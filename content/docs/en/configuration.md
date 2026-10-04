@@ -30,7 +30,6 @@ The other OIDC variables and everything about passwords and passkeys are describ
 | `FLOWPLAN_OCR` | on | `0` turns off text recognition for scanned PDFs and images. |
 | `FLOWPLAN_METRICS_TOKEN` | *empty* | At least 16 characters; enables `/api/metrics` in Prometheus format. |
 | `FLOWPLAN_TRUSTED_PROXIES` | `1` | Number of proxies in front of Flowplan (Traefik alone: `1`, Pangolin in front of Traefik: `2`). Decides which entry in `X-Forwarded-For` is the real address – for limiting sign-in attempts, demo starts and anonymous form answers. Entries made up by the browser are ignored this way. |
-| `FLOWPLAN_PUBLIC_SITE` | *empty* | Only for the official instance app.flowplan.org: `true` allows the public demo. Self-hosted instances leave it empty. |
 
 ## S3 and database backup
 
@@ -116,6 +115,6 @@ Under **Administration → Instance**, administrators set:
 - whether anyone may sign up with e-mail and password,
 - the daily database backup and how many copies are kept,
 - after how many days without sign-in accounts are locked,
-- on app.flowplan.org: whether the website offers a **demo** (running and total started demos are shown under **Administration → Operations**).
+- whether the instance offers a public **demo** (running and total started demos are shown under **Administration → Operations**).
 
 Empty fields fall back to the environment variables.

@@ -31,7 +31,7 @@ The state of the instance: size of the database and uploads, queues, search inde
 | Maximum upload size | The limit per file in MB. |
 | Create workspaces | Whether everyone may create workspaces of their own. |
 | Allow sign-ups with e-mail and password | Anyone may create an account. Without this setting only invited addresses (and the instance's first account). |
-| Offer a demo | Only on the official instance app.flowplan.org, see below. |
+| Offer a public demo | Visitors try Flowplan without an account, see below. |
 
 Empty fields fall back to the [environment variables](/configuration).
 
@@ -47,9 +47,9 @@ Empty fields fall back to the [environment variables](/configuration).
 
 ## Demo
 
-The demo only exists on the official instance app.flowplan.org (`FLOWPLAN_PUBLIC_SITE=true`); self-hosted instances do not show the setting.
+The demo is off on every instance until an administrator switches it on.
 
-With **Offer a demo**, the button **Try the demo** appears on the website [flowplan.org](https://flowplan.org) next to sign-up and sign-in; it opens `app.flowplan.org/demo`. Without an account it creates a demo guest with an example workspace of its own. Every demo gets fresh example pages that show all features: a welcome page, an editor tour with all blocks, a project database with relation, rollup, formula, recurrence and all views (table, board, calendar, timeline, gallery, list, feed, chart, form), a whiteboard, a journal and a small wiki.
+With **Offer a public demo**, the address `/demo` of your instance starts a demo (on flowplan.org the button **Try the demo** links there). Without an account it creates a demo guest with an example workspace of its own. Every demo gets fresh example pages that show all features: a welcome page, an editor tour with all blocks, a project database with relation, rollup, formula, recurrence and all views (table, board, calendar, timeline, gallery, list, feed, chart, form), a whiteboard, a journal and a small wiki.
 
 - The demo ends with **End demo**, on signing out, after 45 minutes without activity and after three hours at the latest. Then the account, workspace, pages and files are deleted completely.
 - Demo guests cannot take anything outside: no publishing, no share links, no invitations, no further workspaces, no public forms, no administration.

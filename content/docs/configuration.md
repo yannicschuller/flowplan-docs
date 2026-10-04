@@ -30,7 +30,6 @@ Die übrigen OIDC-Variablen und alles zu Passwörtern und Passkeys stehen unter 
 | `FLOWPLAN_OCR` | an | `0` schaltet die Texterkennung für gescannte PDFs und Bilder ab. |
 | `FLOWPLAN_METRICS_TOKEN` | *leer* | Mindestens 16 Zeichen; aktiviert `/api/metrics` im Prometheus-Format. |
 | `FLOWPLAN_TRUSTED_PROXIES` | `1` | Anzahl der Proxys vor Flowplan (Traefik allein: `1`, Pangolin vor Traefik: `2`). Bestimmt, welcher Eintrag in `X-Forwarded-For` die echte Adresse ist – für die Begrenzung von Demo-Starts und anonymen Formularantworten. Frei erfundene Einträge des Browsers werden so ignoriert. |
-| `FLOWPLAN_PUBLIC_SITE` | *leer* | Nur für die offizielle Instanz app.flowplan.org: `true` erlaubt die öffentliche Demo. Selbst gehostete Instanzen lassen sie leer. |
 
 ## S3 und Datenbanksicherung
 
@@ -116,6 +115,6 @@ Unter **Administration → Instanz** stellen Admins ein:
 - ob sich jede Person mit E-Mail und Passwort registrieren darf,
 - tägliche Datenbanksicherung und wie viele Kopien bleiben,
 - nach wie vielen Tagen ohne Anmeldung Konten gesperrt werden,
-- auf app.flowplan.org: ob die Webseite eine **Demo** anbietet (laufende und insgesamt gestartete Demos zeigt **Administration → Betrieb**).
+- ob die Instanz eine öffentliche **Demo** anbietet (laufende und insgesamt gestartete Demos zeigt **Administration → Betrieb**).
 
 Leere Felder fallen auf die Umgebungsvariablen zurück.

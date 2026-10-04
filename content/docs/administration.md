@@ -32,7 +32,7 @@ Zustand der Instanz: Größe von Datenbank und Uploads, Warteschlangen, Suchinde
 | Maximale Uploadgröße | Grenze je Datei in MB. |
 | Arbeitsbereiche anlegen | Ob alle Personen eigene Arbeitsbereiche erstellen dürfen. |
 | Registrierung mit E-Mail und Passwort erlauben | Jede Person darf ein Konto anlegen. Ohne diese Einstellung nur eingeladene Adressen (und das erste Konto der Instanz). |
-| Demo anbieten | Nur auf der offiziellen Instanz app.flowplan.org, siehe unten. |
+| Öffentliche Demo anbieten | Besucher probieren Flowplan ohne Konto aus, siehe unten. |
 
 Leere Felder fallen auf die [Umgebungsvariablen](/configuration) zurück.
 
@@ -48,9 +48,9 @@ Leere Felder fallen auf die [Umgebungsvariablen](/configuration) zurück.
 
 ## Demo
 
-Die Demo gibt es nur auf der offiziellen Instanz app.flowplan.org (`FLOWPLAN_PUBLIC_SITE=true`); selbst gehostete Instanzen zeigen die Einstellung nicht.
+Die Demo ist auf jeder Instanz ausgeschaltet, bis ein Admin sie einschaltet.
 
-Mit **Demo anbieten** erscheint auf der Webseite [flowplan.org](https://flowplan.org) neben Registrieren und Anmelden der Knopf **Demo ausprobieren**; er öffnet `app.flowplan.org/demo`. Er legt ohne Konto einen Demo-Gast mit eigenem Beispiel-Arbeitsbereich an. Jede Demo bekommt frische Beispielseiten, die alle Funktionen zeigen: eine Willkommensseite, einen Editor-Rundgang mit allen Blöcken, eine Projektdatenbank mit Beziehung, Rollup, Formel, Wiederholung und allen Ansichten (Tabelle, Board, Kalender, Zeitleiste, Galerie, Liste, Feed, Diagramm, Formular), ein Whiteboard, ein Journal und ein kleines Wiki.
+Mit **Öffentliche Demo anbieten** startet die Adresse `/demo` deiner Instanz eine Demo (auf flowplan.org verlinkt der Knopf **Demo ausprobieren** dorthin). Sie legt ohne Konto einen Demo-Gast mit eigenem Beispiel-Arbeitsbereich an. Jede Demo bekommt frische Beispielseiten, die alle Funktionen zeigen: eine Willkommensseite, einen Editor-Rundgang mit allen Blöcken, eine Projektdatenbank mit Beziehung, Rollup, Formel, Wiederholung und allen Ansichten (Tabelle, Board, Kalender, Zeitleiste, Galerie, Liste, Feed, Diagramm, Formular), ein Whiteboard, ein Journal und ein kleines Wiki.
 
 - Die Demo endet mit **Demo beenden**, beim Abmelden, nach 45 Minuten ohne Aktivität, spätestens nach drei Stunden. Dann werden Konto, Arbeitsbereich, Seiten und Dateien vollständig gelöscht.
 - Demo-Gäste können nichts nach außen tragen: nicht veröffentlichen, keine Freigabelinks, keine Einladungen, keine weiteren Arbeitsbereiche, keine öffentlichen Formulare, keine Administration.
