@@ -101,6 +101,7 @@ List items and tasks stay what they are when moved: outside their list they form
 - **Pasting from the clipboard** (<kbd>⌘</kbd> <kbd>V</kbd>) or dragging in uploads images and files. Images can be resized at their edges.
 - **Photos are scaled down before uploading**: at most 2560 px on the longer side, stored as WebP. The camera rotation is kept, metadata such as the location is removed. GIFs, SVGs and files that would hardly get smaller stay unchanged. Attachments in file properties and forms are stored as they are.
 - **PDFs** appear as a card with a preview of the first page. A click opens the PDF viewer with all pages, zoom (also <kbd>⌘</kbd> <kbd>+</kbd>/<kbd>−</kbd>) and **Download**; <kbd>Esc</kbd> closes it. The same applies to PDFs in the media library, in files properties of databases and on published pages. In editable text, <kbd>⌘</kbd>-click a link to a PDF to open the viewer.
+- **Mark up images**: double-click an image (or the pen in the toolbar while the image is selected) to open it for editing – with **pen**, **highlighter**, **arrow**, **rectangle**, **circle** and **text**, seven colours and three line widths, undo with <kbd>⌘</kbd> <kbd>Z</kbd>. **Save** creates a new image with the markings; the original and the markings stay with the image, so you can change or remove them later.
 - **Media** in the sidebar collects all uploads of the workspace for reuse.
 - **Embed** (`/embed`) takes an address: YouTube, Vimeo, Loom, Spotify, Figma and CodePen appear as players with an adjustable width, other sites as a link card with title and preview image.
 - Links to pages and mentions of people show a preview on hover.
@@ -108,9 +109,22 @@ List items and tasks stay what they are when moved: outside their list they form
 
 ## Formulas, diagrams and code
 
-- **Formulas** in LaTeX: as a block with `/math`, inside the text with `/inlinemath`. The preview appears while you type.
+- **Formulas** in LaTeX: as a block with `/math`, inside the text with `/inlinemath`. The preview appears while you type. Building blocks such as fraction, root, superscript, subscript, ±, π and sum sit above the input.
 - **Mermaid diagrams**: a click or <kbd>Enter</kbd> opens the source and preview. Up to 20,000 characters and 500 edges.
 - **Code blocks**: choose the language in the header; **Wrap lines** and **Copy** are at hand. <kbd>Tab</kbd> indents by two spaces.
+- **Fractions**: `/Fraction` (or `/Bruch`) inserts a formula inside the sentence.
+
+## Calculating in text
+
+Flowplan only calculates when you want it to – exactly, with fractions, in German or English notation (`2,5` or `2.5`, `×`, `²`, `√`, `€`):
+
+- **Hint after "="**: type a calculation followed by `=`, such as `12 × 2,400 € =` or `3/4 + 1/6 =`, and the result appears greyed out behind it. <kbd>Tab</kbd> accepts it, <kbd>Esc</kbd> or typing on dismisses it.
+- **Selected text**: select a calculation, a term or an equation; the text menu (also on right-click) shows what is possible under **Calculate** and inserts the result after it with one click:
+  - **Result** and **Reduce** as an exact fraction, plus **As a decimal** – `12/18 = 2/3`
+  - **Expand**, including the binomial formulas – `(a + b)² = a² + 2ab + b²`
+  - **Factor** – `x² − 9 = (x − 3)(x + 3)`, `4x² − 12x + 9 = (2x − 3)²`, `6x² + 9x = 3x(2x + 3)`
+  - **Solve for x** – linear and quadratic equations exactly (`x² + 2x − 4 = 0 ⇒ x = −1 ± √5`), higher degrees with whole or fractional solutions; with several variables, for each one that appears linearly.
+- **In formulas**: the formula editor shows the same options under **Calculate** and appends the result in LaTeX, such as `\frac{3}{4} + \frac{1}{6} = \frac{11}{12}`.
 
 ## Page links and mentions
 

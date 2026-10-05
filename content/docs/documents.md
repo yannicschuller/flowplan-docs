@@ -101,6 +101,7 @@ Listenpunkte und Aufgaben bleiben beim Verschieben, was sie sind: Außerhalb ihr
 - **Einfügen aus der Zwischenablage** (<kbd>⌘</kbd> <kbd>V</kbd>) oder Hineinziehen lädt Bilder und Dateien hoch. Bilder lassen sich an den Rändern in der Größe ändern.
 - **Fotos werden vor dem Hochladen verkleinert**: höchstens 2560 px an der längeren Seite, gespeichert als WebP. Die Kameradrehung bleibt erhalten, Metadaten wie der Aufnahmeort werden entfernt. GIFs, SVGs und Dateien, die kaum kleiner würden, bleiben unverändert. Anhänge in Dateien-Eigenschaften und Formularen werden im Original gespeichert.
 - **PDFs** erscheinen als Karte mit einer Vorschau der ersten Seite. Ein Klick öffnet den PDF-Viewer mit allen Seiten, Zoom (auch <kbd>⌘</kbd> <kbd>+</kbd>/<kbd>−</kbd>) und **Herunterladen**; <kbd>Esc</kbd> schließt ihn. Dasselbe gilt für PDFs in den Medien, in Dateien-Eigenschaften von Datenbanken und auf veröffentlichten Seiten. In bearbeitbarem Text öffnet ein Link auf ein PDF den Viewer mit <kbd>⌘</kbd>-Klick.
+- **Bilder markieren**: Doppelklick auf ein Bild (oder den Stift in der Werkzeugleiste, solange das Bild ausgewählt ist) öffnet es zum Bearbeiten – mit **Stift**, **Textmarker**, **Pfeil**, **Rechteck**, **Kreis** und **Text**, sieben Farben und drei Strichstärken, Rückgängig mit <kbd>⌘</kbd> <kbd>Z</kbd>. **Speichern** legt ein neues Bild mit den Markierungen an; das Original und die Markierungen bleiben am Bild, sodass sie sich später ändern oder ganz entfernen lassen.
 - Die **Medien** in der Seitenleiste sammeln alle Uploads des Arbeitsbereichs zum Wiederverwenden.
 - **Einbetten** (`/embed`) nimmt eine Adresse entgegen: YouTube, Vimeo, Loom, Spotify, Figma und CodePen erscheinen als Player mit wählbarer Breite, andere Seiten als Linkkarte mit Titel und Vorschaubild.
 - Links auf Seiten und Erwähnungen von Personen zeigen beim Überfahren eine Vorschau.
@@ -108,9 +109,22 @@ Listenpunkte und Aufgaben bleiben beim Verschieben, was sie sind: Außerhalb ihr
 
 ## Formeln, Diagramme und Code
 
-- **Formeln** in LaTeX: Block mit `/math`, im Text mit `/inlinemath`. Die Vorschau erscheint beim Tippen.
+- **Formeln** in LaTeX: Block mit `/math`, im Text mit `/inlinemath`. Die Vorschau erscheint beim Tippen. Über dem Eingabefeld stehen Bausteine wie Bruch, Wurzel, Hoch- und Tiefstellung, ±, π und Summe.
+- **Brüche** fügt `/Bruch` als Formel im Satz ein.
 - **Mermaid-Diagramme**: Klick oder <kbd>Enter</kbd> öffnet Quelltext und Vorschau. Bis 20.000 Zeichen und 500 Kanten.
 - **Codeblöcke**: Sprache im Kopf wählen, **Zeilenumbruch** und **Kopieren** stehen bereit. <kbd>Tab</kbd> rückt um zwei Leerzeichen ein.
+
+## Rechnen im Text
+
+Flowplan rechnet nur, wenn du es möchtest – exakt mit Brüchen, in deutscher Schreibweise (`2,5`, `2.400`, `3 : 4`, `×`, `²`, `√`, `€`):
+
+- **Hinweis nach „=“**: Tippst du eine Rechnung und dann `=`, etwa `12 × 2.400 € =` oder `3/4 + 1/6 =`, erscheint das Ergebnis grau dahinter. <kbd>Tab</kbd> übernimmt es, <kbd>Esc</kbd> oder Weiterschreiben verwirft es.
+- **Markierter Text**: Markiere eine Rechnung, einen Term oder eine Gleichung; das Textmenü (auch per Rechtsklick) zeigt unter **Rechnen**, was möglich ist, und fügt das Ergebnis per Klick dahinter ein:
+  - **Ergebnis** und **Kürzen** als exakter Bruch, dazu **Als Dezimalzahl** – `12/18 = 2/3`
+  - **Ausmultiplizieren**, auch die binomischen Formeln – `(a + b)² = a² + 2ab + b²`
+  - **Faktorisieren** – `x² − 9 = (x − 3)(x + 3)`, `4x² − 12x + 9 = (2x − 3)²`, `6x² + 9x = 3x(2x + 3)`
+  - **Nach x auflösen** – lineare und quadratische Gleichungen exakt (`x² + 2x − 4 = 0 ⇒ x = −1 ± √5`), höhere Grade mit ganzzahligen oder Bruch-Lösungen; bei mehreren Variablen nach jeder, die linear vorkommt.
+- **In Formeln**: Der Formel-Editor zeigt dieselben Möglichkeiten unter **Rechnen** und hängt das Ergebnis in LaTeX an, etwa `\frac{3}{4} + \frac{1}{6} = \frac{11}{12}`.
 
 ## Seitenlinks und Erwähnungen
 
