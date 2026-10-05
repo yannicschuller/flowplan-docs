@@ -29,3 +29,17 @@ Person and relation questions only exist in forms for members, because they woul
 ## Answers
 
 Every answer is a normal record: it appears in all views and can be filtered, assigned and commented on.
+
+## Customer portal
+
+The customer portal turns a form into a service desk: whoever sends it can follow their request afterwards.
+
+1. Under **Share form**, switch on the **customer portal**.
+2. Choose which properties are visible in the portal – for example **Status** or a due date. A select property named “Status” is preselected when you switch it on. People, relations and files always stay internal.
+
+After sending, the person sees a private link to their request. If they answered an e-mail question and e-mail is set up, the link also arrives by e-mail – in their language. The page shows the status, their answers and a conversation with the team.
+
+The team replies in the record under **Customer request**. Replies go to the person by e-mail; when they write back, the people on the record, everyone who already replied and whoever created the database get a notification. **Copy customer link** passes the link on when there is no e-mail address.
+
+> [!NOTE]
+> The link is the key: anyone who has it sees the request and can reply. Switching off the customer portal or the form stops all links from working; switching it back on restores them.

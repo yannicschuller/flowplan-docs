@@ -128,6 +128,17 @@ Flowplan only calculates when you want it to – exactly, with fractions, in Ger
 - **Function graph**: select a term in x, such as `x² − 2` or `f(x) = 2x + 1`, and choose **Draw graph** in the text menu – a graph with axes, grid and marked zeros appears below. `/Function graph` inserts one too. The functions are edited below the graph: it changes while you type, **+ Function** adds up to six functions in their own colours (`sin(x)`, `cos`, `tan`, `exp`, `ln`, `abs`, `√` and `π` work). Dragging moves the view, **+**/**−** or <kbd>⌘</kbd>/<kbd>Ctrl</kbd> + scrolling zoom, **⟲** resets the view. On published pages the graph can be moved and zoomed but not changed.
 - **In formulas**: the formula editor shows the same options under **Calculate** and appends the result in LaTeX, such as `\frac{3}{4} + \frac{1}{6} = \frac{11}{12}`.
 
+## Dashboards and metrics
+
+**/Metric** inserts a card with a number from a database, **/Dashboard** three side by side. With the gear you choose:
+
+- the **database** (every database in the workspace you can read),
+- optionally a **view** – then only the records its filters show count, such as “Open tickets”,
+- the **calculation**: number of records, sum, average, minimum or maximum of a number, formula or rollup property,
+- a **label**.
+
+The server calculates the number for the person looking at the page and refreshes it every minute; private records only count for people allowed to see them. On published pages, visitors without access see a dash. Add charts by inserting a **linked database** below the metrics and choosing a chart view there – that makes a dashboard from several databases.
+
 ## Page links and mentions
 
 `@` searches pages and people. Mentioning a person notifies them in the inbox. Links to pages stay valid even if the page is renamed or moved; the target page lists them under **Linked from**.

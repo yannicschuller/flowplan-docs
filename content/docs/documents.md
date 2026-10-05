@@ -128,6 +128,17 @@ Flowplan rechnet nur, wenn du es möchtest – exakt mit Brüchen, in deutscher 
 - **Funktionsgraph**: Markiere einen Term mit x, etwa `x² − 2` oder `f(x) = 2x + 1`, und wähle im Textmenü **Graph zeichnen** – darunter erscheint ein Graph mit Achsen, Gitter und markierten Nullstellen. Auch `/Funktionsgraph` fügt einen ein. Unter dem Graphen stehen die Funktionen zum Bearbeiten: Der Graph ändert sich beim Tippen, **+ Funktion** fügt bis zu sechs Funktionen in eigenen Farben hinzu (`sin(x)`, `cos`, `tan`, `exp`, `ln`, `abs`, `√` und `π` sind möglich). Ziehen verschiebt den Ausschnitt, **+**/**−** oder <kbd>⌘</kbd>/<kbd>Strg</kbd> + Scrollen zoomen, **⟲** stellt die Ansicht zurück. Auf veröffentlichten Seiten lässt sich der Graph verschieben und zoomen, aber nicht ändern.
 - **In Formeln**: Der Formel-Editor zeigt dieselben Möglichkeiten unter **Rechnen** und hängt das Ergebnis in LaTeX an, etwa `\frac{3}{4} + \frac{1}{6} = \frac{11}{12}`.
 
+## Dashboards und Kennzahlen
+
+**/Kennzahl** fügt eine Karte mit einer Zahl aus einer Datenbank ein, **/Dashboard** gleich drei nebeneinander. Über das Zahnrad wählst du:
+
+- die **Datenbank** (alle Datenbanken des Arbeitsbereichs, die du lesen darfst),
+- optional eine **Ansicht** – dann zählen nur die Einträge, die ihre Filter zeigen, etwa „Offene Tickets“,
+- die **Berechnung**: Anzahl Einträge, Summe, Durchschnitt, Minimum oder Maximum einer Zahl-, Formel- oder Rollup-Eigenschaft,
+- eine **Beschriftung**.
+
+Die Zahl rechnet der Server für die Person aus, die die Seite ansieht, und aktualisiert sie jede Minute; private Einträge zählen nur für die, die sie sehen dürfen. Auf veröffentlichten Seiten sehen Besucher ohne Zugriff einen Strich. Diagramme kommen dazu, indem du unter den Kennzahlen eine **verknüpfte Datenbank** einfügst und dort eine Diagramm-Ansicht wählst – so entsteht ein Dashboard aus mehreren Datenbanken.
+
 ## Seitenlinks und Erwähnungen
 
 `@` sucht Seiten und Personen. Eine Erwähnung einer Person benachrichtigt sie im Posteingang. Links auf Seiten bleiben gültig, auch wenn die Seite umbenannt oder verschoben wird; die Zielseite zeigt sie unter **Verlinkt von**.
