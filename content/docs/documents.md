@@ -122,9 +122,9 @@ Flowplan rechnet nur, wenn du es möchtest – exakt mit Brüchen, in deutscher 
 - **Markierter Text**: Markiere eine Rechnung, einen Term oder eine Gleichung; das Textmenü (auch per Rechtsklick) zeigt unter **Rechnen**, was möglich ist, und fügt das Ergebnis per Klick dahinter ein:
   - **Ergebnis** und **Kürzen** als exakter Bruch, dazu **Als Dezimalzahl** – `12/18 = 2/3`
   - **Ausmultiplizieren**, auch die binomischen Formeln – `(a + b)² = a² + 2ab + b²`
-  - **Faktorisieren** – `x² − 9 = (x − 3)(x + 3)`, `4x² − 12x + 9 = (2x − 3)²`, `6x² + 9x = 3x(2x + 3)`, auch mit mehreren Variablen: `a³ − b³ = (a − b)(a² + ab + b²)`, `x² + 2xy + y² − 1 = (x + y − 1)(x + y + 1)`, durch Ausklammern in Gruppen `ax + ay + bx + by = (x + y)(a + b)`
+  - **Faktorisieren** – `x² − 9 = (x − 3)(x + 3)`, `4x² − 12x + 9 = (2x − 3)²`, `6x² + 9x = 3x(2x + 3)`, auch mit mehreren Variablen: `a³ − b³ = (a − b)(a² + ab + b²)`, `x² + 2xy + y² − 1 = (x + y − 1)(x + y + 1)`, durch Ausklammern in Gruppen `ax + ay + bx + by = (x + y)(a + b)`; **Faktorisieren mit Wurzeln** zerlegt weiter in reelle Faktoren: `x² − 2 = (x − √2)(x + √2)`
   - **Vereinfachen** von Bruchtermen – `(x² − 1)/(x − 1) = x + 1`, `1/x + 1/(x + 1) = (2x + 1)/(x(x + 1))`
-  - **Nach x auflösen** – lineare und quadratische Gleichungen exakt (`x² + 2x − 4 = 0 ⇒ x = −1 ± √5`), höhere Grade mit ganzzahligen oder Bruch-Lösungen; bei mehreren Variablen nach jeder, die linear vorkommt. Gleichungen mit x im Nenner werden mit dem Hauptnenner gelöst; Werte, für die ein Nenner 0 wäre, entfallen und werden genannt (`x/(x − 1) = 1/(x − 1) ⇒ keine Lösung (x = 1 entfällt)`).
+  - **Nach x auflösen** – lineare und quadratische Gleichungen exakt (`x² + 2x − 4 = 0 ⇒ x = −1 ± √5`), höhere Grade exakt, wo es geht (`x³ = 2 ⇒ x = ∛2`, `x⁴ − 5x² + 6 = 0 ⇒ x = ±√2, ±√3`), sonst als gerundete Dezimalzahlen (`x³ + x − 1 = 0 ⇒ x ≈ 0,682328`); bei mehreren Variablen nach jeder, die linear vorkommt. Gleichungen mit x im Nenner werden mit dem Hauptnenner gelöst; Werte, für die ein Nenner 0 wäre, entfallen und werden genannt (`x/(x − 1) = 1/(x − 1) ⇒ keine Lösung (x = 1 entfällt)`).
 - **In Formeln**: Der Formel-Editor zeigt dieselben Möglichkeiten unter **Rechnen** und hängt das Ergebnis in LaTeX an, etwa `\frac{3}{4} + \frac{1}{6} = \frac{11}{12}`.
 
 ## Seitenlinks und Erwähnungen
