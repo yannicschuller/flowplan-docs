@@ -122,8 +122,9 @@ Flowplan only calculates when you want it to – exactly, with fractions, in Ger
 - **Selected text**: select a calculation, a term or an equation; the text menu (also on right-click) shows what is possible under **Calculate** and inserts the result after it with one click:
   - **Result** and **Reduce** as an exact fraction, plus **As a decimal** – `12/18 = 2/3`
   - **Expand**, including the binomial formulas – `(a + b)² = a² + 2ab + b²`
-  - **Factor** – `x² − 9 = (x − 3)(x + 3)`, `4x² − 12x + 9 = (2x − 3)²`, `6x² + 9x = 3x(2x + 3)`
-  - **Solve for x** – linear and quadratic equations exactly (`x² + 2x − 4 = 0 ⇒ x = −1 ± √5`), higher degrees with whole or fractional solutions; with several variables, for each one that appears linearly.
+  - **Factor** – `x² − 9 = (x − 3)(x + 3)`, `4x² − 12x + 9 = (2x − 3)²`, `6x² + 9x = 3x(2x + 3)`, also with several variables: `a³ − b³ = (a − b)(a² + ab + b²)`, `x² + 2xy + y² − 1 = (x + y − 1)(x + y + 1)`, by grouping `ax + ay + bx + by = (x + y)(a + b)`
+  - **Simplify** algebraic fractions – `(x² − 1)/(x − 1) = x + 1`, `1/x + 1/(x + 1) = (2x + 1)/(x(x + 1))`
+  - **Solve for x** – linear and quadratic equations exactly (`x² + 2x − 4 = 0 ⇒ x = −1 ± √5`), higher degrees with whole or fractional solutions; with several variables, for each one that appears linearly. Equations with x in a denominator are solved with the common denominator; values that would make a denominator 0 are excluded and named (`x/(x − 1) = 1/(x − 1) ⇒ no solution (x = 1 excluded)`).
 - **In formulas**: the formula editor shows the same options under **Calculate** and appends the result in LaTeX, such as `\frac{3}{4} + \frac{1}{6} = \frac{11}{12}`.
 
 ## Page links and mentions
