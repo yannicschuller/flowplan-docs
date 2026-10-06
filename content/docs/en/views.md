@@ -37,6 +37,21 @@ Month, week and day view by a date field.
 
 **Subscribe** in the calendar view creates your personal link for Apple Calendar, Google Calendar or Outlook. It shows the records of this view with its filters – only what you may see – and recurrences as series. The link is secret and shown only once; **Create new link** invalidates the old one, **End subscription** switches it off. If you lose access to the database, the link returns nothing anymore.
 
+### Sync both ways (CalDAV)
+
+In the same dialog, **Set up access** sets up sync with Apple Calendar, Thunderbird or DAVx⁵ (Android). Events you add, move, rename or delete there land in the database.
+
+- **Credentials**: you get a server, a username and a password that is shown only once.
+- **Apple**: Add account → Other → CalDAV account, type “Manual”.
+- **Thunderbird and DAVx⁵**: they take the calendar address directly.
+- **Permissions**: your own rights apply – whoever can only read the database cannot change anything from the calendar. Workflow and automations apply as for any change.
+
+Google Calendar does not support CalDAV accounts; use the subscription for it.
+
+## Sprints
+
+Backlog, sprints with goal and period, burndown and velocity – see [Projects, tickets and sprints](/projects-and-tickets#sprints).
+
 ## Timeline
 
 Bars from a start to an end date field, on a scale of week, month, quarter or year.

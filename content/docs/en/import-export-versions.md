@@ -24,6 +24,7 @@ The export respects read permissions and contains all records regardless of view
 
 - **Markdown, text or HTML**: **Settings → Data → Import Markdown or text**. Headings, lists, tasks, tables, code (also `mermaid`) and formulas become blocks.
 - **Notion, AppFlowy or Markdown export**: **Settings → Data** accepts a ZIP with Markdown and CSV files. Markdown becomes pages, CSV databases, folders sub-pages; linked images and files are uploaded, and Notion record pages are matched to their records. Up to 100 MB, 500 pages and 5,000 records per table; you choose the target space beforehand.
+- **Jira or Trello**: **Settings → Data → Import from Jira or Trello** – see [Projects, tickets and sprints](/projects-and-tickets#import-from-jira-and-trello).
 - **CSV**: in a database, choose **Import CSV**; the rows become records.
 - **Content archive** (see below).
 
@@ -46,7 +47,8 @@ Accounts, sessions and sign-in are not part of it – operations back them up ev
 
 - Documents save automatically at most every five minutes, databases before the first change after ten quiet minutes.
 - **Save current version** creates a state at any time; manually saved versions are kept permanently.
-- **Changes** compares a version with the current state: added and removed text, for databases new, changed and removed records and properties.
+- **Changes** compares a version with the current state or with any other version (**Compare with**): added and removed text, for databases new, changed and removed records and properties.
+- **Bring back single paragraphs**: compared with the current state, every removed or changed paragraph has a **Restore** button. The paragraph returns to its old place with its formatting; the rest of the page stays as it is.
 - **Restore** sets the page back to that state.
 
 Automatic versions are thinned out to one per day after seven days and deleted after 180 days (adjustable in the administration).

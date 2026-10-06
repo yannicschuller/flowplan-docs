@@ -29,6 +29,7 @@ const groups: { title: [de: string, en: string]; pages: [slug: string, de: strin
       ["views", "Ansichten", "Views"],
       ["properties-and-formulas", "Eigenschaften, Formeln und Rollups", "Properties, formulas and rollups"],
       ["forms", "Formulare", "Forms"],
+      ["projects-and-tickets", "Projekte, Tickets und Sprints", "Projects, tickets and sprints"],
       ["whiteboards", "Whiteboards", "Whiteboards"],
       ["journal", "Journal", "Journal"],
       ["collaboration", "Zusammenarbeit und Kommentare", "Collaboration and comments"],

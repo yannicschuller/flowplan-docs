@@ -37,6 +37,21 @@ Monats-, Wochen- und Tagesansicht nach einem Datumsfeld.
 
 **Abonnieren** in der Kalenderansicht erzeugt deinen persönlichen Link für Apple Kalender, Google Kalender oder Outlook. Er zeigt die Einträge dieser Ansicht mit ihren Filtern – nur, was du sehen darfst – und Wiederholungen als Serien. Der Link ist geheim und nur einmal sichtbar; **Neuen Link erzeugen** macht den alten ungültig, **Abo beenden** schaltet ihn ab. Verlierst du den Zugriff auf die Datenbank, liefert der Link nichts mehr.
 
+### In beide Richtungen synchronisieren (CalDAV)
+
+Im selben Dialog richtet **Zugang einrichten** eine Synchronisation für Apple Kalender, Thunderbird oder DAVx⁵ (Android) ein. Dort angelegte, verschobene, umbenannte oder gelöschte Termine landen in der Datenbank.
+
+- **Zugangsdaten**: Du bekommst Server, Benutzername und ein Passwort, das nur einmal angezeigt wird.
+- **Apple**: Account hinzufügen → Andere → CalDAV-Account, Typ „Manuell“.
+- **Thunderbird und DAVx⁵**: Sie nehmen die Kalender-Adresse direkt.
+- **Rechte**: Es gelten deine Rechte – wer die Datenbank nur lesen darf, kann im Kalender nichts ändern. Workflow und Automationen gelten wie bei jeder Änderung.
+
+Google Kalender unterstützt keine CalDAV-Konten; dafür bleibt das Abo.
+
+## Sprints
+
+Backlog, Sprints mit Ziel und Zeitraum, Burndown und Velocity – siehe [Projekte, Tickets und Sprints](/projects-and-tickets#sprints).
+
 ## Timeline
 
 Balken von einem Beginn- bis zu einem End-Datumsfeld, im Maßstab Woche, Monat, Quartal oder Jahr.
