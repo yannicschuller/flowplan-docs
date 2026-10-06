@@ -6,9 +6,18 @@ import { createContext, useCallback, useContext } from "react";
 import { LOCALE_COOKIE, translate, type Locale } from "@/lib/i18n";
 
 const LocaleContext = createContext<Locale>("de");
+// "/de" or "/en" when the address fixes the language, otherwise "".
+const PrefixContext = createContext("");
 
-export function LocaleProvider({ locale, children }: { locale: Locale; children: React.ReactNode }) {
-  return <LocaleContext.Provider value={locale}>{children}</LocaleContext.Provider>;
+export function LocaleProvider({ locale, prefix = "", children }: { locale: Locale; prefix?: string; children: React.ReactNode }) {
+  return (
+    <LocaleContext.Provider value={locale}>
+      <PrefixContext.Provider value={prefix}>{children}</PrefixContext.Provider>
+    </LocaleContext.Provider>
+  );
+}
+export function usePrefix() {
+  return useContext(PrefixContext);
 }
 export function useLocale() {
   return useContext(LocaleContext);
@@ -19,7 +28,10 @@ export function useT() {
 export function setLocale(locale: Locale) {
   const domain = /(^|\.)flowplan\.org$/.test(location.hostname) ? "; domain=flowplan.org" : "";
   document.cookie = `${LOCALE_COOKIE}=${locale}; path=/; max-age=31536000; samesite=lax${domain}`;
-  location.reload();
+  // On an address with a fixed language, go to the same page in the other one.
+  const fixed = location.pathname.match(/^\/(de|en)(\/.*)?$/);
+  if (fixed) location.assign(`/${locale}${fixed[2] || ""}${location.hash}`);
+  else location.reload();
 }
 // "DE · EN": the other language is a button.
 export function LanguageSwitch({ className }: { className?: string }) {

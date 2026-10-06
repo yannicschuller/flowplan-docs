@@ -6,6 +6,7 @@ import { join } from "node:path";
 import { existsSync } from "node:fs";
 import { Marked, type Tokens } from "marked";
 import type { Locale } from "./i18n";
+import { GITHUB_URL, websiteUrl } from "./links";
 
 export type DocGroup = { title: string; pages: { slug: string; title: string }[] };
 
@@ -166,6 +167,9 @@ const fileOf = (slug: string, locale: Locale) => {
   return locale === "en" && existsSync(english) ? english : join(directory(), `${slug}.md`);
 };
 
+// The Markdown file of a page (English falls back to German).
+export const docSource = (slug: string, locale: Locale) => fileOf(slug, locale);
+
 function read(slug: string, locale: Locale) {
   const text = readFileSync(fileOf(slug, locale), "utf8");
   const title = text.match(/^# (.+)$/m)?.[1]?.trim() || slug;
@@ -230,3 +234,46 @@ export function docSearchIndex(locale: Locale = "de") {
   });
 }
 export type DocSearchEntry = ReturnType<typeof docSearchIndex>[number];
+
+// llms.txt (https://llmstxt.org): what Flowplan is and where each page's
+// Markdown lives; llms-full.txt has all pages in one file.
+export function llmsIndex(base: string, locale: Locale) {
+  const de = locale === "de";
+  const lines = [
+    de ? "# Flowplan-Dokumentation" : "# Flowplan documentation",
+    "",
+    de
+      ? "> Flowplan ist ein Open-Source-Arbeitsbereich (AGPL-3.0) für Dokumente, Datenbanken (Tabelle, Board, Kalender, Zeitleiste, Galerie, Liste, Feed, Diagramm, Formular), Whiteboards und ein tägliches Journal. Gehostet in Deutschland auf app.flowplan.org oder selbst gehostet als ein Docker-Container (Next.js, SQLite). Oberfläche auf Deutsch und Englisch, ohne KI-Funktionen."
+      : "> Flowplan is an open-source workspace (AGPL-3.0) for documents, databases (table, board, calendar, timeline, gallery, list, feed, chart, form), whiteboards and a daily journal. Hosted in Germany at app.flowplan.org or self-hosted as one Docker container (Next.js, SQLite). Interface in German and English, without AI features.",
+    "",
+    de
+      ? "Jede Seite gibt es als Markdown unter der verlinkten Adresse; die englische Fassung unter /en/…md."
+      : "Every page is available as Markdown at the linked address; the German version is under /de/…md.",
+    "",
+  ];
+  for (const group of docGroups(locale)) {
+    lines.push(`## ${group.title}`, "");
+    for (const page of group.pages) {
+      const doc = loadDoc(page.slug, locale)!;
+      lines.push(`- [${doc.title}](${base}/${locale}/${page.slug}.md): ${doc.summary}`);
+    }
+    lines.push("");
+  }
+  lines.push(
+    "## Optional",
+    "",
+    `- [${de ? "Alle Seiten in einer Datei" : "All pages in one file"}](${base}${de ? "/de" : ""}/llms-full.txt)`,
+    `- [${de ? "Quellcode auf GitHub" : "Source code on GitHub"}](${GITHUB_URL})`,
+    `- [Website](${websiteUrl()})`,
+    "",
+  );
+  return lines.join("\n");
+}
+export function llmsFull(base: string, locale: Locale) {
+  return docSlugs
+    .map((slug) => {
+      const text = readFileSync(fileOf(slug, locale), "utf8").trim();
+      return `<!-- ${base}/${locale}/${slug} -->\n\n${text}`;
+    })
+    .join("\n\n---\n\n");
+}

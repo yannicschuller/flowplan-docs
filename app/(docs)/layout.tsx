@@ -1,7 +1,7 @@
 import { BrandMark } from "@/components/brand-mark";
 import { DocsNav, DocsSearch } from "@/components/docs/docs-nav";
 import { docGroups, docSearchIndex } from "@/lib/docs";
-import { requestLocale } from "@/lib/i18n-server";
+import { localePrefix, requestLocale } from "@/lib/i18n-server";
 import { translate } from "@/lib/i18n";
 import { LanguageSwitch } from "@/components/i18n";
 import s from "@/components/docs/docs.module.css";
@@ -12,6 +12,7 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
   const locale = await requestLocale();
   const t = translate(locale);
   const index = docSearchIndex(locale);
+  const prefix = await localePrefix();
   return (
     <div className={s.root}>
       <header className={s.header}>
@@ -19,7 +20,7 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
           <BrandMark size={26} />
           <span>flowplan</span>
         </a>
-        <a href="/" className={s.section}>
+        <a href={prefix || "/"} className={s.section}>
           {t("Dokumentation", "Documentation")}
         </a>
         <DocsSearch index={index} />

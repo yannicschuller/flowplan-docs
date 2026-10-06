@@ -1,12 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { requestLocale } from "@/lib/i18n-server";
+import { localePrefix, requestLocale } from "@/lib/i18n-server";
 import { translate } from "@/lib/i18n";
+import { docsUrl } from "@/lib/links";
 import { LocaleProvider } from "@/components/i18n";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = translate(await requestLocale());
   return {
+    metadataBase: new URL(docsUrl()),
+    applicationName: "Flowplan",
+    robots: { index: true, follow: true, "max-snippet": -1, "max-image-preview": "large" },
     title: {
       template: t("%s · Flowplan-Dokumentation", "%s · Flowplan documentation"),
       default: t("Dokumentation · Flowplan", "Documentation · Flowplan"),
@@ -34,6 +38,7 @@ export const viewport: Viewport = {
 };
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const locale = await requestLocale();
+  const prefix = await localePrefix();
   return (
     <html lang={locale}>
       <head>
@@ -47,7 +52,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="stylesheet" href="/fonts.css" />
       </head>
       <body>
-        <LocaleProvider locale={locale}>{children}</LocaleProvider>
+        <LocaleProvider locale={locale} prefix={prefix}>{children}</LocaleProvider>
       </body>
     </html>
   );

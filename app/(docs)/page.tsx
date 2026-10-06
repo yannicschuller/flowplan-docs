@@ -1,6 +1,9 @@
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { docGroups, loadDoc } from "@/lib/docs";
-import { requestLocale } from "@/lib/i18n-server";
+import type { Metadata } from "next";
+import { localePrefix, requestLocale } from "@/lib/i18n-server";
+import { GITHUB_URL, websiteUrl } from "@/lib/links";
+import { absolute, jsonLd, pageAlternates, socialMetadata, softwareJson } from "@/lib/seo";
 import { translate } from "@/lib/i18n";
 import s from "@/components/docs/docs.module.css";
 
@@ -15,11 +18,41 @@ const intros: [string, string][] = [
   ],
 ];
 
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await requestLocale();
+  const t = translate(locale);
+  const title = t("Flowplan-Dokumentation", "Flowplan documentation");
+  const description = t(
+    "Anleitung für Flowplan, den Open-Source-Arbeitsbereich für Dokumente, Datenbanken, Whiteboards und Journal: jede Funktion und das Selbst-Hosten mit Docker.",
+    "Guide to Flowplan, the open-source workspace for documents, databases, whiteboards and a journal: every feature and self-hosting with Docker.",
+  );
+  return {
+    title: { absolute: title },
+    description,
+    alternates: pageAlternates("", locale),
+    ...socialMetadata({ title, description, path: "", locale }),
+  };
+}
+
 export default async function DocsHome() {
   const locale = await requestLocale();
   const t = translate(locale);
+  const prefix = await localePrefix();
+  const structured = {
+    "@graph": [
+      {
+        "@type": "WebSite",
+        name: t("Flowplan-Dokumentation", "Flowplan documentation"),
+        url: absolute(`/${locale}`),
+        inLanguage: locale,
+        publisher: { "@type": "Organization", name: "Flowplan", url: websiteUrl(), sameAs: [GITHUB_URL] },
+      },
+      softwareJson(),
+    ],
+  };
   return (
     <main className={s.main} id="inhalt">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(structured)} />
       <article className={s.article}>
         <p className={s.eyebrow}>{t("Dokumentation", "Documentation")}</p>
         <h1 className={s.title}>{t("Flowplan Schritt für Schritt.", "Flowplan, step by step.")}</h1>
@@ -30,13 +63,13 @@ export default async function DocsHome() {
           )}
         </p>
         <div className={s.paths}>
-          <a href="/first-steps" className={s.path}>
+          <a href={`${prefix}/first-steps`} className={s.path}>
             <span>{t("Ich arbeite mit Flowplan", "I work with Flowplan")}</span>
             <strong>{t("Erste Schritte", "First steps")}</strong>
             <small>{t("Anmelden, erste Seite, Seitenbaum und Suche.", "Sign in, first page, page tree and search.")}</small>
             <ArrowRight size={18} />
           </a>
-          <a href="/installation" className={s.path}>
+          <a href={`${prefix}/installation`} className={s.path}>
             <span>{t("Ich betreibe Flowplan selbst", "I run Flowplan myself")}</span>
             <strong>{t("Installation mit Docker", "Installation with Docker")}</strong>
             <small>{t("Container starten, Anmeldung, Speicher und Updates.", "Start the container, sign-in, storage and updates.")}</small>
@@ -52,7 +85,7 @@ export default async function DocsHome() {
                 const doc = loadDoc(page.slug, locale)!;
                 return (
                   <li key={page.slug}>
-                    <a href={`/${page.slug}`}>
+                    <a href={`${prefix}/${page.slug}`}>
                       <strong>{doc.title}</strong>
                       <span>{doc.summary}</span>
                     </a>

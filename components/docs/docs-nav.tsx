@@ -3,13 +3,15 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { List, MagnifyingGlass, X } from "@phosphor-icons/react";
 import type { DocGroup, DocSearchEntry } from "@/lib/docs";
-import { useT } from "../i18n";
+import { usePrefix, useT } from "../i18n";
 import s from "./docs.module.css";
 
 // Sidebar of the documentation; on small screens it folds into a menu.
 export function DocsNav({ groups }: { groups: DocGroup[] }) {
   const t = useT();
-  const path = usePathname();
+  const prefix = usePrefix();
+  // The address without /de or /en.
+  const path = usePathname().replace(/^\/(de|en)(?=\/|$)/, "") || "/";
   const [open, setOpen] = useState(false);
   useEffect(() => setOpen(false), [path]);
   const current = groups.flatMap((g) => g.pages).find((p) => path === `/${p.slug}`);
@@ -25,7 +27,7 @@ export function DocsNav({ groups }: { groups: DocGroup[] }) {
         <span>{current?.title || t("Übersicht", "Overview")}</span>
       </button>
       <div className={s.navList}>
-        <a href="/" aria-current={path === "/" ? "page" : undefined}>
+        <a href={prefix || "/"} aria-current={path === "/" ? "page" : undefined}>
           {t("Übersicht", "Overview")}
         </a>
         {groups.map((group) => (
@@ -34,7 +36,7 @@ export function DocsNav({ groups }: { groups: DocGroup[] }) {
             {group.pages.map((page) => (
               <a
                 key={page.slug}
-                href={`/${page.slug}`}
+                href={`${prefix}/${page.slug}`}
                 aria-current={path === `/${page.slug}` ? "page" : undefined}
               >
                 {page.title}
@@ -57,6 +59,7 @@ const fold = (text: string) =>
 // Search over page titles, summaries and section headings. "/" focuses it.
 export function DocsSearch({ index }: { index: DocSearchEntry[] }) {
   const t = useT();
+  const prefix = usePrefix();
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
   const input = useRef<HTMLInputElement>(null);
@@ -85,14 +88,14 @@ export function DocsSearch({ index }: { index: DocSearchEntry[] }) {
     for (const page of index) {
       if (all(fold(`${page.title} ${page.summary}`)))
         hits.push({
-          href: `/${page.slug}`,
+          href: `${prefix}/${page.slug}`,
           title: page.title,
           context: page.group,
           score: all(fold(page.title)) ? 0 : 2,
         });
       else if (all(fold(page.text)))
         hits.push({
-          href: `/${page.slug}`,
+          href: `${prefix}/${page.slug}`,
           title: page.title,
           context: page.group,
           snippet: excerpt(page.text),
@@ -102,14 +105,14 @@ export function DocsSearch({ index }: { index: DocSearchEntry[] }) {
         const heading = fold(`${section.text} ${page.title}`);
         if (all(heading))
           hits.push({
-            href: `/${page.slug}#${section.id}`,
+            href: `${prefix}/${page.slug}#${section.id}`,
             title: section.text,
             context: page.title,
             score: all(fold(section.text)) ? 1 : 3,
           });
         else if (all(fold(`${section.text} ${section.body}`)))
           hits.push({
-            href: `/${page.slug}#${section.id}`,
+            href: `${prefix}/${page.slug}#${section.id}`,
             title: section.text,
             context: page.title,
             snippet: excerpt(section.body),
@@ -118,7 +121,7 @@ export function DocsSearch({ index }: { index: DocSearchEntry[] }) {
       }
     }
     return hits.sort((a, b) => a.score - b.score).slice(0, 10);
-  }, [index, query]);
+  }, [index, query, prefix]);
   return (
     <div className={s.search}>
       <MagnifyingGlass size={16} aria-hidden="true" />

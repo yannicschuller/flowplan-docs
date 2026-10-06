@@ -37,6 +37,7 @@ const config: NextConfig = {
       ...renamed.map(([from, to]) => ({ source: `/docs/${from}`, destination: `/${to}`, permanent: true })),
       { source: "/docs/:slug", destination: "/:slug", permanent: true },
       ...renamed.map(([from, to]) => ({ source: `/${from}`, destination: `/${to}`, permanent: true })),
+      ...renamed.map(([from, to]) => ({ source: `/:lang(de|en)/${from}`, destination: `/:lang/${to}`, permanent: true })),
     ];
   },
 };
