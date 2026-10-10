@@ -15,6 +15,19 @@ Eine Datenbank ist eine Sammlung von Einträgen mit Eigenschaften. Dieselben Ein
 - Mehrere Einträge auswählen (Kästchen links) und gemeinsam bearbeiten, duplizieren oder löschen – bis zu 500 auf einmal. Vorher sichert Flowplan einen Stand, der sich über den Versionsverlauf wiederherstellen lässt.
 - Gelöschte Einträge liegen im Papierkorb der Datenbank und lassen sich zurückholen.
 
+### Einträge kopieren und verschieben
+
+Ein **Rechtsklick** auf einen Eintrag – in Tabelle, Board, Liste, Galerie, Kalender oder Zeitleiste – öffnet sein Menü: **Öffnen**, **Duplizieren**, **Kopieren nach …**, **Verschieben nach …** und **Löschen**. Sind mehrere Einträge ausgewählt, gilt das Menü für alle; in der Leiste der Auswahl steht dafür auch **Verschieben / kopieren nach …**.
+
+Im Dialog wählst du die Ziel-Datenbank desselben Arbeitsbereichs:
+
+- **Kopieren** legt neue Einträge an – mit Eigenschaften, Inhalt, Symbol und Cover. Dateien und Bilder werden mitkopiert, die Kopie hängt also nicht an der Quelle.
+- **Verschieben** nimmt den Eintrag selbst mit: Inhalt, Kommentare, Versionsverlauf, erfasste Zeiten und Git-Verknüpfungen bleiben erhalten. In der neuen Datenbank bekommt er die nächste Nummer (Ticket-ID).
+- Eigenschaften werden **nach Namen** zugeordnet, der Titel immer zum Titel. Passende Typen werden umgewandelt (Text ↔ E-Mail, Auswahl ↔ Mehrfachauswahl, Zahl → Text …); fehlende Auswahloptionen kommen im Ziel dazu. **Fehlende Eigenschaften im Ziel anlegen** erstellt Eigenschaften, die das Ziel noch nicht hat.
+- Berechnete Werte (Formeln, Rollups, Fortschritt, Erstellt/Geändert) entstehen im Ziel neu.
+
+Schneller geht es mit der Maus: Einträge am Griff **in eine Datenbank der Seitenleiste ziehen** verschiebt sie dorthin, mit gedrückter <kbd>Alt</kbd>-Taste werden sie kopiert. Vorher sichert Flowplan einen Stand der Quelle.
+
 ## Eigenschaften
 
 | Typ | Inhalt |

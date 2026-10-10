@@ -109,7 +109,7 @@ List items and tasks stay what they are when moved: outside their list they form
 
 ## Formulas, diagrams and code
 
-- **Formulas** in LaTeX: as a block with `/math`, inside the text with `/inlinemath`. The preview appears while you type. Building blocks such as fraction, root, superscript, subscript, ±, π and sum sit above the input.
+- **Formulas** in LaTeX: as a block with `/math`, inside the text with `/inlinemath`. The preview appears while you type. Building blocks such as fraction, root, superscript, subscript, vector, cross product, ±, π and sum sit above the input.
 - **Mermaid diagrams**: a click or <kbd>Enter</kbd> opens the source and preview. Up to 20,000 characters and 500 edges.
 - **Code blocks**: choose the language in the header; **Wrap lines** and **Copy** are at hand. <kbd>Tab</kbd> indents by two spaces.
 - **Fractions**: `/Fraction` (or `/Bruch`) inserts a formula inside the sentence.
@@ -126,6 +126,7 @@ Flowplan only calculates when you want it to – exactly, with fractions, in Ger
   - **Simplify** algebraic fractions – `(x² − 1)/(x − 1) = x + 1`, `1/x + 1/(x + 1) = (2x + 1)/(x(x + 1))`
   - **Solve for x** – linear and quadratic equations exactly (`x² + 2x − 4 = 0 ⇒ x = −1 ± √5`), higher degrees exactly where possible (`x³ = 2 ⇒ x = ∛2`, `x⁴ − 5x² + 6 = 0 ⇒ x = ±√2, ±√3`), otherwise as rounded decimals (`x³ + x − 1 = 0 ⇒ x ≈ 0.682328`); with several variables, for each one that appears linearly. Equations with x in a denominator are solved with the common denominator; values that would make a denominator 0 are excluded and named (`x/(x − 1) = 1/(x − 1) ⇒ no solution (x = 1 excluded)`).
 - **Function graph**: select a term in x, such as `x² − 2` or `f(x) = 2x + 1`, and choose **Draw graph** in the text menu – a graph with axes, grid and marked zeros appears below. `/Function graph` inserts one too. The functions are edited below the graph: it changes while you type, **+ Function** adds up to six functions in their own colours (`sin(x)`, `cos`, `tan`, `exp`, `ln`, `abs`, `√` and `π` work). Dragging moves the view, **+**/**−** or <kbd>⌘</kbd>/<kbd>Ctrl</kbd> + scrolling zoom, **⟲** resets the view. On published pages the graph can be moved and zoomed but not changed.
+- **Vectors**: write vectors as `(1 | 2 | 3)`, `(1; 2; 3)` or `(1, 2, 3)`. Flowplan calculates sums and multiples (`2 · (1; −2) − (3; 1) = (−1; −5)`), the **dot product** with `·` including the **angle** (`(1, 0) · (0, 1) = 0 ⇒ ∠ = 90°`), the **cross product** with `×` (`(1|0|0) × (0|1|0) = (0 | 0 | 1)`) and the **magnitude** with `|…|` (`|(1, 1)| = √2`). A vector selected on its own shows its magnitude and **unit vector** (`(3, 4) ⇒ v⁰ = (3/5, 4/5)`). The formula editor has the building blocks **Vector** (column vector), **Vector arrow** and **Cross product**; column vectors in formulas are calculated the same way.
 - **In formulas**: the formula editor shows the same options under **Calculate** and appends the result in LaTeX, such as `\frac{3}{4} + \frac{1}{6} = \frac{11}{12}`.
 
 ## Dashboards and metrics

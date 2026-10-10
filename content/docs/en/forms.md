@@ -34,6 +34,8 @@ Every answer is a normal record: it appears in all views and can be filtered, as
 
 **Turn into a survey** makes a form a survey – or create a new page from the **Survey** template. The builder has five tabs: **Questions**, **Preview**, **Settings**, **Share** and **Results**.
 
+On the left is the flow with numbered questions, text blocks and page breaks; on the right you edit the selected item. **Add question** shows the question types grouped into choice, rating, and text and details. Everything is **saved automatically** shortly after you stop typing – the dot at the top right shows the state. If something is still missing (a question without text, an empty answer), saving waits and says why.
+
 ### Question types
 
 - **Text**: short answer, long text, e-mail, phone, website, number, date, time

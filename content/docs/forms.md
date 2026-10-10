@@ -34,6 +34,8 @@ Jede Antwort ist ein normaler Eintrag: Er erscheint in allen Ansichten und läss
 
 Ein Formular wird mit **Als Umfrage gestalten** zur Umfrage – oder du legst eine neue Seite aus der Vorlage **Umfrage** an. Der Builder hat fünf Reiter: **Fragen**, **Vorschau**, **Einstellungen**, **Teilen** und **Ergebnisse**.
 
+Links steht der Ablauf mit nummerierten Fragen, Textblöcken und Seitenumbrüchen, rechts bearbeitest du das gewählte Element. **Frage hinzufügen** zeigt die Fragetypen nach Auswahl, Bewertung sowie Text und Angaben geordnet. Alles wird **automatisch gespeichert**, kurz nachdem du aufhörst zu tippen – der Punkt oben rechts zeigt den Stand. Fehlt noch etwas (eine Frage ohne Text, eine leere Antwort), wartet das Speichern und nennt den Grund.
+
 ### Fragetypen
 
 - **Text**: kurze Antwort, langer Text, E-Mail, Telefon, Website, Zahl, Datum, Uhrzeit

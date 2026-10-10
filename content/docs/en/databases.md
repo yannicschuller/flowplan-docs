@@ -15,6 +15,19 @@ A database is a collection of records with properties. The same records can be s
 - Select several records (checkboxes on the left) and edit, duplicate or delete them together – up to 500 at once. Flowplan saves a state beforehand that can be restored from the version history.
 - Deleted records sit in the database's trash and can be brought back.
 
+### Copy and move records
+
+A **right-click** on a record – in a table, board, list, gallery, calendar or timeline – opens its menu: **Open**, **Duplicate**, **Copy to …**, **Move to …** and **Delete**. When several records are selected, the menu applies to all of them; the selection bar also has **Move / copy to …**.
+
+In the dialog you choose the target database in the same workspace:
+
+- **Copy** creates new records – with properties, content, icon and cover. Files and images are copied too, so the copy does not depend on the source.
+- **Move** takes the record itself: content, comments, version history, tracked time and Git links stay with it. In the new database it gets the next number (ticket ID).
+- Properties are matched **by name**, the title always to the title. Compatible types are converted (text ↔ e-mail, select ↔ multi-select, number → text …); missing select options are added to the target. **Create missing properties in the target** adds properties the target does not have yet.
+- Calculated values (formulas, rollups, progress, created/edited) are worked out again in the target.
+
+With the mouse it is quicker: **drag records by their handle onto a database in the sidebar** to move them there; hold <kbd>Alt</kbd> to copy them instead. Flowplan saves a state of the source beforehand.
+
 ## Properties
 
 | Type | Content |
