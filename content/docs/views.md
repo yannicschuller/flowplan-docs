@@ -4,6 +4,8 @@ Eine Datenbank kann beliebig viele Ansichten haben. Jede Ansicht zeigt dieselben
 
 Neue Ansicht: **+** neben den Ansichtsreitern, dann die Darstellung wählen. **Ansicht und Eigenschaften** steuert, welche Eigenschaften sichtbar sind und in welcher Reihenfolge.
 
+Ein **Rechtsklick auf einen Ansichtsreiter** öffnet sein Menü: **Umbenennen**, **Duplizieren**, **Einstellungen …**, **Nach links**, **Nach rechts** und **Ansicht löschen** (die Einträge bleiben dabei erhalten; die letzte Ansicht lässt sich nicht löschen). Reiter lassen sich auch **per Ziehen neu anordnen**, ein Doppelklick benennt sie um.
+
 ## Tabelle
 
 - Zellen direkt bearbeiten, Einträge über den Titel als Seite öffnen.
