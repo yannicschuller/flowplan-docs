@@ -2,6 +2,8 @@
 
 Wer die Instanz verwaltet, sieht **Administration** in der Seitenleiste: das erste Konto der Instanz und alle, denen es das Admin-Recht gibt – bei Single Sign-on zusätzlich die Mitglieder der Gruppe aus `OIDC_ADMIN_GROUP`. Dort verwalten sie Konten, Arbeitsbereiche, Betrieb, Einstellungen der Instanz und das Aktivitätsprotokoll.
 
+Oben in der Leiste steht, was gerade läuft: die **Version**, der **Commit** (verlinkt auf GitHub) und das Datum des Builds. Docker-Images aus unserem Workflow kennen ihren Commit; bei Coolify kommt er aus `SOURCE_COMMIT`. Bei einem eigenen Build `--build-arg GIT_COMMIT=$(git rev-parse HEAD)` mitgeben, sonst steht dort „Commit unbekannt“.
+
 ## Benutzer
 
 Alle Konten der Instanz mit ihrer letzten Anmeldung.

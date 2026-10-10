@@ -2,6 +2,8 @@
 
 Whoever administers the instance sees **Administration** in the sidebar: the instance's first account and everyone it gives the admin right to – with single sign-on also the members of the group in `OIDC_ADMIN_GROUP`. There they manage accounts, workspaces, operations, the instance's settings and the activity log.
 
+The bar at the top shows what is running: the **version**, the **commit** (linked to GitHub) and the build date. Docker images from our workflow know their commit; with Coolify it comes from `SOURCE_COMMIT`. For your own build pass `--build-arg GIT_COMMIT=$(git rev-parse HEAD)`, otherwise it says "commit unknown".
+
 ## Users
 
 All accounts of the instance with their last sign-in.
