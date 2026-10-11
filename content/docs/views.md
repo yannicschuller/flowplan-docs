@@ -4,7 +4,9 @@ Eine Datenbank kann beliebig viele Ansichten haben. Jede Ansicht zeigt dieselben
 
 Neue Ansicht: **+** neben den Ansichtsreitern, dann die Darstellung wählen. **Ansicht und Eigenschaften** steuert, welche Eigenschaften sichtbar sind und in welcher Reihenfolge.
 
-Ein **Rechtsklick auf einen Ansichtsreiter** öffnet sein Menü: **Umbenennen**, **Duplizieren**, **Einstellungen …**, **Nach links**, **Nach rechts** und **Ansicht löschen** (die Einträge bleiben dabei erhalten; die letzte Ansicht lässt sich nicht löschen). Reiter lassen sich auch **per Ziehen neu anordnen**, ein Doppelklick benennt sie um.
+Ein **Rechtsklick auf einen Ansichtsreiter** öffnet sein Menü: **Umbenennen**, **Duplizieren**, **Einstellungen …**, **Als Standardansicht festlegen**, **Nach links**, **Nach rechts** und **Ansicht löschen** (die Einträge bleiben dabei erhalten; die letzte Ansicht lässt sich nicht löschen). Reiter lassen sich auch **per Ziehen neu anordnen**, ein Doppelklick benennt sie um.
+
+**Standardansicht:** Die Ansicht, die beim Öffnen der Datenbank zuerst erscheint – etwa das Board statt der Tabelle. Ohne Einstellung ist es die erste Ansicht. Ein kleiner Stern im Reiter markiert sie; einstellbar auch in den Einstellungen der Ansicht (praktisch auf dem Handy).
 
 ## Tabelle
 
