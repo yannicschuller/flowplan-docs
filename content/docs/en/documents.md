@@ -44,7 +44,7 @@ The list icon at the top right of a document opens the **table of contents** bes
 
 ## Pasting answers from ChatGPT
 
-Text copied from ChatGPT or another assistant is formatted when pasted: LaTeX formulas (`\[ … \]`, `\( … \)`, `$$ … $$`) become formula blocks and inline formulas, Markdown (headings, **bold**, lists, tables) is applied, lines with tabs become a table, `☐` a task list, and each line becomes its own paragraph. Formulas already rendered on a copied web page stay formulas. Ordinary text is pasted as before.
+Text copied from ChatGPT or another assistant is formatted when pasted: LaTeX formulas (`\[ … \]`, `\( … \)`, `$$ … $$`) become formula blocks and inline formulas, Markdown (headings, **bold**, lists, tables) is applied, lines with tabs become a table, `☐` a task list, and each line becomes its own paragraph. Formulas already rendered on a copied web page stay formulas. This also applies when copying straight from the ChatGPT web page. If formulas are already in the document as text (such as `\[ A(3;2;1) \]`), select them – or everything with <kbd>⌘</kbd>/<kbd>Ctrl</kbd>+<kbd>A</kbd> – and choose **Turn into formulas** in the text menu. Ordinary text is pasted as before.
 
 ## Focus mode
 
