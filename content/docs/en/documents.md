@@ -38,6 +38,14 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 
 `/voice` opens the recorder: tap the microphone, speak, **Stop recording** (at most ten minutes). You can listen to the recording or discard it; **Insert** puts it into the page as audio. If speech recognition is set up, the spoken words follow below as text; otherwise the dialog only offers the audio.
 
+## Table of contents
+
+The list icon at the top right of a document opens the **table of contents** beside the text – in every document, journal days and database records included. It is built from the headings and grows while you write, marks the section you are reading and jumps to a heading on click. Whether it is open is remembered in this browser for all documents. On a phone a round button at the bottom right opens it.
+
+## Pasting answers from ChatGPT
+
+Text copied from ChatGPT or another assistant is formatted when pasted: LaTeX formulas (`\[ … \]`, `\( … \)`, `$$ … $$`) become formula blocks and inline formulas, Markdown (headings, **bold**, lists, tables) is applied, lines with tabs become a table, `☐` a task list, and each line becomes its own paragraph. Formulas already rendered on a copied web page stay formulas. Ordinary text is pasted as before.
+
 ## Focus mode
 
 **Focus mode** (quick search → `> focus`) hides the sidebar, toolbar and page margins; the top bar only appears on hover. At the bottom, a bar counts the words of the page and those added in this session. With a **goal** (e.g. 500 words) a bar shows the progress; the device remembers the goal per page. <kbd>Esc</kbd> ends the mode.
@@ -77,6 +85,7 @@ While you type, the editor converts:
 Selecting text – or right-clicking it – opens the text menu: reactions for the paragraph, **bold**, *italic*, underline, strikethrough, highlight, code, link, **Comment** and **Copy**, in tasks also **Due date**. The toolbar above the text adds headings, colour and background colour, superscript and subscript, inline formulas and **Hide (spoiler)**.
 
 - Formatting only applies to the current line. After <kbd>Enter</kbd> the new line starts as normal text – only lists and tasks continue with a new item, and a heading is followed by a paragraph.
+- **Turn into**: in the text menu (also on right-click in a line) a line changes its type without losing its text – text, heading 1–3, bulleted list, numbered list, task, quote or code block. The current type is highlighted.
 
 ### Spoiler
 
@@ -126,7 +135,7 @@ Flowplan only calculates when you want it to – exactly, with fractions, in Ger
   - **Simplify** algebraic fractions – `(x² − 1)/(x − 1) = x + 1`, `1/x + 1/(x + 1) = (2x + 1)/(x(x + 1))`
   - **Solve for x** – linear and quadratic equations exactly (`x² + 2x − 4 = 0 ⇒ x = −1 ± √5`), higher degrees exactly where possible (`x³ = 2 ⇒ x = ∛2`, `x⁴ − 5x² + 6 = 0 ⇒ x = ±√2, ±√3`), otherwise as rounded decimals (`x³ + x − 1 = 0 ⇒ x ≈ 0.682328`); with several variables, for each one that appears linearly. Equations with x in a denominator are solved with the common denominator; values that would make a denominator 0 are excluded and named (`x/(x − 1) = 1/(x − 1) ⇒ no solution (x = 1 excluded)`).
 - **Function graph**: select a term in x, such as `x² − 2` or `f(x) = 2x + 1`, and choose **Draw graph** in the text menu – a graph with axes, grid and marked zeros appears below. `/Function graph` inserts one too. The functions are edited below the graph: it changes while you type, **+ Function** adds up to six functions in their own colours (`sin(x)`, `cos`, `tan`, `exp`, `ln`, `abs`, `√` and `π` work). Dragging moves the view, **+**/**−** or <kbd>⌘</kbd>/<kbd>Ctrl</kbd> + scrolling zoom, **⟲** resets the view. On published pages the graph can be moved and zoomed but not changed.
-- **Vectors**: write vectors as `(1 | 2 | 3)`, `(1; 2; 3)` or `(1, 2, 3)`. Flowplan calculates sums and multiples (`2 · (1; −2) − (3; 1) = (−1; −5)`), the **dot product** with `·` including the **angle** (`(1, 0) · (0, 1) = 0 ⇒ ∠ = 90°`), the **cross product** with `×` (`(1|0|0) × (0|1|0) = (0 | 0 | 1)`) and the **magnitude** with `|…|` (`|(1, 1)| = √2`). A vector selected on its own shows its magnitude and **unit vector** (`(3, 4) ⇒ v⁰ = (3/5, 4/5)`). **Draw vectors** in the text menu shows vectors in the plane as arrows in a coordinate system – for `(1, 2) + (3, 1)` both vectors and their sum. More vectors such as `(3, 2)` can be entered in the graph next to functions. The formula editor has the building blocks **Vector** (column vector), **Vector arrow** and **Cross product**; column vectors in formulas are calculated the same way.
+- **Vectors**: write vectors as `(1 | 2 | 3)`, `(1; 2; 3)` or `(1, 2, 3)`. Flowplan calculates sums and multiples (`2 · (1; −2) − (3; 1) = (−1; −5)`), the **dot product** with `·` including the **angle** (`(1, 0) · (0, 1) = 0 ⇒ ∠ = 90°`), the **cross product** with `×` (`(1|0|0) × (0|1|0) = (0 | 0 | 1)`) and the **magnitude** with `|…|` (`|(1, 1)| = √2`). A vector selected on its own shows its magnitude and **unit vector** (`(3, 4) ⇒ v⁰ = (3/5, 4/5)`). **Draw vectors** in the text menu shows vectors in the plane as arrows in a coordinate system – for `(1, 2) + (3, 1)` both vectors and their sum. More vectors such as `(3, 2)` can be entered in the graph next to functions. **Vectors in space** such as `(1, 2, 3)` – cross products too – are drawn in a 3D coordinate system with x, y and z axes, a floor grid and dashed guides to the floor; **dragging turns the view**, and the view is saved with the page. The formula editor has the building blocks **Vector** (column vector), **Vector arrow** and **Cross product**; column vectors in formulas are calculated the same way.
 - **In formulas**: the formula editor shows the same options under **Calculate** and appends the result in LaTeX, such as `\frac{3}{4} + \frac{1}{6} = \frac{11}{12}`.
 
 ## Dashboards and metrics
