@@ -11,6 +11,8 @@ Beim ersten Anmelden legt Flowplan einen privaten Arbeitsbereich mit Beispielsei
 > [!TIP]
 > Bietet die Instanz eine **Demo** an, kannst du Flowplan ohne Konto ausprobieren. Die Demo bekommt einen eigenen Beispiel-Arbeitsbereich und wird beim Beenden, beim Abmelden oder nach 45 Minuten ohne Aktivität vollständig gelöscht.
 
+**Sprache:** Flowplan folgt der Sprache deines Browsers. Unter **Einstellungen → Allgemein → Dein Profil → Sprache** legst du Deutsch oder Englisch fest – dann gilt sie auf allen Geräten, auch für E-Mails und Push-Hinweise.
+
 ## Die Oberfläche
 
 - **Seitenleiste** links: Arbeitsbereich-Wechsel, Suche, Startseite, Posteingang, deine Bereiche mit dem Seitenbaum, darunter Vorlagen, Medien, Papierkorb und Einstellungen.

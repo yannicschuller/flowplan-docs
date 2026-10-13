@@ -6,8 +6,9 @@ The bar at the top shows what is running: the **version**, the **commit** (linke
 
 ## Users
 
-All accounts of the instance with their last sign-in.
+All accounts of the instance with their last sign-in and the storage they use. **Manage** opens an account:
 
+- **Limits** for this person: storage (everything they upload or copy – across all workspaces), number of own workspaces and the largest file. Bars show how much is used. Empty = instance default, 0 = unlimited; admins are not limited.
 - **End sessions** signs a person out on all devices.
 - **Deactivate** locks an account immediately and ends all sessions; **Activate** releases it again.
 - For accounts with e-mail and password: **Make admin** or **Remove admin** (someone always administers the instance) and **Reset link** – a link for a new password, valid for two hours, to hand over when the instance does not send e-mails.
@@ -28,14 +29,16 @@ The state of the instance: size of the database and uploads, queues, search inde
 | --- | --- |
 | Name | Appears in the sidebar and on the start page next to the logo. |
 | Notice | A banner for everyone, e.g. announced maintenance. |
-| Default storage quota | For workspaces without a quota of their own. |
+| Storage per workspace | For workspaces without a quota of their own. |
+| Storage per person | For people without a limit of their own; everything they upload or copy. |
+| Own workspaces per person | How many workspaces a person may own. |
 | Version retention | Days after which automatic versions are deleted. |
 | Maximum upload size | The limit per file in MB. |
 | Create workspaces | Whether everyone may create workspaces of their own. |
 | Allow sign-ups with e-mail and password | Anyone may create an account. Without this setting only invited addresses (and the instance's first account). |
 | Offer a public demo | Visitors try Flowplan without an account, see below. |
 
-Empty fields fall back to the [environment variables](/configuration).
+The settings are grouped into **General**, **Access**, **Storage and limits** and **Versions and backup**; changes take effect with **Save**. Empty fields fall back to the [environment variables](/configuration). Everyone sees their limits and the storage they use under **Settings → General → Your limits**.
 
 ### E-mail and scheduled backup
 

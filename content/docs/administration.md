@@ -6,8 +6,9 @@ Oben in der Leiste steht, was gerade läuft: die **Version**, der **Commit** (ve
 
 ## Benutzer
 
-Alle Konten der Instanz mit ihrer letzten Anmeldung.
+Alle Konten der Instanz mit ihrer letzten Anmeldung und dem belegten Speicher. **Verwalten** öffnet ein Konto:
 
+- **Grenzen** für diese Person: Speicher (alles, was sie hochlädt oder kopiert – über alle Arbeitsbereiche), Anzahl eigener Arbeitsbereiche und größte Datei. Balken zeigen, wie viel davon belegt ist. Leer = Standard der Instanz, 0 = unbegrenzt; für Admins gelten keine Grenzen.
 - **Sitzungen beenden** meldet eine Person auf allen Geräten ab.
 - **Deaktivieren** sperrt ein Konto sofort und beendet alle Sitzungen; **Aktivieren** gibt es wieder frei.
 
@@ -29,14 +30,16 @@ Zustand der Instanz: Größe von Datenbank und Uploads, Warteschlangen, Suchinde
 | --- | --- |
 | Name | Erscheint in der Seitenleiste und auf der Startseite neben dem Logo. |
 | Hinweis | Banner für alle, z. B. eine angekündigte Wartung. |
-| Standard-Speicherkontingent | Für Arbeitsbereiche ohne eigenes Kontingent. |
+| Speicher je Arbeitsbereich | Für Arbeitsbereiche ohne eigenes Kontingent. |
+| Speicher je Person | Für Personen ohne eigene Grenze; alles, was sie hochladen oder kopieren. |
+| Eigene Arbeitsbereiche je Person | Wie viele Arbeitsbereiche eine Person besitzen darf. |
 | Aufbewahrung von Versionen | Tage, nach denen automatische Versionen gelöscht werden. |
 | Maximale Uploadgröße | Grenze je Datei in MB. |
 | Arbeitsbereiche anlegen | Ob alle Personen eigene Arbeitsbereiche erstellen dürfen. |
 | Registrierung mit E-Mail und Passwort erlauben | Jede Person darf ein Konto anlegen. Ohne diese Einstellung nur eingeladene Adressen (und das erste Konto der Instanz). |
 | Öffentliche Demo anbieten | Besucher probieren Flowplan ohne Konto aus, siehe unten. |
 
-Leere Felder fallen auf die [Umgebungsvariablen](/configuration) zurück.
+Die Einstellungen sind in **Allgemein**, **Zugang**, **Speicher und Grenzen** sowie **Versionen und Sicherung** gegliedert; geänderte Werte werden erst mit **Speichern** übernommen. Leere Felder fallen auf die [Umgebungsvariablen](/configuration) zurück. Jede Person sieht ihre Grenzen und den belegten Speicher unter **Einstellungen → Allgemein → Deine Grenzen**.
 
 ### E-Mail-Versand und geplante Sicherung
 
