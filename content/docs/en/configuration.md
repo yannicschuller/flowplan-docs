@@ -68,6 +68,8 @@ Voice notes in the editor are always stored as audio. With a Whisper service in 
 
 | Variable | Default | Meaning |
 | --- | --- | --- |
+| `IMPRINT_URL` | *empty* | Link to the legal notice, e.g. `https://example.com/imprint`. Shown on the sign-in page, under shared pages and forms and in the account menu – only when set. |
+| `PRIVACY_URL` | *empty* | Link to the privacy policy, in the same places and also only when set. |
 | `WHISPER_URL` | *empty* | Address of an OpenAI-compatible Whisper server (`POST /v1/audio/transcriptions`), e.g. `http://whisper:8000`. Turns transcription on. |
 | `WHISPER_MODEL` | `Systran/faster-whisper-small` | The model name as the service expects it. |
 | `WHISPER_LANGUAGE` | `de` | Language of the recordings (e.g. `en`). |

@@ -798,3 +798,21 @@
     width: auto;
   }
 }
+
+/* Legal notice and privacy policy (IMPRINT_URL, PRIVACY_URL). */
+.legal {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  padding: 28px 16px 36px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+}
+.legal a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.legal a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}

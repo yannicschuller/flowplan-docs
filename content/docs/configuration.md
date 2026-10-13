@@ -68,6 +68,8 @@ Sprachnotizen im Editor werden immer als Audio gespeichert. Mit einem Whisper-Di
 
 | Variable | Standard | Bedeutung |
 | --- | --- | --- |
+| `IMPRINT_URL` | *leer* | Link zum Impressum, z. B. `https://example.com/impressum`. Erscheint auf der Anmeldeseite, unter geteilten Seiten und Formularen und im Kontomenü – nur, wenn gesetzt. |
+| `PRIVACY_URL` | *leer* | Link zur Datenschutzerklärung, an denselben Stellen und ebenfalls nur, wenn gesetzt. |
 | `WHISPER_URL` | *leer* | Adresse eines OpenAI-kompatiblen Whisper-Servers (`POST /v1/audio/transcriptions`), z. B. `http://whisper:8000`. Schaltet die Transkription ein. |
 | `WHISPER_MODEL` | `Systran/faster-whisper-small` | Modellname, wie ihn der Dienst erwartet. |
 | `WHISPER_LANGUAGE` | `de` | Sprache der Aufnahmen. |

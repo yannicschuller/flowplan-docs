@@ -18,6 +18,8 @@ npm run dev
 | Variable | Default | Meaning |
 | --- | --- | --- |
 | `WEBSITE_URL` | `https://flowplan.org` | The logo and "Start page" link. |
+| `IMPRINT_URL` | *empty* | Link to the legal notice in the footer, e.g. `https://flowplan.org/impressum`. Hidden when empty. |
+| `PRIVACY_URL` | *empty* | Link to the privacy policy in the footer, e.g. `https://flowplan.org/datenschutz`. Hidden when empty. |
 
 ## Image
 
