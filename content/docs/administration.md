@@ -9,6 +9,8 @@ Oben in der Leiste steht, was gerade läuft: die **Version**, der **Commit** (ve
 Alle Konten der Instanz mit ihrer letzten Anmeldung und dem belegten Speicher. **Verwalten** öffnet ein Konto:
 
 - **Grenzen** für diese Person: Speicher (alles, was sie hochlädt oder kopiert – über alle Arbeitsbereiche), Anzahl eigener Arbeitsbereiche und größte Datei. Balken zeigen, wie viel davon belegt ist. Leer = Standard der Instanz, 0 = unbegrenzt; für Admins gelten keine Grenzen.
+- **Konto löschen …** erscheint, sobald ein Konto deaktiviert ist. Der Dialog nennt vorher, was passiert: Name, E-Mail, Passwort, Passkeys, Sitzungen und persönliche Einstellungen werden gelöscht, ebenso Arbeitsbereiche, in denen nur diese Person Mitglied war, und ihre privaten Bereiche. Gemeinsame Arbeitsbereiche bekommen bei Bedarf ein anderes Mitglied als Eigentümer; Beiträge darin bleiben und erscheinen als „Gelöschtes Konto“. Das eigene Konto und das letzte Admin-Konto lassen sich nicht löschen.
+- **E-Mail als bestätigt markieren** für Konten, die den Link aus der Bestätigungs-E-Mail noch nicht geöffnet haben.
 - **Sitzungen beenden** meldet eine Person auf allen Geräten ab.
 - **Deaktivieren** sperrt ein Konto sofort und beendet alle Sitzungen; **Aktivieren** gibt es wieder frei.
 

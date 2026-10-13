@@ -9,6 +9,8 @@ The bar at the top shows what is running: the **version**, the **commit** (linke
 All accounts of the instance with their last sign-in and the storage they use. **Manage** opens an account:
 
 - **Limits** for this person: storage (everything they upload or copy – across all workspaces), number of own workspaces and the largest file. Bars show how much is used. Empty = instance default, 0 = unlimited; admins are not limited.
+- **Delete account …** appears once an account is disabled. The dialog says beforehand what happens: name, e-mail, password, passkeys, sessions and personal settings are deleted, as are workspaces where only this person was a member and their private spaces. Shared workspaces get another member as owner if needed; contributions there stay and appear as "Deleted account". Your own account and the last admin account cannot be deleted.
+- **Mark e-mail as confirmed** for accounts that have not opened the link from the confirmation e-mail yet.
 - **End sessions** signs a person out on all devices.
 - **Deactivate** locks an account immediately and ends all sessions; **Activate** releases it again.
 - For accounts with e-mail and password: **Make admin** or **Remove admin** (someone always administers the instance) and **Reset link** – a link for a new password, valid for two hours, to hand over when the instance does not send e-mails.
