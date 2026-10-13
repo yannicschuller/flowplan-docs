@@ -21,7 +21,10 @@ concurrency:
 
 jobs:
   image:
-    runs-on: ubuntu-latest
+    # Own runner (label self-hosted). Pull requests from forks do not run on
+    # it – the repository is public and the runner is a real machine.
+    runs-on: self-hosted
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v7
