@@ -13,7 +13,7 @@ It searches:
 - comments,
 - file names,
 - the text of PDF attachments (up to 50 MB, the first 100,000 characters),
-- scanned PDFs and images with text recognition (German and English),
+- scanned PDFs and images with text recognition (German and English, French on request via `FLOWPLAN_OCR_LANGS`),
 - Word, Excel, PowerPoint and OpenDocument files.
 
 Hits can be filtered by type and space. File text is indexed in the background and can be found after a few seconds. The search only shows what you may read. <kbd>Enter</kbd> opens the first hit.

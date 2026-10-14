@@ -28,6 +28,7 @@ The other OIDC variables and everything about passwords and passkeys are describ
 | `FLOWPLAN_WORKSPACE_QUOTA_MB` | unlimited | Default storage quota per workspace in MB (`0` = unlimited). |
 | `FLOWPLAN_SNAPSHOT_RETENTION_DAYS` | `180` | How long automatic versions are kept, in days (`0` = forever). |
 | `FLOWPLAN_OCR` | on | `0` turns off text recognition for scanned PDFs and images. |
+| `FLOWPLAN_OCR_LANGS` | `deu,eng` | Languages of the text recognition, e.g. `fra,eng`; the first is the main language. `deu`, `eng` and `fra` are bundled. Each extra language costs memory and time per page. |
 | `FLOWPLAN_METRICS_TOKEN` | *empty* | At least 16 characters; enables `/api/metrics` in Prometheus format. |
 | `FLOWPLAN_TRUSTED_PROXIES` | `1` | Number of proxies in front of Flowplan (Traefik alone: `1`, Pangolin in front of Traefik: `2`). Decides which entry in `X-Forwarded-For` is the real address – for limiting sign-in attempts, demo starts and anonymous form answers. Entries made up by the browser are ignored this way. |
 
