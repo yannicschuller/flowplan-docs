@@ -23,7 +23,7 @@ With a passkey you sign in with your fingerprint, face recognition or device PIN
 - Passkeys exist for accounts with e-mail and password. SSO accounts sign in with their provider, which may offer passkeys itself.
 - Passkeys belong to the domain in `APP_URL`. They need HTTPS (or `http://localhost` during development); a bare IP address does not work. Whoever changes the domain creates the passkeys anew.
 - A passkey can be removed in the settings at any time.
-- In the desktop app, **Sign in with a passkey** and **Sign in with SSO** open the sign-in in the default browser and hand it back to the app afterwards ([Desktop apps](/en/operations#desktop-apps)).
+- In the desktop app, **Sign in with a passkey** and **Sign in with SSO** open the sign-in in the default browser and hand it back to the app afterwards ([Desktop apps](/operations#desktop-apps)).
 
 ## Single sign-on with OIDC
 
