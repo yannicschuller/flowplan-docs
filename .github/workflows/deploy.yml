@@ -1,0 +1,34 @@
+# Only the Coolify deploy, at the push of a button: Actions → Deploy on
+# Coolify → Run workflow. Rolls out the current :latest image without building
+# – for testing the webhook (COOLIFY_WEBHOOK, COOLIFY_TOKEN) and for
+# redeploying by hand. Shows the runner's public IP for Coolify's
+# "Allowed IPs" (Settings → Advanced).
+name: Deploy on Coolify
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    timeout-minutes: 5
+    steps:
+      - name: Public IP of this runner
+        run: |
+          echo "IPv4: $(curl -4 -sS --max-time 10 https://ifconfig.me || echo none)"
+          echo "IPv6: $(curl -6 -sS --max-time 10 https://ifconfig.me || echo none)"
+      - name: Deploy on Coolify
+        env:
+          COOLIFY_WEBHOOK: ${{ secrets.COOLIFY_WEBHOOK }}
+          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+        run: |
+          if [ -z "$COOLIFY_WEBHOOK" ] || [ -z "$COOLIFY_TOKEN" ]; then echo "::error::The secrets COOLIFY_WEBHOOK and COOLIFY_TOKEN are not set."; exit 1; fi
+          status=$(curl -sS --retry 3 --max-time 60 -o "$RUNNER_TEMP/coolify.json" -w '%{http_code}' -H "Authorization: Bearer $COOLIFY_TOKEN" "$COOLIFY_WEBHOOK")
+          echo "Coolify answered $status: $(head -c 500 "$RUNNER_TEMP/coolify.json")"
+          if [ "$status" -ge 300 ]; then
+            echo "::error::Coolify did not deploy ($status). 401/403: the API token needs the “deploy” permission and the team of the resource; check Settings → Advanced → API access and its allowed IPs."
+            exit 1
+          fi

@@ -32,6 +32,8 @@ After pushing, the workflow rolls the new image out on Coolify. Set two reposito
 
 The Coolify resource must use the `:latest` image. Without the secrets the step is skipped.
 
+To test the webhook or redeploy without building: **Actions → Deploy on Coolify → Run workflow**. It shows Coolify's answer and the runner's public IP (for **Settings → Advanced → Allowed IPs**).
+
 ## License
 
 AGPL-3.0, like Flowplan.
