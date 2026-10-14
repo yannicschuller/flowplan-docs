@@ -50,6 +50,8 @@ A slim desktop app wraps your Flowplan instance. On first start it asks for the 
 - All data stays on the server.
 - The app remembers the window size and position and opens external links in the default browser.
 - Without a connection it shows an offline page of its own; offline use of the web app works as in the browser.
+- It only accepts real Flowplan instances – an address running something else or redirecting to another site is refused.
+- **Sign in with a passkey** and **Sign in with SSO** open the sign-in in the default browser, where passkeys (iCloud Keychain, Windows Hello, password managers) are available. After **Sign in to the desktop app** the app takes over the sign-in; e-mail and password work directly in the app.
 
 The apps for macOS, Windows and Linux are at [flowplan.org/download](https://flowplan.org/download) – the page detects your system; updates install themselves. As long as they are not signed, macOS asks on first opening (right-click → Open) and Windows shows SmartScreen. More under [Operations and troubleshooting](/operations#desktop-apps).
 

@@ -23,6 +23,7 @@ Mit einem Passkey meldest du dich per Fingerabdruck, Gesichtserkennung oder Ger�
 - Passkeys gibt es für Konten mit E-Mail und Passwort. SSO-Konten melden sich beim Anbieter an, der seinerseits Passkeys anbieten kann.
 - Passkeys gehören zur Domain aus `APP_URL`. Sie brauchen HTTPS (oder `http://localhost` beim Entwickeln); eine reine IP-Adresse funktioniert nicht. Wer die Domain wechselt, legt die Passkeys neu an.
 - Ein Passkey lässt sich in den Einstellungen jederzeit wieder entfernen.
+- In der Desktop-App öffnen **Mit Passkey anmelden** und **Mit SSO anmelden** die Anmeldung im Standardbrowser und geben sie danach an die App zurück ([Desktop-Apps](/operations#desktop-apps)).
 
 ## Single Sign-on mit OIDC
 
