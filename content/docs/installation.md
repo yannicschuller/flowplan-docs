@@ -78,6 +78,8 @@ Das Image enthält Node, Litestream für die S3-Sicherung und `curl` für den He
 
 ## Aktualisieren
 
+Gibt es ein neueres Release, zeigt die **Administration** einen Hinweis mit der neuen Versionsnummer und einem Link zu den Änderungen (abschaltbar mit `FLOWPLAN_UPDATE_CHECK=false`, siehe [Konfiguration](/configuration)). Mit dem Image-Tag `:latest` genügt dann:
+
 ```bash
 docker compose pull
 docker compose up -d

@@ -78,6 +78,8 @@ The image contains Node, Litestream for the S3 backup and `curl` for the health 
 
 ## Update
 
+When a newer release exists, the **administration** shows a notice with the new version number and a link to the changes (turn off with `FLOWPLAN_UPDATE_CHECK=false`, see [Configuration](/configuration)). With the image tag `:latest`, this is all it takes:
+
 ```bash
 docker compose pull
 docker compose up -d

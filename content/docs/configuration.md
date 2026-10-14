@@ -30,6 +30,8 @@ Die übrigen OIDC-Variablen und alles zu Passwörtern und Passkeys stehen unter 
 | `FLOWPLAN_OCR` | an | `0` schaltet die Texterkennung für gescannte PDFs und Bilder ab. |
 | `FLOWPLAN_OCR_LANGS` | `deu,eng` | Sprachen der Texterkennung, z. B. `fra,eng`; die erste ist die Hauptsprache. Mitgeliefert sind `deu`, `eng` und `fra`. Jede weitere Sprache kostet Speicher und Zeit pro Seite. |
 | `FLOWPLAN_METRICS_TOKEN` | *leer* | Mindestens 16 Zeichen; aktiviert `/api/metrics` im Prometheus-Format. |
+| `FLOWPLAN_UPDATE_CHECK` | an | `false` schaltet die Suche nach neuen Versionen ab (für Instanzen ohne Internet). Sonst fragt der Server höchstens alle 12 Stunden bei GitHub nach dem neuesten Release und zeigt Admins in der Administration einen Hinweis. |
+| `FLOWPLAN_UPDATE_URL` | GitHub-API | Andere Adresse für das neueste Release (gleiches Format wie `api.github.com/repos/yannicschuller/flowplan/releases/latest`), etwa ein interner Spiegel. |
 | `FLOWPLAN_TRUSTED_PROXIES` | `1` | Anzahl der Proxys vor Flowplan (Traefik allein: `1`, Pangolin vor Traefik: `2`). Bestimmt, welcher Eintrag in `X-Forwarded-For` die echte Adresse ist – für die Begrenzung von Demo-Starts und anonymen Formularantworten. Frei erfundene Einträge des Browsers werden so ignoriert. |
 
 ## S3 und Datenbanksicherung
