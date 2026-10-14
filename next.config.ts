@@ -26,6 +26,9 @@ const renamed = [
 ];
 
 const config: NextConfig = {
+  // The CI checks types; image builds there set FLOWPLAN_SKIP_TYPECHECK=1 so
+  // the check does not run again per architecture.
+  typescript: { ignoreBuildErrors: process.env.FLOWPLAN_SKIP_TYPECHECK === "1" },
   output: "standalone",
   poweredByHeader: false,
   // The pages are read from Markdown files at runtime.

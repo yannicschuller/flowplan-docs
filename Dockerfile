@@ -1,12 +1,17 @@
+# syntax=docker/dockerfile:1
 FROM node:26-bookworm-slim AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci
+# npm's download cache survives between builds (BuildKit cache mount).
+RUN --mount=type=cache,target=/root/.npm npm ci
 FROM deps AS build
 COPY . .
 RUN chmod -R a+rX /app
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN npm run build
+# The type check already runs in CI; image builds there skip it.
+ARG FLOWPLAN_SKIP_TYPECHECK=""
+# Next's build cache survives between builds as well.
+RUN --mount=type=cache,target=/app/.next/cache npm run build
 FROM node:26-bookworm-slim AS runtime
 LABEL org.opencontainers.image.title="flowplan-docs" \
   org.opencontainers.image.source="https://github.com/yannicschuller/flowplan-docs" \
