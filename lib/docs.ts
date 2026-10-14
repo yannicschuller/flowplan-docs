@@ -40,6 +40,7 @@ const groups: { title: [de: string, en: string]; pages: [slug: string, de: strin
       ["offline-and-apps", "Offline, Web-App und Desktop", "Offline, web app and desktop"],
       ["api-and-webhooks", "API und Webhooks", "API and webhooks"],
       ["keyboard-shortcuts", "Tastenkürzel", "Keyboard shortcuts"],
+      ["languages", "Sprachen und Übersetzungen", "Languages and translations"],
     ],
   },
   {

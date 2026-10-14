@@ -11,7 +11,7 @@ When you sign in for the first time, Flowplan creates a private workspace with e
 > [!TIP]
 > If the instance offers a **demo**, you can try Flowplan without an account. The demo gets its own example workspace and is deleted completely when you end it, sign out or after 45 minutes without activity.
 
-**Language:** Flowplan follows your browser's language. Under **Settings → General → Your profile → Language** you fix German or English – it then applies on all devices, also to e-mails and push notifications.
+**Language:** Flowplan follows your browser's language. Under **Settings → General → Your profile → Language** you fix German, English or French – it then applies on all devices, also to e-mails and push notifications. Further languages can be added: [Languages and translations](/languages).
 
 ## The interface
 
