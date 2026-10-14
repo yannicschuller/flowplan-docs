@@ -75,7 +75,7 @@ The desktop app for macOS, Windows and Linux is a slim window around a Flowplan 
 | Windows 10 or newer | `Flowplan-<version>-windows-setup.exe`, the `.zip` without installing | x64 and ARM in one installer |
 | Linux | `Flowplan-<version>-linux-<arch>.AppImage`, or the `.tar.gz` | x64 and ARM |
 
-On first start the app asks for the instance's address (HTTPS, `http://localhost` for local tests); change it via the menu **Server wechseln …**. For managed installations `--server=<URL>` or the environment variable `FLOWPLAN_SERVER` presets the address.
+On first start the app always asks for the instance's address, suggesting `https://app.flowplan.org` (HTTPS, `http://localhost` for local tests); change it via the menu **Server wechseln …**. For managed installations `--server=<URL>` or the environment variable `FLOWPLAN_SERVER` suggests their own address instead – the first start still asks to confirm it.
 
 While the apps are not signed, macOS asks on first opening (right-click → **Open**), Windows shows SmartScreen (**More info → Run anyway**), and an AppImage has to be made executable first (`chmod +x`).
 

@@ -45,7 +45,7 @@ Lesezeichen landen in der Datenbank **Lesezeichen** des gewählten Bereichs; sie
 
 ## Desktop-App für macOS und Windows
 
-Eine schlanke Desktop-App umschließt deine Flowplan-Instanz. Beim ersten Start fragt sie nach der Adresse (z. B. `https://flowplan.example.com`); **Server wechseln …** im Menü ändert sie später.
+Eine schlanke Desktop-App umschließt deine Flowplan-Instanz. Beim ersten Start fragt sie nach der Adresse und schlägt `https://app.flowplan.org` vor – für die eigene Instanz einfach deren Adresse eintragen (z. B. `https://flowplan.example.com`); **Server wechseln …** im Menü ändert sie später.
 
 - Alle Daten bleiben auf dem Server.
 - Die App merkt sich Fenstergröße und -position, bietet deutsche Menüs und öffnet externe Links im Standardbrowser.

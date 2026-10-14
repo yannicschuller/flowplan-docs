@@ -45,7 +45,7 @@ Bookmarks land in the **Bookmarks** database of the chosen space; it is created 
 
 ## Desktop app for macOS and Windows
 
-A slim desktop app wraps your Flowplan instance. On first start it asks for the address (e.g. `https://flowplan.example.com`); **Switch server …** in the menu changes it later.
+A slim desktop app wraps your Flowplan instance. On first start it asks for the address and suggests `https://app.flowplan.org` – for your own instance enter its address instead (e.g. `https://flowplan.example.com`); **Switch server …** in the menu changes it later.
 
 - All data stays on the server.
 - The app remembers the window size and position and opens external links in the default browser.
