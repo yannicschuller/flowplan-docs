@@ -63,7 +63,38 @@ Ohne gesetztes Token ist der Endpunkt abgeschaltet.
 
 ## Desktop-Apps
 
-Jedes Release bringt die Desktop-Apps mit, als Downloads im [GitHub-Release](https://github.com/yannicschuller/flowplan/releases): für macOS (`.dmg`, Apple Silicon und Intel), Windows (Installer `-setup.exe` und `.zip`, x64 und ARM) und Linux (`.AppImage` und `.tar.gz`, x64 und ARM). Beim ersten Start fragen sie nach der Adresse deiner Instanz; vorgeben lässt sie sich mit `--server=<URL>` oder `FLOWPLAN_SERVER`.
+Die Desktop-App für macOS, Windows und Linux ist ein schlankes Fenster um eine Flowplan-Instanz. Alle Daten bleiben auf dem Server; neue Flowplan-Funktionen kommen mit dem Server und brauchen kein App-Update. Die App hat ein eigenes Repository: [flowplan-desktop](https://github.com/yannicschuller/flowplan-desktop).
 
-Ohne Zertifikate sind die Apps unsigniert – macOS fragt beim ersten Öffnen nach (Rechtsklick → Öffnen), Windows zeigt SmartScreen, AppImages unter Linux vorher ausführbar machen (`chmod +x`). Signiert werden sie, wenn im Repository die Secrets `CSC_LINK`/`CSC_KEY_PASSWORD` (macOS, zur Notarisierung zusätzlich `APPLE_ID`, `APPLE_APP_SPECIFIC_PASSWORD`, `APPLE_TEAM_ID`) bzw. `WIN_CSC_LINK`/`WIN_CSC_KEY_PASSWORD` (Windows) hinterlegt sind. Von Hand bauen: im Ordner `desktop/` `npm run dist:mac`, `npm run dist:win` oder `npm run dist:linux`.
+### Herunterladen
+
+[flowplan.org/download](https://flowplan.org/download) erkennt das System und lädt die neueste Version; darunter stehen alle Dateien. Dieselben Dateien liegen im [neuesten Release](https://github.com/yannicschuller/flowplan-desktop/releases/latest):
+
+| System | Datei | Architektur |
+| --- | --- | --- |
+| macOS 12 oder neuer | `Flowplan-<Version>-mac.dmg` | Apple Silicon und Intel in einer App |
+| Windows 10 oder neuer | `Flowplan-<Version>-windows-setup.exe`, ohne Installation die `.zip` | x64 und ARM in einem Installer |
+| Linux | `Flowplan-<Version>-linux-<Arch>.AppImage`, oder die `.tar.gz` | x64 und ARM |
+
+Beim ersten Start fragt die App nach der Adresse der Instanz (HTTPS, für lokale Tests auch `http://localhost`); ändern über das Menü **Server wechseln …**. Für verteilte Installationen gibt `--server=<URL>` oder die Umgebungsvariable `FLOWPLAN_SERVER` die Adresse vor.
+
+Solange die Apps nicht signiert sind, fragt macOS beim ersten Öffnen nach (Rechtsklick → **Öffnen**), Windows zeigt SmartScreen (**Weitere Informationen → Trotzdem ausführen**), und ein AppImage muss vorher ausführbar sein (`chmod +x`).
+
+### Updates
+
+Die App prüft 15 Sekunden nach dem Start, danach alle sechs Stunden und über **Nach Updates suchen …** im Menü, ob es ein neueres Release gibt:
+
+| Installiert als | Was passiert |
+| --- | --- |
+| Windows-Installer | Lädt im Hintergrund; ein Dialog bietet **Jetzt neu starten**, sonst wird beim nächsten Start installiert. |
+| Linux-AppImage | Genauso – das AppImage ersetzt sich selbst. |
+| macOS, signiert | Genauso. |
+| macOS unsigniert, Windows-ZIP, Linux-`.tar.gz` | Ein Dialog nennt die neue Version und öffnet die Download-Seite. macOS lässt nur signierte Apps sich selbst ersetzen. |
+
+Ohne Verbindung bleibt die Prüfung still und versucht es später erneut. Mit `FLOWPLAN_UPDATE_URL` holt die App Updates aus einer anderen Quelle – einem Ordner mit denselben Dateien (`latest*.yml` und die Installer), etwa einem Spiegel im Firmennetz.
+
+### Signieren und neue Versionen
+
+Neue Versionen entstehen im Repository flowplan-desktop über **Actions → Release → Run workflow**: Die Version steigt, die Apps werden für alle drei Systeme gebaut und angehängt, und erst wenn alles da ist, wird das Release veröffentlicht. Installierte Apps finden es innerhalb von sechs Stunden.
+
+Signiert werden die Apps, sobald dort die Secrets `CSC_LINK`/`CSC_KEY_PASSWORD` (macOS, für die Notarisierung zusätzlich `APPLE_ID`, `APPLE_APP_SPECIFIC_PASSWORD`, `APPLE_TEAM_ID`) bzw. `WIN_CSC_LINK`/`WIN_CSC_KEY_PASSWORD` (Windows) hinterlegt sind; eine signierte Mac-App aktualisiert sich dann wie unter Windows selbst. Selbst bauen: im Repository `npm run dist:mac`, `dist:win` oder `dist:linux`.
 

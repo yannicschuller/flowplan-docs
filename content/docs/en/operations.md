@@ -63,6 +63,38 @@ Without a token the endpoint is switched off.
 
 ## Desktop apps
 
-Every release comes with the desktop apps, as downloads in the [GitHub release](https://github.com/yannicschuller/flowplan/releases): for macOS (`.dmg`, Apple Silicon and Intel), Windows (installer `-setup.exe` and `.zip`, x64 and ARM) and Linux (`.AppImage` and `.tar.gz`, x64 and ARM). On first start they ask for your instance's address; it can be preset with `--server=<URL>` or `FLOWPLAN_SERVER`.
+The desktop app for macOS, Windows and Linux is a slim window around a Flowplan instance. All data stays on the server; new Flowplan features arrive with the server and need no app update. The app has its own repository: [flowplan-desktop](https://github.com/yannicschuller/flowplan-desktop).
 
-Without certificates the apps are unsigned – macOS asks on first opening (right-click → Open), Windows shows SmartScreen, and Linux AppImages need to be made executable first (`chmod +x`). They are signed when the repository has the secrets `CSC_LINK`/`CSC_KEY_PASSWORD` (macOS, plus `APPLE_ID`, `APPLE_APP_SPECIFIC_PASSWORD`, `APPLE_TEAM_ID` for notarization) or `WIN_CSC_LINK`/`WIN_CSC_KEY_PASSWORD` (Windows). To build by hand: in the `desktop/` folder run `npm run dist:mac`, `npm run dist:win` or `npm run dist:linux`.
+### Download
+
+[flowplan.org/download](https://flowplan.org/download) detects the system and downloads the latest version; every file is listed below. The same files are in the [latest release](https://github.com/yannicschuller/flowplan-desktop/releases/latest):
+
+| System | File | Architecture |
+| --- | --- | --- |
+| macOS 12 or newer | `Flowplan-<version>-mac.dmg` | Apple Silicon and Intel in one app |
+| Windows 10 or newer | `Flowplan-<version>-windows-setup.exe`, the `.zip` without installing | x64 and ARM in one installer |
+| Linux | `Flowplan-<version>-linux-<arch>.AppImage`, or the `.tar.gz` | x64 and ARM |
+
+On first start the app asks for the instance's address (HTTPS, `http://localhost` for local tests); change it via the menu **Server wechseln …**. For managed installations `--server=<URL>` or the environment variable `FLOWPLAN_SERVER` presets the address.
+
+While the apps are not signed, macOS asks on first opening (right-click → **Open**), Windows shows SmartScreen (**More info → Run anyway**), and an AppImage has to be made executable first (`chmod +x`).
+
+### Updates
+
+The app checks for a newer release 15 seconds after starting, then every six hours and via **Nach Updates suchen …** in the menu:
+
+| Installed as | What happens |
+| --- | --- |
+| Windows installer | Downloads in the background; a dialog offers **Restart now**, otherwise it installs on the next start. |
+| Linux AppImage | The same – the AppImage replaces itself. |
+| macOS, signed | The same. |
+| macOS unsigned, Windows ZIP, Linux `.tar.gz` | A dialog names the new version and opens the download page. macOS only lets signed apps replace themselves. |
+
+Without a connection the check stays quiet and tries again later. `FLOWPLAN_UPDATE_URL` makes the app fetch updates from another source – a folder with the same files (`latest*.yml` and the installers), for example a mirror inside a company network.
+
+### Signing and new versions
+
+New versions are made in the flowplan-desktop repository via **Actions → Release → Run workflow**: the version goes up, the apps are built and attached for all three systems, and the release is published only once everything is there. Installed apps find it within six hours.
+
+The apps are signed as soon as the secrets `CSC_LINK`/`CSC_KEY_PASSWORD` (macOS, plus `APPLE_ID`, `APPLE_APP_SPECIFIC_PASSWORD`, `APPLE_TEAM_ID` for notarization) or `WIN_CSC_LINK`/`WIN_CSC_KEY_PASSWORD` (Windows) are set there; a signed Mac app then updates itself like on Windows. To build yourself: in the repository run `npm run dist:mac`, `dist:win` or `dist:linux`.
+

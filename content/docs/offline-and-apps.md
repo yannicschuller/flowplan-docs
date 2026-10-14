@@ -51,7 +51,7 @@ Eine schlanke Desktop-App umschließt deine Flowplan-Instanz. Beim ersten Start 
 - Die App merkt sich Fenstergröße und -position, bietet deutsche Menüs und öffnet externe Links im Standardbrowser.
 - Ohne Verbindung zeigt sie eine eigene Offline-Seite; die Offline-Nutzung der Web-App funktioniert wie im Browser.
 
-Die Apps für macOS, Windows und Linux liegen jedem [Release](https://github.com/yannicschuller/flowplan/releases) bei; bei eigenen Instanzen bekommst du sie auch von deiner Administration. Solange sie nicht signiert sind, fragt macOS beim ersten Öffnen nach (Rechtsklick → Öffnen) und Windows zeigt SmartScreen. Mehr unter [Betrieb und Fehlersuche](/operations#desktop-apps).
+Die Apps für macOS, Windows und Linux gibt es unter [flowplan.org/download](https://flowplan.org/download) – die Seite erkennt dein System; Updates installieren sich von selbst. Solange sie nicht signiert sind, fragt macOS beim ersten Öffnen nach (Rechtsklick → Öffnen) und Windows zeigt SmartScreen. Mehr unter [Betrieb und Fehlersuche](/operations#desktop-apps).
 
 ## Hell und dunkel
 
