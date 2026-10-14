@@ -34,7 +34,20 @@ sudo chown -R 1000:1000 /path/to/flowplan-data
 
 ### Roll out automatically
 
-A CI pipeline can trigger a deployment through the Coolify API after building the image (`POST /api/v1/deploy` with the application's UUID and an API token with deploy permission). For this, API access must be turned on in Coolify under **Settings → API** and the CI server's address must be allowed.
+Coolify does not watch the registry itself. The repositories' image workflows therefore trigger a deployment through the Coolify API after pushing a new image (`GET /api/v1/deploy?uuid=…` with an API token). Coolify's built-in GitHub webhook does not fit: it builds from source and fires on the push, before the image is ready.
+
+1. In Coolify, turn on API access under **Settings** (and allow the CI runner's address if needed).
+2. Under **Keys & Tokens → API tokens**, create a token with the *deploy* permission.
+3. In the resource under **Webhooks**, copy the *Deploy Webhook* address, e.g. `https://coolify.example.com/api/v1/deploy?uuid=…&force=false`.
+4. In the GitHub repository under **Settings → Secrets and variables → Actions**, create two secrets: `COOLIFY_WEBHOOK` (the address) and `COOLIFY_TOKEN` (the token).
+
+| Repository | Image in Coolify | Rolled out on |
+| --- | --- | --- |
+| flowplan | `ghcr.io/yannicschuller/flowplan:beta` (or `:latest` without automation) | every push to a branch |
+| flowplan-website | `ghcr.io/yannicschuller/flowplan-website:latest` | every push to `main` |
+| flowplan-docs | `ghcr.io/yannicschuller/flowplan-docs:latest` | every push to `main` |
+
+Pull requests and Dependabot never deploy; without the secrets (in forks, for example) the step is skipped. If Coolify does not pull the new image on deploy, set `pull_policy: always` in the compose file.
 
 > [!WARNING]
 > Keep the number of instances at 1 in Coolify. Several containers would write to the same SQLite file.

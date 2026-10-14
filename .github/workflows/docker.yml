@@ -2,7 +2,8 @@
 # Container Registry, for Coolify:
 #   ghcr.io/yannicschuller/flowplan-docs:latest       the latest commit on main
 #   ghcr.io/yannicschuller/flowplan-docs:sha-abc1234  every build
-# Pull requests only build (no push).
+# Pull requests only build (no push). Every new :latest is rolled out on
+# Coolify (COOLIFY_WEBHOOK, COOLIFY_TOKEN; see README).
 name: Docker image
 
 on:
@@ -63,3 +64,13 @@ jobs:
             type=registry,ref=ghcr.io/${{ github.repository }}:buildcache
             type=gha
           cache-to: ${{ github.event_name != 'pull_request' && format('type=registry,ref=ghcr.io/{0}:buildcache,mode=max', github.repository) || 'type=gha,mode=max' }}
+      # Rolls out the new :latest image on Coolify. Without the secrets (forks)
+      # the step does nothing.
+      - name: Deploy on Coolify
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        env:
+          COOLIFY_WEBHOOK: ${{ secrets.COOLIFY_WEBHOOK }}
+          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+        run: |
+          if [ -z "$COOLIFY_WEBHOOK" ] || [ -z "$COOLIFY_TOKEN" ]; then echo "No Coolify secrets: nothing to deploy."; exit 0; fi
+          curl -fsS --retry 3 --max-time 60 -H "Authorization: Bearer $COOLIFY_TOKEN" "$COOLIFY_WEBHOOK"
