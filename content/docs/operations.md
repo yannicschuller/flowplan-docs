@@ -61,7 +61,9 @@ Ohne gesetztes Token ist der Endpunkt abgeschaltet.
 | Hohe CPU-Last nach Uploads | Texterkennung gescannter PDFs; bei Bedarf `FLOWPLAN_OCR=0`. |
 | Änderungen anderer oder Live-Cursor kommen nur verzögert an | Proxy puffert Server-Sent Events (`/api/documents/live`, `/api/whiteboards/…/cursors`); Pufferung abschalten. Ohne den Kanal gleicht Flowplan weiter im Abstand von Sekunden ab. |
 
-## Desktop-App bauen
+## Desktop-Apps
 
-Die Desktop-App für macOS und Windows entsteht aus dem Ordner `desktop/` im Quellcode: `npm run dist:mac` bzw. `npm run dist:win`. Ohne Zertifikate sind die Builds unsigniert – macOS fragt beim ersten Öffnen nach (Rechtsklick → Öffnen), Windows zeigt SmartScreen. Die Dateien gibst du an die Mitglieder weiter.
+Jedes Release bringt die Desktop-Apps mit, als Downloads im [GitHub-Release](https://github.com/yannicschuller/flowplan/releases): für macOS (`.dmg`, Apple Silicon und Intel), Windows (Installer `-setup.exe` und `.zip`, x64 und ARM) und Linux (`.AppImage` und `.tar.gz`, x64 und ARM). Beim ersten Start fragen sie nach der Adresse deiner Instanz; vorgeben lässt sie sich mit `--server=<URL>` oder `FLOWPLAN_SERVER`.
+
+Ohne Zertifikate sind die Apps unsigniert – macOS fragt beim ersten Öffnen nach (Rechtsklick → Öffnen), Windows zeigt SmartScreen, AppImages unter Linux vorher ausführbar machen (`chmod +x`). Signiert werden sie, wenn im Repository die Secrets `CSC_LINK`/`CSC_KEY_PASSWORD` (macOS, zur Notarisierung zusätzlich `APPLE_ID`, `APPLE_APP_SPECIFIC_PASSWORD`, `APPLE_TEAM_ID`) bzw. `WIN_CSC_LINK`/`WIN_CSC_KEY_PASSWORD` (Windows) hinterlegt sind. Von Hand bauen: im Ordner `desktop/` `npm run dist:mac`, `npm run dist:win` oder `npm run dist:linux`.
 

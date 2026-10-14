@@ -61,6 +61,8 @@ Without a token the endpoint is switched off.
 | High CPU load after uploads | Text recognition of scanned PDFs; if needed `FLOWPLAN_OCR=0`. |
 | Other people's changes or live cursors arrive late | The proxy buffers server-sent events (`/api/documents/live`, `/api/whiteboards/…/cursors`); turn buffering off. Without the channel, Flowplan keeps syncing every few seconds. |
 
-## Build the desktop app
+## Desktop apps
 
-The desktop app for macOS and Windows is built from the `desktop/` folder in the source code: `npm run dist:mac` or `npm run dist:win`. Without certificates the builds are unsigned – macOS asks on first opening (right-click → Open), Windows shows SmartScreen. Hand the files to your members.
+Every release comes with the desktop apps, as downloads in the [GitHub release](https://github.com/yannicschuller/flowplan/releases): for macOS (`.dmg`, Apple Silicon and Intel), Windows (installer `-setup.exe` and `.zip`, x64 and ARM) and Linux (`.AppImage` and `.tar.gz`, x64 and ARM). On first start they ask for your instance's address; it can be preset with `--server=<URL>` or `FLOWPLAN_SERVER`.
+
+Without certificates the apps are unsigned – macOS asks on first opening (right-click → Open), Windows shows SmartScreen, and Linux AppImages need to be made executable first (`chmod +x`). They are signed when the repository has the secrets `CSC_LINK`/`CSC_KEY_PASSWORD` (macOS, plus `APPLE_ID`, `APPLE_APP_SPECIFIC_PASSWORD`, `APPLE_TEAM_ID` for notarization) or `WIN_CSC_LINK`/`WIN_CSC_KEY_PASSWORD` (Windows). To build by hand: in the `desktop/` folder run `npm run dist:mac`, `npm run dist:win` or `npm run dist:linux`.
