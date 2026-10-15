@@ -24,6 +24,8 @@ curl -X POST https://flowplan.example.com/api/command \
 
 Tokens never get administrator rights and cannot create further tokens. You can revoke them at any time in the same list; locked accounts lose their tokens automatically.
 
+To connect Claude, ChatGPT or other AI assistants, use the [MCP server](/mcp) with a token like this.
+
 ## Webhooks
 
 Owners of a workspace create webhooks: an address, events and optionally a single database.

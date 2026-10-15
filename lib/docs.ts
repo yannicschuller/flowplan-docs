@@ -39,6 +39,7 @@ const groups: { title: [de: string, en: string]; pages: [slug: string, de: strin
       ["import-export-versions", "Import, Export und Versionen", "Import, export and versions"],
       ["offline-and-apps", "Offline, Web-App und Desktop", "Offline, web app and desktop"],
       ["api-and-webhooks", "API und Webhooks", "API and webhooks"],
+      ["mcp", "MCP: KI-Assistenten", "MCP: AI assistants"],
       ["keyboard-shortcuts", "Tastenkürzel", "Keyboard shortcuts"],
       ["languages", "Sprachen und Übersetzungen", "Languages and translations"],
     ],

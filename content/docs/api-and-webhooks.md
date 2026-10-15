@@ -24,6 +24,8 @@ curl -X POST https://flowplan.example.com/api/command \
 
 Tokens bekommen nie Administratorrechte und können keine weiteren Tokens anlegen. Widerrufen geht jederzeit in derselben Liste; gesperrte Konten verlieren ihre Tokens automatisch.
 
+Um Claude, ChatGPT oder andere KI-Assistenten anzubinden, nutzt du den [MCP-Server](/mcp) mit einem solchen Token.
+
 ## Webhooks
 
 Eigentümer eines Arbeitsbereichs legen Webhooks an: Adresse, Ereignisse und optional eine einzelne Datenbank.
