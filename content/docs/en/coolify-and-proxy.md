@@ -34,7 +34,7 @@ sudo chown -R 1000:1000 /path/to/flowplan-data
 
 ### Roll out automatically
 
-Coolify does not watch the registry itself. The repositories' image workflows therefore trigger a deployment through the Coolify API after pushing a new image (`GET /api/v1/deploy?uuid=…` with an API token). Coolify's built-in GitHub webhook does not fit: it builds from source and fires on the push, before the image is ready.
+Coolify does not watch the registry itself. The repositories' image workflows therefore trigger a deployment through the Coolify API after pushing a new image (`POST /api/v1/deploy?uuid=…` with an API token). Coolify's built-in GitHub webhook does not fit: it builds from source and fires on the push, before the image is ready.
 
 1. In Coolify, turn on API access under **Settings** (and allow the CI runner's address if needed).
 2. Under **Keys & Tokens → API tokens**, create a token with the *deploy* permission.
@@ -43,7 +43,7 @@ Coolify does not watch the registry itself. The repositories' image workflows th
 
 | Repository | Image in Coolify | Rolled out on |
 | --- | --- | --- |
-| flowplan | `ghcr.io/yannicschuller/flowplan:beta` (or `:latest` without automation) | every push to a branch |
+| flowplan | `ghcr.io/yannicschuller/flowplan:beta` (or `:latest` without automation) | every manual build (**Actions → Docker image → Run workflow**) |
 | flowplan-website | `ghcr.io/yannicschuller/flowplan-website:latest` | every push to `main` |
 | flowplan-docs | `ghcr.io/yannicschuller/flowplan-docs:latest` | every push to `main` |
 
