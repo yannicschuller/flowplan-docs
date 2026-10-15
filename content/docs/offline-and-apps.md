@@ -55,6 +55,19 @@ Eine schlanke Desktop-App umschließt deine Flowplan-Instanz. Beim ersten Start 
 
 Die Apps für macOS, Windows und Linux gibt es unter [flowplan.org/download](https://flowplan.org/download) – die Seite erkennt dein System; Updates installieren sich von selbst. Solange sie nicht signiert sind, fragt macOS beim ersten Öffnen nach (Rechtsklick → Öffnen) und Windows zeigt SmartScreen. Mehr unter [Betrieb und Fehlersuche](/operations#desktop-apps).
 
+## Apps für iPhone, iPad und Android (in Vorbereitung)
+
+> [!NOTE]
+> Die Apps sind in Vorbereitung und noch nicht im App Store und bei Google Play erhältlich. Bis dahin lässt sich Flowplan wie oben beschrieben als Web-App installieren.
+
+Wie die Desktop-App umschließen die mobilen Apps deine Flowplan-Instanz; alle Daten bleiben auf dem Server, neue Funktionen kommen ohne App-Update.
+
+- Beim ersten Start fragen sie nach der Adresse und schlagen `https://app.flowplan.org` vor. Sie akzeptieren nur echte Flowplan-Instanzen, die nicht auf eine andere Seite weiterleiten. Langes Drücken auf das App-Symbol → **Server wechseln** ändert sie später.
+- **Mit Passkey anmelden** und **Mit SSO anmelden** öffnen das Anmeldefenster des Systems (iOS) bzw. einen Browser-Tab (Android); danach übernimmt die App die Anmeldung. E-Mail und Passwort gehen direkt in der App. Das braucht einen Flowplan-Server neuer als 0.3.4.
+- Links zu anderen Seiten öffnen im Browser; ohne Verbindung zeigt die App eine eigene Seite und verbindet sich von selbst wieder.
+- Auf Android erscheint Flowplan im **Teilen**-Menü anderer Apps.
+- Push-Nachrichten kommen in einer späteren Version; bis dahin informieren Posteingang und E-Mail.
+
 ## Hell und dunkel
 
 Unter **Einstellungen → Allgemein → Erscheinungsbild** wählst du hell oder dunkel. Die Webseite und diese Dokumentation folgen der Einstellung deines Systems.
