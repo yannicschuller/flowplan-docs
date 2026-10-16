@@ -60,13 +60,25 @@ Die Apps für macOS, Windows und Linux gibt es unter [flowplan.org/download](htt
 > [!NOTE]
 > Die Apps sind in Vorbereitung und noch nicht im App Store und bei Google Play erhältlich. Bis dahin lässt sich Flowplan wie oben beschrieben als Web-App installieren.
 
-Wie die Desktop-App umschließen die mobilen Apps deine Flowplan-Instanz; alle Daten bleiben auf dem Server, neue Funktionen kommen ohne App-Update.
+Wie die Desktop-App zeigen die mobilen Apps deine Flowplan-Instanz; alle Daten bleiben auf dem Server, neue Funktionen kommen ohne App-Update. Dazu kommt, was nur eine App kann:
 
-- Beim ersten Start fragen sie nach der Adresse und schlagen `https://app.flowplan.org` vor. Sie akzeptieren nur echte Flowplan-Instanzen, die nicht auf eine andere Seite weiterleiten. Langes Drücken auf das App-Symbol → **Server wechseln** ändert sie später.
-- **Mit Passkey anmelden** und **Mit SSO anmelden** öffnen das Anmeldefenster des Systems (iOS) bzw. einen Browser-Tab (Android); danach übernimmt die App die Anmeldung. E-Mail und Passwort gehen direkt in der App. Das braucht einen Flowplan-Server neuer als 0.3.4.
+- **Mitteilungen:** Erwähnungen, Kommentare, Aufgaben und Erinnerungen kommen als Mitteilung, die Zahl der ungelesenen steht am App-Symbol. Die App fragt nach dem ersten Anmelden einmal nach der Erlaubnis; ein Tipp öffnet die betroffene Seite. Welche Arten kommen, regelst du wie im Browser unter **Einstellungen → Benachrichtigungen**.
+- **Widgets** für den Home-Bildschirm (auf dem iPhone auch für den Sperrbildschirm): fällige Aufgaben, der Posteingang und die laufende Zeiterfassung. Ein Tipp öffnet die Aufgabe bzw. Seite. Sie aktualisieren sich im Hintergrund.
+- **Laufende Zeiterfassung:** Auf dem iPhone erscheint ein laufender Timer als Live-Aktivität auf dem Sperrbildschirm und in der Dynamic Island, auf Android als Mitteilung mit laufender Uhr.
+- **Schnellaktionen:** Langes Drücken auf das App-Symbol öffnet Posteingang, Meine Aufgaben, die Suche oder eine neue Seite.
+- **App-Sperre:** Auf Wunsch entsperrt sich Flowplan nur mit Face ID, Touch ID, Fingerabdruck oder dem Gerätecode.
+- **Exporte und Downloads** gehen in das Teilen-Menü des Systems (z. B. „In Dateien sichern“).
+
+Außerdem:
+
+- Beim ersten Start fragen sie nach der Adresse und schlagen `https://app.flowplan.org` vor. Sie akzeptieren nur echte Flowplan-Instanzen, die nicht auf eine andere Seite weiterleiten. Die **App-Einstellungen** (über **Einstellungen → Benachrichtigungen → App-Einstellungen öffnen** oder langes Drücken auf das App-Symbol → **Server wechseln**) ändern den Server; **Abmelden und Server vergessen** meldet die App ab und entfernt sie von der Instanz.
+- **Mit Passkey anmelden** und **Mit SSO anmelden** öffnen das Anmeldefenster des Systems (iOS) bzw. einen Browser-Tab (Android); danach übernimmt die App die Anmeldung. E-Mail und Passwort gehen direkt in der App. Das braucht einen Flowplan-Server neuer als 0.3.4; Mitteilungen und Widgets einen Server mit der App-Schnittstelle (ab der nächsten Version).
 - Links zu anderen Seiten öffnen im Browser; ohne Verbindung zeigt die App eine eigene Seite und verbindet sich von selbst wieder.
 - Auf Android erscheint Flowplan im **Teilen**-Menü anderer Apps.
-- Push-Nachrichten kommen in einer späteren Version; bis dahin informieren Posteingang und E-Mail.
+
+### Was die App auf der Instanz hinterlegt
+
+Nach dem Anmelden meldet sich die App bei der Instanz an: Der Eintrag gehört zu dieser Anmeldung und verschwindet mit dem Abmelden, dem Ende der Sitzung oder dem Löschen des Kontos. Die Widgets lesen damit im Hintergrund nur eine kurze Übersicht (ungelesene Benachrichtigungen, offene Aufgaben, laufender Timer). Mitteilungen laufen über den Push-Dienst von Expo, der sie an Apple bzw. Google weitergibt – wie bei Web-Push steht darin nur, dass etwas Neues im Posteingang liegt. Betreiber können das abschalten oder den Text mitschicken, siehe [Konfiguration](/configuration#push-benachrichtigungen).
 
 ## Hell und dunkel
 

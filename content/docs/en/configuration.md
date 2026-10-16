@@ -102,6 +102,8 @@ node -e "fetch('http://whisper:8000/v1/models/Systran/faster-whisper-small',{met
 | --- | --- |
 | `WEB_PUSH_SUBJECT` | Contact for the push services, e.g. `mailto:admin@example.com`. |
 | `WEB_PUSH_PUBLIC_KEY` / `WEB_PUSH_PRIVATE_KEY` | VAPID key pair. If not given, Flowplan creates one in `FLOWPLAN_DATA_DIR/web-push-keys.json`. |
+| `MOBILE_PUSH` | Notifications to the apps for iPhone, iPad and Android through Expo's push service (`exp.host`), which hands them to Apple or Google. Nothing to set up; `off` turns them off. Default: `on`. |
+| `MOBILE_PUSH_CONTENT` | `on` sends the notification's text along (it then passes Expo, Apple and Google). Default: `off` – as with Web Push only "something new in the inbox". |
 
 The keys must not change, otherwise all devices lose their subscription. Outgoing HTTPS to the push services of Apple, Google and Mozilla must be possible.
 

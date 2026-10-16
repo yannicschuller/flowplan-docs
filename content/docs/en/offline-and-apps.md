@@ -60,13 +60,25 @@ The apps for macOS, Windows and Linux are at [flowplan.org/download](https://flo
 > [!NOTE]
 > The apps are in preparation and not yet available in the App Store or on Google Play. Until then, Flowplan can be installed as a web app as described above.
 
-Like the desktop app, the mobile apps wrap your Flowplan instance; all data stays on the server and new features arrive without an app update.
+Like the desktop app, the mobile apps show your Flowplan instance; all data stays on the server and new features arrive without an app update. On top comes what only an app can do:
 
-- On first start they ask for the address and suggest `https://app.flowplan.org`. They only accept real Flowplan instances that do not redirect to another site. Long-press the app icon → **Change server** changes it later.
-- **Sign in with a passkey** and **Sign in with SSO** open the system's sign-in sheet (iOS) or a browser tab (Android); the app then takes over the sign-in. E-mail and password work directly in the app. This needs a Flowplan server newer than 0.3.4.
+- **Notifications:** mentions, comments, tasks and reminders arrive as notifications, the number of unread ones shows on the app icon. The app asks for permission once after the first sign-in; a tap opens the page concerned. Which kinds arrive is set as in the browser under **Settings → Notifications**.
+- **Widgets** for the home screen (on the iPhone also for the lock screen): tasks due, the inbox and the running timer. A tap opens the task or page. They update in the background.
+- **Running timer:** on the iPhone a running timer of the time tracking appears as a Live Activity on the lock screen and in the Dynamic Island, on Android as a notification with a running clock.
+- **Quick actions:** long-press the app icon to open the inbox, My tasks, the search or a new page.
+- **App lock:** if you like, Flowplan only unlocks with Face ID, Touch ID, a fingerprint or the device code.
+- **Exports and downloads** go to the system's share menu (e.g. "Save to Files").
+
+Also:
+
+- On first start they ask for the address and suggest `https://app.flowplan.org`. They only accept real Flowplan instances that do not redirect to another site. The **app settings** (via **Settings → Notifications → Open app settings** or long-press the app icon → **Change server**) change the server; **Sign out and forget the server** signs the app out and removes it from the instance.
+- **Sign in with a passkey** and **Sign in with SSO** open the system's sign-in sheet (iOS) or a browser tab (Android); the app then takes over the sign-in. E-mail and password work directly in the app. This needs a Flowplan server newer than 0.3.4; notifications and widgets need a server with the app interface (from the next version).
 - Links to other sites open in the browser; without a connection the app shows a page of its own and reconnects by itself.
 - On Android, Flowplan appears in other apps' **Share** menu.
-- Push notifications come in a later version; until then the inbox and e-mail keep you informed.
+
+### What the app keeps on the instance
+
+After signing in, the app registers with the instance: the entry belongs to that sign-in and disappears with signing out, the end of the session or the deletion of the account. With it, the widgets read only a short summary in the background (unread notifications, open tasks, the running timer). Notifications go through Expo's push service, which hands them to Apple or Google – as with Web Push, they only say that something new is in the inbox. Operators can turn this off or send the text along, see [Configuration](/configuration#push-notifications).
 
 ## Light and dark
 
