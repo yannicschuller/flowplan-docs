@@ -46,6 +46,10 @@ The list icon at the top right of a document opens the **table of contents** bes
 
 Text copied from ChatGPT or another assistant is formatted when pasted: LaTeX formulas (`\[ … \]`, `\( … \)`, `$$ … $$`) become formula blocks and inline formulas, Markdown (headings, **bold**, lists, tables) is applied, lines with tabs become a table, `☐` a task list, and each line becomes its own paragraph. Formulas already rendered on a copied web page stay formulas. This also applies when copying straight from the ChatGPT web page. If formulas are already in the document as text (such as `\[ A(3;2;1) \]`), select them – or everything with <kbd>⌘</kbd>/<kbd>Ctrl</kbd>+<kbd>A</kbd> – and choose **Turn into formulas** in the text menu. Ordinary text is pasted as before.
 
+## Reading mode
+
+The book icon in the top bar (or <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd>, quick search → `> reading`) opens a document **for reading only**: nothing changes by accident, handles and the block menu disappear – handy on the phone and when reading aloud or presenting. The pencil switches back to editing. The device remembers the mode per page; permissions stay the same, and others keep their own mode.
+
 ## Focus mode
 
 **Focus mode** (quick search → `> focus`) hides the sidebar, toolbar and page margins; the top bar only appears on hover. At the bottom, a bar counts the words of the page and those added in this session. With a **goal** (e.g. 500 words) a bar shows the progress; the device remembers the goal per page. <kbd>Esc</kbd> ends the mode.

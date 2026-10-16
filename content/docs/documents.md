@@ -46,6 +46,10 @@ Das Listen-Symbol oben rechts im Dokument öffnet das **Inhaltsverzeichnis** neb
 
 Text, den du aus ChatGPT oder einem anderen Assistenten kopierst, wird beim Einfügen formatiert: Formeln in LaTeX (`\[ … \]`, `\( … \)`, `$$ … $$`) werden zu Formelblöcken und Formeln im Satz, Markdown (Überschriften, **fett**, Listen, Tabellen) wird umgesetzt, Zeilen mit Tabulatoren werden zur Tabelle, `☐` zur Aufgabenliste, und jede Zeile wird ein eigener Absatz. Aus der Webseite kopierte, bereits gerenderte Formeln bleiben als Formel erhalten. Das gilt auch für das Kopieren direkt aus der ChatGPT-Webseite. Stehen Formeln schon als Text im Dokument (etwa `\[ A(3;2;1) \]`), markiere sie – oder alles mit <kbd>⌘</kbd>/<kbd>Strg</kbd>+<kbd>A</kbd> – und wähle im Textmenü **In Formeln umwandeln**. Gewöhnlicher Text wird wie bisher eingefügt.
 
+## Lesemodus
+
+Das Buch-Symbol oben in der Leiste (oder <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd>, Schnellsuche → `> lesemodus`) öffnet ein Dokument **nur zum Lesen**: Nichts lässt sich versehentlich ändern, Griffe und Blockmenü verschwinden – praktisch auf dem Handy und beim Vorlesen oder Präsentieren. Der Stift wechselt zurück zum Bearbeiten. Das Gerät merkt sich den Modus pro Seite; die Rechte ändern sich dadurch nicht, und andere sehen weiter ihren eigenen Modus.
+
 ## Fokusmodus
 
 **Fokusmodus** (Schnellsuche → `> fokus`) blendet Seitenleiste, Werkzeugleiste und Seitenrand aus; die obere Leiste erscheint erst beim Darüberfahren. Unten zählt eine Leiste die Wörter der Seite und die in dieser Sitzung hinzugekommenen. Mit einem **Ziel** (z. B. 500 Wörter) zeigt ein Balken den Fortschritt; das Ziel merkt sich das Gerät pro Seite. <kbd>Esc</kbd> beendet den Modus.
