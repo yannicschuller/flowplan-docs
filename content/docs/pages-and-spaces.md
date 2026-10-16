@@ -53,7 +53,7 @@ Das Feld **Seiten filtern** über dem Seitenbaum blendet alles aus, was nicht pa
 
 ## Favoriten und „Verlinkt von“
 
-Der Stern in der Kopfzeile legt eine Seite unter **Favoriten** in der Seitenleiste ab – persönlich, andere sehen deine Favoriten nicht. Unten auf jeder Seite zeigt **Verlinkt von**, welche Seiten auf diese verweisen.
+Der Stern in der Kopfzeile legt eine Seite unter **Favoriten** in der Seitenleiste ab – persönlich, andere sehen deine Favoriten nicht. Unten auf jeder Seite zeigt **Verlinkt von**, welche Seiten und Datenbank-Einträge auf diese verweisen.
 
 ## Bereiche verwalten
 

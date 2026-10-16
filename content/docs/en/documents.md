@@ -23,7 +23,7 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 | Image or file | `/image`, `/file` | Upload or pick from the media library |
 | Mermaid diagram | `/mermaid` | Flowcharts, sequence and class diagrams as text |
 | Formula, inline formula | `/math`, `/inlinemath` | LaTeX, rendered with KaTeX |
-| Mention a page or person | `/mention` or `@` | A reference to a page or person |
+| Mention a page, record or person | `/mention` or `@` | A reference to a page, database record or person |
 | Whiteboard | `/board` | Embed a whiteboard in the document |
 | Linked database | `/db` | A view of an existing database |
 | Two columns | `/columns` | Content side by side |
@@ -151,7 +151,9 @@ The server calculates the number for the person looking at the page and refreshe
 
 ## Page links and mentions
 
-`@` searches pages and people. Mentioning a person notifies them in the inbox. Links to pages stay valid even if the page is renamed or moved; the target page lists them under **Linked from**.
+`@` searches pages, database records and people – keep typing to narrow the list. Records appear with their database, such as "Heating – maintenance · Notes"; only records you may read are offered. Mentioning a person notifies them in the inbox.
+
+Links to pages and records stay valid even if they are renamed or moved; the target lists them under **Linked from** – including records whose text contains the link. Records and pages you may not read do not appear there.
 
 ## More blocks
 

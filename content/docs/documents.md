@@ -23,7 +23,7 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 | Bild oder Datei | `/bild`, `/datei` | Upload oder Auswahl aus der Mediathek |
 | Mermaid-Diagramm | `/mermaid` | Ablauf-, Sequenz-, Klassendiagramme als Text |
 | Formel, Inline-Formel | `/math`, `/inlinemath` | LaTeX, dargestellt mit KaTeX |
-| Seite oder Person erwähnen | `/mention` oder `@` | Verweis auf Seite oder Person |
+| Seite, Eintrag oder Person erwähnen | `/mention` oder `@` | Verweis auf Seite, Datenbank-Eintrag oder Person |
 | Whiteboard | `/board` | Whiteboard im Dokument einbetten |
 | Verknüpfte Datenbank | `/db` | Ansicht einer vorhandenen Datenbank |
 | Zwei Spalten | `/spalten` | Inhalte nebeneinander |
@@ -151,7 +151,9 @@ Die Zahl rechnet der Server für die Person aus, die die Seite ansieht, und aktu
 
 ## Seitenlinks und Erwähnungen
 
-`@` sucht Seiten und Personen. Eine Erwähnung einer Person benachrichtigt sie im Posteingang. Links auf Seiten bleiben gültig, auch wenn die Seite umbenannt oder verschoben wird; die Zielseite zeigt sie unter **Verlinkt von**.
+`@` sucht Seiten, Einträge aus Datenbanken und Personen – einfach weitertippen, um die Liste zu filtern. Einträge erscheinen mit ihrer Datenbank, etwa „Heizung – Wartung · Notizen“; angeboten werden nur Einträge, die du lesen darfst. Eine Erwähnung einer Person benachrichtigt sie im Posteingang.
+
+Links auf Seiten und Einträge bleiben gültig, auch wenn sie umbenannt oder verschoben werden; das Ziel zeigt sie unter **Verlinkt von** (Seiten) bzw. **Verknüpft von** (Einträge). Dort stehen auch Einträge, in deren Text der Link steht. Wer einen verlinkenden Eintrag oder seine Seite nicht lesen darf, sieht ihn dort nicht.
 
 ## Weitere Blöcke
 

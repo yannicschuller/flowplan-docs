@@ -53,7 +53,7 @@ The **Filter pages** field above the page tree hides everything that does not ma
 
 ## Favourites and "Linked from"
 
-The star in the header puts a page under **Favourites** in the sidebar – personal, others do not see your favourites. At the bottom of every page, **Linked from** shows which pages refer to it.
+The star in the header puts a page under **Favourites** in the sidebar – personal, others do not see your favourites. At the bottom of every page, **Linked from** shows which pages and database records refer to it.
 
 ## Manage spaces
 

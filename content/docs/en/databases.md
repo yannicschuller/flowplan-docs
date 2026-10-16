@@ -10,7 +10,8 @@ A database is a collection of records with properties. The same records can be s
 
 - **New** at the bottom of the table or at the top right creates a record and opens it with the title selected – just start typing, <kbd>Enter</kbd> saves.
 - A click on the title opens the record as a page: the title at the top to edit directly, the properties below it, and below them a full document with the same editor as every other page – including comments, version history and editing together.
-- At the top right of a record: how it opens (as a dialog, in the side panel or as a full page – the choice applies to you in this browser; the database's default is marked "default"), the star for favourites, the lock for the record's permissions and the sliders for the layout of all records. **Icon** and **Cover** appear when the pointer is over the title.
+- At the top right of a record: how it opens (as a dialog, in the side panel or as a full page – the choice applies to you in this browser; the database's default is marked "default"), the star for favourites, **Copy link** for the record's address, the lock for the record's permissions and the sliders for the layout of all records. **Icon** and **Cover** appear when the pointer is over the title.
+- An open record has its own address (`/#page=<database>&row=<record>`) – whether it opens as a dialog, in the side panel or as a full page. It can be shared, bookmarked or linked in texts with `@`. Below the properties, **Linked from** shows which records refer to it through a relation and which pages and records link to it in their text.
 - **Record templates** give new records properties and content. One template can be the default for new records.
 - Select several records (checkboxes on the left) and edit, duplicate or delete them together – up to 500 at once. Flowplan saves a state beforehand that can be restored from the version history.
 - Deleted records sit in the database's trash and can be brought back.
