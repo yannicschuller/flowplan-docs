@@ -83,4 +83,4 @@ After signing in, the app registers with the instance: the entry belongs to that
 
 ## Light and dark
 
-Under **Settings → General → Appearance** you choose light or dark. The website and this documentation follow your system's setting.
+Flowplan follows your device's light or dark mode by itself – also when it changes while Flowplan is open (for example automatically in the evening). Under **Settings → General → Appearance** you choose a fixed **Light** or **Dark** instead; **Automatic** follows the device again. The choice applies per device. Sign-in, public pages and forms, the website and this documentation follow the device as well, the apps also with their own screens and widgets.
