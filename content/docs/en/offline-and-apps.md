@@ -68,6 +68,7 @@ Like the desktop app, the mobile apps show your Flowplan instance; all data stay
 - **Quick actions:** long-press the app icon to open the inbox, My tasks, the search or a new page.
 - **App lock:** if you like, Flowplan only unlocks with Face ID, Touch ID, a fingerprint or the device code.
 - **Exports and downloads** go to the system's share menu (e.g. "Save to Files").
+- **iPad and tablets:** every orientation, Split View, Slide Over and Stage Manager, keyboard and trackpad. With the **Apple Pencil** you draw on whiteboards with pressure while fingers move the board; double-tap and squeeze switch the tool, Scribble writes into any text field (see [Whiteboards](/whiteboards#pen-and-shape-recognition)).
 
 Also:
 

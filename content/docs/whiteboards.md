@@ -13,6 +13,7 @@ Eine unendliche Fläche für Brainstorming, Abläufe und Workshops: Notizzettel,
 | Form | <kbd>R</kbd> | Rechteck, abgerundet, Ellipse, Raute, Dreieck, Sechseck, Stern, Pfeil, Wolke |
 | Verbindungslinie | <kbd>L</kbd> | Gerade, geschwungen oder gewinkelt; haftet an Elementen und folgt ihnen |
 | Stift | <kbd>P</kbd> | Freihand zeichnen |
+| Radierer | <kbd>X</kbd> | Gezeichnete Striche löschen: einfach darüberfahren |
 | Rahmen | <kbd>F</kbd> | Bereiche gruppieren – und Folien für die Präsentation |
 | Tabelle | <kbd>G</kbd> | Einfache Tabelle auf der Fläche |
 | Kommentar | <kbd>C</kbd> | Kommentar an eine Stelle heften |
@@ -41,6 +42,8 @@ Einen Zettel, eine Form oder einen Text auswählen und <kbd>Tab</kbd> drücken: 
 ## Stift und Formerkennung
 
 Mit einem Tablet-Stift (etwa Apple Pencil) folgt die Strichstärke dem Druck. Im Stiftmenü wählst du die Farbe; mit **Formen erkennen** werden gezeichnete Linien, Rechtecke, Kreise, Dreiecke und Rauten zu sauberen Formen (<kbd>⌥</kbd> beim Loslassen behält den Strich).
+
+Sobald du auf einem Gerät mit dem Stift gezeichnet hast, zeichnet nur noch der Stift: Finger verschieben und zoomen die Fläche, eine aufliegende Hand hinterlässt keine Striche. **Nur mit dem Stift zeichnen** im Stiftmenü schaltet das ab. Ein schwebender Apple Pencil (iPad Pro, iPad Air ab M2) zeigt, wo der Strich beginnt; das Radierer-Ende eines Stifts löscht wie der **Radierer**. In der [iPad-App](/offline-and-apps#apps-fuer-iphone-ipad-und-android-in-vorbereitung) wechselt Doppeltippen oder Drücken des Apple Pencil je nach iPad-Einstellung zum Radierer und zurück, zum vorigen Werkzeug oder zum Stift. Dasselbe gilt beim Markieren von Bildern in Dokumenten.
 
 ## Bilder, Symbole und Einträge
 

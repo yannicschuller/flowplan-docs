@@ -38,7 +38,7 @@ Markdown shortcuts such as `##`, `-`, `[]` or ` ``` ` are listed under [Document
 
 | Shortcut | Effect |
 | --- | --- |
-| <kbd>V</kbd> <kbd>H</kbd> <kbd>N</kbd> <kbd>T</kbd> <kbd>R</kbd> <kbd>L</kbd> <kbd>P</kbd> <kbd>F</kbd> <kbd>G</kbd> <kbd>C</kbd> | Select, hand, sticky note, text, shape, connector, pen, frame, table, comment |
+| <kbd>V</kbd> <kbd>H</kbd> <kbd>N</kbd> <kbd>T</kbd> <kbd>R</kbd> <kbd>L</kbd> <kbd>P</kbd> <kbd>X</kbd> <kbd>F</kbd> <kbd>G</kbd> <kbd>C</kbd> | Select, hand, sticky note, text, shape, connector, pen, eraser, frame, table, comment |
 | <kbd>⇧</kbd> <kbd>1</kbd> | Show everything |
 | <kbd>⌘</kbd> <kbd>D</kbd> | Duplicate |
 | <kbd>Del</kbd> | Delete |
