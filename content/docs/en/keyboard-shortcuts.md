@@ -7,6 +7,7 @@ All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd
 | Shortcut | Effect |
 | --- | --- |
 | <kbd>⌘</kbd> <kbd>K</kbd> | Quick search |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd> | Read or edit the document |
 | <kbd>⌘</kbd> <kbd>N</kbd> | New page |
 | <kbd>Esc</kbd> | Close a dialog, menu or the search |
 
