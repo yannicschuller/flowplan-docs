@@ -74,6 +74,6 @@ The permissions icon at the top of a record restricts a record beyond the permis
 
 - **Same as database**: the default.
 - **Read-only record**: only its managers (page owners and the person who created the record) and people it is explicitly shared with may change it.
-- **Private record**: only its managers and people it is shared with see it.
+- **Private record**: only its managers and people it is shared with see it – together with its comments, tasks and files (in the file list, search, media library, copies, templates and backups).
 
 Shares with people or groups never go beyond their role on the database page.

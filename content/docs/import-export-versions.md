@@ -34,6 +34,8 @@ Unter **Einstellungen → Daten** lädst du ein ZIP deines Arbeitsbereichs herun
 
 Enthalten: zugängliche Seiten samt Papierkorb, Datenbanken mit Ansichten und Einträgen, Dokumentinhalte, Relationen, Vorlagen, Kommentare, Versionen, Favoriten und Formularoptionen, dazu alle Dateien mit Prüfsummen.
 
+Das Archiv enthält nur, was du selbst sehen darfst: private Einträge anderer samt ihrer Kommentare und Dateien fehlen, ebenso Journale hinter einer PIN, die du gerade nicht entsperrt hast. Versionen einer Datenbank kommen nur bei Besitzern mit, weil sie alle Einträge enthalten.
+
 - Beim Import entstehen neue IDs; interne Links und Relationen werden umgeschrieben.
 - Importierte Bereiche und Vorlagen sind privat, Freigaben und Formulare nicht aktiv.
 - Ein fehlerhafter Import wird vollständig zurückgerollt.

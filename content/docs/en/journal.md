@@ -41,7 +41,7 @@ In the settings under **Day bar**, place and appointments can be switched off fo
 
 ## PIN lock
 
-Under **Set up journal → Lock**, a PIN of 4 to 8 digits protects the journal: days, search, previews and images stay hidden until the PIN is entered. After 15 minutes or with the lock button it locks itself again. After five wrong attempts there is a pause. Changing or removing it requires the current PIN. The lock protects against glances but is no encryption: whoever has access to the server's backups sees the content.
+Under **Set up journal → Lock**, a PIN of 4 to 8 digits protects the journal: days, search, previews and images stay hidden until the PIN is entered. After 15 minutes or with the lock button it locks itself again. After five wrong attempts there is a pause. Changing or removing it requires the current PIN. The lock also covers sub-pages of days as well as export, the content archive, comments, share links and duplicating – unlock first for those. It protects against glances but is no encryption: whoever has access to the server's backups sees the content.
 
 ## If today's page was deleted
 

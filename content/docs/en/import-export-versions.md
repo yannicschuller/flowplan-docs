@@ -34,6 +34,8 @@ Under **Settings → Data** you download a ZIP of your workspace and import it e
 
 It contains: accessible pages including the trash, databases with views and records, document content, relations, templates, comments, versions, favourites and form options, plus all files with checksums.
 
+The archive only holds what you may see yourself: other people's private records with their comments and files are left out, as are journals behind a PIN you have not unlocked right now. Versions of a database are included only for owners, because they contain every record.
+
 - Importing creates new IDs; internal links and relations are rewritten.
 - Imported spaces and templates are private, shares and forms are not active.
 - A failed import is rolled back completely.

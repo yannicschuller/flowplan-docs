@@ -27,7 +27,7 @@ Bestehende Mitglieder lassen sich **Zum Gast machen** und umgekehrt **Zum Mitgli
 
 ## Gäste
 
-Gäste sind Personen außerhalb des Teams, etwa Kunden oder Freelancer. Sie sehen nur Seiten und Bereiche, die für sie freigegeben wurden, samt Unterseiten, und können keine Seiten anlegen, niemanden einladen und keine Einstellungen ändern. Für Personen ganz ohne Konto gibt es stattdessen [Links mit eigenen Berechtigungen](/sharing#links-mit-eigenen-berechtigungen).
+Gäste sind Personen außerhalb des Teams, etwa Kunden oder Freelancer. Sie sehen nur Seiten und Bereiche, die für sie freigegeben wurden, samt Unterseiten, und können keine Seiten anlegen, niemanden einladen und keine Einstellungen ändern. Vorlagen des Arbeitsbereichs sehen sie nicht, nur eigene. Für Personen ganz ohne Konto gibt es stattdessen [Links mit eigenen Berechtigungen](/sharing#links-mit-eigenen-berechtigungen).
 
 ## Gruppen
 

@@ -97,7 +97,7 @@ A property of the type **Time tracking** adds up the time worked on a record. Op
    - content type JSON,
    - events for pushes and pull or merge requests.
    The exact steps are in the dialog.
-3. **Commits and pull requests** that mention a ticket number like `WEB-123` appear in the record under **Development**.
+3. **Commits and pull requests** that mention a ticket number of this database like `WEB-123` appear in the record under **Development**. Numbers of other databases are left alone – they have their own connection.
 4. **“closes WEB-123”** (also *fixes*, *resolves*) marks the record done. This happens once the commit is on the default branch or the pull request is merged – through the database's workflow and automations.
 
 Every request is checked against the secret. Only people who may edit the database see the address and the secret. **New address and secret** invalidates the old ones.

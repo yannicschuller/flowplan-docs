@@ -97,7 +97,7 @@ Eine Eigenschaft vom Typ **Zeiterfassung** summiert die Zeit, die an einem Eintr
    - Content type JSON,
    - Ereignisse für Pushes und Pull bzw. Merge Requests.
    Die genauen Schritte stehen im Dialog.
-3. **Commits und Pull Requests**, die eine Ticketnummer wie `WEB-123` nennen, erscheinen im Eintrag unter **Entwicklung**.
+3. **Commits und Pull Requests**, die eine Ticketnummer dieser Datenbank wie `WEB-123` nennen, erscheinen im Eintrag unter **Entwicklung**. Nummern anderer Datenbanken bleiben unberührt – dort gibt es eine eigene Anbindung.
 4. **„closes WEB-123“** (auch *fixes*, *resolves*, *schließt*, *behebt*) setzt den Eintrag auf erledigt. Das geschieht, sobald der Commit im Hauptbranch ist oder der Pull Request zusammengeführt wurde – über den Workflow und die Automationen der Datenbank.
 
 Jede Anfrage wird gegen das Secret geprüft. Adresse und Secret sehen nur Personen, die die Datenbank bearbeiten dürfen. **Neue Adresse und neues Secret** macht die alten ungültig.

@@ -74,6 +74,6 @@ Im Eintrag kann jede Person für jedes gefüllte Datumsfeld eine persönliche Er
 
 - **Rechte wie Datenbank**: Standard.
 - **Schreibgeschützter Eintrag**: nur die Verwaltenden (Seiteneigentümer und die Person, die den Eintrag angelegt hat) und ausdrücklich Freigegebene ändern ihn.
-- **Privater Eintrag**: nur Verwaltende und Freigegebene sehen ihn.
+- **Privater Eintrag**: nur Verwaltende und Freigegebene sehen ihn – samt seinen Kommentaren, Aufgaben und Dateien (in Dateiliste, Suche, Mediathek, Kopien, Vorlagen und Sicherungen).
 
 Freigaben an Personen oder Gruppen gehen nie über die Rolle an der Datenbankseite hinaus.

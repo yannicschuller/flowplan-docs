@@ -27,7 +27,7 @@ Existing members can be turned into guests with **Make guest** and back with **M
 
 ## Guests
 
-Guests are people outside the team, such as customers or freelancers. They only see pages and spaces shared with them, including sub-pages, and cannot create pages, invite anyone or change settings. For people without any account there are [links with their own permissions](/sharing#links-with-their-own-permissions) instead.
+Guests are people outside the team, such as customers or freelancers. They only see pages and spaces shared with them, including sub-pages, and cannot create pages, invite anyone or change settings. They do not see the workspace's templates, only their own. For people without any account there are [links with their own permissions](/sharing#links-with-their-own-permissions) instead.
 
 ## Groups
 
