@@ -11,6 +11,7 @@ Flowplan always saves documents locally in the browser first (IndexedDB) and syn
 Under **Settings → Data → Offline use**, the device also stores the app, the workspace, all readable pages and files you open later. Then you can open pages, read documents and databases and edit text even without a connection.
 
 - Online, the current state always comes from the server; the copy only serves without a connection.
+- If the sign-in has expired, Flowplan shows the sign-in page online – without a connection, the stored copy still opens.
 - The copies contain private content. They are removed when you sign out, when you turn the feature off and when another person signs in.
 
 ### Database records offline

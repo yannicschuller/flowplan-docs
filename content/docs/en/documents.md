@@ -16,7 +16,7 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 | Task list | `/todo` | Tasks to tick off |
 | Bulleted list, numbered list | `/ul`, `/ol` | Lists, nested as deep as you like |
 | Quote | `/quote` | A highlighted quotation |
-| Callout | `/callout` | A coloured box with an icon |
+| Note, Tip, Important, Warning, Caution | `/note`, `/tip`, `/important`, `/warning`, `/caution` | A coloured box with icon and title – the five kinds of GitHub alerts |
 | Toggle | `/toggle` | Content that folds in and out |
 | Code | `/code` | Syntax highlighting for 192 languages |
 | Table | `/table` | A simple table in the text |
@@ -46,9 +46,15 @@ The list icon at the top right of a document opens the **table of contents** bes
 
 Text copied from ChatGPT or another assistant is formatted when pasted: LaTeX formulas (`\[ … \]`, `\( … \)`, `$$ … $$`) become formula blocks and inline formulas, Markdown (headings, **bold**, lists, tables) is applied, lines with tabs become a table, `☐` a task list, and each line becomes its own paragraph. Formulas already rendered on a copied web page stay formulas. This also applies when copying straight from the ChatGPT web page. If formulas are already in the document as text (such as `\[ A(3;2;1) \]`), select them – or everything with <kbd>⌘</kbd>/<kbd>Ctrl</kbd>+<kbd>A</kbd> – and choose **Turn into formulas** in the text menu. Ordinary text is pasted as before.
 
+## Callouts
+
+Callouts come in five kinds, as on GitHub, Forgejo and Obsidian: **Note** (blue), **Tip** (green), **Important** (purple), **Warning** (yellow) and **Caution** (red). Each kind has its icon and a title in the reader's language. With the cursor in a callout, `/tip`, `/warning` etc. change its kind; so does **Manage blocks → Callout type**.
+
+Markdown export writes callouts as GitHub alerts (`> [!WARNING]`). Import (Markdown, ZIP, Notion) turns `> [!NOTE]` to `> [!CAUTION]` back into callouts of that kind; Obsidian's further kinds map to the nearest one (e.g. `danger` → Caution, `hint` → Tip), and a custom title (`> [!WARNING] Read first`) becomes a bold first line.
+
 ## Reading mode
 
-The book icon in the top bar (or <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd>, quick search → `> reading`) opens a document **for reading only**: nothing changes by accident, handles and the block menu disappear – handy on the phone and when reading aloud or presenting. The pencil switches back to editing. The device remembers the mode per page; permissions stay the same, and others keep their own mode.
+The book icon in the top bar (or <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd>, quick search → `> reading`) opens a document **for reading only**: nothing changes by accident, handles and the block menu disappear – handy on the phone and when reading aloud or presenting. The pencil switches back to editing. The device remembers the mode per page; permissions stay the same, and others keep their own mode. Database records have the same book icon at the top of the record (see [Databases](/databases)).
 
 ## Focus mode
 

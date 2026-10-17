@@ -11,6 +11,7 @@ Dokumente speichert Flowplan immer zuerst lokal im Browser (IndexedDB) und gleic
 Unter **Einstellungen → Daten → Offline-Nutzung** speichert das Gerät zusätzlich die App, den Arbeitsbereich, alle lesbaren Seiten und später geöffnete Dateien. Dann lassen sich auch ohne Verbindung Seiten öffnen, Dokumente und Datenbanken lesen und Text bearbeiten.
 
 - Online kommt immer der aktuelle Stand vom Server; die Kopie dient nur ohne Verbindung.
+- Ist die Anmeldung abgelaufen, zeigt Flowplan online die Anmeldeseite – ohne Verbindung öffnet die gespeicherte Kopie trotzdem.
 - Die Kopien enthalten private Inhalte. Sie werden beim Abmelden, beim Ausschalten und bei der Anmeldung einer anderen Person entfernt.
 
 ### Datenbank-Einträge offline
