@@ -34,11 +34,17 @@ Die installierte App öffnet in einem eigenen Fenster ohne Browserleisten.
 
 Ist Flowplan auf Android (Chrome) als App installiert, erscheint es im **Teilen**-Menü anderer Apps. Geteilte Texte und Links landen in einer Vorschau; **Als Seite speichern** legt daraus eine Seite im gewählten Bereich an. Ohne Anmeldung geht es erst zur Anmeldung und danach zurück zur Vorschau. iOS bietet Web-Apps dieses Menü nicht an.
 
-Bei Links fragt die Vorschau, ob sie **als Seite** oder **als Lesezeichen** gespeichert werden sollen. **Artikeltext übernehmen** lädt die Webseite auf dem Server und übernimmt ihren Haupttext ohne Navigation, Werbung und Skripte (nur öffentliche Adressen).
+Die Vorschau fragt, ob gespeichert wird **als Seite**, **als Eintrag** in einer Datenbank oder – bei Links – **als Lesezeichen**. Als Eintrag kommen Titel, Text und Link (bzw. der Artikeltext) in den Eintrag; der Link landet in der ersten URL-Eigenschaft der Datenbank, sonst im Text, und die Standardvorlage der Datenbank wird übernommen. Gibt es eine Standard-Datenbank zum Erfassen (siehe unten), ist **als Eintrag** mit ihr vorgewählt. **Artikeltext übernehmen** lädt die Webseite auf dem Server und übernimmt ihren Haupttext ohne Navigation, Werbung und Skripte (nur öffentliche Adressen).
 
 ### Web-Clipper im Browser
 
 Unter **Einstellungen → Daten → Web-Clipper und Lesezeichen** liegt der Knopf **In Flowplan speichern**. In die Lesezeichenleiste gezogen, öffnet er auf jeder Webseite ein kleines Fenster mit Titel, Adresse und dem markierten Text – dieselbe Vorschau wie beim Teilen. Nach dem Speichern schließt sich das Fenster.
+
+### Erfassen in eine Datenbank
+
+Für einen Eingang („Inbox“), etwa nach PARA: **Schnell erfassen** auf der Startseite, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>N</kbd>, `> erfassen` in der Schnellsuche oder – bei der installierten App – ein langer Druck auf das App-Symbol → **Erfassen** öffnen ein kleines Fenster mit Titel und Text. Gespeichert wird als Eintrag in der gewählten Datenbank; ohne Verbindung wartet er auf dem Gerät und wird angelegt, sobald die Verbindung zurück ist.
+
+**Als Standard zum Erfassen verwenden** (im Fenster) oder **Einstellungen → Daten → Web-Clipper und Lesezeichen → Erfassen** legt die Datenbank fest, die Teilen, Web-Clipper und Schnell erfassen vorwählen – je Person und Arbeitsbereich. Die Standardvorlage der Datenbank wird übernommen, so landen neue Einträge zum Beispiel direkt in der Ansicht „Eingang“.
 
 ### Lesezeichen
 

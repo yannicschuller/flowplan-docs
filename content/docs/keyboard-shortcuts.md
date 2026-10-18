@@ -8,6 +8,7 @@ Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <
 | --- | --- |
 | <kbd>⌘</kbd> <kbd>K</kbd> | Schnellsuche |
 | <kbd>⌘</kbd> <kbd>N</kbd> | Neue Seite |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>N</kbd> | Schnell erfassen (Eintrag in der Datenbank zum Erfassen) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd> | Dokument lesen oder bearbeiten |
 | <kbd>Esc</kbd> | Dialog, Menü oder Suche schließen |
 

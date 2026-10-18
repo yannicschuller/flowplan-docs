@@ -9,7 +9,7 @@ Content comes in as Markdown, CSV or an archive and goes out again as Markdown, 
 | Format | Content |
 | --- | --- |
 | **Markdown (.md)** | One file with the page content; databases with an overview, properties and the documents of all records. |
-| **Markdown with files (.zip)** | `index.md`, sub-pages under `pages/`, record documents under `records/`, databases also as CSV under `tables/`, attachments under `assets/` – all linked relatively. |
+| **Markdown with files (.zip)** | `index.md`, sub-pages under `pages/`, record documents under `records/`, databases also as CSV under `tables/`, attachments under `assets/` – all linked relatively. Every record under `records/` starts with its properties as YAML frontmatter (see below). |
 | **HTML / JSON** | The older format for documents and databases. |
 
 **Print / PDF** opens the browser's print view; save as PDF there.
@@ -25,9 +25,36 @@ The export respects read permissions and contains all records regardless of view
 - **Markdown, text or HTML**: **Settings → Data → Import Markdown or text**. Headings, lists, tasks, tables, code (also `mermaid`) and formulas become blocks.
 - **Notion, AppFlowy or Markdown export**: **Settings → Data** accepts a ZIP with Markdown and CSV files. Markdown becomes pages, CSV databases, folders sub-pages; linked images and files are uploaded, and Notion record pages are matched to their records. Up to 100 MB, 500 pages and 5,000 records per table; you choose the target space beforehand.
 - **Jira or Trello**: **Settings → Data → Import from Jira or Trello** – see [Projects, tickets and sprints](/projects-and-tickets#import-from-jira-and-trello).
-- **CSV**: in a database, choose **Import CSV**; the rows become records.
+- **CSV**: in a database, choose **Import CSV or Markdown** and pick a CSV file; the rows become records.
+- **Markdown with frontmatter into a database** (such as notes from Obsidian): in the database, choose **Import CSV or Markdown** and pick one or more `.md` files or a ZIP – see below.
 - **Content archive** (see below).
 
+
+### Frontmatter: records as Markdown files
+
+Notes from Obsidian, Logseq, Jekyll or Hugo carry their properties as YAML frontmatter at the top of the file:
+
+```markdown
+---
+para: Resource
+area: House
+tags: [heating, maintenance]
+created: 2026-03-14
+---
+# Heating – maintenance
+…
+```
+
+**Import into a database:** every file becomes a record. The title comes from `title:`, otherwise from the first `#` heading or the file name; the rest of the text becomes the record's document, linked images and files from the ZIP are uploaded, and links between the imported files become links to the new records. Keys are matched to properties of the same name (case does not matter):
+
+- select and multi-select take the values and add unknown ones as new options (so `tags:` lands in **Tags**);
+- relations find the linked record by its title (also as `[[Title]]`), people by name or e-mail;
+- dates are read as ISO dates, `true`/`false` as checkboxes, numbers as numbers;
+- computed properties (formulas, rollups, timestamps) are not overwritten.
+
+Before the import, a preview shows which properties match and which are missing. **Create missing properties** adds them with a fitting type: list → multi-select, ISO date → date, `true`/`false` → checkbox, number → number, address → URL, a few recurring values → select, otherwise text. Up to 5,000 files and 100 MB per import.
+
+**Export:** in the ZIP export, every record under `records/` starts with `title:` and its properties: select as text, multi-select and relations (titles of the linked records) as lists, dates as ISO dates. Computed values and the record's id are below `flowplan:` and are skipped on import. A record exported this way and imported into the same database again keeps its properties; it is added as a new record.
 ## Content archive
 
 Under **Settings → Data** you download a ZIP of your workspace and import it elsewhere – also into another Flowplan instance.

@@ -4,7 +4,15 @@ Eine Datenbank ist eine Sammlung von Einträgen mit Eigenschaften. Dieselben Ein
 
 ## Datenbank anlegen
 
-**Neue Seite → Datenbank** legt eine Datenbank mit einer Tabellenansicht an. Alternativ eine [Vorlage](/templates) verwenden, etwa „Aufgaben“ oder „Projekte“, oder eine CSV-Datei importieren (siehe [Import, Export und Versionen](/import-export-versions)).
+**Neue Seite → Datenbank** fragt nach der Art:
+
+| Art | Eigenschaften | Erste Ansicht |
+| --- | --- | --- |
+| **Aufgaben** | Aufgabe, Status, Priorität, Fällig am, Verantwortlich, Tags | Tabelle „Alle Aufgaben“, dazu Board, Kalender, Timeline … |
+| **Dokumente** | Titel, Tags, Erstellt, Bearbeitet | Liste „Alle Dokumente“ (zuletzt bearbeitet oben), Galerie, Tabelle; Einträge öffnen als ganze Seite, leere Eigenschaften sind ausgeblendet |
+| **Leer** | nur ein Titel | Tabelle |
+
+Darunter stehen **Deine Vorlagen**: gespeicherte Datenbank-Vorlagen, etwa eine eigene „Notizen (PARA)“-Datenbank mit Relationen und Ansichten. Die letzte Wahl merkt sich das Gerät. Alternativ eine [Vorlage](/templates) verwenden, etwa „Aufgaben“ oder „Projekte“, oder eine CSV-Datei importieren (siehe [Import, Export und Versionen](/import-export-versions)).
 
 ## Einträge
 

@@ -4,7 +4,15 @@ A database is a collection of records with properties. The same records can be s
 
 ## Create a database
 
-**New page → Database** creates a database with a table view. Alternatively use a [template](/templates), such as "Tasks" or "Projects", or import a CSV file (see [Import, export and versions](/import-export-versions)).
+**New page → Database** asks for the kind:
+
+| Kind | Properties | First view |
+| --- | --- | --- |
+| **Tasks** | Task, Status, Priority, Due, Assignee, Tags | Table "All tasks", plus board, calendar, timeline … |
+| **Documents** | Title, Tags, Created, Edited | List "All documents" (last edited first), gallery, table; records open as a full page, empty properties are hidden |
+| **Empty** | only a title | Table |
+
+Below are **Your templates**: saved database templates, such as your own "Notes (PARA)" database with relations and views. The device remembers the last choice. Alternatively use a [template](/templates), such as "Tasks" or "Projects", or import a CSV file (see [Import, export and versions](/import-export-versions)).
 
 ## Records
 
