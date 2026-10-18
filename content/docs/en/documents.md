@@ -163,7 +163,7 @@ The server calculates the number for the person looking at the page and refreshe
 
 `@` searches pages, database records and people – keep typing to narrow the list. Records appear with their database, such as "Heating – maintenance · Notes"; only records you may read are offered. Mentioning a person notifies them in the inbox.
 
-Links to pages and records stay valid even if they are renamed or moved; the target lists them under **Linked from** – including records whose text contains the link. Records and pages you may not read do not appear there.
+Links to pages and records stay valid even if they are renamed or moved. A link that shows the old title gets the new one on a rename – in all documents and records you may edit; a link with its own text keeps it. The target lists all links to it under **Linked from** – including records whose text contains the link. Records and pages you may not read do not appear there.
 
 ## More blocks
 

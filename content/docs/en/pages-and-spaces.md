@@ -70,13 +70,13 @@ Deleted pages and spaces end up in the **Trash** at the bottom of the sidebar. T
 
 ## Graph of links
 
-The network icon at the bottom of the sidebar (or `> graph` in the quick search) shows all pages as dots and their links as lines. Large dots have many connections; colours tell documents, databases, whiteboards and journals apart.
+The network icon at the bottom of the sidebar (or `> graph` in the quick search) shows all pages as dots and their links as lines. Database records appear as dots of their own once they link or are linked; a click opens the record. Large dots have many connections; colours tell documents, databases, records, whiteboards and journals apart.
 
 - Drag to pan, scroll or use two fingers to zoom, click to open a page.
 - Hovering highlights a page and its neighbours; **Highlight** marks pages by title.
 - **Connect sub-pages** also shows the page hierarchy (dashed), **Pages without links** shows or hides single pages.
-- Links to pages, embedded whiteboards, linked databases and synced blocks count as connections. The graph only shows what you may see.
+- Links to pages and records (also from a record's text), embedded whiteboards, linked databases and synced blocks count as connections. The graph only shows what you may see.
 
 ## Unlinked mentions
 
-Below **Linked from** at the end of a page, **Unlinked mentions** lists documents in which the title of this page appears without being linked (titles of four characters or more). **Link** turns the first mention there into a link to this page.
+Below **Linked from** at the end of a page, **Unlinked mentions** lists documents and records in which the title of this page appears without being linked (titles of four characters or more). **Link** turns the first mention there into a link to this page. An open record shows the same for its title below its properties.

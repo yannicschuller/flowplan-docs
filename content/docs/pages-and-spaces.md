@@ -70,14 +70,14 @@ Gelöschte Seiten und Bereiche landen im **Papierkorb** unten in der Seitenleist
 
 ## Graph der Verlinkungen
 
-Das Netz-Symbol unten in der Seitenleiste (oder `> graph` in der Schnellsuche) zeigt alle Seiten als Punkte und ihre Links als Linien. Große Punkte haben viele Verbindungen; Farben unterscheiden Dokumente, Datenbanken, Whiteboards und Journale.
+Das Netz-Symbol unten in der Seitenleiste (oder `> graph` in der Schnellsuche) zeigt alle Seiten als Punkte und ihre Links als Linien. Datenbank-Einträge erscheinen als eigene Punkte, sobald sie verlinken oder verlinkt sind; ein Klick öffnet den Eintrag. Große Punkte haben viele Verbindungen; Farben unterscheiden Dokumente, Datenbanken, Einträge, Whiteboards und Journale.
 
 - Ziehen verschiebt, Mausrad oder zwei Finger zoomen, ein Klick öffnet die Seite.
 - Überfahren hebt eine Seite und ihre Nachbarn hervor; **Hervorheben** markiert Seiten nach Titel.
 - **Unterseiten verbinden** zeigt zusätzlich die Seitenhierarchie (gestrichelt), **Seiten ohne Verbindung** blendet einzelne Seiten ein oder aus.
-- Als Verbindung zählen Links auf Seiten, eingebettete Whiteboards, verknüpfte Datenbanken und synchronisierte Blöcke. Der Graph zeigt nur, was du sehen darfst.
+- Als Verbindung zählen Links auf Seiten und Einträge (auch aus dem Text eines Eintrags), eingebettete Whiteboards, verknüpfte Datenbanken und synchronisierte Blöcke. Der Graph zeigt nur, was du sehen darfst.
 
 ## Nicht verlinkte Erwähnungen
 
-Unter **Verlinkt von** am Seitenende listet **Nicht verlinkte Erwähnungen** Dokumente, in denen der Titel dieser Seite vorkommt, ohne dass er verlinkt ist (Titel ab vier Zeichen). **Verlinken** macht die erste Erwähnung dort zu einem Link auf diese Seite.
+Unter **Verlinkt von** am Seitenende listet **Nicht verlinkte Erwähnungen** Dokumente und Einträge, in denen der Titel dieser Seite vorkommt, ohne dass er verlinkt ist (Titel ab vier Zeichen). **Verlinken** macht die erste Erwähnung dort zu einem Link auf diese Seite. Ein geöffneter Eintrag zeigt dasselbe für seinen Titel unter seinen Eigenschaften.
 
