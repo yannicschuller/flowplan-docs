@@ -16,7 +16,9 @@ for (const locale of LOCALES)
       assert.equal(doc.title, listed.title, `${slug}: title matches the navigation`);
       assert.ok(doc.summary.length > 30, `${slug}: lead`);
       assert.ok(doc.html.length > 500, `${slug}: content`);
-      assert.ok(!doc.html.includes("[!NOTE]") && !doc.html.includes("[!WARNING]"), `${slug}: callouts render`);
+      // Alerts render as callouts; in code they may be shown as written.
+      const prose = doc.html.replace(/<code>[\s\S]*?<\/code>|<pre>[\s\S]*?<\/pre>/g, "");
+      assert.ok(!prose.includes("[!NOTE]") && !prose.includes("[!WARNING]"), `${slug}: callouts render`);
     }
     assert.equal(loadDoc("../package", locale), null);
   });
