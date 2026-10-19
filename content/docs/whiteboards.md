@@ -53,7 +53,7 @@ Sobald du auf einem Gerät mit dem Stift gezeichnet hast, zeichnet nur noch der 
 ## Navigieren
 
 - Zoomen mit <kbd>⌘</kbd> + Mausrad, Trackpad-Geste oder den Knöpfen unten rechts.
-- **Alles anzeigen** (<kbd>⇧</kbd> <kbd>1</kbd>) passt die Ansicht an alle Elemente an.
+- **Alles anzeigen** (<kbd>⇧</kbd> <kbd>1</kbd>) passt die Ansicht an alle Elemente an, <kbd>⇧</kbd> <kbd>2</kbd> an die Auswahl – mit einer weichen Kamerafahrt, die jede Eingabe sofort beendet.
 - Rückgängig <kbd>⌘</kbd> <kbd>Z</kbd>, Wiederholen <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Z</kbd>.
 
 ## Gemeinsam arbeiten

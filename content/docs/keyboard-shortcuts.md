@@ -44,6 +44,7 @@ Markdown-Kürzel wie `##`, `-`, `[]` oder ` ``` ` stehen unter [Dokumente und Ed
 | --- | --- |
 | <kbd>V</kbd> <kbd>H</kbd> <kbd>N</kbd> <kbd>T</kbd> <kbd>R</kbd> <kbd>L</kbd> <kbd>P</kbd> <kbd>X</kbd> <kbd>F</kbd> <kbd>G</kbd> <kbd>C</kbd> | Auswählen, Verschieben, Notizzettel, Text, Form, Linie, Stift, Radierer, Rahmen, Tabelle, Kommentar |
 | <kbd>⇧</kbd> <kbd>1</kbd> | Alles anzeigen |
+| <kbd>⇧</kbd> <kbd>2</kbd> | Auf die Auswahl zoomen |
 | <kbd>⌘</kbd> <kbd>D</kbd> | Duplizieren |
 | <kbd>Entf</kbd> | Löschen |
 | <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Z</kbd> | Rückgängig / Wiederholen |

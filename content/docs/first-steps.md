@@ -33,6 +33,8 @@ Später öffnet **Einstellungen → Allgemein → Einführung starten** (oder �
 
 Auf dem Smartphone klappt die Seitenleiste ein; das Menüsymbol oben links öffnet sie.
 
+Kurze Animationen zeigen, was sich gerade bewegt hat: Karten und Zeilen gleiten an ihren neuen Platz, mitverschobene Balken in der Timeline rücken sichtbar nach, und das Ziel eines Sprungs – aus dem Inhaltsverzeichnis, der Suche oder einer Benachrichtigung – leuchtet kurz auf. Sie folgen der Systemeinstellung **Bewegung reduzieren**: Ist sie aktiv, springt alles ohne Bewegung an sein Ziel, und Sprungziele werden nur kurz ruhig hervorgehoben.
+
 ## Die erste Seite
 
 1. Neben einem Bereich in der Seitenleiste auf **+** klicken oder auf der Startseite **Neue Seite** wählen.

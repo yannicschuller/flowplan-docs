@@ -53,7 +53,7 @@ Once you have drawn with a pen on a device, only the pen draws: fingers move and
 ## Navigate
 
 - Zoom with <kbd>⌘</kbd> + scroll wheel, trackpad gestures or the buttons at the bottom right.
-- **Show everything** (<kbd>⇧</kbd> <kbd>1</kbd>) fits the view to all elements.
+- **Show everything** (<kbd>⇧</kbd> <kbd>1</kbd>) fits the view to all elements, <kbd>⇧</kbd> <kbd>2</kbd> to the selection – with a smooth camera move that any input stops at once.
 - Undo <kbd>⌘</kbd> <kbd>Z</kbd>, redo <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Z</kbd>.
 
 ## Work together

@@ -33,6 +33,8 @@ Later, **Settings → General → Start introduction** (or "introduction" in the
 
 On a phone the sidebar folds away; the menu icon at the top left opens it.
 
+Short animations show what just moved: cards and rows glide into their new place, bars that move along in the timeline visibly follow, and the target of a jump – from the table of contents, search or a notification – lights up briefly. They follow the system setting **Reduce motion**: when it is on, everything moves to its target without motion, and jump targets are only highlighted briefly and still.
+
 ## Your first page
 
 1. Click **+** next to a space in the sidebar or choose **New page** on the home screen.
