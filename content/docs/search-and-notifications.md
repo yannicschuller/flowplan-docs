@@ -33,13 +33,18 @@ Der **Posteingang** sammelt:
 - Erwähnungen,
 - Kommentare und Antworten auf deine Beiträge,
 - Datums-Erinnerungen,
-- Kommentare und Einträge von Gästen über Freigabelinks.
+- Kommentare und Einträge von Gästen über Freigabelinks,
+- mit dir geteilte Seiten und Arbeitsbereiche,
+- Änderungen an Seiten, denen du folgst (eigene Seiten folgst du beim Anlegen automatisch; die Glocke oben rechts schaltet das Folgen um),
+- Meldungen aus Automationen.
+
+**Standardmäßig** kommt, was dich direkt betrifft – Erwähnungen, geteilte Seiten, Kommentare, Erinnerungen –, im Posteingang, als Push und per E-Mail. Gastkommentare kommen ohne E-Mail. **Änderungen an Seiten, denen du folgst, und Automationen landen nur im Posteingang**, damit nicht jede kleine Bearbeitung eine Mitteilung oder Mail auslöst. Unter **Einstellungen → Benachrichtigungen** lässt sich das je Art und Kanal ändern; **Auf Standard zurücksetzen** stellt den Ausgangszustand wieder her.
 
 Ungelesenes ist markiert und lässt sich filtern. Ein Klick öffnet die Stelle, bei Textkommentaren direkt den Thread.
 
 ## E-Mail
 
-Ist auf der Instanz ein Mailserver eingerichtet, kommen ungelesene Benachrichtigungen nach zehn Minuten als Zusammenfassung per E-Mail – eine Mail für alles, was sich angesammelt hat, jede Benachrichtigung höchstens einmal. Unter **Einstellungen → Benachrichtigungen** lässt sich die Spalte **E-Mail** je Art abschalten. Einladungen in einen Arbeitsbereich kommen ebenfalls per E-Mail.
+Ist auf der Instanz ein Mailserver eingerichtet, kommen ungelesene Benachrichtigungen nach zehn Minuten als Zusammenfassung per E-Mail – eine Mail für alles, was sich angesammelt hat, jede Benachrichtigung höchstens einmal. Unter **Einstellungen → Benachrichtigungen** lässt sich die Spalte **E-Mail** je Art ein- und ausschalten. Einladungen in einen Arbeitsbereich und mit dir geteilte Seiten kommen sofort per E-Mail.
 
 ## Push-Benachrichtigungen
 

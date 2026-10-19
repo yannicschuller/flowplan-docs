@@ -33,13 +33,18 @@ The **Inbox** collects:
 - mentions,
 - comments and replies to your posts,
 - date reminders,
-- comments and records from guests via share links.
+- comments and records from guests via share links,
+- pages and workspaces shared with you,
+- changes on pages you follow (you follow your own pages when creating them; the bell at the top right toggles following),
+- messages from automations.
+
+**By default**, what concerns you directly – mentions, shared pages, comments, reminders – arrives in the inbox, as push and by e-mail. Guest comments come without e-mail. **Changes on pages you follow and automations only land in the inbox**, so that not every small edit triggers a push message or e-mail. **Settings → Notifications** changes this per kind and channel; **Reset to defaults** restores the starting point.
 
 Unread items are marked and can be filtered. A click opens the spot, for text comments the thread directly.
 
 ## E-mail
 
-If a mail server is set up on the instance, unread notifications arrive by e-mail as a digest after ten minutes – one mail for everything that has piled up, each notification at most once. Under **Settings → Notifications**, the **E-mail** column can be switched off per kind. Invitations to a workspace also arrive by e-mail.
+If a mail server is set up on the instance, unread notifications arrive by e-mail as a digest after ten minutes – one mail for everything that has piled up, each notification at most once. Under **Settings → Notifications**, the **E-mail** column can be switched on and off per kind. Invitations to a workspace and pages shared with you arrive by e-mail right away.
 
 ## Push notifications
 
