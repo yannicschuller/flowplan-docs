@@ -30,6 +30,8 @@ curl -sf -X POST https://flowplan.example.com/api/markdown-export \
   -d '{"pageId":"<page id>","format":"zip","includeSubpages":true,"history":true}' -o export.zip
 ```
 
+Instead of `pageId`, `spaceId` exports a whole [space](/import-export-versions#export-a-whole-space) into one ZIP: `{"spaceId":"<space id>","format":"zip","history":true}`.
+
 Tokens never get administrator rights and cannot create further tokens. You can revoke them at any time in the same list; locked accounts lose their tokens automatically.
 
 To connect Claude, ChatGPT or other AI assistants, use the [MCP server](/mcp) with a token like this.

@@ -16,6 +16,16 @@ Content comes in as Markdown, CSV or an archive and goes out again as Markdown, 
 
 The export respects read permissions and contains all records regardless of view filters. Formulas and Mermaid are kept as source. Limits per export: 500 pages, 5,000 records, 250 MB of content.
 
+### Export a whole space
+
+The download icon next to a space's name in the sidebar (or **Settings → Data → Export space as Markdown**) downloads the whole space as **one** Markdown ZIP – to archive, read offline or put into your own Git repository:
+
+- Every top-level page is in a folder of its own, `<title>-<id>/`, with everything below it – the same layout as the [scheduled Markdown export](/storage-and-backups#markdown-export-and-git). Inside, the format of **Markdown with files (.zip)** applies.
+- `index.md` at the top lists the space's pages; links between pages of the space are relative, links into other spaces keep pointing to Flowplan.
+- Anyone who can read the space may export it, no administrator needed. It contains only what that person may read: other people's private records and PIN-locked journals stay out, and other people's private spaces cannot be exported.
+- **Include comments and earlier versions** works as for the page export; the same limits apply, for the whole space.
+- For scripts with a read token: `{"spaceId":"…","format":"zip","history":true}` to `/api/markdown-export` (see [API tokens](/api-and-webhooks)). The space's id is shown in the export dialog.
+
 ### Print and PDF
 
 **Page actions → Print** (or `> print` in the quick search) prints the page as a clean A4 document – in the print dialog it can also be **saved as PDF**. The sidebar, toolbars, handles, comment bars and notices disappear; colours are always light, blocks are not split in the middle of a page, long code lines wrap and external links are written out with their address.

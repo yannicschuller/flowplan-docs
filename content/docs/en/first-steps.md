@@ -13,6 +13,18 @@ When you sign in for the first time, Flowplan creates a private workspace with e
 
 **Language:** Flowplan follows your browser's language. Under **Settings → General → Your profile → Language** you pick German 🇩🇪, English 🇬🇧 or French 🇫🇷 from the list – it then applies on all devices, also to e-mails and push notifications. Further languages can be added: [Languages and translations](/languages).
 
+## The introduction
+
+After creating an account, Flowplan walks you through the essentials once. Every step can be skipped, and everything can be changed later in the settings:
+
+1. **Welcome**: language and appearance (automatic, light or dark).
+2. **What would you like to start with?** Set the workspace's name (as its owner) and, if you like, create pages right away: a **Tasks** database, a **Notes** database, a **Journal** or a **Whiteboard**.
+3. **What Flowplan does**: a short tour of pages and blocks, databases, whiteboards, the journal, collaboration, sharing, search and offline – each with a tip and a link into this documentation.
+4. **Notifications**: e-mail summaries (when the instance sends e-mail) and push on this device.
+5. **All set**: the created pages to open and the most important shortcuts.
+
+Later, **Settings → General → Start introduction** (or "introduction" in the search with `⌘/Ctrl + K`) opens it again. Accounts that existed before the introduction was added do not see it automatically.
+
 ## The interface
 
 - **Sidebar** on the left: workspace switcher, search, home, inbox, your spaces with the page tree, and below them templates, media, trash and settings.

@@ -13,6 +13,18 @@ Beim ersten Anmelden legt Flowplan einen privaten Arbeitsbereich mit Beispielsei
 
 **Sprache:** Flowplan folgt der Sprache deines Browsers. Unter **Einstellungen → Allgemein → Dein Profil → Sprache** wählst du aus der Liste Deutsch 🇩🇪, Englisch 🇬🇧 oder Französisch 🇫🇷 – dann gilt sie auf allen Geräten, auch für E-Mails und Push-Hinweise. Weitere Sprachen lassen sich hinzufügen: [Sprachen und Übersetzungen](/languages).
 
+## Die Einführung
+
+Nach dem Anlegen eines Kontos führt Flowplan einmal kurz durch das Wichtigste. Jeder Schritt lässt sich überspringen, und alles ist später in den Einstellungen änderbar:
+
+1. **Willkommen**: Sprache und Erscheinungsbild (automatisch, hell oder dunkel).
+2. **Womit möchtest du starten?** Den Namen des Arbeitsbereichs festlegen (als Eigentümer) und auf Wunsch gleich Seiten anlegen: eine **Aufgaben**-Datenbank, eine **Notizen**-Datenbank, ein **Journal** oder ein **Whiteboard**.
+3. **Das kann Flowplan**: eine kurze Tour durch Seiten und Blöcke, Datenbanken, Whiteboards, Journal, Zusammenarbeit, Teilen, Suche und Offline – mit einem Tipp und einem Link in diese Dokumentation.
+4. **Benachrichtigungen**: E-Mail-Zusammenfassungen (wenn die Instanz E-Mails verschickt) und Push auf diesem Gerät.
+5. **Fertig**: die angelegten Seiten zum Öffnen und die wichtigsten Tastenkürzel.
+
+Später öffnet **Einstellungen → Allgemein → Einführung starten** (oder „Einführung“ in der Suche mit `⌘/Strg + K`) sie wieder. Konten, die es schon vor der Einführung gab, sehen sie nicht automatisch.
+
 ## Die Oberfläche
 
 - **Seitenleiste** links: Arbeitsbereich-Wechsel, Suche, Startseite, Posteingang, deine Bereiche mit dem Seitenbaum, darunter Vorlagen, Medien, Papierkorb und Einstellungen.
