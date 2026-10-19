@@ -2,7 +2,7 @@
 
 Connect Claude, ChatGPT and other AI assistants to your Flowplan using the Model Context Protocol (MCP). They search, read and write with exactly your permissions, nothing more.
 
-Flowplan has no built-in AI. Through MCP, the assistant *you* choose works with your pages, databases and tasks. It sees only what you can see in Flowplan.
+Besides the optional [built-in AI](/ai), MCP connects the assistant *you* choose. It works with your pages, databases and tasks. It sees only what you can see in Flowplan.
 
 ## Set up
 

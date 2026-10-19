@@ -247,8 +247,8 @@ export function llmsIndex(base: string, locale: Locale) {
     de ? "# Flowplan-Dokumentation" : "# Flowplan documentation",
     "",
     de
-      ? "> Flowplan ist ein Open-Source-Arbeitsbereich (AGPL-3.0) für Dokumente, Datenbanken (Tabelle, Board, Kalender, Zeitleiste, Galerie, Liste, Feed, Diagramm, Formular), Whiteboards und ein tägliches Journal. Gehostet in Deutschland auf app.flowplan.org oder selbst gehostet als ein Docker-Container (Next.js, SQLite). Oberfläche auf Deutsch und Englisch, ohne KI-Funktionen."
-      : "> Flowplan is an open-source workspace (AGPL-3.0) for documents, databases (table, board, calendar, timeline, gallery, list, feed, chart, form), whiteboards and a daily journal. Hosted in Germany at app.flowplan.org or self-hosted as one Docker container (Next.js, SQLite). Interface in German and English, without AI features.",
+      ? "> Flowplan ist ein Open-Source-Arbeitsbereich (AGPL-3.0) für Dokumente, Datenbanken (Tabelle, Board, Kalender, Zeitleiste, Galerie, Liste, Feed, Diagramm, Formular), Whiteboards und ein tägliches Journal. Gehostet in Deutschland auf app.flowplan.org oder selbst gehostet als ein Docker-Container (Next.js, SQLite). Oberfläche auf Deutsch und Englisch. KI ist optional und standardmäßig aus – auch komplett lokal mit Ollama."
+      : "> Flowplan is an open-source workspace (AGPL-3.0) for documents, databases (table, board, calendar, timeline, gallery, list, feed, chart, form), whiteboards and a daily journal. Hosted in Germany at app.flowplan.org or self-hosted as one Docker container (Next.js, SQLite). Interface in German and English. AI is optional and off by default – also completely local with Ollama.",
     "",
     de
       ? "Jede Seite gibt es als Markdown unter der verlinkten Adresse; die englische Fassung unter /en/…md."
