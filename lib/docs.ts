@@ -19,6 +19,7 @@ const groups: { title: [de: string, en: string]; pages: [slug: string, de: strin
     pages: [
       ["first-steps", "Erste Schritte", "First steps"],
       ["pages-and-spaces", "Seiten und Bereiche", "Pages and spaces"],
+      ["migrate", "Umzug von Notion, AppFlowy und Obsidian", "Moving from Notion, AppFlowy and Obsidian"],
     ],
   },
   {

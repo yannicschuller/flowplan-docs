@@ -79,7 +79,7 @@ Beim ersten Start fragt die App immer nach der Adresse der Instanz und schlägt 
 
 **Anmeldung mit Passkey und SSO:** Passkeys und Anbieter, die einen Passkey verlangen, funktionieren nur in einem echten Browser. Die App öffnet die Anmeldung deshalb im Standardbrowser: Sie erzeugt ein zufälliges Geheimnis, öffnet `/api/auth/desktop` mit dessen Hash, nach der Anmeldung bestätigt man **In der Desktop-App anmelden**, und der Browser gibt über `flowplan://sign-in` einen Einmalcode an die App zurück. Der Code gilt eine Minute, nur einmal und nur zusammen mit dem Geheimnis, das die App nie verlässt. Fragt der Browser, ob er Flowplan öffnen darf, ist das dieser Schritt.
 
-Solange die Apps nicht signiert sind, fragt macOS beim ersten Öffnen nach (Rechtsklick → **Öffnen**), Windows zeigt SmartScreen (**Weitere Informationen → Trotzdem ausführen**), und ein AppImage muss vorher ausführbar sein (`chmod +x`).
+Solange die Apps nicht signiert und notarisiert sind, blockiert macOS den ersten Start: ab macOS 15 unter **Systemeinstellungen → Datenschutz & Sicherheit → Dennoch öffnen** freigeben (bis macOS 14 genügt Rechtsklick → **Öffnen**); meldet macOS, die App sei „beschädigt“, entfernt `xattr -dr com.apple.quarantine /Applications/Flowplan.app` die Quarantäne-Markierung. Mit Signatur und Notarisierung entfällt das, siehe [flowplan-desktop → Signing](https://github.com/yannicschuller/flowplan-desktop#signing). Windows zeigt SmartScreen (**Weitere Informationen → Trotzdem ausführen**), und ein AppImage muss vorher ausführbar sein (`chmod +x`).
 
 ### Updates
 

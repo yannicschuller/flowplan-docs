@@ -79,7 +79,7 @@ On first start the app always asks for the instance's address, suggesting `https
 
 **Signing in with passkeys and SSO:** passkeys, and providers that ask for one, only work in a real browser. The app therefore opens the sign-in in the default browser: it creates a random secret, opens `/api/auth/desktop` with its hash, after signing in you confirm **Sign in to the desktop app**, and the browser hands a one-time code back to the app via `flowplan://sign-in`. The code is valid for one minute, once, and only together with the secret that never leaves the app. If the browser asks whether it may open Flowplan, that is this step.
 
-While the apps are not signed, macOS asks on first opening (right-click → **Open**), Windows shows SmartScreen (**More info → Run anyway**), and an AppImage has to be made executable first (`chmod +x`).
+While the apps are not signed and notarized, macOS blocks the first launch: from macOS 15 allow it under **System Settings → Privacy & Security → Open Anyway** (up to macOS 14, right-click → **Open** is enough); if macOS says the app is "damaged", `xattr -dr com.apple.quarantine /Applications/Flowplan.app` removes the quarantine flag. With signing and notarization this goes away, see [flowplan-desktop → Signing](https://github.com/yannicschuller/flowplan-desktop#signing). Windows shows SmartScreen (**More info → Run anyway**), and an AppImage has to be made executable first (`chmod +x`).
 
 ### Updates
 

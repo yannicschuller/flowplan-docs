@@ -23,8 +23,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = translate(locale);
   const title = t("Flowplan-Dokumentation", "Flowplan documentation");
   const description = t(
-    "Anleitung für Flowplan, den Open-Source-Arbeitsbereich für Dokumente, Datenbanken, Whiteboards und Journal: jede Funktion und das Selbst-Hosten mit Docker.",
-    "Guide to Flowplan, the open-source workspace for documents, databases, whiteboards and a journal: every feature and self-hosting with Docker.",
+    "Anleitung für Flowplan, den Open-Source-Arbeitsbereich (AGPL-3.0) für Dokumente, Datenbanken, Whiteboards und Journal – eine Alternative zu Notion und AppFlowy: jede Funktion, der Umzug und das Selbst-Hosten mit Docker.",
+    "Guide to Flowplan, the open-source workspace (AGPL-3.0) for documents, databases, whiteboards and a journal – an alternative to Notion and AppFlowy: every feature, moving over and self-hosting with Docker.",
   );
   return {
     title: { absolute: title },
