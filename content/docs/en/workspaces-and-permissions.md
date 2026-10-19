@@ -23,6 +23,8 @@ When **leaving**, a last owner has to make someone else an owner first; your own
 
 **Settings → Members → Invite member**: enter an e-mail address and role. If e-mail is set up on the instance, the person gets an invitation. They create an account with this address – even if sign-ups are otherwise closed – or sign in with SSO; the workspace appears as soon as the address is confirmed. Without e-mail, tell them yourself and send them the instance's address.
 
+**Where the invitation arrives:** open invitations are listed under **Settings → Members** until they are accepted. The invited person finds the workspace in the workspace switcher at the top left and a notification in the **inbox** – right away with a new account, with an existing one the next time they open Flowplan (with single sign-on, at the next sign-in). A single page can also be shared without the whole workspace: [Share a page with a person](/sharing#share-a-page-with-a-person).
+
 Existing members can be turned into guests with **Make guest** and back with **Make member**.
 
 ## Guests

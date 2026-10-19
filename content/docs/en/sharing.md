@@ -13,6 +13,15 @@ Pages inherit the permissions of their space and parent pages (**Inherited**). I
 
 Private spaces and pages are only visible to the people they are shared with. Guests only see what has been explicitly shared with them (see [Workspaces, members and permissions](/workspaces-and-permissions)).
 
+### Share a page with a person
+
+A page or database can be shared with someone who is not in the workspace – without taking them into the whole workspace. **Share → People with access to this page**: enter an e-mail address (members are suggested), choose **View** or **Edit**, **Add**.
+
+- **The person already has an account on this instance:** they have access to the page and its sub-pages right away and get a notification ("… shared “Page” with you"). If they are not in the workspace yet, they join as a **guest** and see only what is shared with them.
+- **No account yet:** they get an invitation by e-mail (when set up) and are listed as "Invited". Once they create an account with this address, the page is there.
+- In the list, roles can be changed and people **removed**. A guest without any shared page left is no longer in the workspace either.
+- Owners of the workspace and owners of the page's space may share. Everyone else only sees the list.
+
 ## Links with their own permissions
 
 Under **Links with their own permissions** you create as many named links as you like, e.g. "Feedback from the customer":

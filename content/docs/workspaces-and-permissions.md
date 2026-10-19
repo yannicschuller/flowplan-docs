@@ -23,6 +23,8 @@ Beim **Verlassen** muss ein letzter Eigentümer vorher jemand anderen zum Eigent
 
 **Einstellungen → Mitglieder → Mitglied einladen**: E-Mail-Adresse und Rolle eingeben. Ist auf der Instanz E-Mail eingerichtet, bekommt die Person eine Einladung. Sie legt mit dieser Adresse ein Konto an – auch wenn die Registrierung sonst geschlossen ist – oder meldet sich per SSO an; der Arbeitsbereich erscheint, sobald die Adresse bestätigt ist. Ohne E-Mail-Versand sag ihr selbst Bescheid und schick ihr die Adresse der Instanz.
 
+**Wo die Einladung ankommt:** Offene Einladungen stehen unter **Einstellungen → Mitglieder**, bis sie angenommen sind. Die eingeladene Person findet den Arbeitsbereich im Arbeitsbereich-Wechsel oben links und eine Benachrichtigung im **Posteingang** – mit einem neuen Konto sofort, mit einem bestehenden beim nächsten Öffnen von Flowplan (bei Single Sign-on beim nächsten Anmelden). Eine Seite lässt sich auch einzeln teilen, ohne den ganzen Arbeitsbereich: [Eine Seite mit einer Person teilen](/sharing#eine-seite-mit-einer-person-teilen).
+
 Bestehende Mitglieder lassen sich **Zum Gast machen** und umgekehrt **Zum Mitglied machen**.
 
 ## Gäste
