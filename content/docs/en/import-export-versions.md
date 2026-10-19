@@ -14,7 +14,11 @@ Content comes in as Markdown, CSV or an archive and goes out again as Markdown, 
 
 **Print / PDF** opens the browser's print view; save as PDF there.
 
-The export respects read permissions and contains all records regardless of view filters. Formulas and Mermaid are kept as source. Limits per export: 500 pages, 5,000 records, 250 MB of content.
+The export respects read permissions and contains all records regardless of view filters. Formulas and Mermaid are kept as source.
+
+**Whiteboards** come along in the ZIP as SVG images under `assets/`: a whiteboard page shows its image, and a whiteboard embedded in a document becomes the image with a link to the board in Flowplan. The image is cropped like **Export as SVG** in the board; pictures on the board sit next to it under `assets/`. Covered items stay covered, comment pins are not included; an empty board gives a short note instead of an image. Since SVG is text, Git shows changes to a board as a readable diff. The board cannot be edited outside Flowplan.
+
+Limits per export: 500 pages, 5,000 records, 250 MB of content.
 
 ### Export a whole space
 

@@ -173,7 +173,7 @@ Mit `EXPORT_GIT_IMPORT=true` gilt für geänderte Dateien:
 - **Dokumentseiten** (`index.md`, `pages/…-<Kennung>.md`) bekommen den Text der Datei; der vorige Stand bleibt als Version erhalten.
 - Datenbanktabellen, Kommentare und Versionen sind Kopien und werden nicht zurückgelesen.
 
-Markdown kennt nicht alle Blöcke von Flowplan (etwa Spalten oder eingebettete Whiteboards). Wer in Git Seiten mit solchen Blöcken bearbeitet, findet den vorigen Stand im Versionsverlauf. Den Stand der letzten Übertragung (Commit, übernommene Änderungen, Fehler) zeigt die Administration.
+Markdown kennt nicht alle Blöcke von Flowplan (etwa Spalten). Whiteboards liegen als SVG-Bild im Repository; ein eingebettetes Board trägt eine unsichtbare Markierung (`<!-- flowplan:whiteboard … -->`), mit der es beim Übernehmen aus Git wieder eingebettet wird – Bild und Link darunter bitte stehen lassen. Wer in Git Seiten mit anderen solchen Blöcken bearbeitet, findet den vorigen Stand im Versionsverlauf. Den Stand der letzten Übertragung (Commit, übernommene Änderungen, Fehler) zeigt die Administration.
 
 ## Wiederherstellen
 

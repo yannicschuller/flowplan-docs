@@ -72,5 +72,5 @@ As soon as there are frames, **Present** appears. The frames are shown one after
 ## Embed and export
 
 - With `/board` in a document, a whiteboard becomes part of a page; the button at the top right opens it large.
-- **Export as PNG** or **Export as SVG** saves the whiteboard as an image.
+- **Export as PNG** or **Export as SVG** saves the whiteboard as an image. In the [Markdown export](/import-export-versions#export), every whiteboard comes along as an SVG automatically.
 - The text on the board is searchable and appears in exports.

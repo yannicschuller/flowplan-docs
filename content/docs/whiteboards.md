@@ -72,5 +72,5 @@ Sobald es Rahmen gibt, erscheint **Präsentieren**. Die Rahmen werden in Leseric
 ## Einbetten und exportieren
 
 - Mit `/board` im Dokument wird ein Whiteboard Teil einer Seite; der Knopf oben rechts öffnet es groß.
-- **Als PNG exportieren** oder **Als SVG exportieren** speichert das Whiteboard als Bild.
+- **Als PNG exportieren** oder **Als SVG exportieren** speichert das Whiteboard als Bild. Im [Markdown-Export](/import-export-versions#exportieren) kommt jedes Whiteboard automatisch als SVG mit.
 - Die Texte auf dem Board sind durchsuchbar und erscheinen in Exporten.

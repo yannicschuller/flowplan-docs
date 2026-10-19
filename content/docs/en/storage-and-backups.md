@@ -173,7 +173,7 @@ With `EXPORT_GIT_IMPORT=true`, changed files are handled like this:
 - **Document pages** (`index.md`, `pages/…-<id>.md`) get the file's text; the previous state stays as a version.
 - Database tables, comments and versions are copies and are not read back.
 
-Markdown does not know every Flowplan block (such as columns or embedded whiteboards). If you edit pages with such blocks in Git, the previous state is in the version history. The administration shows the state of the last push (commit, changes taken over, errors).
+Markdown does not know every Flowplan block (such as columns). Whiteboards are in the repository as SVG images; an embedded board carries an invisible marker (`<!-- flowplan:whiteboard … -->`) that makes it an embed again when changes are taken over from Git – please leave the image and link below it in place. If you edit pages with other such blocks in Git, the previous state is in the version history. The administration shows the state of the last push (commit, changes taken over, errors).
 
 ## Restore
 
