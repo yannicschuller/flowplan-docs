@@ -32,7 +32,7 @@ Below are **Your templates**: saved database templates, such as your own "Notes 
 - Title, icon and cover become the record's title, icon and cover, the content its document; files and images stay the same files (they then belong to the database).
 - Comments, text comments, tasks and versions come along; favourites become record favourites.
 - Links to the page in all pages and records of the workspace then point to the record.
-- Sub-pages stay pages and move up one level.
+- Sub-pages stay pages and move up one level. Permissions for people set on the page keep applying to them – so they become visible to neither more nor fewer people.
 - Sharing of only this page (permissions for people, share links, publication) ends – the dialog lists it first; the record follows the database's permissions. The database's default record template applies.
 - The page itself goes to the trash.
 

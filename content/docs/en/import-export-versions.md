@@ -12,7 +12,7 @@ Content comes in as Markdown, CSV or an archive and goes out again as Markdown, 
 | **Markdown with files (.zip)** | `index.md`, sub-pages under `pages/`, record documents under `records/`, databases also as CSV under `tables/`, attachments under `assets/` – all linked relatively. Every record under `records/` starts with its properties as YAML frontmatter (see below). With **Include comments and earlier versions**, `<file>.comments.md` and `<file>.versions/` come along. |
 | **HTML / JSON** | The older format for documents and databases. |
 
-**Print / PDF** opens the browser's print view; save as PDF there.
+**Print / PDF** opens the browser's print view; save as PDF there. Home screen apps on iPhone and iPad cannot print themselves: they open the page in Safari under a secret address for 15 minutes. This print view shows content only – no form fields, buttons or scripts – and at the top who created it.
 
 The export respects read permissions and contains all records regardless of view filters. Formulas and Mermaid are kept as source.
 

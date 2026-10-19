@@ -12,7 +12,7 @@ Inhalte kommen als Markdown, CSV oder Archiv herein und gehen als Markdown, PDF 
 | **Markdown mit Dateien (.zip)** | `index.md`, Unterseiten unter `pages/`, Eintragsdokumente unter `records/`, Datenbanken zusätzlich als CSV unter `tables/`, Anhänge unter `assets/` – alles relativ verlinkt. Jeder Eintrag unter `records/` beginnt mit seinen Eigenschaften als YAML-Frontmatter (siehe unten). Mit **Kommentare und frühere Versionen einschließen** kommen `<Datei>.comments.md` und `<Datei>.versions/` dazu. |
 | **HTML / JSON** | Das ältere Format für Dokumente und Datenbanken. |
 
-**Drucken / PDF** öffnet die Druckansicht des Browsers; dort als PDF sichern.
+**Drucken / PDF** öffnet die Druckansicht des Browsers; dort als PDF sichern. Apps auf dem Home-Bildschirm von iPhone und iPad können nicht selbst drucken: Sie öffnen die Seite 15 Minuten lang unter einer geheimen Adresse in Safari. Diese Druckansicht zeigt nur Inhalt – keine Formularfelder, Knöpfe oder Skripte – und oben, wer sie erstellt hat.
 
 Der Export berücksichtigt Leserechte und enthält alle Einträge unabhängig von Ansichtsfiltern. Formeln und Mermaid bleiben als Quelltext erhalten.
 
