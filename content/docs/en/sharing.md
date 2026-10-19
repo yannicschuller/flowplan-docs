@@ -17,8 +17,9 @@ Private spaces and pages are only visible to the people they are shared with. Gu
 
 A page or database can be shared with someone who is not in the workspace – without taking them into the whole workspace. **Share → People with access to this page**: enter an e-mail address (members are suggested), choose **View** or **Edit**, **Add**.
 
-- **The person already has an account on this instance:** they have access to the page and its sub-pages right away and get a notification in the inbox ("… shared “Page” with you") and – when the instance sends e-mail – right away an e-mail with a link to the page. **Settings → Notifications → Pages shared with you** turns the e-mail off. If they are not in the workspace yet, they join as a **guest** and see only what is shared with them.
-- **No account yet:** they get an invitation by e-mail (when set up) and are listed as "Invited". Once they create an account with this address, the page is there.
+- **The person already has an account on this instance** (with a confirmed address)**:** they have access to the page and its sub-pages right away and get a notification in the inbox ("… shared “Page” with you") and – when the instance sends e-mail – right away an e-mail with a link to the page. **Settings → Notifications → Pages shared with you** turns the e-mail off. If they are not in the workspace yet, they join as a **guest** and see only what is shared with them.
+- **No account yet:** they get an invitation by e-mail (when set up) and are listed as "Invited". Once they create an account with this address, the page is there. The same goes for an account whose address is not confirmed yet – then only the invitation link (**Settings → Members → Pending invitations → Copy link**) opens the page.
+- Guests do not see the list of people with access; only those who may share see e-mail addresses. Each person sends at most a few dozen invitations an hour, and each address gets only a few e-mails.
 - In the list, roles can be changed and people **removed**. A guest without any shared page left is no longer in the workspace either.
 - Owners of the workspace and owners of the page's space may share. Everyone else only sees the list.
 

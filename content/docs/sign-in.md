@@ -12,7 +12,8 @@ Ohne weitere Einrichtung zeigt die Anmeldeseite ein Formular für E-Mail und Pas
 - **Passwörter** haben mindestens 10 Zeichen und werden mit scrypt gespeichert. Nach 8 Fehlversuchen für eine Adresse (oder 30 von einer IP-Adresse) ist für 15 Minuten Pause.
 - **Passwort vergessen**: Mit eingerichtetem [E-Mail-Versand](/configuration#e-mail-smtp) schickt die Anmeldeseite einen Link, der zwei Stunden gilt. Ohne E-Mail erzeugt die Administration unter **Benutzer → Link zum Zurücksetzen** einen Link zum Weitergeben. Nach dem Zurücksetzen sind alle bisherigen Sitzungen beendet.
 - **Admin-Recht**: Unter **Benutzer** gibt die Administration es weiter (**Zum Admin machen**) oder entzieht es; eine Person muss die Instanz immer verwalten.
-- Name und Passwort ändert jede Person unter **Einstellungen → Allgemein → Dein Profil**.
+- Name und Passwort ändert jede Person unter **Einstellungen → Allgemein → Dein Profil**. Nach einer Passwortänderung sind alle anderen Sitzungen beendet; die aktuelle bleibt angemeldet.
+- Registrierung und „Passwort vergessen“ sind pro Adresse bzw. Netzwerkadresse begrenzt (höchstens eine Reset-Mail alle fünf Minuten pro Konto).
 
 `FLOWPLAN_LOCAL_LOGIN=false` schaltet E-Mail, Passwort und Passkeys ab – dann gibt es nur Single Sign-on.
 

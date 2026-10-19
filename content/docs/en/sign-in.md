@@ -12,7 +12,8 @@ Without further setup, the sign-in page shows a form for e-mail and password.
 - **Passwords** have at least 10 characters and are stored with scrypt. After 8 failed attempts for an address (or 30 from one IP address) there is a 15-minute pause.
 - **Forgot password**: with [e-mail delivery](/configuration#e-mail-smtp) set up, the sign-in page sends a link that is valid for two hours. Without e-mail, the administrators create a link to hand over under **Users → Reset link**. After a reset all previous sessions are ended.
 - **Admin right**: under **Users**, the administrators pass it on (**Make admin**) or take it away; someone always has to administer the instance.
-- Everyone changes their name and password under **Settings → General → Your profile**.
+- Everyone changes their name and password under **Settings → General → Your profile**. After a password change all other sessions end; the current one stays signed in.
+- Sign-ups and "Forgot password" are limited per address and network address (at most one reset e-mail every five minutes per account).
 
 `FLOWPLAN_LOCAL_LOGIN=false` turns off e-mail, password and passkeys – then only single sign-on remains.
 
