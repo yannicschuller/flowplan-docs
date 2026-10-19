@@ -141,6 +141,8 @@ All optional; the values apply until an admin saves under **Administration → A
 | `FLOWPLAN_AI_GUESTS` | *off* | `on`: guests may use AI too. |
 | `FLOWPLAN_AI_USER_PROVIDERS` | *off* | `on`: people may add their own provider and key. |
 | `FLOWPLAN_AI_FEATURES` | *all* | Allowed features, comma-separated: `write`, `summarize`, `ask`, `database`. |
+| `FLOWPLAN_AI_SEMANTIC_SEARCH` | *off* | `on`: [semantic search](/ai#semantic-search-optional) with the embedding model. |
+| `FLOWPLAN_AI_EMBED_PER_HOUR` | `5000` | Maximum chunks embedded per hour for semantic search. |
 | `FLOWPLAN_AI_REQUESTS_PER_HOUR` | `300` | Maximum AI requests per person and hour (plus 30 per minute, 3 at once). |
 
 ## Push notifications

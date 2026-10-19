@@ -95,6 +95,59 @@ Every AI panel names the provider at the bottom, e.g. "Ollama · llama3.1 · loc
 
 On pages the AI may not read, every AI entry is greyed out with the hint "The AI has no access to this page" – also for selected text. The server refuses such requests as well.
 
+## Ask your workspace
+
+**Ask AI** (sidebar, <kbd>⌘</kbd> <kbd>K</kbd> → "Ask AI …" or the button in search) answers questions about your pages and databases – such as "When is the next heating maintenance due?" or "What did we decide about onboarding?".
+
+- The answer names its **sources** as numbered references [1], [2] …; a click opens the page or record. The references come from the search, never from the AI's text.
+- If the AI finds nothing that fits, it answers "I found nothing about that." instead of making something up.
+- **Where to look:** the whole workspace, the open page with its sub-pages, or one space.
+- **Conversation:** follow-up questions take the last questions and answers into account; **New conversation** starts over. The conversation stays in this browser tab only and is not stored on the server.
+- The search uses the full-text index; the best-matching passages go with your question to the provider shown at the top of the panel. The AI only reads what you may read and what is open to the AI ([What the AI may access](#what-the-ai-may-access)).
+- While the answer is written, a shimmer and a typing cursor show progress; the sources appear one after another.
+
+### Semantic search (optional)
+
+In addition to full text, Flowplan can store content as vectors ("embeddings"). **Ask AI** then also finds passages without the same words – "trip" finds "company outing".
+
+1. Set an **embedding model** at the instance provider:
+   - **Ollama:** download `nomic-embed-text` (under **Administration → AI → Download model** or `ollama pull nomic-embed-text`) and enter it.
+   - **OpenAI-compatible:** e.g. `text-embedding-3-small`; **Gemini:** `text-embedding-004`. Anthropic has no embeddings.
+2. **Turn on semantic search** and save. Or via the environment: `FLOWPLAN_AI_SEMANTIC_SEARCH=on` and `FLOWPLAN_AI_EMBEDDING_MODEL=nomic-embed-text`.
+
+- A background job embeds changed pages and records chunk by chunk; unchanged chunks are not embedded again. At most `FLOWPLAN_AI_EMBED_PER_HOUR` chunks per hour (default 5,000).
+- **Never embedded:** journals with a PIN, pages and spaces closed to AI, and the trash. Permissions and personal AI rules apply to every question.
+- Semantic search always uses the instance provider. People using their own provider search full text only.
+- **Storage:** 4 bytes per dimension and chunk (up to about 900 characters) – with `nomic-embed-text` (768 dimensions) about 3 KB per chunk, roughly three to four times the text; with 1,536 dimensions about 6 KB. Only a checksum of each chunk is stored, not its text. The administration shows the number and size.
+- **Switching off** deletes all vectors; **changing the model** rebuilds them.
+- For very large instances (hundreds of thousands of chunks) there is no vector index yet; the search stays correct but gets slower.
+
+## AI in databases
+
+### AI property
+
+When adding a property, choose **AI property** and write an instruction naming other properties in curly braces:
+
+- `Summarize {Description} in one sentence`
+- `Category from {Title}: one of Novel, Non-fiction, Crime`
+- `{Content}` stands for the record's page content.
+
+The **output** is text, select, multi-select (existing options only – invented ones are dropped) or number. Since an AI property is a normal property, filters, sorting, grouping, forms and exports work as usual.
+
+- **Fill in for all** in the property dialog computes all records in the background; an indicator shows how many values are still being computed.
+- In a record, **Recompute** computes one value right away and shows when and with which model it was made.
+- **Recompute automatically when the properties used change:** values follow changes with a short delay and within the AI limits. This runs in the name of the person who switched it on or last changed the instruction. If they lose access, it stops; if AI is off on the instance, it pauses.
+- Values are written like edits: with version history, automations and webhooks. Freshly computed cells light up briefly.
+- Viewers, guests and API tokens cannot write AI values. Private records and databases closed to AI are skipped.
+
+### Fill in fields with AI
+
+Select records in the table → **Fill in with AI** → choose a property (e.g. tags). The AI fills only **empty** cells – from the title, the other properties and the content; for selects only with existing options.
+
+### Create a database with AI
+
+New page → Database → **Create with AI** and describe it, e.g. "Reading list with author, genre, status, rating". The AI proposes properties with types, select options and a few example records. You rename, remove properties or leave out the examples – only **Create page** creates the database. The proposal is checked strictly (allowed types, at most 25 properties and 30 options, matching example values); nothing from the AI's answer is executed.
+
 ## For admins
 
 Under **Administration → AI**:
@@ -105,7 +158,7 @@ Under **Administration → AI**:
    - **All** or **Selected people** – enable the latter per person under **Administration → Users** ("May use AI features").
    - **Guests too** – when off, guests have no AI features.
    - **People may add their own provider/key** – then everyone can set up their own provider with their own key in their settings. This also works with no instance provider at all: people use AI with their own account at a provider, without the instance paying for it.
-4. **Features:** allow or forbid each one separately.
+4. **Features:** allow or forbid each one separately. Optionally turn on [semantic search](#semantic-search-optional).
 5. **Save.**
 
 This covers three typical setups:

@@ -95,6 +95,59 @@ Jedes KI-Fenster nennt unten den Anbieter, etwa „Ollama · llama3.1 · lokal�
 
 Auf Seiten, die die KI nicht lesen darf, sind alle KI-Einträge ausgegraut mit dem Hinweis „KI hat keinen Zugriff auf diese Seite“ – auch für markierten Text. Der Server lehnt solche Anfragen ebenfalls ab.
 
+## Fragen an den Arbeitsbereich
+
+**KI fragen** (Seitenleiste, <kbd>⌘</kbd> <kbd>K</kbd> → „KI fragen …“ oder der Knopf in der Suche) beantwortet Fragen zu deinen Seiten und Datenbanken – etwa „Wann ist die nächste Wartung der Heizung fällig?“ oder „Was haben wir zum Thema Onboarding beschlossen?“.
+
+- Die Antwort nennt ihre **Quellen** als nummerierte Verweise [1], [2] …; ein Klick öffnet die Seite oder den Eintrag. Die Verweise stammen aus der Suche, nie aus dem Text der KI.
+- Findet die KI nichts Passendes, antwortet sie „Dazu habe ich nichts gefunden.“ statt etwas zu erfinden.
+- **Wo gesucht wird:** ganzer Arbeitsbereich, die geöffnete Seite mit ihren Unterseiten oder ein Bereich.
+- **Gespräch:** Rückfragen beziehen die letzten Fragen und Antworten ein; **Neues Gespräch** beginnt von vorn. Das Gespräch bleibt nur in diesem Browser-Tab und wird nicht auf dem Server gespeichert.
+- Gesucht wird über den Volltextindex; die passendsten Absätze gehen mit deiner Frage an den Anbieter, der oben im Fenster steht. Die KI liest dabei nur, was du lesen darfst und was für die KI freigegeben ist ([Worauf die KI zugreifen darf](#worauf-die-ki-zugreifen-darf)).
+- Während die Antwort entsteht, zeigen ein Schimmer und ein Schreibcursor den Fortschritt; die Quellen erscheinen nacheinander.
+
+### Suche nach Bedeutung (optional)
+
+Zusätzlich zum Volltext kann Flowplan Inhalte als Vektoren („Embeddings“) speichern. Dann findet **KI fragen** passende Stellen auch ohne gleiche Wörter – „Reise“ findet „Betriebsausflug“.
+
+1. Beim Anbieter der Instanz ein **Modell für Embeddings** eintragen:
+   - **Ollama:** `nomic-embed-text` herunterladen (unter **Administration → KI → Modell herunterladen** oder `ollama pull nomic-embed-text`) und eintragen.
+   - **OpenAI-kompatibel:** z. B. `text-embedding-3-small`; **Gemini:** `text-embedding-004`. Anthropic bietet keine Embeddings.
+2. **Suche nach Bedeutung einschalten** und speichern. Alternativ per Umgebung: `FLOWPLAN_AI_SEMANTIC_SEARCH=on` und `FLOWPLAN_AI_EMBEDDING_MODEL=nomic-embed-text`.
+
+- Ein Hintergrundauftrag bettet geänderte Seiten und Einträge abschnittsweise ein; unveränderte Abschnitte werden nicht erneut eingebettet. Höchstens `FLOWPLAN_AI_EMBED_PER_HOUR` Abschnitte pro Stunde (Standard 5.000).
+- **Nie eingebettet** werden Journale mit PIN, für die KI gesperrte Seiten und Bereiche und der Papierkorb. Rechte und persönliche KI-Regeln gelten bei jeder Frage.
+- Die Suche nach Bedeutung nutzt immer den Anbieter der Instanz. Wer einen eigenen Anbieter verwendet, sucht nur im Volltext.
+- **Speicherbedarf:** 4 Byte je Dimension und Abschnitt (bis etwa 900 Zeichen) – mit `nomic-embed-text` (768 Dimensionen) rund 3 KB je Abschnitt, etwa das Drei- bis Vierfache des Textes; mit 1.536 Dimensionen rund 6 KB. Gespeichert wird nur ein Prüfwert jedes Abschnitts, nicht sein Text. Die Administration zeigt Anzahl und Größe.
+- **Ausschalten** löscht alle Vektoren; ein **Modellwechsel** baut sie neu auf.
+- Für sehr große Instanzen (Hunderttausende Abschnitte) gibt es noch keinen Vektorindex; die Suche bleibt dann korrekt, wird aber langsamer.
+
+## KI in Datenbanken
+
+### KI-Eigenschaft
+
+Beim Hinzufügen einer Eigenschaft **KI-Eigenschaft** wählen und einen Auftrag schreiben, der andere Eigenschaften in geschweiften Klammern nennt:
+
+- `Fasse {Beschreibung} in einem Satz zusammen`
+- `Kategorie aus {Titel}: eine von Roman, Sachbuch, Krimi`
+- `{Inhalt}` steht für den Seiteninhalt des Eintrags.
+
+Die **Ausgabe** ist Text, Auswahl, Mehrfachauswahl (nur vorhandene Optionen – erfundene werden verworfen) oder Zahl. Da eine KI-Eigenschaft eine normale Eigenschaft ist, funktionieren Filter, Sortierung, Gruppierung, Formulare und Exporte wie gewohnt.
+
+- **Für alle ausfüllen** im Eigenschaftsdialog berechnet alle Einträge im Hintergrund; eine Anzeige nennt, wie viele Werte noch berechnet werden.
+- Im Eintrag berechnet **Neu berechnen** einen Wert sofort und zeigt, wann und mit welchem Modell er entstand.
+- **Automatisch neu berechnen, wenn sich verwendete Eigenschaften ändern:** Werte folgen Änderungen mit kurzer Verzögerung und im Rahmen der KI-Grenzen. Das läuft im Namen der Person, die es eingeschaltet oder den Auftrag zuletzt geändert hat. Verliert sie den Zugriff, stoppt es; ist KI auf der Instanz aus, pausiert es.
+- Werte entstehen wie Bearbeitungen: mit Versionsverlauf, Automationen und Webhooks. Frisch berechnete Zellen leuchten kurz auf.
+- Leser, Gäste und API-Tokens können keine KI-Werte schreiben. Private Einträge und für die KI gesperrte Datenbanken werden übersprungen.
+
+### Felder mit KI ausfüllen
+
+Einträge in der Tabelle auswählen → **Mit KI ausfüllen** → eine Eigenschaft wählen (etwa Tags). Die KI füllt nur **leere** Felder – aus Titel, übrigen Eigenschaften und Inhalt; bei Auswahlen nur mit vorhandenen Optionen.
+
+### Datenbank mit KI erstellen
+
+Neue Seite → Datenbank → **Mit KI erstellen** und beschreiben, z. B. „Leseliste mit Autor, Genre, Status, Bewertung“. Die KI schlägt Eigenschaften mit Typen, Auswahloptionen und ein paar Beispieleinträge vor. Du benennst um, entfernst Eigenschaften oder lässt die Beispiele weg – erst **Seite erstellen** legt die Datenbank an. Der Vorschlag wird streng geprüft (erlaubte Typen, höchstens 25 Eigenschaften und 30 Optionen, passende Beispielwerte); aus der Antwort der KI wird nichts ausgeführt.
+
 ## Für Admins
 
 Unter **Administration → KI**:
@@ -105,7 +158,7 @@ Unter **Administration → KI**:
    - **Alle** oder **Ausgewählte Personen** – Letztere schaltest du unter **Administration → Benutzer** pro Person frei („Darf KI-Funktionen nutzen“).
    - **Auch Gäste** – ausgeschaltet haben Gäste keine KI-Funktionen.
    - **Nutzer dürfen eigene Anbieter/Schlüssel hinterlegen** – dann richtet jede Person in ihren Einstellungen einen eigenen Anbieter mit eigenem Schlüssel ein. Das geht auch ganz ohne Anbieter der Instanz: So nutzen Personen KI mit ihrem eigenen Konto bei einem Anbieter, ohne dass die Instanz dafür bezahlt.
-4. **Funktionen:** jede einzeln erlauben oder verbieten.
+4. **Funktionen:** jede einzeln erlauben oder verbieten. Optional die [Suche nach Bedeutung](#suche-nach-bedeutung-optional) einschalten.
 5. **Speichern.**
 
 So lassen sich drei typische Varianten einrichten:

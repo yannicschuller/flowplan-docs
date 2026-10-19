@@ -22,6 +22,10 @@ Relationen erscheinen im Eintrag als Links. Die Datenbanksuche findet Einträge 
 
 Zahlen-Rollups erscheinen als Zahl, Fortschrittsbalken, Fortschrittsring oder Bewertung, mit einstellbarem Zielwert. Werte aus Datenbanken, die jemand nicht lesen darf, werden für diese Person nicht geladen.
 
+## KI-Eigenschaften
+
+Ist die [KI](/ai) eingeschaltet, kann eine Eigenschaft ihren Wert aus einem Auftrag an die KI beziehen – etwa eine Zusammenfassung oder eine Kategorie aus anderen Eigenschaften. Alles dazu unter [KI in Datenbanken](/ai#ki-in-datenbanken).
+
 ## Formeln
 
 Im Eigenschaftsdialog den Typ **Formel** wählen. Der Editor bietet 58 Funktionen mit Suche, Kategorien, Signaturen und Beispielen, Vorschläge beim Tippen und eine Live-Vorschau an einem wählbaren Eintrag.

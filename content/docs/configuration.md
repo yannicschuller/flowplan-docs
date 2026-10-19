@@ -135,12 +135,14 @@ Alles optional; die Werte gelten, bis ein Admin unter **Administration → KI** 
 | `OLLAMA_URL` | *leer* | Adresse von Ollama, z. B. `http://ollama:11434` mit dem Compose-Dienst. |
 | `FLOWPLAN_AI_BASE_URL` | *je Anbieter* | Adresse des Anbieters, z. B. `https://api.mistral.ai/v1` für einen OpenAI-kompatiblen Dienst. |
 | `FLOWPLAN_AI_MODEL` | *leer* | Modell, z. B. `llama3.1` oder `gpt-4o-mini`. |
-| `FLOWPLAN_AI_EMBEDDING_MODEL` | *leer* | Modell für die semantische Suche, z. B. `nomic-embed-text` (Ollama). Ohne: nur Volltextsuche. |
+| `FLOWPLAN_AI_EMBEDDING_MODEL` | *leer* | Modell für die Suche nach Bedeutung, z. B. `nomic-embed-text` (Ollama). Ohne: nur Volltextsuche. |
 | `FLOWPLAN_AI_API_KEY` / `FLOWPLAN_AI_API_KEY_FILE` | *leer* | Schlüssel des Anbieters. Wird nie in der Datenbank gespeichert und nur für den Anbieter aus den Variablen verwendet. |
 | `FLOWPLAN_AI_ACCESS` | `everyone` | `selected`: nur freigeschaltete Personen. |
 | `FLOWPLAN_AI_GUESTS` | *aus* | `on`: auch Gäste dürfen KI nutzen. |
 | `FLOWPLAN_AI_USER_PROVIDERS` | *aus* | `on`: Personen dürfen eigene Anbieter und Schlüssel hinterlegen. |
 | `FLOWPLAN_AI_FEATURES` | *alle* | Erlaubte Funktionen, durch Komma getrennt: `write`, `summarize`, `ask`, `database`. |
+| `FLOWPLAN_AI_SEMANTIC_SEARCH` | *aus* | `on`: [Suche nach Bedeutung](/ai#suche-nach-bedeutung-optional) mit dem Embedding-Modell. |
+| `FLOWPLAN_AI_EMBED_PER_HOUR` | `5000` | Höchstzahl eingebetteter Abschnitte pro Stunde für die Suche nach Bedeutung. |
 | `FLOWPLAN_AI_REQUESTS_PER_HOUR` | `300` | Höchstzahl an KI-Anfragen pro Person und Stunde (zusätzlich 30 pro Minute, 3 gleichzeitig). |
 
 ## Push-Benachrichtigungen

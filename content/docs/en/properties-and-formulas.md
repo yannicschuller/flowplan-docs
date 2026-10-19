@@ -22,6 +22,10 @@ Relations appear as links in the record. The database search also finds records 
 
 Number rollups appear as a number, progress bar, progress ring or rating, with an adjustable target value. Values from databases someone may not read are not loaded for that person.
 
+## AI properties
+
+When [AI](/ai) is switched on, a property can take its value from an instruction to the AI – such as a summary or a category from other properties. Everything about it under [AI in databases](/ai#ai-in-databases).
+
 ## Formulas
 
 Choose the type **Formula** in the property dialog. The editor offers 58 functions with search, categories, signatures and examples, suggestions while you type and a live preview on a record of your choice.
