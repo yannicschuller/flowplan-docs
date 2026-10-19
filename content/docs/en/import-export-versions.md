@@ -54,7 +54,11 @@ created: 2026-03-14
 
 Before the import, a preview shows which properties match and which are missing. **Create missing properties** adds them with a fitting type: list → multi-select, ISO date → date, `true`/`false` → checkbox, number → number, address → URL, a few recurring values → select, otherwise text. Up to 5,000 files and 100 MB per import.
 
-**Export:** in the ZIP export, every record under `records/` starts with `title:` and its properties: select as text, multi-select and relations (titles of the linked records) as lists, dates as ISO dates. Computed values and the record's id are below `flowplan:` and are skipped on import. A record exported this way and imported into the same database again keeps its properties; it is added as a new record.
+**Export:** in the ZIP export, every record under `records/` starts with `title:` and its properties: select as text, multi-select and relations (titles of the linked records) as lists, dates as ISO dates. Computed values and the record's id are below `flowplan:` and are skipped on import. When a record exported this way is imported into the same database again, the preview offers **update instead of adding**: the record with the same id gets the file's properties and text, and the previous state stays as a version. Without this choice it is added as a new record.
+
+**Where to export:** in a database's toolbar, **Export** opens a menu with **CSV (current view)**, **Markdown with files (.zip)** and **Markdown (.md)**. A single record is exported from the **…** menu in its header: **Export as Markdown (.md)** (with frontmatter), **Markdown with files (.zip)** or **Print / PDF**.
+
+**From Obsidian:** links in the text are read as standard Markdown links. Convert wikilinks (`[[…]]`, `![[…]]`) first – in Obsidian, *Settings → Files and links*, turn off “Use [[Wikilinks]]” and choose relative paths.
 ## Content archive
 
 Under **Settings → Data** you download a ZIP of your workspace and import it elsewhere – also into another Flowplan instance.

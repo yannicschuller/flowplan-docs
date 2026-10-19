@@ -25,6 +25,17 @@ Below are **Your templates**: saved database templates, such as your own "Notes 
 - Select several records (checkboxes on the left) and edit, duplicate or delete them together – up to 500 at once. Flowplan saves a state beforehand that can be restored from the version history.
 - Deleted records sit in the database's trash and can be brought back.
 
+### Move a page into a database
+
+**Page actions → Move into database …** turns a document page into a record of a database you may write to – for example to bring grown documentation into a notes database:
+
+- Title, icon and cover become the record's title, icon and cover, the content its document; files and images stay the same files (they then belong to the database).
+- Comments, text comments, tasks and versions come along; favourites become record favourites.
+- Links to the page in all pages and records of the workspace then point to the record.
+- Sub-pages stay pages and move up one level.
+- Sharing of only this page (permissions for people, share links, publication) ends – the dialog lists it first; the record follows the database's permissions. The database's default record template applies.
+- The page itself goes to the trash.
+
 ### Copy and move records
 
 A **right-click** on a record – in a table, board, list, gallery, calendar or timeline – opens its menu: **Open**, **Duplicate**, **Copy to …**, **Move to …** and **Delete**. When several records are selected, the menu applies to all of them; the selection bar also has **Move / copy to …**.

@@ -25,6 +25,17 @@ Darunter stehen **Deine Vorlagen**: gespeicherte Datenbank-Vorlagen, etwa eine e
 - Mehrere Einträge auswählen (Kästchen links) und gemeinsam bearbeiten, duplizieren oder löschen – bis zu 500 auf einmal. Vorher sichert Flowplan einen Stand, der sich über den Versionsverlauf wiederherstellen lässt.
 - Gelöschte Einträge liegen im Papierkorb der Datenbank und lassen sich zurückholen.
 
+### Seite in eine Datenbank verschieben
+
+**Seitenaktionen → In Datenbank verschieben …** macht aus einer Dokumentseite einen Eintrag einer Datenbank, in die du schreiben darfst – etwa um gewachsene Dokumentation in eine Notizen-Datenbank zu holen:
+
+- Titel, Symbol und Cover werden zu Titel, Symbol und Cover des Eintrags, der Inhalt zu seinem Dokument; Dateien und Bilder bleiben dieselben (sie gehören dann zur Datenbank).
+- Kommentare, Textkommentare, Aufgaben und Versionen ziehen mit; Favoriten werden Eintrags-Favoriten.
+- Links auf die Seite in allen Seiten und Einträgen des Arbeitsbereichs zeigen danach auf den Eintrag.
+- Unterseiten bleiben Seiten und rücken eine Ebene nach oben.
+- Freigaben nur dieser Seite (Rechte für Personen, Freigabelinks, Veröffentlichung) enden – der Dialog nennt sie vorher; der Eintrag folgt den Rechten der Datenbank. Die Standardvorlage der Datenbank wird übernommen.
+- Die Seite selbst kommt in den Papierkorb.
+
 ### Einträge kopieren und verschieben
 
 Ein **Rechtsklick** auf einen Eintrag – in Tabelle, Board, Liste, Galerie, Kalender oder Zeitleiste – öffnet sein Menü: **Öffnen**, **Duplizieren**, **Kopieren nach …**, **Verschieben nach …** und **Löschen**. Sind mehrere Einträge ausgewählt, gilt das Menü für alle; in der Leiste der Auswahl steht dafür auch **Verschieben / kopieren nach …**.
