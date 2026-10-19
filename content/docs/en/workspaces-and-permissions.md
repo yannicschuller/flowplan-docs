@@ -37,6 +37,8 @@ Guests are people outside the team, such as customers or freelancers. They only 
 
 **Settings → Groups & permissions**: form groups such as "Design" or "Sales", add members and give the group access to spaces or pages. New members of a group get its permissions right away.
 
+With single sign-on, groups from the identity provider can maintain members and groups automatically – see [Map SSO groups](/sign-in#map-sso-groups-to-workspaces).
+
 ## How permissions work together
 
 1. The **space** sets the basis: open to all members or private for the people it is shared with.

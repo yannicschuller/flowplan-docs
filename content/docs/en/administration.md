@@ -17,9 +17,16 @@ All accounts of the instance with their last sign-in and the storage they use. *
 
 Accounts with e-mail and password are created with **Create account** (see [Sign-in](/sign-in)); SSO accounts on their first sign-in via OIDC, and their admin right comes from the group at the provider.
 
+- **Two-factor:** the list shows "2FA on", "2FA via passkey" or "2FA off". **Reset two-factor** (e.g. for a lost phone) turns off the account's authenticator app; this is recorded in the activity log, and the person gets an e-mail if the instance sends e-mail.
+- **AI:** if [Administration → AI](/ai#for-admins) is set to "Selected people", you allow or deny AI per person here.
+
 ## Workspaces
 
-All workspaces with their number of members, usage and storage quota. The quota can be overridden per workspace.
+All workspaces with their number of members, usage and storage quota. The quota can be overridden per workspace. With single sign-on, **Map SSO groups centrally** maps provider groups to roles and groups in any workspace ([SSO groups](/sign-in#map-sso-groups-to-workspaces)).
+
+## AI
+
+Optional and off by default: provider (Ollama, OpenAI-compatible, Anthropic, Gemini), who may use AI, individual features and users' own keys. Everything in [AI](/ai#for-admins).
 
 ## Operations
 
@@ -39,6 +46,7 @@ The state of the instance: size of the database and uploads, queues, search inde
 | Create workspaces | Whether everyone may create workspaces of their own. |
 | Allow sign-ups with e-mail and password | Anyone may create an account. Without this setting only invited addresses (and the instance's first account). |
 | Offer a public demo | Visitors try Flowplan without an account, see below. |
+| Require two-factor sign-in | Not required, only for admins, or for all local accounts. Accounts without an authenticator app and without a passkey set up a second factor right after signing in ([Two-factor sign-in](/sign-in#two-factor-sign-in)). SSO accounts are not affected. |
 
 The settings are grouped into **General**, **Access**, **Storage and limits** and **Versions and backup**; changes take effect with **Save**. Empty fields fall back to the [environment variables](/configuration). Everyone sees their limits and the storage they use under **Settings → General → Your limits**.
 

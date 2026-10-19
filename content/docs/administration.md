@@ -13,6 +13,8 @@ Alle Konten der Instanz mit ihrer letzten Anmeldung und dem belegten Speicher. *
 - **E-Mail als bestätigt markieren** für Konten, die den Link aus der Bestätigungs-E-Mail noch nicht geöffnet haben.
 - **Sitzungen beenden** meldet eine Person auf allen Geräten ab.
 - **Deaktivieren** sperrt ein Konto sofort und beendet alle Sitzungen; **Aktivieren** gibt es wieder frei.
+- **Zwei-Faktor:** Die Liste zeigt „2FA an“, „2FA per Passkey“ oder „2FA aus“. **Zwei-Faktor zurücksetzen** (etwa bei verlorenem Telefon) schaltet die Authenticator-App des Kontos aus; das steht im Aktivitätsprotokoll, und die Person bekommt eine E-Mail, wenn die Instanz E-Mails versendet.
+- **KI:** Steht unter [Administration → KI](/ai#fuer-admins) „Ausgewählte Personen“, schaltest du hier die KI pro Person frei oder ab.
 
 - Bei Konten mit E-Mail und Passwort: **Zum Admin machen** bzw. **Admin entziehen** (eine Person verwaltet die Instanz immer) und **Link zum Zurücksetzen** – ein zwei Stunden gültiger Link für ein neues Passwort, zum Weitergeben, wenn die Instanz keine E-Mails verschickt.
 
@@ -20,7 +22,11 @@ Konten mit E-Mail und Passwort entstehen über **Konto erstellen** (siehe [Anmel
 
 ## Arbeitsbereiche
 
-Alle Arbeitsbereiche mit Mitgliederzahl, Belegung und Speicherkontingent. Das Kontingent lässt sich je Arbeitsbereich überschreiben.
+Alle Arbeitsbereiche mit Mitgliederzahl, Belegung und Speicherkontingent. Das Kontingent lässt sich je Arbeitsbereich überschreiben. Mit Single Sign-on ordnest du unter **SSO-Gruppen zentral zuordnen** Gruppen des Anbieters Rollen und Gruppen in jedem Arbeitsbereich zu ([SSO-Gruppen](/sign-in#sso-gruppen-arbeitsbereichen-zuordnen)).
+
+## KI
+
+Optional und standardmäßig aus: Anbieter (Ollama, OpenAI-kompatibel, Anthropic, Gemini), wer KI nutzen darf, einzelne Funktionen und eigene Schlüssel der Nutzer. Alles dazu unter [KI](/ai#fuer-admins).
 
 ## Betrieb
 
@@ -40,6 +46,7 @@ Zustand der Instanz: Größe von Datenbank und Uploads, Warteschlangen, Suchinde
 | Arbeitsbereiche anlegen | Ob alle Personen eigene Arbeitsbereiche erstellen dürfen. |
 | Registrierung mit E-Mail und Passwort erlauben | Jede Person darf ein Konto anlegen. Ohne diese Einstellung nur eingeladene Adressen (und das erste Konto der Instanz). |
 | Öffentliche Demo anbieten | Besucher probieren Flowplan ohne Konto aus, siehe unten. |
+| Zwei-Faktor-Anmeldung verlangen | Nicht verlangen, nur für Admins oder für alle lokalen Konten. Konten ohne Authenticator-App und ohne Passkey richten direkt nach der Anmeldung einen zweiten Faktor ein ([Zwei-Faktor-Anmeldung](/sign-in#zwei-faktor-anmeldung)). SSO-Konten sind nicht betroffen. |
 
 Die Einstellungen sind in **Allgemein**, **Zugang**, **Speicher und Grenzen** sowie **Versionen und Sicherung** gegliedert; geänderte Werte werden erst mit **Speichern** übernommen. Leere Felder fallen auf die [Umgebungsvariablen](/configuration) zurück. Jede Person sieht ihre Grenzen und den belegten Speicher unter **Einstellungen → Allgemein → Deine Grenzen**.
 

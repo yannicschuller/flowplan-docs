@@ -62,6 +62,19 @@ Details: [Storage, S3 and backups](/storage-and-backups).
 
 Details: [Encryption](/storage-and-backups#encryption).
 
+## Stored secrets
+
+Flowplan stores AI provider keys and the keys of authenticator apps ([two-factor sign-in](/sign-in#two-factor-sign-in)) only encrypted (AES-256-GCM, bound to their place). The key for this comes, in this order, from:
+
+| Source | Meaning |
+| --- | --- |
+| `FLOWPLAN_ENCRYPTION_KEY` | If set, it also encrypts the stored secrets. |
+| `FLOWPLAN_SECRETS_KEY` / `FLOWPLAN_SECRETS_KEY_FILE` | A key just for this: 32 bytes, base64 or hex (`openssl rand -base64 32`), or the path to a file (Docker secret). |
+| `secrets.key` in the data folder | Without the two variables, Flowplan creates this file itself when first needed (readable only by its owner). |
+
+> [!IMPORTANT]
+> The instance backup deliberately leaves out `secrets.key` – it doesn't belong next to the data it protects. Back up the file separately or set the key as a variable. If it is missing after a restore, admins and users enter their AI keys again, and for two-factor sign-in recovery codes or a reset by an administrator help.
+
 ## E-mail (SMTP)
 
 | Variable | Default | Meaning |
@@ -110,6 +123,25 @@ node -e "fetch('http://whisper:8000/v1/models/Systran/faster-whisper-small',{met
 ```
 
 `small` needs about 1 GB of memory and transcribes roughly in real time on a normal CPU; `base` is faster and less accurate, `medium` more accurate and considerably slower. Do not make the Whisper service publicly reachable – only Flowplan talks to it.
+
+## AI
+
+All optional; the values apply until an admin saves under **Administration → AI**. Details: [AI](/ai).
+
+| Variable | Default | Meaning |
+| --- | --- | --- |
+| `FLOWPLAN_AI` | *off* | `on` switches AI on. |
+| `FLOWPLAN_AI_PROVIDER` | *empty* | `ollama`, `openai` (OpenAI-compatible), `anthropic` or `gemini`. If only `OLLAMA_URL` is set, Ollama is used. |
+| `OLLAMA_URL` | *empty* | Address of Ollama, e.g. `http://ollama:11434` with the Compose service. |
+| `FLOWPLAN_AI_BASE_URL` | *per provider* | Address of the provider, e.g. `https://api.mistral.ai/v1` for an OpenAI-compatible service. |
+| `FLOWPLAN_AI_MODEL` | *empty* | Model, e.g. `llama3.1` or `gpt-4o-mini`. |
+| `FLOWPLAN_AI_EMBEDDING_MODEL` | *empty* | Model for semantic search, e.g. `nomic-embed-text` (Ollama). Without it: full-text search only. |
+| `FLOWPLAN_AI_API_KEY` / `FLOWPLAN_AI_API_KEY_FILE` | *empty* | The provider's key. Never stored in the database and only used for the provider from the variables. |
+| `FLOWPLAN_AI_ACCESS` | `everyone` | `selected`: only people who were enabled. |
+| `FLOWPLAN_AI_GUESTS` | *off* | `on`: guests may use AI too. |
+| `FLOWPLAN_AI_USER_PROVIDERS` | *off* | `on`: people may add their own provider and key. |
+| `FLOWPLAN_AI_FEATURES` | *all* | Allowed features, comma-separated: `write`, `summarize`, `ask`, `database`. |
+| `FLOWPLAN_AI_REQUESTS_PER_HOUR` | `300` | Maximum AI requests per person and hour (plus 30 per minute, 3 at once). |
 
 ## Push notifications
 

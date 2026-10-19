@@ -38,6 +38,17 @@ Under **Links with their own permissions** you create as many named links as you
 - Optionally they also apply to the sub-pages that exist right now; new sub-pages are not added automatically.
 - Edit links cannot change permissions, members, private relations or files properties. Before every guest edit, Flowplan saves the previous content.
 
+### Password and expiry date
+
+Links with their own permissions and [publications](#publish-on-the-web) can have a **password** and an **expiry date** – when creating them or later via **Password and expiry date** in the share dialog. The list shows "Password" or "expires on …".
+
+- Visitors enter the password once per device. It is valid for up to 12 hours and only for this link; a new password signs all visitors out.
+- Ten wrong attempts within 15 minutes block that address for the link.
+- After the expiry date the link only shows "expired" – no content, no files, no live updates.
+- You can remove the password or extend the date at any time.
+- Password-protected publications cannot be copied into other workspaces.
+- The password is stored only as a hash and never shown again.
+
 ## Publish on the web
 
 **Enable public link** makes the page readable for everyone with the link.

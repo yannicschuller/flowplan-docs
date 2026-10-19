@@ -26,6 +26,30 @@ With a passkey you sign in with your fingerprint, face recognition or device PIN
 - A passkey can be removed in the settings at any time.
 - In the desktop app, **Sign in with a passkey** and **Sign in with SSO** open the sign-in in the default browser and hand it back to the app afterwards ([Desktop apps](/operations#desktop-apps)).
 
+## Two-factor sign-in
+
+Accounts with e-mail and password can add an authenticator app, such as Aegis, 2FAS, Google Authenticator or 1Password.
+
+1. **Settings → General → Two-factor sign-in → Set up an authenticator app.**
+2. Scan the QR code with the app – or type the key shown.
+3. Confirm with the current six-digit code.
+4. Keep the ten **recovery codes** safe. They are shown only once, and each works exactly once.
+
+When signing in, Flowplan asks for the code from the app (or a recovery code) after the password.
+
+- A code counts only once; codes from the previous and the next 30-second window are accepted, so a slightly wrong clock doesn't matter.
+- Too many wrong codes block sign-in for 15 minutes.
+- **Passkeys** count as a second factor: signing in with a passkey needs no code.
+- **SSO accounts** get their second factor from the provider; **API tokens** are not affected.
+- **Turning it off** and **new recovery codes** need the password or a current code.
+- **Forgot password** does not skip the second step.
+- Lost your phone and your codes? An administrator can reset two-factor sign-in ([Administration → Users](/administration#users)).
+
+Admins can require two-factor sign-in for all local accounts or only for admins ([Administration → Instance](/administration#instance)). Accounts without an app and without a passkey then set up a second factor right after signing in, before using Flowplan; accounts with a passkey but no app sign in with the passkey.
+
+> [!IMPORTANT]
+> The apps' keys are stored encrypted – with `FLOWPLAN_ENCRYPTION_KEY`, otherwise `FLOWPLAN_SECRETS_KEY`, otherwise with the generated file `secrets.key` in the data folder ([Configuration](/configuration#stored-secrets)). Be sure to back up this file or the key: the instance backup deliberately leaves it out. Without it, only the recovery codes work after a restore.
+
 ## Single sign-on with OIDC
 
 Optional. With `OIDC_ISSUER` set, the sign-in page shows **Sign in with SSO**; new people are created on their first sign-in. E-mail accounts and SSO accounts can exist side by side.
@@ -72,6 +96,25 @@ SESSION_HOURS=8
 - **Authentik**: the `profile` scope already delivers `groups` with the group names.
 - **Zitadel**: roles are under `urn:zitadel:iam:org:project:roles`; create a claim of your own with an action or enter the path.
 - **Entra ID**: configure the groups claim in the token. Entra delivers object IDs by default; then enter the admin group's ID as `OIDC_ADMIN_GROUP`.
+
+### Map SSO groups to workspaces
+
+Groups from the identity provider (the claim in `OIDC_GROUPS_CLAIM`) can give membership and groups in workspaces – so you manage access centrally in the provider.
+
+- **Owners** map groups under **Settings → Groups & permissions → SSO groups** (the section appears when `OIDC_ISSUER` is set).
+- **Admins** map them for any workspace under **Administration → Workspaces → Map SSO groups centrally**.
+- A mapping gives a **role** (View, Edit, Owner), a **workspace group** (for [page permissions](/workspaces-and-permissions#groups)) or both.
+
+At every SSO sign-in Flowplan applies them:
+
+- Matching people are added; with several matching groups the highest role wins. Guests stay at "Edit" at most.
+- Whoever no longer has the SSO group loses what the mapping gave.
+- Members and group memberships added by hand stay untouched. If an owner changes the role or groups of an SSO-managed member by hand, that membership is managed by hand from then on.
+- The last owner of a workspace always stays.
+- Changed mappings apply right away to everyone with an active SSO session, otherwise at the next sign-in (with "Stay signed in" at the latest after `SESSION_GROUPS_HOURS`).
+- Accounts with e-mail and password are not affected.
+
+In the member list and the group dialog, such members show "via SSO group “X”".
 
 ## Stay signed in
 

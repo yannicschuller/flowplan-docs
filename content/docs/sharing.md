@@ -38,6 +38,17 @@ Unter **Links mit eigenen Berechtigungen** entstehen beliebig viele benannte Lin
 - Optional gelten sie auch für die aktuell vorhandenen Unterseiten; neue Unterseiten kommen nicht automatisch dazu.
 - Über Bearbeitungslinks lassen sich keine Rechte, Mitglieder, privaten Relationen oder Dateien-Eigenschaften ändern. Vor jeder Gastbearbeitung sichert Flowplan den bisherigen Inhalt.
 
+### Passwort und Ablaufdatum
+
+Links mit eigenen Berechtigungen und [Veröffentlichungen](#im-web-veroeffentlichen) können ein **Passwort** und ein **Ablaufdatum** haben – beim Erstellen oder später über **Passwort und Ablaufdatum** im Teilen-Dialog. Die Liste zeigt „Passwort“ bzw. „läuft ab am …“.
+
+- Besucher geben das Passwort einmal pro Gerät ein. Es gilt bis zu 12 Stunden und nur für diesen Link; ein neues Passwort meldet alle Besucher ab.
+- Zehn falsche Versuche in 15 Minuten sperren die Adresse für diesen Link.
+- Nach dem Ablaufdatum zeigt der Link nur noch „abgelaufen“ – keine Inhalte, keine Dateien, keine Live-Updates.
+- Passwort entfernen oder Ablauf verlängern geht jederzeit.
+- Passwortgeschützte Veröffentlichungen lassen sich nicht in andere Arbeitsbereiche kopieren.
+- Das Passwort wird nur als Hash gespeichert und nie wieder angezeigt.
+
 ## Im Web veröffentlichen
 
 **Öffentlichen Link aktivieren** macht die Seite für alle mit dem Link lesbar.

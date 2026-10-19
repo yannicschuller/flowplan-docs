@@ -75,6 +75,22 @@ const valid = timingSafeEqual(Buffer.from(expected), Buffer.from(req.headers["x-
 - The list shows the last delivery or the last error per webhook.
 - Only public HTTPS addresses are allowed. For services in the same network (Home Assistant, n8n) the administrators set `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true`.
 
+### Create webhooks via the API
+
+With a **write token** of an owner, webhooks can also be created and removed via the API (`POST /api/webhooks`; remove one with `POST /api/command` and `{"action": "webhook.delete", …}`), for instance by automation services. Read tokens cannot.
+
+## n8n
+
+For [n8n](https://n8n.io) there is the community node **`n8n-nodes-flowplan`** (source under [`integrations/n8n`](https://github.com/yannicschuller/flowplan/tree/main/integrations/n8n)).
+
+1. In n8n, install `n8n-nodes-flowplan` under **Settings → Community Nodes**.
+2. Add a **Flowplan API** credential: your instance address and an [API token](#api-tokens).
+3. Use the nodes:
+   - **Flowplan** lists workspaces and pages, creates pages (optionally with Markdown content), reads, creates and updates database records (properties by name) and searches.
+   - **Flowplan Trigger** starts workflows on new or changed records, form answers and new pages. It registers its own webhook on activation (which needs a write token of an owner), removes it on deactivation and rejects deliveries with a wrong signature.
+
+If n8n runs in your own network, set `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true` ([Configuration](/configuration#integrations)).
+
 ## Calendar subscriptions
 
 Calendar views can be subscribed to as an iCalendar link, see [Views](/views#subscribe-to-a-calendar).

@@ -89,6 +89,29 @@ With a self-built image, use `git pull` and `docker compose up -d --build` inste
 
 On start, Flowplan migrates the database itself. Make a backup beforehand (see [Storage, S3 and backups](/storage-and-backups)); going back to an older version after a migration is not supported.
 
+## Kubernetes (Helm)
+
+The chart lives in the repository at [`deploy/helm/flowplan`](https://github.com/yannicschuller/flowplan/tree/main/deploy/helm/flowplan). Flowplan runs as **exactly one pod** (SQLite) with a volume for `/app/data`; updates replace the pod with a short downtime (strategy `Recreate`).
+
+```bash
+kubectl create namespace flowplan
+kubectl -n flowplan create secret generic flowplan-env \
+  --from-literal=FLOWPLAN_ENCRYPTION_KEY="$(openssl rand -base64 32)"
+helm install flowplan deploy/helm/flowplan -n flowplan \
+  --set appUrl=https://flowplan.example.org \
+  --set existingSecret=flowplan-env \
+  --set ingress.enabled=true \
+  --set ingress.hosts[0].host=flowplan.example.org
+```
+
+- Set OIDC, SMTP and S3 via `oidc.*`, `smtp.*` and `s3.*`; secrets preferably in `existingSecret` (keys are the names of the [environment variables](/configuration)). Further variables via `env`.
+- `appUrl` is required (or taken from the first ingress host).
+- Use a block or local volume, not NFS (SQLite).
+- Health checks use `/api/health`; the pod runs as user 1000 without extra privileges. `helm test flowplan` checks that it answers.
+- The volume is kept on uninstall.
+
+The chart's README explains every value.
+
 ## Without Docker
 
 Node.js 22.13 or newer (the image uses Node 26):

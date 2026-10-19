@@ -37,6 +37,8 @@ Gäste sind Personen außerhalb des Teams, etwa Kunden oder Freelancer. Sie sehe
 
 **Einstellungen → Gruppen & Rechte**: Gruppen bilden, etwa „Design“ oder „Vertrieb“, Mitglieder hinzufügen und der Gruppe Zugriff auf Bereiche oder Seiten geben. Neue Mitglieder einer Gruppe erhalten sofort ihre Rechte.
 
+Mit Single Sign-on können Gruppen des Identitätsanbieters Mitglieder und Gruppen automatisch pflegen – siehe [SSO-Gruppen zuordnen](/sign-in#sso-gruppen-arbeitsbereichen-zuordnen).
+
 ## Wie Rechte zusammenwirken
 
 1. Der **Bereich** gibt die Grundlage: öffentlich für alle Mitglieder oder privat für Freigegebene.

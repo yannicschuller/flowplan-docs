@@ -26,6 +26,30 @@ Mit einem Passkey meldest du dich per Fingerabdruck, Gesichtserkennung oder Ger�
 - Ein Passkey lässt sich in den Einstellungen jederzeit wieder entfernen.
 - In der Desktop-App öffnen **Mit Passkey anmelden** und **Mit SSO anmelden** die Anmeldung im Standardbrowser und geben sie danach an die App zurück ([Desktop-Apps](/operations#desktop-apps)).
 
+## Zwei-Faktor-Anmeldung
+
+Konten mit E-Mail und Passwort können zusätzlich eine Authenticator-App nutzen, etwa Aegis, 2FAS, Google Authenticator oder 1Password.
+
+1. **Einstellungen → Allgemein → Zwei-Faktor-Anmeldung → Authenticator-App einrichten.**
+2. Den QR-Code mit der App scannen – oder den angezeigten Schlüssel abtippen.
+3. Mit dem aktuellen sechsstelligen Code bestätigen.
+4. Die zehn **Wiederherstellungscodes** sicher aufbewahren. Sie werden nur einmal angezeigt, jeder funktioniert genau einmal.
+
+Bei der Anmeldung fragt Flowplan nach dem Passwort nach dem Code aus der App (oder einem Wiederherstellungscode).
+
+- Ein Code gilt nur einmal; Codes aus dem vorigen und nächsten 30-Sekunden-Fenster werden angenommen, damit eine leicht falsch gehende Uhr nicht stört.
+- Zu viele falsche Codes sperren für 15 Minuten.
+- **Passkeys** zählen als zweiter Faktor: Wer sich mit einem Passkey anmeldet, braucht keinen Code.
+- **SSO-Konten** regeln den zweiten Faktor beim Anbieter; **API-Tokens** sind nicht betroffen.
+- **Ausschalten** und **neue Wiederherstellungscodes** verlangen das Passwort oder einen aktuellen Code.
+- Auch nach **Passwort vergessen** bleibt der zweite Schritt bestehen.
+- Telefon verloren und keine Codes mehr? Die Administration kann die Zwei-Faktor-Anmeldung zurücksetzen ([Administration → Benutzer](/administration#benutzer)).
+
+Admins können die Zwei-Faktor-Anmeldung für alle lokalen Konten oder nur für Admins verlangen ([Administration → Instanz](/administration#instanz)). Konten ohne App und ohne Passkey richten dann direkt nach der Anmeldung einen zweiten Faktor ein, bevor sie Flowplan nutzen; Konten mit Passkey, aber ohne App melden sich mit dem Passkey an.
+
+> [!IMPORTANT]
+> Die Schlüssel der Apps werden verschlüsselt gespeichert – mit `FLOWPLAN_ENCRYPTION_KEY`, sonst `FLOWPLAN_SECRETS_KEY`, sonst mit der automatisch angelegten Datei `secrets.key` im Datenordner ([Konfiguration](/configuration#gespeicherte-geheimnisse)). Diese Datei oder den Schlüssel unbedingt mitsichern: Die Instanzsicherung enthält sie bewusst nicht. Ohne sie funktionieren nach einer Wiederherstellung nur noch die Wiederherstellungscodes.
+
 ## Single Sign-on mit OIDC
 
 Optional. Mit gesetztem `OIDC_ISSUER` zeigt die Anmeldeseite **Mit SSO anmelden**; neue Personen entstehen beim ersten Anmelden. E-Mail-Konten und SSO-Konten können nebeneinander bestehen.
@@ -72,6 +96,25 @@ SESSION_HOURS=8
 - **Authentik**: Der Scope `profile` liefert `groups` bereits mit den Gruppennamen.
 - **Zitadel**: Rollen stehen unter `urn:zitadel:iam:org:project:roles`; einen eigenen Claim per Action anlegen oder den Pfad eintragen.
 - **Entra ID**: Gruppen-Claim im Token konfigurieren. Entra liefert standardmäßig Objekt-IDs; dann die ID der Admin-Gruppe als `OIDC_ADMIN_GROUP` eintragen.
+
+### SSO-Gruppen Arbeitsbereichen zuordnen
+
+Gruppen aus dem Identitätsanbieter (der Claim aus `OIDC_GROUPS_CLAIM`) können Mitgliedschaft und Gruppen in Arbeitsbereichen geben – so verwaltet ihr den Zugang zentral im Anbieter.
+
+- **Eigentümer** ordnen Gruppen unter **Einstellungen → Gruppen & Rechte → SSO-Gruppen** zu (der Abschnitt erscheint, wenn `OIDC_ISSUER` gesetzt ist).
+- **Admins** ordnen sie für jeden Arbeitsbereich zentral unter **Administration → Arbeitsbereiche → SSO-Gruppen zentral zuordnen** zu.
+- Eine Zuordnung gibt eine **Rolle** (Ansehen, Bearbeiten, Eigentümer), eine **Gruppe des Arbeitsbereichs** (für [Seitenrechte](/workspaces-and-permissions#gruppen)) oder beides.
+
+Bei jeder SSO-Anmeldung gleicht Flowplan ab:
+
+- Passende Personen kommen hinzu; bei mehreren passenden Gruppen gilt die höchste Rolle. Gäste bleiben höchstens bei „Bearbeiten“.
+- Wer die SSO-Gruppe nicht mehr hat, verliert, was die Zuordnung gegeben hat.
+- Von Hand hinzugefügte Mitglieder und Gruppenmitgliedschaften bleiben unberührt. Ändert ein Eigentümer die Rolle oder Gruppen eines über SSO verwalteten Mitglieds von Hand, wird die Mitgliedschaft ab dann von Hand verwaltet.
+- Der letzte Eigentümer eines Arbeitsbereichs bleibt immer.
+- Geänderte Zuordnungen gelten sofort für alle mit einer aktiven SSO-Sitzung, sonst bei der nächsten Anmeldung (mit „Angemeldet bleiben“ spätestens nach `SESSION_GROUPS_HOURS`).
+- Konten mit E-Mail und Passwort sind nicht betroffen.
+
+In der Mitgliederliste und im Gruppendialog steht bei solchen Mitgliedern „über SSO-Gruppe „X““.
 
 ## Angemeldet bleiben
 

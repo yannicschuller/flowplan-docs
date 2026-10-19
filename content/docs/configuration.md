@@ -62,6 +62,19 @@ Details: [Speicher, S3 und Sicherung](/storage-and-backups).
 
 Details: [Verschlüsselung](/storage-and-backups#verschluesselung).
 
+## Gespeicherte Geheimnisse
+
+Schlüssel von KI-Anbietern und die Schlüssel der Authenticator-Apps ([Zwei-Faktor-Anmeldung](/sign-in#zwei-faktor-anmeldung)) speichert Flowplan nur verschlüsselt (AES-256-GCM, an ihren Platz gebunden). Der Schlüssel dafür kommt, in dieser Reihenfolge, aus:
+
+| Quelle | Bedeutung |
+| --- | --- |
+| `FLOWPLAN_ENCRYPTION_KEY` | Wenn gesetzt, verschlüsselt er auch die gespeicherten Geheimnisse. |
+| `FLOWPLAN_SECRETS_KEY` / `FLOWPLAN_SECRETS_KEY_FILE` | Ein eigener Schlüssel nur dafür: 32 Bytes, base64 oder hex (`openssl rand -base64 32`), oder Pfad zu einer Datei (Docker-Secret). |
+| `secrets.key` im Datenordner | Ohne die beiden Variablen legt Flowplan diese Datei beim ersten Bedarf selbst an (nur für den Besitzer lesbar). |
+
+> [!IMPORTANT]
+> Die Instanzsicherung enthält `secrets.key` bewusst nicht – sie gehört nicht neben die Daten, die sie schützt. Sichere die Datei getrennt oder setze den Schlüssel als Variable. Fehlt er nach einer Wiederherstellung, geben Admins und Nutzer ihre KI-Schlüssel neu ein, und für die Zwei-Faktor-Anmeldung helfen Wiederherstellungscodes oder ein Zurücksetzen durch die Administration.
+
 ## E-Mail (SMTP)
 
 | Variable | Standard | Bedeutung |
@@ -110,6 +123,25 @@ node -e "fetch('http://whisper:8000/v1/models/Systran/faster-whisper-small',{met
 ```
 
 `small` braucht rund 1 GB Arbeitsspeicher und transkribiert auf einer normalen CPU etwa in Echtzeit; `base` ist schneller und ungenauer, `medium` genauer und deutlich langsamer. Den Whisper-Dienst nicht öffentlich erreichbar machen – nur Flowplan spricht mit ihm.
+
+## KI
+
+Alles optional; die Werte gelten, bis ein Admin unter **Administration → KI** speichert. Details: [KI](/ai).
+
+| Variable | Standard | Bedeutung |
+| --- | --- | --- |
+| `FLOWPLAN_AI` | *aus* | `on` schaltet KI ein. |
+| `FLOWPLAN_AI_PROVIDER` | *leer* | `ollama`, `openai` (OpenAI-kompatibel), `anthropic` oder `gemini`. Ist nur `OLLAMA_URL` gesetzt, gilt Ollama. |
+| `OLLAMA_URL` | *leer* | Adresse von Ollama, z. B. `http://ollama:11434` mit dem Compose-Dienst. |
+| `FLOWPLAN_AI_BASE_URL` | *je Anbieter* | Adresse des Anbieters, z. B. `https://api.mistral.ai/v1` für einen OpenAI-kompatiblen Dienst. |
+| `FLOWPLAN_AI_MODEL` | *leer* | Modell, z. B. `llama3.1` oder `gpt-4o-mini`. |
+| `FLOWPLAN_AI_EMBEDDING_MODEL` | *leer* | Modell für die semantische Suche, z. B. `nomic-embed-text` (Ollama). Ohne: nur Volltextsuche. |
+| `FLOWPLAN_AI_API_KEY` / `FLOWPLAN_AI_API_KEY_FILE` | *leer* | Schlüssel des Anbieters. Wird nie in der Datenbank gespeichert und nur für den Anbieter aus den Variablen verwendet. |
+| `FLOWPLAN_AI_ACCESS` | `everyone` | `selected`: nur freigeschaltete Personen. |
+| `FLOWPLAN_AI_GUESTS` | *aus* | `on`: auch Gäste dürfen KI nutzen. |
+| `FLOWPLAN_AI_USER_PROVIDERS` | *aus* | `on`: Personen dürfen eigene Anbieter und Schlüssel hinterlegen. |
+| `FLOWPLAN_AI_FEATURES` | *alle* | Erlaubte Funktionen, durch Komma getrennt: `write`, `summarize`, `ask`, `database`. |
+| `FLOWPLAN_AI_REQUESTS_PER_HOUR` | `300` | Höchstzahl an KI-Anfragen pro Person und Stunde (zusätzlich 30 pro Minute, 3 gleichzeitig). |
 
 ## Push-Benachrichtigungen
 
