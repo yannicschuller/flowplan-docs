@@ -64,6 +64,19 @@ Balken von einem Beginn- bis zu einem End-Datumsfeld, im Maßstab Woche, Monat, 
 - **Heute** springt zum aktuellen Datum; Wochenenden lassen sich markieren.
 - Tastatur: <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> verschiebt um einen Tag, mit <kbd>⇧</kbd> ändert es das Ende, mit <kbd>Strg</kbd> den Beginn.
 
+### Abhängigkeiten (Gantt)
+
+Einträge können aufeinander warten – etwa „Druck“ erst nach „Korrektur“:
+
+- In der Leiste der Timeline unter **Abhängigkeiten** eine Relation der Datenbank auf sich selbst wählen – oder **Abhängigkeiten einrichten** legt die Eigenschaft „Abhängigkeiten“ an.
+- **Verknüpfen per Ziehen:** Vom runden Griff am Ende eines Balkens auf einen anderen Balken ziehen – dieser wartet dann auf den ersten. Verknüpfungen, die einen Kreis ergäben, lehnt Flowplan ab.
+- **Pfeile** verbinden die Balken; beginnt ein Eintrag, bevor sein Vorgänger endet, ist der Pfeil rot. Schon beim Ziehen warnt die Timeline, welcher Eintrag zu früh läge.
+- **Nachfolger mitverschieben:** Verschiebst du einen Eintrag (oder sein Ende), rücken alle Einträge, die direkt oder indirekt auf ihn warten, um dieselben Tage mit – in einem Schritt.
+- **Alle Konflikte nachziehen** schiebt jeden zu frühen Eintrag hinter seinen Vorgänger.
+- **Kritischen Pfad hervorheben** markiert die Einträge und Pfeile ohne Puffer: Verzögert sich einer davon, verschiebt sich das Ende des ganzen Plans.
+
+In eingebetteten Ansichten (verknüpfte Datenbanken) sind Verknüpfen per Ziehen und **Alle Konflikte nachziehen** nicht verfügbar – dafür die Datenbank selbst öffnen.
+
 ## Galerie
 
 Karten mit Vorschaubild und ausgewählten Eigenschaften. Das Bild kommt wahlweise aus dem Inhalt des Eintrags, seinem Cover oder einer Dateien-Eigenschaft, füllend oder eingepasst.

@@ -69,6 +69,19 @@ Sobald du auf einem Gerät mit dem Stift gezeichnet hast, zeichnet nur noch der 
 
 Sobald es Rahmen gibt, erscheint **Präsentieren**. Die Rahmen werden in Leserichtung (von oben nach unten, links nach rechts) nacheinander bildschirmfüllend gezeigt; Pfeiltasten oder die Knöpfe blättern, **Präsentation beenden** oder <kbd>Esc</kbd> schließt.
 
+## Excalidraw und draw.io importieren
+
+Über **Importieren …** unten rechts – oder indem du die Datei aufs Board ziehst – übernimmst du Zeichnungen aus:
+
+- **Excalidraw** (`.excalidraw`),
+- **draw.io / diagrams.net** (`.drawio`, `.xml`, auch komprimiert und mit mehreren Seiten) sowie **SVG-Exporte von draw.io** mit eingebettetem Diagramm.
+
+Formen, Texte, Pfeile mit ihren Verbindungen und Beschriftungen, Freihandstriche, Rahmen, Farben, Linienstärken, Strichelungen und Drehungen werden zu Whiteboard-Elementen. Mehrere draw.io-Seiten landen nebeneinander, jede in einem eigenen Rahmen. Was Flowplan nicht kennt (Schablonen, Einbettungen, externe Bilder), wird zu einer Notiz mit seinem Text. Eingebettete Bilder (PNG, JPEG, GIF, WebP) werden als Dateien der Seite gespeichert und zählen zum Speicherkontingent.
+
+- Ziehst du eine solche Datei in ein **Dokument**, entsteht darunter ein neues Whiteboard, das gleich eingebettet wird.
+- Im **ZIP-Import** (siehe [Importieren](/import-export-versions#importieren)) werden `.excalidraw`- und `.drawio`-Dateien zu Whiteboard-Seiten.
+- Grenzen: 20 MB je Datei (30 MB entpackt), 3.000 Elemente, 50 Seiten. Flowplan lädt beim Import nichts aus dem Internet; Texte werden als reiner Text übernommen.
+
 ## Einbetten und exportieren
 
 - Mit `/board` im Dokument wird ein Whiteboard Teil einer Seite; der Knopf oben rechts öffnet es groß.

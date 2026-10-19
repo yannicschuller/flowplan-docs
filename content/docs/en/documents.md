@@ -33,6 +33,9 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 | Synced block | `/sync` | Content that stays the same on several pages |
 | Insert synced block | `/sync` | Show an existing synced block |
 | Divider | `/hr` | A horizontal line |
+| Footnote | `/footnote`, `/fußnote` | Numbered note at the end of the page ([Footnotes](#footnotes)) |
+| Citation | `/cite`, `/zitat` | Cite a source – DOI, BibTeX or Zotero ([Citations](#citations-and-bibliography)) |
+| Bibliography | `/bibliography`, `/references` | All cited works as a list |
 
 ## Voice notes
 
@@ -164,6 +167,56 @@ The server calculates the number for the person looking at the page and refreshe
 `@` searches pages, database records and people – keep typing to narrow the list. Records appear with their database, such as "Heating – maintenance · Notes"; only records you may read are offered. Mentioning a person notifies them in the inbox.
 
 Links to pages and records stay valid even if they are renamed or moved. A link that shows the old title gets the new one on a rename – in all documents and records you may edit; a link with its own text keeps it. The target lists all links to it under **Linked from** – including records whose text contains the link. Records and pages you may not read do not appear there.
+
+## Footnotes
+
+`/footnote`, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd> (<kbd>Ctrl</kbd> <kbd>Alt</kbd> <kbd>F</kbd>) or **Footnote** in the text menu inserts a footnote at the cursor and opens its text.
+
+- The notes appear numbered under **Footnotes** at the end of the page. Numbers follow the order in the text and update by themselves when you move, copy or delete markers.
+- Clicking a number jumps to its note, ↩ jumps back. Double-click the number (or press <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd> with a footnote selected) to edit or remove it.
+- Notes are plain text; web addresses in them become links.
+- Footnotes also show on shared and published pages, in print and in the HTML export, and search finds their text.
+- In the Markdown export they become `[^1]` with `[^1]: text` at the end; the import reads them back – including Obsidian's short form `^[text]`.
+
+## Citations and bibliography
+
+For papers, theses and research notes you cite sources right in the text:
+
+1. `/cite` (or `/zitat`) opens the workspace's **bibliography**.
+2. Search a title, paste a **DOI** (e.g. `10.1000/xyz123` – Flowplan fetches authors, title and year from Crossref and other DOI services) or bring in a whole list via **Import BibTeX or CSL-JSON (Zotero) …**.
+3. Optionally add a page and insert.
+
+The text then reads "(Müller 2021)", "(Müller & Schmidt 2021, p. 12)" or "(Müller et al. 2021)"; hovering shows the full reference. `/bibliography` inserts a **bibliography**: all works cited on the page in an APA-like style, updating itself as you cite – also on shared and published pages.
+
+- The bibliography belongs to the workspace; guests don't see it. Each citation carries its details along, so copies, exports and shared pages are complete without the list.
+- **Zotero:** export a collection from Zotero as *BibTeX* or *CSL JSON* and import it in the dialog.
+- In the **Markdown export** citations become Pandoc citations (`[@key]`, `[@key, p. 12]`) and the bibliography a section of its own – so a text can be processed further with Pandoc.
+
+## Show authors
+
+**Show authors** (in the toolbar or the page menu **…**) colours the text by the person who wrote it – each person always in the same colour. A legend shows names and shares; **Hide authors** turns the colouring off again.
+
+- The content itself doesn't change; the colouring is just a view.
+- Recording starts with this feature: older, imported or restored text appears as "earlier", and so does text written by guests through links with their own permissions.
+- Images, mentions and other embedded objects are not coloured.
+- Only people who may read the page see names.
+
+## Edit as Markdown
+
+**Page menu … → Edit as Markdown** shows the whole page as Markdown text with line numbers – handy for big rearrangements, find and replace, or if you prefer writing Markdown.
+
+- **Apply** (<kbd>⌘</kbd> <kbd>Enter</kbd>) saves a version first and replaces the content in one step; **Undo** takes the change back.
+- Blocks without a Markdown form – embeds, whiteboards, linked databases, synced blocks, columns, tables with merged cells or widths, sized images, function graphs, metrics and bibliographies – appear as a marker `<!-- flowplan:block … -->`. You can move or delete them but not change them; they come back unchanged. If one is deleted, Flowplan asks before applying.
+- Formatting without a Markdown form (colours, superscript, spoilers, mentions, citations) is kept as HTML in the text.
+- **Alignment, indent, text direction and reactions** are lost when applying; the view says beforehand what is affected.
+- If someone changes the page while you write in Markdown, a notice appears; **Apply anyway** then overwrites their changes.
+- People who may only read – also on locked pages and in reading mode – see **View as Markdown** without Apply.
+
+## Text direction
+
+Paragraphs, headings, lists, quotes, callouts and table cells in Arabic, Hebrew or Persian run **right to left automatically**: the direction follows the block's first letter. Bullets, checkboxes, quote bars, callout icons and block handles are then on the right.
+
+Under **Manage blocks** (click the handle `⋮⋮`) → **Text direction** you set **Automatic**, **Left to right** or **Right to left** for a block and everything inside it. The direction is kept in the HTML export; Markdown has no place for it.
 
 ## More blocks
 

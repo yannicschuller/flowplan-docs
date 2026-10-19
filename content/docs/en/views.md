@@ -64,6 +64,19 @@ Bars from a start to an end date field, on a scale of week, month, quarter or ye
 - **Today** jumps to the current date; weekends can be highlighted.
 - Keyboard: <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> moves by one day, with <kbd>⇧</kbd> it changes the end, with <kbd>Ctrl</kbd> the start.
 
+### Dependencies (Gantt)
+
+Records can wait for each other – for example "Print" only after "Proofreading":
+
+- In the timeline's bar, choose a relation of the database to itself under **Dependencies** – or **Set up dependencies** creates a "Dependencies" property.
+- **Link by dragging:** drag from the round handle at the end of a bar onto another bar – that one then waits for the first. Links that would create a circle are refused.
+- **Arrows** connect the bars; if a record starts before its predecessor ends, the arrow is red. While dragging, the timeline already warns which record would be too early.
+- **Move successors along:** moving a record (or its end) moves every record that waits for it, directly or indirectly, by the same number of days – in one step.
+- **Resolve all conflicts** moves every record that starts too early behind its predecessor.
+- **Highlight critical path** marks the records and arrows without slack: if one of them is delayed, the end of the whole plan moves.
+
+In embedded views (linked databases), linking by dragging and **Resolve all conflicts** are not available – open the database itself for that.
+
 ## Gallery
 
 Cards with a preview image and selected properties. The image comes from the record's content, its cover or a files property, filling the card or fitted in.

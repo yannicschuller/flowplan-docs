@@ -69,6 +69,19 @@ Once you have drawn with a pen on a device, only the pen draws: fingers move and
 
 As soon as there are frames, **Present** appears. The frames are shown one after another in reading order (top to bottom, left to right), filling the screen; arrow keys or the buttons page through, **End presentation** or <kbd>Esc</kbd> closes.
 
+## Import Excalidraw and draw.io
+
+Use **Import …** at the bottom right – or drop the file onto the board – to bring in drawings from:
+
+- **Excalidraw** (`.excalidraw`),
+- **draw.io / diagrams.net** (`.drawio`, `.xml`, also compressed and with several pages) and **draw.io SVG exports** with an embedded diagram.
+
+Shapes, texts, arrows with their connections and labels, freehand strokes, frames, colours, stroke widths, dashes and rotations become whiteboard items. Several draw.io pages are placed side by side, each in a frame of its own. What Flowplan doesn't know (stencils, embeds, external images) becomes a note with its text. Embedded pictures (PNG, JPEG, GIF, WebP) are stored as files of the page and count towards the storage quota.
+
+- Dropping such a file into a **document** creates a new whiteboard below it and embeds it right away.
+- In the **ZIP import** (see [Import](/import-export-versions#import)) `.excalidraw` and `.drawio` files become whiteboard pages.
+- Limits: 20 MB per file (30 MB unpacked), 3,000 elements, 50 pages. Flowplan fetches nothing from the internet during import; texts are taken over as plain text.
+
 ## Embed and export
 
 - With `/board` in a document, a whiteboard becomes part of a page; the button at the top right opens it large.

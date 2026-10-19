@@ -32,7 +32,8 @@ All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Move block up / down |
 | <kbd>⇧</kbd> <kbd>Enter</kbd> | Line break within the same block |
 | <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>Z</kbd> | Undo / redo |
-| <kbd>⌘</kbd> <kbd>Enter</kbd> | Send a comment |
+| <kbd>⌘</kbd> <kbd>Enter</kbd> | Send a comment; in **Edit as Markdown**: apply |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd> | Insert footnote (edits a selected one) |
 
 Markdown shortcuts such as `##`, `-`, `[]` or ` ``` ` are listed under [Documents and the editor](/documents#markdown-shortcuts).
 

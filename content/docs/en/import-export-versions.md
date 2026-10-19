@@ -37,7 +37,7 @@ The download icon next to a space's name in the sidebar (or **Settings → Data 
 ## Import
 
 - **Markdown, text or HTML**: **Settings → Data → Import Markdown or text**. Headings, lists, tasks, tables, code (also `mermaid`) and formulas become blocks.
-- **Notion, AppFlowy or Markdown export**: **Settings → Data** accepts a ZIP with Markdown and CSV files. Markdown becomes pages, CSV databases, folders sub-pages; linked images and files are uploaded, and Notion record pages are matched to their records. Up to 100 MB, 500 pages and 5,000 records per table; you choose the target space beforehand.
+- **Notion, AppFlowy or Markdown export**: **Settings → Data** accepts a ZIP with Markdown and CSV files. Markdown becomes pages, CSV databases, Excalidraw and draw.io files [whiteboards](/whiteboards#import-excalidraw-and-draw-io), folders sub-pages; linked images and files are uploaded, and Notion record pages are matched to their records. Up to 100 MB, 500 pages and 5,000 records per table; you choose the target space beforehand.
 - **Jira or Trello**: **Settings → Data → Import from Jira or Trello** – see [Projects, tickets and sprints](/projects-and-tickets#import-from-jira-and-trello).
 - **CSV**: in a database, choose **Import CSV or Markdown** and pick a CSV file; the rows become records.
 - **Markdown with frontmatter into a database** (such as notes from Obsidian): in the database, choose **Import CSV or Markdown** and pick one or more `.md` files or a ZIP – see below.
@@ -96,6 +96,6 @@ Accounts, sessions and sign-in are not part of it – operations back them up ev
 - **Save current version** creates a state at any time; manually saved versions are kept permanently.
 - **Changes** compares a version with the current state or with any other version (**Compare with**): added and removed text, for databases new, changed and removed records and properties.
 - **Bring back single paragraphs**: compared with the current state, every removed or changed paragraph has a **Restore** button. The paragraph returns to its old place with its formatting; the rest of the page stays as it is.
-- **Restore** sets the page back to that state.
+- **Restore** sets the page back to that state. The [authors view](/documents#show-authors) then starts over; the restored text appears as "earlier".
 
 Automatic versions are thinned out to one per day after seven days and deleted after 180 days (adjustable in the administration).

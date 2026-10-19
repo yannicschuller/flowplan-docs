@@ -32,7 +32,8 @@ Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Block nach oben / unten |
 | <kbd>⇧</kbd> <kbd>Enter</kbd> | Zeilenumbruch im selben Block |
 | <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>Z</kbd> | Rückgängig / Wiederholen |
-| <kbd>⌘</kbd> <kbd>Enter</kbd> | Kommentar senden |
+| <kbd>⌘</kbd> <kbd>Enter</kbd> | Kommentar senden; in **Als Markdown bearbeiten**: Übernehmen |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd> | Fußnote einfügen (bei ausgewählter Fußnote: bearbeiten) |
 
 Markdown-Kürzel wie `##`, `-`, `[]` oder ` ``` ` stehen unter [Dokumente und Editor](/documents#markdown-kuerzel).
 

@@ -15,7 +15,7 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 | Überschrift 1–3 | `/h1`, `/h2`, `/h3` | Gliederung; erscheinen im Inhaltsverzeichnis |
 | Aufgabenliste | `/todo` | Abhakbare Aufgaben |
 | Aufzählung, Nummerierte Liste | `/ul`, `/ol` | Listen, beliebig verschachtelt |
-| Zitat | `/quote` | Hervorgehobenes Zitat |
+| Zitat | `/quote` | Hervorgehobenes Zitat (bei `/zitat` erscheint zuerst das Literaturzitat) |
 | Hinweis, Tipp, Wichtig, Warnung, Achtung | `/hinweis`, `/tipp`, `/wichtig`, `/warnung`, `/achtung` | Farbiger Kasten mit Symbol und Titel – die fünf Arten der GitHub-Hinweise |
 | Aufklappbarer Block | `/toggle` | Inhalt, der sich ein- und ausklappen lässt |
 | Code | `/code` | Syntaxhervorhebung für 192 Sprachen |
@@ -33,6 +33,9 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 | Synchronisierter Block | `/sync` | Inhalt, der auf mehreren Seiten gleich bleibt |
 | Synchronisierten Block einfügen | `/sync` | Einen bestehenden synchronisierten Block zeigen |
 | Trennlinie | `/hr` | Horizontale Linie |
+| Fußnote | `/fußnote`, `/footnote` | Nummerierte Anmerkung am Seitenende ([Fußnoten](#fussnoten)) |
+| Literaturzitat | `/zitat`, `/cite` | Quelle zitieren – DOI, BibTeX oder Zotero ([Zitate](#zitate-und-literaturverzeichnis)) |
+| Literaturverzeichnis | `/literatur`, `/bibliography` | Alle zitierten Werke als Liste |
 
 ## Sprachnotizen
 
@@ -164,6 +167,56 @@ Die Zahl rechnet der Server für die Person aus, die die Seite ansieht, und aktu
 `@` sucht Seiten, Einträge aus Datenbanken und Personen – einfach weitertippen, um die Liste zu filtern. Einträge erscheinen mit ihrer Datenbank, etwa „Heizung – Wartung · Notizen“; angeboten werden nur Einträge, die du lesen darfst. Eine Erwähnung einer Person benachrichtigt sie im Posteingang.
 
 Links auf Seiten und Einträge bleiben gültig, auch wenn sie umbenannt oder verschoben werden. Steht im Link der alte Titel, wird er beim Umbenennen durch den neuen ersetzt – in allen Dokumenten und Einträgen, die du bearbeiten darfst; ein Link mit eigenem Text behält ihn. Das Ziel zeigt alle Links darauf unter **Verlinkt von** (Seiten) bzw. **Verknüpft von** (Einträge). Dort stehen auch Einträge, in deren Text der Link steht. Wer einen verlinkenden Eintrag oder seine Seite nicht lesen darf, sieht ihn dort nicht.
+
+## Fußnoten
+
+`/fußnote`, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd> (<kbd>Strg</kbd> <kbd>Alt</kbd> <kbd>F</kbd>) oder **Fußnote** im Textmenü fügt an der Schreibmarke eine Fußnote ein und öffnet ihren Text.
+
+- Die Anmerkungen stehen nummeriert unter **Fußnoten** am Ende der Seite. Die Nummern folgen der Reihenfolge im Text und passen sich beim Verschieben, Kopieren und Löschen von selbst an.
+- Ein Klick auf die Nummer springt zur Anmerkung, ↩ wieder zurück. Doppelklick auf die Nummer (oder <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd> bei ausgewählter Fußnote) bearbeitet oder entfernt sie.
+- Anmerkungen sind reiner Text; Webadressen darin werden zu Links.
+- Fußnoten erscheinen auch auf geteilten und veröffentlichten Seiten, beim Drucken und im HTML-Export, und die Suche findet ihren Text.
+- Im Markdown-Export werden sie zu `[^1]` mit `[^1]: Text` am Ende; der Import liest das wieder ein – auch Obsidians Kurzform `^[Text]`.
+
+## Zitate und Literaturverzeichnis
+
+Für Haus-, Abschluss- und Forschungsarbeiten zitierst du Quellen direkt im Text:
+
+1. `/zitat` (oder `/cite`) öffnet die **Literaturliste** des Arbeitsbereichs.
+2. Einen Titel suchen, eine **DOI** einfügen (z. B. `10.1000/xyz123` – Flowplan holt Autoren, Titel und Jahr bei Crossref und anderen DOI-Diensten) oder über **BibTeX oder CSL-JSON importieren (Zotero) …** eine ganze Literaturliste übernehmen.
+3. Optional eine Seite angeben und einfügen.
+
+Im Text steht dann „(Müller 2021)“, „(Müller & Schmidt 2021, S. 12)“ oder „(Müller et al. 2021)“; beim Überfahren zeigt Flowplan die vollständige Angabe. `/literatur` fügt ein **Literaturverzeichnis** ein: alle auf der Seite zitierten Werke in einem APA-ähnlichen Stil, das sich beim Zitieren selbst aktualisiert – auch auf geteilten und veröffentlichten Seiten.
+
+- Die Literaturliste gehört zum Arbeitsbereich; Gäste sehen sie nicht. Jedes Zitat trägt seine Angaben mit, sodass Kopien, Exporte und geteilte Seiten auch ohne die Liste vollständig sind.
+- **Zotero:** In Zotero eine Sammlung als *BibTeX* oder *CSL JSON* exportieren und im Dialog importieren.
+- Im **Markdown-Export** werden Zitate zu Pandoc-Zitaten (`[@schlüssel]`, `[@schlüssel, p. 12]`) und das Verzeichnis zu einem eigenen Abschnitt – so lässt sich ein Text mit Pandoc weiterverarbeiten.
+
+## Autoren anzeigen
+
+**Autoren anzeigen** (in der Symbolleiste oder im Seitenmenü **…**) färbt den Text nach der Person, die ihn geschrieben hat – jede Person immer in derselben Farbe. Eine Legende zeigt Namen und Anteile; **Autoren ausblenden** schaltet die Färbung wieder ab.
+
+- Am Inhalt ändert sich nichts; die Färbung ist nur eine Ansicht.
+- Aufgezeichnet wird, seit es die Funktion gibt: Älterer, importierter oder aus einer Version wiederhergestellter Text erscheint als „früher“, ebenso Text von Gästen über Links mit eigenen Berechtigungen.
+- Bilder, Erwähnungen und andere eingebettete Objekte werden nicht eingefärbt.
+- Namen sehen nur Personen, die die Seite lesen dürfen.
+
+## Als Markdown bearbeiten
+
+**Seitenmenü … → Als Markdown bearbeiten** zeigt die ganze Seite als Markdown-Text mit Zeilennummern – praktisch für große Umbauten, Suchen und Ersetzen oder wenn du lieber in Markdown schreibst.
+
+- **Übernehmen** (<kbd>⌘</kbd> <kbd>Enter</kbd>) speichert vorher eine Version und ersetzt den Inhalt in einem Schritt; **Rückgängig** nimmt die Änderung zurück.
+- Blöcke ohne Markdown-Form – Einbettungen, Whiteboards, verknüpfte Datenbanken, synchronisierte Blöcke, Spalten, Tabellen mit verbundenen Zellen oder Breiten, Bilder mit Größe, Funktionsgraphen, Kennzahlen und Literaturverzeichnisse – stehen als Markierung `<!-- flowplan:block … -->` im Text. Du kannst sie verschieben oder löschen, aber nicht ändern; sie kommen unverändert zurück. Wird eine gelöscht, fragt Flowplan vor dem Übernehmen nach.
+- Formatierungen ohne Markdown-Form (Farben, Hochstellen, Spoiler, Erwähnungen, Zitate) bleiben als HTML im Text erhalten.
+- **Ausrichtung, Einzug, Textrichtung und Reaktionen** gehen beim Übernehmen verloren; die Ansicht nennt vorher, was betroffen ist.
+- Ändert jemand die Seite, während du im Markdown schreibst, erscheint ein Hinweis; **Trotzdem übernehmen** überschreibt dann deren Änderungen.
+- Wer nur lesen darf – auch bei gesperrten Seiten und im Lesemodus –, sieht **Als Markdown anzeigen** ohne Übernehmen.
+
+## Textrichtung
+
+Absätze, Überschriften, Listen, Zitate, Hinweise und Tabellenzellen in Arabisch, Hebräisch oder Persisch laufen **automatisch von rechts nach links**: Die Richtung folgt dem ersten Buchstaben des Blocks. Aufzählungszeichen, Kästchen, Zitatbalken, Hinweissymbole und Blockgriffe stehen dann rechts.
+
+Unter **Blöcke verwalten** (Klick auf den Griff `⋮⋮`) → **Textrichtung** legst du für einen Block und alles darin **Automatisch**, **Links nach rechts** oder **Rechts nach links** fest. Die Richtung bleibt im HTML-Export erhalten; Markdown kennt sie nicht.
 
 ## Weitere Blöcke
 
