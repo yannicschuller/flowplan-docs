@@ -33,6 +33,7 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 | Synchronisierter Block | `/sync` | Inhalt, der auf mehreren Seiten gleich bleibt |
 | Synchronisierten Block einfügen | `/sync` | Einen bestehenden synchronisierten Block zeigen |
 | Trennlinie | `/hr` | Horizontale Linie |
+| KI | `/ki`, `/ai` | Text mit der [KI](/ai#schreibassistent) schreiben lassen (wenn eingeschaltet) |
 | Fußnote | `/fußnote`, `/footnote` | Nummerierte Anmerkung am Seitenende ([Fußnoten](#fussnoten)) |
 | Literaturzitat | `/zitat`, `/cite` | Quelle zitieren – DOI, BibTeX oder Zotero ([Zitate](#zitate-und-literaturverzeichnis)) |
 | Literaturverzeichnis | `/literatur`, `/bibliography` | Alle zitierten Werke als Liste |

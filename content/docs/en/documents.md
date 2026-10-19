@@ -33,6 +33,7 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 | Synced block | `/sync` | Content that stays the same on several pages |
 | Insert synced block | `/sync` | Show an existing synced block |
 | Divider | `/hr` | A horizontal line |
+| AI | `/ai`, `/ki` | Let the [AI](/ai#writing-assistant) write (when switched on) |
 | Footnote | `/footnote`, `/fußnote` | Numbered note at the end of the page ([Footnotes](#footnotes)) |
 | Citation | `/cite`, `/zitat` | Cite a source – DOI, BibTeX or Zotero ([Citations](#citations-and-bibliography)) |
 | Bibliography | `/bibliography`, `/references` | All cited works as a list |
