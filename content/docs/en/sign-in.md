@@ -72,6 +72,19 @@ SESSION_HOURS=8
 - **Zitadel**: roles are under `urn:zitadel:iam:org:project:roles`; create a claim of your own with an action or enter the path.
 - **Entra ID**: configure the groups claim in the token. Entra delivers object IDs by default; then enter the admin group's ID as `OIDC_ADMIN_GROUP`.
 
+## Stay signed in
+
+Normally a session ends `SESSION_HOURS` after signing in (default 8 hours). With `SESSION_REMEMBER=true` the sign-in page shows **Stay signed in on this device** – for password, passkey and SSO. When ticked, the session lives on while Flowplan is used:
+
+- It ends `SESSION_IDLE_HOURS` after it was last used (default 168 = 7 days) and at the latest `SESSION_MAX_DAYS` after signing in (default 30). Then you sign in again – this limits how long a stolen cookie is good for.
+- With SSO, also at the latest after `SESSION_GROUPS_HOURS` (default 168): signing in at the provider again fetches the current groups, so `OIDC_ALLOWED_GROUP` and `OIDC_ADMIN_GROUP` also apply to long sessions.
+- A disabled account loses access immediately, as before.
+- The desktop and mobile apps stay signed in once the option is on.
+
+Without `SESSION_REMEMBER` nothing changes. Turning the option off later stops the extending; running sessions then end at their next expiry.
+
+**Settings → Account → Signed-in devices** lists all your own sessions with device, last use and end; **Sign out** ends a single one, **Sign out all other devices** all but the current one.
+
 ## Security
 
 With OIDC, Flowplan checks the discovery, issuer, audience, signature, PKCE, state and nonce. Sessions are random tokens, stored hashed in SQLite; cookies are `HttpOnly`, `SameSite=Lax` and `Secure` with HTTPS. Groups or roles are never taken from browser data.

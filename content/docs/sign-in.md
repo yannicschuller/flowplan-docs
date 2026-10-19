@@ -72,6 +72,19 @@ SESSION_HOURS=8
 - **Zitadel**: Rollen stehen unter `urn:zitadel:iam:org:project:roles`; einen eigenen Claim per Action anlegen oder den Pfad eintragen.
 - **Entra ID**: Gruppen-Claim im Token konfigurieren. Entra liefert standardmäßig Objekt-IDs; dann die ID der Admin-Gruppe als `OIDC_ADMIN_GROUP` eintragen.
 
+## Angemeldet bleiben
+
+Normalerweise endet eine Sitzung `SESSION_HOURS` nach der Anmeldung (Standard 8 Stunden). Mit `SESSION_REMEMBER=true` zeigt die Anmeldeseite **Auf diesem Gerät angemeldet bleiben** – für Passwort, Passkey und SSO. Mit Haken lebt die Sitzung weiter, solange Flowplan genutzt wird:
+
+- Sie endet `SESSION_IDLE_HOURS` nach der letzten Nutzung (Standard 168 = 7 Tage) und spätestens `SESSION_MAX_DAYS` nach der Anmeldung (Standard 30). Danach heißt es neu anmelden – das begrenzt, wie lange ein gestohlenes Cookie taugt.
+- Mit SSO zusätzlich spätestens nach `SESSION_GROUPS_HOURS` (Standard 168): Die neue Anmeldung beim Anbieter holt die aktuellen Gruppen, so wirken `OIDC_ALLOWED_GROUP` und `OIDC_ADMIN_GROUP` auch bei langen Sitzungen.
+- Ein deaktiviertes Konto verliert den Zugriff sofort, wie bisher.
+- Die Desktop- und Handy-Apps bleiben angemeldet, sobald die Option eingeschaltet ist.
+
+Ohne `SESSION_REMEMBER` ändert sich nichts. Wer die Option nachträglich ausschaltet, beendet das Verlängern; laufende Sitzungen enden dann zu ihrem nächsten Ablauf.
+
+**Einstellungen → Konto → Angemeldete Geräte** listet alle eigenen Sitzungen mit Gerät, letzter Nutzung und Ende; **Abmelden** beendet eine einzelne, **Alle anderen Geräte abmelden** alle bis auf die aktuelle.
+
 ## Sicherheit
 
 Bei OIDC prüft Flowplan Discovery, Issuer, Audience, Signatur, PKCE, State und Nonce. Sitzungen sind zufällige Tokens, gehasht in SQLite gespeichert; Cookies sind `HttpOnly`, `SameSite=Lax` und bei HTTPS `Secure`. Gruppen oder Rollen werden nie aus Browserdaten übernommen.
