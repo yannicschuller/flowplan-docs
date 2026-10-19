@@ -48,8 +48,19 @@ Die übrigen OIDC-Variablen und alles zu Passwörtern und Passkeys stehen unter 
 | `S3_REGION` | `us-east-1` | Region. Garage verlangt seinen eigenen Wert (oft `garage`). |
 | `S3_PREFIX` | `flowplan` | Ordner im Bucket; Dateien unter `<Präfix>/uploads/`, Datenbank unter `<Präfix>/db/`. |
 | `FLOWPLAN_LITESTREAM` | an | `off`: nur Dateien spiegeln, Datenbank nicht sichern. |
+| `LITESTREAM_SSE_C_KEY` | *leer* | Optional: der Speicheranbieter verschlüsselt die Litestream-Kopie (SSE-C, 32 Bytes base64, nur über https und bei Anbietern, die SSE-C können). |
 
 Details: [Speicher, S3 und Sicherung](/storage-and-backups).
+
+## Verschlüsselung
+
+| Variable | Standard | Bedeutung |
+| --- | --- | --- |
+| `FLOWPLAN_ENCRYPTION_KEY` | *leer* | 32 Bytes, base64 (`openssl rand -base64 32`). Verschlüsselt Dateien im Bucket, geplante Sicherungen, Markdown-Exporte und die Instanzsicherung. Ohne Schlüssel ändert sich nichts. |
+| `FLOWPLAN_ENCRYPTION_KEY_FILE` | *leer* | Statt der Variablen: Pfad zu einer Datei mit dem Schlüssel (Docker-Secret). |
+| `FLOWPLAN_ENCRYPTION_KEY_PREVIOUS` | *leer* | Frühere Schlüssel, durch Komma getrennt – nur zum Lesen nach einem Schlüsselwechsel. |
+
+Details: [Verschlüsselung](/storage-and-backups#verschluesselung).
 
 ## E-Mail (SMTP)
 
@@ -124,7 +135,7 @@ Unter **Administration → Instanz** stellen Admins ein:
 - maximale Uploadgröße,
 - ob alle Personen eigene Arbeitsbereiche anlegen dürfen,
 - ob sich jede Person mit E-Mail und Passwort registrieren darf,
-- tägliche Datenbanksicherung und wie viele Kopien bleiben,
+- tägliche oder stündliche Datenbanksicherung und wie viele Kopien bleiben,
 - nach wie vielen Tagen ohne Anmeldung Konten gesperrt werden,
 - ob die Instanz eine öffentliche **Demo** anbietet (laufende und insgesamt gestartete Demos zeigt **Administration → Betrieb**).
 

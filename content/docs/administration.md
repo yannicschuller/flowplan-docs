@@ -47,11 +47,13 @@ Die Einstellungen sind in **Allgemein**, **Zugang**, **Speicher und Grenzen** so
 
 - **E-Mail-Versand** zeigt den eingerichteten Server, die Warteschlange und den letzten Fehler; **Test-E-Mail senden** prüft die Verbindung sofort.
 - **Tägliche Datenbanksicherung**: eine konsistente Kopie der Datenbank pro Tag, mit S3 in den Bucket unter `backups/`, sonst in den Datenordner. Die neuesten *n* bleiben erhalten; **Jetzt sichern** legt sofort eine an.
+- **Stündlich statt täglich**: eine Kopie pro Stunde – gedacht für verschlüsselte Sicherungen anstelle von Litestream (siehe [Verschlüsselung](/storage-and-backups#verschluesselung)). Dann mehr Kopien aufbewahren, etwa 72 für drei Tage. Der Markdown-Export läuft weiterhin einmal am Tag.
+- **Verschlüsselung** zeigt die Schlüssel-ID, wie viele Dateien im Bucket noch nicht mit diesem Schlüssel verschlüsselt sind (**Bestehende verschlüsseln** holt das nach), und was trotzdem unverschlüsselt den Server verlässt (Litestream, Git-Export).
 - **Konten ohne Anmeldung sperren nach (Tagen)**: gesperrte Konten verlieren ihre Sitzungen, ihre API-Tokens funktionieren nicht mehr; die Sperre steht im Aktivitätsprotokoll und lässt sich unter **Benutzer** aufheben.
 
 ### Sicherung der gesamten Instanz
 
-**Sicherung herunterladen** erzeugt im laufenden Betrieb eine geprüfte Kopie von Datenbank und Dateien. Eine hochgeladene Sicherung wird geprüft und beim nächsten Neustart übernommen; der vorherige Stand bleibt als `pre-restore-…` im Datenverzeichnis.
+**Sicherung herunterladen** erzeugt im laufenden Betrieb eine geprüfte Kopie von Datenbank und Dateien. Eine hochgeladene Sicherung wird geprüft und beim nächsten Neustart übernommen; der vorherige Stand bleibt als `pre-restore-…` im Datenverzeichnis. Mit `FLOWPLAN_ENCRYPTION_KEY` ist die heruntergeladene Datei verschlüsselt (`.zip.enc`); beim Hochladen wird sie mit dem aktuellen oder einem früheren Schlüssel entschlüsselt.
 
 ## Demo
 

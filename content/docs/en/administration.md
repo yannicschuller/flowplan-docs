@@ -46,11 +46,13 @@ The settings are grouped into **General**, **Access**, **Storage and limits** an
 
 - **E-mail delivery** shows the configured server, the queue and the last error; **Send test e-mail** checks the connection right away.
 - **Daily database backup**: a consistent copy of the database per day, with S3 in the bucket under `backups/`, otherwise in the data folder. The newest *n* are kept; **Back up now** creates one immediately.
+- **Hourly instead of daily**: one copy per hour – meant for encrypted backups in place of Litestream (see [Encryption](/storage-and-backups#encryption)). Keep more copies then, e.g. 72 for three days. The Markdown export still runs once a day.
+- **Encryption** shows the key ID, how many files in the bucket are not yet encrypted with this key (**Encrypt existing objects** catches up), and what leaves the server unencrypted regardless (Litestream, Git export).
 - **Lock accounts without sign-in after (days)**: locked accounts lose their sessions and their API tokens stop working; the lock appears in the activity log and can be lifted under **Users**.
 
 ### Backup of the whole instance
 
-**Download backup** creates a verified copy of the database and files while running. An uploaded backup is checked and applied on the next restart; the previous state stays as `pre-restore-…` in the data directory.
+**Download backup** creates a verified copy of the database and files while running. An uploaded backup is checked and applied on the next restart; the previous state stays as `pre-restore-…` in the data directory. With `FLOWPLAN_ENCRYPTION_KEY` the downloaded file is encrypted (`.zip.enc`); on upload it is decrypted with the current or an earlier key.
 
 ## Demo
 
