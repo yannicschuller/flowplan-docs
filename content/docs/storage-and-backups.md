@@ -60,6 +60,35 @@ Dazu `uploads/` und `web-push-keys.json` mitsichern.
 
 Das Inhaltsarchiv unter **Einstellungen → Daten** sichert einen Arbeitsbereich, ersetzt aber keine Instanzsicherung mit Konten und Rechten.
 
+## Markdown-Export und Git
+
+Eine lesbare Kopie außerhalb von Flowplan – für den Notfall, wenn die Instanz nicht läuft, oder als Archiv in einem Git-Repository. **Administration → Instanz → Markdown-Export** wählt Seiten und Datenbanken; mit jeder geplanten Sicherung (und mit **Jetzt sichern**) wird jede davon samt Unterseiten, Kommentaren und früheren Versionen zu einem Markdown-ZIP:
+
+- mit S3 im Bucket unter `<S3_PREFIX>/exports/`, sonst im Datenordner unter `exports/`; es bleiben so viele wie Sicherungen (**Aufbewahrte Sicherungen**);
+- exportiert wird mit den Leserechten der Person, die die Auswahl gespeichert hat – private Einträge und Journale mit PIN bleiben draußen;
+- Dateinamen und Pfade im ZIP enthalten Kennungen, damit sie zwischen zwei Läufen gleich bleiben (sauberer Git-Diff). Einträge beginnen mit YAML-Frontmatter, Kommentare stehen in `<Datei>.comments.md`, frühere Versionen unter `<Datei>.versions/`.
+
+### In ein Git-Repository übertragen
+
+Mit diesen Variablen überträgt Flowplan jeden Export selbst in ein Repository (Forgejo, Gitea, GitHub, GitLab) – jede Seite in einem eigenen Ordner, ein Commit pro Lauf mit Änderungen:
+
+| Variable | Bedeutung |
+| --- | --- |
+| `EXPORT_GIT_URL` | `https://`-Adresse des Repositorys, ohne Zugangsdaten. |
+| `EXPORT_GIT_TOKEN` | Token mit Schreibrecht auf dieses Repository. Steht nur in der Umgebung, nie in der Datenbank oder einer Sicherung. |
+| `EXPORT_GIT_USERNAME` | Benutzername zum Token (Standard `flowplan`; GitLab: `oauth2`). |
+| `EXPORT_GIT_BRANCH` | Zweig, Standard `main`. Ein leeres Repository bekommt ihn beim ersten Lauf. |
+| `EXPORT_GIT_AUTHOR`, `EXPORT_GIT_EMAIL` | Autor der Commits. |
+| `EXPORT_GIT_IMPORT` | `true`: Änderungen, die seit dem letzten Lauf im Repository gemacht wurden, übernimmt Flowplan vor dem Export. |
+
+Mit `EXPORT_GIT_IMPORT=true` gilt für geänderte Dateien:
+
+- **Einträge** (`records/<Datenbank>/…md`) werden über `flowplan.id` im Frontmatter aktualisiert; neue Dateien werden neue Einträge.
+- **Dokumentseiten** (`index.md`, `pages/…-<Kennung>.md`) bekommen den Text der Datei; der vorige Stand bleibt als Version erhalten.
+- Datenbanktabellen, Kommentare und Versionen sind Kopien und werden nicht zurückgelesen.
+
+Markdown kennt nicht alle Blöcke von Flowplan (etwa Spalten oder eingebettete Whiteboards). Wer in Git Seiten mit solchen Blöcken bearbeitet, findet den vorigen Stand im Versionsverlauf. Den Stand der letzten Übertragung (Commit, übernommene Änderungen, Fehler) zeigt die Administration.
+
 ## Wiederherstellen
 
 - **Aus einer Instanzsicherung**: in **Administration → Instanz** hochladen. Flowplan prüft sie und übernimmt sie beim nächsten Neustart; der vorherige Stand bleibt unter `pre-restore-…` im Datenverzeichnis.

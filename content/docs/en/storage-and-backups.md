@@ -60,6 +60,35 @@ Back up `uploads/` and `web-push-keys.json` as well.
 
 The content archive under **Settings → Data** backs up a workspace but does not replace an instance backup with accounts and permissions.
 
+## Markdown export and Git
+
+A readable copy outside Flowplan – for emergencies when the instance is down, or as an archive in a Git repository. **Administration → Instance → Markdown export** chooses pages and databases; with every scheduled backup (and with **Back up now**) each becomes a Markdown ZIP with its sub-pages, comments and earlier versions:
+
+- with S3 in the bucket under `<S3_PREFIX>/exports/`, otherwise in the data folder under `exports/`; as many are kept as backups (**Backups kept**);
+- the export reads with the permissions of the person who saved the selection – private records and journals with a PIN stay out;
+- file names and paths in the ZIP contain ids, so they stay the same between runs (clean Git diff). Records start with YAML frontmatter, comments are in `<file>.comments.md`, earlier versions under `<file>.versions/`.
+
+### Push into a Git repository
+
+With these variables Flowplan pushes every export into a repository itself (Forgejo, Gitea, GitHub, GitLab) – every page in a folder of its own, one commit per run with changes:
+
+| Variable | Meaning |
+| --- | --- |
+| `EXPORT_GIT_URL` | `https://` address of the repository, without credentials. |
+| `EXPORT_GIT_TOKEN` | Token with write access to that repository. Only in the environment, never in the database or a backup. |
+| `EXPORT_GIT_USERNAME` | User name for the token (default `flowplan`; GitLab: `oauth2`). |
+| `EXPORT_GIT_BRANCH` | Branch, default `main`. An empty repository gets it on the first run. |
+| `EXPORT_GIT_AUTHOR`, `EXPORT_GIT_EMAIL` | Author of the commits. |
+| `EXPORT_GIT_IMPORT` | `true`: changes made in the repository since the last run are taken over before exporting. |
+
+With `EXPORT_GIT_IMPORT=true`, changed files are handled like this:
+
+- **Records** (`records/<database>/…md`) are updated by `flowplan.id` in the frontmatter; new files become new records.
+- **Document pages** (`index.md`, `pages/…-<id>.md`) get the file's text; the previous state stays as a version.
+- Database tables, comments and versions are copies and are not read back.
+
+Markdown does not know every Flowplan block (such as columns or embedded whiteboards). If you edit pages with such blocks in Git, the previous state is in the version history. The administration shows the state of the last push (commit, changes taken over, errors).
+
 ## Restore
 
 - **From an instance backup**: upload it in **Administration → Instance**. Flowplan checks it and applies it on the next restart; the previous state stays as `pre-restore-…` in the data directory.

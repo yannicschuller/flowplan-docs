@@ -22,6 +22,14 @@ curl -X POST https://flowplan.example.com/api/command \
   -d '{"action":"row.create","pageId":"<database ID>","cells":{"title":"From Home Assistant"}}'
 ```
 
+**Markdown export** also works with a read token, since it only reads – e.g. for a cron job that pushes the export into a Git repository (or let Flowplan do it, see [Markdown export and Git](/storage-and-backups#markdown-export-and-git)):
+
+```bash
+curl -sf -X POST https://flowplan.example.com/api/markdown-export \
+  -H "Authorization: Bearer fp_…" -H "Content-Type: application/json" \
+  -d '{"pageId":"<page id>","format":"zip","includeSubpages":true,"history":true}' -o export.zip
+```
+
 Tokens never get administrator rights and cannot create further tokens. You can revoke them at any time in the same list; locked accounts lose their tokens automatically.
 
 To connect Claude, ChatGPT or other AI assistants, use the [MCP server](/mcp) with a token like this.

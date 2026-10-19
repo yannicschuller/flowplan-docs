@@ -9,7 +9,7 @@ Content comes in as Markdown, CSV or an archive and goes out again as Markdown, 
 | Format | Content |
 | --- | --- |
 | **Markdown (.md)** | One file with the page content; databases with an overview, properties and the documents of all records. |
-| **Markdown with files (.zip)** | `index.md`, sub-pages under `pages/`, record documents under `records/`, databases also as CSV under `tables/`, attachments under `assets/` – all linked relatively. Every record under `records/` starts with its properties as YAML frontmatter (see below). |
+| **Markdown with files (.zip)** | `index.md`, sub-pages under `pages/`, record documents under `records/`, databases also as CSV under `tables/`, attachments under `assets/` – all linked relatively. Every record under `records/` starts with its properties as YAML frontmatter (see below). With **Include comments and earlier versions**, `<file>.comments.md` and `<file>.versions/` come along. |
 | **HTML / JSON** | The older format for documents and databases. |
 
 **Print / PDF** opens the browser's print view; save as PDF there.
