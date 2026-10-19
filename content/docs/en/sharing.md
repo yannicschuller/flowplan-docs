@@ -17,7 +17,7 @@ Private spaces and pages are only visible to the people they are shared with. Gu
 
 A page or database can be shared with someone who is not in the workspace – without taking them into the whole workspace. **Share → People with access to this page**: enter an e-mail address (members are suggested), choose **View** or **Edit**, **Add**.
 
-- **The person already has an account on this instance:** they have access to the page and its sub-pages right away and get a notification ("… shared “Page” with you"). If they are not in the workspace yet, they join as a **guest** and see only what is shared with them.
+- **The person already has an account on this instance:** they have access to the page and its sub-pages right away and get a notification in the inbox ("… shared “Page” with you") and – when the instance sends e-mail – right away an e-mail with a link to the page. **Settings → Notifications → Pages shared with you** turns the e-mail off. If they are not in the workspace yet, they join as a **guest** and see only what is shared with them.
 - **No account yet:** they get an invitation by e-mail (when set up) and are listed as "Invited". Once they create an account with this address, the page is there.
 - In the list, roles can be changed and people **removed**. A guest without any shared page left is no longer in the workspace either.
 - Owners of the workspace and owners of the page's space may share. Everyone else only sees the list.

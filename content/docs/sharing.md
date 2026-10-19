@@ -17,7 +17,7 @@ Private Bereiche und Seiten sind nur für Freigegebene sichtbar. Gäste sehen au
 
 Eine Seite oder Datenbank lässt sich mit einer Person teilen, die nicht im Arbeitsbereich ist – ohne sie in den ganzen Arbeitsbereich aufzunehmen. **Teilen → Personen mit Zugriff auf diese Seite**: E-Mail-Adresse eingeben (Mitglieder werden vorgeschlagen), **Ansehen** oder **Bearbeiten** wählen, **Hinzufügen**.
 
-- **Die Person hat schon ein Konto auf dieser Instanz:** Sie hat sofort Zugriff auf die Seite samt Unterseiten und bekommt eine Benachrichtigung („… hat „Seite“ mit dir geteilt“). Ist sie noch nicht im Arbeitsbereich, kommt sie als **Gast** dazu und sieht nur, was mit ihr geteilt ist.
+- **Die Person hat schon ein Konto auf dieser Instanz:** Sie hat sofort Zugriff auf die Seite samt Unterseiten und bekommt eine Benachrichtigung im Posteingang („… hat „Seite“ mit dir geteilt“) und – wenn die Instanz E-Mails verschickt – sofort eine E-Mail mit Link zur Seite. Unter **Einstellungen → Benachrichtigungen → Mit dir geteilte Seiten** lässt sich die E-Mail abschalten. Ist sie noch nicht im Arbeitsbereich, kommt sie als **Gast** dazu und sieht nur, was mit ihr geteilt ist.
 - **Noch kein Konto:** Sie bekommt eine Einladung per E-Mail (wenn eingerichtet) und steht als „Eingeladen“ in der Liste. Legt sie mit dieser Adresse ein Konto an, ist die Seite sofort da.
 - In der Liste lassen sich Rollen ändern und Personen wieder **Entfernen**. Hat ein Gast danach keine geteilte Seite mehr, ist er auch nicht mehr im Arbeitsbereich.
 - Teilen dürfen Eigentümer des Arbeitsbereichs und Eigentümer des Bereichs, in dem die Seite liegt. Alle anderen sehen die Liste nur.
