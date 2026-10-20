@@ -36,9 +36,20 @@ Below are **Your templates**: saved database templates, such as your own "Notes 
 - Sharing of only this page (permissions for people, share links, publication) ends – the dialog lists it first; the record follows the database's permissions. The database's default record template applies.
 - The page itself goes to the trash.
 
+### Turn a record into a page
+
+The other way round, **Turn into page …** makes a record a document page again – in the **…** menu at the top of the open record or with a right-click on the record. You need edit access to the record and write access at the target location:
+
+- Title, icon and cover become the page's title, icon and cover, the record's document its content; files and images stay the same files (they then belong to the page).
+- The properties stay as a short "Property: value" list at the top of the page (readable in a Markdown export too); in the dialog you can drop them instead.
+- Comments, text comments, tasks and versions come along; record favourites become page favourites.
+- Links to the record in all pages and records of the workspace then point to the page – @ links and backlinks keep working.
+- The page goes where the database is, or to another location of your choice, and follows its permissions. The record's own permissions and relations from other records to it end – the dialog lists them first.
+- The record itself goes to the database's trash and can be brought back.
+
 ### Copy and move records
 
-A **right-click** on a record – in a table, board, list, gallery, calendar or timeline – opens its menu: **Open**, **Duplicate**, **Copy to …**, **Move to …** and **Delete**. When several records are selected, the menu applies to all of them; the selection bar also has **Move / copy to …**.
+A **right-click** on a record – in a table, board, list, gallery, calendar or timeline – opens its menu: **Open**, **Duplicate**, **Copy to …**, **Move to …**, **Turn into page …** and **Delete**. When several records are selected, the menu applies to all of them; the selection bar also has **Move / copy to …**.
 
 In the dialog you choose the target database in the same workspace:
 

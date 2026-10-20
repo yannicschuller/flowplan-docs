@@ -36,9 +36,20 @@ Darunter stehen **Deine Vorlagen**: gespeicherte Datenbank-Vorlagen, etwa eine e
 - Freigaben nur dieser Seite (Rechte für Personen, Freigabelinks, Veröffentlichung) enden – der Dialog nennt sie vorher; der Eintrag folgt den Rechten der Datenbank. Die Standardvorlage der Datenbank wird übernommen.
 - Die Seite selbst kommt in den Papierkorb.
 
+### Eintrag in eine Seite umwandeln
+
+Umgekehrt macht **In Seite umwandeln …** aus einem Eintrag wieder eine Dokumentseite – im Menü **…** oben im geöffneten Eintrag oder per Rechtsklick auf den Eintrag. Dafür brauchst du Bearbeitungsrechte am Eintrag und Schreibrechte am Zielort:
+
+- Titel, Symbol und Cover werden zu Titel, Symbol und Cover der Seite, das Dokument des Eintrags zu ihrem Inhalt; Dateien und Bilder bleiben dieselben (sie gehören dann zur Seite).
+- Die Eigenschaften bleiben als kurze Liste „Eigenschaft: Wert“ oben auf der Seite stehen (auch im Markdown-Export lesbar); im Dialog lassen sie sich stattdessen weglassen.
+- Kommentare, Textkommentare, Aufgaben und Versionen ziehen mit; Eintrags-Favoriten werden Seiten-Favoriten.
+- Links auf den Eintrag in allen Seiten und Einträgen des Arbeitsbereichs zeigen danach auf die Seite – @-Links und Rückverweise funktionieren weiter.
+- Die Seite landet dort, wo die Datenbank liegt, oder an einem anderen Ort deiner Wahl, und folgt dessen Rechten. Eigene Rechte des Eintrags und Relationen anderer Einträge auf ihn enden – der Dialog nennt sie vorher.
+- Der Eintrag selbst kommt in den Papierkorb der Datenbank und lässt sich zurückholen.
+
 ### Einträge kopieren und verschieben
 
-Ein **Rechtsklick** auf einen Eintrag – in Tabelle, Board, Liste, Galerie, Kalender oder Zeitleiste – öffnet sein Menü: **Öffnen**, **Duplizieren**, **Kopieren nach …**, **Verschieben nach …** und **Löschen**. Sind mehrere Einträge ausgewählt, gilt das Menü für alle; in der Leiste der Auswahl steht dafür auch **Verschieben / kopieren nach …**.
+Ein **Rechtsklick** auf einen Eintrag – in Tabelle, Board, Liste, Galerie, Kalender oder Zeitleiste – öffnet sein Menü: **Öffnen**, **Duplizieren**, **Kopieren nach …**, **Verschieben nach …**, **In Seite umwandeln …** und **Löschen**. Sind mehrere Einträge ausgewählt, gilt das Menü für alle; in der Leiste der Auswahl steht dafür auch **Verschieben / kopieren nach …**.
 
 Im Dialog wählst du die Ziel-Datenbank desselben Arbeitsbereichs:
 
