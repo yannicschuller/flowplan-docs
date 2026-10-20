@@ -83,6 +83,22 @@
 .section:hover {
   color: var(--text);
 }
+.community {
+  padding: 7px 10px;
+  font-size: 14px;
+  font-weight: 550;
+  color: var(--muted);
+  text-decoration: none;
+}
+.community:hover {
+  color: var(--text);
+}
+.lang + .community {
+  margin-left: 8px;
+}
+.community + .back {
+  margin-left: 0;
+}
 .back {
   margin-left: auto;
   padding: 7px 12px;
@@ -727,6 +743,7 @@
     grid-template-columns: 1fr;
   }
   .section,
+  .community,
   .back {
     display: none;
   }

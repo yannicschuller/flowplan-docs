@@ -2,7 +2,7 @@
 // language models. Every page exists three times: /de/…, /en/… (fixed
 // language, these are indexed) and /… (follows the reader, x-default).
 import type { Metadata } from "next";
-import { docsUrl, GITHUB_URL, websiteUrl } from "./links";
+import { DISCORD_URL, docsUrl, GITHUB_URL, websiteUrl } from "./links";
 import type { Locale } from "./i18n";
 
 export const ogLocale = (locale: Locale) => (locale === "de" ? "de_DE" : "en_US");
@@ -41,7 +41,7 @@ export const softwareJson = () => ({
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web, macOS, Windows, Linux (Docker)",
   license: "https://www.gnu.org/licenses/agpl-3.0.html",
-  sameAs: [GITHUB_URL],
+  sameAs: [GITHUB_URL, DISCORD_URL],
 });
 
 export function jsonLd(data: object) {

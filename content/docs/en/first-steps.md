@@ -52,3 +52,7 @@ In a document, `/` opens the block menu: type `/h2`, `/todo` or `/table` and pre
 - [Pages and spaces](/pages-and-spaces): page tree, favourites, moving and trash.
 - [Databases](/databases): tables, boards, calendars and more from the same records.
 - [Collaboration and comments](/collaboration): write together, comment, mention.
+
+## Help and community
+
+Questions, ideas or just saying hello: in the **[Flowplan Discord](https://discord.gg/bCEdB6MPrR)** users and admins help each other. Bugs and feature requests are best filed as [GitHub issues](https://github.com/yannicschuller/flowplan/issues), so nothing gets lost.

@@ -52,3 +52,7 @@ Im Dokument öffnet `/` das Blockmenü: `/h2`, `/todo` oder `/tabelle` tippen un
 - [Seiten und Bereiche](/pages-and-spaces): Seitenbaum, Favoriten, Verschieben und Papierkorb.
 - [Datenbanken](/databases): Tabellen, Boards, Kalender und mehr aus denselben Einträgen.
 - [Zusammenarbeit und Kommentare](/collaboration): gemeinsam schreiben, kommentieren, erwähnen.
+
+## Hilfe und Community
+
+Fragen, Ideen oder einfach Hallo sagen: Im **[Flowplan-Discord](https://discord.gg/bCEdB6MPrR)** helfen sich Nutzerinnen, Nutzer und Admins gegenseitig. Fehler und Funktionswünsche am besten als [GitHub-Issue](https://github.com/yannicschuller/flowplan/issues) melden, damit nichts verloren geht.

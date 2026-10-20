@@ -2,7 +2,7 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { docGroups, loadDoc } from "@/lib/docs";
 import type { Metadata } from "next";
 import { localePrefix, requestLocale } from "@/lib/i18n-server";
-import { GITHUB_URL, websiteUrl } from "@/lib/links";
+import { DISCORD_URL, GITHUB_URL, websiteUrl } from "@/lib/links";
 import { absolute, jsonLd, pageAlternates, socialMetadata, softwareJson } from "@/lib/seo";
 import { translate } from "@/lib/i18n";
 import s from "@/components/docs/docs.module.css";
@@ -45,7 +45,7 @@ export default async function DocsHome() {
         name: t("Flowplan-Dokumentation", "Flowplan documentation"),
         url: absolute(`/${locale}`),
         inLanguage: locale,
-        publisher: { "@type": "Organization", name: "Flowplan", url: websiteUrl(), sameAs: [GITHUB_URL] },
+        publisher: { "@type": "Organization", name: "Flowplan", url: websiteUrl(), sameAs: [GITHUB_URL, DISCORD_URL] },
       },
       softwareJson(),
     ],

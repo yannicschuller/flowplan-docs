@@ -5,7 +5,7 @@ import { localePrefix, requestLocale } from "@/lib/i18n-server";
 import { translate } from "@/lib/i18n";
 import { LanguageSwitch } from "@/components/i18n";
 import s from "@/components/docs/docs.module.css";
-import { imprintUrl, privacyUrl, websiteUrl } from "@/lib/links";
+import { DISCORD_URL, GITHUB_URL, imprintUrl, privacyUrl, websiteUrl } from "@/lib/links";
 
 // The documentation: same paper and ink as the website, calmer.
 export default async function DocsLayout({ children }: { children: React.ReactNode }) {
@@ -27,6 +27,9 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
         </a>
         <DocsSearch index={index} />
         <LanguageSwitch className={s.lang} />
+        <a href={DISCORD_URL} className={s.community} rel="noopener">
+          {t("Community", "Community")}
+        </a>
         <a href={websiteUrl()} className={s.back}>
           {t("Zur Startseite", "Start page")}
         </a>
@@ -35,12 +38,12 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
         <DocsNav groups={docGroups(locale)} />
         {children}
       </div>
-      {(imprint || privacy) && (
-        <footer className={s.legal}>
-          {imprint && <a href={imprint}>{t("Impressum", "Legal notice")}</a>}
-          {privacy && <a href={privacy}>{t("Datenschutz", "Privacy")}</a>}
-        </footer>
-      )}
+      <footer className={s.legal}>
+        <a href={DISCORD_URL} rel="noopener">{t("Community auf Discord", "Community on Discord")}</a>
+        <a href={GITHUB_URL} rel="noopener">GitHub</a>
+        {imprint && <a href={imprint}>{t("Impressum", "Legal notice")}</a>}
+        {privacy && <a href={privacy}>{t("Datenschutz", "Privacy")}</a>}
+      </footer>
     </div>
   );
 }

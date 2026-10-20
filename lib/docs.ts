@@ -6,7 +6,7 @@ import { join } from "node:path";
 import { existsSync } from "node:fs";
 import { Marked, type Tokens } from "marked";
 import type { Locale } from "./i18n";
-import { GITHUB_URL, websiteUrl } from "./links";
+import { DISCORD_URL, GITHUB_URL, websiteUrl } from "./links";
 
 export type DocGroup = { title: string; pages: { slug: string; title: string }[] };
 
@@ -269,6 +269,7 @@ export function llmsIndex(base: string, locale: Locale) {
     "",
     `- [${de ? "Alle Seiten in einer Datei" : "All pages in one file"}](${base}${de ? "/de" : ""}/llms-full.txt)`,
     `- [${de ? "Quellcode auf GitHub" : "Source code on GitHub"}](${GITHUB_URL})`,
+    `- [${de ? "Community auf Discord" : "Community on Discord"}](${DISCORD_URL})`,
     `- [Website](${websiteUrl()})`,
     "",
   );
