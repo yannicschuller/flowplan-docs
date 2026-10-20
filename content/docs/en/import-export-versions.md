@@ -29,6 +29,7 @@ The download icon next to a space's name in the sidebar (or **Settings → Data 
 - Anyone who can read the space may export it, no administrator needed. It contains only what that person may read: other people's private records and PIN-locked journals stay out, and other people's private spaces cannot be exported.
 - **Include comments and earlier versions** works as for the page export; the same limits apply, for the whole space.
 - For scripts with a read token: `{"spaceId":"…","format":"zip","history":true}` to `/api/markdown-export` (see [API tokens](/api-and-webhooks)). The space's id is shown in the export dialog.
+- Regularly into a Git repository, without a script of your own: the [Git export of a space](/storage-and-backups#git-export-of-a-space), set up by the owner of the space.
 
 ### Print and PDF
 

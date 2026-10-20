@@ -64,7 +64,7 @@ Details: [Verschlüsselung](/storage-and-backups#verschluesselung).
 
 ## Gespeicherte Geheimnisse
 
-Schlüssel von KI-Anbietern und die Schlüssel der Authenticator-Apps ([Zwei-Faktor-Anmeldung](/sign-in#zwei-faktor-anmeldung)) speichert Flowplan nur verschlüsselt (AES-256-GCM, an ihren Platz gebunden). Der Schlüssel dafür kommt, in dieser Reihenfolge, aus:
+Schlüssel von KI-Anbietern, die Schlüssel der Authenticator-Apps ([Zwei-Faktor-Anmeldung](/sign-in#zwei-faktor-anmeldung)) und die Zugangstokens des [Git-Exports der Bereiche](/storage-and-backups#git-export-eines-bereichs) speichert Flowplan nur verschlüsselt (AES-256-GCM, an ihren Platz gebunden). Der Schlüssel dafür kommt, in dieser Reihenfolge, aus:
 
 | Quelle | Bedeutung |
 | --- | --- |
@@ -92,6 +92,9 @@ Den Versand prüfst du unter **Administration → Instanz → Test-E-Mail senden
 | Variable | Standard | Bedeutung |
 | --- | --- | --- |
 | `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE` | *leer* | `true` erlaubt Webhooks an interne Adressen und `http://` – etwa Home Assistant oder n8n im selben Netz. Ohne diese Variable sind nur öffentliche HTTPS-Adressen erlaubt. |
+| `SPACE_GIT_EXPORT` | *leer* | `true` schaltet den [Git-Export der Bereiche](/storage-and-backups#git-export-eines-bereichs) ein: Bereichseigentümer übertragen ihren Bereich täglich oder wöchentlich in ein eigenes Repository. |
+| `SPACE_GIT_ALLOWED_HOSTS` | *leer* | Erlaubte Git-Server dafür, durch Komma getrennt (z. B. `git.example.org`). Ohne die Variable ist jeder öffentliche `https://`-Server erlaubt; interne Adressen nie. |
+| `EXPORT_GIT_*` | *leer* | Veraltet: der Git-Export der ganzen Instanz, siehe [In ein Git-Repository übertragen](/storage-and-backups#in-ein-git-repository-uebertragen). Läuft weiter; besser ist der Git-Export der Bereiche. |
 
 ## Sprachnotizen (Whisper)
 

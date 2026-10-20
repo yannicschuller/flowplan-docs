@@ -62,6 +62,7 @@ Der Stern in der Kopfzeile legt eine Seite unter **Favoriten** in der Seitenleis
 - umbenennen, Emoji oder Symbol und eine von neun Farben vergeben,
 - Sichtbarkeit zwischen öffentlich (alle Mitglieder) und privat wechseln,
 - **Bereich duplizieren**: unabhängige Kopie aller aktiven Seiten, Einträge und Anhänge; Kommentare, Versionen und Freigaben werden nicht übernommen,
+- **Git-Export** (nur für die Eigentümerin oder den Eigentümer des Bereichs, wenn die Administration ihn eingeschaltet hat): den Bereich täglich oder wöchentlich in ein Git-Repository übertragen, siehe [Git-Export eines Bereichs](/storage-and-backups#git-export-eines-bereichs),
 - in den Papierkorb verschieben. Der letzte aktive Bereich bleibt erhalten, bis ein weiterer existiert.
 
 ## Papierkorb

@@ -156,6 +156,9 @@ A readable copy outside Flowplan – for emergencies when the instance is down, 
 
 ### Push into a Git repository
 
+> [!IMPORTANT]
+> The instance Git export (`EXPORT_GIT_*`) is deprecated. It keeps working but is replaced by the [Git export of a space](#git-export-of-a-space), which space owners set up themselves; the administration shows a notice about it. The scheduled Markdown export to S3 or the data folder stays as it is.
+
 With these variables Flowplan pushes every export into a repository itself (Forgejo, Gitea, GitHub, GitLab) – every page in a folder of its own, one commit per run with changes:
 
 | Variable | Meaning |
@@ -174,6 +177,37 @@ With `EXPORT_GIT_IMPORT=true`, changed files are handled like this:
 - Database tables, comments and versions are copies and are not read back.
 
 Markdown does not know every Flowplan block (such as columns). Whiteboards are in the repository as SVG images; an embedded board carries an invisible marker (`<!-- flowplan:whiteboard … -->`) that makes it an embed again when changes are taken over from Git – please leave the image and link below it in place. If you edit pages with other such blocks in Git, the previous state is in the version history. The administration shows the state of the last push (commit, changes taken over, errors).
+
+### Git export of a space
+
+Instead of one repository for the whole instance, the owner of a space sets up a repository for that space themselves: **Manage space → Git export** (via `…` next to the space or **Settings → Spaces**). The administration only switches the feature on:
+
+| Variable | Default | Meaning |
+| --- | --- | --- |
+| `SPACE_GIT_EXPORT` | *empty* | `true` turns on the Git export of spaces. Without it, space owners don't see it and exports already set up don't run. |
+| `SPACE_GIT_ALLOWED_HOSTS` | *empty* | Git servers, comma-separated, e.g. `git.example.org,codeberg.org`. When set, only these are allowed; without it, any public `https://` server. |
+
+In the space, the owner enters:
+
+- the **repository address** (`https://`, without credentials), **branch** (default `main`), **user name** and an **access token with write access** (GitLab: user name `oauth2`);
+- the **frequency**: daily or weekly, plus **Run now**;
+- optionally **comments and earlier versions** (`<file>.comments.md`, `<file>.versions/`).
+
+What happens:
+
+- The repository gets the [Markdown export of the space](/import-export-versions) – every top-level page in a folder of its own (`<title>-<id>/`), plus `index.md` and `README.txt`. Other files in the repository (such as `LICENSE` or CI files) stay untouched.
+- One commit per run, and only when something changed; pages no longer in the space are deleted in the same commit.
+- The export reads with the owner's permissions: private records of others and journals with a PIN stay out.
+- Export only: Flowplan does not take over changes made in the repository.
+- The settings show the last run (commit, files changed, error) and when the next one is due. A failed run is retried after an hour.
+
+Security:
+
+- Flowplan stores the token only encrypted (like the other [stored secrets](/configuration#stored-secrets), bound to the space). After saving, the interface only shows whether one is stored; it is not in exports, and in the instance backup only encrypted. A new repository address needs the token again.
+- Every address is resolved and checked: internal addresses (localhost, private networks) cannot be reached, redirects are not followed.
+- The export ends, and token and working copy (`git-export/spaces/<space>/` in the data folder) are deleted, when the owner turns it off, leaves the workspace, becomes a guest or deletes their account – or when the space gets a new owner or moves to the trash.
+
+**Administration → Instance → Markdown export** shows how many spaces use the Git export and their last errors – without addresses or content.
 
 ## Restore
 

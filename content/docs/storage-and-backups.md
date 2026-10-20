@@ -156,6 +156,9 @@ Eine lesbare Kopie außerhalb von Flowplan – für den Notfall, wenn die Instan
 
 ### In ein Git-Repository übertragen
 
+> [!IMPORTANT]
+> Der Git-Export der Instanz (`EXPORT_GIT_*`) ist veraltet. Er läuft weiter, wird aber durch den [Git-Export eines Bereichs](#git-export-eines-bereichs) ersetzt, den Bereichseigentümer selbst einrichten; die Administration zeigt dazu einen Hinweis. Der geplante Markdown-Export nach S3 oder in den Datenordner bleibt unverändert.
+
 Mit diesen Variablen überträgt Flowplan jeden Export selbst in ein Repository (Forgejo, Gitea, GitHub, GitLab) – jede Seite in einem eigenen Ordner, ein Commit pro Lauf mit Änderungen:
 
 | Variable | Bedeutung |
@@ -174,6 +177,37 @@ Mit `EXPORT_GIT_IMPORT=true` gilt für geänderte Dateien:
 - Datenbanktabellen, Kommentare und Versionen sind Kopien und werden nicht zurückgelesen.
 
 Markdown kennt nicht alle Blöcke von Flowplan (etwa Spalten). Whiteboards liegen als SVG-Bild im Repository; ein eingebettetes Board trägt eine unsichtbare Markierung (`<!-- flowplan:whiteboard … -->`), mit der es beim Übernehmen aus Git wieder eingebettet wird – Bild und Link darunter bitte stehen lassen. Wer in Git Seiten mit anderen solchen Blöcken bearbeitet, findet den vorigen Stand im Versionsverlauf. Den Stand der letzten Übertragung (Commit, übernommene Änderungen, Fehler) zeigt die Administration.
+
+### Git-Export eines Bereichs
+
+Statt eines Repositorys für die ganze Instanz richtet die Eigentümerin oder der Eigentümer eines Bereichs selbst ein Repository für diesen Bereich ein: **Bereich verwalten → Git-Export** (über `…` neben dem Bereich oder **Einstellungen → Bereiche**). Die Administration schaltet die Funktion nur ein:
+
+| Variable | Standard | Bedeutung |
+| --- | --- | --- |
+| `SPACE_GIT_EXPORT` | *leer* | `true` schaltet den Git-Export der Bereiche ein. Ohne die Variable sehen Bereichseigentümer ihn nicht, und eingerichtete Exporte laufen nicht. |
+| `SPACE_GIT_ALLOWED_HOSTS` | *leer* | Git-Server, durch Komma getrennt, z. B. `git.example.org,codeberg.org`. Gesetzt sind nur diese erlaubt; ohne die Variable jeder öffentliche `https://`-Server. |
+
+Im Bereich trägt die Eigentümerin oder der Eigentümer ein:
+
+- **Repository-Adresse** (`https://`, ohne Zugangsdaten), **Branch** (Standard `main`), **Benutzername** und ein **Zugangstoken mit Schreibrechten** (GitLab: Benutzername `oauth2`);
+- **Häufigkeit**: täglich oder wöchentlich, dazu **Jetzt ausführen**;
+- auf Wunsch **Kommentare und frühere Versionen** (`<Datei>.comments.md`, `<Datei>.versions/`).
+
+Was dabei passiert:
+
+- Ins Repository kommt der [Markdown-Export des Bereichs](/import-export-versions) – jede Seite der obersten Ebene in einem eigenen Ordner (`<Titel>-<Kennung>/`), dazu `index.md` und `README.txt`. Andere Dateien im Repository (etwa `LICENSE` oder CI-Dateien) bleiben unberührt.
+- Ein Commit je Lauf, und nur, wenn sich etwas geändert hat; Seiten, die nicht mehr im Bereich sind, werden im selben Commit gelöscht.
+- Exportiert wird mit den Leserechten der Eigentümerin oder des Eigentümers: private Einträge anderer und Journale mit PIN bleiben draußen.
+- Nur Export: Änderungen im Repository übernimmt Flowplan nicht.
+- Die Einstellungen zeigen den letzten Lauf (Commit, geänderte Dateien, Fehler) und ab wann der nächste fällig ist. Ein fehlgeschlagener Lauf wird nach einer Stunde wiederholt.
+
+Sicherheit:
+
+- Das Token speichert Flowplan nur verschlüsselt (wie die anderen [gespeicherten Geheimnisse](/configuration#gespeicherte-geheimnisse), an den Bereich gebunden). Nach dem Speichern zeigt die Oberfläche nur noch, ob eines gespeichert ist; in Exporten steht es nicht, in der Instanzsicherung nur verschlüsselt. Eine neue Repository-Adresse braucht das Token erneut.
+- Jede Adresse wird aufgelöst und geprüft: Interne Adressen (localhost, private Netze) sind nicht erreichbar, Weiterleitungen werden nicht verfolgt.
+- Der Export endet, und Token und Arbeitskopie (`git-export/spaces/<Bereich>/` im Datenordner) werden gelöscht, wenn die Eigentümerin oder der Eigentümer ihn ausschaltet, den Arbeitsbereich verlässt, Gast wird oder das Konto löscht – oder wenn der Bereich eine neue Eigentümerin oder einen neuen Eigentümer bekommt oder in den Papierkorb wandert.
+
+**Administration → Instanz → Markdown-Export** zeigt, wie viele Bereiche den Git-Export nutzen, und ihre letzten Fehler – ohne Adressen und Inhalte.
 
 ## Wiederherstellen
 

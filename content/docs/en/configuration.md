@@ -64,7 +64,7 @@ Details: [Encryption](/storage-and-backups#encryption).
 
 ## Stored secrets
 
-Flowplan stores AI provider keys and the keys of authenticator apps ([two-factor sign-in](/sign-in#two-factor-sign-in)) only encrypted (AES-256-GCM, bound to their place). The key for this comes, in this order, from:
+Flowplan stores AI provider keys, the keys of authenticator apps ([two-factor sign-in](/sign-in#two-factor-sign-in)) and the access tokens of the [Git export of spaces](/storage-and-backups#git-export-of-a-space) only encrypted (AES-256-GCM, bound to their place). The key for this comes, in this order, from:
 
 | Source | Meaning |
 | --- | --- |
@@ -92,6 +92,9 @@ Check delivery under **Administration → Instance → Send test e-mail**.
 | Variable | Default | Meaning |
 | --- | --- | --- |
 | `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE` | *empty* | `true` allows webhooks to internal addresses and `http://` – such as Home Assistant or n8n in the same network. Without this variable only public HTTPS addresses are allowed. |
+| `SPACE_GIT_EXPORT` | *empty* | `true` turns on the [Git export of spaces](/storage-and-backups#git-export-of-a-space): space owners push their space into a repository of their own, daily or weekly. |
+| `SPACE_GIT_ALLOWED_HOSTS` | *empty* | Allowed Git servers for it, comma-separated (e.g. `git.example.org`). Without it any public `https://` server is allowed; internal addresses never. |
+| `EXPORT_GIT_*` | *empty* | Deprecated: the Git export of the whole instance, see [Push into a Git repository](/storage-and-backups#push-into-a-git-repository). Keeps working; the Git export of spaces is the better choice. |
 
 ## Voice notes (Whisper)
 

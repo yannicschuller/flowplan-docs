@@ -62,6 +62,7 @@ Via `…` next to a space or **Settings → Spaces**:
 - rename it, give it an emoji or symbol and one of nine colours,
 - switch the visibility between open (all members) and private,
 - **Duplicate space**: an independent copy of all active pages, records and attachments; comments, versions and shares are not copied,
+- **Git export** (only for the owner of the space, when the administration has switched it on): push the space into a Git repository daily or weekly, see [Git export of a space](/storage-and-backups#git-export-of-a-space),
 - move it to the trash. The last active space stays until there is another one.
 
 ## Trash

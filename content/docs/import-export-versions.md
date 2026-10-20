@@ -29,6 +29,7 @@ Das Download-Symbol neben dem Namen eines Bereichs in der Seitenleiste (oder **E
 - Exportieren darf jede Person, die den Bereich lesen kann, ohne Administrator. Enthalten ist nur, was sie lesen darf: private Einträge und Journale mit PIN anderer bleiben draußen, private Bereiche anderer lassen sich nicht exportieren.
 - **Kommentare und frühere Versionen einschließen** wie beim Seitenexport; es gelten dieselben Grenzen, für den ganzen Bereich.
 - Für Skripte mit einem Lese-Token: `{"spaceId":"…","format":"zip","history":true}` an `/api/markdown-export` (siehe [API-Tokens](/api-and-webhooks)). Die Kennung des Bereichs steht im Export-Dialog.
+- Regelmäßig in ein Git-Repository, ohne eigenes Skript: der [Git-Export eines Bereichs](/storage-and-backups#git-export-eines-bereichs), den die Eigentümerin oder der Eigentümer des Bereichs einrichtet.
 
 ### Drucken und PDF
 
