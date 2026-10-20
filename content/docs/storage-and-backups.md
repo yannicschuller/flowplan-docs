@@ -186,6 +186,7 @@ Statt eines Repositorys für die ganze Instanz richtet die Eigentümerin oder de
 | --- | --- | --- |
 | `SPACE_GIT_EXPORT` | *leer* | `true` schaltet den Git-Export der Bereiche ein. Ohne die Variable sehen Bereichseigentümer ihn nicht, und eingerichtete Exporte laufen nicht. |
 | `SPACE_GIT_ALLOWED_HOSTS` | *leer* | Git-Server, durch Komma getrennt, z. B. `git.example.org,codeberg.org`. Gesetzt sind nur diese erlaubt; ohne die Variable jeder öffentliche `https://`-Server. |
+| `SPACE_GIT_ALLOW_PRIVATE` | *leer* | `true` erlaubt den in `SPACE_GIT_ALLOWED_HOSTS` genannten Servern auch interne Adressen – etwa ein Forgejo auf demselben Host, den der Container über `--add-host git.example.org:host-gateway` erreicht. Wirkt nur zusammen mit der Liste; alle anderen Server bleiben auf öffentliche Adressen beschränkt. |
 
 Im Bereich trägt die Eigentümerin oder der Eigentümer ein:
 
@@ -204,7 +205,7 @@ Was dabei passiert:
 Sicherheit:
 
 - Das Token speichert Flowplan nur verschlüsselt (wie die anderen [gespeicherten Geheimnisse](/configuration#gespeicherte-geheimnisse), an den Bereich gebunden). Nach dem Speichern zeigt die Oberfläche nur noch, ob eines gespeichert ist; in Exporten steht es nicht, in der Instanzsicherung nur verschlüsselt. Eine neue Repository-Adresse braucht das Token erneut.
-- Jede Adresse wird aufgelöst und geprüft: Interne Adressen (localhost, private Netze) sind nicht erreichbar, Weiterleitungen werden nicht verfolgt.
+- Jede Adresse wird aufgelöst und geprüft: Interne Adressen (localhost, private Netze) sind nicht erreichbar, Weiterleitungen werden nicht verfolgt. Einzige Ausnahme: Server, die die Administration in `SPACE_GIT_ALLOWED_HOSTS` nennt, wenn zusätzlich `SPACE_GIT_ALLOW_PRIVATE=true` gesetzt ist – etwa ein Git-Server auf demselben Host. Auch dann bleibt es bei HTTPS, festgelegter Adresse und ohne Weiterleitungen.
 - Der Export endet, und Token und Arbeitskopie (`git-export/spaces/<Bereich>/` im Datenordner) werden gelöscht, wenn die Eigentümerin oder der Eigentümer ihn ausschaltet, den Arbeitsbereich verlässt, Gast wird oder das Konto löscht – oder wenn der Bereich eine neue Eigentümerin oder einen neuen Eigentümer bekommt oder in den Papierkorb wandert.
 
 **Administration → Instanz → Markdown-Export** zeigt, wie viele Bereiche den Git-Export nutzen, und ihre letzten Fehler – ohne Adressen und Inhalte.

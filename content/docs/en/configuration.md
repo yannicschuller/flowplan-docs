@@ -94,6 +94,7 @@ Check delivery under **Administration → Instance → Send test e-mail**.
 | `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE` | *empty* | `true` allows webhooks to internal addresses and `http://` – such as Home Assistant or n8n in the same network. Without this variable only public HTTPS addresses are allowed. |
 | `SPACE_GIT_EXPORT` | *empty* | `true` turns on the [Git export of spaces](/storage-and-backups#git-export-of-a-space): space owners push their space into a repository of their own, daily or weekly. |
 | `SPACE_GIT_ALLOWED_HOSTS` | *empty* | Allowed Git servers for it, comma-separated (e.g. `git.example.org`). Without it any public `https://` server is allowed; internal addresses never. |
+| `SPACE_GIT_ALLOW_PRIVATE` | *empty* | `true` also allows internal addresses for the servers listed in `SPACE_GIT_ALLOWED_HOSTS` – for example a Forgejo on the same host that the container reaches via `--add-host git.example.org:host-gateway`. Only works together with the list; every other server stays limited to public addresses. |
 | `EXPORT_GIT_*` | *empty* | Deprecated: the Git export of the whole instance, see [Push into a Git repository](/storage-and-backups#push-into-a-git-repository). Keeps working; the Git export of spaces is the better choice. |
 
 ## Voice notes (Whisper)

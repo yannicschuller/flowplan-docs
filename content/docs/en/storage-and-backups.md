@@ -186,6 +186,7 @@ Instead of one repository for the whole instance, the owner of a space sets up a
 | --- | --- | --- |
 | `SPACE_GIT_EXPORT` | *empty* | `true` turns on the Git export of spaces. Without it, space owners don't see it and exports already set up don't run. |
 | `SPACE_GIT_ALLOWED_HOSTS` | *empty* | Git servers, comma-separated, e.g. `git.example.org,codeberg.org`. When set, only these are allowed; without it, any public `https://` server. |
+| `SPACE_GIT_ALLOW_PRIVATE` | *empty* | `true` also allows internal addresses for the servers listed in `SPACE_GIT_ALLOWED_HOSTS` – for example a Forgejo on the same host that the container reaches via `--add-host git.example.org:host-gateway`. Only works together with the list; every other server stays limited to public addresses. |
 
 In the space, the owner enters:
 
@@ -204,7 +205,7 @@ What happens:
 Security:
 
 - Flowplan stores the token only encrypted (like the other [stored secrets](/configuration#stored-secrets), bound to the space). After saving, the interface only shows whether one is stored; it is not in exports, and in the instance backup only encrypted. A new repository address needs the token again.
-- Every address is resolved and checked: internal addresses (localhost, private networks) cannot be reached, redirects are not followed.
+- Every address is resolved and checked: internal addresses (localhost, private networks) cannot be reached, redirects are not followed. The only exception: servers the administration lists in `SPACE_GIT_ALLOWED_HOSTS` when `SPACE_GIT_ALLOW_PRIVATE=true` is set as well – for example a Git server on the same host. Even then it stays HTTPS, with the pinned address and no redirects.
 - The export ends, and token and working copy (`git-export/spaces/<space>/` in the data folder) are deleted, when the owner turns it off, leaves the workspace, becomes a guest or deletes their account – or when the space gets a new owner or moves to the trash.
 
 **Administration → Instance → Markdown export** shows how many spaces use the Git export and their last errors – without addresses or content.
