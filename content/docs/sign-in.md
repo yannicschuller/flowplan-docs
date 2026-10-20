@@ -39,7 +39,7 @@ Bei der Anmeldung fragt Flowplan nach dem Passwort nach dem Code aus der App (od
 
 - Ein Code gilt nur einmal; Codes aus dem vorigen und nächsten 30-Sekunden-Fenster werden angenommen, damit eine leicht falsch gehende Uhr nicht stört.
 - Zu viele falsche Codes sperren für 15 Minuten.
-- **Passkeys** zählen als zweiter Faktor: Wer sich mit einem Passkey anmeldet, braucht keinen Code.
+- **Passkeys** reichen allein: Wer sich mit einem Passkey anmeldet, braucht keinen Code – auch wenn die App eingeschaltet ist. Wer zusätzlich einen Code möchte, schaltet unter **Einstellungen → Allgemein → Zwei-Faktor-Anmeldung** die Option **Auch nach dem Passkey einen Code verlangen** ein. Ausschalten verlangt das Passwort oder einen aktuellen Code.
 - **SSO-Konten** regeln den zweiten Faktor beim Anbieter; **API-Tokens** sind nicht betroffen.
 - **Ausschalten** und **neue Wiederherstellungscodes** verlangen das Passwort oder einen aktuellen Code.
 - Auch nach **Passwort vergessen** bleibt der zweite Schritt bestehen.
@@ -109,10 +109,13 @@ Bei jeder SSO-Anmeldung gleicht Flowplan ab:
 
 - Passende Personen kommen hinzu; bei mehreren passenden Gruppen gilt die höchste Rolle. Gäste bleiben höchstens bei „Bearbeiten“.
 - Wer die SSO-Gruppe nicht mehr hat, verliert, was die Zuordnung gegeben hat.
-- Von Hand hinzugefügte Mitglieder und Gruppenmitgliedschaften bleiben unberührt. Ändert ein Eigentümer die Rolle oder Gruppen eines über SSO verwalteten Mitglieds von Hand, wird die Mitgliedschaft ab dann von Hand verwaltet.
+- **Die Zuordnung hat immer Vorrang.** Passt eine Zuordnung auf eine Person, setzt Flowplan Rolle und Gruppen so, wie die Zuordnung sagt – auch wenn das Mitglied von Hand hinzugefügt oder geändert wurde. Ab dann wird die Mitgliedschaft über SSO verwaltet.
+- Mitglieder und Gruppenmitgliedschaften, auf die keine Zuordnung passt und die nie aus SSO kamen, bleiben unberührt.
 - Der letzte Eigentümer eines Arbeitsbereichs bleibt immer.
 - Geänderte Zuordnungen gelten sofort für alle mit einer aktiven SSO-Sitzung, sonst bei der nächsten Anmeldung (mit „Angemeldet bleiben“ spätestens nach `SESSION_GROUPS_HOURS`).
 - Konten mit E-Mail und Passwort sind nicht betroffen.
+
+> **Hinweis: Änderungen von Hand bei aktivem SSO.** Ändert ein Eigentümer die Rolle oder eine Gruppe eines Mitglieds, das über eine SSO-Gruppe kommt (in der Mitgliederliste mit „über SSO-Gruppe …“ markiert), gilt die Änderung nur bis zur nächsten SSO-Anmeldung dieser Person oder bis zur nächsten Änderung der Zuordnungen. Danach setzt die Zuordnung Rolle und Gruppen wieder. Flowplan zeigt das direkt nach der Änderung an. Soll eine Rolle dauerhaft anders sein, ändert die Administration die Zuordnung – oder die Gruppen der Person im Identitätsanbieter.
 
 In der Mitgliederliste und im Gruppendialog steht bei solchen Mitgliedern „über SSO-Gruppe „X““.
 

@@ -39,7 +39,7 @@ When signing in, Flowplan asks for the code from the app (or a recovery code) af
 
 - A code counts only once; codes from the previous and the next 30-second window are accepted, so a slightly wrong clock doesn't matter.
 - Too many wrong codes block sign-in for 15 minutes.
-- **Passkeys** count as a second factor: signing in with a passkey needs no code.
+- **Passkeys** are enough on their own: signing in with a passkey needs no code – even with the app turned on. Whoever wants a code as well turns on **Also ask for a code after the passkey** under **Settings → General → Two-factor sign-in**. Turning it off needs the password or a current code.
 - **SSO accounts** get their second factor from the provider; **API tokens** are not affected.
 - **Turning it off** and **new recovery codes** need the password or a current code.
 - **Forgot password** does not skip the second step.
@@ -109,10 +109,13 @@ At every SSO sign-in Flowplan applies them:
 
 - Matching people are added; with several matching groups the highest role wins. Guests stay at "Edit" at most.
 - Whoever no longer has the SSO group loses what the mapping gave.
-- Members and group memberships added by hand stay untouched. If an owner changes the role or groups of an SSO-managed member by hand, that membership is managed by hand from then on.
+- **The mapping always wins.** If a mapping matches a person, Flowplan sets the role and groups to what the mapping says – even if the member was added or changed by hand. From then on the membership is managed through SSO.
+- Members and group memberships that no mapping matches and that never came from SSO stay untouched.
 - The last owner of a workspace always stays.
 - Changed mappings apply right away to everyone with an active SSO session, otherwise at the next sign-in (with "Stay signed in" at the latest after `SESSION_GROUPS_HOURS`).
 - Accounts with e-mail and password are not affected.
+
+> **Note: changes by hand while SSO is active.** If an owner changes the role or a group of a member who comes from an SSO group (marked "via SSO group …" in the member list), the change lasts only until that person's next SSO sign-in or the next change of the mappings. Then the mapping sets the role and groups again. Flowplan says so right after the change. For a lasting difference, the administration changes the mapping – or the person's groups in the identity provider.
 
 In the member list and the group dialog, such members show "via SSO group “X”".
 
