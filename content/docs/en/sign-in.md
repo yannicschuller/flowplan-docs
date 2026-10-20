@@ -101,8 +101,8 @@ SESSION_HOURS=8
 
 Groups from the identity provider (the claim in `OIDC_GROUPS_CLAIM`) can give membership and groups in workspaces – so you manage access centrally in the provider.
 
-- **Owners** map groups under **Settings → Groups & permissions → SSO groups** (the section appears when `OIDC_ISSUER` is set).
-- **Admins** map them for any workspace under **Administration → Workspaces → Map SSO groups centrally**.
+- **Admins** map groups – for any workspace centrally under **Administration → Workspaces → Map SSO groups centrally**, or, where they are owners, under **Settings → Groups & permissions → SSO groups**.
+- **Owners** who aren't admins see their workspace's mappings there but can't change them. A mapping brings people of the whole instance into a workspace and shows their addresses there – that is the administration's decision.
 - A mapping gives a **role** (View, Edit, Owner), a **workspace group** (for [page permissions](/workspaces-and-permissions#groups)) or both.
 
 At every SSO sign-in Flowplan applies them:

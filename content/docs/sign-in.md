@@ -101,8 +101,8 @@ SESSION_HOURS=8
 
 Gruppen aus dem Identitätsanbieter (der Claim aus `OIDC_GROUPS_CLAIM`) können Mitgliedschaft und Gruppen in Arbeitsbereichen geben – so verwaltet ihr den Zugang zentral im Anbieter.
 
-- **Eigentümer** ordnen Gruppen unter **Einstellungen → Gruppen & Rechte → SSO-Gruppen** zu (der Abschnitt erscheint, wenn `OIDC_ISSUER` gesetzt ist).
-- **Admins** ordnen sie für jeden Arbeitsbereich zentral unter **Administration → Arbeitsbereiche → SSO-Gruppen zentral zuordnen** zu.
+- **Admins** ordnen Gruppen zu – für jeden Arbeitsbereich zentral unter **Administration → Arbeitsbereiche → SSO-Gruppen zentral zuordnen** oder, wenn sie dort Eigentümer sind, unter **Einstellungen → Gruppen & Rechte → SSO-Gruppen**.
+- **Eigentümer**, die keine Admins sind, sehen dort die Zuordnungen ihres Arbeitsbereichs, ändern sie aber nicht. Eine Zuordnung holt Personen der ganzen Instanz in einen Arbeitsbereich und zeigt dort ihre Adressen – das entscheidet die Administration.
 - Eine Zuordnung gibt eine **Rolle** (Ansehen, Bearbeiten, Eigentümer), eine **Gruppe des Arbeitsbereichs** (für [Seitenrechte](/workspaces-and-permissions#gruppen)) oder beides.
 
 Bei jeder SSO-Anmeldung gleicht Flowplan ab:
