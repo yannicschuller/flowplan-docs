@@ -50,13 +50,13 @@ Für einen Eingang („Inbox“), etwa nach PARA: **Schnell erfassen** auf der S
 
 Lesezeichen landen in der Datenbank **Lesezeichen** des gewählten Bereichs; sie entsteht beim ersten Mal von selbst, mit Link, Website, Ordner, Notiz, Datum und „Gelesen“ sowie den Ansichten Alle, Karten und Ungelesen. Der mitgenommene Artikeltext steht im Eintrag. **Lesezeichen-Datei wählen** importiert die HTML-Datei, die Chrome, Edge, Firefox und Safari beim Exportieren der Lesezeichen erzeugen – samt Ordnern und Datum; Links, die schon da sind, werden übersprungen.
 
-## Desktop-App für macOS und Windows
+## Desktop-App für macOS, Windows und Linux
 
 Eine schlanke Desktop-App umschließt deine Flowplan-Instanz. Beim ersten Start fragt sie nach der Adresse und schlägt `https://app.flowplan.org` vor – für die eigene Instanz einfach deren Adresse eintragen (z. B. `https://flowplan.example.com`); **Server wechseln …** im Menü ändert sie später.
 
 - Alle Daten bleiben auf dem Server.
 - Die App merkt sich Fenstergröße und -position, bietet deutsche Menüs und öffnet externe Links im Standardbrowser.
-- Ohne Verbindung zeigt sie eine eigene Offline-Seite; die Offline-Nutzung der Web-App funktioniert wie im Browser.
+- Die Offline-Nutzung funktioniert auch in der Desktop-App: **Einstellungen → Daten → Offline-Nutzung** in der App einschalten – die App hat eigene Offline-Kopien, getrennt von Browser oder installierter Web-App. Ohne Verbindung öffnet sie dann die gespeicherte Kopie; ihre eigene Offline-Seite (**Erneut versuchen**, **Server wechseln**) erscheint nur, wenn auf dem Gerät keine Kopie liegt.
 - Sie akzeptiert nur echte Flowplan-Instanzen – eine Adresse, hinter der etwas anderes läuft oder die auf eine andere Seite weiterleitet, wird abgelehnt.
 - **Mit Passkey anmelden** und **Mit SSO anmelden** öffnen die Anmeldung im Standardbrowser, wo Passkeys (iCloud-Schlüsselbund, Windows Hello, Passwortmanager) zur Verfügung stehen. Nach **In der Desktop-App anmelden** übernimmt die App die Anmeldung; E-Mail und Passwort gehen direkt in der App.
 

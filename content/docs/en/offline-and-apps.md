@@ -50,13 +50,13 @@ For an inbox, e.g. with PARA: **Quick capture** on the start page, <kbd>⌘</kbd
 
 Bookmarks land in the **Bookmarks** database of the chosen space; it is created the first time, with link, website, folder, note, date and "read" as well as the views All, Cards and Unread. The article text that was taken along is in the record. **Choose bookmarks file** imports the HTML file that Chrome, Edge, Firefox and Safari create when exporting bookmarks – including folders and dates; links that already exist are skipped.
 
-## Desktop app for macOS and Windows
+## Desktop app for macOS, Windows and Linux
 
 A slim desktop app wraps your Flowplan instance. On first start it asks for the address and suggests `https://app.flowplan.org` – for your own instance enter its address instead (e.g. `https://flowplan.example.com`); **Switch server …** in the menu changes it later.
 
 - All data stays on the server.
 - The app remembers the window size and position and opens external links in the default browser.
-- Without a connection it shows an offline page of its own; offline use of the web app works as in the browser.
+- Offline use works in the desktop app too: turn on **Settings → Data → Offline use** in the app – it keeps its own offline copies, separate from the browser or the installed web app. Without a connection it then opens the stored copy; its own offline page (**Try again**, **Switch server**) only appears when there is no copy on the device.
 - It only accepts real Flowplan instances – an address running something else or redirecting to another site is refused.
 - **Sign in with a passkey** and **Sign in with SSO** open the sign-in in the default browser, where passkeys (iCloud Keychain, Windows Hello, password managers) are available. After **Sign in to the desktop app** the app takes over the sign-in; e-mail and password work directly in the app.
 

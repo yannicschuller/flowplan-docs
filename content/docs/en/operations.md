@@ -65,6 +65,8 @@ Without a token the endpoint is switched off.
 
 The desktop app for macOS, Windows and Linux is a slim window around a Flowplan instance. All data stays on the server; new Flowplan features arrive with the server and need no app update. The app has its own repository: [flowplan-desktop](https://github.com/yannicschuller/flowplan-desktop).
 
+**Offline use:** works in the desktop app as in the browser, including the AppImage on Linux. Turn it on in the app itself under **Settings → Data → Offline use**, because the app, the browser and the installed web app store separately. Without a connection the app opens the copy from the instance's service worker, also when another page of the instance fails to load; the app's own offline page only appears without a copy. If the option is missing, the address is not HTTPS with a valid certificate (the service worker needs a secure connection; `http://localhost` works for tests). See [Work without a connection](/offline-and-apps#turn-on-offline-use).
+
 ### Download
 
 [flowplan.org/download](https://flowplan.org/download) detects the system and downloads the latest version; every file is listed below. The same files are in the [latest release](https://github.com/yannicschuller/flowplan-desktop/releases/latest):
