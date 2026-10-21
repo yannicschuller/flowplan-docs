@@ -8,7 +8,7 @@ Die Schnellsuche findet Inhalte bis in Dateianhänge hinein. Posteingang und Pus
 
 Durchsucht werden:
 
-- Seitentitel und Dokumenttexte,
+- Seitentitel und [Aliasse](/pages-and-spaces#aliasse) sowie Dokumenttexte,
 - Datenbankeinträge und ihre Inhalte,
 - Kommentare,
 - Dateinamen,
@@ -17,6 +17,8 @@ Durchsucht werden:
 - Word-, Excel-, PowerPoint- und OpenDocument-Dateien.
 
 Treffer lassen sich nach Typ und Bereich filtern. Dateitexte werden im Hintergrund erfasst und sind nach wenigen Sekunden auffindbar. Die Suche zeigt nur, was du lesen darfst. <kbd>Enter</kbd> öffnet den ersten Treffer.
+
+Aliasse von Seiten und Einträgen zählen so viel wie der Titel. Passt die Suche nur zu einem Alias, zeigt der Treffer den echten Titel mit dem Alias in Grau, etwa „Chauffage · PAC“. Dasselbe gilt im Dialog der @-Erwähnung.
 
 ### Befehle
 

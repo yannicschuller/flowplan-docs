@@ -8,7 +8,7 @@ The quick search finds content right down into file attachments. The inbox and p
 
 It searches:
 
-- page titles and document text,
+- page titles and [aliases](/pages-and-spaces#aliases) as well as document text,
 - database records and their content,
 - comments,
 - file names,
@@ -17,6 +17,8 @@ It searches:
 - Word, Excel, PowerPoint and OpenDocument files.
 
 Hits can be filtered by type and space. File text is indexed in the background and can be found after a few seconds. The search only shows what you may read. <kbd>Enter</kbd> opens the first hit.
+
+Aliases of pages and records weigh as much as the title. When the search only matches an alias, the hit shows the real title with the alias in grey, e.g. "Chauffage · PAC". The same applies in the @ mention dialog.
 
 ### Commands
 

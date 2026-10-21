@@ -31,6 +31,7 @@ Markdown becomes pages, CSV becomes databases; linked images and files come alon
 
 - **A notes folder as pages:** make a ZIP of the folder and import it under **Settings → Data**.
 - **Notes with frontmatter as a database:** in a database choose **Import CSV or Markdown** and pick the `.md` files or a ZIP. The YAML properties become columns – see [Frontmatter](/import-export-versions#frontmatter-records-as-markdown-files).
+- **Aliases:** `aliases: [PAC, Pompe à chaleur]` (or `alias:`) in the frontmatter becomes the page's [aliases](/pages-and-spaces#aliases) or the record's [Aliases](/properties-and-formulas#aliases) property. @ mentions, search and unlinked mentions then also find "Chauffage" by "PAC", and the Markdown export writes them back as `aliases:`.
 - Alerts such as `> [!WARNING]` become callouts of the matching kind.
 
 ## After the move

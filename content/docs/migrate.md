@@ -31,6 +31,7 @@ Markdown wird zu Seiten, CSV zu Datenbanken; verlinkte Bilder und Dateien werden
 
 - **Ein Notizordner als Seiten:** den Ordner als ZIP packen und unter **Einstellungen → Daten** importieren.
 - **Notizen mit Frontmatter als Datenbank:** in einer Datenbank **CSV oder Markdown importieren** wählen und die `.md`-Dateien oder ein ZIP nehmen. Die YAML-Eigenschaften werden zu Spalten – siehe [Frontmatter](/import-export-versions#frontmatter-eintraege-als-markdown-dateien).
+- **Aliasse:** `aliases: [PAC, Pompe à chaleur]` (oder `alias:`) im Frontmatter wird zu den [Aliassen](/pages-and-spaces#aliasse) der Seite bzw. zur Eigenschaft [Aliasse](/properties-and-formulas#aliasse) des Eintrags. @-Erwähnungen, Suche und nicht verlinkte Erwähnungen finden „Chauffage“ dann auch über „PAC“, und der Markdown-Export schreibt sie wieder als `aliases:` zurück.
 - Hinweise wie `> [!WARNING]` werden zu Hinweisblöcken der passenden Art.
 
 ## Nach dem Umzug

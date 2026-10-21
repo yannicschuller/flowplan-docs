@@ -66,6 +66,15 @@ Once the review date has come, the page shows the hint “This page is waiting f
 > [!NOTE]
 > Through the API, the commands `page.owner` and `page.review` set owner and review date. A restore archive keeps review date and rhythm but not the owner, who belongs to the old workspace.
 
+## Aliases
+
+Under **… → Aliases …** a page gets further names, such as abbreviations ("PAC" for "Chauffage"). Up to 10 aliases of up to 100 characters each; <kbd>Enter</kbd> or a comma separates them, duplicates are dropped. Everyone with edit rights may change them.
+
+@ mentions, the quick search and **Unlinked mentions** find the page by its aliases like by its title; hits show "Title · alias". When you pick a hit found by an alias in an @ mention, the alias becomes the link text. The Markdown export writes aliases as frontmatter (`aliases: [PAC]`) at the top of the page – only for pages that have some. Records use the property type [Aliases](/properties-and-formulas#aliases); a page that becomes a record takes its aliases there, and the other way round.
+
+> [!NOTE]
+> Through the API, the command `page.aliases` (`{ pageId, aliases: [...] }`) sets the aliases of a page; an empty list removes them. A restore archive keeps them.
+
 ## Favourites and "Linked from"
 
 The star in the header puts a page under **Favourites** in the sidebar – personal, others do not see your favourites. At the bottom of every page, **Linked from** shows which pages and database records refer to it.
@@ -95,4 +104,4 @@ The network icon at the bottom of the sidebar (or `> graph` in the quick search)
 
 ## Unlinked mentions
 
-Below **Linked from** at the end of a page, **Unlinked mentions** lists documents and records in which the title of this page appears without being linked (titles of four characters or more). **Link** turns the first mention there into a link to this page. An open record shows the same for its title below its properties.
+Below **Linked from** at the end of a page, **Unlinked mentions** lists documents and records in which the title of this page appears without being linked (titles of four characters or more), or one of its [aliases](#aliases) as a whole word (two characters or more); the alias found is shown in grey next to the hit. **Link** turns the first mention there into a link to this page, by the title first, else by an alias – the text stays as written. An open record shows the same for its title and aliases below its properties.

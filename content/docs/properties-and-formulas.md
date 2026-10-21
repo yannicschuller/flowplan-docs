@@ -6,6 +6,20 @@ Relationen verbinden Datenbanken, Rollups rechnen über verknüpfte Einträge, F
 
 Ein Klick auf den Spaltenkopf oder **Ansicht und Eigenschaften** öffnet den Eigenschaftsdialog: Name, Typ, Optionen und Format. Typwechsel übernehmen vorhandene Werte, soweit sie passen. Formate für Zahlen umfassen Währungen, Prozent, Dezimalstellen und Tausendertrennzeichen und gelten auch für Formeln mit Zahlenergebnis; Datumsfelder zeigen kurz, lang oder ISO und optional Uhrzeiten; **Datum entfernen** unter dem Feld leert es wieder.
 
+## Aliasse
+
+Der Eigenschaftstyp **Aliasse (andere Namen)** hält weitere Namen eines Eintrags, etwa „PAC“ und „Pompe à chaleur“ für den Eintrag „Chauffage“. Eine Datenbank hat höchstens eine solche Eigenschaft. Im Eintrag trägst du die Namen durch Kommas getrennt ein; es zählen bis zu 10 Aliasse mit je bis zu 100 Zeichen, Leerzeichen am Rand und doppelte Namen (Groß- und Kleinschreibung egal) fallen weg.
+
+Aliasse wirken wie der Titel:
+
+- **@-Erwähnungen** und die [Schnellsuche](/search-and-notifications#schnellsuche) finden den Eintrag auch über einen Alias und zeigen dann den echten Titel mit dem Alias in Grau: „Chauffage · PAC“. Aliasse zählen in der Suche so viel wie der Titel.
+- **Nicht verlinkte Erwähnungen** suchen auch nach jedem Alias – als ganzes Wort, ab zwei Zeichen, ohne Rücksicht auf Groß- und Kleinschreibung. **Verlinken** lässt den Text, wie er dasteht: Aus „PAC“ wird ein Link auf „Chauffage“ mit der Beschriftung „PAC“.
+- Der **Markdown-Export** schreibt sie als `aliases:` ins Frontmatter, der Markdown-Import liest `aliases:` und `alias:` zurück ([Frontmatter](/import-export-versions#frontmatter-eintraege-als-markdown-dateien)).
+
+Filter („enthält“, „ist“), Sortierung, Formeln (als Liste wie Mehrfachauswahl), CSV und die übrigen Exporte behandeln Aliasse wie eine Liste von Texten. Ein Alias darf bei mehreren Einträgen vorkommen; dann erscheinen beide. Aliasse findet nur, wer den Eintrag ohnehin lesen darf.
+
+Seiten haben ihre Aliasse unter **… → Aliasse …** – siehe [Seiten und Bereiche](/pages-and-spaces#aliasse).
+
 ## Sichtbarkeit von Eigenschaften
 
 Einzelne Eigenschaften wie „Gehalt“ oder „Interne Notiz“ lassen sich auf bestimmte Personen beschränken. Im Eigenschaftsdialog legt der Abschnitt **Sichtbarkeit** fest, wer die Eigenschaft **sieht** und wer sie **bearbeitet**:

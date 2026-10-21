@@ -6,6 +6,20 @@ Relations connect databases, rollups calculate across linked records, formulas c
 
 A click on the column header or **View and properties** opens the property dialog: name, type, options and format. Changing the type keeps existing values as far as they fit. Number formats cover currencies, percent, decimal places and thousands separators and also apply to formulas with a numeric result; date fields show short, long or ISO dates and optionally times; **Remove date** below the field clears it again.
 
+## Aliases
+
+The property type **Aliases (other names)** holds further names of a record, such as "PAC" and "Pompe à chaleur" for the record "Chauffage". A database has at most one such property. In the record you enter the names separated by commas; up to 10 aliases of up to 100 characters each count, surrounding spaces and duplicate names (ignoring case) are dropped.
+
+Aliases work like the title:
+
+- **@ mentions** and the [quick search](/search-and-notifications#quick-search) also find the record by an alias and then show the real title with the alias in grey: "Chauffage · PAC". In the search, aliases weigh as much as the title.
+- **Unlinked mentions** also look for every alias – as a whole word, from two characters, ignoring case. **Link** keeps the text as written: "PAC" becomes a link to "Chauffage" that still reads "PAC".
+- The **Markdown export** writes them as `aliases:` into the frontmatter, the Markdown import reads `aliases:` and `alias:` back ([Frontmatter](/import-export-versions#frontmatter-records-as-markdown-files)).
+
+Filters ("contains", "is"), sorting, formulas (as a list, like multi-select), CSV and the other exports treat aliases as a list of texts. An alias may be used by several records; then both appear. Only people who may read a record find it by its aliases.
+
+Pages keep their aliases under **… → Aliases …** – see [Pages and spaces](/pages-and-spaces#aliases).
+
 ## Property visibility
 
 Single properties such as "Salary" or "Internal note" can be limited to certain people. In the property dialog, the **Visibility** section sets who may **read** the property and who may **edit** it:
