@@ -43,7 +43,7 @@ Select a sticky note, shape or text and press <kbd>Tab</kbd>: a connected branch
 
 With a tablet pen (such as an Apple Pencil) the stroke width follows the pressure. Choose the colour in the pen menu; with **Recognise shapes**, drawn lines, rectangles, circles, triangles and diamonds turn into clean shapes (<kbd>⌥</kbd> on release keeps the stroke).
 
-Once you have drawn with a pen on a device, only the pen draws: fingers move and zoom the board, a resting hand leaves no strokes. A hand resting on the screen while the pen draws neither cuts nor moves the stroke. **Draw with the pen only** in the pen menu switches this off. A hovering Apple Pencil (iPad Pro, iPad Air M2 and later) shows where the stroke starts; the eraser end of a pen erases like the **Eraser**. In the [iPad app](/offline-and-apps#apps-for-iphone-ipad-and-android-in-preparation), double-tapping or squeezing the Apple Pencil switches to the eraser and back, to the previous tool or to the pen, as set on the iPad. The same applies when marking up images in documents.
+Once you have drawn with a pen on a device, only the pen draws: fingers move and zoom the board, a resting hand leaves no strokes. A hand resting on the screen while the pen draws neither cuts nor moves the stroke. **Draw with the pen only** in the pen menu switches this off. A hovering Apple Pencil (iPad Pro, iPad Air M2 and later) shows where the stroke starts; the eraser end of a pen erases like the **Eraser**. In the [iPad app](/offline-and-apps#apps-for-iphone-ipad-and-android), double-tapping or squeezing the Apple Pencil switches to the eraser and back, to the previous tool or to the pen, as set on the iPad. The same applies when marking up images in documents.
 
 ## Images, icons and records
 

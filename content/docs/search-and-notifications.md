@@ -61,4 +61,4 @@ Push-Nachrichten öffnen die betroffene Seite. Auf dem Sperrbildschirm erscheine
 
 Abmelden, Sitzungsende oder eine Kontosperre beenden das Push-Abonnement; nach dem nächsten Anmelden bei Bedarf wieder aktivieren.
 
-In den [Apps für iPhone, iPad und Android](/offline-and-apps#apps-fuer-iphone-ipad-und-android-in-vorbereitung) kommen Mitteilungen über die App: Sie fragt nach dem ersten Anmelden nach der Erlaubnis, die Zahl der ungelesenen steht am App-Symbol. **Benachrichtigungsarten** gelten dort genauso.
+In den [Apps für iPhone, iPad und Android](/offline-and-apps#apps-fuer-iphone-ipad-und-android) kommen Mitteilungen über die App: Sie fragt nach dem ersten Anmelden nach der Erlaubnis, die Zahl der ungelesenen steht am App-Symbol. **Benachrichtigungsarten** gelten dort genauso.

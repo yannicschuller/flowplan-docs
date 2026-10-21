@@ -79,7 +79,7 @@ Die Desktop-App für macOS, Windows und Linux ist ein schlankes Fenster um eine 
 
 Beim ersten Start fragt die App immer nach der Adresse der Instanz und schlägt `https://app.flowplan.org` vor (HTTPS, für lokale Tests auch `http://localhost`); ändern über das Menü **Server wechseln …**. Für verteilte Installationen schlägt `--server=<URL>` oder die Umgebungsvariable `FLOWPLAN_SERVER` stattdessen die eigene Adresse vor – bestätigt wird sie beim ersten Start trotzdem. Die App prüft, ob dort wirklich Flowplan läuft (`/api/health` antwortet mit `"service": "flowplan"`), und lehnt Adressen ab, die auf eine andere Seite weiterleiten.
 
-**Anmeldung mit Passkey und SSO:** Passkeys und Anbieter, die einen Passkey verlangen, funktionieren nur in einem echten Browser. Die App öffnet die Anmeldung deshalb im Standardbrowser: Sie erzeugt ein zufälliges Geheimnis, öffnet `/api/auth/desktop` mit dessen Hash, nach der Anmeldung bestätigt man **In der Desktop-App anmelden**, und der Browser gibt über `flowplan://sign-in` einen Einmalcode an die App zurück. Der Code gilt eine Minute, nur einmal und nur zusammen mit dem Geheimnis, das die App nie verlässt. Fragt der Browser, ob er Flowplan öffnen darf, ist das dieser Schritt.
+**Anmeldung mit Passkey und SSO:** Passkeys und Anbieter, die einen Passkey verlangen, funktionieren nur in einem echten Browser. Die App öffnet die Anmeldung deshalb im Standardbrowser: Sie erzeugt ein zufälliges Geheimnis, öffnet `/api/auth/desktop` mit dessen Hash, nach der Anmeldung bestätigt man **In der App anmelden**, und der Browser gibt über `flowplan://sign-in` einen Einmalcode an die App zurück. Der Code gilt eine Minute, nur einmal und nur zusammen mit dem Geheimnis, das die App nie verlässt. Fragt der Browser, ob er Flowplan öffnen darf, ist das dieser Schritt.
 
 Solange die Apps nicht signiert und notarisiert sind, blockiert macOS den ersten Start: ab macOS 15 unter **Systemeinstellungen → Datenschutz & Sicherheit → Dennoch öffnen** freigeben (bis macOS 14 genügt Rechtsklick → **Öffnen**); meldet macOS, die App sei „beschädigt“, entfernt `xattr -dr com.apple.quarantine /Applications/Flowplan.app` die Quarantäne-Markierung. Mit Signatur und Notarisierung entfällt das, siehe [flowplan-desktop → Signing](https://github.com/yannicschuller/flowplan-desktop#signing). Windows zeigt SmartScreen (**Weitere Informationen → Trotzdem ausführen**), und ein AppImage muss vorher ausführbar sein (`chmod +x`).
 
@@ -94,7 +94,7 @@ Die App prüft 15 Sekunden nach dem Start, danach alle sechs Stunden und über *
 | macOS, signiert | Genauso. |
 | macOS unsigniert, Windows-ZIP, Linux-`.tar.gz` | Ein Dialog nennt die neue Version und öffnet die Download-Seite. macOS lässt nur signierte Apps sich selbst ersetzen. |
 
-Ohne Verbindung bleibt die Prüfung still und versucht es später erneut. Mit `FLOWPLAN_UPDATE_URL` holt die App Updates aus einer anderen Quelle – einem Ordner mit denselben Dateien (`latest*.yml` und die Installer), etwa einem Spiegel im Firmennetz.
+Ohne Verbindung bleibt die Prüfung still und versucht es später erneut. Mit `FLOWPLAN_UPDATE_URL` auf dem Rechner der App holt sie Updates aus einer anderen Quelle – einem Ordner mit denselben Dateien (`latest*.yml` und die Installer), etwa einem Spiegel im Firmennetz. Nicht zu verwechseln mit der gleichnamigen Variable des Servers, die den Spiegel für den Release-Check der Instanz nennt (siehe [Konfiguration](/configuration#betrieb)).
 
 ### Signieren und neue Versionen
 

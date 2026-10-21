@@ -4,7 +4,9 @@ The documentation of [Flowplan](https://github.com/yannicschuller/flowplan) at [
 
 ## Writing
 
-Pages are Markdown files in `content/docs` (German) and `content/docs/en` (English, same file names). The order and the groups of the navigation are in `lib/docs.ts`. Links between pages are written as `/slug` or `/slug#anchor`; `npm test` checks that every link and anchor exists.
+Pages are Markdown files in `content/docs` (German) and `content/docs/en` (English, same file names). The order and the groups of the navigation are in `lib/docs.ts`. Links between pages are written as `/slug` or `/slug#anchor`; `npm test` checks that every link and anchor exists. Links to other sites open in a new tab (with a hint for screen readers); links to flowplan.org do not.
+
+Every page ends with the date of its last commit and an "Edit on GitHub" link. The dates come from `content/last-modified.json`, which `npm run build` writes from the git history (`scripts/last-modified.mjs`); without a full history (shallow clone, no git) the file stays empty and no dates are shown. The search box fetches its index from `/api/search-index/<lang>` when it is first focused, so pages stay small.
 
 ## Development
 

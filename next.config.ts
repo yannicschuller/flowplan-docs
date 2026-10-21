@@ -31,8 +31,9 @@ const config: NextConfig = {
   typescript: { ignoreBuildErrors: process.env.FLOWPLAN_SKIP_TYPECHECK === "1" },
   output: "standalone",
   poweredByHeader: false,
-  // The pages are read from Markdown files at runtime.
-  outputFileTracingIncludes: { "/**": ["./content/docs/**/*.md"] },
+  // The pages are read from Markdown files at runtime, their commit dates
+  // from content/last-modified.json (written before the build).
+  outputFileTracingIncludes: { "/**": ["./content/docs/**/*.md", "./content/*.json"] },
   async redirects() {
     return [
       // docs.flowplan.org/docs/… (the old path under flowplan.org) → /…

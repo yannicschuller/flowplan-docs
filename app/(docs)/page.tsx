@@ -7,17 +7,6 @@ import { absolute, jsonLd, pageAlternates, socialMetadata, softwareJson } from "
 import { translate } from "@/lib/i18n";
 import s from "@/components/docs/docs.module.css";
 
-// One line under each group, in the order of the groups.
-const intros: [string, string][] = [
-  ["Konto, erster Arbeitsbereich, Seitenbaum.", "Account, first workspace, page tree."],
-  ["Jede Funktion, Schritt für Schritt.", "Every feature, step by step."],
-  ["Mitglieder, Rechte und Arbeitsbereiche.", "Members, permissions and workspaces."],
-  [
-    "Flowplan auf dem eigenen Server: Docker, Anmeldung, Speicher, Sicherung und Betrieb.",
-    "Flowplan on your own server: Docker, sign-in, storage, backups and operations.",
-  ],
-];
-
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await requestLocale();
   const t = translate(locale);
@@ -76,10 +65,10 @@ export default async function DocsHome() {
             <ArrowRight size={18} />
           </a>
         </div>
-        {docGroups(locale).map((group, i) => (
+        {docGroups(locale).map((group) => (
           <section key={group.title} className={s.groupBlock}>
             <h2>{group.title}</h2>
-            <p className={s.groupIntro}>{t(...intros[i])}</p>
+            <p className={s.groupIntro}>{group.intro}</p>
             <ul className={s.cards}>
               {group.pages.map((page) => {
                 const doc = loadDoc(page.slug, locale)!;

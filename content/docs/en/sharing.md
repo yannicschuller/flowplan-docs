@@ -44,6 +44,7 @@ Links with their own permissions and [publications](#publish-on-the-web) can hav
 
 - Visitors enter the password once per device. It is valid for up to 12 hours and only for this link; a new password signs all visitors out.
 - Ten wrong attempts within 15 minutes block that address for the link.
+- Editing links have daily budgets: per link, guests upload at most 200 MB of files per day (20 files per 10 minutes) and send at most 100 MB of changes per day; a document does not grow beyond 3 MB of text through a link. For the whole instance `FLOWPLAN_ANONYMOUS_UPLOAD_MB` applies on top ([Configuration](/en/configuration)).
 - After the expiry date the link only shows "expired" – no content, no files, no live updates.
 - You can remove the password or extend the date at any time.
 - Password-protected publications cannot be copied into other workspaces.

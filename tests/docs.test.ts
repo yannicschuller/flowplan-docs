@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
-import { docGroups, docSearchIndex, docSlugs, loadDoc } from "../lib/docs";
+import { docGroups, docSearchIndex, docSlugs, headingId, languageList, llmsIndex, loadDoc, ownSite } from "../lib/docs";
 import { LOCALES } from "../lib/i18n";
 
 for (const locale of LOCALES)
@@ -56,6 +56,56 @@ test("the search index covers section text", () => {
   assert.match(config.sections.find((s) => s.id === "s3-und-datenbanksicherung")!.body, /S3_BUCKET \S/);
   const english = docSearchIndex("en").find((p) => p.slug === "configuration")!;
   assert.equal(english.title, "Configuration");
+});
+
+test("the navigation has small groups with an intro each, and keeps every page", () => {
+  for (const locale of LOCALES) {
+    const groups = docGroups(locale);
+    assert.ok(groups.length >= 5);
+    for (const group of groups) {
+      assert.ok(group.intro.length > 10, `${group.title}: intro`);
+      assert.ok(group.pages.length >= 3 && group.pages.length <= 8, `${group.title}: ${group.pages.length} pages`);
+    }
+  }
+  assert.equal(docGroups("en").find((g) => g.title === "Getting started")!.pages.map((p) => p.slug)[0], "first-steps");
+  assert.ok(docGroups("en").find((g) => g.title === "Getting started")!.pages.some((p) => p.slug === "workspaces-and-permissions"));
+});
+
+test("the mobile apps keep a stable anchor while their status is a note", () => {
+  const ids = { de: "apps-fuer-iphone-ipad-und-android", en: "apps-for-iphone-ipad-and-android" } as const;
+  for (const locale of LOCALES) {
+    const doc = loadDoc("offline-and-apps", locale)!;
+    const heading = doc.toc.find((e) => e.id === ids[locale]);
+    assert.ok(heading, `${locale}: section ${ids[locale]}`);
+    assert.doesNotMatch(heading!.text, /\(/, `${locale}: no status in the heading`);
+    assert.equal(headingId(heading!.text), ids[locale]);
+    // Other pages link to it.
+    for (const slug of ["whiteboards", "search-and-notifications"])
+      assert.ok(loadDoc(slug, locale)!.html.includes(`/offline-and-apps#${ids[locale]}`), `${locale}: ${slug} links to the apps`);
+  }
+});
+
+test("links to other sites open in a new tab and say so; Flowplan's own sites do not", () => {
+  assert.ok(ownSite("https://flowplan.org/download") && ownSite("https://app.flowplan.org/x") && !ownSite("https://github.com/x"));
+  const de = loadDoc("offline-and-apps", "de")!.html;
+  assert.match(de, /<a href="https:\/\/flowplan\.org\/download">flowplan\.org\/download<\/a>/);
+  assert.match(loadDoc("configuration", "de")!.html, /href="https:\/\/github\.com\/[^"]+" target="_blank" rel="noreferrer">[^<]*<span class="sr-only"> \(öffnet in neuem Tab\)<\/span><\/a>/);
+  assert.match(loadDoc("configuration", "en")!.html, /<span class="sr-only"> \(opens in a new tab\)<\/span>/);
+});
+
+test("llms.txt names every interface language from one list", () => {
+  assert.equal(languageList("de"), "Deutsch, Englisch und Französisch");
+  assert.equal(languageList("en"), "German, English and French");
+  assert.match(llmsIndex("https://docs.example", "de"), /Oberfläche auf Deutsch, Englisch und Französisch\./);
+  assert.match(llmsIndex("https://docs.example", "en"), /Interface in German, English and French\./);
+});
+
+test("pages know their source file and whether they are translated", () => {
+  const de = loadDoc("journal", "de")!,
+    en = loadDoc("journal", "en")!;
+  assert.equal(de.source, "content/docs/journal.md");
+  assert.equal(en.source, "content/docs/en/journal.md");
+  assert.ok(de.translated && en.translated);
 });
 
 test("self-hosting is documented for everyone, in both languages", () => {

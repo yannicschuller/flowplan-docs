@@ -35,8 +35,9 @@ The other OIDC variables and everything about passwords and passkeys are describ
 | `FLOWPLAN_OCR_LANGS` | `deu,eng` | Languages of the text recognition, e.g. `fra,eng`; the first is the main language. `deu`, `eng` and `fra` are bundled. Each extra language costs memory and time per page. |
 | `FLOWPLAN_METRICS_TOKEN` | *empty* | At least 16 characters; enables `/api/metrics` in Prometheus format. |
 | `FLOWPLAN_UPDATE_CHECK` | on | `false` turns off the check for new versions (for instances without internet). Otherwise the server asks GitHub for the latest release at most every 12 hours and shows admins a notice in the administration. |
-| `FLOWPLAN_UPDATE_URL` | GitHub API | Another address for the latest release (same format as `api.github.com/repos/yannicschuller/flowplan/releases/latest`), such as an internal mirror. |
-| `FLOWPLAN_TRUSTED_PROXIES` | `1` | Number of proxies in front of Flowplan (Traefik alone: `1`, Pangolin in front of Traefik: `2`). Decides which entry in `X-Forwarded-For` is the real address – for limiting sign-in attempts, demo starts and anonymous form answers. Entries made up by the browser are ignored this way. |
+| `FLOWPLAN_UPDATE_URL` | GitHub API | Another address for the latest release (same format as `api.github.com/repos/yannicschuller/flowplan/releases/latest`), such as an internal mirror. Not to be confused with the [desktop app's](/offline-and-apps#desktop-app-for-macos-windows-and-linux) variable of the same name, which names the app's update source on the computer running it. |
+| `FLOWPLAN_TRUSTED_PROXIES` | `1` | Number of proxies in front of Flowplan (Traefik alone: `1`, Pangolin in front of Traefik: `2`, `0` = trust no header). Decides which entry in `X-Forwarded-For` is the real address – for limiting sign-in attempts, demo starts and anonymous form answers. Entries made up by the browser are ignored this way. When no address arrives at all (the proxy does not set the header), only the limits per account and per link apply, and the log shows a note once. |
+| `FLOWPLAN_ANONYMOUS_UPLOAD_MB` | `1024` | How many MB visitors without an account may upload per day on the whole instance – through anonymous forms and editing links (`0` = unlimited). Each form or link additionally gets 200 MB per day, independent of the workspace's storage quota. |
 
 ## S3 and database backup
 
@@ -97,14 +98,19 @@ Check delivery under **Administration → Instance → Send test e-mail**.
 | `SPACE_GIT_ALLOW_PRIVATE` | *empty* | `true` also allows internal addresses for the servers listed in `SPACE_GIT_ALLOWED_HOSTS` – for example a Forgejo on the same host that the container reaches via `--add-host git.example.org:host-gateway`. Only works together with the list; every other server stays limited to public addresses. |
 | `EXPORT_GIT_*` | *empty* | Deprecated: the Git export of the whole instance, see [Push into a Git repository](/storage-and-backups#push-into-a-git-repository). Keeps working; the Git export of spaces is the better choice. |
 
+## Legal and interface
+
+| Variable | Default | Meaning |
+| --- | --- | --- |
+| `IMPRINT_URL` | *empty* | Link to the legal notice, e.g. `https://example.com/imprint`. Shown on the sign-in page, under shared pages and forms and in the account menu – only when set. |
+| `PRIVACY_URL` | *empty* | Link to the privacy policy, in the same places and also only when set. |
+
 ## Voice notes (Whisper)
 
 Voice notes in the editor are always stored as audio. With a Whisper service in your own network, Flowplan also turns them into text; the recording never leaves your server.
 
 | Variable | Default | Meaning |
 | --- | --- | --- |
-| `IMPRINT_URL` | *empty* | Link to the legal notice, e.g. `https://example.com/imprint`. Shown on the sign-in page, under shared pages and forms and in the account menu – only when set. |
-| `PRIVACY_URL` | *empty* | Link to the privacy policy, in the same places and also only when set. |
 | `WHISPER_URL` | *empty* | Address of an OpenAI-compatible Whisper server (`POST /v1/audio/transcriptions`), e.g. `http://whisper:8000`. Turns transcription on. |
 | `WHISPER_MODEL` | `Systran/faster-whisper-small` | The model name as the service expects it. |
 | `WHISPER_LANGUAGE` | `de` | Language of the recordings (e.g. `en`). |

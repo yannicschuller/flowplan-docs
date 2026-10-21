@@ -58,14 +58,17 @@ Eine schlanke Desktop-App umschließt deine Flowplan-Instanz. Beim ersten Start 
 - Die App merkt sich Fenstergröße und -position, bietet deutsche Menüs und öffnet externe Links im Standardbrowser.
 - Die Offline-Nutzung funktioniert auch in der Desktop-App: **Einstellungen → Daten → Offline-Nutzung** in der App einschalten – die App hat eigene Offline-Kopien, getrennt von Browser oder installierter Web-App. Ohne Verbindung öffnet sie dann die gespeicherte Kopie; ihre eigene Offline-Seite (**Erneut versuchen**, **Server wechseln**) erscheint nur, wenn auf dem Gerät keine Kopie liegt.
 - Sie akzeptiert nur echte Flowplan-Instanzen – eine Adresse, hinter der etwas anderes läuft oder die auf eine andere Seite weiterleitet, wird abgelehnt.
-- **Mit Passkey anmelden** und **Mit SSO anmelden** öffnen die Anmeldung im Standardbrowser, wo Passkeys (iCloud-Schlüsselbund, Windows Hello, Passwortmanager) zur Verfügung stehen. Nach **In der Desktop-App anmelden** übernimmt die App die Anmeldung; E-Mail und Passwort gehen direkt in der App.
+- **Mit Passkey anmelden** und **Mit SSO anmelden** öffnen die Anmeldung im Standardbrowser, wo Passkeys (iCloud-Schlüsselbund, Windows Hello, Passwortmanager) zur Verfügung stehen. Nach **In der App anmelden** übernimmt die App die Anmeldung; E-Mail und Passwort gehen direkt in der App. Das braucht Flowplan 0.3.3 oder neuer.
 
 Die Apps für macOS, Windows und Linux gibt es unter [flowplan.org/download](https://flowplan.org/download) – die Seite erkennt dein System; Updates installieren sich von selbst. Solange sie nicht signiert sind, fragt macOS beim ersten Öffnen nach (Rechtsklick → Öffnen) und Windows zeigt SmartScreen. Mehr unter [Betrieb und Fehlersuche](/operations#desktop-apps).
 
-## Apps für iPhone, iPad und Android (in Vorbereitung)
+> [!NOTE]
+> Die Umgebungsvariable `FLOWPLAN_UPDATE_URL` gibt es zweimal: Auf dem Rechner mit der Desktop-App nennt sie eine andere Quelle für App-Updates (siehe [Updates](/operations#updates)); auf dem Server nennt die gleichnamige Variable den Spiegel für den Release-Check der Instanz (siehe [Konfiguration](/configuration#betrieb)). Beide meinen verschiedene Dinge und gehören an verschiedene Orte.
+
+## Apps für iPhone, iPad und Android
 
 > [!NOTE]
-> Die Apps sind in Vorbereitung und noch nicht im App Store und bei Google Play erhältlich. Bis dahin lässt sich Flowplan wie oben beschrieben als Web-App installieren.
+> Stand heute sind die Apps in Vorbereitung und noch nicht im App Store und bei Google Play erhältlich. Bis dahin lässt sich Flowplan wie oben beschrieben als Web-App installieren.
 
 Wie die Desktop-App zeigen die mobilen Apps deine Flowplan-Instanz; alle Daten bleiben auf dem Server, neue Funktionen kommen ohne App-Update. Dazu kommt, was nur eine App kann:
 
@@ -80,7 +83,8 @@ Wie die Desktop-App zeigen die mobilen Apps deine Flowplan-Instanz; alle Daten b
 Außerdem:
 
 - Beim ersten Start fragen sie nach der Adresse und schlagen `https://app.flowplan.org` vor. Sie akzeptieren nur echte Flowplan-Instanzen, die nicht auf eine andere Seite weiterleiten. Die **App-Einstellungen** (über **Einstellungen → Benachrichtigungen → App-Einstellungen öffnen** oder langes Drücken auf das App-Symbol → **Server wechseln**) ändern den Server; **Abmelden und Server vergessen** meldet die App ab und entfernt sie von der Instanz.
-- **Mit Passkey anmelden** und **Mit SSO anmelden** öffnen das Anmeldefenster des Systems (iOS) bzw. einen Browser-Tab (Android); danach übernimmt die App die Anmeldung. E-Mail und Passwort gehen direkt in der App. Das braucht einen Flowplan-Server neuer als 0.3.4; Mitteilungen und Widgets einen Server mit der App-Schnittstelle (ab der nächsten Version).
+- **Verwaltete Geräte (MDM/EMM):** Über die verwaltete App-Konfiguration (iOS Managed App Configuration bzw. Android App Restrictions) gibt der Schlüssel `server` die Adresse der eigenen Instanz vor; die App schlägt sie beim ersten Start vor.
+- **Mit Passkey anmelden** und **Mit SSO anmelden** öffnen das Anmeldefenster des Systems (iOS) bzw. einen Browser-Tab (Android); nach **In der App anmelden** übernimmt die App die Anmeldung. E-Mail und Passwort gehen direkt in der App. Die Anmeldung über den Browser sowie Mitteilungen und Widgets (die App-Schnittstelle) brauchen Flowplan 0.4.0 oder neuer.
 - Links zu anderen Seiten öffnen im Browser; ohne Verbindung zeigt die App eine eigene Seite und verbindet sich von selbst wieder.
 - Auf Android erscheint Flowplan im **Teilen**-Menü anderer Apps.
 

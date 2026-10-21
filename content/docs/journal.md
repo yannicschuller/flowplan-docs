@@ -39,7 +39,11 @@ Ein Journal ist eine Seite mit einer Unterseite pro Tag. Morgens liegt die heuti
 
 ## PIN-Sperre
 
-Unter **Journal einrichten → PIN-Sperre** schützt eine PIN aus 4 bis 8 Ziffern das Journal: Tage, Suche, Vorschauen und Bilder bleiben verborgen, bis die PIN eingegeben ist. Nach 15 Minuten oder mit dem Schloss-Knopf sperrt es sich wieder. Nach fünf falschen Versuchen folgt eine Pause. Ändern oder Entfernen verlangt die bisherige PIN. Die Sperre gilt auch für Unterseiten der Tage sowie für Export, Inhaltsarchiv, Kommentare, Links zum Teilen und das Duplizieren – dafür vorher entsperren. Sie schützt vor Blicken, ist aber keine Verschlüsselung: Wer Zugriff auf Sicherungen des Servers hat, sieht die Inhalte.
+Unter **Journal einrichten → PIN-Sperre** schützt eine PIN aus 6 bis 8 Ziffern das Journal (früher gesetzte kürzere PINs gelten weiter): Tage, Suche, Vorschauen und Bilder bleiben verborgen, bis die PIN eingegeben ist. Nach 15 Minuten oder mit dem Schloss-Knopf sperrt es sich wieder. Nach fünf falschen Versuchen folgt eine Pause von fünf Minuten, nach zwanzig an einem Tag ist bis zum nächsten Tag Schluss – auch über einen Neustart des Servers hinweg. Gibt eine andere Person fünfmal eine falsche PIN ein, bekommt die Person, die das Journal angelegt hat, eine Benachrichtigung. Ändern oder Entfernen verlangt die bisherige PIN. Die Sperre gilt auch für Unterseiten der Tage sowie für Export, Inhaltsarchiv, Kommentare, Links zum Teilen und das Duplizieren – dafür vorher entsperren. Sie schützt vor Blicken, ist aber keine Verschlüsselung: Wer Zugriff auf Sicherungen des Servers hat, sieht die Inhalte.
+
+## Wenn die heutige Seite gelöscht wurde
+
+Liegt die heutige Seite im Papierkorb, sagt das Journal das und bietet **Neu anlegen** (eine frische Seite für heute) oder **Aus dem Papierkorb holen** an.
 
 ## Tipps
 

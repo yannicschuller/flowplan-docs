@@ -1,57 +1,103 @@
 // Documentation under /docs: Markdown files in content/docs, rendered on the
 // server. The order and grouping of the pages lives here; each file starts
 // with "# Title" and a one-line summary as its first paragraph.
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
-import { existsSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { existsSync, readFileSync } from "node:fs";
+import { join, relative } from "node:path";
 import { Marked, type Tokens } from "marked";
 import type { Locale } from "./i18n";
 import { DISCORD_URL, GITHUB_URL, websiteUrl } from "./links";
 
-export type DocGroup = { title: string; pages: { slug: string; title: string }[] };
+export type DocGroup = { title: string; intro: string; pages: { slug: string; title: string }[] };
 
-// Page order and titles in both languages. English pages live in
-// content/docs/en with the same file name; a missing one falls back to
-// German.
-const groups: { title: [de: string, en: string]; pages: [slug: string, de: string, en: string][] }[] = [
+// The languages of Flowplan's interface, in both languages of the docs; the
+// llms.txt blurb and the overview are written from this list.
+export const INTERFACE_LANGUAGES: Record<Locale, string[]> = {
+  de: ["Deutsch", "Englisch", "Französisch"],
+  en: ["German", "English", "French"],
+};
+// "Deutsch, Englisch und Französisch" / "German, English and French".
+export const languageList = (locale: Locale) => {
+  const names = INTERFACE_LANGUAGES[locale];
+  return `${names.slice(0, -1).join(", ")} ${locale === "de" ? "und" : "and"} ${names[names.length - 1]}`;
+};
+
+// Page order, groups and titles in both languages, with one line under each
+// group on the overview. English pages live in content/docs/en with the same
+// file name; a missing one falls back to German.
+const groups: {
+  title: [de: string, en: string];
+  intro: [de: string, en: string];
+  pages: [slug: string, de: string, en: string][];
+}[] = [
   {
     title: ["Einstieg", "Getting started"],
+    intro: [
+      "Konto, erster Arbeitsbereich, Seitenbaum, Mitglieder und Rechte.",
+      "Account, first workspace, page tree, members and permissions.",
+    ],
     pages: [
       ["first-steps", "Erste Schritte", "First steps"],
       ["pages-and-spaces", "Seiten und Bereiche", "Pages and spaces"],
+      ["workspaces-and-permissions", "Arbeitsbereiche, Mitglieder und Rechte", "Workspaces, members and permissions"],
       ["migrate", "Umzug von Notion, AppFlowy und Obsidian", "Moving from Notion, AppFlowy and Obsidian"],
-    ],
-  },
-  {
-    title: ["Arbeiten mit Flowplan", "Working with Flowplan"],
-    pages: [
-      ["documents", "Dokumente und Editor", "Documents and the editor"],
-      ["databases", "Datenbanken", "Databases"],
-      ["views", "Ansichten", "Views"],
-      ["properties-and-formulas", "Eigenschaften, Formeln und Rollups", "Properties, formulas and rollups"],
-      ["forms", "Formulare", "Forms"],
-      ["projects-and-tickets", "Projekte, Tickets und Sprints", "Projects, tickets and sprints"],
-      ["whiteboards", "Whiteboards", "Whiteboards"],
-      ["journal", "Journal", "Journal"],
-      ["collaboration", "Zusammenarbeit und Kommentare", "Collaboration and comments"],
-      ["sharing", "Teilen und Veröffentlichen", "Sharing and publishing"],
-      ["templates", "Vorlagen", "Templates"],
-      ["search-and-notifications", "Suche, Posteingang und Push", "Search, inbox and push"],
-      ["import-export-versions", "Import, Export und Versionen", "Import, export and versions"],
-      ["offline-and-apps", "Offline, Web-App und Desktop", "Offline, web app and desktop"],
-      ["api-and-webhooks", "API und Webhooks", "API and webhooks"],
-      ["ai", "KI", "AI"],
-      ["mcp", "MCP: KI-Assistenten", "MCP: AI assistants"],
       ["keyboard-shortcuts", "Tastenkürzel", "Keyboard shortcuts"],
       ["languages", "Sprachen und Übersetzungen", "Languages and translations"],
     ],
   },
   {
-    title: ["Verwaltung", "Administration"],
-    pages: [["workspaces-and-permissions", "Arbeitsbereiche, Mitglieder und Rechte", "Workspaces, members and permissions"]],
+    title: ["Inhalte", "Content"],
+    intro: ["Schreiben, zeichnen, Tag für Tag festhalten.", "Write, draw, keep a record day by day."],
+    pages: [
+      ["documents", "Dokumente und Editor", "Documents and the editor"],
+      ["whiteboards", "Whiteboards", "Whiteboards"],
+      ["journal", "Journal", "Journal"],
+      ["templates", "Vorlagen", "Templates"],
+      ["import-export-versions", "Import, Export und Versionen", "Import, export and versions"],
+    ],
+  },
+  {
+    title: ["Datenbanken und Projekte", "Databases and projects"],
+    intro: [
+      "Tabellen, Ansichten, Formeln, Formulare und Projektarbeit.",
+      "Tables, views, formulas, forms and project work.",
+    ],
+    pages: [
+      ["databases", "Datenbanken", "Databases"],
+      ["views", "Ansichten", "Views"],
+      ["properties-and-formulas", "Eigenschaften, Formeln und Rollups", "Properties, formulas and rollups"],
+      ["forms", "Formulare", "Forms"],
+      ["projects-and-tickets", "Projekte, Tickets und Sprints", "Projects, tickets and sprints"],
+    ],
+  },
+  {
+    title: ["Zusammenarbeit und Teilen", "Collaboration and sharing"],
+    intro: [
+      "Gemeinsam arbeiten, veröffentlichen, finden – auch offline und in den Apps.",
+      "Work together, publish, find things – offline and in the apps too.",
+    ],
+    pages: [
+      ["collaboration", "Zusammenarbeit und Kommentare", "Collaboration and comments"],
+      ["sharing", "Teilen und Veröffentlichen", "Sharing and publishing"],
+      ["search-and-notifications", "Suche, Posteingang und Push", "Search, inbox and push"],
+      ["offline-and-apps", "Offline, Web-App und Desktop", "Offline, web app and desktop"],
+    ],
+  },
+  {
+    title: ["Erweiterungen", "Extensions"],
+    intro: ["API, Webhooks, KI und MCP.", "API, webhooks, AI and MCP."],
+    pages: [
+      ["api-and-webhooks", "API und Webhooks", "API and webhooks"],
+      ["ai", "KI", "AI"],
+      ["mcp", "MCP: KI-Assistenten", "MCP: AI assistants"],
+    ],
   },
   {
     title: ["Selbst hosten", "Self-hosting"],
+    intro: [
+      "Flowplan auf dem eigenen Server: Docker, Anmeldung, Speicher, Sicherung und Betrieb.",
+      "Flowplan on your own server: Docker, sign-in, storage, backups and operations.",
+    ],
     pages: [
       ["installation", "Installation mit Docker", "Installation with Docker"],
       ["administration", "Administration der Instanz", "Administering the instance"],
@@ -67,6 +113,7 @@ const pick = (locale: Locale, [de, en]: [string, string]) => (locale === "en" ? 
 export function docGroups(locale: Locale = "de"): DocGroup[] {
   return groups.map((g) => ({
     title: pick(locale, g.title),
+    intro: pick(locale, g.intro),
     pages: g.pages.map(([slug, de, en]) => ({ slug, title: pick(locale, [de, en]) })),
   }));
 }
@@ -81,9 +128,18 @@ export type Doc = {
   group: string;
   html: string;
   toc: TocEntry[];
+  // False on an English address whose page exists only in German yet.
+  translated: boolean;
+  // The Markdown file, relative to the repository (content/docs/en/….md).
+  source: string;
+  // Date of the last commit that touched the file (content/last-modified.json,
+  // written before the build); undefined without it.
+  modified?: string;
   prev?: { slug: string; title: string };
   next?: { slug: string; title: string };
 };
+// Where a page's Markdown can be edited.
+export const editUrl = (source: string) => `https://github.com/yannicschuller/flowplan-docs/edit/main/${source}`;
 
 export function headingId(text: string) {
   return text
@@ -112,6 +168,15 @@ const callouts: Record<Locale, Record<string, string>> = {
   de: { NOTE: "Hinweis", TIP: "Tipp", WARNING: "Achtung" },
   en: { NOTE: "Note", TIP: "Tip", WARNING: "Warning" },
 };
+const newTab: Record<Locale, string> = { de: "öffnet in neuem Tab", en: "opens in a new tab" };
+// flowplan.org and its subdomains (the website, the app, these docs).
+export function ownSite(href: string) {
+  try {
+    return /(^|\.)flowplan\.org$/.test(new URL(href).hostname);
+  } catch {
+    return false;
+  }
+}
 
 function render(markdown: string, locale: Locale) {
   const toc: TocEntry[] = [];
@@ -129,10 +194,12 @@ function render(markdown: string, locale: Locale) {
       },
       link({ href, title, tokens }: Tokens.Link) {
         const inner = this.parser.parseInline(tokens);
-        const external = /^https?:\/\//.test(href);
+        // Links to other sites open in a new tab and say so for screen
+        // readers; Flowplan's own sites open like internal links.
+        const external = /^https?:\/\//.test(href) && !ownSite(href);
         return `<a href="${escape(href)}"${title ? ` title="${escape(title)}"` : ""}${
           external ? ' target="_blank" rel="noreferrer"' : ""
-        }>${inner}</a>`;
+        }>${inner}${external ? `<span class="sr-only"> (${newTab[locale]})</span>` : ""}</a>`;
       },
       code({ text, lang }: Tokens.Code) {
         const language = (lang || "").split(/\s/)[0];
@@ -174,6 +241,25 @@ const fileOf = (slug: string, locale: Locale) => {
 
 // The Markdown file of a page (English falls back to German).
 export const docSource = (slug: string, locale: Locale) => fileOf(slug, locale);
+// The same, relative to the repository: content/docs/en/first-steps.md.
+const sourceOf = (slug: string, locale: Locale) => relative(process.cwd(), fileOf(slug, locale)).split("\\").join("/");
+// Date of the last commit that touched a page's file, if known.
+export const docModified = (slug: string, locale: Locale) => lastModified(sourceOf(slug, locale));
+
+// Last commit dates per file, written by scripts/last-modified.mjs before
+// the build: { "content/docs/first-steps.md": "2026-10-16T21:33:33+00:00" }.
+// Without the file (development, shallow clone) no dates are shown.
+let modifiedDates: Record<string, string> | undefined;
+export function lastModified(source: string): string | undefined {
+  if (!modifiedDates) {
+    try {
+      modifiedDates = JSON.parse(readFileSync(join(process.cwd(), "content", "last-modified.json"), "utf8"));
+    } catch {
+      modifiedDates = {};
+    }
+  }
+  return modifiedDates![source];
+}
 
 function read(slug: string, locale: Locale) {
   const text = readFileSync(fileOf(slug, locale), "utf8");
@@ -182,12 +268,12 @@ function read(slug: string, locale: Locale) {
   // The first paragraph is the lead, the rest the article.
   const cut = rest.search(/\n\s*\n/);
   const lead = (cut < 0 ? rest : rest.slice(0, cut)).replace(/\s+/g, " ").trim();
-  return { title, lead, body: cut < 0 ? "" : rest.slice(cut) };
+  return { title, lead, body: cut < 0 ? "" : rest.slice(cut), source: sourceOf(slug, locale) };
 }
 
 export function loadDoc(slug: string, locale: Locale = "de"): Doc | null {
   if (!docSlugs.includes(slug)) return null;
-  const { title, lead, body } = read(slug, locale);
+  const { title, lead, body, source } = read(slug, locale);
   const { html, toc } = render(body, locale);
   const leadHtml = new Marked({ gfm: true }).parseInline(lead, { async: false }) as string;
   const all = docGroups(locale);
@@ -201,6 +287,9 @@ export function loadDoc(slug: string, locale: Locale = "de"): Doc | null {
     group: all.find((g) => g.pages.some((p) => p.slug === slug))?.title || "",
     html,
     toc,
+    translated: locale === "de" || source.startsWith("content/docs/en/"),
+    source,
+    modified: lastModified(source),
     prev: index > 0 ? pages[index - 1] : undefined,
     next: pages[index + 1],
   };
@@ -240,6 +329,19 @@ export function docSearchIndex(locale: Locale = "de") {
 }
 export type DocSearchEntry = ReturnType<typeof docSearchIndex>[number];
 
+// A short fingerprint of all Markdown files: the browser fetches the search
+// index as /api/search-index/<locale>?v=<version>, so the address changes
+// whenever the content does and the response can be cached for a long time.
+let indexVersion: string | undefined;
+export function searchIndexVersion() {
+  if (!indexVersion) {
+    const hash = createHash("sha1");
+    for (const slug of docSlugs) for (const locale of ["de", "en"] as const) hash.update(readFileSync(fileOf(slug, locale)));
+    indexVersion = hash.digest("hex").slice(0, 12);
+  }
+  return indexVersion;
+}
+
 // llms.txt (https://llmstxt.org): what Flowplan is and where each page's
 // Markdown lives; llms-full.txt has all pages in one file.
 export function llmsIndex(base: string, locale: Locale) {
@@ -248,8 +350,8 @@ export function llmsIndex(base: string, locale: Locale) {
     de ? "# Flowplan-Dokumentation" : "# Flowplan documentation",
     "",
     de
-      ? "> Flowplan ist ein Open-Source-Arbeitsbereich (AGPL-3.0) für Dokumente, Datenbanken (Tabelle, Board, Kalender, Zeitleiste, Galerie, Liste, Feed, Diagramm, Formular), Whiteboards und ein tägliches Journal. Gehostet in Deutschland auf app.flowplan.org oder selbst gehostet als ein Docker-Container (Next.js, SQLite). Oberfläche auf Deutsch und Englisch. KI ist optional und standardmäßig aus – auch komplett lokal mit Ollama."
-      : "> Flowplan is an open-source workspace (AGPL-3.0) for documents, databases (table, board, calendar, timeline, gallery, list, feed, chart, form), whiteboards and a daily journal. Hosted in Germany at app.flowplan.org or self-hosted as one Docker container (Next.js, SQLite). Interface in German and English. AI is optional and off by default – also completely local with Ollama.",
+      ? `> Flowplan ist ein Open-Source-Arbeitsbereich (AGPL-3.0) für Dokumente, Datenbanken (Tabelle, Board, Kalender, Zeitleiste, Galerie, Liste, Feed, Diagramm, Formular), Whiteboards und ein tägliches Journal. Gehostet in Deutschland auf app.flowplan.org oder selbst gehostet als ein Docker-Container (Next.js, SQLite). Oberfläche auf ${languageList("de")}. KI ist optional und standardmäßig aus – auch komplett lokal mit Ollama.`
+      : `> Flowplan is an open-source workspace (AGPL-3.0) for documents, databases (table, board, calendar, timeline, gallery, list, feed, chart, form), whiteboards and a daily journal. Hosted in Germany at app.flowplan.org or self-hosted as one Docker container (Next.js, SQLite). Interface in ${languageList("en")}. AI is optional and off by default – also completely local with Ollama.`,
     "",
     de
       ? "Jede Seite gibt es als Markdown unter der verlinkten Adresse; die englische Fassung unter /en/…md."

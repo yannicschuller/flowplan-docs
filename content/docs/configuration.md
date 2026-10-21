@@ -35,8 +35,9 @@ Die übrigen OIDC-Variablen und alles zu Passwörtern und Passkeys stehen unter 
 | `FLOWPLAN_OCR_LANGS` | `deu,eng` | Sprachen der Texterkennung, z. B. `fra,eng`; die erste ist die Hauptsprache. Mitgeliefert sind `deu`, `eng` und `fra`. Jede weitere Sprache kostet Speicher und Zeit pro Seite. |
 | `FLOWPLAN_METRICS_TOKEN` | *leer* | Mindestens 16 Zeichen; aktiviert `/api/metrics` im Prometheus-Format. |
 | `FLOWPLAN_UPDATE_CHECK` | an | `false` schaltet die Suche nach neuen Versionen ab (für Instanzen ohne Internet). Sonst fragt der Server höchstens alle 12 Stunden bei GitHub nach dem neuesten Release und zeigt Admins in der Administration einen Hinweis. |
-| `FLOWPLAN_UPDATE_URL` | GitHub-API | Andere Adresse für das neueste Release (gleiches Format wie `api.github.com/repos/yannicschuller/flowplan/releases/latest`), etwa ein interner Spiegel. |
-| `FLOWPLAN_TRUSTED_PROXIES` | `1` | Anzahl der Proxys vor Flowplan (Traefik allein: `1`, Pangolin vor Traefik: `2`). Bestimmt, welcher Eintrag in `X-Forwarded-For` die echte Adresse ist – für die Begrenzung von Demo-Starts und anonymen Formularantworten. Frei erfundene Einträge des Browsers werden so ignoriert. |
+| `FLOWPLAN_UPDATE_URL` | GitHub-API | Andere Adresse für das neueste Release (gleiches Format wie `api.github.com/repos/yannicschuller/flowplan/releases/latest`), etwa ein interner Spiegel. Nicht zu verwechseln mit der gleichnamigen Variable der [Desktop-App](/offline-and-apps#desktop-app-fuer-macos-windows-und-linux), die auf dem Rechner der App deren Update-Quelle nennt. |
+| `FLOWPLAN_TRUSTED_PROXIES` | `1` | Anzahl der Proxys vor Flowplan (Traefik allein: `1`, Pangolin vor Traefik: `2`, `0` = keinem Header vertrauen). Bestimmt, welcher Eintrag in `X-Forwarded-For` die echte Adresse ist – für die Begrenzung von Anmeldeversuchen, Demo-Starts und anonymen Formularantworten. Frei erfundene Einträge des Browsers werden so ignoriert. Kommt gar keine Adresse an (der Proxy setzt den Header nicht), gelten nur die Limits je Konto und je Link, und das Protokoll zeigt einmalig einen Hinweis. |
+| `FLOWPLAN_ANONYMOUS_UPLOAD_MB` | `1024` | Wie viele MB Besucher ohne Konto pro Tag auf der ganzen Instanz hochladen dürfen – über anonyme Formulare und Bearbeiten-Links (`0` = unbegrenzt). Je Formular bzw. Link gelten zusätzlich 200 MB pro Tag, unabhängig vom Speicherkontingent des Arbeitsbereichs. |
 
 ## S3 und Datenbanksicherung
 
@@ -97,14 +98,19 @@ Den Versand prüfst du unter **Administration → Instanz → Test-E-Mail senden
 | `SPACE_GIT_ALLOW_PRIVATE` | *leer* | `true` erlaubt den in `SPACE_GIT_ALLOWED_HOSTS` genannten Servern auch interne Adressen – etwa ein Forgejo auf demselben Host, den der Container über `--add-host git.example.org:host-gateway` erreicht. Wirkt nur zusammen mit der Liste; alle anderen Server bleiben auf öffentliche Adressen beschränkt. |
 | `EXPORT_GIT_*` | *leer* | Veraltet: der Git-Export der ganzen Instanz, siehe [In ein Git-Repository übertragen](/storage-and-backups#in-ein-git-repository-uebertragen). Läuft weiter; besser ist der Git-Export der Bereiche. |
 
+## Rechtliches und Oberfläche
+
+| Variable | Standard | Bedeutung |
+| --- | --- | --- |
+| `IMPRINT_URL` | *leer* | Link zum Impressum, z. B. `https://example.com/impressum`. Erscheint auf der Anmeldeseite, unter geteilten Seiten und Formularen und im Kontomenü – nur, wenn gesetzt. |
+| `PRIVACY_URL` | *leer* | Link zur Datenschutzerklärung, an denselben Stellen und ebenfalls nur, wenn gesetzt. |
+
 ## Sprachnotizen (Whisper)
 
 Sprachnotizen im Editor werden immer als Audio gespeichert. Mit einem Whisper-Dienst im eigenen Netz macht Flowplan daraus zusätzlich Text; die Aufnahme verlässt dabei deinen Server nicht.
 
 | Variable | Standard | Bedeutung |
 | --- | --- | --- |
-| `IMPRINT_URL` | *leer* | Link zum Impressum, z. B. `https://example.com/impressum`. Erscheint auf der Anmeldeseite, unter geteilten Seiten und Formularen und im Kontomenü – nur, wenn gesetzt. |
-| `PRIVACY_URL` | *leer* | Link zur Datenschutzerklärung, an denselben Stellen und ebenfalls nur, wenn gesetzt. |
 | `WHISPER_URL` | *leer* | Adresse eines OpenAI-kompatiblen Whisper-Servers (`POST /v1/audio/transcriptions`), z. B. `http://whisper:8000`. Schaltet die Transkription ein. |
 | `WHISPER_MODEL` | `Systran/faster-whisper-small` | Modellname, wie ihn der Dienst erwartet. |
 | `WHISPER_LANGUAGE` | `de` | Sprache der Aufnahmen. |

@@ -44,6 +44,7 @@ Links mit eigenen Berechtigungen und [Veröffentlichungen](#im-web-veroeffentlic
 
 - Besucher geben das Passwort einmal pro Gerät ein. Es gilt bis zu 12 Stunden und nur für diesen Link; ein neues Passwort meldet alle Besucher ab.
 - Zehn falsche Versuche in 15 Minuten sperren die Adresse für diesen Link.
+- Bearbeiten-Links haben Tagesbudgets: Gäste laden je Link höchstens 200 MB Dateien pro Tag hoch (20 Dateien je 10 Minuten) und senden höchstens 100 MB Änderungen pro Tag; ein Dokument wächst über einen Link nicht über 3 MB Text hinaus. Für die ganze Instanz gilt zusätzlich `FLOWPLAN_ANONYMOUS_UPLOAD_MB` ([Konfiguration](/configuration)).
 - Nach dem Ablaufdatum zeigt der Link nur noch „abgelaufen“ – keine Inhalte, keine Dateien, keine Live-Updates.
 - Passwort entfernen oder Ablauf verlängern geht jederzeit.
 - Passwortgeschützte Veröffentlichungen lassen sich nicht in andere Arbeitsbereiche kopieren.

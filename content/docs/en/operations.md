@@ -79,7 +79,7 @@ The desktop app for macOS, Windows and Linux is a slim window around a Flowplan 
 
 On first start the app always asks for the instance's address, suggesting `https://app.flowplan.org` (HTTPS, `http://localhost` for local tests); change it via the menu **Server wechseln …**. For managed installations `--server=<URL>` or the environment variable `FLOWPLAN_SERVER` suggests their own address instead – the first start still asks to confirm it. The app checks that Flowplan really runs there (`/api/health` answers with `"service": "flowplan"`) and refuses addresses that redirect to another site.
 
-**Signing in with passkeys and SSO:** passkeys, and providers that ask for one, only work in a real browser. The app therefore opens the sign-in in the default browser: it creates a random secret, opens `/api/auth/desktop` with its hash, after signing in you confirm **Sign in to the desktop app**, and the browser hands a one-time code back to the app via `flowplan://sign-in`. The code is valid for one minute, once, and only together with the secret that never leaves the app. If the browser asks whether it may open Flowplan, that is this step.
+**Signing in with passkeys and SSO:** passkeys, and providers that ask for one, only work in a real browser. The app therefore opens the sign-in in the default browser: it creates a random secret, opens `/api/auth/desktop` with its hash, after signing in you confirm **Sign in to the app**, and the browser hands a one-time code back to the app via `flowplan://sign-in`. The code is valid for one minute, once, and only together with the secret that never leaves the app. If the browser asks whether it may open Flowplan, that is this step.
 
 While the apps are not signed and notarized, macOS blocks the first launch: from macOS 15 allow it under **System Settings → Privacy & Security → Open Anyway** (up to macOS 14, right-click → **Open** is enough); if macOS says the app is "damaged", `xattr -dr com.apple.quarantine /Applications/Flowplan.app` removes the quarantine flag. With signing and notarization this goes away, see [flowplan-desktop → Signing](https://github.com/yannicschuller/flowplan-desktop#signing). Windows shows SmartScreen (**More info → Run anyway**), and an AppImage has to be made executable first (`chmod +x`).
 
@@ -94,7 +94,7 @@ The app checks for a newer release 15 seconds after starting, then every six hou
 | macOS, signed | The same. |
 | macOS unsigned, Windows ZIP, Linux `.tar.gz` | A dialog names the new version and opens the download page. macOS only lets signed apps replace themselves. |
 
-Without a connection the check stays quiet and tries again later. `FLOWPLAN_UPDATE_URL` makes the app fetch updates from another source – a folder with the same files (`latest*.yml` and the installers), for example a mirror inside a company network.
+Without a connection the check stays quiet and tries again later. `FLOWPLAN_UPDATE_URL` on the computer running the app makes it fetch updates from another source – a folder with the same files (`latest*.yml` and the installers), for example a mirror inside a company network. Not to be confused with the server's variable of the same name, which points the instance's release check at a mirror (see [Configuration](/configuration#operations)).
 
 ### Signing and new versions
 

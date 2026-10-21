@@ -71,7 +71,7 @@ Records can wait for each other – for example "Print" only after "Proofreading
 - In the timeline's bar, choose a relation of the database to itself under **Dependencies** – or **Set up dependencies** creates a "Dependencies" property.
 - **Link by dragging:** drag from the round handle at the end of a bar onto another bar – that one then waits for the first. Links that would create a circle are refused.
 - **Arrows** connect the bars; if a record starts before its predecessor ends, the arrow is red. While dragging, the timeline already warns which record would be too early.
-- **Move successors along:** moving a record (or its end) moves every record that waits for it, directly or indirectly, by the same number of days – in one step.
+- **Move successors along:** moving a record moves every record that waits for it, directly or indirectly, by the same number of days – in one step. What counts is the side the link is attached to: the record's end for "End → start" and "End → end", its start for "Start → start" and "Start → end".
 - **Resolve all conflicts** moves every record that starts too early behind its predecessor.
 - **Highlight critical path** marks the records and arrows without slack: if one of them is delayed, the end of the whole plan moves.
 

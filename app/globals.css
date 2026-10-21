@@ -1,5 +1,6 @@
 /* Paper and ink: warm neutrals, one confident ultramarine accent (the same
-   tokens as the Flowplan app). */
+   tokens as the Flowplan app; --muted is darker here because it is used
+   for real text – 5:1 on the paper background). */
 :root {
   --bg: #fcfbf8;
   --surface: #f6f4ef;
@@ -7,7 +8,7 @@
   --hover: #ebe8e0;
   --border: #e4e0d6;
   --text: #1d1c22;
-  --muted: #8a8691;
+  --muted: #6f6b77;
   --secondary: #5e5a66;
   --blue: #3b3fd8;
   --blue-light: #ecebfc;
@@ -57,4 +58,16 @@ button {
   gap: 7px;
   padding: 6px;
   border-radius: 5px;
+}
+/* Text for screen readers only, e.g. "(opens in a new tab)" on links. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

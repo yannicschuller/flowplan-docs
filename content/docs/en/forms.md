@@ -19,7 +19,7 @@ Flowplan checks required fields and input types in the browser and on the server
 Under **Share form**, switch the form on and copy the link.
 
 - **Members only**: answering requires signing in; the answer carries the person's name.
-- **Anonymous**: anyone with the link can answer, without an account and without a name.
+- **Anonymous**: anyone with the link can answer, without an account and without a name. Files from anonymous answers count against a daily budget: 200 MB per form and `FLOWPLAN_ANONYMOUS_UPLOAD_MB` for the whole instance ([Configuration](/en/configuration)); each form also accepts at most 1000 answers per hour.
 
 Person and relation questions only exist in forms for members, because they would reveal members and records.
 

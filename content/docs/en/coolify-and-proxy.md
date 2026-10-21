@@ -59,6 +59,7 @@ Pull requests and Dependabot never deploy; without the secrets (in forks, for ex
 - Large uploads: content archives can be up to 2 GB. Traefik does not limit the request size; nginx needs `client_max_body_size`, Cloudflare has its own limits.
 - Timeouts: exporting and importing large archives can take minutes; raise proxy timeouts if needed.
 - Server-sent events (live editing in documents, live cursors on whiteboards) must not be buffered; nginx: `proxy_buffering off` (see the example below). Flowplan also sends `X-Accel-Buffering: no` for this.
+- Client address: the proxy must set `X-Forwarded-For` (Traefik and Caddy do so by default, nginx needs the line from the example). Only then does Flowplan limit sign-in attempts, demo starts and anonymous form answers per address. Without the header only the limits per account and per link apply, and the log shows a note on the first request. `FLOWPLAN_TRUSTED_PROXIES` names the number of proxies ([Configuration](/en/configuration)).
 
 ### nginx
 

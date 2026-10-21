@@ -58,14 +58,17 @@ A slim desktop app wraps your Flowplan instance. On first start it asks for the 
 - The app remembers the window size and position and opens external links in the default browser.
 - Offline use works in the desktop app too: turn on **Settings → Data → Offline use** in the app – it keeps its own offline copies, separate from the browser or the installed web app. Without a connection it then opens the stored copy; its own offline page (**Try again**, **Switch server**) only appears when there is no copy on the device.
 - It only accepts real Flowplan instances – an address running something else or redirecting to another site is refused.
-- **Sign in with a passkey** and **Sign in with SSO** open the sign-in in the default browser, where passkeys (iCloud Keychain, Windows Hello, password managers) are available. After **Sign in to the desktop app** the app takes over the sign-in; e-mail and password work directly in the app.
+- **Sign in with a passkey** and **Sign in with SSO** open the sign-in in the default browser, where passkeys (iCloud Keychain, Windows Hello, password managers) are available. After **Sign in to the app** the app takes over the sign-in; e-mail and password work directly in the app. This needs Flowplan 0.3.3 or newer.
 
 The apps for macOS, Windows and Linux are at [flowplan.org/download](https://flowplan.org/download) – the page detects your system; updates install themselves. As long as they are not signed, macOS asks on first opening (right-click → Open) and Windows shows SmartScreen. More under [Operations and troubleshooting](/operations#desktop-apps).
 
-## Apps for iPhone, iPad and Android (in preparation)
+> [!NOTE]
+> The environment variable `FLOWPLAN_UPDATE_URL` exists twice: on the computer running the desktop app it names another source for app updates (see [Updates](/operations#updates)); on the server, the variable of the same name points the instance's release check at a mirror (see [Configuration](/configuration#operations)). They mean different things and belong in different places.
+
+## Apps for iPhone, iPad and Android
 
 > [!NOTE]
-> The apps are in preparation and not yet available in the App Store or on Google Play. Until then, Flowplan can be installed as a web app as described above.
+> As of today the apps are in preparation and not yet available in the App Store or on Google Play. Until then, Flowplan can be installed as a web app as described above.
 
 Like the desktop app, the mobile apps show your Flowplan instance; all data stays on the server and new features arrive without an app update. On top comes what only an app can do:
 
@@ -80,7 +83,8 @@ Like the desktop app, the mobile apps show your Flowplan instance; all data stay
 Also:
 
 - On first start they ask for the address and suggest `https://app.flowplan.org`. They only accept real Flowplan instances that do not redirect to another site. The **app settings** (via **Settings → Notifications → Open app settings** or long-press the app icon → **Change server**) change the server; **Sign out and forget the server** signs the app out and removes it from the instance.
-- **Sign in with a passkey** and **Sign in with SSO** open the system's sign-in sheet (iOS) or a browser tab (Android); the app then takes over the sign-in. E-mail and password work directly in the app. This needs a Flowplan server newer than 0.3.4; notifications and widgets need a server with the app interface (from the next version).
+- **Managed devices (MDM/EMM):** through managed app configuration (iOS Managed App Configuration or Android app restrictions), the key `server` presets the address of your own instance; the app suggests it on first start.
+- **Sign in with a passkey** and **Sign in with SSO** open the system's sign-in sheet (iOS) or a browser tab (Android); after **Sign in to the app** the app takes over the sign-in. E-mail and password work directly in the app. Signing in through the browser as well as notifications and widgets (the app interface) need Flowplan 0.4.0 or newer.
 - Links to other sites open in the browser; without a connection the app shows a page of its own and reconnects by itself.
 - On Android, Flowplan appears in other apps' **Share** menu.
 

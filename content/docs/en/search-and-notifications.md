@@ -61,4 +61,4 @@ Push notifications open the page concerned. No document content appears on the l
 
 Signing out, the end of a session or a locked account end the push subscription; enable it again after the next sign-in if needed.
 
-In the [apps for iPhone, iPad and Android](/offline-and-apps#apps-for-iphone-ipad-and-android-in-preparation), notifications come through the app: it asks for permission after the first sign-in, and the number of unread ones shows on the app icon. **Notification kinds** apply there as well.
+In the [apps for iPhone, iPad and Android](/offline-and-apps#apps-for-iphone-ipad-and-android), notifications come through the app: it asks for permission after the first sign-in, and the number of unread ones shows on the app icon. **Notification kinds** apply there as well.

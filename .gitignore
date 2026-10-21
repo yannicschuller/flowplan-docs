@@ -6,3 +6,6 @@ playwright-report/
 test-results/
 *.tsbuildinfo
 next-env.d.ts
+
+# Written before every build by scripts/last-modified.mjs (commit dates per page).
+content/last-modified.json

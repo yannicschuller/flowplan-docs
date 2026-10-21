@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { docSlugs, loadDoc } from "@/lib/docs";
+import { docSlugs, editUrl, loadDoc } from "@/lib/docs";
 import { localePrefix, requestLocale } from "@/lib/i18n-server";
 import { websiteUrl } from "@/lib/links";
 import { absolute, jsonLd, pageAlternates, socialMetadata, softwareJson } from "@/lib/seo";
@@ -59,14 +59,36 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
       },
     ],
   };
+  // The text's language, when an English address still shows the German page.
+  const lang = doc.translated ? undefined : "de";
+  const modified = doc.modified
+    ? new Date(doc.modified).toLocaleDateString(locale === "de" ? "de-DE" : "en-GB", { dateStyle: "long" })
+    : undefined;
   return (
     <main className={s.main} id="inhalt">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(structured)} />
       <article className={s.article}>
         <p className={s.eyebrow}>{doc.group}</p>
-        <h1 className={s.title}>{doc.title}</h1>
-        <p className={s.lead} dangerouslySetInnerHTML={{ __html: doc.leadHtml }} />
-        <div className={s.prose} dangerouslySetInnerHTML={{ __html: html }} />
+        <h1 className={s.title} lang={lang}>
+          {doc.title}
+        </h1>
+        {!doc.translated && (
+          <aside className={s.untranslated} role="note">
+            This page is not translated yet – you are reading the German version.
+          </aside>
+        )}
+        <p className={s.lead} lang={lang} dangerouslySetInnerHTML={{ __html: doc.leadHtml }} />
+        <div className={s.prose} lang={lang} dangerouslySetInnerHTML={{ __html: html }} />
+        <p className={s.meta}>
+          {modified && (
+            <span>
+              {t("Zuletzt aktualisiert am", "Last updated on")} <time dateTime={doc.modified}>{modified}</time>
+            </span>
+          )}
+          <a href={editUrl(doc.source)} rel="noopener">
+            {t("Auf GitHub bearbeiten", "Edit on GitHub")}
+          </a>
+        </p>
         <nav className={s.pager} aria-label={t("Weiterlesen", "Continue reading")}>
           {doc.prev ? (
             <a href={`${prefix}/${doc.prev.slug}`} data-dir="prev">
