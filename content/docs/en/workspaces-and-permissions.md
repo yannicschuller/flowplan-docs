@@ -44,7 +44,8 @@ With single sign-on, groups from the identity provider can maintain members and 
 1. The **space** sets the basis: open to all members or private for the people it is shared with.
 2. **Pages** inherit the permissions of their space and parent pages; under **Share**, people or groups are added.
 3. **Records** of a database can be made read-only or private (see [Databases](/databases#permissions-per-record)).
-4. Linked databases, mentions and links never grant additional permissions: whoever may not read the source does not see it embedded either.
+4. **Properties** of a database can be made visible or editable only for editors, owners or selected groups (see [Property visibility](/properties-and-formulas#property-visibility)).
+5. Linked databases, mentions and links never grant additional permissions: whoever may not read the source does not see it embedded either.
 
 Owners of a workspace also manage other members' spaces, but do not get read access to their private pages that way.
 

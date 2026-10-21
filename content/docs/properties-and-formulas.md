@@ -6,6 +6,29 @@ Relationen verbinden Datenbanken, Rollups rechnen über verknüpfte Einträge, F
 
 Ein Klick auf den Spaltenkopf oder **Ansicht und Eigenschaften** öffnet den Eigenschaftsdialog: Name, Typ, Optionen und Format. Typwechsel übernehmen vorhandene Werte, soweit sie passen. Formate für Zahlen umfassen Währungen, Prozent, Dezimalstellen und Tausendertrennzeichen und gelten auch für Formeln mit Zahlenergebnis; Datumsfelder zeigen kurz, lang oder ISO und optional Uhrzeiten; **Datum entfernen** unter dem Feld leert es wieder.
 
+## Sichtbarkeit von Eigenschaften
+
+Einzelne Eigenschaften wie „Gehalt“ oder „Interne Notiz“ lassen sich auf bestimmte Personen beschränken. Im Eigenschaftsdialog legt der Abschnitt **Sichtbarkeit** fest, wer die Eigenschaft **sieht** und wer sie **bearbeitet**:
+
+| Auswahl | Sehen | Bearbeiten |
+| --- | --- | --- |
+| **Alle mit Zugriff** (Standard beim Sehen) | Alle, die die Datenbank lesen dürfen | – |
+| **Bearbeiter und Besitzer** (Standard beim Bearbeiten) | Rollen Bearbeiten und Eigentümer | Rollen Bearbeiten und Eigentümer |
+| **Nur Besitzer** | Eigentümer der Datenbank | Eigentümer der Datenbank |
+| **Ausgewählte Gruppen** | Mitglieder dieser [Gruppen](/workspaces-and-permissions#gruppen) | Mitglieder dieser Gruppen mit Bearbeitungsrecht |
+
+- Nur **Eigentümer der Datenbank** ändern die Sichtbarkeit; sie sehen und bearbeiten selbst immer alles.
+- Eingeschränkte Eigenschaften tragen im Spaltenkopf ein **Schloss**. Wer eine Eigenschaft nicht sehen darf, bekommt die Spalte gar nicht; Zellen, die jemand nur sehen darf, sind schreibgeschützt und nennen beim Überfahren, wer sie bearbeiten darf („Nur für … bearbeitbar“).
+- Die Regeln engen Seiten- und Eintragsrechte nur ein: Wer die Datenbank nur ansehen darf, bearbeitet auch eine Eigenschaft für „ausgewählte Gruppen“ nicht.
+- Die **Titeleigenschaft** (die erste) sehen immer alle mit Zugriff.
+- Der Server setzt die Regeln überall durch: in der Datenbank selbst, in verknüpften Ansichten, Dashboards, Whiteboard-Karten, Exporten (Markdown, CSV, JSON, Word, EPUB, Druck), Versionen, über die API und den [MCP-Server](/mcp), für die [KI](/ai) und in Kalender-Abos. Änderungen an Eigenschaften, die jemand nicht bearbeiten darf – im Eintrag, per Mehrfachbearbeitung, Import, API, KI oder CalDAV –, lehnt er mit einer Meldung ab.
+- **Öffentlich** sind eingeschränkte Eigenschaften nie: Veröffentlichungen, Links mit eigenen Berechtigungen, Formulare, das Kundenportal und Webhooks lassen sie weg, auch wenn ein Link Bearbeiten erlaubt.
+- Die **Volltextsuche** und die semantische Suche der KI nehmen eingeschränkte Eigenschaften nicht auf, für niemanden.
+- **Formeln, Rollups, KI-Eigenschaften, Fortschritt und Zeit**, die eine verborgene Eigenschaft lesen, gelten für diese Person ebenfalls als verborgen – ihr Ergebnis würde den Wert sonst verraten. Eine Formel mit berechnetem `prop()`-Namen hängt von allen Eigenschaften ab. Ein Rollup ist verborgen, wenn die Person die Eigenschaft in der Zieldatenbank nicht sehen darf.
+- Wer eine Eigenschaft nicht sieht, kann sie beim Ändern des Schemas weder verlieren noch löschen. Versionen einer Datenbank mit eingeschränkten Eigenschaften stellen nur Eigentümer wieder her, und Einträge mit verborgenen Eigenschaften lassen sich nicht in eine Seite umwandeln oder in eine andere Datenbank verschieben (Kopieren lässt die verborgenen Werte weg).
+
+Filter und Sortierungen einer Ansicht, die eine verborgene Eigenschaft nutzen, wirken für diese Person wie auf leere Werte; die Bedingung selbst (etwa der Vergleichswert) bleibt in der Ansicht gespeichert.
+
 ## Relationen
 
 1. **Eigenschaft hinzufügen → Relation** und die Zieldatenbank wählen.
