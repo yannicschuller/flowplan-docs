@@ -116,6 +116,40 @@ A property of the type **Time tracking** adds up the time worked on a record. Op
 
 Every request is checked against the secret. Only people who may edit the database see the address and the secret. **New address and secret** invalidates the old ones.
 
+## Sync GitHub and GitLab issues
+
+A database can keep itself in step with the issues of a GitHub or GitLab repository – both ways or only one. Unlike the [Git connection](#git-connection), which only links commits and pull requests, records and issues are created and updated on both sides here.
+
+**Setting up the connection** (workspace owners and administrators):
+
+1. **Settings → API & webhooks → Connect GitHub or GitLab**.
+2. Choose the provider; for an own server enter its address (empty for github.com or gitlab.com), the repository (`owner/name`) or project (`group/project`) and an access token that may read and write issues – on GitHub a fine-grained token with *Issues: Read and write*, on GitLab a token with the `api` scope.
+3. **Test connection** makes one call with the token; **Save** stores the token encrypted. It is never shown again.
+4. Optional **People**: one `login = e-mail` of a member per line. Assignees are matched through it.
+5. For immediate updates, add the shown **webhook address** with the **secret** in the repository – on GitHub with content type JSON and the events *Issues* and *Issue comments*, on GitLab as *Secret token* with *Issues events* and *Comments*. Without a webhook, Flowplan syncs every 10 minutes.
+
+The sync acts as the person who set up the connection: they need edit rights on the database, and records they may not read are skipped. If they are no longer an owner of the workspace, the connection pauses until someone saves the token again.
+
+**Mapping a database**: **… → Sync issues** in the database. There you choose the connection, repository and direction (*both ways*, *only issues → database*, *only database → issues*) and map properties:
+
+| Issue | Property |
+| --- | --- |
+| Title | Title |
+| Description (Markdown) | a text property or the record's document |
+| Open/closed and labels | a select – per option "open" or "closed", optionally with a label (e.g. *Doing* → open + `in progress`) |
+| Labels | a multi-select (only labels that exist as options) |
+| Assignee | a person (through the connection's people list) |
+| Milestone due date | a date (an existing milestone with that date is set) |
+| Number and address | number/text or URL – read-only |
+
+Two switches handle **comments**: issue comments appear as record comments (with name and link), and record comments go out as issue comments. **Also take over existing issues** fetches all existing issues on the first run; otherwise only what changes after saving. New records become issues once the mapping is saved – older records stay as they are.
+
+**Conflicts**: if both the record and the issue changed since the last sync, the later change wins. The decision is written to the audit log. Each record is linked to at most one issue; the record then shows a chip like **GitHub #123** with a link.
+
+**Status**: the dialog shows the last pull and push, conflicts, skipped records and errors; **Sync now** starts a run right away. When the provider reports a rate limit, Flowplan waits for the time it gives. A repository can only be connected to one database. **Disconnect** ends the sync; records and issues stay.
+
+Administrators allow own servers (GitHub Enterprise, self-hosted GitLab) with [`ISSUE_SYNC_ALLOWED_HOSTS`](/configuration#integrations).
+
 ## Records from all databases
 
 **My tasks → Records from databases** shows records from every database of the workspace in one list. By default these are the open ones assigned to you – through any person property.

@@ -116,6 +116,40 @@ Eine Eigenschaft vom Typ **Zeiterfassung** summiert die Zeit, die an einem Eintr
 
 Jede Anfrage wird gegen das Secret geprüft. Adresse und Secret sehen nur Personen, die die Datenbank bearbeiten dürfen. **Neue Adresse und neues Secret** macht die alten ungültig.
 
+## GitHub- und GitLab-Issues synchronisieren
+
+Eine Datenbank kann sich mit den Issues eines GitHub- oder GitLab-Repositorys abgleichen – in beide Richtungen oder nur in eine. Anders als die [Git-Anbindung](#git-anbindung), die Commits und Pull Requests nur verlinkt, werden hier Einträge und Issues gegenseitig angelegt und aktualisiert.
+
+**Verbindung einrichten** (Eigentümer des Arbeitsbereichs und Administratoren):
+
+1. **Einstellungen → API & Webhooks → GitHub oder GitLab verbinden**.
+2. Anbieter wählen, bei eigenem Server dessen Adresse eintragen (leer für github.com bzw. gitlab.com), Repository (`besitzer/name`) bzw. Projekt (`gruppe/projekt`) und ein Zugangstoken, das Issues lesen und schreiben darf – bei GitHub ein Fine-grained Token mit *Issues: Read and write*, bei GitLab ein Token mit dem Scope `api`.
+3. **Verbindung testen** macht einen Aufruf mit dem Token; **Speichern** legt das Token verschlüsselt ab. Angezeigt wird es danach nie wieder.
+4. Optional **Personen**: je Zeile `login = e-mail` eines Mitglieds. Darüber werden Zuständige (Assignees) zugeordnet.
+5. Für sofortige Übernahme die angezeigte **Webhook-Adresse** mit dem **Secret** im Repository eintragen – bei GitHub mit Content type JSON und den Ereignissen *Issues* und *Issue comments*, bei GitLab als *Secret token* mit *Issues events* und *Comments*. Ohne Webhook gleicht Flowplan alle 10 Minuten ab.
+
+Die Synchronisierung handelt als die Person, die die Verbindung eingerichtet hat: Sie braucht Bearbeitungsrechte an der Datenbank, und Einträge, die sie nicht lesen darf, werden übersprungen. Ist sie nicht mehr Eigentümer des Arbeitsbereichs, pausiert die Verbindung, bis jemand das Token neu speichert.
+
+**Datenbank zuordnen**: **… → Issues synchronisieren** in der Datenbank. Dort wählst du Verbindung, Repository und Richtung (*beide*, *nur Issues → Datenbank*, *nur Datenbank → Issues*) und ordnest Eigenschaften zu:
+
+| Issue | Eigenschaft |
+| --- | --- |
+| Titel | Titel |
+| Beschreibung (Markdown) | eine Text-Eigenschaft oder das Dokument des Eintrags |
+| offen/geschlossen und Labels | eine Auswahl – je Option „offen" oder „geschlossen", optional mit einem Label (z. B. *In Arbeit* → offen + `in progress`) |
+| Labels | eine Mehrfachauswahl (nur Labels, die es als Option gibt) |
+| Assignee | eine Person (über die Personen-Liste der Verbindung) |
+| Fälligkeit des Meilensteins | ein Datum (gesetzt wird ein vorhandener Meilenstein mit diesem Datum) |
+| Nummer und Adresse | Zahl/Text bzw. URL – nur lesen |
+
+Dazu kommen zwei Schalter für **Kommentare**: Issue-Kommentare erscheinen als Kommentare am Eintrag (mit Name und Link), und Kommentare am Eintrag gehen als Issue-Kommentare hinaus. **Auch bestehende Issues übernehmen** holt beim ersten Lauf alle vorhandenen Issues; sonst nur, was sich nach dem Speichern ändert. Neue Einträge werden zu Issues, sobald die Zuordnung gespeichert ist – ältere Einträge bleiben, wie sie sind.
+
+**Konflikte**: Wurden Eintrag und Issue seit dem letzten Abgleich beide geändert, gewinnt die spätere Änderung. Die Entscheidung steht im Prüfprotokoll. Jeder Eintrag ist höchstens mit einem Issue verknüpft; der Eintrag zeigt dann einen Chip wie **GitHub #123** mit Link.
+
+**Status**: Der Dialog zeigt den letzten Abruf und die letzte Übertragung, Konflikte, übersprungene Einträge und Fehler; **Jetzt synchronisieren** startet einen Lauf sofort. Meldet der Anbieter ein Ratenlimit, wartet Flowplan die angegebene Zeit ab. Ein Repository lässt sich nur mit einer Datenbank verbinden. **Trennen** beendet den Abgleich; Einträge und Issues bleiben.
+
+Eigene Server (GitHub Enterprise, selbst betriebenes GitLab) gibt die Administration mit [`ISSUE_SYNC_ALLOWED_HOSTS`](/configuration#integrationen) frei.
+
 ## Einträge aus allen Datenbanken
 
 **Meine Aufgaben → Einträge aus Datenbanken** zeigt Einträge aus allen Datenbanken des Arbeitsbereichs in einer Liste. Standardmäßig sind das die offenen, die dir zugewiesen sind – über irgendeine Personen-Eigenschaft.

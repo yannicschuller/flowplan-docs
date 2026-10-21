@@ -111,6 +111,8 @@ Der Mailserver muss Plus-Adressierung unterstützen (`inbox+irgendwas@…` lande
 | `SPACE_GIT_EXPORT` | *leer* | `true` schaltet den [Git-Export der Bereiche](/storage-and-backups#git-export-eines-bereichs) ein: Bereichseigentümer übertragen ihren Bereich täglich oder wöchentlich in ein eigenes Repository. |
 | `SPACE_GIT_ALLOWED_HOSTS` | *leer* | Erlaubte Git-Server dafür, durch Komma getrennt (z. B. `git.example.org`). Ohne die Variable ist jeder öffentliche `https://`-Server erlaubt; interne Adressen nie. |
 | `SPACE_GIT_ALLOW_PRIVATE` | *leer* | `true` erlaubt den in `SPACE_GIT_ALLOWED_HOSTS` genannten Servern auch interne Adressen – etwa ein Forgejo auf demselben Host, den der Container über `--add-host git.example.org:host-gateway` erreicht. Wirkt nur zusammen mit der Liste; alle anderen Server bleiben auf öffentliche Adressen beschränkt. |
+| `ISSUE_SYNC_ALLOWED_HOSTS` | *leer* | Eigene Server für die [Synchronisierung von GitHub- und GitLab-Issues](/projects-and-tickets#github-und-gitlab-issues-synchronisieren), durch Komma getrennt (z. B. `gitlab.example.org`). github.com und gitlab.com sind immer erlaubt; andere Server nur, wenn sie hier stehen. |
+| `ISSUE_SYNC_ALLOW_PRIVATE` | *leer* | `true` erlaubt den in `ISSUE_SYNC_ALLOWED_HOSTS` genannten Servern auch interne Adressen – etwa ein GitLab im selben Netz. Wirkt nur zusammen mit der Liste. |
 | `EXPORT_GIT_*` | *leer* | Veraltet: der Git-Export der ganzen Instanz, siehe [In ein Git-Repository übertragen](/storage-and-backups#in-ein-git-repository-uebertragen). Läuft weiter; besser ist der Git-Export der Bereiche. |
 
 ## Rechtliches und Oberfläche
