@@ -44,8 +44,12 @@ Eigentümer eines Arbeitsbereichs legen Webhooks an: Adresse, Ereignisse und opt
 | --- | --- |
 | `row.created` | Neuer Eintrag in einer Datenbank, auch aus einem Formular |
 | `row.updated` | Eintrag geändert (`changed` nennt die Eigenschaften) |
+| `row.done` | Ein Eintrag wurde erledigt (Status „Erledigt“ o. Ä. oder die eingestellte Erledigt-Regel der Datenbank) |
 | `form.submitted` | Formularantwort |
 | `page.created` | Neue Seite |
+| `comment.created` | Neuer Kommentar an einer Seite oder einem Eintrag (`text`) |
+| `mention` | Jemand wurde in einer Seite oder einem Eintrag erwähnt (`userId`, `text` = Name) |
+| `digest.due` | Einmal am Tag zur eingestellten Uhrzeit: offene Einträge, die heute fällig oder überfällig sind (`items`) |
 
 Flowplan sendet ein JSON per `POST`:
 
@@ -58,6 +62,8 @@ Flowplan sendet ein JSON per `POST`:
   "data": { "pageId": "…", "rowId": "…", "cells": { "title": "Neu" } }
 }
 ```
+
+Die Testnachricht aus den Einstellungen kommt mit dem Ereignis `test`.
 
 ### Signatur prüfen
 
@@ -74,10 +80,150 @@ const valid = timingSafeEqual(Buffer.from(expected), Buffer.from(req.headers["x-
 - Antworten mit Status 2xx gelten als zugestellt; sonst wiederholt Flowplan bis zu sechs Mal mit wachsendem Abstand.
 - Die Liste zeigt je Webhook die letzte Zustellung oder den letzten Fehler.
 - Nur öffentliche HTTPS-Adressen sind erlaubt. Für Dienste im selben Netz (Home Assistant, n8n) setzt die Administration `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true`.
+- **Testnachricht senden** in der Liste schickt sofort eine Beispielnachricht und zeigt das Ergebnis; sie wird nicht wiederholt. Unter der letzten Zustellung steht außerdem der letzte Fehler mit Zeitpunkt.
 
 ### Webhooks per API anlegen
 
-Mit einem **Schreib-Token** eines Eigentümers lassen sich Webhooks auch per API anlegen und entfernen (`POST /api/webhooks`, Entfernen über `POST /api/command` mit `{"action": "webhook.delete", …}`), etwa von Automatisierungsdiensten. Lese-Tokens dürfen das nicht.
+Mit einem **Schreib-Token** eines Eigentümers lassen sich Webhooks auch per API anlegen, ändern und entfernen (`POST /api/webhooks`, `POST /api/webhooks/update`, Testnachricht mit `POST /api/webhooks/test`; Entfernen über `POST /api/command` mit `{"action": "webhook.delete", …}`), etwa von Automatisierungsdiensten. Lese-Tokens dürfen das nicht.
+
+## Chat-Benachrichtigungen
+
+Statt JSON kann ein Webhook eine fertige Nachricht in einen Chat schicken. Im Webhook-Formular unter **Einstellungen → API & Webhooks** wählst du das **Format**:
+
+| Format | Ziel | Was ankommt |
+| --- | --- | --- |
+| JSON | n8n, Home Assistant, eigene Dienste | Das signierte JSON oben |
+| Slack | Incoming Webhook oder eine Slack-App | Block Kit: Überschrift, Text mit dem Eintrag als Link, Felder für geänderte Eigenschaften, Zeile mit Person und Zeit |
+| Matrix | Raum-Webhook (z. B. hookshot) oder die Matrix-Client-API | HTML-Nachricht (`formatted_body`) mit reinem Text als `body` |
+| Microsoft Teams | Incoming Webhook bzw. Workflow „Bei Empfang einer Webhook-Anforderung posten“ | Adaptive Card mit Faktenliste und Schaltfläche **In Flowplan öffnen** |
+| Discord | Kanal-Webhook | Embed mit Titel, Link, Feldern und Zeitstempel |
+
+Neben dem Formular zeigt eine **Vorschau** die Nachricht für ein Beispielereignis, darunter den Inhalt, der tatsächlich gesendet wird.
+
+### Einrichten
+
+**Slack**
+
+- *Nur Nachrichten:* In Slack eine App anlegen (api.slack.com/apps), **Incoming Webhooks** einschalten, einen Kanal wählen und die Adresse `https://hooks.slack.com/services/…` in Flowplan eintragen.
+- *Mit Antworten im Thread:* Der App unter **OAuth & Permissions** das Recht `chat:write` geben, installieren und den **Bot User OAuth Token** (`xoxb-…`) sowie die **Kanal-ID** (in Slack: Kanaldetails, ganz unten) eintragen; den Bot in den Kanal einladen (`/invite @App`). Für Antworten zusätzlich das **Signing Secret** (Basic Information) eintragen. Nach dem Speichern zeigt die Liste eine **Request URL** (`…/api/webhooks/slack/<id>`): In der App unter **Event Subscriptions** einschalten, diese Adresse eintragen und das Bot-Ereignis `message.channels` (bei privaten Kanälen `message.groups`) abonnieren. Antworten im Thread einer Flowplan-Nachricht erscheinen dann als Kommentar am Eintrag – geschrieben im Namen der Person, die den Webhook eingerichtet hat, mit dem Präfix „Slack:“. Threads werden 30 Tage lang zugeordnet.
+
+**Matrix**
+
+- *Raum-Webhook:* Mit einer Brücke wie hookshot einen „generic webhook“ im Raum anlegen und dessen Adresse eintragen. Flowplan sendet `text` und `html` (plus die Felder einer Matrix-Nachricht).
+- *Client-API:* Für ein Bot-Konto ein Zugriffstoken erzeugen, das Konto in den Raum einladen und in Flowplan die **Adresse des Homeservers** (z. B. `https://matrix.example.org`), das **Zugriffstoken** und den **Raum** (`!id:server` oder `#alias:server`) eintragen. Flowplan sendet mit `PUT /_matrix/client/v3/rooms/{raum}/send/m.room.message/{txn}`; Wiederholungen derselben Zustellung erzeugen keine doppelten Nachrichten.
+
+**Microsoft Teams**
+
+- In Teams beim Kanal einen Workflow mit der Vorlage „Bei Empfang einer Webhook-Anforderung in einem Kanal posten“ anlegen (oder einen klassischen Incoming Webhook) und die angezeigte Adresse eintragen.
+
+**Discord**
+
+- In den Kanaleinstellungen unter **Integrationen → Webhooks** einen Webhook anlegen und die Adresse `https://discord.com/api/webhooks/…` eintragen. Erwähnungen (@everyone usw.) werden nie ausgelöst.
+
+Zugriffstoken, Bot-Token und Signing Secret werden verschlüsselt gespeichert und nie wieder angezeigt; beim Bearbeiten bleibt ein leeres Feld beim gespeicherten Wert, **Gespeicherte Zugangsdaten entfernen** löscht sie. Auch für Chat-Adressen gilt: nur öffentliches HTTPS, jede Zustellung prüft die Adresse erneut.
+
+### Vorlagen
+
+Für jedes Ereignis gibt es einen Standardtext, den du im Formular ändern kannst (Auswahl **Vorlage für Ereignis**). Die Schaltflächen fügen Platzhalter ein:
+
+| Platzhalter | Inhalt |
+| --- | --- |
+| `{title}` | Titel des Eintrags oder der Seite |
+| `{actor}` | Wer es ausgelöst hat |
+| `{page}` | Datenbank bzw. übergeordnete Seite |
+| `{changes}` | Geänderte Eigenschaften als Liste (in der Übersicht: die fälligen Einträge) |
+| `{url}` | Link in Flowplan |
+| `{text}` | Kommentartext bzw. Name der erwähnten Person |
+| `{date}` | Datum und Uhrzeit (in der Übersicht: der Tag) |
+| `{count}` | Anzahl der Änderungen bzw. fälligen Einträge |
+
+Erlaubt ist ein kleines Markdown: `**fett**`, `_kursiv_`, `` `Code` ``, `[Text](Adresse)`, Zeilen mit `- ` als Liste und `> ` als Zitat. Flowplan übersetzt das in die Auszeichnung der Plattform (Slack mrkdwn, Matrix-HTML, Teams-Markdown, Discord-Markdown). Werte aus Flowplan werden nie als Auszeichnung gelesen – ein `*` im Titel bleibt ein `*`. Steht `{changes}` nicht in der Vorlage, zeigen Slack, Teams und Discord die Änderungen als eigene Felder, Matrix als Liste darunter. Lange Werte werden gekürzt (Titel 200 Zeichen, Kommentar 1.000, höchstens 10 Änderungen und 25 fällige Einträge), damit die Grenzen der Plattformen eingehalten werden. Die **Sprache der Nachrichten** (Standardtexte, Datumsformat) ist je Webhook einstellbar.
+
+Beispiel:
+
+```text
+{actor} hat [{title}]({url}) in **{page}** geändert:
+{changes}
+```
+
+### Tägliche Übersicht
+
+Mit dem Ereignis **Heute fällig** (`digest.due`, „täglich um …“) kommt einmal am Tag zur gewählten Uhrzeit (Zeitzone des Browsers beim Anlegen) eine Liste der offenen Einträge, die heute fällig oder überfällig sind – aus allen Datenbanken des Arbeitsbereichs oder nur der gewählten. Als Fälligkeit zählt die Datumseigenschaft mit „Fällig“, „Due“, „Deadline“ o. Ä. im Namen, sonst die erste Datumseigenschaft; als erledigt gilt, was die Erledigt-Regel der Datenbank sagt. Private Einträge stehen nie in der Übersicht. Ist nichts fällig, wird nichts gesendet.
+
+## E-Mail-Eingang
+
+Eigentümer eines Arbeitsbereichs legen unter **Einstellungen → Arbeitsbereich → E-Mail-Eingang** Adressen an, die eingehende E-Mails in Flowplan ablegen:
+
+- **Ziel Seite**: Jede E-Mail wird eine neue Unterseite. Der Betreff ist der Titel, der Text (bereinigtes HTML oder reiner Text) der Inhalt, darüber Absender und Datum. Anhänge werden Dateien der neuen Seite; eingebettete Bilder (`cid:`) erscheinen an ihrer Stelle, alle übrigen Anhänge als Liste darunter.
+- **Ziel Datenbank**: Jede E-Mail wird ein Eintrag. Der Betreff ist der Titel, der Text der Inhalt des Eintrags, die Absenderadresse kommt in die erste E-Mail-Eigenschaft (falls vorhanden), das Datum der E-Mail ist das Erstelldatum, Anhänge kommen in die erste Datei-Eigenschaft (sonst als Liste in den Inhalt).
+- **Erlaubte Absender**: Adressen (`ada@example.org`) oder Domains (`example.org`, nur genau diese Domain). E-Mails anderer Absender werden nicht gespeichert, sondern im Prüfprotokoll vermerkt.
+- **Signaturschlüssel** (optional): siehe unten.
+
+Die Adresse handelt mit den Rechten der Person, die sie angelegt hat. Verliert sie die Schreibrechte auf das Ziel oder wird das Ziel gesperrt, nimmt die Adresse nichts mehr an (die Liste zeigt den Fehler).
+
+Sicherheit und Grenzen:
+
+- Jede Adresse hat ein zufälliges Token aus 32 Zeichen. **Neues Token erzeugen** macht die bisherige Adresse sofort ungültig.
+- HTML aus E-Mails wird wie Gastinhalte bereinigt: keine Skripte, Formulare, Stile oder Frames; externe Bilder (z. B. Zählpixel) werden entfernt, Links bleiben.
+- Anhänge: höchstens 20 je E-Mail, 10 MB je Datei, 25 MB zusammen; größere werden mit Namen im Text vermerkt. Der Dateityp wird am Inhalt geprüft, Fotos verlieren ihren Standort; im Browser geöffnet werden nur Bilder und PDFs, alles andere wird heruntergeladen. Anhänge zählen zum Speicherkontingent des Arbeitsbereichs und zum Tagesbudget für anonyme Uploads (200 MB je Adresse und Tag, dazu `FLOWPLAN_ANONYMOUS_UPLOAD_MB` für die ganze Instanz).
+- Höchstens 60 E-Mails pro Adresse und Stunde (auch abgelehnte zählen); darüber antwortet Flowplan mit 429, und der Anbieter versucht es später erneut.
+- Dieselbe `Message-ID` wird je Adresse nur einmal gespeichert. Ohne `Message-ID` zählen Absender, Betreff, Datum und Text.
+- Die Absenderadresse einer E-Mail lässt sich fälschen. Die Absenderliste ist eine Vorauswahl; geheim bleiben muss vor allem das Token. Für Webhooks bietet der Signaturschlüssel zusätzlichen Schutz.
+
+### Per Webhook (Mailgun, Postmark, SendGrid, Cloudflare)
+
+Ohne weitere Einrichtung nimmt Flowplan E-Mails per `POST` an der Webhook-Adresse aus der Liste an:
+
+```
+https://flowplan.example.com/api/inbound-mail/<token>
+```
+
+Flowplan erkennt das Format am Inhalt:
+
+| Anbieter | Einrichtung |
+| --- | --- |
+| **Mailgun** | *Receiving → Create Route*: Ausdruck z. B. `match_recipient("flowplan@mg.example.com")`, Aktion *Forward* an die Webhook-Adresse. Als Signaturschlüssel den *HTTP webhook signing key* von Mailgun eintragen; Flowplan prüft dann `timestamp`, `token` und `signature` (höchstens 15 Minuten alt). |
+| **Postmark** | Server → *Inbound* Stream → *Webhook URL* = Webhook-Adresse. Postmark schickt JSON mit `FromFull`, `TextBody`, `HtmlBody` und `Attachments`. |
+| **SendGrid** | *Settings → Inbound Parse → Add Host & URL*: Domain und Webhook-Adresse. Mit *POST the raw, full MIME message* kommt die ganze E-Mail (`email`), sonst die Felder `from`, `subject`, `text`, `html`, `attachment-info` und `attachment1…`. |
+| **Cloudflare Email Routing** | Eine Email-Worker-Regel, die die rohe E-Mail weitergibt (Beispiel unten). |
+| **Eigene Skripte** | JSON oder `multipart/form-data` mit `from`, `to`, `subject`, `text`, `html`, `messageId`, `date` und `attachments` (JSON: `[{ "filename", "contentType", "content" (base64), "contentId" }]`, Multipart: Dateifelder) – oder die ganze E-Mail als `raw` (Text) bzw. `rawBase64`, oder als Inhalt mit `Content-Type: message/rfc822`. |
+
+Cloudflare Email Worker:
+
+```js
+export default {
+  async email(message, env) {
+    const raw = await new Response(message.raw).arrayBuffer();
+    const body = new Uint8Array(raw);
+    const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(env.FLOWPLAN_KEY), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+    const sig = [...new Uint8Array(await crypto.subtle.sign("HMAC", key, body))].map((b) => b.toString(16).padStart(2, "0")).join("");
+    const res = await fetch(env.FLOWPLAN_URL, {
+      method: "POST",
+      headers: { "Content-Type": "message/rfc822", "X-Flowplan-Signature": `sha256=${sig}` },
+      body,
+    });
+    if (!res.ok) message.setReject(`Flowplan: ${res.status}`);
+  },
+};
+```
+
+**Signaturschlüssel**: Ist für eine Adresse einer gesetzt, braucht jede Zustellung entweder die Kopfzeile `X-Flowplan-Signature: sha256=<hex>` (HMAC-SHA256 des unveränderten Inhalts mit dem Schlüssel, wie bei Flowplans eigenen Webhooks) oder Mailguns Signaturfelder. Sonst antwortet Flowplan mit 401.
+
+Antworten: `200` mit `{"status": "stored" | "duplicate" | "rejected"}` – auch abgelehnte und doppelte E-Mails bekommen 200, damit der Anbieter nicht wiederholt. `401` Signatur ungültig, `404` unbekanntes Token, `409` Ziel nicht beschreibbar, `413` zu groß oder Tagesbudget erreicht, `415` unbekanntes Format, `429` Stundenlimit.
+
+### Per IMAP-Postfach
+
+Statt eines Anbieters kann Flowplan ein eigenes Postfach abfragen (alle zwei Minuten, ungelesene E-Mails). Die Administration setzt dafür `INBOUND_IMAP_HOST`, `INBOUND_IMAP_USER`, `INBOUND_IMAP_PASSWORD` und `INBOUND_MAIL_DOMAIN` ([Konfiguration](/configuration#e-mail-eingang-imap)). Jede Adresse in der Liste lautet dann
+
+```
+inbox+<token>@mail.example.com
+```
+
+(Plus-Adressierung: der Teil vor `+` ist der Benutzername des Postfachs). Flowplan sucht das Token in `To`, `Cc`, `Delivered-To` und `X-Original-To`. Verarbeitete, doppelte, abgelehnte und nicht zuordenbare E-Mails werden als gelesen markiert; ist das Stundenlimit oder Tagesbudget erreicht, bleiben sie ungelesen und kommen in der nächsten Runde dran.
+
+### Per API
+
+Mit einem **Schreib-Token** eines Eigentümers: `GET /api/inbound-mail?workspace=<id>` listet die Adressen, `POST /api/command` mit `inbound.save` (anlegen oder ändern: `pageId`, `senders`, optional `label`, `secret`, `id`), `inbound.rotate` und `inbound.delete` verwaltet sie.
 
 ## OpenAPI und SDKs
 

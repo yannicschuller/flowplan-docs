@@ -44,8 +44,12 @@ Owners of a workspace create webhooks: an address, events and optionally a singl
 | --- | --- |
 | `row.created` | A new record in a database, also from a form |
 | `row.updated` | A record changed (`changed` names the properties) |
+| `row.done` | A record became done (status "Done" or similar, or the database's done rule) |
 | `form.submitted` | A form answer |
 | `page.created` | A new page |
+| `comment.created` | A new comment on a page or record (`text`) |
+| `mention` | Someone was mentioned in a page or record (`userId`, `text` = the name) |
+| `digest.due` | Once a day at the chosen time: open records due today or overdue (`items`) |
 
 Flowplan sends JSON with `POST`:
 
@@ -58,6 +62,8 @@ Flowplan sends JSON with `POST`:
   "data": { "pageId": "…", "rowId": "…", "cells": { "title": "New" } }
 }
 ```
+
+The test message from the settings arrives with the event `test`.
 
 ### Check the signature
 
@@ -74,10 +80,150 @@ const valid = timingSafeEqual(Buffer.from(expected), Buffer.from(req.headers["x-
 - Answers with status 2xx count as delivered; otherwise Flowplan retries up to six times with growing intervals.
 - The list shows the last delivery or the last error per webhook.
 - Only public HTTPS addresses are allowed. For services in the same network (Home Assistant, n8n) the administrators set `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true`.
+- **Send test message** in the list sends a sample message right away and shows the result; it is not retried. Below the last delivery the list also shows the last error and when it happened.
 
 ### Create webhooks via the API
 
-With a **write token** of an owner, webhooks can also be created and removed via the API (`POST /api/webhooks`; remove one with `POST /api/command` and `{"action": "webhook.delete", …}`), for instance by automation services. Read tokens cannot.
+With a **write token** of an owner, webhooks can also be created, changed and removed via the API (`POST /api/webhooks`, `POST /api/webhooks/update`, a test message with `POST /api/webhooks/test`; remove one with `POST /api/command` and `{"action": "webhook.delete", …}`), for instance by automation services. Read tokens cannot.
+
+## Chat notifications
+
+Instead of JSON, a webhook can post a ready message to a chat. In the webhook form under **Settings → API & webhooks** choose the **format**:
+
+| Format | Target | What arrives |
+| --- | --- | --- |
+| JSON | n8n, Home Assistant, your own services | The signed JSON above |
+| Slack | Incoming Webhook or a Slack app | Block Kit: header, text with the record as a link, fields for changed properties, a line with who and when |
+| Matrix | Room webhook (e.g. hookshot) or the Matrix client API | HTML message (`formatted_body`) with plain text as `body` |
+| Microsoft Teams | Incoming Webhook or the workflow "Post to a channel when a webhook request is received" | Adaptive Card with a fact list and an **Open in Flowplan** button |
+| Discord | Channel webhook | Embed with title, link, fields and timestamp |
+
+Next to the form a **preview** shows the message for a sample event, and below it the content that is actually sent.
+
+### Setup
+
+**Slack**
+
+- *Messages only:* Create an app in Slack (api.slack.com/apps), turn on **Incoming Webhooks**, pick a channel and enter the address `https://hooks.slack.com/services/…` in Flowplan.
+- *With thread replies:* Give the app the `chat:write` scope under **OAuth & Permissions**, install it and enter the **Bot User OAuth Token** (`xoxb-…`) and the **channel ID** (in Slack: channel details, at the bottom); invite the bot to the channel (`/invite @App`). For replies, also enter the **signing secret** (Basic Information). After saving, the list shows a **Request URL** (`…/api/webhooks/slack/<id>`): turn on **Event Subscriptions** in the app, enter that address and subscribe to the bot event `message.channels` (`message.groups` for private channels). Replies in the thread of a Flowplan message then appear as a comment on the record – written in the name of the person who set up the webhook, prefixed with "Slack:". Threads are matched for 30 days.
+
+**Matrix**
+
+- *Room webhook:* Create a "generic webhook" in the room with a bridge such as hookshot and enter its address. Flowplan sends `text` and `html` (plus the fields of a Matrix message).
+- *Client API:* Create an access token for a bot account, invite the account to the room and enter the **homeserver address** (e.g. `https://matrix.example.org`), the **access token** and the **room** (`!id:server` or `#alias:server`) in Flowplan. Flowplan sends with `PUT /_matrix/client/v3/rooms/{room}/send/m.room.message/{txn}`; retries of the same delivery never create duplicate messages.
+
+**Microsoft Teams**
+
+- In Teams, add a workflow to the channel from the template "Post to a channel when a webhook request is received" (or a classic Incoming Webhook) and enter the address it shows.
+
+**Discord**
+
+- In the channel settings under **Integrations → Webhooks** create a webhook and enter the address `https://discord.com/api/webhooks/…`. Mentions (@everyone etc.) are never triggered.
+
+Access tokens, bot tokens and signing secrets are stored encrypted and never shown again; when editing, an empty field keeps the stored value, and **Remove stored credentials** deletes them. Chat addresses follow the same rule as other webhooks: public HTTPS only, and every delivery checks the address again.
+
+### Templates
+
+Every event has a default text that you can change in the form (**Template for event**). The buttons insert placeholders:
+
+| Placeholder | Content |
+| --- | --- |
+| `{title}` | Title of the record or page |
+| `{actor}` | Who caused it |
+| `{page}` | Database or parent page |
+| `{changes}` | Changed properties as a list (in the digest: the due records) |
+| `{url}` | Link in Flowplan |
+| `{text}` | Comment text or the name of the mentioned person |
+| `{date}` | Date and time (in the digest: the day) |
+| `{count}` | Number of changes or due records |
+
+A small Markdown is allowed: `**bold**`, `_italic_`, `` `code` ``, `[text](address)`, lines starting with `- ` as a list and `> ` as a quote. Flowplan converts it to the platform's markup (Slack mrkdwn, Matrix HTML, Teams Markdown, Discord Markdown). Values from Flowplan are never read as markup – a `*` in a title stays a `*`. When `{changes}` is not in the template, Slack, Teams and Discord show the changes as fields of their own and Matrix as a list below. Long values are shortened (titles 200 characters, comments 1,000, at most 10 changes and 25 due records) so the platforms' limits are kept. The **language of the messages** (default texts, date format) is set per webhook.
+
+Example:
+
+```text
+{actor} changed [{title}]({url}) in **{page}**:
+{changes}
+```
+
+### Daily digest
+
+With the event **Due today** (`digest.due`, "daily at …") a list of the open records that are due today or overdue arrives once a day at the chosen time (the browser's time zone when the webhook was created) – from all databases of the workspace or only the chosen one. The due date is the date property with "Due", "Fällig", "Deadline" or similar in its name, otherwise the first date property; done is what the database's done rule says. Private records are never listed. When nothing is due, nothing is sent.
+
+## Inbound e-mail
+
+Workspace owners create addresses under **Settings → Workspace → Inbound e-mail** that file incoming e-mail in Flowplan:
+
+- **Target page**: every e-mail becomes a new subpage. The subject is the title, the text (cleaned HTML or plain text) the content, with sender and date above it. Attachments become files of the new page; embedded images (`cid:`) appear in place, all other attachments as a list below.
+- **Target database**: every e-mail becomes a record. The subject is the title, the text the record's content, the sender address goes into the first e-mail property (if there is one), the e-mail's date is the creation date, and attachments go into the first files property (otherwise as a list into the content).
+- **Allowed senders**: addresses (`ada@example.org`) or domains (`example.org`, exactly that domain). E-mails from other senders are not stored but noted in the audit log.
+- **Signing key** (optional): see below.
+
+The address acts with the permissions of the person who created it. If they lose write access to the target or the target is locked, the address stops accepting mail (the list shows the error).
+
+Security and limits:
+
+- Every address has a random 32-character token. **Generate a new token** invalidates the current address at once.
+- HTML from e-mails is cleaned like guest content: no scripts, forms, styles or frames; remote images (e.g. tracking pixels) are removed, links stay.
+- Attachments: at most 20 per e-mail, 10 MB per file, 25 MB together; larger ones are named in the text. The file type is checked against the content, photos lose their location; only images and PDFs open in the browser, everything else is downloaded. Attachments count towards the workspace's storage quota and the daily budget for anonymous uploads (200 MB per address and day, plus `FLOWPLAN_ANONYMOUS_UPLOAD_MB` for the whole instance).
+- At most 60 e-mails per address and hour (rejected ones count too); beyond that Flowplan answers 429 and the provider retries later.
+- The same `Message-ID` is stored only once per address. Without a `Message-ID`, sender, subject, date and text count.
+- The sender address of an e-mail can be forged. The sender list is a pre-filter; above all the token must stay secret. For webhooks the signing key adds protection.
+
+### Via webhook (Mailgun, Postmark, SendGrid, Cloudflare)
+
+Without further setup Flowplan accepts e-mail as a `POST` to the webhook address shown in the list:
+
+```
+https://flowplan.example.com/api/inbound-mail/<token>
+```
+
+Flowplan recognises the format from the content:
+
+| Provider | Setup |
+| --- | --- |
+| **Mailgun** | *Receiving → Create Route*: an expression such as `match_recipient("flowplan@mg.example.com")`, action *Forward* to the webhook address. Enter Mailgun's *HTTP webhook signing key* as the signing key; Flowplan then checks `timestamp`, `token` and `signature` (at most 15 minutes old). |
+| **Postmark** | Server → *Inbound* stream → *Webhook URL* = the webhook address. Postmark sends JSON with `FromFull`, `TextBody`, `HtmlBody` and `Attachments`. |
+| **SendGrid** | *Settings → Inbound Parse → Add Host & URL*: domain and webhook address. With *POST the raw, full MIME message* the whole e-mail arrives (`email`), otherwise the fields `from`, `subject`, `text`, `html`, `attachment-info` and `attachment1…`. |
+| **Cloudflare Email Routing** | An Email Worker rule that passes on the raw e-mail (example below). |
+| **Your own scripts** | JSON or `multipart/form-data` with `from`, `to`, `subject`, `text`, `html`, `messageId`, `date` and `attachments` (JSON: `[{ "filename", "contentType", "content" (base64), "contentId" }]`, multipart: file fields) – or the whole e-mail as `raw` (text) or `rawBase64`, or as the body with `Content-Type: message/rfc822`. |
+
+Cloudflare Email Worker:
+
+```js
+export default {
+  async email(message, env) {
+    const raw = await new Response(message.raw).arrayBuffer();
+    const body = new Uint8Array(raw);
+    const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(env.FLOWPLAN_KEY), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+    const sig = [...new Uint8Array(await crypto.subtle.sign("HMAC", key, body))].map((b) => b.toString(16).padStart(2, "0")).join("");
+    const res = await fetch(env.FLOWPLAN_URL, {
+      method: "POST",
+      headers: { "Content-Type": "message/rfc822", "X-Flowplan-Signature": `sha256=${sig}` },
+      body,
+    });
+    if (!res.ok) message.setReject(`Flowplan: ${res.status}`);
+  },
+};
+```
+
+**Signing key**: when an address has one, every delivery needs either the header `X-Flowplan-Signature: sha256=<hex>` (HMAC-SHA256 of the unchanged body with the key, as with Flowplan's own webhooks) or Mailgun's signature fields. Otherwise Flowplan answers 401.
+
+Answers: `200` with `{"status": "stored" | "duplicate" | "rejected"}` – rejected and duplicate e-mails get 200 too, so the provider does not retry. `401` invalid signature, `404` unknown token, `409` target not writable, `413` too large or daily budget reached, `415` unknown format, `429` hourly limit.
+
+### Via an IMAP mailbox
+
+Instead of a provider, Flowplan can poll a mailbox of your own (every two minutes, unread e-mail). The administrators set `INBOUND_IMAP_HOST`, `INBOUND_IMAP_USER`, `INBOUND_IMAP_PASSWORD` and `INBOUND_MAIL_DOMAIN` for it ([Configuration](/configuration#inbound-e-mail-imap)). Each address in the list then reads
+
+```
+inbox+<token>@mail.example.com
+```
+
+(plus addressing: the part before `+` is the mailbox's user name). Flowplan looks for the token in `To`, `Cc`, `Delivered-To` and `X-Original-To`. Processed, duplicate, rejected and unroutable e-mails are marked as read; when the hourly limit or daily budget is reached they stay unread for the next round.
+
+### Via the API
+
+With an owner's **write token**: `GET /api/inbound-mail?workspace=<id>` lists the addresses; `POST /api/command` with `inbound.save` (create or change: `pageId`, `senders`, optionally `label`, `secret`, `id`), `inbound.rotate` and `inbound.delete` manages them.
 
 ## OpenAPI and SDKs
 

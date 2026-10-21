@@ -88,6 +88,21 @@ Schlüssel von KI-Anbietern, die Schlüssel der Authenticator-Apps ([Zwei-Faktor
 
 Den Versand prüfst du unter **Administration → Instanz → Test-E-Mail senden**.
 
+## E-Mail-Eingang (IMAP)
+
+Für den [E-Mail-Eingang](/api-and-webhooks#e-mail-eingang) per Webhook (Mailgun, Postmark, SendGrid, Cloudflare) ist nichts zu setzen. Ein eigenes Postfach fragt Flowplan alle zwei Minuten per IMAP ab:
+
+| Variable | Standard | Bedeutung |
+| --- | --- | --- |
+| `INBOUND_MAIL_DOMAIN` | *leer* | Domain der Eingangsadressen, z. B. `mail.example.com`. Die Einstellungen zeigen dann je Adresse `inbox+<token>@mail.example.com`. |
+| `INBOUND_IMAP_HOST` | *leer* | Schaltet die IMAP-Abfrage ein (zusammen mit `INBOUND_IMAP_USER`). |
+| `INBOUND_IMAP_PORT` | `993` | Port (`143`, wenn `INBOUND_IMAP_TLS=false`). |
+| `INBOUND_IMAP_USER` / `INBOUND_IMAP_PASSWORD` | *leer* | Anmeldung am Postfach. Der Teil vor `@` ist auch der Teil vor `+` in den Adressen. |
+| `INBOUND_IMAP_FOLDER` | `INBOX` | Ordner, der abgefragt wird. |
+| `INBOUND_IMAP_TLS` | `true` | `false` nur für einen Mailserver auf demselben Rechner oder im selben Netz (ohne Verschlüsselung). |
+
+Der Mailserver muss Plus-Adressierung unterstützen (`inbox+irgendwas@…` landet in `inbox@…`); das tun z. B. Dovecot, Postfix, Gmail/Google Workspace und Microsoft 365 (dort einschalten). Flowplan markiert verarbeitete E-Mails als gelesen und löscht nichts.
+
 ## Integrationen
 
 | Variable | Standard | Bedeutung |

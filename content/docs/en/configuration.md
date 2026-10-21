@@ -88,6 +88,21 @@ Flowplan stores AI provider keys, the keys of authenticator apps ([two-factor si
 
 Check delivery under **Administration → Instance → Send test e-mail**.
 
+## Inbound e-mail (IMAP)
+
+For [inbound e-mail](/api-and-webhooks#inbound-e-mail) via webhook (Mailgun, Postmark, SendGrid, Cloudflare) nothing needs to be set. A mailbox of your own is polled over IMAP every two minutes:
+
+| Variable | Default | Meaning |
+| --- | --- | --- |
+| `INBOUND_MAIL_DOMAIN` | *empty* | Domain of the inbound addresses, e.g. `mail.example.com`. The settings then show `inbox+<token>@mail.example.com` for each address. |
+| `INBOUND_IMAP_HOST` | *empty* | Turns on IMAP polling (together with `INBOUND_IMAP_USER`). |
+| `INBOUND_IMAP_PORT` | `993` | Port (`143` when `INBOUND_IMAP_TLS=false`). |
+| `INBOUND_IMAP_USER` / `INBOUND_IMAP_PASSWORD` | *empty* | Sign-in at the mailbox. The part before `@` is also the part before `+` in the addresses. |
+| `INBOUND_IMAP_FOLDER` | `INBOX` | Folder that is polled. |
+| `INBOUND_IMAP_TLS` | `true` | `false` only for a mail server on the same host or network (unencrypted). |
+
+The mail server must support plus addressing (`inbox+anything@…` is delivered to `inbox@…`); Dovecot, Postfix, Gmail/Google Workspace and Microsoft 365 (switch it on there) do. Flowplan marks processed e-mails as read and deletes nothing.
+
 ## Integrations
 
 | Variable | Default | Meaning |
