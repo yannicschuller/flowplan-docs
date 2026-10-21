@@ -79,6 +79,43 @@ const valid = timingSafeEqual(Buffer.from(expected), Buffer.from(req.headers["x-
 
 Mit einem **Schreib-Token** eines Eigentümers lassen sich Webhooks auch per API anlegen und entfernen (`POST /api/webhooks`, Entfernen über `POST /api/command` mit `{"action": "webhook.delete", …}`), etwa von Automatisierungsdiensten. Lese-Tokens dürfen das nicht.
 
+## OpenAPI und SDKs
+
+Jede Instanz beschreibt ihre API selbst, als [OpenAPI 3.1](https://spec.openapis.org/oas/v3.1.0)-Dokument:
+
+- `GET /api/openapi.json` – das Dokument, öffentlich und eine Stunde zwischengespeichert. Der Eintrag `servers` trägt die Adresse der Instanz (`APP_URL`).
+- `/api/docs` – dieselbe Beschreibung zum Lesen: alle Pfade nach Bereichen, Parameter, Anfragen, Antworten und Schemas.
+
+Darin stehen alle Endpunkte, die ein API-Token aufrufen darf: Arbeitsbereich und Seiten, Suche, Dateien, Importe und Exporte, Webhooks, der MCP-Server und `POST /api/command` mit einem Schema je häufig genutzter Aktion (`page.create`, `row.create`, `row.update`, `webhook.delete` …) sowie der Liste aller übrigen Aktionen. Zu jedem Endpunkt sind die Fehlercodes (400, 401, 403, 404, 409, 413, 429) und die Ratenbegrenzungen vermerkt; Kalender-Abos und CalDAV sind als externe Zugänge mit eigenem Link genannt.
+
+Das Dokument entsteht aus dem Code: Wo der Server Eingaben mit `zod` prüft (Eigenschaften und Ansichten einer Datenbank, die Aktionen, Export-Optionen), werden dieselben Schemas übernommen; der Rest ist in `lib/openapi.ts` aus den Routen beschrieben. Ein Test hält beides zusammen – jede Route unter `app/api`, jede Aktion von `command()` und die SDKs.
+
+### Clients
+
+Aus dem Dokument entstehen zwei schlanke Clients ohne Abhängigkeiten, im Quellcode unter [`sdk/`](https://github.com/yannicschuller/flowplan/tree/main/sdk):
+
+- **TypeScript** (`sdk/typescript/flowplan.ts`): eine Datei, ESM, auf `fetch` aufgebaut, mit Typen für alle Antworten und Aktionen. Die Datei ins Projekt kopieren, fertig:
+
+```ts
+import { FlowplanClient } from "./flowplan.js";
+const client = new FlowplanClient({ baseUrl: "https://flowplan.example.com", token: "fp_…" });
+const { workspace, pages } = await client.bootstrap();
+const { id } = await client.command({ action: "row.create", pageId: "<Datenbank-ID>", cells: { title: "Aus dem SDK" } });
+```
+
+- **Python** (`sdk/python/flowplan_client.py`): nur Standardbibliothek (`urllib`), Python 3.11 oder neuer, `TypedDict`s für die Antworten:
+
+```python
+from flowplan_client import FlowplanClient
+client = FlowplanClient("https://flowplan.example.com", token="fp_…")
+shell = client.bootstrap()
+created = client.command({"action": "row.create", "pageId": "<Datenbank-ID>", "cells": {"title": "Aus dem SDK"}})
+```
+
+Die Methoden heißen wie die `operationId` des Dokuments (`getPage` / `get_page`, `search`, `uploadFile` / `upload_file`, `markdownExport` / `markdown_export` …). Antworten außerhalb von 2xx werfen `FlowplanError` mit Status, Meldung des Servers und bei 429 der Wartezeit. Jedes SDK bringt eine README und ein Beispielskript mit.
+
+Wer Flowplan selbst baut, erzeugt die Clients mit `npm run sdk` neu; der Test `tests/openapi.test.ts` schlägt fehl, wenn die eingecheckten Dateien nicht mehr zum Dokument passen.
+
 ## n8n
 
 Für [n8n](https://n8n.io) gibt es den Community-Knoten **`n8n-nodes-flowplan`** (Quellcode unter [`integrations/n8n`](https://github.com/yannicschuller/flowplan/tree/main/integrations/n8n)).

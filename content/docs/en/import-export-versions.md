@@ -10,6 +10,9 @@ Content comes in as Markdown, CSV or an archive and goes out again as Markdown, 
 | --- | --- |
 | **Markdown (.md)** | One file with the page content; databases with an overview, properties and the documents of all records. |
 | **Markdown with files (.zip)** | `index.md`, sub-pages under `pages/`, record documents under `records/`, databases also as CSV under `tables/`, attachments under `assets/` – all linked relatively. Every record under `records/` starts with its properties as YAML frontmatter (see below). With **Include comments and earlier versions**, `<file>.comments.md` and `<file>.versions/` come along. |
+| **As Word (DOCX)** | A Word document of the page – see [Word, PDF with sub-pages and e-book](#word-pdf-with-sub-pages-and-e-book). |
+| **As PDF (with sub-pages)** | The page with its sub-pages as one document with a cover and a table of contents, which the print dialog saves as PDF. |
+| **As e-book (EPUB)** | The page with its sub-pages as an e-book for e-readers and e-book apps. |
 | **HTML / JSON** | The older format for documents and databases. |
 
 **Print / PDF** opens the browser's print view; save as PDF there. Home screen apps on iPhone and iPad cannot print themselves: they open the page in Safari under a secret address for 15 minutes. This print view shows content only – no form fields, buttons or scripts – and at the top who created it.
@@ -20,9 +23,30 @@ The export respects read permissions and contains all records regardless of view
 
 Limits per export: 500 pages, 5,000 records, 250 MB of content.
 
+### Word, PDF with sub-pages and e-book
+
+Three more formats for handbooks, reports and everything that is read or edited outside Flowplan. All three start from the same cleaned page content as the Markdown export and respect read permissions in the same way: they contain only what you may read – other people's private records, PIN-locked journals and pictures from pages you may not open stay out (a note stands in for such a picture, and a link to an inaccessible page becomes plain text).
+
+**As Word (DOCX)** – **Page actions → Export → As Word (DOCX)**, for a database also via **Export** in the toolbar, for a single record via the **…** menu in the record's header. The file is written by Flowplan itself, without a Word library, and opens in Word, LibreOffice and Pages:
+
+- Headings (as Word heading styles, so the navigation pane works), paragraphs with alignment, **bold**, *italic*, underline, strikethrough, code, highlights, text colour, superscript and subscript, links.
+- Bulleted and numbered lists, also nested, tasks with ☐/☑ and their due date.
+- Tables with merged cells and a shaded header row.
+- Pictures (PNG, JPEG, GIF, WebP) embedded and scaled to the text width; the page's cover image at the top.
+- Callouts (note, tip, important, warning, caution) as shaded paragraphs, quotes with a side line, code blocks, formulas and Mermaid diagrams in a monospace style, toggles with their title, columns one after another.
+- Footnotes as real Word footnotes, citations and the bibliography as text.
+- A database becomes a table of all records followed by every record's document; a single record starts with its properties as a table.
+- Not included: whiteboards, embedded videos, audio, PDFs, link cards and linked databases (they stay links to Flowplan), function plots and metrics (a note), comments and versions.
+
+**As PDF (with sub-pages)** – **Page actions → Export → As PDF (with sub-pages)**: the page with all accessible sub-pages (can be turned off) becomes a print view with a cover, a table of contents and every page as a numbered chapter on a new page; links between the pages jump within the document. As with **Print / PDF**, the browser's print dialog opens – **save as PDF** there. Home screen apps on iPhone and iPad open the view in Safari as usual. Whiteboards come along as pictures, databases as a table with the records' documents. Page numbers in the table of contents and the footer appear only in renderers that know `target-counter` (Prince, Paged.js); browsers leave them out. For scripts: `GET /api/export/pdf?page=<id>&children=1` returns the HTML of the print view.
+
+**As e-book (EPUB)** – **Page actions → Export → As e-book (EPUB)**: the page with its sub-pages as EPUB 3 – every page a chapter, the table of contents nested like the page tree, pictures and whiteboards as resources, links between the pages within the book, footnotes at the end of each chapter. Suitable for Apple Books, Kindle (after conversion), Calibre, Thorium and other readers. For scripts: `GET /api/export/epub?page=<id>&children=1`.
+
+Limits: 200 pages per PDF or EPUB export, 5,000 records, 100 MB of attachments (files over 25 MB are left out). Database tables with more than 200 columns cannot be exported to Word.
+
 ### Export a whole space
 
-The download icon next to a space's name in the sidebar (or **Settings → Data → Export space as Markdown**) downloads the whole space as **one** Markdown ZIP – to archive, read offline or put into your own Git repository:
+The download icon next to a space's name in the sidebar (or **Settings → Data → Export space as Markdown**) opens the space export. Besides the Markdown ZIP it offers **Space as PDF** (a print view of all pages of the space with a cover and a table of contents, see above) and **Space as e-book (EPUB)** – each with everything you may read, up to 200 pages (`GET /api/export/pdf?space=<id>` or `/api/export/epub?space=<id>`). The Markdown ZIP downloads the whole space as **one** archive – to archive, read offline or put into your own Git repository:
 
 - Every top-level page is in a folder of its own, `<title>-<id>/`, with everything below it – the same layout as the [scheduled Markdown export](/storage-and-backups#markdown-export-and-git). Inside, the format of **Markdown with files (.zip)** applies.
 - `index.md` at the top lists the space's pages; links between pages of the space are relative, links into other spaces keep pointing to Flowplan.
@@ -71,7 +95,7 @@ Before the import, a preview shows which properties match and which are missing.
 
 **Export:** in the ZIP export, every record under `records/` starts with `title:` and its properties: select as text, multi-select and relations (titles of the linked records) as lists, dates as ISO dates. Computed values and the record's id are below `flowplan:` and are skipped on import. When a record exported this way is imported into the same database again, the preview offers **update instead of adding**: the record with the same id gets the file's properties and text, and the previous state stays as a version. Without this choice it is added as a new record.
 
-**Where to export:** in a database's toolbar, **Export** opens a menu with **CSV (current view)**, **Markdown with files (.zip)** and **Markdown (.md)**. A single record is exported from the **…** menu in its header: **Export as Markdown (.md)** (with frontmatter), **Markdown with files (.zip)** or **Print / PDF**.
+**Where to export:** in a database's toolbar, **Export** opens a menu with **CSV (current view)**, **Markdown with files (.zip)**, **Markdown (.md)** and **As Word (DOCX)**. A single record is exported from the **…** menu in its header: **Export as Markdown (.md)** (with frontmatter), **Markdown with files (.zip)**, **As Word (DOCX)** (properties as a table, then the document) or **Print / PDF**.
 
 **From Obsidian:** links in the text are read as standard Markdown links. Convert wikilinks (`[[…]]`, `![[…]]`) first – in Obsidian, *Settings → Files and links*, turn off “Use [[Wikilinks]]” and choose relative paths.
 ## Content archive
@@ -96,6 +120,7 @@ Accounts, sessions and sign-in are not part of it – operations back them up ev
 - Documents save automatically at most every five minutes, databases before the first change after ten quiet minutes.
 - **Save current version** creates a state at any time; manually saved versions are kept permanently.
 - **Changes** compares a version with the current state or with any other version (**Compare with**): added and removed text, for databases new, changed and removed records and properties.
+- **The comparison in detail**: it walks the document block by block – headings, paragraphs, list items, table cells, quotes and code stay recognisable as such – and marks the single words inside a changed block: additions green, deletions red and struck through; unchanged blocks are dimmed. A summary states how many words came and went (for example "+120 words · −35 words"), and the arrows jump from change to change, also by keyboard. The same applies to the versions of a record document. Very long documents (more than 60,000 words on both sides together) or versions that differ in too many places are reported as too large to compare; they can still be restored.
 - **Bring back single paragraphs**: compared with the current state, every removed or changed paragraph has a **Restore** button. The paragraph returns to its old place with its formatting; the rest of the page stays as it is.
 - **Restore** sets the page back to that state. The [authors view](/documents#show-authors) then starts over; the restored text appears as "earlier".
 
