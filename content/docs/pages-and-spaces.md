@@ -8,7 +8,7 @@ Alles in Flowplan ist eine Seite in einem Baum. Bereiche gliedern den Baum, Arbe
 | --- | --- |
 | **Arbeitsbereich** | Getrennte Welt mit eigenen Mitgliedern, Gruppen, Vorlagen und Speicherkontingent. Wechsel über den Namen oben in der Seitenleiste. |
 | **Bereich** | Abschnitt in der Seitenleiste, z. B. „Teamspace“ oder „Privat“. Öffentlich für alle Mitglieder oder privat. |
-| **Seite** | Dokument, Datenbank, Whiteboard oder Journal. Seiten können beliebig tief Unterseiten haben. |
+| **Seite** | Dokument, Datenbank, Whiteboard, Journal oder Dashboard. Seiten können beliebig tief Unterseiten haben. |
 
 ## Seitentypen
 
@@ -16,6 +16,7 @@ Alles in Flowplan ist eine Seite in einem Baum. Bereiche gliedern den Baum, Arbe
 - **Datenbank**: Einträge mit Eigenschaften, gezeigt als Tabelle, Board, Kalender, Timeline, Galerie, Liste, Feed, Diagramm oder Formular. Siehe [Datenbanken](/databases).
 - **Whiteboard**: unendliche Fläche mit Notizzetteln, Formen, Verbindungen, Stift und Rahmen. Siehe [Whiteboards](/whiteboards).
 - **Journal**: eine Seite pro Tag, offene Aufgaben wandern mit. Siehe [Journal](/journal).
+- **Dashboard**: Kacheln mit Kennzahlen, Diagrammen, Datenbankansichten, fälligen Aufgaben und Notizen. Siehe [Dashboards](/dashboards).
 
 ## Seitenaktionen
 
@@ -31,6 +32,7 @@ Das Menü `…` oben rechts auf jeder Seite bietet:
 | Verschieben | Unter eine andere Seite, in einen anderen Bereich oder Arbeitsbereich. |
 | Als Vorlage speichern | Siehe [Vorlagen](/templates). |
 | Exportieren, Drucken / PDF | Siehe [Import, Export und Versionen](/import-export-versions). |
+| Besitzer und Prüfung … | Wer sich um die Seite kümmert und wann sie wieder geprüft werden soll, siehe [Besitzer und Prüfdatum](#besitzer-und-prüfdatum). |
 | Versionsverlauf | Frühere Stände vergleichen und wiederherstellen. |
 | In den Papierkorb | Seite samt Unterseiten entfernen, wiederherstellbar. |
 
@@ -50,6 +52,19 @@ Das Feld **Seiten filtern** über dem Seitenbaum blendet alles aus, was nicht pa
 
 > [!NOTE]
 > Beim Verschieben behalten Seiten ihre Adresse. Links auf die Seite funktionieren weiter, sofern die lesende Person Zugriff im neuen Arbeitsbereich hat.
+
+## Besitzer und Prüfdatum
+
+Damit Anleitungen, Richtlinien und Wissensseiten nicht unbemerkt veralten, kann jede Seite einen **Besitzer** und ein **Prüfdatum** haben. Beides stellst du unter **… → Besitzer und Prüfung …** ein (Bearbeitungsrecht nötig):
+
+- **Besitzer**: ein Mitglied des Arbeitsbereichs (kein Gast), das die Seite lesen darf.
+- **Nächste Prüfung am**: ein festes Datum, einmalig oder
+- **Danach alle … Tage**: ein Rhythmus, z. B. 30, 90, 180 Tage oder jährlich. Ohne Datum beginnt er heute.
+
+Ist das Prüfdatum erreicht, zeigt die Seite oben den Hinweis „Diese Seite wartet auf eine Prüfung (Besitzer: …)“. **Geprüft** verschiebt das Datum um den Rhythmus ab heute; ein einmaliges Datum verschwindet. Der Besitzer bekommt am Fälligkeitstag eine Erinnerung („„Titel“ wartet auf deine Prüfung“) – einmal je Prüfdatum, im Posteingang und je nach Einstellung als Push oder E-Mail (Art „Datums-Erinnerungen“).
+
+> [!NOTE]
+> Über die API setzen die Befehle `page.owner` und `page.review` Besitzer und Prüfdatum. Ein Restore-Archiv nimmt Prüfdatum und Rhythmus mit, den Besitzer nicht – er gehört zum alten Arbeitsbereich.
 
 ## Favoriten und „Verlinkt von“
 

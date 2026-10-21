@@ -44,7 +44,7 @@ Die Regeln gelten überall: in Tabelle und Board, bei Sammeländerungen, für G�
 
 **… → Automationen** erledigt wiederkehrende Handgriffe nach dem Muster *Wenn … nur wenn … dann …*:
 
-- **Wenn**: ein Eintrag erstellt wird, ein Eintrag über ein Formular kommt, sich eine Eigenschaft ändert (wahlweise auf einen bestimmten Wert) oder ein Datum überschritten ist.
+- **Wenn**: ein Eintrag erstellt wird, ein Eintrag über ein Formular kommt, sich eine Eigenschaft ändert (wahlweise auf einen bestimmten Wert), ein Datum überschritten ist oder es nach Zeitplan so weit ist (siehe [Geplante Automationen](#geplante-automationen)).
 - **Nur wenn** (optional): Bedingungen wie „Priorität ist Hoch“ oder „Zuständig ist leer“.
 - **Dann**: Eigenschaften setzen oder benachrichtigen.
   - Werte für Eigenschaften können fest sein oder *heute*, *jetzt*, *die auslösende Person* oder *der Ersteller* lauten.
@@ -59,6 +59,20 @@ Regeln lassen sich einzeln ausschalten.
 
 > [!NOTE]
 > Regeln laufen auf dem Server, egal wie ein Eintrag sich ändert. Was eine Regel ändert, löst keine weiteren Regeln aus – so entstehen keine Schleifen. Überfällige Einträge prüft Flowplan alle paar Minuten; jede Regel meldet sich einmal je Eintrag und Datum. Benachrichtigungen erscheinen als „Automationen in Datenbanken“ und lassen sich in den Einstellungen abstellen.
+
+### Geplante Automationen
+
+Mit dem Auslöser **es so weit ist (Zeitplan)** legt eine Regel regelmäßig einen neuen Eintrag an, etwa für Wochenberichte, Monatsabschlüsse oder Wartungen:
+
+- **Wann**: täglich bzw. alle N Tage, wöchentlich bzw. alle N Wochen an einem Wochentag oder monatlich bzw. alle N Monate an einem Tag (der 31. wird in kürzeren Monaten zum letzten Tag), jeweils zu einer Uhrzeit in deiner Zeitzone. Beispiele: „Jeden Montag 09:00“, „Monatlich am 1.“, „Alle 3 Tage“.
+- **Dann**: **Datensatz anlegen** aus einer Datensatzvorlage (Eigenschaften und Text) oder leer. Datumsfelder lassen sich relativ zum Termin setzen, z. B. „Fällig: +3 Tage“; 0 heißt am Tag selbst.
+
+Der Vorschlag „Jeden Montag 09:00 einen Datensatz anlegen“ richtet das mit der Standardvorlage ein.
+
+> [!NOTE]
+> Eine geplante Regel läuft einmal je Termin – auch nach einem Neustart – und erst ab dem Zeitpunkt, an dem sie gespeichert wurde. Termine, an denen der Server nicht lief, werden nicht einzeln nachgeholt; der letzte verpasste läuft einmal. Die Einträge legt die Regel im Namen der Person an, die sie zuletzt geändert hat; hat diese kein Bearbeitungsrecht mehr oder ist die Datenbank gesperrt, ruht die Regel. Ein- und Ausschalten ändert die Person nicht.
+
+Wiederkehrende Aufgaben, deren nächster Eintrag erst entsteht, wenn der vorige erledigt ist, stellst du im Eintrag ein, siehe [Wiederkehrende Aufgaben](/databases#wiederkehrende-aufgaben).
 
 ## WIP-Limits
 

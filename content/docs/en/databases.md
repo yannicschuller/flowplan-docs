@@ -95,6 +95,17 @@ Every view has its own settings:
 
 Date fields can repeat daily, weekly, monthly or yearly. Calendar and timeline show the occurrences; it remains a single record. If needed, a single occurrence can be detached as a record of its own.
 
+### Repeating tasks
+
+For tasks that are ticked off one by one each time (“monthly closing”, “server updates”), set a rhythm in the record under **Repeating task**: daily, weekly (optionally on certain weekdays, e.g. Mo, We, Fr), monthly or yearly, each every N days, weeks, months or years. With several date fields you choose which one moves on.
+
+As soon as the record is done (status or checkbox, see [When is a record done?](/projects-and-tickets#when-is-a-record-done)), Flowplan creates the next record: a copy with the status it had before, the chosen date on the next occurrence and every other date field moved by as many days. The rhythm moves to the new record; reopening and completing the old one again creates nothing more.
+
+- Month ends are clamped but the day is kept: 31 January → 28 February → 31 March.
+- 29 February becomes the 28th in common years and the 29th again in leap years.
+
+New records at fixed times – whether or not the last one is done – come from [scheduled automations](/projects-and-tickets#scheduled-automations).
+
 ## Date reminders
 
 In a record, everyone can set a personal reminder for every filled date field – for times at the appointment or 5 minutes to 1 week before, for all-day dates on the day or 1, 2 or 7 days before at 09:00. Reminders appear in the inbox and as a push notification and do not change the record.

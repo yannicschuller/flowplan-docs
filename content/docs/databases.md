@@ -95,6 +95,17 @@ Jede Ansicht hat eigene Einstellungen:
 
 Datumsfelder lassen sich täglich, wöchentlich, monatlich oder jährlich wiederholen. Kalender und Timeline zeigen die Wiederholungen; es bleibt ein einziger Eintrag. Eine einzelne Wiederholung lässt sich bei Bedarf als eigener Eintrag lösen.
 
+### Wiederkehrende Aufgaben
+
+Für Aufgaben, die jedes Mal einzeln abgehakt werden („Monatsabschluss“, „Server-Updates“), stellst du im Eintrag unter **Wiederkehrende Aufgabe** einen Rhythmus ein: täglich, wöchentlich (wahlweise an bestimmten Wochentagen, z. B. Mo, Mi, Fr), monatlich oder jährlich, jeweils alle N Tage, Wochen, Monate oder Jahre. Gibt es mehrere Datumsfelder, wählst du, welches weiterrückt.
+
+Sobald der Eintrag erledigt ist (Status oder Häkchen, siehe [Wann ist ein Eintrag erledigt?](/projects-and-tickets#wann-ist-ein-eintrag-erledigt)), legt Flowplan den nächsten Eintrag an: eine Kopie mit dem Status von vorher, das gewählte Datum auf dem nächsten Termin und alle anderen Datumsfelder um gleich viele Tage verschoben. Der Rhythmus wandert zum neuen Eintrag; wird der alte noch einmal geöffnet und erledigt, entsteht kein weiterer.
+
+- Monatsenden werden gekappt, der Tag bleibt erhalten: 31. Januar → 28. Februar → 31. März.
+- Der 29. Februar wird in Nicht-Schaltjahren zum 28. und in Schaltjahren wieder zum 29.
+
+Neue Einträge zu festen Zeiten – unabhängig davon, ob der letzte erledigt ist – legen [geplante Automationen](/projects-and-tickets#geplante-automationen) an.
+
 ## Datums-Erinnerungen
 
 Im Eintrag kann jede Person für jedes gefüllte Datumsfeld eine persönliche Erinnerung setzen – bei Uhrzeiten zum Termin oder 5 Minuten bis 1 Woche vorher, bei ganztägigen Daten am Tag oder 1, 2 bzw. 7 Tage vorher um 09:00. Erinnerungen erscheinen im Posteingang und als Push-Nachricht und ändern den Eintrag nicht.

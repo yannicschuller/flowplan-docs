@@ -8,7 +8,7 @@ Everything in Flowplan is a page in a tree. Spaces structure the tree, workspace
 | --- | --- |
 | **Workspace** | A separate world with its own members, groups, templates and storage quota. Switch with the name at the top of the sidebar. |
 | **Space** | A section in the sidebar, e.g. "Teamspace" or "Private". Open to all members or private. |
-| **Page** | Document, database, whiteboard or journal. Pages can have sub-pages at any depth. |
+| **Page** | Document, database, whiteboard, journal or dashboard. Pages can have sub-pages at any depth. |
 
 ## Page types
 
@@ -16,6 +16,7 @@ Everything in Flowplan is a page in a tree. Spaces structure the tree, workspace
 - **Database**: records with properties, shown as a table, board, calendar, timeline, gallery, list, feed, chart or form. See [Databases](/databases).
 - **Whiteboard**: an infinite canvas with sticky notes, shapes, connectors, pen and frames. See [Whiteboards](/whiteboards).
 - **Journal**: one page per day, open tasks move along. See [Journal](/journal).
+- **Dashboard**: tiles with metrics, charts, database views, tasks due and notes. See [Dashboards](/dashboards).
 
 ## Page actions
 
@@ -31,6 +32,7 @@ The `…` menu at the top right of every page offers:
 | Move | Below another page, into another space or workspace. |
 | Save as template | See [Templates](/templates). |
 | Export, print / PDF | See [Import, export and versions](/import-export-versions). |
+| Owner and review … | Who looks after the page and when it should be checked again, see [Owner and review date](#owner-and-review-date). |
 | Version history | Compare and restore earlier states. |
 | Move to trash | Removes the page with its sub-pages; restorable. |
 
@@ -50,6 +52,19 @@ The **Filter pages** field above the page tree hides everything that does not ma
 
 > [!NOTE]
 > Pages keep their address when moved. Links to the page keep working as long as the reader has access in the new workspace.
+
+## Owner and review date
+
+So that guides, policies and knowledge pages do not go stale unnoticed, every page can have an **owner** and a **review date**. Set both under **… → Owner and review …** (edit rights needed):
+
+- **Owner**: a member of the workspace (not a guest) who can read the page.
+- **Next review on**: a fixed date, once, or
+- **Then every … days**: a rhythm such as 30, 90, 180 days or yearly. Without a date it starts today.
+
+Once the review date has come, the page shows the hint “This page is waiting for a review (owner: …)” at the top. **Reviewed** moves the date on by the rhythm, counted from today; a one-off date disappears. The owner gets a reminder on the due day (““Title” is waiting for your review”) – once per review date, in the inbox and, depending on the settings, as push or e-mail (kind “Date reminders”).
+
+> [!NOTE]
+> Through the API, the commands `page.owner` and `page.review` set owner and review date. A restore archive keeps review date and rhythm but not the owner, who belongs to the old workspace.
 
 ## Favourites and "Linked from"
 

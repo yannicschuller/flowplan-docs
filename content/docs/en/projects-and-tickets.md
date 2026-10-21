@@ -44,7 +44,7 @@ The rules apply everywhere: table and board, bulk edits, guests and the Git conn
 
 **… → Automations** takes care of recurring steps in the form *When … only if … then …*:
 
-- **When**: a record is created, a record arrives through a form, a property changes (optionally to a certain value) or a date has passed.
+- **When**: a record is created, a record arrives through a form, a property changes (optionally to a certain value), a date has passed or it is time according to a schedule (see [Scheduled automations](#scheduled-automations)).
 - **Only if** (optional): conditions such as “Priority is High” or “Assignee is empty”.
 - **Then**: set properties or notify.
   - Values for properties can be fixed, or *today*, *now*, *the person who triggered it* or *the creator*.
@@ -59,6 +59,20 @@ Each rule can be switched off on its own.
 
 > [!NOTE]
 > Rules run on the server, however a record changes. What a rule changes does not trigger further rules, so rules cannot loop. Flowplan checks overdue records every few minutes; each rule fires once per record and date. Notifications appear as “Database automations” and can be switched off in the settings.
+
+### Scheduled automations
+
+With the trigger **it is time (schedule)** a rule creates a new record regularly, for weekly reports, monthly closings or maintenance:
+
+- **When**: daily or every N days, weekly or every N weeks on a weekday, or monthly or every N months on a day (the 31st becomes the last day in shorter months), each at a time in your time zone. Examples: “Every Monday at 09:00”, “Monthly on day 1”, “Every 3 days”.
+- **Then**: **Create a record** from a record template (properties and text) or empty. Date fields can be set relative to the run, e.g. “Due: +3 days”; 0 means the same day.
+
+The suggestion “Create a record every Monday at 09:00” sets this up with the default template.
+
+> [!NOTE]
+> A scheduled rule runs once per date – also after a restart – and only from the moment it was saved. Dates on which the server was not running are not made up one by one; the latest missed one runs once. The rule creates records on behalf of the person who last changed it; if they lose edit rights or the database is locked, the rule rests. Switching it on or off does not change the person.
+
+Repeating tasks, whose next record only appears once the previous one is done, are set in the record, see [Repeating tasks](/databases#repeating-tasks).
 
 ## WIP limits
 
