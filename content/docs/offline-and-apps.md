@@ -119,10 +119,11 @@ Das braucht einen Flowplan-Server neuer als 0.6.0 (derzeit das Beta-Image) und d
 Wie die Desktop-App zeigen die mobilen Apps deine Flowplan-Instanz; alle Daten bleiben auf dem Server, neue Funktionen kommen ohne App-Update. Dazu kommt, was nur eine App kann:
 
 - **Mitteilungen:** Erwähnungen, Kommentare, Aufgaben und Erinnerungen kommen als Mitteilung, die Zahl der ungelesenen steht am App-Symbol. Die App fragt nach dem ersten Anmelden einmal nach der Erlaubnis; ein Tipp öffnet die betroffene Seite. Welche Arten kommen, regelst du wie im Browser unter **Einstellungen → Benachrichtigungen**.
-- **Widgets** für den Home-Bildschirm (auf dem iPhone auch für den Sperrbildschirm): fällige Aufgaben, der Posteingang und die laufende Zeiterfassung. Ein Tipp öffnet die Aufgabe bzw. Seite. Sie aktualisieren sich im Hintergrund.
+- **Widgets** für den Home-Bildschirm (auf dem iPhone auch für den Sperrbildschirm): fällige Aufgaben, der Posteingang und die laufende Zeiterfassung. Ein Tipp öffnet die Aufgabe bzw. Seite. Sie aktualisieren sich im Hintergrund. Statt leer zu bleiben, zeigen sie ohne Anmeldung *Flowplan öffnen und anmelden* und ohne fällige Aufgaben *Keine offenen Aufgaben*. Administratoren bekommen [drei weitere Widgets](#widgets-fuer-administratoren).
 - **Laufende Zeiterfassung:** Auf dem iPhone erscheint ein laufender Timer als Live-Aktivität auf dem Sperrbildschirm und in der Dynamic Island, auf Android als Mitteilung mit laufender Uhr.
 - **Schnellaktionen:** Langes Drücken auf das App-Symbol öffnet Posteingang, Meine Aufgaben, die Suche, eine neue Seite oder **Profil wechseln**.
 - **App-Sperre:** Auf Wunsch entsperrt sich Flowplan nur mit Face ID, Touch ID, Fingerabdruck oder dem Gerätecode.
+- **Zurück:** Wischen vom linken Rand (iOS) bzw. die Zurück-Geste oder -Taste (Android) schließt zuerst, was gerade offen ist (Menü, Dialog, Seitenleiste), und geht dann eine Ebene nach oben: von einem Abschnitt der Einstellungen zur Übersicht, von einem Eintrag zur Datenbank, von einer Seite zur vorherigen Seite.
 - **Exporte und Downloads** gehen in das Teilen-Menü des Systems (z. B. „In Dateien sichern“).
 - **iPad und Tablets:** alle Ausrichtungen, Split View, Slide Over und Stage Manager, Tastatur und Trackpad. Mit dem **Apple Pencil** zeichnest du auf Whiteboards mit Druckstärke, während Finger die Fläche bewegen; Doppeltippen und Drücken wechseln das Werkzeug, Scribble schreibt in jedes Textfeld (siehe [Whiteboards](/whiteboards#stift-und-formerkennung)).
 
@@ -144,6 +145,23 @@ Auch die Apps für iPhone, iPad und Android merken sich mehrere Instanzen als Pr
 - **Entfernen:** **Abmelden und Profil entfernen** gilt für das aktive Profil; danach wird das nächste Profil aktiv.
 
 Mitteilungen, Widgets, die Zahl am App-Symbol und die laufende Zeiterfassung gehören immer zum **aktiven** Profil. Beim Wechsel meldet die App das Gerät bei der bisherigen Instanz für Mitteilungen ab; die Anmeldung dort bleibt erhalten, sodass du beim Zurückwechseln weiterhin angemeldet bist. Was die App für ein Profil speichert (das Geräte-Token für Widgets, die letzte Übersicht), liegt getrennt im Schlüsselbund bzw. Keystore und geht nie an eine andere Instanz. Eine bisher eingerichtete Adresse wird nach dem Update zum ersten Profil.
+
+### Widgets für Administratoren
+
+Wer die Instanz administriert (Mitglied der Admin-Gruppe, `OIDC_ADMIN_GROUP`, Standard `flowplan-admins`), bekommt in der App für iPhone, iPad und Android drei weitere Widgets:
+
+| Widget | Größen (iOS) | Zeigt | Tippen öffnet |
+| --- | --- | --- | --- |
+| **Flowplan Instanz** | klein, mittel, Sperrbildschirm | Zustand (*Alles in Ordnung*, Hinweise oder Störungen mit der wichtigsten), Version und verfügbares Update, letzte Sicherung | Administration (bei Hinweisen/Störungen die Überwachung) |
+| **Flowplan Live** | klein, mittel, groß, Sperrbildschirm | gerade aktive Personen, Anfragen pro Minute, Fehlerrate der letzten Stunde, Anmeldungen heute; ab mittel die Anfragen der letzten 24 Stunden als Kurve | Administration → Überwachung |
+| **Flowplan Speicher** | klein, mittel, Sperrbildschirm (Ring) | Datenbank und Dateien, Belegung der Festplatte, Kontingent des vollsten Arbeitsbereichs | Administration → Speicher |
+
+- Alle anderen sehen in diesen Widgets *Nur für Administratoren*; ohne Anmeldung steht dort *Flowplan öffnen und anmelden*.
+- Die Daten kommen wie bei den anderen Widgets mit dem Geräte-Token der App (`GET /api/mobile/admin-summary`). Die Instanz prüft bei jedem Abruf, ob die Person der Sitzung, an die das Gerät gebunden ist, gerade Administrator ist – wer aus der Admin-Gruppe fällt, sich abmeldet oder das Gerät unter *Angemeldete Geräte* entfernt, bekommt nichts mehr. API-Tokens bekommen diese Daten nie.
+- Übertragen werden nur Zahlen und Zustände – keine Namen, E-Mail-Adressen oder Namen von Arbeitsbereichen.
+- Ist die Statistik ausgeschaltet (`FLOWPLAN_METRICS=off` oder in der Administration unter *Überwachung → Statistik*), zeigt *Flowplan Live* „Statistik ausgeschaltet“; Zustand und Speicher bleiben.
+- Aktualisiert wird wie bei allen Widgets: sofort nach Änderungen in der App, beim Öffnen der App und im Hintergrund etwa alle 30 Minuten.
+- Ältere Instanzen ohne diesen Endpunkt zeigen *Nur für Administratoren*.
 
 ### Was die App auf der Instanz hinterlegt
 

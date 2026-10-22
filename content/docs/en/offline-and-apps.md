@@ -119,10 +119,11 @@ This needs a Flowplan server newer than 0.6.0 (currently the beta image) and des
 Like the desktop app, the mobile apps show your Flowplan instance; all data stays on the server and new features arrive without an app update. On top comes what only an app can do:
 
 - **Notifications:** mentions, comments, tasks and reminders arrive as notifications, the number of unread ones shows on the app icon. The app asks for permission once after the first sign-in; a tap opens the page concerned. Which kinds arrive is set as in the browser under **Settings → Notifications**.
-- **Widgets** for the home screen (on the iPhone also for the lock screen): tasks due, the inbox and the running timer. A tap opens the task or page. They update in the background.
+- **Widgets** for the home screen (on the iPhone also for the lock screen): tasks due, the inbox and the running timer. A tap opens the task or page. They update in the background. Instead of staying empty they say *Open Flowplan to sign in* without a sign-in and *No open tasks* when nothing is due. Administrators get [three more widgets](#widgets-for-administrators).
 - **Running timer:** on the iPhone a running timer of the time tracking appears as a Live Activity on the lock screen and in the Dynamic Island, on Android as a notification with a running clock.
 - **Quick actions:** long-press the app icon to open the inbox, My tasks, the search, a new page or **Switch profile**.
 - **App lock:** if you like, Flowplan only unlocks with Face ID, Touch ID, a fingerprint or the device code.
+- **Back:** swiping from the left edge (iOS) or the back gesture or button (Android) first closes what is open (menu, dialog, sidebar) and then goes up a level: from a settings section to the overview, from a record to its database, from a page to the previous page.
 - **Exports and downloads** go to the system's share menu (e.g. "Save to Files").
 - **iPad and tablets:** every orientation, Split View, Slide Over and Stage Manager, keyboard and trackpad. With the **Apple Pencil** you draw on whiteboards with pressure while fingers move the board; double-tap and squeeze switch the tool, Scribble writes into any text field (see [Whiteboards](/whiteboards#pen-and-shape-recognition)).
 
@@ -144,6 +145,23 @@ The apps for iPhone, iPad and Android also keep several instances as profiles:
 - **Remove:** **Sign out and remove the profile** applies to the active profile; the next profile then becomes active.
 
 Notifications, widgets, the number on the app icon and the running timer always belong to the **active** profile. On a switch the app unregisters the device from the previous instance's notifications; the sign-in there stays, so you are still signed in when you switch back. What the app keeps for a profile (the device token for widgets, the last summary) is stored separately in the keychain or Keystore and never goes to another instance. An address set up before becomes the first profile after the update.
+
+### Widgets for administrators
+
+People who administer the instance (members of the admin group, `OIDC_ADMIN_GROUP`, default `flowplan-admins`) get three more widgets in the app for iPhone, iPad and Android:
+
+| Widget | Sizes (iOS) | Shows | Tapping opens |
+| --- | --- | --- | --- |
+| **Flowplan Instance** | small, medium, lock screen | State (*All fine*, notices or problems with the most important one), version and available update, last backup | Administration (Monitoring when there are notices or problems) |
+| **Flowplan Live** | small, medium, large, lock screen | People active now, requests per minute, error rate of the last hour, sign-ins today; from medium up the requests of the last 24 hours as a chart | Administration → Monitoring |
+| **Flowplan Storage** | small, medium, lock screen (ring) | Database and files, disk usage, quota of the fullest workspace | Administration → Storage |
+
+- Everyone else sees *Administrators only* in these widgets; without a sign-in they say *Open Flowplan to sign in*.
+- Like the other widgets they read their data with the app's device token (`GET /api/mobile/admin-summary`). The instance checks on every call that the person of the session the device is bound to is an administrator right now – leaving the admin group, signing out or removing the device under *Signed-in devices* stops it. API tokens never get this data.
+- Only numbers and states are sent – no names, e-mail addresses or workspace names.
+- With the statistics switched off (`FLOWPLAN_METRICS=off` or in the administration under *Monitoring → Statistics*), *Flowplan Live* says "Statistics switched off"; state and storage stay.
+- They refresh like all widgets: right after changes in the app, when the app is opened and in the background about every 30 minutes.
+- Older instances without this endpoint show *Administrators only*.
 
 ### What the app keeps on the instance
 
