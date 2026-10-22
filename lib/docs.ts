@@ -44,7 +44,11 @@ const groups: {
       ["pages-and-spaces", "Seiten und Bereiche", "Pages and spaces"],
       ["workspaces-and-permissions", "Arbeitsbereiche, Mitglieder und Rechte", "Workspaces, members and permissions"],
       ["encrypted-spaces", "Verschlüsselte Bereiche", "Encrypted spaces"],
-      ["migrate", "Umzug von Notion, AppFlowy und Obsidian", "Moving from Notion, AppFlowy and Obsidian"],
+      [
+        "migrate",
+        "Umzug von Notion, AppFlowy, Obsidian, Confluence, Evernote und Google Docs",
+        "Moving from Notion, AppFlowy, Obsidian, Confluence, Evernote and Google Docs",
+      ],
       ["keyboard-shortcuts", "Tastenkürzel", "Keyboard shortcuts"],
       ["languages", "Sprachen und Übersetzungen", "Languages and translations"],
     ],
@@ -90,11 +94,15 @@ const groups: {
   },
   {
     title: ["Erweiterungen", "Extensions"],
-    intro: ["API, Webhooks, KI, MCP und eigene Blöcke.", "API, webhooks, AI, MCP and custom blocks."],
+    intro: [
+      "API, Webhooks, KI, MCP, eigene Blöcke und die Browser-Erweiterung.",
+      "API, webhooks, AI, MCP, custom blocks and the browser extension.",
+    ],
     pages: [
       ["api-and-webhooks", "API und Webhooks", "API and webhooks"],
       ["ai", "KI", "AI"],
       ["mcp", "MCP: KI-Assistenten", "MCP: AI assistants"],
+      ["browser-extension", "Browser-Erweiterung", "Browser extension"],
       ["plugins", "Block-Erweiterungen", "Block extensions"],
     ],
   },

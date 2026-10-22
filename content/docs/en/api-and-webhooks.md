@@ -4,7 +4,9 @@ With personal API tokens, scripts, n8n or Home Assistant access Flowplan; webhoo
 
 ## API tokens
 
-Under **Settings → API & webhooks** you create tokens: with a name, **Read only** or **Read and write**. The token is shown only once – afterwards only its beginning is visible. A **Read only** token is refused for every request that writes, including restoring backups and uploading files.
+Under **Settings → API & webhooks** you create tokens: with a name, **Read only**, **Read and write** or **Browser extension only**. The token is shown only once – afterwards only its beginning is visible. A **Read only** token is refused for every request that writes, including restoring backups and uploading files.
+
+- **Browser extension only:** for the [browser extension](/browser-extension). The token only reaches /api/clipper/targets and /api/clipper/save; everywhere else it counts as no token.
 
 Every request with the token acts with your permissions:
 

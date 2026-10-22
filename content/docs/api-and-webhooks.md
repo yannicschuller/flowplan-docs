@@ -4,7 +4,9 @@ Mit persönlichen API-Tokens greifen Skripte, n8n oder Home Assistant auf Flowpl
 
 ## API-Tokens
 
-Unter **Einstellungen → API & Webhooks** legst du Tokens an: mit Namen, **Nur lesen** oder **Lesen und schreiben**. Das Token erscheint nur einmal – danach sieht man nur seinen Anfang. Ein Token **Nur lesen** wird bei jeder schreibenden Anfrage abgewiesen, auch bei Backup-Wiederherstellung und Datei-Uploads.
+Unter **Einstellungen → API & Webhooks** legst du Tokens an: mit Namen, **Nur lesen**, **Lesen und schreiben** oder **Nur Browser-Erweiterung**. Das Token erscheint nur einmal – danach sieht man nur seinen Anfang. Ein Token **Nur lesen** wird bei jeder schreibenden Anfrage abgewiesen, auch bei Backup-Wiederherstellung und Datei-Uploads.
+
+- **Nur Browser-Erweiterung:** für die [Browser-Erweiterung](/browser-extension). Das Token erreicht nur /api/clipper/targets und /api/clipper/save; überall sonst gilt es als kein Token.
 
 Jede Anfrage mit dem Token handelt mit deinen Rechten:
 

@@ -1,6 +1,22 @@
-# Umzug von Notion, AppFlowy und Obsidian
+# Umzug von Notion, AppFlowy, Obsidian, Confluence, Evernote und Google Docs
 
-Flowplan ist eine Open-Source-Alternative zu Notion und AppFlowy unter der AGPL-3.0. So holst du Seiten, Datenbanken, Bilder und Dateien aus dem bisherigen Werkzeug herüber.
+Flowplan ist eine Open-Source-Alternative zu Notion, Confluence und AppFlowy unter der AGPL-3.0. So holst du Seiten, Datenbanken, Bilder und Dateien aus dem bisherigen Werkzeug herüber.
+
+## Confluence, Evernote, Google Docs und Obsidian
+
+Unter **Einstellungen → Daten → Aus Confluence, Evernote, Google Docs oder Obsidian importieren** wählst du die Quelle (oder lässt sie erkennen), den Zielbereich und ob eine Seitenstruktur oder eine **neue Datenbank** entstehen soll. Dann die Datei auswählen:
+
+1. Flowplan lädt die Datei hoch (mit Fortschrittsanzeige) und zeigt eine **Vorschau**: wie viele Seiten, Ordner, Dateien (mit Größe) und Tags übernommen werden und was nicht geht – etwa verschlüsselter Text, nicht unterstützte Makros oder Bilder, die im Export fehlen.
+2. **Importieren** legt alles in einem Schritt an. Schlägt etwas fehl, bleibt nichts halb importiert zurück.
+
+Für alle Quellen gilt:
+
+- Ende-zu-Ende-verschlüsselte Bereiche sind als Ziel ausgeschlossen (der Server sieht dort keinen Klartext).
+- Du brauchst Schreibrechte im Zielbereich; Speicherkontingente des Arbeitsbereichs und deine persönliche Grenze werden vorher geprüft (die Vorschau warnt schon).
+- Grenzen pro Import: 100 MB, 500 Seiten (als Datenbank: 5.000 Einträge), 10 MB je Datei im ZIP.
+- Der Inhalt wird wie beim Einfügen bereinigt: Skripte, Formulare und eingebettete Fremdseiten fallen weg. Dateinamen werden bereinigt; Dateien, die der Browser ausführen könnte (HTML, SVG), werden nur zum Herunterladen gespeichert.
+- Links zwischen importierten Seiten zeigen auf die neuen Seiten. Bilder und Anhänge werden hochgeladen – jede Datei einmal, auch wenn mehrere Seiten sie zeigen.
+- **Als neue Datenbank** wird jede Notiz ein Eintrag mit den Eigenschaften *Tags*, *Erstellt*, *Geändert*, *Ordner* (der Ordnerpfad) und – wenn vorhanden – *Quelle*. Als Seiten stehen Tags als `#tag` oben auf der Seite.
 
 ## Von Notion
 
@@ -27,12 +43,54 @@ Grenzen pro Import: 100 MB, 500 Seiten und 5.000 Einträge je Tabelle. Größere
 
 Markdown wird zu Seiten, CSV zu Datenbanken; verlinkte Bilder und Dateien werden mitgenommen.
 
+## Von Confluence
+
+1. In Confluence: **Bereichseinstellungen → Exportieren** (Confluence Cloud: **Bereichseinstellungen → Bereich exportieren**). Wähle **HTML** oder **XML**, jeweils mit allen Seiten.
+2. In Flowplan das ZIP wie oben importieren (Quelle **Confluence** oder automatisch).
+
+Was daraus wird:
+
+- Der **Seitenbaum** des Bereichs wird zum Seitenbaum in Flowplan (aus `index.html` bzw. den Elternseiten in `entities.xml`; fehlt eine Seite dort, helfen die Brotkrumen).
+- **Info-, Tipp-, Hinweis- und Warnungs-Makros** werden zu Hinweisblöcken (Info → Hinweis, Tipp → Tipp, Hinweis → Warnung, Warnung → Achtung), **Code-Makros** zu Codeblöcken, **Aufklappen** zu Aufklappblöcken, **Aufgabenlisten** zu Aufgaben mit ihrem Status.
+- **Bilder** und **Anhänge** werden hochgeladen; Anhänge, die im Text nicht vorkommen, stehen als Links am Ende der Seite. **Links auf andere Seiten** des Bereichs zeigen auf die importierten Seiten.
+- Im XML-Export zählt nur die aktuelle Fassung jeder Seite; ältere Versionen und Blogbeiträge werden übersprungen. Erstellungs- und Änderungsdatum werden übernommen.
+- Makros ohne Entsprechung (etwa Inhaltsverzeichnis, Jira-Abfragen) fallen weg; die Vorschau nennt sie.
+
+## Von Evernote
+
+1. In Evernote ein Notizbuch über **… → Notizbuch exportieren** als **ENEX** speichern. Mehrere Notizbücher packst du zusammen in ein ZIP.
+2. In Flowplan die `.enex`-Datei oder das ZIP importieren.
+
+Was daraus wird:
+
+- Jede **Notiz** wird eine Seite; bei mehreren Notizbüchern wird jedes Notizbuch eine Seite mit seinen Notizen darunter.
+- Der Notiztext (ENML) wird zu normalem Text mit Formatierung, Listen und Tabellen; **Kontrollkästchen** werden zu Aufgaben.
+- **Bilder und Anhänge** (in der ENEX-Datei eingebettet) werden hochgeladen und an ihrer Stelle im Text gezeigt; PDFs und andere Dateien als Link. Anhänge ohne Platz im Text kommen ans Ende.
+- **Tags**, **Erstellt**/**Geändert** und die **Quelladresse** bleiben erhalten – am besten als neue Datenbank importieren, dann sind es Eigenschaften zum Filtern und Sortieren.
+- Verschlüsselter Text lässt sich nicht übernehmen; die Vorschau warnt.
+
+## Von Google Docs
+
+1. Unter [takeout.google.com](https://takeout.google.com) **Drive** wählen und bei den Formaten für Dokumente **HTML** (empfohlen) oder **Microsoft Word** einstellen. Einzelne Dokumente gehen auch über **Datei → Herunterladen → Webseite (.html, gezippt)** oder **Microsoft Word (.docx)**.
+2. In Flowplan das Takeout-ZIP, das ZIP der Webseite oder die `.docx`-Datei importieren (Quelle **Google Docs**).
+
+Was daraus wird:
+
+- Jedes Dokument wird eine Seite, **Drive-Ordner** werden zu übergeordneten Seiten.
+- Überschriften, Fett, Kursiv, Unterstrichen, Durchgestrichen, **verschachtelte Listen**, Tabellen und Links werden übernommen; Googles Umleitungslinks zeigen wieder direkt auf ihr Ziel.
+- **Bilder** werden hochgeladen – auch die, die im HTML eingebettet sind.
+- Word-Dateien: Absätze, Überschriften, Listen (nummeriert und mit Aufzählungszeichen, auch verschachtelt), Tabellen (mit verbundenen Spalten), Links und Bilder. Kommentare, Fußnoten und Kopf-/Fußzeilen fallen weg.
+
 ## Von Obsidian und anderen Markdown-Ordnern
 
-- **Ein Notizordner als Seiten:** den Ordner als ZIP packen und unter **Einstellungen → Daten** importieren.
-- **Notizen mit Frontmatter als Datenbank:** in einer Datenbank **CSV oder Markdown importieren** wählen und die `.md`-Dateien oder ein ZIP nehmen. Die YAML-Eigenschaften werden zu Spalten – siehe [Frontmatter](/import-export-versions#frontmatter-eintraege-als-markdown-dateien).
+- **Ein Tresor als Seiten:** den Tresor-Ordner (mit dem Ordner `.obsidian`) als ZIP packen und unter **Einstellungen → Daten** importieren – über **Aus Confluence, Evernote, Google Docs oder Obsidian importieren** mit Vorschau oder über den Notion-/Markdown-Import, der einen Tresor ebenfalls erkennt.
+  - **Ordner** werden zu Seiten mit ihren Notizen darunter. Eine **Ordnernotiz** (`Projekte/Projekte.md` oder `Projekte.md` neben dem Ordner) wird selbst zur Seite des Ordners.
+  - **Wikilinks** `[[Seite]]`, `[[Seite|Text]]`, `[[Ordner/Seite]]` und `[[Seite#Überschrift]]` werden zu Links auf die importierten Seiten – aufgelöst wie in Obsidian über den Pfad oder den Dateinamen. Links auf Notizen, die es nicht gibt, bleiben Text.
+  - **Eingebettete Dateien** `![[bild.png]]` werden zu Bildern, `![[datei.pdf]]` zu Dateilinks; eingebettete Notizen `![[Notiz]]` werden zu Links.
+  - **Callouts** wie `> [!note]` oder `> [!warning] Titel` werden zu Hinweisblöcken der passenden Art.
+  - **Tags** aus dem Frontmatter (`tags:`) und im Text (`#tag`, nicht in Code) werden gesammelt: als Seiten oben als `#tag`, als neue Datenbank in der Eigenschaft *Tags* – zusammen mit *Ordner* für die Herkunft.
+- **Notizen mit Frontmatter in eine vorhandene Datenbank:** in einer Datenbank **CSV oder Markdown importieren** wählen und die `.md`-Dateien oder ein ZIP nehmen. Die YAML-Eigenschaften werden zu Spalten – siehe [Frontmatter](/import-export-versions#frontmatter-eintraege-als-markdown-dateien).
 - **Aliasse:** `aliases: [PAC, Pompe à chaleur]` (oder `alias:`) im Frontmatter wird zu den [Aliassen](/pages-and-spaces#aliasse) der Seite bzw. zur Eigenschaft [Aliasse](/properties-and-formulas#aliasse) des Eintrags. @-Erwähnungen, Suche und nicht verlinkte Erwähnungen finden „Chauffage“ dann auch über „PAC“, und der Markdown-Export schreibt sie wieder als `aliases:` zurück.
-- Hinweise wie `> [!WARNING]` werden zu Hinweisblöcken der passenden Art.
 
 ## Nach dem Umzug
 
