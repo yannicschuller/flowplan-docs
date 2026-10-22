@@ -29,7 +29,7 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 | Zwei Spalten | `/spalten` | Inhalte nebeneinander |
 | Einbetten | `/embed` | Player für YouTube, Vimeo, Loom, Spotify, Figma, CodePen; sonst Linkkarte |
 | Spoiler | `/spoiler` | Verdeckter Text, per Klick sichtbar |
-| Sprachnotiz | `/sprachnotiz` | Aufnehmen und als Audio, auf Wunsch auch als Text einfügen |
+| Sprachnotiz | `/sprachnotiz` | Aufnehmen (bis zu zwei Stunden) und als Audio, auf Wunsch auch als Transkript einfügen |
 | Synchronisierter Block | `/sync` | Inhalt, der auf mehreren Seiten gleich bleibt |
 | Synchronisierten Block einfügen | `/sync` | Einen bestehenden synchronisierten Block zeigen |
 | Trennlinie | `/hr` | Horizontale Linie |
@@ -38,9 +38,15 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 | Literaturzitat | `/zitat`, `/cite` | Quelle zitieren – DOI, BibTeX oder Zotero ([Zitate](#zitate-und-literaturverzeichnis)) |
 | Literaturverzeichnis | `/literatur`, `/bibliography` | Alle zitierten Werke als Liste |
 
-## Sprachnotizen
+## Sprachnotizen und Besprechungen
 
-`/sprachnotiz` öffnet die Aufnahme: Mikrofon antippen, sprechen, **Aufnahme beenden** (höchstens zehn Minuten). Die Aufnahme lässt sich anhören oder verwerfen; **Einfügen** legt sie als Audio in die Seite. Ist die Spracherkennung eingerichtet, folgt darunter das Gesprochene als Text; sonst bietet der Dialog nur das Audio an.
+`/sprachnotiz` öffnet die Aufnahme: Mikrofon antippen, sprechen, **Aufnahme beenden** – bis zu **zwei Stunden**, genug für eine Besprechung. Die Aufnahme lässt sich anhören oder verwerfen; **Einfügen** legt sie als Audio in die Seite (im Rahmen der Upload-Grenze der Instanz). Ist die Spracherkennung eingerichtet, folgt darunter das Gesprochene als Text; sonst bietet der Dialog nur das Audio an.
+
+- **Lange Aufnahmen** gehen in Teilen an den Server, der sie zusammensetzt und an die Spracherkennung schickt. Die Größe begrenzt `WHISPER_MAX_MB` (Standard 200).
+- **Transkript mit Zeitmarken:** Liefert die Spracherkennung Abschnitte mit Zeiten (OpenAI-kompatibles `verbose_json`, etwa faster-whisper-server, speaches oder whisper.cpp), erscheint ein aufklappbarer Block **Transkript · Dauer** mit einem Absatz je Passage und ihrer Zeitmarke (`00:04`, `1:02:05`).
+- **Sprecher:** Nur wenn der Dienst selbst Sprecher trennt (Diarisierung, einzuschalten mit `WHISPER_DIARIZE=on` bei Servern, die `diarize` kennen) und je Abschnitt einen Sprecher zurückgibt, steht vor jeder Passage **Sprecher 1**, **Sprecher 2** … Flowplan rät keine Sprecher aus Pausen. Kennt der Dienst nur einfaches JSON, wird der Text wie bisher als Absätze eingefügt.
+- **Danach mit KI zusammenfassen** fasst das Transkript zusammen ([Zusammenfassungen](/ai#zusammenfassungen)).
+- **Aufgaben und Zusammenfassung erzeugen** (wenn [KI-Aktionen](/ai#ki-aktionen) für dich eingeschaltet sind): Die KI schlägt eine Zusammenfassung mit Beschlüssen und eine Aufgabenliste mit verantwortlichen Personen und Terminen vor – als Vorschau mit Kästchen; erst **Ausführen** fügt sie in die Seite ein.
 
 ## Inhaltsverzeichnis
 

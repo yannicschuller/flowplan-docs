@@ -8,7 +8,7 @@ Optionale KI für Texte, Zusammenfassungen, Fragen an den Arbeitsbereich und Dat
 ## Grundsätze
 
 - **Aus, bis jemand sie einschaltet** – auf der Instanz und für jede Person.
-- **Jede Funktion einzeln:** Schreibassistent, Zusammenfassungen, Fragen an den Arbeitsbereich und KI in Datenbanken lassen sich von der Administration und von jeder Person getrennt erlauben oder ausschalten.
+- **Jede Funktion einzeln:** Schreibassistent, Zusammenfassungen, Fragen an den Arbeitsbereich, KI in Datenbanken und KI-Aktionen lassen sich von der Administration und von jeder Person getrennt erlauben oder ausschalten.
 - **Nur mit deinen Rechten:** Die KI liest nie mehr, als du selbst sehen darfst – und nur, was du ihr erlaubst ([Worauf die KI zugreifen darf](#worauf-die-ki-zugreifen-darf)).
 - **Du siehst, wohin deine Texte gehen:** Jede KI-Funktion nennt den Anbieter und ob die Daten den Server verlassen.
 - **Schlüssel bleiben geheim:** API-Schlüssel werden verschlüsselt gespeichert und nie wieder angezeigt ([Sicherheit der Schlüssel](#sicherheit-der-schluessel)).
@@ -85,7 +85,7 @@ Die KI liefert eine kurze **Zusammenfassung**, die **Kernpunkte** und die **offe
 - **Seite:** Seitenmenü **…** → **Mit KI zusammenfassen**. Das Ergebnis erscheint in einer Seitenleiste mit **Als Callout oben einfügen** (Zusammenfassung und Kernpunkte als Hinweis am Seitenanfang), **Aufgaben als Checkliste einfügen** (unter der Schreibmarke), **Kopieren** und **Erneut**.
 - **Datenbank:** Der KI-Knopf in der Werkzeugleiste fasst die Einträge der **aktuellen Ansicht** zusammen – mit ihren Filtern, ihrer Suche und Sortierung, höchstens 300 Einträge. Die Leiste nennt, wie viele es waren („120 von 340 Einträgen“).
 - **Eintrag:** KI-Knopf im Kopf des Eintrags; Callout und Checkliste landen im Dokument des Eintrags.
-- **Sprachnotiz:** Wandelt der Server Sprachnotizen in Text um ([Sprachnotizen](/documents#sprachnotizen)), fasst **Danach mit KI zusammenfassen** das Transkript zusammen; **Darunter einfügen** setzt die Zusammenfassung unter das Transkript.
+- **Sprachnotiz:** Wandelt der Server Sprachnotizen in Text um ([Sprachnotizen](/documents#sprachnotizen-und-besprechungen)), fasst **Danach mit KI zusammenfassen** das Transkript zusammen; **Darunter einfügen** setzt die Zusammenfassung unter das Transkript.
 
 Lange Seiten werden abschnittsweise gelesen: Jeder Teil wird zusammengefasst, dann werden die Teile zusammengeführt (bei lokaler KI in kleineren Teilen). Sehr lange Inhalte werden nach zwölf Teilen abgeschnitten; die Leiste weist darauf hin. Einträge, die du nicht sehen darfst oder die für die KI gesperrt sind, bleiben außen vor.
 
@@ -101,7 +101,8 @@ Auf Seiten, die die KI nicht lesen darf, sind alle KI-Einträge ausgegraut mit d
 
 - Die Antwort nennt ihre **Quellen** als nummerierte Verweise [1], [2] …; ein Klick öffnet die Seite oder den Eintrag. Die Verweise stammen aus der Suche, nie aus dem Text der KI.
 - Findet die KI nichts Passendes, antwortet sie „Dazu habe ich nichts gefunden.“ statt etwas zu erfinden.
-- **Wo gesucht wird:** ganzer Arbeitsbereich, die geöffnete Seite mit ihren Unterseiten oder ein Bereich.
+- **Wo gesucht wird:** ganzer Arbeitsbereich, die geöffnete Seite mit ihren Unterseiten oder ein Bereich. Mit **Alle Arbeitsbereiche** sucht die Frage in allen Arbeitsbereichen, in denen du Mitglied bist – in jedem nur, wenn KI dort für dich nutzbar ist (etwa nicht als Gast, wenn Gäste keine KI haben), und mit deinen Regeln für jeden Arbeitsbereich. Quellen aus anderen Arbeitsbereichen tragen dessen Namen; ein Klick wechselt dorthin.
+- **Aktionen vorschlagen:** Unter einer Antwort schlägt die KI auf Wunsch vor, was sich daraus anlegen lässt – siehe [KI-Aktionen](#ki-aktionen).
 - **Gespräch:** Rückfragen beziehen die letzten Fragen und Antworten ein; **Neues Gespräch** beginnt von vorn. Das Gespräch bleibt nur in diesem Browser-Tab und wird nicht auf dem Server gespeichert.
 - Gesucht wird über den Volltextindex; die passendsten Absätze gehen mit deiner Frage an den Anbieter, der oben im Fenster steht. Die KI liest dabei nur, was du lesen darfst und was für die KI freigegeben ist ([Worauf die KI zugreifen darf](#worauf-die-ki-zugreifen-darf)).
 - Während die Antwort entsteht, zeigen ein Schimmer und ein Schreibcursor den Fortschritt; die Quellen erscheinen nacheinander.
@@ -121,6 +122,33 @@ Zusätzlich zum Volltext kann Flowplan Inhalte als Vektoren („Embeddings“) s
 - **Speicherbedarf:** 4 Byte je Dimension und Abschnitt (bis etwa 900 Zeichen) – mit `nomic-embed-text` (768 Dimensionen) rund 3 KB je Abschnitt, etwa das Drei- bis Vierfache des Textes; mit 1.536 Dimensionen rund 6 KB. Gespeichert wird nur ein Prüfwert jedes Abschnitts, nicht sein Text. Die Administration zeigt Anzahl und Größe.
 - **Ausschalten** löscht alle Vektoren; ein **Modellwechsel** baut sie neu auf.
 - Für sehr große Instanzen (Hunderttausende Abschnitte) gibt es noch keinen Vektorindex; die Suche bleibt dann korrekt, wird aber langsamer.
+
+### Verwandte Seiten
+
+Unter einer Seite und im Eintrag einer Datenbank zeigt **Verwandte Seiten** bis zu acht Seiten und Einträge, die dazugehören. Das funktioniert auch ohne KI:
+
+- **Ohne Suche nach Bedeutung** zählen Links von der Seite, Links auf die Seite, Seiten mit denselben Verweisen, bei Einträgen gleiche Tags (Mehrfachauswahl) und ähnliche Titel im Volltextindex.
+- **Mit Suche nach Bedeutung** kommen Seiten mit ähnlichem Inhalt dazu („nach Bedeutung“). Dafür werden nur die schon gespeicherten Vektoren verglichen – es geht keine Anfrage an den Anbieter, kein Text verlässt den Server. Die geöffnete Seite muss für die KI lesbar sein; jeder Treffer durchläuft dieselben Regeln wie bei **KI fragen**.
+
+Angezeigt wird nur, was du lesen darfst – keine privaten Bereiche anderer, keine verborgenen Einträge, nichts aus dem Papierkorb oder gesperrten Journalen.
+
+## KI-Aktionen
+
+Aus einer Antwort von **KI fragen**, aus dem Schreibassistenten (**Aktionen vorschlagen** unter der Antwort) oder aus dem Transkript einer [Besprechung](/documents#sprachnotizen-und-besprechungen) schlägt die KI Aktionen vor:
+
+| Aktion | Was passiert |
+| --- | --- |
+| **Seite anlegen** | Neue Seite mit Titel und Inhalt in einem Bereich, in dem du Seiten anlegen darfst. |
+| **Aufgaben anlegen** | Aufgaben am Ende eines Dokuments, auf Wunsch mit verantwortlicher Person (@Erwähnung) und Fälligkeitsdatum – sie erscheinen in **Meine Aufgaben** wie selbst geschriebene. |
+| **Text anfügen** | Etwa eine Zusammenfassung am Ende eines Dokuments. |
+| **Eintrag anlegen** / **Eintrag ändern** | In einer Datenbank, nur in Eigenschaften, die du ändern darfst, und nur mit gültigen Werten (vorhandene Auswahloptionen, Mitglieder, Datumsangaben). |
+
+**Nichts geschieht ohne dich:** Die Vorschläge erscheinen als **Vorschau mit Kästchen**. Was nicht möglich ist – etwa ein Bereich ohne Schreibrecht, eine gesperrte Eigenschaft oder eine für die KI gesperrte Datenbank –, steht ausgegraut mit dem Grund daneben. Erst **Ausführen** legt die gewählten Aktionen an.
+
+- Ausgeführt wird **in deinem Namen und mit deinen Rechten**; der Server prüft jede Aktion beim Ausführen noch einmal. Versionsverlauf, Benachrichtigungen, Automationen und Webhooks laufen wie bei einer eigenen Änderung, das Protokoll vermerkt `ai.action`.
+- **Rückgängig:** Angelegte Seiten und Einträge lassen sich direkt im Ergebnis zurücknehmen (sie landen im Papierkorb); angefügter Text und geänderte Einträge stehen im Versionsverlauf.
+- Die KI sieht nur einen Katalog der Bereiche, Datenbanken, Eigenschaften und Mitglieder, in die du schreiben darfst und die die KI lesen darf – keine Inhalte darüber hinaus. Die Antwort der KI ist reines JSON und wird nie direkt ausgeführt.
+- Die Funktion **KI-Aktionen** lässt sich wie alle anderen von der Administration und unter **Einstellungen → KI** ausschalten.
 
 ## KI in Datenbanken
 
@@ -223,5 +251,7 @@ Auf einer Seite, die die KI nicht lesen darf, sind KI-Funktionen ausgegraut, mit
 **Trainiert der Anbieter mit meinen Daten?** Das regeln die Bedingungen des jeweiligen Anbieters. Flowplan schickt nur, was für eine Anfrage nötig ist, und nur Inhalte, die die KI lesen darf. Wer sicher gehen will, nutzt Ollama.
 
 **Werden Gespräche gespeichert?** Flowplan speichert Anfragen und Antworten nicht dauerhaft; was in Seiten eingefügt wird, ist normaler Inhalt mit Versionsverlauf.
+
+**Kann die KI selbst etwas ändern?** Nein. KI-Aktionen sind Vorschläge; erst wenn du sie auswählst und **Ausführen** drückst, werden sie mit deinen Rechten angelegt.
 
 **Was ist mit dem MCP-Server?** Der [MCP-Server](/mcp) ist ein anderer Weg: Dort arbeitet ein externer Assistent wie Claude Desktop mit deinem Flowplan. Er ist unabhängig von den Einstellungen hier.

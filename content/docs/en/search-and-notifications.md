@@ -48,6 +48,15 @@ Unread items are marked and can be filtered. A click opens the spot, for text co
 
 If a mail server is set up on the instance, unread notifications arrive by e-mail as a digest after ten minutes – one mail for everything that has piled up, each notification at most once. Under **Settings → Notifications**, the **E-mail** column can be switched on and off per kind. Invitations to a workspace and pages shared with you arrive by e-mail right away.
 
+### Weekly digest
+
+Under **Settings → Notifications → Weekly digest** you subscribe to an e-mail that arrives every **Monday at 7 am** in your time zone (your browser's time zone is saved when you switch it on):
+
+- **Changed in pages you follow** – with the workspace and who changed it (changes of the last seven days, by others only),
+- **Overdue tasks** and **Open tasks** – as in **My tasks**, across all workspaces.
+
+**With a short AI summary of the changes** (only shown when [AI](/ai) is on for you) puts a few bullet points before the list. The AI only reads pages it may read for you, with your AI provider. If AI is off or the request fails, the e-mail comes as a plain list. If there is nothing to report in a week, no e-mail is sent. The digest needs a mail server to be set up.
+
 ## Push notifications
 
 Under **Settings → Notifications**:

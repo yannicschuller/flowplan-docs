@@ -152,6 +152,9 @@ Voice notes in the editor are always stored as audio. With a Whisper service in 
 | `WHISPER_MODEL` | `Systran/faster-whisper-small` | The model name as the service expects it. |
 | `WHISPER_LANGUAGE` | `de` | Language of the recordings (e.g. `en`). |
 | `WHISPER_API_KEY` | *empty* | Only if the service requires a key. |
+| `WHISPER_MAX_MB` | `200` | Largest recording in MB. |
+| `WHISPER_RESPONSE_FORMAT` | `verbose_json` | Response format of speech recognition; falls back to `json` once. |
+| `WHISPER_DIARIZE` | *empty* | `on`: ask for speaker separation (`diarize=true`), only for services that support it. |
 
 Example with [speaches](https://github.com/speaches-ai/speaches) (formerly faster-whisper-server) in the same Compose project:
 

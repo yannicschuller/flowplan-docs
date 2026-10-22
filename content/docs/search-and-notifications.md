@@ -48,6 +48,15 @@ Ungelesenes ist markiert und lässt sich filtern. Ein Klick öffnet die Stelle, 
 
 Ist auf der Instanz ein Mailserver eingerichtet, kommen ungelesene Benachrichtigungen nach zehn Minuten als Zusammenfassung per E-Mail – eine Mail für alles, was sich angesammelt hat, jede Benachrichtigung höchstens einmal. Unter **Einstellungen → Benachrichtigungen** lässt sich die Spalte **E-Mail** je Art ein- und ausschalten. Einladungen in einen Arbeitsbereich und mit dir geteilte Seiten kommen sofort per E-Mail.
 
+### Wöchentliche Zusammenfassung
+
+Unter **Einstellungen → Benachrichtigungen → Wöchentliche Zusammenfassung** bestellst du eine E-Mail, die jeden **Montag um 7 Uhr** in deiner Zeitzone kommt (gespeichert wird die Zeitzone deines Browsers beim Einschalten):
+
+- **Geändert in Seiten, denen du folgst** – mit Arbeitsbereich und wer geändert hat (Änderungen der letzten sieben Tage, nur von anderen),
+- **Überfällige Aufgaben** und **Offene Aufgaben** – wie in **Meine Aufgaben**, über alle Arbeitsbereiche.
+
+**Mit kurzer KI-Zusammenfassung der Änderungen** (nur sichtbar, wenn [KI](/ai) für dich eingeschaltet ist) stellt der Liste ein paar Stichpunkte voran. Die KI liest dafür nur Seiten, die sie für dich lesen darf, mit deinem KI-Anbieter. Ist KI aus oder schlägt die Anfrage fehl, kommt die E-Mail als einfache Liste. Gibt es in einer Woche nichts zu berichten, kommt keine E-Mail. Die Zusammenfassung braucht einen eingerichteten Mailserver.
+
 ## Push-Benachrichtigungen
 
 Unter **Einstellungen → Benachrichtigungen**:

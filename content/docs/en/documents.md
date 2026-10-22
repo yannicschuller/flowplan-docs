@@ -29,7 +29,7 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 | Two columns | `/columns` | Content side by side |
 | Embed | `/embed` | Players for YouTube, Vimeo, Loom, Spotify, Figma, CodePen; a link card otherwise |
 | Spoiler | `/spoiler` | Hidden text, revealed by a click |
-| Voice note | `/voice` | Record and insert as audio, optionally also as text |
+| Voice note | `/voice` | Record (up to two hours) and insert as audio, optionally also as a transcript |
 | Synced block | `/sync` | Content that stays the same on several pages |
 | Insert synced block | `/sync` | Show an existing synced block |
 | Divider | `/hr` | A horizontal line |
@@ -38,9 +38,15 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 | Citation | `/cite`, `/zitat` | Cite a source – DOI, BibTeX or Zotero ([Citations](#citations-and-bibliography)) |
 | Bibliography | `/bibliography`, `/references` | All cited works as a list |
 
-## Voice notes
+## Voice notes and meetings
 
-`/voice` opens the recorder: tap the microphone, speak, **Stop recording** (at most ten minutes). You can listen to the recording or discard it; **Insert** puts it into the page as audio. If speech recognition is set up, the spoken words follow below as text; otherwise the dialog only offers the audio.
+`/voice` opens the recorder: tap the microphone, speak, **Stop recording** – up to **two hours**, enough for a meeting. You can listen to the recording or discard it; **Insert** puts it into the page as audio (within the instance's upload limit). If speech recognition is set up, the spoken words follow below as text; otherwise the dialog only offers the audio.
+
+- **Long recordings** go to the server in parts; it puts them together and sends them to speech recognition. `WHISPER_MAX_MB` limits the size (default 200).
+- **Transcript with timestamps:** if speech recognition returns segments with times (OpenAI-compatible `verbose_json`, e.g. faster-whisper-server, speaches or whisper.cpp), a collapsible **Transcript · duration** block appears with one paragraph per passage and its timestamp (`00:04`, `1:02:05`).
+- **Speakers:** only when the service itself separates speakers (diarization, switched on with `WHISPER_DIARIZE=on` for servers that know `diarize`) and returns a speaker per segment, each passage starts with **Speaker 1**, **Speaker 2** … Flowplan never guesses speakers from pauses. If the service only knows plain JSON, the text is inserted as paragraphs as before.
+- **Then summarise with AI** summarises the transcript ([Summaries](/ai#summaries)).
+- **Generate tasks and summary** (when [AI actions](/ai#ai-actions) are on for you): the AI proposes a summary with decisions and a task list with assignees and dates – as a preview with checkboxes; only **Run** adds them to the page.
 
 ## Table of contents
 

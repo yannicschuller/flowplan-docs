@@ -8,7 +8,7 @@ Optional AI for writing, summaries, questions to your workspace and databases �
 ## Principles
 
 - **Off until someone switches it on** – on the instance and for every person.
-- **Every feature separately:** writing assistant, summaries, questions to the workspace and AI in databases can each be allowed or switched off by administrators and by every person.
+- **Every feature separately:** writing assistant, summaries, questions to the workspace, AI in databases and AI actions can each be allowed or switched off by administrators and by every person.
 - **Only with your permissions:** the AI never reads more than you may see yourself – and only what you allow it ([What the AI may access](#what-the-ai-may-access)).
 - **You see where your text goes:** every AI feature names the provider and whether data leaves the server.
 - **Keys stay secret:** API keys are stored encrypted and never shown again ([Security of keys](#security-of-keys)).
@@ -85,7 +85,7 @@ The AI returns a short **summary**, the **key points** and the **open tasks** �
 - **Page:** page menu **…** → **Summarise with AI**. The result appears in a side panel with **Insert as callout at the top** (summary and key points as a callout at the start of the page), **Insert tasks as checklist** (below the caret), **Copy** and **Retry**.
 - **Database:** the AI button in the toolbar summarises the records of the **current view** – with its filters, search and sort order, at most 300 records. The panel says how many were included ("120 of 340 records").
 - **Record:** AI button in the record's header; callout and checklist go into the record's document.
-- **Voice note:** if the server turns voice notes into text ([Voice notes](/documents#voice-notes)), **Then summarise with AI** summarises the transcript; **Insert below** puts the summary under it.
+- **Voice note:** if the server turns voice notes into text ([Voice notes](/documents#voice-notes-and-meetings)), **Then summarise with AI** summarises the transcript; **Insert below** puts the summary under it.
 
 Long pages are read in parts: each part is summarised, then the parts are merged (in smaller parts with local AI). Very long content is cut after twelve parts, and the panel says so. Records you may not see or that are closed to the AI are left out.
 
@@ -101,7 +101,8 @@ On pages the AI may not read, every AI entry is greyed out with the hint "The AI
 
 - The answer names its **sources** as numbered references [1], [2] …; a click opens the page or record. The references come from the search, never from the AI's text.
 - If the AI finds nothing that fits, it answers "I found nothing about that." instead of making something up.
-- **Where to look:** the whole workspace, the open page with its sub-pages, or one space.
+- **Where to look:** the whole workspace, the open page with its sub-pages, or one space. With **All workspaces** the question searches every workspace you belong to – each only when AI is usable for you there (not as a guest when guests have no AI, for example), and with your rules for each workspace. Sources from other workspaces carry its name; a click switches there.
+- **Propose actions:** below an answer, the AI can propose what to create from it – see [AI actions](#ai-actions).
 - **Conversation:** follow-up questions take the last questions and answers into account; **New conversation** starts over. The conversation stays in this browser tab only and is not stored on the server.
 - The search uses the full-text index; the best-matching passages go with your question to the provider shown at the top of the panel. The AI only reads what you may read and what is open to the AI ([What the AI may access](#what-the-ai-may-access)).
 - While the answer is written, a shimmer and a typing cursor show progress; the sources appear one after another.
@@ -121,6 +122,33 @@ In addition to full text, Flowplan can store content as vectors ("embeddings"). 
 - **Storage:** 4 bytes per dimension and chunk (up to about 900 characters) – with `nomic-embed-text` (768 dimensions) about 3 KB per chunk, roughly three to four times the text; with 1,536 dimensions about 6 KB. Only a checksum of each chunk is stored, not its text. The administration shows the number and size.
 - **Switching off** deletes all vectors; **changing the model** rebuilds them.
 - For very large instances (hundreds of thousands of chunks) there is no vector index yet; the search stays correct but gets slower.
+
+### Related pages
+
+Below a page and in a database record, **Related pages** shows up to eight pages and records that belong with it. It also works without AI:
+
+- **Without semantic search**, it counts links from the page, links to the page, pages with the same links, the same tags (multi-select) for records, and similar titles in the full-text index.
+- **With semantic search**, pages with similar content are added ("by meaning"). Only the vectors already stored are compared – no request goes to the provider, no text leaves the server. The open page must be readable for the AI; every hit passes the same rules as **Ask AI**.
+
+Only what you may read is shown – no private spaces of others, no hidden records, nothing from the trash or locked journals.
+
+## AI actions
+
+From an answer of **Ask AI**, from the writing assistant (**Propose actions** below the answer) or from the transcript of a [meeting](/documents#voice-notes-and-meetings), the AI proposes actions:
+
+| Action | What happens |
+| --- | --- |
+| **Create page** | A new page with title and content in a space where you may create pages. |
+| **Create tasks** | Tasks at the end of a document, optionally with an assignee (@mention) and due date – they appear in **My tasks** like ones you wrote. |
+| **Append text** | A summary, for example, at the end of a document. |
+| **Create record** / **Change record** | In a database, only in properties you may change and only with valid values (existing options, members, dates). |
+
+**Nothing happens without you:** the proposals appear as a **preview with checkboxes**. What is not possible – a space without write access, a restricted property or a database closed to the AI – is greyed out with the reason. Only **Run** creates the chosen actions.
+
+- Actions run **in your name and with your permissions**; the server checks each action again when running it. Version history, notifications, automations and webhooks work as for your own change; the audit log records `ai.action`.
+- **Undo:** created pages and records can be taken back right in the result (they go to the trash); appended text and changed records are in the version history.
+- The AI only sees a catalogue of the spaces, databases, properties and members you may write to and the AI may read – no content beyond that. The AI's answer is plain JSON and is never executed directly.
+- Like every other feature, **AI actions** can be switched off by the administration and under **Settings → AI**.
 
 ## AI in databases
 
@@ -223,5 +251,7 @@ On a page the AI may not read, AI features are greyed out with a note saying why
 **Does the provider train on my data?** That depends on the provider's terms. Flowplan only sends what a request needs, and only content the AI may read. If you want to be sure, use Ollama.
 
 **Are conversations stored?** Flowplan does not keep requests and answers permanently; whatever you insert into pages is normal content with version history.
+
+**Can the AI change things by itself?** No. AI actions are proposals; only when you select them and press **Run** are they created with your permissions.
 
 **What about the MCP server?** The [MCP server](/mcp) is a different route: an external assistant such as Claude Desktop works with your Flowplan. It is independent of the settings here.

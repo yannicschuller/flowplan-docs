@@ -152,6 +152,9 @@ Sprachnotizen im Editor werden immer als Audio gespeichert. Mit einem Whisper-Di
 | `WHISPER_MODEL` | `Systran/faster-whisper-small` | Modellname, wie ihn der Dienst erwartet. |
 | `WHISPER_LANGUAGE` | `de` | Sprache der Aufnahmen. |
 | `WHISPER_API_KEY` | *leer* | Nur falls der Dienst einen Schlüssel verlangt. |
+| `WHISPER_MAX_MB` | `200` | Größte Aufnahme in MB. |
+| `WHISPER_RESPONSE_FORMAT` | `verbose_json` | Antwortformat der Spracherkennung; bei Fehler einmal `json`. |
+| `WHISPER_DIARIZE` | *leer* | `on`: Sprechertrennung anfragen (`diarize=true`), nur bei Diensten, die es können. |
 
 Beispiel mit [speaches](https://github.com/speaches-ai/speaches) (früher faster-whisper-server) im selben Compose-Projekt:
 
