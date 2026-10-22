@@ -32,7 +32,7 @@ Neben jedem Termin steht **Besprechungsnotiz anlegen**. Flowplan legt eine Seite
 - **Teilnehmende**: aus dem verbundenen Google- oder Outlook-Kalender, aus dem iCal-Link und aus Personen-Eigenschaften des Eintrags. Wer mit seiner E-Mail-Adresse Mitglied des Arbeitsbereichs ist, wird erwähnt; andere stehen mit Name und Adresse da.
 - **Aufgaben** mit @Person erscheinen bei dieser Person sofort unter **Meine Aufgaben**.
 - Bei Einträgen aus einer Datenbank verlinkt die Notiz den Eintrag. Eine PIN-Sperre des Journals gilt auch für seine Besprechungsnotizen.
-- Dieselbe Gliederung gibt es als Vorlage **Besprechungsnotiz** unter **Vorlagen → Besprechungen**.
+- Dieselbe Gliederung gibt es als Vorlage **Besprechungsnotiz** unter **Vorlagen → Meetings**.
 
 ## Überblick auf der Journalseite
 

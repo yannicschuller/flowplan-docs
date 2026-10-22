@@ -4,7 +4,7 @@ Templates are saved pages – documents, databases or whole page trees – from 
 
 ## Starter templates
 
-**Templates** in the sidebar shows 24 built-in templates in six categories, each with example records and fitting views:
+**Templates** in the sidebar shows 26 built-in templates in six categories, each with example records and fitting views:
 
 | Category | Templates |
 | --- | --- |
