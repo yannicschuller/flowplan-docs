@@ -8,11 +8,29 @@ Dokumente speichert Flowplan immer zuerst lokal im Browser (IndexedDB) und gleic
 
 ### Offline-Nutzung einschalten
 
-Unter **Einstellungen → Daten → Offline-Nutzung** speichert das Gerät zusätzlich die App, den Arbeitsbereich, alle lesbaren Seiten und später geöffnete Dateien. Dann lassen sich auch ohne Verbindung Seiten öffnen, Dokumente und Datenbanken lesen und Text bearbeiten.
+Unter **Einstellungen → Daten → Offline-Nutzung** speichert das Gerät zusätzlich die App, den Arbeitsbereich, alle lesbaren Seiten und später geöffnete Einträge und Dateien. Dann lassen sich auch ohne Verbindung Seiten öffnen, Dokumente und Datenbanken lesen und Text bearbeiten.
 
 - Online kommt immer der aktuelle Stand vom Server; die Kopie dient nur ohne Verbindung.
 - Ist die Anmeldung abgelaufen, zeigt Flowplan online die Anmeldeseite – ohne Verbindung öffnet die gespeicherte Kopie trotzdem.
 - Die Kopien enthalten private Inhalte. Sie werden beim Abmelden, beim Ausschalten und bei der Anmeldung einer anderen Person entfernt.
+
+#### Die Kopie bleibt aktuell
+
+Solange Flowplan geöffnet ist, gleicht es die Kopie selbst ab: beim Start, wenn die Verbindung zurückkommt, wenn du die App wieder in den Vordergrund holst, und alle 6 Stunden. Dabei lädt es nur, was sich seit dem letzten Abgleich geändert hat – meist zwei kleine Anfragen.
+
+- **Neue Seiten** kommen dazu, **geänderte** Seiten, Einträge und Dokumente werden neu geladen.
+- **Gelöschte Seiten** und Seiten, die du nicht mehr lesen darfst (auch ein Journal hinter einer PIN), verschwinden samt ihren Einträgen und Dateien aus der Kopie.
+- Läuft ein Abgleich länger, steht unten links kurz **Offline-Kopie wird aktualisiert …**.
+- Ist die Anmeldung abgelaufen, gleicht Flowplan nicht ab – die vorhandene Kopie bleibt unverändert.
+
+Unter **Einstellungen → Daten → Offline-Nutzung** steht der Stand, etwa „Offline-Kopie aktualisiert vor 2 Std. · 312 Seiten · 85 MB“. **Jetzt aktualisieren** lädt alle Seiten neu.
+
+**Auch Eintragsinhalte und Dateien speichern** legt zusätzlich die Dokumente aller Datenbank-Einträge und die Dateien der Seiten ab, auch wenn du sie noch nie geöffnet hast – höchstens 200 MB und nur, solange das Gerät genug Platz hat. Ohne Haken bleiben nur Einträge und Dateien, die du schon einmal geöffnet hast. Ausschalten entfernt die zusätzlich gespeicherten Einträge und Dateien.
+
+Ohne Verbindung zeigt Flowplan unter dem Offline-Hinweis das Datum der Kopie, wenn sie älter als 7 Tage ist („Offline-Kopie vom 12. Okt.“).
+
+> [!NOTE]
+> Als App installiert (Chrome, Edge, Android), gleicht Flowplan die Kopie auf Wunsch des Browsers auch im Hintergrund ab, wenn die App geschlossen ist (Periodic Background Sync). Ob und wie oft, entscheidet der Browser – meist nur bei häufig genutzten Apps. Einträge und Dateien, die noch nie geöffnet wurden, lädt erst die geöffnete App.
 
 ### Datenbank-Einträge offline
 

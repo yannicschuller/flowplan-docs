@@ -8,11 +8,29 @@ Flowplan always saves documents locally in the browser first (IndexedDB) and syn
 
 ### Turn on offline use
 
-Under **Settings → Data → Offline use**, the device also stores the app, the workspace, all readable pages and files you open later. Then you can open pages, read documents and databases and edit text even without a connection.
+Under **Settings → Data → Offline use**, the device also stores the app, the workspace, all readable pages and the records and files you open later. Then you can open pages, read documents and databases and edit text even without a connection.
 
 - Online, the current state always comes from the server; the copy only serves without a connection.
 - If the sign-in has expired, Flowplan shows the sign-in page online – without a connection, the stored copy still opens.
 - The copies contain private content. They are removed when you sign out, when you turn the feature off and when another person signs in.
+
+#### The copy stays current
+
+While Flowplan is open, it keeps the copy up to date on its own: at start, when the connection comes back, when you bring the app back to the foreground, and every 6 hours. It only loads what changed since the last update – usually two small requests.
+
+- **New pages** are added; **changed** pages, records and documents are loaded again.
+- **Deleted pages** and pages you may no longer read (including a journal behind a PIN) leave the copy together with their records and files.
+- When an update takes a moment, **Updating offline copy …** shows briefly in the bottom left corner.
+- When the sign-in has expired, Flowplan does not update – the existing copy stays as it is.
+
+**Settings → Data → Offline use** shows the state, for example “Offline copy updated 2 h ago · 312 pages · 85 MB”. **Update now** loads every page again.
+
+**Also store record contents and files** also stores the documents of all database records and the files of the pages, even ones you have never opened – at most 200 MB and only while the device has enough space. Without it, only records and files you opened once are kept. Turning it off removes the records and files stored in addition.
+
+Without a connection, Flowplan shows the date of the copy below the offline notice when it is older than 7 days (“Offline copy from Oct 12”).
+
+> [!NOTE]
+> Installed as an app (Chrome, Edge, Android), Flowplan also updates the copy in the background while the app is closed, when the browser allows it (Periodic Background Sync). The browser decides whether and how often – usually only for apps used often. Records and files never opened are loaded only by the open app.
 
 ### Database records offline
 
