@@ -9,7 +9,7 @@ Templates are saved pages – documents, databases or whole page trees – from 
 | Category | Templates |
 | --- | --- |
 | Projects | Project planning, product roadmap, sprint board, project brief |
-| Meetings | Meeting notes, 1:1 conversation, retrospective, meeting minutes |
+| Meetings | Meeting notes, meeting note, 1:1 conversation, retrospective, meeting minutes |
 | Knowledge & documentation | Team wiki, how-to guide, decision log, FAQ |
 | Planning & goals | OKRs, quarterly planning, content calendar, budget planning |
 | Personal | To-do list, reading list, habit tracker, travel planning |

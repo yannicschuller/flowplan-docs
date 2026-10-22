@@ -25,6 +25,15 @@ Ein Journal ist eine Seite mit einer Unterseite pro Tag. Morgens liegt die heuti
 - **Ort**: frei eintragen; **Standort** speichert zusätzlich die Koordinaten des Geräts mit einem Link zur Karte.
 - **Termine**: Einträge aller Datenbanken mit Datum, die du sehen darfst, samt Wiederholungen. Unter **Journal einrichten → Kalender** lässt sich zusätzlich ein Kalender per iCal-Link einbinden (Google, Apple, Outlook, Nextcloud …).
 
+### Besprechungsnotizen
+
+Neben jedem Termin steht **Besprechungsnotiz anlegen**. Flowplan legt eine Seite unter dem Journal an – mit Titel und Datum des Termins, den **Teilnehmenden**, einer **Agenda**, **Notizen** und **Aufgaben** – und öffnet sie. Danach steht neben dem Termin **Notiz öffnen**.
+
+- **Teilnehmende**: aus dem verbundenen Google- oder Outlook-Kalender, aus dem iCal-Link und aus Personen-Eigenschaften des Eintrags. Wer mit seiner E-Mail-Adresse Mitglied des Arbeitsbereichs ist, wird erwähnt; andere stehen mit Name und Adresse da.
+- **Aufgaben** mit @Person erscheinen bei dieser Person sofort unter **Meine Aufgaben**.
+- Bei Einträgen aus einer Datenbank verlinkt die Notiz den Eintrag. Eine PIN-Sperre des Journals gilt auch für seine Besprechungsnotizen.
+- Dieselbe Gliederung gibt es als Vorlage **Besprechungsnotiz** unter **Vorlagen → Besprechungen**.
+
 ## Überblick auf der Journalseite
 
 - **Serie**: wie viele Tage in Folge du geschrieben hast, dazu die längste Serie, Einträge und Wörter.

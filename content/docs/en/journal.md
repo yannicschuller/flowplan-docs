@@ -27,6 +27,15 @@ Above every day there is a bar:
 
 In the settings under **Day bar**, place and appointments can be switched off for the whole journal.
 
+### Meeting notes
+
+Next to every appointment there is **Create meeting note**. Flowplan creates a page below the journal – with the title and date of the appointment, the **Attendees**, an **Agenda**, **Notes** and **Tasks** – and opens it. Afterwards the appointment shows **Open note**.
+
+- **Attendees**: from the connected Google or Outlook calendar, from the iCal link and from person properties of the record. Whoever is a member of the workspace with that e-mail address is mentioned; others are listed with name and address.
+- **Tasks** with @person show up for that person in **My tasks** right away.
+- For records of a database the note links the record. A PIN lock of the journal also covers its meeting notes.
+- The same outline is available as the template **Meeting note** under **Templates → Meetings**.
+
 ## Overview on the journal page
 
 - **Streak**: how many days in a row you have written, plus the longest streak, entries and words.

@@ -50,7 +50,30 @@ In the same dialog, **Set up access** sets up sync with Apple Calendar, Thunderb
 - **Thunderbird and DAVx⁵**: they take the calendar address directly.
 - **Permissions**: your own rights apply – whoever can only read the database cannot change anything from the calendar. Workflow and automations apply as for any change.
 
-Google Calendar does not support CalDAV accounts; use the subscription for it.
+Google Calendar does not support CalDAV accounts; use the calendar sync below for it.
+
+### Sync with Google Calendar or Outlook
+
+**Calendar sync** keeps a view with a date and a calendar in Google Calendar or Microsoft Outlook / 365 in step both ways – personally, with your own account.
+
+1. **Settings → Account → Connect calendar** → **Connect Google Calendar** or **Connect Microsoft Outlook / 365**. You sign in with the provider and allow access to your calendars.
+2. In the database, open the calendar icon next to **…** (**Calendar sync**), pick the view, the account and the calendar, and **Connect**.
+
+What is synced:
+
+- **Title** ↔ event title.
+- **Date** ↔ start and end: a date without a time becomes an all-day event, a date with a time a timed event. The view decides which date properties are start and end; the time zone of the calendar view applies to dates without their own time zone.
+- **The record's document** ↔ description, as plain text. The description ends with a link back to the record.
+- **New, changed, deleted** – both ways. Events deleted in the calendar move their records to the database's trash.
+
+Good to know:
+
+- Flowplan syncs **every ten minutes** and only fetches changes; **Sync now** in the dialog syncs right away.
+- **Conflicts**: when both sides change the same event, the later change wins. The audit log records every conflict.
+- **Permissions**: only records you may see and edit go to the calendar and are changed by it. Workflow and automations apply as for any change.
+- **Range**: events from 90 days back to one year ahead. Recurring events from the calendar arrive as single records; a recurring record goes to the calendar with its first date.
+- **Disconnect** under **Settings → Account** ends every sync of that connection. You can also revoke access in your Google or Microsoft account.
+- An administrator sets up the providers once, see [Configuration](/configuration#calendar-sync).
 
 ## Sprints
 

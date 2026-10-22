@@ -123,6 +123,18 @@ Der Mailserver muss Plus-Adressierung unterstützen (`inbox+irgendwas@…` lande
 | `ISSUE_SYNC_ALLOW_PRIVATE` | *leer* | `true` erlaubt den in `ISSUE_SYNC_ALLOWED_HOSTS` genannten Servern auch interne Adressen – etwa ein GitLab im selben Netz. Wirkt nur zusammen mit der Liste. |
 | `EXPORT_GIT_*` | *leer* | Veraltet: der Git-Export der ganzen Instanz, siehe [In ein Git-Repository übertragen](/storage-and-backups#in-ein-git-repository-uebertragen). Läuft weiter; besser ist der Git-Export der Bereiche. |
 
+## Kalender-Sync
+
+Zwei-Wege-Synchronisierung von Datenbankansichten mit [Google Kalender und Microsoft Outlook / 365](/views#mit-google-kalender-oder-outlook-synchronisieren). Jede Person verbindet ihr eigenes Konto; ohne Client-ID bleibt der jeweilige Anbieter ausgeblendet. Flowplan fragt alle zehn Minuten nach Änderungen (Push-Benachrichtigungen der Anbieter werden nicht genutzt – sie bräuchten eine öffentlich erreichbare, beim Anbieter bestätigte HTTPS-Adresse).
+
+| Variable | Standard | Bedeutung |
+| --- | --- | --- |
+| `GOOGLE_CALENDAR_CLIENT_ID` / `GOOGLE_CALENDAR_CLIENT_SECRET` | *leer* | OAuth-Client (Typ „Webanwendung“) aus der Google Cloud Console, mit aktivierter Google Calendar API und dem Bereich `…/auth/calendar`. Weiterleitungs-URI: `<APP_URL>/api/calendar-sync/callback/google`. |
+| `MS_CALENDAR_CLIENT_ID` / `MS_CALENDAR_CLIENT_SECRET` | *leer* | App-Registrierung in Microsoft Entra ID (Web-Plattform) mit den delegierten Berechtigungen `Calendars.ReadWrite` und `offline_access`. Weiterleitungs-URI: `<APP_URL>/api/calendar-sync/callback/microsoft`. |
+| `MS_CALENDAR_TENANT` | `common` | `common` (Geschäfts- und private Konten), `organizations` oder die ID eines Mandanten. |
+
+Die Aktualisierungs-Tokens der Personen liegen versiegelt in der Datenbank (wie alle [gespeicherten Geheimnisse](#gespeicherte-geheimnisse)).
+
 ## Rechtliches und Oberfläche
 
 | Variable | Standard | Bedeutung |

@@ -50,7 +50,30 @@ Im selben Dialog richtet **Zugang einrichten** eine Synchronisation für Apple K
 - **Thunderbird und DAVx⁵**: Sie nehmen die Kalender-Adresse direkt.
 - **Rechte**: Es gelten deine Rechte – wer die Datenbank nur lesen darf, kann im Kalender nichts ändern. Workflow und Automationen gelten wie bei jeder Änderung.
 
-Google Kalender unterstützt keine CalDAV-Konten; dafür bleibt das Abo.
+Google Kalender unterstützt keine CalDAV-Konten; dafür gibt es den Kalender-Sync unten.
+
+### Mit Google Kalender oder Outlook synchronisieren
+
+Mit dem **Kalender-Sync** hältst du eine Ansicht mit Datum und einen Kalender in Google Kalender oder Microsoft Outlook / 365 in beide Richtungen gleich – persönlich, mit deinem eigenen Konto.
+
+1. **Einstellungen → Konto → Kalender verbinden** → **Mit Google Calendar verbinden** bzw. **Mit Microsoft Outlook / 365 verbinden**. Du meldest dich beim Anbieter an und erlaubst den Zugriff auf deine Kalender.
+2. In der Datenbank das Kalendersymbol neben **…** (**Kalender-Sync**) öffnen, die Ansicht, das Konto und den Kalender wählen und **Verbinden**.
+
+Was synchronisiert wird:
+
+- **Titel** ↔ Titel des Termins.
+- **Datum** ↔ Beginn und Ende: Datum ohne Uhrzeit wird ein ganztägiger Termin, Datum mit Uhrzeit ein Termin mit Uhrzeit. Die Ansicht bestimmt, welche Datumseigenschaften Beginn und Ende sind; die Zeitzone der Kalenderansicht gilt für Termine ohne eigene Zeitzone.
+- **Dokument des Eintrags** ↔ Beschreibung, als reiner Text. Am Ende der Beschreibung steht ein Link zurück zum Eintrag.
+- **Neu, geändert, gelöscht** – in beide Richtungen. Im Kalender gelöschte Termine landen als Einträge im Papierkorb der Datenbank.
+
+Gut zu wissen:
+
+- Flowplan gleicht **alle zehn Minuten** ab und holt dabei nur Änderungen; **Jetzt synchronisieren** im Dialog sofort.
+- **Konflikte**: Ändern beide Seiten denselben Termin, gewinnt die spätere Änderung. Das Protokoll hält jeden Konflikt fest.
+- **Rechte**: Nur Einträge, die du sehen und bearbeiten darfst, gehen in den Kalender und werden vom Kalender geändert. Workflow und Automationen gelten wie bei jeder Änderung.
+- **Zeitraum**: Termine von 90 Tagen zurück bis ein Jahr voraus. Wiederholte Termine aus dem Kalender kommen als einzelne Einträge an; ein wiederholter Eintrag geht mit seinem ersten Termin in den Kalender.
+- **Trennen** unter **Einstellungen → Konto** beendet alle Synchronisierungen dieser Verbindung. Den Zugriff kannst du zusätzlich in deinem Google- oder Microsoft-Konto widerrufen.
+- Die Administration muss die Anbieter einmal einrichten, siehe [Konfiguration](/configuration#kalender-sync).
 
 ## Sprints
 

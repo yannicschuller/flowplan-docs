@@ -123,6 +123,18 @@ The mail server must support plus addressing (`inbox+anything@…` is delivered 
 | `ISSUE_SYNC_ALLOW_PRIVATE` | *empty* | `true` also allows internal addresses for the servers listed in `ISSUE_SYNC_ALLOWED_HOSTS` – for example a GitLab in the same network. Only works together with the list. |
 | `EXPORT_GIT_*` | *empty* | Deprecated: the Git export of the whole instance, see [Push into a Git repository](/storage-and-backups#push-into-a-git-repository). Keeps working; the Git export of spaces is the better choice. |
 
+## Calendar sync
+
+Two-way sync of database views with [Google Calendar and Microsoft Outlook / 365](/views#sync-with-google-calendar-or-outlook). Each person connects their own account; without a client ID that provider stays hidden. Flowplan asks for changes every ten minutes (the providers' push notifications are not used – they would need a publicly reachable HTTPS address verified with the provider).
+
+| Variable | Default | Meaning |
+| --- | --- | --- |
+| `GOOGLE_CALENDAR_CLIENT_ID` / `GOOGLE_CALENDAR_CLIENT_SECRET` | *empty* | OAuth client (type “Web application”) from the Google Cloud Console, with the Google Calendar API enabled and the scope `…/auth/calendar`. Redirect URI: `<APP_URL>/api/calendar-sync/callback/google`. |
+| `MS_CALENDAR_CLIENT_ID` / `MS_CALENDAR_CLIENT_SECRET` | *empty* | App registration in Microsoft Entra ID (web platform) with the delegated permissions `Calendars.ReadWrite` and `offline_access`. Redirect URI: `<APP_URL>/api/calendar-sync/callback/microsoft`. |
+| `MS_CALENDAR_TENANT` | `common` | `common` (work and personal accounts), `organizations` or a tenant ID. |
+
+People's refresh tokens are stored sealed in the database (like all [stored secrets](#stored-secrets)).
+
 ## Legal and interface
 
 | Variable | Default | Meaning |

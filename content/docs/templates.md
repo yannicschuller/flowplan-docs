@@ -9,7 +9,7 @@ Vorlagen sind gespeicherte Seiten – Dokumente, Datenbanken oder ganze Seitenb�
 | Kategorie | Vorlagen |
 | --- | --- |
 | Projekte | Projektplanung, Produkt-Roadmap, Sprint-Board, Projektsteckbrief |
-| Meetings | Meeting-Notizen, 1:1-Gespräch, Retrospektive, Besprechungsprotokolle |
+| Meetings | Meeting-Notizen, Besprechungsnotiz, 1:1-Gespräch, Retrospektive, Besprechungsprotokolle |
 | Wissen & Dokumentation | Team-Wiki, Anleitung, Entscheidungsprotokoll, FAQ |
 | Planung & Ziele | OKR-Ziele, Quartalsplanung, Content-Kalender, Budgetplanung |
 | Persönlich | Aufgabenliste, Leseliste, Gewohnheiten-Tracker, Reiseplanung |
