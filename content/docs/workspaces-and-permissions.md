@@ -49,6 +49,8 @@ Mit Single Sign-on können Gruppen des Identitätsanbieters Mitglieder und Grupp
 
 Eigentümer eines Arbeitsbereichs verwalten auch Bereiche anderer Mitglieder, erhalten dadurch aber keinen Lesezugriff auf deren private Seiten.
 
+**Verschlüsselte Bereiche** gehen einen Schritt weiter: Dort entscheidet nicht nur das Recht auf dem Server, sondern der Schlüssel. Wer keinen Bereichsschlüssel bekommen hat, liest nichts – auch nicht Eigentümer des Arbeitsbereichs oder die Administration. Siehe [Verschlüsselte Bereiche](/encrypted-spaces).
+
 ## Speicherkontingent
 
 Jeder Arbeitsbereich kann ein Kontingent haben. Uploads, Kopien, Vorlagen und Importe darüber werden abgelehnt. Die Belegung sehen Admins unter **Administration → Arbeitsbereiche**.

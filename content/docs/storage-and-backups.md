@@ -145,6 +145,7 @@ Die Verschlüsselung betrifft das, was den Server verlässt. Auf dem Server selb
 - **Festplattenverschlüsselung** des Hosts (LUKS, verschlüsseltes Volume beim Anbieter). Das lässt sich jederzeit nachrüsten und ist unabhängig von Flowplan.
 - Das Format trägt eine Version (`FPE1`) und eine Schlüssel-ID. Ein späterer Wechsel auf ein anderes Verfahren oder einen anderen Schlüssel läuft deshalb über denselben Weg wie oben, ohne dass alte Sicherungen unlesbar werden.
 - Eine Verschlüsselung der laufenden Datenbank (SQLCipher) gehört bewusst nicht dazu, siehe die Begründung in [Issue #32](https://github.com/yannicschuller/flowplan/issues/32).
+- Für einzelne vertrauliche Inhalte gibt es **[verschlüsselte Bereiche](/encrypted-spaces)**: Sie werden schon im Browser verschlüsselt, sodass auch Datenbank, Uploads-Ordner und Sicherungen auf dem Server nur Chiffretext enthalten – unabhängig von `FLOWPLAN_ENCRYPTION_KEY`.
 
 ## Markdown-Export und Git
 

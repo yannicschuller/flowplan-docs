@@ -145,6 +145,7 @@ Encryption covers what leaves the server. On the server itself, the database and
 - **Disk encryption** on the host (LUKS, an encrypted volume at your provider). You can add it at any time, independently of Flowplan.
 - The format carries a version (`FPE1`) and a key ID. A later switch to another method or key therefore goes the same way as above, without making old backups unreadable.
 - Encrypting the running database (SQLCipher) is deliberately not part of this; see the reasoning in [issue #32](https://github.com/yannicschuller/flowplan/issues/32).
+- For individual confidential content there are **[encrypted spaces](/encrypted-spaces)**: they are encrypted in the browser already, so the database, the uploads folder and the backups on the server hold only ciphertext – independently of `FLOWPLAN_ENCRYPTION_KEY`.
 
 ## Markdown export and Git
 

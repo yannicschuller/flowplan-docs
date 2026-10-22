@@ -43,6 +43,7 @@ const groups: {
       ["first-steps", "Erste Schritte", "First steps"],
       ["pages-and-spaces", "Seiten und Bereiche", "Pages and spaces"],
       ["workspaces-and-permissions", "Arbeitsbereiche, Mitglieder und Rechte", "Workspaces, members and permissions"],
+      ["encrypted-spaces", "Verschlüsselte Bereiche", "Encrypted spaces"],
       ["migrate", "Umzug von Notion, AppFlowy und Obsidian", "Moving from Notion, AppFlowy and Obsidian"],
       ["keyboard-shortcuts", "Tastenkürzel", "Keyboard shortcuts"],
       ["languages", "Sprachen und Übersetzungen", "Languages and translations"],

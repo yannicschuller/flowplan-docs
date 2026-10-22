@@ -49,6 +49,8 @@ With single sign-on, groups from the identity provider can maintain members and 
 
 Owners of a workspace also manage other members' spaces, but do not get read access to their private pages that way.
 
+**Encrypted spaces** go one step further: there, not only the permission on the server decides but the key. Whoever has not been given the space key reads nothing – not even workspace owners or the administrators. See [Encrypted spaces](/encrypted-spaces).
+
 ## Storage quota
 
 Every workspace can have a quota. Uploads, copies, templates and imports beyond it are refused. Administrators see the usage under **Administration → Workspaces**.
