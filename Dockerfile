@@ -16,6 +16,9 @@ FROM node:26-bookworm-slim AS runtime
 LABEL org.opencontainers.image.title="flowplan-docs" \
   org.opencontainers.image.source="https://github.com/yannicschuller/flowplan-docs" \
   org.opencontainers.image.licenses="AGPL-3.0-only"
+# curl for Coolify's HTTP healthcheck, which runs inside the container.
+RUN apt-get update && apt-get install -y --no-install-recommends curl \
+  && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 HOSTNAME=0.0.0.0 PORT=3000
 COPY --from=build --chown=node:node /app/.next/standalone ./
