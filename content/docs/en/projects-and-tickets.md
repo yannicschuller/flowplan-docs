@@ -100,7 +100,26 @@ A property of the type **Time tracking** adds up the time worked on a record. Op
 - **In the record**: **Start** and **Stop** – each person has at most one running timer, a new one stops the old one.
 - **Add time**: a duration as `45`, `1:30` or `1.5h`, with a date and a note.
 - **Correcting**: you delete your own entries; owners can correct everyone's.
-- **… → Time report**: hours per person and week and effort against estimate per record, also as CSV.
+- **… → Time report**: the time report of this database, switchable to the whole workspace (see [Time reports and billing](#time-reports-and-billing)). The report across all databases is also under **Settings → Time**.
+
+### Time reports and billing
+
+The time report sums up the time entries of a database or of the whole workspace.
+
+- **Period**: This week (from Monday), This month, Last month or a custom period with start and end date (at most three years). The server's time zone applies.
+- **Filters**: person, database (in the workspace), project, billing status and billable yes/no. **Project** is the record a record's first relation points to (not the parent relation of subtasks) – such as the project of a task. Records without a relation are listed under **No project**.
+- **Group** by person, project, record, database, day or week. The totals come first (total, open, billed, not billable and – with hourly rates – the amount), then a bar chart and a table per group. Clicking a bar filters by that person, project or database.
+- **Time entries**: the single entries with date, person, record, project, note, duration and billing status (the first 1000; the export contains all).
+- **Export**: **CSV** (commas, decimal points) for spreadsheets and scripts, **CSV for Excel** with semicolons, decimal commas and a BOM, as a German Excel opens it correctly with a double click. Cells a spreadsheet would run as a formula start with an apostrophe.
+- **Print** outputs totals, chart and table (also save as PDF); expanded time entries come along.
+
+**Who sees what**: everyone sees their own time entries and the entries of others on records they may read. If the permissions of the property (who may read it, see [Property visibility](/properties-and-formulas#property-visibility)) hide the time property from someone, they only see their own time there. Own time on a record that has become private since appears without a title as “Record without access”.
+
+**Billing status**: every time entry is **open**, **billed** or **not billable**. Whoever may edit the record and the time property changes the status – one by one in the list of time entries, or with **Mark as billed** for all open entries of the current selection. Entries that are not billable stay as they are, as do running timers. Every change is in the activity log (`time.billing`).
+
+**Hourly rates** (optional): workspace owners set a rate per person and/or per project under **Hourly rates**, plus the currency (e.g. EUR, CHF). A project's rate takes precedence over the person's. Members with edit rights in the workspace see amounts; readers and guests see hours only.
+
+> Through the API: `GET /api/time-reports` with `page` or `workspace` and the same filters (`format=csv` or `format=excel` for the files), `POST /api/time-reports` with `{ "action": "billing", "status": "billed", "filter": { … } }`.
 
 ## Git connection
 

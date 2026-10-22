@@ -30,7 +30,7 @@ Optional and off by default: provider (Ollama, OpenAI-compatible, Anthropic, Gem
 
 ## Operations
 
-The state of the instance: size of the database and uploads, queues, search index, versions and uptime, plus the storage overview with the S3 connection, database backup and content figures. Details under [Operations and troubleshooting](/operations).
+The state of the instance: size of the database and uploads, queues, search index, versions and uptime; refused requests (failed sign-ins, limits, anonymous uploads), storage per workspace with its quota, the mail queue, failing webhooks and the last run of every background worker. Plus **alerts by webhook** and the **maintenance notice**, and below them the storage overview with the S3 connection, database backup and content figures. Details under [Operations and troubleshooting](/operations#administration-operations).
 
 ## Instance
 
@@ -74,4 +74,4 @@ With **Offer a public demo**, the address `/demo` of your instance starts a demo
 
 ## Activity log
 
-The latest changes with person, action and affected resource – such as shares, role changes, deletions and settings. **Export as CSV** downloads the complete log for spreadsheet programs.
+The latest changes with person, action and affected resource – such as shares, role changes, deletions, settings and the billing status of time entries. For the **export**, optionally pick a from and to date (UTC, as stored) and download the log as **CSV** (semicolons, with BOM, for Excel) or as **JSON**. In the CSV, values a spreadsheet would run as a formula start with an apostrophe. Only signed-in administrators can export, never API tokens.

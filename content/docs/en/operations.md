@@ -14,7 +14,41 @@ Health check, metrics, the storage overview and the most common causes when some
 
 ## Administration → Operations
 
-Administrators see the size of the database and uploads, queues, search index, versions and uptime there. The **storage overview** shows:
+Administrators see the size of the database and uploads, queues, search index, versions and uptime there, and also:
+
+- **Refused requests**: failed sign-ins, requests a limit refused with 429 (sign-in attempts, invitations, AI, MCP, forms …) and anonymous uploads over the daily budget (forms, share links) – each in the last hour, in 24 hours and in 7 days, plus a chart of the last 14 days. The counters are kept for 35 days and cleaned up daily.
+- **Background workers**: last run and last error of backup, Markdown export, AI background work, calendar and issue sync and LDAP sync; “off” means not set up.
+- **Storage per workspace** with bars against the quota (yellow from 80 %, red from 95 %).
+- **Delivery**: the mail queue (waiting, given up, sent, last error) and webhooks retrying or given up, with the latest errors. Only the host of a webhook address is shown, never its path or token.
+
+### Alerts by webhook
+
+Under **Alerts by webhook**, enter an `https://` address (with `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true` also `http://` and internal addresses) and choose the events:
+
+| Event | When |
+| --- | --- |
+| Backup failed | The last scheduled backup ended with an error. |
+| Storage > 90 % | A workspace with a quota is more than 90 % full. |
+| Worker error | A worker that is set up reported an error in the last 24 hours. |
+| Many failed sign-ins | 50 or more failed sign-ins within an hour. |
+
+Flowplan checks every ten minutes and sends at most **one message per event and day** as a `POST` with JSON:
+
+```json
+{ "event": "ops.storage_high", "title": "Speicher > 90 %", "detail": "Agency: 93 %", "instance": "Flowplan", "url": "https://flowplan.example.org", "at": "2026-10-22T08:10:00.000Z" }
+```
+
+The `title` is in German, as alerts are sent outside of a request; match on `event`.
+
+The header `X-Flowplan-Signature: sha256=<HMAC-SHA256 of the body>` is made with the **signing secret** shown, `X-Flowplan-Event` names the event. **Send test** sends `ops.test` right away, **Check now** checks out of turn, **New secret** creates a new signing secret. The latest alerts sent are listed below with their status code. An empty address turns alerts off.
+
+### Maintenance notice
+
+A **maintenance notice** with text, start and end appears to everyone signed in as a banner at the top of the window from saving on – before the start as “Scheduled maintenance”, during it as “Maintenance in progress”, in each person's time zone and language. After the end it disappears by itself, also in windows already open (they check every five minutes). Everyone can hide the notice for themselves. **Remove notice** withdraws it at once. Saving and removing are in the activity log.
+
+### Storage overview
+
+The **storage overview** shows:
 
 - whether the S3 storage is reachable, how long the check took and how many files are still waiting,
 - what is local and what is in the bucket: files by kind (images, videos, documents …) and how the database is split,

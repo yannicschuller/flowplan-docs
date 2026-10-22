@@ -100,7 +100,26 @@ Eine Eigenschaft vom Typ **Zeiterfassung** summiert die Zeit, die an einem Eintr
 - **Im Eintrag**: **Start** und **Stopp** – jede Person hat höchstens einen laufenden Timer, ein neuer stoppt den alten.
 - **Nachtragen**: Dauer als `45`, `1:30` oder `1,5h`, mit Datum und Notiz.
 - **Korrigieren**: Eigene Einträge löschst du selbst; Verantwortliche können alle korrigieren.
-- **… → Zeiten auswerten**: Stunden pro Person und Woche sowie Aufwand gegen Schätzung je Eintrag, auch als CSV.
+- **… → Zeiten auswerten**: der Zeitbericht dieser Datenbank, umschaltbar auf den ganzen Arbeitsbereich (siehe [Zeitberichte und Abrechnung](#zeitberichte-und-abrechnung)). Den Bericht über alle Datenbanken findest du auch unter **Einstellungen → Zeiten**.
+
+### Zeitberichte und Abrechnung
+
+Der Zeitbericht fasst die Zeiteinträge einer Datenbank oder des ganzen Arbeitsbereichs zusammen.
+
+- **Zeitraum**: Diese Woche (ab Montag), Dieser Monat, Letzter Monat oder ein eigener Zeitraum mit Start- und Enddatum (höchstens drei Jahre). Es gilt die Zeitzone des Servers.
+- **Filter**: Person, Datenbank (im Arbeitsbereich), Projekt, Abrechnungsstatus und abrechenbar ja/nein. **Projekt** ist der Eintrag, auf den die erste Relation eines Eintrags zeigt (nicht die Eltern-Relation von Unteraufgaben) – etwa das Projekt einer Aufgabe. Einträge ohne Relation stehen unter **Ohne Projekt**.
+- **Gruppieren** nach Person, Projekt, Eintrag, Datenbank, Tag oder Woche. Oben stehen die Summen (gesamt, offen, abgerechnet, nicht abrechenbar und – mit Stundensätzen – der Betrag), darunter ein Balkendiagramm und eine Tabelle je Gruppe. Ein Klick auf einen Balken filtert auf diese Person, dieses Projekt oder diese Datenbank.
+- **Zeiteinträge**: die einzelnen Einträge mit Datum, Person, Eintrag, Projekt, Notiz, Dauer und Abrechnungsstatus (die ersten 1000; der Export enthält alle).
+- **Export**: **CSV** (Komma, Dezimalpunkt) für Tabellenprogramme und Skripte, **CSV für Excel** mit Semikolon, Dezimalkomma und BOM, wie es ein deutsches Excel per Doppelklick richtig öffnet. Zellen, die eine Tabellenkalkulation als Formel ausführen würde, beginnen mit einem Apostroph.
+- **Drucken** gibt Summen, Diagramm und Tabelle aus (auch als PDF speichern); aufgeklappte Zeiteinträge kommen mit.
+
+**Wer was sieht**: Jede Person sieht ihre eigenen Zeiteinträge und die Einträge anderer an Datensätzen, die sie lesen darf. Ist die Zeiterfassungs-Eigenschaft durch die Rechte der Eigenschaft (wer sie lesen darf, siehe [Sichtbarkeit von Eigenschaften](/properties-and-formulas#sichtbarkeit-von-eigenschaften)) für jemanden verborgen, sieht er dort nur seine eigenen Zeiten. Eigene Zeiten an einem Datensatz, der inzwischen privat ist, erscheinen ohne Titel als „Eintrag ohne Zugriff“.
+
+**Abrechnungsstatus**: Jeder Zeiteintrag ist **offen**, **abgerechnet** oder **nicht abrechenbar**. Den Status ändert, wer den Datensatz und die Zeiterfassungs-Eigenschaft bearbeiten darf – einzeln in der Liste der Zeiteinträge oder mit **Als abgerechnet markieren** für alle offenen Einträge der aktuellen Auswahl. Nicht abrechenbare Einträge bleiben dabei unverändert, laufende Timer ebenfalls. Jede Änderung steht im Aktivitätsprotokoll (`time.billing`).
+
+**Stundensätze** (optional): Eigentümer des Arbeitsbereichs legen unter **Stundensätze** einen Satz je Person und/oder je Projekt fest, dazu die Währung (z. B. EUR, CHF). Ein Projektsatz geht dem Satz der Person vor. Beträge sehen Mitglieder mit Bearbeitungsrechten im Arbeitsbereich; Leserinnen, Leser und Gäste sehen nur Stunden.
+
+> Über die API: `GET /api/time-reports` mit `page` oder `workspace` und denselben Filtern (`format=csv` bzw. `format=excel` für die Dateien), `POST /api/time-reports` mit `{ "action": "billing", "status": "billed", "filter": { … } }`.
 
 ## Git-Anbindung
 

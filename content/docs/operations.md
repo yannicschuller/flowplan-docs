@@ -14,7 +14,39 @@ Healthcheck, Kennzahlen, Speicherübersicht und die häufigsten Ursachen, wenn e
 
 ## Administration → Betrieb
 
-Admins sehen dort Größe von Datenbank und Uploads, Warteschlangen, Suchindex, Versionen und Laufzeit. Die **Speicherübersicht** zeigt:
+Admins sehen dort Größe von Datenbank und Uploads, Warteschlangen, Suchindex, Versionen und Laufzeit, außerdem:
+
+- **Abgewiesene Anfragen**: fehlgeschlagene Anmeldungen, Anfragen, die ein Limit mit 429 abgewiesen hat (Anmeldeversuche, Einladungen, KI, MCP, Formulare …), und anonyme Uploads über dem Tagesbudget (Formulare, Freigabelinks) – je in der letzten Stunde, in 24 Stunden und in 7 Tagen, dazu ein Diagramm der letzten 14 Tage. Die Zähler werden 35 Tage aufbewahrt und täglich aufgeräumt.
+- **Hintergrunddienste**: letzter Lauf und letzter Fehler von Sicherung, Markdown-Export, KI-Hintergrundarbeit, Kalender- und Issue-Synchronisierung und LDAP-Abgleich; „aus“ heißt nicht eingerichtet.
+- **Speicher je Arbeitsbereich** mit Balken gegen das Kontingent (ab 80 % gelb, ab 95 % rot).
+- **Zustellung**: die E-Mail-Warteschlange (wartend, aufgegeben, gesendet, letzter Fehler) und Webhooks in Wiederholung oder aufgegeben, mit den letzten Fehlern. Von Webhook-Adressen erscheint nur der Host, nie Pfad oder Token.
+
+### Warnungen per Webhook
+
+Unter **Warnungen per Webhook** trägst du eine `https://`-Adresse ein (mit `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true` auch `http://` und interne Adressen) und wählst die Ereignisse:
+
+| Ereignis | Wann |
+| --- | --- |
+| Backup fehlgeschlagen | Die letzte geplante Sicherung endete mit einem Fehler. |
+| Speicher > 90 % | Ein Arbeitsbereich mit Kontingent ist zu mehr als 90 % belegt. |
+| Worker-Fehler | Ein eingerichteter Hintergrunddienst meldete in den letzten 24 Stunden einen Fehler. |
+| Viele fehlgeschlagene Anmeldungen | 50 oder mehr fehlgeschlagene Anmeldungen in einer Stunde. |
+
+Flowplan prüft alle zehn Minuten und sendet je Ereignis höchstens **eine Nachricht pro Tag** als `POST` mit JSON:
+
+```json
+{ "event": "ops.storage_high", "title": "Speicher > 90 %", "detail": "Agentur: 93 %", "instance": "Flowplan", "url": "https://flowplan.example.org", "at": "2026-10-22T08:10:00.000Z" }
+```
+
+Die Kopfzeile `X-Flowplan-Signature: sha256=<HMAC-SHA256 des Inhalts>` ist mit dem angezeigten **Signaturschlüssel** gebildet, `X-Flowplan-Event` nennt das Ereignis. **Test senden** schickt sofort `ops.test`, **Jetzt prüfen** prüft außer der Reihe, **Neuer Schlüssel** erzeugt einen neuen Signaturschlüssel. Die letzten gesendeten Warnungen stehen mit Antwortcode darunter. Eine leere Adresse schaltet die Warnungen aus.
+
+### Wartungshinweis
+
+Ein **Wartungshinweis** mit Text, Beginn und Ende erscheint ab dem Speichern allen angemeldeten Personen als Banner oben im Fenster – vor dem Beginn als „Geplante Wartung“, währenddessen als „Wartung läuft“, in Zeitzone und Sprache der jeweiligen Person. Nach dem Ende verschwindet er von selbst, auch in schon geöffneten Fenstern (sie fragen alle fünf Minuten nach). Jede Person kann den Hinweis für sich ausblenden. **Hinweis entfernen** nimmt ihn sofort zurück. Speichern und Entfernen stehen im Aktivitätsprotokoll.
+
+### Speicherübersicht
+
+Die **Speicherübersicht** zeigt:
 
 - ob der S3-Speicher erreichbar ist, wie lange die Prüfung dauerte und wie viele Dateien noch warten,
 - was lokal und was im Bucket liegt: Dateien nach Art (Bilder, Videos, Dokumente …) und die Aufteilung der Datenbank,

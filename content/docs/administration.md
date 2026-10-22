@@ -30,7 +30,7 @@ Optional und standardmäßig aus: Anbieter (Ollama, OpenAI-kompatibel, Anthropic
 
 ## Betrieb
 
-Zustand der Instanz: Größe von Datenbank und Uploads, Warteschlangen, Suchindex, Versionen und Laufzeit, dazu die Speicherübersicht mit S3-Verbindung, Datenbanksicherung und Inhaltszahlen. Details unter [Betrieb und Fehlersuche](/operations).
+Zustand der Instanz: Größe von Datenbank und Uploads, Warteschlangen, Suchindex, Versionen und Laufzeit; abgewiesene Anfragen (fehlgeschlagene Anmeldungen, Limits, anonyme Uploads), Speicher je Arbeitsbereich mit Kontingent, E-Mail-Warteschlange, fehlschlagende Webhooks und der letzte Lauf jedes Hintergrunddienstes. Dazu kommen **Warnungen per Webhook** und der **Wartungshinweis**, und darunter die Speicherübersicht mit S3-Verbindung, Datenbanksicherung und Inhaltszahlen. Details unter [Betrieb und Fehlersuche](/operations#administration-betrieb).
 
 ## Instanz
 
@@ -74,4 +74,4 @@ Mit **Öffentliche Demo anbieten** startet die Adresse `/demo` deiner Instanz ei
 
 ## Aktivitätsprotokoll
 
-Die letzten Änderungen mit Person, Aktion und betroffener Ressource – etwa Freigaben, Rollenwechsel, Löschungen und Einstellungen. **Als CSV exportieren** lädt das vollständige Protokoll für Tabellenprogramme herunter.
+Die letzten Änderungen mit Person, Aktion und betroffener Ressource – etwa Freigaben, Rollenwechsel, Löschungen, Einstellungen und Abrechnungsstatus von Zeiten. Zum **Export** wählst du optional ein Von- und Bis-Datum (UTC, wie gespeichert) und lädst das Protokoll als **CSV** (Semikolon, mit BOM, für Excel) oder als **JSON** herunter. Werte, die eine Tabellenkalkulation als Formel ausführen würde, beginnen im CSV mit einem Apostroph. Der Export ist nur angemeldeten Admins zugänglich, nie API-Tokens.
