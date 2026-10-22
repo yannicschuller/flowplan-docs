@@ -1,77 +1,115 @@
 # Administration der Instanz
 
-Wer die Instanz verwaltet, sieht **Administration** in der Seitenleiste: das erste Konto der Instanz und alle, denen es das Admin-Recht gibt – bei Single Sign-on zusätzlich die Mitglieder der Gruppe aus `OIDC_ADMIN_GROUP`. Dort verwalten sie Konten, Arbeitsbereiche, Betrieb, Einstellungen der Instanz und das Aktivitätsprotokoll.
+Wer die Instanz verwaltet, sieht **Administration** in der Seitenleiste: das erste Konto der Instanz und alle, denen es das Admin-Recht gibt – bei Single Sign-on zusätzlich die Mitglieder der Gruppe aus `OIDC_ADMIN_GROUP`.
 
-Oben in der Leiste steht, was gerade läuft: die **Version**, der **Commit** (verlinkt auf GitHub) und das Datum des Builds. Docker-Images aus unserem Workflow kennen ihren Commit; bei Coolify kommt er aus `SOURCE_COMMIT`. Bei einem eigenen Build `--build-arg GIT_COMMIT=$(git rev-parse HEAD)` mitgeben, sonst steht dort „Commit unbekannt“.
+## Übersicht
+
+Die Administration öffnet mit einer Übersicht. Oben steht der Zustand der Instanz: Störungen und Hinweise (mit Link zum betroffenen Bereich), vier Live-Zahlen – gerade aktive Personen, Anfragen pro Minute, Fehlerquote der letzten Stunde, Anmeldungen heute – und die Anfragen der letzten 24 Stunden als Diagramm. Die Zahlen aktualisieren sich alle 15 Sekunden, solange die Seite sichtbar ist („Live“). Darunter je Bereich eine Kachel mit seinem Zustand und, wo es passt, einer Zahl mit Verlauf: aktive Personen (Benutzer), das vollste Kontingent (Arbeitsbereiche), der Speicher der letzten 30 Tage, KI-Tokens heute, Änderungen im Aktivitätsprotokoll, Anfragen bzw. Fehler (Überwachung). Fehler sind rot markiert, Hinweise gelb. Auf dem Telefon sind die Kacheln eine Liste mit einem kleinen Verlauf rechts.
+
+Die Bereiche sind gruppiert in **Personen** (Benutzer, Anmeldung & SSO, Arbeitsbereiche), **Daten** (Speicher & Sicherung, Grenzen & Aufbewahrung, Markdown- & Git-Export), **Dienste** (E-Mail, KI, Erweiterungen & Domains), **Sicherheit** (Verschlüsselung, Aktivitätsprotokoll) und **Betrieb** (Überwachung, Wartung & Hinweise, Instanz). Jeder Bereich beginnt oben mit einer **Zustandszeile** – etwa „Geplante Sicherung aus“ mit dem Link zum Schalter oder „S3 aus“ mit dem Link zur Anleitung. Jede Einstellung hat genau einen Ort. Schalter und Auswahlfelder speichern sofort, daneben steht „Speichert …“ bzw. „Gespeichert“; einzelne Textfelder zeigen **Speichern**, sobald du sie geändert hast. Jeder Bereich hat eine eigene Adresse, z. B. `/#admin/storage` oder `/#admin/monitoring`.
 
 ## Benutzer
 
-Alle Konten der Instanz mit ihrer letzten Anmeldung und dem belegten Speicher. **Verwalten** öffnet ein Konto:
+Alle Konten als durchsuchbare Liste (auf dem Telefon untereinander) mit ihrem Zustand: **Aktiv**, **Inaktiv** (30 Tage oder länger ohne Anmeldung), **Deaktiviert**, dazu **Admin** und **E-Mail unbestätigt**, die letzte Anmeldung und der belegte Speicher. Der Status-Filter zeigt nur Aktive, Inaktive, Deaktivierte oder Admins. Mehrere Konten auf einmal: Häkchen setzen, dann **Sitzungen beenden**, **Deaktivieren** oder **Aktivieren**.
 
-- **Grenzen** für diese Person: Speicher (alles, was sie hochlädt oder kopiert – über alle Arbeitsbereiche), Anzahl eigener Arbeitsbereiche und größte Datei. Balken zeigen, wie viel davon belegt ist. Leer = Standard der Instanz, 0 = unbegrenzt; für Admins gelten keine Grenzen.
-- **Konto löschen …** erscheint, sobald ein Konto deaktiviert ist. Der Dialog nennt vorher, was passiert: Name, E-Mail, Passwort, Passkeys, Sitzungen und persönliche Einstellungen werden gelöscht, ebenso Arbeitsbereiche, in denen nur diese Person Mitglied war, und ihre privaten Bereiche. Gemeinsame Arbeitsbereiche bekommen bei Bedarf ein anderes Mitglied als Eigentümer; Beiträge darin bleiben und erscheinen als „Gelöschtes Konto“. Das eigene Konto und das letzte Admin-Konto lassen sich nicht löschen.
-- **E-Mail als bestätigt markieren** für Konten, die den Link aus der Bestätigungs-E-Mail noch nicht geöffnet haben.
-- **Sitzungen beenden** meldet eine Person auf allen Geräten ab.
-- **Deaktivieren** sperrt ein Konto sofort und beendet alle Sitzungen; **Aktivieren** gibt es wieder frei.
-- **Zwei-Faktor:** Die Liste zeigt „2FA an“, „2FA per Passkey“ oder „2FA aus“. **Zwei-Faktor zurücksetzen** (etwa bei verlorenem Telefon) schaltet die Authenticator-App des Kontos aus; das steht im Aktivitätsprotokoll, und die Person bekommt eine E-Mail, wenn die Instanz E-Mails versendet.
-- **KI:** Steht unter [Administration → KI](/ai#fuer-admins) „Ausgewählte Personen“, schaltest du hier die KI pro Person frei oder ab.
+**Verwalten** öffnet ein Konto in einem Seitenfenster (auf dem Telefon bildschirmfüllend):
 
-- Bei Konten mit E-Mail und Passwort: **Zum Admin machen** bzw. **Admin entziehen** (eine Person verwaltet die Instanz immer) und **Link zum Zurücksetzen** – ein zwei Stunden gültiger Link für ein neues Passwort, zum Weitergeben, wenn die Instanz keine E-Mails verschickt.
+- **Belegung und Grenzen** für diese Person: Speicher (alles, was sie hochlädt oder kopiert – über alle Arbeitsbereiche), Anzahl eigener Arbeitsbereiche und größte Datei. Balken zeigen, wie viel davon belegt ist. Leer = Standard der Instanz, 0 = unbegrenzt; für Admins gelten keine Grenzen. **Grenzen speichern** übernimmt sie.
+- **Zugang**:
+  - **KI-Funktionen**: Steht unter [Administration → KI](/ai#fuer-admins) „Ausgewählte Personen“, schaltest du hier die KI pro Person frei oder ab.
+  - **Sitzungen beenden** meldet die Person auf allen Geräten ab.
+  - Bei Konten mit E-Mail und Passwort: **Zum Admin machen** bzw. **Admin entziehen** (eine Person verwaltet die Instanz immer) und **Link zum Zurücksetzen** – ein zwei Stunden gültiger Link für ein neues Passwort, zum Weitergeben, wenn die Instanz keine E-Mails verschickt.
+  - **Zwei-Faktor-Anmeldung**: „2FA an“, „2FA per Passkey“ oder „2FA aus“. **Zwei-Faktor zurücksetzen** (etwa bei verlorenem Telefon) schaltet die Authenticator-App des Kontos aus; das steht im Aktivitätsprotokoll, und die Person bekommt eine E-Mail, wenn die Instanz E-Mails versendet.
+  - **E-Mail als bestätigt markieren** für Konten, die den Link aus der Bestätigungs-E-Mail noch nicht geöffnet haben.
+- **Gefahrenzone**: **Deaktivieren** sperrt das Konto sofort und beendet alle Sitzungen; **Aktivieren** gibt es wieder frei. **Konto löschen …** geht, sobald ein Konto deaktiviert ist. Der Dialog nennt vorher, was passiert: Name, E-Mail, Passwort, Passkeys, Sitzungen und persönliche Einstellungen werden gelöscht, ebenso Arbeitsbereiche, in denen nur diese Person Mitglied war, und ihre privaten Bereiche. Gemeinsame Arbeitsbereiche bekommen bei Bedarf ein anderes Mitglied als Eigentümer; Beiträge darin bleiben und erscheinen als „Gelöschtes Konto“. Das eigene Konto und das letzte Admin-Konto lassen sich nicht löschen.
 
-Konten mit E-Mail und Passwort entstehen über **Konto erstellen** (siehe [Anmeldung](/sign-in)); SSO-Konten beim ersten Anmelden über OIDC, ihr Admin-Recht kommt aus der Gruppe beim Anbieter.
+Konten mit E-Mail und Passwort entstehen über **Konto erstellen** (siehe [Anmeldung](/sign-in)); SSO-Konten beim ersten Anmelden über OIDC, ihr Admin-Recht kommt aus der Gruppe beim Anbieter. Ob sich Personen selbst registrieren dürfen, stellst du unter [Anmeldung & SSO](#anmeldung-sso) ein.
+
+## Anmeldung & SSO
+
+- **Registrierung & Zugang**: **Registrierung mit E-Mail und Passwort** (jede Person darf ein Konto anlegen; ohne diese Einstellung nur eingeladene Adressen und das erste Konto der Instanz), **Alle dürfen Arbeitsbereiche anlegen** und **Inaktive Konten sperren** nach einer Zahl von Tagen ohne Anmeldung. Gesperrte Konten verlieren ihre Sitzungen, ihre API-Tokens funktionieren nicht mehr; die Sperre steht im Aktivitätsprotokoll und lässt sich unter **Benutzer** aufheben.
+- **Zwei-Faktor-Anmeldung**: **Zwei-Faktor-Anmeldung verlangen** – nicht verlangen, nur für Admins oder für alle lokalen Konten –, dazu wie viele lokale Konten schon einen zweiten Faktor haben. Konten ohne Authenticator-App und ohne Passkey richten direkt nach der Anmeldung einen zweiten Faktor ein ([Zwei-Faktor-Anmeldung](/sign-in#zwei-faktor-anmeldung)). SSO-Konten sind nicht betroffen.
+- **Single Sign-on (OIDC)**: ob ein Anbieter eingerichtet ist, die Admin-Gruppe und **SSO-Gruppen zentral zuordnen** – Gruppen des Anbieters bekommen Rollen und Gruppen in jedem Arbeitsbereich ([SSO-Gruppen](/sign-in#sso-gruppen-arbeitsbereichen-zuordnen)).
+- **SCIM-Token** und **LDAP-Verzeichnis** mit ihrem Zustand ([Benutzer bereitstellen mit SCIM](/sign-in#benutzer-bereitstellen-mit-scim), [Anmeldung mit LDAP](/sign-in#anmeldung-mit-ldap)).
 
 ## Arbeitsbereiche
 
-Alle Arbeitsbereiche mit Mitgliederzahl, Belegung und Speicherkontingent. Das Kontingent lässt sich je Arbeitsbereich überschreiben. Mit Single Sign-on ordnest du unter **SSO-Gruppen zentral zuordnen** Gruppen des Anbieters Rollen und Gruppen in jedem Arbeitsbereich zu ([SSO-Gruppen](/sign-in#sso-gruppen-arbeitsbereichen-zuordnen)).
+Alle Arbeitsbereiche mit Mitgliedern, Seiten, Belegung (Balken bei einem Kontingent) und **Eigenes Kontingent** – gespeichert, sobald du das Feld verlässt. Leer = Standard, 0 = unbegrenzt. Den Standard stellst du unter [Grenzen & Aufbewahrung](#grenzen-aufbewahrung) ein.
+
+## Speicher & Sicherung
+
+Der eine Ort für Sicherungen:
+
+- **Sicherungen**: **S3-Spiegel** und **Litestream** mit ihrem Zustand, die geplante **Tägliche Datenbanksicherung** – eine konsistente Kopie der Datenbank pro Tag, mit S3 in den Bucket unter `backups/`, sonst in den Datenordner –, **Stündlich statt täglich** (gedacht für verschlüsselte Sicherungen anstelle von Litestream, siehe [Verschlüsselung](/storage-and-backups#verschluesselung); dann mehr Kopien aufbewahren, etwa 72 für drei Tage), **Aufbewahrte Sicherungen**, die letzte Sicherung und **Jetzt sichern**. Der Markdown-Export läuft weiterhin einmal am Tag.
+- **Belegung**: was lokal und was im Bucket liegt, nach Art, und die Aufteilung der Datenbank.
+- **Gesamte Instanz → Herunterladen** erzeugt im laufenden Betrieb eine geprüfte Kopie von Datenbank und Dateien. Mit `FLOWPLAN_ENCRYPTION_KEY` ist die Datei verschlüsselt (`.zip.enc`).
+- **Inhalte**: wie viele Arbeitsbereiche, Seiten, Datenbanken, Einträge, Dateien, Konten und Kommentare es gibt.
+- Ganz unten, in Rot: **Aus Sicherung wiederherstellen**. Eine hochgeladene Sicherung wird geprüft und beim nächsten Neustart übernommen; der vorherige Stand bleibt als `pre-restore-…` im Datenverzeichnis. Eine verschlüsselte Sicherung wird mit dem aktuellen oder einem früheren Schlüssel entschlüsselt.
+
+Details: [Speicher und Sicherungen](/storage-and-backups).
+
+## Grenzen & Aufbewahrung
+
+| Einstellung | Wirkung |
+| --- | --- |
+| Speicher je Arbeitsbereich | Für Arbeitsbereiche ohne eigenes Kontingent. |
+| Speicher je Person | Für Personen ohne eigene Grenze; alles, was sie hochladen oder kopieren. |
+| Eigene Arbeitsbereiche je Person | Wie viele Arbeitsbereiche eine Person besitzen darf. |
+| Größte Datei beim Hochladen | Grenze je Datei in MB. |
+| Versionen aufbewahren | Tage, nach denen automatische Versionen gelöscht werden. |
+
+Leere Felder fallen auf die [Umgebungsvariablen](/configuration) zurück. Jede Person sieht ihre Grenzen und den belegten Speicher unter **Einstellungen → Konto & Sicherheit → Deine Grenzen**.
+
+## Markdown- & Git-Export
+
+Seiten und Datenbanken für den Markdown-Export wählen, den Git-Export der Bereiche einschalten und das (veraltete) Git-Repository der Instanz – siehe [Markdown-Export und Git](/storage-and-backups#markdown-export-und-git).
+
+## E-Mail
+
+**E-Mail-Versand** zeigt den eingerichteten Server, den Absender, die Warteschlange und den letzten Fehler; ohne SMTP einen Hinweis mit den Variablen ([E-Mail (SMTP)](/configuration#e-mail-smtp)). **Test-E-Mail** prüft die Verbindung sofort.
 
 ## KI
 
 Optional und standardmäßig aus: Anbieter (Ollama, OpenAI-kompatibel, Anthropic, Gemini), wer KI nutzen darf, einzelne Funktionen und eigene Schlüssel der Nutzer. Alles dazu unter [KI](/ai#fuer-admins).
 
-## Betrieb
+## Erweiterungen & Domains
 
-Zustand der Instanz: Größe von Datenbank und Uploads, Warteschlangen, Suchindex, Versionen und Laufzeit; abgewiesene Anfragen (fehlgeschlagene Anmeldungen, Limits, anonyme Uploads), Speicher je Arbeitsbereich mit Kontingent, E-Mail-Warteschlange, fehlschlagende Webhooks und der letzte Lauf jedes Hintergrunddienstes. Dazu kommen **Warnungen per Webhook** und der **Wartungshinweis**, und darunter die Speicherübersicht mit S3-Verbindung, Datenbanksicherung und Inhaltszahlen. Details unter [Betrieb und Fehlersuche](/operations#administration-betrieb).
+**Block-Erweiterungen von jeder HTTPS-Adresse** (aus: nur aus `PLUGIN_ALLOWED_ORIGINS`) und **Eigene Domains für Veröffentlichungen** – siehe [Block-Erweiterungen](/plugins) und [Coolify und Reverse Proxy](/coolify-and-proxy#eigene-domains-fuer-veroeffentlichungen).
+
+## Verschlüsselung
+
+Die Schlüssel-ID, frühere Schlüssel, wie viele Dateien im Bucket noch nicht mit diesem Schlüssel verschlüsselt sind (**Bestehende verschlüsseln** holt das nach), und was trotzdem unverschlüsselt den Server verlässt (Litestream, Git-Export). Siehe [Verschlüsselung](/storage-and-backups#verschluesselung).
+
+## Aktivitätsprotokoll
+
+Die letzten Änderungen mit Person, Aktion und betroffener Ressource – etwa Freigaben, Rollenwechsel, Löschungen, Einstellungen und Abrechnungsstatus von Zeiten –, durchsuchbar und nach Person und Art gefiltert, auf dem Telefon als Liste. Unter **Exportieren** wählst du optional ein Von- und Bis-Datum (UTC, wie gespeichert) und lädst das Protokoll als **CSV** (Semikolon, mit BOM, für Excel) oder als **JSON** herunter. Werte, die eine Tabellenkalkulation als Formel ausführen würde, beginnen im CSV mit einem Apostroph. Der Export ist nur angemeldeten Admins zugänglich, nie API-Tokens.
+
+## Überwachung
+
+Zustand, Nutzung und Ereignisse der Instanz – live, mit Diagrammen, Warteschlangen, Hintergrunddiensten, abgewiesenen Anfragen, Warnungen per Webhook und der Nutzungsstatistik. Details unter [Betrieb und Fehlersuche](/operations#administration-ueberwachung).
+
+## Wartung & Hinweise
+
+**Hinweis für alle Personen** – ein Banner für alle, bis du ihn leerst – und der **Wartungshinweis** mit Beginn und Ende, der nach dem Ende von selbst verschwindet ([Wartung & Hinweise](/operations#wartung-hinweise)).
 
 ## Instanz
 
 | Einstellung | Wirkung |
 | --- | --- |
-| Name | Erscheint in der Seitenleiste und auf der Startseite neben dem Logo. |
-| Hinweis | Banner für alle, z. B. eine angekündigte Wartung. |
-| Speicher je Arbeitsbereich | Für Arbeitsbereiche ohne eigenes Kontingent. |
-| Speicher je Person | Für Personen ohne eigene Grenze; alles, was sie hochladen oder kopieren. |
-| Eigene Arbeitsbereiche je Person | Wie viele Arbeitsbereiche eine Person besitzen darf. |
-| Aufbewahrung von Versionen | Tage, nach denen automatische Versionen gelöscht werden. |
-| Maximale Uploadgröße | Grenze je Datei in MB. |
-| Arbeitsbereiche anlegen | Ob alle Personen eigene Arbeitsbereiche erstellen dürfen. |
-| Registrierung mit E-Mail und Passwort erlauben | Jede Person darf ein Konto anlegen. Ohne diese Einstellung nur eingeladene Adressen (und das erste Konto der Instanz). |
-| Öffentliche Demo anbieten | Besucher probieren Flowplan ohne Konto aus, siehe unten. |
-| Zwei-Faktor-Anmeldung verlangen | Nicht verlangen, nur für Admins oder für alle lokalen Konten. Konten ohne Authenticator-App und ohne Passkey richten direkt nach der Anmeldung einen zweiten Faktor ein ([Zwei-Faktor-Anmeldung](/sign-in#zwei-faktor-anmeldung)). SSO-Konten sind nicht betroffen. |
+| Name der Instanz | Erscheint bei der Anmeldung, in der Seitenleiste und im Browser-Tab. |
+| Öffentliche Demo | Besucher probieren Flowplan ohne Konto aus, siehe [Demo](#demo). |
+| Version | Laufende **Version**, **Commit** (verlinkt auf GitHub) und Build-Datum. Docker-Images aus unserem Workflow kennen ihren Commit; bei Coolify kommt er aus `SOURCE_COMMIT`. Bei einem eigenen Build `--build-arg GIT_COMMIT=$(git rev-parse HEAD)` mitgeben, sonst steht dort „Commit unbekannt“. Ist eine neuere Version da, steht dort ein Hinweis mit **So aktualisierst du**. |
+| Admin-Gruppe | Die SSO- oder LDAP-Gruppe aus `OIDC_ADMIN_GROUP`. |
 
-Die Einstellungen sind in **Allgemein**, **Zugang**, **Speicher und Grenzen** sowie **Versionen und Sicherung** gegliedert; geänderte Werte werden erst mit **Speichern** übernommen. Leere Felder fallen auf die [Umgebungsvariablen](/configuration) zurück. Jede Person sieht ihre Grenzen und den belegten Speicher unter **Einstellungen → Allgemein → Deine Grenzen**.
-
-### E-Mail-Versand und geplante Sicherung
-
-- **E-Mail-Versand** zeigt den eingerichteten Server, die Warteschlange und den letzten Fehler; **Test-E-Mail senden** prüft die Verbindung sofort.
-- **Tägliche Datenbanksicherung**: eine konsistente Kopie der Datenbank pro Tag, mit S3 in den Bucket unter `backups/`, sonst in den Datenordner. Die neuesten *n* bleiben erhalten; **Jetzt sichern** legt sofort eine an.
-- **Stündlich statt täglich**: eine Kopie pro Stunde – gedacht für verschlüsselte Sicherungen anstelle von Litestream (siehe [Verschlüsselung](/storage-and-backups#verschluesselung)). Dann mehr Kopien aufbewahren, etwa 72 für drei Tage. Der Markdown-Export läuft weiterhin einmal am Tag.
-- **Verschlüsselung** zeigt die Schlüssel-ID, wie viele Dateien im Bucket noch nicht mit diesem Schlüssel verschlüsselt sind (**Bestehende verschlüsseln** holt das nach), und was trotzdem unverschlüsselt den Server verlässt (Litestream, Git-Export).
-- **Konten ohne Anmeldung sperren nach (Tagen)**: gesperrte Konten verlieren ihre Sitzungen, ihre API-Tokens funktionieren nicht mehr; die Sperre steht im Aktivitätsprotokoll und lässt sich unter **Benutzer** aufheben.
-
-### Sicherung der gesamten Instanz
-
-**Sicherung herunterladen** erzeugt im laufenden Betrieb eine geprüfte Kopie von Datenbank und Dateien. Eine hochgeladene Sicherung wird geprüft und beim nächsten Neustart übernommen; der vorherige Stand bleibt als `pre-restore-…` im Datenverzeichnis. Mit `FLOWPLAN_ENCRYPTION_KEY` ist die heruntergeladene Datei verschlüsselt (`.zip.enc`); beim Hochladen wird sie mit dem aktuellen oder einem früheren Schlüssel entschlüsselt.
+Darunter führt **Weitere Einstellungen der Instanz** zu den Bereichen, in die frühere Einstellungen der Instanz umgezogen sind.
 
 ## Demo
 
-Die Demo ist auf jeder Instanz ausgeschaltet, bis ein Admin sie einschaltet.
+Die Demo ist auf jeder Instanz ausgeschaltet, bis ein Admin sie unter **Administration → Instanz → Öffentliche Demo** einschaltet.
 
-Mit **Öffentliche Demo anbieten** startet die Adresse `/demo` deiner Instanz eine Demo (auf flowplan.org verlinkt der Knopf **Demo ausprobieren** dorthin). Sie legt ohne Konto einen Demo-Gast mit eigenem Beispiel-Arbeitsbereich an. Jede Demo bekommt frische Beispielseiten, die alle Funktionen zeigen: eine Willkommensseite, einen Editor-Rundgang mit allen Blöcken, eine Projektdatenbank mit Beziehung, Rollup, Formel, Wiederholung und allen Ansichten (Tabelle, Board, Kalender, Zeitleiste, Galerie, Liste, Feed, Diagramm, Formular), ein Whiteboard, ein Journal und ein kleines Wiki.
+Dann startet die Adresse `/demo` deiner Instanz eine Demo (auf flowplan.org verlinkt der Knopf **Demo ausprobieren** dorthin). Sie legt ohne Konto einen Demo-Gast mit eigenem Beispiel-Arbeitsbereich an. Jede Demo bekommt frische Beispielseiten, die alle Funktionen zeigen: eine Willkommensseite, einen Editor-Rundgang mit allen Blöcken, eine Projektdatenbank mit Beziehung, Rollup, Formel, Wiederholung und allen Ansichten (Tabelle, Board, Kalender, Zeitleiste, Galerie, Liste, Feed, Diagramm, Formular), ein Whiteboard, ein Journal und ein kleines Wiki.
 
 - Die Demo endet mit **Demo beenden**, beim Abmelden, nach 45 Minuten ohne Aktivität, spätestens nach drei Stunden. Dann werden Konto, Arbeitsbereich, Seiten und Dateien vollständig gelöscht.
 - Demo-Gäste können nichts nach außen tragen: nicht veröffentlichen, keine Freigabelinks, keine Einladungen, keine weiteren Arbeitsbereiche, keine öffentlichen Formulare, keine Administration.
 - Jeder Demo-Arbeitsbereich hat 25 MB Speicher. Neue Demos sind auf fünf pro Stunde und Adresse sowie 40 gleichzeitig begrenzt.
-
-## Aktivitätsprotokoll
-
-Die letzten Änderungen mit Person, Aktion und betroffener Ressource – etwa Freigaben, Rollenwechsel, Löschungen, Einstellungen und Abrechnungsstatus von Zeiten. Zum **Export** wählst du optional ein Von- und Bis-Datum (UTC, wie gespeichert) und lädst das Protokoll als **CSV** (Semikolon, mit BOM, für Excel) oder als **JSON** herunter. Werte, die eine Tabellenkalkulation als Formel ausführen würde, beginnen im CSV mit einem Apostroph. Der Export ist nur angemeldeten Admins zugänglich, nie API-Tokens.
+- Laufende und insgesamt gestartete Demos zeigt **Administration → Überwachung → Instanz in Zahlen**.

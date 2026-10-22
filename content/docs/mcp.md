@@ -6,7 +6,7 @@ Neben der optionalen [eingebauten KI](/ai) kannst du über MCP den Assistenten a
 
 ## Einrichten
 
-1. Lege unter **Einstellungen → API & Webhooks** ein [persönliches API-Token](/api-and-webhooks) für den Assistenten an. Wähle **Nur lesen**, wenn der Assistent nur suchen und lesen soll. Wähle **Lesen und schreiben**, wenn er auch Seiten und Datensätze anlegen soll.
+1. Lege unter **Einstellungen → API & KI-Assistenten** ein [persönliches API-Token](/api-and-webhooks) für den Assistenten an. Wähle **Nur lesen**, wenn der Assistent nur suchen und lesen soll. Wähle **Lesen und schreiben**, wenn er auch Seiten und Datensätze anlegen soll.
 2. Kopiere die Adresse unter **KI-Assistenten (MCP)**. Sie besteht aus deiner Flowplan-Adresse und `/api/mcp`, zum Beispiel `https://flowplan.example.com/api/mcp`.
 3. Trage beides in deinen Client ein (Beispiele unten). Die Einstellungsseite zeigt für jeden Client eine fertige Konfiguration und setzt ein gerade erstelltes Token gleich ein.
 
@@ -91,7 +91,7 @@ Außerdem ist jede Seite als **Ressource** `flowplan://page/<ID>` abrufbar (dein
 
 ## Sicherheitshinweise
 
-- Behandle das Token wie ein Passwort. Wer es hat, kann alles lesen (und mit einem Schreib-Token ändern), was du kannst. Widerrufe ein Token unter **Einstellungen → API & Webhooks**, wenn du es nicht mehr brauchst oder es in falsche Hände geraten sein könnte; die Verbindung endet sofort.
+- Behandle das Token wie ein Passwort. Wer es hat, kann alles lesen (und mit einem Schreib-Token ändern), was du kannst. Widerrufe ein Token unter **Einstellungen → API & KI-Assistenten**, wenn du es nicht mehr brauchst oder es in falsche Hände geraten sein könnte; die Verbindung endet sofort.
 - KI-Assistenten lassen sich durch Inhalte, die sie lesen, in die Irre führen (Prompt Injection), etwa durch Text auf einer mit dir geteilten Seite. Gib einem Assistenten ein **Lese-Token**, wenn er nicht schreiben muss. Nutze bei einem Schreib-Token die Bestätigungsabfragen des Clients für Werkzeugaufrufe.
 - Antworten können alles enthalten, was du in Flowplan lesen kannst. Diese Inhalte gehen an den Anbieter deines Assistenten, prüfe also vorher dessen Datenschutzbedingungen.
 - `/api/mcp` nimmt nur Tokens an, nicht das Anmelde-Cookie. Eine fremde Website kann deine Browser-Sitzung deshalb nicht benutzen. Anfragen mit fremdem `Origin` werden abgelehnt.

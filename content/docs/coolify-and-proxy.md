@@ -90,7 +90,7 @@ Den internen Port `3000` nie zusätzlich öffentlich freigeben.
 
 ## Eigene Domains für Veröffentlichungen
 
-Mit **Eigene Domains für Veröffentlichungen** in der Administration zeigen Eigentümer veröffentlichte Seiten unter ihrer Domain ([Teilen und Veröffentlichen](/sharing#eigene-domain)). Flowplan erkennt die Domain am `Host`-Header und liefert nur die Veröffentlichung aus. Das Zertifikat bleibt Sache des Reverse Proxy; er muss Anfragen für beliebige Hosts an Flowplan weiterreichen und den `Host` unverändert lassen.
+Mit **Eigene Domains für Veröffentlichungen** unter **Administration → Erweiterungen & Domains** zeigen Eigentümer veröffentlichte Seiten unter ihrer Domain ([Teilen und Veröffentlichen](/sharing#eigene-domain)). Flowplan erkennt die Domain am `Host`-Header und liefert nur die Veröffentlichung aus. Das Zertifikat bleibt Sache des Reverse Proxy; er muss Anfragen für beliebige Hosts an Flowplan weiterreichen und den `Host` unverändert lassen.
 
 Flowplan beantwortet `GET /api/domains/allowed?domain=<host>` mit 200 für bestätigte Domains aktiver Veröffentlichungen und sonst mit 404 – genau die Frage, die Caddy vor einem neuen Zertifikat stellt.
 

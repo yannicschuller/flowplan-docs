@@ -18,7 +18,7 @@ With `S3_BUCKET` and credentials (see [Configuration](/configuration#s3-and-data
 - **Files**: every uploaded file goes into the bucket right after saving, and deleted files are removed there. `uploads/` stays the working copy. If a file is missing there – a new host, a lost volume –, Flowplan fetches it from the bucket: right away when requested, all others in the background.
 - **Database**: [Litestream](https://litestream.io) transfers changes to the SQLite file to `<prefix>/db` about every second. If the container starts without a database, Litestream first restores it from the bucket.
 
-On the first start with S3, Flowplan uploads all existing files. `/api/health` shows the progress under `objectStorage.pending`, and **Administration → Operations** shows the connection and the split between local and S3.
+On the first start with S3, Flowplan uploads all existing files. `/api/health` shows the progress under `objectStorage.pending`, and **Administration → Storage & backup** shows the connection and the split between local and S3 (cards **Backups** and **Usage**).
 
 MinIO, Garage, SeaweedFS, AWS S3 and other S3-compatible services are suitable.
 
@@ -47,7 +47,7 @@ Start the S3 service so that it listens on all interfaces (`-ip.bind=0.0.0.0`), 
 
 ## Backups
 
-1. **Instance backup in Flowplan** (recommended): **Administration → Instance → Backup of the whole instance** downloads the database and files consistently while running.
+1. **Instance backup in Flowplan** (recommended): **Administration → Storage & backup → Whole instance → Download** downloads the database and files consistently while running.
 2. **S3 with Litestream**: a continuous backup; an earlier point in time can be restored (below).
 3. **Scheduled backup**: a consistent copy of the database every day or every hour, with S3 in the bucket under `backups/`, otherwise in the data folder – encrypted when a key is set ([Encryption](#encryption)).
 4. A **volume backup** on the host or in Coolify. For a consistent copy, stop the container first.
@@ -59,7 +59,7 @@ sqlite3 /app/data/flowplan.sqlite "VACUUM INTO '/backup/flowplan.sqlite'"
 
 Back up `uploads/` and `web-push-keys.json` as well.
 
-The content archive under **Settings → Data** backs up a workspace but does not replace an instance backup with accounts and permissions.
+The content archive under **Settings → Import & export → Export → Workspace as ZIP** backs up a workspace but does not replace an instance backup with accounts and permissions.
 
 ## Encryption
 
@@ -91,7 +91,7 @@ FLOWPLAN_ENCRYPTION_KEY=<32 bytes, base64>
 FLOWPLAN_ENCRYPTION_KEY_FILE=/run/secrets/flowplan-key
 ```
 
-**Administration → Instance → Encryption** then shows “Encryption on” with the key ID (the first bytes of a hash, not the key itself). A malformed key shows up there as an error; backups then fail instead of being stored unencrypted.
+**Administration → Encryption** then shows “Encryption on” with the key ID (the first bytes of a hash, not the key itself). A malformed key shows up there as an error; backups then fail instead of being stored unencrypted.
 
 > [!CAUTION]
 > Without the key, encrypted backups and files are lost – for you too. Keep it apart from the backups (password manager, vault), not in the same bucket and not only on the same server.
@@ -111,7 +111,7 @@ There is no migration step, and nothing is rewritten at startup. Flowplan recogn
 ### Change the key
 
 1. Set the new key as `FLOWPLAN_ENCRYPTION_KEY` and move the old one to `FLOWPLAN_ENCRYPTION_KEY_PREVIOUS` (several separated by commas), then restart.
-2. In Administration, choose **Encrypt existing objects**. All files in the bucket are re-encrypted with the new key.
+2. Under **Administration → Encryption**, choose **Encrypt existing objects**. All files in the bucket are re-encrypted with the new key.
 3. Keep the old key until the last backup encrypted with it has dropped out of retention.
 
 Every encrypted file names the ID of its key. If that key is missing, Flowplan says exactly that instead of silently returning broken data.
@@ -120,7 +120,7 @@ Every encrypted file names the ID of its key. If that key is missing, Flowplan s
 
 Litestream (0.5) cannot encrypt the database replica itself. With a key set, Administration therefore warns that an unencrypted copy is kept under `<prefix>/db/`. Two ways out:
 
-1. **Encrypted backups only** (recommended for a bucket you do not trust): set `FLOWPLAN_LITESTREAM=off`, turn on **Hourly instead of daily** under **Administration → Instance**, and keep more copies (e.g. 72). Then delete the folder `<prefix>/db/` in the bucket. The price: in the worst case you lose the last hour instead of the last seconds, and on a new host you restore the database from the newest backup (below).
+1. **Encrypted backups only** (recommended for a bucket you do not trust): set `FLOWPLAN_LITESTREAM=off`, turn on **Hourly instead of daily** under **Administration → Storage & backup → Backups**, and keep more copies (e.g. 72). Then delete the folder `<prefix>/db/` in the bucket. The price: in the worst case you lose the last hour instead of the last seconds, and on a new host you restore the database from the newest backup (below).
 2. **Server-side encryption at the provider (SSE-C)**: set `LITESTREAM_SSE_C_KEY` to a key of its own (32 bytes, base64). The provider encrypts the replica and receives the key with every request to do so. That protects against leaked disks or buckets, not against the provider itself. It only works over https and only with providers that support SSE-C (check first). Empty the folder `<prefix>/db/` before turning it on, because a replica made of unencrypted and SSE-C parts cannot be restored.
 
 ### Emergency: decrypt without a running instance
@@ -149,7 +149,7 @@ Encryption covers what leaves the server. On the server itself, the database and
 
 ## Markdown export and Git
 
-A readable copy outside Flowplan – for emergencies when the instance is down, or as an archive in a Git repository. **Administration → Instance → Markdown export** chooses pages and databases; with every scheduled backup (and with **Back up now**) each becomes a Markdown ZIP with its sub-pages, comments and earlier versions:
+A readable copy outside Flowplan – for emergencies when the instance is down, or as an archive in a Git repository. **Administration → Markdown & Git export** chooses pages and databases; with every scheduled backup (and with **Back up now**) each becomes a Markdown ZIP with its sub-pages, comments and earlier versions:
 
 - with S3 in the bucket under `<S3_PREFIX>/exports/`, otherwise in the data folder under `exports/`; as many are kept as backups (**Backups kept**). With `FLOWPLAN_ENCRYPTION_KEY` the ZIPs are encrypted (`.zip.enc`), the push to Git is not;
 - the export reads with the permissions of the person who saved the selection – private records and journals with a PIN stay out;
@@ -209,11 +209,11 @@ Security:
 - Every address is resolved and checked: internal addresses (localhost, private networks) cannot be reached, redirects are not followed. The only exception: servers the administration lists in `SPACE_GIT_ALLOWED_HOSTS` when `SPACE_GIT_ALLOW_PRIVATE=true` is set as well – for example a Git server on the same host. Even then it stays HTTPS, with the pinned address and no redirects.
 - The export ends, and token and working copy (`git-export/spaces/<space>/` in the data folder) are deleted, when the owner turns it off, leaves the workspace, becomes a guest or deletes their account – or when the space gets a new owner or moves to the trash.
 
-**Administration → Instance → Markdown export** shows how many spaces use the Git export and their last errors – without addresses or content.
+**Administration → Markdown & Git export** shows how many spaces use the Git export and their last errors – without addresses or content.
 
 ## Restore
 
-- **From an instance backup**: upload it in **Administration → Instance**. Flowplan checks it and applies it on the next restart; the previous state stays as `pre-restore-…` in the data directory.
+- **From an instance backup**: upload it under **Administration → Storage & backup → Restore from backup** (at the very end). Flowplan checks it and applies it on the next restart; the previous state stays as `pre-restore-…` in the data directory.
 - **From a scheduled backup**, with the app stopped: [decrypt](#emergency-decrypt-without-a-running-instance) an encrypted one first, then move the existing `flowplan.sqlite` with `-wal` and `-shm` aside and put the backup in place as `/app/data/flowplan.sqlite`. With S3, the files follow from the bucket.
 - **On a new host with S3**: start a new installation with **the same** `S3_*` variables and an empty volume. Litestream restores the database, the files follow in the background.
 - **An earlier point in time**, with the app stopped:
@@ -227,4 +227,4 @@ Move the existing `flowplan.sqlite` with `-wal` and `-shm` aside first.
 
 ## Quotas
 
-`FLOWPLAN_WORKSPACE_QUOTA_MB` or **Administration → Instance** sets a default quota per workspace; under **Administration → Workspaces** it can be overridden per workspace. Uploads, copies, templates and imports beyond the quota are refused.
+`FLOWPLAN_WORKSPACE_QUOTA_MB` or **Administration → Limits & retention** sets a default quota per workspace; under **Administration → Workspaces** it can be overridden per workspace. Uploads, copies, templates and imports beyond the quota are refused.

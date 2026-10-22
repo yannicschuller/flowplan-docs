@@ -56,7 +56,7 @@ Google Calendar does not support CalDAV accounts; use the calendar sync below fo
 
 **Calendar sync** keeps a view with a date and a calendar in Google Calendar or Microsoft Outlook / 365 in step both ways – personally, with your own account.
 
-1. **Settings → Account → Connect calendar** → **Connect Google Calendar** or **Connect Microsoft Outlook / 365**. You sign in with the provider and allow access to your calendars.
+1. **Settings → Calendars & issues → Connect calendar** → **Connect Google Calendar** or **Connect Microsoft Outlook / 365**. You sign in with the provider and allow access to your calendars.
 2. In the database, open the calendar icon next to **…** (**Calendar sync**), pick the view, the account and the calendar, and **Connect**.
 
 What is synced:
@@ -72,7 +72,7 @@ Good to know:
 - **Conflicts**: when both sides change the same event, the later change wins. The audit log records every conflict.
 - **Permissions**: only records you may see and edit go to the calendar and are changed by it. Workflow and automations apply as for any change.
 - **Range**: events from 90 days back to one year ahead. Recurring events from the calendar arrive as single records; a recurring record goes to the calendar with its first date.
-- **Disconnect** under **Settings → Account** ends every sync of that connection. You can also revoke access in your Google or Microsoft account.
+- **Disconnect** under **Settings → Calendars & issues** ends every sync of that connection. You can also revoke access in your Google or Microsoft account.
 - An administrator sets up the providers once, see [Configuration](/configuration#calendar-sync).
 
 ## Sprints

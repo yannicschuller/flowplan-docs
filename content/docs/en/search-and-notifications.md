@@ -62,7 +62,7 @@ Under **Settings → Notifications → Weekly digest** you subscribe to an e-mai
 Under **Settings → Notifications**:
 
 1. **Enable push** – the browser asks for permission. This applies per device.
-2. Under **Notification kinds**, choose what arrives as push and what only lands in the inbox.
+2. In the card **Notification kinds**, set the switches **Inbox**, **Push** and **E-mail** per kind – every change is saved at once. On a phone every kind is a card of its own with three labelled switches.
 3. Check it with a test notification.
 
 Push notifications open the page concerned. No document content appears on the lock screen.

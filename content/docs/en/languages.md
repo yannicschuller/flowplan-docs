@@ -4,7 +4,7 @@ Flowplan is available in {{facts.languages|word}} languages: **German, English a
 
 ## Choosing a language
 
-Flowplan follows your browser's language; languages Flowplan does not know show English. Under **Settings → General → Your profile → Language** you pick a language (with its flag) from the list – it then applies on all devices, also to e-mails and push notifications; **Automatic (follows the browser)** undoes the choice. On the sign-in page the small button at the bottom right (e.g. **🇬🇧 EN**) opens a menu with all languages.
+Flowplan follows your browser's language; languages Flowplan does not know show English. Under **Settings → Appearance & language → Language** you pick a language (with its flag) from the list – it then applies on all devices, also to e-mails and push notifications; **Automatic (follows the browser)** undoes the choice. On the sign-in page the small button at the bottom right (e.g. **🇬🇧 EN**) opens a menu with all languages.
 
 Dates, times and numbers follow the language (French: `fr-FR`, e.g. “15 oct. 2026” and “2 400,5”). Calculations in notes use the decimal comma in French as well.
 

@@ -16,14 +16,14 @@ Die Verschlüsselung schützt vor dem Mitlesen auf dem Server und in Sicherungen
 
 ## Schlüssel einrichten
 
-Beim ersten verschlüsselten Bereich – oder unter **Einstellungen → Konto → Ende-zu-Ende-Verschlüsselung** – richtest du deine Schlüssel ein:
+Beim ersten verschlüsselten Bereich – oder unter **Einstellungen → Konto & Sicherheit → Ende-zu-Ende-Verschlüsselung** – richtest du deine Schlüssel ein:
 
 1. Eine **Passphrase** wählen (mindestens 10 Zeichen, am besten ein ganzer Satz). Sie ist nicht dein Anmeldepasswort und verlässt deinen Browser nie.
 2. Den **Wiederherstellungsschlüssel** sichern: 52 Zeichen in Vierergruppen, zum **Herunterladen** oder **Drucken**. Erst wenn du bestätigst, ihn sicher aufbewahrt zu haben, wird eingerichtet.
 
 **Wichtig:** Wer Passphrase **und** Wiederherstellungsschlüssel verliert, verliert den Zugang zu seinen verschlüsselten Daten. Weder die Administration noch der Betreiber können sie wiederherstellen – der Server hat die Schlüssel nie gesehen.
 
-In den Einstellungen lassen sich die Passphrase ändern, ein neuer Wiederherstellungsschlüssel erzeugen (der alte gilt dann nicht mehr) und – nur wenn beides verloren ist – die Schlüssel zurücksetzen. Danach muss dir ein Mitglied den Zugang zu jedem verschlüsselten Bereich neu geben.
+Unter **Einstellungen → Konto & Sicherheit → Ende-zu-Ende-Verschlüsselung** lassen sich die Passphrase ändern und ein neuer Wiederherstellungsschlüssel erzeugen (der alte gilt dann nicht mehr). Nur wenn beides verloren ist: **Schlüssel zurücksetzen …** ganz unten in der **Gefahrenzone**. Danach muss dir ein Mitglied den Zugang zu jedem verschlüsselten Bereich neu geben.
 
 ## Entsperren und automatisches Sperren
 

@@ -1,6 +1,6 @@
 # Configuration
 
-All environment variables at a glance. Many values can also be set in the interface under **Administration → Instance**; values set there take precedence.
+All environment variables at a glance. Many values can also be set in the interface of the **Administration** (see [In the interface](#in-the-interface)); values set there take precedence.
 
 ## Required
 
@@ -41,6 +41,7 @@ The other OIDC variables and everything about passwords and passkeys are describ
 | `FLOWPLAN_SNAPSHOT_RETENTION_DAYS` | `180` | How long automatic versions are kept, in days (`0` = forever). |
 | `FLOWPLAN_OCR` | on | `0` turns off text recognition for scanned PDFs and images. |
 | `FLOWPLAN_OCR_LANGS` | `deu,eng` | Languages of the text recognition, e.g. `fra,eng`; the first is the main language. `deu`, `eng` and `fra` are bundled. Each extra language costs memory and time per page. |
+| `FLOWPLAN_METRICS` | on | `off` switches off the usage statistics of the [monitoring](/operations#statistics): requests, errors and response times per minute, active people per hour, storage history and AI tokens. Only numbers are collected – no IP addresses, paths or names; minutes are kept 48 hours, hours 35 days, days 400 days. With `off` nothing is collected, and the switch **Collect usage statistics** under **Administration → Monitoring → Statistics** is locked. `/api/metrics` does not depend on it. |
 | `FLOWPLAN_METRICS_TOKEN` | *empty* | At least 16 characters; enables `/api/metrics` in Prometheus format. |
 | `FLOWPLAN_UPDATE_CHECK` | on | `false` turns off the check for new versions (for instances without internet). Otherwise the server asks GitHub for the latest release at most every 12 hours and shows admins a notice in the administration. |
 | `FLOWPLAN_UPDATE_URL` | GitHub API | Another address for the latest release (same format as `api.github.com/repos/yannicschuller/flowplan/releases/latest`), such as an internal mirror. Not to be confused with the [desktop app's](/offline-and-apps#desktop-app-for-macos-windows-and-linux) variable of the same name, which names the app's update source on the computer running it. |
@@ -94,7 +95,7 @@ Flowplan stores AI provider keys, the keys of authenticator apps ([two-factor si
 | `SMTP_USER` / `SMTP_PASSWORD` | *empty* | Sign-in at the mail server. |
 | `SMTP_FROM` | `Flowplan <SMTP_USER>` | Sender, e.g. `Flowplan <flowplan@example.com>`. |
 
-Check delivery under **Administration → Instance → Send test e-mail**.
+Check delivery under **Administration → E-mail → Send test email**.
 
 ## Inbound e-mail (IMAP)
 
@@ -213,16 +214,14 @@ The image sets `NODE_ENV`, `PORT`, `HOSTNAME` and `NEXT_TELEMETRY_DISABLED` itse
 
 ## In the interface
 
-Under **Administration → Instance**, administrators set:
+In the **Administration**, administrators set (see [Administering the instance](/administration)):
 
-- the instance name and a notice banner for everyone,
-- the default storage quota and how long versions are kept,
-- the maximum upload size,
-- whether everyone may create workspaces of their own,
-- whether anyone may sign up with e-mail and password,
-- the daily or hourly database backup and how many copies are kept,
-- after how many days without sign-in accounts are locked,
-- whether the instance offers a public **demo** (running and total started demos are shown under **Administration → Operations**),
-- **Custom domains for publications** (off) and **Block extensions from any HTTPS address** (off) – see [Coolify and reverse proxies](/coolify-and-proxy#custom-domains-for-publications) and [Block extensions](/plugins).
+- **Instance**: the instance name and whether the instance offers a public **demo** (running and total started demos are shown under **Administration → Monitoring → Instance in numbers**),
+- **Sign-in & SSO**: whether anyone may sign up with e-mail and password, whether everyone may create workspaces of their own, after how many days without sign-in accounts are blocked, required two-factor sign-in,
+- **Limits & retention**: the default storage quota, storage and own workspaces per person, the maximum upload size, how long versions are kept,
+- **Storage & backup**: the daily or hourly database backup and how many copies are kept,
+- **Maintenance & notices**: a notice banner for everyone and the maintenance notice,
+- **Extensions & domains**: **Custom domains for publications** (off) and **Block extensions from any HTTPS address** (off) – see [Coolify and reverse proxies](/coolify-and-proxy#custom-domains-for-publications) and [Block extensions](/plugins),
+- **Monitoring → Statistics**: whether usage statistics are collected (locked with `FLOWPLAN_METRICS=off`).
 
 Empty fields fall back to the environment variables.

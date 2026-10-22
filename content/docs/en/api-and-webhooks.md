@@ -4,7 +4,7 @@ With personal API tokens, scripts, n8n or Home Assistant access Flowplan; webhoo
 
 ## API tokens
 
-Under **Settings → API & webhooks** you create tokens: with a name, **Read only**, **Read and write** or **Browser extension only**. The token is shown only once – afterwards only its beginning is visible. A **Read only** token is refused for every request that writes, including restoring backups and uploading files.
+Under **Settings → API & AI assistants** you create tokens: with a name, **Read only**, **Read and write** or **Browser extension only**. The token is shown only once – afterwards only its beginning is visible. A **Read only** token is refused for every request that writes, including restoring backups and uploading files.
 
 - **Browser extension only:** for the [browser extension](/browser-extension). The token only reaches /api/clipper/targets and /api/clipper/save; everywhere else it counts as no token.
 
@@ -40,7 +40,7 @@ To connect Claude, ChatGPT or other AI assistants, use the [MCP server](/mcp) wi
 
 ## Webhooks
 
-Owners of a workspace create webhooks: an address, events and optionally a single database.
+Webhooks have their own section: **Settings → Webhooks** (group “Connections”, owners only). Owners of a workspace create webhooks there with **Create webhook**: an address, events and optionally a single database. The list shows each webhook with its format, last delivery and events. Every webhook has a page of its own (`/#settings/webhooks/<id>`) with the cards **Target** (format, address, database, credentials for Slack/Matrix), **Events** (one switch per event), **Message** (chat formats only), **Preview** and – for an existing webhook – **Delivery** with **Send test message**; **Save changes** saves it, and it is deleted in the **Danger zone** with **Delete webhook …**. The secret key appears once above the list after creating.
 
 | Event | When |
 | --- | --- |
@@ -80,9 +80,9 @@ const valid = timingSafeEqual(Buffer.from(expected), Buffer.from(req.headers["x-
 ### Delivery
 
 - Answers with status 2xx count as delivered; otherwise Flowplan retries up to six times with growing intervals.
-- The list shows the last delivery or the last error per webhook.
+- The list under **Settings → Webhooks** shows each webhook's format, last delivery or last error and its events.
 - Only public HTTPS addresses are allowed. For services in the same network (Home Assistant, n8n) the administrators set `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true`.
-- **Send test message** in the list sends a sample message right away and shows the result; it is not retried. Below the last delivery the list also shows the last error and when it happened.
+- **Send test message** in the list or on the webhook's page (card **Delivery**) sends a sample message right away and shows the result; it is not retried. Below the last delivery the list also shows the last error and when it happened.
 
 ### Create webhooks via the API
 
@@ -90,7 +90,7 @@ With a **write token** of an owner, webhooks can also be created, changed and re
 
 ## Chat notifications
 
-Instead of JSON, a webhook can post a ready message to a chat. In the webhook form under **Settings → API & webhooks** choose the **format**:
+Instead of JSON, a webhook can post a ready message to a chat. On the webhook's page under **Settings → Webhooks**, choose the **format** in the card **Target**:
 
 | Format | Target | What arrives |
 | --- | --- | --- |
@@ -107,7 +107,7 @@ Next to the form a **preview** shows the message for a sample event, and below i
 **Slack**
 
 - *Messages only:* Create an app in Slack (api.slack.com/apps), turn on **Incoming Webhooks**, pick a channel and enter the address `https://hooks.slack.com/services/…` in Flowplan.
-- *With thread replies:* Give the app the `chat:write` scope under **OAuth & Permissions**, install it and enter the **Bot User OAuth Token** (`xoxb-…`) and the **channel ID** (in Slack: channel details, at the bottom); invite the bot to the channel (`/invite @App`). For replies, also enter the **signing secret** (Basic Information). After saving, the list shows a **Request URL** (`…/api/webhooks/slack/<id>`): turn on **Event Subscriptions** in the app, enter that address and subscribe to the bot event `message.channels` (`message.groups` for private channels). Replies in the thread of a Flowplan message then appear as a comment on the record – written in the name of the person who set up the webhook, prefixed with "Slack:". Threads are matched for 30 days.
+- *With thread replies:* Give the app the `chat:write` scope under **OAuth & Permissions**, install it and enter the **Bot User OAuth Token** (`xoxb-…`) and the **channel ID** (in Slack: channel details, at the bottom); invite the bot to the channel (`/invite @App`). For replies, also enter the **signing secret** (Basic Information). After saving, the webhook's page (card **Delivery**) shows a **Request URL** (`…/api/webhooks/slack/<id>`): turn on **Event Subscriptions** in the app, enter that address and subscribe to the bot event `message.channels` (`message.groups` for private channels). Replies in the thread of a Flowplan message then appear as a comment on the record – written in the name of the person who set up the webhook, prefixed with "Slack:". Threads are matched for 30 days.
 
 **Matrix**
 
@@ -154,7 +154,7 @@ With the event **Due today** (`digest.due`, "daily at …") a list of the open r
 
 ## Inbound e-mail
 
-Workspace owners create addresses under **Settings → Workspace → Inbound e-mail** that file incoming e-mail in Flowplan:
+Workspace owners create addresses with **Create address** under **Settings → General → Inbound e-mail** that file incoming e-mail in Flowplan:
 
 - **Target page**: every e-mail becomes a new subpage. The subject is the title, the text (cleaned HTML or plain text) the content, with sender and date above it. Attachments become files of the new page; embedded images (`cid:`) appear in place, all other attachments as a list below.
 - **Target database**: every e-mail becomes a record. The subject is the title, the text the record's content, the sender address goes into the first e-mail property (if there is one), the e-mail's date is the creation date, and attachments go into the first files property (otherwise as a list into the content).

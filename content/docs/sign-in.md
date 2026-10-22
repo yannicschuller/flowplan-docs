@@ -12,14 +12,16 @@ Ohne weitere Einrichtung zeigt die Anmeldeseite ein Formular für E-Mail und Pas
 - **Passwörter** haben mindestens 10 Zeichen und werden mit scrypt gespeichert. Nach 8 Fehlversuchen für eine Adresse (oder 30 von einer IP-Adresse) ist für 15 Minuten Pause.
 - **Passwort vergessen**: Mit eingerichtetem [E-Mail-Versand](/configuration#e-mail-smtp) schickt die Anmeldeseite einen Link, der zwei Stunden gilt. Ohne E-Mail erzeugt die Administration unter **Benutzer → Link zum Zurücksetzen** einen Link zum Weitergeben. Nach dem Zurücksetzen sind alle bisherigen Sitzungen beendet.
 - **Admin-Recht**: Unter **Benutzer** gibt die Administration es weiter (**Zum Admin machen**) oder entzieht es; eine Person muss die Instanz immer verwalten.
-- Name und Passwort ändert jede Person unter **Einstellungen → Allgemein → Dein Profil**. Nach einer Passwortänderung sind alle anderen Sitzungen beendet; die aktuelle bleibt angemeldet.
+- Name und Passwort ändert jede Person unter **Einstellungen → Konto & Sicherheit** (Karte **Profil** bzw. **Passwort ändern …** in **Anmeldung & Sicherheit**). Der Name wird gespeichert, sobald du das Feld verlässt. Nach einer Passwortänderung sind alle anderen Sitzungen beendet; die aktuelle bleibt angemeldet.
 - Registrierung und „Passwort vergessen“ sind pro Adresse bzw. Netzwerkadresse begrenzt (höchstens eine Reset-Mail alle fünf Minuten pro Konto).
 
 `FLOWPLAN_LOCAL_LOGIN=false` schaltet E-Mail, Passwort und Passkeys ab – dann gibt es nur Single Sign-on.
 
 ## Passkeys
 
-Mit einem Passkey meldest du dich per Fingerabdruck, Gesichtserkennung oder Geräte-PIN an, ohne Passwort. Angelegt werden Passkeys unter **Einstellungen → Allgemein → Dein Profil → Passkey hinzufügen**; danach genügt auf der Anmeldeseite **Mit Passkey anmelden**.
+Mit einem Passkey meldest du dich per Fingerabdruck, Gesichtserkennung oder Geräte-PIN an, ohne Passwort. Angelegt werden Passkeys unter **Einstellungen → Konto & Sicherheit → Passkey hinzufügen**; danach genügt auf der Anmeldeseite **Mit Passkey anmelden**.
+
+Unter **Einstellungen → Konto & Sicherheit** stehen in der Karte **Anmeldung & Sicherheit** Passwort, Zwei-Faktor-Anmeldung, Passkeys und die angemeldeten Geräte untereinander, jeweils mit ihrem Zustand („Aus“, „An · 8 Codes übrig“, „2 Passkeys“). **Konto löschen** steht ganz unten in der **Gefahrenzone**. Direkt öffnen lassen sich die Karten mit Adressen wie `/#settings/account/passkeys` oder `/#settings/account/two-factor`.
 
 - Passkeys gibt es für Konten mit E-Mail und Passwort. SSO-Konten melden sich beim Anbieter an, der seinerseits Passkeys anbieten kann.
 - Passkeys gehören zur Domain aus `APP_URL`. Sie brauchen HTTPS (oder `http://localhost` beim Entwickeln); eine reine IP-Adresse funktioniert nicht. Wer die Domain wechselt, legt die Passkeys neu an.
@@ -30,7 +32,7 @@ Mit einem Passkey meldest du dich per Fingerabdruck, Gesichtserkennung oder Ger�
 
 Konten mit E-Mail und Passwort können zusätzlich eine Authenticator-App nutzen, etwa Aegis, 2FAS, Google Authenticator oder 1Password.
 
-1. **Einstellungen → Allgemein → Zwei-Faktor-Anmeldung → Authenticator-App einrichten.**
+1. **Einstellungen → Konto & Sicherheit → Zwei-Faktor-Anmeldung → Authenticator-App einrichten.**
 2. Den QR-Code mit der App scannen – oder den angezeigten Schlüssel abtippen.
 3. Mit dem aktuellen sechsstelligen Code bestätigen.
 4. Die zehn **Wiederherstellungscodes** sicher aufbewahren. Sie werden nur einmal angezeigt, jeder funktioniert genau einmal.
@@ -39,13 +41,13 @@ Bei der Anmeldung fragt Flowplan nach dem Passwort nach dem Code aus der App (od
 
 - Ein Code gilt nur einmal; Codes aus dem vorigen und nächsten 30-Sekunden-Fenster werden angenommen, damit eine leicht falsch gehende Uhr nicht stört.
 - Zu viele falsche Codes sperren für 15 Minuten.
-- **Passkeys** reichen allein: Wer sich mit einem Passkey anmeldet, braucht keinen Code – auch wenn die App eingeschaltet ist. Wer zusätzlich einen Code möchte, schaltet unter **Einstellungen → Allgemein → Zwei-Faktor-Anmeldung** die Option **Auch nach dem Passkey einen Code verlangen** ein. Ausschalten verlangt das Passwort oder einen aktuellen Code.
+- **Passkeys** reichen allein: Wer sich mit einem Passkey anmeldet, braucht keinen Code – auch wenn die App eingeschaltet ist. Wer zusätzlich einen Code möchte, schaltet unter **Einstellungen → Konto & Sicherheit → Zwei-Faktor-Anmeldung → Verwalten** die Option **Auch nach dem Passkey einen Code verlangen** ein. Ausschalten verlangt das Passwort oder einen aktuellen Code.
 - **SSO-Konten** regeln den zweiten Faktor beim Anbieter; **API-Tokens** sind nicht betroffen.
 - **Ausschalten** und **neue Wiederherstellungscodes** verlangen das Passwort oder einen aktuellen Code.
 - Auch nach **Passwort vergessen** bleibt der zweite Schritt bestehen.
 - Telefon verloren und keine Codes mehr? Die Administration kann die Zwei-Faktor-Anmeldung zurücksetzen ([Administration → Benutzer](/administration#benutzer)).
 
-Admins können die Zwei-Faktor-Anmeldung für alle lokalen Konten oder nur für Admins verlangen ([Administration → Instanz](/administration#instanz)). Konten ohne App und ohne Passkey richten dann direkt nach der Anmeldung einen zweiten Faktor ein, bevor sie Flowplan nutzen; Konten mit Passkey, aber ohne App melden sich mit dem Passkey an.
+Admins können die Zwei-Faktor-Anmeldung für alle lokalen Konten oder nur für Admins verlangen ([Administration → Anmeldung & SSO](/administration#anmeldung-sso)). Konten ohne App und ohne Passkey richten dann direkt nach der Anmeldung einen zweiten Faktor ein, bevor sie Flowplan nutzen; Konten mit Passkey, aber ohne App melden sich mit dem Passkey an.
 
 > [!IMPORTANT]
 > Die Schlüssel der Apps werden verschlüsselt gespeichert – mit `FLOWPLAN_ENCRYPTION_KEY`, sonst `FLOWPLAN_SECRETS_KEY`, sonst mit der automatisch angelegten Datei `secrets.key` im Datenordner ([Konfiguration](/configuration#gespeicherte-geheimnisse)). Diese Datei oder den Schlüssel unbedingt mitsichern: Die Instanzsicherung enthält sie bewusst nicht. Ohne sie funktionieren nach einer Wiederherstellung nur noch die Wiederherstellungscodes.
@@ -101,7 +103,7 @@ SESSION_HOURS=8
 
 Gruppen aus dem Identitätsanbieter (der Claim aus `OIDC_GROUPS_CLAIM`) können Mitgliedschaft und Gruppen in Arbeitsbereichen geben – so verwaltet ihr den Zugang zentral im Anbieter.
 
-- **Admins** ordnen Gruppen zu – für jeden Arbeitsbereich zentral unter **Administration → Arbeitsbereiche → SSO-Gruppen zentral zuordnen** oder, wenn sie dort Eigentümer sind, unter **Einstellungen → Gruppen & Rechte → SSO-Gruppen**.
+- **Admins** ordnen Gruppen zu – für jeden Arbeitsbereich zentral unter **Administration → Anmeldung & SSO → SSO-Gruppen zentral zuordnen** oder, wenn sie dort Eigentümer sind, unter **Einstellungen → Gruppen & Rechte → SSO-Gruppen**.
 - **Eigentümer**, die keine Admins sind, sehen dort die Zuordnungen ihres Arbeitsbereichs, ändern sie aber nicht. Eine Zuordnung holt Personen der ganzen Instanz in einen Arbeitsbereich und zeigt dort ihre Adressen – das entscheidet die Administration.
 - Eine Zuordnung gibt eine **Rolle** (Ansehen, Bearbeiten, Eigentümer), eine **Gruppe des Arbeitsbereichs** (für [Seitenrechte](/workspaces-and-permissions#gruppen)) oder beides.
 
@@ -125,7 +127,7 @@ Mit SCIM 2.0 legt der Identitätsanbieter Konten in Flowplan an, hält Name und 
 
 **Einrichten**
 
-1. **Administration → Benutzer → Benutzerverwaltung (SCIM/LDAP)**: **Token erstellen**. Der Token beginnt mit `fpscim_` und wird nur einmal angezeigt; gespeichert ist nur sein Hash. Widerrufen geht jederzeit.
+1. **Administration → Anmeldung & SSO → SCIM-Token**: **Token erstellen**. Der Token beginnt mit `fpscim_` und wird nur einmal angezeigt; gespeichert ist nur sein Hash. Widerrufen geht jederzeit.
 2. Beim Anbieter die **SCIM-Basis-URL** `<APP_URL>/api/scim/v2` und den Token als **Bearer-Token** eintragen.
 3. Im Anbieter Personen und Gruppen der App zuweisen bzw. „Push Groups“ einschalten.
 
@@ -155,7 +157,7 @@ Ist `LDAP_URL` gesetzt, prüft das Passwortfeld der Anmeldeseite Namen gegen ein
 - **Gruppen** kommen aus `LDAP_GROUP_ATTRIBUTE` (Standard `memberOf`): Flowplan nimmt den Gruppennamen (das erste RDN, meist der CN, z. B. `flowplan-admins`) **und** den vollständigen DN. Beides kann in den [SSO-Zuordnungen](#sso-gruppen-arbeitsbereichen-zuordnen) und als `OIDC_ADMIN_GROUP` stehen.
 - **Stündlicher Abgleich**: Flowplan liest alle LDAP-Konten neu – Gruppen, Name, Adresse. Wer im Verzeichnis fehlt oder dort gesperrt ist (Active Directory `userAccountControl`, 389 DS `nsAccountLock`, OpenLDAP-ppolicy `pwdAccountLockedTime`), wird deaktiviert; ist die Person wieder da, wird sie wieder aktiviert. Von Admins deaktivierte Konten bleiben deaktiviert. Würde ein Lauf mehr als die Hälfte (mindestens fünf) der Konten deaktivieren, bricht er ab – das ist eher eine falsche Konfiguration.
 - Die **Zwei-Faktor-Anmeldung** gilt wie bei Passwörtern: LDAP-Konten können eine Authenticator-App einrichten, und die Vorgabe der Instanz („Admins“ oder „alle“) gilt auch für sie.
-- **Administration → Benutzer** zeigt den Status, **Verbindung testen** und **Jetzt abgleichen** mit dem letzten Ergebnis.
+- **Administration → Anmeldung & SSO → LDAP-Verzeichnis** zeigt den Status, **Verbindung testen** und **Jetzt abgleichen** mit dem letzten Ergebnis.
 
 | Variable | Standard | Bedeutung |
 | --- | --- | --- |
@@ -199,7 +201,7 @@ Normalerweise endet eine Sitzung `SESSION_HOURS` nach der Anmeldung (Standard 8 
 
 Ohne `SESSION_REMEMBER` ändert sich nichts. Wer die Option nachträglich ausschaltet, beendet das Verlängern; laufende Sitzungen enden dann zu ihrem nächsten Ablauf.
 
-**Einstellungen → Konto → Angemeldete Geräte** listet alle eigenen Sitzungen mit Gerät, letzter Nutzung und Ende; **Abmelden** beendet eine einzelne, **Alle anderen Geräte abmelden** alle bis auf die aktuelle.
+**Einstellungen → Konto & Sicherheit → Angemeldete Geräte** listet alle eigenen Sitzungen mit Gerät, letzter Nutzung und Ende; **Abmelden** beendet eine einzelne, **Alle anderen Geräte abmelden** alle bis auf die aktuelle.
 
 ## Sicherheit
 

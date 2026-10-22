@@ -6,9 +6,9 @@ A workspace belongs to a team: its own members, groups, spaces and templates. Pe
 
 - **Create**: the name at the top of the sidebar → **Create workspace**. The administrators decide whether everyone may do this.
 - **Switch**: via the same name; everyone can be a member of several workspaces.
-- **Settings → General**: change the name and icon, leave the workspace or – as an owner, after entering its name – delete it permanently.
+- **Settings → General**: change the name and icon (**Name & icon**). Leaving and deleting are at the end in the **Danger zone**; when a button is greyed out, the text above it says why.
 
-When **leaving**, a last owner has to make someone else an owner first; your own spaces are handed over to a remaining owner of your choice. **Deleting** removes all content, templates, files and shares for all members and cannot be undone.
+When **leaving**, a last owner has to make someone else an owner first under **Settings → Members**; your own spaces are handed over to a remaining owner of your choice. **Deleting** is only possible once you have another workspace; it removes all content, templates, files and shares for all members and cannot be undone. Both are confirmed with the workspace's name.
 
 ## Roles
 
@@ -21,7 +21,7 @@ When **leaving**, a last owner has to make someone else an owner first; your own
 
 ## Invite members
 
-**Settings → Members → Invite member**: enter an e-mail address and role. If e-mail is set up on the instance, the person gets an invitation. They create an account with this address – even if sign-ups are otherwise closed – or sign in with SSO; the workspace appears as soon as the address is confirmed. Without e-mail, copy the **invitation link** of the pending invitation (**Copy link**) and send it to them yourself.
+**Settings → Members → Invite member** opens a sheet (from the bottom on phones): e-mail address, role and – if needed – **Invite as a guest**. If e-mail is set up on the instance, the person gets an invitation. They create an account with this address – even if sign-ups are otherwise closed – or sign in with SSO; the workspace appears as soon as the address is confirmed. Without e-mail, afterwards copy the **invitation link** under **Pending invitations** (**Copy link**) and send it to them yourself.
 
 **Only confirmed addresses:** an existing account takes over an invitation on its own only when its address provably belongs to it – confirmed with the e-mail link, by an administrator or by the SSO provider. Otherwise (for instance on an instance without e-mail, where any address can sign up) only the invitation link counts: whoever opens it and signs in or signs up accepts the invitation. So give the link only to the person invited.
 
@@ -35,7 +35,7 @@ Guests are people outside the team, such as customers or freelancers. They only 
 
 ## Groups
 
-**Settings → Groups & permissions**: form groups such as "Design" or "Sales", add members and give the group access to spaces or pages. New members of a group get its permissions right away.
+**Settings → Groups & permissions**: under **Groups** create a group such as "Design" or "Sales" and tick members with **Manage** (with a search when there are many). Under **Access to spaces** set each space's visibility and below it **View** or **Edit** per group; single pages get a group through **Share**. New members of a group get its permissions right away.
 
 With single sign-on, groups from the identity provider can maintain members and groups automatically – see [Map SSO groups](/sign-in#map-sso-groups-to-workspaces).
 

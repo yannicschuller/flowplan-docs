@@ -4,7 +4,7 @@ Flowplan ist eine Open-Source-Alternative zu Notion, Confluence und AppFlowy unt
 
 ## Confluence, Evernote, Google Docs und Obsidian
 
-Unter **Einstellungen → Daten → Aus Confluence, Evernote, Google Docs oder Obsidian importieren** wählst du die Quelle (oder lässt sie erkennen), den Zielbereich und ob eine Seitenstruktur oder eine **neue Datenbank** entstehen soll. Dann die Datei auswählen:
+Unter **Einstellungen → Import & Export → Import** wählst du oben den Zielbereich und bei **Confluence, Evernote, Google Docs oder Obsidian** die Quelle (oder lässt sie erkennen) und ob eine Seitenstruktur oder eine **neue Datenbank** entstehen soll. Dann die Datei auswählen:
 
 1. Flowplan lädt die Datei hoch (mit Fortschrittsanzeige) und zeigt eine **Vorschau**: wie viele Seiten, Ordner, Dateien (mit Größe) und Tags übernommen werden und was nicht geht – etwa verschlüsselter Text, nicht unterstützte Makros oder Bilder, die im Export fehlen.
 2. **Importieren** legt alles in einem Schritt an. Schlägt etwas fehl, bleibt nichts halb importiert zurück.
@@ -21,7 +21,7 @@ Für alle Quellen gilt:
 ## Von Notion
 
 1. In Notion: **Einstellungen → Exportieren** (für den ganzen Arbeitsbereich) oder im Menü **…** einer Seite **Exportieren**. Als Format **Markdown & CSV** wählen und **Unterseiten einschließen** aktivieren.
-2. In Flowplan: **Einstellungen → Daten**, das ZIP auswählen und den Bereich, in den es kommt.
+2. In Flowplan: **Einstellungen → Import & Export → Import**, oben den Zielbereich wählen und bei **Notion, AppFlowy oder Markdown-Export (ZIP)** das ZIP auswählen.
 3. Fertig – der Import läuft in einem Schritt. Schlägt er fehl, bleibt nichts halb importiert zurück.
 
 Was daraus wird:
@@ -39,7 +39,7 @@ Grenzen pro Import: 100 MB, 500 Seiten und 5.000 Einträge je Tabelle. Größere
 
 1. In AppFlowy Seiten als **Markdown** und Datenbanken als **CSV** exportieren.
 2. Die Dateien in einen Ordner legen – Unterordner werden zu Unterseiten – und als ZIP packen.
-3. In Flowplan unter **Einstellungen → Daten** importieren.
+3. In Flowplan unter **Einstellungen → Import & Export → Import** importieren.
 
 Markdown wird zu Seiten, CSV zu Datenbanken; verlinkte Bilder und Dateien werden mitgenommen.
 
@@ -83,7 +83,7 @@ Was daraus wird:
 
 ## Von Obsidian und anderen Markdown-Ordnern
 
-- **Ein Tresor als Seiten:** den Tresor-Ordner (mit dem Ordner `.obsidian`) als ZIP packen und unter **Einstellungen → Daten** importieren – über **Aus Confluence, Evernote, Google Docs oder Obsidian importieren** mit Vorschau oder über den Notion-/Markdown-Import, der einen Tresor ebenfalls erkennt.
+- **Ein Tresor als Seiten:** den Tresor-Ordner (mit dem Ordner `.obsidian`) als ZIP packen und unter **Einstellungen → Import & Export → Import** importieren – über **Confluence, Evernote, Google Docs oder Obsidian** mit Vorschau oder über den Notion-/Markdown-Import, der einen Tresor ebenfalls erkennt.
   - **Ordner** werden zu Seiten mit ihren Notizen darunter. Eine **Ordnernotiz** (`Projekte/Projekte.md` oder `Projekte.md` neben dem Ordner) wird selbst zur Seite des Ordners.
   - **Wikilinks** `[[Seite]]`, `[[Seite|Text]]`, `[[Ordner/Seite]]` und `[[Seite#Überschrift]]` werden zu Links auf die importierten Seiten – aufgelöst wie in Obsidian über den Pfad oder den Dateinamen. Links auf Notizen, die es nicht gibt, bleiben Text.
   - **Eingebettete Dateien** `![[bild.png]]` werden zu Bildern, `![[datei.pdf]]` zu Dateilinks; eingebettete Notizen `![[Notiz]]` werden zu Links.

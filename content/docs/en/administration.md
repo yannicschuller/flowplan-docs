@@ -1,77 +1,115 @@
 # Administering the instance
 
-Whoever administers the instance sees **Administration** in the sidebar: the instance's first account and everyone it gives the admin right to – with single sign-on also the members of the group in `OIDC_ADMIN_GROUP`. There they manage accounts, workspaces, operations, the instance's settings and the activity log.
+Whoever administers the instance sees **Administration** in the sidebar: the instance's first account and everyone it gives the admin right to – with single sign-on also the members of the group in `OIDC_ADMIN_GROUP`.
 
-The bar at the top shows what is running: the **version**, the **commit** (linked to GitHub) and the build date. Docker images from our workflow know their commit; with Coolify it comes from `SOURCE_COMMIT`. For your own build pass `--build-arg GIT_COMMIT=$(git rev-parse HEAD)`, otherwise it says "commit unknown".
+## Overview
+
+The administration opens with an overview. At the top is the state of the instance: problems and notices (linked to the area concerned), four live figures – people active now, requests per minute, error rate of the last hour, sign-ins today – and the requests of the last 24 hours as a chart. The figures refresh every 15 seconds while the page is visible (“Live”). Below, one tile per area with its state and, where it fits, a figure with its trend: active people (Users), the fullest quota (Workspaces), storage of the last 30 days, AI tokens today, changes in the activity log, requests or errors (Monitoring). Errors are marked red, notices yellow. On phones the tiles are a list with a small trend on the right.
+
+The sections are grouped into **People** (Users, Sign-in & SSO, Workspaces), **Data** (Storage & backup, Limits & retention, Markdown & Git export), **Services** (E-mail, AI, Extensions & domains), **Security** (Encryption, Activity log) and **Operations** (Monitoring, Maintenance & notices, Instance). Every section starts with a **status line** – e.g. “Scheduled backup off” with a link to the switch, or “S3 off” with a link to the guide. Every setting has exactly one home. Switches and choices save at once, with “Saving …” or “Saved” next to them; single text fields show **Save** once you have changed them. Every section has its own address, e.g. `/#admin/storage` or `/#admin/monitoring`.
 
 ## Users
 
-All accounts of the instance with their last sign-in and the storage they use. **Manage** opens an account:
+All accounts as a searchable list (stacked on phones) with their state: **Active**, **Inactive** (30 days or more without signing in), **Disabled**, plus **Admin** and **E-mail unconfirmed**, the last sign-in and the storage used. The status filter shows only active, inactive or disabled accounts or admins. Several accounts at once: tick them, then **End sessions**, **Disable** or **Enable**.
 
-- **Limits** for this person: storage (everything they upload or copy – across all workspaces), number of own workspaces and the largest file. Bars show how much is used. Empty = instance default, 0 = unlimited; admins are not limited.
-- **Delete account …** appears once an account is disabled. The dialog says beforehand what happens: name, e-mail, password, passkeys, sessions and personal settings are deleted, as are workspaces where only this person was a member and their private spaces. Shared workspaces get another member as owner if needed; contributions there stay and appear as "Deleted account". Your own account and the last admin account cannot be deleted.
-- **Mark e-mail as confirmed** for accounts that have not opened the link from the confirmation e-mail yet.
-- **End sessions** signs a person out on all devices.
-- **Deactivate** locks an account immediately and ends all sessions; **Activate** releases it again.
-- For accounts with e-mail and password: **Make admin** or **Remove admin** (someone always administers the instance) and **Reset link** – a link for a new password, valid for two hours, to hand over when the instance does not send e-mails.
+**Manage** opens an account in a side panel (full screen on phones):
 
-Accounts with e-mail and password are created with **Create account** (see [Sign-in](/sign-in)); SSO accounts on their first sign-in via OIDC, and their admin right comes from the group at the provider.
+- **Usage and limits** for this person: storage (everything they upload or copy – across all workspaces), number of own workspaces and the largest file. Bars show how much is used. Empty = instance default, 0 = unlimited; admins are not limited. **Save limits** applies them.
+- **Access**:
+  - **AI features**: if [Administration → AI](/ai#for-admins) is set to "Selected people", you allow or deny AI per person here.
+  - **End sessions** signs the person out on all devices.
+  - For accounts with e-mail and password: **Make admin** or **Revoke admin** (someone always administers the instance) and **Reset link** – a link for a new password, valid for two hours, to hand over when the instance does not send e-mails.
+  - **Two-factor sign-in**: "2FA on", "2FA via passkey" or "2FA off". **Reset two-factor** (e.g. for a lost phone) turns off the account's authenticator app; this is recorded in the activity log, and the person gets an e-mail if the instance sends e-mail.
+  - **Mark e-mail as confirmed** for accounts that have not opened the link from the confirmation e-mail yet.
+- **Danger zone**: **Disable** blocks the account at once and ends all sessions; **Enable** releases it again. **Delete account …** is possible once an account is disabled. The dialog says beforehand what happens: name, e-mail, password, passkeys, sessions and personal settings are deleted, as are workspaces where only this person was a member and their private spaces. Shared workspaces get another member as owner if needed; contributions there stay and appear as "Deleted account". Your own account and the last admin account cannot be deleted.
 
-- **Two-factor:** the list shows "2FA on", "2FA via passkey" or "2FA off". **Reset two-factor** (e.g. for a lost phone) turns off the account's authenticator app; this is recorded in the activity log, and the person gets an e-mail if the instance sends e-mail.
-- **AI:** if [Administration → AI](/ai#for-admins) is set to "Selected people", you allow or deny AI per person here.
+Accounts with e-mail and password are created with **Create account** (see [Sign-in](/sign-in)); SSO accounts on their first sign-in via OIDC, and their admin right comes from the group at the provider. Whether people may sign up themselves is set under [Sign-in & SSO](#sign-in-sso).
+
+## Sign-in & SSO
+
+- **Sign-up & access**: **Sign-up with email and password** (anyone may create an account; without this setting only invited addresses and the instance's first account), **Everyone may create workspaces** and **Block inactive accounts** after a number of days without signing in. Blocked accounts lose their sessions and their API tokens stop working; the block appears in the activity log and can be lifted under **Users**.
+- **Two-factor sign-in**: **Require two-factor sign-in** – not required, only for admins or for all local accounts –, plus how many local accounts already have a second factor. Accounts without an authenticator app and without a passkey set up a second factor right after signing in ([Two-factor sign-in](/sign-in#two-factor-sign-in)). SSO accounts are not affected.
+- **Single sign-on (OIDC)**: whether a provider is set up, the admin group and **Map SSO groups centrally** – provider groups get roles and groups in any workspace ([SSO groups](/sign-in#map-sso-groups-to-workspaces)).
+- **SCIM tokens** and the **LDAP directory** with their state ([User provisioning (SCIM)](/sign-in#user-provisioning-scim), [Sign-in with LDAP](/sign-in#sign-in-with-ldap)).
 
 ## Workspaces
 
-All workspaces with their number of members, usage and storage quota. The quota can be overridden per workspace. With single sign-on, **Map SSO groups centrally** maps provider groups to roles and groups in any workspace ([SSO groups](/sign-in#map-sso-groups-to-workspaces)).
+All workspaces with members, pages, usage (a bar when there is a quota) and **Own quota** – saved when you leave the field. Empty = default, 0 = unlimited. The default is set under [Limits & retention](#limits-retention).
+
+## Storage & backup
+
+The one place for backups:
+
+- **Backups**: **S3 mirror** and **Litestream** with their state, the scheduled **Daily database backup** – a consistent copy of the database per day, with S3 in the bucket under `backups/`, otherwise in the data folder –, **Hourly instead of daily** (meant for encrypted backups in place of Litestream, see [Encryption](/storage-and-backups#encryption); keep more copies then, e.g. 72 for three days), **Backups kept**, the last backup and **Back up now**. The Markdown export still runs once a day.
+- **Usage**: what is local and what is in the bucket, by kind, and how the database is split.
+- **Whole instance → Download** creates a verified copy of the database and files while running. With `FLOWPLAN_ENCRYPTION_KEY` the file is encrypted (`.zip.enc`).
+- **Content**: how many workspaces, pages, databases, records, files, accounts and comments there are.
+- At the very end, in red: **Restore from backup**. An uploaded backup is checked and applied on the next restart; the previous state stays as `pre-restore-…` in the data directory. An encrypted backup is decrypted with the current or an earlier key.
+
+Details: [Storage and backups](/storage-and-backups).
+
+## Limits & retention
+
+| Setting | Effect |
+| --- | --- |
+| Storage per workspace | For workspaces without a quota of their own. |
+| Storage per person | For people without a limit of their own; everything they upload or copy. |
+| Own workspaces per person | How many workspaces a person may own. |
+| Largest upload | The limit per file in MB. |
+| Keep versions | Days after which automatic versions are deleted. |
+
+Empty fields fall back to the [environment variables](/configuration). Everyone sees their limits and the storage they use under **Settings → Account & security → Your limits**.
+
+## Markdown & Git export
+
+Choose pages and databases for the Markdown export, switch on the Git export of spaces, and the (deprecated) instance Git repository – see [Markdown export and Git](/storage-and-backups#markdown-export-and-git).
+
+## E-mail
+
+**Sending e-mail** shows the configured server, the sender, the queue and the last error; without SMTP a note with the variables ([E-mail (SMTP)](/configuration#e-mail-smtp)). **Test e-mail** checks the connection right away.
 
 ## AI
 
 Optional and off by default: provider (Ollama, OpenAI-compatible, Anthropic, Gemini), who may use AI, individual features and users' own keys. Everything in [AI](/ai#for-admins).
 
-## Operations
+## Extensions & domains
 
-The state of the instance: size of the database and uploads, queues, search index, versions and uptime; refused requests (failed sign-ins, limits, anonymous uploads), storage per workspace with its quota, the mail queue, failing webhooks and the last run of every background worker. Plus **alerts by webhook** and the **maintenance notice**, and below them the storage overview with the S3 connection, database backup and content figures. Details under [Operations and troubleshooting](/operations#administration-operations).
+**Block extensions from any HTTPS address** (off: only from `PLUGIN_ALLOWED_ORIGINS`) and **Custom domains for publications** – see [Block extensions](/plugins) and [Coolify and reverse proxies](/coolify-and-proxy#custom-domains-for-publications).
+
+## Encryption
+
+The key ID, earlier keys, how many files in the bucket are not yet encrypted with this key (**Encrypt existing objects** catches up), and what leaves the server unencrypted regardless (Litestream, Git export). See [Encryption](/storage-and-backups#encryption).
+
+## Activity log
+
+The latest changes with person, action and affected resource – such as shares, role changes, deletions, settings and the billing status of time entries –, searchable and filtered by person and kind, a list on phones. Under **Export**, optionally pick a from and to date (UTC, as stored) and download the log as **CSV** (semicolons, with BOM, for Excel) or as **JSON**. In the CSV, values a spreadsheet would run as a formula start with an apostrophe. Only signed-in administrators can export, never API tokens.
+
+## Monitoring
+
+Health, usage and events of the instance – live, with charts, queues, background workers, refused requests, alerts by webhook and the usage statistics. Details under [Operations and troubleshooting](/operations#administration-monitoring).
+
+## Maintenance & notices
+
+**Notice for everyone** – a banner for everyone until you clear it – and the **maintenance notice** with start and end, which disappears by itself afterwards ([Maintenance & notices](/operations#maintenance-notices)).
 
 ## Instance
 
 | Setting | Effect |
 | --- | --- |
-| Name | Appears in the sidebar and on the start page next to the logo. |
-| Notice | A banner for everyone, e.g. announced maintenance. |
-| Storage per workspace | For workspaces without a quota of their own. |
-| Storage per person | For people without a limit of their own; everything they upload or copy. |
-| Own workspaces per person | How many workspaces a person may own. |
-| Version retention | Days after which automatic versions are deleted. |
-| Maximum upload size | The limit per file in MB. |
-| Create workspaces | Whether everyone may create workspaces of their own. |
-| Allow sign-ups with e-mail and password | Anyone may create an account. Without this setting only invited addresses (and the instance's first account). |
-| Offer a public demo | Visitors try Flowplan without an account, see below. |
-| Require two-factor sign-in | Not required, only for admins, or for all local accounts. Accounts without an authenticator app and without a passkey set up a second factor right after signing in ([Two-factor sign-in](/sign-in#two-factor-sign-in)). SSO accounts are not affected. |
+| Instance name | Shown when signing in, in the sidebar and in the browser tab. |
+| Public demo | Visitors try Flowplan without an account, see [Demo](#demo). |
+| Version | Running **version**, **commit** (linked to GitHub) and build date. Docker images from our workflow know their commit; with Coolify it comes from `SOURCE_COMMIT`. For your own build pass `--build-arg GIT_COMMIT=$(git rev-parse HEAD)`, otherwise it says "commit unknown". When a newer version is out, a notice with **How to update** shows there. |
+| Admin group | The SSO or LDAP group from `OIDC_ADMIN_GROUP`. |
 
-The settings are grouped into **General**, **Access**, **Storage and limits** and **Versions and backup**; changes take effect with **Save**. Empty fields fall back to the [environment variables](/configuration). Everyone sees their limits and the storage they use under **Settings → General → Your limits**.
-
-### E-mail and scheduled backup
-
-- **E-mail delivery** shows the configured server, the queue and the last error; **Send test e-mail** checks the connection right away.
-- **Daily database backup**: a consistent copy of the database per day, with S3 in the bucket under `backups/`, otherwise in the data folder. The newest *n* are kept; **Back up now** creates one immediately.
-- **Hourly instead of daily**: one copy per hour – meant for encrypted backups in place of Litestream (see [Encryption](/storage-and-backups#encryption)). Keep more copies then, e.g. 72 for three days. The Markdown export still runs once a day.
-- **Encryption** shows the key ID, how many files in the bucket are not yet encrypted with this key (**Encrypt existing objects** catches up), and what leaves the server unencrypted regardless (Litestream, Git export).
-- **Lock accounts without sign-in after (days)**: locked accounts lose their sessions and their API tokens stop working; the lock appears in the activity log and can be lifted under **Users**.
-
-### Backup of the whole instance
-
-**Download backup** creates a verified copy of the database and files while running. An uploaded backup is checked and applied on the next restart; the previous state stays as `pre-restore-…` in the data directory. With `FLOWPLAN_ENCRYPTION_KEY` the downloaded file is encrypted (`.zip.enc`); on upload it is decrypted with the current or an earlier key.
+Below, **More instance settings** leads to the sections that earlier instance settings moved to.
 
 ## Demo
 
-The demo is off on every instance until an administrator switches it on.
+The demo is off on every instance until an administrator switches it on under **Administration → Instance → Public demo**.
 
-With **Offer a public demo**, the address `/demo` of your instance starts a demo (on flowplan.org the button **Try the demo** links there). Without an account it creates a demo guest with an example workspace of its own. Every demo gets fresh example pages that show all features: a welcome page, an editor tour with all blocks, a project database with relation, rollup, formula, recurrence and all views (table, board, calendar, timeline, gallery, list, feed, chart, form), a whiteboard, a journal and a small wiki.
+Then the address `/demo` of your instance starts a demo (on flowplan.org the button **Try the demo** links there). Without an account it creates a demo guest with an example workspace of its own. Every demo gets fresh example pages that show all features: a welcome page, an editor tour with all blocks, a project database with relation, rollup, formula, recurrence and all views (table, board, calendar, timeline, gallery, list, feed, chart, form), a whiteboard, a journal and a small wiki.
 
 - The demo ends with **End demo**, on signing out, after 45 minutes without activity and after three hours at the latest. Then the account, workspace, pages and files are deleted completely.
 - Demo guests cannot take anything outside: no publishing, no share links, no invitations, no further workspaces, no public forms, no administration.
 - Every demo workspace has 25 MB of storage. New demos are limited to five per hour and address and 40 at the same time.
-
-## Activity log
-
-The latest changes with person, action and affected resource – such as shares, role changes, deletions, settings and the billing status of time entries. For the **export**, optionally pick a from and to date (UTC, as stored) and download the log as **CSV** (semicolons, with BOM, for Excel) or as **JSON**. In the CSV, values a spreadsheet would run as a formula start with an apostrophe. Only signed-in administrators can export, never API tokens.
+- Running and total started demos are shown under **Administration → Monitoring → Instance in numbers**.

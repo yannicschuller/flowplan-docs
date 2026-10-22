@@ -8,7 +8,7 @@ Dokumente speichert Flowplan immer zuerst lokal im Browser (IndexedDB) und gleic
 
 ### Offline-Nutzung einschalten
 
-Unter **Einstellungen → Daten → Offline-Nutzung** speichert das Gerät zusätzlich die App, den Arbeitsbereich, alle lesbaren Seiten und später geöffnete Einträge und Dateien. Dann lassen sich auch ohne Verbindung Seiten öffnen, Dokumente und Datenbanken lesen und Text bearbeiten.
+Unter **Einstellungen → Offline & Geräte** speichert das Gerät zusätzlich die App, den Arbeitsbereich, alle lesbaren Seiten und später geöffnete Einträge und Dateien. Dann lassen sich auch ohne Verbindung Seiten öffnen, Dokumente und Datenbanken lesen und Text bearbeiten.
 
 - Online kommt immer der aktuelle Stand vom Server; die Kopie dient nur ohne Verbindung.
 - Ist die Anmeldung abgelaufen, zeigt Flowplan online die Anmeldeseite – ohne Verbindung öffnet die gespeicherte Kopie trotzdem.
@@ -23,7 +23,7 @@ Solange Flowplan geöffnet ist, gleicht es die Kopie selbst ab: beim Start, wenn
 - Läuft ein Abgleich länger, steht unten links kurz **Offline-Kopie wird aktualisiert …**.
 - Ist die Anmeldung abgelaufen, gleicht Flowplan nicht ab – die vorhandene Kopie bleibt unverändert.
 
-Unter **Einstellungen → Daten → Offline-Nutzung** steht der Stand, etwa „Offline-Kopie aktualisiert vor 2 Std. · 312 Seiten · 85 MB“. **Jetzt aktualisieren** lädt alle Seiten neu.
+Unter **Einstellungen → Offline & Geräte** steht der Stand, etwa „Offline-Kopie aktualisiert vor 2 Std. · 312 Seiten · 85 MB“. **Jetzt aktualisieren** lädt alle Seiten neu.
 
 **Auch Eintragsinhalte und Dateien speichern** legt zusätzlich die Dokumente aller Datenbank-Einträge und die Dateien der Seiten ab, auch wenn du sie noch nie geöffnet hast – höchstens 200 MB und nur, solange das Gerät genug Platz hat. Ohne Haken bleiben nur Einträge und Dateien, die du schon einmal geöffnet hast. Ausschalten entfernt die zusätzlich gespeicherten Einträge und Dateien.
 
@@ -56,13 +56,13 @@ Die Vorschau fragt, ob gespeichert wird **als Seite**, **als Eintrag** in einer 
 
 ### Web-Clipper im Browser
 
-Unter **Einstellungen → Daten → Web-Clipper und Lesezeichen** liegt der Knopf **In Flowplan speichern**. In die Lesezeichenleiste gezogen, öffnet er auf jeder Webseite ein kleines Fenster mit Titel, Adresse und dem markierten Text – dieselbe Vorschau wie beim Teilen. Nach dem Speichern schließt sich das Fenster.
+Unter **Einstellungen → Web-Clipper** liegt der Knopf **In Flowplan speichern**. In die Lesezeichenleiste gezogen, öffnet er auf jeder Webseite ein kleines Fenster mit Titel, Adresse und dem markierten Text – dieselbe Vorschau wie beim Teilen. Nach dem Speichern schließt sich das Fenster.
 
 ### Erfassen in eine Datenbank
 
 Für einen Eingang („Inbox“), etwa nach PARA: **Schnell erfassen** auf der Startseite, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>N</kbd>, `> erfassen` in der Schnellsuche oder – bei der installierten App – ein langer Druck auf das App-Symbol → **Erfassen** öffnen ein kleines Fenster mit Titel und Text. Gespeichert wird als Eintrag in der gewählten Datenbank; ohne Verbindung wartet er auf dem Gerät und wird angelegt, sobald die Verbindung zurück ist.
 
-**Als Standard zum Erfassen verwenden** (im Fenster) oder **Einstellungen → Daten → Web-Clipper und Lesezeichen → Erfassen** legt die Datenbank fest, die Teilen, Web-Clipper und Schnell erfassen vorwählen – je Person und Arbeitsbereich. Die Standardvorlage der Datenbank wird übernommen, so landen neue Einträge zum Beispiel direkt in der Ansicht „Eingang“.
+**Als Standard zum Erfassen verwenden** (im Fenster) oder **Einstellungen → Web-Clipper → Erfassen** legt die Datenbank fest, die Teilen, Web-Clipper und Schnell erfassen vorwählen – je Person und Arbeitsbereich. Die Standardvorlage der Datenbank wird übernommen, so landen neue Einträge zum Beispiel direkt in der Ansicht „Eingang“.
 
 ### Lesezeichen
 
@@ -74,7 +74,7 @@ Eine schlanke Desktop-App umschließt deine Flowplan-Instanz. Beim ersten Start 
 
 - Alle Daten bleiben auf dem Server.
 - Die App merkt sich Fenstergröße und -position, bietet deutsche Menüs und öffnet externe Links im Standardbrowser.
-- Die Offline-Nutzung funktioniert auch in der Desktop-App: **Einstellungen → Daten → Offline-Nutzung** in der App einschalten – die App hat eigene Offline-Kopien, getrennt von Browser oder installierter Web-App. Ohne Verbindung öffnet sie dann die gespeicherte Kopie; ihre eigene Offline-Seite (**Erneut versuchen**, **Profile**) erscheint nur, wenn auf dem Gerät keine Kopie liegt.
+- Die Offline-Nutzung funktioniert auch in der Desktop-App: **Einstellungen → Offline & Geräte** in der App einschalten – die App hat eigene Offline-Kopien, getrennt von Browser oder installierter Web-App. Ohne Verbindung öffnet sie dann die gespeicherte Kopie; ihre eigene Offline-Seite (**Erneut versuchen**, **Profile**) erscheint nur, wenn auf dem Gerät keine Kopie liegt.
 - **Mitteilungen:** Die App zeigt neue Benachrichtigungen aus dem Posteingang als Mitteilungen des Systems und die Zahl der ungelesenen am App-Symbol – auch bei minimiertem oder ausgeblendetem Fenster. Mehr unter [Mitteilungen in der Desktop-App](#mitteilungen-in-der-desktop-app).
 - Sie akzeptiert nur echte Flowplan-Instanzen – eine Adresse, hinter der etwas anderes läuft oder die auf eine andere Seite weiterleitet, wird abgelehnt.
 - **Mit Passkey anmelden** und **Mit SSO anmelden** öffnen die Anmeldung im Standardbrowser, wo Passkeys (iCloud-Schlüsselbund, Windows Hello, Passwortmanager) zur Verfügung stehen. Nach **In der App anmelden** übernimmt die App die Anmeldung; E-Mail und Passwort gehen direkt in der App. Das braucht Flowplan 0.3.3 oder neuer.
@@ -151,4 +151,4 @@ Nach dem Anmelden meldet sich die App bei der Instanz an: Der Eintrag gehört zu
 
 ## Hell und dunkel
 
-Flowplan folgt von sich aus dem Hell- oder Dunkelmodus deines Geräts – auch wenn er sich ändert, während Flowplan offen ist (etwa abends automatisch). Unter **Einstellungen → Allgemein → Erscheinungsbild** wählst du stattdessen fest **Hell** oder **Dunkel**; **Automatisch** folgt wieder dem Gerät. Die Wahl gilt pro Gerät. Anmeldung, öffentliche Seiten und Formulare, die Webseite und diese Dokumentation folgen ebenfalls dem Gerät, die Apps auch mit ihren eigenen Bildschirmen und Widgets.
+Flowplan folgt von sich aus dem Hell- oder Dunkelmodus deines Geräts – auch wenn er sich ändert, während Flowplan offen ist (etwa abends automatisch). Unter **Einstellungen → Darstellung & Sprache → Erscheinungsbild** wählst du stattdessen fest **Hell** oder **Dunkel**; **Automatisch** folgt wieder dem Gerät. Die Wahl gilt pro Gerät. Anmeldung, öffentliche Seiten und Formulare, die Webseite und diese Dokumentation folgen ebenfalls dem Gerät, die Apps auch mit ihren eigenen Bildschirmen und Widgets.

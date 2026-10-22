@@ -12,14 +12,16 @@ Without further setup, the sign-in page shows a form for e-mail and password.
 - **Passwords** have at least 10 characters and are stored with scrypt. After 8 failed attempts for an address (or 30 from one IP address) there is a 15-minute pause.
 - **Forgot password**: with [e-mail delivery](/configuration#e-mail-smtp) set up, the sign-in page sends a link that is valid for two hours. Without e-mail, the administrators create a link to hand over under **Users → Reset link**. After a reset all previous sessions are ended.
 - **Admin right**: under **Users**, the administrators pass it on (**Make admin**) or take it away; someone always has to administer the instance.
-- Everyone changes their name and password under **Settings → General → Your profile**. After a password change all other sessions end; the current one stays signed in.
+- Everyone changes their name and password under **Settings → Account & security** (card **Profile**, or **Change password …** in **Sign-in & security**). The name is saved when you leave the field. After a password change all other sessions end; the current one stays signed in.
 - Sign-ups and "Forgot password" are limited per address and network address (at most one reset e-mail every five minutes per account).
 
 `FLOWPLAN_LOCAL_LOGIN=false` turns off e-mail, password and passkeys – then only single sign-on remains.
 
 ## Passkeys
 
-With a passkey you sign in with your fingerprint, face recognition or device PIN, without a password. Passkeys are created under **Settings → General → Your profile → Add a passkey**; afterwards **Sign in with a passkey** on the sign-in page is all it takes.
+With a passkey you sign in with your fingerprint, face recognition or device PIN, without a password. Passkeys are created under **Settings → Account & security → Add a passkey**; afterwards **Sign in with a passkey** on the sign-in page is all it takes.
+
+Under **Settings → Account & security**, the card **Sign-in & security** lists password, two-factor sign-in, passkeys and the signed-in devices, each with its state (“Off”, “On · 8 codes left”, “2 passkeys”). **Delete account** is at the very bottom, in the **Danger zone**. Addresses such as `/#settings/account/passkeys` or `/#settings/account/two-factor` open a card directly.
 
 - Passkeys exist for accounts with e-mail and password. SSO accounts sign in with their provider, which may offer passkeys itself.
 - Passkeys belong to the domain in `APP_URL`. They need HTTPS (or `http://localhost` during development); a bare IP address does not work. Whoever changes the domain creates the passkeys anew.
@@ -30,7 +32,7 @@ With a passkey you sign in with your fingerprint, face recognition or device PIN
 
 Accounts with e-mail and password can add an authenticator app, such as Aegis, 2FAS, Google Authenticator or 1Password.
 
-1. **Settings → General → Two-factor sign-in → Set up an authenticator app.**
+1. **Settings → Account & security → Two-factor sign-in → Set up an authenticator app.**
 2. Scan the QR code with the app – or type the key shown.
 3. Confirm with the current six-digit code.
 4. Keep the ten **recovery codes** safe. They are shown only once, and each works exactly once.
@@ -39,13 +41,13 @@ When signing in, Flowplan asks for the code from the app (or a recovery code) af
 
 - A code counts only once; codes from the previous and the next 30-second window are accepted, so a slightly wrong clock doesn't matter.
 - Too many wrong codes block sign-in for 15 minutes.
-- **Passkeys** are enough on their own: signing in with a passkey needs no code – even with the app turned on. Whoever wants a code as well turns on **Also ask for a code after the passkey** under **Settings → General → Two-factor sign-in**. Turning it off needs the password or a current code.
+- **Passkeys** are enough on their own: signing in with a passkey needs no code – even with the app turned on. Whoever wants a code as well turns on **Also ask for a code after the passkey** under **Settings → Account & security → Two-factor sign-in → Manage**. Turning it off needs the password or a current code.
 - **SSO accounts** get their second factor from the provider; **API tokens** are not affected.
 - **Turning it off** and **new recovery codes** need the password or a current code.
 - **Forgot password** does not skip the second step.
 - Lost your phone and your codes? An administrator can reset two-factor sign-in ([Administration → Users](/administration#users)).
 
-Admins can require two-factor sign-in for all local accounts or only for admins ([Administration → Instance](/administration#instance)). Accounts without an app and without a passkey then set up a second factor right after signing in, before using Flowplan; accounts with a passkey but no app sign in with the passkey.
+Admins can require two-factor sign-in for all local accounts or only for admins ([Administration → Sign-in & SSO](/administration#sign-in-sso)). Accounts without an app and without a passkey then set up a second factor right after signing in, before using Flowplan; accounts with a passkey but no app sign in with the passkey.
 
 > [!IMPORTANT]
 > The apps' keys are stored encrypted – with `FLOWPLAN_ENCRYPTION_KEY`, otherwise `FLOWPLAN_SECRETS_KEY`, otherwise with the generated file `secrets.key` in the data folder ([Configuration](/configuration#stored-secrets)). Be sure to back up this file or the key: the instance backup deliberately leaves it out. Without it, only the recovery codes work after a restore.
@@ -101,7 +103,7 @@ SESSION_HOURS=8
 
 Groups from the identity provider (the claim in `OIDC_GROUPS_CLAIM`) can give membership and groups in workspaces – so you manage access centrally in the provider.
 
-- **Admins** map groups – for any workspace centrally under **Administration → Workspaces → Map SSO groups centrally**, or, where they are owners, under **Settings → Groups & permissions → SSO groups**.
+- **Admins** map groups – for any workspace centrally under **Administration → Sign-in & SSO → Map SSO groups centrally**, or, where they are owners, under **Settings → Groups & permissions → SSO groups**.
 - **Owners** who aren't admins see their workspace's mappings there but can't change them. A mapping brings people of the whole instance into a workspace and shows their addresses there – that is the administration's decision.
 - A mapping gives a **role** (View, Edit, Owner), a **workspace group** (for [page permissions](/workspaces-and-permissions#groups)) or both.
 
@@ -125,7 +127,7 @@ With SCIM 2.0 your identity provider creates accounts in Flowplan, keeps name an
 
 **Setting up**
 
-1. **Administration → Users → User provisioning (SCIM/LDAP)**: **Create token**. The token starts with `fpscim_` and is shown only once; only its hash is stored. You can revoke it at any time.
+1. **Administration → Sign-in & SSO → SCIM tokens**: **Create token**. The token starts with `fpscim_` and is shown only once; only its hash is stored. You can revoke it at any time.
 2. At the provider, enter the **SCIM base URL** `<APP_URL>/api/scim/v2` and the token as **bearer token**.
 3. Assign people and groups to the app at the provider, or turn on "Push Groups".
 
@@ -155,7 +157,7 @@ With `LDAP_URL` set, the password field of the sign-in page checks names against
 - **Groups** come from `LDAP_GROUP_ATTRIBUTE` (default `memberOf`): Flowplan takes the group's name (the first RDN, usually the CN, e.g. `flowplan-admins`) **and** the full DN. Either can be used in the [SSO group mappings](#map-sso-groups-to-workspaces) and as `OIDC_ADMIN_GROUP`.
 - **Hourly sync**: Flowplan reads all LDAP accounts again – groups, name, address. Whoever is missing from the directory or locked there (Active Directory `userAccountControl`, 389 DS `nsAccountLock`, OpenLDAP ppolicy `pwdAccountLockedTime`) is disabled; once they are back, they are enabled again. Accounts disabled by an admin stay disabled. A run that would disable more than half of the accounts (at least five) stops – that is more likely a wrong configuration.
 - **Two-factor sign-in** applies as for passwords: LDAP accounts can set up an authenticator app, and the instance's policy ("admins" or "everyone") applies to them too.
-- **Administration → Users** shows the status, **Test connection** and **Sync now** with the last result.
+- **Administration → Sign-in & SSO → LDAP directory** shows the status, **Test connection** and **Sync now** with the last result.
 
 | Variable | Default | Meaning |
 | --- | --- | --- |
@@ -199,7 +201,7 @@ Normally a session ends `SESSION_HOURS` after signing in (default 8 hours). With
 
 Without `SESSION_REMEMBER` nothing changes. Turning the option off later stops the extending; running sessions then end at their next expiry.
 
-**Settings → Account → Signed-in devices** lists all your own sessions with device, last use and end; **Sign out** ends a single one, **Sign out all other devices** all but the current one.
+**Settings → Account & security → Signed-in devices** lists all your own sessions with device, last use and end; **Sign out** ends a single one, **Sign out all other devices** all but the current one.
 
 ## Security
 

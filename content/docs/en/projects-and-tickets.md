@@ -100,7 +100,7 @@ A property of the type **Time tracking** adds up the time worked on a record. Op
 - **In the record**: **Start** and **Stop** – each person has at most one running timer, a new one stops the old one.
 - **Add time**: a duration as `45`, `1:30` or `1.5h`, with a date and a note.
 - **Correcting**: you delete your own entries; owners can correct everyone's.
-- **… → Time report**: the time report of this database, switchable to the whole workspace (see [Time reports and billing](#time-reports-and-billing)). The report across all databases is also under **Settings → Time**.
+- **… → Time report**: the time report of this database, switchable to the whole workspace (see [Time reports and billing](#time-reports-and-billing)). The report across all databases is also under **Settings → Time**; there the filters carry their labels above the report, two side by side on phones.
 
 ### Time reports and billing
 
@@ -141,7 +141,7 @@ A database can keep itself in step with the issues of a GitHub or GitLab reposit
 
 **Setting up the connection** (workspace owners and administrators):
 
-1. **Settings → API & webhooks → Connect GitHub or GitLab**.
+1. **Settings → Calendars & issues → Connect GitHub or GitLab**.
 2. Choose the provider; for an own server enter its address (empty for github.com or gitlab.com), the repository (`owner/name`) or project (`group/project`) and an access token that may read and write issues – on GitHub a fine-grained token with *Issues: Read and write*, on GitLab a token with the `api` scope.
 3. **Test connection** makes one call with the token; **Save** stores the token encrypted. It is never shown again.
 4. Optional **People**: one `login = e-mail` of a member per line. Assignees are matched through it.
@@ -178,7 +178,7 @@ Administrators allow own servers (GitHub Enterprise, self-hosted GitLab) with [`
 
 ## Import from Jira and Trello
 
-**Settings → Data → Import from Jira or Trello** takes a Jira CSV export (all fields) or a Trello JSON export.
+**Settings → Import & export → Import → Jira or Trello** takes a Jira CSV export (all fields) or a Trello JSON export.
 
 It becomes a new database with a table and a board. It brings over:
 - status or list, priority, type, labels, dates and story points,

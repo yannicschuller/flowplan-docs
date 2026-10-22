@@ -4,7 +4,7 @@ Mit persönlichen API-Tokens greifen Skripte, n8n oder Home Assistant auf Flowpl
 
 ## API-Tokens
 
-Unter **Einstellungen → API & Webhooks** legst du Tokens an: mit Namen, **Nur lesen**, **Lesen und schreiben** oder **Nur Browser-Erweiterung**. Das Token erscheint nur einmal – danach sieht man nur seinen Anfang. Ein Token **Nur lesen** wird bei jeder schreibenden Anfrage abgewiesen, auch bei Backup-Wiederherstellung und Datei-Uploads.
+Unter **Einstellungen → API & KI-Assistenten** legst du Tokens an: mit Namen, **Nur lesen**, **Lesen und schreiben** oder **Nur Browser-Erweiterung**. Das Token erscheint nur einmal – danach sieht man nur seinen Anfang. Ein Token **Nur lesen** wird bei jeder schreibenden Anfrage abgewiesen, auch bei Backup-Wiederherstellung und Datei-Uploads.
 
 - **Nur Browser-Erweiterung:** für die [Browser-Erweiterung](/browser-extension). Das Token erreicht nur /api/clipper/targets und /api/clipper/save; überall sonst gilt es als kein Token.
 
@@ -40,7 +40,7 @@ Um Claude, ChatGPT oder andere KI-Assistenten anzubinden, nutzt du den [MCP-Serv
 
 ## Webhooks
 
-Eigentümer eines Arbeitsbereichs legen Webhooks an: Adresse, Ereignisse und optional eine einzelne Datenbank.
+Webhooks haben einen eigenen Abschnitt: **Einstellungen → Webhooks** (Gruppe „Verbindungen“, nur für Eigentümer). Eigentümer eines Arbeitsbereichs legen dort mit **Webhook anlegen** Webhooks an: Adresse, Ereignisse und optional eine einzelne Datenbank. Die Liste zeigt jeden Webhook mit Format, letzter Zustellung und Ereignissen. Jeder Webhook hat eine eigene Seite (`/#settings/webhooks/<id>`) mit den Karten **Ziel** (Format, Adresse, Datenbank, Zugangsdaten für Slack/Matrix), **Ereignisse** (ein Schalter je Ereignis), **Nachricht** (nur Chat-Formate), **Vorschau** und – bei bestehenden Webhooks – **Zustellung** mit **Testnachricht senden**; gespeichert wird mit **Änderungen speichern**, gelöscht in der **Gefahrenzone** mit **Webhook löschen …**. Der geheime Schlüssel erscheint nach dem Anlegen einmal über der Liste.
 
 | Ereignis | Wann |
 | --- | --- |
@@ -80,9 +80,9 @@ const valid = timingSafeEqual(Buffer.from(expected), Buffer.from(req.headers["x-
 ### Zustellung
 
 - Antworten mit Status 2xx gelten als zugestellt; sonst wiederholt Flowplan bis zu sechs Mal mit wachsendem Abstand.
-- Die Liste zeigt je Webhook die letzte Zustellung oder den letzten Fehler.
+- Die Liste unter **Einstellungen → Webhooks** zeigt je Webhook Format, letzte Zustellung oder letzten Fehler und die Ereignisse.
 - Nur öffentliche HTTPS-Adressen sind erlaubt. Für Dienste im selben Netz (Home Assistant, n8n) setzt die Administration `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true`.
-- **Testnachricht senden** in der Liste schickt sofort eine Beispielnachricht und zeigt das Ergebnis; sie wird nicht wiederholt. Unter der letzten Zustellung steht außerdem der letzte Fehler mit Zeitpunkt.
+- **Testnachricht senden** in der Liste oder auf der Seite des Webhooks (Karte **Zustellung**) schickt sofort eine Beispielnachricht und zeigt das Ergebnis; sie wird nicht wiederholt. Unter der letzten Zustellung steht außerdem der letzte Fehler mit Zeitpunkt.
 
 ### Webhooks per API anlegen
 
@@ -90,7 +90,7 @@ Mit einem **Schreib-Token** eines Eigentümers lassen sich Webhooks auch per API
 
 ## Chat-Benachrichtigungen
 
-Statt JSON kann ein Webhook eine fertige Nachricht in einen Chat schicken. Im Webhook-Formular unter **Einstellungen → API & Webhooks** wählst du das **Format**:
+Statt JSON kann ein Webhook eine fertige Nachricht in einen Chat schicken. Auf der Seite des Webhooks unter **Einstellungen → Webhooks** wählst du in der Karte **Ziel** das **Format**:
 
 | Format | Ziel | Was ankommt |
 | --- | --- | --- |
@@ -107,7 +107,7 @@ Neben dem Formular zeigt eine **Vorschau** die Nachricht für ein Beispielereign
 **Slack**
 
 - *Nur Nachrichten:* In Slack eine App anlegen (api.slack.com/apps), **Incoming Webhooks** einschalten, einen Kanal wählen und die Adresse `https://hooks.slack.com/services/…` in Flowplan eintragen.
-- *Mit Antworten im Thread:* Der App unter **OAuth & Permissions** das Recht `chat:write` geben, installieren und den **Bot User OAuth Token** (`xoxb-…`) sowie die **Kanal-ID** (in Slack: Kanaldetails, ganz unten) eintragen; den Bot in den Kanal einladen (`/invite @App`). Für Antworten zusätzlich das **Signing Secret** (Basic Information) eintragen. Nach dem Speichern zeigt die Liste eine **Request URL** (`…/api/webhooks/slack/<id>`): In der App unter **Event Subscriptions** einschalten, diese Adresse eintragen und das Bot-Ereignis `message.channels` (bei privaten Kanälen `message.groups`) abonnieren. Antworten im Thread einer Flowplan-Nachricht erscheinen dann als Kommentar am Eintrag – geschrieben im Namen der Person, die den Webhook eingerichtet hat, mit dem Präfix „Slack:“. Threads werden 30 Tage lang zugeordnet.
+- *Mit Antworten im Thread:* Der App unter **OAuth & Permissions** das Recht `chat:write` geben, installieren und den **Bot User OAuth Token** (`xoxb-…`) sowie die **Kanal-ID** (in Slack: Kanaldetails, ganz unten) eintragen; den Bot in den Kanal einladen (`/invite @App`). Für Antworten zusätzlich das **Signing Secret** (Basic Information) eintragen. Nach dem Speichern zeigt die Seite des Webhooks (Karte **Zustellung**) eine **Request URL** (`…/api/webhooks/slack/<id>`): In der App unter **Event Subscriptions** einschalten, diese Adresse eintragen und das Bot-Ereignis `message.channels` (bei privaten Kanälen `message.groups`) abonnieren. Antworten im Thread einer Flowplan-Nachricht erscheinen dann als Kommentar am Eintrag – geschrieben im Namen der Person, die den Webhook eingerichtet hat, mit dem Präfix „Slack:“. Threads werden 30 Tage lang zugeordnet.
 
 **Matrix**
 
@@ -154,7 +154,7 @@ Mit dem Ereignis **Heute fällig** (`digest.due`, „täglich um …“) kommt e
 
 ## E-Mail-Eingang
 
-Eigentümer eines Arbeitsbereichs legen unter **Einstellungen → Arbeitsbereich → E-Mail-Eingang** Adressen an, die eingehende E-Mails in Flowplan ablegen:
+Eigentümer eines Arbeitsbereichs legen unter **Einstellungen → Allgemein → E-Mail-Eingang** mit **Adresse anlegen** Adressen an, die eingehende E-Mails in Flowplan ablegen:
 
 - **Ziel Seite**: Jede E-Mail wird eine neue Unterseite. Der Betreff ist der Titel, der Text (bereinigtes HTML oder reiner Text) der Inhalt, darüber Absender und Datum. Anhänge werden Dateien der neuen Seite; eingebettete Bilder (`cid:`) erscheinen an ihrer Stelle, alle übrigen Anhänge als Liste darunter.
 - **Ziel Datenbank**: Jede E-Mail wird ein Eintrag. Der Betreff ist der Titel, der Text der Inhalt des Eintrags, die Absenderadresse kommt in die erste E-Mail-Eigenschaft (falls vorhanden), das Datum der E-Mail ist das Erstelldatum, Anhänge kommen in die erste Datei-Eigenschaft (sonst als Liste in den Inhalt).

@@ -100,7 +100,7 @@ Eine Eigenschaft vom Typ **Zeiterfassung** summiert die Zeit, die an einem Eintr
 - **Im Eintrag**: **Start** und **Stopp** – jede Person hat höchstens einen laufenden Timer, ein neuer stoppt den alten.
 - **Nachtragen**: Dauer als `45`, `1:30` oder `1,5h`, mit Datum und Notiz.
 - **Korrigieren**: Eigene Einträge löschst du selbst; Verantwortliche können alle korrigieren.
-- **… → Zeiten auswerten**: der Zeitbericht dieser Datenbank, umschaltbar auf den ganzen Arbeitsbereich (siehe [Zeitberichte und Abrechnung](#zeitberichte-und-abrechnung)). Den Bericht über alle Datenbanken findest du auch unter **Einstellungen → Zeiten**.
+- **… → Zeiten auswerten**: der Zeitbericht dieser Datenbank, umschaltbar auf den ganzen Arbeitsbereich (siehe [Zeitberichte und Abrechnung](#zeitberichte-und-abrechnung)). Den Bericht über alle Datenbanken findest du auch unter **Einstellungen → Zeiten**; dort stehen die Filter mit Beschriftung über der Auswertung, auf dem Handy zwei nebeneinander.
 
 ### Zeitberichte und Abrechnung
 
@@ -141,7 +141,7 @@ Eine Datenbank kann sich mit den Issues eines GitHub- oder GitLab-Repositorys ab
 
 **Verbindung einrichten** (Eigentümer des Arbeitsbereichs und Administratoren):
 
-1. **Einstellungen → API & Webhooks → GitHub oder GitLab verbinden**.
+1. **Einstellungen → Kalender & Issues → GitHub oder GitLab verbinden**.
 2. Anbieter wählen, bei eigenem Server dessen Adresse eintragen (leer für github.com bzw. gitlab.com), Repository (`besitzer/name`) bzw. Projekt (`gruppe/projekt`) und ein Zugangstoken, das Issues lesen und schreiben darf – bei GitHub ein Fine-grained Token mit *Issues: Read and write*, bei GitLab ein Token mit dem Scope `api`.
 3. **Verbindung testen** macht einen Aufruf mit dem Token; **Speichern** legt das Token verschlüsselt ab. Angezeigt wird es danach nie wieder.
 4. Optional **Personen**: je Zeile `login = e-mail` eines Mitglieds. Darüber werden Zuständige (Assignees) zugeordnet.
@@ -178,7 +178,7 @@ Eigene Server (GitHub Enterprise, selbst betriebenes GitLab) gibt die Administra
 
 ## Import aus Jira und Trello
 
-**Einstellungen → Daten → Aus Jira oder Trello importieren** nimmt einen Jira-CSV-Export (alle Felder) oder einen Trello-JSON-Export.
+**Einstellungen → Import & Export → Import → Jira oder Trello** nimmt einen Jira-CSV-Export (alle Felder) oder einen Trello-JSON-Export.
 
 Daraus entsteht eine neue Datenbank mit Tabelle und Board. Übernommen werden:
 - Status bzw. Liste, Priorität, Typ, Labels, Termine und Story Points,

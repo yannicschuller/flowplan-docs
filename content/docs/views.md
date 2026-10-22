@@ -56,7 +56,7 @@ Google Kalender unterstützt keine CalDAV-Konten; dafür gibt es den Kalender-Sy
 
 Mit dem **Kalender-Sync** hältst du eine Ansicht mit Datum und einen Kalender in Google Kalender oder Microsoft Outlook / 365 in beide Richtungen gleich – persönlich, mit deinem eigenen Konto.
 
-1. **Einstellungen → Konto → Kalender verbinden** → **Mit Google Calendar verbinden** bzw. **Mit Microsoft Outlook / 365 verbinden**. Du meldest dich beim Anbieter an und erlaubst den Zugriff auf deine Kalender.
+1. **Einstellungen → Kalender & Issues → Kalender verbinden** → **Mit Google Calendar verbinden** bzw. **Mit Microsoft Outlook / 365 verbinden**. Du meldest dich beim Anbieter an und erlaubst den Zugriff auf deine Kalender.
 2. In der Datenbank das Kalendersymbol neben **…** (**Kalender-Sync**) öffnen, die Ansicht, das Konto und den Kalender wählen und **Verbinden**.
 
 Was synchronisiert wird:
@@ -72,7 +72,7 @@ Gut zu wissen:
 - **Konflikte**: Ändern beide Seiten denselben Termin, gewinnt die spätere Änderung. Das Protokoll hält jeden Konflikt fest.
 - **Rechte**: Nur Einträge, die du sehen und bearbeiten darfst, gehen in den Kalender und werden vom Kalender geändert. Workflow und Automationen gelten wie bei jeder Änderung.
 - **Zeitraum**: Termine von 90 Tagen zurück bis ein Jahr voraus. Wiederholte Termine aus dem Kalender kommen als einzelne Einträge an; ein wiederholter Eintrag geht mit seinem ersten Termin in den Kalender.
-- **Trennen** unter **Einstellungen → Konto** beendet alle Synchronisierungen dieser Verbindung. Den Zugriff kannst du zusätzlich in deinem Google- oder Microsoft-Konto widerrufen.
+- **Trennen** unter **Einstellungen → Kalender & Issues** beendet alle Synchronisierungen dieser Verbindung. Den Zugriff kannst du zusätzlich in deinem Google- oder Microsoft-Konto widerrufen.
 - Die Administration muss die Anbieter einmal einrichten, siehe [Konfiguration](/configuration#kalender-sync).
 
 ## Sprints

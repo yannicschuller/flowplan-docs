@@ -183,7 +183,7 @@ Under **Administration → AI**:
 1. **Turn on AI.**
 2. Choose the **instance provider** (or **No provider**, see below), enter address, model and – if needed – the **API key**. **Test connection.**
 3. **Who may use AI:**
-   - **All** or **Selected people** – enable the latter per person under **Administration → Users** ("May use AI features").
+   - **All** or **Selected people** – enable the latter per person under **Administration → Users → Manage** (**AI features**).
    - **Guests too** – when off, guests have no AI features.
    - **People may add their own provider/key** – then everyone can set up their own provider with their own key in their settings. This also works with no instance provider at all: people use AI with their own account at a provider, without the instance paying for it.
 4. **Features:** allow or forbid each one separately. Optionally turn on [semantic search](#semantic-search-optional).

@@ -46,7 +46,7 @@ Limits: 200 pages per PDF or EPUB export, 5,000 records, 100 MB of attachments (
 
 ### Export a whole space
 
-The download icon next to a space's name in the sidebar (or **Settings → Data → Export space as Markdown**) opens the space export. Besides the Markdown ZIP it offers **Space as PDF** (a print view of all pages of the space with a cover and a table of contents, see above) and **Space as e-book (EPUB)** – each with everything you may read, up to 200 pages (`GET /api/export/pdf?space=<id>` or `/api/export/epub?space=<id>`). The Markdown ZIP downloads the whole space as **one** archive – to archive, read offline or put into your own Git repository:
+The download icon next to a space's name in the sidebar (or **Settings → Import & export → Export → One space**) opens the space export. Besides the Markdown ZIP it offers **Space as PDF** (a print view of all pages of the space with a cover and a table of contents, see above) and **Space as e-book (EPUB)** – each with everything you may read, up to 200 pages (`GET /api/export/pdf?space=<id>` or `/api/export/epub?space=<id>`). The Markdown ZIP downloads the whole space as **one** archive – to archive, read offline or put into your own Git repository:
 
 - Every top-level page is in a folder of its own, `<title>-<id>/`, with everything below it – the same layout as the [scheduled Markdown export](/storage-and-backups#markdown-export-and-git). Inside, the format of **Markdown with files (.zip)** applies.
 - `index.md` at the top lists the space's pages; links between pages of the space are relative, links into other spaces keep pointing to Flowplan.
@@ -61,9 +61,11 @@ The download icon next to a space's name in the sidebar (or **Settings → Data 
 
 ## Import
 
-- **Markdown, text or HTML**: **Settings → Data → Import Markdown or text**. Headings, lists, tasks, tables, code (also `mermaid`) and formulas become blocks.
-- **Notion, AppFlowy or Markdown export**: **Settings → Data** accepts a ZIP with Markdown and CSV files. Markdown becomes pages, CSV databases, Excalidraw and draw.io files [whiteboards](/whiteboards#import-excalidraw-and-draw-io), folders sub-pages; linked images and files are uploaded, and Notion record pages are matched to their records. Up to 100 MB, 500 pages and 5,000 records per table; you choose the target space beforehand.
-- **Jira or Trello**: **Settings → Data → Import from Jira or Trello** – see [Projects, tickets and sprints](/projects-and-tickets#import-from-jira-and-trello).
+All imports are under **Settings → Import & export → Import**; at the top you choose the **Target space** once for all of them.
+
+- **Markdown, text or HTML**: **Markdown, text or HTML files**. Headings, lists, tasks, tables, code (also `mermaid`) and formulas become blocks.
+- **Notion, AppFlowy or Markdown export**: **Notion, AppFlowy or Markdown export (ZIP)** accepts a ZIP with Markdown and CSV files. Markdown becomes pages, CSV databases, Excalidraw and draw.io files [whiteboards](/whiteboards#import-excalidraw-and-draw-io), folders sub-pages; linked images and files are uploaded, and Notion record pages are matched to their records. Up to 100 MB, 500 pages and 5,000 records per table; you choose the target space beforehand.
+- **Jira or Trello**: **Jira or Trello** – see [Projects, tickets and sprints](/projects-and-tickets#import-from-jira-and-trello).
 - **CSV**: in a database, choose **Import CSV or Markdown** and pick a CSV file; the rows become records.
 - **Markdown with frontmatter into a database** (such as notes from Obsidian): in the database, choose **Import CSV or Markdown** and pick one or more `.md` files or a ZIP – see below.
 - **Content archive** (see below).
@@ -96,14 +98,16 @@ Before the import, a preview shows which properties match and which are missing.
 
 **Export:** in the ZIP export, every record under `records/` starts with `title:` and its properties: select as text, multi-select and relations (titles of the linked records) as lists, dates as ISO dates. Aliases are written under Obsidian's key `aliases:` as a list, so they survive a trip to Obsidian and back. Computed values and the record's id are below `flowplan:` and are skipped on import. When a record exported this way is imported into the same database again, the preview offers **update instead of adding**: the record with the same id gets the file's properties and text, and the previous state stays as a version. Without this choice it is added as a new record.
 
-**Pages:** when a page has [aliases](/pages-and-spaces#aliases), its Markdown file (single page, space export and scheduled export) starts with frontmatter that only holds `aliases:`; pages without aliases keep no frontmatter. The ZIP import under **Settings → Data** reads a note's `aliases:`/`alias:` as the aliases of the new page; frontmatter holding nothing but aliases is removed from the text, other frontmatter stays in the text as before. The Git export reads aliases of changed pages back as well.
+**Pages:** when a page has [aliases](/pages-and-spaces#aliases), its Markdown file (single page, space export and scheduled export) starts with frontmatter that only holds `aliases:`; pages without aliases keep no frontmatter. The ZIP import under **Settings → Import & export** reads a note's `aliases:`/`alias:` as the aliases of the new page; frontmatter holding nothing but aliases is removed from the text, other frontmatter stays in the text as before. The Git export reads aliases of changed pages back as well.
 
 **Where to export:** in a database's toolbar, **Export** opens a menu with **CSV (current view)**, **Markdown with files (.zip)**, **Markdown (.md)** and **As Word (DOCX)**. A single record is exported from the **…** menu in its header: **Export as Markdown (.md)** (with frontmatter), **Markdown with files (.zip)**, **As Word (DOCX)** (properties as a table, then the document) or **Print / PDF**.
 
 **From Obsidian:** links in the text are read as standard Markdown links. Convert wikilinks (`[[…]]`, `![[…]]`) first – in Obsidian, *Settings → Files and links*, turn off “Use [[Wikilinks]]” and choose relative paths.
 ## Content archive
 
-Under **Settings → Data** you download a ZIP of your workspace and import it elsewhere – also into another Flowplan instance.
+Under **Settings → Import & export → Export → Workspace as ZIP** you download a ZIP of your workspace. To bring it back – also into another Flowplan instance – use **Backups → Restore a Flowplan archive**: the archive is created as a copy in new private spaces.
+
+Backing up the whole instance (with accounts and permissions) is up to the administration: **Administration → Storage & backup**. The card **Trash & retention** leads to the trash and says how long things are kept: deleted pages and spaces until someone deletes them permanently, deleted database records 30 days; how long earlier versions stay is set by the administration.
 
 It contains: accessible pages including the trash, databases with views and records, document content, relations, templates, comments, versions, favourites and form options, plus all files with checksums.
 

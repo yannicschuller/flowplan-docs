@@ -18,7 +18,7 @@ Mit `S3_BUCKET` und Zugangsdaten (siehe [Konfiguration](/configuration#s3-und-da
 - **Dateien**: Jede hochgeladene Datei geht direkt nach dem Speichern in den Bucket, gelöschte Dateien werden dort entfernt. `uploads/` bleibt Arbeitskopie. Fehlt dort eine Datei – neuer Host, verlorenes Volume –, holt Flowplan sie aus dem Bucket: beim Abruf sofort, alle übrigen im Hintergrund.
 - **Datenbank**: [Litestream](https://litestream.io) überträgt Änderungen der SQLite-Datei etwa im Sekundentakt nach `<Präfix>/db`. Startet der Container ohne Datenbank, stellt Litestream sie zuerst aus dem Bucket wieder her.
 
-Beim ersten Start mit S3 lädt Flowplan alle vorhandenen Dateien hoch. Den Fortschritt zeigt `/api/health` unter `objectStorage.pending`, die Verbindung und die Verteilung lokal/S3 die **Administration → Betrieb**.
+Beim ersten Start mit S3 lädt Flowplan alle vorhandenen Dateien hoch. Den Fortschritt zeigt `/api/health` unter `objectStorage.pending`, die Verbindung und die Verteilung lokal/S3 **Administration → Speicher & Sicherung** (Karten **Sicherungen** und **Belegung**).
 
 Geeignet sind MinIO, Garage, SeaweedFS, AWS S3 und andere S3-kompatible Dienste.
 
@@ -47,7 +47,7 @@ Den S3-Dienst so starten, dass er auf allen Schnittstellen lauscht (`-ip.bind=0.
 
 ## Sicherungen
 
-1. **Instanzsicherung in Flowplan** (empfohlen): **Administration → Instanz → Sicherung der gesamten Instanz** lädt Datenbank und Dateien konsistent im laufenden Betrieb herunter.
+1. **Instanzsicherung in Flowplan** (empfohlen): **Administration → Speicher & Sicherung → Gesamte Instanz → Herunterladen** lädt Datenbank und Dateien konsistent im laufenden Betrieb herunter.
 2. **S3 mit Litestream**: laufende Sicherung; ein früherer Zeitpunkt lässt sich wiederherstellen (unten).
 3. **Geplante Sicherung**: täglich oder stündlich eine konsistente Kopie der Datenbank, mit S3 in den Bucket unter `backups/`, sonst in den Datenordner – mit Schlüssel verschlüsselt ([Verschlüsselung](#verschluesselung)).
 4. **Volume-Backup** des Hosts oder in Coolify. Für eine konsistente Kopie den Container vorher stoppen.
@@ -59,7 +59,7 @@ sqlite3 /app/data/flowplan.sqlite "VACUUM INTO '/backup/flowplan.sqlite'"
 
 Dazu `uploads/` und `web-push-keys.json` mitsichern.
 
-Das Inhaltsarchiv unter **Einstellungen → Daten** sichert einen Arbeitsbereich, ersetzt aber keine Instanzsicherung mit Konten und Rechten.
+Das Inhaltsarchiv unter **Einstellungen → Import & Export → Export → Arbeitsbereich als ZIP** sichert einen Arbeitsbereich, ersetzt aber keine Instanzsicherung mit Konten und Rechten.
 
 ## Verschlüsselung
 
@@ -91,7 +91,7 @@ FLOWPLAN_ENCRYPTION_KEY=<32 Bytes, base64>
 FLOWPLAN_ENCRYPTION_KEY_FILE=/run/secrets/flowplan-key
 ```
 
-**Administration → Instanz → Verschlüsselung** zeigt danach „Verschlüsselung an“ mit der Schlüssel-ID (die ersten Bytes eines Hashes, nicht der Schlüssel selbst). Ein falsch geformter Schlüssel erscheint dort als Fehler; Sicherungen schlagen dann fehl, statt unverschlüsselt zu landen.
+**Administration → Verschlüsselung** zeigt danach „Verschlüsselung an“ mit der Schlüssel-ID (die ersten Bytes eines Hashes, nicht der Schlüssel selbst). Ein falsch geformter Schlüssel erscheint dort als Fehler; Sicherungen schlagen dann fehl, statt unverschlüsselt zu landen.
 
 > [!CAUTION]
 > Ohne den Schlüssel sind verschlüsselte Sicherungen und Dateien verloren – auch für dich. Bewahre ihn getrennt von den Sicherungen auf (Passwortmanager, Tresor), nicht im selben Bucket und nicht nur auf demselben Server.
@@ -111,7 +111,7 @@ Es gibt keinen Migrationsschritt, und beim Start wird nichts umgeschrieben. Flow
 ### Schlüssel wechseln
 
 1. Den neuen Schlüssel als `FLOWPLAN_ENCRYPTION_KEY` setzen und den alten nach `FLOWPLAN_ENCRYPTION_KEY_PREVIOUS` verschieben (mehrere durch Komma getrennt), dann neu starten.
-2. In der Administration **Bestehende verschlüsseln** wählen. Alle Dateien im Bucket werden mit dem neuen Schlüssel neu verschlüsselt.
+2. Unter **Administration → Verschlüsselung** **Bestehende verschlüsseln** wählen. Alle Dateien im Bucket werden mit dem neuen Schlüssel neu verschlüsselt.
 3. Den alten Schlüssel aufheben, bis die letzte damit verschlüsselte Sicherung aus der Aufbewahrung gefallen ist.
 
 Jede verschlüsselte Datei nennt die ID ihres Schlüssels. Fehlt dieser Schlüssel, sagt Flowplan genau das, statt still kaputte Daten zu liefern.
@@ -120,7 +120,7 @@ Jede verschlüsselte Datei nennt die ID ihres Schlüssels. Fehlt dieser Schlüss
 
 Litestream (0.5) kann die Datenbank-Kopie selbst nicht verschlüsseln. Mit eingeschaltetem Schlüssel warnt die Administration deshalb, dass unter `<Präfix>/db/` eine unverschlüsselte Kopie liegt. Zwei Wege:
 
-1. **Nur verschlüsselte Sicherungen** (empfohlen bei einem Bucket, dem du nicht traust): `FLOWPLAN_LITESTREAM=off` setzen und unter **Administration → Instanz** die Option **Stündlich statt täglich** einschalten, dazu mehr Kopien aufbewahren (z. B. 72). Danach den Ordner `<Präfix>/db/` im Bucket löschen. Der Preis: Im schlimmsten Fall geht die letzte Stunde verloren statt der letzten Sekunden, und auf einem neuen Host stellst du die Datenbank aus der neuesten Sicherung her (unten).
+1. **Nur verschlüsselte Sicherungen** (empfohlen bei einem Bucket, dem du nicht traust): `FLOWPLAN_LITESTREAM=off` setzen und unter **Administration → Speicher & Sicherung → Sicherungen** die Option **Stündlich statt täglich** einschalten, dazu mehr Kopien aufbewahren (z. B. 72). Danach den Ordner `<Präfix>/db/` im Bucket löschen. Der Preis: Im schlimmsten Fall geht die letzte Stunde verloren statt der letzten Sekunden, und auf einem neuen Host stellst du die Datenbank aus der neuesten Sicherung her (unten).
 2. **Serverseitige Verschlüsselung beim Anbieter (SSE-C)**: `LITESTREAM_SSE_C_KEY` auf einen eigenen Schlüssel setzen (32 Bytes, base64). Der Anbieter verschlüsselt die Kopie und bekommt den Schlüssel dafür bei jeder Anfrage mit. Das schützt also vor geleakten Datenträgern oder Buckets, nicht vor dem Anbieter selbst. Das funktioniert nur über https und nur bei Anbietern, die SSE-C unterstützen (vorher prüfen). Vor dem Einschalten den Ordner `<Präfix>/db/` leeren, denn eine Kopie aus unverschlüsselten und SSE-C-Teilen lässt sich nicht wiederherstellen.
 
 ### Notfall: ohne laufende Instanz entschlüsseln
@@ -149,7 +149,7 @@ Die Verschlüsselung betrifft das, was den Server verlässt. Auf dem Server selb
 
 ## Markdown-Export und Git
 
-Eine lesbare Kopie außerhalb von Flowplan – für den Notfall, wenn die Instanz nicht läuft, oder als Archiv in einem Git-Repository. **Administration → Instanz → Markdown-Export** wählt Seiten und Datenbanken; mit jeder geplanten Sicherung (und mit **Jetzt sichern**) wird jede davon samt Unterseiten, Kommentaren und früheren Versionen zu einem Markdown-ZIP:
+Eine lesbare Kopie außerhalb von Flowplan – für den Notfall, wenn die Instanz nicht läuft, oder als Archiv in einem Git-Repository. **Administration → Markdown- & Git-Export** wählt Seiten und Datenbanken; mit jeder geplanten Sicherung (und mit **Jetzt sichern**) wird jede davon samt Unterseiten, Kommentaren und früheren Versionen zu einem Markdown-ZIP:
 
 - mit S3 im Bucket unter `<S3_PREFIX>/exports/`, sonst im Datenordner unter `exports/`; es bleiben so viele wie Sicherungen (**Aufbewahrte Sicherungen**). Mit `FLOWPLAN_ENCRYPTION_KEY` sind die ZIPs verschlüsselt (`.zip.enc`), die Übertragung nach Git nicht;
 - exportiert wird mit den Leserechten der Person, die die Auswahl gespeichert hat – private Einträge und Journale mit PIN bleiben draußen;
@@ -209,11 +209,11 @@ Sicherheit:
 - Jede Adresse wird aufgelöst und geprüft: Interne Adressen (localhost, private Netze) sind nicht erreichbar, Weiterleitungen werden nicht verfolgt. Einzige Ausnahme: Server, die die Administration in `SPACE_GIT_ALLOWED_HOSTS` nennt, wenn zusätzlich `SPACE_GIT_ALLOW_PRIVATE=true` gesetzt ist – etwa ein Git-Server auf demselben Host. Auch dann bleibt es bei HTTPS, festgelegter Adresse und ohne Weiterleitungen.
 - Der Export endet, und Token und Arbeitskopie (`git-export/spaces/<Bereich>/` im Datenordner) werden gelöscht, wenn die Eigentümerin oder der Eigentümer ihn ausschaltet, den Arbeitsbereich verlässt, Gast wird oder das Konto löscht – oder wenn der Bereich eine neue Eigentümerin oder einen neuen Eigentümer bekommt oder in den Papierkorb wandert.
 
-**Administration → Instanz → Markdown-Export** zeigt, wie viele Bereiche den Git-Export nutzen, und ihre letzten Fehler – ohne Adressen und Inhalte.
+**Administration → Markdown- & Git-Export** zeigt, wie viele Bereiche den Git-Export nutzen, und ihre letzten Fehler – ohne Adressen und Inhalte.
 
 ## Wiederherstellen
 
-- **Aus einer Instanzsicherung**: in **Administration → Instanz** hochladen. Flowplan prüft sie und übernimmt sie beim nächsten Neustart; der vorherige Stand bleibt unter `pre-restore-…` im Datenverzeichnis.
+- **Aus einer Instanzsicherung**: unter **Administration → Speicher & Sicherung → Aus Sicherung wiederherstellen** (ganz unten) hochladen. Flowplan prüft sie und übernimmt sie beim nächsten Neustart; der vorherige Stand bleibt unter `pre-restore-…` im Datenverzeichnis.
 - **Aus einer geplanten Sicherung** bei gestoppter App: eine verschlüsselte erst [entschlüsseln](#notfall-ohne-laufende-instanz-entschluesseln), dann die bestehende `flowplan.sqlite` samt `-wal` und `-shm` beiseitelegen und die Sicherung als `/app/data/flowplan.sqlite` einsetzen. Mit S3 kommen die Dateien aus dem Bucket nach.
 - **Auf einem neuen Host mit S3**: neue Installation mit **denselben** `S3_*`-Variablen und leerem Volume starten. Litestream stellt die Datenbank her, die Dateien folgen im Hintergrund.
 - **Einen früheren Zeitpunkt** bei gestoppter App:
@@ -227,4 +227,4 @@ Vorher die bestehende `flowplan.sqlite` samt `-wal` und `-shm` beiseitelegen.
 
 ## Kontingente
 
-`FLOWPLAN_WORKSPACE_QUOTA_MB` oder **Administration → Instanz** legt ein Standard-Kontingent je Arbeitsbereich fest; unter **Administration → Arbeitsbereiche** lässt es sich je Arbeitsbereich überschreiben. Uploads, Kopien, Vorlagen und Importe über dem Kontingent werden abgelehnt.
+`FLOWPLAN_WORKSPACE_QUOTA_MB` oder **Administration → Grenzen & Aufbewahrung** legt ein Standard-Kontingent je Arbeitsbereich fest; unter **Administration → Arbeitsbereiche** lässt es sich je Arbeitsbereich überschreiben. Uploads, Kopien, Vorlagen und Importe über dem Kontingent werden abgelehnt.

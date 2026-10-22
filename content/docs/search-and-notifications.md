@@ -62,7 +62,7 @@ Unter **Einstellungen → Benachrichtigungen → Wöchentliche Zusammenfassung**
 Unter **Einstellungen → Benachrichtigungen**:
 
 1. **Push aktivieren** – der Browser fragt nach der Erlaubnis. Das gilt pro Gerät.
-2. Unter **Benachrichtigungsarten** wählen, was als Push kommt und was nur im Posteingang landet.
+2. In der Karte **Benachrichtigungsarten** je Art die Schalter **Posteingang**, **Push** und **E-Mail** setzen – jede Änderung wird sofort gespeichert. Auf dem Handy steht jede Art als eigene Karte mit drei beschrifteten Schaltern.
 3. Mit einer Testbenachrichtigung prüfen.
 
 Push-Nachrichten öffnen die betroffene Seite. Auf dem Sperrbildschirm erscheinen keine Dokumentinhalte.

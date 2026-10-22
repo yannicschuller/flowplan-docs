@@ -46,7 +46,7 @@ Grenzen: 200 Seiten je PDF- oder EPUB-Export, 5.000 Datensätze, 100 MB Anhänge
 
 ### Einen ganzen Bereich exportieren
 
-Das Download-Symbol neben dem Namen eines Bereichs in der Seitenleiste (oder **Einstellungen → Daten → Bereich als Markdown exportieren**) öffnet den Export des Bereichs. Neben dem Markdown-ZIP stehen dort **Bereich als PDF** (eine Druckansicht aller Seiten des Bereichs mit Deckblatt und Inhaltsverzeichnis, siehe oben) und **Bereich als E-Book (EPUB)** zur Wahl – jeweils mit allem, was du lesen darfst, bis 200 Seiten (`GET /api/export/pdf?space=<id>` bzw. `/api/export/epub?space=<id>`). Das Markdown-ZIP lädt den ganzen Bereich als **ein** Archiv herunter – zum Archivieren, offline Lesen oder für ein eigenes Git-Repository:
+Das Download-Symbol neben dem Namen eines Bereichs in der Seitenleiste (oder **Einstellungen → Import & Export → Export → Einen Bereich**) öffnet den Export des Bereichs. Neben dem Markdown-ZIP stehen dort **Bereich als PDF** (eine Druckansicht aller Seiten des Bereichs mit Deckblatt und Inhaltsverzeichnis, siehe oben) und **Bereich als E-Book (EPUB)** zur Wahl – jeweils mit allem, was du lesen darfst, bis 200 Seiten (`GET /api/export/pdf?space=<id>` bzw. `/api/export/epub?space=<id>`). Das Markdown-ZIP lädt den ganzen Bereich als **ein** Archiv herunter – zum Archivieren, offline Lesen oder für ein eigenes Git-Repository:
 
 - Jede Seite der obersten Ebene liegt mit allem, was darunter hängt, in einem eigenen Ordner `<Titel>-<Kennung>/` – derselbe Aufbau wie beim [geplanten Markdown-Export](/storage-and-backups#markdown-export-und-git). Darin gilt das Format von **Markdown mit Dateien (.zip)**.
 - `index.md` oben listet die Seiten des Bereichs; Links zwischen Seiten des Bereichs sind relativ, Links in andere Bereiche zeigen weiter auf Flowplan.
@@ -61,9 +61,11 @@ Das Download-Symbol neben dem Namen eines Bereichs in der Seitenleiste (oder **E
 
 ## Importieren
 
-- **Markdown, Text oder HTML**: **Einstellungen → Daten → Markdown oder Text importieren**. Überschriften, Listen, Aufgaben, Tabellen, Code (auch `mermaid`) und Formeln werden zu Blöcken.
-- **Notion-, AppFlowy- oder Markdown-Export**: **Einstellungen → Daten** nimmt ein ZIP mit Markdown- und CSV-Dateien an. Markdown wird zu Seiten, CSV zu Datenbanken, Excalidraw- und draw.io-Dateien zu [Whiteboards](/whiteboards#excalidraw-und-draw-io-importieren), Ordner zu Unterseiten; verlinkte Bilder und Dateien werden hochgeladen, Datensatzseiten aus Notion den Einträgen zugeordnet. Bis 100 MB, 500 Seiten und 5.000 Einträge je Tabelle; den Zielbereich wählst du vorher.
-- **Jira oder Trello**: **Einstellungen → Daten → Aus Jira oder Trello importieren** – siehe [Projekte, Tickets und Sprints](/projects-and-tickets#import-aus-jira-und-trello).
+Alle Importe stehen unter **Einstellungen → Import & Export → Import**; oben wählst du einmal den **Zielbereich** für alle.
+
+- **Markdown, Text oder HTML**: **Markdown-, Text- oder HTML-Dateien**. Überschriften, Listen, Aufgaben, Tabellen, Code (auch `mermaid`) und Formeln werden zu Blöcken.
+- **Notion-, AppFlowy- oder Markdown-Export**: **Notion, AppFlowy oder Markdown-Export (ZIP)** nimmt ein ZIP mit Markdown- und CSV-Dateien an. Markdown wird zu Seiten, CSV zu Datenbanken, Excalidraw- und draw.io-Dateien zu [Whiteboards](/whiteboards#excalidraw-und-draw-io-importieren), Ordner zu Unterseiten; verlinkte Bilder und Dateien werden hochgeladen, Datensatzseiten aus Notion den Einträgen zugeordnet. Bis 100 MB, 500 Seiten und 5.000 Einträge je Tabelle; den Zielbereich wählst du vorher.
+- **Jira oder Trello**: **Jira oder Trello** – siehe [Projekte, Tickets und Sprints](/projects-and-tickets#import-aus-jira-und-trello).
 - **CSV**: in einer Datenbank **CSV oder Markdown importieren** wählen und eine CSV-Datei nehmen; die Zeilen werden zu Einträgen.
 - **Markdown mit Frontmatter in eine Datenbank** (etwa Notizen aus Obsidian): in der Datenbank **CSV oder Markdown importieren** wählen und eine oder mehrere `.md`-Dateien oder ein ZIP nehmen – siehe unten.
 - **Inhaltsarchiv** (siehe unten).
@@ -95,7 +97,7 @@ Vor dem Import zeigt eine Vorschau, welche Eigenschaften passen und welche fehle
 
 **Export:** Im ZIP-Export beginnt jeder Eintrag unter `records/` mit `title:` und seinen Eigenschaften: Auswahl als Text, Mehrfachauswahl und Relationen (Titel der verknüpften Einträge) als Liste, Datum als ISO-Datum. Aliasse stehen unter dem Obsidian-Schlüssel `aliases:` als Liste, so dass sie einen Weg nach Obsidian und zurück überstehen. Berechnete Werte und die Kennung des Eintrags stehen unter `flowplan:` und werden beim Import übergangen. Wird ein so exportierter Eintrag wieder in dieselbe Datenbank importiert, bietet die Vorschau **aktualisieren statt neu anlegen** an: Der Eintrag mit derselben Kennung bekommt Eigenschaften und Text der Datei, der vorige Stand bleibt als Version erhalten. Ohne diese Wahl kommt er als neuer Eintrag hinzu.
 
-**Seiten:** Hat eine Seite [Aliasse](/pages-and-spaces#aliasse), beginnt ihre Markdown-Datei (einzeln, im Bereichs-Export und im geplanten Export) mit einem Frontmatter, das nur `aliases:` enthält; Seiten ohne Aliasse bleiben ohne Frontmatter. Der ZIP-Import unter **Einstellungen → Daten** liest `aliases:`/`alias:` einer Notiz als Aliasse der neuen Seite; ein Frontmatter, das nur Aliasse enthält, verschwindet dabei aus dem Text, anderes Frontmatter bleibt wie bisher im Text stehen. Der Git-Export liest Aliasse geänderter Seiten ebenfalls zurück.
+**Seiten:** Hat eine Seite [Aliasse](/pages-and-spaces#aliasse), beginnt ihre Markdown-Datei (einzeln, im Bereichs-Export und im geplanten Export) mit einem Frontmatter, das nur `aliases:` enthält; Seiten ohne Aliasse bleiben ohne Frontmatter. Der ZIP-Import unter **Einstellungen → Import & Export** liest `aliases:`/`alias:` einer Notiz als Aliasse der neuen Seite; ein Frontmatter, das nur Aliasse enthält, verschwindet dabei aus dem Text, anderes Frontmatter bleibt wie bisher im Text stehen. Der Git-Export liest Aliasse geänderter Seiten ebenfalls zurück.
 
 **Wo exportieren:** In der Leiste einer Datenbank öffnet **Exportieren** ein Menü mit **CSV (aktuelle Ansicht)**, **Markdown mit Dateien (.zip)**, **Markdown (.md)** und **Als Word (DOCX)**. Einen einzelnen Eintrag exportiert das **…**-Menü im Kopf des Eintrags: **Als Markdown exportieren (.md)** (mit Frontmatter), **Markdown mit Dateien (.zip)**, **Als Word (DOCX)** (Eigenschaften als Tabelle, dann das Dokument) oder **Drucken / PDF**.
 
@@ -103,7 +105,9 @@ Vor dem Import zeigt eine Vorschau, welche Eigenschaften passen und welche fehle
 
 ## Inhaltsarchiv
 
-Unter **Einstellungen → Daten** lädst du ein ZIP deines Arbeitsbereichs herunter und importierst es an anderer Stelle – auch in eine andere Flowplan-Instanz.
+Unter **Einstellungen → Import & Export → Export → Arbeitsbereich als ZIP** lädst du ein ZIP deines Arbeitsbereichs herunter. Zurückholen – auch in eine andere Flowplan-Instanz – geht unter **Sicherungen → Flowplan-Archiv wiederherstellen**: Das Archiv wird als Kopie in neuen privaten Bereichen angelegt.
+
+Die Sicherung der ganzen Instanz (mit Konten und Rechten) ist Sache der Administration: **Administration → Speicher & Sicherung**. Die Karte **Papierkorb & Aufbewahrung** führt zum Papierkorb und sagt, wie lange was aufbewahrt wird: gelöschte Seiten und Bereiche, bis jemand sie endgültig löscht, gelöschte Datenbank-Einträge 30 Tage; wie lange frühere Versionen bleiben, legt die Administration fest.
 
 Enthalten: zugängliche Seiten samt Papierkorb, Datenbanken mit Ansichten und Einträgen, Dokumentinhalte, Relationen, Vorlagen, Kommentare, Versionen, Favoriten und Formularoptionen, dazu alle Dateien mit Prüfsummen.
 

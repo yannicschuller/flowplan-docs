@@ -12,18 +12,40 @@ Healthcheck, Kennzahlen, Speicherübersicht und die häufigsten Ursachen, wenn e
 - fehlgeschlagene Push-Zustellungen,
 - mit S3: `objectStorage.pending` (noch hochzuladende Dateien) und `retrying`.
 
-## Administration → Betrieb
+## Administration → Überwachung
 
-Admins sehen dort Größe von Datenbank und Uploads, Warteschlangen, Suchindex, Versionen und Laufzeit, außerdem:
+**Administration → Überwachung** zeigt die Instanz live – alle 15 Sekunden aktualisiert, pausiert, solange der Tab im Hintergrund liegt:
 
-- **Abgewiesene Anfragen**: fehlgeschlagene Anmeldungen, Anfragen, die ein Limit mit 429 abgewiesen hat (Anmeldeversuche, Einladungen, KI, MCP, Formulare …), und anonyme Uploads über dem Tagesbudget (Formulare, Freigabelinks) – je in der letzten Stunde, in 24 Stunden und in 7 Tagen, dazu ein Diagramm der letzten 14 Tage. Die Zähler werden 35 Tage aufbewahrt und täglich aufgeräumt.
+- **Zustand**: Datenbank, Dateispeicher (mit Belegung des Datenträgers), S3-Spiegel, Sicherung, E-Mail, KI-Anbieter (erreichbar und Antwortzeit, höchstens alle fünf Minuten geprüft), Hintergrunddienste und Aktualisierung. Jede Kachel führt zum zuständigen Bereich.
+- **Kennzahlen**: gerade aktiv, Anfragen pro Minute (mit Fehlerquote und p95-Antwortzeit), Anmeldungen heute, Speicher mit Veränderung in 7 Tagen.
+- **Diagramme**: **Anfragen & Fehler** (5xx) – 1 Stunde, 24 Stunden oder 7 Tage –, **Aktive Personen** je Stunde (7 Tage), **Anmeldungen** erfolgreich und fehlgeschlagen je Tag (14 Tage), **Abgewiesene Anfragen**, **Speicher** nach Art und die größten Arbeitsbereiche, **Zustellungen** (Webhooks, Push, E-Mail) je Tag und **KI-Nutzung** (Tokens je Tag und je Funktion). Jedes Diagramm zeigt beim Zeigen, Tippen oder mit den Pfeiltasten die Werte und hat **Als Tabelle**.
+- **Warteschlangen**: was gerade auf Bearbeitung wartet – Suchindex, E-Mail-Warteschlange, Push-Zustellung, KI-Felder und KI-Suchindex, S3-Upload, Webhooks in Wiederholung.
+- **Ereignisse**: Fehler, Warnungen und Hinweise der letzten 14 Tage, filterbar.
+- **Schnellzugriff**: **Jetzt sichern**, **KI-Anbieter prüfen**, **Warnungen prüfen**, **Testwarnung**, der Weg zu Wartung & Hinweise und das Aktivitätsprotokoll als CSV.
+- Darunter **Hintergrunddienste**, **Instanz in Zahlen** (Größe von Datenbank und Uploads, Versionen, Laufzeit, Demos …), **Warnungen per Webhook** und **Statistik**.
+
+Im Einzelnen:
+
+- **Abgewiesene Anfragen**: fehlgeschlagene Anmeldungen, Anfragen, die ein Limit mit 429 abgewiesen hat (Anmeldeversuche, Einladungen, KI, MCP, Formulare …), und anonyme Uploads über dem Tagesbudget (Formulare, Freigabelinks) – je Tag der letzten 14 Tage. Ein Anstieg deutet auf Angriffe oder zu knappe Grenzen. Die Zähler werden 35 Tage aufbewahrt und täglich aufgeräumt.
 - **Hintergrunddienste**: letzter Lauf und letzter Fehler von Sicherung, Markdown-Export, KI-Hintergrundarbeit, Kalender- und Issue-Synchronisierung und LDAP-Abgleich; „aus“ heißt nicht eingerichtet.
-- **Speicher je Arbeitsbereich** mit Balken gegen das Kontingent (ab 80 % gelb, ab 95 % rot).
-- **Zustellung**: die E-Mail-Warteschlange (wartend, aufgegeben, gesendet, letzter Fehler) und Webhooks in Wiederholung oder aufgegeben, mit den letzten Fehlern. Von Webhook-Adressen erscheint nur der Host, nie Pfad oder Token.
+- **Speicher**: Belegung nach Art und die größten Arbeitsbereiche mit Balken gegen das Kontingent (ab 80 % gelb, ab 95 % rot). Kontingente stellst du unter **Administration → Arbeitsbereiche** und **Administration → Grenzen & Aufbewahrung** ein.
+- **Zustellungen**: zugestellte Webhooks, Push-Nachrichten und E-Mails je Tag; Wartendes, Aufgegebenes und die letzten Fehler stehen unter **Warteschlangen**. Von Webhook-Adressen erscheint nur der Host, nie Pfad oder Token.
+
+### Statistik
+
+Für die Diagramme zählt Flowplan Anfragen, Fehler und Antwortzeiten je Minute, aktive Personen je Stunde, Speicher je Tag und KI-Tokens je Funktion – nur Zahlen, ohne IP-Adressen, Pfade, Browserkennungen oder Namen. Wer aktiv war, steht nur für die laufende Stunde im Arbeitsspeicher, damit jede Person einmal zählt. Erfolgreiche Anmeldungen werden mit Zeitpunkt (ohne Person) gezählt. KI-Tokens stammen vom Anbieter, wo er sie meldet, sonst sind sie geschätzt (vier Zeichen je Token).
+
+| Auflösung | Aufbewahrung |
+| --- | --- |
+| Minuten | 48 Stunden |
+| Stunden | 35 Tage |
+| Tage (Speicher, KI-Tokens) | 400 Tage |
+
+Ausschalten lässt sich die Statistik unter **Administration → Überwachung → Statistik** (**Nutzungsstatistik erfassen**) oder für die ganze Instanz mit `FLOWPLAN_METRICS=off` (siehe [Konfiguration](/configuration#betrieb)); dann ist der Schalter gesperrt. **Statistik löschen** entfernt alle gezählten Anfragen, aktiven Personen, Speicherstände, KI-Tokens und erfolgreichen Anmeldungen; die Zähler der abgewiesenen Anfragen bleiben.
 
 ### Warnungen per Webhook
 
-Unter **Warnungen per Webhook** trägst du eine `https://`-Adresse ein (mit `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true` auch `http://` und interne Adressen) und wählst die Ereignisse:
+Unter **Administration → Überwachung → Warnungen per Webhook** trägst du eine `https://`-Adresse ein (mit `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true` auch `http://` und interne Adressen) und wählst die Ereignisse:
 
 | Ereignis | Wann |
 | --- | --- |
@@ -40,13 +62,13 @@ Flowplan prüft alle zehn Minuten und sendet je Ereignis höchstens **eine Nachr
 
 Die Kopfzeile `X-Flowplan-Signature: sha256=<HMAC-SHA256 des Inhalts>` ist mit dem angezeigten **Signaturschlüssel** gebildet, `X-Flowplan-Event` nennt das Ereignis. **Test senden** schickt sofort `ops.test`, **Jetzt prüfen** prüft außer der Reihe, **Neuer Schlüssel** erzeugt einen neuen Signaturschlüssel. Die letzten gesendeten Warnungen stehen mit Antwortcode darunter. Eine leere Adresse schaltet die Warnungen aus.
 
-### Wartungshinweis
+### Wartung & Hinweise
 
-Ein **Wartungshinweis** mit Text, Beginn und Ende erscheint ab dem Speichern allen angemeldeten Personen als Banner oben im Fenster – vor dem Beginn als „Geplante Wartung“, währenddessen als „Wartung läuft“, in Zeitzone und Sprache der jeweiligen Person. Nach dem Ende verschwindet er von selbst, auch in schon geöffneten Fenstern (sie fragen alle fünf Minuten nach). Jede Person kann den Hinweis für sich ausblenden. **Hinweis entfernen** nimmt ihn sofort zurück. Speichern und Entfernen stehen im Aktivitätsprotokoll.
+Unter **Administration → Wartung & Hinweise** stehen zwei Banner. Der **Hinweis für alle Personen** – etwa „Ab Montag gilt die neue Ablage“ – bleibt, bis du das Feld leerst. Ein **Wartungshinweis** mit Text, Beginn und Ende erscheint ab dem Speichern allen angemeldeten Personen als Banner oben im Fenster – vor dem Beginn als „Geplante Wartung“, währenddessen als „Wartung läuft“, in Zeitzone und Sprache der jeweiligen Person. Nach dem Ende verschwindet er von selbst, auch in schon geöffneten Fenstern (sie fragen alle fünf Minuten nach). Jede Person kann den Hinweis für sich ausblenden. **Hinweis entfernen** nimmt ihn sofort zurück. Speichern und Entfernen stehen im Aktivitätsprotokoll.
 
 ### Speicherübersicht
 
-Die **Speicherübersicht** zeigt:
+**Administration → Speicher & Sicherung** zeigt in den Karten **Sicherungen**, **Belegung** und **Inhalte**:
 
 - ob der S3-Speicher erreichbar ist, wie lange die Prüfung dauerte und wie viele Dateien noch warten,
 - was lokal und was im Bucket liegt: Dateien nach Art (Bilder, Videos, Dokumente …) und die Aufteilung der Datenbank,
@@ -97,7 +119,7 @@ Ohne gesetztes Token ist der Endpunkt abgeschaltet.
 
 Die Desktop-App für macOS, Windows und Linux ist ein schlankes Fenster um eine Flowplan-Instanz. Alle Daten bleiben auf dem Server; neue Flowplan-Funktionen kommen mit dem Server und brauchen kein App-Update. Die App hat ein eigenes Repository: [flowplan-desktop](https://github.com/yannicschuller/flowplan-desktop).
 
-**Offline-Nutzung:** funktioniert in der Desktop-App wie im Browser, auch im AppImage unter Linux. Sie wird in der App selbst unter **Einstellungen → Daten → Offline-Nutzung** eingeschaltet, denn App, Browser und installierte Web-App speichern getrennt. Ohne Verbindung öffnet die App die Kopie aus dem Service Worker der Instanz, auch wenn eine andere Seite der Instanz nicht lädt; die eigene Offline-Seite der App erscheint nur ohne Kopie. Fehlt die Option, ist die Adresse kein HTTPS mit gültigem Zertifikat (der Service Worker braucht eine sichere Verbindung; `http://localhost` geht für Tests). Siehe [Offline arbeiten](/offline-and-apps#offline-nutzung-einschalten).
+**Offline-Nutzung:** funktioniert in der Desktop-App wie im Browser, auch im AppImage unter Linux. Sie wird in der App selbst unter **Einstellungen → Offline & Geräte** eingeschaltet, denn App, Browser und installierte Web-App speichern getrennt. Ohne Verbindung öffnet die App die Kopie aus dem Service Worker der Instanz, auch wenn eine andere Seite der Instanz nicht lädt; die eigene Offline-Seite der App erscheint nur ohne Kopie. Fehlt die Option, ist die Adresse kein HTTPS mit gültigem Zertifikat (der Service Worker braucht eine sichere Verbindung; `http://localhost` geht für Tests). Siehe [Offline arbeiten](/offline-and-apps#offline-nutzung-einschalten).
 
 ### Herunterladen
 

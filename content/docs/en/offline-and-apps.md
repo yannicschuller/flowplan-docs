@@ -8,7 +8,7 @@ Flowplan always saves documents locally in the browser first (IndexedDB) and syn
 
 ### Turn on offline use
 
-Under **Settings → Data → Offline use**, the device also stores the app, the workspace, all readable pages and the records and files you open later. Then you can open pages, read documents and databases and edit text even without a connection.
+Under **Settings → Offline & devices**, the device also stores the app, the workspace, all readable pages and the records and files you open later. Then you can open pages, read documents and databases and edit text even without a connection.
 
 - Online, the current state always comes from the server; the copy only serves without a connection.
 - If the sign-in has expired, Flowplan shows the sign-in page online – without a connection, the stored copy still opens.
@@ -23,7 +23,7 @@ While Flowplan is open, it keeps the copy up to date on its own: at start, when 
 - When an update takes a moment, **Updating offline copy …** shows briefly in the bottom left corner.
 - When the sign-in has expired, Flowplan does not update – the existing copy stays as it is.
 
-**Settings → Data → Offline use** shows the state, for example “Offline copy updated 2 h ago · 312 pages · 85 MB”. **Update now** loads every page again.
+**Settings → Offline & devices** shows the state, for example “Offline copy updated 2 h ago · 312 pages · 85 MB”. **Update now** loads every page again.
 
 **Also store record contents and files** also stores the documents of all database records and the files of the pages, even ones you have never opened – at most 200 MB and only while the device has enough space. Without it, only records and files you opened once are kept. Turning it off removes the records and files stored in addition.
 
@@ -56,13 +56,13 @@ The preview asks whether to save **as a page**, **as a record** in a database or
 
 ### Web clipper in the browser
 
-Under **Settings → Data → Web clipper and bookmarks** you find the button **Save to Flowplan**. Dragged into the bookmarks bar, it opens a small window on any web page with the title, address and selected text – the same preview as when sharing. After saving, the window closes.
+Under **Settings → Web clipper** you find the button **Save to Flowplan**. Dragged into the bookmarks bar, it opens a small window on any web page with the title, address and selected text – the same preview as when sharing. After saving, the window closes.
 
 ### Capture into a database
 
 For an inbox, e.g. with PARA: **Quick capture** on the start page, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>N</kbd>, `> capture` in the quick search or – with the installed app – a long press on the app icon → its capture shortcut open a small window with title and text. It is saved as a record in the chosen database; without a connection it waits on the device and is created once the connection is back.
 
-**Use as default for capturing** (in the window) or **Settings → Data → Web clipper and bookmarks → Capture** sets the database that share, the web clipper and quick capture preselect – per person and workspace. The database's default record template applies, so new records land e.g. straight in the "Inbox" view.
+**Use as default for capturing** (in the window) or **Settings → Web clipper → Capture** sets the database that share, the web clipper and quick capture preselect – per person and workspace. The database's default record template applies, so new records land e.g. straight in the "Inbox" view.
 
 ### Bookmarks
 
@@ -74,7 +74,7 @@ A slim desktop app wraps your Flowplan instance. On first start it asks for the 
 
 - All data stays on the server.
 - The app remembers the window size and position and opens external links in the default browser.
-- Offline use works in the desktop app too: turn on **Settings → Data → Offline use** in the app – it keeps its own offline copies, separate from the browser or the installed web app. Without a connection it then opens the stored copy; its own offline page (**Try again**, **Profiles**) only appears when there is no copy on the device.
+- Offline use works in the desktop app too: turn on **Settings → Offline & devices** in the app – it keeps its own offline copies, separate from the browser or the installed web app. Without a connection it then opens the stored copy; its own offline page (**Try again**, **Profiles**) only appears when there is no copy on the device.
 - **Notifications:** the app shows new inbox notifications as system notifications and the unread count on the app icon – also with the window minimised or hidden. See [Notifications in the desktop app](#notifications-in-the-desktop-app).
 - It only accepts real Flowplan instances – an address running something else or redirecting to another site is refused.
 - **Sign in with a passkey** and **Sign in with SSO** open the sign-in in the default browser, where passkeys (iCloud Keychain, Windows Hello, password managers) are available. After **Sign in to the app** the app takes over the sign-in; e-mail and password work directly in the app. This needs Flowplan 0.3.3 or newer.
@@ -151,4 +151,4 @@ After signing in, the app registers with the instance: the entry belongs to that
 
 ## Light and dark
 
-Flowplan follows your device's light or dark mode by itself – also when it changes while Flowplan is open (for example automatically in the evening). Under **Settings → General → Appearance** you choose a fixed **Light** or **Dark** instead; **Automatic** follows the device again. The choice applies per device. Sign-in, public pages and forms, the website and this documentation follow the device as well, the apps also with their own screens and widgets.
+Flowplan follows your device's light or dark mode by itself – also when it changes while Flowplan is open (for example automatically in the evening). Under **Settings → Appearance & language → Appearance** you choose a fixed **Light** or **Dark** instead; **Automatic** follows the device again. The choice applies per device. Sign-in, public pages and forms, the website and this documentation follow the device as well, the apps also with their own screens and widgets.

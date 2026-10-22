@@ -90,7 +90,7 @@ Never expose the internal port `3000` publicly as well.
 
 ## Custom domains for publications
 
-With **Custom domains for publications** in the administration, owners show published pages under their domain ([Sharing and publishing](/sharing#custom-domain)). Flowplan recognises the domain by the `Host` header and serves only the publication. The certificate stays the reverse proxy's job; it must pass requests for any host on to Flowplan and keep the `Host` unchanged.
+With **Custom domains for publications** under **Administration → Extensions & domains**, owners show published pages under their domain ([Sharing and publishing](/sharing#custom-domain)). Flowplan recognises the domain by the `Host` header and serves only the publication. The certificate stays the reverse proxy's job; it must pass requests for any host on to Flowplan and keep the `Host` unchanged.
 
 Flowplan answers `GET /api/domains/allowed?domain=<host>` with 200 for verified domains of active publications and with 404 otherwise – exactly the question Caddy asks before a new certificate.
 

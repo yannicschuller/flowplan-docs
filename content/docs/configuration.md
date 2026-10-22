@@ -1,6 +1,6 @@
 # Konfiguration
 
-Alle Umgebungsvariablen auf einen Blick. Viele Werte lassen sich zusätzlich in der Oberfläche unter **Administration → Instanz** setzen; dort gesetzte Werte haben Vorrang.
+Alle Umgebungsvariablen auf einen Blick. Viele Werte lassen sich zusätzlich in der Oberfläche der **Administration** setzen (siehe [In der Oberfläche](#in-der-oberflaeche)); dort gesetzte Werte haben Vorrang.
 
 ## Pflicht
 
@@ -41,6 +41,7 @@ Die übrigen OIDC-Variablen und alles zu Passwörtern und Passkeys stehen unter 
 | `FLOWPLAN_SNAPSHOT_RETENTION_DAYS` | `180` | Aufbewahrung automatischer Versionen in Tagen (`0` = unbegrenzt). |
 | `FLOWPLAN_OCR` | an | `0` schaltet die Texterkennung für gescannte PDFs und Bilder ab. |
 | `FLOWPLAN_OCR_LANGS` | `deu,eng` | Sprachen der Texterkennung, z. B. `fra,eng`; die erste ist die Hauptsprache. Mitgeliefert sind `deu`, `eng` und `fra`. Jede weitere Sprache kostet Speicher und Zeit pro Seite. |
+| `FLOWPLAN_METRICS` | an | `off` schaltet die Nutzungsstatistik der [Überwachung](/operations#statistik) aus: Anfragen, Fehler und Antwortzeiten je Minute, aktive Personen je Stunde, Speicherverlauf und KI-Tokens. Erfasst werden nur Zahlen – keine IP-Adressen, Pfade oder Namen; Minuten bleiben 48 Stunden, Stunden 35 Tage, Tage 400 Tage. Mit `off` wird nichts erfasst, und der Schalter **Nutzungsstatistik erfassen** unter **Administration → Überwachung → Statistik** ist gesperrt. `/api/metrics` hängt davon nicht ab. |
 | `FLOWPLAN_METRICS_TOKEN` | *leer* | Mindestens 16 Zeichen; aktiviert `/api/metrics` im Prometheus-Format. |
 | `FLOWPLAN_UPDATE_CHECK` | an | `false` schaltet die Suche nach neuen Versionen ab (für Instanzen ohne Internet). Sonst fragt der Server höchstens alle 12 Stunden bei GitHub nach dem neuesten Release und zeigt Admins in der Administration einen Hinweis. |
 | `FLOWPLAN_UPDATE_URL` | GitHub-API | Andere Adresse für das neueste Release (gleiches Format wie `api.github.com/repos/yannicschuller/flowplan/releases/latest`), etwa ein interner Spiegel. Nicht zu verwechseln mit der gleichnamigen Variable der [Desktop-App](/offline-and-apps#desktop-app-fuer-macos-windows-und-linux), die auf dem Rechner der App deren Update-Quelle nennt. |
@@ -94,7 +95,7 @@ Schlüssel von KI-Anbietern, die Schlüssel der Authenticator-Apps ([Zwei-Faktor
 | `SMTP_USER` / `SMTP_PASSWORD` | *leer* | Anmeldung am Mailserver. |
 | `SMTP_FROM` | `Flowplan <SMTP_USER>` | Absender, z. B. `Flowplan <flowplan@example.com>`. |
 
-Den Versand prüfst du unter **Administration → Instanz → Test-E-Mail senden**.
+Den Versand prüfst du unter **Administration → E-Mail → Test-E-Mail senden**.
 
 ## E-Mail-Eingang (IMAP)
 
@@ -213,16 +214,14 @@ Die Schlüssel dürfen sich nicht ändern, sonst verlieren alle Geräte ihr Abon
 
 ## In der Oberfläche
 
-Unter **Administration → Instanz** stellen Admins ein:
+In der **Administration** stellen Admins ein (siehe [Administration der Instanz](/administration)):
 
-- Instanzname und ein Hinweisbanner für alle,
-- Standard-Speicherkontingent und Aufbewahrung von Versionen,
-- maximale Uploadgröße,
-- ob alle Personen eigene Arbeitsbereiche anlegen dürfen,
-- ob sich jede Person mit E-Mail und Passwort registrieren darf,
-- tägliche oder stündliche Datenbanksicherung und wie viele Kopien bleiben,
-- nach wie vielen Tagen ohne Anmeldung Konten gesperrt werden,
-- ob die Instanz eine öffentliche **Demo** anbietet (laufende und insgesamt gestartete Demos zeigt **Administration → Betrieb**),
-- **Eigene Domains für Veröffentlichungen** (aus) und **Block-Erweiterungen von jeder HTTPS-Adresse** (aus) – siehe [Coolify und Reverse Proxy](/coolify-and-proxy#eigene-domains-fuer-veroeffentlichungen) und [Block-Erweiterungen](/plugins).
+- **Instanz**: Name der Instanz und ob die Instanz eine öffentliche **Demo** anbietet (laufende und insgesamt gestartete Demos zeigt **Administration → Überwachung → Instanz in Zahlen**),
+- **Anmeldung & SSO**: ob sich jede Person mit E-Mail und Passwort registrieren darf, ob alle Personen eigene Arbeitsbereiche anlegen dürfen, nach wie vielen Tagen ohne Anmeldung Konten gesperrt werden, Zwei-Faktor-Pflicht,
+- **Grenzen & Aufbewahrung**: Standard-Speicherkontingent, Speicher und eigene Arbeitsbereiche je Person, maximale Uploadgröße, Aufbewahrung von Versionen,
+- **Speicher & Sicherung**: tägliche oder stündliche Datenbanksicherung und wie viele Kopien bleiben,
+- **Wartung & Hinweise**: ein Hinweisbanner für alle und der Wartungshinweis,
+- **Erweiterungen & Domains**: **Eigene Domains für Veröffentlichungen** (aus) und **Block-Erweiterungen von jeder HTTPS-Adresse** (aus) – siehe [Coolify und Reverse Proxy](/coolify-and-proxy#eigene-domains-fuer-veroeffentlichungen) und [Block-Erweiterungen](/plugins),
+- **Überwachung → Statistik**: ob die Nutzungsstatistik erfasst wird (gesperrt mit `FLOWPLAN_METRICS=off`).
 
 Leere Felder fallen auf die Umgebungsvariablen zurück.

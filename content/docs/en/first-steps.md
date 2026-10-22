@@ -4,14 +4,14 @@ From signing in for the first time to your first own page: what you do with Flow
 
 ## Sign in or sign up
 
-You sign in with your e-mail and password, with a passkey (fingerprint, face or device PIN) or – if your organisation has set it up – with **Sign in with SSO** through your organisation's login (OpenID Connect, such as Keycloak, Authentik, Zitadel or Entra ID). You create an account with **Create account**, provided the instance allows sign-ups or you have been invited. Afterwards you set up passkeys under **Settings → General → Your profile**. Everything else is described under [Sign-in](/sign-in).
+You sign in with your e-mail and password, with a passkey (fingerprint, face or device PIN) or – if your organisation has set it up – with **Sign in with SSO** through your organisation's login (OpenID Connect, such as Keycloak, Authentik, Zitadel or Entra ID). You create an account with **Create account**, provided the instance allows sign-ups or you have been invited. Afterwards you set up passkeys under **Settings → Account & security**. Everything else is described under [Sign-in](/sign-in).
 
 When you sign in for the first time, Flowplan creates a private workspace with example pages. With single sign-on, your name, e-mail address and – if available – your profile picture come from the login provider.
 
 > [!TIP]
 > If the instance offers a **demo**, you can try Flowplan without an account. The demo gets its own example workspace and is deleted completely when you end it, sign out or after 45 minutes without activity.
 
-**Language:** Flowplan follows your browser's language. Under **Settings → General → Your profile → Language** you pick German 🇩🇪, English 🇬🇧 or French 🇫🇷 from the list – it then applies on all devices, also to e-mails and push notifications. Further languages can be added: [Languages and translations](/languages).
+**Language:** Flowplan follows your browser's language. Under **Settings → Appearance & language → Language** you pick German 🇩🇪, English 🇬🇧 or French 🇫🇷 from the list – it then applies on all devices, also to e-mails and push notifications. Further languages can be added: [Languages and translations](/languages).
 
 ## The introduction
 
@@ -23,7 +23,9 @@ After creating an account, Flowplan walks you through the essentials once. Every
 4. **Notifications**: e-mail summaries (when the instance sends e-mail) and push on this device.
 5. **All set**: the created pages to open and the most important shortcuts.
 
-Later, **Settings → General → Start introduction** (or "introduction" in the search with `⌘/Ctrl + K`) opens it again. Accounts that existed before the introduction was added do not see it automatically.
+Later, **Settings → Appearance & language → Start introduction** (or "introduction" in the search with `⌘/Ctrl + K`) opens it again. Accounts that existed before the introduction was added do not see it automatically.
+
+The settings open with an overview: one tile per section, grouped into **Personal**, **Connections** and **Workspace**. The search at the top (“Search settings …”) helps – “passkeys” finds **Account & security**, for example –, and every section has its own link, e.g. `/#settings/notifications`.
 
 ## The interface
 

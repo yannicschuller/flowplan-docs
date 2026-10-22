@@ -183,7 +183,7 @@ Unter **Administration → KI**:
 1. **KI einschalten.**
 2. **Anbieter der Instanz** wählen (oder **Kein Anbieter**, siehe unten), Adresse, Modell und – falls nötig – den **API-Schlüssel** eintragen. **Verbindung testen.**
 3. **Wer KI nutzen darf:**
-   - **Alle** oder **Ausgewählte Personen** – Letztere schaltest du unter **Administration → Benutzer** pro Person frei („Darf KI-Funktionen nutzen“).
+   - **Alle** oder **Ausgewählte Personen** – Letztere schaltest du unter **Administration → Benutzer → Verwalten** pro Person frei (**KI-Funktionen**).
    - **Auch Gäste** – ausgeschaltet haben Gäste keine KI-Funktionen.
    - **Nutzer dürfen eigene Anbieter/Schlüssel hinterlegen** – dann richtet jede Person in ihren Einstellungen einen eigenen Anbieter mit eigenem Schlüssel ein. Das geht auch ganz ohne Anbieter der Instanz: So nutzen Personen KI mit ihrem eigenen Konto bei einem Anbieter, ohne dass die Instanz dafür bezahlt.
 4. **Funktionen:** jede einzeln erlauben oder verbieten. Optional die [Suche nach Bedeutung](#suche-nach-bedeutung-optional) einschalten.

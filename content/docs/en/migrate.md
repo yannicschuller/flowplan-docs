@@ -4,7 +4,7 @@ Flowplan is an open-source alternative to Notion, Confluence and AppFlowy under 
 
 ## Confluence, Evernote, Google Docs and Obsidian
 
-Under **Settings → Data → Import from Confluence, Evernote, Google Docs or Obsidian** choose the source (or let it be detected), the target space and whether you want a page tree or a **new database**. Then choose the file:
+Under **Settings → Import & export → Import** choose the target space at the top and, at **Confluence, Evernote, Google Docs or Obsidian**, the source (or let it be detected) and whether you want a page tree or a **new database**. Then choose the file:
 
 1. Flowplan uploads the file (with a progress bar) and shows a **preview**: how many pages, folders, files (with their size) and tags will be imported, and what will not work – such as encrypted text, unsupported macros or images missing from the export.
 2. **Import** creates everything in one step. If something fails, nothing is left half imported.
@@ -21,7 +21,7 @@ For all sources:
 ## From Notion
 
 1. In Notion: **Settings → Export** (for the whole workspace) or **Export** in a page's **…** menu. Choose the format **Markdown & CSV** and turn on **Include subpages**.
-2. In Flowplan: **Settings → Data**, choose the ZIP and the space it goes into.
+2. In Flowplan: **Settings → Import & export → Import**, choose the target space at the top and the ZIP at **Notion, AppFlowy or Markdown export (ZIP)**.
 3. Done – the import runs in one step. If it fails, nothing is left half imported.
 
 What it turns into:
@@ -39,7 +39,7 @@ Limits per import: 100 MB, 500 pages and 5,000 records per table. Export larger 
 
 1. In AppFlowy, export pages as **Markdown** and databases as **CSV**.
 2. Put the files into one folder – sub-folders become sub-pages – and make a ZIP of it.
-3. Import it in Flowplan under **Settings → Data**.
+3. Import it in Flowplan under **Settings → Import & export → Import**.
 
 Markdown becomes pages, CSV becomes databases; linked images and files come along.
 
@@ -83,7 +83,7 @@ What it turns into:
 
 ## From Obsidian and other Markdown folders
 
-- **A vault as pages:** make a ZIP of the vault folder (with its `.obsidian` folder) and import it under **Settings → Data** – via **Import from Confluence, Evernote, Google Docs or Obsidian** with a preview, or via the Notion/Markdown import, which recognises a vault as well.
+- **A vault as pages:** make a ZIP of the vault folder (with its `.obsidian` folder) and import it under **Settings → Import & export → Import** – via **Confluence, Evernote, Google Docs or Obsidian** with a preview, or via the Notion/Markdown import, which recognises a vault as well.
   - **Folders** become pages with their notes below. A **folder note** (`Projects/Projects.md` or `Projects.md` next to the folder) becomes the folder's page itself.
   - **Wikilinks** `[[Page]]`, `[[Page|text]]`, `[[Folder/Page]]` and `[[Page#Heading]]` become links to the imported pages – resolved like Obsidian does, by path or file name. Links to notes that do not exist stay text.
   - **Embedded files** `![[image.png]]` become images, `![[file.pdf]]` file links; embedded notes `![[Note]]` become links.

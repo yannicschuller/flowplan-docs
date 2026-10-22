@@ -6,7 +6,7 @@ Besides the optional [built-in AI](/ai), MCP connects the assistant *you* choose
 
 ## Set up
 
-1. Under **Settings → API & webhooks**, create a [personal API token](/api-and-webhooks) for the assistant. Choose **Read only** if the assistant should only search and read. Choose **Read and write** if it should also create pages and records.
+1. Under **Settings → API & AI assistants**, create a [personal API token](/api-and-webhooks) for the assistant. Choose **Read only** if the assistant should only search and read. Choose **Read and write** if it should also create pages and records.
 2. Copy the address shown under **AI assistants (MCP)**. It is your Flowplan address followed by `/api/mcp`, for example `https://flowplan.example.com/api/mcp`.
 3. Enter both in your client (examples below). The settings page has a ready-made configuration for each client and fills in a token you have just created.
 
@@ -91,7 +91,7 @@ In addition, each page is available as a **resource** `flowplan://page/<ID>` (yo
 
 ## Security notes
 
-- Treat the token like a password. Anyone who has it can read (and with a write token change) everything you can. Revoke a token under **Settings → API & webhooks** if you no longer need it or it might have leaked; the connection stops immediately.
+- Treat the token like a password. Anyone who has it can read (and with a write token change) everything you can. Revoke a token under **Settings → API & AI assistants** if you no longer need it or it might have leaked; the connection stops immediately.
 - AI assistants can be misled by content they read (prompt injection), for example by text on a page shared with you. Give an assistant a **read token** if it does not need to write. With a write token, use the client's confirmation prompts for tool calls.
 - Answers can contain anything you can read in Flowplan. That content goes to the provider of your assistant, so check its privacy terms first.
 - `/api/mcp` accepts only tokens, not the sign-in cookie, so another website cannot use your browser session. Requests from a foreign `Origin` are refused.

@@ -12,18 +12,40 @@ Health check, metrics, the storage overview and the most common causes when some
 - failed push deliveries,
 - with S3: `objectStorage.pending` (files still to upload) and `retrying`.
 
-## Administration → Operations
+## Administration → Monitoring
 
-Administrators see the size of the database and uploads, queues, search index, versions and uptime there, and also:
+**Administration → Monitoring** shows the instance live – refreshed every 15 seconds, paused while the tab is in the background:
 
-- **Refused requests**: failed sign-ins, requests a limit refused with 429 (sign-in attempts, invitations, AI, MCP, forms …) and anonymous uploads over the daily budget (forms, share links) – each in the last hour, in 24 hours and in 7 days, plus a chart of the last 14 days. The counters are kept for 35 days and cleaned up daily.
+- **Health**: database, file storage (with disk usage), S3 mirror, backup, e-mail, AI provider (reachable and response time, checked at most every five minutes), background workers and update. Each tile leads to the section in charge.
+- **Key figures**: active now, requests per minute (with error rate and p95 response time), sign-ins today, storage with its change over 7 days.
+- **Charts**: **Requests & errors** (5xx) – 1 hour, 24 hours or 7 days –, **Active people** per hour (7 days), **Sign-ins** successful and failed per day (14 days), **Refused requests**, **Storage** by kind and the largest workspaces, **Deliveries** (webhooks, push, e-mail) per day and **AI usage** (tokens per day and per feature). Every chart shows its values on hover, tap or with the arrow keys and has **As a table**.
+- **Queues**: what is waiting to be processed right now – search index, mail queue, push delivery, AI fields and AI search index, S3 upload, webhooks retrying.
+- **Events**: errors, warnings and notes of the last 14 days, filterable.
+- **Quick actions**: **Back up now**, **Check AI provider**, **Check alerts**, **Test alert**, the way to Maintenance & notices and the activity log as CSV.
+- Below: **Background workers**, **Instance in numbers** (size of the database and uploads, versions, uptime, demos …), **Alerts by webhook** and **Statistics**.
+
+In detail:
+
+- **Refused requests**: failed sign-ins, requests a limit refused with 429 (sign-in attempts, invitations, AI, MCP, forms …) and anonymous uploads over the daily budget (forms, share links) – per day over the last 14 days. A rise points to attacks or limits that are too tight. The counters are kept for 35 days and cleaned up daily.
 - **Background workers**: last run and last error of backup, Markdown export, AI background work, calendar and issue sync and LDAP sync; “off” means not set up.
-- **Storage per workspace** with bars against the quota (yellow from 80 %, red from 95 %).
-- **Delivery**: the mail queue (waiting, given up, sent, last error) and webhooks retrying or given up, with the latest errors. Only the host of a webhook address is shown, never its path or token.
+- **Storage**: usage by kind and the largest workspaces with bars against the quota (yellow from 80 %, red from 95 %). Quotas are set under **Administration → Workspaces** and **Administration → Limits & retention**.
+- **Deliveries**: delivered webhooks, push messages and e-mails per day; what is waiting, given up and the latest errors are under **Queues**. Only the host of a webhook address is shown, never its path or token.
+
+### Statistics
+
+For the charts, Flowplan counts requests, errors and response times per minute, active people per hour, storage per day and AI tokens per feature – numbers only, without IP addresses, paths, user agents or names. Who was active is held in memory for the running hour only, so that each person counts once. Successful sign-ins are counted with their time (without the person). AI tokens come from the provider where it reports them, otherwise they are estimated (four characters per token).
+
+| Resolution | Kept for |
+| --- | --- |
+| Minutes | 48 hours |
+| Hours | 35 days |
+| Days (storage, AI tokens) | 400 days |
+
+Switch the statistics off under **Administration → Monitoring → Statistics** (**Collect usage statistics**) or for the whole instance with `FLOWPLAN_METRICS=off` (see [Configuration](/configuration#operations)); the switch is then locked. **Delete statistics** removes all counted requests, active people, storage history, AI tokens and successful sign-ins; the counters of refused requests stay.
 
 ### Alerts by webhook
 
-Under **Alerts by webhook**, enter an `https://` address (with `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true` also `http://` and internal addresses) and choose the events:
+Under **Administration → Monitoring → Alerts by webhook**, enter an `https://` address (with `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true` also `http://` and internal addresses) and choose the events:
 
 | Event | When |
 | --- | --- |
@@ -42,13 +64,13 @@ The `title` is in German, as alerts are sent outside of a request; match on `eve
 
 The header `X-Flowplan-Signature: sha256=<HMAC-SHA256 of the body>` is made with the **signing secret** shown, `X-Flowplan-Event` names the event. **Send test** sends `ops.test` right away, **Check now** checks out of turn, **New secret** creates a new signing secret. The latest alerts sent are listed below with their status code. An empty address turns alerts off.
 
-### Maintenance notice
+### Maintenance & notices
 
-A **maintenance notice** with text, start and end appears to everyone signed in as a banner at the top of the window from saving on – before the start as “Scheduled maintenance”, during it as “Maintenance in progress”, in each person's time zone and language. After the end it disappears by itself, also in windows already open (they check every five minutes). Everyone can hide the notice for themselves. **Remove notice** withdraws it at once. Saving and removing are in the activity log.
+**Administration → Maintenance & notices** holds two banners. The **notice for everyone** – e.g. “The new filing applies from Monday” – stays until you clear the field. A **maintenance notice** with text, start and end appears to everyone signed in as a banner at the top of the window from saving on – before the start as “Scheduled maintenance”, during it as “Maintenance in progress”, in each person's time zone and language. After the end it disappears by itself, also in windows already open (they check every five minutes). Everyone can hide the notice for themselves. **Remove notice** withdraws it at once. Saving and removing are in the activity log.
 
 ### Storage overview
 
-The **storage overview** shows:
+**Administration → Storage & backup** shows in the cards **Backups**, **Usage** and **Content**:
 
 - whether the S3 storage is reachable, how long the check took and how many files are still waiting,
 - what is local and what is in the bucket: files by kind (images, videos, documents …) and how the database is split,
@@ -99,7 +121,7 @@ Without a token the endpoint is switched off.
 
 The desktop app for macOS, Windows and Linux is a slim window around a Flowplan instance. All data stays on the server; new Flowplan features arrive with the server and need no app update. The app has its own repository: [flowplan-desktop](https://github.com/yannicschuller/flowplan-desktop).
 
-**Offline use:** works in the desktop app as in the browser, including the AppImage on Linux. Turn it on in the app itself under **Settings → Data → Offline use**, because the app, the browser and the installed web app store separately. Without a connection the app opens the copy from the instance's service worker, also when another page of the instance fails to load; the app's own offline page only appears without a copy. If the option is missing, the address is not HTTPS with a valid certificate (the service worker needs a secure connection; `http://localhost` works for tests). See [Work without a connection](/offline-and-apps#turn-on-offline-use).
+**Offline use:** works in the desktop app as in the browser, including the AppImage on Linux. Turn it on in the app itself under **Settings → Offline & devices**, because the app, the browser and the installed web app store separately. Without a connection the app opens the copy from the instance's service worker, also when another page of the instance fails to load; the app's own offline page only appears without a copy. If the option is missing, the address is not HTTPS with a valid certificate (the service worker needs a secure connection; `http://localhost` works for tests). See [Work without a connection](/offline-and-apps#turn-on-offline-use).
 
 ### Download
 

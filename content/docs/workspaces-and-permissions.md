@@ -6,9 +6,9 @@ Ein Arbeitsbereich gehört einem Team: eigene Mitglieder, Gruppen, Bereiche und 
 
 - **Anlegen**: Name oben in der Seitenleiste → **Arbeitsbereich erstellen**. Ob alle das dürfen, legt die Administration fest.
 - **Wechseln**: über denselben Namen; jede Person kann Mitglied mehrerer Arbeitsbereiche sein.
-- **Einstellungen → Allgemein**: Name und Symbol ändern, den Arbeitsbereich verlassen oder – als Eigentümer nach Eingabe des Namens – endgültig löschen.
+- **Einstellungen → Allgemein**: Name und Symbol ändern (**Name & Symbol**). Verlassen und Löschen stehen am Ende in der **Gefahrenzone**; ist ein Knopf ausgegraut, steht darüber, warum.
 
-Beim **Verlassen** muss ein letzter Eigentümer vorher jemand anderen zum Eigentümer machen; eigene Bereiche gehen an einen gewählten verbleibenden Eigentümer über. **Löschen** entfernt alle Inhalte, Vorlagen, Dateien und Freigaben für alle Mitglieder und lässt sich nicht rückgängig machen.
+Beim **Verlassen** muss ein letzter Eigentümer vorher unter **Einstellungen → Mitglieder** jemand anderen zum Eigentümer machen; eigene Bereiche gehen an einen gewählten verbleibenden Eigentümer über. **Löschen** geht erst, wenn du einen weiteren Arbeitsbereich hast, entfernt alle Inhalte, Vorlagen, Dateien und Freigaben für alle Mitglieder und lässt sich nicht rückgängig machen. Beides bestätigst du mit dem Namen des Arbeitsbereichs.
 
 ## Rollen
 
@@ -21,7 +21,7 @@ Beim **Verlassen** muss ein letzter Eigentümer vorher jemand anderen zum Eigent
 
 ## Mitglieder einladen
 
-**Einstellungen → Mitglieder → Mitglied einladen**: E-Mail-Adresse und Rolle eingeben. Ist auf der Instanz E-Mail eingerichtet, bekommt die Person eine Einladung. Sie legt mit dieser Adresse ein Konto an – auch wenn die Registrierung sonst geschlossen ist – oder meldet sich per SSO an; der Arbeitsbereich erscheint, sobald die Adresse bestätigt ist. Ohne E-Mail-Versand kopierst du bei der offenen Einladung den **Einladungslink** (**Link kopieren**) und schickst ihn ihr selbst.
+**Einstellungen → Mitglieder → Mitglied einladen** öffnet ein Fenster (auf dem Handy von unten): E-Mail-Adresse, Rolle und – wenn nötig – **Als Gast einladen**. Ist auf der Instanz E-Mail eingerichtet, bekommt die Person eine Einladung. Sie legt mit dieser Adresse ein Konto an – auch wenn die Registrierung sonst geschlossen ist – oder meldet sich per SSO an; der Arbeitsbereich erscheint, sobald die Adresse bestätigt ist. Ohne E-Mail-Versand kopierst du danach unter **Ausstehende Einladungen** den **Einladungslink** (**Link kopieren**) und schickst ihn ihr selbst.
 
 **Nur bestätigte Adressen:** Ein bestehendes Konto übernimmt eine Einladung automatisch nur, wenn seine Adresse nachweislich ihm gehört – bestätigt per E-Mail-Link, durch die Administration oder vom SSO-Anbieter. Sonst (etwa auf einer Instanz ohne E-Mail-Versand, auf der sich jede Adresse registrieren lässt) zählt nur der Einladungslink: Wer ihn öffnet und sich anmeldet oder registriert, nimmt die Einladung an. Gib den Link deshalb nur der eingeladenen Person.
 
@@ -35,7 +35,7 @@ Gäste sind Personen außerhalb des Teams, etwa Kunden oder Freelancer. Sie sehe
 
 ## Gruppen
 
-**Einstellungen → Gruppen & Rechte**: Gruppen bilden, etwa „Design“ oder „Vertrieb“, Mitglieder hinzufügen und der Gruppe Zugriff auf Bereiche oder Seiten geben. Neue Mitglieder einer Gruppe erhalten sofort ihre Rechte.
+**Einstellungen → Gruppen & Rechte**: Unter **Gruppen** eine Gruppe anlegen, etwa „Design“ oder „Vertrieb“, und mit **Verwalten** Mitglieder an- oder abhaken (mit Suche bei vielen Mitgliedern). Unter **Zugriff auf Bereiche** stellst du je Bereich die Sichtbarkeit ein und darunter je Gruppe **Ansehen** oder **Bearbeiten**; einzelnen Seiten gibst du eine Gruppe über **Teilen**. Neue Mitglieder einer Gruppe erhalten sofort ihre Rechte.
 
 Mit Single Sign-on können Gruppen des Identitätsanbieters Mitglieder und Gruppen automatisch pflegen – siehe [SSO-Gruppen zuordnen](/sign-in#sso-gruppen-arbeitsbereichen-zuordnen).
 
