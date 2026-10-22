@@ -70,6 +70,31 @@ The book icon in the top bar (or <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd>, qui
 
 **Focus mode** (quick search → `> focus`) hides the sidebar, toolbar and page margins; the top bar only appears on hover. At the bottom, a bar counts the words of the page and those added in this session. With a **goal** (e.g. 500 words) a bar shows the progress; the device remembers the goal per page. <kbd>Esc</kbd> ends the mode.
 
+## Present
+
+**Present** in the `…` menu at the top right (or <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd>, quick search → `> present`) shows a document as full-screen slides – without rebuilding it:
+
+- Each **heading 1** starts a new slide. If the document has none, each **heading 2** does. A **divider** (`---`) always starts a new slide.
+- Whatever comes before the first heading becomes a title slide with the page title.
+- Images, tables, code, formulas and diagrams are scaled down so the whole slide fits on the screen.
+
+| Key | Effect |
+| --- | --- |
+| <kbd>→</kbd>, <kbd>↓</kbd>, <kbd>Space</kbd>, <kbd>Page Down</kbd> | Next slide |
+| <kbd>←</kbd>, <kbd>↑</kbd>, <kbd>Page Up</kbd> | Previous slide |
+| <kbd>Home</kbd> / <kbd>End</kbd> | First / last slide |
+| <kbd>Esc</kbd> | End the presentation |
+
+A click into the right two thirds of the slide moves on, into the left third back. At the bottom, a counter and a bar show where you are; the bar of buttons fades out while the mouse rests. It also switches between **light and dark slides**. If “Reduce motion” is set on your system, slides change without a fade.
+
+### Speaker notes and presenter view
+
+A **callout** (`/callout`, kind “Note”) as the last block of a slide holds the **speaker notes**: it does not appear on the slide. **Presenter view** (notepad icon in the bar) opens a second window with the current and the next slide, the notes and the elapsed time – handy on the laptop while the projector shows the slides. Both windows stay in step: you can move on in either of them.
+
+### Slides as PDF
+
+The printer icon in the bar prints the slides – each on its own page in **landscape**. Choose **Save as PDF** in the print dialog to pass the slides on.
+
 ## Synced blocks
 
 A synced block (`/sync` → **Synced block**) is content that is the same in several places – such as contact details, a checklist or a status notice. **Insert synced block** shows it on another page. You can edit it everywhere; the change appears on all pages, live on pages that are open.

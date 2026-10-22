@@ -70,6 +70,31 @@ Das Buch-Symbol oben in der Leiste (oder <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</k
 
 **Fokusmodus** (Schnellsuche → `> fokus`) blendet Seitenleiste, Werkzeugleiste und Seitenrand aus; die obere Leiste erscheint erst beim Darüberfahren. Unten zählt eine Leiste die Wörter der Seite und die in dieser Sitzung hinzugekommenen. Mit einem **Ziel** (z. B. 500 Wörter) zeigt ein Balken den Fortschritt; das Ziel merkt sich das Gerät pro Seite. <kbd>Esc</kbd> beendet den Modus.
 
+## Präsentieren
+
+**Präsentieren** im Menü `…` oben rechts (oder <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd>, Schnellsuche → `> präsentieren`) zeigt ein Dokument als Folien im Vollbild – ohne es umzubauen:
+
+- Jede **Überschrift 1** beginnt eine neue Folie. Hat das Dokument keine, beginnt jede **Überschrift 2** eine. Eine **Trennlinie** (`---`) beginnt immer eine neue Folie.
+- Was vor der ersten Überschrift steht, wird zur Titelfolie mit dem Seitentitel.
+- Bilder, Tabellen, Code, Formeln und Diagramme werden so verkleinert, dass die Folie ganz auf den Bildschirm passt.
+
+| Taste | Wirkung |
+| --- | --- |
+| <kbd>→</kbd>, <kbd>↓</kbd>, <kbd>Leertaste</kbd>, <kbd>Bild ↓</kbd> | Nächste Folie |
+| <kbd>←</kbd>, <kbd>↑</kbd>, <kbd>Bild ↑</kbd> | Vorherige Folie |
+| <kbd>Pos1</kbd> / <kbd>Ende</kbd> | Erste / letzte Folie |
+| <kbd>Esc</kbd> | Präsentation beenden |
+
+Ein Klick ins rechte Zwei-Drittel der Folie blättert weiter, ins linke Drittel zurück. Unten zeigen ein Zähler und ein Balken, wo du bist; die Leiste mit den Knöpfen blendet sich aus, solange die Maus ruht. Dort wechselst du auch zwischen **hellen und dunklen Folien**. Wer im System „Bewegung reduzieren“ eingestellt hat, sieht die Folien ohne Überblendung.
+
+### Sprechernotizen und Referentenansicht
+
+Ein **Hinweis** (`/hinweis`, Art „Hinweis“) als letzter Block einer Folie enthält die **Sprechernotizen**: Auf der Folie erscheint er nicht. **Referentenansicht** (Notizblock-Symbol in der Leiste) öffnet ein zweites Fenster mit der aktuellen und der nächsten Folie, den Notizen und der verstrichenen Zeit – praktisch auf dem Laptop, während der Beamer die Folien zeigt. Beide Fenster bleiben im Gleichschritt: Blättern geht in jedem von beiden.
+
+### Folien als PDF
+
+Das Drucker-Symbol in der Leiste druckt die Folien – jede auf eine eigene Seite im **Querformat**. Im Druckdialog **Als PDF sichern** wählen, um die Folien weiterzugeben.
+
 ## Synchronisierte Blöcke
 
 Ein synchronisierter Block (`/sync` → **Synchronisierter Block**) ist Inhalt, der an mehreren Stellen derselbe ist – etwa Kontaktdaten, eine Checkliste oder ein Statushinweis. **Synchronisierten Block einfügen** zeigt ihn auf einer weiteren Seite. Bearbeiten geht überall; die Änderung erscheint auf allen Seiten, bei geöffneten Seiten live.

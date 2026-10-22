@@ -32,22 +32,44 @@ Das Menü `…` oben rechts auf jeder Seite bietet:
 | Verschieben | Unter eine andere Seite, in einen anderen Bereich oder Arbeitsbereich. |
 | Als Vorlage speichern | Siehe [Vorlagen](/templates). |
 | Exportieren, Drucken / PDF | Siehe [Import, Export und Versionen](/import-export-versions). |
-| Besitzer und Prüfung … | Wer sich um die Seite kümmert und wann sie wieder geprüft werden soll, siehe [Besitzer und Prüfdatum](#besitzer-und-prüfdatum). |
+| Präsentieren | Ein Dokument als Folien im Vollbild zeigen, siehe [Präsentieren](/documents#praesentieren). |
+| Seite daneben öffnen … | Eine zweite Seite in der [geteilten Ansicht](#geteilte-ansicht) rechts daneben öffnen. |
+| Besitzer und Prüfung … | Wer sich um die Seite kümmert und wann sie wieder geprüft werden soll, siehe [Besitzer und Prüfdatum](#besitzer-und-pruefdatum). |
 | Versionsverlauf | Frühere Stände vergleichen und wiederherstellen. |
 | In den Papierkorb | Seite samt Unterseiten entfernen, wiederherstellbar. |
 
 ### Rechtsklick in der Seitenleiste
 
-Ein Rechtsklick auf eine Seite im Seitenbaum oder unter Favoriten – auf dem Smartphone langes Drücken – öffnet ihre Aktionen direkt: **In neuem Tab öffnen**, **Link kopieren**, **Zu Favoriten**, **Teilen**, **Unterseite hinzufügen**, **Icon ändern**, **Duplizieren**, **Verschieben**, **Exportieren**, **Seite sperren** und **In den Papierkorb**. Aktionen mit Dialog öffnen die Seite vorher.
+Ein Rechtsklick auf eine Seite im Seitenbaum oder unter Favoriten – auf dem Smartphone langes Drücken – öffnet ihre Aktionen direkt: **In neuem Tab öffnen**, **In geteilter Ansicht öffnen**, **Link kopieren**, **Zu Favoriten**, **Teilen**, **Unterseite hinzufügen**, **Icon ändern**, **Duplizieren**, **Verschieben**, **Exportieren**, **Seite sperren** und **In den Papierkorb**. Aktionen mit Dialog öffnen die Seite vorher.
 
 ### Seiten filtern
 
 Das Feld **Seiten filtern** über dem Seitenbaum blendet alles aus, was nicht passt; übergeordnete Seiten der Treffer bleiben sichtbar und aufgeklappt. <kbd>Esc</kbd> leert den Filter. Vorlagen, Medien, Papierkorb, Einstellungen und Administration liegen als Symbolleiste unten in der Seitenleiste.
 
+## Geteilte Ansicht
+
+Zwei Seiten nebeneinander – etwa Notizen links und die Aufgaben-Datenbank rechts. Eine Seite öffnet sich rechts daneben mit:
+
+- **In geteilter Ansicht öffnen** im Rechtsklick-Menü einer Seite im Seitenbaum,
+- <kbd>⌘</kbd>-Klick (Windows/Linux: <kbd>Strg</kbd>-Klick) auf eine Seite im Seitenbaum, unter Favoriten oder auf einen Seitenlink im Text,
+- Ziehen einer Seite aus dem Seitenbaum an den **rechten Fensterrand** (dort erscheint eine Ablagefläche),
+- <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>S</kbd> oder **Seite daneben öffnen …** im Menü `…`: Die Schnellsuche öffnet die gewählte Seite rechts.
+
+Jede Hälfte hat eine eigene Kopfzeile mit Titel und **×**. Das **×** links schließt die linke Seite, die rechte rückt in die Hauptansicht; der Pfeil rechts holt die rechte Seite in die Hauptansicht. Dokumente lassen sich in beiden Hälften bearbeiten, Datenbanken, Whiteboards und Dashboards funktionieren wie gewohnt.
+
+Die **Trennlinie** zwischen beiden Hälften lässt sich mit der Maus ziehen; mit der Tastatur: Tab bis zur Linie, dann <kbd>←</kbd> / <kbd>→</kbd> (mit <kbd>⇧</kbd> in großen Schritten), <kbd>Pos1</kbd> / <kbd>Ende</kbd> für die schmalste und breiteste Stellung, <kbd>Enter</kbd> oder Doppelklick für halbe-halbe. Die Breite merkt sich das Gerät.
+
+Eine Seite aus dem Seitenbaum in ein Dokument der anderen Hälfte zu ziehen, fügt dort einen **Link** auf sie ein; markierter Text und Blöcke lassen sich zwischen den beiden Dokumenten ziehen (dabei wird kopiert).
+
+Die rechte Seite steht in der Adresse (`?split=…`): Neu laden und Lesezeichen behalten die geteilte Ansicht. In Fenstern bis 1024 Pixel Breite und auf dem Smartphone gibt es sie nicht – dort öffnen dieselben Wege die Seite ganz normal.
+
+> [!NOTE]
+> Weil <kbd>⌘</kbd>/<kbd>Strg</kbd>-Klick im Seitenbaum jetzt die geteilte Ansicht öffnet, beginnt eine Mehrfachauswahl mit <kbd>⇧</kbd>-Klick oder dem Häkchen-Symbol am Bereich; danach fügt auch <kbd>⌘</kbd>/<kbd>Strg</kbd>-Klick weitere Seiten hinzu.
+
 ## Ordnen und verschieben
 
 - In der Seitenleiste Seiten per Drag and Drop umsortieren oder auf eine andere Seite ziehen, um sie unterzuordnen.
-- **Seiten auswählen** (Häkchen-Symbol am Bereich) markiert mehrere Seiten, die sich gemeinsam verschieben oder löschen lassen.
+- **Seiten auswählen** (Häkchen-Symbol am Bereich) oder <kbd>⇧</kbd>-Klick markiert mehrere Seiten, die sich gemeinsam verschieben oder löschen lassen.
 - **Verschieben** in einen anderen Arbeitsbereich nimmt Unterseiten, Datenbankeinträge und Dateien mit. Freigaben für Gruppen oder Personen, die dort nicht Mitglied sind, entfallen. Datenbanken mit Relationen zu zurückbleibenden Datenbanken müssen vorher gelöst werden.
 
 > [!NOTE]

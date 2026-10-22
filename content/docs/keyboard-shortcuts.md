@@ -9,8 +9,28 @@ Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <
 | <kbd>⌘</kbd> <kbd>K</kbd> | Schnellsuche |
 | <kbd>⌘</kbd> <kbd>N</kbd> | Neue Seite |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>N</kbd> | Schnell erfassen (Eintrag in der Datenbank zum Erfassen) |
+| <kbd>?</kbd> oder <kbd>⌘</kbd> <kbd>/</kbd> | Übersicht der Tastenkürzel |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd> | Dokument lesen oder bearbeiten |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>B</kbd> | Seitenleiste ein- oder ausblenden |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Z</kbd> | Fokusmodus ein oder aus |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>K</kbd> | Kommentare ein- oder ausblenden |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>S</kbd> | [Geteilte Ansicht](/pages-and-spaces#geteilte-ansicht) öffnen oder schließen |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd> | Dokument [präsentieren](/documents#praesentieren) |
+| – | Helles oder dunkles Design (ohne Vorgabe, eigenes Kürzel möglich) |
 | <kbd>Esc</kbd> | Dialog, Menü oder Suche schließen |
+
+Alle Kürzel dieser Tabelle außer <kbd>Esc</kbd> lassen sich ändern, siehe [Eigene Tastenkürzel](#eigene-tastenkuerzel).
+
+## Eigene Tastenkürzel
+
+<kbd>?</kbd> (außerhalb von Textfeldern), <kbd>⌘</kbd> <kbd>/</kbd>, das <kbd>?</kbd> unten in der Seitenleiste oder Einstellungen → Konto öffnen die Übersicht. Unter **Überall** hat jede Aktion den Knopf **Ändern**: Danach die neue Kombination drücken – <kbd>Esc</kbd> bricht ab. Die Kombination gilt sofort und für dein Konto auf allen Geräten und Browsern.
+
+- **Konflikte** zeigt die Übersicht an: Gehört die Kombination schon zu einer anderen Aktion, fragt sie nach (**Trotzdem verwenden** nimmt sie der anderen Aktion weg). Kollidiert sie mit einem Kürzel des Editors (etwa <kbd>⌘</kbd> <kbd>B</kbd> für Fett) oder behält der Browser sie meist für sich (etwa <kbd>⌘</kbd> <kbd>W</kbd>), steht ein Hinweis darunter.
+- Der Pfeil setzt eine Aktion auf ihre Vorgabe zurück, **×** entfernt ihr Kürzel ganz, **Alle zurücksetzen** stellt alle Vorgaben wieder her. Eigene Kürzel sind mit **Eigene** markiert.
+- Kombinationen ohne <kbd>⌘</kbd>, <kbd>Strg</kbd> oder <kbd>⌥</kbd> (wie <kbd>?</kbd>) wirken nur außerhalb von Textfeldern und dem Editor.
+- Die Kürzel des Editors, des Seitenbaums, der Präsentation und der geteilten Ansicht sind fest; die Übersicht listet sie zum Nachschlagen.
+
+Die Übersicht zeigt die Tasten so, wie sie auf deinem Gerät heißen: auf dem Mac <kbd>⌘</kbd> und <kbd>⌥</kbd>, sonst <kbd>Ctrl</kbd> und <kbd>Alt</kbd>. Über die API speichert der Befehl `shortcuts.save` dieselben Einstellungen (siehe [API und Webhooks](/api-and-webhooks)).
 
 ## Im Dokument
 
@@ -37,6 +57,23 @@ Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd> | Fußnote einfügen (bei ausgewählter Fußnote: bearbeiten) |
 
 Markdown-Kürzel wie `##`, `-`, `[]` oder ` ``` ` stehen unter [Dokumente und Editor](/documents#markdown-kuerzel).
+
+## Präsentation
+
+| Kürzel | Wirkung |
+| --- | --- |
+| <kbd>→</kbd> <kbd>↓</kbd> <kbd>Leertaste</kbd> <kbd>Bild ↓</kbd> | Nächste Folie |
+| <kbd>←</kbd> <kbd>↑</kbd> <kbd>Bild ↑</kbd> | Vorherige Folie |
+| <kbd>Pos1</kbd> / <kbd>Ende</kbd> | Erste / letzte Folie |
+| <kbd>Esc</kbd> | Präsentation beenden |
+
+## Geteilte Ansicht
+
+| Kürzel | Wirkung |
+| --- | --- |
+| <kbd>⌘</kbd>-Klick | Seite im Seitenbaum oder Seitenlink rechts daneben öffnen |
+| <kbd>←</kbd> / <kbd>→</kbd> (Trennlinie fokussiert) | Breite ändern, mit <kbd>⇧</kbd> in großen Schritten |
+| <kbd>Enter</kbd> (Trennlinie fokussiert) | Halbe-halbe |
 
 ## Whiteboard
 

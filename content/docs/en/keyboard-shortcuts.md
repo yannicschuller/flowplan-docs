@@ -7,10 +7,30 @@ All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd
 | Shortcut | Effect |
 | --- | --- |
 | <kbd>⌘</kbd> <kbd>K</kbd> | Quick search |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd> | Read or edit the document |
 | <kbd>⌘</kbd> <kbd>N</kbd> | New page |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>N</kbd> | Quick capture (record in the capture database) |
+| <kbd>?</kbd> or <kbd>⌘</kbd> <kbd>/</kbd> | Keyboard shortcut overview |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd> | Read or edit the document |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>B</kbd> | Show or hide the sidebar |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Z</kbd> | Focus mode on or off |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>K</kbd> | Show or hide comments |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>S</kbd> | Open or close the [split view](/pages-and-spaces#split-view) |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd> | [Present](/documents#present) the document |
+| – | Light or dark theme (no default, your own shortcut possible) |
 | <kbd>Esc</kbd> | Close a dialog, menu or the search |
+
+Every shortcut in this table except <kbd>Esc</kbd> can be changed, see [Your own shortcuts](#your-own-shortcuts).
+
+## Your own shortcuts
+
+<kbd>?</kbd> (outside text fields), <kbd>⌘</kbd> <kbd>/</kbd>, the <kbd>?</kbd> at the bottom of the sidebar or Settings → Account open the overview. Under **Everywhere**, every action has a **Change** button: press the new combination after it – <kbd>Esc</kbd> cancels. The combination applies at once and for your account on all devices and browsers.
+
+- The overview shows **conflicts**: if the combination already belongs to another action, it asks (**Use it anyway** takes it away from the other action). If it collides with an editor shortcut (such as <kbd>⌘</kbd> <kbd>B</kbd> for bold) or the browser usually keeps it for itself (such as <kbd>⌘</kbd> <kbd>W</kbd>), a note appears below it.
+- The arrow resets an action to its default, **×** removes its shortcut altogether, **Reset all** restores every default. Your own shortcuts are marked **Custom**.
+- Combinations without <kbd>⌘</kbd>, <kbd>Ctrl</kbd> or <kbd>⌥</kbd> (like <kbd>?</kbd>) only work outside text fields and the editor.
+- The shortcuts of the editor, the page tree, presentations and the split view are fixed; the overview lists them for reference.
+
+The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kbd> on a Mac, <kbd>Ctrl</kbd> and <kbd>Alt</kbd> elsewhere. Through the API, the command `shortcuts.save` stores the same settings (see [API and webhooks](/api-and-webhooks)).
 
 ## In a document
 
@@ -37,6 +57,23 @@ All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd> | Insert footnote (edits a selected one) |
 
 Markdown shortcuts such as `##`, `-`, `[]` or ` ``` ` are listed under [Documents and the editor](/documents#markdown-shortcuts).
+
+## Presentation
+
+| Shortcut | Effect |
+| --- | --- |
+| <kbd>→</kbd> <kbd>↓</kbd> <kbd>Space</kbd> <kbd>Page Down</kbd> | Next slide |
+| <kbd>←</kbd> <kbd>↑</kbd> <kbd>Page Up</kbd> | Previous slide |
+| <kbd>Home</kbd> / <kbd>End</kbd> | First / last slide |
+| <kbd>Esc</kbd> | End the presentation |
+
+## Split view
+
+| Shortcut | Effect |
+| --- | --- |
+| <kbd>⌘</kbd>-click | Open a page in the page tree or a page link on the right |
+| <kbd>←</kbd> / <kbd>→</kbd> (divider focused) | Change the width, with <kbd>⇧</kbd> in large steps |
+| <kbd>Enter</kbd> (divider focused) | Half and half |
 
 ## Whiteboard
 
