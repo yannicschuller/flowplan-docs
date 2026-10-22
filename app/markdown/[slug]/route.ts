@@ -1,6 +1,5 @@
 import { headers } from "next/headers";
-import { readFileSync } from "node:fs";
-import { docSlugs, docSource } from "@/lib/docs";
+import { docMarkdown, docSlugs } from "@/lib/docs";
 import { isLocale } from "@/lib/i18n";
 import { LOCALE_HEADER } from "@/lib/i18n-server";
 import { absolute } from "@/lib/seo";
@@ -12,7 +11,7 @@ export async function GET(_: Request, { params }: { params: Promise<{ slug: stri
   if (!docSlugs.includes(slug)) return new Response("Not found\n", { status: 404 });
   const fixed = (await headers()).get(LOCALE_HEADER);
   const locale = isLocale(fixed) ? fixed : "en";
-  return new Response(readFileSync(docSource(slug, locale), "utf8"), {
+  return new Response(docMarkdown(slug, locale), {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",
       "Cache-Control": "public, max-age=600",

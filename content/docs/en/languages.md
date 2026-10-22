@@ -1,6 +1,6 @@
 # Languages and translations
 
-Flowplan is available in **German, English and French**. Further languages can be added without changing the app's code – with any translation tool that understands JSON files.
+Flowplan is available in {{facts.languages|word}} languages: **German, English and French**. Further languages can be added without changing the app's code – with any translation tool that understands JSON files.
 
 ## Choosing a language
 

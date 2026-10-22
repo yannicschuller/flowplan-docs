@@ -5,7 +5,10 @@ import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { Marked, type Tokens } from "marked";
+import { releases } from "./changelog";
+import { FACTS, fillFacts } from "./facts";
 import type { Locale } from "./i18n";
+import { synonymKeywords } from "./search";
 import { DISCORD_URL, GITHUB_URL, websiteUrl } from "./links";
 
 export type DocGroup = { title: string; intro: string; pages: { slug: string; title: string }[] };
@@ -204,7 +207,9 @@ function render(markdown: string, locale: Locale) {
       },
       code({ text, lang }: Tokens.Code) {
         const language = (lang || "").split(/\s/)[0];
-        return `<div class="code" data-lang="${escape(language)}"><pre><code>${escape(text)}</code></pre></div>\n`;
+        // Scrollable regions take keyboard focus, so long lines can be
+        // scrolled without a mouse (WCAG 2.1.1, axe scrollable-region-focusable).
+        return `<div class="code" data-lang="${escape(language)}"><pre tabindex="0"><code>${escape(text)}</code></pre></div>\n`;
       },
       blockquote({ tokens }: Tokens.Blockquote) {
         let body = this.parser.parse(tokens);
@@ -226,7 +231,7 @@ function render(markdown: string, locale: Locale) {
                 .join("")}</tr>`,
           )
           .join("");
-        return `<div class="table"><table><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>\n`;
+        return `<div class="table" tabindex="0"><table><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>\n`;
       },
     },
   });
@@ -262,8 +267,11 @@ export function lastModified(source: string): string | undefined {
   return modifiedDates![source];
 }
 
+// A page's Markdown with the counts filled in (see lib/facts.ts).
+export const docMarkdown = (slug: string, locale: Locale) => fillFacts(readFileSync(fileOf(slug, locale), "utf8"), locale);
+
 function read(slug: string, locale: Locale) {
-  const text = readFileSync(fileOf(slug, locale), "utf8");
+  const text = docMarkdown(slug, locale);
   const title = text.match(/^# (.+)$/m)?.[1]?.trim() || slug;
   const rest = text.replace(/^[\s\S]*?^# .+\n+/m, "");
   // The first paragraph is the lead, the rest the article.
@@ -303,30 +311,52 @@ const blockText = (html: string) =>
     .replace(/\s+/g, " ")
     .trim();
 
+// The "What's new" page (app/(docs)/whats-new): its address and title.
+export const WHATS_NEW = { slug: "whats-new", title: ["Was ist neu", "What's new"] as [string, string] };
+export const whatsNewTitle = (locale: Locale) => pick(locale, WHATS_NEW.title);
+
 // Search index: every page with its sections and their plain text, so the
-// search box also finds words that only appear in the body.
+// search box also finds words that only appear in the body. "keywords" holds
+// the synonyms of terms in the text (lib/search.ts), so "login" finds a
+// section about the Anmeldung and "S3" one about Speicher.
 export function docSearchIndex(locale: Locale = "de") {
-  return docSlugs.map((slug) => {
+  const pages = docSlugs.map((slug) => {
     const doc = loadDoc(slug, locale)!;
     const parts = doc.html.split(/(?=<h[23] id=")/);
     const intro = parts[0].startsWith("<h") ? "" : parts.shift()!;
+    const text = blockText(intro);
     return {
       slug,
       title: doc.title,
       group: doc.group,
       summary: doc.summary,
-      text: blockText(intro),
+      text,
+      keywords: synonymKeywords(`${doc.title} ${doc.summary} ${text}`),
       sections: parts.map((part) => {
         const id = part.match(/^<h[23] id="([^"]+)"/)![1];
         const heading = plain(part.slice(0, part.indexOf("</h")).replace(/<a class="anchor"[^>]*>#<\/a>/, ""));
-        return {
-          id,
-          text: heading.trim(),
-          body: blockText(part.slice(part.indexOf("</h") + 5)),
-        };
+        const body = blockText(part.slice(part.indexOf("</h") + 5));
+        return { id, text: heading.trim(), body, keywords: synonymKeywords(`${heading} ${body}`) };
       }),
     };
   });
+  // Releases are searchable too ("v0.5", "passkeys" in a release note).
+  const title = whatsNewTitle(locale);
+  const summary =
+    locale === "en" ? "The changes in every release of Flowplan, newest first." : "Die Änderungen jeder Flowplan-Version, die neueste zuerst.";
+  pages.push({
+    slug: WHATS_NEW.slug,
+    title,
+    group: title,
+    summary,
+    text: "",
+    keywords: synonymKeywords(`${title} ${summary}`),
+    sections: releases().map((r) => {
+      const body = r.entries.map((e) => e.text).join(" ");
+      return { id: r.id, text: `${r.version} – ${r.date}`, body, keywords: synonymKeywords(body) };
+    }),
+  });
+  return pages;
 }
 export type DocSearchEntry = ReturnType<typeof docSearchIndex>[number];
 
@@ -338,6 +368,8 @@ export function searchIndexVersion() {
   if (!indexVersion) {
     const hash = createHash("sha1");
     for (const slug of docSlugs) for (const locale of ["de", "en"] as const) hash.update(readFileSync(fileOf(slug, locale)));
+    hash.update(JSON.stringify(FACTS));
+    hash.update(JSON.stringify(releases()));
     indexVersion = hash.digest("hex").slice(0, 12);
   }
   return indexVersion;
@@ -381,7 +413,7 @@ export function llmsIndex(base: string, locale: Locale) {
 export function llmsFull(base: string, locale: Locale) {
   return docSlugs
     .map((slug) => {
-      const text = readFileSync(fileOf(slug, locale), "utf8").trim();
+      const text = docMarkdown(slug, locale).trim();
       return `<!-- ${base}/${locale}/${slug} -->\n\n${text}`;
     })
     .join("\n\n---\n\n");

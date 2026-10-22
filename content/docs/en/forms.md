@@ -62,6 +62,8 @@ On the left is the flow with numbered questions, text blocks and page breaks; on
 
 ### Question types
 
+Surveys have {{facts.questionTypes}} question types:
+
 - **Text**: short answer, long text, e-mail, phone, website, number, date, time
 - **Choice**: single choice, multiple choice, dropdown, yes / no – optionally with “Other” and a text field, a random order and a minimum or maximum number
 - **Rating**: stars (3 to 10), Net Promoter Score (0–10), a scale with labels at both ends, a slider

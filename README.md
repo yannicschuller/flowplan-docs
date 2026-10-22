@@ -6,7 +6,9 @@ The documentation of [Flowplan](https://github.com/yannicschuller/flowplan) at [
 
 Pages are Markdown files in `content/docs` (German) and `content/docs/en` (English, same file names). The order and the groups of the navigation are in `lib/docs.ts`. Links between pages are written as `/slug` or `/slug#anchor`; `npm test` checks that every link and anchor exists. Links to other sites open in a new tab (with a hint for screen readers); links to flowplan.org do not.
 
-Every page ends with the date of its last commit and an "Edit on GitHub" link. The dates come from `content/last-modified.json`, which `npm run build` writes from the git history (`scripts/last-modified.mjs`); without a full history (shallow clone, no git) the file stays empty and no dates are shown. The search box fetches its index from `/api/search-index/<lang>` when it is first focused, so pages stay small.
+Every page ends with the date of its last commit and an "Edit on GitHub" link. The dates come from `content/last-modified.json`, which `npm run build` writes from the git history (`scripts/last-modified.mjs`); without a full history (shallow clone, no git) the file stays empty and no dates are shown. The search box fetches its index from `/api/search-index/<lang>` when it is first focused, so pages stay small. The index lists synonyms of the terms in each section (`lib/search.ts`: login ↔ Anmeldung, env ↔ Konfiguration, S3 ↔ Speicher, SSO ↔ Single Sign-on, KI ↔ AI …), and results mark the matched words.
+
+Counts that the pages state come from the app's [`facts.json`](https://github.com/yannicschuller/flowplan/blob/main/facts.json): write `{{facts.templates}}` for "26" or `{{facts.views|word}}` for "zehn" / "ten" (keys: `views`, `fieldTypes`, `questionTypes`, `languages`, `templates`, `templateCategories`). **Was ist neu / What's new** (`/whats-new`) lists the releases from the app's `CHANGELOG.md`. Both files are fetched before every build (`scripts/app-files.mjs`, also `npm run app-files`) into `content/facts.json` and `content/changelog.md`; without network the committed copies are used.
 
 ## Development
 
@@ -14,6 +16,8 @@ Every page ends with the date of its last commit and an "Edit on GitHub" link. T
 npm install
 npm run dev
 ```
+
+Checks: `npm run typecheck`, `npm test`, `npm run build`, then `npm run quality` – it starts the production build and opens `/de`, `/en/configuration`, `/de/journal` and `/en/whats-new` at 1280 and 390 px in Chromium: no serious or critical [axe](https://github.com/dequelabs/axe-core) findings (contrast included), nothing focusable inside `aria-hidden`, no horizontal scrolling, at most 150 KB of JavaScript (gzip) per page and a largest contentful paint under 2.5 s. `QUALITY_CHROMIUM` names a Chromium binary when Playwright's own is not installed (`npx playwright install chromium`).
 
 ## Configuration
 

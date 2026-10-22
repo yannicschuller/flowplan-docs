@@ -27,3 +27,13 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
+      # Accessibility and performance budgets (scripts/quality-check.mjs).
+      # GitHub's runners download Chromium; the own runner uses the one it
+      # has and skips the check with a notice when there is none.
+      - name: Install Chromium
+        if: runner.environment == 'github-hosted'
+        run: npx playwright install --with-deps chromium
+      - name: Quality budgets
+        run: npm run quality
+        env:
+          QUALITY_OPTIONAL: ${{ runner.environment == 'github-hosted' && '0' || '1' }}

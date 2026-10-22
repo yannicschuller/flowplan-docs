@@ -9,7 +9,7 @@ import { absolute } from "@/lib/seo";
 // are those of the last commit per file (content/last-modified.json, written
 // before the build); without them lastModified is left out.
 export default function sitemap(): MetadataRoute.Sitemap {
-  return ["", ...docSlugs.map((slug) => `/${slug}`)].flatMap((path) =>
+  return ["", ...docSlugs.map((slug) => `/${slug}`), "/whats-new"].flatMap((path) =>
     (["de", "en"] as const).map((locale) => {
       const modified = path ? docModified(path.slice(1), locale) : undefined;
       return {

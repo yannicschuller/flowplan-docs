@@ -62,6 +62,8 @@ Links steht der Ablauf mit nummerierten Fragen, Textblöcken und Seitenumbrüche
 
 ### Fragetypen
 
+Umfragen kennen {{facts.questionTypes}} Fragetypen:
+
 - **Text**: kurze Antwort, langer Text, E-Mail, Telefon, Website, Zahl, Datum, Uhrzeit
 - **Auswahl**: Einfachauswahl, Mehrfachauswahl, Dropdown, Ja / Nein – wahlweise mit „Andere“ samt Textfeld, zufälliger Reihenfolge und Mindest- oder Höchstzahl
 - **Bewertung**: Sterne (3 bis 10), Weiterempfehlung (NPS, 0–10), Skala mit Beschriftung an beiden Enden, Schieberegler

@@ -17,7 +17,7 @@ for (const locale of LOCALES)
       assert.ok(doc.summary.length > 30, `${slug}: lead`);
       assert.ok(doc.html.length > 500, `${slug}: content`);
       // Alerts render as callouts; in code they may be shown as written.
-      const prose = doc.html.replace(/<code>[\s\S]*?<\/code>|<pre>[\s\S]*?<\/pre>/g, "");
+      const prose = doc.html.replace(/<code>[\s\S]*?<\/code>|<pre[^>]*>[\s\S]*?<\/pre>/g, "");
       assert.ok(!prose.includes("[!NOTE]") && !prose.includes("[!WARNING]"), `${slug}: callouts render`);
     }
     assert.equal(loadDoc("../package", locale), null);
@@ -28,7 +28,7 @@ test("every page has an English translation without German left in it", () => {
     assert.ok(existsSync(join(process.cwd(), "content", "docs", "en", `${slug}.md`)), `${slug}: English file`);
     const doc = loadDoc(slug, "en")!;
     const text = (doc.leadHtml + doc.html)
-      .replace(/<code>[\s\S]*?<\/code>|<pre>[\s\S]*?<\/pre>/g, "")
+      .replace(/<code>[\s\S]*?<\/code>|<pre[^>]*>[\s\S]*?<\/pre>/g, "")
       .replace(/<[^>]+>/g, " ");
     assert.doesNotMatch(text, /\b(und|der|die|das|nicht|mit|für|oder|wird|werden|eine?n?)\b/, `${slug}: German words`);
   }

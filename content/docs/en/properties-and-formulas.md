@@ -4,7 +4,7 @@ Relations connect databases, rollups calculate across linked records, formulas c
 
 ## Edit properties
 
-A click on the column header or **View and properties** opens the property dialog: name, type, options and format. Changing the type keeps existing values as far as they fit. Number formats cover currencies, percent, decimal places and thousands separators and also apply to formulas with a numeric result; date fields show short, long or ISO dates and optionally times; **Remove date** below the field clears it again.
+A click on the column header or **View and properties** opens the property dialog: name, type (one of {{facts.fieldTypes}} property types), options and format. Changing the type keeps existing values as far as they fit. Number formats cover currencies, percent, decimal places and thousands separators and also apply to formulas with a numeric result; date fields show short, long or ISO dates and optionally times; **Remove date** below the field clears it again.
 
 ## Aliases
 

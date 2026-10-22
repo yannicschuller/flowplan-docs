@@ -894,3 +894,45 @@
   color: var(--text);
   text-decoration: underline;
 }
+
+/* ---------- What's new ---------- */
+.releaseDate {
+  margin-left: 6px;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 450;
+  letter-spacing: 0;
+  color: var(--secondary);
+}
+.prose a.commit {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--secondary);
+  text-decoration-color: var(--border);
+}
+.releaseMeta {
+  font-size: 13px;
+  color: var(--secondary);
+}
+.prose .releaseMeta a {
+  color: var(--blue);
+}
+
+/* Matches in search results. */
+.results mark {
+  background: color-mix(in srgb, var(--signal) 22%, transparent);
+  color: inherit;
+  border-radius: 2px;
+}
+
+/* Wide tables and code blocks scroll and take keyboard focus for it. */
+.prose :global(.table):focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+/* Inside the rounded code box, which clips what is outside it. */
+.prose pre:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: -2px;
+  border-radius: 12px;
+}

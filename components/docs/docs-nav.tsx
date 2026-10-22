@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { List, MagnifyingGlass, X } from "@phosphor-icons/react";
 import type { DocGroup, DocSearchEntry } from "@/lib/docs";
+import { excerpt, expandWord, fold, highlight } from "@/lib/search";
 import { useLocale, usePrefix, useT } from "../i18n";
 import s from "./docs.module.css";
 
@@ -14,7 +15,8 @@ export function DocsNav({ groups }: { groups: DocGroup[] }) {
   const path = usePathname().replace(/^\/(de|en)(?=\/|$)/, "") || "/";
   const [open, setOpen] = useState(false);
   useEffect(() => setOpen(false), [path]);
-  const current = groups.flatMap((g) => g.pages).find((p) => path === `/${p.slug}`);
+  const whatsNew = t("Was ist neu", "What's new");
+  const current = groups.flatMap((g) => g.pages).find((p) => path === `/${p.slug}`) ?? (path === "/whats-new" ? { title: whatsNew } : undefined);
   return (
     <nav className={s.nav} aria-label={t("Dokumentation", "Documentation")} data-open={open}>
       <button
@@ -29,6 +31,9 @@ export function DocsNav({ groups }: { groups: DocGroup[] }) {
       <div className={s.navList}>
         <a href={prefix || "/"} aria-current={path === "/" ? "page" : undefined}>
           {t("Übersicht", "Overview")}
+        </a>
+        <a href={`${prefix}/whats-new`} aria-current={path === "/whats-new" ? "page" : undefined}>
+          {whatsNew}
         </a>
         {groups.map((group) => (
           <div key={group.title} className={s.navGroup}>
@@ -49,12 +54,14 @@ export function DocsNav({ groups }: { groups: DocGroup[] }) {
   );
 }
 
-const fold = (text: string) =>
-  text
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .replace(/ß/g, "ss");
+// Marks the matched terms of a title or snippet.
+function Marked({ text, terms }: { text: string; terms: string[] }) {
+  return (
+    <>
+      {highlight(text, terms).map((piece, i) => (piece.hit ? <mark key={i}>{piece.text}</mark> : piece.text))}
+    </>
+  );
+}
 
 const LISTBOX_ID = "docs-search-results";
 const optionId = (i: number) => `docs-search-option-${i}`;
@@ -100,54 +107,54 @@ export function DocsSearch({ version }: { version: string }) {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const results = useMemo(() => {
+  // Each query word stands for itself and its synonyms (lib/search.ts):
+  // "login" also finds "Anmeldung", whose synonyms the index lists under
+  // "keywords". All words have to match; the snippet marks every hit.
+  const { results, terms } = useMemo(() => {
     const words = fold(query).split(/\s+/).filter(Boolean);
-    if (!words.length || !index) return [];
+    if (!words.length || !index) return { results: [], terms: [] };
+    const expanded = words.map(expandWord);
+    const terms = [...new Set(expanded.flat())];
     const hits: { href: string; title: string; context: string; snippet?: string; score: number }[] = [];
     const all = (text: string) => words.every((w) => text.includes(w));
-    // A short excerpt around the first matching word.
-    const excerpt = (text: string) => {
-      const at = fold(text).indexOf(words[0]);
-      if (at < 0) return undefined;
-      const start = Math.max(0, text.lastIndexOf(" ", Math.max(0, at - 40)) + 1);
-      return (start > 0 ? "… " : "") + text.slice(start, start + 110).trim() + (start + 110 < text.length ? " …" : "");
-    };
+    // Synonyms count only after the words themselves: in a title through the
+    // expanded query, in a text through the keywords of the index.
+    const named = (text: string) => expanded.every((alternatives) => alternatives.some((t) => text.includes(t)));
+    const loose = (text: string, keywords: string) => all(`${text} ${keywords}`);
     for (const page of index) {
-      if (all(fold(`${page.title} ${page.summary}`)))
+      const head = fold(`${page.title} ${page.summary}`);
+      const body = fold(page.text);
+      if (all(head) || named(fold(page.title)))
+        hits.push({ href: `${prefix}/${page.slug}`, title: page.title, context: page.group, score: all(fold(page.title)) ? 0 : all(head) ? 2 : 2.5 });
+      else if (all(body) || loose(`${head} ${body}`, page.keywords))
         hits.push({
           href: `${prefix}/${page.slug}`,
           title: page.title,
           context: page.group,
-          score: all(fold(page.title)) ? 0 : 2,
-        });
-      else if (all(fold(page.text)))
-        hits.push({
-          href: `${prefix}/${page.slug}`,
-          title: page.title,
-          context: page.group,
-          snippet: excerpt(page.text),
-          score: 4,
+          snippet: excerpt(page.text, terms) ?? excerpt(page.summary, terms),
+          score: all(body) ? 4 : 6,
         });
       for (const section of page.sections) {
         const heading = fold(`${section.text} ${page.title}`);
-        if (all(heading))
+        const text = fold(`${section.text} ${section.body}`);
+        if (all(heading) || named(fold(section.text)))
           hits.push({
             href: `${prefix}/${page.slug}#${section.id}`,
             title: section.text,
             context: page.title,
-            score: all(fold(section.text)) ? 1 : 3,
+            score: all(fold(section.text)) ? 1 : all(heading) ? 3 : 3.5,
           });
-        else if (all(fold(`${section.text} ${section.body}`)))
+        else if (all(text) || loose(text, section.keywords))
           hits.push({
             href: `${prefix}/${page.slug}#${section.id}`,
             title: section.text,
             context: page.title,
-            snippet: excerpt(section.body),
-            score: 5,
+            snippet: excerpt(section.body, terms),
+            score: all(text) ? 5 : 7,
           });
       }
     }
-    return hits.sort((a, b) => a.score - b.score).slice(0, 10);
+    return { results: hits.sort((a, b) => a.score - b.score).slice(0, 10), terms };
   }, [index, query, prefix]);
 
   const open = query.trim().length > 0;
@@ -205,9 +212,15 @@ export function DocsSearch({ version }: { version: string }) {
           {results.map((hit, i) => (
             <li key={hit.href} role="option" id={optionId(i)} aria-selected={i === active}>
               <a href={hit.href} tabIndex={-1} onClick={close} onMouseEnter={() => setActive(i)}>
-                <strong>{hit.title}</strong>
+                <strong>
+                  <Marked text={hit.title} terms={terms} />
+                </strong>
                 <small>{hit.context}</small>
-                {hit.snippet && <span>{hit.snippet}</span>}
+                {hit.snippet && (
+                  <span>
+                    <Marked text={hit.snippet} terms={terms} />
+                  </span>
+                )}
               </a>
             </li>
           ))}

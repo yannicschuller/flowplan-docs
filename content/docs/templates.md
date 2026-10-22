@@ -4,7 +4,7 @@ Vorlagen sind gespeicherte Seiten – Dokumente, Datenbanken oder ganze Seitenb�
 
 ## Startervorlagen
 
-**Vorlagen** in der Seitenleiste zeigt 26 eingebaute Vorlagen in sechs Kategorien, jeweils mit Beispieleinträgen und passenden Ansichten:
+**Vorlagen** in der Seitenleiste zeigt {{facts.templates}} eingebaute Vorlagen in {{facts.templateCategories|word}} Kategorien, jeweils mit Beispieleinträgen und passenden Ansichten:
 
 | Kategorie | Vorlagen |
 | --- | --- |

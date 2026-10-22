@@ -2,7 +2,7 @@
 
 A database can have as many views as you like. Every view shows the same records with its own layout, filters, sorting and groups.
 
-New view: **+** next to the view tabs, then choose the layout. **View and properties** controls which properties are visible and in which order.
+New view: **+** next to the view tabs, then choose one of the {{facts.views|word}} layouts. **View and properties** controls which properties are visible and in which order.
 
 A **right-click on a view tab** opens its menu: **Rename**, **Duplicate**, **Settings …**, **Set as default view**, **Move left**, **Move right** and **Delete view** (the records are kept; the last view cannot be deleted). Tabs can also be **reordered by dragging**, and a double-click renames them.
 
