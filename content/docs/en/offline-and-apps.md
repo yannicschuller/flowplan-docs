@@ -75,6 +75,7 @@ A slim desktop app wraps your Flowplan instance. On first start it asks for the 
 - All data stays on the server.
 - The app remembers the window size and position and opens external links in the default browser.
 - Offline use works in the desktop app too: turn on **Settings → Data → Offline use** in the app – it keeps its own offline copies, separate from the browser or the installed web app. Without a connection it then opens the stored copy; its own offline page (**Try again**, **Profiles**) only appears when there is no copy on the device.
+- **Notifications:** the app shows new inbox notifications as system notifications and the unread count on the app icon – also with the window minimised or hidden. See [Notifications in the desktop app](#notifications-in-the-desktop-app).
 - It only accepts real Flowplan instances – an address running something else or redirecting to another site is refused.
 - **Sign in with a passkey** and **Sign in with SSO** open the sign-in in the default browser, where passkeys (iCloud Keychain, Windows Hello, password managers) are available. After **Sign in to the app** the app takes over the sign-in; e-mail and password work directly in the app. This needs Flowplan 0.3.3 or newer.
 
@@ -94,6 +95,21 @@ If you work with more than one Flowplan instance, say **Work – flowplan.compan
 Every profile has its own sign-in, its own offline copy and its own cookies – also two profiles on the same instance, for example for two accounts. Only the active profile's instance opens in the window; links to another instance go to the browser. With more than one profile, the window title names the active one.
 
 If you had set up an address before, it becomes the first profile after the update – still signed in and with its offline copy.
+
+### Notifications in the desktop app
+
+Browsers receive notifications through Web Push, which the desktop app does not have. It therefore asks your instance itself, about once a minute while it runs:
+
+- **What appears:** each new unread notification once, with the inbox line as title and the record below it (with several profiles also the profile name). Your **notification kinds** under **Settings → Notifications** apply: only kinds with **push** switched on pop up. More than three at once become one notification that opens the inbox.
+- **Click:** brings the window to the front, switches to the right profile if needed and opens the page.
+- **Count on the icon:** the unread notifications – on the Dock (macOS), in the launcher (Linux, where the desktop shows counts) and as a red dot on the taskbar button (Windows).
+- **Settings:** in the **Notifications** menu (macOS: in the *Flowplan* menu, Windows and Linux: in the *File* menu): **Show Notifications**, **Do Not Disturb** for an hour or until tomorrow morning, and **All Profiles** (otherwise only the active profile). In the app, **Settings → Notifications** shows the same switch instead of Web Push.
+
+Nothing pops up for the window in front – its inbox is in view anyway. What was there at the first start is not shown again, not even after a restart.
+
+On a Mac the app keeps running in the Dock after closing the window and keeps notifying. On Windows and Linux closing the window quits the app; notifications arrive while it runs (minimised is enough).
+
+This needs a Flowplan server newer than 0.6.0 (currently the beta image) and desktop app 1.0.7 or newer. The app only asks the profile's own instance, with its sign-in; nothing is stored on the server for it.
 
 ## Apps for iPhone, iPad and Android
 

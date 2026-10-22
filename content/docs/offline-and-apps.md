@@ -75,6 +75,7 @@ Eine schlanke Desktop-App umschließt deine Flowplan-Instanz. Beim ersten Start 
 - Alle Daten bleiben auf dem Server.
 - Die App merkt sich Fenstergröße und -position, bietet deutsche Menüs und öffnet externe Links im Standardbrowser.
 - Die Offline-Nutzung funktioniert auch in der Desktop-App: **Einstellungen → Daten → Offline-Nutzung** in der App einschalten – die App hat eigene Offline-Kopien, getrennt von Browser oder installierter Web-App. Ohne Verbindung öffnet sie dann die gespeicherte Kopie; ihre eigene Offline-Seite (**Erneut versuchen**, **Profile**) erscheint nur, wenn auf dem Gerät keine Kopie liegt.
+- **Mitteilungen:** Die App zeigt neue Benachrichtigungen aus dem Posteingang als Mitteilungen des Systems und die Zahl der ungelesenen am App-Symbol – auch bei minimiertem oder ausgeblendetem Fenster. Mehr unter [Mitteilungen in der Desktop-App](#mitteilungen-in-der-desktop-app).
 - Sie akzeptiert nur echte Flowplan-Instanzen – eine Adresse, hinter der etwas anderes läuft oder die auf eine andere Seite weiterleitet, wird abgelehnt.
 - **Mit Passkey anmelden** und **Mit SSO anmelden** öffnen die Anmeldung im Standardbrowser, wo Passkeys (iCloud-Schlüsselbund, Windows Hello, Passwortmanager) zur Verfügung stehen. Nach **In der App anmelden** übernimmt die App die Anmeldung; E-Mail und Passwort gehen direkt in der App. Das braucht Flowplan 0.3.3 oder neuer.
 
@@ -94,6 +95,21 @@ Arbeitest du mit mehr als einer Flowplan-Instanz, etwa **Arbeit – flowplan.fir
 Jedes Profil hat seine eigene Anmeldung, seine eigene Offline-Kopie und eigene Cookies – auch zwei Profile auf derselben Instanz, etwa für zwei Konten. Im Fenster öffnet sich nur die Instanz des aktiven Profils; Links auf eine andere Instanz gehen in den Browser. Bei mehr als einem Profil steht der Profilname im Fenstertitel.
 
 Wer bisher eine Adresse eingerichtet hatte, findet sie nach dem Update als erstes Profil wieder – angemeldet und mit der bisherigen Offline-Kopie.
+
+### Mitteilungen in der Desktop-App
+
+Browser bekommen Benachrichtigungen per Web-Push – das gibt es in der Desktop-App nicht. Sie fragt deshalb selbst bei deiner Instanz nach, etwa einmal pro Minute, solange sie läuft:
+
+- **Was erscheint:** jede neue ungelesene Benachrichtigung einmal, mit der Zeile aus dem Posteingang als Titel und dem Eintrag darunter (bei mehreren Profilen auch der Profilname). Es gelten deine **Benachrichtigungsarten** unter **Einstellungen → Benachrichtigungen**: Mitteilungen gibt es nur für Arten, bei denen **Push** eingeschaltet ist. Kommen mehr als drei auf einmal, fasst die App sie zu einer Mitteilung zusammen, die den Posteingang öffnet.
+- **Klick:** holt das Fenster nach vorn, wechselt bei Bedarf ins richtige Profil und öffnet die Seite.
+- **Zahl am Symbol:** die ungelesenen Benachrichtigungen – im Dock (macOS), im Starter (Linux, wenn der Desktop Zahlen anzeigt) und als roter Punkt an der Taskleisten-Schaltfläche (Windows).
+- **Einstellungen:** im Menü **Mitteilungen** (macOS: im Menü *Flowplan*, Windows und Linux: im Menü *Datei*): **Mitteilungen anzeigen**, **Nicht stören** für eine Stunde oder bis morgen früh und **Alle Profile** (sonst nur das aktive Profil). In der App zeigt **Einstellungen → Benachrichtigungen** statt Web-Push denselben Schalter.
+
+Für das Fenster im Vordergrund erscheinen keine Mitteilungen – dort siehst du den Posteingang ohnehin. Was beim ersten Start schon da war, zeigt die App nicht noch einmal, auch nicht nach einem Neustart.
+
+Auf dem Mac läuft die App nach dem Schließen des Fensters im Dock weiter und meldet sich weiter. Unter Windows und Linux beendet das Schließen des Fensters die App; Mitteilungen kommen, solange sie läuft (minimiert reicht).
+
+Das braucht einen Flowplan-Server neuer als 0.6.0 (derzeit das Beta-Image) und die Desktop-App 1.0.7 oder neuer. Die App fragt nur die eigene Instanz des Profils, mit dessen Anmeldung; auf dem Server wird dafür nichts hinterlegt.
 
 ## Apps für iPhone, iPad und Android
 
