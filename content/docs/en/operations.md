@@ -111,11 +111,20 @@ The desktop app for macOS, Windows and Linux is a slim window around a Flowplan 
 | Windows 10 or newer | `Flowplan-<version>-windows-setup.exe`, the `.zip` without installing | x64 and ARM in one installer |
 | Linux | `Flowplan-<version>-linux-<arch>.AppImage`, or the `.tar.gz` | x64 and ARM |
 
-On first start the app always asks for the instance's address, suggesting `https://app.flowplan.org` (HTTPS, `http://localhost` for local tests); change it via the menu **Server wechseln …**. For managed installations `--server=<URL>` or the environment variable `FLOWPLAN_SERVER` suggests their own address instead – the first start still asks to confirm it. The app checks that Flowplan really runs there (`/api/health` answers with `"service": "flowplan"`) and refuses addresses that redirect to another site.
+On first start the app always asks for the instance's address, suggesting `https://app.flowplan.org` (HTTPS, `http://localhost` for local tests); more instances are added as profiles (see below). For managed installations `--server=<URL>` or the environment variable `FLOWPLAN_SERVER` suggests their own address instead – the first start still asks to confirm it. The app checks that Flowplan really runs there (`/api/health` answers with `"service": "flowplan"`) and refuses addresses that redirect to another site.
 
 **Signing in with passkeys and SSO:** passkeys, and providers that ask for one, only work in a real browser. The app therefore opens the sign-in in the default browser: it creates a random secret, opens `/api/auth/desktop` with its hash, after signing in you confirm **Sign in to the app**, and the browser hands a one-time code back to the app via `flowplan://sign-in`. The code is valid for one minute, once, and only together with the secret that never leaves the app. If the browser asks whether it may open Flowplan, that is this step.
 
 While the apps are not signed and notarized, macOS blocks the first launch: from macOS 15 allow it under **System Settings → Privacy & Security → Open Anyway** (up to macOS 14, right-click → **Open** is enough); if macOS says the app is "damaged", `xattr -dr com.apple.quarantine /Applications/Flowplan.app` removes the quarantine flag. With signing and notarization this goes away, see [flowplan-desktop → Signing](https://github.com/yannicschuller/flowplan-desktop#signing). Windows shows SmartScreen (**More info → Run anyway**), and an AppImage has to be made executable first (`chmod +x`).
+
+### Profiles
+
+The desktop app can keep several instances as profiles (how to use them: [Several instances](/offline-and-apps#several-instances-profiles)). Under the hood:
+
+- Every profile has its own Electron session (`persist:profile-<id>`): cookies, service worker, offline copy, IndexedDB and cache are separate, also for two profiles on the same instance. Permissions (notifications, microphone) go only to the active profile's instance, and a sign-in started in the browser is dropped on a switch.
+- The profiles live in `config.json` in the app's user data folder (`profiles`, `activeProfile`). An address from version 1.0.4 or older becomes the first profile automatically on first start and keeps its session; `server` still mirrors the active profile, so an older version finds an address after a downgrade.
+- `--profile=<id or name>` starts the app with a saved profile or switches a running app to it, for example from a Linux launcher. New addresses are not accepted this way; only `--server=<URL>` or `FLOWPLAN_SERVER` suggest one on first start, as before.
+- Removing a profile signs it out of the instance and empties its session on this computer.
 
 ### Updates
 

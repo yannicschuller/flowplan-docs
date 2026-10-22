@@ -109,11 +109,20 @@ Die Desktop-App für macOS, Windows und Linux ist ein schlankes Fenster um eine 
 | Windows 10 oder neuer | `Flowplan-<Version>-windows-setup.exe`, ohne Installation die `.zip` | x64 und ARM in einem Installer |
 | Linux | `Flowplan-<Version>-linux-<Arch>.AppImage`, oder die `.tar.gz` | x64 und ARM |
 
-Beim ersten Start fragt die App immer nach der Adresse der Instanz und schlägt `https://app.flowplan.org` vor (HTTPS, für lokale Tests auch `http://localhost`); ändern über das Menü **Server wechseln …**. Für verteilte Installationen schlägt `--server=<URL>` oder die Umgebungsvariable `FLOWPLAN_SERVER` stattdessen die eigene Adresse vor – bestätigt wird sie beim ersten Start trotzdem. Die App prüft, ob dort wirklich Flowplan läuft (`/api/health` antwortet mit `"service": "flowplan"`), und lehnt Adressen ab, die auf eine andere Seite weiterleiten.
+Beim ersten Start fragt die App immer nach der Adresse der Instanz und schlägt `https://app.flowplan.org` vor (HTTPS, für lokale Tests auch `http://localhost`); weitere Instanzen kommen als Profile dazu (siehe unten). Für verteilte Installationen schlägt `--server=<URL>` oder die Umgebungsvariable `FLOWPLAN_SERVER` stattdessen die eigene Adresse vor – bestätigt wird sie beim ersten Start trotzdem. Die App prüft, ob dort wirklich Flowplan läuft (`/api/health` antwortet mit `"service": "flowplan"`), und lehnt Adressen ab, die auf eine andere Seite weiterleiten.
 
 **Anmeldung mit Passkey und SSO:** Passkeys und Anbieter, die einen Passkey verlangen, funktionieren nur in einem echten Browser. Die App öffnet die Anmeldung deshalb im Standardbrowser: Sie erzeugt ein zufälliges Geheimnis, öffnet `/api/auth/desktop` mit dessen Hash, nach der Anmeldung bestätigt man **In der App anmelden**, und der Browser gibt über `flowplan://sign-in` einen Einmalcode an die App zurück. Der Code gilt eine Minute, nur einmal und nur zusammen mit dem Geheimnis, das die App nie verlässt. Fragt der Browser, ob er Flowplan öffnen darf, ist das dieser Schritt.
 
 Solange die Apps nicht signiert und notarisiert sind, blockiert macOS den ersten Start: ab macOS 15 unter **Systemeinstellungen → Datenschutz & Sicherheit → Dennoch öffnen** freigeben (bis macOS 14 genügt Rechtsklick → **Öffnen**); meldet macOS, die App sei „beschädigt“, entfernt `xattr -dr com.apple.quarantine /Applications/Flowplan.app` die Quarantäne-Markierung. Mit Signatur und Notarisierung entfällt das, siehe [flowplan-desktop → Signing](https://github.com/yannicschuller/flowplan-desktop#signing). Windows zeigt SmartScreen (**Weitere Informationen → Trotzdem ausführen**), und ein AppImage muss vorher ausführbar sein (`chmod +x`).
+
+### Profile
+
+Die Desktop-App kann mehrere Instanzen als Profile speichern (Bedienung: [Mehrere Instanzen](/offline-and-apps#mehrere-instanzen-profile)). Technisch:
+
+- Jedes Profil hat eine eigene Electron-Sitzung (`persist:profile-<id>`): Cookies, Service Worker, Offline-Kopie, IndexedDB und Cache sind getrennt, auch für zwei Profile auf derselben Instanz. Berechtigungen (Mitteilungen, Mikrofon) bekommt nur die Instanz des aktiven Profils, eine im Browser begonnene Anmeldung verfällt beim Wechsel.
+- Die Profile stehen in `config.json` im Benutzerordner der App (`profiles`, `activeProfile`). Eine Adresse aus Version 1.0.4 oder älter wird beim ersten Start automatisch zum ersten Profil und behält die bisherige Sitzung; `server` spiegelt weiterhin das aktive Profil, damit eine ältere Version nach einem Downgrade eine Adresse findet.
+- `--profile=<ID oder Name>` startet die App mit einem gespeicherten Profil oder wechselt in einer laufenden App dorthin, etwa aus einem Starter unter Linux. Neue Adressen nimmt die App so nicht an; die schlägt weiterhin nur `--server=<URL>` bzw. `FLOWPLAN_SERVER` beim ersten Start vor.
+- Ein Profil entfernen meldet es bei der Instanz ab und leert seine Sitzung auf diesem Rechner.
 
 ### Updates
 

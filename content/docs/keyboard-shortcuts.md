@@ -21,6 +21,8 @@ Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <
 
 Alle Kürzel dieser Tabelle außer <kbd>Esc</kbd> lassen sich ändern, siehe [Eigene Tastenkürzel](#eigene-tastenkuerzel).
 
+In der Desktop-App wechselt <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> bzw. <kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>P</kbd> zum nächsten [Profil](/offline-and-apps#mehrere-instanzen-profile), sobald mehr als eines gespeichert ist.
+
 ## Eigene Tastenkürzel
 
 <kbd>?</kbd> (außerhalb von Textfeldern), <kbd>⌘</kbd> <kbd>/</kbd>, das <kbd>?</kbd> unten in der Seitenleiste oder Einstellungen → Konto öffnen die Übersicht. Unter **Überall** hat jede Aktion den Knopf **Ändern**: Danach die neue Kombination drücken – <kbd>Esc</kbd> bricht ab. Die Kombination gilt sofort und für dein Konto auf allen Geräten und Browsern.

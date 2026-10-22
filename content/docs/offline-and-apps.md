@@ -70,11 +70,11 @@ Lesezeichen landen in der Datenbank **Lesezeichen** des gewählten Bereichs; sie
 
 ## Desktop-App für macOS, Windows und Linux
 
-Eine schlanke Desktop-App umschließt deine Flowplan-Instanz. Beim ersten Start fragt sie nach der Adresse und schlägt `https://app.flowplan.org` vor – für die eigene Instanz einfach deren Adresse eintragen (z. B. `https://flowplan.example.com`); **Server wechseln …** im Menü ändert sie später.
+Eine schlanke Desktop-App umschließt deine Flowplan-Instanz. Beim ersten Start fragt sie nach der Adresse und schlägt `https://app.flowplan.org` vor – für die eigene Instanz einfach deren Adresse eintragen (z. B. `https://flowplan.example.com`). Weitere Instanzen legst du als [Profile](#mehrere-instanzen-profile) an.
 
 - Alle Daten bleiben auf dem Server.
 - Die App merkt sich Fenstergröße und -position, bietet deutsche Menüs und öffnet externe Links im Standardbrowser.
-- Die Offline-Nutzung funktioniert auch in der Desktop-App: **Einstellungen → Daten → Offline-Nutzung** in der App einschalten – die App hat eigene Offline-Kopien, getrennt von Browser oder installierter Web-App. Ohne Verbindung öffnet sie dann die gespeicherte Kopie; ihre eigene Offline-Seite (**Erneut versuchen**, **Server wechseln**) erscheint nur, wenn auf dem Gerät keine Kopie liegt.
+- Die Offline-Nutzung funktioniert auch in der Desktop-App: **Einstellungen → Daten → Offline-Nutzung** in der App einschalten – die App hat eigene Offline-Kopien, getrennt von Browser oder installierter Web-App. Ohne Verbindung öffnet sie dann die gespeicherte Kopie; ihre eigene Offline-Seite (**Erneut versuchen**, **Profile**) erscheint nur, wenn auf dem Gerät keine Kopie liegt.
 - Sie akzeptiert nur echte Flowplan-Instanzen – eine Adresse, hinter der etwas anderes läuft oder die auf eine andere Seite weiterleitet, wird abgelehnt.
 - **Mit Passkey anmelden** und **Mit SSO anmelden** öffnen die Anmeldung im Standardbrowser, wo Passkeys (iCloud-Schlüsselbund, Windows Hello, Passwortmanager) zur Verfügung stehen. Nach **In der App anmelden** übernimmt die App die Anmeldung; E-Mail und Passwort gehen direkt in der App. Das braucht Flowplan 0.3.3 oder neuer.
 
@@ -82,6 +82,18 @@ Die Apps für macOS, Windows und Linux gibt es unter [flowplan.org/download](htt
 
 > [!NOTE]
 > Die Umgebungsvariable `FLOWPLAN_UPDATE_URL` gibt es zweimal: Auf dem Rechner mit der Desktop-App nennt sie eine andere Quelle für App-Updates (siehe [Updates](/operations#updates)); auf dem Server nennt die gleichnamige Variable den Spiegel für den Release-Check der Instanz (siehe [Konfiguration](/configuration#betrieb)). Beide meinen verschiedene Dinge und gehören an verschiedene Orte.
+
+### Mehrere Instanzen (Profile)
+
+Arbeitest du mit mehr als einer Flowplan-Instanz, etwa **Arbeit – flowplan.firma.de** und **Privat – notizen.example**, speichert die Desktop-App jede als eigenes Profil:
+
+- **Hinzufügen:** Menü **Profile → Profil hinzufügen …**, Adresse eintragen und optional einen Namen (ohne Namen zeigt die App die Adresse). Die Adresse wird geprüft wie beim ersten Start.
+- **Wechseln:** im Menü **Profile** (macOS: im Menü *Flowplan*, Windows und Linux: im Menü *Datei*), mit **Nächstes Profil** (<kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> bzw. <kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>P</kbd>), auf dem Mac über das Dock-Symbol und unter Windows über die Sprungliste in der Taskleiste.
+- **Umbenennen und entfernen:** **Profile → Profile verwalten …** (auch von der Offline-Seite aus). Entfernen fragt nach, meldet das Profil ab und löscht, was es auf diesem Computer gespeichert hat. Deine Daten bleiben auf dem Server.
+
+Jedes Profil hat seine eigene Anmeldung, seine eigene Offline-Kopie und eigene Cookies – auch zwei Profile auf derselben Instanz, etwa für zwei Konten. Im Fenster öffnet sich nur die Instanz des aktiven Profils; Links auf eine andere Instanz gehen in den Browser. Bei mehr als einem Profil steht der Profilname im Fenstertitel.
+
+Wer bisher eine Adresse eingerichtet hatte, findet sie nach dem Update als erstes Profil wieder – angemeldet und mit der bisherigen Offline-Kopie.
 
 ## Apps für iPhone, iPad und Android
 
@@ -93,18 +105,29 @@ Wie die Desktop-App zeigen die mobilen Apps deine Flowplan-Instanz; alle Daten b
 - **Mitteilungen:** Erwähnungen, Kommentare, Aufgaben und Erinnerungen kommen als Mitteilung, die Zahl der ungelesenen steht am App-Symbol. Die App fragt nach dem ersten Anmelden einmal nach der Erlaubnis; ein Tipp öffnet die betroffene Seite. Welche Arten kommen, regelst du wie im Browser unter **Einstellungen → Benachrichtigungen**.
 - **Widgets** für den Home-Bildschirm (auf dem iPhone auch für den Sperrbildschirm): fällige Aufgaben, der Posteingang und die laufende Zeiterfassung. Ein Tipp öffnet die Aufgabe bzw. Seite. Sie aktualisieren sich im Hintergrund.
 - **Laufende Zeiterfassung:** Auf dem iPhone erscheint ein laufender Timer als Live-Aktivität auf dem Sperrbildschirm und in der Dynamic Island, auf Android als Mitteilung mit laufender Uhr.
-- **Schnellaktionen:** Langes Drücken auf das App-Symbol öffnet Posteingang, Meine Aufgaben, die Suche oder eine neue Seite.
+- **Schnellaktionen:** Langes Drücken auf das App-Symbol öffnet Posteingang, Meine Aufgaben, die Suche, eine neue Seite oder **Profil wechseln**.
 - **App-Sperre:** Auf Wunsch entsperrt sich Flowplan nur mit Face ID, Touch ID, Fingerabdruck oder dem Gerätecode.
 - **Exporte und Downloads** gehen in das Teilen-Menü des Systems (z. B. „In Dateien sichern“).
 - **iPad und Tablets:** alle Ausrichtungen, Split View, Slide Over und Stage Manager, Tastatur und Trackpad. Mit dem **Apple Pencil** zeichnest du auf Whiteboards mit Druckstärke, während Finger die Fläche bewegen; Doppeltippen und Drücken wechseln das Werkzeug, Scribble schreibt in jedes Textfeld (siehe [Whiteboards](/whiteboards#stift-und-formerkennung)).
 
 Außerdem:
 
-- Beim ersten Start fragen sie nach der Adresse und schlagen `https://app.flowplan.org` vor. Sie akzeptieren nur echte Flowplan-Instanzen, die nicht auf eine andere Seite weiterleiten. Die **App-Einstellungen** (über **Einstellungen → Benachrichtigungen → App-Einstellungen öffnen** oder langes Drücken auf das App-Symbol → **Server wechseln**) ändern den Server; **Abmelden und Server vergessen** meldet die App ab und entfernt sie von der Instanz.
+- Beim ersten Start fragen sie nach der Adresse und schlagen `https://app.flowplan.org` vor. Sie akzeptieren nur echte Flowplan-Instanzen, die nicht auf eine andere Seite weiterleiten. Weitere Instanzen speicherst du als [Profile](#profile-in-den-mobilen-apps). **Abmelden und Profil entfernen** in den **App-Einstellungen** (über **Einstellungen → Benachrichtigungen → App-Einstellungen öffnen**) meldet die App bei der Instanz des aktiven Profils ab und entfernt sie dort.
 - **Verwaltete Geräte (MDM/EMM):** Über die verwaltete App-Konfiguration (iOS Managed App Configuration bzw. Android App Restrictions) gibt der Schlüssel `server` die Adresse der eigenen Instanz vor; die App schlägt sie beim ersten Start vor.
 - **Mit Passkey anmelden** und **Mit SSO anmelden** öffnen das Anmeldefenster des Systems (iOS) bzw. einen Browser-Tab (Android); nach **In der App anmelden** übernimmt die App die Anmeldung. E-Mail und Passwort gehen direkt in der App. Die Anmeldung über den Browser sowie Mitteilungen und Widgets (die App-Schnittstelle) brauchen Flowplan 0.4.0 oder neuer.
 - Links zu anderen Seiten öffnen im Browser; ohne Verbindung zeigt die App eine eigene Seite und verbindet sich von selbst wieder.
 - Auf Android erscheint Flowplan im **Teilen**-Menü anderer Apps.
+
+### Profile in den mobilen Apps
+
+Auch die Apps für iPhone, iPad und Android merken sich mehrere Instanzen als Profile:
+
+- **Wechseln:** in den **App-Einstellungen** unter **Profile** auf ein Profil tippen, oder langes Drücken auf das App-Symbol → **Profil wechseln**. Dieselbe Liste erscheint auf der Offline-Seite.
+- **Hinzufügen:** **App-Einstellungen → Profil hinzufügen**, Adresse und optional einen Namen eintragen. Ist für die Adresse schon ein Profil gespeichert, wechselt die App einfach dorthin – je Instanz gibt es ein Profil.
+- **Umbenennen:** in den App-Einstellungen bei einem Profil auf **Umbenennen** tippen.
+- **Entfernen:** **Abmelden und Profil entfernen** gilt für das aktive Profil; danach wird das nächste Profil aktiv.
+
+Mitteilungen, Widgets, die Zahl am App-Symbol und die laufende Zeiterfassung gehören immer zum **aktiven** Profil. Beim Wechsel meldet die App das Gerät bei der bisherigen Instanz für Mitteilungen ab; die Anmeldung dort bleibt erhalten, sodass du beim Zurückwechseln weiterhin angemeldet bist. Was die App für ein Profil speichert (das Geräte-Token für Widgets, die letzte Übersicht), liegt getrennt im Schlüsselbund bzw. Keystore und geht nie an eine andere Instanz. Eine bisher eingerichtete Adresse wird nach dem Update zum ersten Profil.
 
 ### Was die App auf der Instanz hinterlegt
 

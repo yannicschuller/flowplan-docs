@@ -21,6 +21,8 @@ All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd
 
 Every shortcut in this table except <kbd>Esc</kbd> can be changed, see [Your own shortcuts](#your-own-shortcuts).
 
+In the desktop app, <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> or <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>P</kbd> switches to the next [profile](/offline-and-apps#several-instances-profiles) once more than one is saved.
+
 ## Your own shortcuts
 
 <kbd>?</kbd> (outside text fields), <kbd>⌘</kbd> <kbd>/</kbd>, the <kbd>?</kbd> at the bottom of the sidebar or Settings → Account open the overview. Under **Everywhere**, every action has a **Change** button: press the new combination after it – <kbd>Esc</kbd> cancels. The combination applies at once and for your account on all devices and browsers.
