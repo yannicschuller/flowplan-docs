@@ -21,6 +21,14 @@ Alle Umgebungsvariablen auf einen Blick. Viele Werte lassen sich zusätzlich in 
 | `SESSION_IDLE_HOURS` | `168` | Mit „angemeldet bleiben“: Sitzung endet so viele Stunden nach der letzten Nutzung. |
 | `SESSION_MAX_DAYS` | `30` | Mit „angemeldet bleiben“: spätestens nach so vielen Tagen neu anmelden (1–365). |
 | `SESSION_GROUPS_HOURS` | `168` | Mit „angemeldet bleiben“ und SSO: nach so vielen Stunden neu beim Anbieter anmelden, damit Gruppenänderungen wirken. |
+| `LDAP_URL` | *leer* | Anmeldung mit einem LDAP-Verzeichnis (`ldap://` oder `ldaps://`) – siehe [Anmeldung mit LDAP](/sign-in#anmeldung-mit-ldap). |
+| `LDAP_BIND_DN` / `LDAP_BIND_PASSWORD` | *leer* | Suchkonto für LDAP; ohne es anonyme Suche. |
+| `LDAP_BASE_DN` | – | Wo LDAP-Konten gesucht werden. |
+| `LDAP_USER_FILTER` | `(\|(uid={user})(mail={user}))` | Suchfilter; `{user}` ist der maskierte Anmeldename. |
+| `LDAP_GROUP_ATTRIBUTE` | `memberOf` | Gruppen für SSO-Zuordnungen und Admin-Gruppe, stündlich abgeglichen. |
+| `LDAP_TLS_CA` | *leer* | CA für `ldaps://`/StartTLS (Pfad oder PEM). |
+| `LDAP_STARTTLS` | `false` | `ldap://` mit StartTLS. |
+| `LDAP_TIMEOUT_MS` | `8000` | Zeitlimit je LDAP-Operation. |
 
 Die übrigen OIDC-Variablen und alles zu Passwörtern und Passkeys stehen unter [Anmeldung](/sign-in).
 

@@ -21,6 +21,14 @@ All environment variables at a glance. Many values can also be set in the interf
 | `SESSION_IDLE_HOURS` | `168` | With "stay signed in": the session ends this many hours after it was last used. |
 | `SESSION_MAX_DAYS` | `30` | With "stay signed in": sign in again after this many days at the latest (1–365). |
 | `SESSION_GROUPS_HOURS` | `168` | With "stay signed in" and SSO: sign in at the provider again after this many hours, so group changes take effect. |
+| `LDAP_URL` | *empty* | Sign-in with an LDAP directory (`ldap://` or `ldaps://`) – see [Sign-in with LDAP](/sign-in#sign-in-with-ldap). |
+| `LDAP_BIND_DN` / `LDAP_BIND_PASSWORD` | *empty* | Search account for LDAP; without it, anonymous search. |
+| `LDAP_BASE_DN` | – | Where LDAP accounts are searched. |
+| `LDAP_USER_FILTER` | `(\|(uid={user})(mail={user}))` | Search filter; `{user}` is the escaped sign-in name. |
+| `LDAP_GROUP_ATTRIBUTE` | `memberOf` | Groups for SSO mappings and the admin group, synced hourly. |
+| `LDAP_TLS_CA` | *empty* | CA for `ldaps://`/StartTLS (path or PEM). |
+| `LDAP_STARTTLS` | `false` | `ldap://` with StartTLS. |
+| `LDAP_TIMEOUT_MS` | `8000` | Time limit per LDAP operation. |
 
 The other OIDC variables and everything about passwords and passkeys are described under [Sign-in](/sign-in).
 
