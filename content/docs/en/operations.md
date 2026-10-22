@@ -115,7 +115,7 @@ On first start the app always asks for the instance's address, suggesting `https
 
 **Signing in with passkeys and SSO:** passkeys, and providers that ask for one, only work in a real browser. The app therefore opens the sign-in in the default browser: it creates a random secret, opens `/api/auth/desktop` with its hash, after signing in you confirm **Sign in to the app**, and the browser hands a one-time code back to the app via `flowplan://sign-in`. The code is valid for one minute, once, and only together with the secret that never leaves the app. If the browser asks whether it may open Flowplan, that is this step.
 
-While the apps are not signed and notarized, macOS blocks the first launch: from macOS 15 allow it under **System Settings → Privacy & Security → Open Anyway** (up to macOS 14, right-click → **Open** is enough); if macOS says the app is "damaged", `xattr -dr com.apple.quarantine /Applications/Flowplan.app` removes the quarantine flag. With signing and notarization this goes away, see [flowplan-desktop → Signing](https://github.com/yannicschuller/flowplan-desktop#signing). Windows shows SmartScreen (**More info → Run anyway**), and an AppImage has to be made executable first (`chmod +x`).
+From version 1.0.6 the Mac app is signed with a Developer ID and notarized by Apple; macOS opens it without asking. Only versions up to 1.0.5 were unsigned: there macOS blocks the first launch (from macOS 15 allow it under **System Settings → Privacy & Security → Open Anyway**, up to macOS 14 right-click → **Open**; if macOS says "damaged", `xattr -dr com.apple.quarantine /Applications/Flowplan.app` helps). Self-built apps without a certificate behave the same, see [flowplan-desktop → Signing](https://github.com/yannicschuller/flowplan-desktop#signing). Windows shows SmartScreen (**More info → Run anyway**), and an AppImage has to be made executable first (`chmod +x`).
 
 ### Profiles
 
@@ -134,8 +134,8 @@ The app checks for a newer release 15 seconds after starting, then every six hou
 | --- | --- |
 | Windows installer | Downloads in the background; a dialog offers **Restart now**, otherwise it installs on the next start. |
 | Linux AppImage | The same – the AppImage replaces itself. |
-| macOS, signed | The same. |
-| macOS unsigned, Windows ZIP, Linux `.tar.gz` | A dialog names the new version and opens the download page. macOS only lets signed apps replace themselves. |
+| macOS (1.0.6 and later, signed) | The same. |
+| macOS up to 1.0.5 (unsigned), Windows ZIP, Linux `.tar.gz` | A dialog names the new version and opens the download page. macOS only lets signed apps replace themselves – so from 1.0.5 or older download 1.0.6 once; after that the app updates itself. |
 
 Without a connection the check stays quiet and tries again later. `FLOWPLAN_UPDATE_URL` on the computer running the app makes it fetch updates from another source – a folder with the same files (`latest*.yml` and the installers), for example a mirror inside a company network. Not to be confused with the server's variable of the same name, which points the instance's release check at a mirror (see [Configuration](/configuration#operations)).
 

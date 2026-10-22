@@ -113,7 +113,7 @@ Beim ersten Start fragt die App immer nach der Adresse der Instanz und schlägt 
 
 **Anmeldung mit Passkey und SSO:** Passkeys und Anbieter, die einen Passkey verlangen, funktionieren nur in einem echten Browser. Die App öffnet die Anmeldung deshalb im Standardbrowser: Sie erzeugt ein zufälliges Geheimnis, öffnet `/api/auth/desktop` mit dessen Hash, nach der Anmeldung bestätigt man **In der App anmelden**, und der Browser gibt über `flowplan://sign-in` einen Einmalcode an die App zurück. Der Code gilt eine Minute, nur einmal und nur zusammen mit dem Geheimnis, das die App nie verlässt. Fragt der Browser, ob er Flowplan öffnen darf, ist das dieser Schritt.
 
-Solange die Apps nicht signiert und notarisiert sind, blockiert macOS den ersten Start: ab macOS 15 unter **Systemeinstellungen → Datenschutz & Sicherheit → Dennoch öffnen** freigeben (bis macOS 14 genügt Rechtsklick → **Öffnen**); meldet macOS, die App sei „beschädigt“, entfernt `xattr -dr com.apple.quarantine /Applications/Flowplan.app` die Quarantäne-Markierung. Mit Signatur und Notarisierung entfällt das, siehe [flowplan-desktop → Signing](https://github.com/yannicschuller/flowplan-desktop#signing). Windows zeigt SmartScreen (**Weitere Informationen → Trotzdem ausführen**), und ein AppImage muss vorher ausführbar sein (`chmod +x`).
+Die Mac-App ist ab Version 1.0.6 mit einer Developer ID signiert und von Apple notarisiert; macOS öffnet sie ohne Rückfrage. Nur Versionen bis 1.0.5 waren unsigniert: Dort blockiert macOS den ersten Start (ab macOS 15 unter **Systemeinstellungen → Datenschutz & Sicherheit → Dennoch öffnen** freigeben, bis macOS 14 Rechtsklick → **Öffnen**; meldet macOS „beschädigt“, hilft `xattr -dr com.apple.quarantine /Applications/Flowplan.app`). Selbst gebaute Apps ohne Zertifikat verhalten sich genauso, siehe [flowplan-desktop → Signing](https://github.com/yannicschuller/flowplan-desktop#signing). Windows zeigt SmartScreen (**Weitere Informationen → Trotzdem ausführen**), und ein AppImage muss vorher ausführbar sein (`chmod +x`).
 
 ### Profile
 
@@ -132,8 +132,8 @@ Die App prüft 15 Sekunden nach dem Start, danach alle sechs Stunden und über *
 | --- | --- |
 | Windows-Installer | Lädt im Hintergrund; ein Dialog bietet **Jetzt neu starten**, sonst wird beim nächsten Start installiert. |
 | Linux-AppImage | Genauso – das AppImage ersetzt sich selbst. |
-| macOS, signiert | Genauso. |
-| macOS unsigniert, Windows-ZIP, Linux-`.tar.gz` | Ein Dialog nennt die neue Version und öffnet die Download-Seite. macOS lässt nur signierte Apps sich selbst ersetzen. |
+| macOS (ab 1.0.6, signiert) | Genauso. |
+| macOS bis 1.0.5 (unsigniert), Windows-ZIP, Linux-`.tar.gz` | Ein Dialog nennt die neue Version und öffnet die Download-Seite. macOS lässt nur signierte Apps sich selbst ersetzen – von 1.0.5 oder älter also einmal 1.0.6 herunterladen, danach aktualisiert sich die App selbst. |
 
 Ohne Verbindung bleibt die Prüfung still und versucht es später erneut. Mit `FLOWPLAN_UPDATE_URL` auf dem Rechner der App holt sie Updates aus einer anderen Quelle – einem Ordner mit denselben Dateien (`latest*.yml` und die Installer), etwa einem Spiegel im Firmennetz. Nicht zu verwechseln mit der gleichnamigen Variable des Servers, die den Spiegel für den Release-Check der Instanz nennt (siehe [Konfiguration](/configuration#betrieb)).
 
