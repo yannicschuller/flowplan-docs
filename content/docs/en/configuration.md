@@ -121,6 +121,7 @@ The mail server must support plus addressing (`inbox+anything@…` is delivered 
 | `SPACE_GIT_ALLOW_PRIVATE` | *empty* | `true` also allows internal addresses for the servers listed in `SPACE_GIT_ALLOWED_HOSTS` – for example a Forgejo on the same host that the container reaches via `--add-host git.example.org:host-gateway`. Only works together with the list; every other server stays limited to public addresses. |
 | `ISSUE_SYNC_ALLOWED_HOSTS` | *empty* | Own servers for the [GitHub and GitLab issue sync](/projects-and-tickets#sync-github-and-gitlab-issues), comma-separated (e.g. `gitlab.example.org`). github.com and gitlab.com are always allowed; other servers only when listed here. |
 | `ISSUE_SYNC_ALLOW_PRIVATE` | *empty* | `true` also allows internal addresses for the servers listed in `ISSUE_SYNC_ALLOWED_HOSTS` – for example a GitLab in the same network. Only works together with the list. |
+| `PLUGIN_ALLOWED_ORIGINS` | *empty* | HTTPS origins owners may register [block extensions](/plugins) from, comma-separated (e.g. `https://plugins.example.org`). Without it only when the administration switches on **Block extensions from any HTTPS address**. The origins are also added to the `frame-src` of the Content Security Policy. |
 | `EXPORT_GIT_*` | *empty* | Deprecated: the Git export of the whole instance, see [Push into a Git repository](/storage-and-backups#push-into-a-git-repository). Keeps working; the Git export of spaces is the better choice. |
 
 ## Calendar sync
@@ -221,6 +222,7 @@ Under **Administration → Instance**, administrators set:
 - whether anyone may sign up with e-mail and password,
 - the daily or hourly database backup and how many copies are kept,
 - after how many days without sign-in accounts are locked,
-- whether the instance offers a public **demo** (running and total started demos are shown under **Administration → Operations**).
+- whether the instance offers a public **demo** (running and total started demos are shown under **Administration → Operations**),
+- **Custom domains for publications** (off) and **Block extensions from any HTTPS address** (off) – see [Coolify and reverse proxies](/coolify-and-proxy#custom-domains-for-publications) and [Block extensions](/plugins).
 
 Empty fields fall back to the environment variables.

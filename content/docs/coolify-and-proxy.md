@@ -87,3 +87,65 @@ flowplan.example.com {
 ```
 
 Den internen Port `3000` nie zusätzlich öffentlich freigeben.
+
+## Eigene Domains für Veröffentlichungen
+
+Mit **Eigene Domains für Veröffentlichungen** in der Administration zeigen Eigentümer veröffentlichte Seiten unter ihrer Domain ([Teilen und Veröffentlichen](/sharing#eigene-domain)). Flowplan erkennt die Domain am `Host`-Header und liefert nur die Veröffentlichung aus. Das Zertifikat bleibt Sache des Reverse Proxy; er muss Anfragen für beliebige Hosts an Flowplan weiterreichen und den `Host` unverändert lassen.
+
+Flowplan beantwortet `GET /api/domains/allowed?domain=<host>` mit 200 für bestätigte Domains aktiver Veröffentlichungen und sonst mit 404 – genau die Frage, die Caddy vor einem neuen Zertifikat stellt.
+
+### Caddy mit On-Demand-TLS
+
+```
+{
+  on_demand_tls {
+    ask http://127.0.0.1:3000/api/domains/allowed
+  }
+}
+
+flowplan.example.com {
+  reverse_proxy 127.0.0.1:3000
+}
+
+# Alle anderen Hosts: nur mit Zertifikat, wenn Flowplan die Domain kennt.
+https:// {
+  tls {
+    on_demand
+  }
+  reverse_proxy 127.0.0.1:3000
+}
+```
+
+Caddy holt das Zertifikat beim ersten Aufruf der Domain. Domains, die Flowplan nicht bestätigt hat, bekommen keines – so kann niemand Zertifikate für fremde Namen anstoßen.
+
+### Traefik
+
+Traefik kennt keine Rückfrage vor dem Zertifikat. Lege je Domain einen Router an (Datei-Provider oder Labels) – nachdem die Domain in Flowplan bestätigt ist:
+
+```yaml
+http:
+  routers:
+    flowplan-docs-example:
+      rule: Host(`docs.example.org`)
+      service: flowplan
+      tls:
+        certResolver: letsencrypt
+  services:
+    flowplan:
+      loadBalancer:
+        servers:
+          - url: http://flowplan:3000
+```
+
+Mit einem HTTP-01-Resolver funktioniert danach auch die Prüfung per Datei (`/.well-known/flowplan-verify.txt`); mit DNS ist die Reihenfolge egal.
+
+### Coolify
+
+In Coolify die zusätzliche Domain im Feld **Domains** der Flowplan-Ressource ergänzen (durch Komma getrennt, z. B. `https://flowplan.example.com,https://docs.example.org`) und neu ausrollen. Coolify legt Router und Zertifikat für Traefik an. `APP_URL` bleibt die Adresse der App.
+
+### Sicherheit
+
+- Unter einer eigenen Domain antwortet Flowplan nur auf Lesezugriffe der Veröffentlichung, ihre Dateien und die statischen Dateien der Oberfläche. Anmeldung, App und API antworten mit 404 – auch wenn jemand den `Host`-Header fälscht.
+- Cookies und `Authorization`-Kopfzeilen werden dort verworfen, und Flowplan setzt nie ein Cookie.
+- Die Seiten tragen `frame-ancestors 'none'` und `X-Frame-Options: DENY`.
+- Ein Eintrag für die Instanz-Adresse selbst ist nicht möglich.

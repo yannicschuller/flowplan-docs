@@ -60,6 +60,23 @@ Links with their own permissions and [publications](#publish-on-the-web) can hav
 - Files linked in published pages are public; other uploads are not.
 - Switching it off, deleting or moving a page out of the published tree revokes access immediately, including to files.
 
+### Appearance
+
+Below the public link you set the look of the publication: **logo** and **favicon** (an HTTPS address or an uploaded file the publication shows), **accent colour**, **footer text** and **hide “Published with Flowplan”**.
+
+### Custom domain
+
+When the administration switched it on (**Custom domains for publications**), a publication can also be shown under your domain, such as `docs.example.org`:
+
+1. Enter the domain under **Custom domain**.
+2. At your DNS provider create the TXT record shown: name `_flowplan-verify.docs.example.org`, value `flowplan-verify-…`. Alternatively the domain serves the file `https://docs.example.org/.well-known/flowplan-verify.txt` with this value.
+3. Point the domain at the Flowplan instance with a CNAME (or A/AAAA) record.
+4. Choose **Check now**. The reverse proxy obtains the HTTPS certificate – see [Custom domains for publications](/coolify-and-proxy#custom-domains-for-publications).
+
+Under the domain there are short addresses (`/` for the start page, `/<page ID>` for sub-pages), a `sitemap.xml` and `robots.txt` of its own, and search engines may index the pages; the `/share/…` link names them as the canonical address. The domain shows only this publication: no sign-in, no app, no API apart from the publication's read access, no cookies, and the pages cannot be embedded in other sites.
+
+Publications with a password cannot be shown under a custom domain. When the publication ends, the domain answers with 404.
+
 > [!WARNING]
 > Embedded videos and external images load content from their provider when viewed. This also applies to published pages.
 

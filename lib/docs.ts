@@ -89,11 +89,12 @@ const groups: {
   },
   {
     title: ["Erweiterungen", "Extensions"],
-    intro: ["API, Webhooks, KI und MCP.", "API, webhooks, AI and MCP."],
+    intro: ["API, Webhooks, KI, MCP und eigene Blöcke.", "API, webhooks, AI, MCP and custom blocks."],
     pages: [
       ["api-and-webhooks", "API und Webhooks", "API and webhooks"],
       ["ai", "KI", "AI"],
       ["mcp", "MCP: KI-Assistenten", "MCP: AI assistants"],
+      ["plugins", "Block-Erweiterungen", "Block extensions"],
     ],
   },
   {

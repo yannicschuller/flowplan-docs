@@ -121,6 +121,7 @@ Der Mailserver muss Plus-Adressierung unterstützen (`inbox+irgendwas@…` lande
 | `SPACE_GIT_ALLOW_PRIVATE` | *leer* | `true` erlaubt den in `SPACE_GIT_ALLOWED_HOSTS` genannten Servern auch interne Adressen – etwa ein Forgejo auf demselben Host, den der Container über `--add-host git.example.org:host-gateway` erreicht. Wirkt nur zusammen mit der Liste; alle anderen Server bleiben auf öffentliche Adressen beschränkt. |
 | `ISSUE_SYNC_ALLOWED_HOSTS` | *leer* | Eigene Server für die [Synchronisierung von GitHub- und GitLab-Issues](/projects-and-tickets#github-und-gitlab-issues-synchronisieren), durch Komma getrennt (z. B. `gitlab.example.org`). github.com und gitlab.com sind immer erlaubt; andere Server nur, wenn sie hier stehen. |
 | `ISSUE_SYNC_ALLOW_PRIVATE` | *leer* | `true` erlaubt den in `ISSUE_SYNC_ALLOWED_HOSTS` genannten Servern auch interne Adressen – etwa ein GitLab im selben Netz. Wirkt nur zusammen mit der Liste. |
+| `PLUGIN_ALLOWED_ORIGINS` | *leer* | HTTPS-Ursprünge, von denen Eigentümer [Block-Erweiterungen](/plugins) registrieren dürfen, durch Komma getrennt (z. B. `https://plugins.example.org`). Ohne die Variable nur, wenn die Administration **Block-Erweiterungen von jeder HTTPS-Adresse** einschaltet. Die Ursprünge werden auch in die `frame-src` der Content Security Policy aufgenommen. |
 | `EXPORT_GIT_*` | *leer* | Veraltet: der Git-Export der ganzen Instanz, siehe [In ein Git-Repository übertragen](/storage-and-backups#in-ein-git-repository-uebertragen). Läuft weiter; besser ist der Git-Export der Bereiche. |
 
 ## Kalender-Sync
@@ -221,6 +222,7 @@ Unter **Administration → Instanz** stellen Admins ein:
 - ob sich jede Person mit E-Mail und Passwort registrieren darf,
 - tägliche oder stündliche Datenbanksicherung und wie viele Kopien bleiben,
 - nach wie vielen Tagen ohne Anmeldung Konten gesperrt werden,
-- ob die Instanz eine öffentliche **Demo** anbietet (laufende und insgesamt gestartete Demos zeigt **Administration → Betrieb**).
+- ob die Instanz eine öffentliche **Demo** anbietet (laufende und insgesamt gestartete Demos zeigt **Administration → Betrieb**),
+- **Eigene Domains für Veröffentlichungen** (aus) und **Block-Erweiterungen von jeder HTTPS-Adresse** (aus) – siehe [Coolify und Reverse Proxy](/coolify-and-proxy#eigene-domains-fuer-veroeffentlichungen) und [Block-Erweiterungen](/plugins).
 
 Leere Felder fallen auf die Umgebungsvariablen zurück.

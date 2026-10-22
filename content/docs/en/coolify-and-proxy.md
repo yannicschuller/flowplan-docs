@@ -87,3 +87,65 @@ flowplan.example.com {
 ```
 
 Never expose the internal port `3000` publicly as well.
+
+## Custom domains for publications
+
+With **Custom domains for publications** in the administration, owners show published pages under their domain ([Sharing and publishing](/sharing#custom-domain)). Flowplan recognises the domain by the `Host` header and serves only the publication. The certificate stays the reverse proxy's job; it must pass requests for any host on to Flowplan and keep the `Host` unchanged.
+
+Flowplan answers `GET /api/domains/allowed?domain=<host>` with 200 for verified domains of active publications and with 404 otherwise – exactly the question Caddy asks before a new certificate.
+
+### Caddy with on-demand TLS
+
+```
+{
+  on_demand_tls {
+    ask http://127.0.0.1:3000/api/domains/allowed
+  }
+}
+
+flowplan.example.com {
+  reverse_proxy 127.0.0.1:3000
+}
+
+# Every other host: a certificate only when Flowplan knows the domain.
+https:// {
+  tls {
+    on_demand
+  }
+  reverse_proxy 127.0.0.1:3000
+}
+```
+
+Caddy fetches the certificate on the first request for the domain. Domains Flowplan has not verified get none – so nobody can trigger certificates for other people's names.
+
+### Traefik
+
+Traefik does not ask before issuing a certificate. Add a router per domain (file provider or labels) – after the domain is verified in Flowplan:
+
+```yaml
+http:
+  routers:
+    flowplan-docs-example:
+      rule: Host(`docs.example.org`)
+      service: flowplan
+      tls:
+        certResolver: letsencrypt
+  services:
+    flowplan:
+      loadBalancer:
+        servers:
+          - url: http://flowplan:3000
+```
+
+With an HTTP-01 resolver the file check (`/.well-known/flowplan-verify.txt`) then works too; with DNS the order does not matter.
+
+### Coolify
+
+In Coolify add the extra domain to the **Domains** field of the Flowplan resource (comma-separated, e.g. `https://flowplan.example.com,https://docs.example.org`) and redeploy. Coolify creates the router and certificate for Traefik. `APP_URL` stays the address of the app.
+
+### Security
+
+- Under a custom domain Flowplan only answers the publication's read access, its files and the interface's static files. Sign-in, app and API answer with 404 – also when someone forges the `Host` header.
+- Cookies and `Authorization` headers are dropped there, and Flowplan never sets a cookie.
+- The pages carry `frame-ancestors 'none'` and `X-Frame-Options: DENY`.
+- An entry for the instance's own address is not possible.
