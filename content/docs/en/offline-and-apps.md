@@ -119,9 +119,9 @@ This needs a Flowplan server newer than 0.6.0 (currently the beta image) and des
 Like the desktop app, the mobile apps show your Flowplan instance; all data stays on the server and new features arrive without an app update. On top comes what only an app can do:
 
 - **Notifications:** mentions, comments, tasks and reminders arrive as notifications, the number of unread ones shows on the app icon. The app asks for permission once after the first sign-in; a tap opens the page concerned. Which kinds arrive is set as in the browser under **Settings → Notifications**.
-- **Widgets** for the home screen (on the iPhone also for the lock screen): tasks due, the inbox and the running timer. A tap opens the task or page. They update in the background. Instead of staying empty they say *Open Flowplan to sign in* without a sign-in and *No open tasks* when nothing is due. Administrators get [three more widgets](#widgets-for-administrators).
-- **Running timer:** on the iPhone a running timer of the time tracking appears as a Live Activity on the lock screen and in the Dynamic Island, on Android as a notification with a running clock.
-- **Quick actions:** long-press the app icon to open the inbox, My tasks, the search, a new page or **Switch profile**.
+- **[Widgets](#widgets)** for the home screen (on the iPhone also for the lock screen), each with settings of its own – tasks to check off, appointments, counters, time tracking and more; plus [widgets for administrators](#widgets-for-administrators).
+- **[Live Activities](#live-activities-and-ongoing-notifications):** the timer, focus, the meeting, imports/exports and voice memos on the lock screen and in the Dynamic Island, or as an ongoing notification.
+- **[Capture, Siri, Control Center](#capture-siri-control-center):** notes, tasks, voice memos and photos from widgets, Siri, Control Center, the app icon and an Android tile.
 - **App lock:** if you like, Flowplan only unlocks with Face ID, Touch ID, a fingerprint or the device code.
 - **Back:** swiping from the left edge (iOS) or the back gesture or button (Android) first closes what is open (menu, dialog, sidebar) and then goes up a level: from a settings section to the overview, from a record to its database, from a page to the previous page.
 - **Exports and downloads** go to the system's share menu (e.g. "Save to Files").
@@ -135,37 +135,94 @@ Also:
 - Links to other sites open in the browser; without a connection the app shows a page of its own and reconnects by itself.
 - On Android, Flowplan appears in other apps' **Share** menu.
 
-### Profiles in the mobile apps
+### Widgets
 
-The apps for iPhone, iPad and Android also keep several instances as profiles:
+Each widget shows **one thing** and has **settings of its own**. A widget you just added works right away with sensible defaults; small sizes show less. A tap opens the task or page in the app.
 
-- **Switch:** tap a profile under **Profiles** in the **app settings**, or long-press the app icon → **Switch profile**. The same list is a tap away from the offline page.
-- **Add:** **App settings → Add profile**, enter the address and, if you like, a name. If the address already has a profile, the app simply switches to it – there is one profile per instance.
-- **Rename:** tap **Rename** next to a profile in the app settings.
-- **Remove:** **Sign out and remove the profile** applies to the active profile; the next profile then becomes active.
+- **Change the settings:** iPhone/iPad (iOS 17 or later): long-press the widget → *Edit Widget*. Android: long-press the widget → *Settings* (you can skip this step when adding it).
+- The lists to choose from (databases, views, properties, calendars, forms …) come straight from your Flowplan instance.
 
-Notifications, widgets, the number on the app icon and the running timer always belong to the **active** profile. On a switch the app unregisters the device from the previous instance's notifications; the sign-in there stays, so you are still signed in when you switch back. What the app keeps for a profile (the device token for widgets, the last summary) is stored separately in the keychain or Keystore and never goes to another instance. An address set up before becomes the first profile after the update.
+| Widget | What it shows | Settings |
+| --- | --- | --- |
+| **Quick capture** | Buttons for note, task, voice memo, photo | Where to save (default: your capture inbox), which buttons |
+| **Tasks** | Open tasks – **check them off right in the widget** | My tasks, records of a database (with view) or to-dos of a page; all open, due today or overdue; number |
+| **Today** | Appointments and tasks due | Calendars, range (today, 3 days, week), tasks due on/off |
+| **Page and favorites** | Your favorites, or one page / database view | Page, view, up to two properties |
+| **Database counter** | One number (count, sum, average) with its last 14 days | Database, view, value, group, history |
+| **Journal and habits** | Whether today is written, your streak; habits **to check off** | Journal, habit database |
+| **Time this week** | Hours this week and today; **start/stop the timer** | Which timer "Start" starts |
+| **Mentions** | Who mentioned you or gave you a task; **mark as read** | Mentions and/or new tasks, unread only |
+| **Form responses** | New responses to a form | Form |
+| **Flowplan** | Tasks due at a glance | With or without the inbox, running timer on/off |
+| **Flowplan Inbox** | Number of unread notifications | – |
+| **Flowplan Instance, Live, Storage** | [Administrators](#widgets-for-administrators) only: state, one live number, storage | What to show or which metric |
+
+Good to know:
+
+- **Counter history:** Flowplan keeps the value of every day. Days before the widget was set up are estimated and drawn lighter and dashed.
+- **Privacy:** widgets only show what you may see in Flowplan. Pages behind a journal PIN or end-to-end encrypted only show their state in a widget, never content.
+- **Signed out?** When your session ends (e.g. a short SSO session), every widget shows *Open Flowplan to sign in*. Its settings stay; after signing in, the widgets fill again at once.
+- **Profiles:** widgets belong to the active profile. Switching removes what the previous profile showed; on Android every widget keeps its settings per profile.
+- **Updates:** when you change something in Flowplan, when the app comes to the foreground, and in the background about every 30 minutes (iOS decides how often).
+- **Requirements:** the configurable widgets, the Live Activities other than the timer, and Siri and Shortcuts need a Flowplan server newer than 0.6.0 (currently the beta image). *Flowplan*, *Flowplan Inbox* and the running timer work from 0.4.0.
 
 ### Widgets for administrators
 
-People who administer the instance (members of the admin group, `OIDC_ADMIN_GROUP`, default `flowplan-admins`) get three more widgets in the app for iPhone, iPad and Android:
+People who administer the instance (members of the admin group, `OIDC_ADMIN_GROUP`, default `flowplan-admins`) get three more widgets in the app for iPhone, iPad and Android. Each shows one thing big; on the iPhone you choose which in the widget's settings.
 
-| Widget | Sizes (iOS) | Shows | Tapping opens |
+| Widget | Sizes (iOS) | Setting (default first) | Tapping opens |
 | --- | --- | --- | --- |
-| **Flowplan Instance** | small, medium, lock screen | State (*All fine*, notices or problems with the most important one), version and available update, last backup | Administration (Monitoring when there are notices or problems) |
-| **Flowplan Live** | small, medium, large, lock screen | People active now, requests per minute, error rate of the last hour, sign-ins today; from medium up the requests of the last 24 hours as a chart | Administration → Monitoring |
-| **Flowplan Storage** | small, medium, lock screen (ring) | Database and files, disk usage, quota of the fullest workspace | Administration → Storage |
+| **Flowplan Instance** | small, medium, lock screen | *Show:* state (*All fine*, notices or problems with the most important one), last backup, or version with available update | Administration (Monitoring when there are notices or problems) |
+| **Flowplan Live** | small, medium, large, lock screen | *Metric:* active now, requests/min, error rate (1 h) or sign-ins today; from medium up the other numbers small and the requests of the last 24 hours as a chart | Administration → Monitoring |
+| **Flowplan Storage** | small, medium, lock screen (ring) | *Metric:* disk used, database and files, or fullest workspace (quota) | Administration → Storage |
 
 - Everyone else sees *Administrators only* in these widgets; without a sign-in they say *Open Flowplan to sign in*.
 - Like the other widgets they read their data with the app's device token (`GET /api/mobile/admin-summary`). The instance checks on every call that the person of the session the device is bound to is an administrator right now – leaving the admin group, signing out or removing the device under *Signed-in devices* stops it. API tokens never get this data.
 - Only numbers and states are sent – no names, e-mail addresses or workspace names.
 - With the statistics switched off (`FLOWPLAN_METRICS=off` or in the administration under *Monitoring → Statistics*), *Flowplan Live* says "Statistics switched off"; state and storage stay.
-- They refresh like all widgets: right after changes in the app, when the app is opened and in the background about every 30 minutes.
 - Older instances without this endpoint show *Administrators only*.
+
+### Live Activities and ongoing notifications
+
+On iPhone what is running appears on the lock screen and in the Dynamic Island, on Android as a notification (a Live Update on Android 16):
+
+| What runs | Shows | Button |
+| --- | --- | --- |
+| **Timer** | a running clock | – |
+| **Focus** | e.g. 25 minutes of focus, then the break | *End* |
+| **Meeting now** | the time left | *Open notes* – creates the meeting note in your journal if there is none yet |
+| **Imports and exports** | their progress | – |
+| **Voice memo** | recording | *Stop recording* |
+| **Incident of the instance** | administrators only, only while it lasts | – |
+
+Meetings, imports/exports and incidents can be switched off in the app settings under *Live Activities*; the timer, focus and voice memos always appear while they run.
+
+### Capture, Siri, Control Center
+
+Every way leads to the app's capture screen: type a note or task, record a voice memo (keeps recording with the screen locked; transcribed when your instance can) or take/choose a photo.
+
+| Way | What it offers |
+| --- | --- |
+| **Quick capture widget** | Note, task, voice memo, photo – into the place chosen in the widget |
+| **Siri and Shortcuts** (English, German, French) | "Add a note to Flowplan", "What's on today in Flowplan", "Start the timer in Flowplan", "Stop the timer in Flowplan", "Record a voice memo in Flowplan", "Start focus in Flowplan" |
+| **Control Center and the Action button** (iOS 18) | New note, Voice memo, Start focus, Timer (a switch) |
+| **Long-press the app icon** | Inbox, My tasks, Search, New note, Switch profile; on Android also Voice memo. The iPhone shows the first four of them, *Switch profile* when signed out. |
+| **Android Quick Settings** | a "New note" tile |
+
+### Profiles in the mobile apps
+
+The apps for iPhone, iPad and Android also keep several instances as profiles:
+
+- **Switch:** tap a profile under **Profiles** in the **app settings**, or long-press the app icon → **Switch profile** (on the iPhone while signed out). The same list is a tap away from the offline page.
+- **Add:** **App settings → Add profile**, enter the address and, if you like, a name. If the address already has a profile, the app simply switches to it – there is one profile per instance.
+- **Rename:** tap **Rename** next to a profile in the app settings.
+- **Remove:** **Sign out and remove the profile** applies to the active profile; the next profile then becomes active.
+
+Notifications, widgets, Live Activities, the number on the app icon and the running timer always belong to the **active** profile. On a switch the app unregisters the device from the previous instance's notifications; the sign-in there stays, so you are still signed in when you switch back. What the app keeps for a profile (the device token for widgets, the last summary) is stored separately in the keychain or Keystore and never goes to another instance. An address set up before becomes the first profile after the update.
 
 ### What the app keeps on the instance
 
-After signing in, the app registers with the instance: the entry belongs to that sign-in; signing in again on the device moves it to the new session. It disappears with signing out, removing it under *Signed-in devices* or deleting the account. With it, the widgets read only a short summary in the background (unread notifications, open tasks, the running timer). Notifications go through Expo's push service, which hands them to Apple or Google – as with Web Push, they only say that something new is in the inbox. Operators can turn this off or send the text along, see [Configuration](/configuration#push-notifications).
+After signing in, the app registers with the instance: the entry belongs to that sign-in; signing in again on the device moves it to the new session. It disappears with signing out, removing it under *Signed-in devices* or deleting the account. With its device token, widgets, Live Activities and Shortcuts read in the background only what you may see in Flowplan – in small answers of at most ten items per widget – and run their buttons (check off a task or habit, start/stop the timer, mark as read, save what you captured). Notifications go through Expo's push service, which hands them to Apple or Google – as with Web Push, they only say that something new is in the inbox. Operators can turn this off or send the text along, see [Configuration](/configuration#push-notifications).
 
 ## Light and dark
 
