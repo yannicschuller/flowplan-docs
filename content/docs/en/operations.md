@@ -4,13 +4,28 @@ Health check, metrics, the storage overview and the most common causes when some
 
 ## Health check
 
-`GET /api/health` answers without sign-in with `200`, or with `503` when there are problems. It only reports states, no content:
+`GET /api/health` answers without sign-in with `200`, or with `503` when there are problems, and tells nothing about the instance:
 
-- database reachable and writable,
-- upload directory writable,
-- search index backlog,
-- failed push deliveries,
-- with S3: `objectStorage.pending` (files still to upload) and `retrying`.
+```json
+{"service":"flowplan","status":"ok"}
+```
+
+With `503` it says `"status":"error"`. Docker/Podman health checks, Kubernetes probes, Coolify, Gatus and uptime monitors only need the status code; the desktop and mobile apps recognise a Flowplan instance by `"service":"flowplan"`.
+
+The details come only with the token from `FLOWPLAN_METRICS_TOKEN` (`Authorization: Bearer <token>`, as for `/api/metrics`) or for signed-in instance administrators:
+
+- `checks.database`: database reachable and writable,
+- `checks.storage`: upload directory writable,
+- `searchBacklog`: search index backlog,
+- `failedPushDeliveries`: failed push deliveries,
+- `objectStorage`: with S3 `pending` (files still to upload) and `retrying`, otherwise `"off"`,
+- `uptimeSeconds`: the server's uptime.
+
+```sh
+curl -H "Authorization: Bearer $FLOWPLAN_METRICS_TOKEN" https://flowplan.example.com/api/health
+```
+
+Personal API tokens do not unlock the details.
 
 ## Administration → Monitoring
 
@@ -90,7 +105,7 @@ scrape_configs:
       - targets: ["flowplan:3000"]
 ```
 
-Without a token the endpoint is switched off.
+Without a token the endpoint is switched off. The same token unlocks the details of `/api/health` (see above).
 
 ## Check after the first start
 

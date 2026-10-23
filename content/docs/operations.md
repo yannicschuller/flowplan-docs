@@ -4,13 +4,28 @@ Healthcheck, Kennzahlen, Speicherübersicht und die häufigsten Ursachen, wenn e
 
 ## Healthcheck
 
-`GET /api/health` antwortet ohne Anmeldung mit `200` oder bei Problemen mit `503`. Er meldet nur Zustände, keine Inhalte:
+`GET /api/health` antwortet ohne Anmeldung mit `200` oder bei Problemen mit `503` und verrät dabei nichts über die Instanz:
 
-- Datenbank erreichbar und beschreibbar,
-- Upload-Verzeichnis beschreibbar,
-- Rückstand des Suchindex,
-- fehlgeschlagene Push-Zustellungen,
-- mit S3: `objectStorage.pending` (noch hochzuladende Dateien) und `retrying`.
+```json
+{"service":"flowplan","status":"ok"}
+```
+
+Bei `503` steht `"status":"error"` darin. Für Docker-/Podman-Healthchecks, Kubernetes-Probes, Coolify, Gatus und Uptime-Monitore reicht der Statuscode; die Desktop- und Mobil-Apps erkennen eine Flowplan-Instanz an `"service":"flowplan"`.
+
+Die Details gibt es nur mit dem Token aus `FLOWPLAN_METRICS_TOKEN` (`Authorization: Bearer <Token>`, wie für `/api/metrics`) oder für angemeldete Instanz-Admins:
+
+- `checks.database`: Datenbank erreichbar und beschreibbar,
+- `checks.storage`: Upload-Verzeichnis beschreibbar,
+- `searchBacklog`: Rückstand des Suchindex,
+- `failedPushDeliveries`: fehlgeschlagene Push-Zustellungen,
+- `objectStorage`: mit S3 `pending` (noch hochzuladende Dateien) und `retrying`, sonst `"off"`,
+- `uptimeSeconds`: Laufzeit des Servers.
+
+```sh
+curl -H "Authorization: Bearer $FLOWPLAN_METRICS_TOKEN" https://flowplan.example.com/api/health
+```
+
+Persönliche API-Tokens schalten die Details nicht frei.
 
 ## Administration → Überwachung
 
@@ -88,7 +103,7 @@ scrape_configs:
       - targets: ["flowplan:3000"]
 ```
 
-Ohne gesetztes Token ist der Endpunkt abgeschaltet.
+Ohne gesetztes Token ist der Endpunkt abgeschaltet. Dasselbe Token schaltet die Details von `/api/health` frei (siehe oben).
 
 ## Nach dem ersten Start prüfen
 

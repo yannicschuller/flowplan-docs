@@ -18,7 +18,7 @@ Mit `S3_BUCKET` und Zugangsdaten (siehe [Konfiguration](/configuration#s3-und-da
 - **Dateien**: Jede hochgeladene Datei geht direkt nach dem Speichern in den Bucket, gelöschte Dateien werden dort entfernt. `uploads/` bleibt Arbeitskopie. Fehlt dort eine Datei – neuer Host, verlorenes Volume –, holt Flowplan sie aus dem Bucket: beim Abruf sofort, alle übrigen im Hintergrund.
 - **Datenbank**: [Litestream](https://litestream.io) überträgt Änderungen der SQLite-Datei etwa im Sekundentakt nach `<Präfix>/db`. Startet der Container ohne Datenbank, stellt Litestream sie zuerst aus dem Bucket wieder her.
 
-Beim ersten Start mit S3 lädt Flowplan alle vorhandenen Dateien hoch. Den Fortschritt zeigt `/api/health` unter `objectStorage.pending`, die Verbindung und die Verteilung lokal/S3 **Administration → Speicher & Sicherung** (Karten **Sicherungen** und **Belegung**).
+Beim ersten Start mit S3 lädt Flowplan alle vorhandenen Dateien hoch. Den Fortschritt zeigen **Administration → Speicher & Sicherung** (Karten **Sicherungen** und **Belegung**, dazu die Verbindung und die Verteilung lokal/S3) und – mit `FLOWPLAN_METRICS_TOKEN` oder als Admin angemeldet – `/api/health` unter `objectStorage.pending`.
 
 Geeignet sind MinIO, Garage, SeaweedFS, AWS S3 und andere S3-kompatible Dienste.
 

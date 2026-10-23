@@ -24,6 +24,8 @@ Das Image bringt einen eigenen Healthcheck mit. Wird er in Coolify eingestellt:
 | Expected code | `200` |
 | Start period | `30` Sekunden (mit S3 stellt Litestream beim ersten Start die Datenbank her) |
 
+Flowplan sendet keinen `X-Powered-By`-Header. Der Healthcheck braucht nur den Statuscode; seine Details sind ohne Token nicht öffentlich (siehe [Healthcheck](/operations#healthcheck)).
+
 ### Volume-Rechte
 
 Der Container läuft als UID 1000. Ein neues Docker-Volume bekommt die Rechte automatisch. Ein eingebundener Host-Ordner muss dieser UID gehören:

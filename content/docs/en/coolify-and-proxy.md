@@ -24,6 +24,8 @@ The image comes with its own health check. If you set it up in Coolify:
 | Expected code | `200` |
 | Start period | `30` seconds (with S3, Litestream restores the database on the first start) |
 
+Flowplan sends no `X-Powered-By` header. The health check only needs the status code; its details are not public without a token (see [Health check](/operations#health-check)).
+
 ### Volume permissions
 
 The container runs as UID 1000. A new Docker volume gets the permissions automatically. A mounted host folder must belong to this UID:

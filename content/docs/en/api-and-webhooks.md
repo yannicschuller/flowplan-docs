@@ -231,8 +231,14 @@ With an owner's **write token**: `GET /api/inbound-mail?workspace=<id>` lists th
 
 Every instance describes its own API as an [OpenAPI 3.1](https://spec.openapis.org/oas/v3.1.0) document:
 
-- `GET /api/openapi.json` – the document, public and cached for an hour. Its `servers` entry carries the instance's address (`APP_URL`).
+- `GET /api/openapi.json` – the document. Its `servers` entry carries the instance's address (`APP_URL`).
 - `/api/docs` – the same description for reading: every path by section, parameters, requests, answers and schemas.
+
+Both are only available to signed-in people and with an API token (`Authorization: Bearer fp_…`, any scope); without signing in `/api/openapi.json` answers `401` and `/api/docs` asks to sign in. Instances that want to show the description publicly set `FLOWPLAN_PUBLIC_API_DOCS=true`; visitors then only see the major version (`0.x`) under `info.version`, signed-in people the exact one.
+
+```sh
+curl -H "Authorization: Bearer fp_…" https://flowplan.example.com/api/openapi.json > openapi.json
+```
 
 It lists every endpoint an API token may call: workspace and pages, search, files, imports and exports, webhooks, the MCP server and `POST /api/command` with a schema for each commonly used action (`page.create`, `row.create`, `row.update`, `webhook.delete` …) plus the list of all other actions. Each endpoint names its error codes (400, 401, 403, 404, 409, 413, 429) and the rate limits; calendar subscriptions and CalDAV are noted as external accesses with their own link.
 

@@ -231,8 +231,14 @@ Mit einem **Schreib-Token** eines Eigentümers: `GET /api/inbound-mail?workspace
 
 Jede Instanz beschreibt ihre API selbst, als [OpenAPI 3.1](https://spec.openapis.org/oas/v3.1.0)-Dokument:
 
-- `GET /api/openapi.json` – das Dokument, öffentlich und eine Stunde zwischengespeichert. Der Eintrag `servers` trägt die Adresse der Instanz (`APP_URL`).
+- `GET /api/openapi.json` – das Dokument. Der Eintrag `servers` trägt die Adresse der Instanz (`APP_URL`).
 - `/api/docs` – dieselbe Beschreibung zum Lesen: alle Pfade nach Bereichen, Parameter, Anfragen, Antworten und Schemas.
+
+Beides ist nur für Angemeldete und mit einem API-Token (`Authorization: Bearer fp_…`, jede Berechtigung) erreichbar; ohne Anmeldung antwortet `/api/openapi.json` mit `401`, und `/api/docs` bittet um die Anmeldung. Instanzen, die die Beschreibung öffentlich zeigen wollen, setzen `FLOWPLAN_PUBLIC_API_DOCS=true`; Besucher sehen dann unter `info.version` nur die Hauptversion (`0.x`), Angemeldete die genaue.
+
+```sh
+curl -H "Authorization: Bearer fp_…" https://flowplan.example.com/api/openapi.json > openapi.json
+```
 
 Darin stehen alle Endpunkte, die ein API-Token aufrufen darf: Arbeitsbereich und Seiten, Suche, Dateien, Importe und Exporte, Webhooks, der MCP-Server und `POST /api/command` mit einem Schema je häufig genutzter Aktion (`page.create`, `row.create`, `row.update`, `webhook.delete` …) sowie der Liste aller übrigen Aktionen. Zu jedem Endpunkt sind die Fehlercodes (400, 401, 403, 404, 409, 413, 429) und die Ratenbegrenzungen vermerkt; Kalender-Abos und CalDAV sind als externe Zugänge mit eigenem Link genannt.
 

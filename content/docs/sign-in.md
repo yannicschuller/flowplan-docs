@@ -90,7 +90,7 @@ SESSION_HOURS=8
 | `OIDC_ALLOWED_GROUP` | Wenn gesetzt, dürfen sich nur Mitglieder dieser Gruppe anmelden. |
 | `OIDC_PROMPT_CREATE` | `true`: **Registrieren** öffnet direkt die Registrierung des Anbieters (`prompt=create`). |
 | `OIDC_PICTURE` | Profilbild aus dem Claim `picture` übernehmen (Standard an, `off` schaltet ab). Das Bild muss unter einer öffentlichen HTTPS-Adresse liegen; interne Adressen werden – auch über Weiterleitungen – nicht abgerufen. |
-| `SESSION_HOURS` | Gültigkeit einer Sitzung in Stunden. Gruppenänderungen wirken spätestens danach. |
+| `SESSION_HOURS` | Gültigkeit einer Sitzung in Stunden, solange „Angemeldet bleiben“ nicht genutzt wird (siehe [Angemeldet bleiben](/sign-in#angemeldet-bleiben)). |
 
 ### Gruppennamen bei verbreiteten Anbietern
 
@@ -114,7 +114,7 @@ Bei jeder SSO-Anmeldung gleicht Flowplan ab:
 - **Die Zuordnung hat immer Vorrang.** Passt eine Zuordnung auf eine Person, setzt Flowplan Rolle und Gruppen so, wie die Zuordnung sagt – auch wenn das Mitglied von Hand hinzugefügt oder geändert wurde. Ab dann wird die Mitgliedschaft über SSO verwaltet.
 - Mitglieder und Gruppenmitgliedschaften, auf die keine Zuordnung passt und die nie aus SSO kamen, bleiben unberührt.
 - Der letzte Eigentümer eines Arbeitsbereichs bleibt immer.
-- Geänderte Zuordnungen gelten sofort für alle mit einer aktiven SSO-Sitzung, sonst bei der nächsten Anmeldung (mit „Angemeldet bleiben“ spätestens nach `SESSION_GROUPS_HOURS`).
+- Geänderte Zuordnungen gelten sofort für alle mit einer aktiven SSO-Sitzung, sonst bei der nächsten Anmeldung (mit „Angemeldet bleiben“ und gesetztem `SESSION_GROUPS_HOURS` spätestens danach).
 - Konten mit E-Mail und Passwort sind nicht betroffen.
 
 > **Hinweis: Änderungen von Hand bei aktivem SSO.** Ändert ein Eigentümer die Rolle oder eine Gruppe eines Mitglieds, das über eine SSO-Gruppe kommt (in der Mitgliederliste mit „über SSO-Gruppe …“ markiert), gilt die Änderung nur bis zur nächsten SSO-Anmeldung dieser Person oder bis zur nächsten Änderung der Zuordnungen. Danach setzt die Zuordnung Rolle und Gruppen wieder. Flowplan zeigt das direkt nach der Änderung an. Soll eine Rolle dauerhaft anders sein, ändert die Administration die Zuordnung – oder die Gruppen der Person im Identitätsanbieter.
@@ -195,11 +195,12 @@ Ist `LDAP_URL` gesetzt, prüft das Passwortfeld der Anmeldeseite Namen gegen ein
 Normalerweise endet eine Sitzung `SESSION_HOURS` nach der Anmeldung (Standard 8 Stunden). Mit `SESSION_REMEMBER=true` zeigt die Anmeldeseite **Auf diesem Gerät angemeldet bleiben** – für Passwort, Passkey und SSO. Mit Haken lebt die Sitzung weiter, solange Flowplan genutzt wird:
 
 - Sie endet `SESSION_IDLE_HOURS` nach der letzten Nutzung (Standard 168 = 7 Tage) und spätestens `SESSION_MAX_DAYS` nach der Anmeldung (Standard 30). Danach heißt es neu anmelden – das begrenzt, wie lange ein gestohlenes Cookie taugt.
-- Mit SSO zusätzlich spätestens nach `SESSION_GROUPS_HOURS` (Standard 168): Die neue Anmeldung beim Anbieter holt die aktuellen Gruppen, so wirken `OIDC_ALLOWED_GROUP` und `OIDC_ADMIN_GROUP` auch bei langen Sitzungen.
+- SSO-Sitzungen verlängern sich genauso, bis `SESSION_MAX_DAYS`. Gruppenänderungen beim Anbieter wirken über SCIM, den LDAP-Abgleich oder die nächste Anmeldung. Nur wenn `SESSION_GROUPS_HOURS` gesetzt ist, endet eine SSO-Sitzung schon nach so vielen Stunden: Die neue Anmeldung beim Anbieter holt die aktuellen Gruppen, so wirken `OIDC_ALLOWED_GROUP` und `OIDC_ADMIN_GROUP` auch ohne SCIM spätestens dann.
 - Ein deaktiviertes Konto verliert den Zugriff sofort, wie bisher.
-- Die Desktop- und Handy-Apps bleiben angemeldet, sobald die Option eingeschaltet ist.
+- Die Desktop- und Handy-Apps bleiben angemeldet, sobald die Option eingeschaltet ist; sie fragen immer danach.
+- Meldet sich dieselbe Person auf einem Gerät neu an (etwa weil die Sitzung abgelaufen ist), bleibt die Registrierung der App erhalten – Mitteilungen, Widgets, Live Activities und Kurzbefehle gehen auf die neue Sitzung über. Erst ausdrückliches **Abmelden** (in der App oder unter **Angemeldete Geräte**) entfernt sie.
 
-Ohne `SESSION_REMEMBER` ändert sich nichts. Wer die Option nachträglich ausschaltet, beendet das Verlängern; laufende Sitzungen enden dann zu ihrem nächsten Ablauf.
+Ohne `SESSION_REMEMBER` endet jede Sitzung – auch die der Apps und damit ihre Widgets – `SESSION_HOURS` nach der Anmeldung (Standard 8 Stunden). Wer die Apps oder ihre Widgets nutzt, setzt deshalb `SESSION_REMEMBER=true`. Wer die Option nachträglich ausschaltet, beendet das Verlängern; laufende Sitzungen enden dann zu ihrem nächsten Ablauf.
 
 **Einstellungen → Konto & Sicherheit → Angemeldete Geräte** listet alle eigenen Sitzungen mit Gerät, letzter Nutzung und Ende; **Abmelden** beendet eine einzelne, **Alle anderen Geräte abmelden** alle bis auf die aktuelle.
 

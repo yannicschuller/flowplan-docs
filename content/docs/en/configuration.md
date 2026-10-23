@@ -16,11 +16,11 @@ All environment variables at a glance. Many values can also be set in the interf
 | `OIDC_ISSUER` | *empty* | The login provider for single sign-on. Without it there are only e-mail, password and passkeys. |
 | `OIDC_CLIENT_ID` | – | Client ID. |
 | `OIDC_CLIENT_SECRET` | – | Client secret. Never put it into the image or into Git. |
-| `SESSION_HOURS` | `8` | How long a session lasts in hours (1–24). |
-| `SESSION_REMEMBER` | off | `true` offers **Stay signed in on this device** when signing in – see [Sign-in](/sign-in#stay-signed-in). |
+| `SESSION_HOURS` | `8` | How long a session lasts in hours (1–24). Without `SESSION_REMEMBER` this applies to every session, the apps' too. |
+| `SESSION_REMEMBER` | off | `true` offers **Stay signed in on this device** when signing in – see [Sign-in](/sign-in#stay-signed-in). Recommended when the desktop or mobile apps and their widgets are used. |
 | `SESSION_IDLE_HOURS` | `168` | With "stay signed in": the session ends this many hours after it was last used. |
-| `SESSION_MAX_DAYS` | `30` | With "stay signed in": sign in again after this many days at the latest (1–365). |
-| `SESSION_GROUPS_HOURS` | `168` | With "stay signed in" and SSO: sign in at the provider again after this many hours, so group changes take effect. |
+| `SESSION_MAX_DAYS` | `30` | With "stay signed in": sign in again after this many days at the latest (1–365) – with SSO just as with password and passkey. |
+| `SESSION_GROUPS_HOURS` | *empty* | Only when set: SSO sessions with "stay signed in" end after this many hours already, so group changes at the provider take effect with the new sign-in. Without it they follow through SCIM, the LDAP sync or the next sign-in. |
 | `LDAP_URL` | *empty* | Sign-in with an LDAP directory (`ldap://` or `ldaps://`) – see [Sign-in with LDAP](/sign-in#sign-in-with-ldap). |
 | `LDAP_BIND_DN` / `LDAP_BIND_PASSWORD` | *empty* | Search account for LDAP; without it, anonymous search. |
 | `LDAP_BASE_DN` | – | Where LDAP accounts are searched. |
@@ -42,7 +42,8 @@ The other OIDC variables and everything about passwords and passkeys are describ
 | `FLOWPLAN_OCR` | on | `0` turns off text recognition for scanned PDFs and images. |
 | `FLOWPLAN_OCR_LANGS` | `deu,eng` | Languages of the text recognition, e.g. `fra,eng`; the first is the main language. `deu`, `eng` and `fra` are bundled. Each extra language costs memory and time per page. |
 | `FLOWPLAN_METRICS` | on | `off` switches off the usage statistics of the [monitoring](/operations#statistics): requests, errors and response times per minute, active people per hour, storage history and AI tokens. Only numbers are collected – no IP addresses, paths or names; minutes are kept 48 hours, hours 35 days, days 400 days. With `off` nothing is collected, and the switch **Collect usage statistics** under **Administration → Monitoring → Statistics** is locked. `/api/metrics` does not depend on it. |
-| `FLOWPLAN_METRICS_TOKEN` | *empty* | At least 16 characters; enables `/api/metrics` in Prometheus format. |
+| `FLOWPLAN_METRICS_TOKEN` | *empty* | At least 16 characters; enables `/api/metrics` in Prometheus format. Sent as `Authorization: Bearer …`, it also unlocks the details of `/api/health` (see [Health check](/operations#health-check)). |
+| `FLOWPLAN_PUBLIC_API_DOCS` | `false` | `true` makes `/api/openapi.json` and `/api/docs` readable without signing in; visitors only see the major version (`0.x`) there. Otherwise only for signed-in people and API tokens. |
 | `FLOWPLAN_UPDATE_CHECK` | on | `false` turns off the check for new versions (for instances without internet). Otherwise the server asks GitHub for the latest release at most every 12 hours and shows admins a notice in the administration. |
 | `FLOWPLAN_UPDATE_URL` | GitHub API | Another address for the latest release (same format as `api.github.com/repos/yannicschuller/flowplan/releases/latest`), such as an internal mirror. Not to be confused with the [desktop app's](/offline-and-apps#desktop-app-for-macos-windows-and-linux) variable of the same name, which names the app's update source on the computer running it. |
 | `FLOWPLAN_TRUSTED_PROXIES` | `1` | Number of proxies in front of Flowplan (Traefik alone: `1`, Pangolin in front of Traefik: `2`, `0` = trust no header). Decides which entry in `X-Forwarded-For` is the real address – for limiting sign-in attempts, demo starts and anonymous form answers. Entries made up by the browser are ignored this way. When no address arrives at all (the proxy does not set the header), only the limits per account and per link apply, and the log shows a note once. |

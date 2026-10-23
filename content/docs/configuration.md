@@ -16,11 +16,11 @@ Alle Umgebungsvariablen auf einen Blick. Viele Werte lassen sich zusätzlich in 
 | `OIDC_ISSUER` | *leer* | Login-Anbieter für Single Sign-on. Ohne ihn gibt es nur E-Mail, Passwort und Passkeys. |
 | `OIDC_CLIENT_ID` | – | Client-ID. |
 | `OIDC_CLIENT_SECRET` | – | Client-Secret. Nie ins Image oder ins Git. |
-| `SESSION_HOURS` | `8` | Dauer einer Sitzung in Stunden (1–24). |
-| `SESSION_REMEMBER` | aus | `true` bietet beim Anmelden **Auf diesem Gerät angemeldet bleiben** an – siehe [Anmeldung](/sign-in#angemeldet-bleiben). |
+| `SESSION_HOURS` | `8` | Dauer einer Sitzung in Stunden (1–24). Ohne `SESSION_REMEMBER` gilt das für alle Sitzungen, auch die der Apps. |
+| `SESSION_REMEMBER` | aus | `true` bietet beim Anmelden **Auf diesem Gerät angemeldet bleiben** an – siehe [Anmeldung](/sign-in#angemeldet-bleiben). Empfohlen, wenn die Desktop- oder Handy-Apps und ihre Widgets genutzt werden. |
 | `SESSION_IDLE_HOURS` | `168` | Mit „angemeldet bleiben“: Sitzung endet so viele Stunden nach der letzten Nutzung. |
-| `SESSION_MAX_DAYS` | `30` | Mit „angemeldet bleiben“: spätestens nach so vielen Tagen neu anmelden (1–365). |
-| `SESSION_GROUPS_HOURS` | `168` | Mit „angemeldet bleiben“ und SSO: nach so vielen Stunden neu beim Anbieter anmelden, damit Gruppenänderungen wirken. |
+| `SESSION_MAX_DAYS` | `30` | Mit „angemeldet bleiben“: spätestens nach so vielen Tagen neu anmelden (1–365) – mit SSO genauso wie mit Passwort und Passkey. |
+| `SESSION_GROUPS_HOURS` | *leer* | Nur wenn gesetzt: SSO-Sitzungen mit „angemeldet bleiben“ enden schon nach so vielen Stunden, damit Gruppenänderungen beim Anbieter mit der neuen Anmeldung wirken. Ohne die Variable wirken sie über SCIM, den LDAP-Abgleich oder die nächste Anmeldung. |
 | `LDAP_URL` | *leer* | Anmeldung mit einem LDAP-Verzeichnis (`ldap://` oder `ldaps://`) – siehe [Anmeldung mit LDAP](/sign-in#anmeldung-mit-ldap). |
 | `LDAP_BIND_DN` / `LDAP_BIND_PASSWORD` | *leer* | Suchkonto für LDAP; ohne es anonyme Suche. |
 | `LDAP_BASE_DN` | – | Wo LDAP-Konten gesucht werden. |
@@ -42,7 +42,8 @@ Die übrigen OIDC-Variablen und alles zu Passwörtern und Passkeys stehen unter 
 | `FLOWPLAN_OCR` | an | `0` schaltet die Texterkennung für gescannte PDFs und Bilder ab. |
 | `FLOWPLAN_OCR_LANGS` | `deu,eng` | Sprachen der Texterkennung, z. B. `fra,eng`; die erste ist die Hauptsprache. Mitgeliefert sind `deu`, `eng` und `fra`. Jede weitere Sprache kostet Speicher und Zeit pro Seite. |
 | `FLOWPLAN_METRICS` | an | `off` schaltet die Nutzungsstatistik der [Überwachung](/operations#statistik) aus: Anfragen, Fehler und Antwortzeiten je Minute, aktive Personen je Stunde, Speicherverlauf und KI-Tokens. Erfasst werden nur Zahlen – keine IP-Adressen, Pfade oder Namen; Minuten bleiben 48 Stunden, Stunden 35 Tage, Tage 400 Tage. Mit `off` wird nichts erfasst, und der Schalter **Nutzungsstatistik erfassen** unter **Administration → Überwachung → Statistik** ist gesperrt. `/api/metrics` hängt davon nicht ab. |
-| `FLOWPLAN_METRICS_TOKEN` | *leer* | Mindestens 16 Zeichen; aktiviert `/api/metrics` im Prometheus-Format. |
+| `FLOWPLAN_METRICS_TOKEN` | *leer* | Mindestens 16 Zeichen; aktiviert `/api/metrics` im Prometheus-Format. Als `Authorization: Bearer …` mitgeschickt, liefert `/api/health` damit auch die Details (siehe [Healthcheck](/operations#healthcheck)). |
+| `FLOWPLAN_PUBLIC_API_DOCS` | `false` | `true` macht `/api/openapi.json` und `/api/docs` ohne Anmeldung lesbar; Besucher sehen darin nur die Hauptversion (`0.x`). Sonst nur für Angemeldete und API-Tokens. |
 | `FLOWPLAN_UPDATE_CHECK` | an | `false` schaltet die Suche nach neuen Versionen ab (für Instanzen ohne Internet). Sonst fragt der Server höchstens alle 12 Stunden bei GitHub nach dem neuesten Release und zeigt Admins in der Administration einen Hinweis. |
 | `FLOWPLAN_UPDATE_URL` | GitHub-API | Andere Adresse für das neueste Release (gleiches Format wie `api.github.com/repos/yannicschuller/flowplan/releases/latest`), etwa ein interner Spiegel. Nicht zu verwechseln mit der gleichnamigen Variable der [Desktop-App](/offline-and-apps#desktop-app-fuer-macos-windows-und-linux), die auf dem Rechner der App deren Update-Quelle nennt. |
 | `FLOWPLAN_TRUSTED_PROXIES` | `1` | Anzahl der Proxys vor Flowplan (Traefik allein: `1`, Pangolin vor Traefik: `2`, `0` = keinem Header vertrauen). Bestimmt, welcher Eintrag in `X-Forwarded-For` die echte Adresse ist – für die Begrenzung von Anmeldeversuchen, Demo-Starts und anonymen Formularantworten. Frei erfundene Einträge des Browsers werden so ignoriert. Kommt gar keine Adresse an (der Proxy setzt den Header nicht), gelten nur die Limits je Konto und je Link, und das Protokoll zeigt einmalig einen Hinweis. |

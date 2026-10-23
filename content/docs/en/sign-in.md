@@ -90,7 +90,7 @@ SESSION_HOURS=8
 | `OIDC_ALLOWED_GROUP` | If set, only members of this group may sign in. |
 | `OIDC_PROMPT_CREATE` | `true`: **Sign up** opens the provider's registration directly (`prompt=create`). |
 | `OIDC_PICTURE` | Take the profile picture from the `picture` claim (on by default, `off` turns it off). The image must be at a public HTTPS address; internal addresses are not fetched – not even via redirects. |
-| `SESSION_HOURS` | How long a session is valid in hours. Group changes take effect after that at the latest. |
+| `SESSION_HOURS` | How long a session is valid in hours, as long as "Stay signed in" is not used (see [Stay signed in](/sign-in#stay-signed-in)). |
 
 ### Group names with common providers
 
@@ -114,7 +114,7 @@ At every SSO sign-in Flowplan applies them:
 - **The mapping always wins.** If a mapping matches a person, Flowplan sets the role and groups to what the mapping says – even if the member was added or changed by hand. From then on the membership is managed through SSO.
 - Members and group memberships that no mapping matches and that never came from SSO stay untouched.
 - The last owner of a workspace always stays.
-- Changed mappings apply right away to everyone with an active SSO session, otherwise at the next sign-in (with "Stay signed in" at the latest after `SESSION_GROUPS_HOURS`).
+- Changed mappings apply right away to everyone with an active SSO session, otherwise at the next sign-in (with "Stay signed in" and `SESSION_GROUPS_HOURS` set, at the latest after that).
 - Accounts with e-mail and password are not affected.
 
 > **Note: changes by hand while SSO is active.** If an owner changes the role or a group of a member who comes from an SSO group (marked "via SSO group …" in the member list), the change lasts only until that person's next SSO sign-in or the next change of the mappings. Then the mapping sets the role and groups again. Flowplan says so right after the change. For a lasting difference, the administration changes the mapping – or the person's groups in the identity provider.
@@ -195,11 +195,12 @@ With `LDAP_URL` set, the password field of the sign-in page checks names against
 Normally a session ends `SESSION_HOURS` after signing in (default 8 hours). With `SESSION_REMEMBER=true` the sign-in page shows **Stay signed in on this device** – for password, passkey and SSO. When ticked, the session lives on while Flowplan is used:
 
 - It ends `SESSION_IDLE_HOURS` after it was last used (default 168 = 7 days) and at the latest `SESSION_MAX_DAYS` after signing in (default 30). Then you sign in again – this limits how long a stolen cookie is good for.
-- With SSO, also at the latest after `SESSION_GROUPS_HOURS` (default 168): signing in at the provider again fetches the current groups, so `OIDC_ALLOWED_GROUP` and `OIDC_ADMIN_GROUP` also apply to long sessions.
+- SSO sessions extend the same way, up to `SESSION_MAX_DAYS`. Group changes at the provider follow through SCIM, the LDAP sync or the next sign-in. Only when `SESSION_GROUPS_HOURS` is set does an SSO session end after that many hours already: signing in at the provider again fetches the current groups, so `OIDC_ALLOWED_GROUP` and `OIDC_ADMIN_GROUP` apply by then at the latest, even without SCIM.
 - A disabled account loses access immediately, as before.
-- The desktop and mobile apps stay signed in once the option is on.
+- The desktop and mobile apps stay signed in once the option is on; they always ask for it.
+- When the same person signs in again on a device (for example because the session ran out), the app's registration survives – notifications, widgets, Live Activities and Shortcuts move over to the new session. Only an explicit **Sign out** (in the app or under **Signed-in devices**) removes it.
 
-Without `SESSION_REMEMBER` nothing changes. Turning the option off later stops the extending; running sessions then end at their next expiry.
+Without `SESSION_REMEMBER` every session – the apps' too, and with them their widgets – ends `SESSION_HOURS` after signing in (default 8 hours). If you use the apps or their widgets, set `SESSION_REMEMBER=true`. Turning the option off later stops the extending; running sessions then end at their next expiry.
 
 **Settings → Account & security → Signed-in devices** lists all your own sessions with device, last use and end; **Sign out** ends a single one, **Sign out all other devices** all but the current one.
 
