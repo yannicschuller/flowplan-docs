@@ -165,7 +165,7 @@ Wer die Instanz administriert (Mitglied der Admin-Gruppe, `OIDC_ADMIN_GROUP`, St
 
 ### Was die App auf der Instanz hinterlegt
 
-Nach dem Anmelden meldet sich die App bei der Instanz an: Der Eintrag gehört zu dieser Anmeldung und verschwindet mit dem Abmelden, dem Ende der Sitzung oder dem Löschen des Kontos. Die Widgets lesen damit im Hintergrund nur eine kurze Übersicht (ungelesene Benachrichtigungen, offene Aufgaben, laufender Timer). Mitteilungen laufen über den Push-Dienst von Expo, der sie an Apple bzw. Google weitergibt – wie bei Web-Push steht darin nur, dass etwas Neues im Posteingang liegt. Betreiber können das abschalten oder den Text mitschicken, siehe [Konfiguration](/configuration#push-benachrichtigungen).
+Nach dem Anmelden meldet sich die App bei der Instanz an: Der Eintrag gehört zu dieser Anmeldung; meldest du dich auf dem Gerät neu an, geht er auf die neue Sitzung über. Er verschwindet mit dem Abmelden, dem Entfernen unter *Angemeldete Geräte* oder dem Löschen des Kontos. Die Widgets lesen damit im Hintergrund nur eine kurze Übersicht (ungelesene Benachrichtigungen, offene Aufgaben, laufender Timer). Mitteilungen laufen über den Push-Dienst von Expo, der sie an Apple bzw. Google weitergibt – wie bei Web-Push steht darin nur, dass etwas Neues im Posteingang liegt. Betreiber können das abschalten oder den Text mitschicken, siehe [Konfiguration](/configuration#push-benachrichtigungen).
 
 ## Hell und dunkel
 

@@ -165,7 +165,7 @@ People who administer the instance (members of the admin group, `OIDC_ADMIN_GROU
 
 ### What the app keeps on the instance
 
-After signing in, the app registers with the instance: the entry belongs to that sign-in and disappears with signing out, the end of the session or the deletion of the account. With it, the widgets read only a short summary in the background (unread notifications, open tasks, the running timer). Notifications go through Expo's push service, which hands them to Apple or Google – as with Web Push, they only say that something new is in the inbox. Operators can turn this off or send the text along, see [Configuration](/configuration#push-notifications).
+After signing in, the app registers with the instance: the entry belongs to that sign-in; signing in again on the device moves it to the new session. It disappears with signing out, removing it under *Signed-in devices* or deleting the account. With it, the widgets read only a short summary in the background (unread notifications, open tasks, the running timer). Notifications go through Expo's push service, which hands them to Apple or Google – as with Web Push, they only say that something new is in the inbox. Operators can turn this off or send the text along, see [Configuration](/configuration#push-notifications).
 
 ## Light and dark
 
