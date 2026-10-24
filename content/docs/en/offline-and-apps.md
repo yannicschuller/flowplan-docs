@@ -123,7 +123,8 @@ Like the desktop app, the mobile apps show your Flowplan instance; all data stay
 - **[Live Activities](#live-activities-and-ongoing-notifications):** the timer, focus, the meeting, imports/exports and voice memos on the lock screen and in the Dynamic Island, or as an ongoing notification.
 - **[Capture, Siri, Control Center](#capture-siri-control-center):** notes, tasks, voice memos and photos from widgets, Siri, Control Center, the app icon and Android tiles; ask Siri what is due, open a page or search.
 - **[Focus filters](#focus-filters)** (iPhone, iPad): one profile or workspace per Focus, optionally without notifications from the others.
-- **[Share from other apps](#share-from-other-apps-android)** (Android): text, links, photos and PDFs straight into the inbox or onto a page.
+- **[Share from other apps](#share-from-other-apps):** text, links, photos and PDFs from any app straight into the inbox, a database or onto a page.
+- **[Scanner and Spotlight](#scan-documents-and-spotlight-iphone-and-ipad)** (iPhone, iPad): documents scanned into searchable PDFs, your pages and tasks in the phone's search.
 - **App lock:** if you like, Flowplan only unlocks with Face ID, Touch ID, a fingerprint or the device code.
 - **Back:** swiping from the left edge (iOS) or the back gesture or button (Android) first closes what is open (menu, dialog, sidebar) and then goes up a level: from a settings section to the overview, from a record to its database, from a page to the previous page.
 - **Exports and downloads** go to the system's share menu (e.g. "Save to Files").
@@ -135,7 +136,7 @@ Also:
 - **Managed devices (MDM/EMM):** through managed app configuration (iOS Managed App Configuration or Android app restrictions), the key `server` presets the address of your own instance; the app suggests it on first start.
 - **Sign in with a passkey** and **Sign in with SSO** open the system's sign-in sheet (iOS) or a browser tab (Android); after **Sign in to the app** the app takes over the sign-in. E-mail and password work directly in the app. Signing in through the browser as well as notifications and widgets (the app interface) need Flowplan 0.4.0 or newer.
 - Links to other sites open in the browser; without a connection the app shows a page of its own and reconnects by itself.
-- On Android, Flowplan appears as **Save to Flowplan** in other apps' **Share** menu, see [Share from other apps](#share-from-other-apps-android).
+- Flowplan appears in other apps' **Share** menu – as **Flowplan** on iPhone and iPad, as **Save to Flowplan** on Android, see [Share from other apps](#share-from-other-apps).
 
 ### Widgets
 
@@ -234,15 +235,27 @@ On the iPhone and iPad, a Focus (Settings → Focus → e.g. *Work* → **Add fi
 
 Workspaces appear in the list once the app has been signed in to that profile; open the app on the profile once if one is missing.
 
-### Share from other apps (Android)
+### Share from other apps
 
-In any app that can share (browser, gallery, files, scanner, mail …): **Share → Save to Flowplan**.
+In any app that can share (browser, Photos or gallery, Files, mail, scanner …), **Share → Flowplan** (iPhone, iPad) or **Share → Save to Flowplan** (Android) opens a small window with title, text, link and files.
 
-- **What works:** text, links, photos and PDFs – several files at once too (at most 10). Other file types and anything beyond that are listed in the window under *Not taken*.
-- **Where to:** the **inbox**, your default capture database, is preselected. **Change** lists every page and database you may write to, with search.
-- **What you get:** in a database a **record** – the link in the URL property (if there is one), the files in the files property and in the record itself, PDFs with a preview of their first page. On a page a **sub page** with text, link, photos and PDFs. You can change the title; left empty it is the first line of the text, the link's address or the first file name.
-- After **Save**, **Back to the app** returns to the app you shared from; **Open** shows the result in Flowplan.
-- Not signed in yet? Text and links then go to the instance's preview as in the browser and continue after signing in. Instances up to 0.6.0 take only text and links (through that preview), files only newer ones.
+- **What works:** text, links, photos and PDFs – several files at once too (at most 10). Other file types are not taken.
+- **Where to:** the **inbox**, your default capture database, is preselected (set it in the browser with **Use as default for capturing**, see [Capture into a database](#capture-into-a-database)). **Save to** (iPhone, iPad) or **Change** (Android) lists every page and database you may write to, with search.
+- **What you get:** in a database (the inbox included) a **record** – the link in the first URL property (if there is one), the files in the first files property and in the record itself. On a page a **sub page** with text, link, photos and PDFs.
+
+**On iPhone and iPad** you stay in the app you share from. Flowplan remembers the last choice of where to save per profile. The sheet uses the sign-in of the app: open Flowplan once and sign in, otherwise it asks you to. Photos in HEIC become JPEG.
+
+**On Android** the window lists under *Not taken* what it cannot take (other file types, more than 10 files). PDFs get a preview of their first page in the record. You can change the title; left empty it is the first line of the text, the link's address or the first file name. After **Save**, **Back to the app** returns to the app you shared from; **Open** shows the result in Flowplan. Not signed in yet? Text and links then go to the instance's preview as in the browser and continue after signing in.
+
+The share sheet on iPhone and iPad as well as photos and PDFs on Android need a Flowplan server newer than 0.6.0 (currently the beta image). Up to 0.6.0, Android takes only text and links, through the instance's preview.
+
+### Scan documents and Spotlight (iPhone and iPad)
+
+**Scan documents.** In a page, type `/` and choose **Scan document** (only in the iPhone and iPad app). The camera finds the edges and straightens each page; take as many pages as you like. Flowplan recognises the text on the device (German, English, French) and adds one PDF at the end of the page – or of the record you are in. The PDF carries the text invisibly, so you can select and search it in any PDF viewer, and **Flowplan's search finds the scan by its text** right away. The link `flowplan://scan` (e.g. in a shortcut) opens the scanner with the choice of inbox, page or database. The PDF does not stay on the phone after saving.
+
+**Spotlight.** The app puts the titles of your most recently changed pages (up to 500, with where they are and a line of their content) and your open tasks into the phone's search. A tap on a result opens it in Flowplan. Nothing of end-to-end encrypted spaces, pages behind a journal PIN or journal days goes there; signing out or switching profiles empties it. The index stays on the phone.
+
+The scanner and Spotlight need a Flowplan server newer than 0.6.0 (currently the beta image).
 
 ### Profiles in the mobile apps
 
@@ -257,7 +270,7 @@ Notifications, widgets, Live Activities, the number on the app icon and the runn
 
 ### What the app keeps on the instance
 
-After signing in, the app registers with the instance: the entry belongs to that sign-in; signing in again on the device moves it to the new session. It disappears with signing out, removing it under *Signed-in devices* or deleting the account. With its device token, widgets, Live Activities and Shortcuts read in the background only what you may see in Flowplan – in small answers of at most ten items per widget – and run their buttons (check off a task or habit, start/stop the timer, mark as read, save what you captured). Notifications go through Expo's push service, which hands them to Apple or Google – as with Web Push, they only say that something new is in the inbox. Operators can turn this off or send the text along, see [Configuration](/configuration#push-notifications). A [focus filter](#focus-filters) that hides notifications leaves a rule for this device there: which workspace may still notify it, for at most a day.
+After signing in, the app registers with the instance: the entry belongs to that sign-in; signing in again on the device moves it to the new session. It disappears with signing out, removing it under *Signed-in devices* or deleting the account. With its device token, widgets, Live Activities and Shortcuts read in the background only what you may see in Flowplan – in small answers of at most ten items per widget – and run their buttons (check off a task or habit, start/stop the timer, mark as read, save what you captured); the share sheet and the scanner save with it as well, and Spotlight reads your page titles and open tasks with it. Notifications go through Expo's push service, which hands them to Apple or Google – as with Web Push, they only say that something new is in the inbox. Operators can turn this off or send the text along, see [Configuration](/configuration#push-notifications). A [focus filter](#focus-filters) that hides notifications leaves a rule for this device there: which workspace may still notify it, for at most a day.
 
 ## Light and dark
 

@@ -123,7 +123,8 @@ Wie die Desktop-App zeigen die mobilen Apps deine Flowplan-Instanz; alle Daten b
 - **[Live-Aktivitäten](#live-aktivitaeten-und-laufende-mitteilungen):** Zeiterfassung, Fokus, Besprechung, Import/Export und Sprachnotiz auf dem Sperrbildschirm und in der Dynamic Island bzw. als laufende Mitteilung.
 - **[Erfassen, Siri, Kontrollzentrum](#erfassen-siri-kontrollzentrum):** Notizen, Aufgaben, Sprachnotizen und Fotos aus Widgets, Siri, Kontrollzentrum, App-Symbol und Android-Kacheln; Siri fragen, was fällig ist, eine Seite öffnen oder suchen.
 - **[Fokus-Filter](#fokus-filter)** (iPhone, iPad): ein Profil oder Arbeitsbereich je Fokus, auf Wunsch ohne Mitteilungen der anderen.
-- **[Teilen aus anderen Apps](#teilen-aus-anderen-apps-android)** (Android): Texte, Links, Fotos und PDFs direkt in den Eingang oder auf eine Seite.
+- **[Teilen aus anderen Apps](#teilen-aus-anderen-apps):** Texte, Links, Fotos und PDFs aus jeder App direkt in den Eingang, eine Datenbank oder auf eine Seite.
+- **[Scanner und Spotlight](#dokumente-scannen-und-spotlight-iphone-und-ipad)** (iPhone, iPad): Dokumente als durchsuchbare PDFs scannen, deine Seiten und Aufgaben in der Suche des Telefons.
 - **App-Sperre:** Auf Wunsch entsperrt sich Flowplan nur mit Face ID, Touch ID, Fingerabdruck oder dem Gerätecode.
 - **Zurück:** Wischen vom linken Rand (iOS) bzw. die Zurück-Geste oder -Taste (Android) schließt zuerst, was gerade offen ist (Menü, Dialog, Seitenleiste), und geht dann eine Ebene nach oben: von einem Abschnitt der Einstellungen zur Übersicht, von einem Eintrag zur Datenbank, von einer Seite zur vorherigen Seite.
 - **Exporte und Downloads** gehen in das Teilen-Menü des Systems (z. B. „In Dateien sichern“).
@@ -135,7 +136,7 @@ Außerdem:
 - **Verwaltete Geräte (MDM/EMM):** Über die verwaltete App-Konfiguration (iOS Managed App Configuration bzw. Android App Restrictions) gibt der Schlüssel `server` die Adresse der eigenen Instanz vor; die App schlägt sie beim ersten Start vor.
 - **Mit Passkey anmelden** und **Mit SSO anmelden** öffnen das Anmeldefenster des Systems (iOS) bzw. einen Browser-Tab (Android); nach **In der App anmelden** übernimmt die App die Anmeldung. E-Mail und Passwort gehen direkt in der App. Die Anmeldung über den Browser sowie Mitteilungen und Widgets (die App-Schnittstelle) brauchen Flowplan 0.4.0 oder neuer.
 - Links zu anderen Seiten öffnen im Browser; ohne Verbindung zeigt die App eine eigene Seite und verbindet sich von selbst wieder.
-- Auf Android erscheint Flowplan als **In Flowplan speichern** im **Teilen**-Menü anderer Apps, siehe [Teilen aus anderen Apps](#teilen-aus-anderen-apps-android).
+- Flowplan erscheint im **Teilen**-Menü anderer Apps – auf iPhone und iPad als **Flowplan**, auf Android als **In Flowplan speichern**, siehe [Teilen aus anderen Apps](#teilen-aus-anderen-apps).
 
 ### Widgets
 
@@ -234,15 +235,27 @@ Auf iPhone und iPad kann ein Fokus (Einstellungen → Fokus → z. B. *Arbeiten*
 
 Arbeitsbereiche erscheinen in der Liste, sobald die App in diesem Profil angemeldet war; fehlt einer, öffne die App einmal in dem Profil.
 
-### Teilen aus anderen Apps (Android)
+### Teilen aus anderen Apps
 
-In jeder App, die etwas teilen kann (Browser, Galerie, Dateien, Scanner, Mail …): **Teilen → In Flowplan speichern**.
+In jeder App, die etwas teilen kann (Browser, Fotos bzw. Galerie, Dateien, Mail, Scanner …), öffnet **Teilen → Flowplan** (iPhone, iPad) bzw. **Teilen → In Flowplan speichern** (Android) ein kleines Fenster mit Titel, Text, Link und Dateien.
 
-- **Was geht:** Text, Links, Fotos und PDFs – auch mehrere Dateien auf einmal (höchstens 10). Andere Dateitypen und was darüber hinausgeht, nennt das Fenster unter *Nicht übernommen*.
-- **Wohin:** vorgewählt ist der **Eingang**, deine Standard-Datenbank zum Erfassen. **Ändern** zeigt alle Seiten und Datenbanken, in die du schreiben darfst, mit Suche.
-- **Was entsteht:** In einer Datenbank ein **Eintrag** – der Link in der URL-Eigenschaft (falls vorhanden), die Dateien in der Datei-Eigenschaft und im Eintrag selbst, PDFs mit Vorschau der ersten Seite. Auf einer Seite eine **Unterseite** mit Text, Link, Fotos und PDFs. Den Titel kannst du ändern; leer bleibt er die erste Zeile des Texts, die Adresse des Links oder der erste Dateiname.
-- Nach **Sichern** führt **Zurück zur App** in die App, aus der du geteilt hast; **Öffnen** zeigt das Ergebnis in Flowplan.
-- Noch nicht angemeldet? Texte und Links gehen dann wie im Browser zur Vorschau der Instanz und nach dem Anmelden weiter. Instanzen bis 0.6.0 nehmen nur Text und Links an (über diese Vorschau), Dateien erst neuere.
+- **Was geht:** Text, Links, Fotos und PDFs – auch mehrere Dateien auf einmal (höchstens 10). Andere Dateitypen werden nicht übernommen.
+- **Wohin:** vorgewählt ist der **Eingang**, deine Standard-Datenbank zum Erfassen (im Browser mit **Als Standard zum Erfassen verwenden** festgelegt, siehe [Erfassen in eine Datenbank](#erfassen-in-eine-datenbank)). **Sichern in** (iPhone, iPad) bzw. **Ändern** (Android) zeigt alle Seiten und Datenbanken, in die du schreiben darfst, mit Suche.
+- **Was entsteht:** In einer Datenbank (auch dem Eingang) ein **Eintrag** – der Link in der ersten URL-Eigenschaft (falls vorhanden), die Dateien in der ersten Datei-Eigenschaft und im Eintrag selbst. Auf einer Seite eine **Unterseite** mit Text, Link, Fotos und PDFs.
+
+**Auf iPhone und iPad** bleibst du in der App, aus der du teilst. Flowplan merkt sich die letzte Wahl des Ziels je Profil. Das Fenster nutzt die Anmeldung der App: Öffne Flowplan einmal und melde dich an, sonst weist es darauf hin. Fotos im HEIC-Format werden zu JPEG.
+
+**Auf Android** nennt das Fenster unter *Nicht übernommen*, was es nicht übernehmen kann (andere Dateitypen, mehr als 10 Dateien). PDFs bekommen im Eintrag eine Vorschau der ersten Seite. Den Titel kannst du ändern; leer bleibt er die erste Zeile des Texts, die Adresse des Links oder der erste Dateiname. Nach **Sichern** führt **Zurück zur App** in die App, aus der du geteilt hast; **Öffnen** zeigt das Ergebnis in Flowplan. Noch nicht angemeldet? Texte und Links gehen dann wie im Browser zur Vorschau der Instanz und nach dem Anmelden weiter.
+
+Das Teilen-Fenster auf iPhone und iPad sowie Fotos und PDFs auf Android brauchen einen Flowplan-Server neuer als 0.6.0 (derzeit das Beta-Image). Bis 0.6.0 nimmt Android nur Text und Links an, über die Vorschau der Instanz.
+
+### Dokumente scannen und Spotlight (iPhone und iPad)
+
+**Dokumente scannen.** Tippe in einer Seite `/` und wähle **Dokument scannen** (nur in der App für iPhone und iPad). Die Kamera findet die Ränder und richtet jede Seite gerade aus; nimm so viele Seiten auf, wie du möchtest. Flowplan erkennt den Text auf dem Gerät (Deutsch, Englisch, Französisch) und fügt ein PDF am Ende der Seite ein – oder des Eintrags, in dem du gerade bist. Das PDF trägt den Text unsichtbar mit, sodass du ihn in jedem PDF-Programm markieren und durchsuchen kannst, und **die Suche in Flowplan findet den Scan sofort über seinen Text**. Der Link `flowplan://scan` (z. B. in einem Kurzbefehl) öffnet den Scanner mit der Wahl zwischen Eingang, Seite und Datenbank. Nach dem Sichern bleibt das PDF nicht auf dem Telefon.
+
+**Spotlight.** Die App legt die Titel deiner zuletzt geänderten Seiten (bis zu 500, mit Ort und einer Zeile Inhalt) und deine offenen Aufgaben in die Suche des Telefons. Ein Tipp auf einen Treffer öffnet ihn in Flowplan. Nichts aus Ende-zu-Ende-verschlüsselten Bereichen, hinter einer Journal-PIN oder aus Journaltagen landet dort; Abmelden oder ein Profilwechsel leert die Suche. Der Index bleibt auf dem Telefon.
+
+Scanner und Spotlight brauchen einen Flowplan-Server neuer als 0.6.0 (derzeit das Beta-Image).
 
 ### Profile in den mobilen Apps
 
@@ -257,7 +270,7 @@ Mitteilungen, Widgets, Live-Aktivitäten, die Zahl am App-Symbol und die laufend
 
 ### Was die App auf der Instanz hinterlegt
 
-Nach dem Anmelden meldet sich die App bei der Instanz an: Der Eintrag gehört zu dieser Anmeldung; meldest du dich auf dem Gerät neu an, geht er auf die neue Sitzung über. Er verschwindet mit dem Abmelden, dem Entfernen unter *Angemeldete Geräte* oder dem Löschen des Kontos. Mit dem Geräte-Token lesen Widgets, Live-Aktivitäten und Kurzbefehle im Hintergrund nur, was du auch in Flowplan sehen darfst – in kleinen Antworten von höchstens zehn Einträgen je Widget – und führen ihre Knöpfe aus (Aufgabe oder Gewohnheit abhaken, Timer starten/stoppen, als gelesen markieren, Erfasstes sichern). Mitteilungen laufen über den Push-Dienst von Expo, der sie an Apple bzw. Google weitergibt – wie bei Web-Push steht darin nur, dass etwas Neues im Posteingang liegt. Betreiber können das abschalten oder den Text mitschicken, siehe [Konfiguration](/configuration#push-benachrichtigungen). Ein [Fokus-Filter](#fokus-filter), der Mitteilungen ausblendet, hinterlegt dort eine Regel für dieses Gerät: welcher Arbeitsbereich ihm noch Mitteilungen schicken darf, höchstens für einen Tag.
+Nach dem Anmelden meldet sich die App bei der Instanz an: Der Eintrag gehört zu dieser Anmeldung; meldest du dich auf dem Gerät neu an, geht er auf die neue Sitzung über. Er verschwindet mit dem Abmelden, dem Entfernen unter *Angemeldete Geräte* oder dem Löschen des Kontos. Mit dem Geräte-Token lesen Widgets, Live-Aktivitäten und Kurzbefehle im Hintergrund nur, was du auch in Flowplan sehen darfst – in kleinen Antworten von höchstens zehn Einträgen je Widget – und führen ihre Knöpfe aus (Aufgabe oder Gewohnheit abhaken, Timer starten/stoppen, als gelesen markieren, Erfasstes sichern); auch das Teilen-Fenster und der Scanner sichern damit, und Spotlight liest damit Seitentitel und offene Aufgaben. Mitteilungen laufen über den Push-Dienst von Expo, der sie an Apple bzw. Google weitergibt – wie bei Web-Push steht darin nur, dass etwas Neues im Posteingang liegt. Betreiber können das abschalten oder den Text mitschicken, siehe [Konfiguration](/configuration#push-benachrichtigungen). Ein [Fokus-Filter](#fokus-filter), der Mitteilungen ausblendet, hinterlegt dort eine Regel für dieses Gerät: welcher Arbeitsbereich ihm noch Mitteilungen schicken darf, höchstens für einen Tag.
 
 ## Hell und dunkel
 
