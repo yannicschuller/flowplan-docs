@@ -30,12 +30,32 @@ Die Einstellungen öffnen mit einer Übersicht: je Abschnitt eine Kachel, gruppi
 ## Die Oberfläche
 
 - **Seitenleiste** links: Arbeitsbereich-Wechsel, Suche, Startseite, Posteingang, deine Bereiche mit dem Seitenbaum, darunter Vorlagen, Medien, Papierkorb und Einstellungen.
-- **Startseite**: zuletzt bearbeitete Seiten, Schnellstarts für eine neue Idee oder ein Projekt und alle Seiten deines Arbeitsbereichs.
+- **Startseite**: zuletzt bearbeitete Seiten, Schnellstarts für eine neue Idee oder ein Projekt und alle Seiten deines Arbeitsbereichs – mit Widgets nach deinen Wünschen anpassbar (siehe [Startseite anpassen](#startseite-anpassen)).
 - **Kopfzeile** einer Seite: Pfad, Teilen, Kommentare, Favorit und das Menü **Seitenaktionen** (`…`).
 
 Auf dem Smartphone klappt die Seitenleiste ein; das Menüsymbol oben links öffnet sie.
 
 Kurze Animationen zeigen, was sich gerade bewegt hat: Karten und Zeilen gleiten an ihren neuen Platz, mitverschobene Balken in der Timeline rücken sichtbar nach, und das Ziel eines Sprungs – aus dem Inhaltsverzeichnis, der Suche oder einer Benachrichtigung – leuchtet kurz auf. Sie folgen der Systemeinstellung **Bewegung reduzieren**: Ist sie aktiv, springt alles ohne Bewegung an sein Ziel, und Sprungziele werden nur kurz ruhig hervorgehoben.
+
+## Startseite anpassen
+
+Die Startseite gehört dir: Mit **Anpassen** oben rechts (oder „Startseite anpassen“ in der Schnellsuche) ordnest du sie aus Widgets so an, wie du arbeitest. Auf dem Smartphone steht alles in einer Spalte, auf dem Tablet in zwei, auf großen Bildschirmen in drei oder vier – in der App für iPhone, iPad und Android und in der Desktop-App siehst du dieselbe Startseite.
+
+Im Bearbeitungsmodus:
+
+- **Widget** öffnet die Auswahl: Begrüßung, Zuletzt bearbeitet oder angesehen, Favoriten, Seiten des Arbeitsbereichs, Meine Aufgaben, Posteingang, Journal heute, Termine, Datenbankansicht, angeheftete Seite, Schnell erfassen, Fokus & Zeit, Gewohnheiten, Zähler, Notizzettel, Aktivität, Diese Woche, Links und – für die Administration – der Instanz-Status.
+- **Verschieben**: am Griff ziehen, mit den Pfeilen nach oben/unten oder mit der Tastatur – Griff fokussieren, dann Pfeiltasten, <kbd>Pos1</kbd> und <kbd>Ende</kbd>.
+- **Größe**: klein (eine Spalte), mittel (zwei), groß (drei) oder volle Breite. Ein Widget wird nie breiter als der Platz.
+- **Einstellungen** (Zahnrad): eine eigene Überschrift und was das Widget zeigt – etwa bei **Meine Aufgaben** „Heute fällig und überfällig“, „Heute fällig“, „Überfällig“ oder „Alle offenen“, aus deinen Aufgaben oder den offenen Einträgen einer Datenbankansicht; bei **Termine** den Zeitraum (heute, 3 oder 7 Tage) und welche Kalender- und Zeitleistenansichten (auch mit Google, Microsoft 365 oder CalDAV verbundene) zählen.
+- **Darstellung**: Kopfbereich mit Farbe, Verlauf oder dem Coverbild einer Seite, ein Emoji als Symbol, großzügige oder kompakte Abstände, ein dezenter Hintergrund (Punkte, Raster, getönt) und normale oder breite Seite.
+- **Fertig** speichert, **Abbrechen** verwirft. Im Menü **…** speicherst du die Startseite **für alle deine Arbeitsbereiche** (sonst gilt sie nur für diesen) oder setzt sie **zurück**.
+
+Aufgaben hakst du direkt im Widget ab, Gewohnheiten ebenso; im Journal-Widget schreibst du ein paar Zeilen in den heutigen Eintrag, im Notizzettel notierst du, was nirgends sonst hinpasst – er wird beim Tippen gespeichert und ist auf allen Geräten gleich.
+
+Widgets zeigen nur, was du ohnehin sehen darfst: Seiten anderer Arbeitsbereiche erscheinen nicht, Journale hinter einer PIN zeigen nur ihren Namen, und von Ende-zu-Ende-verschlüsselten Bereichen sieht die Startseite keinen Inhalt.
+
+> [!TIP]
+> Eigentümerinnen und Eigentümer eines Arbeitsbereichs legen über **… → Als Standard für Mitglieder festlegen** die Startseite fest, die neue Mitglieder (und alle ohne eigene) sehen. Persönliche Notizen werden dabei nicht übernommen.
 
 ## Die erste Seite
 

@@ -30,12 +30,32 @@ The settings open with an overview: one tile per section, grouped into **Persona
 ## The interface
 
 - **Sidebar** on the left: workspace switcher, search, home, inbox, your spaces with the page tree, and below them templates, media, trash and settings.
-- **Home**: recently edited pages, quick starts for a new idea or project, and all pages of your workspace.
+- **Home**: recently edited pages, quick starts for a new idea or project, and all pages of your workspace – customizable with widgets (see [Customize your home page](#customize-your-home-page)).
 - **Header** of a page: path, share, comments, favourite and the **Page actions** menu (`…`).
 
 On a phone the sidebar folds away; the menu icon at the top left opens it.
 
 Short animations show what just moved: cards and rows glide into their new place, bars that move along in the timeline visibly follow, and the target of a jump – from the table of contents, search or a notification – lights up briefly. They follow the system setting **Reduce motion**: when it is on, everything moves to its target without motion, and jump targets are only highlighted briefly and still.
+
+## Customize your home page
+
+The home page is yours: **Customize** at the top right (or “Customize home page” in quick search) lets you arrange it from widgets the way you work. On phones everything sits in one column, on tablets in two, on large screens in three or four – the iPhone, iPad and Android apps and the desktop app show the same home page.
+
+While customizing:
+
+- **Widget** opens the gallery: greeting, recently edited or viewed, favourites, the workspace's pages, my tasks, inbox, journal today, agenda, database view, pinned page, quick capture, focus & time, habits, counter, scratchpad, activity, this week, links and – for administrators – the instance status.
+- **Move**: drag the handle, use the up/down arrows, or the keyboard – focus the handle, then the arrow keys, <kbd>Home</kbd> and <kbd>End</kbd>.
+- **Size**: small (one column), medium (two), large (three) or full width. A widget never gets wider than the space there is.
+- **Settings** (gear): a heading of your own and what the widget shows – for **My tasks** “Due today and overdue”, “Due today”, “Overdue” or “All open”, from your tasks or the open records of a database view; for the **Agenda** the period (today, 3 or 7 days) and which calendar and timeline views count (also those connected to Google, Microsoft 365 or CalDAV).
+- **Appearance**: a header with a colour, a gradient or a page's cover image, an emoji as icon, comfortable or compact spacing, a subtle background (dots, grid, tinted) and a normal or wide page.
+- **Done** saves, **Cancel** discards. In the **…** menu you save the home page **for all your workspaces** (otherwise it applies to this one only) or **reset** it.
+
+You tick off tasks right in the widget, habits too; the journal widget adds a few lines to today's entry, and the scratchpad holds whatever fits nowhere else – it saves as you type and is the same on all devices.
+
+Widgets only show what you may see anyway: pages of other workspaces do not appear, journals behind a PIN only show their name, and the home page sees no content of end-to-end encrypted spaces.
+
+> [!TIP]
+> Workspace owners can use **… → Set as default for members** to choose the home page new members (and everyone without their own) see. Personal notes are not passed on.
 
 ## Your first page
 
