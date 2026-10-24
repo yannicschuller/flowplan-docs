@@ -155,12 +155,27 @@ Listenpunkte und Aufgaben bleiben beim Verschieben, was sie sind: Außerhalb ihr
 
 - **Einfügen aus der Zwischenablage** (<kbd>⌘</kbd> <kbd>V</kbd>) oder Hineinziehen lädt Bilder und Dateien hoch. Bilder lassen sich an den Rändern in der Größe ändern.
 - **Fotos werden vor dem Hochladen verkleinert**: höchstens 2560 px an der längeren Seite, gespeichert als WebP. Die Kameradrehung bleibt erhalten, Metadaten wie der Aufnahmeort werden entfernt. GIFs, SVGs und Dateien, die kaum kleiner würden, bleiben unverändert. Anhänge in Dateien-Eigenschaften und Formularen werden im Original gespeichert.
-- **PDFs** erscheinen als Karte mit einer Vorschau der ersten Seite. Ein Klick öffnet den PDF-Viewer mit allen Seiten, Zoom (auch <kbd>⌘</kbd> <kbd>+</kbd>/<kbd>−</kbd>) und **Herunterladen**; <kbd>Esc</kbd> schließt ihn. Dasselbe gilt für PDFs in den Medien, in Dateien-Eigenschaften von Datenbanken und auf veröffentlichten Seiten. In bearbeitbarem Text öffnet ein Link auf ein PDF den Viewer mit <kbd>⌘</kbd>-Klick.
+- **PDFs** erscheinen als Karte mit einer Vorschau der ersten Seite. Ein Klick öffnet den PDF-Viewer mit allen Seiten, Zoom (auch <kbd>⌘</kbd> <kbd>+</kbd>/<kbd>−</kbd>) und **Herunterladen**; <kbd>Esc</kbd> schließt ihn. Dasselbe gilt für PDFs in den Medien, in Dateien-Eigenschaften von Datenbanken und auf veröffentlichten Seiten. In bearbeitbarem Text öffnet ein Link auf ein PDF den Viewer mit <kbd>⌘</kbd>-Klick. Im Viewer lässt sich auf dem PDF schreiben – siehe [PDFs anmerken](#pdfs-anmerken).
 - **Bilder markieren**: Doppelklick auf ein Bild (oder den Stift in der Werkzeugleiste, solange das Bild ausgewählt ist) öffnet es zum Bearbeiten – mit **Stift**, **Textmarker**, **Pfeil**, **Rechteck**, **Kreis** und **Text**, sieben Farben und drei Strichstärken, Rückgängig mit <kbd>⌘</kbd> <kbd>Z</kbd>. **Speichern** legt ein neues Bild mit den Markierungen an; das Original und die Markierungen bleiben am Bild, sodass sie sich später ändern oder ganz entfernen lassen.
 - Die **Medien** in der Seitenleiste sammeln alle Uploads des Arbeitsbereichs zum Wiederverwenden.
 - **Einbetten** (`/embed`) nimmt eine Adresse entgegen: YouTube, Vimeo, Loom, Spotify, Figma und CodePen erscheinen als Player mit wählbarer Breite, andere Seiten als Linkkarte mit Titel und Vorschaubild.
 - Links auf Seiten und Erwähnungen von Personen zeigen beim Überfahren eine Vorschau.
 - Die maximale Dateigröße legt die Administration fest (Standard 10 MB).
+
+### PDFs anmerken
+
+Wer die Seite bearbeiten darf, zu der ein PDF gehört, findet im PDF-Viewer **Anmerken** (nicht in [verschlüsselten Bereichen](/encrypted-spaces) und auf gesperrten Seiten). Darunter erscheint eine Werkzeugleiste: **Stift** (mit dem Apple Pencil oder einem anderen Tablet-Stift folgt die Strichstärke dem Druck), **Textmarker** (durchscheinend, liegt unter der Schrift und der Tinte), **Radierer** (**Ganze Striche** oder **Teilweise** – dann verschwindet nur, was unter dem Radierer liegt), **Lasso**, **Text** und **Laserpointer** (zeigt etwas, ohne zu bleiben). Dazu Farben, drei Breiten, Rückgängig und Wiederholen (<kbd>⌘</kbd> <kbd>Z</kbd>, <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Z</kbd>).
+
+- **Lieblingsstifte**: Die drei Stifte neben den Werkzeugen merken sich Farbe und Breite; änderst du sie, während einer gewählt ist, ändert sich der Lieblingsstift mit. Sie gelten auf diesem Gerät.
+- **Formen**: Halte den Stift am Ende eines Strichs kurz still – aus einer gezeichneten Linie wird eine gerade, aus einem Rechteck, Kreis, Dreieck oder einer Raute die saubere Form. Abschalten lässt sich das in den **Stifteinstellungen** (Zahnrad).
+- **Lasso**: Umkreise Striche und Text, um sie zu verschieben, am Griff unten rechts zu vergrößern oder zu verkleinern, umzufärben, zu kopieren (<kbd>⌘</kbd> <kbd>C</kbd>, Einfügen mit <kbd>⌘</kbd> <kbd>V</kbd> – auch auf einer anderen Seite), zu duplizieren oder zu löschen.
+- **Text** setzt du mit einem Tipp auf die Seite; ein Tipp auf vorhandenen Text ändert ihn. Mit Scribble schreibst du auf dem iPad mit dem Stift hinein.
+- **Nur mit dem Stift zeichnen**: Sobald du auf einem Gerät mit dem Stift geschrieben hast, schreibt nur noch der Stift – Finger blättern und zoomen, eine aufliegende Hand hinterlässt keine Spuren. Die Einstellung teilen sich PDFs, Whiteboards und Bilder; abschalten lässt sie sich in den **Stifteinstellungen**, dann schreibt auch ein Finger, und zwei Finger blättern und zoomen.
+- **Apple Pencil**: Das Radierer-Ende eines Stifts radiert. In der iPad-App wechselt Doppeltippen oder Drücken zum Radierer und zurück – wie in den iPad-Einstellungen festgelegt, oder in den **Stifteinstellungen** fest auf Radierer, letztes Werkzeug oder nichts.
+
+Die Anmerkungen gehören zur Seite des PDFs, nicht zum Bildschirm: Sie bleiben bei jedem Zoom an ihrer Stelle und gelten für alle, die das PDF öffnen – wer nur lesen darf, sieht sie, kann sie aber nicht ändern. Das PDF selbst bleibt unverändert. **Fertig** (oder <kbd>⌘</kbd> <kbd>S</kbd>) speichert; jedes Speichern ist eine Version, die du über das Uhr-Symbol wieder laden kannst. Hat jemand anderes die Anmerkungen inzwischen gespeichert, gewinnt deine Fassung, und ein Hinweis nennt, wer; die andere bleibt als Version erhalten. Text, den du auf ein PDF schreibst, findet die Suche.
+
+**Herunterladen** lädt weiterhin das Original. **Mit Anmerkungen herunterladen** (daneben, sobald es Anmerkungen gibt) erzeugt ein neues PDF mit denselben Seiten, auf denen die Anmerkungen als Vektorgrafik liegen – sie bleiben beim Vergrößern scharf. Geschützte (verschlüsselte) PDFs lassen sich nur ohne Anmerkungen herunterladen; Text erscheint in Helvetica, Zeichen außerhalb des westeuropäischen Zeichensatzes als „?“.
 
 ## Formeln, Diagramme und Code
 
