@@ -204,10 +204,26 @@ All optional; the values apply until an admin saves under **Administration → A
 | --- | --- |
 | `WEB_PUSH_SUBJECT` | Contact for the push services, e.g. `mailto:admin@example.com`. |
 | `WEB_PUSH_PUBLIC_KEY` / `WEB_PUSH_PRIVATE_KEY` | VAPID key pair. If not given, Flowplan creates one in `FLOWPLAN_DATA_DIR/web-push-keys.json`. |
-| `MOBILE_PUSH` | Notifications to the apps for iPhone, iPad and Android through Expo's push service (`exp.host`), which hands them to Apple or Google. Nothing to set up; `off` turns them off. Default: `on`. |
-| `MOBILE_PUSH_CONTENT` | `on` sends the notification's text along (it then passes Expo, Apple and Google) – and with it the buttons **Done** and **Tomorrow** on due tasks and **Reply** on comments ([Buttons on notifications](/offline-and-apps#buttons-on-notifications)); **Mark as read** is always there. Default: `off` – as with Web Push only "something new in the inbox". |
+| `MOBILE_PUSH` | Notifications to the apps for iPhone, iPad and Android. Nothing to set up; `off` turns them off altogether. Default: `on`. |
+| `PUSH_RELAY_URL` | The [push relay](#push-relay-and-end-to-end-encryption) notifications to the apps go through. An HTTPS origin only (`http` only for `localhost`), without a path. Default: `https://push.flowplan.org`. |
+| `PUSH_RELAY` | `off`: no relay. Apps then only get notifications if they have an Expo token (older app versions), through Expo's push service. Default: `on`. |
+| `MOBILE_PUSH_CONTENT` | Whether the notification's text comes along – and with it the buttons **Done** and **Tomorrow** on due tasks and **Reply** on comments ([Buttons on notifications](/offline-and-apps#buttons-on-notifications)); **Mark as read** is always there. *Empty* (default): only where it is end-to-end encrypted, i.e. through the relay; through Expo (older apps) only "something new in the inbox" as with Web Push, and Live Activities only with times, no titles. `on`: also through Expo and with titles in Live Activities – readable by Expo, Apple and Google. `off`: never, not even through the relay. |
 
-The keys must not change, otherwise all devices lose their subscription. Outgoing HTTPS to the push services of Apple, Google and Mozilla must be possible.
+The VAPID keys must not change, otherwise all browsers lose their subscription. Outgoing HTTPS to the push services of Apple, Google and Mozilla (Web Push) and to the push relay must be possible.
+
+### Push relay and end-to-end encryption
+
+Notifications to the apps go through the Flowplan push relay (`push.flowplan.org`). Only the relay holds the credentials for Apple (APNs) and Google (Firebase); your instance needs none of its own – self-hosted instances, too, reach the apps from the App Store and Google Play this way.
+
+- **End-to-end encrypted:** every app installation creates a key pair (X25519) per instance and gives the instance only the public key. The instance encrypts every notification with it (HKDF-SHA256, AES-256-GCM, a fresh one-time key per notification); only the app on the device decrypts it. The relay, Apple and Google only see ciphertext – plus the kind of message, which buttons it has, the number on the app icon and when it was sent. If a notification cannot be decrypted, the app shows "New notification".
+- **Signed:** the instance has a signing key pair of its own (Ed25519), created on first use. The private key is stored only encrypted in the database (like stored secrets, see above); the public key is published at `/.well-known/flowplan-push`. The relay only accepts signed requests, and only for devices that registered for exactly this instance. For this, `APP_URL` must be the public HTTPS address, and `/.well-known/flowplan-push` must be reachable from outside.
+- **What is stored:** per app installation the relay token (only encrypted) and the public key. Both go with signing out, removing the device under *Signed-in devices*, or when the relay reports that the device can no longer be reached. Neither tokens nor keys nor content are logged.
+- **Live Activities** (iPhone) for the timer and focus are also updated by the instance through the relay when their state changes. iOS renders their content itself – it cannot be encrypted. By default it therefore holds only times and the phase, no titles (`MOBILE_PUSH_CONTENT=on` sends the title along).
+- **Older app versions** without the relay keep getting notifications through Expo's push service (`exp.host`), without text by default.
+- **Rotating the signing key:** `node --import tsx scripts/push-relay-key.mjs rotate` in the repository, or as an administrator `POST /api/admin/operations` with `{"action":"pushRelay.rotate"}`. The new key is published at once and signs after a little more than an hour; the old one stays listed for 7 days (`--grace-days` or `graceDays`). For a key that may have leaked, `--immediate` or `"immediate": true`: the new one signs at once, all old ones are removed. `{"action":"pushRelay.keys"}` lists the keys (ids and dates only).
+- **Your own relay:** set `PUSH_RELAY_URL` to its address; the apps pick it up at their next registration.
+
+**For an instance's privacy policy**, for example: "Push notifications to the Flowplan apps are delivered end-to-end encrypted through Flowplan's push service (push.flowplan.org) and the services of Apple (APNs) or Google (Firebase Cloud Messaging). These services receive a device token, the address of this instance, the time and the kind of the notification, but not its content." – extend it accordingly with `MOBILE_PUSH_CONTENT=on` or notifications through Expo.
 
 ## Do not set
 

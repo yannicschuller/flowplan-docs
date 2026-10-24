@@ -72,6 +72,6 @@ Push notifications open the page concerned. No document content appears on the l
 
 Signing out, the end of a session or a locked account end the push subscription; enable it again after the next sign-in if needed.
 
-In the [apps for iPhone, iPad and Android](/offline-and-apps#apps-for-iphone-ipad-and-android), notifications come through the app: it asks for permission after the first sign-in, and the number of unread ones shows on the app icon. **Notification kinds** apply there as well.
+In the [apps for iPhone, iPad and Android](/offline-and-apps#apps-for-iphone-ipad-and-android), notifications come through the app: it asks for permission after the first sign-in, and the number of unread ones shows on the app icon. **Notification kinds** apply there as well. These notifications are end-to-end encrypted and therefore show their text – the relay, Apple and Google cannot read it, see [Push relay](/configuration#push-relay-and-end-to-end-encryption).
 
 The [desktop app](/offline-and-apps#notifications-in-the-desktop-app) has no Web Push. It asks for new notifications itself and shows them as system notifications, with the unread count on the app icon. There, **Settings → Notifications** shows a switch for the app's notifications instead of **Enable push**; **Do Not Disturb** and **All Profiles** are in the app's **Notifications** menu. **Notification kinds** apply here too: only kinds with push pop up.

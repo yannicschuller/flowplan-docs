@@ -204,10 +204,26 @@ Alles optional; die Werte gelten, bis ein Admin unter **Administration → KI** 
 | --- | --- |
 | `WEB_PUSH_SUBJECT` | Kontakt für die Push-Dienste, z. B. `mailto:admin@example.com`. |
 | `WEB_PUSH_PUBLIC_KEY` / `WEB_PUSH_PRIVATE_KEY` | VAPID-Schlüsselpaar. Ohne Angabe erzeugt Flowplan eines unter `FLOWPLAN_DATA_DIR/web-push-keys.json`. |
-| `MOBILE_PUSH` | Mitteilungen an die Apps für iPhone, iPad und Android über den Push-Dienst von Expo (`exp.host`), der sie an Apple bzw. Google weitergibt. Nichts einzurichten; `off` schaltet sie ab. Standard: `on`. |
-| `MOBILE_PUSH_CONTENT` | `on` schickt den Text der Benachrichtigung mit (er läuft dann über Expo, Apple und Google) – und damit die Knöpfe **Erledigt** und **Morgen** an fälligen Aufgaben und **Antworten** an Kommentaren ([Knöpfe an Mitteilungen](/offline-and-apps#knoepfe-an-mitteilungen)); **Als gelesen markieren** gibt es immer. Standard: `off` – wie bei Web-Push nur „Neues im Posteingang“. |
+| `MOBILE_PUSH` | Mitteilungen an die Apps für iPhone, iPad und Android. Nichts einzurichten; `off` schaltet sie ganz ab. Standard: `on`. |
+| `PUSH_RELAY_URL` | Das [Push-Relay](#push-relay-und-ende-zu-ende-verschluesselung), über das Mitteilungen an die Apps gehen. Nur ein HTTPS-Origin (`http` nur für `localhost`), ohne Pfad. Standard: `https://push.flowplan.org`. |
+| `PUSH_RELAY` | `off`: kein Relay. Apps bekommen Mitteilungen dann nur noch, wenn sie ein Expo-Token haben (ältere App-Versionen), über den Push-Dienst von Expo. Standard: `on`. |
+| `MOBILE_PUSH_CONTENT` | Ob der Text der Benachrichtigung mitkommt – und damit die Knöpfe **Erledigt** und **Morgen** an fälligen Aufgaben und **Antworten** an Kommentaren ([Knöpfe an Mitteilungen](/offline-and-apps#knoepfe-an-mitteilungen)); **Als gelesen markieren** gibt es immer. *Leer* (Standard): nur, wo er Ende-zu-Ende-verschlüsselt ist, also über das Relay; über Expo (ältere Apps) wie bei Web-Push nur „Neues im Posteingang“, Live-Aktivitäten nur mit Zeiten, ohne Titel. `on`: auch über Expo und mit Titeln in Live-Aktivitäten – lesbar für Expo, Apple und Google. `off`: nie, auch nicht über das Relay. |
 
-Die Schlüssel dürfen sich nicht ändern, sonst verlieren alle Geräte ihr Abonnement. Ausgehendes HTTPS zu den Push-Diensten von Apple, Google und Mozilla muss möglich sein.
+Die VAPID-Schlüssel dürfen sich nicht ändern, sonst verlieren alle Browser ihr Abonnement. Ausgehendes HTTPS zu den Push-Diensten von Apple, Google und Mozilla (Web-Push) und zum Push-Relay muss möglich sein.
+
+### Push-Relay und Ende-zu-Ende-Verschlüsselung
+
+Mitteilungen an die Apps gehen über das Flowplan-Push-Relay (`push.flowplan.org`). Nur das Relay hat die Zugangsdaten für Apple (APNs) und Google (Firebase); deine Instanz braucht keine eigenen – auch selbst gehostete Instanzen schicken so an die Apps aus dem App Store und Google Play.
+
+- **Ende-zu-Ende-verschlüsselt:** Jede App-Installation erzeugt pro Instanz ein Schlüsselpaar (X25519) und gibt der Instanz nur den öffentlichen Schlüssel. Die Instanz verschlüsselt jede Mitteilung damit (HKDF-SHA256, AES-256-GCM, ein neuer Einmalschlüssel je Mitteilung); erst die App auf dem Gerät entschlüsselt sie. Relay, Apple und Google sehen nur Chiffretext – dazu die Art der Mitteilung, welche Knöpfe sie hat, die Zahl am App-Symbol und wann sie geschickt wurde. Lässt sich eine Mitteilung nicht entschlüsseln, zeigt die App „Neue Mitteilung“.
+- **Signiert:** Die Instanz hat ein eigenes Signaturschlüsselpaar (Ed25519), das beim ersten Gebrauch entsteht. Der private Schlüssel liegt nur verschlüsselt in der Datenbank (wie gespeicherte Geheimnisse, siehe oben); den öffentlichen veröffentlicht die Instanz unter `/.well-known/flowplan-push`. Das Relay nimmt nur signierte Anfragen an und nur für Geräte, die sich für genau diese Instanz angemeldet haben. Dafür muss `APP_URL` die öffentliche HTTPS-Adresse sein, und `/.well-known/flowplan-push` muss von außen erreichbar sein.
+- **Was gespeichert wird:** Pro App-Installation das Relay-Token (nur verschlüsselt) und der öffentliche Schlüssel. Beides verschwindet mit dem Abmelden, dem Entfernen unter *Angemeldete Geräte* oder wenn das Relay meldet, dass das Gerät nicht mehr erreichbar ist. Protokolliert werden weder Tokens noch Schlüssel noch Inhalte.
+- **Live-Aktivitäten** (iPhone) für Zeiterfassung und Fokus aktualisiert die Instanz ebenfalls über das Relay, wenn sich der Zustand ändert. Ihren Inhalt zeichnet iOS selbst – er lässt sich nicht verschlüsseln. Deshalb enthält er standardmäßig nur Zeiten und die Phase, keine Titel (`MOBILE_PUSH_CONTENT=on` schickt den Titel mit).
+- **Ältere App-Versionen** ohne Relay bekommen Mitteilungen weiter über den Push-Dienst von Expo (`exp.host`), standardmäßig ohne Text.
+- **Signaturschlüssel wechseln:** `node --import tsx scripts/push-relay-key.mjs rotate` im Repository bzw. als Administrator `POST /api/admin/operations` mit `{"action":"pushRelay.rotate"}`. Der neue Schlüssel wird sofort veröffentlicht und signiert nach gut einer Stunde; der alte bleibt 7 Tage gelistet (`--grace-days` bzw. `graceDays`). Bei einem womöglich bekannt gewordenen Schlüssel `--immediate` bzw. `"immediate": true`: der neue signiert sofort, alle alten verschwinden. `{"action":"pushRelay.keys"}` listet die Schlüssel (nur IDs und Daten).
+- **Eigenes Relay:** `PUSH_RELAY_URL` auf dessen Adresse setzen; die Apps übernehmen sie bei der nächsten Anmeldung.
+
+**Für die Datenschutzerklärung** einer Instanz etwa: „Push-Mitteilungen an die Flowplan-Apps werden Ende-zu-Ende-verschlüsselt über den Push-Dienst von Flowplan (push.flowplan.org) und die Dienste von Apple (APNs) bzw. Google (Firebase Cloud Messaging) zugestellt. Diese Dienste erhalten ein Geräte-Token, die Adresse dieser Instanz, den Zeitpunkt und die Art der Mitteilung, nicht aber ihren Inhalt.“ – mit `MOBILE_PUSH_CONTENT=on` oder Mitteilungen über Expo entsprechend ergänzen.
 
 ## Nicht setzen
 
