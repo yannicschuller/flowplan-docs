@@ -59,6 +59,7 @@ const groups: {
     pages: [
       ["documents", "Dokumente und Editor", "Documents and the editor"],
       ["whiteboards", "Whiteboards", "Whiteboards"],
+      ["notebooks", "Notizbücher und Handschrift", "Notebooks and handwriting"],
       ["dashboards", "Dashboards", "Dashboards"],
       ["journal", "Journal", "Journal"],
       ["templates", "Vorlagen", "Templates"],

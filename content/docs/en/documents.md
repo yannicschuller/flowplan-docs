@@ -25,6 +25,7 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 | Formula, inline formula | `/math`, `/inlinemath` | LaTeX, rendered with KaTeX |
 | Mention a page, record or person | `/mention` or `@` | A reference to a page, database record or person |
 | Whiteboard | `/board` | Embed a whiteboard in the document |
+| Draw | `/draw`, `/sketch`, `/handwriting` | Handwriting and sketches with a pen or finger ([Handwriting in documents](/notebooks#handwriting-in-documents)) |
 | Linked database | `/db` | A view of an existing database |
 | Two columns | `/columns` | Content side by side |
 | Embed | `/embed` | Players for YouTube, Vimeo, Loom, Spotify, Figma, CodePen; a link card otherwise |
@@ -173,7 +174,9 @@ If you may edit the page a PDF belongs to, the PDF viewer shows **Annotate** (no
 - **Draw with the pen only**: once you have written with the pen on a device, only the pen writes – fingers scroll and zoom, a resting hand leaves no marks. PDFs, whiteboards and images share the setting; switch it off in the **Pen settings**, then a finger writes too, and two fingers scroll and zoom.
 - **Apple Pencil**: the eraser end of a pen erases. In the iPad app, double-tap or squeeze switches to the eraser and back – as set in the iPad settings, or in the **Pen settings** always to the eraser, the last tool or nothing.
 
-The annotations belong to the page of the PDF, not to the screen: they stay in place at any zoom and apply to everyone who opens the PDF – readers see them but cannot change them. The PDF itself stays unchanged. **Done** (or <kbd>⌘</kbd> <kbd>S</kbd>) saves; every save is a version you can load again from the clock icon. If someone else saved the annotations in the meantime, your version wins and a notice says who; theirs is kept as a version. Search finds text you write on a PDF.
+The annotations belong to the page of the PDF, not to the screen: they stay in place at any zoom and apply to everyone who opens the PDF – readers see them but cannot change them. The PDF itself stays unchanged. **Done** (or <kbd>⌘</kbd> <kbd>S</kbd>) saves; every save is a version you can load again from the clock icon. If someone else saved the annotations in the meantime, your version wins and a notice says who; theirs is kept as a version. Search finds text you write on a PDF – in the app for iPhone and iPad also the handwriting itself, and **Convert to text** turns selected handwriting into typed text (see [Recognising handwriting](/notebooks#recognising-handwriting-iphone-and-ipad)).
+
+To turn a PDF into a notebook you write in page by page and add sheets to, open it as a [notebook](/notebooks#creating-a-notebook): every PDF page becomes a sheet.
 
 **Download** still downloads the original. **Download with annotations** (next to it once there are annotations) creates a new PDF with the same pages and the annotations on top as vector graphics – they stay sharp when zooming in. Protected (encrypted) PDFs can only be downloaded without annotations; text appears in Helvetica, characters outside the Western European character set as “?”.
 
@@ -272,3 +275,4 @@ Under **Manage blocks** (click the handle `⋮⋮`) → **Text direction** you s
 - **Two columns**: blocks side by side; stacked on a phone.
 - **Linked database**: a view of an existing database with its own filters and sorting; changes to records go to the source. See [Views](/views#linked-databases).
 - **Whiteboard**: a whiteboard right in the document; the button at the top right opens it large.
+- **Draw** (`/draw`): a block for handwriting across the full width, blank, lined or grid, with a height you drag; several people draw at once without overwriting each other. See [Handwriting in documents](/notebooks#handwriting-in-documents).

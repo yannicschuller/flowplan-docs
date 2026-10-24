@@ -25,6 +25,7 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 | Formel, Inline-Formel | `/math`, `/inlinemath` | LaTeX, dargestellt mit KaTeX |
 | Seite, Eintrag oder Person erwähnen | `/mention` oder `@` | Verweis auf Seite, Datenbank-Eintrag oder Person |
 | Whiteboard | `/board` | Whiteboard im Dokument einbetten |
+| Zeichnen | `/zeichnen`, `/draw`, `/handschrift` | Handschrift und Skizzen mit Stift oder Finger ([Handschrift in Dokumenten](/notebooks#handschrift-in-dokumenten)) |
 | Verknüpfte Datenbank | `/db` | Ansicht einer vorhandenen Datenbank |
 | Zwei Spalten | `/spalten` | Inhalte nebeneinander |
 | Einbetten | `/embed` | Player für YouTube, Vimeo, Loom, Spotify, Figma, CodePen; sonst Linkkarte |
@@ -173,7 +174,9 @@ Wer die Seite bearbeiten darf, zu der ein PDF gehört, findet im PDF-Viewer **An
 - **Nur mit dem Stift zeichnen**: Sobald du auf einem Gerät mit dem Stift geschrieben hast, schreibt nur noch der Stift – Finger blättern und zoomen, eine aufliegende Hand hinterlässt keine Spuren. Die Einstellung teilen sich PDFs, Whiteboards und Bilder; abschalten lässt sie sich in den **Stifteinstellungen**, dann schreibt auch ein Finger, und zwei Finger blättern und zoomen.
 - **Apple Pencil**: Das Radierer-Ende eines Stifts radiert. In der iPad-App wechselt Doppeltippen oder Drücken zum Radierer und zurück – wie in den iPad-Einstellungen festgelegt, oder in den **Stifteinstellungen** fest auf Radierer, letztes Werkzeug oder nichts.
 
-Die Anmerkungen gehören zur Seite des PDFs, nicht zum Bildschirm: Sie bleiben bei jedem Zoom an ihrer Stelle und gelten für alle, die das PDF öffnen – wer nur lesen darf, sieht sie, kann sie aber nicht ändern. Das PDF selbst bleibt unverändert. **Fertig** (oder <kbd>⌘</kbd> <kbd>S</kbd>) speichert; jedes Speichern ist eine Version, die du über das Uhr-Symbol wieder laden kannst. Hat jemand anderes die Anmerkungen inzwischen gespeichert, gewinnt deine Fassung, und ein Hinweis nennt, wer; die andere bleibt als Version erhalten. Text, den du auf ein PDF schreibst, findet die Suche.
+Die Anmerkungen gehören zur Seite des PDFs, nicht zum Bildschirm: Sie bleiben bei jedem Zoom an ihrer Stelle und gelten für alle, die das PDF öffnen – wer nur lesen darf, sieht sie, kann sie aber nicht ändern. Das PDF selbst bleibt unverändert. **Fertig** (oder <kbd>⌘</kbd> <kbd>S</kbd>) speichert; jedes Speichern ist eine Version, die du über das Uhr-Symbol wieder laden kannst. Hat jemand anderes die Anmerkungen inzwischen gespeichert, gewinnt deine Fassung, und ein Hinweis nennt, wer; die andere bleibt als Version erhalten. Text, den du auf ein PDF schreibst, findet die Suche – in der App für iPhone und iPad auch die Handschrift selbst, und **In Text umwandeln** macht aus ausgewählter Handschrift getippten Text (siehe [Handschrift erkennen](/notebooks#handschrift-erkennen-iphone-und-ipad)).
+
+Soll ein PDF zum Heft werden, in dem du Seite für Seite schreibst und Blätter ergänzt, öffne es als [Notizbuch](/notebooks#notizbuch-anlegen): Jede PDF-Seite wird ein Blatt.
 
 **Herunterladen** lädt weiterhin das Original. **Mit Anmerkungen herunterladen** (daneben, sobald es Anmerkungen gibt) erzeugt ein neues PDF mit denselben Seiten, auf denen die Anmerkungen als Vektorgrafik liegen – sie bleiben beim Vergrößern scharf. Geschützte (verschlüsselte) PDFs lassen sich nur ohne Anmerkungen herunterladen; Text erscheint in Helvetica, Zeichen außerhalb des westeuropäischen Zeichensatzes als „?“.
 
@@ -272,3 +275,4 @@ Unter **Blöcke verwalten** (Klick auf den Griff `⋮⋮`) → **Textrichtung** 
 - **Zwei Spalten**: Blöcke nebeneinander; auf dem Smartphone untereinander.
 - **Verknüpfte Datenbank**: eine Ansicht einer vorhandenen Datenbank mit eigenen Filtern und Sortierungen; Änderungen an Einträgen landen in der Quelle. Siehe [Ansichten](/views#verknuepfte-datenbanken).
 - **Whiteboard**: ein Whiteboard direkt im Dokument; der Knopf oben rechts öffnet es groß.
+- **Zeichnen** (`/zeichnen`): ein Block für Handschrift über die ganze Breite, leer, liniert oder kariert, in der Höhe ziehbar; mehrere Personen zeichnen gleichzeitig, ohne sich zu überschreiben. Siehe [Handschrift in Dokumenten](/notebooks#handschrift-in-dokumenten).
