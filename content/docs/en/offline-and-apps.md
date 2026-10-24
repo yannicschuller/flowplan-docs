@@ -121,8 +121,9 @@ Like the desktop app, the mobile apps show your Flowplan instance; all data stay
 - **Notifications:** mentions, comments, tasks and reminders arrive as notifications, the number of unread ones shows on the app icon. The app asks for permission once after the first sign-in; a tap opens the page concerned. Which kinds arrive is set as in the browser under **Settings → Notifications**.
 - **[Widgets](#widgets)** for the home screen (on the iPhone also for the lock screen), each with settings of its own – tasks to check off, appointments, counters, time tracking and more; plus [widgets for administrators](#widgets-for-administrators).
 - **[Live Activities](#live-activities-and-ongoing-notifications):** the timer, focus, the meeting, imports/exports and voice memos on the lock screen and in the Dynamic Island, or as an ongoing notification.
-- **[Capture, Siri, Control Center](#capture-siri-control-center):** notes, tasks, voice memos and photos from widgets, Siri, Control Center, the app icon and an Android tile; ask Siri what is due, open a page or search.
+- **[Capture, Siri, Control Center](#capture-siri-control-center):** notes, tasks, voice memos and photos from widgets, Siri, Control Center, the app icon and Android tiles; ask Siri what is due, open a page or search.
 - **[Focus filters](#focus-filters)** (iPhone, iPad): one profile or workspace per Focus, optionally without notifications from the others.
+- **[Share from other apps](#share-from-other-apps-android)** (Android): text, links, photos and PDFs straight into the inbox or onto a page.
 - **App lock:** if you like, Flowplan only unlocks with Face ID, Touch ID, a fingerprint or the device code.
 - **Back:** swiping from the left edge (iOS) or the back gesture or button (Android) first closes what is open (menu, dialog, sidebar) and then goes up a level: from a settings section to the overview, from a record to its database, from a page to the previous page.
 - **Exports and downloads** go to the system's share menu (e.g. "Save to Files").
@@ -134,7 +135,7 @@ Also:
 - **Managed devices (MDM/EMM):** through managed app configuration (iOS Managed App Configuration or Android app restrictions), the key `server` presets the address of your own instance; the app suggests it on first start.
 - **Sign in with a passkey** and **Sign in with SSO** open the system's sign-in sheet (iOS) or a browser tab (Android); after **Sign in to the app** the app takes over the sign-in. E-mail and password work directly in the app. Signing in through the browser as well as notifications and widgets (the app interface) need Flowplan 0.4.0 or newer.
 - Links to other sites open in the browser; without a connection the app shows a page of its own and reconnects by itself.
-- On Android, Flowplan appears in other apps' **Share** menu.
+- On Android, Flowplan appears as **Save to Flowplan** in other apps' **Share** menu, see [Share from other apps](#share-from-other-apps-android).
 
 ### Widgets
 
@@ -164,6 +165,8 @@ Good to know:
 - **Privacy:** widgets only show what you may see in Flowplan. Pages behind a journal PIN or end-to-end encrypted only show their state in a widget, never content.
 - **Signed out?** When your session ends (e.g. a short SSO session), every widget shows *Open Flowplan to sign in*. Its settings stay; after signing in, the widgets fill again at once.
 - **Profiles:** widgets belong to the active profile. Switching removes what the previous profile showed; on Android every widget keeps its settings per profile.
+- **Colours on Android:** from Android 12 all widgets take the system colours (Material You, from the wallpaper or the chosen theme), light and dark. Red, amber and green keep their meaning. After a new wallpaper the widgets follow with their next update.
+- **Check off today's tasks:** add the **Tasks** widget and choose *Due today* in its settings.
 - **Updates:** when you change something in Flowplan, when the app comes to the foreground, and in the background about every 30 minutes (iOS decides how often).
 - **Requirements:** the configurable widgets, the Live Activities other than the timer, and Siri and Shortcuts need a Flowplan server newer than 0.6.0 (currently the beta image). *Flowplan*, *Flowplan Inbox* and the running timer work from 0.4.0.
 
@@ -207,8 +210,11 @@ Every way leads to the app's capture screen: type a note or task, record a voice
 | **Quick capture widget** | Note, task, voice memo, photo – into the place chosen in the widget |
 | **Siri and Shortcuts** (English, German, French) | "Add a note to Flowplan" (into your capture inbox), "Add a task to Flowplan", "What's on today in Flowplan", "What's due today in Flowplan", "Open a page in Flowplan", "Search Flowplan", "Start the timer in Flowplan", "Stop the timer in Flowplan", "Record a voice memo in Flowplan", "Start focus in Flowplan" |
 | **Control Center and the Action button** (iOS 18) | New note, Quick capture, Today's tasks (shows how many are due), Voice memo, Start focus, Timer (a switch) |
-| **Long-press the app icon** | Inbox, My tasks, Search, New note, Switch profile; on Android also Voice memo. The iPhone shows the first four of them, *Switch profile* when signed out. |
-| **Android Quick Settings** | a "New note" tile |
+| **Long-press the app icon** (iPhone, iPad) | Inbox, My tasks, Search, New note, Switch profile. The iPhone shows the first four of them, *Switch profile* when signed out. |
+| **Long-press the app icon** (Android) | *New note* and *Quick capture* (always there, even before the first sign-in), then the **pages you opened last**, Inbox, My tasks, Search, Voice memo and Switch profile. Most launchers show four of them; every shortcut can be dragged to the home screen. Shortcuts to pages of another profile are greyed out until that profile is active again. |
+| **Android Quick Settings** | "New note" and "Quick capture" tiles (also from the lock screen). From Android 13, **App settings → Widgets → Add “Quick capture” to Quick Settings** adds the tile with one tap; otherwise use the pencil of Quick Settings. |
+
+**Quick capture** (tile and shortcut on Android) opens a compact window: choose where it goes – the **inbox** (your default capture database, see [Capture into a database](#capture-into-a-database)) or another page or database, with search –, type title and text, take or choose photos if you like, **Save**.
 
 What Siri does without opening the app:
 
@@ -227,6 +233,16 @@ On the iPhone and iPad, a Focus (Settings → Focus → e.g. *Work* → **Add fi
 - **Hide notifications from other workspaces:** while the Focus is on, your instance does not send this phone push notifications from other workspaces – or none at all if the Focus belongs to another profile. They still arrive in the inbox. If the Focus is never switched off, the rule ends by itself after a day.
 
 Workspaces appear in the list once the app has been signed in to that profile; open the app on the profile once if one is missing.
+
+### Share from other apps (Android)
+
+In any app that can share (browser, gallery, files, scanner, mail …): **Share → Save to Flowplan**.
+
+- **What works:** text, links, photos and PDFs – several files at once too (at most 10). Other file types and anything beyond that are listed in the window under *Not taken*.
+- **Where to:** the **inbox**, your default capture database, is preselected. **Change** lists every page and database you may write to, with search.
+- **What you get:** in a database a **record** – the link in the URL property (if there is one), the files in the files property and in the record itself, PDFs with a preview of their first page. On a page a **sub page** with text, link, photos and PDFs. You can change the title; left empty it is the first line of the text, the link's address or the first file name.
+- After **Save**, **Back to the app** returns to the app you shared from; **Open** shows the result in Flowplan.
+- Not signed in yet? Text and links then go to the instance's preview as in the browser and continue after signing in. Instances up to 0.6.0 take only text and links (through that preview), files only newer ones.
 
 ### Profiles in the mobile apps
 
