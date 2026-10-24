@@ -118,13 +118,15 @@ This needs a Flowplan server newer than 0.6.0 (currently the beta image) and des
 
 Like the desktop app, the mobile apps show your Flowplan instance; all data stays on the server and new features arrive without an app update. On top comes what only an app can do:
 
-- **Notifications:** mentions, comments, tasks and reminders arrive as notifications, the number of unread ones shows on the app icon. The app asks for permission once after the first sign-in; a tap opens the page concerned. Which kinds arrive is set as in the browser under **Settings → Notifications**.
+- **Notifications:** mentions, comments, tasks and reminders arrive as notifications, the number of unread ones shows on the app icon. The app asks for permission once after the first sign-in; a tap opens the page concerned. Which kinds arrive is set as in the browser under **Settings → Notifications**. [Buttons](#buttons-on-notifications) tick off a task, postpone it to tomorrow, answer a comment or mark it read – without opening the app.
 - **[Widgets](#widgets)** for the home screen (on the iPhone also for the lock screen), each with settings of its own – tasks to check off, appointments, counters, time tracking and more; plus [widgets for administrators](#widgets-for-administrators).
 - **[Live Activities](#live-activities-and-ongoing-notifications):** the timer, focus, the meeting, imports/exports and voice memos on the lock screen and in the Dynamic Island, or as an ongoing notification.
 - **[Capture, Siri, Control Center](#capture-siri-control-center):** notes, tasks, voice memos and photos from widgets, Siri, Control Center, the app icon and Android tiles; ask Siri what is due, open a page or search.
 - **[Focus filters](#focus-filters)** (iPhone, iPad): one profile or workspace per Focus, optionally without notifications from the others.
 - **[Share from other apps](#share-from-other-apps):** text, links, photos and PDFs from any app straight into the inbox, a database or onto a page.
 - **[Scanner and Spotlight](#scan-documents-and-spotlight-iphone-and-ipad)** (iPhone, iPad): documents scanned into searchable PDFs, your pages and tasks in the phone's search.
+- **[Voice notes](#voice-notes-in-pages)** in pages are recorded by the app; on the iPhone and iPad they become text on the device itself.
+- **[Calendars in Apple Calendar](#calendars-in-apple-calendar)** with one configuration profile instead of typing CalDAV credentials.
 - **App lock:** if you like, Flowplan only unlocks with Face ID, Touch ID, a fingerprint or the device code.
 - **Back:** swiping from the left edge (iOS) or the back gesture or button (Android) first closes what is open (menu, dialog, sidebar) and then goes up a level: from a settings section to the overview, from a record to its database, from a page to the previous page.
 - **Exports and downloads** go to the system's share menu (e.g. "Save to Files").
@@ -137,6 +139,24 @@ Also:
 - **Sign in with a passkey** and **Sign in with SSO** open the system's sign-in sheet (iOS) or a browser tab (Android); after **Sign in to the app** the app takes over the sign-in. E-mail and password work directly in the app. Signing in through the browser as well as notifications and widgets (the app interface) need Flowplan 0.4.0 or newer.
 - Links to other sites open in the browser; without a connection the app shows a page of its own and reconnects by itself.
 - Flowplan appears in other apps' **Share** menu – as **Flowplan** on iPhone and iPad, as **Save to Flowplan** on Android, see [Share from other apps](#share-from-other-apps).
+
+### Buttons on notifications
+
+Long-press a notification (or pull it down) for its buttons. They do their work in the background; the app does not open.
+
+| Notification | Buttons |
+| --- | --- |
+| **A task is due** (a task assigned to you is due today, a [date reminder](/databases#date-reminders) of a record) | **Done** ticks it off; **Tomorrow** moves its date to tomorrow – the time of day stays, a date further ahead moves one day on |
+| **Comment, reply, mention in a comment** | **Reply** – type the answer right in the notification; it goes into the thread (or comments on the page) under your name. **Mark as read** |
+| **Everything else** | **Mark as read** |
+
+- Each button also marks the notification as read; the number on the app icon follows.
+- **Done**, **Tomorrow** and **Reply** need the phone unlocked; **Mark as read** works on the lock screen.
+- **Done** on a record uses the database's “done” state (a status option such as *Done*, or a checkbox *Done*); databases without one only offer **Mark as read**. If the task changed meanwhile, nothing is ticked off – a notification says so, and a tap opens the page.
+- Your rights apply as in the browser, and the change shows in the activity, versions and automations like any other.
+- **Done**, **Tomorrow** and **Reply** only appear when the instance sends the notification's text along (`MOBILE_PUSH_CONTENT=on`, see [Configuration](/configuration#push-notifications)) – without it, nobody could tell which task a button acts on. Otherwise there is **Mark as read** only.
+
+**Reminders without push:** if your instance does not send push notifications to the app (switched off by the operators, or a test build without push), the app reminds you of your tasks itself – at 09:00 on the day a task is due, as long as notifications are allowed for Flowplan. It uses the tasks the app knows from its summary (the next eight).
 
 ### Widgets
 
@@ -257,6 +277,20 @@ The share sheet on iPhone and iPad as well as photos and PDFs on Android need a 
 
 The scanner and Spotlight need a Flowplan server newer than 0.6.0 (currently the beta image).
 
+### Voice notes in pages
+
+In the app, **Voice note** (`/voice`) in a document records with the phone's microphone – up to 30 minutes, also with the screen locked. **Insert** puts the recording into the page as audio:
+
+- **Insert as text** (iPhone and iPad): the spoken words become text on the device with Apple's speech recognition – the recording does not leave the phone for it. The text follows below the audio as a **Transcript** with timestamps. The app asks once for permission to use speech recognition. It works for the languages the device can recognise by itself (set by the device's language; most major languages, depending on the iOS version).
+- Where the device cannot (Android, other languages), your instance's speech recognition turns it into text if it is set up ([Voice notes](/documents#voice-notes-and-meetings)); otherwise the audio stays on its own.
+- **Then summarise with AI** puts a summary below the text when the [AI](/ai#summaries) is available to you.
+
+This needs a Flowplan server newer than 0.6.0 (currently the beta image). In the browser, `/voice` records as before.
+
+### Calendars in Apple Calendar
+
+**Settings → Calendars & issues → Calendars on iPhone, iPad and Mac**: choose calendar views and tap **Set up in Apple Calendar**. The app opens a configuration profile in Safari; confirm the download, then install it under **Settings → Profile Downloaded** (on the Mac: System Settings → Profiles). Each view becomes a CalDAV account in Apple Calendar, in both directions – see [Sync both ways](/views#sync-both-ways-caldav). On a computer the page shows a QR code instead; scan it with the iPhone's camera. The link works once and for ten minutes.
+
 ### Profiles in the mobile apps
 
 The apps for iPhone, iPad and Android also keep several instances as profiles:
@@ -270,7 +304,7 @@ Notifications, widgets, Live Activities, the number on the app icon and the runn
 
 ### What the app keeps on the instance
 
-After signing in, the app registers with the instance: the entry belongs to that sign-in; signing in again on the device moves it to the new session. It disappears with signing out, removing it under *Signed-in devices* or deleting the account. With its device token, widgets, Live Activities and Shortcuts read in the background only what you may see in Flowplan – in small answers of at most ten items per widget – and run their buttons (check off a task or habit, start/stop the timer, mark as read, save what you captured); the share sheet and the scanner save with it as well, and Spotlight reads your page titles and open tasks with it. Notifications go through Expo's push service, which hands them to Apple or Google – as with Web Push, they only say that something new is in the inbox. Operators can turn this off or send the text along, see [Configuration](/configuration#push-notifications). A [focus filter](#focus-filters) that hides notifications leaves a rule for this device there: which workspace may still notify it, for at most a day.
+After signing in, the app registers with the instance: the entry belongs to that sign-in; signing in again on the device moves it to the new session. It disappears with signing out, removing it under *Signed-in devices* or deleting the account. With its device token, widgets, Live Activities and Shortcuts read in the background only what you may see in Flowplan – in small answers of at most ten items per widget – and run their buttons (check off a task or habit, start/stop the timer, mark as read, save what you captured) – as do the buttons on notifications, which name only the notification: what they act on comes from the instance. The share sheet and the scanner save with it as well, and Spotlight reads your page titles and open tasks with it. Notifications go through Expo's push service, which hands them to Apple or Google – as with Web Push, they only say that something new is in the inbox. Operators can turn this off or send the text along, see [Configuration](/configuration#push-notifications). A [focus filter](#focus-filters) that hides notifications leaves a rule for this device there: which workspace may still notify it, for at most a day.
 
 ## Light and dark
 

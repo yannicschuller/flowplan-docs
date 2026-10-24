@@ -46,8 +46,9 @@ Monats-, Wochen- und Tagesansicht nach einem Datumsfeld.
 Im selben Dialog richtet **Zugang einrichten** eine Synchronisation für Apple Kalender, Thunderbird oder DAVx⁵ (Android) ein. Dort angelegte, verschobene, umbenannte oder gelöschte Termine landen in der Datenbank.
 
 - **Zugangsdaten**: Du bekommst Server, Benutzername und ein Passwort, das nur einmal angezeigt wird.
-- **Apple**: Account hinzufügen → Andere → CalDAV-Account, Typ „Manuell“.
+- **Apple**: **In Apple Kalender einrichten** (in der App, in Safari oder auf dem Mac) lädt ein Konfigurationsprofil mit dem Account – installieren unter Einstellungen → **Profil geladen**. Mehrere Kalender auf einmal: **Einstellungen → Kalender & Issues → Kalender auf iPhone, iPad und Mac**. Von Hand: Account hinzufügen → Andere → CalDAV-Account, Typ „Manuell“.
 - **Thunderbird und DAVx⁵**: Sie nehmen die Kalender-Adresse direkt.
+- **Mehrere Geräte**: Jedes Profil bekommt einen eigenen Zugang, ein auf dem Mac eingerichteter Kalender läuft also weiter, wenn du das Profil auf dem iPhone installierst. **Zugang beenden** oder **Neues Passwort erzeugen** beendet alle Zugänge zu diesem Kalender, auch die der Profile.
 - **Rechte**: Es gelten deine Rechte – wer die Datenbank nur lesen darf, kann im Kalender nichts ändern. Workflow und Automationen gelten wie bei jeder Änderung.
 
 Google Kalender unterstützt keine CalDAV-Konten; dafür gibt es den Kalender-Sync unten.

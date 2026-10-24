@@ -46,6 +46,7 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 - **Transkript mit Zeitmarken:** Liefert die Spracherkennung Abschnitte mit Zeiten (OpenAI-kompatibles `verbose_json`, etwa faster-whisper-server, speaches oder whisper.cpp), erscheint ein aufklappbarer Block **Transkript · Dauer** mit einem Absatz je Passage und ihrer Zeitmarke (`00:04`, `1:02:05`).
 - **Sprecher:** Nur wenn der Dienst selbst Sprecher trennt (Diarisierung, einzuschalten mit `WHISPER_DIARIZE=on` bei Servern, die `diarize` kennen) und je Abschnitt einen Sprecher zurückgibt, steht vor jeder Passage **Sprecher 1**, **Sprecher 2** … Flowplan rät keine Sprecher aus Pausen. Kennt der Dienst nur einfaches JSON, wird der Text wie bisher als Absätze eingefügt.
 - **Danach mit KI zusammenfassen** fasst das Transkript zusammen ([Zusammenfassungen](/ai#zusammenfassungen)).
+- **In den Apps** für iPhone, iPad und Android nimmt die App auf; iPhone und iPad machen auf dem Gerät Text daraus, ohne Spracherkennung auf dem Server ([Sprachnotizen in Seiten](/offline-and-apps#sprachnotizen-in-seiten)).
 - **Aufgaben und Zusammenfassung erzeugen** (wenn [KI-Aktionen](/ai#ki-aktionen) für dich eingeschaltet sind): Die KI schlägt eine Zusammenfassung mit Beschlüssen und eine Aufgabenliste mit verantwortlichen Personen und Terminen vor – als Vorschau mit Kästchen; erst **Ausführen** fügt sie in die Seite ein.
 
 ## Inhaltsverzeichnis
