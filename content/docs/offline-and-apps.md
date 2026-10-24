@@ -121,7 +121,8 @@ Wie die Desktop-App zeigen die mobilen Apps deine Flowplan-Instanz; alle Daten b
 - **Mitteilungen:** Erwähnungen, Kommentare, Aufgaben und Erinnerungen kommen als Mitteilung, die Zahl der ungelesenen steht am App-Symbol. Die App fragt nach dem ersten Anmelden einmal nach der Erlaubnis; ein Tipp öffnet die betroffene Seite. Welche Arten kommen, regelst du wie im Browser unter **Einstellungen → Benachrichtigungen**.
 - **[Widgets](#widgets)** für den Home-Bildschirm (auf dem iPhone auch für den Sperrbildschirm), jedes mit eigenen Einstellungen – Aufgaben zum Abhaken, Termine, Zähler, Zeiterfassung und mehr; dazu [Widgets für Administratoren](#widgets-fuer-administratoren).
 - **[Live-Aktivitäten](#live-aktivitaeten-und-laufende-mitteilungen):** Zeiterfassung, Fokus, Besprechung, Import/Export und Sprachnotiz auf dem Sperrbildschirm und in der Dynamic Island bzw. als laufende Mitteilung.
-- **[Erfassen, Siri, Kontrollzentrum](#erfassen-siri-kontrollzentrum):** Notizen, Aufgaben, Sprachnotizen und Fotos aus Widgets, Siri, Kontrollzentrum, App-Symbol und Android-Kachel.
+- **[Erfassen, Siri, Kontrollzentrum](#erfassen-siri-kontrollzentrum):** Notizen, Aufgaben, Sprachnotizen und Fotos aus Widgets, Siri, Kontrollzentrum, App-Symbol und Android-Kacheln.
+- **[Teilen aus anderen Apps](#teilen-aus-anderen-apps-android)** (Android): Texte, Links, Fotos und PDFs direkt in den Eingang oder auf eine Seite.
 - **App-Sperre:** Auf Wunsch entsperrt sich Flowplan nur mit Face ID, Touch ID, Fingerabdruck oder dem Gerätecode.
 - **Zurück:** Wischen vom linken Rand (iOS) bzw. die Zurück-Geste oder -Taste (Android) schließt zuerst, was gerade offen ist (Menü, Dialog, Seitenleiste), und geht dann eine Ebene nach oben: von einem Abschnitt der Einstellungen zur Übersicht, von einem Eintrag zur Datenbank, von einer Seite zur vorherigen Seite.
 - **Exporte und Downloads** gehen in das Teilen-Menü des Systems (z. B. „In Dateien sichern“).
@@ -133,7 +134,7 @@ Außerdem:
 - **Verwaltete Geräte (MDM/EMM):** Über die verwaltete App-Konfiguration (iOS Managed App Configuration bzw. Android App Restrictions) gibt der Schlüssel `server` die Adresse der eigenen Instanz vor; die App schlägt sie beim ersten Start vor.
 - **Mit Passkey anmelden** und **Mit SSO anmelden** öffnen das Anmeldefenster des Systems (iOS) bzw. einen Browser-Tab (Android); nach **In der App anmelden** übernimmt die App die Anmeldung. E-Mail und Passwort gehen direkt in der App. Die Anmeldung über den Browser sowie Mitteilungen und Widgets (die App-Schnittstelle) brauchen Flowplan 0.4.0 oder neuer.
 - Links zu anderen Seiten öffnen im Browser; ohne Verbindung zeigt die App eine eigene Seite und verbindet sich von selbst wieder.
-- Auf Android erscheint Flowplan im **Teilen**-Menü anderer Apps.
+- Auf Android erscheint Flowplan als **In Flowplan speichern** im **Teilen**-Menü anderer Apps, siehe [Teilen aus anderen Apps](#teilen-aus-anderen-apps-android).
 
 ### Widgets
 
@@ -163,6 +164,8 @@ Gut zu wissen:
 - **Datenschutz:** Widgets zeigen nur, was du auch in Flowplan sehen darfst. Seiten hinter einer Journal-PIN oder mit Ende-zu-Ende-Verschlüsselung zeigen im Widget nur ihren Zustand, nie Inhalte.
 - **Abgemeldet?** Endet deine Sitzung (z. B. bei kurzer SSO-Sitzung), zeigen alle Widgets *Flowplan öffnen und anmelden*. Ihre Einstellungen bleiben; nach dem Anmelden füllen sie sich sofort wieder.
 - **Profile:** Widgets gehören zum aktiven Profil. Beim Wechsel verschwinden die Inhalte des vorigen Profils; auf Android behält jedes Widget seine Einstellungen pro Profil.
+- **Farben auf Android:** Ab Android 12 übernehmen alle Widgets die Systemfarben (Material You, aus dem Hintergrundbild oder dem gewählten Design), hell und dunkel. Rot, Gelb und Grün behalten ihre Bedeutung. Nach einem neuen Hintergrundbild passen sich die Widgets mit der nächsten Aktualisierung an.
+- **Heutige Aufgaben abhaken:** Widget **Aufgaben** hinzufügen und in seinen Einstellungen *Heute fällig* wählen.
 - **Aktualisierung:** wenn du in Flowplan etwas änderst, wenn die App in den Vordergrund kommt, im Hintergrund etwa alle 30 Minuten (iOS entscheidet selbst, wie oft).
 - **Voraussetzung:** Die einstellbaren Widgets, Live-Aktivitäten außer der Zeiterfassung sowie Siri und Kurzbefehle brauchen einen Flowplan-Server neuer als 0.6.0 (derzeit das Beta-Image). *Flowplan*, *Flowplan Posteingang* und die laufende Zeiterfassung gehen ab 0.4.0.
 
@@ -206,8 +209,21 @@ Alle Wege führen in das Erfassen der App: Notiz oder Aufgabe tippen, Sprachnoti
 | **Widget Schnellerfassung** | Notiz, Aufgabe, Sprachnotiz, Foto – in das im Widget gewählte Ziel |
 | **Siri und Kurzbefehle** (Deutsch, Englisch, Französisch) | „Notiz zu Flowplan hinzufügen“, „Was steht heute in Flowplan an“, „Timer in Flowplan starten“, „Timer in Flowplan stoppen“, „Sprachnotiz in Flowplan aufnehmen“, „Fokus in Flowplan starten“ |
 | **Kontrollzentrum und Aktionstaste** (iOS 18) | Neue Notiz, Sprachnotiz, Fokus starten, Timer (Schalter) |
-| **App-Symbol lange drücken** | Posteingang, Meine Aufgaben, Suchen, Neue Notiz, Profil wechseln; auf Android zusätzlich Sprachnotiz. Das iPhone zeigt davon die ersten vier, abgemeldet *Profil wechseln*. |
-| **Android-Schnelleinstellungen** | Kachel „Neue Notiz“ |
+| **App-Symbol lange drücken** (iPhone, iPad) | Posteingang, Meine Aufgaben, Suchen, Neue Notiz, Profil wechseln. Das iPhone zeigt davon die ersten vier, abgemeldet *Profil wechseln*. |
+| **App-Symbol lange drücken** (Android) | *Neue Notiz* und *Schnell erfassen* (immer da, auch vor dem ersten Anmelden), dann die **zuletzt geöffneten Seiten**, Posteingang, Meine Aufgaben, Suchen, Sprachnotiz und Profil wechseln. Die meisten Launcher zeigen vier davon; jede Verknüpfung lässt sich auf den Home-Bildschirm ziehen. Verknüpfungen zu Seiten eines anderen Profils sind ausgegraut, bis das Profil wieder aktiv ist. |
+| **Android-Schnelleinstellungen** | Kacheln „Neue Notiz“ und „Schnell erfassen“ (auch vom Sperrbildschirm). Ab Android 13 fügt **App-Einstellungen → Widgets → „Schnell erfassen“ zu den Schnelleinstellungen hinzufügen** die Kachel mit einem Tipp hinzu; sonst über das Stift-Symbol der Schnelleinstellungen. |
+
+**Schnell erfassen** (Kachel und Verknüpfung auf Android) öffnet ein kompaktes Fenster: Ziel wählen – den **Eingang** (deine Standard-Datenbank zum Erfassen, siehe [In eine Datenbank erfassen](#erfassen-in-eine-datenbank)) oder eine andere Seite oder Datenbank, mit Suche –, Titel und Text tippen, auf Wunsch Fotos aufnehmen oder auswählen, **Sichern**.
+
+### Teilen aus anderen Apps (Android)
+
+In jeder App, die etwas teilen kann (Browser, Galerie, Dateien, Scanner, Mail …): **Teilen → In Flowplan speichern**.
+
+- **Was geht:** Text, Links, Fotos und PDFs – auch mehrere Dateien auf einmal (höchstens 10). Andere Dateitypen und was darüber hinausgeht, nennt das Fenster unter *Nicht übernommen*.
+- **Wohin:** vorgewählt ist der **Eingang**, deine Standard-Datenbank zum Erfassen. **Ändern** zeigt alle Seiten und Datenbanken, in die du schreiben darfst, mit Suche.
+- **Was entsteht:** In einer Datenbank ein **Eintrag** – der Link in der URL-Eigenschaft (falls vorhanden), die Dateien in der Datei-Eigenschaft und im Eintrag selbst, PDFs mit Vorschau der ersten Seite. Auf einer Seite eine **Unterseite** mit Text, Link, Fotos und PDFs. Den Titel kannst du ändern; leer bleibt er die erste Zeile des Texts, die Adresse des Links oder der erste Dateiname.
+- Nach **Sichern** führt **Zurück zur App** in die App, aus der du geteilt hast; **Öffnen** zeigt das Ergebnis in Flowplan.
+- Noch nicht angemeldet? Texte und Links gehen dann wie im Browser zur Vorschau der Instanz und nach dem Anmelden weiter. Instanzen bis 0.6.0 nehmen nur Text und Links an (über diese Vorschau), Dateien erst neuere.
 
 ### Profile in den mobilen Apps
 
