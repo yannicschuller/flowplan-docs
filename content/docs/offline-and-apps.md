@@ -121,7 +121,8 @@ Wie die Desktop-App zeigen die mobilen Apps deine Flowplan-Instanz; alle Daten b
 - **Mitteilungen:** Erwähnungen, Kommentare, Aufgaben und Erinnerungen kommen als Mitteilung, die Zahl der ungelesenen steht am App-Symbol. Die App fragt nach dem ersten Anmelden einmal nach der Erlaubnis; ein Tipp öffnet die betroffene Seite. Welche Arten kommen, regelst du wie im Browser unter **Einstellungen → Benachrichtigungen**.
 - **[Widgets](#widgets)** für den Home-Bildschirm (auf dem iPhone auch für den Sperrbildschirm), jedes mit eigenen Einstellungen – Aufgaben zum Abhaken, Termine, Zähler, Zeiterfassung und mehr; dazu [Widgets für Administratoren](#widgets-fuer-administratoren).
 - **[Live-Aktivitäten](#live-aktivitaeten-und-laufende-mitteilungen):** Zeiterfassung, Fokus, Besprechung, Import/Export und Sprachnotiz auf dem Sperrbildschirm und in der Dynamic Island bzw. als laufende Mitteilung.
-- **[Erfassen, Siri, Kontrollzentrum](#erfassen-siri-kontrollzentrum):** Notizen, Aufgaben, Sprachnotizen und Fotos aus Widgets, Siri, Kontrollzentrum, App-Symbol und Android-Kachel.
+- **[Erfassen, Siri, Kontrollzentrum](#erfassen-siri-kontrollzentrum):** Notizen, Aufgaben, Sprachnotizen und Fotos aus Widgets, Siri, Kontrollzentrum, App-Symbol und Android-Kachel; Siri fragen, was fällig ist, eine Seite öffnen oder suchen.
+- **[Fokus-Filter](#fokus-filter)** (iPhone, iPad): ein Profil oder Arbeitsbereich je Fokus, auf Wunsch ohne Mitteilungen der anderen.
 - **App-Sperre:** Auf Wunsch entsperrt sich Flowplan nur mit Face ID, Touch ID, Fingerabdruck oder dem Gerätecode.
 - **Zurück:** Wischen vom linken Rand (iOS) bzw. die Zurück-Geste oder -Taste (Android) schließt zuerst, was gerade offen ist (Menü, Dialog, Seitenleiste), und geht dann eine Ebene nach oben: von einem Abschnitt der Einstellungen zur Übersicht, von einem Eintrag zur Datenbank, von einer Seite zur vorherigen Seite.
 - **Exporte und Downloads** gehen in das Teilen-Menü des Systems (z. B. „In Dateien sichern“).
@@ -204,10 +205,28 @@ Alle Wege führen in das Erfassen der App: Notiz oder Aufgabe tippen, Sprachnoti
 | Weg | Was es bietet |
 | --- | --- |
 | **Widget Schnellerfassung** | Notiz, Aufgabe, Sprachnotiz, Foto – in das im Widget gewählte Ziel |
-| **Siri und Kurzbefehle** (Deutsch, Englisch, Französisch) | „Notiz zu Flowplan hinzufügen“, „Was steht heute in Flowplan an“, „Timer in Flowplan starten“, „Timer in Flowplan stoppen“, „Sprachnotiz in Flowplan aufnehmen“, „Fokus in Flowplan starten“ |
-| **Kontrollzentrum und Aktionstaste** (iOS 18) | Neue Notiz, Sprachnotiz, Fokus starten, Timer (Schalter) |
+| **Siri und Kurzbefehle** (Deutsch, Englisch, Französisch) | „Notiz zu Flowplan hinzufügen“ (in deinen Erfassungs-Eingang), „Aufgabe zu Flowplan hinzufügen“, „Was steht heute in Flowplan an“, „Was ist heute in Flowplan fällig“, „Seite in Flowplan öffnen“, „In Flowplan suchen“, „Timer in Flowplan starten“, „Timer in Flowplan stoppen“, „Sprachnotiz in Flowplan aufnehmen“, „Fokus in Flowplan starten“ |
+| **Kontrollzentrum und Aktionstaste** (iOS 18) | Neue Notiz, Schnellerfassung, Heutige Aufgaben (zeigt, wie viele fällig sind), Sprachnotiz, Fokus starten, Timer (Schalter) |
 | **App-Symbol lange drücken** | Posteingang, Meine Aufgaben, Suchen, Neue Notiz, Profil wechseln; auf Android zusätzlich Sprachnotiz. Das iPhone zeigt davon die ersten vier, abgemeldet *Profil wechseln*. |
 | **Android-Schnelleinstellungen** | Kachel „Neue Notiz“ |
+
+Was Siri erledigt, ohne die App zu öffnen:
+
+- **Aufgabe hinzufügen:** Siri fragt nach der Aufgabe; in der Kurzbefehle-App legst du zusätzlich ein **Fälligkeitsdatum** und die **Liste oder Datenbank** fest (sonst dein Erfassungs-Ziel). In einer Datenbank landet das Datum in ihrer ersten Datums-Eigenschaft.
+- **Was ist heute fällig:** Siri sagt, wie viele Aufgaben heute fällig und überfällig sind, nennt die ersten drei und zeigt die Liste.
+- **In Flowplan suchen:** durchsucht Seiten, Einträge und Kommentare in allen deinen Arbeitsbereichen und zeigt die besten Treffer; in einem Kurzbefehl lassen sie sich weitergeben (etwa an *Seite öffnen*). Die Aktion *In der App suchen* öffnet stattdessen die Suche von Flowplan mit dem Text.
+- **Seite öffnen:** Siri fragt nach der Seite – nenne einen Teil des Titels – und öffnet sie in der App. In Kurzbefehlen wählst du die Seite aus einer Liste.
+
+Siri, Kurzbefehle und Steuerelemente nutzen das **aktive** Profil. Seiten aus Ende-zu-Ende-verschlüsselten Bereichen erscheinen nicht (auch nicht ihre Titel). Aufgaben hinzufügen, Fälliges, Seiten öffnen, Suchen, die neuen Steuerelemente und Fokus-Filter brauchen einen Flowplan-Server neuer als 0.6.0 (derzeit das Beta-Image).
+
+### Fokus-Filter
+
+Auf iPhone und iPad kann ein Fokus (Einstellungen → Fokus → z. B. *Arbeiten* → **Filter hinzufügen** → **Flowplan**) festlegen:
+
+- **Profil oder Arbeitsbereich:** ein Profil („Alle Arbeitsbereiche“) oder einen Arbeitsbereich eines Profils. Beginnt der Fokus, wechselt die App in dieses Profil und öffnet den Arbeitsbereich; endet er, geht sie zurück zum Profil von vorher – außer du hast inzwischen selbst gewechselt.
+- **Mitteilungen anderer Arbeitsbereiche ausblenden:** Solange der Fokus läuft, schickt deine Instanz diesem Gerät keine Push-Mitteilungen aus anderen Arbeitsbereichen – oder gar keine, wenn der Fokus zu einem anderen Profil gehört. Im Posteingang kommen sie trotzdem an. Wird der Fokus nie beendet, endet die Regel nach einem Tag von selbst.
+
+Arbeitsbereiche erscheinen in der Liste, sobald die App in diesem Profil angemeldet war; fehlt einer, öffne die App einmal in dem Profil.
 
 ### Profile in den mobilen Apps
 
@@ -222,7 +241,7 @@ Mitteilungen, Widgets, Live-Aktivitäten, die Zahl am App-Symbol und die laufend
 
 ### Was die App auf der Instanz hinterlegt
 
-Nach dem Anmelden meldet sich die App bei der Instanz an: Der Eintrag gehört zu dieser Anmeldung; meldest du dich auf dem Gerät neu an, geht er auf die neue Sitzung über. Er verschwindet mit dem Abmelden, dem Entfernen unter *Angemeldete Geräte* oder dem Löschen des Kontos. Mit dem Geräte-Token lesen Widgets, Live-Aktivitäten und Kurzbefehle im Hintergrund nur, was du auch in Flowplan sehen darfst – in kleinen Antworten von höchstens zehn Einträgen je Widget – und führen ihre Knöpfe aus (Aufgabe oder Gewohnheit abhaken, Timer starten/stoppen, als gelesen markieren, Erfasstes sichern). Mitteilungen laufen über den Push-Dienst von Expo, der sie an Apple bzw. Google weitergibt – wie bei Web-Push steht darin nur, dass etwas Neues im Posteingang liegt. Betreiber können das abschalten oder den Text mitschicken, siehe [Konfiguration](/configuration#push-benachrichtigungen).
+Nach dem Anmelden meldet sich die App bei der Instanz an: Der Eintrag gehört zu dieser Anmeldung; meldest du dich auf dem Gerät neu an, geht er auf die neue Sitzung über. Er verschwindet mit dem Abmelden, dem Entfernen unter *Angemeldete Geräte* oder dem Löschen des Kontos. Mit dem Geräte-Token lesen Widgets, Live-Aktivitäten und Kurzbefehle im Hintergrund nur, was du auch in Flowplan sehen darfst – in kleinen Antworten von höchstens zehn Einträgen je Widget – und führen ihre Knöpfe aus (Aufgabe oder Gewohnheit abhaken, Timer starten/stoppen, als gelesen markieren, Erfasstes sichern). Mitteilungen laufen über den Push-Dienst von Expo, der sie an Apple bzw. Google weitergibt – wie bei Web-Push steht darin nur, dass etwas Neues im Posteingang liegt. Betreiber können das abschalten oder den Text mitschicken, siehe [Konfiguration](/configuration#push-benachrichtigungen). Ein [Fokus-Filter](#fokus-filter), der Mitteilungen ausblendet, hinterlegt dort eine Regel für dieses Gerät: welcher Arbeitsbereich ihm noch Mitteilungen schicken darf, höchstens für einen Tag.
 
 ## Hell und dunkel
 

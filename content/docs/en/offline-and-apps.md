@@ -121,7 +121,8 @@ Like the desktop app, the mobile apps show your Flowplan instance; all data stay
 - **Notifications:** mentions, comments, tasks and reminders arrive as notifications, the number of unread ones shows on the app icon. The app asks for permission once after the first sign-in; a tap opens the page concerned. Which kinds arrive is set as in the browser under **Settings → Notifications**.
 - **[Widgets](#widgets)** for the home screen (on the iPhone also for the lock screen), each with settings of its own – tasks to check off, appointments, counters, time tracking and more; plus [widgets for administrators](#widgets-for-administrators).
 - **[Live Activities](#live-activities-and-ongoing-notifications):** the timer, focus, the meeting, imports/exports and voice memos on the lock screen and in the Dynamic Island, or as an ongoing notification.
-- **[Capture, Siri, Control Center](#capture-siri-control-center):** notes, tasks, voice memos and photos from widgets, Siri, Control Center, the app icon and an Android tile.
+- **[Capture, Siri, Control Center](#capture-siri-control-center):** notes, tasks, voice memos and photos from widgets, Siri, Control Center, the app icon and an Android tile; ask Siri what is due, open a page or search.
+- **[Focus filters](#focus-filters)** (iPhone, iPad): one profile or workspace per Focus, optionally without notifications from the others.
 - **App lock:** if you like, Flowplan only unlocks with Face ID, Touch ID, a fingerprint or the device code.
 - **Back:** swiping from the left edge (iOS) or the back gesture or button (Android) first closes what is open (menu, dialog, sidebar) and then goes up a level: from a settings section to the overview, from a record to its database, from a page to the previous page.
 - **Exports and downloads** go to the system's share menu (e.g. "Save to Files").
@@ -204,10 +205,28 @@ Every way leads to the app's capture screen: type a note or task, record a voice
 | Way | What it offers |
 | --- | --- |
 | **Quick capture widget** | Note, task, voice memo, photo – into the place chosen in the widget |
-| **Siri and Shortcuts** (English, German, French) | "Add a note to Flowplan", "What's on today in Flowplan", "Start the timer in Flowplan", "Stop the timer in Flowplan", "Record a voice memo in Flowplan", "Start focus in Flowplan" |
-| **Control Center and the Action button** (iOS 18) | New note, Voice memo, Start focus, Timer (a switch) |
+| **Siri and Shortcuts** (English, German, French) | "Add a note to Flowplan" (into your capture inbox), "Add a task to Flowplan", "What's on today in Flowplan", "What's due today in Flowplan", "Open a page in Flowplan", "Search Flowplan", "Start the timer in Flowplan", "Stop the timer in Flowplan", "Record a voice memo in Flowplan", "Start focus in Flowplan" |
+| **Control Center and the Action button** (iOS 18) | New note, Quick capture, Today's tasks (shows how many are due), Voice memo, Start focus, Timer (a switch) |
 | **Long-press the app icon** | Inbox, My tasks, Search, New note, Switch profile; on Android also Voice memo. The iPhone shows the first four of them, *Switch profile* when signed out. |
 | **Android Quick Settings** | a "New note" tile |
+
+What Siri does without opening the app:
+
+- **Add a task:** Siri asks for the task; in the Shortcuts app you can also set a **due date** and the **list or database** it goes to (otherwise your capture default). In a database the due date goes into its first date property.
+- **What's due today:** Siri reads out how many tasks are due today and overdue and the first three, and shows the list.
+- **Search Flowplan:** searches pages, records and comments in all your workspaces and shows the best hits; in a shortcut, the hits can be passed on (e.g. to *Open a page*). The action *Search in the app* opens Flowplan's own search with the text instead.
+- **Open a page:** Siri asks which page – say part of its title – and opens it in the app. In Shortcuts you pick the page from a list.
+
+Siri, Shortcuts and the controls use the **active** profile. Pages of end-to-end encrypted spaces do not appear (not even their titles). Adding tasks, what's due, opening pages, searching, the new controls and focus filters need a Flowplan server newer than 0.6.0 (currently the beta image).
+
+### Focus filters
+
+On the iPhone and iPad, a Focus (Settings → Focus → e.g. *Work* → **Add filter** → **Flowplan**) can choose:
+
+- **Profile or workspace:** a profile ("all workspaces") or one workspace of a profile. When the Focus starts, the app switches to that profile and opens the workspace; when it ends, it goes back to the profile you had before – unless you switched yourself in the meantime.
+- **Hide notifications from other workspaces:** while the Focus is on, your instance does not send this phone push notifications from other workspaces – or none at all if the Focus belongs to another profile. They still arrive in the inbox. If the Focus is never switched off, the rule ends by itself after a day.
+
+Workspaces appear in the list once the app has been signed in to that profile; open the app on the profile once if one is missing.
 
 ### Profiles in the mobile apps
 
@@ -222,7 +241,7 @@ Notifications, widgets, Live Activities, the number on the app icon and the runn
 
 ### What the app keeps on the instance
 
-After signing in, the app registers with the instance: the entry belongs to that sign-in; signing in again on the device moves it to the new session. It disappears with signing out, removing it under *Signed-in devices* or deleting the account. With its device token, widgets, Live Activities and Shortcuts read in the background only what you may see in Flowplan – in small answers of at most ten items per widget – and run their buttons (check off a task or habit, start/stop the timer, mark as read, save what you captured). Notifications go through Expo's push service, which hands them to Apple or Google – as with Web Push, they only say that something new is in the inbox. Operators can turn this off or send the text along, see [Configuration](/configuration#push-notifications).
+After signing in, the app registers with the instance: the entry belongs to that sign-in; signing in again on the device moves it to the new session. It disappears with signing out, removing it under *Signed-in devices* or deleting the account. With its device token, widgets, Live Activities and Shortcuts read in the background only what you may see in Flowplan – in small answers of at most ten items per widget – and run their buttons (check off a task or habit, start/stop the timer, mark as read, save what you captured). Notifications go through Expo's push service, which hands them to Apple or Google – as with Web Push, they only say that something new is in the inbox. Operators can turn this off or send the text along, see [Configuration](/configuration#push-notifications). A [focus filter](#focus-filters) that hides notifications leaves a rule for this device there: which workspace may still notify it, for at most a day.
 
 ## Light and dark
 
