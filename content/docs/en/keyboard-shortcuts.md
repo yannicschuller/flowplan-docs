@@ -32,6 +32,8 @@ In the desktop app, <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> or <kbd>Ctrl</kbd
 - Combinations without <kbd>⌘</kbd>, <kbd>Ctrl</kbd> or <kbd>⌥</kbd> (like <kbd>?</kbd>) only work outside text fields and the editor.
 - The shortcuts of the editor, the page tree, presentations and the split view are fixed; the overview lists them for reference.
 
+In the [iPad app](/offline-and-apps#ipad-windows-keyboard-and-handoff) with a hardware keyboard, holding <kbd>⌘</kbd> lists the shortcuts with <kbd>⌘</kbd>, <kbd>⌃</kbd> or <kbd>⌥</kbd> – your own combinations included – in the iPad's overlay.
+
 The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kbd> on a Mac, <kbd>Ctrl</kbd> and <kbd>Alt</kbd> elsewhere. Through the API, the command `shortcuts.save` stores the same settings (see [API and webhooks](/api-and-webhooks)).
 
 ## In a document
