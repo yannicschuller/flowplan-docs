@@ -32,6 +32,8 @@ In der Desktop-App wechselt <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> bzw. <kbd
 - Kombinationen ohne <kbd>⌘</kbd>, <kbd>Strg</kbd> oder <kbd>⌥</kbd> (wie <kbd>?</kbd>) wirken nur außerhalb von Textfeldern und dem Editor.
 - Die Kürzel des Editors, des Seitenbaums, der Präsentation und der geteilten Ansicht sind fest; die Übersicht listet sie zum Nachschlagen.
 
+In der [iPad-App](/offline-and-apps#ipad-fenster-tastatur-und-handoff) mit Hardware-Tastatur listet das iPad die Kürzel mit <kbd>⌘</kbd>, <kbd>⌃</kbd> oder <kbd>⌥</kbd> – auch deine eigenen –, wenn du <kbd>⌘</kbd> hältst.
+
 Die Übersicht zeigt die Tasten so, wie sie auf deinem Gerät heißen: auf dem Mac <kbd>⌘</kbd> und <kbd>⌥</kbd>, sonst <kbd>Ctrl</kbd> und <kbd>Alt</kbd>. Über die API speichert der Befehl `shortcuts.save` dieselben Einstellungen (siehe [API und Webhooks](/api-and-webhooks)).
 
 ## Im Dokument

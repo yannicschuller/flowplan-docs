@@ -77,6 +77,7 @@ Eine schlanke Desktop-App umschließt deine Flowplan-Instanz. Beim ersten Start 
 - Die Offline-Nutzung funktioniert auch in der Desktop-App: **Einstellungen → Offline & Geräte** in der App einschalten – die App hat eigene Offline-Kopien, getrennt von Browser oder installierter Web-App. Ohne Verbindung öffnet sie dann die gespeicherte Kopie; ihre eigene Offline-Seite (**Erneut versuchen**, **Profile**) erscheint nur, wenn auf dem Gerät keine Kopie liegt.
 - **Mitteilungen:** Die App zeigt neue Benachrichtigungen aus dem Posteingang als Mitteilungen des Systems und die Zahl der ungelesenen am App-Symbol – auch bei minimiertem oder ausgeblendetem Fenster. Mehr unter [Mitteilungen in der Desktop-App](#mitteilungen-in-der-desktop-app).
 - Sie akzeptiert nur echte Flowplan-Instanzen – eine Adresse, hinter der etwas anderes läuft oder die auf eine andere Seite weiterleitet, wird abgelehnt.
+- **Handoff (Mac):** Die Seite im Fenster erscheint auf deinem iPad und iPhone (gleicher Apple Account, Handoff an) und öffnet sich dort in der Flowplan-App – ohne App im Browser. Eine Seite, die in der iPad- oder iPhone-App offen ist, erscheint im Dock des Mac und öffnet sich in der Desktop-App, im Profil ihrer Instanz. Siehe [iPad: Fenster, Tastatur und Handoff](#ipad-fenster-tastatur-und-handoff).
 - **Mit Passkey anmelden** und **Mit SSO anmelden** öffnen die Anmeldung im Standardbrowser, wo Passkeys (iCloud-Schlüsselbund, Windows Hello, Passwortmanager) zur Verfügung stehen. Nach **In der App anmelden** übernimmt die App die Anmeldung; E-Mail und Passwort gehen direkt in der App. Das braucht Flowplan 0.3.3 oder neuer.
 
 Die Apps für macOS, Windows und Linux gibt es unter [flowplan.org/download](https://flowplan.org/download) – die Seite erkennt dein System. Updates installieren sich von selbst (macOS, Windows-Installer, Linux-AppImage). Die Mac-App ist signiert und notarisiert; wer noch 1.0.5 oder älter hat, lädt einmal die aktuelle Version herunter, danach aktualisiert sie sich selbst. Windows zeigt SmartScreen. Mehr unter [Betrieb und Fehlersuche](/operations#desktop-apps).
@@ -125,7 +126,7 @@ Wie die Desktop-App zeigen die mobilen Apps deine Flowplan-Instanz; alle Daten b
 - **App-Sperre:** Auf Wunsch entsperrt sich Flowplan nur mit Face ID, Touch ID, Fingerabdruck oder dem Gerätecode.
 - **Zurück:** Wischen vom linken Rand (iOS) bzw. die Zurück-Geste oder -Taste (Android) schließt zuerst, was gerade offen ist (Menü, Dialog, Seitenleiste), und geht dann eine Ebene nach oben: von einem Abschnitt der Einstellungen zur Übersicht, von einem Eintrag zur Datenbank, von einer Seite zur vorherigen Seite.
 - **Exporte und Downloads** gehen in das Teilen-Menü des Systems (z. B. „In Dateien sichern“).
-- **iPad und Tablets:** alle Ausrichtungen, Split View, Slide Over und Stage Manager, Tastatur und Trackpad. Mit dem **Apple Pencil** zeichnest du auf Whiteboards mit Druckstärke, während Finger die Fläche bewegen; Doppeltippen und Drücken wechseln das Werkzeug, Scribble schreibt in jedes Textfeld (siehe [Whiteboards](/whiteboards#stift-und-formerkennung)).
+- **iPad und Tablets:** alle Ausrichtungen, Split View, Slide Over und Stage Manager, mehrere Fenster, Hardware-Tastatur mit den Tastenkürzeln, die erscheinen, wenn du <kbd>⌘</kbd> hältst, Trackpad und Handoff zum Mac – siehe [iPad: Fenster, Tastatur und Handoff](#ipad-fenster-tastatur-und-handoff). Mit dem **Apple Pencil** zeichnest du auf Whiteboards mit Druckstärke, während Finger die Fläche bewegen und eine aufliegende Hand keine Spuren hinterlässt; Doppeltippen und Drücken wechseln das Werkzeug, Scribble schreibt in jedes Textfeld (siehe [Whiteboards](/whiteboards#stift-und-formerkennung)).
 
 Außerdem:
 
@@ -208,6 +209,13 @@ Alle Wege führen in das Erfassen der App: Notiz oder Aufgabe tippen, Sprachnoti
 | **Kontrollzentrum und Aktionstaste** (iOS 18) | Neue Notiz, Sprachnotiz, Fokus starten, Timer (Schalter) |
 | **App-Symbol lange drücken** | Posteingang, Meine Aufgaben, Suchen, Neue Notiz, Profil wechseln; auf Android zusätzlich Sprachnotiz. Das iPhone zeigt davon die ersten vier, abgemeldet *Profil wechseln*. |
 | **Android-Schnelleinstellungen** | Kachel „Neue Notiz“ |
+
+### iPad: Fenster, Tastatur und Handoff
+
+- **Mehrere Fenster:** Im Menü einer Seite (Rechtsklick oder lange drücken in der Seitenleiste) gibt **In neuem Fenster öffnen** der Seite ein eigenes Fenster – nebeneinander in Split View, in Slide Over oder im Stage Manager. Links, die einen neuen Tab öffnen würden, tun dasselbe. App-Symbol lange drücken → **Alle Fenster einblenden** listet sie. Das erste Fenster hat die App-Einstellungen, Mitteilungen und Widgets; die anderen zeigen eine Seite und kommen nach einem Neustart mit ihr zurück. Alle Fenster nutzen das aktive Profil und die App-Sperre.
+- **Hardware-Tastatur:** Halte <kbd>⌘</kbd>, und das iPad listet die Tastenkürzel von Flowplan – Suche <kbd>⌘</kbd> <kbd>K</kbd>, neue Seite <kbd>⌘</kbd> <kbd>N</kbd>, schnell erfassen <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>N</kbd>, die Übersicht <kbd>⌘</kbd> <kbd>/</kbd> und die anderen mit <kbd>⌘</kbd>, <kbd>⌃</kbd> oder <kbd>⌥</kbd>, auch [deine eigenen](/keyboard-shortcuts#eigene-tastenkuerzel). Ein Kürzel wirkt im Fenster im Vordergrund. Die Kürzel des Editors (Fett, Rückgängig …) wirken wie im Browser.
+- **Trackpad und Maus:** Der Zeiger reagiert auf Knöpfe und Links wie in Safari.
+- **Handoff:** Die Seite im Vordergrund wird deinem Mac und deinen anderen Geräten angeboten (gleicher Apple Account, Handoff an unter Einstellungen → Allgemein → AirPlay & Kontinuität). Auf dem Mac öffnet sie sich in der [Desktop-App](#desktop-app-fuer-macos-windows-und-linux), ohne sie im Browser. Seiten vom Mac oder einem anderen Gerät öffnen sich in der App im Profil ihrer Instanz; Seiten einer Instanz ohne Profil öffnen sich in Safari. Solange die App-Sperre sperrt, wird nichts angeboten.
 
 ### Profile in den mobilen Apps
 

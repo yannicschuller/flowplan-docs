@@ -77,6 +77,7 @@ A slim desktop app wraps your Flowplan instance. On first start it asks for the 
 - Offline use works in the desktop app too: turn on **Settings → Offline & devices** in the app – it keeps its own offline copies, separate from the browser or the installed web app. Without a connection it then opens the stored copy; its own offline page (**Try again**, **Profiles**) only appears when there is no copy on the device.
 - **Notifications:** the app shows new inbox notifications as system notifications and the unread count on the app icon – also with the window minimised or hidden. See [Notifications in the desktop app](#notifications-in-the-desktop-app).
 - It only accepts real Flowplan instances – an address running something else or redirecting to another site is refused.
+- **Handoff (Mac):** the page open in the window appears on your iPad and iPhone (same Apple Account, Handoff on) and opens there in the Flowplan app – or in the browser without the app. A page open in the iPad or iPhone app appears in the Mac's Dock and opens in the desktop app, in the profile of its instance. See [iPad: windows, keyboard and Handoff](#ipad-windows-keyboard-and-handoff).
 - **Sign in with a passkey** and **Sign in with SSO** open the sign-in in the default browser, where passkeys (iCloud Keychain, Windows Hello, password managers) are available. After **Sign in to the app** the app takes over the sign-in; e-mail and password work directly in the app. This needs Flowplan 0.3.3 or newer.
 
 The apps for macOS, Windows and Linux are at [flowplan.org/download](https://flowplan.org/download) – the page detects your system. Updates install themselves (macOS, Windows installer, Linux AppImage). The Mac app is signed and notarized; with 1.0.5 or older, download the current version once – after that it updates itself. Windows shows SmartScreen. More under [Operations and troubleshooting](/operations#desktop-apps).
@@ -125,7 +126,7 @@ Like the desktop app, the mobile apps show your Flowplan instance; all data stay
 - **App lock:** if you like, Flowplan only unlocks with Face ID, Touch ID, a fingerprint or the device code.
 - **Back:** swiping from the left edge (iOS) or the back gesture or button (Android) first closes what is open (menu, dialog, sidebar) and then goes up a level: from a settings section to the overview, from a record to its database, from a page to the previous page.
 - **Exports and downloads** go to the system's share menu (e.g. "Save to Files").
-- **iPad and tablets:** every orientation, Split View, Slide Over and Stage Manager, keyboard and trackpad. With the **Apple Pencil** you draw on whiteboards with pressure while fingers move the board; double-tap and squeeze switch the tool, Scribble writes into any text field (see [Whiteboards](/whiteboards#pen-and-shape-recognition)).
+- **iPad and tablets:** every orientation, Split View, Slide Over and Stage Manager, several windows, a hardware keyboard with the shortcuts listed when you hold <kbd>⌘</kbd>, the trackpad, and Handoff to the Mac – see [iPad: windows, keyboard and Handoff](#ipad-windows-keyboard-and-handoff). With the **Apple Pencil** you draw on whiteboards with pressure while fingers move the board and a resting hand leaves no marks; double-tap and squeeze switch the tool, Scribble writes into any text field (see [Whiteboards](/whiteboards#pen-and-shape-recognition)).
 
 Also:
 
@@ -208,6 +209,13 @@ Every way leads to the app's capture screen: type a note or task, record a voice
 | **Control Center and the Action button** (iOS 18) | New note, Voice memo, Start focus, Timer (a switch) |
 | **Long-press the app icon** | Inbox, My tasks, Search, New note, Switch profile; on Android also Voice memo. The iPhone shows the first four of them, *Switch profile* when signed out. |
 | **Android Quick Settings** | a "New note" tile |
+
+### iPad: windows, keyboard and Handoff
+
+- **Several windows:** in a page's menu (right-click or long-press it in the sidebar), **Open in new window** gives the page a window of its own – side by side in Split View, in Slide Over or in Stage Manager. Links that would open a new tab do the same. Long-press the app icon → **Show All Windows** lists them. The first window holds the app settings, notifications and widgets; the others show a page and come back with it after a restart. All windows use the active profile and the app lock.
+- **Hardware keyboard:** hold <kbd>⌘</kbd> and the iPad lists Flowplan's shortcuts – search <kbd>⌘</kbd> <kbd>K</kbd>, new page <kbd>⌘</kbd> <kbd>N</kbd>, quick capture <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>N</kbd>, the overview <kbd>⌘</kbd> <kbd>/</kbd> and the others with <kbd>⌘</kbd>, <kbd>⌃</kbd> or <kbd>⌥</kbd>, including [your own](/keyboard-shortcuts#your-own-shortcuts). A shortcut works in the window in front. The editor's shortcuts (bold, undo …) work as in the browser.
+- **Trackpad and mouse:** the pointer hovers over buttons and links as in Safari.
+- **Handoff:** the page in front is offered to your Mac and your other devices (same Apple Account, Handoff on under Settings → General → AirPlay & Continuity). On the Mac it opens in the [desktop app](#desktop-app-for-macos-windows-and-linux), without it in the browser. Pages from the Mac or another device open in the app on the profile of their instance; pages of an instance without a profile open in Safari. Pages behind the app lock are not offered while it is locked.
 
 ### Profiles in the mobile apps
 
