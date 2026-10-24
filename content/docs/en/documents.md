@@ -46,6 +46,7 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 - **Transcript with timestamps:** if speech recognition returns segments with times (OpenAI-compatible `verbose_json`, e.g. faster-whisper-server, speaches or whisper.cpp), a collapsible **Transcript · duration** block appears with one paragraph per passage and its timestamp (`00:04`, `1:02:05`).
 - **Speakers:** only when the service itself separates speakers (diarization, switched on with `WHISPER_DIARIZE=on` for servers that know `diarize`) and returns a speaker per segment, each passage starts with **Speaker 1**, **Speaker 2** … Flowplan never guesses speakers from pauses. If the service only knows plain JSON, the text is inserted as paragraphs as before.
 - **Then summarise with AI** summarises the transcript ([Summaries](/ai#summaries)).
+- **In the apps** for iPhone, iPad and Android the app records; iPhone and iPad turn the words into text on the device, without speech recognition on the server ([Voice notes in pages](/offline-and-apps#voice-notes-in-pages)).
 - **Generate tasks and summary** (when [AI actions](/ai#ai-actions) are on for you): the AI proposes a summary with decisions and a task list with assignees and dates – as a preview with checkboxes; only **Run** adds them to the page.
 
 ## Table of contents

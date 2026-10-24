@@ -205,7 +205,7 @@ Alles optional; die Werte gelten, bis ein Admin unter **Administration → KI** 
 | `WEB_PUSH_SUBJECT` | Kontakt für die Push-Dienste, z. B. `mailto:admin@example.com`. |
 | `WEB_PUSH_PUBLIC_KEY` / `WEB_PUSH_PRIVATE_KEY` | VAPID-Schlüsselpaar. Ohne Angabe erzeugt Flowplan eines unter `FLOWPLAN_DATA_DIR/web-push-keys.json`. |
 | `MOBILE_PUSH` | Mitteilungen an die Apps für iPhone, iPad und Android über den Push-Dienst von Expo (`exp.host`), der sie an Apple bzw. Google weitergibt. Nichts einzurichten; `off` schaltet sie ab. Standard: `on`. |
-| `MOBILE_PUSH_CONTENT` | `on` schickt den Text der Benachrichtigung mit (er läuft dann über Expo, Apple und Google). Standard: `off` – wie bei Web-Push nur „Neues im Posteingang“. |
+| `MOBILE_PUSH_CONTENT` | `on` schickt den Text der Benachrichtigung mit (er läuft dann über Expo, Apple und Google) – und damit die Knöpfe **Erledigt** und **Morgen** an fälligen Aufgaben und **Antworten** an Kommentaren ([Knöpfe an Mitteilungen](/offline-and-apps#knoepfe-an-mitteilungen)); **Als gelesen markieren** gibt es immer. Standard: `off` – wie bei Web-Push nur „Neues im Posteingang“. |
 
 Die Schlüssel dürfen sich nicht ändern, sonst verlieren alle Geräte ihr Abonnement. Ausgehendes HTTPS zu den Push-Diensten von Apple, Google und Mozilla muss möglich sein.
 

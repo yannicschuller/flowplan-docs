@@ -118,7 +118,9 @@ Das braucht einen Flowplan-Server neuer als 0.6.0 (derzeit das Beta-Image) und d
 
 Wie die Desktop-App zeigen die mobilen Apps deine Flowplan-Instanz; alle Daten bleiben auf dem Server, neue Funktionen kommen ohne App-Update. Dazu kommt, was nur eine App kann:
 
-- **Mitteilungen:** Erwähnungen, Kommentare, Aufgaben und Erinnerungen kommen als Mitteilung, die Zahl der ungelesenen steht am App-Symbol. Die App fragt nach dem ersten Anmelden einmal nach der Erlaubnis; ein Tipp öffnet die betroffene Seite. Welche Arten kommen, regelst du wie im Browser unter **Einstellungen → Benachrichtigungen**.
+- **Mitteilungen:** Erwähnungen, Kommentare, Aufgaben und Erinnerungen kommen als Mitteilung, die Zahl der ungelesenen steht am App-Symbol. Die App fragt nach dem ersten Anmelden einmal nach der Erlaubnis; ein Tipp öffnet die betroffene Seite. Welche Arten kommen, regelst du wie im Browser unter **Einstellungen → Benachrichtigungen**. [Knöpfe](#knoepfe-an-mitteilungen) haken eine Aufgabe ab, schieben sie auf morgen, beantworten einen Kommentar oder markieren ihn als gelesen – ohne die App zu öffnen.
+- **[Sprachnotizen](#sprachnotizen-in-seiten)** in Seiten nimmt die App auf; auf iPhone und iPad werden sie auf dem Gerät selbst zu Text.
+- **[Kalender in Apple Kalender](#kalender-in-apple-kalender)** mit einem Konfigurationsprofil, statt CalDAV-Zugangsdaten abzutippen.
 - **[Widgets](#widgets)** für den Home-Bildschirm (auf dem iPhone auch für den Sperrbildschirm), jedes mit eigenen Einstellungen – Aufgaben zum Abhaken, Termine, Zähler, Zeiterfassung und mehr; dazu [Widgets für Administratoren](#widgets-fuer-administratoren).
 - **[Live-Aktivitäten](#live-aktivitaeten-und-laufende-mitteilungen):** Zeiterfassung, Fokus, Besprechung, Import/Export und Sprachnotiz auf dem Sperrbildschirm und in der Dynamic Island bzw. als laufende Mitteilung.
 - **[Erfassen, Siri, Kontrollzentrum](#erfassen-siri-kontrollzentrum):** Notizen, Aufgaben, Sprachnotizen und Fotos aus Widgets, Siri, Kontrollzentrum, App-Symbol und Android-Kachel.
@@ -209,6 +211,38 @@ Alle Wege führen in das Erfassen der App: Notiz oder Aufgabe tippen, Sprachnoti
 | **App-Symbol lange drücken** | Posteingang, Meine Aufgaben, Suchen, Neue Notiz, Profil wechseln; auf Android zusätzlich Sprachnotiz. Das iPhone zeigt davon die ersten vier, abgemeldet *Profil wechseln*. |
 | **Android-Schnelleinstellungen** | Kachel „Neue Notiz“ |
 
+### Knöpfe an Mitteilungen
+
+Eine Mitteilung lange drücken (oder herunterziehen) zeigt ihre Knöpfe. Sie erledigen ihre Arbeit im Hintergrund; die App öffnet sich nicht.
+
+| Mitteilung | Knöpfe |
+| --- | --- |
+| **Eine Aufgabe ist fällig** (eine dir gegebene Aufgabe ist heute fällig, eine [Datums-Erinnerung](/databases#datums-erinnerungen) eines Eintrags) | **Erledigt** hakt sie ab; **Morgen** setzt ihr Datum auf morgen – die Uhrzeit bleibt, ein späteres Datum rückt einen Tag weiter |
+| **Kommentar, Antwort, Erwähnung in einem Kommentar** | **Antworten** – die Antwort direkt in der Mitteilung tippen; sie landet in deinem Namen im Thread (bzw. als Kommentar an der Seite). **Als gelesen markieren** |
+| **Alles andere** | **Als gelesen markieren** |
+
+- Jeder Knopf markiert die Mitteilung auch als gelesen; die Zahl am App-Symbol folgt.
+- **Erledigt**, **Morgen** und **Antworten** brauchen ein entsperrtes Telefon; **Als gelesen markieren** geht auf dem Sperrbildschirm.
+- **Erledigt** bei einem Eintrag nutzt den „Erledigt“-Zustand der Datenbank (eine Status-Option wie *Erledigt* oder ein Kontrollkästchen *Erledigt*); Datenbanken ohne bieten nur **Als gelesen markieren**. Hat sich die Aufgabe inzwischen geändert, wird nichts abgehakt – eine Mitteilung sagt das, ein Tipp öffnet die Seite.
+- Es gelten deine Rechte wie im Browser, und die Änderung erscheint in Aktivität, Versionen und Automationen wie jede andere.
+- **Erledigt**, **Morgen** und **Antworten** erscheinen nur, wenn die Instanz den Text der Mitteilung mitschickt (`MOBILE_PUSH_CONTENT=on`, siehe [Konfiguration](/configuration#push-benachrichtigungen)) – ohne ihn wüsste niemand, auf welche Aufgabe ein Knopf wirkt. Sonst gibt es nur **Als gelesen markieren**.
+
+**Erinnerungen ohne Push:** Schickt deine Instanz keine Mitteilungen an die App (von den Betreibern abgeschaltet oder eine Testversion ohne Push), erinnert die App selbst an deine Aufgaben – um 9:00 Uhr am Tag, an dem eine Aufgabe fällig ist, sofern Mitteilungen für Flowplan erlaubt sind. Sie nimmt die Aufgaben, die die App aus ihrer Übersicht kennt (die nächsten acht).
+
+### Sprachnotizen in Seiten
+
+In der App nimmt **Sprachnotiz** (`/sprachnotiz`) in einem Dokument mit dem Mikrofon des Telefons auf – bis zu 30 Minuten, auch bei gesperrtem Bildschirm. **Einfügen** legt die Aufnahme als Audio in die Seite:
+
+- **Als Text einfügen** (iPhone und iPad): Das Gesprochene wird auf dem Gerät mit der Spracherkennung von Apple zu Text – die Aufnahme verlässt dafür das Telefon nicht. Der Text folgt unter dem Audio als **Transkript** mit Zeitmarken. Die App fragt einmal nach der Erlaubnis für die Spracherkennung. Das geht für die Sprachen, die das Gerät selbst erkennt (nach der Sprache des Geräts; die meisten großen Sprachen, je nach iOS-Version).
+- Wo das Gerät es nicht kann (Android, andere Sprachen), macht die Spracherkennung deiner Instanz daraus Text, wenn sie eingerichtet ist ([Sprachnotizen](/documents#sprachnotizen-und-besprechungen)); sonst bleibt das Audio allein.
+- **Danach mit KI zusammenfassen** setzt eine Zusammenfassung unter den Text, wenn dir die [KI](/ai#zusammenfassungen) zur Verfügung steht.
+
+Das braucht einen Flowplan-Server neuer als 0.6.0. Im Browser nimmt `/sprachnotiz` wie bisher auf.
+
+### Kalender in Apple Kalender
+
+**Einstellungen → Kalender & Issues → Kalender auf iPhone, iPad und Mac**: Kalenderansichten wählen und **In Apple Kalender einrichten** tippen. Die App öffnet ein Konfigurationsprofil in Safari; den Download bestätigen und es dann unter **Einstellungen → Profil geladen** installieren (auf dem Mac: Systemeinstellungen → Profile). Jede Ansicht wird ein CalDAV-Account in Apple Kalender, in beide Richtungen – siehe [In beide Richtungen synchronisieren](/views#in-beide-richtungen-synchronisieren-caldav). Am Computer zeigt die Seite stattdessen einen QR-Code; ihn mit der Kamera des iPhones scannen. Der Link gilt einmal und zehn Minuten lang.
+
 ### Profile in den mobilen Apps
 
 Auch die Apps für iPhone, iPad und Android merken sich mehrere Instanzen als Profile:
@@ -222,7 +256,7 @@ Mitteilungen, Widgets, Live-Aktivitäten, die Zahl am App-Symbol und die laufend
 
 ### Was die App auf der Instanz hinterlegt
 
-Nach dem Anmelden meldet sich die App bei der Instanz an: Der Eintrag gehört zu dieser Anmeldung; meldest du dich auf dem Gerät neu an, geht er auf die neue Sitzung über. Er verschwindet mit dem Abmelden, dem Entfernen unter *Angemeldete Geräte* oder dem Löschen des Kontos. Mit dem Geräte-Token lesen Widgets, Live-Aktivitäten und Kurzbefehle im Hintergrund nur, was du auch in Flowplan sehen darfst – in kleinen Antworten von höchstens zehn Einträgen je Widget – und führen ihre Knöpfe aus (Aufgabe oder Gewohnheit abhaken, Timer starten/stoppen, als gelesen markieren, Erfasstes sichern). Mitteilungen laufen über den Push-Dienst von Expo, der sie an Apple bzw. Google weitergibt – wie bei Web-Push steht darin nur, dass etwas Neues im Posteingang liegt. Betreiber können das abschalten oder den Text mitschicken, siehe [Konfiguration](/configuration#push-benachrichtigungen).
+Nach dem Anmelden meldet sich die App bei der Instanz an: Der Eintrag gehört zu dieser Anmeldung; meldest du dich auf dem Gerät neu an, geht er auf die neue Sitzung über. Er verschwindet mit dem Abmelden, dem Entfernen unter *Angemeldete Geräte* oder dem Löschen des Kontos. Mit dem Geräte-Token lesen Widgets, Live-Aktivitäten und Kurzbefehle im Hintergrund nur, was du auch in Flowplan sehen darfst – in kleinen Antworten von höchstens zehn Einträgen je Widget – und führen ihre Knöpfe aus (Aufgabe oder Gewohnheit abhaken, Timer starten/stoppen, als gelesen markieren, Erfasstes sichern) – ebenso die Knöpfe an Mitteilungen, die nur die Mitteilung nennen: worauf sie wirken, weiß die Instanz. Mitteilungen laufen über den Push-Dienst von Expo, der sie an Apple bzw. Google weitergibt – wie bei Web-Push steht darin nur, dass etwas Neues im Posteingang liegt. Betreiber können das abschalten oder den Text mitschicken, siehe [Konfiguration](/configuration#push-benachrichtigungen).
 
 ## Hell und dunkel
 

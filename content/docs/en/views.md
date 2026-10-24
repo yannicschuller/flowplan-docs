@@ -46,8 +46,9 @@ Month, week and day view by a date field.
 In the same dialog, **Set up access** sets up sync with Apple Calendar, Thunderbird or DAVx⁵ (Android). Events you add, move, rename or delete there land in the database.
 
 - **Credentials**: you get a server, a username and a password that is shown only once.
-- **Apple**: Add account → Other → CalDAV account, type “Manual”.
+- **Apple**: **Set up in Apple Calendar** (in the app, in Safari or on a Mac) downloads a configuration profile with the account – install it under Settings → **Profile Downloaded**. Several calendars at once: **Settings → Calendars & issues → Calendars on iPhone, iPad and Mac**. By hand: Add account → Other → CalDAV account, type “Manual”.
 - **Thunderbird and DAVx⁵**: they take the calendar address directly.
+- **Several devices**: each profile gets its own access, so a calendar set up on the Mac keeps working when you install the profile on the iPhone. **End access** or **Create new password** ends all accesses to this calendar, those of profiles included.
 - **Permissions**: your own rights apply – whoever can only read the database cannot change anything from the calendar. Workflow and automations apply as for any change.
 
 Google Calendar does not support CalDAV accounts; use the calendar sync below for it.
