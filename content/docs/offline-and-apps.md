@@ -14,6 +14,15 @@ Unter **Einstellungen → Offline & Geräte** speichert das Gerät zusätzlich d
 - Ist die Anmeldung abgelaufen, zeigt Flowplan online die Anmeldeseite – ohne Verbindung öffnet die gespeicherte Kopie trotzdem.
 - Die Kopien enthalten private Inhalte. Sie werden beim Abmelden, beim Ausschalten und bei der Anmeldung einer anderen Person entfernt.
 
+#### Die ganze App auf dem Gerät
+
+Zur Kopie gehört die ganze App – nicht nur die Teile, die du online schon geöffnet hast. Auch Editor, Kalender-, Zeitleisten- und Galerieansichten, Dashboards, Diagramme, Whiteboards, Notizbücher, Formeln, Mermaid-Diagramme und der PDF-Viewer laden dann ohne Verbindung.
+
+- **Speicherbedarf:** etwa 18 MB auf dem Gerät (rund 5 MB Download), einmal je Version. Flowplan speichert die App-Dateien nur, wenn das Gerät genug Platz hat.
+- **Neue Version:** Nach einem Update lädt Flowplan beim nächsten Abgleich die Dateien der neuen Version; was sich nicht geändert hat, wird übernommen statt neu geladen. Sobald die neue Version vollständig gespeichert ist, entfernt es die alte.
+- Unter **Einstellungen → Offline & Geräte** steht dazu eine Zeile wie „Die App ist für die Offline-Nutzung gespeichert (Version 0.6.0) · 18 MB“ – oder wie viele Dateien noch fehlen.
+- Fehlt ohne Verbindung doch einmal ein Teil, zeigt Flowplan an seiner Stelle „Nicht offline verfügbar – versuche es wieder, wenn du online bist“ mit **Erneut versuchen**; der Rest der App bleibt bedienbar, und sobald die Verbindung zurück ist, lädt der Teil von selbst. Ein Eintrag, dessen Inhalt nicht in der Kopie liegt, zeigt „Dieser Eintrag ist offline nicht verfügbar.“
+
 #### Die Kopie bleibt aktuell
 
 Solange Flowplan geöffnet ist, gleicht es die Kopie selbst ab: beim Start, wenn die Verbindung zurückkommt, wenn du die App wieder in den Vordergrund holst, und alle 6 Stunden. Dabei lädt es nur, was sich seit dem letzten Abgleich geändert hat – meist zwei kleine Anfragen.

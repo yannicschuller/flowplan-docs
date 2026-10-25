@@ -14,6 +14,15 @@ Under **Settings → Offline & devices**, the device also stores the app, the wo
 - If the sign-in has expired, Flowplan shows the sign-in page online – without a connection, the stored copy still opens.
 - The copies contain private content. They are removed when you sign out, when you turn the feature off and when another person signs in.
 
+#### The whole app on the device
+
+The copy holds the whole app – not only the parts you already opened online. The editor, calendar, timeline and gallery views, dashboards, charts, whiteboards, notebooks, math, Mermaid diagrams and the PDF viewer then load without a connection as well.
+
+- **Storage:** about 18 MB on the device (around 5 MB to download), once per version. Flowplan only stores the app's files when the device has enough space.
+- **New version:** after an update, Flowplan loads the new version's files with the next refresh; files that did not change are taken over instead of downloaded again. As soon as the new version is stored completely, the old one is removed.
+- **Settings → Offline & devices** shows a line like “The app is stored for offline use (version 0.6.0) · 18 MB” – or how many files are still missing.
+- If a part is missing without a connection after all, Flowplan shows “Not available offline – try again when you're online” with **Try again** in its place; the rest of the app keeps working, and the part loads by itself once the connection is back. A record whose content is not in the copy shows “This record is not available offline.”
+
 #### The copy stays current
 
 While Flowplan is open, it keeps the copy up to date on its own: at start, when the connection comes back, when you bring the app back to the foreground, and every 6 hours. It only loads what changed since the last update – usually two small requests.
