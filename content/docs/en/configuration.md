@@ -221,10 +221,32 @@ Notifications to the apps go through the Flowplan push relay (`push.flowplan.org
 - **Live Activities** (iPhone) for the timer and focus are also updated by the instance through the relay when their state changes. iOS renders their content itself – it cannot be encrypted. By default it therefore holds only times and the phase, no titles (`MOBILE_PUSH_CONTENT=on` sends the title along).
 - **Older app versions** without the relay keep getting notifications through Expo's push service (`exp.host`), without text by default.
 - **Rotating the signing key:** `node --import tsx scripts/push-relay-key.mjs rotate` in the repository, or as an administrator `POST /api/admin/operations` with `{"action":"pushRelay.rotate"}`. The new key is published at once and signs after a little more than an hour; the old one stays listed for 7 days (`--grace-days` or `graceDays`). For a key that may have leaked, `--immediate` or `"immediate": true`: the new one signs at once, all old ones are removed. `{"action":"pushRelay.keys"}` lists the keys (ids and dates only).
-- **Your own relay:** set `PUSH_RELAY_URL` to its address; the apps pick it up at their next registration.
+- **Your own relay:** only together with your own app build – see [Running your own push relay](#running-your-own-push-relay).
 - **Checking it:** **Settings → Notifications → Send test notification** sends at once through the relay, Expo and Web Push to your own devices and shows the result per device – for example that the relay could not verify the instance (`/.well-known/flowplan-push` not reachable) or cannot be reached. Administrators also see the relay address, whether `/.well-known/flowplan-push` is enabled and the `APP_URL` in use. See [Test notification](/search-and-notifications#test-notification).
 
 **For an instance's privacy policy**, for example: "Push notifications to the Flowplan apps are delivered end-to-end encrypted through Flowplan's push service (push.flowplan.org) and the services of Apple (APNs) or Google (Firebase Cloud Messaging). These services receive a device token, the address of this instance, the time and the kind of the notification, but not its content." – extend it accordingly with `MOBILE_PUSH_CONTENT=on` or notifications through Expo.
+
+### Running your own push relay
+
+The relay is open source ([github.com/yannicschuller/flowplan-push](https://github.com/yannicschuller/flowplan-push)) and can be self-hosted. **The apps from the App Store and Google Play don't need it** – they only accept notifications through `push.flowplan.org`, because Apple and Google deliver to these apps only with Flowplan's keys. Your own relay makes sense if you build **your own app version** (own bundle ID, own Apple team) or want to reach instances in an internal network.
+
+1. **Start the relay** – as the Docker image `ghcr.io/yannicschuller/flowplan-push:latest` (or built from the repository), e.g. in Coolify at `https://push.example.com`, port `8080`, a volume on `/data`. Environment variables:
+
+   | Variable | Value |
+   | --- | --- |
+   | `RELAY_STORAGE_KEY` | `openssl rand -base64 32` – encrypts the stored device tokens |
+   | `APNS_KEY_ID`, `APNS_TEAM_ID`, `APNS_KEY` | your Apple team's APNs key (`.p8`): key ID, team ID and the file's contents (base64 also works) |
+   | `ALLOWED_BUNDLE_IDS` | your app's bundle ID, e.g. `com.example.notes` |
+   | `FCM_SERVICE_ACCOUNT` | optional, your Firebase project's service-account JSON for Android |
+   | `TRUST_PROXY` | `1` behind Coolify/Traefik |
+   | `ALLOW_PRIVATE_INSTANCES` | `true` if instances in an internal network (private addresses) should send notifications |
+
+   `https://push.example.com/healthz` answers `{"status":"ok"}`; the start-up log says whether APNs and FCM are set up.
+2. **Build the app** – with your bundle ID and Apple team, `PUSH_RELAY_URL=https://push.example.com` (the app's build variable) and, for Android, your `google-services.json`. The app only registers with the relay it was built for.
+3. **Configure the instance** – `PUSH_RELAY_URL=https://push.example.com`. `APP_URL` must be the instance's HTTPS address and `/.well-known/flowplan-push` reachable for the relay. An instance can use one relay only: pointed at yours, it no longer reaches the store apps through the relay.
+4. **Check** – with the [test notification](/search-and-notifications#test-notification).
+
+Operations, key rotation, blocking abusive instances (`node dist/src/cli.js block <origin>` in the container) and backups are described in the relay's README.
 
 ## Do not set
 

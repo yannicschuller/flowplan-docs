@@ -221,10 +221,32 @@ Mitteilungen an die Apps gehen über das Flowplan-Push-Relay (`push.flowplan.org
 - **Live-Aktivitäten** (iPhone) für Zeiterfassung und Fokus aktualisiert die Instanz ebenfalls über das Relay, wenn sich der Zustand ändert. Ihren Inhalt zeichnet iOS selbst – er lässt sich nicht verschlüsseln. Deshalb enthält er standardmäßig nur Zeiten und die Phase, keine Titel (`MOBILE_PUSH_CONTENT=on` schickt den Titel mit).
 - **Ältere App-Versionen** ohne Relay bekommen Mitteilungen weiter über den Push-Dienst von Expo (`exp.host`), standardmäßig ohne Text.
 - **Signaturschlüssel wechseln:** `node --import tsx scripts/push-relay-key.mjs rotate` im Repository bzw. als Administrator `POST /api/admin/operations` mit `{"action":"pushRelay.rotate"}`. Der neue Schlüssel wird sofort veröffentlicht und signiert nach gut einer Stunde; der alte bleibt 7 Tage gelistet (`--grace-days` bzw. `graceDays`). Bei einem womöglich bekannt gewordenen Schlüssel `--immediate` bzw. `"immediate": true`: der neue signiert sofort, alle alten verschwinden. `{"action":"pushRelay.keys"}` listet die Schlüssel (nur IDs und Daten).
-- **Eigenes Relay:** `PUSH_RELAY_URL` auf dessen Adresse setzen; die Apps übernehmen sie bei der nächsten Anmeldung.
+- **Eigenes Relay:** nur zusammen mit einer eigenen App-Version – siehe [Eigenes Push-Relay betreiben](#eigenes-push-relay-betreiben).
 - **Prüfen:** **Einstellungen → Benachrichtigungen → Testbenachrichtigung senden** schickt sofort über Relay, Expo und Web-Push an die eigenen Geräte und zeigt je Gerät das Ergebnis – etwa dass das Relay die Instanz nicht verifizieren konnte (`/.well-known/flowplan-push` nicht erreichbar) oder nicht erreichbar ist. Administratoren sehen dazu Relay-Adresse, ob `/.well-known/flowplan-push` aktiv ist, und die verwendete `APP_URL`. Siehe [Testbenachrichtigung](/search-and-notifications#testbenachrichtigung).
 
 **Für die Datenschutzerklärung** einer Instanz etwa: „Push-Mitteilungen an die Flowplan-Apps werden Ende-zu-Ende-verschlüsselt über den Push-Dienst von Flowplan (push.flowplan.org) und die Dienste von Apple (APNs) bzw. Google (Firebase Cloud Messaging) zugestellt. Diese Dienste erhalten ein Geräte-Token, die Adresse dieser Instanz, den Zeitpunkt und die Art der Mitteilung, nicht aber ihren Inhalt.“ – mit `MOBILE_PUSH_CONTENT=on` oder Mitteilungen über Expo entsprechend ergänzen.
+
+### Eigenes Push-Relay betreiben
+
+Das Relay ist Open Source ([github.com/yannicschuller/flowplan-push](https://github.com/yannicschuller/flowplan-push)) und lässt sich selbst betreiben. **Für die Apps aus App Store und Google Play brauchst du das nicht** – sie nehmen nur Mitteilungen über `push.flowplan.org` an, denn Apple und Google stellen an diese Apps nur mit Flowplans Schlüsseln zu. Ein eigenes Relay ist sinnvoll, wenn du **eine eigene App-Version** baust (eigene Bundle-ID, eigenes Apple-Team) oder Instanzen im internen Netz erreichen willst.
+
+1. **Relay starten** – als Docker-Image `ghcr.io/yannicschuller/flowplan-push:latest` (oder selbst aus dem Repository gebaut), z. B. in Coolify unter `https://push.example.com`, Port `8080`, ein Volume auf `/data`. Umgebungsvariablen:
+
+   | Variable | Wert |
+   | --- | --- |
+   | `RELAY_STORAGE_KEY` | `openssl rand -base64 32` – verschlüsselt die gespeicherten Geräte-Tokens |
+   | `APNS_KEY_ID`, `APNS_TEAM_ID`, `APNS_KEY` | APNs-Schlüssel (`.p8`) deines Apple-Teams: Key ID, Team ID und Inhalt der Datei (auch als Base64) |
+   | `ALLOWED_BUNDLE_IDS` | die Bundle-ID deiner App, z. B. `com.example.notes` |
+   | `FCM_SERVICE_ACCOUNT` | optional, Dienstkonto-JSON deines Firebase-Projekts für Android |
+   | `TRUST_PROXY` | `1` hinter Coolify/Traefik |
+   | `ALLOW_PRIVATE_INSTANCES` | `true`, wenn Instanzen im internen Netz (private Adressen) Mitteilungen schicken sollen |
+
+   `https://push.example.com/healthz` antwortet mit `{"status":"ok"}`; im Log steht beim Start, ob APNs und FCM eingerichtet sind.
+2. **App bauen** – mit deiner Bundle-ID und deinem Apple-Team sowie `PUSH_RELAY_URL=https://push.example.com` (Build-Variable der App) und für Android deiner `google-services.json`. Die App meldet sich nur bei dem Relay an, mit dem sie gebaut wurde.
+3. **Instanz einstellen** – `PUSH_RELAY_URL=https://push.example.com`. `APP_URL` muss die HTTPS-Adresse der Instanz sein und `/.well-known/flowplan-push` für das Relay erreichbar. Eine Instanz kann nur ein Relay nutzen: Zeigt sie auf dein Relay, bekommen die Store-Apps von ihr keine Mitteilungen mehr über das Relay.
+4. **Prüfen** – mit der [Testbenachrichtigung](/search-and-notifications#testbenachrichtigung).
+
+Betrieb, Schlüsselwechsel, Sperren missbräuchlicher Instanzen (`node dist/src/cli.js block <origin>` im Container) und Sicherungen beschreibt die README des Relays.
 
 ## Nicht setzen
 
