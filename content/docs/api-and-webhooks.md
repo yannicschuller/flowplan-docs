@@ -38,6 +38,30 @@ Tokens bekommen nie Administratorrechte und können keine weiteren Tokens anlege
 
 Um Claude, ChatGPT oder andere KI-Assistenten anzubinden, nutzt du den [MCP-Server](/mcp) mit einem solchen Token.
 
+## Idempotency-Key: Wiederholen ohne Doppelte
+
+Eine Anfrage kann ohne Antwort scheitern – die Verbindung bricht ab, ein Proxy läuft in sein Zeitlimit –, obwohl Flowplan sie schon ausgeführt hat. Damit ein Skript einfach noch einmal senden kann, nimmt jede ändernde Anfrage den Header `Idempotency-Key`: ein Schlüssel pro Vorgang (z. B. eine UUID v4, 8–128 Zeichen aus `A–Z a–z 0–9 _ -`), bei jeder Wiederholung dieses Vorgangs **unverändert** mitgeschickt.
+
+```bash
+KEY=$(uuidgen)
+curl -X POST https://flowplan.example.com/api/command \
+  -H "Authorization: Bearer fp_…" -H "Content-Type: application/json" \
+  -H "Idempotency-Key: $KEY" \
+  -d '{"action":"comment.create","pageId":"<Seiten-ID>","body":"Ausgerollt"}'
+# Dieselbe Anfrage mit demselben Schlüssel noch einmal: kein zweiter Kommentar.
+```
+
+- **Erste Anfrage:** wird ausgeführt; der Schlüssel wird mit der Antwort gespeichert. Bei `POST /api/command` geschieht das in derselben Transaktion wie die Änderung – beides oder keins.
+- **Gleicher Schlüssel, gleiche Anfrage** (Methode, Pfad und Inhalt): die gespeicherte Antwort mit demselben Status, gekennzeichnet mit `Idempotent-Replayed: true`. Nichts wird erneut ausgeführt.
+- **Gleicher Schlüssel, andere Anfrage:** `422` (`code: idempotency_key_reused`).
+- **Erste Anfrage läuft noch:** `409` mit `Retry-After` (`code: idempotency_in_progress`) – kurz warten und mit demselben Schlüssel erneut senden.
+- **Antworten mit Geheimnissen** (ein neues API-Token, eine Abo-Adresse, ein Zugangspasswort) und Antworten über 64 KB werden nicht gespeichert: Eine Wiederholung bekommt `409` (`code: idempotency_already_applied`) statt das Geheimnis ein zweites Mal.
+- Ein ungültiger Schlüssel ergibt `400` (`code: idempotency_key_invalid`). Eine gescheiterte Anfrage (4xx, 5xx) hinterlässt keinen Schlüssel – nach Behebung der Ursache geht sie mit demselben Schlüssel erneut.
+
+Schlüssel gehören dem, der sie sendet: der Person in der Web-App, dem API-Token oder der App-Installation (Widgets, Kurzbefehle, Teilen-Menü). Derselbe Schlüssel eines anderen Tokens oder einer anderen Person ist ein anderer Schlüssel. Schlüssel verfallen nach 24 Stunden. Anfragen ohne den Header funktionieren wie bisher.
+
+Den Header nehmen `POST /api/command`, Uploads (`/api/upload`), Importe, Webhooks, Zeitberichte, die Issue-Synchronisierung, `/api/clipper/save` der Browser-Erweiterung und die Aktionen der Mobil-Apps; das [OpenAPI-Dokument](#openapi-und-sdks) kennzeichnet diese Operationen (`x-idempotent`). Die Web-App, die Mobil-Apps (Widgets, Kurzbefehle, Teilen-Menü, Mitteilungs-Buttons, offline vorgemerkte Änderungen) und die erzeugten SDKs schicken bei jeder Änderung von sich aus einen Schlüssel und behalten ihn, wenn sie wiederholen – ein Doppelklick, ein Tippen bei schwachem Empfang oder ein Wiederverbinden führt eine Änderung nie zweimal aus.
+
 ## Webhooks
 
 Webhooks haben einen eigenen Abschnitt: **Einstellungen → Webhooks** (Gruppe „Verbindungen“, nur für Eigentümer). Eigentümer eines Arbeitsbereichs legen dort mit **Webhook anlegen** Webhooks an: Adresse, Ereignisse und optional eine einzelne Datenbank. Die Liste zeigt jeden Webhook mit Format, letzter Zustellung und Ereignissen. Jeder Webhook hat eine eigene Seite (`/#settings/webhooks/<id>`) mit den Karten **Ziel** (Format, Adresse, Datenbank, Zugangsdaten für Slack/Matrix), **Ereignisse** (ein Schalter je Ereignis), **Nachricht** (nur Chat-Formate), **Vorschau** und – bei bestehenden Webhooks – **Zustellung** mit **Testnachricht senden**; gespeichert wird mit **Änderungen speichern**, gelöscht in der **Gefahrenzone** mit **Webhook löschen …**. Der geheime Schlüssel erscheint nach dem Anlegen einmal über der Liste.

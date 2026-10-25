@@ -38,6 +38,30 @@ Tokens never get administrator rights and cannot create further tokens. You can 
 
 To connect Claude, ChatGPT or other AI assistants, use the [MCP server](/mcp) with a token like this.
 
+## Idempotency-Key: retries without doubles
+
+A request can fail without an answer – the connection drops, a proxy times out – although Flowplan already applied it. So that a script can simply try again, every changing request takes the header `Idempotency-Key`: one key per logical action (e.g. a UUID v4, 8–128 characters of `A–Z a–z 0–9 _ -`), sent again **unchanged** with every retry of that action.
+
+```bash
+KEY=$(uuidgen)
+curl -X POST https://flowplan.example.com/api/command \
+  -H "Authorization: Bearer fp_…" -H "Content-Type: application/json" \
+  -H "Idempotency-Key: $KEY" \
+  -d '{"action":"comment.create","pageId":"<page ID>","body":"Deployed"}'
+# The same request with the same key again: no second comment.
+```
+
+- **First request:** applied; the key is stored with the answer. For `POST /api/command` this happens in the same transaction as the change – either both or neither.
+- **Same key, same request** (method, path and body): the stored answer with the same status, marked with `Idempotent-Replayed: true`. Nothing is applied again.
+- **Same key, different request:** `422` (`code: idempotency_key_reused`).
+- **First request still running:** `409` with `Retry-After` (`code: idempotency_in_progress`) – wait and send again with the same key.
+- **Answers with secrets** (a new API token, a feed address, an access password) and answers larger than 64 KB are not stored: a repeat gets `409` (`code: idempotency_already_applied`) instead of the secret a second time.
+- An invalid key gives `400` (`code: idempotency_key_invalid`). A failed request (4xx, 5xx) keeps no key – after fixing the cause it can be sent again with the same key.
+
+Keys belong to whoever sends them: to the person for the web app, to the API token, or to the app installation (widgets, Shortcuts, share sheet). The same key of another token or person is a different key. Keys expire after 24 hours. Requests without the header work as before.
+
+The header is accepted by `POST /api/command`, uploads (`/api/upload`), imports, webhooks, time reports, issue sync, the browser extension's `/api/clipper/save` and the actions of the mobile apps; the [OpenAPI document](#openapi-and-sdks) marks these operations (`x-idempotent`). The web app, the mobile apps (widgets, Shortcuts, share sheet, notification buttons, changes queued offline) and the generated SDKs send a key with every change on their own and keep it when they retry – a double click, a tap with a weak signal or a reconnect never applies a change twice.
+
 ## Webhooks
 
 Webhooks have their own section: **Settings → Webhooks** (group “Connections”, owners only). Owners of a workspace create webhooks there with **Create webhook**: an address, events and optionally a single database. The list shows each webhook with its format, last delivery and events. Every webhook has a page of its own (`/#settings/webhooks/<id>`) with the cards **Target** (format, address, database, credentials for Slack/Matrix), **Events** (one switch per event), **Message** (chat formats only), **Preview** and – for an existing webhook – **Delivery** with **Send test message**; **Save changes** saves it, and it is deleted in the **Danger zone** with **Delete webhook …**. The secret key appears once above the list after creating.
