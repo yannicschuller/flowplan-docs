@@ -6,7 +6,7 @@ Whoever administers the instance sees **Administration** in the sidebar: the ins
 
 The administration opens with an overview. At the top is the state of the instance: problems and notices (linked to the area concerned), four live figures – people active now, requests per minute, error rate of the last hour, sign-ins today – and the requests of the last 24 hours as a chart. The figures refresh every 15 seconds while the page is visible (“Live”). Below, one tile per area with its state and, where it fits, a figure with its trend: active people (Users), the fullest quota (Workspaces), storage of the last 30 days, AI tokens today, changes in the activity log, requests or errors (Monitoring). Errors are marked red, notices yellow. On phones the tiles are a list with a small trend on the right.
 
-The sections are grouped into **People** (Users, Sign-in & SSO, Workspaces), **Data** (Storage & backup, Limits & retention, Markdown & Git export), **Services** (E-mail, AI, Extensions & domains), **Security** (Encryption, Activity log) and **Operations** (Monitoring, Maintenance & notices, Instance). Every section starts with a **status line** – e.g. “Scheduled backup off” with a link to the switch, or “S3 off” with a link to the guide. Every setting has exactly one home. Switches and choices save at once, with “Saving …” or “Saved” next to them; single text fields show **Save** once you have changed them. Every section has its own address, e.g. `/#admin/storage` or `/#admin/monitoring`.
+The sections are grouped into **People** (Users, Sign-in & SSO, Workspaces), **Data** (Storage & backup, Limits & retention, Markdown & Git export), **Services** (E-mail, Push notifications, AI, Extensions & domains), **Security** (Encryption, Activity log) and **Operations** (Monitoring, Maintenance & notices, Instance). Every section starts with a **status line** – e.g. “Scheduled backup off” with a link to the switch, or “S3 off” with a link to the guide. Every setting has exactly one home. Switches and choices save at once, with “Saving …” or “Saved” next to them; single text fields show **Save** once you have changed them. Every section has its own address, e.g. `/#admin/storage` or `/#admin/monitoring`.
 
 ## Users
 
@@ -67,6 +67,18 @@ Choose pages and databases for the Markdown export, switch on the Git export of 
 ## E-mail
 
 **Sending e-mail** shows the configured server, the sender, the queue and the last error; without SMTP a note with the variables ([E-mail (SMTP)](/configuration#e-mail-smtp)). **Test e-mail** checks the connection right away.
+
+## Push notifications
+
+Whether notifications can reach the apps and through which service (`/#admin/push`). The overview's tile shows the relay with a green, yellow or red badge – e.g. “Reachable (85 ms)” – and the deliveries of the last 24 hours; the same tile is under **Monitoring → Health**.
+
+- **Push relay**: the address in use – the official `https://push.flowplan.org` or your own from `PUSH_RELAY_URL` (credentials in the address are never shown) –, whether it is on and otherwise exactly why not (`PUSH_RELAY=off`, `APP_URL` not an HTTPS address, `PUSH_RELAY_URL` invalid), the `APP_URL` the relay knows the instance by, and whether `/.well-known/flowplan-push` is published.
+- **Reachability**: the instance requests `GET <relay>/healthz` – at most 5 seconds, HTTPS only, following no redirects – and shows “Reachable” with the response time (and the relay's version if it names one) or the reason: timeout, connection refused, DNS, TLS, redirect, HTTP status. It also fetches its own `/.well-known/flowplan-push` at `APP_URL`, as the relay does, and checks that the current signing key is listed. If that fails from inside, it is only a warning: behind NAT or a proxy that does not resolve its own address internally this is normal – what counts is that the relay reaches it from outside ([test notification](/search-and-notifications#test-notification)). A result is kept for a minute; **Check now** checks again at once.
+- **Signing key**: key ids with their status (signing, waiting, retiring) and dates. **Rotate key …** asks first and rotates as described in [Push relay and end-to-end encryption](/configuration#push-relay-and-end-to-end-encryption), optionally immediately.
+- **Deliveries of the last 24 hours** per channel (relay, Expo, Web Push) and result (delivered, gone, forbidden, invalid, rate limited, error), the last delivery through the relay, the last error as a code (e.g. `signature HTTP 401` or `unreachable`), the queue and the registered devices per channel. Counted only while the usage statistics are on (see [Monitoring](#monitoring)).
+- **Expo and Web Push**: `MOBILE_PUSH` on or off, what `MOBILE_PUSH_CONTENT` sends along, where the VAPID keys come from and whether `WEB_PUSH_SUBJECT` is set.
+
+The answers never contain tokens, keys or push addresses. `/api/admin/push` is for signed-in administrators only, never for API tokens.
 
 ## AI
 

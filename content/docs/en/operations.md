@@ -31,7 +31,7 @@ Personal API tokens do not unlock the details.
 
 **Administration → Monitoring** shows the instance live – refreshed every 15 seconds, paused while the tab is in the background:
 
-- **Health**: database, file storage (with disk usage), S3 mirror, backup, e-mail, AI provider (reachable and response time, checked at most every five minutes), background workers and update. Each tile leads to the section in charge.
+- **Health**: database, file storage (with disk usage), S3 mirror, backup, e-mail, AI provider (reachable and response time, checked at most every five minutes), push relay (reachable, checked at most every minute, see [Push notifications](/administration#push-notifications)), background workers and update. Each tile leads to the section in charge.
 - **Key figures**: active now, requests per minute (with error rate and p95 response time), sign-ins today, storage with its change over 7 days.
 - **Charts**: **Requests & errors** (5xx) – 1 hour, 24 hours or 7 days –, **Active people** per hour (7 days), **Sign-ins** successful and failed per day (14 days), **Refused requests**, **Storage** by kind and the largest workspaces, **Deliveries** (webhooks, push, e-mail) per day and **AI usage** (tokens per day and per feature). Every chart shows its values on hover, tap or with the arrow keys and has **As a table**.
 - **Queues**: what is waiting to be processed right now – search index, mail queue, push delivery, AI fields and AI search index, S3 upload, webhooks retrying.
