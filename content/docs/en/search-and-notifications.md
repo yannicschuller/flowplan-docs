@@ -63,7 +63,7 @@ Under **Settings → Notifications**:
 
 1. **Enable push** – the browser asks for permission. This applies per device.
 2. In the card **Notification kinds**, set the switches **Inbox**, **Push** and **E-mail** per kind – every change is saved at once. On a phone every kind is a card of its own with three labelled switches.
-3. Check it with a test notification.
+3. Use **Send test notification** to check that everything arrives (see [below](#test-notification)).
 
 Push notifications open the page concerned. No document content appears on the lock screen.
 
@@ -73,5 +73,19 @@ Push notifications open the page concerned. No document content appears on the l
 Signing out, the end of a session or a locked account end the push subscription; enable it again after the next sign-in if needed.
 
 In the [apps for iPhone, iPad and Android](/offline-and-apps#apps-for-iphone-ipad-and-android), notifications come through the app: it asks for permission after the first sign-in, and the number of unread ones shows on the app icon. **Notification kinds** apply there as well. These notifications are end-to-end encrypted and therefore show their text – the relay, Apple and Google cannot read it, see [Push relay](/configuration#push-relay-and-end-to-end-encryption).
+
+### Test notification
+
+**Settings → Notifications → Send test notification** immediately sends a notification "Test notification – everything works." to all your push targets: every browser with push enabled and every [app](/offline-and-apps#apps-for-iphone-ipad-and-android) with notifications allowed. It takes the same way as every notification – Web Push, the [push relay](/configuration#push-relay-and-end-to-end-encryption) or Expo – but leaves nothing in the inbox. Tapping it opens these settings.
+
+After at most ten seconds, each device is listed with the channel it went through (**Relay · end-to-end encrypted**, **Expo** or **Web Push**) and what happened:
+
+- **Delivered** – handed to Apple, Google or the browser's push service. If nothing shows up anyway, check the device: are notifications allowed for Flowplan? An active Focus is mentioned.
+- **Registration expired** – open the app once, it registers again. For a browser whose subscription expired, enable push there again.
+- **Notifications turned off** – allow them in the app or in the device's system settings.
+- **Push relay not set up, unreachable or instance not verified** – this concerns the instance, not your device; the message gives the reason (e.g. `PUSH_RELAY=off`, `APP_URL` without HTTPS, `/.well-known/flowplan-push` not reachable). See [Configuration](/configuration#push-relay-and-end-to-end-encryption).
+- **No devices registered** – enable push above or open the app and allow notifications.
+
+The test only goes to your own devices, regardless of **Notification kinds** and Focus filters – the device's own permission and Focus still apply. At most five tests in ten minutes. The result never shows tokens or keys; administrators also see a diagnostics line with the relay address, whether `/.well-known/flowplan-push` is enabled and the instance's address (`APP_URL`).
 
 The [desktop app](/offline-and-apps#notifications-in-the-desktop-app) has no Web Push. It asks for new notifications itself and shows them as system notifications, with the unread count on the app icon. There, **Settings → Notifications** shows a switch for the app's notifications instead of **Enable push**; **Do Not Disturb** and **All Profiles** are in the app's **Notifications** menu. **Notification kinds** apply here too: only kinds with push pop up.

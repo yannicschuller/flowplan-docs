@@ -63,7 +63,7 @@ Unter **Einstellungen → Benachrichtigungen**:
 
 1. **Push aktivieren** – der Browser fragt nach der Erlaubnis. Das gilt pro Gerät.
 2. In der Karte **Benachrichtigungsarten** je Art die Schalter **Posteingang**, **Push** und **E-Mail** setzen – jede Änderung wird sofort gespeichert. Auf dem Handy steht jede Art als eigene Karte mit drei beschrifteten Schaltern.
-3. Mit einer Testbenachrichtigung prüfen.
+3. Mit **Testbenachrichtigung senden** prüfen, ob alles ankommt (siehe [unten](#testbenachrichtigung)).
 
 Push-Nachrichten öffnen die betroffene Seite. Auf dem Sperrbildschirm erscheinen keine Dokumentinhalte.
 
@@ -73,5 +73,19 @@ Push-Nachrichten öffnen die betroffene Seite. Auf dem Sperrbildschirm erscheine
 Abmelden, Sitzungsende oder eine Kontosperre beenden das Push-Abonnement; nach dem nächsten Anmelden bei Bedarf wieder aktivieren.
 
 In den [Apps für iPhone, iPad und Android](/offline-and-apps#apps-fuer-iphone-ipad-und-android) kommen Mitteilungen über die App: Sie fragt nach dem ersten Anmelden nach der Erlaubnis, die Zahl der ungelesenen steht am App-Symbol. **Benachrichtigungsarten** gelten dort genauso. Diese Mitteilungen sind Ende-zu-Ende-verschlüsselt und zeigen deshalb ihren Text – Relay, Apple und Google lesen ihn nicht mit, siehe [Push-Relay](/configuration#push-relay-und-ende-zu-ende-verschluesselung).
+
+### Testbenachrichtigung
+
+**Einstellungen → Benachrichtigungen → Testbenachrichtigung senden** schickt sofort eine Mitteilung „Testbenachrichtigung – alles funktioniert.“ an alle deine Push-Ziele: jeden Browser mit aktiviertem Push und jede [App](/offline-and-apps#apps-fuer-iphone-ipad-und-android) mit erlaubten Mitteilungen. Sie geht denselben Weg wie jede Benachrichtigung – Web-Push, [Push-Relay](/configuration#push-relay-und-ende-zu-ende-verschluesselung) oder Expo –, legt aber nichts im Posteingang ab. Ein Tipp darauf öffnet diese Einstellungen.
+
+Nach höchstens zehn Sekunden steht darunter je Gerät, über welchen Kanal es ging (**Relay · Ende-zu-Ende-verschlüsselt**, **Expo** oder **Web Push**) und was passiert ist:
+
+- **Zugestellt** – an Apple, Google oder den Push-Dienst des Browsers übergeben. Kommt trotzdem nichts an, liegt es am Gerät: Mitteilungen für Flowplan erlaubt? Ist ein Fokus aktiv, steht das dabei.
+- **Registrierung abgelaufen** – die App einmal öffnen, sie meldet sich neu an. Beim abgelaufenen Abonnement eines Browsers dort Push erneut aktivieren.
+- **Benachrichtigungen ausgeschaltet** – in der App bzw. den Systemeinstellungen des Geräts erlauben.
+- **Push-Relay nicht eingerichtet, nicht erreichbar oder Instanz nicht verifiziert** – das betrifft die Instanz, nicht dein Gerät; die Meldung nennt den Grund (z. B. `PUSH_RELAY=off`, `APP_URL` ohne HTTPS, `/.well-known/flowplan-push` nicht erreichbar). Siehe [Konfiguration](/configuration#push-relay-und-ende-zu-ende-verschluesselung).
+- **Keine Geräte registriert** – Push oben aktivieren oder die App öffnen und Mitteilungen erlauben.
+
+Der Test geht nur an deine eigenen Geräte, ungeachtet der **Benachrichtigungsarten** und eines Fokus-Filters – Erlaubnis und Fokus des Geräts selbst gelten weiter. Höchstens fünf Tests in zehn Minuten. Tokens oder Schlüssel zeigt das Ergebnis nie; Administratoren sehen zusätzlich eine Diagnosezeile mit Relay-Adresse, ob `/.well-known/flowplan-push` aktiv ist, und der Adresse der Instanz (`APP_URL`).
 
 In der [Desktop-App](/offline-and-apps#mitteilungen-in-der-desktop-app) gibt es kein Web-Push. Die App fragt selbst nach neuen Benachrichtigungen und zeigt sie als Mitteilungen des Systems, die Zahl der ungelesenen steht am App-Symbol. **Einstellungen → Benachrichtigungen** zeigt dort statt **Push aktivieren** einen Schalter für die Mitteilungen der App; **Nicht stören** und **Alle Profile** stehen im Menü **Mitteilungen** der App. **Benachrichtigungsarten** gelten auch hier: Mitteilungen gibt es nur für Arten mit Push.
