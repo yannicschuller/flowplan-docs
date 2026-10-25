@@ -193,6 +193,31 @@ export function ownSite(href: string) {
   }
 }
 
+// Width and height of a WebP or PNG in public/ (screenshots), so the page
+// keeps its place for an image while it loads; undefined if unreadable.
+const imageSizes = new Map<string, { width: number; height: number } | undefined>();
+export function imageSize(src: string) {
+  if (imageSizes.has(src)) return imageSizes.get(src);
+  let size: { width: number; height: number } | undefined;
+  try {
+    if (!/^\/[\w/.-]+$/.test(src) || src.includes("..")) throw new Error("not a local image");
+    const b = readFileSync(join(process.cwd(), "public", src));
+    if (b.toString("ascii", 0, 4) === "RIFF" && b.toString("ascii", 8, 12) === "WEBP") {
+      const kind = b.toString("ascii", 12, 16);
+      if (kind === "VP8X") size = { width: 1 + b.readUIntLE(24, 3), height: 1 + b.readUIntLE(27, 3) };
+      else if (kind === "VP8 ") size = { width: b.readUInt16LE(26) & 0x3fff, height: b.readUInt16LE(28) & 0x3fff };
+      else if (kind === "VP8L") {
+        const bits = b.readUInt32LE(21);
+        size = { width: 1 + (bits & 0x3fff), height: 1 + ((bits >> 14) & 0x3fff) };
+      }
+    } else if (b.readUInt32BE(0) === 0x89504e47) size = { width: b.readUInt32BE(16), height: b.readUInt32BE(20) };
+  } catch {
+    size = undefined;
+  }
+  imageSizes.set(src, size);
+  return size;
+}
+
 function render(markdown: string, locale: Locale) {
   const toc: TocEntry[] = [];
   const used = new Set<string>();
@@ -221,6 +246,21 @@ function render(markdown: string, locale: Locale) {
         // Scrollable regions take keyboard focus, so long lines can be
         // scrolled without a mouse (WCAG 2.1.1, axe scrollable-region-focusable).
         return `<div class="code" data-lang="${escape(language)}"><pre tabindex="0"><code>${escape(text)}</code></pre></div>\n`;
+      },
+      // Screenshots: ![what it shows](/screenshots/name.webp "caption"). A
+      // paragraph of just an image becomes a figure with the caption below.
+      image({ href, title, text }: Tokens.Image) {
+        const size = imageSize(href);
+        return `<img src="${escape(href)}" alt="${escape(text)}"${size ? ` width="${size.width}" height="${size.height}"` : ""} loading="lazy" decoding="async">`;
+      },
+      paragraph({ tokens }: Tokens.Paragraph) {
+        const only = tokens.filter((t) => !(t.type === "text" && !t.raw.trim()));
+        if (only.length === 1 && only[0].type === "image") {
+          const image = only[0] as Tokens.Image;
+          const caption = image.title ? `<figcaption>${escape(image.title)}</figcaption>` : "";
+          return `<figure class="shot">${this.parser.parseInline([image])}${caption}</figure>\n`;
+        }
+        return `<p>${this.parser.parseInline(tokens)}</p>\n`;
       },
       blockquote({ tokens }: Tokens.Blockquote) {
         let body = this.parser.parse(tokens);

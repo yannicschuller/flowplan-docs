@@ -167,6 +167,8 @@ List items and tasks stay what they are when moved: outside their list they form
 
 If you may edit the page a PDF belongs to, the PDF viewer shows **Annotate** (not in [encrypted spaces](/encrypted-spaces) and on locked pages). A toolbar appears below it: **Pen** (with the Apple Pencil or another tablet pen, the line width follows the pressure), **Highlighter** (translucent, stays under the text and the ink), **Eraser** (**Whole strokes** or **Partial** – then only what is under the eraser goes), **Lasso**, **Text** and **Laser pointer** (points at something without staying). Plus colours, three widths, undo and redo (<kbd>⌘</kbd> <kbd>Z</kbd>, <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Z</kbd>).
 
+![A research paper in the PDF viewer while annotating: highlighted sentences, a circled number in a table and handwritten notes](/screenshots/pdf-annotate.webp "A PDF annotated with highlighter and pen – saved as a version.")
+
 - **Favourite pens**: the three pens next to the tools remember colour and width; change them while one is chosen and the favourite changes with it. They apply on this device.
 - **Shapes**: hold the pen still for a moment at the end of a stroke – a drawn line becomes straight, a rectangle, circle, triangle or diamond becomes the clean shape. Switch this off in the **Pen settings** (gear).
 - **Lasso**: draw around strokes and text to move them, resize them with the handle at the bottom right, recolour, copy (<kbd>⌘</kbd> <kbd>C</kbd>, paste with <kbd>⌘</kbd> <kbd>V</kbd> – also on another page), duplicate or delete them.

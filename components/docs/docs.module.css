@@ -529,6 +529,24 @@
 .prose :global(.callout) p:last-child {
   margin-bottom: 0;
 }
+/* Screenshots of the app (public/screenshots), with a caption. */
+.prose :global(.shot) {
+  margin: 24px 0 28px;
+}
+.prose img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface, transparent);
+}
+.prose :global(.shot) figcaption {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--secondary);
+}
 .prose hr {
   border: 0;
   border-top: 1px solid var(--border);

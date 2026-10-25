@@ -115,3 +115,20 @@ test("self-hosting is documented for everyone, in both languages", () => {
   for (const locale of LOCALES)
     assert.match(loadDoc("installation", locale)!.html, /ghcr\.io\/yannicschuller\/flowplan/);
 });
+
+for (const locale of LOCALES)
+  test(`screenshots exist, say what they show and keep their place while loading (${locale})`, () => {
+    let count = 0;
+    for (const slug of docSlugs)
+      for (const [tag] of loadDoc(slug, locale)!.html.matchAll(/<img [^>]*>/g)) {
+        count++;
+        const src = tag.match(/src="([^"]+)"/)![1];
+        assert.ok(existsSync(join(process.cwd(), "public", src)), `${slug}: ${src} exists`);
+        assert.match(tag, /alt="[^"]{20,}"/, `${slug}: ${src} has a description`);
+        assert.match(tag, /width="\d+" height="\d+"/, `${slug}: ${src} has its size`);
+        assert.match(tag, /loading="lazy"/);
+      }
+    assert.ok(count >= 4, `${count} screenshots`);
+    const notebook = loadDoc("notebooks", locale)!.html;
+    assert.match(notebook, /<figure class="shot"><img src="\/screenshots\/notebook\.webp"[^>]*><figcaption>[^<]+<\/figcaption><\/figure>/);
+  });

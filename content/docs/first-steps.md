@@ -41,6 +41,8 @@ Kurze Animationen zeigen, was sich gerade bewegt hat: Karten und Zeilen gleiten 
 
 Die Startseite gehört dir: Mit **Anpassen** oben rechts (oder „Startseite anpassen“ in der Schnellsuche) ordnest du sie aus Widgets so an, wie du arbeitest. Auf dem Smartphone steht alles in einer Spalte, auf dem Tablet in zwei, auf großen Bildschirmen in drei oder vier – in der App für iPhone, iPad und Android und in der Desktop-App siehst du dieselbe Startseite.
 
+![Die Startseite beim Anpassen: Leiste mit Widget, Darstellung, Abbrechen und Fertig, ein Kopfbereich mit Verlauf und Widgets mit Griff, Pfeilen, Größe, Einstellungen und Entfernen](/screenshots/home-customize.webp "Die Startseite beim Anpassen: Begrüßung, Meine Aufgaben, Notizzettel, Fokus & Zeit, Termine und Journal heute.")
+
 Im Bearbeitungsmodus:
 
 - **Widget** öffnet die Auswahl: Begrüßung, Zuletzt bearbeitet oder angesehen, Favoriten, Seiten des Arbeitsbereichs, Meine Aufgaben, Posteingang, Journal heute, Termine, Datenbankansicht, angeheftete Seite, Schnell erfassen, Fokus & Zeit, Gewohnheiten, Zähler, Notizzettel, Aktivität, Diese Woche, Links und – für die Administration – der Instanz-Status.

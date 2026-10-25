@@ -167,6 +167,8 @@ Listenpunkte und Aufgaben bleiben beim Verschieben, was sie sind: Außerhalb ihr
 
 Wer die Seite bearbeiten darf, zu der ein PDF gehört, findet im PDF-Viewer **Anmerken** (nicht in [verschlüsselten Bereichen](/encrypted-spaces) und auf gesperrten Seiten). Darunter erscheint eine Werkzeugleiste: **Stift** (mit dem Apple Pencil oder einem anderen Tablet-Stift folgt die Strichstärke dem Druck), **Textmarker** (durchscheinend, liegt unter der Schrift und der Tinte), **Radierer** (**Ganze Striche** oder **Teilweise** – dann verschwindet nur, was unter dem Radierer liegt), **Lasso**, **Text** und **Laserpointer** (zeigt etwas, ohne zu bleiben). Dazu Farben, drei Breiten, Rückgängig und Wiederholen (<kbd>⌘</kbd> <kbd>Z</kbd>, <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Z</kbd>).
 
+![Ein Fachartikel im PDF-Viewer beim Anmerken: markierte Sätze, eine eingekreiste Zahl in einer Tabelle und handschriftliche Notizen](/screenshots/pdf-annotate.webp "Ein PDF mit Textmarker und Stift angemerkt – gespeichert als Version.")
+
 - **Lieblingsstifte**: Die drei Stifte neben den Werkzeugen merken sich Farbe und Breite; änderst du sie, während einer gewählt ist, ändert sich der Lieblingsstift mit. Sie gelten auf diesem Gerät.
 - **Formen**: Halte den Stift am Ende eines Strichs kurz still – aus einer gezeichneten Linie wird eine gerade, aus einem Rechteck, Kreis, Dreieck oder einer Raute die saubere Form. Abschalten lässt sich das in den **Stifteinstellungen** (Zahnrad).
 - **Lasso**: Umkreise Striche und Text, um sie zu verschieben, am Griff unten rechts zu vergrößern oder zu verkleinern, umzufärben, zu kopieren (<kbd>⌘</kbd> <kbd>C</kbd>, Einfügen mit <kbd>⌘</kbd> <kbd>V</kbd> – auch auf einer anderen Seite), zu duplizieren oder zu löschen.

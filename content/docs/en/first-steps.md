@@ -41,6 +41,8 @@ Short animations show what just moved: cards and rows glide into their new place
 
 The home page is yours: **Customize** at the top right (or “Customize home page” in quick search) lets you arrange it from widgets the way you work. On phones everything sits in one column, on tablets in two, on large screens in three or four – the iPhone, iPad and Android apps and the desktop app show the same home page.
 
+![The home page while customizing: a bar with Widget, Appearance, Cancel and Done, a header with a gradient and widgets with handle, arrows, size, settings and remove](/screenshots/home-customize.webp "The home page while customizing: greeting, my tasks, scratchpad, focus & time, agenda and journal today.")
+
 While customizing:
 
 - **Widget** opens the gallery: greeting, recently edited or viewed, favourites, the workspace's pages, my tasks, inbox, journal today, agenda, database view, pinned page, quick capture, focus & time, habits, counter, scratchpad, activity, this week, links and – for administrators – the instance status.

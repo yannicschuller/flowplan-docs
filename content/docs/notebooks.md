@@ -2,6 +2,8 @@
 
 Ein **Notizbuch** ist eine Seite aus Blättern zum Beschreiben – mit dem Apple Pencil, einem anderen Tablet-Stift, der Maus oder dem Finger, wie in einem Papierheft. Die Blätter stehen untereinander, du scrollst durch sie hindurch. Jedes Blatt hat sein Papier (liniert, kariert, gepunktet, Cornell, Notenlinien …) oder eine Seite aus einem PDF als Hintergrund. Dazu gibt es **Handschrift in Dokumenten**: einen Zeichenblock mitten im Text.
 
+![Ein Notizbuch: links die Seitenübersicht mit zwei Blättern, rechts ein liniertes Blatt mit handschriftlichen Vorlesungsnotizen, einer eingerahmten Formel, Markierungen und einer Skizze](/screenshots/notebook.webp "Ein Notizbuch: liniertes Papier mit Stift und Textmarker; um die Formel ist ein Rechteck eingerastet.")
+
 ## Notizbuch anlegen
 
 **Neue Seite** → **Notizbuch** (oder in der Befehlspalette **Neues Notizbuch**). Ein neues Notizbuch beginnt mit einem Blatt in liniertem A4-Papier.
@@ -63,6 +65,8 @@ Das Seitenleisten-Symbol links in der Leiste zeigt alle Blätter als Vorschau; e
 ## Handschrift in Dokumenten
 
 In einem Dokument `/zeichnen` tippen (auch `/draw`, `/dessin`, `/Handschrift` oder `/sketch`): Es entsteht ein **Zeichenblock** über die ganze Breite. Mit dem Stift schreibst du sofort darauf; mit Maus oder Finger erst nach einem Tipp in den Block (oder auf **Zeichnen**) – so blättert ein Finger weiter durchs Dokument. Dann erscheint die Werkzeugleiste mit dem **Papier** des Blocks (**Leer**, **Liniert**, **Kariert**) und **Fertig**. Am unteren Rand ziehst du die **Höhe** größer oder kleiner (oder mit den Pfeiltasten auf dem Griff).
+
+![Ein Zeichenblock auf kariertem Papier in einem Dokument: drei skizzierte App-Bildschirme mit Pfeilen und eine rote Notiz, darüber die Werkzeugleiste](/screenshots/draw-block.webp "Ein Zeichenblock mitten im Dokument, mit Papier „Kariert“ und der Werkzeugleiste.")
 
 Die Handschrift gehört zum Block und wird beim Zeichnen gespeichert. Für gemeinsames Bearbeiten heißt das: Zeichnen mehrere Personen zugleich im selben Block, werden ihre Striche zusammengeführt statt überschrieben; Text drumherum bearbeitet ihr wie immer gleichzeitig. Kopierte oder duplizierte Blöcke (auch in ein anderes Dokument) nehmen ihre Zeichnung mit und sind danach unabhängig. Rechte, Sperren und Papierkorb gelten wie für das Dokument; auf veröffentlichten Seiten, in geteilten Links und in den Exporten erscheint der Block als Bild.
 

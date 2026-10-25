@@ -2,6 +2,8 @@
 
 A **notebook** is a page of sheets to write on – with the Apple Pencil, another tablet pen, a mouse or a finger, like a paper notebook. The sheets sit one below the other and you scroll through them. Each sheet has its paper (lined, grid, dotted, Cornell, music staff …) or a page of a PDF as its background. There is also **handwriting in documents**: a drawing block in the middle of the text.
 
+![A notebook: the page overview with two sheets on the left, a sheet of lined paper with handwritten lecture notes, a boxed formula, highlights and a sketch on the right](/screenshots/notebook.webp "A notebook: lined paper with pen and highlighter; a rectangle has snapped around the formula.")
+
 ## Creating a notebook
 
 **New page** → **Notebook** (or **New notebook** in the command palette). A new notebook starts with one sheet of lined A4 paper.
@@ -63,6 +65,8 @@ The sidebar icon on the left of the toolbar shows all sheets as previews; a tap 
 ## Handwriting in documents
 
 Type `/draw` in a document (also `/zeichnen`, `/dessin`, `/handwriting` or `/sketch`): a **drawing block** across the full width appears. With a pen you write on it right away; with a mouse or finger after a tap into the block (or on **Draw**) – so a finger keeps scrolling the document. Then the toolbar appears with the block's **paper** (**Blank**, **Lined**, **Grid**) and **Done**. Drag the bottom edge to change the **height** (or use the arrow keys on the handle).
+
+![A drawing block on grid paper in a document: three sketched app screens with arrows and a red note, the toolbar above it](/screenshots/draw-block.webp "A drawing block in the middle of a document, with Grid paper and the toolbar.")
 
 The handwriting belongs to the block and is saved as you draw. For working together this means: when several people draw in the same block at once, their strokes are merged instead of overwritten; the text around it you edit together as always. Copied or duplicated blocks (also into another document) take their drawing along and are independent afterwards. Permissions, locking and the trash work as for the document; on published pages, in share links and in exports the block shows as a picture.
 
