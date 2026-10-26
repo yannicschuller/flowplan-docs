@@ -18,7 +18,7 @@ Alle Umgebungsvariablen auf einen Blick. Viele Werte lassen sich zusätzlich in 
 | `OIDC_CLIENT_SECRET` | – | Client-Secret. Nie ins Image oder ins Git. |
 | `SESSION_HOURS` | `8` | Dauer einer Sitzung in Stunden (1–24). Ohne `SESSION_REMEMBER` gilt das für alle Sitzungen, auch die der Apps. |
 | `SESSION_REMEMBER` | aus | `true` bietet beim Anmelden **Angemeldet bleiben** an – siehe [Anmeldung](/sign-in#angemeldet-bleiben). Empfohlen, wenn die Desktop- oder Handy-Apps und ihre Widgets genutzt werden. |
-| `SESSION_IDLE_HOURS` | `168` | Mit „angemeldet bleiben“: Sitzung endet so viele Stunden nach der letzten Nutzung. |
+| `SESSION_IDLE_HOURS` | `168` | Mit „angemeldet bleiben“: Sitzung endet so viele Stunden nach der letzten Nutzung (1–2160, höchstens `SESSION_MAX_DAYS`). |
 | `SESSION_MAX_DAYS` | `30` | Mit „angemeldet bleiben“: spätestens nach so vielen Tagen neu anmelden (1–365) – mit SSO genauso wie mit Passwort und Passkey. |
 | `SESSION_GROUPS_HOURS` | *leer* | Nur wenn gesetzt: SSO-Sitzungen mit „angemeldet bleiben“ enden schon nach so vielen Stunden, damit Gruppenänderungen beim Anbieter mit der neuen Anmeldung wirken. Ohne die Variable wirken sie über SCIM, den LDAP-Abgleich oder die nächste Anmeldung. |
 | `LDAP_URL` | *leer* | Anmeldung mit einem LDAP-Verzeichnis (`ldap://` oder `ldaps://`) – siehe [Anmeldung mit LDAP](/sign-in#anmeldung-mit-ldap). |
@@ -237,11 +237,12 @@ Das Relay ist Open Source ([github.com/yannicschuller/flowplan-push](https://git
    | Variable | Wert |
    | --- | --- |
    | `RELAY_STORAGE_KEY` | `openssl rand -base64 32` – verschlüsselt die gespeicherten Geräte-Tokens |
+   | `RELAY_PUBLIC_URL` | die öffentliche Adresse des Relays ohne Pfad, z. B. `https://push.example.com` (sonst gilt `https://push.flowplan.org`) |
    | `APNS_KEY_ID`, `APNS_TEAM_ID`, `APNS_KEY` | APNs-Schlüssel (`.p8`) deines Apple-Teams: Key ID, Team ID und Inhalt der Datei (auch als Base64) |
    | `ALLOWED_BUNDLE_IDS` | die Bundle-ID deiner App, z. B. `com.example.notes` |
    | `FCM_SERVICE_ACCOUNT` | optional, Dienstkonto-JSON deines Firebase-Projekts für Android |
    | `TRUST_PROXY` | `1` hinter Coolify/Traefik |
-   | `ALLOW_PRIVATE_INSTANCES` | `true`, wenn Instanzen im internen Netz (private Adressen) Mitteilungen schicken sollen |
+   | `ALLOW_PRIVATE_INSTANCES` | `true`, wenn Instanzen im internen Netz (private Adressen, `http://localhost`) Mitteilungen schicken sollen – laut README des Relays nur für Entwicklung und geschlossene Netze gedacht |
 
    `https://push.example.com/healthz` antwortet mit `{"status":"ok"}`; im Log steht beim Start, ob APNs und FCM eingerichtet sind.
 2. **App bauen** – mit deiner Bundle-ID und deinem Apple-Team sowie `PUSH_RELAY_URL=https://push.example.com` (Build-Variable der App) und für Android deiner `google-services.json`. Die App meldet sich nur bei dem Relay an, mit dem sie gebaut wurde.
@@ -252,7 +253,7 @@ Betrieb, Schlüsselwechsel, Sperren missbräuchlicher Instanzen (`node dist/src/
 
 ## Nicht setzen
 
-`NODE_ENV`, `PORT`, `HOSTNAME` und `NEXT_TELEMETRY_DISABLED` setzt das Image selbst. `FLOWPLAN_DIST_DIR` ist nur für parallele Entwicklungsserver gedacht, `OIDC_ALLOW_LOCAL_HTTP` nur für Tests mit einem Anbieter auf `http://localhost`.
+`NODE_ENV`, `PORT`, `HOSTNAME` und `NEXT_TELEMETRY_DISABLED` setzt das Image selbst. `FLOWPLAN_DIST_DIR` ist nur für parallele Entwicklungsserver gedacht, `OIDC_ALLOW_LOCAL_HTTP` nur für Tests mit einem Anbieter auf `http://localhost`, `FLOWPLAN_GIT_ALLOW_HTTP` nur für Tests des Git-Exports mit einem `http://`-Server (in Produktion wirkungslos). Version und Commit (`FLOWPLAN_VERSION`, `GIT_COMMIT`, `SOURCE_COMMIT`) kommen aus dem Build; `FLOWPLAN_VERSION` in der `.env` wählt nur das Image-Tag in `compose.yaml`.
 
 ## In der Oberfläche
 
