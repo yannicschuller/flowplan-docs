@@ -20,6 +20,7 @@ The details come only with the token from `FLOWPLAN_METRICS_TOKEN` (`Authorizati
 - `failedPushDeliveries`: failed push deliveries,
 - `objectStorage`: with S3 `pending` (files still to upload) and `retrying`, otherwise `"off"`,
 - `uptimeSeconds`: the server's uptime.
+- `version`, `commit`, `builtAt`: which version from which commit runs here (empty when the image doesn't carry them) – for example to check whether a deployment is current.
 
 ```sh
 curl -H "Authorization: Bearer $FLOWPLAN_METRICS_TOKEN" https://flowplan.example.com/api/health
