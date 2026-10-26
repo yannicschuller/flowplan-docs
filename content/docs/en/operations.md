@@ -169,12 +169,19 @@ The app checks for a newer release 15 seconds after starting, then every six hou
 
 | Installed as | What happens |
 | --- | --- |
-| Windows installer | Downloads in the background; a dialog offers **Restart now**, otherwise it installs on the next start. |
+| Windows installer | Downloads in the background, with its progress in a small notice in the window and on the taskbar button; then the notice, the menu and the notification area offer **Restart**, otherwise it installs when the app quits. |
 | Linux AppImage | The same – the AppImage replaces itself. |
 | macOS (1.0.6 and later, signed) | The same. |
-| macOS up to 1.0.5 (unsigned), Windows ZIP, Linux `.tar.gz` | A dialog names the new version and opens the download page. macOS only lets signed apps replace themselves – so from 1.0.5 or older download 1.0.6 once; after that the app updates itself. |
+| macOS up to 1.0.5 (unsigned), Windows ZIP, Linux `.tar.gz` | A notice in the window names the new version and leads to the download page (up to 1.0.8 this was a dialog). macOS only lets signed apps replace themselves – so from 1.0.5 or older download 1.0.6 once; after that the app updates itself. |
 
-Without a connection the check stays quiet and tries again later. `FLOWPLAN_UPDATE_URL` on the computer running the app makes it fetch updates from another source – a folder with the same files (`latest*.yml` and the installers), for example a mirror inside a company network. Not to be confused with the server's variable of the same name, which points the instance's release check at a mirror (see [Configuration](/configuration#operations)).
+From the version after 1.0.8 no dialog interrupts any more: the answer to **Check for Updates…** also appears as a notice in the window. Without a connection the check stays quiet and tries again later. `FLOWPLAN_UPDATE_URL` on the computer running the app makes it fetch updates from another source – a folder with the same files (`latest*.yml` and the installers), for example a mirror inside a company network. Not to be confused with the server's variable of the same name, which points the instance's release check at a mirror (see [Configuration](/configuration#operations)).
+
+### Settings, links and launch at login
+
+- The app's settings (notification area icon, open at login, the quick capture shortcut, the spell checker's languages) are in `config.json` under `settings`, the pages in windows of their own per profile under `pageWindows`. The app checks both when reading; anything unknown is dropped.
+- `flowplan://open?instance=<address>&page=<id>` opens a page (see [flowplan-desktop → Links](https://github.com/yannicschuller/flowplan-desktop#links-to-pages-flowplan)). An instance without a profile is only added after asking and the same check as on setup. On Linux this needs the registered desktop file, like the sign-in through the browser.
+- **Open at login** registers a login item on macOS and Windows; on Linux the app writes `~/.config/autostart/flowplan.desktop` (or under `$XDG_CONFIG_HOME`).
+- Quick capture and dropped files go to the profile's own instance with its sign-in, through the same endpoints as the web app (`capture.record`, `/api/upload`, the Markdown import, `/api/import/source`); nothing is set up on the server for it.
 
 ### Signing and new versions
 

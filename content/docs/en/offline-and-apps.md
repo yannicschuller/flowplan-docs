@@ -93,7 +93,7 @@ Bookmarks land in the **Bookmarks** database of the chosen space; it is created 
 A slim desktop app wraps your Flowplan instance. On first start it asks for the address and suggests `https://app.flowplan.org` – for your own instance enter its address instead (e.g. `https://flowplan.example.com`). More instances are added as [profiles](#several-instances-profiles).
 
 - All data stays on the server.
-- The app remembers the window size and position and opens external links in the default browser.
+- The app remembers the window size and position and opens external links in the default browser. Right-click menu with spelling suggestions, quick capture from anywhere, an icon in the menu bar or notification area, pages in windows of their own and more: see [More from the desktop app](#more-from-the-desktop-app).
 - Offline use works in the desktop app too: turn on **Settings → Offline & devices** in the app – it keeps its own offline copies, separate from the browser or the installed web app. Without a connection it then opens the stored copy; its own offline page (**Try again**, **Profiles**) only appears when there is no copy on the device.
 - **Notifications:** the app shows new inbox notifications as system notifications and the unread count on the app icon – also with the window minimised or hidden. See [Notifications in the desktop app](#notifications-in-the-desktop-app).
 - It only accepts real Flowplan instances – an address running something else or redirecting to another site is refused.
@@ -128,9 +128,23 @@ Browsers receive notifications through Web Push, which the desktop app does not 
 
 Nothing pops up for the window in front – its inbox is in view anyway. What was there at the first start is not shown again, not even after a restart.
 
-On a Mac the app keeps running in the Dock after closing the window and keeps notifying. On Windows and Linux closing the window quits the app; notifications arrive while it runs (minimised is enough).
+On a Mac the app keeps running in the Dock after closing the window and keeps notifying. On Windows and Linux closing the window quits the app; notifications arrive while it runs (minimised is enough) – or, with the [notification area icon](#more-from-the-desktop-app), also without a window.
 
 This needs a Flowplan server newer than 0.6.0 (currently the beta image) and desktop app 1.0.7 or newer. The app only asks the profile's own instance, with its sign-in; nothing is stored on the server for it.
+
+### More from the desktop app
+
+From the desktop app after 1.0.8 there is more around the window. Its switches are under **Settings…** (macOS: in the *Flowplan* menu, Windows and Linux: in the *File* menu).
+
+- **Right-click and spelling:** a right click in fields, on links and images shows a system menu – suggestions for a misspelled word, **Add to Dictionary**, cut, copy, paste, **Paste as Plain Text**, open a link in the browser or in a new window, copy or save an image, **Look Up** on a Mac. In the editor Flowplan's own text menu stays; the app's suggestions appear at its top (needs a Flowplan server newer than 0.6.0). Choose the spell checker's languages – German, English, French – under **Spelling** in the right-click menu, in the *Edit* menu or in the settings.
+- **Quick capture from anywhere:** <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>Space</kbd> (Mac: <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Space</kbd>) opens a small window above every app – also while Flowplan is minimised or hidden. <kbd>Enter</kbd> saves into the inbox of the active profile (your default database under **Capture**), <kbd>Shift</kbd> <kbd>Enter</kbd> starts a new line, <kbd>Esc</kbd> closes. **As a task for today** turns the first line into an open task due today. Without a connection the window says so and keeps the text. Change or switch off the shortcut in the settings; if another app already uses it, the app tells you.
+- **Icon in the menu bar (Mac) or notification area (Windows, Linux):** **Quick Capture**, the tasks due today or overdue from **My tasks**, the unread notifications, open Flowplan, the profiles and quit. On by default on a Mac, switched on in the settings on Windows and Linux; the app then keeps running in the notification area after its window is closed.
+- **Open pages from links:** links like `flowplan://open?instance=…&page=…` open the page in the app, in the profile of its instance. In a browser on a computer, a page's actions (**…** at the top right) offer **Open in desktop app**. For an instance without a profile the app asks first whether to add it.
+- **Pages in windows of their own:** **Open Page in New Window** (<kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>N</kbd> or <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>N</kbd>), a <kbd>Shift</kbd>- or middle-click on a link, or **Open in new window** in a page's menu. The app remembers these windows with their size and place and opens them again on the next start.
+- **Drop files:** drop PDFs, images, Markdown and text files on the Dock icon, open them with **Open With → Flowplan**, or drop them on the window where Flowplan does not take them itself. The app asks where to: **Into the Inbox** (one record per file) or **As New Pages** (Markdown becomes a real page). Images and PDFs up to 50 MB, text up to 5 MB, at most 10 files at once.
+- **Open at login:** in the settings, optionally **Start without a window**.
+- **Print and PDF:** **Print…** shows a preview and prints through the system's dialog, **Save as PDF…** saves the page as a PDF – both without sidebar and tools, as when printing from the browser.
+- **Updates without interruptions:** a new update downloads in the background; a small notice at the bottom of the window shows progress, size and speed, and the progress also shows on the app icon. Once it is ready the notice (and the menu) offer **Restart**; otherwise it installs when you quit. No dialog interrupts your typing.
 
 ## Apps for iPhone, iPad and Android
 

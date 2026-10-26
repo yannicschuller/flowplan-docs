@@ -167,12 +167,19 @@ Die App prüft 15 Sekunden nach dem Start, danach alle sechs Stunden und über *
 
 | Installiert als | Was passiert |
 | --- | --- |
-| Windows-Installer | Lädt im Hintergrund; ein Dialog bietet **Jetzt neu starten**, sonst wird beim nächsten Start installiert. |
+| Windows-Installer | Lädt im Hintergrund, mit Fortschritt in einem kleinen Hinweis im Fenster und am Taskleisten-Symbol; dann bieten Hinweis, Menü und Infobereich **Neu starten**, sonst wird beim Beenden installiert. |
 | Linux-AppImage | Genauso – das AppImage ersetzt sich selbst. |
 | macOS (ab 1.0.6, signiert) | Genauso. |
-| macOS bis 1.0.5 (unsigniert), Windows-ZIP, Linux-`.tar.gz` | Ein Dialog nennt die neue Version und öffnet die Download-Seite. macOS lässt nur signierte Apps sich selbst ersetzen – von 1.0.5 oder älter also einmal 1.0.6 herunterladen, danach aktualisiert sich die App selbst. |
+| macOS bis 1.0.5 (unsigniert), Windows-ZIP, Linux-`.tar.gz` | Ein Hinweis im Fenster nennt die neue Version und führt zur Download-Seite (bis 1.0.8 war das ein Dialog). macOS lässt nur signierte Apps sich selbst ersetzen – von 1.0.5 oder älter also einmal 1.0.6 herunterladen, danach aktualisiert sich die App selbst. |
 
-Ohne Verbindung bleibt die Prüfung still und versucht es später erneut. Mit `FLOWPLAN_UPDATE_URL` auf dem Rechner der App holt sie Updates aus einer anderen Quelle – einem Ordner mit denselben Dateien (`latest*.yml` und die Installer), etwa einem Spiegel im Firmennetz. Nicht zu verwechseln mit der gleichnamigen Variable des Servers, die den Spiegel für den Release-Check der Instanz nennt (siehe [Konfiguration](/configuration#betrieb)).
+Ab der Version nach 1.0.8 unterbricht kein Dialog mehr: Auch die Antwort auf **Nach Updates suchen …** erscheint als Hinweis im Fenster. Ohne Verbindung bleibt die Prüfung still und versucht es später erneut. Mit `FLOWPLAN_UPDATE_URL` auf dem Rechner der App holt sie Updates aus einer anderen Quelle – einem Ordner mit denselben Dateien (`latest*.yml` und die Installer), etwa einem Spiegel im Firmennetz. Nicht zu verwechseln mit der gleichnamigen Variable des Servers, die den Spiegel für den Release-Check der Instanz nennt (siehe [Konfiguration](/configuration#betrieb)).
+
+### Einstellungen, Links und Autostart
+
+- Die Einstellungen der App (Symbol im Infobereich, Beim Anmelden öffnen, Tastenkürzel für Schnell erfassen, Sprachen der Rechtschreibprüfung) stehen in `config.json` unter `settings`, die Seiten in eigenen Fenstern je Profil unter `pageWindows`. Die App prüft beides beim Lesen; Unbekanntes fällt weg.
+- `flowplan://open?instance=<Adresse>&page=<ID>` öffnet eine Seite (siehe [flowplan-desktop → Links](https://github.com/yannicschuller/flowplan-desktop#links-to-pages-flowplan)). Eine Instanz ohne Profil wird erst nach Rückfrage und derselben Prüfung wie beim Einrichten hinzugefügt. Unter Linux braucht das, wie die Anmeldung über den Browser, die registrierte Desktop-Datei.
+- **Beim Anmelden öffnen** trägt die App unter macOS und Windows als Anmeldeobjekt ein, unter Linux schreibt sie `~/.config/autostart/flowplan.desktop` (bzw. unter `$XDG_CONFIG_HOME`).
+- Schnell erfassen und Dateien gehen mit der Anmeldung des Profils an dessen eigene Instanz, über dieselben Endpunkte wie die Web-App (`capture.record`, `/api/upload`, Markdown-Import, `/api/import/source`); auf dem Server wird dafür nichts eingerichtet.
 
 ### Signieren und neue Versionen
 
