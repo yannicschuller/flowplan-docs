@@ -16,7 +16,7 @@ Flowplan ist Open Source (AGPL-3.0). Das fertige Image liegt in der GitHub Conta
 | Tag | Inhalt |
 | --- | --- |
 | `ghcr.io/yannicschuller/flowplan:latest` | Neueste Version (Release) |
-| `ghcr.io/yannicschuller/flowplan:1.2.3` | Feste Version, auch als `:1.2` und `:1` |
+| `ghcr.io/yannicschuller/flowplan:0.7.0` | Feste Version (derzeit 0.7.0), auch als `:0.7` und `:0` |
 | `ghcr.io/yannicschuller/flowplan:beta` | Letzter manuell gestarteter Entwicklungsstand – zum Ausprobieren, nicht für den Betrieb |
 
 Compose-Datei und Beispielkonfiguration herunterladen:
@@ -39,7 +39,7 @@ Für Single Sign-on zusätzlich `OIDC_ISSUER`, `OIDC_CLIENT_ID`, `OIDC_CLIENT_SE
 docker compose up -d
 ```
 
-Der Container lauscht auf Port `3000` (in der Compose-Datei nur an `127.0.0.1` gebunden, damit der Proxy davor sitzt). Das Volume `flowplan-data` auf `/app/data` hält alle Inhalte unabhängig vom Container. Eine feste Version wählst du mit `FLOWPLAN_VERSION=1.2.3` in der `.env`.
+Der Container lauscht auf Port `3000` (in der Compose-Datei nur an `127.0.0.1` gebunden, damit der Proxy davor sitzt). Das Volume `flowplan-data` auf `/app/data` hält alle Inhalte unabhängig vom Container. Eine feste Version wählst du mit `FLOWPLAN_VERSION=0.7.0` in der `.env`.
 
 > [!NOTE]
 > Eine Instanz öffnet direkt mit der Anmeldung. Die Webseite [flowplan.org](https://flowplan.org) und diese Dokumentation sind eigene Projekte; die gehostete Instanz läuft unter [app.flowplan.org](https://app.flowplan.org).
@@ -89,9 +89,18 @@ Beim selbst gebauten Image stattdessen `git pull` und `docker compose up -d --bu
 
 Beim Start migriert Flowplan die Datenbank selbst. Vorher eine Sicherung anlegen (siehe [Speicher, S3 und Sicherung](/storage-and-backups)); ein Zurückgehen auf eine ältere Version nach einer Migration ist nicht vorgesehen.
 
+### Auf 0.7.0 aktualisieren
+
+Von Hand ist nichts zu tun; die neuen Tabellen (etwa für Idempotenz-Schlüssel und den Push-Relay) legt Flowplan beim Start an. Was sich für den Betrieb ändert:
+
+- **API-Beschreibung nur noch mit Anmeldung:** `/api/openapi.json` und `/api/docs` brauchen eine Anmeldung oder ein API-Token. Öffentlich wie bisher mit `FLOWPLAN_PUBLIC_API_DOCS=true` (siehe [OpenAPI und SDKs](/api-and-webhooks#openapi-und-sdks)).
+- **Gesundheitsprüfung knapper:** `/api/health` antwortet ohne Token nur noch mit `{"service":"flowplan","status":"ok"}`; Details gibt es mit `FLOWPLAN_METRICS_TOKEN` (siehe [Healthcheck](/operations#healthcheck)).
+- **Push an die Apps über den Push-Relay:** Benachrichtigungen an die Apps laufen Ende-zu-Ende-verschlüsselt über `push.flowplan.org`. Dafür muss `APP_URL` die öffentliche HTTPS-Adresse sein und ausgehendes HTTPS zum Relay möglich – siehe [Push-Relay](/configuration#push-relay-und-ende-zu-ende-verschluesselung).
+- **Nutzungsstatistik:** Die Überwachung zählt Anfragen, aktive Personen und Speicher – nur Zahlen. Abschalten mit `FLOWPLAN_METRICS=off` oder in der Administration (siehe [Statistik](/operations#statistik)).
+
 ## Kubernetes (Helm)
 
-Das Chart liegt im Repository unter [`deploy/helm/flowplan`](https://github.com/yannicschuller/flowplan/tree/main/deploy/helm/flowplan). Flowplan läuft dort als **genau ein Pod** (SQLite) mit einem Volume für `/app/data`; Updates ersetzen den Pod mit kurzer Unterbrechung (Strategie `Recreate`).
+Das Chart liegt im Repository unter [`deploy/helm/flowplan`](https://github.com/yannicschuller/flowplan/tree/main/deploy/helm/flowplan). Flowplan läuft dort als **genau ein Pod** (SQLite) mit einem Volume für `/app/data`; Updates ersetzen den Pod mit kurzer Unterbrechung (Strategie `Recreate`). Das Chart (Version 0.1.0) installiert Flowplan 0.7.0 (`appVersion`); eine andere Version wählst du mit `--set image.tag=…`.
 
 ```bash
 kubectl create namespace flowplan
@@ -109,6 +118,7 @@ helm install flowplan deploy/helm/flowplan -n flowplan \
 - Ein Block- oder lokales Volume verwenden, kein NFS (SQLite).
 - Health-Checks laufen über `/api/health`; der Pod läuft als Nutzer 1000 ohne zusätzliche Rechte. `helm test flowplan` prüft die Erreichbarkeit.
 - Das Volume bleibt beim Deinstallieren erhalten.
+- Aktualisieren: im Repository `git pull`, dann `helm upgrade flowplan deploy/helm/flowplan -n flowplan --reuse-values`.
 
 Alle Werte erklärt das README des Charts.
 

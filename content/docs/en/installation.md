@@ -16,7 +16,7 @@ Flowplan is open source (AGPL-3.0). The ready-made image is in the GitHub Contai
 | Tag | Content |
 | --- | --- |
 | `ghcr.io/yannicschuller/flowplan:latest` | The latest version (release) |
-| `ghcr.io/yannicschuller/flowplan:1.2.3` | A fixed version, also as `:1.2` and `:1` |
+| `ghcr.io/yannicschuller/flowplan:0.7.0` | A fixed version (currently 0.7.0), also as `:0.7` and `:0` |
 | `ghcr.io/yannicschuller/flowplan:beta` | The latest manually built development state – for trying out, not for production |
 
 Download the Compose file and the example configuration:
@@ -39,7 +39,7 @@ For single sign-on also set `OIDC_ISSUER`, `OIDC_CLIENT_ID`, `OIDC_CLIENT_SECRET
 docker compose up -d
 ```
 
-The container listens on port `3000` (bound to `127.0.0.1` only in the Compose file, so that the proxy sits in front of it). The volume `flowplan-data` on `/app/data` holds all content independently of the container. Choose a fixed version with `FLOWPLAN_VERSION=1.2.3` in `.env`.
+The container listens on port `3000` (bound to `127.0.0.1` only in the Compose file, so that the proxy sits in front of it). The volume `flowplan-data` on `/app/data` holds all content independently of the container. Choose a fixed version with `FLOWPLAN_VERSION=0.7.0` in `.env`.
 
 > [!NOTE]
 > An instance opens with the sign-in page. The website [flowplan.org](https://flowplan.org) and this documentation are separate projects; the hosted instance runs at [app.flowplan.org](https://app.flowplan.org).
@@ -89,9 +89,18 @@ With a self-built image, use `git pull` and `docker compose up -d --build` inste
 
 On start, Flowplan migrates the database itself. Make a backup beforehand (see [Storage, S3 and backups](/storage-and-backups)); going back to an older version after a migration is not supported.
 
+### Upgrading to 0.7.0
+
+Nothing to do by hand; Flowplan creates the new tables (for idempotency keys and the push relay, among others) on start. What changes for operations:
+
+- **API description only when signed in:** `/api/openapi.json` and `/api/docs` need a sign-in or an API token. Public as before with `FLOWPLAN_PUBLIC_API_DOCS=true` (see [OpenAPI and SDKs](/api-and-webhooks#openapi-and-sdks)).
+- **A shorter health check:** without a token, `/api/health` only answers `{"service":"flowplan","status":"ok"}`; the details come with `FLOWPLAN_METRICS_TOKEN` (see [Health check](/operations#health-check)).
+- **Push to the apps through the push relay:** notifications to the apps go end-to-end encrypted through `push.flowplan.org`. `APP_URL` must be the public HTTPS address and outgoing HTTPS to the relay possible – see [Push relay](/configuration#push-relay-and-end-to-end-encryption).
+- **Usage statistics:** monitoring counts requests, active people and storage – numbers only. Switch it off with `FLOWPLAN_METRICS=off` or in the administration (see [Statistics](/operations#statistics)).
+
 ## Kubernetes (Helm)
 
-The chart lives in the repository at [`deploy/helm/flowplan`](https://github.com/yannicschuller/flowplan/tree/main/deploy/helm/flowplan). Flowplan runs as **exactly one pod** (SQLite) with a volume for `/app/data`; updates replace the pod with a short downtime (strategy `Recreate`).
+The chart lives in the repository at [`deploy/helm/flowplan`](https://github.com/yannicschuller/flowplan/tree/main/deploy/helm/flowplan). Flowplan runs as **exactly one pod** (SQLite) with a volume for `/app/data`; updates replace the pod with a short downtime (strategy `Recreate`). The chart (version 0.1.0) installs Flowplan 0.7.0 (`appVersion`); choose another version with `--set image.tag=…`.
 
 ```bash
 kubectl create namespace flowplan
@@ -109,6 +118,7 @@ helm install flowplan deploy/helm/flowplan -n flowplan \
 - Use a block or local volume, not NFS (SQLite).
 - Health checks use `/api/health`; the pod runs as user 1000 without extra privileges. `helm test flowplan` checks that it answers.
 - The volume is kept on uninstall.
+- To update: `git pull` in the repository, then `helm upgrade flowplan deploy/helm/flowplan -n flowplan --reuse-values`.
 
 The chart's README explains every value.
 
