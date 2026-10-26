@@ -82,7 +82,7 @@ Die Antworten enthalten nie Tokens, Schlüssel oder Push-Adressen. `/api/admin/p
 
 ## KI
 
-Optional und standardmäßig aus: Anbieter (Ollama, OpenAI-kompatibel, Anthropic, Gemini), wer KI nutzen darf, einzelne Funktionen und eigene Schlüssel der Nutzer. Alles dazu unter [KI](/ai#fuer-admins).
+Optional und standardmäßig aus: Anbieter (Ollama, OpenAI-kompatibel, Anthropic, Gemini), wer KI nutzen darf, einzelne Funktionen und eigene Schlüssel der Nutzer. Eigener Schalter: **KI auf dem Gerät (Apple)** – standardmäßig erlaubt, weil nichts das Gerät verlässt. Alles dazu unter [KI](/ai#fuer-admins).
 
 ## Erweiterungen & Domains
 

@@ -82,7 +82,7 @@ The answers never contain tokens, keys or push addresses. `/api/admin/push` is f
 
 ## AI
 
-Optional and off by default: provider (Ollama, OpenAI-compatible, Anthropic, Gemini), who may use AI, individual features and users' own keys. Everything in [AI](/ai#for-admins).
+Optional and off by default: provider (Ollama, OpenAI-compatible, Anthropic, Gemini), who may use AI, individual features and users' own keys. A switch of its own: **On-device AI (Apple)** – allowed by default because nothing leaves the device. Everything in [AI](/ai#for-admins).
 
 ## Extensions & domains
 

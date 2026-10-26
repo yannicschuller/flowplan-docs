@@ -7,7 +7,7 @@ Optionale KI für Texte, Zusammenfassungen, Fragen an den Arbeitsbereich und Dat
 
 ## Grundsätze
 
-- **Aus, bis jemand sie einschaltet** – auf der Instanz und für jede Person.
+- **Aus, bis jemand sie einschaltet** – auf der Instanz und für jede Person. Einzige Ausnahme ist die [KI auf dem Gerät (Apple)](#ki-auf-dem-geraet-apple): Sie ist erlaubt, weil nichts das Gerät verlässt, und lässt sich ebenso abschalten.
 - **Jede Funktion einzeln:** Schreibassistent, Zusammenfassungen, Fragen an den Arbeitsbereich, KI in Datenbanken und KI-Aktionen lassen sich von der Administration und von jeder Person getrennt erlauben oder ausschalten.
 - **Nur mit deinen Rechten:** Die KI liest nie mehr, als du selbst sehen darfst – und nur, was du ihr erlaubst ([Worauf die KI zugreifen darf](#worauf-die-ki-zugreifen-darf)).
 - **Du siehst, wohin deine Texte gehen:** Jede KI-Funktion nennt den Anbieter und ob die Daten den Server verlassen.
@@ -275,7 +275,7 @@ Auf einer Seite, die die KI nicht lesen darf, sind KI-Funktionen ausgegraut, mit
 
 ## Häufige Fragen
 
-**Muss ich KI nutzen?** Nein. Sie ist aus, bis die Administration sie einschaltet, und jede Person kann sie für sich ausschalten. Auch die KI auf Apple-Geräten ist optional: **Einstellungen → KI → Auf diesem Gerät (Apple) → Aus**.
+**Muss ich KI nutzen?** Nein. KI über den Server ist aus, bis die Administration sie einschaltet, und jede Person kann sie für sich ausschalten. Die KI auf Apple-Geräten ist erlaubt, weil der Text das Gerät nicht verlässt, und ebenso optional: **Einstellungen → KI → Auf diesem Gerät (Apple) → Aus**.
 
 **Geht bei der KI auf dem Gerät etwas an den Server?** Nein. Der Text wird auf dem iPhone, iPad oder Mac verarbeitet; der Server erfährt nur, dass du die Einstellung gewählt hast.
 

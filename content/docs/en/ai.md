@@ -7,7 +7,7 @@ Optional AI for writing, summaries, questions to your workspace and databases �
 
 ## Principles
 
-- **Off until someone switches it on** – on the instance and for every person.
+- **Off until someone switches it on** – on the instance and for every person. The one exception is [on-device AI (Apple)](#on-device-ai-apple): it is allowed because nothing leaves the device, and it can be switched off just the same.
 - **Every feature separately:** writing assistant, summaries, questions to the workspace, AI in databases and AI actions can each be allowed or switched off by administrators and by every person.
 - **Only with your permissions:** the AI never reads more than you may see yourself – and only what you allow it ([What the AI may access](#what-the-ai-may-access)).
 - **You see where your text goes:** every AI feature names the provider and whether data leaves the server.
@@ -275,7 +275,7 @@ On a page the AI may not read, AI features are greyed out with a note saying why
 
 ## Frequently asked questions
 
-**Do I have to use AI?** No. It is off until administrators switch it on, and everyone can switch it off for themselves. AI on Apple devices is optional too: **Settings → AI → On this device (Apple) → Off**.
+**Do I have to use AI?** No. AI through the server is off until administrators switch it on, and everyone can switch it off for themselves. AI on Apple devices is allowed because the text does not leave the device, and it is just as optional: **Settings → AI → On this device (Apple) → Off**.
 
 **Does anything go to the server with on-device AI?** No. The text is processed on the iPhone, iPad or Mac; the server only learns which setting you chose.
 
