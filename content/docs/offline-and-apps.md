@@ -48,6 +48,17 @@ Ohne Verbindung zeigt Flowplan unter dem Offline-Hinweis das Datum der Kopie, we
 > [!NOTE]
 > Das Schema einer Datenbank – Eigenschaften und Ansichten – lässt sich nur mit Verbindung ändern.
 
+### Offline in der App für iPhone und iPad
+
+Die App für iPhone und iPad hält die Offline-Kopie selbst – für jede Instanz, auch eine selbst gehostete. (iOS erlaubt Apps keinen Service Worker für frei gewählte Adressen; in Safari und in der Android-App arbeitet Flowplan offline wie im Browser.)
+
+- **Einschalten** wie überall unter **Einstellungen → Offline & Geräte** – je Profil der App. Dort steht zusätzlich „In der Flowplan-App gespeichert“; Stand, Größe, Version, **Jetzt aktualisieren**, **Auch Eintragsinhalte und Dateien speichern** und **Offline-Kopien entfernen** funktionieren wie im Browser.
+- **Ohne Verbindung** – beim Start oder wenn die Instanz nicht erreichbar ist – öffnet die App die gespeicherte Kopie: dieselbe Seite, auf der du warst, mit dem Hinweis „Offline – du siehst den zuletzt gespeicherten Stand“. Seiten, Datenbanken, Einträge, Kalender, Dashboards und der Editor laufen aus der Kopie. Den Bildschirm „Keine Verbindung“ zeigt die App nur noch, wenn es für das Profil keine Kopie gibt.
+- **Offline ändern:** Text in Dokumenten und Änderungen an Einträgen werden wie im Browser auf dem Gerät gesammelt und abgeglichen, sobald die Instanz wieder antwortet. Danach wechselt die App von selbst zur aktuellen Seite – erst, wenn du gerade nicht tippst.
+- **Aktuell halten:** wie im Browser, solange die App offen ist, und zusätzlich jedes Mal, wenn sie in den Vordergrund kommt; nur Geändertes wird geladen.
+- **Speicherort:** im Container der App, verschlüsselt bis zum ersten Entsperren nach einem Neustart und nicht in Backups. Die Kopie gehört zum Profil: **Abmelden** in Flowplan und **Abmelden und Profil entfernen** in den Einstellungen der App löschen sie; ein anderes Profil sieht sie nie.
+- **Grenzen:** Dateien über 25 MB, der PDF-Viewer und die Texterkennung (OCR) brauchen in der App eine Verbindung; pro Profil höchstens 2 GB, und die App lässt immer 300 MB frei. Die Kopie braucht einen Flowplan-Server mit dieser Offline-Unterstützung (neuer als 0.6.0); mit älteren Servern zeigt die App ohne Verbindung ihren Bildschirm „Keine Verbindung“ wie bisher.
+
 ## Als App installieren
 
 - **Chrome, Edge**: Installieren-Symbol in der Adressleiste.
@@ -140,6 +151,7 @@ Wie die Desktop-App zeigen die mobilen Apps deine Flowplan-Instanz; alle Daten b
 - **App-Sperre:** Auf Wunsch entsperrt sich Flowplan nur mit Face ID, Touch ID, Fingerabdruck oder dem Gerätecode.
 - **Zurück:** Wischen vom linken Rand (iOS) bzw. die Zurück-Geste oder -Taste (Android) schließt zuerst, was gerade offen ist (Menü, Dialog, Seitenleiste), und geht dann eine Ebene nach oben: von einem Abschnitt der Einstellungen zur Übersicht, von einem Eintrag zur Datenbank, von einer Seite zur vorherigen Seite.
 - **Exporte und Downloads** gehen in das Teilen-Menü des Systems (z. B. „In Dateien sichern“).
+- **Ohne Verbindung:** Die App öffnet die Offline-Kopie des Profils, auch auf iPhone und iPad – siehe [Offline in der App für iPhone und iPad](#offline-in-der-app-fuer-iphone-und-ipad).
 - **iPad und Tablets:** alle Ausrichtungen, Split View, Slide Over und Stage Manager, mehrere Fenster, Hardware-Tastatur mit den Tastenkürzeln, die erscheinen, wenn du <kbd>⌘</kbd> hältst, Trackpad und Handoff zum Mac – siehe [iPad: Fenster, Tastatur und Handoff](#ipad-fenster-tastatur-und-handoff). Mit dem **Apple Pencil** schreibst du in [Notizbücher](/notebooks) und Zeichenblöcke, zeichnest auf Whiteboards und schreibst auf PDFs (siehe [PDFs anmerken](/documents#pdfs-anmerken)) mit Druckstärke, während Finger die Fläche bewegen und eine aufliegende Hand keine Spuren hinterlässt; Doppeltippen und Drücken wechseln das Werkzeug, Scribble schreibt in jedes Textfeld (siehe [Whiteboards](/whiteboards#stift-und-formerkennung)). Die App erkennt deine Handschrift auf dem Gerät: Die Suche findet sie, und **In Text umwandeln** macht aus ausgewählten Strichen Text (siehe [Handschrift erkennen](/notebooks#handschrift-erkennen-iphone-und-ipad)).
 - **iPhone Duo:** Auf- und Zuklappen während der Arbeit – die Seite bleibt, wie sie ist (kein Neuladen, dieselbe Stelle, der Text, den du gerade tippst) und ordnet sich neu: Telefon-Layout mit der unteren Leiste auf dem zugeklappten Display und auf dem aufgeklappten im Hochformat, die Seitenleiste auf dem aufgeklappten Display im Querformat. Inhalte bleiben frei von Statusleiste und Kamera am Rand des zugeklappten Displays. Auf dem aufgeklappten Display gibt es **mehrere Fenster** wie auf dem iPad (siehe [unten](#ipad-fenster-tastatur-und-handoff)); das zugeklappte hat eines. Den ganzen Bildschirm nutzt auf dem iPhone Duo eine App, die für iOS 27.1 oder neuer gebaut ist.
 

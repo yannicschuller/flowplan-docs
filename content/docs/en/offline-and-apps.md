@@ -48,6 +48,17 @@ Changes to records without a connection appear in the views right away and are c
 > [!NOTE]
 > A database's schema – properties and views – can only be changed with a connection.
 
+### Offline in the app for iPhone and iPad
+
+The app for iPhone and iPad keeps the offline copy itself – for every instance, self-hosted ones included. (iOS gives apps no service worker for addresses of your choice; in Safari and in the Android app, Flowplan works offline as in the browser.)
+
+- **Turn it on** as everywhere under **Settings → Offline & devices** – per profile of the app. It also says “Stored in the Flowplan app”; state, size, version, **Update now**, **Also store record contents and files** and **Remove offline copies** work as in the browser.
+- **Without a connection** – at start or when the instance cannot be reached – the app opens the stored copy: the same page you were on, with the notice “Offline – you see the last saved state”. Pages, databases, records, calendars, dashboards and the editor run from the copy. The app shows its “No connection” screen only when there is no copy for the profile.
+- **Changes offline:** text in documents and changes to records are collected on the device as in the browser and synced as soon as the instance answers again. Then the app switches to the current page by itself – once you are not typing.
+- **Kept current:** as in the browser while the app is open, and also every time it comes to the foreground; only what changed is loaded.
+- **Where it is stored:** in the app's container, encrypted until the first unlock after a restart and not in backups. The copy belongs to the profile: **Sign out** in Flowplan and **Sign out and remove the profile** in the app's settings delete it; another profile never sees it.
+- **Limits:** files over 25 MB, the PDF viewer and text recognition (OCR) need a connection in the app; at most 2 GB per profile, and the app always leaves 300 MB free. The copy needs a Flowplan server with this offline support (newer than 0.6.0); with older servers the app shows its “No connection” screen without a connection, as before.
+
 ## Install as an app
 
 - **Chrome, Edge**: the install icon in the address bar.
@@ -140,6 +151,7 @@ Like the desktop app, the mobile apps show your Flowplan instance; all data stay
 - **App lock:** if you like, Flowplan only unlocks with Face ID, Touch ID, a fingerprint or the device code.
 - **Back:** swiping from the left edge (iOS) or the back gesture or button (Android) first closes what is open (menu, dialog, sidebar) and then goes up a level: from a settings section to the overview, from a record to its database, from a page to the previous page.
 - **Exports and downloads** go to the system's share menu (e.g. "Save to Files").
+- **Without a connection:** the app opens the profile's offline copy, on iPhone and iPad too – see [Offline in the app for iPhone and iPad](#offline-in-the-app-for-iphone-and-ipad).
 - **iPad and tablets:** every orientation, Split View, Slide Over and Stage Manager, several windows, a hardware keyboard with the shortcuts listed when you hold <kbd>⌘</kbd>, the trackpad, and Handoff to the Mac – see [iPad: windows, keyboard and Handoff](#ipad-windows-keyboard-and-handoff). With the **Apple Pencil** you write in [notebooks](/notebooks) and drawing blocks, draw on whiteboards and write on PDFs (see [Annotate PDFs](/documents#annotate-pdfs)) with pressure while fingers move the board and a resting hand leaves no marks; double-tap and squeeze switch the tool, Scribble writes into any text field (see [Whiteboards](/whiteboards#pen-and-shape-recognition)). The app recognises your handwriting on the device: search finds it, and **Convert to text** turns selected strokes into text (see [Recognising handwriting](/notebooks#recognising-handwriting-iphone-and-ipad)).
 - **iPhone Duo:** open or close it while you work – the page stays as it is (no reload, the same place, the text you are typing) and lays itself out anew: the phone layout with the bottom bar on the closed display and on the open one held upright, the sidebar on the open display held sideways. Content stays clear of the status bar and camera at the side of the closed display. On the open display you can use **several windows** as on the iPad (see [below](#ipad-windows-keyboard-and-handoff)); the closed display has one. Full screen on iPhone Duo needs an app built for iOS 27.1 or later.
 
