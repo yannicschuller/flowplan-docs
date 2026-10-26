@@ -18,8 +18,9 @@ All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd> | [Present](/documents#present) the document |
 | – | Light or dark theme (no default, your own shortcut possible) |
 | <kbd>Esc</kbd> | Close a dialog, menu or the search |
+| <kbd>⌘</kbd> <kbd>Z</kbd> | Take back a deletion, a move or a bulk edit while the notice with **Undo** shows (outside text fields; in the editor it undoes the last input) |
 
-Every shortcut in this table except <kbd>Esc</kbd> can be changed, see [Your own shortcuts](#your-own-shortcuts).
+Every shortcut in this table except <kbd>Esc</kbd> and <kbd>⌘</kbd> <kbd>Z</kbd> can be changed, see [Your own shortcuts](#your-own-shortcuts).
 
 In the desktop app, <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> or <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>P</kbd> switches to the next [profile](/offline-and-apps#several-instances-profiles) once more than one is saved.
 

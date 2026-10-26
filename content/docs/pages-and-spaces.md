@@ -115,6 +115,8 @@ Der Stern in der Kopfzeile legt eine Seite unter **Favoriten** in der Seitenleis
 
 Gelöschte Seiten und Bereiche landen im **Papierkorb** unten in der Seitenleiste. Dort lassen sie sich wiederherstellen oder endgültig löschen. Veröffentlichungen, Freigabelinks und Formulare werden beim Löschen deaktiviert und bei der Wiederherstellung nicht automatisch wieder eingeschaltet.
 
+Direkt nach dem Löschen zeigt Flowplan unten einen Hinweis wie „„Notizen“ in den Papierkorb gelegt“ mit **Rückgängig** – etwa sechs Sekunden lang, solange der Mauszeiger oder der Fokus darauf liegt auch länger. **Rückgängig** oder <kbd>⌘</kbd> <kbd>Z</kbd> (außerhalb von Textfeldern) holt die Seite samt Unterseiten zurück und öffnet sie wieder. Dasselbe gilt fürs Verschieben von Seiten im Seitenbaum und für mehrere Seiten auf einmal.
+
 ## Graph der Verlinkungen
 
 Das Netz-Symbol unten in der Seitenleiste (oder `> graph` in der Schnellsuche) zeigt alle Seiten als Punkte und ihre Links als Linien. Datenbank-Einträge erscheinen als eigene Punkte, sobald sie verlinken oder verlinkt sind; ein Klick öffnet den Eintrag. Große Punkte haben viele Verbindungen; Farben unterscheiden Dokumente, Datenbanken, Einträge, Whiteboards und Journale.

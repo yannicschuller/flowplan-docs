@@ -23,7 +23,7 @@ Darunter stehen **Deine Vorlagen**: gespeicherte Datenbank-Vorlagen, etwa eine e
 - Ein geöffneter Eintrag hat seine eigene Adresse (`/#page=<Datenbank>&row=<Eintrag>`) – egal ob als Dialog, in der Seitenleiste oder als ganze Seite. Sie lässt sich teilen, als Lesezeichen speichern oder per `@` in Texten verlinken. Unter den Eigenschaften zeigt **Verknüpft von**, welche Einträge per Relation und welche Seiten und Einträge per Link im Text auf ihn verweisen.
 - **Datensatzvorlagen** geben neuen Einträgen Eigenschaften und Inhalt vor. Eine Vorlage kann Standard für neue Einträge sein.
 - Mehrere Einträge auswählen (Kästchen links) und gemeinsam bearbeiten, duplizieren oder löschen – bis zu 500 auf einmal. Vorher sichert Flowplan einen Stand, der sich über den Versionsverlauf wiederherstellen lässt.
-- Gelöschte Einträge liegen im Papierkorb der Datenbank und lassen sich zurückholen.
+- Gelöschte Einträge liegen im Papierkorb der Datenbank und lassen sich zurückholen. Gleich nach dem Löschen geht das schneller: **Rückgängig** im Hinweis unten (oder <kbd>⌘</kbd> <kbd>Z</kbd>, solange er sichtbar ist). Ebenso lassen sich eine gemeinsame Bearbeitung mehrerer Einträge, ein in eine andere Spalte gezogener Eintrag, ein entferntes Datum und eine gelöschte Eigenschaft zurücknehmen.
 
 ### Seite in eine Datenbank verschieben
 
