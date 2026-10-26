@@ -9,6 +9,7 @@ All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd
 | <kbd>⌘</kbd> <kbd>K</kbd> | Quick search |
 | <kbd>⌘</kbd> <kbd>N</kbd> | New page |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>N</kbd> | Quick capture (record in the capture database) |
+| <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Space</kbd> / <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>Space</kbd> | Desktop app: quick capture from any app ([Quick capture (desktop)](/desktop-capture)) |
 | <kbd>?</kbd> or <kbd>⌘</kbd> <kbd>/</kbd> | Keyboard shortcut overview |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd> | Read or edit the document |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>B</kbd> | Show or hide the sidebar |
