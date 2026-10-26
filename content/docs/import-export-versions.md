@@ -109,11 +109,13 @@ Unter **Einstellungen → Import & Export → Export → Arbeitsbereich als ZIP*
 
 Die Sicherung der ganzen Instanz (mit Konten und Rechten) ist Sache der Administration: **Administration → Speicher & Sicherung**. Die Karte **Papierkorb & Aufbewahrung** führt zum Papierkorb und sagt, wie lange was aufbewahrt wird: gelöschte Seiten und Bereiche, bis jemand sie endgültig löscht, gelöschte Datenbank-Einträge 30 Tage; wie lange frühere Versionen bleiben, legt die Administration fest.
 
-Enthalten: zugängliche Seiten samt Papierkorb, Datenbanken mit Ansichten und Einträgen, Dokumentinhalte, Relationen, Vorlagen, Kommentare, Versionen, Favoriten und Formularoptionen, dazu alle Dateien mit Prüfsummen.
+Enthalten: zugängliche Seiten samt Papierkorb, Datenbanken mit Ansichten und Einträgen, Dokumentinhalte, Relationen, Vorlagen, Kommentare, Versionen, Favoriten und Formularoptionen, dazu alle Dateien mit Prüfsummen. Außerdem die Einstellungen der Datenbanken (Erledigt-Regel, Workflow, Automationen, Sprints, Story Points – nie das Git-Token), Zeiteinträge und der Statusverlauf hinter den Burndown-Diagrammen, die Einstellungen und Tracker der Journale samt Werten und Ort jedes Tages, Handschrift auf PDFs und deine [Startseite](/first-steps#startseite-anpassen) (übernommen nur, wenn die importierende Person noch keine eigene hat).
 
 Das Archiv enthält nur, was du selbst sehen darfst: private Einträge anderer samt ihrer Kommentare und Dateien fehlen, ebenso Journale hinter einer PIN, die du gerade nicht entsperrt hast. Versionen einer Datenbank kommen nur bei Besitzern mit, weil sie alle Einträge enthalten.
 
-- Beim Import entstehen neue IDs; interne Links und Relationen werden umgeschrieben.
+- Beim Import entstehen neue IDs; interne Links und Relationen werden umgeschrieben – auch eingebettete Whiteboards, synchronisierte Blöcke, Kennzahlen, Zeichenblöcke und Einträge auf Whiteboard-Karten.
+- Stammt das Archiv von jemand anderem, werden dessen Zuweisungen und Erwähnungen zu deinen; Aufgaben in Dokumenten erscheinen sofort unter **Meine Aufgaben**.
+- Ältere Archive lassen sich wie bisher importieren; ältere Server überspringen, was sie nicht kennen.
 - Importierte Bereiche und Vorlagen sind privat, Freigaben und Formulare nicht aktiv.
 - Ein fehlerhafter Import wird vollständig zurückgerollt.
 - Grenzen: 2 GB ZIP, 500 Seiten, 20.000 Dateien, 5.000 Einträge je Datenbank.

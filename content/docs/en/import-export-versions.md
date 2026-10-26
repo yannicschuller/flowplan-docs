@@ -109,11 +109,13 @@ Under **Settings → Import & export → Export → Workspace as ZIP** you downl
 
 Backing up the whole instance (with accounts and permissions) is up to the administration: **Administration → Storage & backup**. The card **Trash & retention** leads to the trash and says how long things are kept: deleted pages and spaces until someone deletes them permanently, deleted database records 30 days; how long earlier versions stay is set by the administration.
 
-It contains: accessible pages including the trash, databases with views and records, document content, relations, templates, comments, versions, favourites and form options, plus all files with checksums.
+It contains: accessible pages including the trash, databases with views and records, document content, relations, templates, comments, versions, favourites and form options, plus all files with checksums. Also the settings of databases (done rule, workflow, automations, sprints, story points – never the Git token), time entries and the status history behind burndown charts, the settings and trackers of journals with each day's values and place, handwriting on PDFs and your [home page](/first-steps#customize-your-home-page) (applied only when the person importing has none of their own yet).
 
 The archive only holds what you may see yourself: other people's private records with their comments and files are left out, as are journals behind a PIN you have not unlocked right now. Versions of a database are included only for owners, because they contain every record.
 
-- Importing creates new IDs; internal links and relations are rewritten.
+- Importing creates new IDs; internal links and relations are rewritten – embedded whiteboards, synced blocks, metrics, drawing blocks and records on whiteboard cards too.
+- If the archive comes from someone else, their assignments and mentions become yours; tasks in documents show under **My tasks** right away.
+- Older archives import as before; older servers skip what they do not know.
 - Imported spaces and templates are private, shares and forms are not active.
 - A failed import is rolled back completely.
 - Limits: 2 GB ZIP, 500 pages, 20,000 files, 5,000 records per database.
