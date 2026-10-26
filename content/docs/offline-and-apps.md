@@ -151,6 +151,8 @@ Seit der Desktop-App nach 1.0.8 kommt rund um das Fenster einiges dazu. Die Scha
 > [!NOTE]
 > Stand heute sind die Apps in Vorbereitung und noch nicht im App Store und bei Google Play erhältlich. Bis dahin lässt sich Flowplan wie oben beschrieben als Web-App installieren.
 
+**Voraussetzungen:** iPhone und iPad mit iOS/iPadOS 16.4 oder neuer (das Teilen-Fenster und die einstellbaren Widgets ab iOS 17), Android 8.0 oder neuer.
+
 Wie die Desktop-App zeigen die mobilen Apps deine Flowplan-Instanz; alle Daten bleiben auf dem Server, neue Funktionen kommen ohne App-Update. Dazu kommt, was nur eine App kann:
 
 - **Mitteilungen:** Erwähnungen, Kommentare, Aufgaben und Erinnerungen kommen als Mitteilung, die Zahl der ungelesenen steht am App-Symbol. Die App fragt nach dem ersten Anmelden einmal nach der Erlaubnis; ein Tipp öffnet die betroffene Seite. Welche Arten kommen, regelst du wie im Browser unter **Einstellungen → Benachrichtigungen**; dort prüft **Testbenachrichtigung senden**, ob Mitteilungen auf allen deinen Geräten ankommen, und sagt sonst, woran es liegt ([mehr](/search-and-notifications#testbenachrichtigung)). [Knöpfe](#knoepfe-an-mitteilungen) haken eine Aufgabe ab, schieben sie auf morgen, beantworten einen Kommentar oder markieren ihn als gelesen – ohne die App zu öffnen.

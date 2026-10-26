@@ -151,6 +151,8 @@ From the desktop app after 1.0.8 there is more around the window. Its switches a
 > [!NOTE]
 > As of today the apps are in preparation and not yet available in the App Store or on Google Play. Until then, Flowplan can be installed as a web app as described above.
 
+**Requirements:** iPhone and iPad with iOS/iPadOS 16.4 or later (the share sheet and the configurable widgets from iOS 17), Android 8.0 or later.
+
 Like the desktop app, the mobile apps show your Flowplan instance; all data stays on the server and new features arrive without an app update. On top comes what only an app can do:
 
 - **Notifications:** mentions, comments, tasks and reminders arrive as notifications, the number of unread ones shows on the app icon. The app asks for permission once after the first sign-in; a tap opens the page concerned. Which kinds arrive is set as in the browser under **Settings → Notifications**; there, **Send test notification** checks whether notifications reach all your devices and otherwise says why ([more](/search-and-notifications#test-notification)). [Buttons](#buttons-on-notifications) tick off a task, postpone it to tomorrow, answer a comment or mark it read – without opening the app.
