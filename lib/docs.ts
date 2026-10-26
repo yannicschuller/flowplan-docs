@@ -169,14 +169,15 @@ export function headingId(text: string) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 }
-const plain = (html: string) =>
+// Text of rendered HTML; &amp; last, so "&amp;lt;" stays the text "&lt;".
+export const plain = (html: string) =>
   html
     .replace(/<[^>]+>/g, "")
-    .replace(/&amp;/g, "&")
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
     .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">");
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&");
 const escape = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 

@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
-import { docGroups, docSearchIndex, docSlugs, headingId, languageList, llmsIndex, loadDoc, ownSite } from "../lib/docs";
+import { docGroups, docSearchIndex, docSlugs, headingId, languageList, llmsIndex, loadDoc, ownSite, plain } from "../lib/docs";
 import { LOCALES } from "../lib/i18n";
 
 for (const locale of LOCALES)
@@ -132,3 +132,7 @@ for (const locale of LOCALES)
     const notebook = loadDoc("notebooks", locale)!.html;
     assert.match(notebook, /<figure class="shot"><img src="\/screenshots\/notebook\.webp"[^>]*><figcaption>[^<]+<\/figcaption><\/figure>/);
   });
+
+test("text of rendered HTML decodes each entity once", () => {
+  assert.equal(plain("<code>&amp;lt;b&amp;gt;</code> &amp;amp; &lt;i&gt; &quot;q&quot;"), '&lt;b&gt; &amp; <i> "q"');
+});
