@@ -161,6 +161,7 @@ Like the desktop app, the mobile apps show your Flowplan instance; all data stay
 - **[Share from other apps](#share-from-other-apps):** text, links, photos and PDFs from any app straight into the inbox, a database or onto a page.
 - **[Scanner and Spotlight](#scan-documents-and-spotlight-iphone-and-ipad)** (iPhone, iPad): documents scanned into searchable PDFs, your pages and tasks in the phone's search.
 - **[Voice notes](#voice-notes-in-pages)** in pages are recorded by the app; on the iPhone and iPad they become text on the device itself.
+- **[On-device AI](#on-device-ai-and-writing-tools-iphone-and-ipad)** (iPhone, iPad, optional): writing assistant and summaries with Apple Intelligence without the text leaving the device; Apple's Writing Tools in the editor.
 - **[Calendars in Apple Calendar](#calendars-in-apple-calendar)** with one configuration profile instead of typing CalDAV credentials.
 - **App lock:** if you like, Flowplan only unlocks with Face ID, Touch ID, a fingerprint or the device code.
 - **Back:** swiping from the left edge (iOS) or the back gesture or button (Android) first closes what is open (menu, dialog, sidebar) and then goes up a level: from a settings section to the overview, from a record to its database, from a page to the previous page.
@@ -325,6 +326,17 @@ In the app, **Voice note** (`/voice`) in a document records with the phone's mic
 - **Then summarise with AI** puts a summary below the text when the [AI](/ai#summaries) is available to you.
 
 This needs a Flowplan server newer than 0.6.0 (currently the beta image). In the browser, `/voice` records as before.
+
+### On-device AI and Writing Tools (iPhone and iPad)
+
+**Optional:** on an iPhone or iPad with **iOS/iPadOS 26** or later that supports Apple Intelligence, with **Apple Intelligence switched on** (Settings → Apple Intelligence & Siri), the writing assistant and the summary of open pages run with Apple's language model **on the device**. The text does not leave the device, also in encrypted spaces; the instance needs no AI provider for it. Results carry the label **On this device**.
+
+- **Switch it off:** **Settings → AI → On this device (Apple) → Off** – Flowplan then never asks the device. It also shows whether Apple Intelligence on this device is available, turned off in Settings or not supported. Administrators can switch it off for the whole instance.
+- **Server AI stays:** questions to the workspace, AI in databases and AI actions keep running through the instance when it is set up; it also takes over texts that are too long.
+- **Older devices and iOS versions** (from iOS 16.4) use the app as before, just without this path.
+- **Writing Tools:** Apple's Writing Tools (proofread, rewrite, summarise) work right in the editor – select text and choose **Writing Tools** in the text menu (from iOS 18 with Apple Intelligence).
+
+More: [on-device AI](/ai#on-device-ai-apple).
 
 ### Calendars in Apple Calendar
 

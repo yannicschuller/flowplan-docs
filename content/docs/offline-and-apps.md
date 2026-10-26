@@ -161,6 +161,7 @@ Wie die Desktop-App zeigen die mobilen Apps deine Flowplan-Instanz; alle Daten b
 - **[Teilen aus anderen Apps](#teilen-aus-anderen-apps):** Texte, Links, Fotos und PDFs aus jeder App direkt in den Eingang, eine Datenbank oder auf eine Seite.
 - **[Scanner und Spotlight](#dokumente-scannen-und-spotlight-iphone-und-ipad)** (iPhone, iPad): Dokumente als durchsuchbare PDFs scannen, deine Seiten und Aufgaben in der Suche des Telefons.
 - **[Sprachnotizen](#sprachnotizen-in-seiten)** in Seiten nimmt die App auf; auf iPhone und iPad werden sie auf dem Gerät selbst zu Text.
+- **[KI auf dem Gerät](#ki-auf-dem-geraet-und-schreibtools-iphone-und-ipad)** (iPhone, iPad, optional): Schreibassistent und Zusammenfassungen mit Apple Intelligence, ohne dass der Text das Gerät verlässt; Apples Schreibtools im Editor.
 - **[Kalender in Apple Kalender](#kalender-in-apple-kalender)** mit einem Konfigurationsprofil, statt CalDAV-Zugangsdaten abzutippen.
 - **App-Sperre:** Auf Wunsch entsperrt sich Flowplan nur mit Face ID, Touch ID, Fingerabdruck oder dem Gerätecode.
 - **Zurück:** Wischen vom linken Rand (iOS) bzw. die Zurück-Geste oder -Taste (Android) schließt zuerst, was gerade offen ist (Menü, Dialog, Seitenleiste), und geht dann eine Ebene nach oben: von einem Abschnitt der Einstellungen zur Übersicht, von einem Eintrag zur Datenbank, von einer Seite zur vorherigen Seite.
@@ -325,6 +326,17 @@ In der App nimmt **Sprachnotiz** (`/sprachnotiz`) in einem Dokument mit dem Mikr
 - **Danach mit KI zusammenfassen** setzt eine Zusammenfassung unter den Text, wenn dir die [KI](/ai#zusammenfassungen) zur Verfügung steht.
 
 Das braucht einen Flowplan-Server neuer als 0.6.0 (derzeit das Beta-Image). Im Browser nimmt `/sprachnotiz` wie bisher auf.
+
+### KI auf dem Gerät und Schreibtools (iPhone und iPad)
+
+**Optional:** Auf einem iPhone oder iPad mit **iOS/iPadOS 26** oder neuer, das Apple Intelligence unterstützt, und mit **eingeschaltetem Apple Intelligence** (Einstellungen → Apple Intelligence & Siri) laufen der Schreibassistent und die Zusammenfassung offener Seiten mit dem Sprachmodell von Apple **auf dem Gerät**. Der Text verlässt das Gerät nicht, auch nicht in verschlüsselten Bereichen; die Instanz braucht dafür keinen KI-Anbieter. Ergebnisse tragen das Kennzeichen **Auf diesem Gerät**.
+
+- **Abschalten:** **Einstellungen → KI → Auf diesem Gerät (Apple) → Aus** – dann fragt Flowplan das Gerät nie. Dort steht auch, ob Apple Intelligence auf diesem Gerät verfügbar, in den Einstellungen ausgeschaltet oder nicht unterstützt ist. Die Administration kann es für die ganze Instanz abschalten.
+- **Server-KI bleibt:** Fragen an den Arbeitsbereich, KI in Datenbanken und KI-Aktionen laufen weiter über die Instanz, wenn sie eingerichtet ist; zu lange Texte übernimmt sie ebenfalls.
+- **Ältere Geräte und iOS-Versionen** (ab iOS 16.4) nutzen die App wie bisher, nur ohne diesen Weg.
+- **Schreibtools:** Apples Schreibtools (Korrekturlesen, Umschreiben, Zusammenfassen) funktionieren direkt im Editor – Text markieren und im Textmenü **Schreibtools** wählen (ab iOS 18 mit Apple Intelligence).
+
+Mehr: [KI auf dem Gerät](/ai#ki-auf-dem-geraet-apple).
 
 ### Kalender in Apple Kalender
 

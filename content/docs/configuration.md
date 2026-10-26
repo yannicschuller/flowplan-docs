@@ -194,6 +194,7 @@ Alles optional; die Werte gelten, bis ein Admin unter **Administration → KI** 
 | `FLOWPLAN_AI_GUESTS` | *aus* | `on`: auch Gäste dürfen KI nutzen. |
 | `FLOWPLAN_AI_USER_PROVIDERS` | *aus* | `on`: Personen dürfen eigene Anbieter und Schlüssel hinterlegen. |
 | `FLOWPLAN_AI_FEATURES` | *alle* | Erlaubte Funktionen, durch Komma getrennt: `write`, `summarize`, `ask`, `database`. |
+| `FLOWPLAN_AI_DEVICE` | *an* | `off`: keine [KI auf dem Gerät](/ai#ki-auf-dem-geraet-apple) in den Apps für iPhone, iPad und Mac. Unabhängig von `FLOWPLAN_AI`. |
 | `FLOWPLAN_AI_SEMANTIC_SEARCH` | *aus* | `on`: [Suche nach Bedeutung](/ai#suche-nach-bedeutung-optional) mit dem Embedding-Modell. |
 | `FLOWPLAN_AI_EMBED_PER_HOUR` | `5000` | Höchstzahl eingebetteter Abschnitte pro Stunde für die Suche nach Bedeutung. |
 | `FLOWPLAN_AI_REQUESTS_PER_HOUR` | `300` | Höchstzahl an KI-Anfragen pro Person und Stunde (zusätzlich 30 pro Minute, 3 gleichzeitig). |

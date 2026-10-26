@@ -1,9 +1,9 @@
 # KI
 
-Optionale KI für Texte, Zusammenfassungen, Fragen an den Arbeitsbereich und Datenbanken – standardmäßig aus, auf Wunsch komplett lokal mit Ollama oder mit einem Schlüssel für OpenAI, Anthropic, Gemini oder jeden OpenAI-kompatiblen Dienst.
+Optionale KI für Texte, Zusammenfassungen, Fragen an den Arbeitsbereich und Datenbanken – standardmäßig aus, auf Wunsch komplett lokal mit Ollama oder mit einem Schlüssel für OpenAI, Anthropic, Gemini oder jeden OpenAI-kompatiblen Dienst. In den Apps für iPhone, iPad und Mac auf Wunsch auch [direkt auf dem Gerät mit Apple Intelligence](#ki-auf-dem-geraet-apple).
 
 > [!NOTE]
-> **KI ist in Flowplan immer optional.** Nach der Installation ist sie aus. Die Administration entscheidet, ob es sie gibt, welcher Anbieter verwendet wird, wer sie nutzen darf und welche Funktionen erlaubt sind. Jede Person kann sie für sich wieder ausschalten und festlegen, welche Seiten die KI lesen darf. Mit [Ollama](#ollama-komplett-lokal) verlassen deine Texte den Server nicht.
+> **KI ist in Flowplan immer optional.** Nach der Installation ist sie aus. Die Administration entscheidet, ob es sie gibt, welcher Anbieter verwendet wird, wer sie nutzen darf und welche Funktionen erlaubt sind. Jede Person kann sie für sich wieder ausschalten und festlegen, welche Seiten die KI lesen darf. Mit [Ollama](#ollama-komplett-lokal) verlassen deine Texte den Server nicht. Einzige Ausnahme vom „standardmäßig aus“: [KI auf dem Gerät (Apple)](#ki-auf-dem-geraet-apple) ist erlaubt, weil dabei nichts das Gerät verlässt – Administration und jede Person können auch sie ausschalten.
 
 ## Grundsätze
 
@@ -42,6 +42,35 @@ Danach unter **Administration → KI** den Anbieter **Ollama** wählen. **Instal
 
 > [!TIP]
 > Wie gut und schnell lokale Modelle antworten, hängt vom Server ab. Kleine Modelle (3–8 Milliarden Parameter) laufen auf aktuellen CPUs; mit einer Grafikkarte werden sie deutlich schneller. Läuft Ollama auf einem anderen Rechner im Netz, trage dessen Adresse ein – Adressen im eigenen Netz sind für den Anbieter der Instanz erlaubt.
+
+## KI auf dem Gerät (Apple)
+
+> [!NOTE]
+> **Optional und jederzeit abschaltbar.** In den Flowplan-Apps für iPhone, iPad und Mac kann Flowplan **Apple Intelligence direkt auf dem Gerät** nutzen. **Der Text verlässt das Gerät dabei nicht** – er geht weder an den Flowplan-Server noch an einen KI-Anbieter. Die KI über den Server bleibt davon unberührt und weiter verfügbar.
+
+**Was du brauchst:** die Flowplan-App für iPhone oder iPad mit **iOS/iPadOS 26** oder neuer bzw. die Desktop-App auf einem Mac mit **macOS 26** oder neuer, ein Gerät, das Apple Intelligence unterstützt (etwa iPhone 15 Pro oder neuer, iPad und Mac mit M-Chip), und **Apple Intelligence eingeschaltet** (Einstellungen → Apple Intelligence & Siri). Im Browser und auf anderen Geräten gibt es diesen Weg nicht.
+
+**Was auf dem Gerät läuft** – die leichten Aktionen auf einer geöffneten Seite:
+
+- der [Schreibassistent](#schreibassistent) für markierten Text (Verbessern, Umformulieren, Kürzen, Erweitern, Einfacher erklären, Ton ändern, Übersetzen, Als Liste/Tabelle, eigene Anweisung) und das freie Schreiben an der Schreibmarke,
+- die [Zusammenfassung](#zusammenfassungen) der geöffneten Seite, eines Eintrags oder einer Sprachnotiz – mit Kernpunkten und **offenen Aufgaben**, die das Modell strukturiert herausliest.
+
+**Was auf dem Server bleibt:** Fragen an den Arbeitsbereich, KI in Datenbanken, KI-Aktionen und Zusammenfassungen von Datenbank-Ansichten. Sie brauchen weiter einen Anbieter der Instanz.
+
+Ergebnisse vom Gerät tragen das Kennzeichen **Auf diesem Gerät**, unten steht „Apple Intelligence · nur auf diesem Gerät“. Die Antwort erscheint wie gewohnt Stück für Stück, **Stopp** bricht auch auf dem Gerät ab.
+
+**Grenzen:** Das Modell auf dem Gerät ist klein und hat wenig Platz (etwa 4000 Token für Anweisung, Text und Antwort zusammen). Für den Schreibassistenten reicht das für einige Absätze; längere Seiten fasst es in Teilen zusammen. Was zu lang ist, übernimmt der Server, wenn du dort KI nutzen darfst – sonst sagt Flowplan, dass der Text zu lang ist, bzw. fasst nur den Anfang zusammen. Lehnt das Modell eine Anfrage nach Apples Sicherheitsregeln ab, geht sie nicht stattdessen an den Server.
+
+**Ein- und ausschalten:**
+
+- **Jede Person** unter **Einstellungen → KI → Auf diesem Gerät (Apple)**: **Wenn möglich (Standard)** – auf dem Gerät, wenn es kann, sonst auf dem Server; **Nur ohne KI auf dem Server** – das Gerät nur, wenn der Server keine KI anbietet; **Aus** – Flowplan fragt das Gerät nie. Dort steht auch, ob Apple Intelligence auf diesem Gerät **verfügbar**, **in den Einstellungen ausgeschaltet** oder **nicht unterstützt** ist. **KI-Funktionen verwenden** aus schaltet auch die KI auf dem Gerät ab.
+- **Die Administration** unter **Administration → KI → KI auf dem Gerät (Apple)** für die ganze Instanz (oder mit `FLOWPLAN_AI_DEVICE=off`, [Konfiguration](/configuration#ki)). Der Hauptschalter **KI einschalten** gilt für die KI über den Server; die KI auf dem Gerät hat ihren eigenen Schalter und ist standardmäßig erlaubt – auch ohne Anbieter.
+- **Für KI gesperrte Seiten und Bereiche** bleiben gesperrt, ebenso deine eigenen Regeln, die Schalter der einzelnen Funktionen, **Ausgewählte Personen** und **Auch Gäste**.
+
+**Verschlüsselte Bereiche:** In [Ende-zu-Ende-verschlüsselten Bereichen](/encrypted-spaces) gibt es sonst keine KI, weil der Server den Text nicht kennt. Auf dem Gerät schon: Schreibassistent (KI-Knopf in der Werkzeugleiste) und Zusammenfassung arbeiten mit dem entschlüsselten Text auf dem Gerät – an den Server geht dabei nichts, auch nicht ersatzweise.
+
+> [!TIP]
+> Apples **Schreibtools** (Korrekturlesen, Umschreiben, Zusammenfassen im Textmenü) funktionieren in der App für iPhone und iPad ebenfalls direkt im Editor. Sie gehören zum System und laufen unabhängig von diesen Einstellungen.
 
 ## Schreibassistent
 
@@ -187,7 +216,8 @@ Unter **Administration → KI**:
    - **Auch Gäste** – ausgeschaltet haben Gäste keine KI-Funktionen.
    - **Nutzer dürfen eigene Anbieter/Schlüssel hinterlegen** – dann richtet jede Person in ihren Einstellungen einen eigenen Anbieter mit eigenem Schlüssel ein. Das geht auch ganz ohne Anbieter der Instanz: So nutzen Personen KI mit ihrem eigenen Konto bei einem Anbieter, ohne dass die Instanz dafür bezahlt.
 4. **Funktionen:** jede einzeln erlauben oder verbieten. Optional die [Suche nach Bedeutung](#suche-nach-bedeutung-optional) einschalten.
-5. **Speichern.**
+5. **KI auf dem Gerät (Apple):** standardmäßig erlaubt, unabhängig vom Schalter in Schritt 1 ([KI auf dem Gerät](#ki-auf-dem-geraet-apple)). Ausschalten, wenn es auf der Instanz gar keine KI geben soll.
+6. **Speichern.**
 
 So lassen sich drei typische Varianten einrichten:
 
@@ -209,6 +239,7 @@ Unter **Einstellungen → KI**:
 
 - **Verwendeter Anbieter:** welcher Anbieter für dich arbeitet und ob deine Texte den Server verlassen („Deine Texte werden auf diesem Server verarbeitet und verlassen ihn nicht.“ bei Ollama).
 - **KI-Funktionen verwenden:** KI für dich ganz ausschalten – oder einzelne Funktionen.
+- **Auf diesem Gerät (Apple):** ob Apple Intelligence hier verfügbar ist und ob Flowplan es nutzen soll – **Wenn möglich (Standard)**, **Nur ohne KI auf dem Server** oder **Aus** ([KI auf dem Gerät](#ki-auf-dem-geraet-apple)).
 - **Eigenen Anbieter einrichten** (wenn die Administration es erlaubt): Anbieter, Adresse, Modell und dein Schlüssel. Eigene Anbieter müssen öffentliche `https`-Adressen haben. Gibt es auch einen Anbieter der Instanz, wählst du unter **Welchen Anbieter verwenden** zwischen **Den der Instanz** und **Meinen eigenen**.
 
 ### Worauf die KI zugreifen darf
@@ -238,13 +269,15 @@ Auf einer Seite, die die KI nicht lesen darf, sind KI-Funktionen ausgegraut, mit
 - **Keine internen Adressen für eigene Anbieter:** Eigene Anbieter von Personen erreichen nur öffentliche `https`-Adressen – keine Adressen im internen Netz oder des Servers selbst.
 - **Aus Umgebungsvariablen:** Ein Schlüssel aus `FLOWPLAN_AI_API_KEY` wird nie in der Datenbank gespeichert und nur für den Anbieter aus den Variablen verwendet.
 - **Fehlermeldungen** von Anbietern werden von Schlüsseln bereinigt, bevor sie angezeigt oder protokolliert werden.
-- **Kein Zugriff über API-Tokens und Demo:** API-Tokens können KI-Einstellungen weder lesen noch ändern und keine KI-Funktionen nutzen; in der Demo ist KI aus.
+- **Kein Zugriff über API-Tokens und Demo:** API-Tokens können KI-Einstellungen weder lesen noch ändern und keine KI-Funktionen nutzen; in der Demo ist KI über den Server aus (KI auf dem Gerät gibt es dort mit den Standardeinstellungen).
 - **Grenzen:** höchstens 30 Anfragen pro Minute, 300 pro Stunde (`FLOWPLAN_AI_REQUESTS_PER_HOUR`) und 3 gleichzeitig pro Person.
 - **Sicherungen:** `secrets.key` ist nicht Teil der Instanzsicherung. Nach einer Wiederherstellung auf einem anderen Server ohne diese Datei zeigt Flowplan „gespeichert, aber nicht lesbar – bitte ersetzen“, und die Schlüssel werden neu eingegeben.
 
 ## Häufige Fragen
 
-**Muss ich KI nutzen?** Nein. Sie ist aus, bis die Administration sie einschaltet, und jede Person kann sie für sich ausschalten.
+**Muss ich KI nutzen?** Nein. Sie ist aus, bis die Administration sie einschaltet, und jede Person kann sie für sich ausschalten. Auch die KI auf Apple-Geräten ist optional: **Einstellungen → KI → Auf diesem Gerät (Apple) → Aus**.
+
+**Geht bei der KI auf dem Gerät etwas an den Server?** Nein. Der Text wird auf dem iPhone, iPad oder Mac verarbeitet; der Server erfährt nur, dass du die Einstellung gewählt hast.
 
 **Geht es ganz ohne Cloud?** Ja, mit Ollama auf dem eigenen Server. Dann verlässt kein Text den Server.
 

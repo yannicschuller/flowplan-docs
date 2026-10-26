@@ -1,9 +1,9 @@
 # AI
 
-Optional AI for writing, summaries, questions to your workspace and databases – off by default, completely local with Ollama if you like, or with a key for OpenAI, Anthropic, Gemini or any OpenAI-compatible service.
+Optional AI for writing, summaries, questions to your workspace and databases – off by default, completely local with Ollama if you like, or with a key for OpenAI, Anthropic, Gemini or any OpenAI-compatible service. In the apps for iPhone, iPad and Mac optionally also [right on the device with Apple Intelligence](#on-device-ai-apple).
 
 > [!NOTE]
-> **AI in Flowplan is always optional.** After installation it is off. Administrators decide whether it is available, which provider is used, who may use it and which features are allowed. Everyone can switch it off again for themselves and decide which pages the AI may read. With [Ollama](#ollama-completely-local) your text never leaves the server.
+> **AI in Flowplan is always optional.** After installation it is off. Administrators decide whether it is available, which provider is used, who may use it and which features are allowed. Everyone can switch it off again for themselves and decide which pages the AI may read. With [Ollama](#ollama-completely-local) your text never leaves the server. The one exception to “off by default”: [on-device AI (Apple)](#on-device-ai-apple) is allowed because nothing leaves the device – administrators and everyone can switch it off too.
 
 ## Principles
 
@@ -42,6 +42,35 @@ Then choose the provider **Ollama** under **Administration → AI**. **Load inst
 
 > [!TIP]
 > How well and how fast local models answer depends on the server. Small models (3–8 billion parameters) run on current CPUs; a graphics card makes them much faster. If Ollama runs on another machine in your network, enter its address – addresses in your own network are allowed for the instance provider.
+
+## On-device AI (Apple)
+
+> [!NOTE]
+> **Optional and can be switched off at any time.** In the Flowplan apps for iPhone, iPad and Mac, Flowplan can use **Apple Intelligence right on the device**. **The text does not leave the device** – it goes neither to the Flowplan server nor to an AI provider. AI through the server is not affected and stays available.
+
+**What you need:** the Flowplan app for iPhone or iPad with **iOS/iPadOS 26** or later, or the desktop app on a Mac with **macOS 26** or later, a device that supports Apple Intelligence (such as iPhone 15 Pro or later, iPad and Mac with an M chip), and **Apple Intelligence switched on** (Settings → Apple Intelligence & Siri). In the browser and on other devices this path does not exist.
+
+**What runs on the device** – the light actions on an open page:
+
+- the [writing assistant](#writing-assistant) for selected text (improve, rephrase, shorten, expand, explain more simply, change tone, translate, as a list/table, your own instruction) and free writing at the cursor,
+- the [summary](#summaries) of the open page, a record or a voice note – with key points and **open tasks** that the model extracts in a structured way.
+
+**What stays on the server:** questions to the workspace, AI in databases, AI actions and summaries of database views. They still need an instance provider.
+
+Results from the device carry the label **On this device**, and the bottom line reads “Apple Intelligence · only on this device”. The answer appears piece by piece as usual, and **Stop** cancels on the device too.
+
+**Limits:** the on-device model is small and has little room (about 4,000 tokens for instruction, text and answer together). For the writing assistant that is enough for a few paragraphs; longer pages are summarised in parts. What is too long is taken over by the server if you may use AI there – otherwise Flowplan says the text is too long, or summarises only the beginning. If the model declines a request under Apple's safety rules, it is not sent to the server instead.
+
+**Switching it on and off:**
+
+- **Everyone** under **Settings → AI → On this device (Apple)**: **When possible (default)** – on the device when it can, otherwise on the server; **Only without AI on the server** – the device only when the server offers no AI; **Off** – Flowplan never asks the device. It also shows whether Apple Intelligence on this device is **available**, **turned off in Settings** or **not supported**. Switching off **Use AI features** turns off on-device AI too.
+- **Administrators** under **Administration → AI → On-device AI (Apple)** for the whole instance (or with `FLOWPLAN_AI_DEVICE=off`, [configuration](/configuration#ai)). The main switch **Turn on AI** applies to AI through the server; on-device AI has its own switch and is allowed by default – also without a provider.
+- **Pages and spaces closed to the AI** stay closed, as do your own rules, the switches of the individual features, **Selected people** and **Guests too**.
+
+**Encrypted spaces:** in [end-to-end encrypted spaces](/encrypted-spaces) there is otherwise no AI, because the server does not know the text. On the device there is: the writing assistant (AI button in the toolbar) and the summary work with the decrypted text on the device – nothing goes to the server, not even as a fallback.
+
+> [!TIP]
+> Apple's **Writing Tools** (proofread, rewrite, summarise in the text menu) also work right in the editor in the app for iPhone and iPad. They are part of the system and run independently of these settings.
 
 ## Writing assistant
 
@@ -187,7 +216,8 @@ Under **Administration → AI**:
    - **Guests too** – when off, guests have no AI features.
    - **People may add their own provider/key** – then everyone can set up their own provider with their own key in their settings. This also works with no instance provider at all: people use AI with their own account at a provider, without the instance paying for it.
 4. **Features:** allow or forbid each one separately. Optionally turn on [semantic search](#semantic-search-optional).
-5. **Save.**
+5. **On-device AI (Apple):** allowed by default, independently of the switch in step 1 ([on-device AI](#on-device-ai-apple)). Switch it off if there should be no AI on the instance at all.
+6. **Save.**
 
 This covers three typical setups:
 
@@ -209,6 +239,7 @@ Under **Settings → AI**:
 
 - **Provider in use:** which provider works for you and whether your text leaves the server ("Your text is processed on this server and does not leave it." with Ollama).
 - **Use AI features:** switch AI off for yourself entirely – or single features.
+- **On this device (Apple):** whether Apple Intelligence is available here and whether Flowplan should use it – **When possible (default)**, **Only without AI on the server** or **Off** ([on-device AI](#on-device-ai-apple)).
 - **Set up own provider** (if administrators allow it): provider, address, model and your key. Your own providers need public `https` addresses. If there is an instance provider too, choose under **Which provider to use** between **The instance's** and **My own**.
 
 ### What the AI may access
@@ -238,13 +269,15 @@ On a page the AI may not read, AI features are greyed out with a note saying why
 - **No internal addresses for own providers:** people's own providers only reach public `https` addresses – no addresses in the internal network or of the server itself.
 - **From environment variables:** a key from `FLOWPLAN_AI_API_KEY` is never stored in the database and only used for the provider from the variables.
 - **Error messages** from providers are cleaned of keys before they are shown or logged.
-- **No access with API tokens or in the demo:** API tokens can neither read nor change AI settings and cannot use AI features; in the demo, AI is off.
+- **No access with API tokens or in the demo:** API tokens can neither read nor change AI settings and cannot use AI features; in the demo, AI through the server is off (on-device AI is there with the default settings).
 - **Limits:** at most 30 requests per minute, 300 per hour (`FLOWPLAN_AI_REQUESTS_PER_HOUR`) and 3 at once per person.
 - **Backups:** `secrets.key` is not part of the instance backup. After restoring on another server without this file, Flowplan shows "stored but unreadable – please replace", and the keys are entered again.
 
 ## Frequently asked questions
 
-**Do I have to use AI?** No. It is off until administrators switch it on, and everyone can switch it off for themselves.
+**Do I have to use AI?** No. It is off until administrators switch it on, and everyone can switch it off for themselves. AI on Apple devices is optional too: **Settings → AI → On this device (Apple) → Off**.
+
+**Does anything go to the server with on-device AI?** No. The text is processed on the iPhone, iPad or Mac; the server only learns which setting you chose.
 
 **Does it work without any cloud?** Yes, with Ollama on your own server. Then no text leaves the server.
 
