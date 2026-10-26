@@ -35,7 +35,7 @@ The settings open with an overview: one tile per section, grouped into **Persona
 
 On a phone the sidebar folds away; the menu icon at the top left opens it.
 
-Short animations show what just moved: cards and rows glide into their new place, bars that move along in the timeline visibly follow, and the target of a jump – from the table of contents, search or a notification – lights up briefly. They follow the system setting **Reduce motion**: when it is on, everything moves to its target without motion, and jump targets are only highlighted briefly and still.
+Short animations show what just moved: cards and rows glide into their new place, bars that move along in the timeline visibly follow, and the target of a jump – from the table of contents, search or a notification – lights up briefly. Moving to another page briefly cross-fades the content area; when you open a page in the page tree, its icon and title fly to their place, and a card from a board or gallery grows into its record (on a phone the record comes up as a sheet). A tap or a key ends such a transition at once, and clicking quickly from one page to the next goes without one. While uploaded images load, they show a blurred preview in their final size and then fade in – nothing below them moves. The animations follow the system setting **Reduce motion**: when it is on, everything moves to its target without motion, and jump targets are only highlighted briefly and still.
 
 ## Customize your home page
 

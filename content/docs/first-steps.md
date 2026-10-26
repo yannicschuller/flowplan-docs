@@ -35,7 +35,7 @@ Die Einstellungen öffnen mit einer Übersicht: je Abschnitt eine Kachel, gruppi
 
 Auf dem Smartphone klappt die Seitenleiste ein; das Menüsymbol oben links öffnet sie.
 
-Kurze Animationen zeigen, was sich gerade bewegt hat: Karten und Zeilen gleiten an ihren neuen Platz, mitverschobene Balken in der Timeline rücken sichtbar nach, und das Ziel eines Sprungs – aus dem Inhaltsverzeichnis, der Suche oder einer Benachrichtigung – leuchtet kurz auf. Sie folgen der Systemeinstellung **Bewegung reduzieren**: Ist sie aktiv, springt alles ohne Bewegung an sein Ziel, und Sprungziele werden nur kurz ruhig hervorgehoben.
+Kurze Animationen zeigen, was sich gerade bewegt hat: Karten und Zeilen gleiten an ihren neuen Platz, mitverschobene Balken in der Timeline rücken sichtbar nach, und das Ziel eines Sprungs – aus dem Inhaltsverzeichnis, der Suche oder einer Benachrichtigung – leuchtet kurz auf. Beim Wechsel zu einer anderen Seite blendet der Inhaltsbereich kurz über; öffnest du eine Seite im Seitenbaum, fliegen ihr Symbol und ihr Titel an ihren Platz, und eine Karte aus Board oder Galerie wächst zum Eintrag (auf dem Smartphone kommt er als Blatt von unten). Ein Tippen oder eine Taste beendet so einen Übergang sofort, und wer schnell hintereinander klickt, wechselt ohne Übergang. Hochgeladene Bilder zeigen, solange sie laden, eine unscharfe Vorschau in ihrer endgültigen Größe und blenden dann ein – nichts darunter verrutscht. Die Animationen folgen der Systemeinstellung **Bewegung reduzieren**: Ist sie aktiv, springt alles ohne Bewegung an sein Ziel, und Sprungziele werden nur kurz ruhig hervorgehoben.
 
 ## Startseite anpassen
 

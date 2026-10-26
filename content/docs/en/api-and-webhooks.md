@@ -266,6 +266,8 @@ curl -H "Authorization: Bearer fp_…" https://flowplan.example.com/api/openapi.
 
 It lists every endpoint an API token may call: workspace and pages, search, files, imports and exports, webhooks, the MCP server and `POST /api/command` with a schema for each commonly used action (`page.create`, `row.create`, `row.update`, `webhook.delete` …) plus the list of all other actions. Each endpoint names its error codes (400, 401, 403, 404, 409, 413, 429) and the rate limits; calendar subscriptions and CalDAV are noted as external accesses with their own link.
 
+Uploaded images have a placeholder: the answer of `POST /api/upload` names, under `placeholder`, the size the image is shown in (`w`, `h`) and a [ThumbHash](https://evanw.github.io/thumbhash/) (`hash`, base64) – a blurred preview in about 25 bytes. `GET /api/files/placeholders?ids=…` returns the same for up to 100 files and profile pictures (`avatar:<user ID>`), but only for files you may download; anything else is left out of the answer. For older files the placeholder is computed on the first request. Files of encrypted spaces never have one – the server cannot see their content.
+
 The document is built from the code: where the server validates input with `zod` (properties and views of a database, the actions, export options), the same schemas are used; the rest is described from the routes in `lib/openapi.ts`. A test keeps them together – every route under `app/api`, every action of `command()` and the SDKs.
 
 ### Clients

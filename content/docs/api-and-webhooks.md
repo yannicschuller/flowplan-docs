@@ -266,6 +266,8 @@ curl -H "Authorization: Bearer fp_…" https://flowplan.example.com/api/openapi.
 
 Darin stehen alle Endpunkte, die ein API-Token aufrufen darf: Arbeitsbereich und Seiten, Suche, Dateien, Importe und Exporte, Webhooks, der MCP-Server und `POST /api/command` mit einem Schema je häufig genutzter Aktion (`page.create`, `row.create`, `row.update`, `webhook.delete` …) sowie der Liste aller übrigen Aktionen. Zu jedem Endpunkt sind die Fehlercodes (400, 401, 403, 404, 409, 413, 429) und die Ratenbegrenzungen vermerkt; Kalender-Abos und CalDAV sind als externe Zugänge mit eigenem Link genannt.
 
+Hochgeladene Bilder haben einen Platzhalter: Die Antwort von `POST /api/upload` nennt unter `placeholder` die Größe, in der das Bild erscheint (`w`, `h`), und einen [ThumbHash](https://evanw.github.io/thumbhash/) (`hash`, Base64) – eine unscharfe Vorschau in rund 25 Bytes. `GET /api/files/placeholders?ids=…` liefert dasselbe für bis zu 100 Dateien und Profilbilder (`avatar:<Benutzer-ID>`), aber nur für Dateien, die du auch herunterladen darfst; alles andere fehlt in der Antwort. Für ältere Dateien wird der Platzhalter bei der ersten Anfrage berechnet. Dateien verschlüsselter Bereiche haben nie einen – der Server sieht ihren Inhalt nicht.
+
 Das Dokument entsteht aus dem Code: Wo der Server Eingaben mit `zod` prüft (Eigenschaften und Ansichten einer Datenbank, die Aktionen, Export-Optionen), werden dieselben Schemas übernommen; der Rest ist in `lib/openapi.ts` aus den Routen beschrieben. Ein Test hält beides zusammen – jede Route unter `app/api`, jede Aktion von `command()` und die SDKs.
 
 ### Clients
