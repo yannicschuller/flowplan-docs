@@ -18,8 +18,9 @@ Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd> | Dokument [präsentieren](/documents#praesentieren) |
 | – | Helles oder dunkles Design (ohne Vorgabe, eigenes Kürzel möglich) |
 | <kbd>Esc</kbd> | Dialog, Menü oder Suche schließen |
+| <kbd>⌘</kbd> <kbd>Z</kbd> | Löschen, Verschieben oder eine Massenänderung zurücknehmen, solange der Hinweis mit **Rückgängig** sichtbar ist (außerhalb von Textfeldern; im Editor nimmt es die letzte Eingabe zurück) |
 
-Alle Kürzel dieser Tabelle außer <kbd>Esc</kbd> lassen sich ändern, siehe [Eigene Tastenkürzel](#eigene-tastenkuerzel).
+Alle Kürzel dieser Tabelle außer <kbd>Esc</kbd> und <kbd>⌘</kbd> <kbd>Z</kbd> lassen sich ändern, siehe [Eigene Tastenkürzel](#eigene-tastenkuerzel).
 
 In der Desktop-App wechselt <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> bzw. <kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>P</kbd> zum nächsten [Profil](/offline-and-apps#mehrere-instanzen-profile), sobald mehr als eines gespeichert ist.
 

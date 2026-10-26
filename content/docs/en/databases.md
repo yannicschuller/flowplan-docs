@@ -23,7 +23,7 @@ Below are **Your templates**: saved database templates, such as your own "Notes 
 - An open record has its own address (`/#page=<database>&row=<record>`) – whether it opens as a dialog, in the side panel or as a full page. It can be shared, bookmarked or linked in texts with `@`. Below the properties, **Linked from** shows which records refer to it through a relation and which pages and records link to it in their text.
 - **Record templates** give new records properties and content. One template can be the default for new records.
 - Select several records (checkboxes on the left) and edit, duplicate or delete them together – up to 500 at once. Flowplan saves a state beforehand that can be restored from the version history.
-- Deleted records sit in the database's trash and can be brought back.
+- Deleted records sit in the database's trash and can be brought back. Right after deleting it is quicker: **Undo** in the notice at the bottom (or <kbd>⌘</kbd> <kbd>Z</kbd> while it shows). A bulk edit of several records, a record dragged into another column, a removed date and a deleted property can be taken back the same way.
 
 ### Move a page into a database
 

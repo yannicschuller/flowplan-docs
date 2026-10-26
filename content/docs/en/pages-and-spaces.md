@@ -115,6 +115,8 @@ Via `…` next to a space or **Settings → Spaces**:
 
 Deleted pages and spaces end up in the **Trash** at the bottom of the sidebar. There they can be restored or deleted permanently. Publications, share links and forms are switched off when deleting and are not switched on again automatically when restoring.
 
+Right after deleting, Flowplan shows a notice at the bottom such as “‘Notes’ moved to the trash” with **Undo** – for about six seconds, longer while the pointer or the focus rests on it. **Undo** or <kbd>⌘</kbd> <kbd>Z</kbd> (outside text fields) brings the page back with its sub-pages and opens it again. The same goes for moving pages in the page tree and for several pages at once.
+
 ## Graph of links
 
 The network icon at the bottom of the sidebar (or `> graph` in the quick search) shows all pages as dots and their links as lines. Database records appear as dots of their own once they link or are linked; a click opens the record. Large dots have many connections; colours tell documents, databases, records, whiteboards and journals apart.
