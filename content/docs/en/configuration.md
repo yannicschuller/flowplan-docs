@@ -17,7 +17,7 @@ All environment variables at a glance. Many values can also be set in the interf
 | `OIDC_CLIENT_ID` | – | Client ID. |
 | `OIDC_CLIENT_SECRET` | – | Client secret. Never put it into the image or into Git. |
 | `SESSION_HOURS` | `8` | How long a session lasts in hours (1–24). Without `SESSION_REMEMBER` this applies to every session, the apps' too. |
-| `SESSION_REMEMBER` | off | `true` offers **Stay signed in on this device** when signing in – see [Sign-in](/sign-in#stay-signed-in). Recommended when the desktop or mobile apps and their widgets are used. |
+| `SESSION_REMEMBER` | off | `true` offers **Stay signed in** when signing in – see [Sign-in](/sign-in#stay-signed-in). Recommended when the desktop or mobile apps and their widgets are used. |
 | `SESSION_IDLE_HOURS` | `168` | With "stay signed in": the session ends this many hours after it was last used. |
 | `SESSION_MAX_DAYS` | `30` | With "stay signed in": sign in again after this many days at the latest (1–365) – with SSO just as with password and passkey. |
 | `SESSION_GROUPS_HOURS` | *empty* | Only when set: SSO sessions with "stay signed in" end after this many hours already, so group changes at the provider take effect with the new sign-in. Without it they follow through SCIM, the LDAP sync or the next sign-in. |

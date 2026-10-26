@@ -29,9 +29,9 @@ Under **Links with their own permissions** you create as many named links as you
 
 | Link permission | Visitors may |
 | --- | --- |
-| **View** | look at the page |
-| **View and comment** | also comment; comments carry a guest note |
-| **View, comment and edit** | also change the title, text and visible properties of existing records |
+| **Read** | look at the page |
+| **Read and comment** | also comment; comments carry a guest note |
+| **Read, comment and edit** | also change the title, text and visible properties of existing records |
 
 - Links work without an account and can be revoked one by one.
 - With **edit** links, guests write along live: changes by members and other guests appear right away, and cursors are visible both ways – guests appear as "Guest · <link name>".

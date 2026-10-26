@@ -15,7 +15,7 @@ Ein Journal ist eine Seite mit einer Unterseite pro Tag. Morgens liegt die heuti
 
 ## Tagesvorlage
 
-**Journal einrichten** (Zahnrad auf der Journalseite) → **Tagesvorlage**: Jeder neue Tag beginnt mit diesem Inhalt, etwa „Dankbar für“, „Fokus heute“ und „Rückblick am Abend“. Zur Wahl stehen fertige Vorlagen (Dankbarkeit & Fokus, 5-Minuten-Journal, Arbeitslog, Tagesrückblick); **Heutigen Tag als Vorlage** übernimmt den aktuellen Tag. Aufgaben aus der Vorlage kommen jeden Tag neu und werden nicht zusätzlich übernommen. Ein Tag, auf dem nur die Vorlage steht, gilt als leer und verschwindet wie jeder leere Tag.
+**Journal einrichten** (Zahnrad auf der Journalseite) → **Vorlage**: Jeder neue Tag beginnt mit diesem Inhalt, etwa „Dankbar für“, „Fokus heute“ und „Rückblick am Abend“. Zur Wahl stehen fertige Vorlagen (Dankbarkeit & Fokus, 5-Minuten-Journal, Arbeitslog, Tagesrückblick); **Heutigen Tag übernehmen** macht den aktuellen Tag zur Vorlage den aktuellen Tag. Aufgaben aus der Vorlage kommen jeden Tag neu und werden nicht zusätzlich übernommen. Ein Tag, auf dem nur die Vorlage steht, gilt als leer und verschwindet wie jeder leere Tag.
 
 ## Tracker, Ort und Termine
 

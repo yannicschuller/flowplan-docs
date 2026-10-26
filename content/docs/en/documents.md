@@ -186,7 +186,7 @@ To turn a PDF into a notebook you write in page by page and add sheets to, open 
 
 - **Formulas** in LaTeX: as a block with `/math`, inside the text with `/inlinemath`. The preview appears while you type. Building blocks such as fraction, root, superscript, subscript, vector, cross product, ±, π and sum sit above the input.
 - **Mermaid diagrams**: a click or <kbd>Enter</kbd> opens the source and preview. Up to 20,000 characters and 500 edges.
-- **Code blocks**: choose the language in the header; **Wrap lines** and **Copy** are at hand. <kbd>Tab</kbd> indents by two spaces.
+- **Code blocks**: choose the language in the header; **Line wrap** and **Copy** are at hand. <kbd>Tab</kbd> indents by two spaces.
 - **Fractions**: `/Fraction` (or `/Bruch`) inserts a formula inside the sentence.
 
 ## Calculating in text

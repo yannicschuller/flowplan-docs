@@ -17,7 +17,7 @@ Alle Umgebungsvariablen auf einen Blick. Viele Werte lassen sich zusätzlich in 
 | `OIDC_CLIENT_ID` | – | Client-ID. |
 | `OIDC_CLIENT_SECRET` | – | Client-Secret. Nie ins Image oder ins Git. |
 | `SESSION_HOURS` | `8` | Dauer einer Sitzung in Stunden (1–24). Ohne `SESSION_REMEMBER` gilt das für alle Sitzungen, auch die der Apps. |
-| `SESSION_REMEMBER` | aus | `true` bietet beim Anmelden **Auf diesem Gerät angemeldet bleiben** an – siehe [Anmeldung](/sign-in#angemeldet-bleiben). Empfohlen, wenn die Desktop- oder Handy-Apps und ihre Widgets genutzt werden. |
+| `SESSION_REMEMBER` | aus | `true` bietet beim Anmelden **Angemeldet bleiben** an – siehe [Anmeldung](/sign-in#angemeldet-bleiben). Empfohlen, wenn die Desktop- oder Handy-Apps und ihre Widgets genutzt werden. |
 | `SESSION_IDLE_HOURS` | `168` | Mit „angemeldet bleiben“: Sitzung endet so viele Stunden nach der letzten Nutzung. |
 | `SESSION_MAX_DAYS` | `30` | Mit „angemeldet bleiben“: spätestens nach so vielen Tagen neu anmelden (1–365) – mit SSO genauso wie mit Passwort und Passkey. |
 | `SESSION_GROUPS_HOURS` | *leer* | Nur wenn gesetzt: SSO-Sitzungen mit „angemeldet bleiben“ enden schon nach so vielen Stunden, damit Gruppenänderungen beim Anbieter mit der neuen Anmeldung wirken. Ohne die Variable wirken sie über SCIM, den LDAP-Abgleich oder die nächste Anmeldung. |

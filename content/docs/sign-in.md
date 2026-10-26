@@ -192,7 +192,7 @@ Ist `LDAP_URL` gesetzt, prüft das Passwortfeld der Anmeldeseite Namen gegen ein
 
 ## Angemeldet bleiben
 
-Normalerweise endet eine Sitzung `SESSION_HOURS` nach der Anmeldung (Standard 8 Stunden). Mit `SESSION_REMEMBER=true` zeigt die Anmeldeseite **Auf diesem Gerät angemeldet bleiben** – für Passwort, Passkey und SSO. Mit Haken lebt die Sitzung weiter, solange Flowplan genutzt wird:
+Normalerweise endet eine Sitzung `SESSION_HOURS` nach der Anmeldung (Standard 8 Stunden). Mit `SESSION_REMEMBER=true` zeigt die Anmeldeseite **Angemeldet bleiben** – für Passwort, Passkey und SSO. Mit Haken lebt die Sitzung weiter, solange Flowplan genutzt wird:
 
 - Sie endet `SESSION_IDLE_HOURS` nach der letzten Nutzung (Standard 168 = 7 Tage) und spätestens `SESSION_MAX_DAYS` nach der Anmeldung (Standard 30). Danach heißt es neu anmelden – das begrenzt, wie lange ein gestohlenes Cookie taugt.
 - SSO-Sitzungen verlängern sich genauso, bis `SESSION_MAX_DAYS`. Gruppenänderungen beim Anbieter wirken über SCIM, den LDAP-Abgleich oder die nächste Anmeldung. Nur wenn `SESSION_GROUPS_HOURS` gesetzt ist, endet eine SSO-Sitzung schon nach so vielen Stunden: Die neue Anmeldung beim Anbieter holt die aktuellen Gruppen, so wirken `OIDC_ALLOWED_GROUP` und `OIDC_ADMIN_GROUP` auch ohne SCIM spätestens dann.

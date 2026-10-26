@@ -37,7 +37,7 @@ Select a sticky note, shape or text and press <kbd>Tab</kbd>: a connected branch
 - When moving, edges and centres snap to other elements; orange **guides** show to which. <kbd>⌥</kbd> while dragging turns snapping off.
 - **Snap to grid** (grid button at the bottom) snaps elements without neighbours to the 24-point grid.
 - Select several elements → **Arrange**: align left, centre, right, top, middle or bottom, distribute evenly or stack as a row or column.
-- For workshops: **Group by colour**, **Group by person** (with headings), **Sort by votes** or **Arrange as grid**.
+- For workshops: **Group by colour**, **Group by person** (with headings), **Sort by votes** or **Arrange as a grid**.
 
 ## Pen and shape recognition
 

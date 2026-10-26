@@ -192,7 +192,7 @@ With `LDAP_URL` set, the password field of the sign-in page checks names against
 
 ## Stay signed in
 
-Normally a session ends `SESSION_HOURS` after signing in (default 8 hours). With `SESSION_REMEMBER=true` the sign-in page shows **Stay signed in on this device** – for password, passkey and SSO. When ticked, the session lives on while Flowplan is used:
+Normally a session ends `SESSION_HOURS` after signing in (default 8 hours). With `SESSION_REMEMBER=true` the sign-in page shows **Stay signed in** – for password, passkey and SSO. When ticked, the session lives on while Flowplan is used:
 
 - It ends `SESSION_IDLE_HOURS` after it was last used (default 168 = 7 days) and at the latest `SESSION_MAX_DAYS` after signing in (default 30). Then you sign in again – this limits how long a stolen cookie is good for.
 - SSO sessions extend the same way, up to `SESSION_MAX_DAYS`. Group changes at the provider follow through SCIM, the LDAP sync or the next sign-in. Only when `SESSION_GROUPS_HOURS` is set does an SSO session end after that many hours already: signing in at the provider again fetches the current groups, so `OIDC_ALLOWED_GROUP` and `OIDC_ADMIN_GROUP` apply by then at the latest, even without SCIM.
