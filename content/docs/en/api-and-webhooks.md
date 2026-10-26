@@ -294,6 +294,8 @@ created = client.command({"action": "row.create", "pageId": "<database ID>", "ce
 
 Methods are named after the document's `operationId` (`getPage` / `get_page`, `search`, `uploadFile` / `upload_file`, `markdownExport` / `markdown_export` …). Answers outside 2xx raise `FlowplanError` with the status, the server's message and, for 429, the time to wait. Each SDK comes with a README and an example script.
 
+Both clients send an [`Idempotency-Key`](#idempotency-key-retries-without-doubles) with every change on their own and retry by themselves – GET requests and changes after a network error, `429`, `502`, `503`, `504` or `409` while the first attempt still runs, twice by default (`retries`, `0` turns it off). Changes are retried with the same key and so applied once. To repeat an action later, pass your own key: `idempotencyKey` (TypeScript, in the options of a call) or `idempotency_key=` (Python).
+
 If you build Flowplan yourself, `npm run sdk` regenerates the clients; the test `tests/openapi.test.ts` fails when the committed files no longer match the document.
 
 ## n8n

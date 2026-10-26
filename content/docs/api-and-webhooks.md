@@ -294,6 +294,8 @@ created = client.command({"action": "row.create", "pageId": "<Datenbank-ID>", "c
 
 Die Methoden heißen wie die `operationId` des Dokuments (`getPage` / `get_page`, `search`, `uploadFile` / `upload_file`, `markdownExport` / `markdown_export` …). Antworten außerhalb von 2xx werfen `FlowplanError` mit Status, Meldung des Servers und bei 429 der Wartezeit. Jedes SDK bringt eine README und ein Beispielskript mit.
 
+Beide Clients schicken bei jeder Änderung von selbst einen [`Idempotency-Key`](#idempotency-key-wiederholen-ohne-doppelte) mit und wiederholen selbst – GET-Anfragen und Änderungen nach einem Netzwerkfehler, `429`, `502`, `503`, `504` oder `409`, solange der erste Versuch noch läuft, standardmäßig zweimal (`retries`, `0` schaltet es ab). Änderungen gehen mit demselben Schlüssel erneut und wirken so nur einmal. Um eine Aktion später zu wiederholen, gib einen eigenen Schlüssel mit: `idempotencyKey` (TypeScript, in den Optionen eines Aufrufs) oder `idempotency_key=` (Python).
+
 Wer Flowplan selbst baut, erzeugt die Clients mit `npm run sdk` neu; der Test `tests/openapi.test.ts` schlägt fehl, wenn die eingecheckten Dateien nicht mehr zum Dokument passen.
 
 ## n8n
