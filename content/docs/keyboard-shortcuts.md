@@ -50,6 +50,9 @@ Die Übersicht zeigt die Tasten so, wie sie auf deinem Gerät heißen: auf dem M
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>H</kbd> | Verdecken (Spoiler) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>M</kbd> | Text kommentieren |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>1</kbd>–<kbd>3</kbd> | Überschrift 1–3 |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>0</kbd> | Zurück zu normalem Text |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>E</kbd> | Text zentrieren |
+| <kbd>⌘</kbd> <kbd>.</kbd> / <kbd>⌘</kbd> <kbd>,</kbd> | Hochgestellt / tiefgestellt |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>8</kbd> / <kbd>7</kbd> / <kbd>9</kbd> | Aufzählung, nummerierte Liste, Aufgabenliste |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>B</kbd> | Zitat |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>C</kbd> | Codeblock |
@@ -62,6 +65,16 @@ Die Übersicht zeigt die Tasten so, wie sie auf deinem Gerät heißen: auf dem M
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd> | Fußnote einfügen (bei ausgewählter Fußnote: bearbeiten) |
 
 Markdown-Kürzel wie `##`, `-`, `[]` oder ` ``` ` stehen unter [Dokumente und Editor](/documents#markdown-kuerzel).
+
+## Seitenbaum
+
+| Kürzel | Wirkung |
+| --- | --- |
+| <kbd>↑</kbd> / <kbd>↓</kbd> | Zwischen Seiten bewegen |
+| <kbd>→</kbd> / <kbd>←</kbd> | Unterseiten öffnen oder schließen |
+| <kbd>Enter</kbd> | Seite öffnen |
+| <kbd>⇧</kbd>-Klick | Mehrere Seiten auswählen |
+| <kbd>⌘</kbd>-Klick | In der [geteilten Ansicht](#geteilte-ansicht) öffnen |
 
 ## Präsentation
 
@@ -84,7 +97,9 @@ Markdown-Kürzel wie `##`, `-`, `[]` oder ` ``` ` stehen unter [Dokumente und Ed
 
 | Kürzel | Wirkung |
 | --- | --- |
-| <kbd>V</kbd> <kbd>H</kbd> <kbd>N</kbd> <kbd>T</kbd> <kbd>R</kbd> <kbd>L</kbd> <kbd>P</kbd> <kbd>X</kbd> <kbd>F</kbd> <kbd>G</kbd> <kbd>C</kbd> | Auswählen, Verschieben, Notizzettel, Text, Form, Linie, Stift, Radierer, Rahmen, Tabelle, Kommentar |
+| <kbd>V</kbd> <kbd>H</kbd> <kbd>N</kbd> <kbd>T</kbd> <kbd>R</kbd> <kbd>L</kbd> <kbd>P</kbd> <kbd>X</kbd> <kbd>F</kbd> <kbd>G</kbd> <kbd>C</kbd> <kbd>E</kbd> <kbd>K</kbd> | Auswählen, Verschieben, Notizzettel, Text, Form, Linie, Stift, Radierer, Rahmen, Tabelle, Kommentar, Stempel, Laserpointer |
+| <kbd>⌘</kbd> <kbd>+</kbd> / <kbd>⌘</kbd> <kbd>−</kbd> | Hinein- / herauszoomen |
+| Pfeiltasten | Auswahl um 1 Punkt verschieben, mit <kbd>⇧</kbd> um 10 |
 | <kbd>⇧</kbd> <kbd>1</kbd> | Alles anzeigen |
 | <kbd>⇧</kbd> <kbd>2</kbd> | Auf die Auswahl zoomen |
 | <kbd>⌘</kbd> <kbd>D</kbd> | Duplizieren |

@@ -50,6 +50,9 @@ The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kb
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>H</kbd> | Hide (spoiler) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>M</kbd> | Comment on text |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>1</kbd>–<kbd>3</kbd> | Heading 1–3 |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>0</kbd> | Back to normal text |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>E</kbd> | Centre the text |
+| <kbd>⌘</kbd> <kbd>.</kbd> / <kbd>⌘</kbd> <kbd>,</kbd> | Superscript / subscript |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>8</kbd> / <kbd>7</kbd> / <kbd>9</kbd> | Bulleted list, numbered list, task list |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>B</kbd> | Quote |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>C</kbd> | Code block |
@@ -62,6 +65,16 @@ The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kb
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd> | Insert footnote (edits a selected one) |
 
 Markdown shortcuts such as `##`, `-`, `[]` or ` ``` ` are listed under [Documents and the editor](/documents#markdown-shortcuts).
+
+## Page tree
+
+| Shortcut | Effect |
+| --- | --- |
+| <kbd>↑</kbd> / <kbd>↓</kbd> | Move between pages |
+| <kbd>→</kbd> / <kbd>←</kbd> | Expand or collapse sub-pages |
+| <kbd>Enter</kbd> | Open the page |
+| <kbd>⇧</kbd>-click | Select several pages |
+| <kbd>⌘</kbd>-click | Open in the [split view](#split-view) |
 
 ## Presentation
 
@@ -84,7 +97,9 @@ Markdown shortcuts such as `##`, `-`, `[]` or ` ``` ` are listed under [Document
 
 | Shortcut | Effect |
 | --- | --- |
-| <kbd>V</kbd> <kbd>H</kbd> <kbd>N</kbd> <kbd>T</kbd> <kbd>R</kbd> <kbd>L</kbd> <kbd>P</kbd> <kbd>X</kbd> <kbd>F</kbd> <kbd>G</kbd> <kbd>C</kbd> | Select, hand, sticky note, text, shape, connector, pen, eraser, frame, table, comment |
+| <kbd>V</kbd> <kbd>H</kbd> <kbd>N</kbd> <kbd>T</kbd> <kbd>R</kbd> <kbd>L</kbd> <kbd>P</kbd> <kbd>X</kbd> <kbd>F</kbd> <kbd>G</kbd> <kbd>C</kbd> <kbd>E</kbd> <kbd>K</kbd> | Select, hand, sticky note, text, shape, connector, pen, eraser, frame, table, comment, stamp, laser pointer |
+| <kbd>⌘</kbd> <kbd>+</kbd> / <kbd>⌘</kbd> <kbd>−</kbd> | Zoom in / out |
+| Arrow keys | Move the selection by 1 point, with <kbd>⇧</kbd> by 10 |
 | <kbd>⇧</kbd> <kbd>1</kbd> | Show everything |
 | <kbd>⇧</kbd> <kbd>2</kbd> | Zoom to selection |
 | <kbd>⌘</kbd> <kbd>D</kbd> | Duplicate |
