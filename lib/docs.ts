@@ -91,6 +91,7 @@ const groups: {
       ["sharing", "Teilen und Veröffentlichen", "Sharing and publishing"],
       ["search-and-notifications", "Suche, Posteingang und Push", "Search, inbox and push"],
       ["offline-and-apps", "Offline, Web-App und Desktop", "Offline, web app and desktop"],
+      ["desktop-capture", "Schnell erfassen (Desktop)", "Quick capture (desktop)"],
     ],
   },
   {

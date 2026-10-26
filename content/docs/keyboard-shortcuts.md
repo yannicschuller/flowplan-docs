@@ -9,6 +9,7 @@ Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <
 | <kbd>⌘</kbd> <kbd>K</kbd> | Schnellsuche |
 | <kbd>⌘</kbd> <kbd>N</kbd> | Neue Seite |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>N</kbd> | Schnell erfassen (Eintrag in der Datenbank zum Erfassen) |
+| <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Leertaste</kbd> / <kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>Leertaste</kbd> | Desktop-App: Schnell erfassen aus jeder App ([Schnell erfassen (Desktop)](/desktop-capture)) |
 | <kbd>?</kbd> oder <kbd>⌘</kbd> <kbd>/</kbd> | Übersicht der Tastenkürzel |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd> | Dokument lesen oder bearbeiten |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>B</kbd> | Seitenleiste ein- oder ausblenden |
