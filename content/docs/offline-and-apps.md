@@ -20,7 +20,7 @@ Zur Kopie gehört die ganze App – nicht nur die Teile, die du online schon ge�
 
 - **Speicherbedarf:** etwa 18 MB auf dem Gerät (rund 5 MB Download), einmal je Version. Flowplan speichert die App-Dateien nur, wenn das Gerät genug Platz hat.
 - **Neue Version:** Nach einem Update lädt Flowplan beim nächsten Abgleich die Dateien der neuen Version; was sich nicht geändert hat, wird übernommen statt neu geladen. Sobald die neue Version vollständig gespeichert ist, entfernt es die alte.
-- Unter **Einstellungen → Offline & Geräte** steht dazu eine Zeile wie „Die App ist für die Offline-Nutzung gespeichert (Version 0.6.0) · 18 MB“ – oder wie viele Dateien noch fehlen.
+- Unter **Einstellungen → Offline & Geräte** steht dazu eine Zeile wie „Die App ist für die Offline-Nutzung gespeichert (Version 0.7.0) · 18 MB“ – oder wie viele Dateien noch fehlen.
 - Fehlt ohne Verbindung doch einmal ein Teil, zeigt Flowplan an seiner Stelle „Nicht offline verfügbar – versuche es wieder, wenn du online bist“ mit **Erneut versuchen**; der Rest der App bleibt bedienbar, und sobald die Verbindung zurück ist, lädt der Teil von selbst. Ein Eintrag, dessen Inhalt nicht in der Kopie liegt, zeigt „Dieser Eintrag ist offline nicht verfügbar.“
 
 #### Die Kopie bleibt aktuell
@@ -57,7 +57,7 @@ Die App für iPhone und iPad hält die Offline-Kopie selbst – für jede Instan
 - **Offline ändern:** Text in Dokumenten und Änderungen an Einträgen werden wie im Browser auf dem Gerät gesammelt und abgeglichen, sobald die Instanz wieder antwortet. Danach wechselt die App von selbst zur aktuellen Seite – erst, wenn du gerade nicht tippst.
 - **Aktuell halten:** wie im Browser, solange die App offen ist, und zusätzlich jedes Mal, wenn sie in den Vordergrund kommt; nur Geändertes wird geladen.
 - **Speicherort:** im Container der App, verschlüsselt bis zum ersten Entsperren nach einem Neustart und nicht in Backups. Die Kopie gehört zum Profil: **Abmelden** in Flowplan und **Abmelden und Profil entfernen** in den Einstellungen der App löschen sie; ein anderes Profil sieht sie nie.
-- **Grenzen:** Dateien über 25 MB, der PDF-Viewer und die Texterkennung (OCR) brauchen in der App eine Verbindung; pro Profil höchstens 2 GB, und die App lässt immer 300 MB frei. Die Kopie braucht einen Flowplan-Server mit dieser Offline-Unterstützung (neuer als 0.6.0); mit älteren Servern zeigt die App ohne Verbindung ihren Bildschirm „Keine Verbindung“ wie bisher.
+- **Grenzen:** Dateien über 25 MB, der PDF-Viewer und die Texterkennung (OCR) brauchen in der App eine Verbindung; pro Profil höchstens 2 GB, und die App lässt immer 300 MB frei. Die Kopie braucht einen Flowplan-Server mit dieser Offline-Unterstützung (ab 0.7.0); mit älteren Servern zeigt die App ohne Verbindung ihren Bildschirm „Keine Verbindung“ wie bisher.
 
 ## Als App installieren
 
@@ -130,13 +130,13 @@ Für das Fenster im Vordergrund erscheinen keine Mitteilungen – dort siehst du
 
 Auf dem Mac läuft die App nach dem Schließen des Fensters im Dock weiter und meldet sich weiter. Unter Windows und Linux beendet das Schließen des Fensters die App; Mitteilungen kommen, solange sie läuft (minimiert reicht) – oder mit dem [Symbol im Infobereich](#mehr-aus-der-desktop-app) auch ohne Fenster.
 
-Das braucht einen Flowplan-Server neuer als 0.6.0 (derzeit das Beta-Image) und die Desktop-App 1.0.7 oder neuer. Die App fragt nur die eigene Instanz des Profils, mit dessen Anmeldung; auf dem Server wird dafür nichts hinterlegt.
+Das braucht einen Flowplan-Server ab 0.7.0 und die Desktop-App 1.0.7 oder neuer. Die App fragt nur die eigene Instanz des Profils, mit dessen Anmeldung; auf dem Server wird dafür nichts hinterlegt.
 
 ### Mehr aus der Desktop-App
 
 Seit der Desktop-App nach 1.0.8 kommt rund um das Fenster einiges dazu. Die Schalter dafür stehen unter **Einstellungen …** (macOS: im Menü *Flowplan*, Windows und Linux: im Menü *Datei*).
 
-- **Rechtsklick und Rechtschreibung:** Ein Rechtsklick in Feldern, auf Links und Bildern zeigt ein Menü des Systems – Vorschläge für ein falsch geschriebenes Wort, **Zum Wörterbuch hinzufügen**, Ausschneiden, Kopieren, Einsetzen, **Als reinen Text einsetzen**, Link im Browser oder in neuem Fenster öffnen, Bild kopieren oder sichern, auf dem Mac **Nachschlagen**. Im Editor bleibt das Textmenü von Flowplan; dort stehen die Vorschläge der App oben in diesem Menü (braucht einen Flowplan-Server neuer als 0.6.0). Die Sprachen der Prüfung – Deutsch, Englisch, Französisch – wählst du unter **Rechtschreibung** im Rechtsklick-Menü, im Menü *Bearbeiten* oder in den Einstellungen.
+- **Rechtsklick und Rechtschreibung:** Ein Rechtsklick in Feldern, auf Links und Bildern zeigt ein Menü des Systems – Vorschläge für ein falsch geschriebenes Wort, **Zum Wörterbuch hinzufügen**, Ausschneiden, Kopieren, Einsetzen, **Als reinen Text einsetzen**, Link im Browser oder in neuem Fenster öffnen, Bild kopieren oder sichern, auf dem Mac **Nachschlagen**. Im Editor bleibt das Textmenü von Flowplan; dort stehen die Vorschläge der App oben in diesem Menü (braucht einen Flowplan-Server ab 0.7.0). Die Sprachen der Prüfung – Deutsch, Englisch, Französisch – wählst du unter **Rechtschreibung** im Rechtsklick-Menü, im Menü *Bearbeiten* oder in den Einstellungen.
 - **Schnell erfassen von überall:** <kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>Leertaste</kbd> (Mac: <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Leertaste</kbd>) öffnet über jeder App ein kleines Fenster – auch wenn Flowplan minimiert oder ausgeblendet ist. <kbd>Enter</kbd> speichert in den Eingang des aktiven Profils (deine Standard-Datenbank unter **Erfassen**), <kbd>Umschalt</kbd> <kbd>Enter</kbd> beginnt eine neue Zeile, <kbd>Esc</kbd> schließt. **Als Aufgabe für heute** macht aus der ersten Zeile eine offene Aufgabe mit dem heutigen Datum. Ohne Verbindung sagt das Fenster das und behält den Text. Das Tastenkürzel änderst oder abschaltest du in den Einstellungen; ist es schon von einer anderen App belegt, sagt die App das.
 - **Symbol in der Menüleiste (Mac) bzw. im Infobereich (Windows, Linux):** **Schnell erfassen**, die heute fälligen und überfälligen Aufgaben aus **Meine Aufgaben**, die ungelesenen Benachrichtigungen, Flowplan öffnen, die Profile und Beenden. Auf dem Mac standardmäßig an, unter Windows und Linux in den Einstellungen einzuschalten; dann läuft die App nach dem Schließen des Fensters im Infobereich weiter.
 - **Seiten aus Links öffnen:** Links der Form `flowplan://open?instance=…&page=…` öffnen die Seite in der App, im Profil ihrer Instanz. Im Browser auf dem Computer steht dafür in den **Seitenaktionen** (**…** oben rechts) **In Desktop-App öffnen**. Für eine Instanz ohne Profil fragt die App erst, ob sie sie hinzufügen soll.
@@ -227,7 +227,7 @@ Gut zu wissen:
 - **Farben auf Android:** Ab Android 12 übernehmen alle Widgets die Systemfarben (Material You, aus dem Hintergrundbild oder dem gewählten Design), hell und dunkel. Rot, Gelb und Grün behalten ihre Bedeutung. Nach einem neuen Hintergrundbild passen sich die Widgets mit der nächsten Aktualisierung an.
 - **Heutige Aufgaben abhaken:** Widget **Aufgaben** hinzufügen und in seinen Einstellungen *Heute fällig* wählen.
 - **Aktualisierung:** wenn du in Flowplan etwas änderst, wenn die App in den Vordergrund kommt, im Hintergrund etwa alle 30 Minuten (iOS entscheidet selbst, wie oft).
-- **Voraussetzung:** Die einstellbaren Widgets, Live-Aktivitäten außer der Zeiterfassung sowie Siri und Kurzbefehle brauchen einen Flowplan-Server neuer als 0.6.0 (derzeit das Beta-Image). *Flowplan*, *Flowplan Posteingang* und die laufende Zeiterfassung gehen ab 0.4.0.
+- **Voraussetzung:** Die einstellbaren Widgets, Live-Aktivitäten außer der Zeiterfassung sowie Siri und Kurzbefehle brauchen einen Flowplan-Server ab 0.7.0. *Flowplan*, *Flowplan Posteingang* und die laufende Zeiterfassung gehen ab 0.4.0.
 
 ### Widgets für Administratoren
 
@@ -284,7 +284,7 @@ Was Siri erledigt, ohne die App zu öffnen:
 - **In Flowplan suchen:** durchsucht Seiten, Einträge und Kommentare in allen deinen Arbeitsbereichen und zeigt die besten Treffer; in einem Kurzbefehl lassen sie sich weitergeben (etwa an *Seite öffnen*). Die Aktion *In der App suchen* öffnet stattdessen die Suche von Flowplan mit dem Text.
 - **Seite öffnen:** Siri fragt nach der Seite – nenne einen Teil des Titels – und öffnet sie in der App. In Kurzbefehlen wählst du die Seite aus einer Liste.
 
-Siri, Kurzbefehle und Steuerelemente nutzen das **aktive** Profil. Seiten aus Ende-zu-Ende-verschlüsselten Bereichen erscheinen nicht (auch nicht ihre Titel). Aufgaben hinzufügen, Fälliges, Seiten öffnen, Suchen, die neuen Steuerelemente und Fokus-Filter brauchen einen Flowplan-Server neuer als 0.6.0 (derzeit das Beta-Image).
+Siri, Kurzbefehle und Steuerelemente nutzen das **aktive** Profil. Seiten aus Ende-zu-Ende-verschlüsselten Bereichen erscheinen nicht (auch nicht ihre Titel). Aufgaben hinzufügen, Fälliges, Seiten öffnen, Suchen, die neuen Steuerelemente und Fokus-Filter brauchen einen Flowplan-Server ab 0.7.0.
 
 ### Fokus-Filter
 
@@ -307,7 +307,7 @@ In jeder App, die etwas teilen kann (Browser, Fotos bzw. Galerie, Dateien, Mail,
 
 **Auf Android** nennt das Fenster unter *Nicht übernommen*, was es nicht übernehmen kann (andere Dateitypen, mehr als 10 Dateien). PDFs bekommen im Eintrag eine Vorschau der ersten Seite. Den Titel kannst du ändern; leer bleibt er die erste Zeile des Texts, die Adresse des Links oder der erste Dateiname. Nach **Sichern** führt **Zurück zur App** in die App, aus der du geteilt hast; **Öffnen** zeigt das Ergebnis in Flowplan. Noch nicht angemeldet? Texte und Links gehen dann wie im Browser zur Vorschau der Instanz und nach dem Anmelden weiter.
 
-Das Teilen-Fenster auf iPhone und iPad sowie Fotos und PDFs auf Android brauchen einen Flowplan-Server neuer als 0.6.0 (derzeit das Beta-Image). Bis 0.6.0 nimmt Android nur Text und Links an, über die Vorschau der Instanz.
+Das Teilen-Fenster auf iPhone und iPad sowie Fotos und PDFs auf Android brauchen einen Flowplan-Server ab 0.7.0. Bis 0.6.0 nimmt Android nur Text und Links an, über die Vorschau der Instanz.
 
 ### Dokumente scannen und Spotlight (iPhone und iPad)
 
@@ -315,7 +315,7 @@ Das Teilen-Fenster auf iPhone und iPad sowie Fotos und PDFs auf Android brauchen
 
 **Spotlight.** Die App legt die Titel deiner zuletzt geänderten Seiten (bis zu 500, mit Ort und einer Zeile Inhalt) und deine offenen Aufgaben in die Suche des Telefons. Ein Tipp auf einen Treffer öffnet ihn in Flowplan. Nichts aus Ende-zu-Ende-verschlüsselten Bereichen, hinter einer Journal-PIN oder aus Journaltagen landet dort; Abmelden oder ein Profilwechsel leert die Suche. Der Index bleibt auf dem Telefon.
 
-Scanner und Spotlight brauchen einen Flowplan-Server neuer als 0.6.0 (derzeit das Beta-Image).
+Scanner und Spotlight brauchen einen Flowplan-Server ab 0.7.0.
 
 ### Sprachnotizen in Seiten
 
@@ -325,11 +325,11 @@ In der App nimmt **Sprachnotiz** (`/sprachnotiz`) in einem Dokument mit dem Mikr
 - Wo das Gerät es nicht kann (Android, andere Sprachen), macht die Spracherkennung deiner Instanz daraus Text, wenn sie eingerichtet ist ([Sprachnotizen](/documents#sprachnotizen-und-besprechungen)); sonst bleibt das Audio allein.
 - **Danach mit KI zusammenfassen** setzt eine Zusammenfassung unter den Text, wenn dir die [KI](/ai#zusammenfassungen) zur Verfügung steht.
 
-Das braucht einen Flowplan-Server neuer als 0.6.0 (derzeit das Beta-Image). Im Browser nimmt `/sprachnotiz` wie bisher auf.
+Das braucht einen Flowplan-Server ab 0.7.0. Im Browser nimmt `/sprachnotiz` wie bisher auf.
 
 ### KI auf dem Gerät und Schreibtools (iPhone und iPad)
 
-**Optional:** Auf einem iPhone oder iPad mit **iOS/iPadOS 26** oder neuer, das Apple Intelligence unterstützt, und mit **eingeschaltetem Apple Intelligence** (Einstellungen → Apple Intelligence & Siri) laufen der Schreibassistent und die Zusammenfassung offener Seiten mit dem Sprachmodell von Apple **auf dem Gerät**. Der Text verlässt das Gerät nicht, auch nicht in verschlüsselten Bereichen; die Instanz braucht dafür keinen KI-Anbieter. Ergebnisse tragen das Kennzeichen **Auf diesem Gerät**.
+**Optional:** Auf einem iPhone oder iPad mit **iOS/iPadOS 26** oder neuer, das Apple Intelligence unterstützt, und mit **eingeschaltetem Apple Intelligence** (Einstellungen → Apple Intelligence & Siri) laufen der Schreibassistent und die Zusammenfassung offener Seiten mit dem Sprachmodell von Apple **auf dem Gerät**. Der Text verlässt das Gerät nicht, auch nicht in verschlüsselten Bereichen; die Instanz braucht dafür keinen KI-Anbieter. Ergebnisse tragen das Kennzeichen **Auf diesem Gerät**. Das braucht einen Flowplan-Server neuer als 0.7.0 (derzeit das Beta-Image).
 
 - **Abschalten:** **Einstellungen → KI → Auf diesem Gerät (Apple) → Aus** – dann fragt Flowplan das Gerät nie. Dort steht auch, ob Apple Intelligence auf diesem Gerät verfügbar, in den Einstellungen ausgeschaltet oder nicht unterstützt ist. Die Administration kann es für die ganze Instanz abschalten.
 - **Server-KI bleibt:** Fragen an den Arbeitsbereich, KI in Datenbanken und KI-Aktionen laufen weiter über die Instanz, wenn sie eingerichtet ist; zu lange Texte übernimmt sie ebenfalls.

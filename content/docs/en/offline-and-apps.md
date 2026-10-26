@@ -20,7 +20,7 @@ The copy holds the whole app – not only the parts you already opened online. T
 
 - **Storage:** about 18 MB on the device (around 5 MB to download), once per version. Flowplan only stores the app's files when the device has enough space.
 - **New version:** after an update, Flowplan loads the new version's files with the next refresh; files that did not change are taken over instead of downloaded again. As soon as the new version is stored completely, the old one is removed.
-- **Settings → Offline & devices** shows a line like “The app is stored for offline use (version 0.6.0) · 18 MB” – or how many files are still missing.
+- **Settings → Offline & devices** shows a line like “The app is stored for offline use (version 0.7.0) · 18 MB” – or how many files are still missing.
 - If a part is missing without a connection after all, Flowplan shows “Not available offline – try again when you're online” with **Try again** in its place; the rest of the app keeps working, and the part loads by itself once the connection is back. A record whose content is not in the copy shows “This record is not available offline.”
 
 #### The copy stays current
@@ -57,7 +57,7 @@ The app for iPhone and iPad keeps the offline copy itself – for every instance
 - **Changes offline:** text in documents and changes to records are collected on the device as in the browser and synced as soon as the instance answers again. Then the app switches to the current page by itself – once you are not typing.
 - **Kept current:** as in the browser while the app is open, and also every time it comes to the foreground; only what changed is loaded.
 - **Where it is stored:** in the app's container, encrypted until the first unlock after a restart and not in backups. The copy belongs to the profile: **Sign out** in Flowplan and **Sign out and remove the profile** in the app's settings delete it; another profile never sees it.
-- **Limits:** files over 25 MB, the PDF viewer and text recognition (OCR) need a connection in the app; at most 2 GB per profile, and the app always leaves 300 MB free. The copy needs a Flowplan server with this offline support (newer than 0.6.0); with older servers the app shows its “No connection” screen without a connection, as before.
+- **Limits:** files over 25 MB, the PDF viewer and text recognition (OCR) need a connection in the app; at most 2 GB per profile, and the app always leaves 300 MB free. The copy needs a Flowplan server with this offline support (0.7.0 or newer); with older servers the app shows its “No connection” screen without a connection, as before.
 
 ## Install as an app
 
@@ -130,13 +130,13 @@ Nothing pops up for the window in front – its inbox is in view anyway. What wa
 
 On a Mac the app keeps running in the Dock after closing the window and keeps notifying. On Windows and Linux closing the window quits the app; notifications arrive while it runs (minimised is enough) – or, with the [notification area icon](#more-from-the-desktop-app), also without a window.
 
-This needs a Flowplan server newer than 0.6.0 (currently the beta image) and desktop app 1.0.7 or newer. The app only asks the profile's own instance, with its sign-in; nothing is stored on the server for it.
+This needs a Flowplan server 0.7.0 or newer and desktop app 1.0.7 or newer. The app only asks the profile's own instance, with its sign-in; nothing is stored on the server for it.
 
 ### More from the desktop app
 
 From the desktop app after 1.0.8 there is more around the window. Its switches are under **Settings…** (macOS: in the *Flowplan* menu, Windows and Linux: in the *File* menu).
 
-- **Right-click and spelling:** a right click in fields, on links and images shows a system menu – suggestions for a misspelled word, **Add to Dictionary**, cut, copy, paste, **Paste as Plain Text**, open a link in the browser or in a new window, copy or save an image, **Look Up** on a Mac. In the editor Flowplan's own text menu stays; the app's suggestions appear at its top (needs a Flowplan server newer than 0.6.0). Choose the spell checker's languages – German, English, French – under **Spelling** in the right-click menu, in the *Edit* menu or in the settings.
+- **Right-click and spelling:** a right click in fields, on links and images shows a system menu – suggestions for a misspelled word, **Add to Dictionary**, cut, copy, paste, **Paste as Plain Text**, open a link in the browser or in a new window, copy or save an image, **Look Up** on a Mac. In the editor Flowplan's own text menu stays; the app's suggestions appear at its top (needs a Flowplan server 0.7.0 or newer). Choose the spell checker's languages – German, English, French – under **Spelling** in the right-click menu, in the *Edit* menu or in the settings.
 - **Quick capture from anywhere:** <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>Space</kbd> (Mac: <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Space</kbd>) opens a small window above every app – also while Flowplan is minimised or hidden. <kbd>Enter</kbd> saves into the inbox of the active profile (your default database under **Capture**), <kbd>Shift</kbd> <kbd>Enter</kbd> starts a new line, <kbd>Esc</kbd> closes. **As a task for today** turns the first line into an open task due today. Without a connection the window says so and keeps the text. Change or switch off the shortcut in the settings; if another app already uses it, the app tells you.
 - **Icon in the menu bar (Mac) or notification area (Windows, Linux):** **Quick Capture**, the tasks due today or overdue from **My tasks**, the unread notifications, open Flowplan, the profiles and quit. On by default on a Mac, switched on in the settings on Windows and Linux; the app then keeps running in the notification area after its window is closed.
 - **Open pages from links:** links like `flowplan://open?instance=…&page=…` open the page in the app, in the profile of its instance. In a browser on a computer, a page's actions (**…** at the top right) offer **Open in desktop app**. For an instance without a profile the app asks first whether to add it.
@@ -227,7 +227,7 @@ Good to know:
 - **Colours on Android:** from Android 12 all widgets take the system colours (Material You, from the wallpaper or the chosen theme), light and dark. Red, amber and green keep their meaning. After a new wallpaper the widgets follow with their next update.
 - **Check off today's tasks:** add the **Tasks** widget and choose *Due today* in its settings.
 - **Updates:** when you change something in Flowplan, when the app comes to the foreground, and in the background about every 30 minutes (iOS decides how often).
-- **Requirements:** the configurable widgets, the Live Activities other than the timer, and Siri and Shortcuts need a Flowplan server newer than 0.6.0 (currently the beta image). *Flowplan*, *Flowplan Inbox* and the running timer work from 0.4.0.
+- **Requirements:** the configurable widgets, the Live Activities other than the timer, and Siri and Shortcuts need a Flowplan server 0.7.0 or newer. *Flowplan*, *Flowplan Inbox* and the running timer work from 0.4.0.
 
 ### Widgets for administrators
 
@@ -284,7 +284,7 @@ What Siri does without opening the app:
 - **Search Flowplan:** searches pages, records and comments in all your workspaces and shows the best hits; in a shortcut, the hits can be passed on (e.g. to *Open a page*). The action *Search in the app* opens Flowplan's own search with the text instead.
 - **Open a page:** Siri asks which page – say part of its title – and opens it in the app. In Shortcuts you pick the page from a list.
 
-Siri, Shortcuts and the controls use the **active** profile. Pages of end-to-end encrypted spaces do not appear (not even their titles). Adding tasks, what's due, opening pages, searching, the new controls and focus filters need a Flowplan server newer than 0.6.0 (currently the beta image).
+Siri, Shortcuts and the controls use the **active** profile. Pages of end-to-end encrypted spaces do not appear (not even their titles). Adding tasks, what's due, opening pages, searching, the new controls and focus filters need a Flowplan server 0.7.0 or newer.
 
 ### Focus filters
 
@@ -307,7 +307,7 @@ In any app that can share (browser, Photos or gallery, Files, mail, scanner …)
 
 **On Android** the window lists under *Not taken* what it cannot take (other file types, more than 10 files). PDFs get a preview of their first page in the record. You can change the title; left empty it is the first line of the text, the link's address or the first file name. After **Save**, **Back to the app** returns to the app you shared from; **Open** shows the result in Flowplan. Not signed in yet? Text and links then go to the instance's preview as in the browser and continue after signing in.
 
-The share sheet on iPhone and iPad as well as photos and PDFs on Android need a Flowplan server newer than 0.6.0 (currently the beta image). Up to 0.6.0, Android takes only text and links, through the instance's preview.
+The share sheet on iPhone and iPad as well as photos and PDFs on Android need a Flowplan server 0.7.0 or newer. Up to 0.6.0, Android takes only text and links, through the instance's preview.
 
 ### Scan documents and Spotlight (iPhone and iPad)
 
@@ -315,7 +315,7 @@ The share sheet on iPhone and iPad as well as photos and PDFs on Android need a 
 
 **Spotlight.** The app puts the titles of your most recently changed pages (up to 500, with where they are and a line of their content) and your open tasks into the phone's search. A tap on a result opens it in Flowplan. Nothing of end-to-end encrypted spaces, pages behind a journal PIN or journal days goes there; signing out or switching profiles empties it. The index stays on the phone.
 
-The scanner and Spotlight need a Flowplan server newer than 0.6.0 (currently the beta image).
+The scanner and Spotlight need a Flowplan server 0.7.0 or newer.
 
 ### Voice notes in pages
 
@@ -325,11 +325,11 @@ In the app, **Voice note** (`/voice`) in a document records with the phone's mic
 - Where the device cannot (Android, other languages), your instance's speech recognition turns it into text if it is set up ([Voice notes](/documents#voice-notes-and-meetings)); otherwise the audio stays on its own.
 - **Then summarise with AI** puts a summary below the text when the [AI](/ai#summaries) is available to you.
 
-This needs a Flowplan server newer than 0.6.0 (currently the beta image). In the browser, `/voice` records as before.
+This needs a Flowplan server 0.7.0 or newer. In the browser, `/voice` records as before.
 
 ### On-device AI and Writing Tools (iPhone and iPad)
 
-**Optional:** on an iPhone or iPad with **iOS/iPadOS 26** or later that supports Apple Intelligence, with **Apple Intelligence switched on** (Settings → Apple Intelligence & Siri), the writing assistant and the summary of open pages run with Apple's language model **on the device**. The text does not leave the device, also in encrypted spaces; the instance needs no AI provider for it. Results carry the label **On this device**.
+**Optional:** on an iPhone or iPad with **iOS/iPadOS 26** or later that supports Apple Intelligence, with **Apple Intelligence switched on** (Settings → Apple Intelligence & Siri), the writing assistant and the summary of open pages run with Apple's language model **on the device**. The text does not leave the device, also in encrypted spaces; the instance needs no AI provider for it. Results carry the label **On this device**. This needs a Flowplan server newer than 0.7.0 (currently the beta image).
 
 - **Switch it off:** **Settings → AI → On this device (Apple) → Off** – Flowplan then never asks the device. It also shows whether Apple Intelligence on this device is available, turned off in Settings or not supported. Administrators can switch it off for the whole instance.
 - **Server AI stays:** questions to the workspace, AI in databases and AI actions keep running through the instance when it is set up; it also takes over texts that are too long.

@@ -48,7 +48,7 @@ Then choose the provider **Ollama** under **Administration → AI**. **Load inst
 > [!NOTE]
 > **Optional and can be switched off at any time.** In the Flowplan apps for iPhone, iPad and Mac, Flowplan can use **Apple Intelligence right on the device**. **The text does not leave the device** – it goes neither to the Flowplan server nor to an AI provider. AI through the server is not affected and stays available.
 
-**What you need:** the Flowplan app for iPhone or iPad with **iOS/iPadOS 26** or later, or the desktop app on a Mac with **macOS 26** or later, a device that supports Apple Intelligence (such as iPhone 15 Pro or later, iPad and Mac with an M chip), and **Apple Intelligence switched on** (Settings → Apple Intelligence & Siri). In the browser and on other devices this path does not exist.
+**What you need:** the Flowplan app for iPhone or iPad with **iOS/iPadOS 26** or later, or the desktop app 1.2.0 or later on a Mac with **macOS 26** or later, a device that supports Apple Intelligence (such as iPhone 15 Pro or later, iPad and Mac with an M chip), and **Apple Intelligence switched on** (Settings → Apple Intelligence & Siri). In the browser and on other devices this path does not exist. The server needs a Flowplan version newer than 0.7.0 (currently the beta image).
 
 **What runs on the device** – the light actions on an open page:
 

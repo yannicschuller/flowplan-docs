@@ -48,7 +48,7 @@ Danach unter **Administration → KI** den Anbieter **Ollama** wählen. **Instal
 > [!NOTE]
 > **Optional und jederzeit abschaltbar.** In den Flowplan-Apps für iPhone, iPad und Mac kann Flowplan **Apple Intelligence direkt auf dem Gerät** nutzen. **Der Text verlässt das Gerät dabei nicht** – er geht weder an den Flowplan-Server noch an einen KI-Anbieter. Die KI über den Server bleibt davon unberührt und weiter verfügbar.
 
-**Was du brauchst:** die Flowplan-App für iPhone oder iPad mit **iOS/iPadOS 26** oder neuer bzw. die Desktop-App auf einem Mac mit **macOS 26** oder neuer, ein Gerät, das Apple Intelligence unterstützt (etwa iPhone 15 Pro oder neuer, iPad und Mac mit M-Chip), und **Apple Intelligence eingeschaltet** (Einstellungen → Apple Intelligence & Siri). Im Browser und auf anderen Geräten gibt es diesen Weg nicht.
+**Was du brauchst:** die Flowplan-App für iPhone oder iPad mit **iOS/iPadOS 26** oder neuer bzw. die Desktop-App ab 1.2.0 auf einem Mac mit **macOS 26** oder neuer, ein Gerät, das Apple Intelligence unterstützt (etwa iPhone 15 Pro oder neuer, iPad und Mac mit M-Chip), und **Apple Intelligence eingeschaltet** (Einstellungen → Apple Intelligence & Siri). Im Browser und auf anderen Geräten gibt es diesen Weg nicht. Auf dem Server braucht es eine Flowplan-Version neuer als 0.7.0 (derzeit das Beta-Image).
 
 **Was auf dem Gerät läuft** – die leichten Aktionen auf einer geöffneten Seite:
 
