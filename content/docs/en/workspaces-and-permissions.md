@@ -14,7 +14,7 @@ When **leaving**, a last owner has to make someone else an owner first under **S
 
 | Role | May |
 | --- | --- |
-| **Owner** | Everything, plus managing members, groups, spaces and the workspace itself |
+| **Owner** | Everything, plus managing members, groups, spaces (including their order in the sidebar) and the workspace itself |
 | **Edit** | Create and change pages, comment, share |
 | **View** | Read and comment |
 | **Guest** | Only explicitly shared pages and spaces, with view or edit access |

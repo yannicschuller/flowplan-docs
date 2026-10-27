@@ -103,13 +103,35 @@ Der Stern in der Kopfzeile legt eine Seite unter **Favoriten** in der Seitenleis
 
 ## Bereiche verwalten
 
-Über `…` neben einem Bereich oder **Einstellungen → Bereiche**:
+Über `…` neben einem Bereich → **Bereich bearbeiten …** oder **Einstellungen → Bereiche**:
 
 - umbenennen, Emoji oder Symbol und eine von neun Farben vergeben,
 - Sichtbarkeit zwischen öffentlich (alle Mitglieder) und privat wechseln,
 - **Bereich duplizieren**: unabhängige Kopie aller aktiven Seiten, Einträge und Anhänge; Kommentare, Versionen und Freigaben werden nicht übernommen,
 - **Git-Export** (nur für die Eigentümerin oder den Eigentümer des Bereichs, wenn die Administration ihn eingeschaltet hat): den Bereich täglich oder wöchentlich in ein Git-Repository übertragen, siehe [Git-Export eines Bereichs](/storage-and-backups#git-export-eines-bereichs),
 - in den Papierkorb verschieben. Der letzte aktive Bereich bleibt erhalten, bis ein weiterer existiert.
+
+### Reihenfolge der Bereiche
+
+Eigentümerinnen und Eigentümer des Arbeitsbereichs legen fest, in welcher Reihenfolge die Bereiche in der Seitenleiste stehen – für alle Mitglieder gleich:
+
+- **Ziehen**: einen Bereich an seiner Kopfzeile (Name und Symbol) fassen und über oder unter einem anderen Bereich ablegen. Eine blaue Linie zeigt, wo er landet.
+- **Tastatur und Smartphone**: `…` neben dem Bereich → **Nach oben** oder **Nach unten**. Ein Bildschirmleser sagt die neue Position an.
+- **Einstellungen → Bereiche** zeigt die Bereiche in derselben Reihenfolge, mit Pfeilen zum Verschieben.
+
+Andere Mitglieder sehen die neue Reihenfolge nach wenigen Sekunden, ohne neu zu laden. Wo Bereiche zur Auswahl stehen – Verschieben, Teilen, die Browser-Erweiterung, Eintrag als Seite – gilt dieselbe Reihenfolge.
+
+- Neue Bereiche kommen ans Ende, ein **duplizierter** Bereich direkt hinter sein Original.
+- Ein Bereich aus dem **Papierkorb** kehrt an seinen alten Platz zurück.
+- Ein **Restore-Archiv** nimmt die Reihenfolge seiner Bereiche mit; sie kommen beim Import ans Ende. Ältere Archive ohne Reihenfolge behalten ihre bisherige.
+- Bereiche, die du nicht siehst – private Bereiche anderer, verschlüsselte Bereiche ohne Schlüssel –, behalten ihren Platz. Ihre Namen erscheinen nirgends; die Sichtbarkeit ändert sich durchs Umsortieren nicht.
+
+> [!NOTE]
+> Über die API setzt der Befehl `space.reorder` (`{ workspaceId, order: [spaceIds] }`) die Reihenfolge der Bereiche, die du in der Seitenleiste siehst; nur Eigentümerinnen und Eigentümer des Arbeitsbereichs dürfen das. Die Antwort nennt die sichtbaren Bereiche in neuer Reihenfolge.
+
+### Bereiche ein- und ausklappen
+
+Ein Klick auf den Namen eines Bereichs klappt seine Seiten zu oder wieder auf. Das merkt sich jedes Gerät für sich. Öffnest du eine Seite in einem zugeklappten Bereich, klappt er von selbst auf; beim Filtern des Seitenbaums sind alle Bereiche mit Treffern offen.
 
 ## Papierkorb
 

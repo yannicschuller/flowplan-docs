@@ -103,13 +103,35 @@ The star in the header puts a page under **Favourites** in the sidebar – perso
 
 ## Manage spaces
 
-Via `…` next to a space or **Settings → Spaces**:
+Via `…` next to a space → **Edit space …** or **Settings → Spaces**:
 
 - rename it, give it an emoji or symbol and one of nine colours,
 - switch the visibility between open (all members) and private,
 - **Duplicate space**: an independent copy of all active pages, records and attachments; comments, versions and shares are not copied,
 - **Git export** (only for the owner of the space, when the administration has switched it on): push the space into a Git repository daily or weekly, see [Git export of a space](/storage-and-backups#git-export-of-a-space),
 - move it to the trash. The last active space stays until there is another one.
+
+### Order of spaces
+
+Workspace owners decide in which order the spaces appear in the sidebar – the same for every member:
+
+- **Drag**: grab a space by its header (name and symbol) and drop it above or below another space. A blue line shows where it lands.
+- **Keyboard and phone**: `…` next to the space → **Move up** or **Move down**. Screen readers announce the new position.
+- **Settings → Spaces** lists the spaces in the same order, with arrows to move them.
+
+Other members see the new order within a few seconds, without reloading. Wherever spaces are offered for choice – moving, sharing, the browser extension, record to page – the same order applies.
+
+- New spaces go to the end, a **duplicated** space right after its original.
+- A space restored from the **trash** returns to its old place.
+- A **restore archive** keeps the order of its spaces; on import they go to the end. Older archives without an order keep their previous one.
+- Spaces you cannot see – private spaces of others, encrypted spaces without the key – keep their place. Their names appear nowhere; reordering changes nothing about visibility.
+
+> [!NOTE]
+> Through the API the command `space.reorder` (`{ workspaceId, order: [spaceIds] }`) sets the order of the spaces you see in the sidebar; only workspace owners may do this. The answer lists the visible spaces in their new order.
+
+### Collapse and expand spaces
+
+A click on a space's name collapses its pages or expands them again. Each device remembers this for itself. Opening a page in a collapsed space expands it by itself; while filtering the page tree, every space with matches stays open.
 
 ## Trash
 
