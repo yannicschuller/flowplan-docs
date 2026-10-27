@@ -175,6 +175,7 @@ Mit `EXPORT_GIT_IMPORT=true` gilt für geänderte Dateien:
 
 - **Einträge** (`records/<Datenbank>/…md`) werden über `flowplan.id` im Frontmatter aktualisiert; neue Dateien werden neue Einträge.
 - **Dokumentseiten** (`index.md`, `pages/…-<Kennung>.md`) bekommen den Text der Datei; der vorige Stand bleibt als Version erhalten.
+- **Journaltage** (`<Journalordner>/2026/10/2026-10-27.md`) werden über ihr Journal (den Ordner) und das Datum gefunden; `flowplan.id` im Frontmatter zählt nur, wenn sie einen Tag desselben Journals nennt. Repositorys aus älteren Versionen, in denen Tage noch als `pages/<Titel>-<Kennung>.md` lagen, funktionieren weiter: Änderungen an diesen Dateien werden vor dem Export noch übernommen, danach schreibt der Export die Tage an die neuen Pfade und entfernt die alten Dateien. Dabei entsteht kein Tag doppelt; ein umbenanntes Journal behält seine Tage, weil der Ordner über die Kennung zugeordnet wird.
 - Datenbanktabellen, Kommentare und Versionen sind Kopien und werden nicht zurückgelesen.
 
 Markdown kennt nicht alle Blöcke von Flowplan (etwa Spalten). Whiteboards liegen als SVG-Bild im Repository; ein eingebettetes Board trägt eine unsichtbare Markierung (`<!-- flowplan:whiteboard … -->`), mit der es beim Übernehmen aus Git wieder eingebettet wird – Bild und Link darunter bitte stehen lassen. Wer in Git Seiten mit anderen solchen Blöcken bearbeitet, findet den vorigen Stand im Versionsverlauf. Den Stand der letzten Übertragung (Commit, übernommene Änderungen, Fehler) zeigt die Administration.

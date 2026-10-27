@@ -16,7 +16,7 @@ It searches:
 - scanned PDFs and images with text recognition (German and English, French on request via `FLOWPLAN_OCR_LANGS`),
 - Word, Excel, PowerPoint and OpenDocument files.
 
-Hits can be filtered by type and space. File text is indexed in the background and can be found after a few seconds. The search only shows what you may read. <kbd>Enter</kbd> opens the first hit.
+Hits can be filtered by type and space. [Journal days](/journal#days-in-lists-search-graph-and-export) come after all other hits; **Without journal days** leaves them out completely and stays on for the next search. File text is indexed in the background and can be found after a few seconds. The search only shows what you may read. <kbd>Enter</kbd> opens the first hit.
 
 Aliases of pages and records weigh as much as the title. When the search only matches an alias, the hit shows the real title with the alias in grey, e.g. "Chauffage · PAC". The same applies in the @ mention dialog.
 

@@ -124,6 +124,7 @@ The network icon at the bottom of the sidebar (or `> graph` in the quick search)
 - Drag to pan, scroll or use two fingers to zoom, click to open a page.
 - Hovering highlights a page and its neighbours; **Highlight** marks pages by title.
 - **Connect sub-pages** also shows the page hierarchy (dashed), **Pages without links** shows or hides single pages.
+- **Journal days** controls the days of [journals](/journal): **hide**, **one dot per month** (default; the dot gathers the links of all days of the month, a click opens the journal) or **show each day**. The line at the top counts pages and journal days separately.
 - Links to pages and records (also from a record's text), embedded whiteboards, linked databases and synced blocks count as connections. The graph only shows what you may see.
 
 ## Unlinked mentions

@@ -9,7 +9,7 @@ Inhalte kommen als Markdown, CSV oder Archiv herein und gehen als Markdown, PDF 
 | Format | Inhalt |
 | --- | --- |
 | **Markdown (.md)** | Eine Datei mit dem Seiteninhalt; Datenbanken mit Übersicht, Eigenschaften und den Dokumenten aller Einträge. |
-| **Markdown mit Dateien (.zip)** | `index.md`, Unterseiten unter `pages/`, Eintragsdokumente unter `records/`, Datenbanken zusätzlich als CSV unter `tables/`, Anhänge unter `assets/` – alles relativ verlinkt. Jeder Eintrag unter `records/` beginnt mit seinen Eigenschaften als YAML-Frontmatter (siehe unten). Mit **Kommentare und frühere Versionen einschließen** kommen `<Datei>.comments.md` und `<Datei>.versions/` dazu. |
+| **Markdown mit Dateien (.zip)** | `index.md`, Unterseiten unter `pages/`, die Tage eines Journals in seinem Ordner unter `2026/10/2026-10-27.md` (siehe unten), Eintragsdokumente unter `records/`, Datenbanken zusätzlich als CSV unter `tables/`, Anhänge unter `assets/` – alles relativ verlinkt. Jeder Eintrag unter `records/` beginnt mit seinen Eigenschaften als YAML-Frontmatter (siehe unten). Mit **Kommentare und frühere Versionen einschließen** kommen `<Datei>.comments.md` und `<Datei>.versions/` dazu. |
 | **Als Word (DOCX)** | Ein Word-Dokument der Seite – siehe [Word, PDF mit Unterseiten und E-Book](#word-pdf-mit-unterseiten-und-e-book). |
 | **Als PDF (mit Unterseiten)** | Die Seite mit ihren Unterseiten als ein Dokument mit Deckblatt und Inhaltsverzeichnis, das der Druckdialog als PDF sichert. |
 | **Als E-Book (EPUB)** | Die Seite mit ihren Unterseiten als E-Book für Lesegeräte und E-Book-Apps. |
@@ -20,6 +20,8 @@ Inhalte kommen als Markdown, CSV oder Archiv herein und gehen als Markdown, PDF 
 Der Export berücksichtigt Leserechte und enthält alle Einträge unabhängig von Ansichtsfiltern. Formeln und Mermaid bleiben als Quelltext erhalten.
 
 **Whiteboards** kommen im ZIP als SVG-Bild unter `assets/` mit: Eine Whiteboard-Seite zeigt ihr Bild, ein in ein Dokument eingebettetes Whiteboard wird zum Bild mit einem Link zum Board in Flowplan. Das Bild ist zugeschnitten wie **Als SVG exportieren** im Board, Bilder auf dem Board liegen daneben unter `assets/`. Verdeckte Elemente bleiben verdeckt, Kommentar-Pins sind nicht enthalten; ein leeres Board ergibt einen kurzen Hinweis statt eines Bildes. Weil SVG Text ist, zeigt Git Änderungen an einem Board als lesbaren Diff. Bearbeitbar ist das Board außerhalb von Flowplan nicht.
+
+**Journaltage** liegen im ZIP sortierbar im Ordner ihres Journals: `2026/10/2026-10-27.md` neben der `index.md` eines exportierten Journals, bei einem Journal unter einer anderen Seite unter `pages/<Titel>-<Kennung>/2026/10/…`. Die Überschrift ist der Titel des Tages in der Sprache des Exports („Dienstag, 27. Oktober 2026“; ein umbenannter Tag behält seinen Titel), das Frontmatter nennt Kennung und Datum (`flowplan: id, date`). Das gilt für Seiten- und Bereichs-Export, den geplanten Export und Git. Der ZIP-Import macht daraus wieder ein Journal mit seinen Tagen, ohne Ordnerseiten „2026“ oder „10“; eine zweite Datei desselben Datums wird kein zweiter Tag.
 
 Grenzen je Export: 500 Seiten, 5.000 Einträge, 250 MB Inhalt.
 
@@ -64,7 +66,7 @@ Das Download-Symbol neben dem Namen eines Bereichs in der Seitenleiste (oder **E
 Alle Importe stehen unter **Einstellungen → Import & Export → Import**; oben wählst du einmal den **Zielbereich** für alle.
 
 - **Markdown, Text oder HTML**: **Markdown-, Text- oder HTML-Dateien**. Überschriften, Listen, Aufgaben, Tabellen, Code (auch `mermaid`) und Formeln werden zu Blöcken.
-- **Notion-, AppFlowy- oder Markdown-Export**: **Notion, AppFlowy oder Markdown-Export (ZIP)** nimmt ein ZIP mit Markdown- und CSV-Dateien an. Markdown wird zu Seiten, CSV zu Datenbanken, Excalidraw- und draw.io-Dateien zu [Whiteboards](/whiteboards#excalidraw-und-draw-io-importieren), Ordner zu Unterseiten; verlinkte Bilder und Dateien werden hochgeladen, Datensatzseiten aus Notion den Einträgen zugeordnet. Bis 100 MB, 500 Seiten und 5.000 Einträge je Tabelle; den Zielbereich wählst du vorher.
+- **Notion-, AppFlowy- oder Markdown-Export**: **Notion, AppFlowy oder Markdown-Export (ZIP)** nimmt ein ZIP mit Markdown- und CSV-Dateien an. Markdown wird zu Seiten, CSV zu Datenbanken, Tage eines Flowplan-Journals (`…/2026/10/2026-10-27.md` unter dem Journal) wieder zu Tagen dieses Journals, Excalidraw- und draw.io-Dateien zu [Whiteboards](/whiteboards#excalidraw-und-draw-io-importieren), Ordner zu Unterseiten; verlinkte Bilder und Dateien werden hochgeladen, Datensatzseiten aus Notion den Einträgen zugeordnet. Bis 100 MB, 500 Seiten und 5.000 Einträge je Tabelle; den Zielbereich wählst du vorher.
 - **Jira oder Trello**: **Jira oder Trello** – siehe [Projekte, Tickets und Sprints](/projects-and-tickets#import-aus-jira-und-trello).
 - **CSV**: in einer Datenbank **CSV oder Markdown importieren** wählen und eine CSV-Datei nehmen; die Zeilen werden zu Einträgen.
 - **Markdown mit Frontmatter in eine Datenbank** (etwa Notizen aus Obsidian): in der Datenbank **CSV oder Markdown importieren** wählen und eine oder mehrere `.md`-Dateien oder ein ZIP nehmen – siehe unten.

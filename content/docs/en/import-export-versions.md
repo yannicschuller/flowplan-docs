@@ -9,7 +9,7 @@ Content comes in as Markdown, CSV or an archive and goes out again as Markdown, 
 | Format | Content |
 | --- | --- |
 | **Markdown (.md)** | One file with the page content; databases with an overview, properties and the documents of all records. |
-| **Markdown with files (.zip)** | `index.md`, sub-pages under `pages/`, record documents under `records/`, databases also as CSV under `tables/`, attachments under `assets/` – all linked relatively. Every record under `records/` starts with its properties as YAML frontmatter (see below). With **Include comments and earlier versions**, `<file>.comments.md` and `<file>.versions/` come along. |
+| **Markdown with files (.zip)** | `index.md`, sub-pages under `pages/`, the days of a journal in its folder under `2026/10/2026-10-27.md` (see below), record documents under `records/`, databases also as CSV under `tables/`, attachments under `assets/` – all linked relatively. Every record under `records/` starts with its properties as YAML frontmatter (see below). With **Include comments and earlier versions**, `<file>.comments.md` and `<file>.versions/` come along. |
 | **As Word (DOCX)** | A Word document of the page – see [Word, PDF with sub-pages and e-book](#word-pdf-with-sub-pages-and-e-book). |
 | **As PDF (with sub-pages)** | The page with its sub-pages as one document with a cover and a table of contents, which the print dialog saves as PDF. |
 | **As e-book (EPUB)** | The page with its sub-pages as an e-book for e-readers and e-book apps. |
@@ -20,6 +20,8 @@ Content comes in as Markdown, CSV or an archive and goes out again as Markdown, 
 The export respects read permissions and contains all records regardless of view filters. Formulas and Mermaid are kept as source.
 
 **Whiteboards** come along in the ZIP as SVG images under `assets/`: a whiteboard page shows its image, and a whiteboard embedded in a document becomes the image with a link to the board in Flowplan. The image is cropped like **Export as SVG** in the board; pictures on the board sit next to it under `assets/`. Covered items stay covered, comment pins are not included; an empty board gives a short note instead of an image. Since SVG is text, Git shows changes to a board as a readable diff. The board cannot be edited outside Flowplan.
+
+**Journal days** sort by path in the ZIP, in their journal's folder: `2026/10/2026-10-27.md` next to the `index.md` of an exported journal, for a journal below another page under `pages/<title>-<id>/2026/10/…`. The heading is the day's title in the export's language ("Tuesday, 27 October 2026"; a renamed day keeps its title), the frontmatter names id and date (`flowplan: id, date`). This applies to the page and space export, the scheduled export and Git. The ZIP import turns them back into a journal with its days, without folder pages "2026" or "10"; a second file of the same date does not become a second day.
 
 Limits per export: 500 pages, 5,000 records, 250 MB of content.
 
@@ -64,7 +66,7 @@ The download icon next to a space's name in the sidebar (or **Settings → Impor
 All imports are under **Settings → Import & export → Import**; at the top you choose the **Target space** once for all of them.
 
 - **Markdown, text or HTML**: **Markdown, text or HTML files**. Headings, lists, tasks, tables, code (also `mermaid`) and formulas become blocks.
-- **Notion, AppFlowy or Markdown export**: **Notion, AppFlowy or Markdown export (ZIP)** accepts a ZIP with Markdown and CSV files. Markdown becomes pages, CSV databases, Excalidraw and draw.io files [whiteboards](/whiteboards#import-excalidraw-and-draw-io), folders sub-pages; linked images and files are uploaded, and Notion record pages are matched to their records. Up to 100 MB, 500 pages and 5,000 records per table; you choose the target space beforehand.
+- **Notion, AppFlowy or Markdown export**: **Notion, AppFlowy or Markdown export (ZIP)** accepts a ZIP with Markdown and CSV files. Markdown becomes pages, CSV databases, days of a Flowplan journal (`…/2026/10/2026-10-27.md` below the journal) days of that journal again, Excalidraw and draw.io files [whiteboards](/whiteboards#import-excalidraw-and-draw-io), folders sub-pages; linked images and files are uploaded, and Notion record pages are matched to their records. Up to 100 MB, 500 pages and 5,000 records per table; you choose the target space beforehand.
 - **Jira or Trello**: **Jira or Trello** – see [Projects, tickets and sprints](/projects-and-tickets#import-from-jira-and-trello).
 - **CSV**: in a database, choose **Import CSV or Markdown** and pick a CSV file; the rows become records.
 - **Markdown with frontmatter into a database** (such as notes from Obsidian): in the database, choose **Import CSV or Markdown** and pick one or more `.md` files or a ZIP – see below.

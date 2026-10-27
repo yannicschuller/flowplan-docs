@@ -175,6 +175,7 @@ With `EXPORT_GIT_IMPORT=true`, changed files are handled like this:
 
 - **Records** (`records/<database>/…md`) are updated by `flowplan.id` in the frontmatter; new files become new records.
 - **Document pages** (`index.md`, `pages/…-<id>.md`) get the file's text; the previous state stays as a version.
+- **Journal days** (`<journal folder>/2026/10/2026-10-27.md`) are found by their journal (the folder) and the date; `flowplan.id` in the frontmatter only counts when it names a day of the same journal. Repositories from older versions, where days were still `pages/<title>-<id>.md`, keep working: changes to those files are still taken over before the export, then the export writes the days to the new paths and removes the old files. No day is created twice; a renamed journal keeps its days because the folder is matched by its id.
 - Database tables, comments and versions are copies and are not read back.
 
 Markdown does not know every Flowplan block (such as columns). Whiteboards are in the repository as SVG images; an embedded board carries an invisible marker (`<!-- flowplan:whiteboard … -->`) that makes it an embed again when changes are taken over from Git – please leave the image and link below it in place. If you edit pages with other such blocks in Git, the previous state is in the version history. The administration shows the state of the last push (commit, changes taken over, errors).
