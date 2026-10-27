@@ -193,7 +193,7 @@ All optional; the values apply until an admin saves under **Administration → A
 | `FLOWPLAN_AI_ACCESS` | `everyone` | `selected`: only people who were enabled. |
 | `FLOWPLAN_AI_GUESTS` | *off* | `on`: guests may use AI too. |
 | `FLOWPLAN_AI_USER_PROVIDERS` | *off* | `on`: people may add their own provider and key. |
-| `FLOWPLAN_AI_FEATURES` | *all* | Allowed features, comma-separated: `write`, `summarize`, `ask`, `database`. |
+| `FLOWPLAN_AI_FEATURES` | *all* | Allowed features, comma-separated: `write`, `summarize`, `ask`, `database`, `actions`, `whiteboard`. |
 | `FLOWPLAN_AI_DEVICE` | *on* | `off`: no [on-device AI](/ai#on-device-ai-apple) in the apps for iPhone, iPad and Mac. Independent of `FLOWPLAN_AI`. |
 | `FLOWPLAN_AI_SEMANTIC_SEARCH` | *off* | `on`: [semantic search](/ai#semantic-search-optional) with the embedding model. |
 | `FLOWPLAN_AI_EMBED_PER_HOUR` | `5000` | Maximum chunks embedded per hour for semantic search. |

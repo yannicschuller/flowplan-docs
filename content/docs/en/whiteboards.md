@@ -50,6 +50,32 @@ Once you have drawn with a pen on a device, only the pen draws: fingers move and
 - **Images and icons** (magnifier in the toolbar) searches freely licensed images on Openverse; chosen images are uploaded to the server, and the credit shows as a tooltip on the image. There is also the icon library in ten colours.
 - **Link page → Record from "…"** places a database record as a card. The card shows the title and up to three properties and stays up to date when the record changes; a double click opens it.
 
+## Sticky notes as database records
+
+Turn a brainstorm into a backlog: select notes → **As records in database …** (database icon) in the bar. Without a selection the dialog takes the notes in view, with a selected frame the notes in it. This works without any AI.
+
+1. Choose the **target database** – you are offered databases you may add records to.
+2. **Mapping:** the note's first line becomes the **title**, further lines the record's content. Optionally the **colour** becomes a select property (one option per note colour; options with the same name such as "Yellow" or "Red" are preselected) and the note's **author** a person property.
+3. **Replace with cards** swaps the notes for record cards in the same place – connectors then attach to the card. **Keep and link** leaves the notes and places the cards next to them, joined by a dashed line.
+
+The cards are live: when someone changes the record in the database, the board shows it at once. Others see the new cards like any edit; one <kbd>⌘</kbd> <kbd>Z</kbd> takes the change to the board back in one step (the records stay in the database).
+
+- At most 500 notes at once; the server creates them in batches of 100, progress shows how far it got, **Cancel** stops – whatever was created already goes onto the board.
+- Trying again after an error creates nothing twice.
+- Values are checked like every edit: locked properties, existing options, only members as people.
+- **Split with AI** (when AI is available to you): the AI reads the notes' text and fills further properties – such as assignee, due date or priority. A **preview** first shows the values per note, anything that does not fit is listed with the reason; records are only created after that.
+- In the [API](/api-and-webhooks) the command is `whiteboard.toRecords`.
+
+## AI on the whiteboard
+
+When [AI](/ai) is on for you, **AI** in the toolbar (on phones under **More tools**) opens these features. Without AI the button is missing and everything else works as usual; on boards the AI may not read, the entries are greyed out with the reason.
+
+- **Group by theme (AI)** – also in the **Arrange** menu once two notes are selected: the AI finds themes in the selected notes (without a selection: those in view) and arranges them in labelled columns, like **Group by colour**. Notes without text and those that fit nowhere go under "Other".
+- **Summarise as a page** – reads the board (or the selection or selected frame) and creates a page next to it: summary, themes, **Decisions**, **Open questions** and **Action items**, with a link back to the board. With **Take over action items** they become real tasks with person and due date where the board names them – they appear in **My tasks**. Frames become sections; the AI reads large boards in parts, and the page says what was left out beyond the limit of 2,000 elements.
+- **Create with AI …** – a **mind map** or a **flowchart** from a description, such as "how a holiday request is approved". It appears in the middle of the view (or to the right of it when something is already there) as normal shapes and connectors; the mind map uses the layout of **Arrange mind map**. At most 60 and 40 nodes respectively.
+
+Every action shows its progress and can be **cancelled**; an error shows in the dialog with **Try again**. The result is an ordinary change to the board: everyone sees it live, and **one** <kbd>⌘</kbd> <kbd>Z</kbd> takes it all back. Hidden notes stay hidden from the AI; it reads linked pages and records only when it may read them.
+
 ## Navigate
 
 - Zoom with <kbd>⌘</kbd> + scroll wheel, trackpad gestures or the buttons at the bottom right.
