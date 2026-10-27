@@ -146,6 +146,7 @@ Das Netz-Symbol unten in der Seitenleiste (oder `> graph` in der Schnellsuche) z
 - Ziehen verschiebt, Mausrad oder zwei Finger zoomen, ein Klick öffnet die Seite.
 - Überfahren hebt eine Seite und ihre Nachbarn hervor; **Hervorheben** markiert Seiten nach Titel.
 - **Unterseiten verbinden** zeigt zusätzlich die Seitenhierarchie (gestrichelt), **Seiten ohne Verbindung** blendet einzelne Seiten ein oder aus.
+- **Journaltage** steuert die Tage von [Journalen](/journal): **ausblenden**, **je Monat ein Punkt** (Standard; der Punkt sammelt die Links aller Tage des Monats, ein Klick öffnet das Journal) oder **einzeln zeigen**. Die Zeile oben nennt Seiten und Journaltage getrennt.
 - Als Verbindung zählen Links auf Seiten und Einträge (auch aus dem Text eines Eintrags), eingebettete Whiteboards, verknüpfte Datenbanken und synchronisierte Blöcke. Der Graph zeigt nur, was du sehen darfst.
 
 ## Nicht verlinkte Erwähnungen
