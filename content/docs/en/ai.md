@@ -131,7 +131,7 @@ On pages the AI may not read, every AI entry is greyed out with the hint "The AI
 
 - The answer names its **sources** as numbered references [1], [2] …; a click opens the page or record. The references come from the search, never from the AI's text.
 - If the AI finds nothing that fits, it answers "I found nothing about that." instead of making something up.
-- **Where to look:** the whole workspace, the open page with its sub-pages, or one space. With **All workspaces** the question searches every workspace you belong to – each only when AI is usable for you there (not as a guest when guests have no AI, for example), and with your rules for each workspace. Sources from other workspaces carry its name; a click switches there.
+- **Where to look:** the whole workspace, the open page with its sub-pages, or one space – in the menu at the top left. With **All my workspaces** (its last entry) the question searches every workspace you belong to – each only when AI is usable for you there (not as a guest when guests have no AI, for example), and with your rules for each workspace. Sources from other workspaces carry its name; a click switches there.
 - **Propose actions:** below an answer, the AI can propose what to create from it – see [AI actions](#ai-actions).
 - **Conversation:** follow-up questions take the last questions and answers into account; **New conversation** starts over. The conversation stays in this browser tab only and is not stored on the server.
 - The search uses the full-text index; the best-matching passages go with your question to the provider shown at the top of the panel. The AI only reads what you may read and what is open to the AI ([What the AI may access](#what-the-ai-may-access)).
