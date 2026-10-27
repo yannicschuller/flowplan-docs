@@ -61,7 +61,7 @@ Even after years with thousands of days, the journal stays short in the sidebar.
 
 Other sub-pages of the journal (such as meeting notes or monthly summaries) follow below as usual.
 
-Under **Set up journal → Sidebar** you choose for each journal which **days appear in the sidebar**:
+Under **Set up journal → Days** you choose for each journal which **days appear in the sidebar**:
 
 - **None**
 - **Last 7 days** (the default)

@@ -59,7 +59,7 @@ Auch nach Jahren mit Tausenden Tagen bleibt das Journal in der Seitenleiste kurz
 
 Andere Unterseiten des Journals (etwa Besprechungsnotizen oder Monatszusammenfassungen) stehen darunter wie gewohnt.
 
-Unter **Journal einrichten → Seitenleiste** legst du für jedes Journal fest, welche **Tage in der Seitenleiste** stehen:
+Unter **Journal einrichten → Tage** legst du für jedes Journal fest, welche **Tage in der Seitenleiste** stehen:
 
 - **Keine**
 - **Letzte 7 Tage** (Voreinstellung)
