@@ -51,6 +51,35 @@ Next to every appointment there is **Create meeting note**. Flowplan creates a p
 - For records of a database the note links the record. A PIN lock of the journal also covers its meeting notes.
 - The same outline is available as the template **Meeting note** under **Templates → Meetings**.
 
+## In the sidebar
+
+Even after years with thousands of days, the journal stays short in the sidebar. Below the journal you find:
+
+- **Today** – also when today's page has not been created yet; a click opens the day,
+- the **last 7 days**,
+- **All days …** with the number of all days: opens the journal page at its list or calendar.
+
+Other sub-pages of the journal (such as meeting notes or monthly summaries) follow below as usual.
+
+Under **Set up journal → Sidebar** you choose for each journal which **days appear in the sidebar**:
+
+- **None**
+- **Last 7 days** (the default)
+- **Grouped by year and month**: as above, older days in addition in folders by year and month, such as "October 2026 · 18". The folders only exist in the sidebar, they are not pages – you cannot drag anything into them.
+- **All**: every single day, as before.
+
+When a day is open, the sidebar always shows it – also when it is older than 7 days; in the grouped view its year and month unfold. Days can still be dragged, and the arrow keys work in the folders too (→ opens, ← closes or jumps to the folder above).
+
+## From day to day
+
+Above every day page there is a bar:
+
+- **← Previous day** and **Next day →** jump to the previous or next day with an entry – gaps are skipped.
+- **Today** opens today's day.
+- The **month** (such as "October 2026") opens a small calendar: days with an entry are highlighted and can be opened. The arrow keys move by a day or a week, <kbd>Page ↑</kbd>/<kbd>Page ↓</kbd> by a month; <kbd>Esc</kbd> closes it.
+
+From anywhere, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> (Windows/Linux: <kbd>Ctrl</kbd> <kbd>Alt</kbd> <kbd>Y</kbd>) or the command **Journal: Today** in the quick search (<kbd>⌘</kbd> <kbd>K</kbd>) takes you to today – of the journal used last. With several journals the quick search offers one entry per journal. The shortcut can be changed (see [Keyboard shortcuts](/keyboard-shortcuts#your-own-shortcuts)).
+
 ## Overview on the journal page
 
 - **Streak**: how many days in a row you have written, plus the longest streak, entries and words.
@@ -62,6 +91,17 @@ Next to every appointment there is **Create meeting note**. Flowplan creates a p
 ## Review
 
 **Review** sums up a week or a month: days, words, completed and still open tasks, tracker averages, places and photos. **Copy as Markdown** takes the summary along, for example into a weekly report.
+
+### Monthly summary
+
+In the review of a month, **Create monthly summary** creates a normal sub-page of the journal – not a day – and opens it, such as "Monthly summary October 2026". It holds:
+
+- days, words, completed and still open tasks in numbers,
+- **Highlights**: tracker averages, places, photos and the completed tasks with a link to their day,
+- **Still open**: tasks from this month that are still open today, with a link to the day they are on now,
+- **Days**: every day as a link with the beginning of its text.
+
+The page is built from your entries alone, without AI, and can be edited freely afterwards. If the month already has a summary, the review offers **Open monthly summary**; **Create a new one anyway** deliberately adds another one.
 
 ## PIN lock
 

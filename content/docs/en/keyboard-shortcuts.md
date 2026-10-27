@@ -17,6 +17,7 @@ All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>K</kbd> | Show or hide comments |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>S</kbd> | Open or close the [split view](/pages-and-spaces#split-view) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd> | [Present](/documents#present) the document |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> | [Journal](/journal#from-day-to-day): open today (of the journal used last) |
 | – | Light or dark theme (no default, your own shortcut possible) |
 | <kbd>Esc</kbd> | Close a dialog, menu or the search |
 | <kbd>⌘</kbd> <kbd>Z</kbd> | Take back a deletion, a move or a bulk edit while the notice with **Undo** shows (outside text fields; in the editor it undoes the last input) |
@@ -72,7 +73,7 @@ Markdown shortcuts such as `##`, `-`, `[]` or ` ``` ` are listed under [Document
 | Shortcut | Effect |
 | --- | --- |
 | <kbd>↑</kbd> / <kbd>↓</kbd> | Move between pages |
-| <kbd>→</kbd> / <kbd>←</kbd> | Expand or collapse sub-pages |
+| <kbd>→</kbd> / <kbd>←</kbd> | Expand or collapse sub-pages – also the year and month folders of a [journal](/journal#in-the-sidebar) |
 | <kbd>Enter</kbd> | Open the page |
 | <kbd>⇧</kbd>-click | Select several pages |
 | <kbd>⌘</kbd>-click | Open in the [split view](#split-view) |
