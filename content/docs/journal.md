@@ -34,6 +34,35 @@ Neben jedem Termin steht **Besprechungsnotiz anlegen**. Flowplan legt eine Seite
 - Bei Einträgen aus einer Datenbank verlinkt die Notiz den Eintrag. Eine PIN-Sperre des Journals gilt auch für seine Besprechungsnotizen.
 - Dieselbe Gliederung gibt es als Vorlage **Besprechungsnotiz** unter **Vorlagen → Meetings**.
 
+## In der Seitenleiste
+
+Auch nach Jahren mit Tausenden Tagen bleibt das Journal in der Seitenleiste kurz. Unter dem Journal stehen:
+
+- **Heute** – auch wenn die Seite für heute noch nicht angelegt ist; ein Klick öffnet den Tag,
+- die **letzten 7 Tage**,
+- **Alle Tage …** mit der Zahl aller Tage: öffnet die Journalseite bei der Liste bzw. dem Kalender.
+
+Andere Unterseiten des Journals (etwa Besprechungsnotizen oder Monatszusammenfassungen) stehen darunter wie gewohnt.
+
+Unter **Journal einrichten → Seitenleiste** legst du für jedes Journal fest, welche **Tage in der Seitenleiste** stehen:
+
+- **Keine**
+- **Letzte 7 Tage** (Voreinstellung)
+- **Nach Jahr und Monat gruppiert**: wie oben, ältere Tage zusätzlich in Ordnern nach Jahr und Monat, etwa „Oktober 2026 · 18“. Die Ordner gibt es nur in der Seitenleiste, es sind keine Seiten – man kann nichts hineinziehen.
+- **Alle**: jeder Tag einzeln, wie früher.
+
+Ist ein Tag geöffnet, zeigt die Seitenleiste ihn immer an – auch wenn er älter als 7 Tage ist; in der gruppierten Ansicht klappen sein Jahr und sein Monat auf. Tage lassen sich weiter ziehen, und die Pfeiltasten funktionieren auch in den Ordnern (→ öffnet, ← schließt oder springt zum Ordner darüber).
+
+## Von Tag zu Tag
+
+Über jeder Tagesseite steht eine Leiste:
+
+- **← Vorheriger Tag** und **Nächster Tag →** springen zum vorigen bzw. nächsten Tag mit Eintrag – Lücken werden übersprungen.
+- **Heute** öffnet den heutigen Tag.
+- Der **Monat** (etwa „Oktober 2026“) öffnet einen kleinen Kalender: Tage mit Eintrag sind hervorgehoben und lassen sich öffnen. Mit den Pfeiltasten wanderst du um einen Tag oder eine Woche, mit <kbd>Bild ↑</kbd>/<kbd>Bild ↓</kbd> um einen Monat; <kbd>Esc</kbd> schließt ihn.
+
+Von überall geht es mit <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> (Windows/Linux: <kbd>Strg</kbd> <kbd>Alt</kbd> <kbd>Y</kbd>) oder dem Befehl **Journal: Heute** in der Schnellsuche (<kbd>⌘</kbd> <kbd>K</kbd>) zum heutigen Tag – des zuletzt benutzten Journals. Bei mehreren Journalen bietet die Schnellsuche einen Eintrag pro Journal an. Das Kürzel lässt sich ändern (siehe [Tastenkürzel](/keyboard-shortcuts#eigene-tastenkuerzel)).
+
 ## Überblick auf der Journalseite
 
 - **Serie**: wie viele Tage in Folge du geschrieben hast, dazu die längste Serie, Einträge und Wörter.
@@ -45,6 +74,17 @@ Neben jedem Termin steht **Besprechungsnotiz anlegen**. Flowplan legt eine Seite
 ## Rückblick
 
 **Rückblick** fasst eine Woche oder einen Monat zusammen: Tage, Wörter, erledigte und noch offene Aufgaben, Durchschnitte der Tracker, Orte und Fotos. **Als Markdown kopieren** übernimmt die Zusammenfassung, etwa in einen Wochenbericht.
+
+### Monatszusammenfassung
+
+Im Rückblick eines Monats legt **Monatszusammenfassung erstellen** eine normale Unterseite des Journals an – keinen Tag – und öffnet sie, etwa „Monatszusammenfassung Oktober 2026“. Darauf stehen:
+
+- Tage, Wörter, erledigte und noch offene Aufgaben in Zahlen,
+- **Höhepunkte**: Durchschnitte der Tracker, Orte, Fotos und die erledigten Aufgaben mit Link zu ihrem Tag,
+- **Noch offen**: Aufgaben aus diesem Monat, die bis heute offen sind, mit Link zum Tag, auf dem sie jetzt stehen,
+- **Tage**: jeder Tag als Link mit dem Anfang seines Textes.
+
+Die Seite entsteht allein aus deinen Einträgen, ohne KI, und lässt sich danach frei bearbeiten. Gibt es für den Monat schon eine Zusammenfassung, bietet der Rückblick **Monatszusammenfassung öffnen** an; **Trotzdem neu erstellen** legt bewusst eine weitere an.
 
 ## PIN-Sperre
 

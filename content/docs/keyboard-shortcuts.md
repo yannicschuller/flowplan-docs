@@ -17,6 +17,7 @@ Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>K</kbd> | Kommentare ein- oder ausblenden |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>S</kbd> | [Geteilte Ansicht](/pages-and-spaces#geteilte-ansicht) öffnen oder schließen |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd> | Dokument [präsentieren](/documents#praesentieren) |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> | [Journal](/journal#von-tag-zu-tag): heutigen Tag öffnen (des zuletzt benutzten Journals) |
 | – | Helles oder dunkles Design (ohne Vorgabe, eigenes Kürzel möglich) |
 | <kbd>Esc</kbd> | Dialog, Menü oder Suche schließen |
 | <kbd>⌘</kbd> <kbd>Z</kbd> | Löschen, Verschieben oder eine Massenänderung zurücknehmen, solange der Hinweis mit **Rückgängig** sichtbar ist (außerhalb von Textfeldern; im Editor nimmt es die letzte Eingabe zurück) |
@@ -72,7 +73,7 @@ Markdown-Kürzel wie `##`, `-`, `[]` oder ` ``` ` stehen unter [Dokumente und Ed
 | Kürzel | Wirkung |
 | --- | --- |
 | <kbd>↑</kbd> / <kbd>↓</kbd> | Zwischen Seiten bewegen |
-| <kbd>→</kbd> / <kbd>←</kbd> | Unterseiten öffnen oder schließen |
+| <kbd>→</kbd> / <kbd>←</kbd> | Unterseiten öffnen oder schließen – auch die Jahres- und Monatsordner eines [Journals](/journal#in-der-seitenleiste) |
 | <kbd>Enter</kbd> | Seite öffnen |
 | <kbd>⇧</kbd>-Klick | Mehrere Seiten auswählen |
 | <kbd>⌘</kbd>-Klick | In der [geteilten Ansicht](#geteilte-ansicht) öffnen |
