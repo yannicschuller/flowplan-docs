@@ -8,7 +8,7 @@ Optionale KI für Texte, Zusammenfassungen, Fragen an den Arbeitsbereich und Dat
 ## Grundsätze
 
 - **Aus, bis jemand sie einschaltet** – auf der Instanz und für jede Person. Einzige Ausnahme ist die [KI auf dem Gerät (Apple)](#ki-auf-dem-geraet-apple): Sie ist erlaubt, weil nichts das Gerät verlässt, und lässt sich ebenso abschalten.
-- **Jede Funktion einzeln:** Schreibassistent, Zusammenfassungen, Fragen an den Arbeitsbereich, KI in Datenbanken und KI-Aktionen lassen sich von der Administration und von jeder Person getrennt erlauben oder ausschalten.
+- **Jede Funktion einzeln:** Schreibassistent, Zusammenfassungen, Fragen an den Arbeitsbereich, KI in Datenbanken, KI-Aktionen und KI auf Whiteboards lassen sich von der Administration und von jeder Person getrennt erlauben oder ausschalten.
 - **Nur mit deinen Rechten:** Die KI liest nie mehr, als du selbst sehen darfst – und nur, was du ihr erlaubst ([Worauf die KI zugreifen darf](#worauf-die-ki-zugreifen-darf)).
 - **Du siehst, wohin deine Texte gehen:** Jede KI-Funktion nennt den Anbieter und ob die Daten den Server verlassen.
 - **Schlüssel bleiben geheim:** API-Schlüssel werden verschlüsselt gespeichert und nie wieder angezeigt ([Sicherheit der Schlüssel](#sicherheit-der-schluessel)).
@@ -179,6 +179,20 @@ Aus einer Antwort von **KI fragen**, aus dem Schreibassistenten (**Aktionen vors
 - **Rückgängig:** Angelegte Seiten und Einträge lassen sich direkt im Ergebnis zurücknehmen (sie landen im Papierkorb); angefügter Text und geänderte Einträge stehen im Versionsverlauf.
 - Die KI sieht nur einen Katalog der Bereiche, Datenbanken, Eigenschaften und Mitglieder, in die du schreiben darfst und die die KI lesen darf – keine Inhalte darüber hinaus. Die Antwort der KI ist reines JSON und wird nie direkt ausgeführt.
 - Die Funktion **KI-Aktionen** lässt sich wie alle anderen von der Administration und unter **Einstellungen → KI** ausschalten.
+
+## KI auf Whiteboards
+
+Auf [Whiteboards](/whiteboards#ki-auf-dem-whiteboard) öffnet **KI** in der Werkzeugleiste drei Funktionen:
+
+- **Nach Thema gruppieren (KI):** ausgewählte Zettel – oder alle im sichtbaren Bereich – nach Themen in beschrifteten Spalten ordnen.
+- **Zusammenfassen als Seite:** eine neue Seite neben dem Board mit Zusammenfassung, Themen, Entscheidungen, offenen Fragen und Aufgaben (auf Wunsch als echte Aufgaben mit Person und Termin), mit Link zurück.
+- **Mit KI erzeugen …:** eine Mindmap oder ein Flussdiagramm aus einer Beschreibung.
+
+Dazu kommt beim Anlegen von [Datenbankeinträgen aus Zetteln](/whiteboards#zettel-als-datenbankeintraege) **Mit KI aufteilen**: Die KI füllt aus dem Zetteltext weitere Eigenschaften, mit Vorschau vor dem Anlegen. Das Anlegen selbst braucht keine KI.
+
+- Nutzen können es Personen, die das Board bearbeiten dürfen. Die Antwort der KI wird streng geprüft (nur bekannte Zettel, Formen und Eigenschaften, Höchstgrenzen) und dann wie eine eigene Änderung angewendet – live für alle, mit einem Schritt rückgängig zu machen.
+- An den Anbieter gehen nur die Texte der betroffenen Elemente – ohne verdeckte Zettel und ohne verknüpfte Seiten oder Einträge, die die KI nicht lesen darf. Beim Erzeugen geht nur deine Beschreibung hin, nichts vom Board. Das Protokoll vermerkt `ai.whiteboard`.
+- Die Funktion **KI auf Whiteboards** lässt sich wie alle anderen von der Administration und unter **Einstellungen → KI** ausschalten; sie ist an, sobald KI an ist.
 
 ## KI in Datenbanken
 

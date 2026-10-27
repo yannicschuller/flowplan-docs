@@ -100,6 +100,32 @@ Sobald du auf einem Gerät mit dem Stift gezeichnet hast, zeichnet nur noch der 
 - **Bilder und Symbole** (Lupe in der Werkzeugleiste) sucht frei lizenzierte Bilder bei Openverse; ausgewählte Bilder werden auf den Server geladen, der Bildnachweis steht als Tooltip am Bild. Außerdem gibt es die Symbolbibliothek in zehn Farben.
 - **Seite verknüpfen → Eintrag aus „…“** legt einen Datenbankeintrag als Karte ab. Die Karte zeigt Titel und bis zu drei Eigenschaften und bleibt aktuell, wenn sich der Eintrag ändert; ein Doppelklick öffnet ihn.
 
+## Zettel als Datenbankeinträge
+
+Aus einem Brainstorming wird ein Backlog: Zettel auswählen → in der Leiste **Als Einträge in Datenbank …** (Datenbank-Symbol). Ohne Auswahl nimmt der Dialog die Zettel im sichtbaren Bereich, mit einem ausgewählten Rahmen dessen Zettel. Das funktioniert auch ganz ohne KI.
+
+1. **Ziel-Datenbank** wählen – angeboten werden Datenbanken, in die du Einträge schreiben darfst.
+2. **Zuordnung:** Die erste Zeile des Zettels wird zum **Titel**, weitere Zeilen zum Inhalt des Eintrags. Optional wird die **Farbe** zu einer Auswahl-Eigenschaft (für jede Zettelfarbe eine Option; gleichnamige Optionen wie „Gelb“ oder „Rot“ sind vorbelegt) und der **Autor** des Zettels zu einer Personen-Eigenschaft.
+3. **Durch Karten ersetzen** tauscht die Zettel gegen Eintragskarten an derselben Stelle – Verbindungslinien hängen danach an der Karte. **Behalten und verknüpfen** lässt die Zettel stehen und legt die Karten daneben, mit einer gestrichelten Linie verbunden.
+
+Die Karten sind live: Ändert jemand den Eintrag in der Datenbank, zeigt das Board es sofort. Andere sehen die neuen Karten wie jede Änderung; ein <kbd>⌘</kbd> <kbd>Z</kbd> nimmt die Änderung am Board in einem Schritt zurück (die Einträge bleiben in der Datenbank).
+
+- Höchstens 500 Zettel auf einmal; der Server legt sie in Paketen zu 100 an, ein Fortschritt zeigt den Stand, **Abbrechen** hält an – was schon angelegt ist, kommt aufs Board.
+- Ein zweiter Versuch nach einem Fehler legt nichts doppelt an.
+- Werte werden geprüft wie jede Bearbeitung: gesperrte Eigenschaften, vorhandene Optionen, nur Mitglieder als Personen.
+- **Mit KI aufteilen** (wenn KI für dich verfügbar ist): Die KI liest den Text der Zettel und füllt weitere Eigenschaften – etwa Verantwortlich, Fälligkeit oder Priorität. Erst eine **Vorschau** zeigt die Werte je Zettel, Unpassendes steht mit Grund daneben; angelegt wird erst danach.
+- Über die [API](/api-and-webhooks) heißt der Befehl `whiteboard.toRecords`.
+
+## KI auf dem Whiteboard
+
+Ist [KI](/ai) für dich eingeschaltet, öffnet **KI** in der Werkzeugleiste (am Handy unter **Weitere Werkzeuge**) diese Funktionen. Ohne KI fehlt der Knopf, alles andere funktioniert wie gewohnt; auf Boards, die die KI nicht lesen darf, sind die Einträge ausgegraut mit dem Grund.
+
+- **Nach Thema gruppieren (KI)** – auch im Menü **Anordnen**, sobald zwei Zettel ausgewählt sind: Die KI findet Themen in den ausgewählten Zetteln (ohne Auswahl: im sichtbaren Bereich) und ordnet sie in beschrifteten Spalten an, wie **Nach Farbe gruppieren**. Zettel ohne Text und solche, die nirgends passen, landen unter „Sonstiges“.
+- **Zusammenfassen als Seite** – liest das Board (oder die Auswahl bzw. den ausgewählten Rahmen) und legt daneben eine Seite an: Zusammenfassung, Themen, **Entscheidungen**, **Offene Fragen** und **Aufgaben**, mit einem Link zurück zum Board. Mit **Aufgaben übernehmen** werden die Aufgaben echte Aufgaben mit Person und Termin, wenn das Board sie nennt – sie erscheinen in **Meine Aufgaben**. Rahmen werden zu Abschnitten; große Boards liest die KI in Teilen, und die Seite nennt, was über die Grenze von 2.000 Elementen hinaus weggelassen wurde.
+- **Mit KI erzeugen …** – eine **Mindmap** oder ein **Flussdiagramm** aus einer Beschreibung, etwa „Ablauf einer Urlaubsanfrage mit Genehmigung“. Es entsteht in der Mitte des sichtbaren Bereichs (oder rechts daneben, wenn dort schon etwas liegt) aus normalen Formen und Verbindungslinien; die Mindmap nutzt das Layout von **Mindmap anordnen**. Höchstens 60 bzw. 40 Knoten.
+
+Jede Aktion zeigt ihren Fortschritt und lässt sich **abbrechen**; ein Fehler steht mit **Erneut versuchen** im Dialog. Das Ergebnis ist eine gewöhnliche Änderung am Board: Alle sehen sie live, und **ein** <kbd>⌘</kbd> <kbd>Z</kbd> nimmt sie ganz zurück. Verdeckte Zettel bleiben vor der KI verborgen, verknüpfte Seiten und Einträge liest sie nur, wenn sie sie lesen darf.
+
 ## Navigieren
 
 - Zoomen mit <kbd>⌘</kbd> + Mausrad, Trackpad-Geste oder den Knöpfen unten rechts.

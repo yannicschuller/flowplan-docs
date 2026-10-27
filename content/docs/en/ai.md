@@ -8,7 +8,7 @@ Optional AI for writing, summaries, questions to your workspace and databases �
 ## Principles
 
 - **Off until someone switches it on** – on the instance and for every person. The one exception is [on-device AI (Apple)](#on-device-ai-apple): it is allowed because nothing leaves the device, and it can be switched off just the same.
-- **Every feature separately:** writing assistant, summaries, questions to the workspace, AI in databases and AI actions can each be allowed or switched off by administrators and by every person.
+- **Every feature separately:** writing assistant, summaries, questions to the workspace, AI in databases, AI actions and AI on whiteboards can each be allowed or switched off by administrators and by every person.
 - **Only with your permissions:** the AI never reads more than you may see yourself – and only what you allow it ([What the AI may access](#what-the-ai-may-access)).
 - **You see where your text goes:** every AI feature names the provider and whether data leaves the server.
 - **Keys stay secret:** API keys are stored encrypted and never shown again ([Security of keys](#security-of-keys)).
@@ -179,6 +179,20 @@ From an answer of **Ask AI**, from the writing assistant (**Propose actions** be
 - **Undo:** created pages and records can be taken back right in the result (they go to the trash); appended text and changed records are in the version history.
 - The AI only sees a catalogue of the spaces, databases, properties and members you may write to and the AI may read – no content beyond that. The AI's answer is plain JSON and is never executed directly.
 - Like every other feature, **AI actions** can be switched off by the administration and under **Settings → AI**.
+
+## AI on whiteboards
+
+On [whiteboards](/whiteboards#ai-on-the-whiteboard), **AI** in the toolbar opens three features:
+
+- **Group by theme (AI):** arrange the selected notes – or all in view – by theme in labelled columns.
+- **Summarise as a page:** a new page next to the board with summary, themes, decisions, open questions and action items (optionally as real tasks with person and due date), linking back.
+- **Create with AI …:** a mind map or a flowchart from a description.
+
+When [creating database records from notes](/whiteboards#sticky-notes-as-database-records) there is also **Split with AI**: the AI fills further properties from the note's text, with a preview before anything is created. Creating the records itself needs no AI.
+
+- People who may edit the board can use it. The AI's answer is strictly checked (only known notes, shapes and properties, limits) and then applied like your own edit – live for everyone, undone in one step.
+- Only the text of the elements concerned goes to the provider – without hidden notes and without linked pages or records the AI may not read. When creating, only your description goes there, nothing from the board. The audit log records `ai.whiteboard`.
+- The **AI on whiteboards** feature can be switched off like all others by administrators and under **Settings → AI**; it is on as soon as AI is on.
 
 ## AI in databases
 
