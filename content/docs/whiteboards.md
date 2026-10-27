@@ -20,13 +20,42 @@ Eine unendliche Fläche für Brainstorming, Abläufe und Workshops: Notizzettel,
 | Stempel | <kbd>E</kbd> | Schnelle Reaktion (👍 ❤️ ⭐ ✅ ❓ 🔥 💡 🎉) auf ein Element; noch einmal nimmt sie zurück |
 | Laserpointer | <kbd>K</kbd> | Zeigen, ohne etwas zu verändern: alle sehen eine kurz nachleuchtende rote Spur |
 
-Dazu in der Leiste: **Bild einfügen**, **Emoji oder Sticker**, **Seite verknüpfen** (Karte mit Link auf eine Flowplan-Seite), **Formenbibliothek**, **Zeitleiste** und **Vorlagen**: Retrospektive, Kanban, Mindmap, SWOT-Analyse, Flussdiagramm.
+Dazu in der Leiste: **Bild einfügen**, **Emoji oder Sticker**, **Seite verknüpfen** (Karte mit Link auf eine Flowplan-Seite), **Formenbibliothek**, **Zeitleiste**, **Einbetten** (Video, Webseite oder PDF, siehe [unten](#videos-webseiten-und-pdfs-einbetten)) und **Vorlagen** (siehe [Vorlagen](#vorlagen)).
 
 ## Elemente gestalten
 
 Ausgewählte Elemente zeigen eine Leiste mit Farbe, Schriftgröße, Fett, Ausrichtung, Linienstärke und -verlauf, **Nach vorne**/**Nach hinten**, **Duplizieren** (<kbd>⌘</kbd> <kbd>D</kbd>) und **Löschen** (<kbd>Entf</kbd>). Zettel und Texte lassen sich auch **verdecken** – wie ein Spoiler im Dokument, per Klick aufdecken.
 
-Doppelklick bearbeitet den Text eines Elements. Kopieren und Einfügen funktioniert innerhalb und zwischen Whiteboards.
+Doppelklick bearbeitet den Text eines Elements. Kopieren und Einfügen funktioniert innerhalb und zwischen Whiteboards. **Kursiv** und **Unterstrichen** gelten wie **Fett** für den ganzen Text eines Elements.
+
+## Gruppieren
+
+Mehrere Elemente auswählen und <kbd>⌘</kbd> <kbd>G</kbd> drücken (oder **Gruppieren** in der Leiste): Die Elemente verhalten sich danach wie eines. Ein Klick wählt die ganze Gruppe, und sie wird gemeinsam verschoben, an den Ecken skaliert, dupliziert, kopiert, gesperrt und gelöscht. Gruppen lassen sich wieder zu größeren Gruppen zusammenfassen.
+
+- **Doppelklick** auf ein gruppiertes Element betritt die Gruppe: Eine gestrichelte Linie zeigt sie, und Klicks wählen nun einzelne Elemente darin (bei verschachtelten Gruppen die nächste Ebene). <kbd>Esc</kbd> oder ein Klick daneben verlässt die Gruppe.
+- <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>G</kbd> oder **Gruppierung aufheben** löst die äußerste Gruppe der Auswahl auf.
+- Kopien einer Gruppe sind eine eigene, neue Gruppe. Wie jede Änderung wird das Gruppieren live geteilt und lässt sich mit <kbd>⌘</kbd> <kbd>Z</kbd> zurücknehmen.
+
+## Listen, Links und Schlagwörter
+
+In Zetteln, Formen und Texten gibt es einfache Formatierungen im Text selbst:
+
+| Schreibweise | Ergebnis |
+| --- | --- |
+| `- Punkt` | Aufzählung (die Knöpfe **Aufzählung** und **Nummerierte Liste** in der Leiste setzen sie für die markierten Zeilen) |
+| `1. Punkt` | Nummerierte Liste; <kbd>Enter</kbd> setzt die Liste fort, eine leere Zeile beendet sie |
+| `**fett**`, `*kursiv*`, `__unterstrichen__` | Einzelne Wörter hervorheben – beim Schreiben mit <kbd>⌘</kbd> <kbd>B</kbd>, <kbd>⌘</kbd> <kbd>I</kbd>, <kbd>⌘</kbd> <kbd>U</kbd> |
+| `[Text](https://…)` | Link – **Link in den Text einfügen** in der Leiste fügt ihn um die Markierung ein |
+
+Links dürfen nur auf `https://`, `http://` und `mailto:` zeigen oder auf ein Element desselben Boards (siehe unten); andere Adressen bleiben einfacher Text. Web-Links öffnen sich in einem neuen Tab. Daneben kann jedes Element einen eigenen **Link** tragen (Kettensymbol in der Leiste); ein kleines Symbol an der Ecke führt dorthin.
+
+**Schlagwörter** an Zetteln erscheinen als farbige Chips an der Unterkante – jedes Schlagwort hat immer dieselbe Farbe. In der Board-Suche hebt **Nur Zettel mit Schlagwort** alle Zettel mit diesem Schlagwort hervor und blendet den Rest ab.
+
+## Links zu Rahmen und Elementen
+
+**Link zu diesem Element kopieren** (in der Leiste eines ausgewählten Elements oder in der Rahmen-Übersicht) kopiert eine Adresse wie `…/#page=…&item=…`. Wer sie öffnet, sieht das Board, auf das Element gezoomt und ausgewählt – sofern sie das Board lesen darf.
+
+Innerhalb des Boards führen Links auf Elemente per Kamerafahrt dorthin: im Link-Feld eines Elements oder im Text als `[Zum Ziel](#item=…)`. Fehlt das Element inzwischen, sagt ein Hinweis das.
 
 ## Mindmaps
 
@@ -98,7 +127,20 @@ Sobald du auf einem Gerät mit dem Stift gezeichnet hast, zeichnet nur noch der 
 ## Bilder, Symbole und Einträge
 
 - **Bilder und Symbole** (Lupe in der Werkzeugleiste) sucht frei lizenzierte Bilder bei Openverse; ausgewählte Bilder werden auf den Server geladen, der Bildnachweis steht als Tooltip am Bild. Außerdem gibt es die Symbolbibliothek in zehn Farben.
+- **Zuschneiden** (in der Leiste eines Bildes): Ausschnitt mit Maus, Finger oder Pfeiltasten wählen (<kbd>⇧</kbd> ändert die Größe). Das Bild selbst bleibt unverändert – **Ganzes Bild zeigen** macht den Zuschnitt jederzeit rückgängig, und auch Exporte zeigen den Ausschnitt.
+- **GIFs**: Hat die Instanz einen Schlüssel für GIPHY oder Tenor (siehe [Konfiguration](/configuration#integrationen)), gibt es in **Bilder und Symbole** einen Reiter **GIFs**. Die Suche läuft über den Server; ein gewähltes GIF wird wie die Openverse-Bilder auf den Server geladen (bis 8 MB), danach lädt das Board nichts mehr vom Anbieter. Ohne Schlüssel fehlt der Reiter.
 - **Seite verknüpfen → Eintrag aus „…“** legt einen Datenbankeintrag als Karte ab. Die Karte zeigt Titel und bis zu drei Eigenschaften und bleibt aktuell, wenn sich der Eintrag ändert; ein Doppelklick öffnet ihn.
+
+Karten verknüpfter Dokumente zeigen, wenn sie hoch genug sind, die ersten Zeilen der Seite als kleine Vorschau.
+
+## Videos, Webseiten und PDFs einbetten
+
+**Einbetten** in der Werkzeugleiste (am Handy unter **Weitere Werkzeuge**) nimmt einen Link auf:
+
+- **Videos und Webseiten** von YouTube, Vimeo, Loom, Spotify, Figma und CodePen – dieselbe Liste wie für Einbettungen in Dokumenten. Andere Adressen werden abgelehnt. Das Board zeigt zuerst nur eine Vorschau mit dem Anbieter; der Inhalt lädt erst nach einem Klick auf **Laden**, in einem abgeschotteten Rahmen (Sandbox), und **Einbettung schließen** entlädt ihn wieder. YouTube läuft über `youtube-nocookie.com`.
+- **PDFs**: **PDF hochladen …** oder eine PDF-Datei aufs Board ziehen. Die Datei wird in der Seite gespeichert und zählt zum Speicherkontingent; das Board zeigt eine Seite als Vorschau, mit Pfeilen zum Blättern. Ein Doppelklick öffnet den PDF-Betrachter.
+
+Exporte zeigen statt des Players eine Karte mit Anbieter und Link.
 
 ## Zettel als Datenbankeinträge
 
@@ -131,6 +173,8 @@ Jede Aktion zeigt ihren Fortschritt und lässt sich **abbrechen**; ein Fehler st
 - Zoomen mit <kbd>⌘</kbd> + Mausrad, Trackpad-Geste oder den Knöpfen unten rechts.
 - **Alles anzeigen** (<kbd>⇧</kbd> <kbd>1</kbd>) passt die Ansicht an alle Elemente an, <kbd>⇧</kbd> <kbd>2</kbd> an die Auswahl – mit einer weichen Kamerafahrt, die jede Eingabe sofort beendet.
 - Rückgängig <kbd>⌘</kbd> <kbd>Z</kbd>, Wiederholen <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Z</kbd>.
+- **Minikarte** (Kartensymbol unten rechts, auf schmalen Boards im Menü **Ansicht und Aktionen**): eine kleine Übersicht aller Elemente mit dem sichtbaren Ausschnitt. Klicken oder Ziehen springt dorthin; mit dem Fokus auf der Minikarte verschieben die Pfeiltasten die Ansicht. Ob sie offen ist, merkt sich der Browser.
+- **Auf dem Board suchen** (<kbd>⌘</kbd> <kbd>F</kbd> auf dem Board, oder die Lupe unten): durchsucht Zettel, Formen, Texte, Tabellen, Rahmen, Kommentare, Einbettungen sowie Seiten- und Eintragskarten. <kbd>Enter</kbd> und <kbd>⇧</kbd> <kbd>Enter</kbd> (oder die Pfeile) springen zum nächsten bzw. vorigen Treffer, der hervorgehoben wird; <kbd>Esc</kbd> schließt die Suche.
 
 ## Gemeinsam arbeiten
 
@@ -141,9 +185,39 @@ Jede Aktion zeigt ihren Fortschritt und lässt sich **abbrechen**; ein Fehler st
 - **Folge mir** (Personen-Symbol unten): Alle anderen sehen deinen Ausschnitt und folgen dir beim Verschieben und Zoomen. Wer selbst schiebt oder zoomt, hört auf zu folgen und kann mit **Folgen** zurück. **Beenden** hebt es für alle auf.
 - **Kommentare** an Stellen der Fläche, mit Antworten und Erwähnungen.
 
+## Rahmen-Übersicht
+
+**Rahmenübersicht** (unten rechts bzw. im Menü **Ansicht und Aktionen**) listet alle Rahmen mit kleiner Vorschau – auf dem Handy als Blatt von unten.
+
+- Ein Klick auf die Vorschau fährt zum Rahmen; der Name lässt sich direkt umbenennen.
+- **Ziehen** am Griff (oder <kbd>⌥</kbd> + Pfeiltasten) ändert die Reihenfolge – sie ist die Reihenfolge der Präsentation und wird mit dem Board gespeichert. Solange niemand sortiert, gilt die Leserichtung (von oben nach unten, links nach rechts).
+- **In der Präsentation ausblenden** (Augensymbol) lässt einen Rahmen beim Präsentieren aus, ohne ihn zu löschen.
+- **Sprechernotizen** je Rahmen, sichtbar nur in der Präsentation.
+- Außerdem: **Link zu diesem Element kopieren**, **Rahmen exportieren** und **Ab hier präsentieren**.
+
 ## Präsentieren
 
-Sobald es Rahmen gibt, erscheint **Präsentieren**. Die Rahmen werden in Leserichtung (von oben nach unten, links nach rechts) nacheinander bildschirmfüllend gezeigt; Pfeiltasten oder die Knöpfe blättern, **Präsentation beenden** oder <kbd>Esc</kbd> schließt.
+Sobald es Rahmen gibt, erscheint **Präsentieren**. Die Rahmen werden in der Reihenfolge der Rahmen-Übersicht nacheinander bildschirmfüllend gezeigt, ausgeblendete Rahmen fehlen; alles außerhalb des aktuellen Rahmens tritt zurück. Pfeiltasten oder die Knöpfe blättern, **Präsentation beenden** oder <kbd>Esc</kbd> schließt.
+
+- **Sprechernotizen** blendet die Notizen des Rahmens ein.
+- **Referentenansicht** öffnet dieselbe zweite Ansicht wie bei [Dokumenten](/documents#sprechernotizen-und-referentenansicht): aktuelle und nächste Folie, die Notizen und die verstrichene Zeit. Beide Fenster bleiben im Gleichschritt – Blättern geht in jedem von beiden.
+
+## Vorlagen
+
+**Vorlagen** öffnet eine durchsuchbare Galerie mit Vorschau, nach Kategorien sortiert:
+
+| Kategorie | Vorlagen |
+| --- | --- |
+| Retrospektiven | Retrospektive, 4L-Retrospektive, Seestern-Retrospektive |
+| Planung | Kanban, User Story Map, Sprint-Planung, Projektzeitplan, Eisenhower-Matrix, Aufwand-Nutzen-Matrix |
+| Strategie | OKR, SWOT-Analyse, Lean Canvas, Business Model Canvas, Customer Journey |
+| Ideen | Empathy Map, Brainstorming, Mindmap |
+| Diagramme | Flussdiagramm, Entscheidungsbaum, Organigramm |
+| Besprechungen | Besprechungsagenda, Eisbrecher |
+
+Eine Vorlage landet in der Mitte der Ansicht und ist danach normaler Inhalt des Boards.
+
+**Eigene Vorlagen**: Unter **Als Vorlage speichern** wird das ganze Board oder die Auswahl zur Vorlage – **Für den Arbeitsbereich** oder **Nur für mich**. Kommentare, Stimmen und Stempel bleiben draußen, Bilder und PDFs bleiben Dateien des Arbeitsbereichs. Eigene Vorlagen stehen im Reiter **Eigene Vorlagen**; löschen können sie die Person, die sie gespeichert hat, und Besitzer. Höchstens 500 Vorlagen je Arbeitsbereich.
 
 ## Excalidraw und draw.io importieren
 
@@ -161,6 +235,8 @@ Formen, Texte, Pfeile mit ihren Verbindungen und Beschriftungen, Freihandstriche
 ## Einbetten und exportieren
 
 - Mit `/board` im Dokument wird ein Whiteboard Teil einer Seite; der Knopf oben rechts öffnet es groß.
-- **Als PNG exportieren** oder **Als SVG exportieren** speichert das Whiteboard als Bild. Im [Markdown-Export](/import-export-versions#exportieren) kommt jedes Whiteboard automatisch als SVG mit.
+- **Als PNG exportieren** oder **Als SVG exportieren** speichert das Whiteboard als Bild.
+- **Exportieren … (PNG, SVG, PDF)** öffnet den Export-Dialog: Was (**Ganzes Board**, **Auswahl** oder ein einzelner Rahmen), Format und bei PNG die **Auflösung** 1×, 2× oder 4×. Als **PDF** kommt das Board **Alles auf einer Seite** oder mit **Eine Seite pro Rahmen** in der Reihenfolge der Präsentation (ausgeblendete Rahmen fehlen). Der Export entsteht im Browser; der Server sieht davon nichts.
+- Im [Markdown-Export](/import-export-versions#exportieren) kommt jedes Whiteboard automatisch als SVG mit.
 - Die Texte auf dem Board sind durchsuchbar und erscheinen in Exporten.
 - **Als Mermaid kopieren** übernimmt Formen und Verbindungen als Mermaid-Flussdiagramm (siehe oben).

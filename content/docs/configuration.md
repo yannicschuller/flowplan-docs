@@ -124,6 +124,7 @@ Der Mailserver muss Plus-Adressierung unterstützen (`inbox+irgendwas@…` lande
 | `ISSUE_SYNC_ALLOWED_HOSTS` | *leer* | Eigene Server für die [Synchronisierung von GitHub- und GitLab-Issues](/projects-and-tickets#github-und-gitlab-issues-synchronisieren), durch Komma getrennt (z. B. `gitlab.example.org`). github.com und gitlab.com sind immer erlaubt; andere Server nur, wenn sie hier stehen. |
 | `ISSUE_SYNC_ALLOW_PRIVATE` | *leer* | `true` erlaubt den in `ISSUE_SYNC_ALLOWED_HOSTS` genannten Servern auch interne Adressen – etwa ein GitLab im selben Netz. Wirkt nur zusammen mit der Liste. |
 | `PLUGIN_ALLOWED_ORIGINS` | *leer* | HTTPS-Ursprünge, von denen Eigentümer [Block-Erweiterungen](/plugins) registrieren dürfen, durch Komma getrennt (z. B. `https://plugins.example.org`). Ohne die Variable nur, wenn die Administration **Block-Erweiterungen von jeder HTTPS-Adresse** einschaltet. Die Ursprünge werden auch in die `frame-src` der Content Security Policy aufgenommen. |
+| `GIPHY_API_KEY` / `TENOR_API_KEY` | *leer* | Schlüssel für die [GIF-Suche auf Whiteboards](/whiteboards#bilder-symbole-und-eintraege) bei GIPHY bzw. Tenor (ist beides gesetzt, gilt GIPHY). Ohne Schlüssel fehlt der Reiter **GIFs**. Gesucht wird über den Server; gewählte GIFs werden bis 8 MB auf dem Server gespeichert. |
 | `EXPORT_GIT_*` | *leer* | Veraltet: der Git-Export der ganzen Instanz, siehe [In ein Git-Repository übertragen](/storage-and-backups#in-ein-git-repository-uebertragen). Läuft weiter; besser ist der Git-Export der Bereiche. |
 
 ## Kalender-Sync

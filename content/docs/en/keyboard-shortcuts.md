@@ -104,6 +104,8 @@ Markdown shortcuts such as `##`, `-`, `[]` or ` ``` ` are listed under [Document
 | Arrow keys | Move the selection by 1 point, with <kbd>⇧</kbd> by 10 |
 | <kbd>⇧</kbd> <kbd>1</kbd> | Show everything |
 | <kbd>⇧</kbd> <kbd>2</kbd> | Zoom to selection |
+| <kbd>⌘</kbd> <kbd>G</kbd> / <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>G</kbd> | Group / ungroup |
+| <kbd>⌘</kbd> <kbd>F</kbd> | Search the board |
 | <kbd>⌘</kbd> <kbd>D</kbd> | Duplicate |
 | <kbd>Del</kbd> | Delete |
 | <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Z</kbd> | Undo / redo |

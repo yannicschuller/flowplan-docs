@@ -104,6 +104,8 @@ Markdown-Kürzel wie `##`, `-`, `[]` oder ` ``` ` stehen unter [Dokumente und Ed
 | Pfeiltasten | Auswahl um 1 Punkt verschieben, mit <kbd>⇧</kbd> um 10 |
 | <kbd>⇧</kbd> <kbd>1</kbd> | Alles anzeigen |
 | <kbd>⇧</kbd> <kbd>2</kbd> | Auf die Auswahl zoomen |
+| <kbd>⌘</kbd> <kbd>G</kbd> / <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>G</kbd> | Gruppieren / Gruppierung aufheben |
+| <kbd>⌘</kbd> <kbd>F</kbd> | Auf dem Board suchen |
 | <kbd>⌘</kbd> <kbd>D</kbd> | Duplizieren |
 | <kbd>Entf</kbd> | Löschen |
 | <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Z</kbd> | Rückgängig / Wiederholen |

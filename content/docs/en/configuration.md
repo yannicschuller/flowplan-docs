@@ -124,6 +124,7 @@ The mail server must support plus addressing (`inbox+anything@…` is delivered 
 | `ISSUE_SYNC_ALLOWED_HOSTS` | *empty* | Own servers for the [GitHub and GitLab issue sync](/projects-and-tickets#sync-github-and-gitlab-issues), comma-separated (e.g. `gitlab.example.org`). github.com and gitlab.com are always allowed; other servers only when listed here. |
 | `ISSUE_SYNC_ALLOW_PRIVATE` | *empty* | `true` also allows internal addresses for the servers listed in `ISSUE_SYNC_ALLOWED_HOSTS` – for example a GitLab in the same network. Only works together with the list. |
 | `PLUGIN_ALLOWED_ORIGINS` | *empty* | HTTPS origins owners may register [block extensions](/plugins) from, comma-separated (e.g. `https://plugins.example.org`). Without it only when the administration switches on **Block extensions from any HTTPS address**. The origins are also added to the `frame-src` of the Content Security Policy. |
+| `GIPHY_API_KEY` / `TENOR_API_KEY` | *empty* | Key for the [GIF search on whiteboards](/whiteboards#images-icons-and-records) at GIPHY or Tenor (if both are set, GIPHY wins). Without a key the **GIFs** tab is hidden. Searches run through the server; chosen GIFs up to 8 MB are stored on the server. |
 | `EXPORT_GIT_*` | *empty* | Deprecated: the Git export of the whole instance, see [Push into a Git repository](/storage-and-backups#push-into-a-git-repository). Keeps working; the Git export of spaces is the better choice. |
 
 ## Calendar sync
