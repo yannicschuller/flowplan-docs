@@ -10,7 +10,9 @@ The sections are grouped into **People** (Users, Sign-in & SSO, Workspaces), **D
 
 ## Users
 
-All accounts as a searchable list (stacked on phones) with their state: **Active**, **Inactive** (30 days or more without signing in), **Disabled**, plus **Admin** and **E-mail unconfirmed**, the last sign-in and the storage used. The status filter shows only active, inactive or disabled accounts or admins. Several accounts at once: tick them, then **End sessions**, **Disable** or **Enable**.
+All accounts as a searchable list (stacked on phones) with their state: **Active**, **Inactive** (30 days or more without signing in), **Disabled**, plus **Admin** and **E-mail unconfirmed**, when the person was last here and the storage used. The status filter shows only active, inactive or disabled accounts, admins or who is **here now**. Several accounts at once: tick them, then **End sessions**, **Disable** or **Enable**.
+
+**Who is here right now** shows in the **Last active** column and refreshes every 30 seconds: a green dot for **Active now** (Flowplan is open and was used in the last few minutes), an amber one for **Open · idle for …** (open but untouched since then – a tab in the background, too), a grey one with the time of the last visit when Flowplan is closed, and an empty circle for accounts that were never here. For this the open app only reports once a minute that it is open and how long ago it was last used (typing, clicking, scrolling, touching) – not what someone does or which page is open.
 
 **Manage** opens an account in a side panel (full screen on phones):
 
