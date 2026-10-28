@@ -10,7 +10,7 @@ Die Bereiche sind gruppiert in **Personen** (Benutzer, Anmeldung & SSO, Arbeitsb
 
 ## Benutzer
 
-Alle Konten als durchsuchbare Liste (auf dem Telefon untereinander) mit ihrem Zustand: **Aktiv**, **Inaktiv** (30 Tage oder länger ohne Anmeldung), **Deaktiviert**, dazu **Admin** und **E-Mail unbestätigt**, wann die Person zuletzt da war und der belegte Speicher. Der Status-Filter zeigt nur Aktive, Inaktive, Deaktivierte, Admins oder wer **gerade da** ist. Mehrere Konten auf einmal: Häkchen setzen, dann **Sitzungen beenden**, **Deaktivieren** oder **Aktivieren**.
+Alle Konten als durchsuchbare Liste (auf dem Telefon untereinander) mit ihrem Zustand: **Aktiv**, **Inaktiv** (30 Tage oder länger ohne Anmeldung), **Deaktiviert**, dazu **Admin** und **E-Mail unbestätigt**, wann die Person zuletzt da war und der belegte Speicher. Die Filter-Knöpfe über der Liste (mit der Anzahl) zeigen nur Aktive, Inaktive, Deaktivierte, Admins oder wer **gerade da** ist. Mehrere Konten auf einmal: Häkchen setzen, dann **Sitzungen beenden**, **Deaktivieren** oder **Aktivieren**.
 
 **Wer gerade da ist** steht in der Spalte **Zuletzt aktiv** und aktualisiert sich alle 30 Sekunden: ein grüner Punkt für **Jetzt aktiv** (Flowplan ist offen und wurde in den letzten Minuten benutzt), ein gelber für **Geöffnet · inaktiv seit …** (offen, aber seit dieser Zeit nicht berührt – auch ein Tab im Hintergrund), ein grauer mit der Zeit des letzten Besuchs, wenn Flowplan geschlossen ist, und ein leerer Kreis für Konten, die noch nie da waren. Dafür meldet die geöffnete App einmal pro Minute nur, dass sie offen ist und wie lange die letzte Eingabe her ist (Tippen, Klicken, Scrollen, Tippen auf dem Bildschirm) – nicht, was jemand tut oder welche Seite offen ist.
 
