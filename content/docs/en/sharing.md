@@ -59,6 +59,7 @@ Links with their own permissions and [publications](#publish-on-the-web) can hav
 - Databases appear with their views – table, board, gallery, list, feed, calendar, timeline and chart (also with series and more values) –, records and record documents. A view is only published if all properties it needs are public. Person properties, relations, formulas, rollups and internal comments stay private.
 - Files linked in published pages are public; other uploads are not.
 - Switching it off, deleting or moving a page out of the published tree revokes access immediately, including to files.
+- If a page has headings, visitors show its **outline** with the list icon to the right of the text (on a phone, the round button at the bottom right). It marks where you are reading and jumps to a heading on click. The browser remembers whether it is open – as in the editor.
 
 ### Appearance
 
