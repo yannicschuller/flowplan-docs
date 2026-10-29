@@ -149,7 +149,7 @@ Seit der Desktop-App 1.1.0 kommt rund um das Fenster einiges dazu. Die Schalter 
 ## Apps für iPhone, iPad und Android
 
 > [!NOTE]
-> Stand heute sind die Apps in Vorbereitung und noch nicht im App Store und bei Google Play erhältlich. Bis dahin lässt sich Flowplan wie oben beschrieben als Web-App installieren.
+> **Für iPhone und iPad gibt es eine Beta-App über TestFlight:** [testflight.apple.com/join/Yjy9aZAE](https://testflight.apple.com/join/Yjy9aZAE) – erst die App **TestFlight** von Apple aus dem App Store installieren, dann den Link auf dem iPhone oder iPad öffnen. Im App Store und bei Google Play sind die Apps noch nicht; die Android-App ist in Vorbereitung. Bis dahin lässt sich Flowplan auf Android wie oben beschrieben als Web-App installieren.
 
 **Voraussetzungen:** iPhone und iPad mit iOS/iPadOS 16.4 oder neuer (das Teilen-Fenster und die einstellbaren Widgets ab iOS 17), Android 8.0 oder neuer.
 

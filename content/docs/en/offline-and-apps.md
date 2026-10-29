@@ -149,7 +149,7 @@ From desktop app 1.1.0 there is more around the window. Its switches are under *
 ## Apps for iPhone, iPad and Android
 
 > [!NOTE]
-> As of today the apps are in preparation and not yet available in the App Store or on Google Play. Until then, Flowplan can be installed as a web app as described above.
+> **There is a beta app for iPhone and iPad on TestFlight:** [testflight.apple.com/join/Yjy9aZAE](https://testflight.apple.com/join/Yjy9aZAE) – install Apple's **TestFlight** app from the App Store first, then open the link on the iPhone or iPad. The apps are not in the App Store or on Google Play yet; the Android app is on the way. Until then, Flowplan can be installed on Android as a web app as described above.
 
 **Requirements:** iPhone and iPad with iOS/iPadOS 16.4 or later (the share sheet and the configurable widgets from iOS 17), Android 8.0 or later.
 
