@@ -7,6 +7,7 @@ All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd
 | Shortcut | Effect |
 | --- | --- |
 | <kbd>⌘</kbd> <kbd>K</kbd> | Quick search |
+| <kbd>⌘</kbd> <kbd>F</kbd> | Find on the page: marks every match, <kbd>Enter</kbd> or <kbd>⇧</kbd> <kbd>Enter</kbd> jumps to the next or previous one, <kbd>Esc</kbd> closes. Selected text becomes the query. Also works in the desktop app and the apps; on a whiteboard it searches the board. |
 | <kbd>⌘</kbd> <kbd>N</kbd> | New page |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>N</kbd> | Quick capture (record in the capture database) |
 | <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Space</kbd> / <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>Space</kbd> | Desktop app: quick capture from any app ([Quick capture (desktop)](/desktop-capture)) |

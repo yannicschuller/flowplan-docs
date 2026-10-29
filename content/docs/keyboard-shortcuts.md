@@ -7,6 +7,7 @@ Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <
 | Kürzel | Wirkung |
 | --- | --- |
 | <kbd>⌘</kbd> <kbd>K</kbd> | Schnellsuche |
+| <kbd>⌘</kbd> <kbd>F</kbd> | Auf der Seite suchen: markiert alle Treffer, <kbd>Enter</kbd> bzw. <kbd>⇧</kbd> <kbd>Enter</kbd> springt zum nächsten bzw. vorigen, <kbd>Esc</kbd> schließt. Ausgewählter Text wird zum Suchbegriff. Geht auch in der Desktop-App und den Apps; auf einem Whiteboard sucht es im Board. |
 | <kbd>⌘</kbd> <kbd>N</kbd> | Neue Seite |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>N</kbd> | Schnell erfassen (Eintrag in der Datenbank zum Erfassen) |
 | <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Leertaste</kbd> / <kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>Leertaste</kbd> | Desktop-App: Schnell erfassen aus jeder App ([Schnell erfassen (Desktop)](/desktop-capture)) |
