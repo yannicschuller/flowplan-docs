@@ -149,7 +149,20 @@ From desktop app 1.1.0 there is more around the window. Its switches are under *
 ## Apps for iPhone, iPad and Android
 
 > [!NOTE]
-> **There is a beta app for iPhone and iPad on TestFlight:** [testflight.apple.com/join/Yjy9aZAE](https://testflight.apple.com/join/Yjy9aZAE) – install Apple's **TestFlight** app from the App Store first, then open the link on the iPhone or iPad. The apps are not in the App Store or on Google Play yet; the Android app is on the way. Until then, Flowplan can be installed on Android as a web app as described above.
+> **There is a beta app for iPhone and iPad on TestFlight:** [testflight.apple.com/join/Yjy9aZAE](https://testflight.apple.com/join/Yjy9aZAE) – install Apple's **TestFlight** app from the App Store first, then open the link on the iPhone or iPad. The apps are not in the App Store yet.
+>
+> **The Android app comes straight from us, without the Play Store:** [flowplan.org/download/android.apk](https://flowplan.org/download/android.apk) or on [flowplan.org/download](https://flowplan.org/download). See [Installing and updating the Android app](#installing-and-updating-the-android-app).
+
+### Installing and updating the Android app
+
+1. On the Android device, open [flowplan.org/download](https://flowplan.org/download) and tap **Download the app**.
+2. Open the downloaded file (the browser's notification or *Downloads*).
+3. The first time, Android asks whether the browser may install apps: **Settings** → **Allow from this source**, then go back and tap **Install**.
+4. If Google Play Protect warns about an unknown app: **More details** → **Install anyway**. The app is signed with our key, just not distributed through Google Play.
+
+**Updates:** once a day the app checks whether there is a new version and then asks: **Download** fetches it in the browser, opening the file and tapping **Update** installs it over the old one – sign-in, profiles and settings stay. **Later** asks again for that version only after a week. New Flowplan features arrive through the server anyway, no app update needed.
+
+You can also do without the Android app: Flowplan can be installed on Android as a web app as described above.
 
 **Requirements:** iPhone and iPad with iOS/iPadOS 16.4 or later (the share sheet and the configurable widgets from iOS 17), Android 8.0 or later.
 
