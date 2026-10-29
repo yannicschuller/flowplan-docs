@@ -39,6 +39,8 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 | Literaturzitat | `/zitat`, `/cite` | Quelle zitieren – DOI, BibTeX oder Zotero ([Zitate](#zitate-und-literaturverzeichnis)) |
 | Literaturverzeichnis | `/literatur`, `/bibliography` | Alle zitierten Werke als Liste |
 
+**Tabellen:** Steht der Cursor in einer Tabelle, erscheint direkt darunter eine kleine Leiste: Zeile darüber oder darunter, Spalte links oder rechts einfügen; unter **…** Kopfzeile ein/aus, Zeile, Spalte oder die ganze Tabelle löschen. Ist das Ende der Tabelle nicht zu sehen, bleibt die Leiste unten im sichtbaren Bereich – auf dem Handy über der Tastatur. <kbd>Tab</kbd> springt zur nächsten Zelle und legt in der letzten Zelle eine neue Zeile an.
+
 ## Sprachnotizen und Besprechungen
 
 `/sprachnotiz` öffnet die Aufnahme: Mikrofon antippen, sprechen, **Aufnahme beenden** – bis zu **zwei Stunden**, genug für eine Besprechung. Die Aufnahme lässt sich anhören oder verwerfen; **Einfügen** legt sie als Audio in die Seite (im Rahmen der Upload-Grenze der Instanz). Ist die Spracherkennung eingerichtet, folgt darunter das Gesprochene als Text; sonst bietet der Dialog nur das Audio an.
