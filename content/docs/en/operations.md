@@ -82,7 +82,19 @@ The header `X-Flowplan-Signature: sha256=<HMAC-SHA256 of the body>` is made with
 
 ### Maintenance & notices
 
-**Administration → Maintenance & notices** holds two banners. The **notice for everyone** – e.g. “The new filing applies from Monday” – stays until you clear the field. A **maintenance notice** with text, start and end appears to everyone signed in as a banner at the top of the window from saving on – before the start as “Scheduled maintenance”, during it as “Maintenance in progress”, in each person's time zone and language. After the end it disappears by itself, also in windows already open (they check every five minutes). Everyone can hide the notice for themselves. **Remove notice** withdraws it at once. Saving and removing are in the activity log.
+**Administration → Maintenance & notices** holds two banners and the banners to click away. The **notice for everyone** – e.g. “The new filing applies from Monday” – stays until you clear the field. A **maintenance notice** with text, start and end appears to everyone signed in as a banner at the top of the window from saving on – before the start as “Scheduled maintenance”, during it as “Maintenance in progress”, in each person's time zone and language. After the end it disappears by itself, also in windows already open (they check every five minutes). Everyone can hide the notice for themselves. **Remove notice** withdraws it at once. Saving and removing are in the activity log.
+
+#### Banners to click away
+
+For news each person should see only once – e.g. “Flowplan is now an app” or your Discord server – **New banner** creates a banner everyone sees until they close it or follow its link. After that it never appears for them again, on no device; whoever opens Flowplan next sees it at the top of the window.
+
+- **Content:** an optional **heading** (bold), the **text** (at most 300 characters) and an optional **link** with its own label – an `https://` address (opens in a new tab) or a page of this instance (`#…` or `/…`). The **preview** shows it while you write.
+- **Colour:** notice (blue), promotion (accent), news (green) or important (yellow).
+- **Who and where:** everyone or administrators only; everywhere or **browser only** – then not in the desktop app and the apps, e.g. when it promotes the apps.
+- **Period:** optional **From** and **Until**; without them it applies right away and until you end it.
+- **Templates** fill in the form for the apps (link to flowplan.org/download, browser only) or for Discord.
+
+The list shows each banner with its state (shown, planned, paused, ended) and how many closed it and how many followed the link. **Pause** hides it without losing its numbers; **Show again** shows it to everyone once more, also to those who closed it; **Delete** removes it with its numbers for everyone right away. At most three banners appear at a time, newest first. Creating, changing and deleting are in the activity log.
 
 ### Storage overview
 

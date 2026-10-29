@@ -80,7 +80,19 @@ Die Kopfzeile `X-Flowplan-Signature: sha256=<HMAC-SHA256 des Inhalts>` ist mit d
 
 ### Wartung & Hinweise
 
-Unter **Administration → Wartung & Hinweise** stehen zwei Banner. Der **Hinweis für alle Personen** – etwa „Ab Montag gilt die neue Ablage“ – bleibt, bis du das Feld leerst. Ein **Wartungshinweis** mit Text, Beginn und Ende erscheint ab dem Speichern allen angemeldeten Personen als Banner oben im Fenster – vor dem Beginn als „Geplante Wartung“, währenddessen als „Wartung läuft“, in Zeitzone und Sprache der jeweiligen Person. Nach dem Ende verschwindet er von selbst, auch in schon geöffneten Fenstern (sie fragen alle fünf Minuten nach). Jede Person kann den Hinweis für sich ausblenden. **Hinweis entfernen** nimmt ihn sofort zurück. Speichern und Entfernen stehen im Aktivitätsprotokoll.
+Unter **Administration → Wartung & Hinweise** stehen zwei Banner und die Banner zum Wegklicken. Der **Hinweis für alle Personen** – etwa „Ab Montag gilt die neue Ablage“ – bleibt, bis du das Feld leerst. Ein **Wartungshinweis** mit Text, Beginn und Ende erscheint ab dem Speichern allen angemeldeten Personen als Banner oben im Fenster – vor dem Beginn als „Geplante Wartung“, währenddessen als „Wartung läuft“, in Zeitzone und Sprache der jeweiligen Person. Nach dem Ende verschwindet er von selbst, auch in schon geöffneten Fenstern (sie fragen alle fünf Minuten nach). Jede Person kann den Hinweis für sich ausblenden. **Hinweis entfernen** nimmt ihn sofort zurück. Speichern und Entfernen stehen im Aktivitätsprotokoll.
+
+#### Banner zum Wegklicken
+
+Für Neuigkeiten, die jede Person nur einmal sehen soll – etwa „Flowplan gibt es jetzt als App“ oder euer Discord-Server –, legt **Neuer Banner** einen Banner an, den jede Person sieht, bis sie ihn schließt oder seinem Link folgt. Danach erscheint er für sie nie wieder, auf keinem Gerät; wer Flowplan das nächste Mal öffnet, sieht ihn oben im Fenster.
+
+- **Inhalt:** optionale **Überschrift** (fett), **Text** (höchstens 300 Zeichen) und ein optionaler **Link** mit eigener Beschriftung – eine `https://`-Adresse (öffnet in einem neuen Tab) oder eine Seite dieser Instanz (`#…` oder `/…`). Die **Vorschau** zeigt ihn beim Schreiben.
+- **Farbe:** Hinweis (blau), Werbung (Akzent), Neuigkeit (grün) oder Wichtig (gelb).
+- **Wer und wo:** alle Personen oder nur Administratoren; überall oder **nur im Browser** – dann nicht in der Desktop-App und den Apps, etwa wenn er für die Apps wirbt.
+- **Zeitraum:** optional **Ab** und **Bis**; ohne Angaben gilt er sofort und bis du ihn beendest.
+- **Vorlagen** füllen das Formular für die Apps (Link zu flowplan.org/download, nur im Browser) oder für Discord vor.
+
+Die Liste zeigt jeden Banner mit Zustand (wird angezeigt, geplant, pausiert, beendet) und wie viele ihn geschlossen haben und wie viele dem Link gefolgt sind. **Pausieren** blendet ihn aus, ohne die Zahlen zu verlieren; **Wieder anzeigen** zeigt ihn allen noch einmal, auch denen, die ihn schon geschlossen haben; **Löschen** entfernt ihn samt Zahlen sofort für alle. Höchstens drei Banner erscheinen gleichzeitig, die neuesten zuerst. Anlegen, Ändern und Löschen stehen im Aktivitätsprotokoll.
 
 ### Speicherübersicht
 

@@ -4,13 +4,13 @@ Whoever administers the instance sees **Administration** in the sidebar: the ins
 
 ## Overview
 
-The administration opens with an overview. At the top is the state of the instance: problems and notices (linked to the area concerned), four live figures – people active now, requests per minute, error rate of the last hour, sign-ins today – and the requests of the last 24 hours as a chart. The figures refresh every 15 seconds while the page is visible (“Live”). Below, one tile per area with its state and, where it fits, a figure with its trend: active people (Users), the fullest quota (Workspaces), storage of the last 30 days, AI tokens today, changes in the activity log, requests or errors (Monitoring). Errors are marked red, notices yellow. On phones the tiles are a list with a small trend on the right.
+The administration opens with an overview. At the top is the state of the instance: problems and notices (linked to the area concerned), five live figures – people active now, people active today (different people since midnight), requests per minute, error rate of the last hour, sign-ins today – and the requests of the last 24 hours as a chart. The figures refresh every 15 seconds while the page is visible (“Live”). Below, one tile per area with its state and, where it fits, a figure with its trend: active people (Users), the fullest quota (Workspaces), storage of the last 30 days, AI tokens today, changes in the activity log, requests or errors (Monitoring). Errors are marked red, notices yellow. On phones the tiles are a list with a small trend on the right.
 
 The sections are grouped into **People** (Users, Sign-in & SSO, Workspaces), **Data** (Storage & backup, Limits & retention, Markdown & Git export), **Services** (E-mail, Push notifications, AI, Extensions & domains), **Security** (Encryption, Activity log) and **Operations** (Monitoring, Maintenance & notices, Instance). Every section starts with a **status line** – e.g. “Scheduled backup off” with a link to the switch, or “S3 off” with a link to the guide. Every setting has exactly one home. Switches and choices save at once, with “Saving …” or “Saved” next to them; single text fields show **Save** once you have changed them. Every section has its own address, e.g. `/#admin/storage` or `/#admin/monitoring`.
 
 ## Users
 
-All accounts as a searchable list (stacked on phones) with their state: **Active**, **Inactive** (30 days or more without signing in), **Disabled**, plus **Admin** and **E-mail unconfirmed**, when the person was last here and the storage used. The filter buttons above the list (with their counts) show only active, inactive or disabled accounts, admins or who is **here now**. Several accounts at once: tick them, then **End sessions**, **Disable** or **Enable**.
+All accounts as a searchable list (stacked on phones) with their state: **Active**, **Inactive** (30 days or more without signing in), **Disabled**, plus **Admin** (local accounts with admin rights and everyone who last signed in with the admin group, also via SSO or LDAP) and **E-mail unconfirmed**, when the person was last here and the storage used. The filter buttons above the list (with their counts) show only active, inactive or disabled accounts, admins or who is **here now**. Several accounts at once: tick them, then **End sessions**, **Disable** or **Enable**.
 
 **Who is here right now** shows in the **Last active** column and refreshes every 30 seconds: a green dot for **Active now** (Flowplan is open and was used in the last few minutes), an amber one for **Open · idle for …** (open but untouched since then – a tab in the background, too), a grey one with the time of the last visit when Flowplan is closed, and an empty circle for accounts that were never here. For this the open app only reports once a minute that it is open and how long ago it was last used (typing, clicking, scrolling, touching) – not what someone does or which page is open.
 
@@ -104,7 +104,7 @@ Health, usage and events of the instance – live, with charts, queues, backgrou
 
 ## Maintenance & notices
 
-**Notice for everyone** – a banner for everyone until you clear it – and the **maintenance notice** with start and end, which disappears by itself afterwards ([Maintenance & notices](/operations#maintenance-notices)).
+**Notice for everyone** – a banner for everyone until you clear it – the **maintenance notice** with start and end, which disappears by itself afterwards, and **banners to click away** that each person sees until they close them – e.g. for the apps or your Discord server ([Maintenance & notices](/operations#maintenance-notices)).
 
 ## Instance
 
