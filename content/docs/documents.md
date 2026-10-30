@@ -62,7 +62,7 @@ Text, den du aus ChatGPT oder einem anderen Assistenten kopierst, wird beim Einf
 
 ## Hinweise
 
-Hinweise gibt es in fünf Arten, wie bei GitHub, Forgejo und Obsidian: **Hinweis** (blau), **Tipp** (grün), **Wichtig** (lila), **Warnung** (gelb) und **Achtung** (rot). Jede Art hat ihr Symbol und ihren Titel in der Sprache der Lesenden. Steht der Cursor in einem Hinweis, ändert `/tipp`, `/warnung` usw. seine Art; ebenso **Blöcke verwalten → Hinweistyp**.
+Hinweise gibt es in fünf Arten, wie bei GitHub, Forgejo und Obsidian: **Hinweis** (blau), **Tipp** (grün), **Wichtig** (lila), **Warnung** (gelb) und **Achtung** (rot). Jede Art hat ihr Symbol und ihren Titel in der Sprache der Lesenden. Steht der Cursor in einem Hinweis, ändert `/tipp`, `/warnung` usw. seine Art; ebenso das Blockmenü (Klick auf den Griff `⋮⋮`) → **Hinweistyp**.
 
 Beim Markdown-Export werden Hinweise zu GitHub-Hinweisen (`> [!WARNING]`). Beim Import (Markdown, ZIP, Notion) werden `> [!NOTE]` bis `> [!CAUTION]` wieder zu Hinweisen der passenden Art; die weiteren Arten von Obsidian landen bei der nächstliegenden (etwa `danger` → Achtung, `hint` → Tipp), ein eigener Titel (`> [!WARNING] Vorher lesen`) wird zur fetten ersten Zeile.
 
@@ -148,7 +148,18 @@ Verdeckter Text bleibt auch beim Schreiben verdeckt. Ein Klick auf die Fläche d
 
 ## Blöcke verschieben
 
-Links neben jedem Block erscheint beim Überfahren ein Griff (`⋮⋮`). Ziehen zeigt eine Einfügelinie; nach dem Loslassen gleitet der Block an die neue Stelle. Ein Klick auf den Griff öffnet **Blöcke verwalten**: verschieben – auch in Hinweise oder Spalten –, duplizieren oder löschen, einzeln oder mehrere benachbarte Blöcke.
+Links neben jedem Block erscheint beim Überfahren ein Griff (`⋮⋮`). Ziehen zeigt eine Einfügelinie – auch in Hinweise, Zitate oder Spalten hinein; nach dem Loslassen gleitet der Block an die neue Stelle.
+
+Ein Klick auf den Griff öffnet das **Blockmenü** (am Handy von unten):
+
+- **Nach oben** / **Nach unten** – am Nachbarn vorbei
+- **Verschieben unter …** – direkt unter eine Überschrift der Seite, an den Anfang oder ans Ende
+- **Duplizieren** und **Löschen**
+- **Umwandeln in …** – Text, Überschrift 1–3, Aufzählung, nummerierte Liste, Aufgabenliste, Zitat, Hinweis oder Code; Listenpunkte wechseln die Listenart, Zitate und Hinweise lassen sich auflösen
+- **Hinweistyp**, **Breite** (Videos und Einbettungen) und **Textrichtung**, wo sie passen
+- **Mehrere auswählen** – der Auswahlmodus
+
+Im **Auswahlmodus** stehen Kreise statt der Griffe. Ein Tipp wählt einen Block aus, ein weiterer erweitert die Auswahl bis dorthin; sind alle Punkte einer Liste gewählt, gilt die ganze Liste. Die Leiste unten verschiebt, dupliziert, verschiebt unter eine Überschrift oder löscht die Auswahl, **⋯** hat den Rest des Blockmenüs. **Fertig** oder <kbd>Esc</kbd> beendet den Modus.
 
 Listenpunkte und Aufgaben bleiben beim Verschieben, was sie sind: Außerhalb ihrer Liste bilden sie eine eigene Liste derselben Art, ein nummerierter Punkt behält seine Nummer. Direkt neben einer passenden Liste werden sie Teil davon; in einer anderen Listenart passen sie sich an.
 
@@ -271,7 +282,7 @@ Im Text steht dann „(Müller 2021)“, „(Müller & Schmidt 2021, S. 12)“ o
 
 Absätze, Überschriften, Listen, Zitate, Hinweise und Tabellenzellen in Arabisch, Hebräisch oder Persisch laufen **automatisch von rechts nach links**: Die Richtung folgt dem ersten Buchstaben des Blocks. Aufzählungszeichen, Kästchen, Zitatbalken, Hinweissymbole und Blockgriffe stehen dann rechts.
 
-Unter **Blöcke verwalten** (Klick auf den Griff `⋮⋮`) → **Textrichtung** legst du für einen Block und alles darin **Automatisch**, **Links nach rechts** oder **Rechts nach links** fest. Die Richtung bleibt im HTML-Export erhalten; Markdown kennt sie nicht.
+Im Blockmenü (Klick auf den Griff `⋮⋮`) → **Textrichtung** legst du für einen Block und alles darin **Automatisch**, **Links nach rechts** oder **Rechts nach links** fest. Die Richtung bleibt im HTML-Export erhalten; Markdown kennt sie nicht.
 
 ## Weitere Blöcke
 

@@ -62,7 +62,7 @@ Text copied from ChatGPT or another assistant is formatted when pasted: LaTeX fo
 
 ## Callouts
 
-Callouts come in five kinds, as on GitHub, Forgejo and Obsidian: **Note** (blue), **Tip** (green), **Important** (purple), **Warning** (yellow) and **Caution** (red). Each kind has its icon and a title in the reader's language. With the cursor in a callout, `/tip`, `/warning` etc. change its kind; so does **Manage blocks → Callout type**.
+Callouts come in five kinds, as on GitHub, Forgejo and Obsidian: **Note** (blue), **Tip** (green), **Important** (purple), **Warning** (yellow) and **Caution** (red). Each kind has its icon and a title in the reader's language. With the cursor in a callout, `/tip`, `/warning` etc. change its kind; so does the block menu (click the handle `⋮⋮`) → **Callout type**.
 
 Markdown export writes callouts as GitHub alerts (`> [!WARNING]`). Import (Markdown, ZIP, Notion) turns `> [!NOTE]` to `> [!CAUTION]` back into callouts of that kind; Obsidian's further kinds map to the nearest one (e.g. `danger` → Caution, `hint` → Tip), and a custom title (`> [!WARNING] Read first`) becomes a bold first line.
 
@@ -148,7 +148,18 @@ Hidden text stays hidden while you write. A click on the area reveals it, anothe
 
 ## Move blocks
 
-A handle (`⋮⋮`) appears to the left of every block on hover. Dragging shows an insertion line in the middle of the gap between two blocks; when you let go, the block glides to its new place. A click on the handle opens **Manage blocks**: move – also into callouts or columns –, duplicate or delete, one block or several neighbouring ones.
+A handle (`⋮⋮`) appears to the left of every block on hover. Dragging shows an insertion line in the middle of the gap between two blocks – also into callouts, quotes or columns; when you let go, the block glides to its new place.
+
+A click on the handle opens the **block menu** (from the bottom on phones):
+
+- **Move up** / **Move down** – past the neighbour
+- **Move below …** – right below a heading of the page, to the top or to the end
+- **Duplicate** and **Delete**
+- **Turn into …** – text, heading 1–3, bulleted list, numbered list, task list, quote, callout or code; list items switch the kind of list, quotes and callouts can be dissolved
+- **Callout type**, **Width** (videos and embeds) and **Text direction** where they fit
+- **Select several** – the selection mode
+
+In the **selection mode** circles take the place of the handles. A tap selects a block, another one extends the selection up to it; when all items of a list are chosen, the whole list is. The bar at the bottom moves, duplicates, moves below a heading or deletes the selection, **⋯** holds the rest of the block menu. **Done** or <kbd>Esc</kbd> ends the mode.
 
 List items and tasks stay what they are when moved: outside their list they form a list of the same kind of their own, and a numbered item keeps its number. Right next to a matching list they become part of it; in another kind of list they adapt.
 
@@ -271,7 +282,7 @@ The text then reads "(Müller 2021)", "(Müller & Schmidt 2021, p. 12)" or "(Mü
 
 Paragraphs, headings, lists, quotes, callouts and table cells in Arabic, Hebrew or Persian run **right to left automatically**: the direction follows the block's first letter. Bullets, checkboxes, quote bars, callout icons and block handles are then on the right.
 
-Under **Manage blocks** (click the handle `⋮⋮`) → **Text direction** you set **Automatic**, **Left to right** or **Right to left** for a block and everything inside it. The direction is kept in the HTML export; Markdown has no place for it.
+In the block menu (click the handle `⋮⋮`) → **Text direction** you set **Automatic**, **Left to right** or **Right to left** for a block and everything inside it. The direction is kept in the HTML export; Markdown has no place for it.
 
 ## More blocks
 
