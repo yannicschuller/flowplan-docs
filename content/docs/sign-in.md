@@ -204,6 +204,17 @@ Ohne `SESSION_REMEMBER` endet jede Sitzung – auch die der Apps und damit ihre 
 
 **Einstellungen → Konto & Sicherheit → Angemeldete Geräte** listet alle eigenen Sitzungen mit Gerät, letzter Nutzung und Ende; **Abmelden** beendet eine einzelne, **Alle anderen Geräte abmelden** alle bis auf die aktuelle.
 
+## Sicherheitscheck
+
+**Einstellungen → Sicherheitscheck** (`/#settings/security`) zeigt jeder Person, wie gut ihr Konto geschützt ist – zugeschnitten auf die Art der Anmeldung:
+
+- **Der Check:** zweiter Faktor, Passkey und übrige Wiederherstellungscodes (bei E-Mail-Konten), bestätigte E-Mail-Adresse, Geräte, die seit über einem Monat ungenutzt sind, API-Tokens ohne Ablauf oder seit drei Monaten ungenutzt, Links zum Bearbeiten ohne Passwort und Ablaufdatum, ob Sicherheitshinweise per Push oder E-Mail ankommen, und fehlgeschlagene Anmeldungen am eigenen Konto. Offene Punkte stehen oben, jeweils mit dem Weg zur Lösung. Bei SSO und LDAP verweist er auf den Anbieter bzw. das Verzeichnis.
+- **Was du geteilt hast:** eigene Freigabelinks (mit Recht und Schutz), öffentliche Seiten, die du angelegt hast, und Personen oder offene Einladungen mit eigenem Zugriff auf deine Seiten – jeweils direkt zu löschen, zu beenden oder zu entziehen.
+- **Anmeldungen & Änderungen** der letzten 30 Tage mit Gerät und Netz, auch fehlgeschlagene Versuche mit deiner Adresse.
+- **Tipps**, passend zum Konto.
+
+Meldet sich jemand mit einem Gerät an, das 90 Tage nicht dabei war, kommt außerdem ein Sicherheitshinweis.
+
 ## Sicherheit
 
 Bei OIDC prüft Flowplan Discovery, Issuer, Audience, Signatur, PKCE, State und Nonce. Sitzungen sind zufällige Tokens, gehasht in SQLite gespeichert; Cookies sind `HttpOnly`, `SameSite=Lax` und bei HTTPS `Secure`. Gruppen oder Rollen werden nie aus Browserdaten übernommen.

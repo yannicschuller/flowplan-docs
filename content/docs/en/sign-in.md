@@ -204,6 +204,17 @@ Without `SESSION_REMEMBER` every session – the apps' too, and with them their 
 
 **Settings → Account & security → Signed-in devices** lists all your own sessions with device, last use and end; **Sign out** ends a single one, **Sign out all other devices** all but the current one.
 
+## Security check
+
+**Settings → Security check** (`/#settings/security`) shows everyone how well their account is protected – tailored to how they sign in:
+
+- **The check:** second factor, passkey and recovery codes left (e-mail accounts), a confirmed e-mail address, devices unused for over a month, API tokens without an end date or unused for three months, edit links without a password and end date, whether security notices arrive by push or e-mail, and failed sign-ins on your own account. Open points come first, each with the way to fix it. With SSO and LDAP it points to the provider or the directory.
+- **What you shared:** your share links (with right and protection), public pages you created, and people or open invitations with their own access to your pages – each to delete, stop or remove right there.
+- **Sign-ins & changes** of the last 30 days with device and network, including failed attempts with your address.
+- **Tips** that fit the account.
+
+When someone signs in with a device not seen for 90 days, a security notice arrives as well.
+
 ## Security
 
 With OIDC, Flowplan checks the discovery, issuer, audience, signature, PKCE, state and nonce. Sessions are random tokens, stored hashed in SQLite; cookies are `HttpOnly`, `SameSite=Lax` and `Secure` with HTTPS. Groups or roles are never taken from browser data.
