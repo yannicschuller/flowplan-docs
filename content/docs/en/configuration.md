@@ -47,6 +47,10 @@ The other OIDC variables and everything about passwords and passkeys are describ
 | `FLOWPLAN_UPDATE_CHECK` | on | `false` turns off the check for new versions (for instances without internet). Otherwise the server asks GitHub for the latest release at most every 12 hours and shows admins a notice in the administration. |
 | `FLOWPLAN_UPDATE_URL` | GitHub API | Another address for the latest release (same format as `api.github.com/repos/yannicschuller/flowplan/releases/latest`), such as an internal mirror. Not to be confused with the [desktop app's](/offline-and-apps#desktop-app-for-macos-windows-and-linux) variable of the same name, which names the app's update source on the computer running it. |
 | `FLOWPLAN_TRUSTED_PROXIES` | `1` | Number of proxies in front of Flowplan (Traefik alone: `1`, Pangolin in front of Traefik: `2`, `0` = trust no header). Decides which entry in `X-Forwarded-For` is the real address – for limiting sign-in attempts, demo starts and anonymous form answers. Entries made up by the browser are ignored this way. When no address arrives at all (the proxy does not set the header), only the limits per account and per link apply, and the log shows a note once. |
+| `FLOWPLAN_SECURITY_LOG` | `on` | Security events as a JSON line on stdout: `on` (with address, for fail2ban/CrowdSec), `anonymous`, `off` ([Security](/en/operations#security)). |
+| `FLOWPLAN_SECURITY_RETENTION_DAYS` | `90` | How long security events stay in the database (at least 7). |
+| `FLOWPLAN_COUNTRY_HEADER` | *empty* | The proxy's header with the country of the request (e.g. `CF-IPCountry`); turns on the rule "two countries in a short time". |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | *empty* | OTLP collector (HTTP); security events go there as OpenTelemetry logs. With `OTEL_EXPORTER_OTLP_HEADERS` and `OTEL_SERVICE_NAME`. |
 | `FLOWPLAN_ANONYMOUS_UPLOAD_MB` | `1024` | How many MB visitors without an account may upload per day on the whole instance – through anonymous forms and editing links (`0` = unlimited). Each form or link additionally gets 200 MB per day, independent of the workspace's storage quota. |
 
 ## S3 and database backup
