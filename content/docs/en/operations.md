@@ -141,7 +141,7 @@ Flowplan records security-relevant events, detects typical attacks in them and h
 The page `/#admin/threats` (group **Security**) sums it up and refreshes every 30 seconds:
 
 - **State:** open incidents (critical ones in red), hints on missing connections, numbers of the last 24 hours and sign-ins per hour
-- **Incidents** of the detection rules, with actions right next to them: resolved, block the address or network for 24 hours, end all sessions of the person, disable the account
+- **Incidents** of the detection rules, with actions right next to them: resolved, block the address or network for 24 hours, end all sessions of the person, disable the account. **Details** shows per incident why the rule fired (with its thresholds), the period, the origin and whether it is already blocked, the accounts tried, successful sign-ins in the same period (red when an account may have been taken over afterwards), networks, countries and devices, and the timeline of all its events. For probing it also lists the requested paths with answer and count – IDs and tokens in them replaced by `:id`, `:n` and `:token`.
 - **Addresses with failures**, **events** with filters (severity, kind) and export as CSV or JSON
 - **Signed-in people** (admins first), **open ways in** (API tokens, share links, public pages of the whole instance) to revoke
 - **Blocks** of addresses and networks, for a time or indefinitely. Blocked addresses only get `403` – signed-in people in them too. Your own address and network cannot be blocked.
