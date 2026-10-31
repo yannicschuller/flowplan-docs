@@ -136,7 +136,9 @@ Auf Seiten, die die KI nicht lesen darf, sind alle KI-Einträge ausgegraut mit d
 
 ## Fragen an den Arbeitsbereich
 
-**KI fragen** (Seitenleiste, <kbd>⌘</kbd> <kbd>K</kbd> → „KI fragen …“ oder der Knopf in der Suche) beantwortet Fragen zu deinen Seiten und Datenbanken – etwa „Wann ist die nächste Wartung der Heizung fällig?“ oder „Was haben wir zum Thema Onboarding beschlossen?“.
+**KI fragen** (Seitenleiste, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>A</kbd> bzw. <kbd>Strg</kbd> <kbd>Alt</kbd> <kbd>A</kbd>, <kbd>⌘</kbd> <kbd>K</kbd> → „KI fragen …“ oder der Knopf in der Suche) beantwortet Fragen zu deinen Seiten und Datenbanken – etwa „Wann ist die nächste Wartung der Heizung fällig?“ oder „Was haben wir zum Thema Onboarding beschlossen?“.
+
+**Als Leiste am rechten Rand:** Auf dem Computer und dem iPad öffnet sich **KI fragen** als Leiste rechts neben der Seite; die Seite wird schmaler, nichts wird verdeckt. Du kannst weiterschreiben, scrollen und andere Seiten öffnen, während die Antwort entsteht – sie läuft weiter, und das Gespräch bleibt beim Seitenwechsel erhalten. Ein Klick auf eine Quelle öffnet die Seite daneben, die Leiste bleibt offen. Die Breite änderst du am linken Rand der Leiste (Doppelklick setzt zurück); dieser Browser merkt sie sich. <kbd>Esc</kbd> in der Leiste, das <kbd>×</kbd> oder derselbe Kurzbefehl schließen sie wieder. **KI fragen** und die **Kommentare** teilen sich den rechten Rand: Öffnest du das eine, schließt sich das andere. Im Fokusmodus ist die Leiste ausgeblendet. Auf dem Handy erscheint **KI fragen** als Blatt über der unteren Leiste; nach unten wischen (oder der Pfeil oben) verkleinert es zu einem Knopf „KI antwortet …“ – die Antwort läuft weiter.
 
 - Die Antwort nennt ihre **Quellen** als nummerierte Verweise [1], [2] …; ein Klick öffnet die Seite oder den Eintrag. Die Verweise stammen aus der Suche, nie aus dem Text der KI.
 - Findet die KI nichts Passendes, antwortet sie „Dazu habe ich nichts gefunden.“ statt etwas zu erfinden.
@@ -146,7 +148,7 @@ Auf Seiten, die die KI nicht lesen darf, sind alle KI-Einträge ausgegraut mit d
 - **Darstellung:** Antworten erscheinen formatiert – fett, kursiv, Listen (auch verschachtelt), Code und Links; die Quellen-Nummern bleiben anklickbar.
 - **Aktionen vorschlagen:** Unter einer Antwort schlägt die KI auf Wunsch vor, was sich daraus anlegen lässt – siehe [KI-Aktionen](#ki-aktionen).
 - **Gespräch:** Rückfragen beziehen die letzten Fragen und Antworten ein; **Neues Gespräch** beginnt von vorn. Das Gespräch bleibt nur in diesem Browser-Tab und wird nicht auf dem Server gespeichert.
-- Gesucht wird über den Volltextindex; die passendsten Absätze gehen mit deiner Frage an den Anbieter, der oben im Fenster steht. Die KI liest dabei nur, was du lesen darfst und was für die KI freigegeben ist ([Worauf die KI zugreifen darf](#worauf-die-ki-zugreifen-darf)).
+- Gesucht wird über den Volltextindex; die passendsten Absätze gehen mit deiner Frage an den Anbieter, der oben in der Leiste steht. Die KI liest dabei nur, was du lesen darfst und was für die KI freigegeben ist ([Worauf die KI zugreifen darf](#worauf-die-ki-zugreifen-darf)).
 - Während die Antwort entsteht, zeigen ein Schimmer und ein Schreibcursor den Fortschritt; die Quellen erscheinen nacheinander.
 
 ### Suche nach Bedeutung (optional)

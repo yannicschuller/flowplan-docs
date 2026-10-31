@@ -16,6 +16,7 @@ Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>B</kbd> | Seitenleiste ein- oder ausblenden |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Z</kbd> | Fokusmodus ein oder aus |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>K</kbd> | Kommentare ein- oder ausblenden |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>A</kbd> | [KI fragen](/ai#fragen-an-den-arbeitsbereich) öffnen oder schließen (ist die Leiste offen, springt der Fokus hinein; von dort schließt das Kürzel sie) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>S</kbd> | [Geteilte Ansicht](/pages-and-spaces#geteilte-ansicht) öffnen oder schließen |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd> | Dokument [präsentieren](/documents#praesentieren) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> | [Journal](/journal#von-tag-zu-tag): heutigen Tag öffnen (des zuletzt benutzten Journals) |

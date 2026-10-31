@@ -16,6 +16,7 @@ All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>B</kbd> | Show or hide the sidebar |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Z</kbd> | Focus mode on or off |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>K</kbd> | Show or hide comments |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>A</kbd> | Open or close [Ask AI](/ai#ask-your-workspace) (when the panel is open, focus moves into it; from there the shortcut closes it) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>S</kbd> | Open or close the [split view](/pages-and-spaces#split-view) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd> | [Present](/documents#present) the document |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> | [Journal](/journal#from-day-to-day): open today (of the journal used last) |

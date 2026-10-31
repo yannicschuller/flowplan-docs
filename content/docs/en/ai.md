@@ -136,7 +136,9 @@ On pages the AI may not read, every AI entry is greyed out with the hint "The AI
 
 ## Ask your workspace
 
-**Ask AI** (sidebar, <kbd>⌘</kbd> <kbd>K</kbd> → "Ask AI …" or the button in search) answers questions about your pages and databases – such as "When is the next heating maintenance due?" or "What did we decide about onboarding?".
+**Ask AI** (sidebar, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>A</kbd> or <kbd>Ctrl</kbd> <kbd>Alt</kbd> <kbd>A</kbd>, <kbd>⌘</kbd> <kbd>K</kbd> → "Ask AI …" or the button in search) answers questions about your pages and databases – such as "When is the next heating maintenance due?" or "What did we decide about onboarding?".
+
+**A panel at the right edge:** on a computer and an iPad, **Ask AI** opens as a panel to the right of the page; the page gets narrower, nothing is covered. You can keep writing, scrolling and opening other pages while the answer is written – it keeps going, and the conversation stays when you switch pages. A click on a source opens the page beside it, the panel stays open. Drag the panel's left edge to change its width (double-click resets it); this browser remembers it. <kbd>Esc</kbd> in the panel, the <kbd>×</kbd> or the same shortcut close it again. **Ask AI** and the **comments** share the right edge: opening one closes the other. In focus mode the panel is hidden. On phones, **Ask AI** is a sheet above the bottom bar; swiping it down (or the arrow at its top) shrinks it to an "AI is answering …" button – the answer keeps going.
 
 - The answer names its **sources** as numbered references [1], [2] …; a click opens the page or record. The references come from the search, never from the AI's text.
 - If the AI finds nothing that fits, it answers "I found nothing about that." instead of making something up.
