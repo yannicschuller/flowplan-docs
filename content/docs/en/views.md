@@ -53,6 +53,10 @@ In the same dialog, **Set up access** sets up sync with Apple Calendar, Thunderb
 
 Google Calendar does not support CalDAV accounts; use the calendar sync below for it.
 
+### Contacts as an address book (CardDAV)
+
+Contacts databases can be subscribed to like calendars – as an address book in Apple Contacts, Thunderbird or DAVx⁵, read-only, with the same kind of access (password shown only once) and a configuration profile for iPhone, iPad and Mac. See [Subscribe as an address book](/contacts#subscribe-as-an-address-book-carddav).
+
 ### Sync with Google Calendar or Outlook
 
 **Calendar sync** keeps a view with a date and a calendar in Google Calendar or Microsoft Outlook / 365 in step both ways – personally, with your own account.

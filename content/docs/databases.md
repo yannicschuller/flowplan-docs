@@ -10,6 +10,7 @@ Eine Datenbank ist eine Sammlung von Einträgen mit Eigenschaften. Dieselben Ein
 | --- | --- | --- |
 | **Aufgaben** | Aufgabe, Status, Priorität, Fällig am, Verantwortlich, Tags | Tabelle „Alle Aufgaben“, dazu Board, Kalender, Timeline … |
 | **Dokumente** | Titel, Tags, Erstellt, Bearbeitet | Liste „Alle Dokumente“ (zuletzt bearbeitet oben), Galerie, Tabelle; Einträge öffnen als ganze Seite, leere Eigenschaften sind ausgeblendet |
+| **Kontakte** | Name, Vorname, Nachname, Firma, Position, E-Mail, Telefon, Mobil, Straße, PLZ, Ort, Land, Geburtstag, Tags | Liste „Alle Kontakte“ (nach Nachname), Tabelle, Kalender „Geburtstage“, Galerie; Einträge öffnen als Profilseite mit Kontaktkarte – siehe [Kontakte](/contacts) |
 | **Leer** | nur ein Titel | Tabelle |
 
 Darunter stehen **Deine Vorlagen**: gespeicherte Datenbank-Vorlagen, etwa eine eigene „Notizen (PARA)“-Datenbank mit Relationen und Ansichten. Die letzte Wahl merkt sich das Gerät. Alternativ eine [Vorlage](/templates) verwenden, etwa „Aufgaben“ oder „Projekte“, oder eine CSV-Datei importieren (siehe [Import, Export und Versionen](/import-export-versions)).

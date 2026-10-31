@@ -190,6 +190,23 @@ With `LDAP_URL` set, the password field of the sign-in page checks names against
 
 **Authentik**: create an LDAP outpost (provider "LDAP", base DN e.g. `dc=ldap,dc=goauthentik,dc=io`), a service account with "Search full LDAP directory" as `LDAP_BIND_DN` (`cn=<name>,ou=users,<base>`), `LDAP_USER_FILTER=(|(cn={user})(mail={user}))`. Groups are in `memberOf`.
 
+### Contacts from LDAP
+
+[Contacts databases](/contacts#contacts-from-the-ldap-directory) import people from the directory and keep them in sync (directory → Flowplan only). Flowplan uses the server, search account and TLS of the LDAP sign-in (`LDAP_URL`, `LDAP_BIND_DN`/`LDAP_BIND_PASSWORD`, `LDAP_TLS_CA`, `LDAP_STARTTLS`, `LDAP_TIMEOUT_MS`). Base and filter can be separate:
+
+| Variable | Default | Meaning |
+| --- | --- | --- |
+| `LDAP_CONTACTS_BASE_DN` | `LDAP_BASE_DN` | Where contacts are searched; the OU tree of the import dialog starts here. Entries outside it cannot be reached. |
+| `LDAP_CONTACTS_FILTER` | `(&(\|(objectClass=inetOrgPerson)(objectClass=user)(objectClass=contact))(!(objectClass=computer)))` | Which entries are people. |
+| `LDAP_CONTACTS_SYNC_MINUTES` | `60` | Interval of the sync (15–1440). |
+| `LDAP_CONTACTS` | on | `off` turns contacts from the directory off. |
+
+For contacts alone, `LDAP_URL` with `LDAP_CONTACTS_BASE_DN` is enough; without `LDAP_BASE_DN`, sign-in with LDAP stays off.
+
+**Administration → Sign-in & SSO → Contacts from LDAP** shows where base and filter come from and overrides them: base DN, filter, sync every … minutes and **Allowed** (off: nobody can import, the sync rests). Stored values take precedence over the environment; empty fields fall back to the environment. **Test connection** checks the bind and the base. The search account's password stays in the environment and is never stored. Changes and imports are recorded as the security event “Security-relevant setting changed”.
+
+Limits: at most 500 people per list in the dialog (search for more), 2000 linked contacts and 20 OUs per database; every operation has the `LDAP_TIMEOUT_MS` time limit.
+
 ## Stay signed in
 
 Normally a session ends `SESSION_HOURS` after signing in (default 8 hours). With `SESSION_REMEMBER=true` the sign-in page shows **Stay signed in** – for password, passkey and SSO. When ticked, the session lives on while Flowplan is used:

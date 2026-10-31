@@ -33,6 +33,7 @@ Konten mit E-Mail und Passwort entstehen über **Konto erstellen** (siehe [Anmel
 - **Zwei-Faktor-Anmeldung**: **Zwei-Faktor-Anmeldung verlangen** – nicht verlangen, nur für Admins oder für alle lokalen Konten –, dazu wie viele lokale Konten schon einen zweiten Faktor haben. Konten ohne Authenticator-App und ohne Passkey richten direkt nach der Anmeldung einen zweiten Faktor ein ([Zwei-Faktor-Anmeldung](/sign-in#zwei-faktor-anmeldung)). SSO-Konten sind nicht betroffen.
 - **Single Sign-on (OIDC)**: ob ein Anbieter eingerichtet ist, die Admin-Gruppe und **SSO-Gruppen zentral zuordnen** – Gruppen des Anbieters bekommen Rollen und Gruppen in jedem Arbeitsbereich ([SSO-Gruppen](/sign-in#sso-gruppen-arbeitsbereichen-zuordnen)).
 - **SCIM-Token** und **LDAP-Verzeichnis** mit ihrem Zustand ([Benutzer bereitstellen mit SCIM](/sign-in#benutzer-bereitstellen-mit-scim), [Anmeldung mit LDAP](/sign-in#anmeldung-mit-ldap)).
+- **Kontakte aus LDAP**: Basis-DN, Personenfilter und Abgleich für [Kontakte-Datenbanken](/contacts#kontakte-aus-dem-ldap-verzeichnis); Änderungen werden als Sicherheitsereignis protokolliert. Siehe [Kontakte aus LDAP](/sign-in#kontakte-aus-ldap).
 
 ## Arbeitsbereiche
 

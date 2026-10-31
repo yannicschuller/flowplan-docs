@@ -262,6 +262,8 @@ Alle Einstellungen lassen sich auch über [Umgebungsvariablen](/configuration#ki
 
 Eigentümer eines Arbeitsbereichs oder eines Bereichs können eine **Seite** (im Teilen-Dialog) oder einen **Bereich** (in den Bereichseinstellungen) **für KI sperren**. Das gilt für alle Personen und für alles darunter – Unterseiten und Datenbankeinträge. Keine KI-Funktion liest dann diese Inhalte, auch wenn eine Person sie in ihren eigenen Regeln erlaubt hat.
 
+Neue [Kontakte-Datenbanken](/contacts) sind von Anfang an für die KI gesperrt; wer die Seite verwaltet, kann sie öffnen.
+
 ## Für Nutzer
 
 Unter **Einstellungen → KI**:

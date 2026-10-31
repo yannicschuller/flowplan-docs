@@ -33,6 +33,7 @@ Accounts with e-mail and password are created with **Create account** (see [Sign
 - **Two-factor sign-in**: **Require two-factor sign-in** – not required, only for admins or for all local accounts –, plus how many local accounts already have a second factor. Accounts without an authenticator app and without a passkey set up a second factor right after signing in ([Two-factor sign-in](/sign-in#two-factor-sign-in)). SSO accounts are not affected.
 - **Single sign-on (OIDC)**: whether a provider is set up, the admin group and **Map SSO groups centrally** – provider groups get roles and groups in any workspace ([SSO groups](/sign-in#map-sso-groups-to-workspaces)).
 - **SCIM tokens** and the **LDAP directory** with their state ([User provisioning (SCIM)](/sign-in#user-provisioning-scim), [Sign-in with LDAP](/sign-in#sign-in-with-ldap)).
+- **Contacts from LDAP**: base DN, people filter and sync for [contacts databases](/contacts#contacts-from-the-ldap-directory); changes are recorded as security events. See [Contacts from LDAP](/sign-in#contacts-from-ldap).
 
 ## Workspaces
 

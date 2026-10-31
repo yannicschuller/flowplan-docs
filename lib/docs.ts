@@ -75,6 +75,7 @@ const groups: {
     pages: [
       ["databases", "Datenbanken", "Databases"],
       ["views", "Ansichten", "Views"],
+      ["contacts", "Kontakte", "Contacts"],
       ["properties-and-formulas", "Eigenschaften, Formeln und Rollups", "Properties, formulas and rollups"],
       ["forms", "Formulare", "Forms"],
       ["projects-and-tickets", "Projekte, Tickets und Sprints", "Projects, tickets and sprints"],

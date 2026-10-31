@@ -29,6 +29,10 @@ Alle Umgebungsvariablen auf einen Blick. Viele Werte lassen sich zusätzlich in 
 | `LDAP_TLS_CA` | *leer* | CA für `ldaps://`/StartTLS (Pfad oder PEM). |
 | `LDAP_STARTTLS` | `false` | `ldap://` mit StartTLS. |
 | `LDAP_TIMEOUT_MS` | `8000` | Zeitlimit je LDAP-Operation. |
+| `LDAP_CONTACTS_BASE_DN` | `LDAP_BASE_DN` | Basis für [Kontakte aus LDAP](/sign-in#kontakte-aus-ldap); der OU-Baum beginnt hier. |
+| `LDAP_CONTACTS_FILTER` | Personen ohne Computer | Welche Einträge als Kontakte gelten. |
+| `LDAP_CONTACTS_SYNC_MINUTES` | `60` | Abgleich der Kontakte aus dem Verzeichnis (15–1440 Minuten). |
+| `LDAP_CONTACTS` | an | `off` schaltet Kontakte aus LDAP ab. |
 
 Die übrigen OIDC-Variablen und alles zu Passwörtern und Passkeys stehen unter [Anmeldung](/sign-in).
 

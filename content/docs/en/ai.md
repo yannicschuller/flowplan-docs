@@ -262,6 +262,8 @@ All settings can also be preset with [environment variables](/configuration#ai),
 
 Owners of a workspace or a space can mark a **page** (in the share dialog) or a **space** (in the space settings) **Closed to AI**. This applies to everyone and to everything below – sub-pages and database records. No AI feature reads this content, even if a person allowed it in their own rules.
 
+New [contacts databases](/contacts) start closed to the AI; whoever manages the page can open them.
+
 ## For users
 
 Under **Settings → AI**:

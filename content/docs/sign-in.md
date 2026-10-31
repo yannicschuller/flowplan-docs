@@ -190,6 +190,23 @@ Ist `LDAP_URL` gesetzt, prüft das Passwortfeld der Anmeldeseite Namen gegen ein
 
 **Authentik**: LDAP-Outpost anlegen (Provider „LDAP“, Base DN z. B. `dc=ldap,dc=goauthentik,dc=io`), ein Dienstkonto mit „Search full LDAP directory“ als `LDAP_BIND_DN` (`cn=<name>,ou=users,<base>`), `LDAP_USER_FILTER=(|(cn={user})(mail={user}))`. Gruppen stehen in `memberOf`.
 
+### Kontakte aus LDAP
+
+[Kontakte-Datenbanken](/contacts#kontakte-aus-dem-ldap-verzeichnis) übernehmen Personen aus dem Verzeichnis und gleichen sie ab (nur Verzeichnis → Flowplan). Dafür nutzt Flowplan den Server, das Suchkonto und TLS der LDAP-Anmeldung (`LDAP_URL`, `LDAP_BIND_DN`/`LDAP_BIND_PASSWORD`, `LDAP_TLS_CA`, `LDAP_STARTTLS`, `LDAP_TIMEOUT_MS`). Basis und Filter können eigene sein:
+
+| Variable | Standard | Bedeutung |
+| --- | --- | --- |
+| `LDAP_CONTACTS_BASE_DN` | `LDAP_BASE_DN` | Wo Kontakte gesucht werden; der OU-Baum im Import-Dialog beginnt hier. Einträge außerhalb sind nicht erreichbar. |
+| `LDAP_CONTACTS_FILTER` | `(&(\|(objectClass=inetOrgPerson)(objectClass=user)(objectClass=contact))(!(objectClass=computer)))` | Welche Einträge Personen sind. |
+| `LDAP_CONTACTS_SYNC_MINUTES` | `60` | Abstand des Abgleichs (15–1440). |
+| `LDAP_CONTACTS` | an | `off` schaltet Kontakte aus dem Verzeichnis ab. |
+
+Für Kontakte allein reicht `LDAP_URL` mit `LDAP_CONTACTS_BASE_DN`; ohne `LDAP_BASE_DN` bleibt die Anmeldung mit LDAP aus.
+
+**Administration → Anmeldung & SSO → Kontakte aus LDAP** zeigt, woher Basis und Filter kommen, und überschreibt sie: Basis-DN, Filter, Abgleich alle … Minuten und **Erlaubt** (aus: niemand kann importieren, der Abgleich ruht). Gespeicherte Werte gehen der Umgebung vor; leere Felder nehmen wieder den Wert aus der Umgebung. **Verbindung testen** prüft Bind und Basis. Das Passwort des Suchkontos bleibt in der Umgebung und wird nie gespeichert. Änderungen und Importe stehen als Sicherheitsereignis „Sicherheitsrelevante Einstellung geändert“ im Protokoll.
+
+Grenzen: höchstens 500 Personen je Liste im Dialog (dann suchen), 2000 verknüpfte Kontakte und 20 OUs je Datenbank; jede Operation hat das Zeitlimit `LDAP_TIMEOUT_MS`.
+
 ## Angemeldet bleiben
 
 Normalerweise endet eine Sitzung `SESSION_HOURS` nach der Anmeldung (Standard 8 Stunden). Mit `SESSION_REMEMBER=true` zeigt die Anmeldeseite **Angemeldet bleiben** – für Passwort, Passkey und SSO. Mit Haken lebt die Sitzung weiter, solange Flowplan genutzt wird:

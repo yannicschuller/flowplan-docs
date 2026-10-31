@@ -53,6 +53,10 @@ Im selben Dialog richtet **Zugang einrichten** eine Synchronisation für Apple K
 
 Google Kalender unterstützt keine CalDAV-Konten; dafür gibt es den Kalender-Sync unten.
 
+### Kontakte als Adressbuch (CardDAV)
+
+Kontakte-Datenbanken lassen sich wie Kalender abonnieren – als Adressbuch in Apple Kontakte, Thunderbird oder DAVx⁵, nur lesend, mit denselben Zugängen (Passwort nur einmal sichtbar) und einem Konfigurationsprofil für iPhone, iPad und Mac. Siehe [Als Adressbuch abonnieren](/contacts#als-adressbuch-abonnieren-carddav).
+
 ### Mit Google Kalender oder Outlook synchronisieren
 
 Mit dem **Kalender-Sync** hältst du eine Ansicht mit Datum und einen Kalender in Google Kalender oder Microsoft Outlook / 365 in beide Richtungen gleich – persönlich, mit deinem eigenen Konto.

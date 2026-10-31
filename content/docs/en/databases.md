@@ -10,6 +10,7 @@ A database is a collection of records with properties. The same records can be s
 | --- | --- | --- |
 | **Tasks** | Task, Status, Priority, Due, Assignee, Tags | Table "All tasks", plus board, calendar, timeline … |
 | **Documents** | Title, Tags, Created, Edited | List "All documents" (last edited first), gallery, table; records open as a full page, empty properties are hidden |
+| **Contacts** | Name, First name, Last name, Company, Position, E-mail, Phone, Mobile, Street, Postal code, City, Country, Birthday, Tags | List “All contacts” (by last name), Table, calendar “Birthdays”, Gallery; records open as a profile page with a contact card – see [Contacts](/contacts) |
 | **Empty** | only a title | Table |
 
 Below are **Your templates**: saved database templates, such as your own "Notes (PARA)" database with relations and views. The device remembers the last choice. Alternatively use a [template](/templates), such as "Tasks" or "Projects", or import a CSV file (see [Import, export and versions](/import-export-versions)).
