@@ -1,10 +1,10 @@
-# Umzug von Notion, AppFlowy, Obsidian, Confluence, Evernote und Google Docs
+# Umzug von Notion, AppFlowy, AFFiNE, Obsidian, Confluence, Evernote und Google Docs
 
 Flowplan ist eine Open-Source-Alternative zu Notion, Confluence und AppFlowy unter der AGPL-3.0. So holst du Seiten, Datenbanken, Bilder und Dateien aus dem bisherigen Werkzeug herüber.
 
 ## Confluence, Evernote, Google Docs und Obsidian
 
-Unter **Einstellungen → Import & Export → Import** wählst du oben den Zielbereich und bei **Confluence, Evernote, Google Docs oder Obsidian** die Quelle (oder lässt sie erkennen) und ob eine Seitenstruktur oder eine **neue Datenbank** entstehen soll. Dann die Datei auswählen:
+Unter **Einstellungen → Import & Export → Import** wählst du oben den Zielbereich und bei **AFFiNE, Confluence, Evernote, Google Docs oder Obsidian** die Quelle (oder lässt sie erkennen) und ob eine Seitenstruktur oder eine **neue Datenbank** entstehen soll. Dann die Datei auswählen:
 
 1. Flowplan lädt die Datei hoch (mit Fortschrittsanzeige) und zeigt eine **Vorschau**: wie viele Seiten, Ordner, Dateien (mit Größe) und Tags übernommen werden und was nicht geht – etwa verschlüsselter Text, nicht unterstützte Makros oder Bilder, die im Export fehlen.
 2. **Importieren** legt alles in einem Schritt an. Schlägt etwas fehl, bleibt nichts halb importiert zurück.
@@ -42,6 +42,28 @@ Grenzen pro Import: 100 MB, 500 Seiten und 5.000 Einträge je Tabelle. Größere
 3. In Flowplan unter **Einstellungen → Import & Export → Import** importieren.
 
 Markdown wird zu Seiten, CSV zu Datenbanken; verlinkte Bilder und Dateien werden mitgenommen.
+
+## Von AFFiNE
+
+1. In der AFFiNE-Desktop-App in den **Einstellungen des Arbeitsbereichs** den Export **Full Backup** („Export a complete workspace backup“) wählen. Es entsteht eine Datei `Name_….affine` – die ganze Datenbank des Arbeitsbereichs mit Dokumenten, Ordnern, Sammlungen, Journal und Dateien.
+   In der Web-App gibt es diese Datei nicht; dort exportierst du Dokumente als **Snapshot** (ZIP) – dafür muss in den Einstellungen des Arbeitsbereichs unter den experimentellen Funktionen **Enable Snapshot Import Export** eingeschaltet sein. Ein Snapshot enthält Dokumente, Datenbanken, Whiteboards und Dateien, aber keine Ordner, Sammlungen und Journal-Zuordnungen.
+2. In Flowplan: **Einstellungen → Import & Export → Import**, den Zielbereich wählen und bei **AFFiNE, Confluence, Evernote, Google Docs oder Obsidian** die `.affine`-Datei oder das Snapshot-ZIP auswählen (Quelle **AFFiNE** oder automatisch).
+3. Die Vorschau zeigt, was kommt: Seiten, Ordner, Dateien, Tags, Whiteboards, Datenbanken, Sammlungen und Tage fürs Journal – und was nicht übernommen werden kann. **Importieren** legt alles in einem Schritt an.
+
+Was daraus wird:
+
+- **Alles landet unter einer Seite** mit dem Namen des AFFiNE-Arbeitsbereichs. **Ordner** werden zu Seiten mit ihren Dokumenten darunter. Steht ein Dokument in mehreren Ordnern, liegt es im ersten; die anderen Ordner verlinken es. Dokumente ohne Ordner liegen direkt unter der Arbeitsbereichsseite.
+- **Text:** Überschriften, Absätze, Aufzählungen, nummerierte Listen, **To-dos** mit ihrem Haken, Aufklapplisten, Zitate, Codeblöcke mit Sprache, Hinweisblöcke (Callouts, nach Farbe: Rot → Achtung, Orange/Gelb → Warnung, Grün → Tipp, Lila → Wichtig, sonst Hinweis), Trennlinien, Tabellen, LaTeX (Block und im Text), Fett, Kursiv, Unterstrichen, Durchgestrichen, Code, Links, Text- und Hervorhebungsfarben.
+- **Links zwischen Dokumenten** – im Text (@-Verweise), als Karten verlinkter oder synchronisierter Dokumente und als AFFiNE-App-Links – zeigen auf die importierten Seiten. Synchronisierte Dokumente werden dabei zu Links.
+- **Tags** stehen als `#tag` oben auf der Seite (als neue Datenbank: Eigenschaft *Tags*).
+- **Bilder und Anhänge** werden hochgeladen und an ihrer Stelle gezeigt (Bilder als Bild, andere Dateien als Link). Lesezeichen und Einbettungen (YouTube, Figma, GitHub …) werden zu Links.
+- **Datenbanken** werden zu einer Datenbank-Seite unter ihrem Dokument und erscheinen im Dokument an derselben Stelle als eingebettete Datenbank. Spalten: Titel, Text, Zahl, Auswahl, Mehrfachauswahl, Datum, Kontrollkästchen, Link (Adresse), Fortschritt (Zahl in Prozent) und Erstellt. Zeilen behalten ihren Inhalt als Dokument des Eintrags. Tabellenansichten bleiben Tabellen, Kanban-Ansichten werden Boards nach derselben Spalte. Bild-Spalten werden nicht übernommen.
+- **Whiteboards (Edgeless):** Der Text eines Dokuments wird immer ein Dokument. Liegt auf seiner Edgeless-Fläche mehr als die Notiz mit dem Text – Formen, Verbinder, Texte, Bilder, Rahmen, weitere Notizen, Zeichnungen, Mindmaps – oder öffnet AFFiNE das Dokument im Edgeless-Modus, entsteht daneben ein Whiteboard **„Name – Whiteboard“**. Dokument und Whiteboard sind verlinkt: oben im Dokument steht der Link zum Whiteboard, auf dem Whiteboard zeigt eine Karte auf das Dokument (dort, wo die Notiz lag). Formen (Rechteck, abgerundet, Ellipse, Raute, Dreieck) mit Text und Farben, Verbinder (gerade, gewinkelt, gebogen, mit Pfeilen und Beschriftung, an ihren Formen befestigt), Texte, Pinselstriche, Bilder, Rahmen, weitere Notizen (als Haftnotizen), Gruppen und Mindmaps (Knoten als Formen, Äste als Verbinder) werden übernommen. Was keine Entsprechung hat, fällt weg; die Vorschau nennt die Zahl.
+- **Sammlungen** werden je zu einer Seite **„Sammlung: Name“** mit Links auf ihre Dokumente zum Zeitpunkt des Imports: die von Hand hinzugefügten und die, auf die die Regeln passen (Tags, Erstellt/Geändert, Titel, Favoriten, Journal). Die Regeln stehen als Text auf der Seite. Lassen sich nicht alle Regeln auswerten (etwa Regeln auf eigene Eigenschaften), stehen nur die von Hand hinzugefügten Dokumente darin, mit einem Hinweis. Eine Sammlung in einem Ordner liegt in diesem Ordner.
+- **Journal:** Journal-Dokumente von AFFiNE kommen in das [Journal](/journal) des Arbeitsbereichs, jeweils in den passenden Tag – ins Journal im Zielbereich, sonst in eines im Arbeitsbereich, in das du schreiben darfst; gibt es keines, legt der Import eines an. Fehlt der Tag, wird er angelegt; gibt es ihn schon, wird der Text unten angehängt (mit dem Titel des AFFiNE-Dokuments als Überschrift).
+- Dokumente im **Papierkorb** von AFFiNE werden nicht übernommen. HTML-Einbettungen und Data Views fallen weg; die Vorschau nennt sie.
+- Whiteboards, Datenbanken und Journal-Tage gibt es nur beim Import **als Seiten**; als neue Datenbank wird jedes Dokument ein Eintrag.
+- Sicherheit: Die Datei wird nur gelesen; Größe, Anzahl und Verschachtelung der Dokumente sind begrenzt, Text wird nie als HTML übernommen, Links behalten nur `http`, `https` und `mailto`.
 
 ## Von Confluence
 
@@ -83,7 +105,7 @@ Was daraus wird:
 
 ## Von Obsidian und anderen Markdown-Ordnern
 
-- **Ein Tresor als Seiten:** den Tresor-Ordner (mit dem Ordner `.obsidian`) als ZIP packen und unter **Einstellungen → Import & Export → Import** importieren – über **Confluence, Evernote, Google Docs oder Obsidian** mit Vorschau oder über den Notion-/Markdown-Import, der einen Tresor ebenfalls erkennt.
+- **Ein Tresor als Seiten:** den Tresor-Ordner (mit dem Ordner `.obsidian`) als ZIP packen und unter **Einstellungen → Import & Export → Import** importieren – über **AFFiNE, Confluence, Evernote, Google Docs oder Obsidian** mit Vorschau oder über den Notion-/Markdown-Import, der einen Tresor ebenfalls erkennt.
   - **Ordner** werden zu Seiten mit ihren Notizen darunter. Eine **Ordnernotiz** (`Projekte/Projekte.md` oder `Projekte.md` neben dem Ordner) wird selbst zur Seite des Ordners.
   - **Wikilinks** `[[Seite]]`, `[[Seite|Text]]`, `[[Ordner/Seite]]` und `[[Seite#Überschrift]]` werden zu Links auf die importierten Seiten – aufgelöst wie in Obsidian über den Pfad oder den Dateinamen. Links auf Notizen, die es nicht gibt, bleiben Text.
   - **Eingebettete Dateien** `![[bild.png]]` werden zu Bildern, `![[datei.pdf]]` zu Dateilinks; eingebettete Notizen `![[Notiz]]` werden zu Links.
