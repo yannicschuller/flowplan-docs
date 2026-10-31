@@ -144,7 +144,7 @@ Die Seite `/#admin/threats` (Gruppe **Sicherheit**) fasst zusammen und aktualisi
 - **Angemeldete Personen** (Admins zuerst), **offene Zugänge** (API-Tokens, Freigabelinks, öffentliche Seiten der ganzen Instanz) zum Widerrufen
 - **Sperren** von Adressen und Netzen, befristet oder unbefristet. Gesperrte Adressen bekommen nur noch `403` – auch angemeldete Personen darin. Die eigene Adresse und das eigene Netz lassen sich nicht sperren.
 
-Neue Vorfälle gehen an alle Instanz-Admins als Mitteilung der Art **Sicherheitshinweise** (Posteingang, Push, E-Mail) und – wenn unter **Überwachung → Warnungen per Webhook** eingerichtet – sofort an den Webhook (Ereignis `ops.security` mit `rule` und `severity`). Höchstens 30 Meldungen pro Stunde, damit ein Angriff niemanden flutet.
+Neue Vorfälle gehen an alle Instanz-Admins als Mitteilung der Art **Sicherheitsvorfälle der Instanz**. Wie, stellt jeder Admin selbst unter **Einstellungen → Benachrichtigungen** ein: die Kanäle (standardmäßig Posteingang, Push, E-Mail und Chat-Apps) und ob **alle Vorfälle** oder **nur kritische** ankommen; die Mitteilung führt direkt zur Seite des Vorfalls, und oben in der Liste der Vorfälle steht, wie du gerade benachrichtigt wirst. Ist unter **Überwachung → Warnungen per Webhook** ein Webhook eingerichtet, geht jeder Vorfall außerdem sofort dorthin (Ereignis `ops.security` mit `rule` und `severity`). Höchstens 30 Meldungen pro Stunde, damit ein Angriff niemanden flutet.
 
 Wer sich mit einem Gerät anmeldet, das 90 Tage nicht dabei war, bekommt selbst einen Sicherheitshinweis – so fällt die Übernahme eines Kontos oft dem Konto selbst zuerst auf.
 

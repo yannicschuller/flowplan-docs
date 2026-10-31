@@ -146,7 +146,7 @@ The page `/#admin/threats` (group **Security**) sums it up and refreshes every 3
 - **Signed-in people** (admins first), **open ways in** (API tokens, share links, public pages of the whole instance) to revoke
 - **Blocks** of addresses and networks, for a time or indefinitely. Blocked addresses only get `403` – signed-in people in them too. Your own address and network cannot be blocked.
 
-New incidents go to all instance admins as notifications of the kind **Security notices** (inbox, push, e-mail) and – when set up under **Monitoring → Alerts by webhook** – right away to the webhook (event `ops.security` with `rule` and `severity`). At most 30 reports an hour, so an attack floods nobody.
+New incidents go to all instance admins as notifications of the kind **Security incidents of the instance**. Each admin chooses how under **Settings → Notifications**: the channels (by default inbox, push, e-mail and chat apps) and whether **all incidents** or **critical only** arrive; the notification leads straight to the incident's page, and the top of the incident list says how you are notified right now. When a webhook is set up under **Monitoring → Alerts by webhook**, every incident also goes there right away (event `ops.security` with `rule` and `severity`). At most 30 reports an hour, so an attack floods nobody.
 
 Whoever signs in with a device not seen for 90 days gets a security notice themselves – a taken-over account is often noticed by its owner first.
 

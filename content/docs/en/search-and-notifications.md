@@ -42,7 +42,9 @@ The **Inbox** collects:
 
 **By default** what concerns you directly – mentions, shared pages, comments, reminders – arrives in the inbox, as push, by e-mail and in connected [chat apps](#chat-apps). Guest comments come without e-mail and chat app. **Changes on pages you follow and automations only land in the inbox**, so that not every small edit triggers a notification or mail. Under **Settings → Notifications** this can be changed per kind and channel; **Reset to defaults** restores the initial state.
 
-Unread items are marked and can be filtered. A click opens the spot, for text comments the thread directly.
+**For administrators: security incidents of the instance.** Admins see their own row **Security incidents of the instance** among the notification kinds: what the [detection rules](/operations#security) find on the whole instance (password guessing, new admin rights, probing …). Each admin chooses how incidents arrive – inbox, push, e-mail and chat apps are on by default – and which: **All incidents** (default) or **Critical only**. The choice applies to every channel of this kind; every incident still shows under **Administration → Threats & incidents**. Clicking or tapping the notification opens the incident's page. The row **Security notices** is only about your own account (a new sign-in, a wrong journal PIN, a chat app switched off); whoever had switched channels off there before the update has them off for security incidents too. Other people don't see the row.
+
+Unread items are marked and can be filtered. A click opens the spot, for text comments the thread directly. Notifications without a page lead to their place in the app: a security incident to its page under **Administration → Threats & incidents**, a new sign-in to the signed-in devices, a chat app switched off to its connections – also when tapping the push notification and through the link in e-mails and chat apps.
 
 ## E-mail
 
@@ -110,6 +112,6 @@ Instead of (or besides) push and e-mail, notifications arrive right away in a ch
 
 **Delivery:** messages go through a queue like push and e-mail. If the service does not answer, Flowplan retries with growing pauses and gives up after six attempts; if the service throttles (HTTP 429), Flowplan waits as long as asked. At most 20 messages a minute go to one target. What you already read in the app is not sent any more. If the service refuses a target three times in a row (401/403/404 or a blocked internal address), **Flowplan switches it off** and tells you in the inbox; **Switch on again** resumes it once fixed.
 
-**For administrators:** the switch **Operations alerts** sends failed backups, full storage, errors of background workers and many failed sign-ins (at most once a day per alert) to your chat apps – also without a webhook under [Monitoring](/administration#monitoring). Security incidents arrive as **Security notices** through the kinds column, not twice.
+**For administrators:** the switch **Operations alerts** sends failed backups, full storage, errors of background workers and many failed sign-ins (at most once a day per alert) to your chat apps – also without a webhook under [Monitoring](/administration#monitoring). Security incidents arrive through the row **Security incidents of the instance** of the notification kinds, not twice.
 
 Which services and servers are allowed is up to the administration ([Administration → Chat apps](/administration#chat-apps)).
