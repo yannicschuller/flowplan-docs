@@ -108,6 +108,15 @@ Die KI antwortet in der Sprache des Textes, beim freien Schreiben in der Sprache
 > [!NOTE]
 > Bilder aus Antworten werden nicht übernommen (nur ihr Alternativtext), Links nur, wenn sie auf `http(s)`, E-Mail oder Flowplan selbst zeigen. So kann ein manipulierter Text keine Inhalte über Bildadressen nach außen schicken.
 
+### Bestehende Seiten verlinken
+
+Mit **Mit bestehenden Seiten verlinken** (im Schreibassistenten, voreingestellt an; deine Wahl merkt sich der Browser) sucht Flowplan zu deiner Anweisung und dem markierten Text bis zu acht passende Seiten des Arbeitsbereichs – mit derselben Suche wie [Fragen an den Arbeitsbereich](#fragen-an-den-arbeitsbereich) – und gibt der KI deren Titel und einen kurzen Auszug mit. Wo eine Seite wirklich passt, verlinkt die KI sie im Text. Das gilt für alle Aktionen, das freie Schreiben und die Zusammenfassung einer Sprachnotiz.
+
+- Die Links sind schon in der **Vorschau** zu sehen; darunter steht **Verlinkt: …** mit den verlinkten Seiten. Eingefügt werden sie als echte Seitenlinks – wie mit `[[` im Editor: Sie erscheinen in den Rückverweisen, folgen einer Umbenennung und bleiben im Markdown-Export erhalten.
+- Angeboten werden nur Seiten, die die KI für dich lesen darf (siehe [Worauf die KI zugreifen darf](#worauf-die-ki-zugreifen-darf)) – nie die Seite, an der du schreibst, und nie gesperrte, private, gelöschte oder PIN-geschützte Inhalte. Die KI kennt die Seiten nur unter Nummern; Flowplan setzt die Links selbst. Adressen, die sich die KI ausdenkt, werden nie zu Links.
+- Mit der **KI auf dem Gerät** und in Ende-zu-Ende-verschlüsselten Bereichen wird nicht verlinkt: Dafür müsste der Text auf dem Server durchsucht werden.
+- Die Administration kann die Funktion **Seiten verlinken** ausschalten, du selbst unter **Einstellungen → KI**.
+
 ## Zusammenfassungen
 
 Die KI liefert eine kurze **Zusammenfassung**, die **Kernpunkte** und die **offenen Aufgaben** – in der Sprache des Inhalts.

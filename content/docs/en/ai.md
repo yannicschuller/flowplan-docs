@@ -108,6 +108,15 @@ Headings, lists, tasks, tables, code and callouts are inserted as real blocks. I
 > [!NOTE]
 > Images in answers are not inserted (only their alt text), and links only if they point to `http(s)`, e-mail or Flowplan itself. This stops manipulated content from sending text out through image addresses.
 
+### Linking existing pages
+
+With **Link existing pages** (in the writing assistant, on by default; your browser remembers the choice) Flowplan looks for up to eight pages of the workspace that fit your instruction and the selected text – with the same search as [Ask your workspace](#ask-your-workspace) – and gives the AI their titles and a short excerpt. Where a page really fits, the AI links it in its text. This works for every action, free writing and the summary of a voice note.
+
+- The links already show in the **preview**; below it, **Linked: …** lists the linked pages. They are inserted as real page links – like `[[` in the editor: they appear in backlinks, follow a rename and survive the Markdown export.
+- Only pages the AI may read for you are offered (see [What the AI may access](#what-the-ai-may-access)) – never the page you are writing in, and never closed, private, deleted or PIN-protected content. The AI only knows the pages by number; Flowplan sets the links itself. Addresses the AI makes up never become links.
+- The **on-device AI** and end-to-end encrypted spaces do not link: that would mean searching the text on the server.
+- Administrators can switch the **Link pages** feature off, and so can you under **Settings → AI**.
+
 ## Summaries
 
 The AI returns a short **summary**, the **key points** and the **open tasks** – in the language of the content.
