@@ -364,6 +364,30 @@ Mehr: [KI auf dem Gerät](/ai#ki-auf-dem-geraet-apple).
 - **Trackpad und Maus:** Der Zeiger reagiert auf Knöpfe und Links wie in Safari.
 - **Handoff:** Die Seite im Vordergrund wird deinem Mac und deinen anderen Geräten angeboten (gleicher Apple Account, Handoff an unter Einstellungen → Allgemein → AirPlay & Kontinuität). Auf dem Mac öffnet sie sich in der [Desktop-App](#desktop-app-fuer-macos-windows-und-linux), ohne sie im Browser. Seiten vom Mac oder einem anderen Gerät öffnen sich in der App im Profil ihrer Instanz; Seiten einer Instanz ohne Profil öffnen sich in Safari. Solange die App-Sperre sperrt, wird nichts angeboten.
 
+### Instanz im eigenen Netz ohne HTTPS
+
+Beim ersten Start (oder unter **Profil hinzufügen**) gibst du die Adresse deiner Instanz ein. Ohne `http://` davor nimmt die App immer HTTPS an. Eine reine `http://`-Adresse nimmt sie nur an, wenn die Instanz **im lokalen Netz** läuft – öffentliche Domains und Adressen brauchen immer HTTPS.
+
+| Funktioniert mit `http://` | iPhone und iPad | Android |
+| --- | --- | --- |
+| Private IP-Adressen: `192.168.x.x`, `10.x.x.x`, `172.16.x.x`–`172.31.x.x` | ja | ja |
+| Tailscale- und CGNAT-Adressen `100.64.x.x`–`100.127.x.x`, Link-local `169.254.x.x` | ja | ja |
+| IPv6 im lokalen Netz (`fd…`, `fe80…`), `localhost` | ja | ja |
+| Namen ohne Punkt, z. B. `http://nas:3000` | ja | ja |
+| `.local`-Namen, z. B. `http://flowplan.local:3000` | ja | ja |
+| `.lan`, `.home.arpa`, `.internal`, z. B. `http://flowplan.lan` | **nein** | ja |
+| Öffentliche Domains und IPs, auch Tailscale-Namen `*.ts.net` | nein (nur HTTPS) | nein (nur HTTPS) |
+
+Auf iPhone und iPad erlaubt iOS unverschlüsselte Verbindungen nur zu IP-Adressen, Namen ohne Punkt und `.local`-Namen. Für eine Instanz unter `flowplan.lan` gibst du dort die IP-Adresse ein (`http://192.168.1.20:3000`) – oder richtest HTTPS ein. Die App sagt das beim Verbinden, statt eine leere Seite zu zeigen. Beim ersten Verbinden fragt iOS außerdem, ob Flowplan auf Geräte im lokalen Netz zugreifen darf: **Erlauben** tippen.
+
+Sobald eine `http://`-Adresse im Feld steht, warnt die App vor dem Verbinden:
+
+- **Passwörter und alle Inhalte gehen unverschlüsselt durchs Netz.** Das ist nur in einem Netz in Ordnung, dem du vertraust.
+- **Ohne HTTPS fehlen** Passkeys, verschlüsselte Bereiche, Sprachnotizen in Seiten und auf Android die Offline-Kopie (auf iPhone und iPad hält die App die Offline-Kopie selbst, sie funktioniert auch so).
+- **Mitteilungen** kommen von einer Instanz, die nur im lokalen Netz erreichbar ist, meist nicht an: Das [Push-Relay](/configuration#push-relay-und-ende-zu-ende-verschluesselung) muss die Instanz aus dem Internet erreichen.
+
+Für den echten Betrieb richte HTTPS ein, siehe [Ohne HTTPS](/installation#ohne-https). Mit einem Tailscale-Namen (`*.ts.net`) bekommst du HTTPS auch ohne öffentliche Domain.
+
 ### Profile in den mobilen Apps
 
 Auch die Apps für iPhone, iPad und Android merken sich mehrere Instanzen als Profile:

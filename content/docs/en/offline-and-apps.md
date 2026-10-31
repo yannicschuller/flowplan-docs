@@ -364,6 +364,30 @@ More: [on-device AI](/ai#on-device-ai-apple).
 - **Trackpad and mouse:** the pointer hovers over buttons and links as in Safari.
 - **Handoff:** the page in front is offered to your Mac and your other devices (same Apple Account, Handoff on under Settings → General → AirPlay & Continuity). On the Mac it opens in the [desktop app](#desktop-app-for-macos-windows-and-linux), without it in the browser. Pages from the Mac or another device open in the app on the profile of their instance; pages of an instance without a profile open in Safari. Pages behind the app lock are not offered while it is locked.
 
+### An instance on your own network without HTTPS
+
+On first start (or under **Add profile**) you enter your instance's address. Without `http://` in front, the app always assumes HTTPS. It accepts a plain `http://` address only when the instance runs **on your local network** – public domains and addresses always need HTTPS.
+
+| Works with `http://` | iPhone and iPad | Android |
+| --- | --- | --- |
+| Private IP addresses: `192.168.x.x`, `10.x.x.x`, `172.16.x.x`–`172.31.x.x` | yes | yes |
+| Tailscale and CGNAT addresses `100.64.x.x`–`100.127.x.x`, link-local `169.254.x.x` | yes | yes |
+| Local IPv6 (`fd…`, `fe80…`), `localhost` | yes | yes |
+| Names without a dot, e.g. `http://nas:3000` | yes | yes |
+| `.local` names, e.g. `http://flowplan.local:3000` | yes | yes |
+| `.lan`, `.home.arpa`, `.internal`, e.g. `http://flowplan.lan` | **no** | yes |
+| Public domains and IPs, also Tailscale names `*.ts.net` | no (HTTPS only) | no (HTTPS only) |
+
+On iPhone and iPad, iOS allows unencrypted connections only to IP addresses, names without a dot and `.local` names. For an instance at `flowplan.lan`, enter its IP address there (`http://192.168.1.20:3000`) – or set up HTTPS. The app tells you so when connecting instead of showing an empty page. On the first connection iOS also asks whether Flowplan may access devices on your local network: tap **Allow**.
+
+As soon as an `http://` address is in the field, the app warns before connecting:
+
+- **Passwords and all content cross the network unencrypted.** That is fine only on a network you trust.
+- **Without HTTPS there are no** passkeys, encrypted spaces, voice notes on pages and, on Android, no offline copy (on iPhone and iPad the app keeps the offline copy itself, so it works there).
+- **Notifications** from an instance that is only reachable on your local network usually don't arrive: the [push relay](/configuration#push-relay-and-end-to-end-encryption) has to reach the instance from the internet.
+
+For real use, set up HTTPS, see [Without HTTPS](/installation#without-https). With a Tailscale name (`*.ts.net`) you get HTTPS even without a public domain.
+
 ### Profiles in the mobile apps
 
 The apps for iPhone, iPad and Android also keep several instances as profiles:

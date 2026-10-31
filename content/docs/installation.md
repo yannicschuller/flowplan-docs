@@ -83,7 +83,8 @@ Nur zum Ausprobieren: Flowplan läuft auch unter einer reinen `http://`-Adresse,
 Die Anmeldeseite und **Administration → Instanz** zeigen dann den Hinweis „Diese Instanz läuft ohne HTTPS“. Für einen Test ist das in Ordnung, für den echten Betrieb nicht:
 
 - **Passwörter gehen unverschlüsselt durchs Netz** – jeder im selben Netz kann sie mitlesen.
-- **Passkeys, die Offline-Kopie, die Apps, Push sowie Kamera, Mikrofon und Zwischenablage** gibt es im Browser nur über HTTPS. Flowplan blendet sie dann aus oder sagt, warum sie fehlen.
+- **Passkeys, die Offline-Kopie, Push sowie Kamera, Mikrofon und Zwischenablage** gibt es im Browser nur über HTTPS. Flowplan blendet sie dann aus oder sagt, warum sie fehlen.
+- **Die Apps für iPhone, iPad und Android** verbinden sich ohne HTTPS nur mit einer Instanz im lokalen Netz (z. B. `http://192.168.1.20:3000`, `http://nas` oder `http://nas.local`) und warnen vorher. Auf iPhone und iPad gehen `.lan`- oder `.home.arpa`-Namen nicht – dort die IP-Adresse eintragen. Siehe [Instanz im eigenen Netz ohne HTTPS](/offline-and-apps#instanz-im-eigenen-netz-ohne-https).
 - Cookies tragen kein `Secure`-Kennzeichen, und der Browser stuft Anfragen nicht auf HTTPS hoch.
 
 Unter `http://localhost` oder `http://127.0.0.1` auf dem eigenen Rechner erscheint kein Hinweis: Browser behandeln diese Adressen wie eine sichere Verbindung.
