@@ -5,7 +5,7 @@ Flowplan runs as a single container with SQLite and a data directory. Postgres, 
 ## Requirements
 
 - A server with Docker and a persistent volume. Text recognition for scanned PDFs briefly needs noticeable CPU when uploading.
-- A domain with HTTPS behind a reverse proxy (Traefik, Caddy, nginx, Coolify, Pangolin …).
+- A domain with HTTPS through a reverse proxy (Traefik, Caddy, nginx, Coolify, Pangolin …). For just trying it out it works without, see [Without HTTPS](#without-https).
 - Optionally an OpenID Connect provider for single sign-on. Without one, people sign in with e-mail and password or a passkey, see [Sign-in](/sign-in).
 - Optionally an S3-compatible storage for files and the continuous database backup, see [Storage, S3 and backups](/storage-and-backups).
 
@@ -75,6 +75,23 @@ The image contains Node, Litestream for the S3 backup and `curl` for the health 
 
 > [!WARNING]
 > Flowplan is built for **exactly one running instance**. Several replicas would write to the same SQLite file. Do not scale horizontally; when updating, stop the old container before the new one.
+
+## Without HTTPS
+
+For trying it out only: Flowplan also runs at a plain `http://` address, for example `APP_URL=http://192.168.1.20:3000` on your own network. `APP_URL` must then be exactly that address – with `http://` and the port.
+
+The sign-in page and **Administration → Instance** then show the note "This instance runs without HTTPS". That is fine for a test, not for real use:
+
+- **Passwords cross the network unencrypted** – anyone on the same network can read them.
+- **Passkeys, the offline copy, the apps, push, and the camera, microphone and clipboard** are only available in the browser over HTTPS. Flowplan hides them or says why they are missing.
+- Cookies carry no `Secure` flag, and the browser does not upgrade requests to HTTPS.
+
+At `http://localhost` or `http://127.0.0.1` on your own computer there is no note: browsers treat these addresses like a secure connection.
+
+For real use, put a reverse proxy with a certificate in front (see [Coolify and reverse proxies](/coolify-and-proxy)) and change `APP_URL` to the `https://` address. With Caddy two lines are enough; Caddy gets the certificate itself.
+
+> [!NOTE]
+> Up to 0.8.0 Flowplan silently required HTTPS: at an `http://` address styles and scripts were missing and the registration form simply stayed put. This is fixed – and forms with a password never send credentials in the address bar again.
 
 ## Update
 
