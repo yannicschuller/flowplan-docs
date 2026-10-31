@@ -40,7 +40,7 @@ Der **Posteingang** sammelt:
 - Änderungen an Seiten, denen du folgst (eigene Seiten folgst du beim Anlegen automatisch; die Glocke oben rechts schaltet das Folgen um),
 - Meldungen aus Automationen.
 
-**Standardmäßig** kommt, was dich direkt betrifft – Erwähnungen, geteilte Seiten, Kommentare, Erinnerungen –, im Posteingang, als Push und per E-Mail. Gastkommentare kommen ohne E-Mail. **Änderungen an Seiten, denen du folgst, und Automationen landen nur im Posteingang**, damit nicht jede kleine Bearbeitung eine Mitteilung oder Mail auslöst. Unter **Einstellungen → Benachrichtigungen** lässt sich das je Art und Kanal ändern; **Auf Standard zurücksetzen** stellt den Ausgangszustand wieder her.
+**Standardmäßig** kommt, was dich direkt betrifft – Erwähnungen, geteilte Seiten, Kommentare, Erinnerungen –, im Posteingang, als Push, per E-Mail und in verbundenen [Chat-Apps](#chat-apps). Gastkommentare kommen ohne E-Mail und ohne Chat-App. **Änderungen an Seiten, denen du folgst, und Automationen landen nur im Posteingang**, damit nicht jede kleine Bearbeitung eine Mitteilung oder Mail auslöst. Unter **Einstellungen → Benachrichtigungen** lässt sich das je Art und Kanal ändern; **Auf Standard zurücksetzen** stellt den Ausgangszustand wieder her.
 
 Ungelesenes ist markiert und lässt sich filtern. Ein Klick öffnet die Stelle, bei Textkommentaren direkt den Thread.
 
@@ -89,3 +89,27 @@ Nach höchstens zehn Sekunden steht darunter je Gerät, über welchen Kanal es g
 Der Test geht nur an deine eigenen Geräte, ungeachtet der **Benachrichtigungsarten** und eines Fokus-Filters – Erlaubnis und Fokus des Geräts selbst gelten weiter. Höchstens fünf Tests in zehn Minuten. Tokens oder Schlüssel zeigt das Ergebnis nie; Administratoren sehen zusätzlich eine Diagnosezeile mit Relay-Adresse, ob `/.well-known/flowplan-push` aktiv ist, und der Adresse der Instanz (`APP_URL`).
 
 In der [Desktop-App](/offline-and-apps#mitteilungen-in-der-desktop-app) gibt es kein Web-Push. Die App fragt selbst nach neuen Benachrichtigungen und zeigt sie als Mitteilungen des Systems, die Zahl der ungelesenen steht am App-Symbol. **Einstellungen → Benachrichtigungen** zeigt dort statt **Push aktivieren** einen Schalter für die Mitteilungen der App; **Nicht stören** und **Alle Profile** stehen im Menü **Mitteilungen** der App. **Benachrichtigungsarten** gelten auch hier: Mitteilungen gibt es nur für Arten mit Push.
+
+## Chat-Apps
+
+Statt (oder neben) Push und E-Mail kommen Benachrichtigungen sofort in einer Chat-App an: **Telegram**, **Gotify**, **ntfy** oder **Matrix**. Unter **Einstellungen → Benachrichtigungen → Chat-Apps** verbindest du je Dienst ein Ziel; welche Arten dort ankommen, stellst du in der Karte **Benachrichtigungsarten** in der Spalte **Chat-Apps** ein. Standardmäßig sind das Erwähnungen, geteilte Seiten, Kommentare, Erinnerungen und Sicherheitshinweise – Gastkommentare, Änderungen an Seiten, denen du folgst, und Automationen nicht. Was im Posteingang ausgeschaltet ist, kommt auch nicht in der Chat-App an.
+
+| Dienst | Was du angibst |
+| --- | --- |
+| **Telegram – Bot der Instanz** | Nichts: **Verbindungslink erzeugen**, den Link auf dem Gerät mit Telegram öffnen und **Starten** tippen (oder dem Bot `/start <Code>` schicken). Der Code gilt 15 Minuten und nur einmal. Nur verfügbar, wenn die Administration einen Bot eingerichtet hat. |
+| **Telegram – eigener Bot** | Bot-Token (von @BotFather), deine Chat-ID (z. B. von @userinfobot) oder `@kanalname`, optional eine eigene API-Adresse – für einen selbst betriebenen Bot-API-Server oder ein Relay/Proxy. Schreib deinem Bot einmal, damit er dir antworten darf. |
+| **Gotify** | Server-Adresse und App-Token (in Gotify unter *Apps* anlegen). Ein Tipp auf die Mitteilung öffnet Flowplan. |
+| **ntfy** | Server (leer: `https://ntfy.sh`), Thema, optional ein Zugriffstoken oder Benutzer und Passwort. Auf ntfy.sh ist jedes Thema öffentlich – wähle einen schwer zu ratenden Namen oder einen eigenen Server mit Anmeldung. |
+| **Matrix** | Homeserver, Raum-ID (`!abc:example.org`, in Element unter *Raumeinstellungen → Erweitert*) und das Zugriffstoken eines Kontos, das im Raum ist – am besten eines eigenen Bot-Kontos. |
+
+**Testnachricht senden** schickt sofort eine Nachricht und zeigt das Ergebnis: angekommen, *Zugangsdaten abgelehnt (HTTP 401)*, *Nicht gefunden (HTTP 404)* (Adresse, Thema, Raum oder Chat-ID), *Server nicht erreichbar* oder *Interne Adressen sind gesperrt*. **Ändern** übernimmt neue Angaben; ein leeres Token-Feld behält das gespeicherte Token. **Trennen** löscht die Verbindung mit ihren Zugangsdaten.
+
+**Was in der Nachricht steht:** wie bei Push die Art, ein kurzer Auszug der Benachrichtigung und ein Link zur Stelle. Mit **Text mitschicken** aus kommt nur „Neue Benachrichtigung in Flowplan“ mit dem Link. Benachrichtigungen aus [Ende-zu-Ende-verschlüsselten Bereichen](/encrypted-spaces) kommen **immer** ohne Inhalt. Tokens oder andere Geheimnisse stehen nie in einer Nachricht.
+
+**Zugangsdaten** (Bot-, App- und Zugriffstokens, Passwörter) speichert Flowplan nur verschlüsselt wie andere [gespeicherte Geheimnisse](/configuration#gespeicherte-geheimnisse) und zeigt sie nie wieder an – nur „Token gesetzt (…abcd)“. Verbinden und Trennen erscheinen unter **Einstellungen → Sicherheitscheck → Anmeldungen & Änderungen**.
+
+**Zustellung:** Nachrichten gehen über eine Warteschlange wie Push und E-Mail. Antwortet der Dienst nicht, versucht Flowplan es mit wachsenden Pausen erneut und gibt nach sechs Versuchen auf; bremst der Dienst (HTTP 429), wartet Flowplan so lange wie verlangt. Pro Ziel gehen höchstens 20 Nachrichten pro Minute hinaus. Was du in der App schon gelesen hast, wird nicht mehr geschickt. Lehnt der Dienst ein Ziel dreimal hintereinander ab (401/403/404 oder eine gesperrte interne Adresse), **schaltet Flowplan es aus** und sagt dir im Posteingang Bescheid; **Wieder einschalten** nimmt es nach der Korrektur wieder in Betrieb.
+
+**Für Administratoren:** Der Schalter **Betriebswarnungen** schickt fehlgeschlagene Backups, vollen Speicher, Fehler von Hintergrunddiensten und viele fehlgeschlagene Anmeldungen (höchstens einmal am Tag je Warnung) an deine Chat-Apps – auch ohne Webhook unter [Überwachung](/administration#ueberwachung). Sicherheitsvorfälle kommen als **Sicherheitshinweise** über die Spalte der Benachrichtigungsarten, nicht doppelt.
+
+Welche Dienste und Server erlaubt sind, bestimmt die Administration ([Administration → Chat-Apps](/administration#chat-apps)).

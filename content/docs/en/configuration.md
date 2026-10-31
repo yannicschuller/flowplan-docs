@@ -79,7 +79,7 @@ Details: [Encryption](/storage-and-backups#encryption).
 
 ## Stored secrets
 
-Flowplan stores AI provider keys, the keys of authenticator apps ([two-factor sign-in](/sign-in#two-factor-sign-in)) and the access tokens of the [Git export of spaces](/storage-and-backups#git-export-of-a-space) only encrypted (AES-256-GCM, bound to their place). The key for this comes, in this order, from:
+Flowplan stores AI provider keys, the keys of authenticator apps ([two-factor sign-in](/sign-in#two-factor-sign-in)), the access tokens of the [Git export of spaces](/storage-and-backups#git-export-of-a-space) and the tokens of [chat apps](/search-and-notifications#chat-apps) only encrypted (AES-256-GCM, bound to their place). The key for this comes, in this order, from:
 
 | Source | Meaning |
 | --- | --- |
@@ -88,7 +88,7 @@ Flowplan stores AI provider keys, the keys of authenticator apps ([two-factor si
 | `secrets.key` in the data folder | Without the two variables, Flowplan creates this file itself when first needed (readable only by its owner). |
 
 > [!IMPORTANT]
-> The instance backup deliberately leaves out `secrets.key` – it doesn't belong next to the data it protects. Back up the file separately or set the key as a variable. If it is missing after a restore, admins and users enter their AI keys again, and for two-factor sign-in recovery codes or a reset by an administrator help.
+> The instance backup deliberately leaves out `secrets.key` – it doesn't belong next to the data it protects. Back up the file separately or set the key as a variable. If it is missing after a restore, admins and users enter their AI keys and chat-app tokens again, and for two-factor sign-in recovery codes or a reset by an administrator help.
 
 ## E-mail (SMTP)
 
@@ -255,6 +255,23 @@ The relay is open source ([github.com/yannicschuller/flowplan-push](https://gith
 4. **Check** – with the [test notification](/search-and-notifications#test-notification).
 
 Operations, key rotation, blocking abusive instances (`node dist/src/cli.js block <origin>` in the container) and backups are described in the relay's README.
+
+## Chat apps
+
+Notifications to [Telegram, Gotify, ntfy and Matrix](/search-and-notifications#chat-apps). Everything can also be set under **Administration → Chat apps**; values saved there take precedence.
+
+| Variable | Default | Meaning |
+| --- | --- | --- |
+| `FLOWPLAN_MESSENGERS` | *all* | Services people may connect, comma-separated: `telegram`, `gotify`, `ntfy`, `matrix`; `off` for none. |
+| `FLOWPLAN_TELEGRAM_BOT_TOKEN` | *empty* | Token of the instance's Telegram bot (from @BotFather). With it people connect Telegram through a link with a one-time code, without an own bot. |
+| `FLOWPLAN_TELEGRAM_API_URL` | `https://api.telegram.org` | Address of the Bot API for the instance's bot – a self-hosted [Telegram Bot API server](https://github.com/tdlib/telegram-bot-api) or a relay/proxy. May be in the own network and `http://`. |
+| `FLOWPLAN_MESSENGER_ALLOW_PRIVATE` | as `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE` | `true`: people may name servers in the own network (internal addresses, `http://`) – e.g. Gotify or ntfy at home. Otherwise internal addresses are blocked, also when a name is later pointed at one. |
+
+**The instance's bot without a public address:** Flowplan uses no webhook but reads the bot's messages with `getUpdates` – only while a connection code waits (at most 15 minutes). Outgoing HTTPS to the Bot API is enough. The bot must therefore not have a webhook at the same time or be polled by another program (Telegram then reports a conflict, the administration shows it) – use a separate bot just for Flowplan.
+
+**Outgoing connections:** to `api.telegram.org` (or the own API address), `ntfy.sh` and the servers people name. They go through the same check as link previews and webhooks: resolve the address, refuse internal addresses, use exactly the checked address, no redirects. Refused attempts appear as the security event “Internal address refused (SSRF)”.
+
+The tokens of people and of the bot are stored encrypted like other [stored secrets](#stored-secrets). If the key is missing after a restore, the administration enters the bot token again; connections with an own token are switched off after three failed attempts, and their owners learn it in the inbox.
 
 ## Do not set
 

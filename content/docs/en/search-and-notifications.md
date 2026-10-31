@@ -40,7 +40,7 @@ The **Inbox** collects:
 - changes on pages you follow (you follow your own pages when creating them; the bell at the top right toggles following),
 - messages from automations.
 
-**By default**, what concerns you directly – mentions, shared pages, comments, reminders – arrives in the inbox, as push and by e-mail. Guest comments come without e-mail. **Changes on pages you follow and automations only land in the inbox**, so that not every small edit triggers a push message or e-mail. **Settings → Notifications** changes this per kind and channel; **Reset to defaults** restores the starting point.
+**By default** what concerns you directly – mentions, shared pages, comments, reminders – arrives in the inbox, as push, by e-mail and in connected [chat apps](#chat-apps). Guest comments come without e-mail and chat app. **Changes on pages you follow and automations only land in the inbox**, so that not every small edit triggers a notification or mail. Under **Settings → Notifications** this can be changed per kind and channel; **Reset to defaults** restores the initial state.
 
 Unread items are marked and can be filtered. A click opens the spot, for text comments the thread directly.
 
@@ -89,3 +89,27 @@ After at most ten seconds, each device is listed with the channel it went throug
 The test only goes to your own devices, regardless of **Notification kinds** and Focus filters – the device's own permission and Focus still apply. At most five tests in ten minutes. The result never shows tokens or keys; administrators also see a diagnostics line with the relay address, whether `/.well-known/flowplan-push` is enabled and the instance's address (`APP_URL`).
 
 The [desktop app](/offline-and-apps#notifications-in-the-desktop-app) has no Web Push. It asks for new notifications itself and shows them as system notifications, with the unread count on the app icon. There, **Settings → Notifications** shows a switch for the app's notifications instead of **Enable push**; **Do Not Disturb** and **All Profiles** are in the app's **Notifications** menu. **Notification kinds** apply here too: only kinds with push pop up.
+
+## Chat apps
+
+Instead of (or besides) push and e-mail, notifications arrive right away in a chat app: **Telegram**, **Gotify**, **ntfy** or **Matrix**. Under **Settings → Notifications → Chat apps** you connect one target per service; which kinds arrive there you choose in the **Notification kinds** card, column **Chat apps**. By default these are mentions, shared pages, comments, reminders and security notices – not guest comments, changes on pages you follow or automations. What is switched off for the inbox does not reach the chat app either.
+
+| Service | What you enter |
+| --- | --- |
+| **Telegram – the instance's bot** | Nothing: **Create a connection link**, open the link on the device with Telegram and tap **Start** (or send the bot `/start <code>`). The code is valid for 15 minutes and only once. Only available when the administration has set up a bot. |
+| **Telegram – own bot** | Bot token (from @BotFather), your chat ID (e.g. from @userinfobot) or `@channelname`, optionally an own API address – for a self-hosted Bot API server or a relay/proxy. Message your bot once so it may write to you. |
+| **Gotify** | Server address and app token (create one in Gotify under *Apps*). Tapping the notification opens Flowplan. |
+| **ntfy** | Server (empty: `https://ntfy.sh`), topic, optionally an access token or user and password. On ntfy.sh every topic is public – choose a name that is hard to guess, or your own server with authentication. |
+| **Matrix** | Homeserver, room ID (`!abc:example.org`, in Element under *Room settings → Advanced*) and the access token of an account that is in the room – preferably a separate bot account. |
+
+**Send test message** sends a message right away and shows the outcome: delivered, *Credentials refused (HTTP 401)*, *Not found (HTTP 404)* (address, topic, room or chat ID), *Server not reachable* or *Internal addresses are blocked*. **Change** takes new details; an empty token field keeps the stored token. **Disconnect** deletes the connection with its credentials.
+
+**What a message says:** as with push, the kind, a short excerpt of the notification and a link to the place. With **Include the text** off, only “New notification in Flowplan” with the link. Notifications from [end-to-end encrypted spaces](/encrypted-spaces) **always** arrive without content. Tokens or other secrets are never part of a message.
+
+**Credentials** (bot, app and access tokens, passwords) are stored only encrypted, like other [stored secrets](/configuration#stored-secrets), and never shown again – only “Token set (…abcd)”. Connecting and disconnecting appear under **Settings → Security check → Sign-ins & changes**.
+
+**Delivery:** messages go through a queue like push and e-mail. If the service does not answer, Flowplan retries with growing pauses and gives up after six attempts; if the service throttles (HTTP 429), Flowplan waits as long as asked. At most 20 messages a minute go to one target. What you already read in the app is not sent any more. If the service refuses a target three times in a row (401/403/404 or a blocked internal address), **Flowplan switches it off** and tells you in the inbox; **Switch on again** resumes it once fixed.
+
+**For administrators:** the switch **Operations alerts** sends failed backups, full storage, errors of background workers and many failed sign-ins (at most once a day per alert) to your chat apps – also without a webhook under [Monitoring](/administration#monitoring). Security incidents arrive as **Security notices** through the kinds column, not twice.
+
+Which services and servers are allowed is up to the administration ([Administration → Chat apps](/administration#chat-apps)).

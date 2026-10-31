@@ -82,6 +82,16 @@ Ob Mitteilungen an die Apps ankommen können und über welchen Dienst (`/#admin/
 
 Die Antworten enthalten nie Tokens, Schlüssel oder Push-Adressen. `/api/admin/push` ist nur für angemeldete Administratoren, nicht für API-Tokens.
 
+## Chat-Apps
+
+**Administration → Chat-Apps** regelt die [Benachrichtigungen an Chat-Apps](/search-and-notifications#chat-apps). Oben stehen erlaubte Dienste, der Bot der Instanz, aktive und nach Fehlern ausgeschaltete Verbindungen und die Zustellungen der letzten 24 Stunden.
+
+- **Erlaubte Dienste:** Telegram, Gotify, ntfy und Matrix lassen sich einzeln ausschalten (Vorgabe: `FLOWPLAN_MESSENGERS`). Ausgeschaltete Dienste bekommen keine Nachrichten mehr; die Verbindungen der Personen bleiben gespeichert und laufen wieder, wenn der Dienst eingeschaltet wird.
+- **Telegram-Bot der Instanz:** Bot-Token von @BotFather und optional eine eigene API-Adresse (Bot-API-Server oder Relay/Proxy, auch im eigenen Netz). **Prüfen und speichern** fragt Telegram mit `getMe` nach dem Bot und speichert den Token nur, wenn er angenommen wird – verschlüsselt, angezeigt wird nur „…abcd“. **Bot entfernen** löscht ihn (ein Token aus `FLOWPLAN_TELEGRAM_BOT_TOKEN` gilt dann wieder). Ein Konflikt mit einem Webhook oder einem anderen Programm, das den Bot abfragt, steht unter **Letzter Fehler**.
+- **Server-Adressen:** leer erlaubt jeden öffentlichen Server; sonst nur die eingetragenen Hosts, einer pro Zeile (`*.example.org` für Subdomains). `api.telegram.org` und `ntfy.sh` gehen immer. Interne Adressen erlaubt nur `FLOWPLAN_MESSENGER_ALLOW_PRIVATE=true`.
+
+Das Ändern des Bots wird als Sicherheitsereignis „Telegram-Bot der Instanz geändert“ festgehalten, das Ändern der Dienste und Hosts als „Sicherheitsrelevante Einstellung geändert“ – beides auch im [Aktivitätsprotokoll](#aktivitaetsprotokoll).
+
 ## KI
 
 Optional und standardmäßig aus: Anbieter (Ollama, OpenAI-kompatibel, Anthropic, Gemini), wer KI nutzen darf, einzelne Funktionen und eigene Schlüssel der Nutzer. Eigener Schalter: **KI auf dem Gerät (Apple)** – standardmäßig erlaubt, weil nichts das Gerät verlässt. Alles dazu unter [KI](/ai#fuer-admins).

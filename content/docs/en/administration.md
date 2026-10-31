@@ -82,6 +82,16 @@ Whether notifications can reach the apps and through which service (`/#admin/pus
 
 The answers never contain tokens, keys or push addresses. `/api/admin/push` is for signed-in administrators only, never for API tokens.
 
+## Chat apps
+
+**Administration → Chat apps** governs [notifications to chat apps](/search-and-notifications#chat-apps). At the top: allowed services, the instance's bot, active connections and those switched off after errors, and the deliveries of the last 24 hours.
+
+- **Allowed services:** Telegram, Gotify, ntfy and Matrix can be switched off one by one (default: `FLOWPLAN_MESSENGERS`). Services switched off get no more messages; people's connections stay stored and resume when the service is switched on again.
+- **Instance Telegram bot:** bot token from @BotFather and optionally an own API address (Bot API server or relay/proxy, also in the own network). **Check and save** asks Telegram for the bot with `getMe` and stores the token only when it is accepted – encrypted, shown only as “…abcd”. **Remove bot** deletes it (a token from `FLOWPLAN_TELEGRAM_BOT_TOKEN` then applies again). A conflict with a webhook or another program polling the bot shows under **Last error**.
+- **Server addresses:** empty allows any public server; otherwise only the hosts listed, one per line (`*.example.org` for subdomains). `api.telegram.org` and `ntfy.sh` always work. Internal addresses need `FLOWPLAN_MESSENGER_ALLOW_PRIVATE=true`.
+
+Changing the bot is recorded as the security event “Instance Telegram bot changed”, changing services and hosts as “Security-relevant setting changed” – both also in the [activity log](#activity-log).
+
 ## AI
 
 Optional and off by default: provider (Ollama, OpenAI-compatible, Anthropic, Gemini), who may use AI, individual features and users' own keys. A switch of its own: **On-device AI (Apple)** – allowed by default because nothing leaves the device. Everything in [AI](/ai#for-admins).

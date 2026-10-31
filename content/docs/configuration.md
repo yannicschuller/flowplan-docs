@@ -79,7 +79,7 @@ Details: [Verschlüsselung](/storage-and-backups#verschluesselung).
 
 ## Gespeicherte Geheimnisse
 
-Schlüssel von KI-Anbietern, die Schlüssel der Authenticator-Apps ([Zwei-Faktor-Anmeldung](/sign-in#zwei-faktor-anmeldung)) und die Zugangstokens des [Git-Exports der Bereiche](/storage-and-backups#git-export-eines-bereichs) speichert Flowplan nur verschlüsselt (AES-256-GCM, an ihren Platz gebunden). Der Schlüssel dafür kommt, in dieser Reihenfolge, aus:
+Schlüssel von KI-Anbietern, die Schlüssel der Authenticator-Apps ([Zwei-Faktor-Anmeldung](/sign-in#zwei-faktor-anmeldung)) die Zugangstokens des [Git-Exports der Bereiche](/storage-and-backups#git-export-eines-bereichs) und die Tokens der [Chat-Apps](/search-and-notifications#chat-apps) speichert Flowplan nur verschlüsselt (AES-256-GCM, an ihren Platz gebunden). Der Schlüssel dafür kommt, in dieser Reihenfolge, aus:
 
 | Quelle | Bedeutung |
 | --- | --- |
@@ -88,7 +88,7 @@ Schlüssel von KI-Anbietern, die Schlüssel der Authenticator-Apps ([Zwei-Faktor
 | `secrets.key` im Datenordner | Ohne die beiden Variablen legt Flowplan diese Datei beim ersten Bedarf selbst an (nur für den Besitzer lesbar). |
 
 > [!IMPORTANT]
-> Die Instanzsicherung enthält `secrets.key` bewusst nicht – sie gehört nicht neben die Daten, die sie schützt. Sichere die Datei getrennt oder setze den Schlüssel als Variable. Fehlt er nach einer Wiederherstellung, geben Admins und Nutzer ihre KI-Schlüssel neu ein, und für die Zwei-Faktor-Anmeldung helfen Wiederherstellungscodes oder ein Zurücksetzen durch die Administration.
+> Die Instanzsicherung enthält `secrets.key` bewusst nicht – sie gehört nicht neben die Daten, die sie schützt. Sichere die Datei getrennt oder setze den Schlüssel als Variable. Fehlt er nach einer Wiederherstellung, geben Admins und Nutzer ihre KI-Schlüssel und Chat-App-Tokens neu ein, und für die Zwei-Faktor-Anmeldung helfen Wiederherstellungscodes oder ein Zurücksetzen durch die Administration.
 
 ## E-Mail (SMTP)
 
@@ -255,6 +255,23 @@ Das Relay ist Open Source ([github.com/yannicschuller/flowplan-push](https://git
 4. **Prüfen** – mit der [Testbenachrichtigung](/search-and-notifications#testbenachrichtigung).
 
 Betrieb, Schlüsselwechsel, Sperren missbräuchlicher Instanzen (`node dist/src/cli.js block <origin>` im Container) und Sicherungen beschreibt die README des Relays.
+
+## Chat-Apps
+
+Benachrichtigungen an [Telegram, Gotify, ntfy und Matrix](/search-and-notifications#chat-apps). Alles lässt sich auch unter **Administration → Chat-Apps** einstellen; dort gespeicherte Werte haben Vorrang.
+
+| Variable | Standard | Bedeutung |
+| --- | --- | --- |
+| `FLOWPLAN_MESSENGERS` | *alle* | Dienste, die Personen verbinden dürfen, durch Komma getrennt: `telegram`, `gotify`, `ntfy`, `matrix`; `off` für keinen. |
+| `FLOWPLAN_TELEGRAM_BOT_TOKEN` | *leer* | Token des Telegram-Bots der Instanz (von @BotFather). Damit verbinden Personen Telegram über einen Link mit Einmal-Code, ohne eigenen Bot. |
+| `FLOWPLAN_TELEGRAM_API_URL` | `https://api.telegram.org` | Adresse der Bot-API für den Bot der Instanz – ein selbst betriebener [Telegram-Bot-API-Server](https://github.com/tdlib/telegram-bot-api) oder ein Relay/Proxy. Darf im eigenen Netz liegen und `http://` sein. |
+| `FLOWPLAN_MESSENGER_ALLOW_PRIVATE` | wie `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE` | `true`: Personen dürfen Server im eigenen Netz angeben (interne Adressen, `http://`) – etwa Gotify oder ntfy im Heimnetz. Sonst sind interne Adressen gesperrt, auch wenn ein Name später auf eine umgestellt wird. |
+
+**Bot der Instanz ohne öffentliche Adresse:** Flowplan nutzt keinen Webhook, sondern fragt die Nachrichten des Bots mit `getUpdates` ab – nur solange ein Verbindungscode wartet (höchstens 15 Minuten). Ausgehendes HTTPS zur Bot-API genügt. Der Bot darf deshalb nicht gleichzeitig einen Webhook haben oder von einem anderen Programm abgefragt werden (Telegram meldet dann einen Konflikt, die Administration zeigt ihn an) – nimm einen eigenen Bot nur für Flowplan.
+
+**Ausgehende Verbindungen:** zu `api.telegram.org` (oder der eigenen API-Adresse), `ntfy.sh` und den Servern, die Personen angeben. Sie laufen über dieselbe Prüfung wie Link-Vorschauen und Webhooks: Adresse auflösen, interne Adressen abweisen, genau die geprüfte Adresse verwenden, keine Weiterleitungen. Abgewiesene Versuche erscheinen als Sicherheitsereignis „Interne Adresse abgewiesen (SSRF)“.
+
+Die Tokens der Personen und des Bots speichert Flowplan verschlüsselt wie andere [gespeicherte Geheimnisse](#gespeicherte-geheimnisse). Fehlt der Schlüssel nach einer Wiederherstellung, muss die Administration den Bot-Token neu eingeben; Verbindungen mit eigenem Token werden nach drei Fehlversuchen ausgeschaltet, und ihre Besitzer erfahren es im Posteingang.
 
 ## Nicht setzen
 
