@@ -458,7 +458,11 @@
     border: 1px solid var(--border);
   }
 }
+/* position: relative keeps absolutely positioned content (e.g. the
+   screen-reader hint "opens in a new tab" on links) inside the scrolling
+   box, so it cannot widen the page on narrow screens. */
 .prose :global(.table) {
+  position: relative;
   margin: 0 0 22px;
   overflow-x: auto;
   border: 1px solid var(--border);
