@@ -17,7 +17,7 @@ Flowplan is open source (AGPL-3.0). The ready-made image is in the GitHub Contai
 | --- | --- |
 | `ghcr.io/yannicschuller/flowplan:latest` | The latest version (release) |
 | `ghcr.io/yannicschuller/flowplan:0.7.0` | A fixed version (currently 0.7.0), also as `:0.7` and `:0` |
-| `ghcr.io/yannicschuller/flowplan:beta` | The latest manually built development state – for trying out, not for production |
+| `ghcr.io/yannicschuller/flowplan:beta` | The latest manually built development state, or a release if that is newer – for trying out, not for production |
 
 Download the Compose file and the example configuration:
 

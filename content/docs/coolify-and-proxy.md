@@ -45,7 +45,7 @@ Coolify beobachtet die Registry nicht selbst. Die Image-Workflows der Repositori
 
 | Repository | Image in Coolify | Ausgerollt bei |
 | --- | --- | --- |
-| flowplan | `ghcr.io/yannicschuller/flowplan:beta` (oder `:latest` ohne Automatik) | jedem manuellen Build (**Actions → Docker image → Run workflow**) |
+| flowplan | `ghcr.io/yannicschuller/flowplan:beta` (oder `:latest` ohne Automatik) | jedem manuellen Build (**Actions → Docker image → Run workflow**) und jedem Release, das neuer ist als die aktuelle Beta |
 | flowplan-website | `ghcr.io/yannicschuller/flowplan-website:latest` | jedem Push auf `main` |
 | flowplan-docs | `ghcr.io/yannicschuller/flowplan-docs:latest` | jedem Push auf `main` |
 
