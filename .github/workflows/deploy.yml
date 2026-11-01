@@ -1,8 +1,8 @@
 # Only the Coolify deploy, at the push of a button: Actions → Deploy on
 # Coolify → Run workflow. Rolls out the current :latest image without building
 # – for testing the webhook (COOLIFY_WEBHOOK, COOLIFY_TOKEN) and for
-# redeploying by hand. Shows the runner's public IP for Coolify's
-# "Allowed IPs" (Settings → Advanced).
+# redeploying by hand. Runs on GitHub's runners; Coolify's API must accept
+# them (Settings → Advanced → API access: allowed IPs).
 name: Deploy on Coolify
 
 on:
@@ -13,13 +13,9 @@ permissions:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Public IP of this runner
-        run: |
-          echo "IPv4: $(curl -4 -sS --max-time 10 https://ifconfig.me || echo none)"
-          echo "IPv6: $(curl -6 -sS --max-time 10 https://ifconfig.me || echo none)"
       - name: Deploy on Coolify
         env:
           COOLIFY_WEBHOOK: ${{ secrets.COOLIFY_WEBHOOK }}

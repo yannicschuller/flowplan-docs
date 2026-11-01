@@ -119,14 +119,14 @@ jobs:
             $(printf 'ghcr.io/${{ github.repository }}@sha256:%s ' *)
           docker buildx imagetools inspect "ghcr.io/${{ github.repository }}:sha-${GITHUB_SHA::7}"
 
-  # Rolls out the new :latest image on Coolify. On the own runner: Coolify's
-  # API only answers its address (Settings → Advanced → API access), and
-  # GitHub's runners have changing ones. One request – no build there, and
-  # never for pull requests. Without the secrets the step does nothing.
+  # Rolls out the new :latest image on Coolify, never for pull requests.
+  # Coolify's API must accept GitHub's runners (Settings → Advanced → API
+  # access: allowed IPs); the token still guards it. Without the secrets the
+  # step does nothing.
   deploy:
     needs: image
     if: github.ref == 'refs/heads/main'
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Deploy on Coolify
