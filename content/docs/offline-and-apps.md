@@ -393,6 +393,8 @@ Für den echten Betrieb richte HTTPS ein, siehe [Ohne HTTPS](/installation#ohne-
 Auch die Apps für iPhone, iPad und Android merken sich mehrere Instanzen als Profile:
 
 - **Wechseln:** in den **App-Einstellungen** unter **Profile** auf ein Profil tippen, oder langes Drücken auf das App-Symbol → **Profil wechseln** (auf dem iPhone, solange du abgemeldet bist). Dieselbe Liste erscheint auf der Offline-Seite.
+- **Vor der Anmeldung:** unten auf der Anmelde- und Registrierungsseite (auch bei „Passwort vergessen“, beim Zwei-Faktor-Code und beim neuen Passwort) steht **Anderer Server? Profil wechseln**. *Abbrechen* (auf Android auch die Zurück-Taste) bringt dich zurück auf die Seite.
+- **Falsche Adresse:** Ein Profil, das noch nie angemeldet war, kannst du im Profil-Bildschirm mit **Adresse ändern** korrigieren oder mit **Profil entfernen** löschen. Antwortet unter der Adresse kein Flowplan, zeigt die App ihre eigene Seite mit **Erneut versuchen** und **Profil wechseln**.
 - **Hinzufügen:** **App-Einstellungen → Profil hinzufügen**, Adresse und optional einen Namen eintragen. Ist für die Adresse schon ein Profil gespeichert, wechselt die App einfach dorthin – je Instanz gibt es ein Profil.
 - **Umbenennen:** in den App-Einstellungen bei einem Profil auf **Umbenennen** tippen.
 - **Entfernen:** **Abmelden und Profil entfernen** gilt für das aktive Profil; danach wird das nächste Profil aktiv.

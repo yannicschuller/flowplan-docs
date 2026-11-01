@@ -6,6 +6,8 @@ Relations connect databases, rollups calculate across linked records, formulas c
 
 A click on the column header or **View and properties** opens the property dialog: name, type (one of {{facts.fieldTypes}} property types), options and format. Changing the type keeps existing values as far as they fit. Number formats cover currencies, percent, decimal places and thousands separators and also apply to formulas with a numeric result; date fields show short, long or ISO dates and optionally times; **Remove date** below the field clears it again.
 
+**URL, email and phone** properties show as links in tables, lists, boards, galleries and records: web addresses open in a new tab (shortened to host and path, the full address in the tooltip), email addresses in your mail app, phone numbers in your phone app. To change one, click the pencil next to the link (on hover or via Tab on a computer, always shown on phones) or the empty part of the cell; <kbd>Enter</kbd> saves, <kbd>Esc</kbd> discards. Only `http://` and `https://` addresses, email addresses and phone numbers become links – anything else stays plain text.
+
 ## Aliases
 
 The property type **Aliases (other names)** holds further names of a record, such as "PAC" and "Pompe à chaleur" for the record "Chauffage". A database has at most one such property. In the record you enter the names separated by commas; up to 10 aliases of up to 100 characters each count, surrounding spaces and duplicate names (ignoring case) are dropped.

@@ -393,6 +393,8 @@ For real use, set up HTTPS, see [Without HTTPS](/installation#without-https). Wi
 The apps for iPhone, iPad and Android also keep several instances as profiles:
 
 - **Switch:** tap a profile under **Profiles** in the **app settings**, or long-press the app icon → **Switch profile** (on the iPhone while signed out). The same list is a tap away from the offline page.
+- **Before signing in:** at the bottom of the sign-in and registration page (also for "Forgot password", the two-factor code and the new-password page) there is **Other server? Switch profile**. *Cancel* (on Android also the back button) takes you back to the page.
+- **Wrong address:** a profile that has never been signed in can be corrected with **Change address** or deleted with **Remove profile** on the profile screen. If no Flowplan answers at the address, the app shows its own page with **Try again** and **Switch profile**.
 - **Add:** **App settings → Add profile**, enter the address and, if you like, a name. If the address already has a profile, the app simply switches to it – there is one profile per instance.
 - **Rename:** tap **Rename** next to a profile in the app settings.
 - **Remove:** **Sign out and remove the profile** applies to the active profile; the next profile then becomes active.

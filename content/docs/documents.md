@@ -70,6 +70,8 @@ Beim Markdown-Export werden Hinweise zu GitHub-Hinweisen (`> [!WARNING]`). Beim 
 
 Das Buch-Symbol oben in der Leiste (oder <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd>, Schnellsuche → `> lesemodus`) öffnet ein Dokument **nur zum Lesen**: Nichts lässt sich versehentlich ändern, Griffe und Blockmenü verschwinden – praktisch auf dem Handy und beim Vorlesen oder Präsentieren. Der Stift wechselt zurück zum Bearbeiten. Das Gerät merkt sich den Modus pro Seite; die Rechte ändern sich dadurch nicht, und andere sehen weiter ihren eigenen Modus. Datenbank-Einträge haben dasselbe Buch-Symbol oben im Eintrag (siehe [Datenbanken](/databases)).
 
+Der Lesemodus gilt auch für alles, was in der Seite eingebettet ist: In **verknüpften Datenbanken** lassen sich keine Zellen bearbeiten, keine Einträge anlegen, löschen oder verschieben und keine Ansichten ändern; ein von dort geöffneter Eintrag ist ebenfalls nur lesbar. Änderungen anderer erscheinen weiter live. Synchronisierte Blöcke, Zeichnungen, Kennzahlen, Funktionsgraphen und Erweiterungsblöcke sind im Lesemodus ebenfalls gesperrt.
+
 ## Fokusmodus
 
 **Fokusmodus** (Schnellsuche → `> fokus`) blendet Seitenleiste, Werkzeugleiste und Seitenrand aus; die obere Leiste erscheint erst beim Darüberfahren. Unten zählt eine Leiste die Wörter der Seite und die in dieser Sitzung hinzugekommenen. Mit einem **Ziel** (z. B. 500 Wörter) zeigt ein Balken den Fortschritt; das Ziel merkt sich das Gerät pro Seite. <kbd>Esc</kbd> beendet den Modus.

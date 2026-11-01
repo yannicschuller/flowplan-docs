@@ -6,6 +6,8 @@ Relationen verbinden Datenbanken, Rollups rechnen über verknüpfte Einträge, F
 
 Ein Klick auf den Spaltenkopf oder **Ansicht und Eigenschaften** öffnet den Eigenschaftsdialog: Name, Typ (einer von {{facts.fieldTypes}} Eigenschaftstypen), Optionen und Format. Typwechsel übernehmen vorhandene Werte, soweit sie passen. Formate für Zahlen umfassen Währungen, Prozent, Dezimalstellen und Tausendertrennzeichen und gelten auch für Formeln mit Zahlenergebnis; Datumsfelder zeigen kurz, lang oder ISO und optional Uhrzeiten; **Datum entfernen** unter dem Feld leert es wieder.
 
+**URL, E-Mail und Telefon** erscheinen in Tabelle, Liste, Board, Galerie und im Eintrag als Link: Webadressen öffnen sich in einem neuen Tab (gekürzt auf Host und Pfad, die volle Adresse steht im Tooltip), E-Mail-Adressen im Mailprogramm, Telefonnummern in der Telefon-App. Zum Ändern klickst du auf den Stift neben dem Link (am Computer beim Überfahren oder mit der Tab-Taste, am Handy immer sichtbar) oder auf die freie Fläche der Zelle; <kbd>Enter</kbd> speichert, <kbd>Esc</kbd> verwirft. Nur `http://`- und `https://`-Adressen, E-Mail-Adressen und Telefonnummern werden zu Links – alles andere bleibt einfacher Text.
+
 ## Aliasse
 
 Der Eigenschaftstyp **Aliasse (andere Namen)** hält weitere Namen eines Eintrags, etwa „PAC“ und „Pompe à chaleur“ für den Eintrag „Chauffage“. Eine Datenbank hat höchstens eine solche Eigenschaft. Im Eintrag trägst du die Namen durch Kommas getrennt ein; es zählen bis zu 10 Aliasse mit je bis zu 100 Zeichen, Leerzeichen am Rand und doppelte Namen (Groß- und Kleinschreibung egal) fallen weg.

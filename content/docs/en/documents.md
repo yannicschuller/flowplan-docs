@@ -70,6 +70,8 @@ Markdown export writes callouts as GitHub alerts (`> [!WARNING]`). Import (Markd
 
 The book icon in the top bar (or <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd>, quick search → `> reading`) opens a document **for reading only**: nothing changes by accident, handles and the block menu disappear – handy on the phone and when reading aloud or presenting. The pencil switches back to editing. The device remembers the mode per page; permissions stay the same, and others keep their own mode. Database records have the same book icon at the top of the record (see [Databases](/databases)).
 
+Reading mode also covers everything embedded in the page: in **linked databases** you can't edit cells, add, delete or move records, or change views; a record opened from there is read-only too. Other people's changes keep showing up live. Synced blocks, drawings, metrics, function graphs and extension blocks are locked in reading mode as well.
+
 ## Focus mode
 
 **Focus mode** (quick search → `> focus`) hides the sidebar, toolbar and page margins; the top bar only appears on hover. At the bottom, a bar counts the words of the page and those added in this session. With a **goal** (e.g. 500 words) a bar shows the progress; the device remembers the goal per page. <kbd>Esc</kbd> ends the mode.
