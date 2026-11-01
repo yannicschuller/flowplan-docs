@@ -13,10 +13,11 @@ Für alle Quellen gilt:
 
 - Ende-zu-Ende-verschlüsselte Bereiche sind als Ziel ausgeschlossen (der Server sieht dort keinen Klartext).
 - Du brauchst Schreibrechte im Zielbereich; Speicherkontingente des Arbeitsbereichs und deine persönliche Grenze werden vorher geprüft (die Vorschau warnt schon).
-- Grenzen pro Import: 100 MB, 500 Seiten (als Datenbank: 5.000 Einträge), 10 MB je Datei im ZIP.
+- Grenzen pro Import: 500 Seiten (als Datenbank: 5.000 Einträge), 10 MB je Datei im ZIP. ZIP-Exporte und einzelne Dateien dürfen höchstens 100 MB groß sein. Die **AFFiNE-Arbeitsbereichsdatei (`.affine`)** darf so groß sein wie die **größte Datei beim Hochladen** (Administration → [Grenzen & Aufbewahrung](/administration#grenzen-aufbewahrung), je Person änderbar), mindestens aber 100 MB; `FLOWPLAN_IMPORT_MAX_MB` legt die Grenze für die ganze Instanz fest ([Konfiguration](/configuration#betrieb)). Ist eine Datei zu groß, nennt die Meldung die Grenze und wo sie geändert wird.
+- Die Datei wird nur einmal hochgeladen: Die Vorschau behält sie auf dem Server, **Importieren** verwendet sie weiter. Brichst du ab, wird sie gelöscht, sonst spätestens nach sechs Stunden.
 - Der Inhalt wird wie beim Einfügen bereinigt: Skripte, Formulare und eingebettete Fremdseiten fallen weg. Dateinamen werden bereinigt; Dateien, die der Browser ausführen könnte (HTML, SVG), werden nur zum Herunterladen gespeichert.
 - Links zwischen importierten Seiten zeigen auf die neuen Seiten. Bilder und Anhänge werden hochgeladen – jede Datei einmal, auch wenn mehrere Seiten sie zeigen.
-- **Als neue Datenbank** wird jede Notiz ein Eintrag mit den Eigenschaften *Tags*, *Erstellt*, *Geändert*, *Ordner* (der Ordnerpfad) und – wenn vorhanden – *Quelle*. Als Seiten stehen Tags als `#tag` oben auf der Seite.
+- **Als neue Datenbank** wird jede Notiz ein Eintrag mit den Eigenschaften *Tags*, *Erstellt*, *Geändert*, *Ordner* (der Ordnerpfad) und – wenn vorhanden – *Quelle*. Als Seiten werden Tags zu [Tags der Seite](/pages-and-spaces#tags-und-eigenschaften); fehlende werden im Arbeitsbereich angelegt.
 
 ## Von Notion
 
@@ -31,6 +32,7 @@ Was daraus wird:
 - Spalten bekommen eine passende Art: Zahlen, Kontrollkästchen, Daten (auch im Notion-Format „September 24, 2026“) und Auswahlen mit ihren Optionen; der Rest bleibt Text.
 - Die Seiten der Einträge werden ihren Einträgen als Dokument zugeordnet.
 - Bilder und Dateien, auf die Seiten verweisen, werden hochgeladen.
+- Callouts werden zu [Hinweisen](/documents#hinweise) und behalten ihr Emoji als Symbol.
 - Große Exporte, die Notion in mehrere ZIP-Dateien innerhalb des ZIPs aufteilt, werden erkannt.
 
 Grenzen pro Import: 100 MB, 500 Seiten und 5.000 Einträge je Tabelle. Größere Arbeitsbereiche exportierst du in Teilen, etwa Seite für Seite.
@@ -52,10 +54,11 @@ Markdown wird zu Seiten, CSV zu Datenbanken; verlinkte Bilder und Dateien werden
 
 Was daraus wird:
 
-- **Alles landet unter einer Seite** mit dem Namen des AFFiNE-Arbeitsbereichs. **Ordner** werden zu Seiten mit ihren Dokumenten darunter. Steht ein Dokument in mehreren Ordnern, liegt es im ersten; die anderen Ordner verlinken es. Dokumente ohne Ordner liegen direkt unter der Arbeitsbereichsseite.
-- **Text:** Überschriften, Absätze, Aufzählungen, nummerierte Listen, **To-dos** mit ihrem Haken, Aufklapplisten, Zitate, Codeblöcke mit Sprache, Hinweisblöcke (Callouts, nach Farbe: Rot → Achtung, Orange/Gelb → Warnung, Grün → Tipp, Lila → Wichtig, sonst Hinweis), Trennlinien, Tabellen, LaTeX (Block und im Text), Fett, Kursiv, Unterstrichen, Durchgestrichen, Code, Links, Text- und Hervorhebungsfarben.
+- **Wohin es kommt:** Aus einer Arbeitsbereichsdatei (`.affine`) mit mehreren Einträgen auf oberster Ebene – Ordner, Dokumente ohne Ordner, Sammlungen – entsteht **eine Seite mit dem Namen des AFFiNE-Arbeitsbereichs**, unter der alles liegt; die Vorschau nennt sie („Alles unter einer Seite …“). Ein **Snapshot** und ein Arbeitsbereich mit nur einem Eintrag auf oberster Ebene kommen **direkt in den Zielbereich** – ohne leere Seite darüber. Ein Whiteboard zählt dabei zu seinem Dokument; Journal-Dokumente gehen ins Journal.
+- **Ordner** werden zu Seiten mit ihren Dokumenten darunter. Steht ein Dokument in mehreren Ordnern, liegt es im ersten; die anderen Ordner verlinken es. Dokumente ohne Ordner liegen auf oberster Ebene – unter der Arbeitsbereichsseite, wenn es sie gibt.
+- **Text:** Überschriften, Absätze, Aufzählungen, nummerierte Listen, **To-dos** mit ihrem Haken, Aufklapplisten, Zitate, Codeblöcke mit Sprache, Hinweisblöcke (Callouts, Art nach Farbe: Rot → Achtung, Orange/Gelb → Warnung, Grün → Tipp, Lila → Wichtig, sonst Hinweis; ihr Emoji wird zum [Symbol des Hinweises](/documents#eigenes-symbol-und-eigene-farbe)), Trennlinien, Tabellen, LaTeX (Block und im Text), Fett, Kursiv, Unterstrichen, Durchgestrichen, Code, Links, Text- und Hervorhebungsfarben.
 - **Links zwischen Dokumenten** – im Text (@-Verweise), als Karten verlinkter oder synchronisierter Dokumente und als AFFiNE-App-Links – zeigen auf die importierten Seiten. Synchronisierte Dokumente werden dabei zu Links.
-- **Tags** stehen als `#tag` oben auf der Seite (als neue Datenbank: Eigenschaft *Tags*).
+- **Tags** werden zu Tags der Seite, mit ihren Farben aus AFFiNE (als neue Datenbank: Eigenschaft *Tags*).
 - **Bilder und Anhänge** werden hochgeladen und an ihrer Stelle gezeigt (Bilder als Bild, andere Dateien als Link). Lesezeichen und Einbettungen (YouTube, Figma, GitHub …) werden zu Links.
 - **Datenbanken** werden zu einer Datenbank-Seite unter ihrem Dokument und erscheinen im Dokument an derselben Stelle als eingebettete Datenbank. Spalten: Titel, Text, Zahl, Auswahl, Mehrfachauswahl, Datum, Kontrollkästchen, Link (Adresse), Fortschritt (Zahl in Prozent) und Erstellt. Zeilen behalten ihren Inhalt als Dokument des Eintrags. Tabellenansichten bleiben Tabellen, Kanban-Ansichten werden Boards nach derselben Spalte. Bild-Spalten werden nicht übernommen.
 - **Whiteboards (Edgeless):** Der Text eines Dokuments wird immer ein Dokument. Liegt auf seiner Edgeless-Fläche mehr als die Notiz mit dem Text – Formen, Verbinder, Texte, Bilder, Rahmen, weitere Notizen, Zeichnungen, Mindmaps – oder öffnet AFFiNE das Dokument im Edgeless-Modus, entsteht daneben ein Whiteboard **„Name – Whiteboard“**. Dokument und Whiteboard sind verlinkt: oben im Dokument steht der Link zum Whiteboard, auf dem Whiteboard zeigt eine Karte auf das Dokument (dort, wo die Notiz lag). Formen (Rechteck, abgerundet, Ellipse, Raute, Dreieck) mit Text und Farben, Verbinder (gerade, gewinkelt, gebogen, mit Pfeilen und Beschriftung, an ihren Formen befestigt), Texte, Pinselstriche, Bilder, Rahmen, weitere Notizen (als Haftnotizen), Gruppen und Mindmaps (Knoten als Formen, Äste als Verbinder) werden übernommen. Was keine Entsprechung hat, fällt weg; die Vorschau nennt die Zahl.
@@ -63,6 +66,7 @@ Was daraus wird:
 - **Journal:** Journal-Dokumente von AFFiNE kommen in das [Journal](/journal) des Arbeitsbereichs, jeweils in den passenden Tag – ins Journal im Zielbereich, sonst in eines im Arbeitsbereich, in das du schreiben darfst; gibt es keines, legt der Import eines an. Fehlt der Tag, wird er angelegt; gibt es ihn schon, wird der Text unten angehängt (mit dem Titel des AFFiNE-Dokuments als Überschrift).
 - Dokumente im **Papierkorb** von AFFiNE werden nicht übernommen. HTML-Einbettungen und Data Views fallen weg; die Vorschau nennt sie.
 - Whiteboards, Datenbanken und Journal-Tage gibt es nur beim Import **als Seiten**; als neue Datenbank wird jedes Dokument ein Eintrag.
+- **Große Arbeitsbereiche:** Die `.affine`-Datei darf größer als 100 MB sein (siehe [Grenzen oben](#confluence-evernote-google-docs-und-obsidian)). Der Server schreibt sie beim Hochladen direkt auf die Platte und liest Bilder und Anhänge erst beim Import einzeln – der Arbeitsspeicher wächst mit den Dokumenten, nicht mit den Dateien. Steht ein Reverse-Proxy davor, muss er so große Anfragen durchlassen (siehe [Coolify und Reverse Proxy](/coolify-and-proxy#pangolin-traefik-und-andere-proxys)).
 - Sicherheit: Die Datei wird nur gelesen; Größe, Anzahl und Verschachtelung der Dokumente sind begrenzt, Text wird nie als HTML übernommen, Links behalten nur `http`, `https` und `mailto`.
 
 ## Von Confluence
@@ -110,7 +114,7 @@ Was daraus wird:
   - **Wikilinks** `[[Seite]]`, `[[Seite|Text]]`, `[[Ordner/Seite]]` und `[[Seite#Überschrift]]` werden zu Links auf die importierten Seiten – aufgelöst wie in Obsidian über den Pfad oder den Dateinamen. Links auf Notizen, die es nicht gibt, bleiben Text.
   - **Eingebettete Dateien** `![[bild.png]]` werden zu Bildern, `![[datei.pdf]]` zu Dateilinks; eingebettete Notizen `![[Notiz]]` werden zu Links.
   - **Callouts** wie `> [!note]` oder `> [!warning] Titel` werden zu Hinweisblöcken der passenden Art.
-  - **Tags** aus dem Frontmatter (`tags:`) und im Text (`#tag`, nicht in Code) werden gesammelt: als Seiten oben als `#tag`, als neue Datenbank in der Eigenschaft *Tags* – zusammen mit *Ordner* für die Herkunft.
+  - **Tags** aus dem Frontmatter (`tags:`) und im Text (`#tag`, nicht in Code) werden gesammelt: als Seiten als Tags der Seite, als neue Datenbank in der Eigenschaft *Tags* – zusammen mit *Ordner* für die Herkunft. Weitere Schlüssel des Frontmatters werden als Seiten zu [Eigenschaften](/import-export-versions#frontmatter-eintraege-als-markdown-dateien).
 - **Notizen mit Frontmatter in eine vorhandene Datenbank:** in einer Datenbank **CSV oder Markdown importieren** wählen und die `.md`-Dateien oder ein ZIP nehmen. Die YAML-Eigenschaften werden zu Spalten – siehe [Frontmatter](/import-export-versions#frontmatter-eintraege-als-markdown-dateien).
 - **Aliasse:** `aliases: [PAC, Pompe à chaleur]` (oder `alias:`) im Frontmatter wird zu den [Aliassen](/pages-and-spaces#aliasse) der Seite bzw. zur Eigenschaft [Aliasse](/properties-and-formulas#aliasse) des Eintrags. @-Erwähnungen, Suche und nicht verlinkte Erwähnungen finden „Chauffage“ dann auch über „PAC“, und der Markdown-Export schreibt sie wieder als `aliases:` zurück.
 

@@ -42,6 +42,7 @@ Die übrigen OIDC-Variablen und alles zu Passwörtern und Passkeys stehen unter 
 | --- | --- | --- |
 | `FLOWPLAN_DATA_DIR` | `/app/data` im Image, sonst `./data` | Datenverzeichnis für SQLite, Uploads, Push-Schlüssel und Texterkennungsdaten. |
 | `FLOWPLAN_WORKSPACE_QUOTA_MB` | unbegrenzt | Standard-Speicherkontingent je Arbeitsbereich in MB (`0` = unbegrenzt). |
+| `FLOWPLAN_IMPORT_MAX_MB` | *leer* | Größte Datei für [Importe aus AFFiNE](/migrate#von-affine) und anderen Werkzeugen in MB, für alle Personen. Ohne die Variable gilt die **größte Datei beim Hochladen** (Administration → Grenzen & Aufbewahrung bzw. die Grenze der Person), mindestens 100 MB. Größer als 100 MB darf nur die AFFiNE-Arbeitsbereichsdatei (`.affine`) sein; ZIP-Exporte bleiben bei 100 MB. Ein Proxy davor muss so große Anfragen durchlassen. |
 | `FLOWPLAN_SNAPSHOT_RETENTION_DAYS` | `180` | Aufbewahrung automatischer Versionen in Tagen (`0` = unbegrenzt). |
 | `FLOWPLAN_OCR` | an | `0` schaltet die Texterkennung für gescannte PDFs und Bilder ab. |
 | `FLOWPLAN_OCR_LANGS` | `deu,eng` | Sprachen der Texterkennung, z. B. `fra,eng`; die erste ist die Hauptsprache. Mitgeliefert sind `deu`, `eng` und `fra`. Jede weitere Sprache kostet Speicher und Zeit pro Seite. |

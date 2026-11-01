@@ -9,6 +9,7 @@ Die Schnellsuche findet Inhalte bis in Dateianhänge hinein. Posteingang und Pus
 Durchsucht werden:
 
 - Seitentitel und [Aliasse](/pages-and-spaces#aliasse) sowie Dokumenttexte,
+- [Tags und Eigenschaftswerte](/pages-and-spaces#tags-und-eigenschaften) von Seiten,
 - Datenbankeinträge und ihre Inhalte,
 - Kommentare,
 - Dateinamen,
@@ -19,6 +20,25 @@ Durchsucht werden:
 Treffer lassen sich nach Typ und Bereich filtern. [Journaltage](/journal#tage-in-listen-suche-graph-und-export) stehen hinter allen anderen Treffern; **Ohne Journaltage** lässt sie ganz weg und bleibt für die nächste Suche eingeschaltet. Dateitexte werden im Hintergrund erfasst und sind nach wenigen Sekunden auffindbar. Die Suche zeigt nur, was du lesen darfst. <kbd>Enter</kbd> öffnet den ersten Treffer.
 
 Aliasse von Seiten und Einträgen zählen so viel wie der Titel. Passt die Suche nur zu einem Alias, zeigt der Treffer den echten Titel mit dem Alias in Grau, etwa „Chauffage · PAC“. Dasselbe gilt im Dialog der @-Erwähnung.
+
+### Nach Tags und Eigenschaften filtern
+
+Diese Wörter wirken in der Suche als Filter:
+
+| Eingabe | Findet |
+| --- | --- |
+| `#Kunde` | Seiten mit dem Tag „Kunde“ (Groß-/Kleinschreibung egal); Tags mit Leerzeichen als `#"Neue Idee"` |
+| `-#Intern` | lässt Seiten mit dem Tag weg |
+| `Status:Offen` | Eigenschaft „Status“ mit dem Wert „Offen“ (Auswahl und Mehrfachauswahl: genau diese Option; Text, Webadresse, E-Mail, Telefon: enthält) |
+| `Budget:>1000`, `Budget:<=50`, `Budget:10..20` | Zahlen vergleichen |
+| `Fällig:2026-12`, `Fällig:>2026-11-01`, `Fällig:2026-11-01..2026-11-30` | Datum: Tag, Monat oder Jahr; nach, zwischen (auch `<`, `>=`, `<=`) |
+| `Abgerechnet:ja` / `Abgerechnet:nein` | Kontrollkästchen |
+| `Verantwortlich:Emil`, `Verantwortlich:ich` | Person nach Namen; `ich` (auch `me`) bist du |
+| `Status:*` / `Status:-` | Eigenschaft gesetzt / leer |
+
+Namen mit Leerzeichen stehen in Anführungszeichen: `"Nächster Schritt":Angebot`. Mehrere Filter gelten zusammen; der übrige Text wird wie gewohnt gesucht. Nur Filter ohne Text listen alle passenden Seiten, die zuletzt geänderte zuerst. Wörter, die keinen Tag und keine Eigenschaft nennen (etwa `#123`), bleiben normale Suchwörter.
+
+Erkannte Filter erscheinen als Chips unter dem Suchfeld; ✕ nimmt einen wieder heraus. Die Auswahl **Tag …** neben dem Bereich fügt einen Tag-Filter ein. Gespeicherte Suchen behalten die Filter. Tag-Namen und Werte sind außerdem gewöhnliche Suchwörter der Seite: „Kunde“ findet auch Seiten mit dem Tag „Kunde“.
 
 ### Befehle
 

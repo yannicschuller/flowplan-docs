@@ -148,7 +148,7 @@ On pages the AI may not read, every AI entry is greyed out with the hint "The AI
 - **Formatting:** answers are formatted – bold, italic, lists (also nested), code and links; the source numbers stay clickable.
 - **Propose actions:** below an answer, the AI can propose what to create from it – see [AI actions](#ai-actions).
 - **Conversation:** follow-up questions take the last questions and answers into account; **New conversation** starts over. The conversation stays in this browser tab only and is not stored on the server.
-- The search uses the full-text index; the best-matching passages go with your question to the provider shown at the top of the panel. The AI only reads what you may read and what is open to the AI ([What the AI may access](#what-the-ai-may-access)).
+- The search uses the full-text index; the best-matching passages go with your question to the provider shown at the top of the panel. The AI only reads what you may read and what is open to the AI ([What the AI may access](#what-the-ai-may-access)). A page's [tags and property values](/pages-and-spaces#tags-and-properties) count as part of its text.
 - While the answer is written, a shimmer and a typing cursor show progress; the sources appear one after another.
 
 ### Semantic search (optional)

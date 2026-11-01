@@ -42,6 +42,7 @@ The other OIDC variables and everything about passwords and passkeys are describ
 | --- | --- | --- |
 | `FLOWPLAN_DATA_DIR` | `/app/data` in the image, `./data` otherwise | Data directory for SQLite, uploads, push keys and text recognition data. |
 | `FLOWPLAN_WORKSPACE_QUOTA_MB` | unlimited | Default storage quota per workspace in MB (`0` = unlimited). |
+| `FLOWPLAN_IMPORT_MAX_MB` | *empty* | Largest file for [imports from AFFiNE](/migrate#from-affine) and other tools in MB, for everyone. Without it the **largest upload** applies (Administration → Limits & retention, or the person's own limit), at least 100 MB. Only the AFFiNE workspace file (`.affine`) may exceed 100 MB; ZIP exports stay at 100 MB. A proxy in front must let such large requests through. |
 | `FLOWPLAN_SNAPSHOT_RETENTION_DAYS` | `180` | How long automatic versions are kept, in days (`0` = forever). |
 | `FLOWPLAN_OCR` | on | `0` turns off text recognition for scanned PDFs and images. |
 | `FLOWPLAN_OCR_LANGS` | `deu,eng` | Languages of the text recognition, e.g. `fra,eng`; the first is the main language. `deu`, `eng` and `fra` are bundled. Each extra language costs memory and time per page. |

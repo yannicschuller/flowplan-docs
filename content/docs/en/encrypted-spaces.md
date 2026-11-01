@@ -50,6 +50,7 @@ Everything that would need the server to read the content is switched off here a
 - Comments and text comments, mentions with notifications
 - Share links, sharing single pages and publishing
 - Version history, templates, duplicating, moving to other spaces (in or out)
+- [Tags and page properties](/pages-and-spaces#tags-and-properties)
 - Export as PDF, DOCX, EPUB, server-side Markdown, Git export
 - Webhooks only receive the page ID, MCP clients only metadata
 

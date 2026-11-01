@@ -56,6 +56,17 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 
 The list icon at the top right of a document opens the **table of contents** beside the text – in every document, journal days and database records included. It is built from the headings and grows while you write, marks the section you are reading and jumps to a heading on click. Whether it is open is remembered in this browser for all documents. On a phone a round button at the bottom right opens it.
 
+## Collapsing sections
+
+Every heading can be **collapsed**: the small arrow to the left of a heading (it shows on hover; on touch devices and for collapsed headings always) hides everything below it – up to the next heading of the same or a higher level. A collapsed heading shows how much is hidden behind it (**… 3 blocks**); another click expands it again. With the cursor in the heading, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> does the same. On a phone the arrow sits at the end of the heading, in right-to-left text on the other side.
+
+- **Collapse / expand all sections:** in a document's page menu `⋯`, at the top of the [table of contents](#table-of-contents), in quick search (`> sections`) or with <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>X</kbd> and <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>O</kbd> ([changeable](/keyboard-shortcuts#your-own-shortcuts)). With a database record open, it applies to the record's text.
+- **Just for you:** what is collapsed is remembered on this device (per page or record) – it does not change the document, others still see everything. Documents you open for the first time are expanded.
+- **Nothing gets lost:** when the cursor gets into a collapsed part (arrow keys, undo, a click in the table of contents), it expands. So it does when **Find on page** (<kbd>⌘</kbd> <kbd>F</kbd>) goes to a match inside, or a search hit, backlink or notification leads there. You can keep typing in the collapsed heading itself; it stays collapsed.
+- **Moving:** dragging a collapsed heading by its handle `⋮⋮` (or moving it with <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd>/<kbd>↓</kbd>) takes its whole section along.
+- **Printing and PDF** always show everything; so do export, presentations and published pages.
+- Headings directly in the document collapse – in reading mode and in [encrypted spaces](/encrypted-spaces) too. Headings inside callouts, toggles, tables, columns or lists have no arrow; such blocks simply belong to the section they are in.
+
 ## Pasting answers from ChatGPT
 
 Text copied from ChatGPT or another assistant is formatted when pasted: LaTeX formulas (`\[ … \]`, `\( … \)`, `$$ … $$`) become formula blocks and inline formulas, Markdown (headings, **bold**, lists, tables) is applied, lines with tabs become a table, `☐` a task list, and each line becomes its own paragraph. Formulas already rendered on a copied web page stay formulas. This also applies when copying straight from the ChatGPT web page. If formulas are already in the document as text (such as `\[ A(3;2;1) \]`), select them – or everything with <kbd>⌘</kbd>/<kbd>Ctrl</kbd>+<kbd>A</kbd> – and choose **Turn into formulas** in the text menu. Ordinary text is pasted as before.
@@ -64,7 +75,28 @@ Text copied from ChatGPT or another assistant is formatted when pasted: LaTeX fo
 
 Callouts come in five kinds, as on GitHub, Forgejo and Obsidian: **Note** (blue), **Tip** (green), **Important** (purple), **Warning** (yellow) and **Caution** (red). Each kind has its icon and a title in the reader's language. With the cursor in a callout, `/tip`, `/warning` etc. change its kind; so does the block menu (click the handle `⋮⋮`) → **Callout type**.
 
-Markdown export writes callouts as GitHub alerts (`> [!WARNING]`). Import (Markdown, ZIP, Notion) turns `> [!NOTE]` to `> [!CAUTION]` back into callouts of that kind; Obsidian's further kinds map to the nearest one (e.g. `danger` → Caution, `hint` → Tip), and a custom title (`> [!WARNING] Read first`) becomes a bold first line.
+### Your own symbol and colour
+
+So that a callout serves other purposes too – an idea 💡, a date 📅, a key point ★ –, the block menu gives it a symbol and a colour of its own:
+
+- **Symbol** → **Choose emoji or character …** opens the emoji picker (the same as for page icons, with search, categories and skin tone). Under **Or a character of your own** you can also type a character such as ★, → or ✓ – exactly one emoji or symbol character is allowed, no letters, digits, punctuation or spaces. **Remove symbol** brings back the icon of the kind.
+- **Colour** offers the nine text colours (grey, brown, orange, yellow, green, blue, purple, pink, red); **Default** goes back to the kind's colour. The colours read well in the light and the dark theme.
+
+The kind stays: it gives the title (“Tip”, “Warning” …) and is used for the Markdown export. Symbol and colour are kept when copying, duplicating, in templates, versions, published pages, when printing and in the PDF, EPUB and Word export. [Encrypted spaces](/encrypted-spaces) have no callouts.
+
+### Callouts in Markdown
+
+Markdown export writes callouts as GitHub alerts (`> [!WARNING]`). A symbol of its own leads the text, a colour of its own follows as a comment at the end that GitHub does not show:
+
+```markdown
+> [!TIP]
+>
+> 💡 The / menu is quicker.
+>
+> <!-- flowplan:callout color=green -->
+```
+
+Import (Markdown, ZIP, Notion) turns `> [!NOTE]` to `> [!CAUTION]` back into callouts of that kind; Obsidian's further kinds map to the nearest one (e.g. `danger` → Caution, `hint` → Tip), and a custom title (`> [!WARNING] Read first`) becomes a bold first line. A single emoji or symbol followed by a space at the start of the text becomes the callout's symbol; the colour comment restores the colour. Callouts from Notion's Markdown export (`<aside>💡 …</aside>`) become callouts with their emoji.
 
 ## Reading mode
 
@@ -158,7 +190,7 @@ A click on the handle opens the **block menu** (from the bottom on phones):
 - **Move below …** – right below a heading of the page, to the top or to the end
 - **Duplicate** and **Delete**
 - **Turn into …** – text, heading 1–3, bulleted list, numbered list, task list, quote, callout or code; list items switch the kind of list, quotes and callouts can be dissolved
-- **Callout type**, **Width** (videos and embeds) and **Text direction** where they fit
+- **Callout type**, **Symbol** and **Colour** (callouts), **Width** (videos and embeds) and **Text direction** where they fit
 - **Select several** – the selection mode
 
 In the **selection mode** circles take the place of the handles. A tap selects a block, another one extends the selection up to it; when all items of a list are chosen, the whole list is. The bar at the bottom moves, duplicates, moves below a heading or deletes the selection, **⋯** holds the rest of the block menu. **Done** or <kbd>Esc</kbd> ends the mode.

@@ -58,7 +58,7 @@ Details: [Storage and backups](/storage-and-backups).
 | Storage per workspace | For workspaces without a quota of their own. |
 | Storage per person | For people without a limit of their own; everything they upload or copy. |
 | Own workspaces per person | How many workspaces a person may own. |
-| Largest upload | The limit per file in MB. |
+| Largest upload | The limit per file in MB. Also applies to [importing an AFFiNE workspace file](/migrate#from-affine) (at least 100 MB; `FLOWPLAN_IMPORT_MAX_MB` takes precedence). |
 | Keep versions | Days after which automatic versions are deleted. |
 
 Empty fields fall back to the [environment variables](/configuration). Everyone sees their limits and the storage they use under **Settings → Account & security → Your limits**.

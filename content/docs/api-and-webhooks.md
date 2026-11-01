@@ -298,6 +298,15 @@ Beide Clients schicken bei jeder Änderung von selbst einen [`Idempotency-Key`](
 
 Wer Flowplan selbst baut, erzeugt die Clients mit `npm run sdk` neu; der Test `tests/openapi.test.ts` schlägt fehl, wenn die eingecheckten Dateien nicht mehr zum Dokument passen.
 
+### Tags und Eigenschaften per API
+
+- `GET /api/tags?workspace=<id>` – Tags (`id`, `name`, `color`, `position`, `pages`) und Eigenschaften (`id`, `name`, `type`, `options`) des Arbeitsbereichs. `GET /api/tags/<tagId>?workspace=<id>` liefert zusätzlich die lesbaren Seiten mit diesem Tag.
+- `GET /api/pages/<id>` enthält `properties`: `tags` (Tag-IDs), `values` (nach Eigenschafts-ID) und `info` (erstellt/geändert am/von).
+- `POST /api/command` mit `page.properties`: `{ "action": "page.properties", "pageId": "…", "addTags": ["Kunde"], "values": { "Status": "Offen", "Budget": 1200 } }`. Tags und Eigenschaften gehen über ID oder Namen; `tags` ersetzt alle Tags, `addTags`/`removeTags` ändern sie, `null` entfernt einen Wert.
+- `pages.tag` vergibt oder entfernt Tags auf bis zu 500 Seiten auf einmal.
+- Nur Eigentümer: `tag.save`, `tag.delete`, `tag.merge`, `tag.reorder`, `property.save`, `property.delete`, `property.reorder`. Neue Tags (`tag.save` ohne `tagId`) dürfen auch Mitglieder mit Bearbeitungsrecht anlegen.
+- In `GET /api/search` wirken `#tag`, `-#tag` und `name:wert` als Filter (siehe [Suche](/search-and-notifications#nach-tags-und-eigenschaften-filtern)). MCP-Clients bekommen Tags und Werte mit `read_page` als Frontmatter.
+
 ## n8n
 
 Für [n8n](https://n8n.io) gibt es den Community-Knoten **`n8n-nodes-flowplan`** (Quellcode unter [`integrations/n8n`](https://github.com/yannicschuller/flowplan/tree/main/integrations/n8n)).

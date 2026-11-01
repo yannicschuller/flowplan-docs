@@ -99,7 +99,24 @@ Vor dem Import zeigt eine Vorschau, welche Eigenschaften passen und welche fehle
 
 **Export:** Im ZIP-Export beginnt jeder Eintrag unter `records/` mit `title:` und seinen Eigenschaften: Auswahl als Text, Mehrfachauswahl und Relationen (Titel der verknüpften Einträge) als Liste, Datum als ISO-Datum. Aliasse stehen unter dem Obsidian-Schlüssel `aliases:` als Liste, so dass sie einen Weg nach Obsidian und zurück überstehen. Berechnete Werte und die Kennung des Eintrags stehen unter `flowplan:` und werden beim Import übergangen. Wird ein so exportierter Eintrag wieder in dieselbe Datenbank importiert, bietet die Vorschau **aktualisieren statt neu anlegen** an: Der Eintrag mit derselben Kennung bekommt Eigenschaften und Text der Datei, der vorige Stand bleibt als Version erhalten. Ohne diese Wahl kommt er als neuer Eintrag hinzu.
 
-**Seiten:** Hat eine Seite [Aliasse](/pages-and-spaces#aliasse), beginnt ihre Markdown-Datei (einzeln, im Bereichs-Export und im geplanten Export) mit einem Frontmatter, das nur `aliases:` enthält; Seiten ohne Aliasse bleiben ohne Frontmatter. Der ZIP-Import unter **Einstellungen → Import & Export** liest `aliases:`/`alias:` einer Notiz als Aliasse der neuen Seite; ein Frontmatter, das nur Aliasse enthält, verschwindet dabei aus dem Text, anderes Frontmatter bleibt wie bisher im Text stehen. Der Git-Export liest Aliasse geänderter Seiten ebenfalls zurück.
+**Seiten:** [Aliasse](/pages-and-spaces#aliasse), [Tags und Eigenschaften](/pages-and-spaces#tags-und-eigenschaften) einer Seite schreibt der Markdown-Export (einzeln, im Bereichs-Export, im geplanten Export und im Git-Export) als Frontmatter an den Anfang der Datei – so, wie Obsidian sie liest:
+
+```markdown
+---
+tags:
+  - Kunde
+  - Angebot
+Status: Gesendet
+Budget: 12500
+Fällig: 2026-12-01
+Verantwortlich: Emil Beispiel
+---
+# Angebot Müller GmbH
+```
+
+Personen stehen mit ihrem Namen, Mehrfachauswahlen als Liste, Kontrollkästchen als `true`/`false`; die automatischen Eigenschaften (Erstellt am …) fehlen. Seiten ohne Aliasse, Tags und Werte bleiben ohne Frontmatter.
+
+Beim Import von Markdown-Dateien, Markdown-ZIPs und Obsidian-Tresoren unter **Einstellungen → Import & Export** wird `aliases:`/`alias:` zu den Aliassen der neuen Seite und `tags:` (oder `tag:`, als Liste oder „a, b“) zu ihren Tags; fehlende Tags werden angelegt. Weitere Schlüssel werden zu Eigenschaften: Gibt es im Arbeitsbereich schon eine Eigenschaft mit dem Namen, bekommt die Seite dort ihren Wert. Unbekannte Schlüssel legen nur **Eigentümer** des Arbeitsbereichs als neue Eigenschaften an – der Typ ergibt sich aus dem Wert (`true` → Kontrollkästchen, Zahl → Zahl, `2026-12-01` → Datum, Liste → Mehrfachauswahl, Webadresse, E-Mail, sonst Text). Schlüssel von Veröffentlichungswerkzeugen (`cssclass`, `publish`, `permalink`, `layout`, `slug`, `draft` …) werden nie zu Eigenschaften. Ist das ganze Frontmatter übernommen, verschwindet es aus dem Text; sonst bleibt es wie bisher im Text stehen. Der Git-Export liest Aliasse, Tags und Werte geänderter Seiten aus dem Repository zurück.
 
 **Wo exportieren:** In der Leiste einer Datenbank öffnet **Exportieren** ein Menü mit **CSV (aktuelle Ansicht)**, **Markdown mit Dateien (.zip)**, **Markdown (.md)** und **Als Word (DOCX)**. Einen einzelnen Eintrag exportiert das **…**-Menü im Kopf des Eintrags: **Als Markdown exportieren (.md)** (mit Frontmatter), **Markdown mit Dateien (.zip)**, **Als Word (DOCX)** (Eigenschaften als Tabelle, dann das Dokument) oder **Drucken / PDF**.
 
@@ -112,6 +129,8 @@ Unter **Einstellungen → Import & Export → Export → Arbeitsbereich als ZIP*
 Die Sicherung der ganzen Instanz (mit Konten und Rechten) ist Sache der Administration: **Administration → Speicher & Sicherung**. Die Karte **Papierkorb & Aufbewahrung** führt zum Papierkorb und sagt, wie lange was aufbewahrt wird: gelöschte Seiten und Bereiche, bis jemand sie endgültig löscht, gelöschte Datenbank-Einträge 30 Tage; wie lange frühere Versionen bleiben, legt die Administration fest.
 
 Enthalten: zugängliche Seiten samt Papierkorb, Datenbanken mit Ansichten und Einträgen, Dokumentinhalte, Relationen, Vorlagen, Kommentare, Versionen, Favoriten und Formularoptionen, dazu alle Dateien mit Prüfsummen. Außerdem die Einstellungen der Datenbanken (Erledigt-Regel, Workflow, Automationen, Sprints, Story Points – nie das Git-Token), Zeiteinträge und der Statusverlauf hinter den Burndown-Diagrammen, die Einstellungen und Tracker der Journale samt Werten und Ort jedes Tages, Handschrift auf PDFs und deine [Startseite](/first-steps#startseite-anpassen) (übernommen nur, wenn die importierende Person noch keine eigene hat).
+
+Auch die Tags und Eigenschaften des Arbeitsbereichs (auch ungenutzte) und die Tags und Werte jeder Seite sind dabei. Beim Einspielen werden fehlende Tags angelegt, fehlende Eigenschaften nur, wenn du Eigentümer des Ziel-Arbeitsbereichs bist; vorhandene mit gleichem Namen werden weiterverwendet.
 
 Das Archiv enthält nur, was du selbst sehen darfst: private Einträge anderer samt ihrer Kommentare und Dateien fehlen, ebenso Journale hinter einer PIN, die du gerade nicht entsperrt hast. Versionen einer Datenbank kommen nur bei Besitzern mit, weil sie alle Einträge enthalten.
 

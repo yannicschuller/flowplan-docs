@@ -13,10 +13,11 @@ For all sources:
 
 - End-to-end encrypted spaces cannot be targets (the server sees no plaintext there).
 - You need write access to the target space; the workspace's storage quota and your personal limit are checked first (the preview already warns).
-- Limits per import: 100 MB, 500 pages (as a database: 5,000 records), 10 MB per file in the ZIP.
+- Limits per import: 500 pages (as a database: 5,000 records), 10 MB per file in the ZIP. ZIP exports and single files may be up to 100 MB. The **AFFiNE workspace file (`.affine`)** may be as large as the **largest upload** (Administration → [Limits & retention](/administration#limits-retention), can differ per person), but at least 100 MB; `FLOWPLAN_IMPORT_MAX_MB` sets the limit for the whole instance ([Configuration](/configuration#operations)). When a file is too large, the message names the limit and where to change it.
+- The file is uploaded only once: the preview keeps it on the server and **Import** uses it. Cancelling deletes it; otherwise it is deleted after six hours at the latest.
 - The content is cleaned like when pasting: scripts, forms and embedded foreign pages are dropped. File names are cleaned; files a browser could run (HTML, SVG) are only stored for download.
 - Links between imported pages point to the new pages. Images and attachments are uploaded – every file once, even if several pages show it.
-- **As a new database**, every note becomes a record with the properties *Tags*, *Created*, *Updated*, *Folder* (the folder path) and – where present – *Source*. As pages, tags appear as `#tag` at the top of the page.
+- **As a new database**, every note becomes a record with the properties *Tags*, *Created*, *Updated*, *Folder* (the folder path) and – where present – *Source*. As pages, tags become the [page's tags](/pages-and-spaces#tags-and-properties); missing ones are created in the workspace.
 
 ## From Notion
 
@@ -31,6 +32,7 @@ What it turns into:
 - Columns get a fitting type: numbers, checkboxes, dates (also in Notion's format "September 24, 2026") and selects with their options; the rest stays text.
 - Record pages are matched to their records as their document.
 - Images and files the pages refer to are uploaded.
+- Callouts become [callouts](/documents#callouts) and keep their emoji as their symbol.
 - Large exports that Notion splits into several ZIP files inside the ZIP are recognised.
 
 Limits per import: 100 MB, 500 pages and 5,000 records per table. Export larger workspaces in parts, for instance page by page.
@@ -52,10 +54,11 @@ Markdown becomes pages, CSV becomes databases; linked images and files come alon
 
 What it becomes:
 
-- **Everything lands below one page** named after the AFFiNE workspace. **Folders** become pages with their documents below them. A document in several folders lives in the first one; the others link to it. Documents outside folders sit directly below the workspace page.
-- **Text:** headings, paragraphs, bulleted and numbered lists, **to-dos** with their check mark, toggle lists, quotes, code blocks with their language, callouts (by colour: red → caution, orange/yellow → warning, green → tip, purple → important, otherwise note), dividers, tables, LaTeX (block and inline), bold, italic, underline, strike-through, code, links, text and highlight colours.
+- **Where it goes:** a workspace file (`.affine`) with several items at the top – folders, documents outside folders, collections – arrives below **one page named after the AFFiNE workspace**; the preview names it (“Everything below a page …”). A **snapshot** and a workspace with a single item at the top go **straight into the target space** – no empty page above them. A whiteboard counts with its document; journal documents go into the journal.
+- **Folders** become pages with their documents below them. A document in several folders lives in the first one; the others link to it. Documents outside folders sit at the top level – below the workspace page, if there is one.
+- **Text:** headings, paragraphs, bulleted and numbered lists, **to-dos** with their check mark, toggle lists, quotes, code blocks with their language, callouts (kind by colour: red → caution, orange/yellow → warning, green → tip, purple → important, otherwise note; their emoji becomes the [callout's symbol](/documents#your-own-symbol-and-colour)), dividers, tables, LaTeX (block and inline), bold, italic, underline, strike-through, code, links, text and highlight colours.
 - **Links between documents** – in the text (@ references), as linked-doc or synced-doc cards and as AFFiNE app links – point to the imported pages. Synced documents become links.
-- **Tags** appear as `#tag` at the top of the page (as a new database: the *Tags* property).
+- **Tags** become the page's tags, with their colours from AFFiNE (as a new database: the *Tags* property).
 - **Images and attachments** are uploaded and shown in their place (images as images, other files as links). Bookmarks and embeds (YouTube, Figma, GitHub …) become links.
 - **Databases** become a database page below their document and appear in the document at the same place as an embedded database. Columns: title, text, number, select, multi-select, date, checkbox, link (URL), progress (number in percent) and created. Rows keep their content as the record's document. Table views stay tables, kanban views become boards by the same column. Image columns are not imported.
 - **Whiteboards (edgeless):** a document's text always becomes a document. If its edgeless canvas holds more than the note with the text – shapes, connectors, texts, images, frames, further notes, drawings, mind maps – or AFFiNE opens the document in edgeless mode, a whiteboard **“Name – Whiteboard”** is created next to it. Document and whiteboard are linked: the document starts with a link to the whiteboard, and a card on the whiteboard points to the document (where the note was). Shapes (rectangle, rounded, ellipse, diamond, triangle) with text and colours, connectors (straight, elbow, curved, with arrows and labels, attached to their shapes), texts, brush strokes, images, frames, further notes (as sticky notes), groups and mind maps (nodes as shapes, branches as connectors) come along. Whatever has no counterpart is left out; the preview gives the number.
@@ -63,6 +66,7 @@ What it becomes:
 - **Journal:** AFFiNE's journal documents go into the workspace's [journal](/journal), each into the matching day – the journal in the target space, else one in the workspace you may write in; if there is none, the import creates one. A missing day is created; an existing day gets the text appended at the end (under the AFFiNE document's title).
 - Documents in AFFiNE's **trash** are not imported. HTML embeds and data views are left out; the preview names them.
 - Whiteboards, databases and journal days only come along when importing **as pages**; as a new database every document becomes a record.
+- **Large workspaces:** the `.affine` file may be larger than 100 MB (see the [limits above](#confluence-evernote-google-docs-and-obsidian)). The server writes it straight to disk while it is uploaded and reads images and attachments one at a time during the import – memory grows with the documents, not with the files. A reverse proxy in front must let such large requests through (see [Coolify and reverse proxies](/coolify-and-proxy#pangolin-traefik-and-other-proxies)).
 - Safety: the file is only read; the size, number and nesting of documents are limited, text never comes in as HTML, and links keep only `http`, `https` and `mailto`.
 
 ## From Confluence
@@ -110,7 +114,7 @@ What it turns into:
   - **Wikilinks** `[[Page]]`, `[[Page|text]]`, `[[Folder/Page]]` and `[[Page#Heading]]` become links to the imported pages – resolved like Obsidian does, by path or file name. Links to notes that do not exist stay text.
   - **Embedded files** `![[image.png]]` become images, `![[file.pdf]]` file links; embedded notes `![[Note]]` become links.
   - **Callouts** such as `> [!note]` or `> [!warning] Title` become callouts of the matching kind.
-  - **Tags** from the frontmatter (`tags:`) and in the text (`#tag`, not in code) are collected: on pages as `#tag` at the top, in a new database in the *Tags* property – together with *Folder* for where a note came from.
+  - **Tags** from the frontmatter (`tags:`) and in the text (`#tag`, not in code) are collected: on pages as the page's tags, in a new database in the *Tags* property – together with *Folder* for where a note came from. Further frontmatter keys become [properties](/import-export-versions#frontmatter-records-as-markdown-files) on pages.
 - **Notes with frontmatter into an existing database:** in a database choose **Import CSV or Markdown** and pick the `.md` files or a ZIP. The YAML properties become columns – see [Frontmatter](/import-export-versions#frontmatter-records-as-markdown-files).
 - **Aliases:** `aliases: [PAC, Pompe à chaleur]` (or `alias:`) in the frontmatter becomes the page's [aliases](/pages-and-spaces#aliases) or the record's [Aliases](/properties-and-formulas#aliases) property. @ mentions, search and unlinked mentions then also find "Chauffage" by "PAC", and the Markdown export writes them back as `aliases:`.
 

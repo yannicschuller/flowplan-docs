@@ -97,6 +97,45 @@ Under **… → Aliases …** a page gets further names, such as abbreviations (
 > [!NOTE]
 > Through the API, the command `page.aliases` (`{ pageId, aliases: [...] }`) sets the aliases of a page; an empty list removes them. A restore archive keeps them.
 
+## Tags and properties
+
+Every page – document, database, whiteboard, notebook, dashboard, journal day – can carry **tags** and **properties**. Both belong to the whole workspace: a tag “Customer” is the same on every page, a property “Status” has the same options everywhere. (The properties of database records are separate, see [Properties, formulas and rollups](/properties-and-formulas).)
+
+A slim bar under the page title holds them:
+
+- **+ Tag** opens a field that suggests matching tags. <kbd>↑</kbd>/<kbd>↓</kbd> choose, <kbd>Enter</kbd> adds, <kbd>Esc</kbd> closes. If the name does not exist yet, <kbd>Enter</kbd> creates the tag. The field stays open so you can add several tags in a row. The ✕ on a tag removes it from the page.
+- Clicking a tag opens the [tag view](#tag-view) with all pages that carry it.
+- **+ Property** lists the workspace's properties the page does not have yet; owners can also choose **New property …** there. You edit values right in the bar – with the same fields as in databases. The ✕ next to a value removes it.
+
+With neither tags nor values the bar is just a faint line with **+ Tag** and **+ Property**; in reading mode, without edit rights and on locked pages it is hidden then.
+
+| Property type | Value |
+| --- | --- |
+| Text, URL, email, phone | Text up to 2,000 characters; URL, email and phone as links |
+| Number | a number |
+| Date | a day, optionally with a time |
+| Select / multi-select | one or several of the defined options |
+| Checkbox | yes or no |
+| Person | a member of the workspace |
+| Created at, edited at, created by, edited by | read from the page automatically |
+
+**Who may do what:**
+
+- **A page's tags and values** are set by whoever may edit the page – including guests with edit rights on it.
+- **New tags** are created by members with edit rights while tagging. Guests and readers only pick existing ones.
+- **Settings → Tags & properties** can only be changed by workspace owners; others see the lists. There tags are renamed, coloured (nine colours), ordered, merged and deleted, and properties are created, changed in type and options, ordered and deleted. A changed type or a removed option converts values where possible and removes the others; a deleted property disappears with its values from every page.
+- Values are read by whoever may read the page. The tag view, search and counts only show pages you may read; guests only see the tags and properties of the pages shared with them.
+
+Pages in [encrypted spaces](/encrypted-spaces) have no tags or properties – the server would have to store them as plain text.
+
+### Tag view
+
+**Tags** (the tag icon at the bottom of the sidebar, or `> tags` in quick search) shows all tags with the number of their pages. A tag opens the list of its pages, most recently changed first. Above it you narrow the list with text or further tags (“And: + Offer”). Owners reach the settings through **Manage tags**. The view has its own address (`#tags/<id>`) to share or bookmark. In the search, `#tag` finds the same, see [Filter by tags and properties](/search-and-notifications#filter-by-tags-and-properties).
+
+### Copies, templates and trash
+
+Duplicating keeps tags and values (into another workspace by name: missing tags are created, values only for properties that exist there). [Page templates](/templates#your-own-templates) store tags and values and put them on new pages made from the template. In the trash they are kept and come back on restore; only deleting permanently removes them. Through the API, the command `page.properties` sets tags and values, see [API and webhooks](/api-and-webhooks#tags-and-properties-via-the-api).
+
 ## Favourites and "Linked from"
 
 The star in the header puts a page under **Favourites** in the sidebar – personal, others do not see your favourites. At the bottom of every page, **Linked from** shows which pages and database records refer to it.

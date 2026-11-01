@@ -100,7 +100,24 @@ Before the import, a preview shows which properties match and which are missing.
 
 **Export:** in the ZIP export, every record under `records/` starts with `title:` and its properties: select as text, multi-select and relations (titles of the linked records) as lists, dates as ISO dates. Aliases are written under Obsidian's key `aliases:` as a list, so they survive a trip to Obsidian and back. Computed values and the record's id are below `flowplan:` and are skipped on import. When a record exported this way is imported into the same database again, the preview offers **update instead of adding**: the record with the same id gets the file's properties and text, and the previous state stays as a version. Without this choice it is added as a new record.
 
-**Pages:** when a page has [aliases](/pages-and-spaces#aliases), its Markdown file (single page, space export and scheduled export) starts with frontmatter that only holds `aliases:`; pages without aliases keep no frontmatter. The ZIP import under **Settings → Import & export** reads a note's `aliases:`/`alias:` as the aliases of the new page; frontmatter holding nothing but aliases is removed from the text, other frontmatter stays in the text as before. The Git export reads aliases of changed pages back as well.
+**Pages:** a page's [aliases](/pages-and-spaces#aliases), [tags and properties](/pages-and-spaces#tags-and-properties) are written by the Markdown export (single page, space export, scheduled export and Git export) as frontmatter at the top of the file – the way Obsidian reads them:
+
+```markdown
+---
+tags:
+  - Customer
+  - Offer
+Status: Sent
+Budget: 12500
+Due: 2026-12-01
+Owner: Emil Example
+---
+# Offer Müller Ltd
+```
+
+People appear by name, multi-selects as a list, checkboxes as `true`/`false`; the automatic properties (created at …) are left out. Pages without aliases, tags and values keep no frontmatter.
+
+When importing Markdown files, Markdown ZIPs and Obsidian vaults under **Settings → Import & export**, `aliases:`/`alias:` becomes the new page's aliases and `tags:` (or `tag:`, as a list or “a, b”) its tags; missing tags are created. Further keys become properties: if the workspace already has a property with that name, the page gets its value there. Unknown keys are created as new properties only by workspace **owners** – the type follows the value (`true` → checkbox, number → number, `2026-12-01` → date, list → multi-select, URL, email, otherwise text). Keys of publishing tools (`cssclass`, `publish`, `permalink`, `layout`, `slug`, `draft` …) never become properties. When the whole frontmatter is taken over, it disappears from the text; otherwise it stays in the text as before. The Git export reads aliases, tags and values of changed pages back from the repository.
 
 **Where to export:** in a database's toolbar, **Export** opens a menu with **CSV (current view)**, **Markdown with files (.zip)**, **Markdown (.md)** and **As Word (DOCX)**. A single record is exported from the **…** menu in its header: **Export as Markdown (.md)** (with frontmatter), **Markdown with files (.zip)**, **As Word (DOCX)** (properties as a table, then the document) or **Print / PDF**.
 
@@ -112,6 +129,8 @@ Under **Settings → Import & export → Export → Workspace as ZIP** you downl
 Backing up the whole instance (with accounts and permissions) is up to the administration: **Administration → Storage & backup**. The card **Trash & retention** leads to the trash and says how long things are kept: deleted pages and spaces until someone deletes them permanently, deleted database records 30 days; how long earlier versions stay is set by the administration.
 
 It contains: accessible pages including the trash, databases with views and records, document content, relations, templates, comments, versions, favourites and form options, plus all files with checksums. Also the settings of databases (done rule, workflow, automations, sprints, story points – never the Git token), time entries and the status history behind burndown charts, the settings and trackers of journals with each day's values and place, handwriting on PDFs and your [home page](/first-steps#customize-your-home-page) (applied only when the person importing has none of their own yet).
+
+The workspace's tags and properties (unused ones too) and every page's tags and values come along as well. Importing creates missing tags, and missing properties only if you own the target workspace; existing ones with the same name are reused.
 
 The archive only holds what you may see yourself: other people's private records with their comments and files are left out, as are journals behind a PIN you have not unlocked right now. Versions of a database are included only for owners, because they contain every record.
 

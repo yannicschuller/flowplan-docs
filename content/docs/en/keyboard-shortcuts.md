@@ -20,6 +20,8 @@ All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>S</kbd> | Open or close the [split view](/pages-and-spaces#split-view) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd> | [Present](/documents#present) the document |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> | [Journal](/journal#from-day-to-day): open today (of the journal used last) |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>X</kbd> | [Collapse all sections](/documents#collapsing-sections) (of the open document or record) |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>O</kbd> | Expand all sections |
 | – | Light or dark theme (no default, your own shortcut possible) |
 | <kbd>Esc</kbd> | Close a dialog, menu or the search |
 | <kbd>⌘</kbd> <kbd>Z</kbd> | Take back a deletion, a move or a bulk edit while the notice with **Undo** shows (outside text fields; in the editor it undoes the last input) |
@@ -61,7 +63,8 @@ The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kb
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>B</kbd> | Quote |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>C</kbd> | Code block |
 | <kbd>Tab</kbd> / <kbd>⇧</kbd> <kbd>Tab</kbd> | Indent / outdent |
-| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Move block up / down |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Move block up / down (a collapsed heading with its section) |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> | In a heading: [collapse or expand its section](/documents#collapsing-sections) |
 | <kbd>⇧</kbd> <kbd>Enter</kbd> | Line break within the same block |
 | <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>Z</kbd> | Undo / redo |
 | <kbd>⌘</kbd> <kbd>Enter</kbd> | Send a comment; in **Edit as Markdown**: apply |

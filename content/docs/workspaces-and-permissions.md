@@ -14,8 +14,8 @@ Beim **Verlassen** muss ein letzter Eigentümer vorher unter **Einstellungen →
 
 | Rolle | Darf |
 | --- | --- |
-| **Eigentümer** | Alles, dazu Mitglieder, Gruppen, Bereiche (auch ihre Reihenfolge in der Seitenleiste) und den Arbeitsbereich selbst verwalten |
-| **Bearbeiten** | Seiten anlegen und ändern, kommentieren, teilen |
+| **Eigentümer** | Alles, dazu Mitglieder, Gruppen, Bereiche (auch ihre Reihenfolge in der Seitenleiste), [Tags und Seiteneigenschaften](/pages-and-spaces#tags-und-eigenschaften) und den Arbeitsbereich selbst verwalten |
+| **Bearbeiten** | Seiten anlegen und ändern, Tags und Eigenschaftswerte vergeben, neue Tags anlegen, kommentieren, teilen |
 | **Ansehen** | Lesen und kommentieren |
 | **Gast** | Nur ausdrücklich freigegebene Seiten und Bereiche, mit Ansehen oder Bearbeiten |
 

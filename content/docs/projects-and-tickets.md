@@ -46,14 +46,18 @@ Die Regeln gelten überall: in Tabelle und Board, bei Sammeländerungen, für G�
 
 - **Wenn**: ein Eintrag erstellt wird, ein Eintrag über ein Formular kommt, sich eine Eigenschaft ändert (wahlweise auf einen bestimmten Wert), ein Datum überschritten ist oder es nach Zeitplan so weit ist (siehe [Geplante Automationen](#geplante-automationen)).
 - **Nur wenn** (optional): Bedingungen wie „Priorität ist Hoch“ oder „Zuständig ist leer“.
-- **Dann**: Eigenschaften setzen oder benachrichtigen.
+- **Dann**: Eigenschaften setzen, benachrichtigen oder eine **Vorlage anwenden**.
   - Werte für Eigenschaften können fest sein oder *heute*, *jetzt*, *die auslösende Person* oder *der Ersteller* lauten.
   - Benachrichtigt werden können die Person in einer Personen-Eigenschaft, der Ersteller, die auslösende Person oder ein bestimmtes Mitglied.
+  - **Vorlage anwenden** setzt eine [Datensatzvorlage](/templates#datensatzvorlagen) auf den auslösenden Eintrag – mit ausgefüllten [Platzhaltern](/templates#platzhalter). Wahlweise **nur wenn der Inhalt leer ist** (vorhandener Text bleibt dann unberührt) oder **unten anhängen**. Leere Eigenschaften erhalten die Werte der Vorlage. Jede Regel wendet eine Vorlage pro Eintrag nur einmal an – auch wenn der Status später hin- und herwechselt.
 
 Vorschläge legen die üblichen Regeln mit einem Klick an:
 - „Wenn Status → Erledigt, Datum setzen“,
 - „Wenn die Fälligkeit überschritten ist, benachrichtigen“,
-- „Neue Formular-Einträge zuweisen“.
+- „Neue Formular-Einträge zuweisen“,
+- „Wenn Status → Genehmigt, Vorlage anwenden“ (wenn die Datenbank Datensatzvorlagen hat).
+
+Beispiel: *Wenn* Status sich auf „Genehmigt“ ändert, *nur wenn* Firma nicht leer ist, *dann* Vorlage „Kickoff“ anwenden. Jeder genehmigte Eintrag bekommt so seine Kickoff-Seite mit Firmenname und Termin. Angewendete Vorlagen stehen im [Aktivitätsprotokoll](/administration#aktivitaetsprotokoll) (`row.template.applied`).
 
 Regeln lassen sich einzeln ausschalten.
 

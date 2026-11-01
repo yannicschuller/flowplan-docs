@@ -298,6 +298,15 @@ Both clients send an [`Idempotency-Key`](#idempotency-key-retries-without-double
 
 If you build Flowplan yourself, `npm run sdk` regenerates the clients; the test `tests/openapi.test.ts` fails when the committed files no longer match the document.
 
+### Tags and properties via the API
+
+- `GET /api/tags?workspace=<id>` – the workspace's tags (`id`, `name`, `color`, `position`, `pages`) and properties (`id`, `name`, `type`, `options`). `GET /api/tags/<tagId>?workspace=<id>` adds the readable pages with that tag.
+- `GET /api/pages/<id>` contains `properties`: `tags` (tag IDs), `values` (by property ID) and `info` (created/changed at/by).
+- `POST /api/command` with `page.properties`: `{ "action": "page.properties", "pageId": "…", "addTags": ["Customer"], "values": { "Status": "Open", "Budget": 1200 } }`. Tags and properties go by ID or name; `tags` replaces all tags, `addTags`/`removeTags` change them, `null` removes a value.
+- `pages.tag` adds or removes tags on up to 500 pages at once.
+- Owners only: `tag.save`, `tag.delete`, `tag.merge`, `tag.reorder`, `property.save`, `property.delete`, `property.reorder`. New tags (`tag.save` without `tagId`) may also be created by members with edit rights.
+- In `GET /api/search`, `#tag`, `-#tag` and `name:value` act as filters (see [Search](/search-and-notifications#filter-by-tags-and-properties)). MCP clients get tags and values with `read_page` as frontmatter.
+
 ## n8n
 
 For [n8n](https://n8n.io) there is the community node **`n8n-nodes-flowplan`** (source under [`integrations/n8n`](https://github.com/yannicschuller/flowplan/tree/main/integrations/n8n)).

@@ -50,6 +50,7 @@ Alles, wofür der Server den Inhalt lesen müsste, ist hier abgeschaltet und wir
 - Kommentare und Textkommentare, Erwähnungen mit Benachrichtigung
 - Freigabelinks, Teilen einzelner Seiten und Veröffentlichung
 - Versionsverlauf, Vorlagen, Duplizieren, Verschieben in andere Bereiche (hinein wie heraus)
+- [Tags und Seiteneigenschaften](/pages-and-spaces#tags-und-eigenschaften)
 - Export als PDF, DOCX, EPUB, Markdown vom Server, Git-Export
 - Webhooks erhalten nur die Seiten-ID, MCP-Clients nur Metadaten
 

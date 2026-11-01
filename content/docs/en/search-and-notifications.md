@@ -9,6 +9,7 @@ The quick search finds content right down into file attachments. The inbox and p
 It searches:
 
 - page titles and [aliases](/pages-and-spaces#aliases) as well as document text,
+- [tags and property values](/pages-and-spaces#tags-and-properties) of pages,
 - database records and their content,
 - comments,
 - file names,
@@ -19,6 +20,25 @@ It searches:
 Hits can be filtered by type and space. [Journal days](/journal#days-in-lists-search-graph-and-export) come after all other hits; **Without journal days** leaves them out completely and stays on for the next search. File text is indexed in the background and can be found after a few seconds. The search only shows what you may read. <kbd>Enter</kbd> opens the first hit.
 
 Aliases of pages and records weigh as much as the title. When the search only matches an alias, the hit shows the real title with the alias in grey, e.g. "Chauffage · PAC". The same applies in the @ mention dialog.
+
+### Filter by tags and properties
+
+These words act as filters in the search:
+
+| Input | Finds |
+| --- | --- |
+| `#customer` | pages with the tag “customer” (case does not matter); tags with spaces as `#"New idea"` |
+| `-#internal` | leaves out pages with the tag |
+| `Status:Open` | property “Status” with the value “Open” (select and multi-select: exactly this option; text, URL, email, phone: contains) |
+| `Budget:>1000`, `Budget:<=50`, `Budget:10..20` | compare numbers |
+| `Due:2026-12`, `Due:>2026-11-01`, `Due:2026-11-01..2026-11-30` | dates: day, month or year; after, between (also `<`, `>=`, `<=`) |
+| `Billed:yes` / `Billed:no` | checkbox |
+| `Owner:Emil`, `Owner:me` | person by name; `me` is you |
+| `Status:*` / `Status:-` | property set / empty |
+
+Names with spaces go in quotes: `"Next step":Offer`. Several filters apply together; the remaining text is searched as usual. Filters without text list all matching pages, most recently changed first. Words that name no tag and no property (like `#123`) stay ordinary search words.
+
+Recognised filters appear as chips under the search field; ✕ removes one. The **Tag …** choice next to the space adds a tag filter. Saved searches keep the filters. Tag names and values are also ordinary words of the page: “customer” also finds pages tagged “customer”.
 
 ### Commands
 

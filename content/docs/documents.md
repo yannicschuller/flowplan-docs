@@ -56,6 +56,17 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 
 Das Listen-Symbol oben rechts im Dokument öffnet das **Inhaltsverzeichnis** neben dem Text – in allen Dokumenten, auch in Journal-Tagen und Einträgen einer Datenbank. Es entsteht aus den Überschriften und wächst beim Schreiben mit, markiert den Abschnitt, in dem du gerade liest, und springt per Klick zur Überschrift. Ob es offen ist, merkt sich Flowplan in diesem Browser für alle Dokumente. Auf dem Handy öffnet es ein runder Knopf unten rechts.
 
+## Abschnitte einklappen
+
+Jede Überschrift lässt sich **einklappen**: Der kleine Pfeil links neben der Überschrift (erscheint beim Darüberfahren; auf Touch-Geräten und bei eingeklappten Überschriften immer) blendet alles darunter aus – bis zur nächsten Überschrift derselben oder einer höheren Ebene. Eine eingeklappte Überschrift zeigt dahinter, wie viel verborgen ist (**… 3 Blöcke**); ein zweiter Klick klappt wieder aus. Steht der Cursor in der Überschrift, geht das auch mit <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd>. Auf dem Handy sitzt der Pfeil am Ende der Überschrift, in Texten von rechts nach links auf der anderen Seite.
+
+- **Alle Abschnitte einklappen / ausklappen:** im Seitenmenü `⋯` eines Dokuments, oben im [Inhaltsverzeichnis](#inhaltsverzeichnis), in der Schnellsuche (`> abschnitte`) oder mit <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>X</kbd> bzw. <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>O</kbd> ([änderbar](/keyboard-shortcuts#eigene-tastenkuerzel)). Ist ein Datenbank-Eintrag offen, gilt es für seinen Text.
+- **Nur für dich:** Was eingeklappt ist, merkt sich dieses Gerät (pro Seite bzw. Eintrag) – es ändert das Dokument nicht, andere sehen alles wie bisher. Neu geöffnete Dokumente sind ausgeklappt.
+- **Nichts geht verloren:** Kommt der Cursor in einen eingeklappten Teil (Pfeiltasten, Rückgängig, ein Klick im Inhaltsverzeichnis), klappt er auf. Ebenso, wenn **Auf der Seite suchen** (<kbd>⌘</kbd> <kbd>F</kbd>) einen Treffer darin anspringt oder ein Suchtreffer, Rückverweis oder eine Benachrichtigung dorthin führt. In der eingeklappten Überschrift selbst kannst du weiterschreiben, sie bleibt eingeklappt.
+- **Verschieben:** Ziehst du eine eingeklappte Überschrift am Griff `⋮⋮` (oder verschiebst sie mit <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd>/<kbd>↓</kbd>), wandert ihr ganzer Abschnitt mit.
+- **Drucken und PDF** zeigen immer alles; ebenso Export, Präsentation und veröffentlichte Seiten.
+- Einklappen lassen sich Überschriften direkt im Dokument – auch im Lesemodus und in [verschlüsselten Bereichen](/encrypted-spaces). Überschriften in Hinweisen, Toggles, Tabellen, Spalten oder Listen haben keinen Pfeil; solche Blöcke gehören einfach zum Abschnitt, in dem sie stehen.
+
 ## Antworten aus ChatGPT einfügen
 
 Text, den du aus ChatGPT oder einem anderen Assistenten kopierst, wird beim Einfügen formatiert: Formeln in LaTeX (`\[ … \]`, `\( … \)`, `$$ … $$`) werden zu Formelblöcken und Formeln im Satz, Markdown (Überschriften, **fett**, Listen, Tabellen) wird umgesetzt, Zeilen mit Tabulatoren werden zur Tabelle, `☐` zur Aufgabenliste, und jede Zeile wird ein eigener Absatz. Aus der Webseite kopierte, bereits gerenderte Formeln bleiben als Formel erhalten. Das gilt auch für das Kopieren direkt aus der ChatGPT-Webseite. Stehen Formeln schon als Text im Dokument (etwa `\[ A(3;2;1) \]`), markiere sie – oder alles mit <kbd>⌘</kbd>/<kbd>Strg</kbd>+<kbd>A</kbd> – und wähle im Textmenü **In Formeln umwandeln**. Gewöhnlicher Text wird wie bisher eingefügt.
@@ -64,7 +75,28 @@ Text, den du aus ChatGPT oder einem anderen Assistenten kopierst, wird beim Einf
 
 Hinweise gibt es in fünf Arten, wie bei GitHub, Forgejo und Obsidian: **Hinweis** (blau), **Tipp** (grün), **Wichtig** (lila), **Warnung** (gelb) und **Achtung** (rot). Jede Art hat ihr Symbol und ihren Titel in der Sprache der Lesenden. Steht der Cursor in einem Hinweis, ändert `/tipp`, `/warnung` usw. seine Art; ebenso das Blockmenü (Klick auf den Griff `⋮⋮`) → **Hinweistyp**.
 
-Beim Markdown-Export werden Hinweise zu GitHub-Hinweisen (`> [!WARNING]`). Beim Import (Markdown, ZIP, Notion) werden `> [!NOTE]` bis `> [!CAUTION]` wieder zu Hinweisen der passenden Art; die weiteren Arten von Obsidian landen bei der nächstliegenden (etwa `danger` → Achtung, `hint` → Tipp), ein eigener Titel (`> [!WARNING] Vorher lesen`) wird zur fetten ersten Zeile.
+### Eigenes Symbol und eigene Farbe
+
+Damit ein Hinweis auch für anderes taugt – eine Idee 💡, ein Termin 📅, ein Merksatz ★ –, bekommt er im Blockmenü ein eigenes Symbol und eine eigene Farbe:
+
+- **Symbol** → **Emoji oder Zeichen wählen …** öffnet die Emoji-Auswahl (dieselbe wie für Seitensymbole, mit Suche, Kategorien und Hautton). Unter **Oder ein eigenes Zeichen** tippst du auch ein Zeichen wie ★, → oder ✓ ein – erlaubt ist genau ein Emoji oder Symbolzeichen, keine Buchstaben, Ziffern, Satzzeichen oder Leerzeichen. **Symbol entfernen** stellt das Symbol der Art wieder her.
+- **Farbe** bietet die neun Textfarben (Grau, Braun, Orange, Gelb, Grün, Blau, Lila, Pink, Rot); **Standard** nimmt wieder die Farbe der Art. Die Farben sind im hellen und im dunklen Design gut lesbar.
+
+Die Art bleibt dabei erhalten: Sie gibt den Titel („Tipp“, „Warnung“ …) und gilt beim Markdown-Export. Symbol und Farbe bleiben beim Kopieren, Duplizieren, in Vorlagen, Versionen, veröffentlichten Seiten, beim Drucken sowie im PDF-, EPUB- und Word-Export erhalten. In [verschlüsselten Bereichen](/encrypted-spaces) gibt es keine Hinweise.
+
+### Hinweise in Markdown
+
+Beim Markdown-Export werden Hinweise zu GitHub-Hinweisen (`> [!WARNING]`). Ein eigenes Symbol steht am Anfang des Textes, eine eigene Farbe als Kommentar am Ende, den GitHub nicht anzeigt:
+
+```markdown
+> [!TIP]
+>
+> 💡 Mit / geht es schneller.
+>
+> <!-- flowplan:callout color=green -->
+```
+
+Beim Import (Markdown, ZIP, Notion) werden `> [!NOTE]` bis `> [!CAUTION]` wieder zu Hinweisen der passenden Art; die weiteren Arten von Obsidian landen bei der nächstliegenden (etwa `danger` → Achtung, `hint` → Tipp), ein eigener Titel (`> [!WARNING] Vorher lesen`) wird zur fetten ersten Zeile. Steht am Anfang des Textes ein einzelnes Emoji oder Symbol mit Leerzeichen dahinter, wird es zum Symbol des Hinweises; der Farbkommentar stellt die Farbe wieder her. Hinweise aus Notions Markdown-Export (`<aside>💡 …</aside>`) werden zu Hinweisen mit ihrem Emoji.
 
 ## Lesemodus
 
@@ -158,7 +190,7 @@ Ein Klick auf den Griff öffnet das **Blockmenü** (am Handy von unten):
 - **Verschieben unter …** – direkt unter eine Überschrift der Seite, an den Anfang oder ans Ende
 - **Duplizieren** und **Löschen**
 - **Umwandeln in …** – Text, Überschrift 1–3, Aufzählung, nummerierte Liste, Aufgabenliste, Zitat, Hinweis oder Code; Listenpunkte wechseln die Listenart, Zitate und Hinweise lassen sich auflösen
-- **Hinweistyp**, **Breite** (Videos und Einbettungen) und **Textrichtung**, wo sie passen
+- **Hinweistyp**, **Symbol** und **Farbe** (Hinweise), **Breite** (Videos und Einbettungen) und **Textrichtung**, wo sie passen
 - **Mehrere auswählen** – der Auswahlmodus
 
 Im **Auswahlmodus** stehen Kreise statt der Griffe. Ein Tipp wählt einen Block aus, ein weiterer erweitert die Auswahl bis dorthin; sind alle Punkte einer Liste gewählt, gilt die ganze Liste. Die Leiste unten verschiebt, dupliziert, verschiebt unter eine Überschrift oder löscht die Auswahl, **⋯** hat den Rest des Blockmenüs. **Fertig** oder <kbd>Esc</kbd> beendet den Modus.

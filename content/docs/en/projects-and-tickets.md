@@ -46,14 +46,18 @@ The rules apply everywhere: table and board, bulk edits, guests and the Git conn
 
 - **When**: a record is created, a record arrives through a form, a property changes (optionally to a certain value), a date has passed or it is time according to a schedule (see [Scheduled automations](#scheduled-automations)).
 - **Only if** (optional): conditions such as “Priority is High” or “Assignee is empty”.
-- **Then**: set properties or notify.
+- **Then**: set properties, notify or **apply a template**.
   - Values for properties can be fixed, or *today*, *now*, *the person who triggered it* or *the creator*.
   - You can notify the person in a person property, the creator, the person who triggered it or a specific member.
+  - **Apply template** puts a [record template](/templates#record-templates) on the triggering record – with its [placeholders](/templates#placeholders) filled in. Either **only if the content is empty** (existing text then stays untouched) or **append below**. Empty properties get the template's values. Each rule applies a template to a record only once – even if the status later goes back and forth.
 
 Suggestions add the usual rules in one click:
 - “When Status → Done, set a date”,
 - “When the due date has passed, notify”,
-- “Assign new form records”.
+- “Assign new form records”,
+- “When Status → Approved, apply a template” (when the database has record templates).
+
+Example: *When* Status changes to “Approved”, *only if* Company is not empty, *then* apply the template “Kickoff”. Every approved record gets its kickoff page with the company name and date. Applied templates are recorded in the [activity log](/administration#activity-log) (`row.template.applied`).
 
 Each rule can be switched off on its own.
 

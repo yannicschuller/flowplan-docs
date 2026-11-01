@@ -58,7 +58,7 @@ Details: [Speicher und Sicherungen](/storage-and-backups).
 | Speicher je Arbeitsbereich | Für Arbeitsbereiche ohne eigenes Kontingent. |
 | Speicher je Person | Für Personen ohne eigene Grenze; alles, was sie hochladen oder kopieren. |
 | Eigene Arbeitsbereiche je Person | Wie viele Arbeitsbereiche eine Person besitzen darf. |
-| Größte Datei beim Hochladen | Grenze je Datei in MB. |
+| Größte Datei beim Hochladen | Grenze je Datei in MB. Gilt auch für den [Import einer AFFiNE-Arbeitsbereichsdatei](/migrate#von-affine) (mindestens 100 MB; `FLOWPLAN_IMPORT_MAX_MB` hat Vorrang). |
 | Versionen aufbewahren | Tage, nach denen automatische Versionen gelöscht werden. |
 
 Leere Felder fallen auf die [Umgebungsvariablen](/configuration) zurück. Jede Person sieht ihre Grenzen und den belegten Speicher unter **Einstellungen → Konto & Sicherheit → Deine Grenzen**.

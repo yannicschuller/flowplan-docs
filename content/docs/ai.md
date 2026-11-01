@@ -148,7 +148,7 @@ Auf Seiten, die die KI nicht lesen darf, sind alle KI-Einträge ausgegraut mit d
 - **Darstellung:** Antworten erscheinen formatiert – fett, kursiv, Listen (auch verschachtelt), Code und Links; die Quellen-Nummern bleiben anklickbar.
 - **Aktionen vorschlagen:** Unter einer Antwort schlägt die KI auf Wunsch vor, was sich daraus anlegen lässt – siehe [KI-Aktionen](#ki-aktionen).
 - **Gespräch:** Rückfragen beziehen die letzten Fragen und Antworten ein; **Neues Gespräch** beginnt von vorn. Das Gespräch bleibt nur in diesem Browser-Tab und wird nicht auf dem Server gespeichert.
-- Gesucht wird über den Volltextindex; die passendsten Absätze gehen mit deiner Frage an den Anbieter, der oben in der Leiste steht. Die KI liest dabei nur, was du lesen darfst und was für die KI freigegeben ist ([Worauf die KI zugreifen darf](#worauf-die-ki-zugreifen-darf)).
+- Gesucht wird über den Volltextindex; die passendsten Absätze gehen mit deiner Frage an den Anbieter, der oben in der Leiste steht. Die KI liest dabei nur, was du lesen darfst und was für die KI freigegeben ist ([Worauf die KI zugreifen darf](#worauf-die-ki-zugreifen-darf)). [Tags und Eigenschaftswerte](/pages-and-spaces#tags-und-eigenschaften) einer Seite gehören zu ihrem Text.
 - Während die Antwort entsteht, zeigen ein Schimmer und ein Schreibcursor den Fortschritt; die Quellen erscheinen nacheinander.
 
 ### Suche nach Bedeutung (optional)

@@ -12,10 +12,12 @@ test("every {{facts.…}} placeholder is filled, on the page and in the Markdown
   for (const locale of LOCALES) {
     for (const slug of docSlugs) {
       const doc = loadDoc(slug, locale)!;
-      assert.doesNotMatch(doc.html + doc.leadHtml, /\{\{/, `${locale}/${slug}`);
-      assert.doesNotMatch(docMarkdown(slug, locale), /\{\{/, `${locale}/${slug}.md`);
+      // Only facts placeholders: other double braces are text (record
+      // template placeholders like {{Title}} on the templates page).
+      assert.doesNotMatch(doc.html + doc.leadHtml, /\{\{\s*facts\b/, `${locale}/${slug}`);
+      assert.doesNotMatch(docMarkdown(slug, locale), /\{\{\s*facts\b/, `${locale}/${slug}.md`);
     }
-    assert.doesNotMatch(llmsFull("https://docs.example", locale), /\{\{/);
+    assert.doesNotMatch(llmsFull("https://docs.example", locale), /\{\{\s*facts\b/);
   }
   assert.throws(() => fillFacts("{{facts.nothing}}", "de"), /Unknown fact/);
   assert.equal(fillFacts("{{facts.views|word}} / {{facts.templates}}", "en", { ...FACTS, views: 10, templates: 26 }), "ten / 26");

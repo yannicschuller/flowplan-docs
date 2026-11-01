@@ -97,6 +97,45 @@ Unter **… → Aliasse …** bekommt eine Seite weitere Namen, etwa Abkürzunge
 > [!NOTE]
 > Über die API setzt der Befehl `page.aliases` (`{ pageId, aliases: [...] }`) die Aliasse einer Seite; eine leere Liste entfernt sie. Ein Restore-Archiv nimmt sie mit.
 
+## Tags und Eigenschaften
+
+Jede Seite – Dokument, Datenbank, Whiteboard, Notizbuch, Dashboard, Journaltag – kann **Tags** und **Eigenschaften** tragen. Beide gelten für den ganzen Arbeitsbereich: Ein Tag „Kunde“ ist auf allen Seiten derselbe, eine Eigenschaft „Status“ hat überall dieselben Optionen. (Die Eigenschaften von Datenbank-Einträgen sind davon getrennt, siehe [Eigenschaften, Formeln und Rollups](/properties-and-formulas).)
+
+Unter dem Seitentitel steht dafür eine schmale Leiste:
+
+- **+ Tag** öffnet ein Eingabefeld, das passende Tags vorschlägt. <kbd>↑</kbd>/<kbd>↓</kbd> wählen, <kbd>Enter</kbd> übernimmt, <kbd>Esc</kbd> schließt. Gibt es den Namen noch nicht, legt <kbd>Enter</kbd> den Tag an. Das Feld bleibt offen, sodass du mehrere Tags nacheinander vergibst. Das ✕ am Tag nimmt ihn von der Seite.
+- Ein Klick auf einen Tag öffnet die [Tag-Ansicht](#tag-ansicht) mit allen Seiten, die ihn tragen.
+- **+ Eigenschaft** zeigt die Eigenschaften des Arbeitsbereichs, die die Seite noch nicht hat; Eigentümer können dort auch **Neue Eigenschaft …** anlegen. Werte bearbeitest du direkt in der Leiste – mit denselben Feldern wie in Datenbanken. Das ✕ neben einem Wert entfernt ihn.
+
+Hat eine Seite weder Tags noch Werte, ist die Leiste nur eine blasse Zeile mit **+ Tag** und **+ Eigenschaft**; im Lesemodus, ohne Bearbeitungsrecht und auf gesperrten Seiten ist sie dann ganz ausgeblendet.
+
+| Eigenschaftstyp | Wert |
+| --- | --- |
+| Text, Webadresse, E-Mail, Telefon | Text bis 2.000 Zeichen; Webadresse, E-Mail und Telefon als Link |
+| Zahl | eine Zahl |
+| Datum | ein Tag, auf Wunsch mit Uhrzeit |
+| Auswahl / Mehrfachauswahl | eine bzw. mehrere der festgelegten Optionen |
+| Kontrollkästchen | ja oder nein |
+| Person | ein Mitglied des Arbeitsbereichs |
+| Erstellt am, Geändert am, Erstellt von, Geändert von | werden automatisch aus der Seite gelesen |
+
+**Wer was darf:**
+
+- **Tags und Werte einer Seite** setzt, wer die Seite bearbeiten darf – auch Gäste mit Bearbeitungsrecht auf der Seite.
+- **Neue Tags** legen Mitglieder mit Bearbeitungsrecht beim Vergeben an. Gäste und Leser wählen nur vorhandene.
+- **Einstellungen → Tags & Eigenschaften** ändern nur Eigentümer des Arbeitsbereichs; andere sehen die Listen. Dort werden Tags umbenannt, eingefärbt (neun Farben), sortiert, zusammengeführt und gelöscht, Eigenschaften angelegt, in Typ und Optionen geändert, sortiert und gelöscht. Ein geänderter Typ oder eine entfernte Option wandelt Werte um, wo es geht, und entfernt die übrigen; eine gelöschte Eigenschaft verschwindet samt ihren Werten von allen Seiten.
+- Werte liest, wer die Seite lesen darf. Tag-Ansicht, Suche und Zähler zeigen nur Seiten, die du lesen darfst; Gäste sehen nur die Tags und Eigenschaften der Seiten, die für sie freigegeben sind.
+
+Seiten in [verschlüsselten Bereichen](/encrypted-spaces) haben keine Tags und Eigenschaften – der Server müsste sie im Klartext speichern.
+
+### Tag-Ansicht
+
+**Tags** (Etikett-Symbol unten in der Seitenleiste oder `> tags` in der Schnellsuche) zeigt alle Tags mit der Zahl ihrer Seiten. Ein Tag öffnet die Liste seiner Seiten, die zuletzt geänderte zuerst. Darüber engst du die Liste mit Text oder weiteren Tags ein („Und: + Angebot“). Eigentümer kommen über **Tags verwalten** zu den Einstellungen. Die Ansicht hat eine eigene Adresse (`#tags/<id>`), die du teilen oder als Lesezeichen speichern kannst. In der Suche findet `#Tag` dasselbe, siehe [Nach Tags und Eigenschaften filtern](/search-and-notifications#nach-tags-und-eigenschaften-filtern).
+
+### Kopien, Vorlagen und Papierkorb
+
+Duplizieren übernimmt Tags und Werte (in einen anderen Arbeitsbereich über den Namen: fehlende Tags werden angelegt, Werte nur für Eigenschaften, die es dort gibt). [Seitenvorlagen](/templates#eigene-vorlagen) speichern Tags und Werte mit und setzen sie auf neue Seiten aus der Vorlage. Im Papierkorb bleiben sie erhalten und kommen beim Wiederherstellen zurück; erst endgültiges Löschen entfernt sie. Über die API setzt der Befehl `page.properties` Tags und Werte, siehe [API und Webhooks](/api-and-webhooks#tags-und-eigenschaften-per-api).
+
 ## Favoriten und „Verlinkt von“
 
 Der Stern in der Kopfzeile legt eine Seite unter **Favoriten** in der Seitenleiste ab – persönlich, andere sehen deine Favoriten nicht. Unten auf jeder Seite zeigt **Verlinkt von**, welche Seiten und Datenbank-Einträge auf diese verweisen.

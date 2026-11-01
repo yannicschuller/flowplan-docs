@@ -26,11 +26,34 @@ Ein Klick fragt nach Titel und Bereich und legt die Seite an. Datumswerte der Be
    - **Alle Arbeitsbereiche** der Instanz,
    - **Öffentliche Galerie** (nur Admins): auch ohne Konto sichtbar.
 
-Vorlagen speichern eigene Kopien der Dateien und bleiben verwendbar, auch wenn die Quellseite gelöscht wird. Datenbank-Vorlagen enthalten Ansichten, Einträge samt Inhalten, Datensatzvorlagen und die Formulargestaltung. Vorlagen lassen sich umbenennen, privat oder geteilt schalten und in den Papierkorb legen.
+Vorlagen speichern eigene Kopien der Dateien und bleiben verwendbar, auch wenn die Quellseite gelöscht wird. Auch die [Tags und Eigenschaftswerte](/pages-and-spaces#tags-und-eigenschaften) der Seite kommen mit; neue Seiten aus der Vorlage bekommen sie (fehlende Tags werden angelegt). Datenbank-Vorlagen enthalten Ansichten, Einträge samt Inhalten, Datensatzvorlagen und die Formulargestaltung. Vorlagen lassen sich umbenennen, privat oder geteilt schalten und in den Papierkorb legen.
 
 ## Datensatzvorlagen
 
 In einer Datenbank öffnet **Datensatzvorlagen** die Vorlagen für Einträge: Eigenschaftswerte und Inhalt werden bei jedem neuen Eintrag übernommen. Eine Vorlage kann Standard sein, sodass **Neu** sie automatisch nutzt.
+
+Eine Vorlage entsteht aus einem Eintrag: Inhalt schreiben, dann **Als Vorlage speichern**. Zum Ändern wählst du in **Datensatzvorlagen** bei der Vorlage **Bearbeiten** – ein Entwurf öffnet sich als Eintrag; speichere ihn mit **Als Vorlage speichern** und unter **Speichern als** mit **„…“ ersetzen**. Die Vorlage behält dabei ihre Rolle als Standardvorlage und in Automationen. Den Entwurfseintrag kannst du danach löschen.
+
+### Platzhalter
+
+Text in doppelten geschweiften Klammern wird beim Anwenden durch die Werte des Eintrags ersetzt – im Titel, in Überschriften, im Text, in Tabellen und Hinweisen sowie in Text-Eigenschaften der Vorlage. Beispiel: *„Kickoff {{Firma}} am {{Termin}}“*.
+
+- **`{{Eigenschaft}}`** – der Wert einer Eigenschaft der Datenbank. Groß- und Kleinschreibung spielen keine Rolle.
+- **`{{Titel}}`**, **`{{Heute}}`** (auch `{{Datum}}`), **`{{Jetzt}}`**, **`{{Ersteller}}`**, **`{{Ich}}`** (wer die Vorlage anwendet) und **`{{Datenbank}}`** sind eingebaut. Die englischen Namen (`{{Title}}`, `{{Today}}`, `{{Date}}`, `{{Now}}`, `{{Creator}}`, `{{Me}}`, `{{Database}}`) funktionieren ebenso. Heißt eine Eigenschaft genauso (etwa „Datum“), gilt die Eigenschaft.
+- Das Symbol **{ }** neben **Inhalt** eines Eintrags (**Platzhalter einfügen**) setzt Platzhalter an der Schreibmarke ein und listet alle Eigenschaften der Datenbank.
+
+Werte erscheinen wie in der Tabelle: Datumsangaben in deiner Sprache und im Datumsformat der Eigenschaft, Mehrfachauswahl durch Kommas getrennt, Verknüpfungen als Titel der verknüpften Einträge, Personen mit Namen, Kontrollkästchen als ✓ oder ✗. Leere Eigenschaften ergeben leeren Text; unbekannte Platzhalter bleiben stehen. Werte werden immer als reiner Text eingesetzt, nie als Formatierung oder HTML. Eigenschaften, die nur bestimmte Personen sehen dürfen, bleiben leer – der Text ist für alle sichtbar, die den Eintrag sehen.
+
+Eigenschaften umbenennen ist kein Problem: Vorlagen merken sich die Eigenschaft, nicht nur ihren Namen. Im Entwurf einer Vorlage bleiben die Platzhalter stehen.
+
+### Vorlage auf einen bestehenden Eintrag anwenden
+
+Im Menü **…** eines geöffneten Eintrags oder per Rechtsklick auf eine Zeile wählst du **Vorlage anwenden …**, dann die Vorlage und was mit dem vorhandenen Inhalt geschieht:
+
+- **Nur anwenden, wenn der Inhalt leer ist** – hat der Eintrag schon Text, sagt Flowplan das und ändert nichts.
+- **Unten anhängen** – der Text der Vorlage kommt unter den vorhandenen Text.
+
+Vorhandener Text wird nie überschrieben, ausgefüllte Eigenschaften bleiben; nur leere Eigenschaften erhalten die Werte der Vorlage. Der vorherige Inhalt bleibt als Version erhalten, und **Rückgängig** im Hinweis stellt ihn wieder her. Dafür braucht es Bearbeitungsrechte am Eintrag; Workflow-Regeln der Datenbank gelten auch hier. Automatisch geht das mit einer [Automation](/projects-and-tickets#automationen).
 
 ## Öffentliche Vorlagengalerie
 
