@@ -10,10 +10,9 @@ permissions:
 
 jobs:
   check:
-    # Own runner (label self-hosted) for this repository's own work. Dependabot
-    # and pull requests from forks run on GitHub's runners instead: their code
-    # never reaches the self-hosted machine.
-    runs-on: ${{ (github.actor == 'dependabot[bot]' || github.triggering_actor == 'dependabot[bot]' || (github.event_name == 'pull_request' && (github.event.pull_request.user.login == 'dependabot[bot]' || github.event.pull_request.head.repo.full_name != github.repository))) && 'ubuntu-latest' || 'self-hosted' }}
+    # GitHub's runners: free for public repositories, and code from pull
+    # requests never reaches an own machine.
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
         with:
@@ -28,12 +27,9 @@ jobs:
       - run: npm test
       - run: npm run build
       # Accessibility and performance budgets (scripts/quality-check.mjs).
-      # GitHub's runners download Chromium; the own runner uses the one it
-      # has and skips the check with a notice when there is none.
       - name: Install Chromium
-        if: runner.environment == 'github-hosted'
         run: npx playwright install --with-deps chromium
       - name: Quality budgets
         run: npm run quality
         env:
-          QUALITY_OPTIONAL: ${{ runner.environment == 'github-hosted' && '0' || '1' }}
+          QUALITY_OPTIONAL: "0"

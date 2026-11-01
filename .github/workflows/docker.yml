@@ -2,8 +2,11 @@
 # Container Registry, for Coolify:
 #   ghcr.io/yannicschuller/flowplan-docs:latest       the latest commit on main
 #   ghcr.io/yannicschuller/flowplan-docs:sha-abc1234  every build
-# Pull requests only build (no push). Every new :latest is rolled out on
-# Coolify (COOLIFY_WEBHOOK, COOLIFY_TOKEN; see README).
+# For linux/amd64 and linux/arm64, each built natively on GitHub's runners
+# (ubuntu-latest and ubuntu-24.04-arm, free for public repositories) in
+# parallel, then joined into one multi-platform image. Pull requests only
+# build (no push). Every new :latest is rolled out on Coolify
+# (COOLIFY_WEBHOOK, COOLIFY_TOKEN; see README).
 name: Docker image
 
 on:
@@ -21,16 +24,27 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  image:
+  # One native build per platform – no QEMU emulation. Each pushes its image
+  # by digest only; "image" below tags them together.
+  build:
     # No image for Dependabot: its pull requests are tested by CI, and the
-    # image is built after merging, on the own runner.
+    # image is built after merging.
     if: github.actor != 'dependabot[bot]' && github.event.pull_request.user.login != 'dependabot[bot]'
-    # Own runner (label self-hosted) for this repository's own work. Dependabot
-    # and pull requests from forks run on GitHub's runners instead: their code
-    # never reaches the self-hosted machine.
-    runs-on: ${{ (github.actor == 'dependabot[bot]' || github.triggering_actor == 'dependabot[bot]' || (github.event_name == 'pull_request' && (github.event.pull_request.user.login == 'dependabot[bot]' || github.event.pull_request.head.repo.full_name != github.repository))) && 'ubuntu-latest' || 'self-hosted' }}
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - platform: linux/amd64
+            runner: ubuntu-latest
+          - platform: linux/arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
     timeout-minutes: 45
     steps:
+      - id: platform
+        run: |
+          platform="${{ matrix.platform }}"
+          echo "pair=${platform//\//-}" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v7
         with:
           # The whole history: the build writes each page's last commit date
@@ -38,10 +52,53 @@ jobs:
           # token left in .git, which the image build copies.
           fetch-depth: 0
           persist-credentials: false
-      - uses: docker/setup-qemu-action@v4
       - uses: docker/setup-buildx-action@v4
       - uses: docker/login-action@v4
         if: github.event_name != 'pull_request'
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - id: build
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          platforms: ${{ matrix.platform }}
+          # Pull requests only build: nothing is published.
+          outputs: ${{ github.event_name == 'pull_request' && 'type=cacheonly' || format('type=image,name=ghcr.io/{0},push-by-digest=true,name-canonical=true,push=true', github.repository) }}
+          build-args: |
+            FLOWPLAN_SKIP_TYPECHECK=1
+          # GitHub's Actions cache, one scope per platform, kept between runs.
+          cache-from: type=gha,scope=image-${{ steps.platform.outputs.pair }}
+          cache-to: type=gha,scope=image-${{ steps.platform.outputs.pair }},mode=max
+      - name: Remember the digest
+        if: github.event_name != 'pull_request'
+        run: |
+          mkdir -p "$RUNNER_TEMP/digests"
+          digest="${{ steps.build.outputs.digest }}"
+          touch "$RUNNER_TEMP/digests/${digest#sha256:}"
+      - uses: actions/upload-artifact@v7
+        if: github.event_name != 'pull_request'
+        with:
+          name: digests-${{ steps.platform.outputs.pair }}
+          path: ${{ runner.temp }}/digests/*
+          if-no-files-found: error
+          retention-days: 1
+
+  # Joins both platform images under the tags.
+  image:
+    needs: build
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/download-artifact@v7
+        with:
+          path: ${{ runner.temp }}/digests
+          pattern: digests-*
+          merge-multiple: true
+      - uses: docker/setup-buildx-action@v4
+      - uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -50,30 +107,29 @@ jobs:
         uses: docker/metadata-action@v6
         with:
           images: ghcr.io/${{ github.repository }}
+          flavor: latest=false
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
             type=sha
-      - uses: docker/build-push-action@v7
-        with:
-          context: .
-          # Pull requests only build (nothing is published): one architecture.
-          platforms: ${{ github.event_name == 'pull_request' && 'linux/amd64' || 'linux/amd64,linux/arm64' }}
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          build-args: |
-            FLOWPLAN_SKIP_TYPECHECK=1
-          # Cache in the registry: fast from the self-hosted runner, kept
-          # between runs. Pull requests (also Dependabot, without registry
-          # write access) use GitHub's cache.
-          cache-from: |
-            type=registry,ref=ghcr.io/${{ github.repository }}:buildcache
-            type=gha
-          cache-to: ${{ github.event_name != 'pull_request' && format('type=registry,ref=ghcr.io/{0}:buildcache,mode=max', github.repository) || 'type=gha,mode=max' }}
-      # Rolls out the new :latest image on Coolify. Without the secrets (forks)
-      # the step does nothing.
+      - name: Tag the multi-platform image
+        working-directory: ${{ runner.temp }}/digests
+        run: |
+          docker buildx imagetools create \
+            $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
+            $(printf 'ghcr.io/${{ github.repository }}@sha256:%s ' *)
+          docker buildx imagetools inspect "ghcr.io/${{ github.repository }}:sha-${GITHUB_SHA::7}"
+
+  # Rolls out the new :latest image on Coolify. On the own runner: Coolify's
+  # API only answers its address (Settings → Advanced → API access), and
+  # GitHub's runners have changing ones. One request – no build there, and
+  # never for pull requests. Without the secrets the step does nothing.
+  deploy:
+    needs: image
+    if: github.ref == 'refs/heads/main'
+    runs-on: self-hosted
+    timeout-minutes: 10
+    steps:
       - name: Deploy on Coolify
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         env:
           COOLIFY_WEBHOOK: ${{ secrets.COOLIFY_WEBHOOK }}
           COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
