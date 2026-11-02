@@ -27,8 +27,8 @@ These words act as filters in the search:
 
 | Input | Finds |
 | --- | --- |
-| `#customer` | pages with the tag “customer” (case does not matter); tags with spaces as `#"New idea"` |
-| `-#internal` | leaves out pages with the tag |
+| `#customer` | pages with the tag “customer” (case does not matter) and database records carrying it in a multi-select with the workspace's tags; tags with spaces as `#"New idea"` |
+| `-#internal` | leaves out pages and records with the tag |
 | `Status:Open` | property “Status” with the value “Open” (select and multi-select: exactly this option; text, URL, email, phone: contains) |
 | `Budget:>1000`, `Budget:<=50`, `Budget:10..20` | compare numbers |
 | `Due:2026-12`, `Due:>2026-11-01`, `Due:2026-11-01..2026-11-30` | dates: day, month or year; after, between (also `<`, `>=`, `<=`) |
@@ -36,7 +36,7 @@ These words act as filters in the search:
 | `Owner:Emil`, `Owner:me` | person by name; `me` is you |
 | `Status:*` / `Status:-` | property set / empty |
 
-Names with spaces go in quotes: `"Next step":Offer`. Several filters apply together; the remaining text is searched as usual. Filters without text list all matching pages, most recently changed first. Words that name no tag and no property (like `#123`) stay ordinary search words.
+Names with spaces go in quotes: `"Next step":Offer`. Several filters apply together; the remaining text is searched as usual. Filters without text list all matching pages, most recently changed first. Records count with their own tags and those of their database page. Words that name no tag and no property (like `#123`) stay ordinary search words.
 
 Recognised filters appear as chips under the search field; ✕ removes one. The **Tag …** choice next to the space adds a tag filter. Saved searches keep the filters. Tag names and values are also ordinary words of the page: “customer” also finds pages tagged “customer”.
 

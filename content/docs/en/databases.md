@@ -31,6 +31,7 @@ Below are **Your templates**: saved database templates, such as your own "Notes 
 **Page actions → Move into database …** turns a document page into a record of a database you may write to – for example to bring grown documentation into a notes database:
 
 - Title, icon and cover become the record's title, icon and cover, the content its document; files and images stay the same files (they then belong to the database).
+- The page's tags go into the database's (first) multi-select with the [workspace's tags](#multi-select-with-the-workspace-tags), if there is one and you may change it.
 - Comments, text comments, tasks and versions come along; favourites become record favourites.
 - Links to the page in all pages and records of the workspace then point to the record.
 - Sub-pages stay pages and move up one level. Permissions for people set on the page keep applying to them – so they become visible to neither more nor fewer people.
@@ -43,6 +44,7 @@ The other way round, **Turn into page …** makes a record a document page again
 
 - Title, icon and cover become the page's title, icon and cover, the record's document its content; files and images stay the same files (they then belong to the page).
 - The properties stay as a short "Property: value" list at the top of the page (readable in a Markdown export too); in the dialog you can drop them instead.
+- The tags from multi-selects with the [workspace's tags](#multi-select-with-the-workspace-tags) become the page's tags.
 - Comments, text comments, tasks and versions come along; record favourites become page favourites.
 - Links to the record in all pages and records of the workspace then point to the page – @ links and backlinks keep working.
 - The page goes where the database is, or to another location of your choice, and follows its permissions. The record's own permissions and relations from other records to it end – the dialog lists them first.
@@ -77,6 +79,19 @@ With the mouse it is quicker: **drag records by their handle onto a database in 
 | Created time/by, edited time/by | Maintained automatically |
 
 Relations, rollups and formulas are described under [Properties, formulas and rollups](/properties-and-formulas).
+
+### Multi-select with the workspace tags
+
+Instead of its own list, a multi-select can have the **workspace's tags** as its options – the same tags pages carry. In the property's settings (click the column header), under **Options**, choose between **Own list** and **Workspace tags**.
+
+- The property offers all tags with their colours and in their order; cells, board columns and cards show the tag colours. In a record you pick with **+ Tag** as on pages: typing suggests matching tags, <kbd>Enter</kbd> takes one.
+- A value that is not a tag yet creates the tag – as on pages, members with edit rights may do that. Readers, guests and read tokens only pick existing tags. On a board, **+ Group** creates a new tag for such a property.
+- It stays a multi-select: filters, sorting, grouping, board columns, formulas, automations, import and export (Markdown, CSV, Git), API and MCP work as usual. The tag names are stored.
+- **Renaming, merging and deleting** a tag (Settings → Tags & properties) changes every record with that tag as well: a renamed tag shows under its new name, merging turns the one tag into the other (without duplicates), a deleted tag disappears from the records. Filters and board columns of views follow; Flowplan first keeps a version of every database affected in its version history.
+- Records with tags appear in the [tag view](/pages-and-spaces#tag-view) next to the pages and are found with `#tag` / `-#tag` in the search.
+- **Switching** an existing multi-select to the tags: its options are matched to tags (ignoring case), missing tags are created; the records keep their values, now with the tag's exact name. **Back to “Own list”**, the tags become its own options – the ones in use first, at most 100; the values stay.
+- Guests only see the tags used in the records shared with them as options and create none. Through share links a record only offers its own tags.
+- In [encrypted spaces](/encrypted-spaces) the option does not exist (like tags on pages).
 
 ## Large databases
 

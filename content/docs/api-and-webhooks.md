@@ -300,11 +300,12 @@ Wer Flowplan selbst baut, erzeugt die Clients mit `npm run sdk` neu; der Test `t
 
 ### Tags und Eigenschaften per API
 
-- `GET /api/tags?workspace=<id>` – Tags (`id`, `name`, `color`, `position`, `pages`) und Eigenschaften (`id`, `name`, `type`, `options`) des Arbeitsbereichs. `GET /api/tags/<tagId>?workspace=<id>` liefert zusätzlich die lesbaren Seiten mit diesem Tag.
+- `GET /api/tags?workspace=<id>` – Tags (`id`, `name`, `color`, `position`, `pages`, `records`: Zahl der lesbaren Datenbank-Einträge mit dem Tag) und Eigenschaften (`id`, `name`, `type`, `options`) des Arbeitsbereichs. `GET /api/tags/<tagId>?workspace=<id>` liefert zusätzlich die lesbaren Seiten (`pages`) und Einträge (`records`: `page_id`, `row_id`, `title`, `database`, `space_id`, `updated_at`, `tags`) mit diesem Tag.
 - `GET /api/pages/<id>` enthält `properties`: `tags` (Tag-IDs), `values` (nach Eigenschafts-ID) und `info` (erstellt/geändert am/von).
 - `POST /api/command` mit `page.properties`: `{ "action": "page.properties", "pageId": "…", "addTags": ["Kunde"], "values": { "Status": "Offen", "Budget": 1200 } }`. Tags und Eigenschaften gehen über ID oder Namen; `tags` ersetzt alle Tags, `addTags`/`removeTags` ändern sie, `null` entfernt einen Wert.
 - `pages.tag` vergibt oder entfernt Tags auf bis zu 500 Seiten auf einmal.
 - Nur Eigentümer: `tag.save`, `tag.delete`, `tag.merge`, `tag.reorder`, `property.save`, `property.delete`, `property.reorder`. Neue Tags (`tag.save` ohne `tagId`) dürfen auch Mitglieder mit Bearbeitungsrecht anlegen.
+- Datenbank-Eigenschaften mit den Tags als Optionen: in `database.update` eine `multiselect`-Eigenschaft mit `"tagOptions": true` (ihre `options` setzt der Server). Zellen enthalten Tag-Namen; ein neuer Name in `row.create`, `row.update` oder `rows.bulk` legt den Tag an (Mitglieder mit Bearbeitungsrecht, sonst 403); `rows.import` lässt Namen weg, die kein Tag werden dürfen. MCP nennt solche Eigenschaften in `get_database` mit `tagOptions: true`.
 - In `GET /api/search` wirken `#tag`, `-#tag` und `name:wert` als Filter (siehe [Suche](/search-and-notifications#nach-tags-und-eigenschaften-filtern)). MCP-Clients bekommen Tags und Werte mit `read_page` als Frontmatter.
 
 ## n8n

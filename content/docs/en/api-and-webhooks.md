@@ -300,11 +300,12 @@ If you build Flowplan yourself, `npm run sdk` regenerates the clients; the test 
 
 ### Tags and properties via the API
 
-- `GET /api/tags?workspace=<id>` – the workspace's tags (`id`, `name`, `color`, `position`, `pages`) and properties (`id`, `name`, `type`, `options`). `GET /api/tags/<tagId>?workspace=<id>` adds the readable pages with that tag.
+- `GET /api/tags?workspace=<id>` – the workspace's tags (`id`, `name`, `color`, `position`, `pages`, `records`: number of readable database records with the tag) and properties (`id`, `name`, `type`, `options`). `GET /api/tags/<tagId>?workspace=<id>` also returns the readable pages (`pages`) and records (`records`: `page_id`, `row_id`, `title`, `database`, `space_id`, `updated_at`, `tags`) with that tag.
 - `GET /api/pages/<id>` contains `properties`: `tags` (tag IDs), `values` (by property ID) and `info` (created/changed at/by).
 - `POST /api/command` with `page.properties`: `{ "action": "page.properties", "pageId": "…", "addTags": ["Customer"], "values": { "Status": "Open", "Budget": 1200 } }`. Tags and properties go by ID or name; `tags` replaces all tags, `addTags`/`removeTags` change them, `null` removes a value.
 - `pages.tag` adds or removes tags on up to 500 pages at once.
 - Owners only: `tag.save`, `tag.delete`, `tag.merge`, `tag.reorder`, `property.save`, `property.delete`, `property.reorder`. New tags (`tag.save` without `tagId`) may also be created by members with edit rights.
+- Database properties with the tags as options: in `database.update` a `multiselect` property with `"tagOptions": true` (the server sets its `options`). Cells hold tag names; a new name in `row.create`, `row.update` or `rows.bulk` creates the tag (members with edit rights, 403 otherwise); `rows.import` leaves out names that may not become tags. MCP lists such properties in `get_database` with `tagOptions: true`.
 - In `GET /api/search`, `#tag`, `-#tag` and `name:value` act as filters (see [Search](/search-and-notifications#filter-by-tags-and-properties)). MCP clients get tags and values with `read_page` as frontmatter.
 
 ## n8n

@@ -123,14 +123,14 @@ With neither tags nor values the bar is just a faint line with **+ Tag** and **+
 
 - **A page's tags and values** are set by whoever may edit the page – including guests with edit rights on it.
 - **New tags** are created by members with edit rights while tagging. Guests and readers only pick existing ones.
-- **Settings → Tags & properties** can only be changed by workspace owners; others see the lists. There tags are renamed, coloured (nine colours), ordered, merged and deleted, and properties are created, changed in type and options, ordered and deleted. A changed type or a removed option converts values where possible and removes the others; a deleted property disappears with its values from every page.
-- Values are read by whoever may read the page. The tag view, search and counts only show pages you may read; guests only see the tags and properties of the pages shared with them.
+- **Settings → Tags & properties** can only be changed by workspace owners; others see the lists. There tags are renamed, coloured (nine colours), ordered, merged and deleted, and properties are created, changed in type and options, ordered and deleted. A changed type or a removed option converts values where possible and removes the others; a deleted property disappears with its values from every page. Renaming, merging and deleting also changes the records of database properties that have the tags as options (see [Multi-select with the workspace's tags](/databases#multi-select-with-the-workspace-tags)).
+- Values are read by whoever may read the page. The tag view, search and counts only show pages you may read; guests only see the tags and properties of the pages and records shared with them.
 
 Pages in [encrypted spaces](/encrypted-spaces) have no tags or properties – the server would have to store them as plain text.
 
 ### Tag view
 
-**Tags** (the tag icon at the bottom of the sidebar, or `> tags` in quick search) shows all tags with the number of their pages. A tag opens the list of its pages, most recently changed first. Above it you narrow the list with text or further tags (“And: + Offer”). Owners reach the settings through **Manage tags**. The view has its own address (`#tags/<id>`) to share or bookmark. In the search, `#tag` finds the same, see [Filter by tags and properties](/search-and-notifications#filter-by-tags-and-properties).
+**Tags** (the tag icon at the bottom of the sidebar, or `> tags` in quick search) shows all tags with the number of their pages and records. A tag opens the list of its pages, most recently changed first, and below them the **records** of databases whose multi-select has the [workspace's tags](/databases#multi-select-with-the-workspace-tags) as options (with database and space; a click opens the record). Only records you may read appear – no private records of others, no properties hidden from you, nothing behind a journal PIN or in the trash. Above it you narrow the list with text or further tags (“And: + Offer”). Owners reach the settings through **Manage tags**. The view has its own address (`#tags/<id>`) to share or bookmark. In the search, `#tag` finds the same, see [Filter by tags and properties](/search-and-notifications#filter-by-tags-and-properties).
 
 ### Copies, templates and trash
 

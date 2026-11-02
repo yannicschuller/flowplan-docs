@@ -96,6 +96,8 @@ created: 2026-03-14
 - `aliases:` (a list or one text, separated by commas) and `alias:` together fill the property of type [Aliases](/properties-and-formulas#aliases), whatever its name; if there is none, **Create missing properties** adds one. A database without an aliases property but with a property named "aliases" gets the values there, as before;
 - computed properties (formulas, rollups, timestamps) are not overwritten.
 
+When importing records (Markdown, CSV) into a [multi-select with the workspace's tags](/databases#multi-select-with-the-workspace-tags), the values stay names; missing tags are created if you may create tags (members with edit rights) – otherwise such values are left out.
+
 Before the import, a preview shows which properties match and which are missing. **Create missing properties** adds them with a fitting type: list → multi-select, ISO date → date, `true`/`false` → checkbox, number → number, address → URL, a few recurring values → select, otherwise text. Up to 5,000 files and 100 MB per import.
 
 **Export:** in the ZIP export, every record under `records/` starts with `title:` and its properties: select as text, multi-select and relations (titles of the linked records) as lists, dates as ISO dates. Aliases are written under Obsidian's key `aliases:` as a list, so they survive a trip to Obsidian and back. Computed values and the record's id are below `flowplan:` and are skipped on import. When a record exported this way is imported into the same database again, the preview offers **update instead of adding**: the record with the same id gets the file's properties and text, and the previous state stays as a version. Without this choice it is added as a new record.

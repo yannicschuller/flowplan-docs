@@ -31,6 +31,7 @@ Darunter stehen **Deine Vorlagen**: gespeicherte Datenbank-Vorlagen, etwa eine e
 **Seitenaktionen → In Datenbank verschieben …** macht aus einer Dokumentseite einen Eintrag einer Datenbank, in die du schreiben darfst – etwa um gewachsene Dokumentation in eine Notizen-Datenbank zu holen:
 
 - Titel, Symbol und Cover werden zu Titel, Symbol und Cover des Eintrags, der Inhalt zu seinem Dokument; Dateien und Bilder bleiben dieselben (sie gehören dann zur Datenbank).
+- Die Tags der Seite kommen in die (erste) Mehrfachauswahl der Datenbank mit den [Tags des Arbeitsbereichs](#mehrfachauswahl-mit-den-tags-des-arbeitsbereichs), sofern es eine gibt und du sie ändern darfst.
 - Kommentare, Textkommentare, Aufgaben und Versionen ziehen mit; Favoriten werden Eintrags-Favoriten.
 - Links auf die Seite in allen Seiten und Einträgen des Arbeitsbereichs zeigen danach auf den Eintrag.
 - Unterseiten bleiben Seiten und rücken eine Ebene nach oben. Rechte für Personen, die auf der Seite gesetzt waren, gelten für sie weiter – sie werden dadurch weder für mehr noch für weniger Personen sichtbar.
@@ -43,6 +44,7 @@ Umgekehrt macht **In Seite umwandeln …** aus einem Eintrag wieder eine Dokumen
 
 - Titel, Symbol und Cover werden zu Titel, Symbol und Cover der Seite, das Dokument des Eintrags zu ihrem Inhalt; Dateien und Bilder bleiben dieselben (sie gehören dann zur Seite).
 - Die Eigenschaften bleiben als kurze Liste „Eigenschaft: Wert“ oben auf der Seite stehen (auch im Markdown-Export lesbar); im Dialog lassen sie sich stattdessen weglassen.
+- Die Tags aus Mehrfachauswahlen mit den [Tags des Arbeitsbereichs](#mehrfachauswahl-mit-den-tags-des-arbeitsbereichs) werden zu Tags der Seite.
 - Kommentare, Textkommentare, Aufgaben und Versionen ziehen mit; Eintrags-Favoriten werden Seiten-Favoriten.
 - Links auf den Eintrag in allen Seiten und Einträgen des Arbeitsbereichs zeigen danach auf die Seite – @-Links und Rückverweise funktionieren weiter.
 - Die Seite landet dort, wo die Datenbank liegt, oder an einem anderen Ort deiner Wahl, und folgt dessen Rechten. Eigene Rechte des Eintrags und Relationen anderer Einträge auf ihn enden – der Dialog nennt sie vorher.
@@ -77,6 +79,19 @@ Schneller geht es mit der Maus: Einträge am Griff **in eine Datenbank der Seite
 | Erstellt am/von, Bearbeitet am/von | Werden automatisch gepflegt |
 
 Relationen, Rollups und Formeln sind unter [Eigenschaften, Formeln und Rollups](/properties-and-formulas) beschrieben.
+
+### Mehrfachauswahl mit den Tags des Arbeitsbereichs
+
+Eine Mehrfachauswahl kann statt einer eigenen Liste die **Tags des Arbeitsbereichs** als Optionen haben – dieselben Tags, die auch Seiten tragen. In den Einstellungen der Eigenschaft (Klick auf die Spaltenüberschrift) unter **Optionen** zwischen **Eigene Liste** und **Tags des Arbeitsbereichs** wählen.
+
+- Die Eigenschaft bietet alle Tags mit ihren Farben und in ihrer Reihenfolge an; Zellen, Board-Spalten und Karten zeigen die Tag-Farben. Im Eintrag wählst du mit **+ Tag** wie auf Seiten: Tippen schlägt passende Tags vor, <kbd>Enter</kbd> übernimmt.
+- Gibt es einen eingegebenen Wert noch nicht, legt er den Tag an – wie auf Seiten dürfen das Mitglieder mit Bearbeitungsrecht. Leser, Gäste und Lese-Tokens wählen nur vorhandene Tags. Auf dem Board legt **+ Gruppe** bei so einer Eigenschaft einen neuen Tag an.
+- Es bleibt eine Mehrfachauswahl: Filter, Sortierung, Gruppierung, Board-Spalten, Formeln, Automationen, Import und Export (Markdown, CSV, Git), API und MCP funktionieren wie gewohnt. Gespeichert werden die Tag-Namen.
+- **Umbenennen, Zusammenführen und Löschen** eines Tags (Einstellungen → Tags & Eigenschaften) ändert alle Einträge mit diesem Tag gleich mit: Ein umbenannter Tag erscheint unter seinem neuen Namen, beim Zusammenführen wird aus dem einen Tag der andere (ohne Doppel), ein gelöschter Tag verschwindet aus den Einträgen. Filter und Board-Spalten der Ansichten folgen; vorher sichert Flowplan einen Stand jeder betroffenen Datenbank im Versionsverlauf.
+- Einträge mit Tags erscheinen in der [Tag-Ansicht](/pages-and-spaces#tag-ansicht) neben den Seiten und werden mit `#Tag` / `-#Tag` in der Suche gefunden.
+- **Umstellen** einer vorhandenen Mehrfachauswahl auf die Tags: Ihre Optionen werden den Tags zugeordnet (ohne Rücksicht auf Groß-/Kleinschreibung), fehlende Tags werden angelegt; die Werte der Einträge bleiben und tragen danach den genauen Namen des Tags. **Zurück auf „Eigene Liste“** werden die Tags zu eigenen Optionen – die verwendeten zuerst, höchstens 100; die Werte bleiben.
+- Gäste sehen als Optionen nur die Tags, die in den für sie freigegebenen Einträgen vorkommen, und legen keine an. Über Freigabelinks bietet ein Eintrag nur seine eigenen Tags an.
+- In [verschlüsselten Bereichen](/encrypted-spaces) gibt es diese Option nicht (wie Tags auf Seiten).
 
 ## Große Datenbanken
 
