@@ -109,6 +109,17 @@ A slim bar under the page title holds them:
 
 With neither tags nor values the bar is just a faint line with **+ Tag** and **+ Property**; in reading mode, without edit rights and on locked pages it is hidden then.
 
+### Collapsing the bar
+
+With many tags and properties the bar gets long. The arrow at its far left collapses it into one line: the first tags as small chips (two on a phone, three otherwise), “+3” for the rest and the number of properties, e.g. “6 properties”. Clicking the line – or <kbd>Enter</kbd>/<kbd>Space</kbd> while it has focus – expands the bar again.
+
+- **Your choice is per page and only yours.** It is stored in your account, so it applies on all your devices; others keep seeing the page the way they chose. This works in reading mode and without edit rights too.
+- **Until you choose**, the bar is expanded while it is small and collapsed when the page shows **more than four properties** (properties with a value and the automatic ones such as “Created at” count; empty ones do not). This is decided when the page opens – the bar never folds away while you are filling in values.
+- An empty bar (only **+ Tag** and **+ Property**) cannot be collapsed.
+- **Printing and exports** always show all tags and properties, even when the bar is collapsed.
+- Guests without an account who open a shared link see no bar, so there is nothing to remember there.
+- Through the API the command `page.collapseProperties` sets your choice: `{ "action": "page.collapseProperties", "pageId": "…", "collapsed": true }` – `false` expands, `null` forgets the choice (the rule above applies again).
+
 | Property type | Value |
 | --- | --- |
 | Text, URL, email, phone | Text up to 2,000 characters; URL, email and phone as links |

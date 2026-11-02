@@ -109,6 +109,17 @@ Unter dem Seitentitel steht dafür eine schmale Leiste:
 
 Hat eine Seite weder Tags noch Werte, ist die Leiste nur eine blasse Zeile mit **+ Tag** und **+ Eigenschaft**; im Lesemodus, ohne Bearbeitungsrecht und auf gesperrten Seiten ist sie dann ganz ausgeblendet.
 
+### Leiste einklappen
+
+Mit vielen Tags und Eigenschaften wird die Leiste lang. Der Pfeil ganz links klappt sie zu einer Zeile ein: Sie zeigt die ersten Tags als kleine Etiketten (auf dem Handy zwei, sonst drei), „+3“ für die übrigen und die Zahl der Eigenschaften, z. B. „6 Eigenschaften“. Ein Klick auf die Zeile – oder <kbd>Enter</kbd>/<kbd>Leertaste</kbd>, wenn sie den Fokus hat – klappt die Leiste wieder auf.
+
+- **Deine Wahl gilt pro Seite und nur für dich.** Sie wird in deinem Konto gespeichert und gilt so auf allen deinen Geräten; andere sehen die Seite weiter so, wie sie es selbst gewählt haben. Das geht auch im Lesemodus und ohne Bearbeitungsrecht.
+- **Ohne eigene Wahl** ist die Leiste aufgeklappt, solange sie klein ist, und eingeklappt, wenn die Seite **mehr als vier Eigenschaften** zeigt (mitgezählt werden Eigenschaften mit Wert und die automatischen wie „Erstellt am“; leere nicht). Das wird beim Öffnen der Seite entschieden – die Leiste klappt also nicht weg, während du Werte einträgst.
+- Eine leere Leiste (nur **+ Tag** und **+ Eigenschaft**) lässt sich nicht einklappen.
+- **Drucken und Exporte** zeigen immer alle Tags und Eigenschaften, auch wenn die Leiste eingeklappt ist.
+- Über geteilte Links sehen Gäste ohne Konto keine Leiste; es gibt dort also nichts zu merken.
+- Über die API setzt der Befehl `page.collapseProperties` die Wahl für dich: `{ "action": "page.collapseProperties", "pageId": "…", "collapsed": true }` – `false` klappt auf, `null` vergisst die Wahl (dann gilt wieder die Regel oben).
+
 | Eigenschaftstyp | Wert |
 | --- | --- |
 | Text, Webadresse, E-Mail, Telefon | Text bis 2.000 Zeichen; Webadresse, E-Mail und Telefon als Link |
