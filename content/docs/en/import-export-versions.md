@@ -41,6 +41,8 @@ The Markdown import (also ZIP, Git and **Edit as Markdown**) reads these back as
 
 **Journal days** sort by path in the ZIP, in their journal's folder: `2026/10/2026-10-27.md` next to the `index.md` of an exported journal, for a journal below another page under `pages/<title>-<id>/2026/10/…`. The heading is the day's title in the export's language ("Tuesday, 27 October 2026"; a renamed day keeps its title), the frontmatter names id and date (`flowplan: id, date`). This applies to the page and space export, the scheduled export and Git. The ZIP import turns them back into a journal with its days, without folder pages "2026" or "10"; a second file of the same date does not become a second day.
 
+**Block links in the Markdown export.** Links to blocks become relative links with an anchor in the ZIP, the way Obsidian writes them: `[Project › Goals](<../index.md#^k3x9a2b1>)`. The linked block carries its id as a marker: a paragraph, heading or list item at the end of its line (`Our goals for 2027 ^k3x9a2b1`), any other block (table, code, quote, list …) on a line of its own right below it (`^k3x9a2b1`). Only blocks that a link in the workspace points to are marked – the rest of the Markdown stays clean. Obsidian reads both as block references; other Markdown tools show the short marker as text. On import (ZIP, Obsidian vault, [Git export](/storage-and-backups#push-into-a-git-repository) with taking over changes, **Edit as Markdown**) the marker becomes the block's id again and the links point to it again. Outside a ZIP (a single Markdown file, MCP) the link stays the Flowplan address with `&block=…`.
+
 Limits per export: 500 pages, 5,000 records, 250 MB of content.
 
 ### Word, PDF with sub-pages and e-book

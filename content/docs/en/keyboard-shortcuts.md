@@ -58,6 +58,7 @@ The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kb
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>1</kbd>–<kbd>3</kbd> | Heading 1–3 |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>0</kbd> | Back to normal text |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>E</kbd> | Centre the text |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd> | Copy the [link to the block](/documents#links-to-blocks) with the cursor |
 | <kbd>⌘</kbd> <kbd>.</kbd> / <kbd>⌘</kbd> <kbd>,</kbd> | Superscript / subscript |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>8</kbd> / <kbd>7</kbd> / <kbd>9</kbd> | Bulleted list, numbered list, task list |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>B</kbd> | Quote |

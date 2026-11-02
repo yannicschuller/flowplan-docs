@@ -282,6 +282,37 @@ Die Zahl rechnet der Server für die Person aus, die die Seite ansieht, und aktu
 
 Links auf Seiten und Einträge bleiben gültig, auch wenn sie umbenannt oder verschoben werden. Steht im Link der alte Titel, wird er beim Umbenennen durch den neuen ersetzt – in allen Dokumenten und Einträgen, die du bearbeiten darfst; ein Link mit eigenem Text behält ihn. Das Ziel zeigt alle Links darauf unter **Verlinkt von** (Seiten) bzw. **Verknüpft von** (Einträge). Dort stehen auch Einträge, in deren Text der Link steht. Wer einen verlinkenden Eintrag oder seine Seite nicht lesen darf, sieht ihn dort nicht.
 
+## Links auf Blöcke
+
+Jeder Block lässt sich verlinken: ein Absatz, eine Überschrift, ein Listenpunkt, eine Tabelle, ein Bild, ein Diagramm … Der Link ist die Adresse der Seite mit dem Block, etwa `https://flowplan.example.org/#page=…&block=k3x9a2b1` (bei Einträgen mit `&row=…`), und funktioniert überall im selben Arbeitsbereich.
+
+**Link kopieren**
+
+- im Blockmenü (Griff ⠿ links neben dem Block, auf dem Handy antippen): **Link zum Block kopieren**,
+- bei Überschriften über das Link-Symbol, das beim Darüberfahren hinter der Überschrift erscheint,
+- im [Inhaltsverzeichnis](#inhaltsverzeichnis) über das Link-Symbol neben jeder Überschrift (auf dem Handy immer sichtbar),
+- mit <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd> (Windows/Linux: <kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>L</kbd>) für den Block, in dem der Cursor steht.
+
+Kopiert wird die Adresse; in andere Programme eingefügt (Mail, Chat, Word) erscheint sie als Link mit dem Text „Seite › Anfang des Blocks“.
+
+**Link einfügen**
+
+Einen kopierten Blocklink einfach in ein Dokument oder einen Eintrag desselben Arbeitsbereichs einfügen (<kbd>⌘</kbd> <kbd>V</kbd>): Er wird zu einem Link wie ein Seitenlink, mit dem Text „Seite › Anfang des Blocks“. Ist vorher Text markiert, wird dieser Text zum Link. Über `@` lassen sich auch Überschriften und Blöcke anderer Seiten suchen: `@Projekt › Ziele` (oder `@Projekt#Ziele`) zeigt die Überschriften der Seite „Projekt“, die „Ziele“ enthalten; ein Suchwort allein findet auch Absätze mit diesem Text. Überschriften der eigenen Seite stehen als „Diese Seite › …“ dabei.
+
+Wird die verlinkte Seite (oder der Eintrag) umbenannt, ändert sich der Seitentitel im Linktext mit; der Teil hinter „›“ bleibt, wie er ist. Beim Darüberfahren zeigt die Vorschau den aktuellen Text des Blocks.
+
+**Link öffnen**
+
+Ein Klick öffnet die Seite (bei einem Eintrag den Eintrag im Dialog), scrollt zum Block und hebt ihn kurz hervor. Ein Block in einem eingeklappten Abschnitt wird dabei aufgeklappt. Gibt es den Block nicht mehr, öffnet sich die Seite mit dem Hinweis „Diesen Block gibt es nicht mehr – die Seite ist geöffnet.“
+
+**Gut zu wissen**
+
+- Ein Block behält seinen Link beim Bearbeiten, Verschieben (auch Ausschneiden und Einfügen) und Umwandeln. Kopien – **Duplizieren** oder Kopieren und Einfügen im selben Dokument – bekommen einen eigenen Link. Wird ein Block mit Enter geteilt, bleibt der Link beim ersten Teil.
+- Vorschau und Linktext zeigen nur, was du lesen darfst: Für eine Seite ohne Leserecht erscheint nur „Verlinkter Block“, ohne Text.
+- In [verschlüsselten Bereichen](/encrypted-spaces) funktionieren Blocklinks innerhalb des Bereichs ebenso; der Server kennt den Text dort nicht, deshalb gibt es keine Textvorschau.
+- Auch wer eine Seite nur lesen darf, kann Links auf ihre Blöcke kopieren.
+- Für **Text links ausrichten** gibt es kein Tastenkürzel mehr (<kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd> kopiert jetzt den Blocklink); links ist die Standardausrichtung, die Werkzeugleiste bietet sie weiter an.
+
 ## Fußnoten
 
 `/fußnote`, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd> (<kbd>Strg</kbd> <kbd>Alt</kbd> <kbd>F</kbd>) oder **Fußnote** im Textmenü fügt an der Schreibmarke eine Fußnote ein und öffnet ihren Text.

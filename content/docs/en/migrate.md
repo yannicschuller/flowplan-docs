@@ -33,6 +33,7 @@ What it turns into:
 - Record pages are matched to their records as their document.
 - Images and files the pages refer to are uploaded.
 - Callouts become [callouts](/documents#callouts) and keep their emoji as their symbol.
+- Links to headings (`Page.md#heading`) lead to the heading; `notion.so` links to pages of the export lead to the imported page (Notion's Markdown has no block ids, so links to single paragraphs lead to the page).
 - Large exports that Notion splits into several ZIP files inside the ZIP are recognised.
 
 Limits per import: 100 MB, by default 10,000 pages (`FLOWPLAN_IMPORT_MAX_DOCS`) and 5,000 records per table. Export larger workspaces in parts, for instance page by page.
@@ -57,7 +58,7 @@ What it becomes:
 - **Where it goes:** a workspace file (`.affine`) with several items at the top – folders, documents outside folders, collections – arrives below **one page named after the AFFiNE workspace**; the preview names it (“Everything below a page …”). A **snapshot** and a workspace with a single item at the top go **straight into the target space** – no empty page above them. A whiteboard counts with its document; journal documents go into the journal.
 - **Folders** become pages with their documents below them. A document in several folders lives in the first one; the others link to it. Documents outside folders sit at the top level – below the workspace page, if there is one.
 - **Text:** headings, paragraphs, bulleted and numbered lists, **to-dos** with their check mark, toggle lists, quotes, code blocks with their language, callouts (kind by colour: red → caution, orange/yellow → warning, green → tip, purple → important, otherwise note; their emoji becomes the [callout's symbol](/documents#your-own-symbol-and-colour)), dividers, tables, LaTeX (block and inline), bold, italic, underline, strike-through, code, links, text and highlight colours.
-- **Links between documents** – in the text (@ references), as linked-doc or synced-doc cards and as AFFiNE app links – point to the imported pages. Synced documents become links.
+- **Links between documents** – in the text (@ references), as linked-doc or synced-doc cards and as AFFiNE app links – point to the imported pages. Synced documents become links. References to a block (references and doc cards with a block, app links with `?blockIds=`) lead to that block; references to shapes on the canvas (`elementIds`) lead to the page.
 - **Tags** become the page's tags, with their colours from AFFiNE (as a new database: the *Tags* property).
 - **Properties** of a document (text, number, checkbox, date) become [page properties](/pages-and-spaces#tags-and-properties) of the same name; missing ones are created by the import if you may manage the workspace. Deleted properties and AFFiNE's own fields (created by, mode, template …) are left out.
 - **Icons:** an emoji as the icon of a document, folder or collection becomes the page's icon. Icons from AFFiNE's own icon library have no counterpart; the preview gives their number.
@@ -85,7 +86,7 @@ What it turns into:
 
 - The space's **page tree** becomes the page tree in Flowplan (from `index.html` or the parent pages in `entities.xml`; where a page is missing there, the breadcrumbs help).
 - **Info, tip, note and warning macros** become callouts (info → note, tip → tip, note → warning, warning → caution), **code macros** code blocks, **expand** toggles, **task lists** tasks with their status.
-- **Images** and **attachments** are uploaded; attachments the text does not show are listed as links at the end of the page. **Links to other pages** of the space point to the imported pages.
+- **Images** and **attachments** are uploaded; attachments the text does not show are listed as links at the end of the page. **Links to other pages** of the space point to the imported pages. Anchor links (`Page.html#Page-Heading`, `#…` on the same page, `ac:anchor` in the XML export) lead to the heading or anchor.
 - In the XML export only the current version of each page counts; older versions and blog posts are skipped. Creation and modification dates are kept.
 - Macros without a counterpart (such as table of contents or Jira queries) are dropped; the preview names them.
 
@@ -110,7 +111,7 @@ What it turns into:
 What it turns into:
 
 - Every document becomes a page, **Drive folders** become parent pages.
-- Headings, bold, italic, underline, strike-through, **nested lists**, tables and links come along; Google's redirect links point straight to their target again.
+- Headings, bold, italic, underline, strike-through, **nested lists**, tables and links come along; Google's redirect links point straight to their target again. Links to headings and bookmarks in the same document (`#h.…`, `#kix.…`) stay links to that place.
 - **Images** are uploaded – including the ones embedded in the HTML.
 - Word files: paragraphs, headings, lists (numbered and bulleted, also nested), tables (with merged columns), links and images. Comments, footnotes and headers/footers are dropped.
 
@@ -119,6 +120,7 @@ What it turns into:
 - **A vault as pages:** make a ZIP of the vault folder (with its `.obsidian` folder) and import it under **Settings → Import & export → Import** – via **AFFiNE, Confluence, Evernote, Google Docs or Obsidian** with a preview, or via the Notion/Markdown import, which recognises a vault as well.
   - **Folders** become pages with their notes below. A **folder note** (`Projects/Projects.md` or `Projects.md` next to the folder) becomes the folder's page itself.
   - **Wikilinks** `[[Page]]`, `[[Page|text]]`, `[[Folder/Page]]` and `[[Page#Heading]]` become links to the imported pages – resolved like Obsidian does, by path or file name. Links to notes that do not exist stay text.
+  - `[[Page#Heading]]`, `[[Page#^id]]`, `[[#Heading]]` and Markdown links with `#^id` become links to that heading or block; the `^id` markers at line ends leave the text and become the block's id.
   - **Embedded files** `![[image.png]]` become images, `![[file.pdf]]` file links; embedded notes `![[Note]]` become links.
   - **Callouts** such as `> [!note]` or `> [!warning] Title` become callouts of the matching kind.
   - **Tags** from the frontmatter (`tags:`) and in the text (`#tag`, not in code) are collected: on pages as the page's tags, in a new database in the *Tags* property – together with *Folder* for where a note came from. Further frontmatter keys become [properties](/import-export-versions#frontmatter-records-as-markdown-files) on pages.
@@ -128,6 +130,7 @@ What it turns into:
 ## After the move
 
 - **Check links:** links between imported pages point to the new pages; links to pages outside the export still point to the old tool.
+- **Links to blocks and headings are kept.** If a link in the source points to a particular place of another (or the same) page, it points to the same block in Flowplan after the import: a click opens the page and jumps there (see [Links to blocks](/documents#links-to-blocks)). If the place cannot be found (for example because the export does not contain it), the link leads to the page.
 - **Set up views:** an import creates one table per database. Add board, calendar, gallery or timeline afterwards – see [Views](/views).
 - **Sharing:** permissions are not carried over. Invite members or share single pages – see [Sharing and publishing](/sharing).
 - **Your data stays portable:** Flowplan exports again at any time as Markdown with frontmatter, CSV and ZIP, scheduled and pushed to Git if you like – see [Import, export and versions](/import-export-versions).

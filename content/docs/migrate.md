@@ -33,6 +33,7 @@ Was daraus wird:
 - Die Seiten der Einträge werden ihren Einträgen als Dokument zugeordnet.
 - Bilder und Dateien, auf die Seiten verweisen, werden hochgeladen.
 - Callouts werden zu [Hinweisen](/documents#hinweise) und behalten ihr Emoji als Symbol.
+- Links auf Überschriften (`Seite.md#ueberschrift`) führen zur Überschrift; `notion.so`-Links auf Seiten des Exports führen zur importierten Seite (Notions Markdown enthält keine Blockkennungen, Links auf einzelne Absätze führen daher zur Seite).
 - Große Exporte, die Notion in mehrere ZIP-Dateien innerhalb des ZIPs aufteilt, werden erkannt.
 
 Grenzen pro Import: 100 MB, standardmäßig 10.000 Seiten (`FLOWPLAN_IMPORT_MAX_DOCS`) und 5.000 Einträge je Tabelle. Größere Arbeitsbereiche exportierst du in Teilen, etwa Seite für Seite.
@@ -57,7 +58,7 @@ Was daraus wird:
 - **Wohin es kommt:** Aus einer Arbeitsbereichsdatei (`.affine`) mit mehreren Einträgen auf oberster Ebene – Ordner, Dokumente ohne Ordner, Sammlungen – entsteht **eine Seite mit dem Namen des AFFiNE-Arbeitsbereichs**, unter der alles liegt; die Vorschau nennt sie („Alles unter einer Seite …“). Ein **Snapshot** und ein Arbeitsbereich mit nur einem Eintrag auf oberster Ebene kommen **direkt in den Zielbereich** – ohne leere Seite darüber. Ein Whiteboard zählt dabei zu seinem Dokument; Journal-Dokumente gehen ins Journal.
 - **Ordner** werden zu Seiten mit ihren Dokumenten darunter. Steht ein Dokument in mehreren Ordnern, liegt es im ersten; die anderen Ordner verlinken es. Dokumente ohne Ordner liegen auf oberster Ebene – unter der Arbeitsbereichsseite, wenn es sie gibt.
 - **Text:** Überschriften, Absätze, Aufzählungen, nummerierte Listen, **To-dos** mit ihrem Haken, Aufklapplisten, Zitate, Codeblöcke mit Sprache, Hinweisblöcke (Callouts, Art nach Farbe: Rot → Achtung, Orange/Gelb → Warnung, Grün → Tipp, Lila → Wichtig, sonst Hinweis; ihr Emoji wird zum [Symbol des Hinweises](/documents#eigenes-symbol-und-eigene-farbe)), Trennlinien, Tabellen, LaTeX (Block und im Text), Fett, Kursiv, Unterstrichen, Durchgestrichen, Code, Links, Text- und Hervorhebungsfarben.
-- **Links zwischen Dokumenten** – im Text (@-Verweise), als Karten verlinkter oder synchronisierter Dokumente und als AFFiNE-App-Links – zeigen auf die importierten Seiten. Synchronisierte Dokumente werden dabei zu Links.
+- **Links zwischen Dokumenten** – im Text (@-Verweise), als Karten verlinkter oder synchronisierter Dokumente und als AFFiNE-App-Links – zeigen auf die importierten Seiten. Synchronisierte Dokumente werden dabei zu Links. Verweise auf einen Block (Verweise und Dokumentkarten mit Block, App-Links mit `?blockIds=`) führen zu diesem Block; Verweise auf Formen der Leinwand (`elementIds`) zur Seite.
 - **Tags** werden zu Tags der Seite, mit ihren Farben aus AFFiNE (als neue Datenbank: Eigenschaft *Tags*).
 - **Eigenschaften** eines Dokuments (Text, Zahl, Kontrollkästchen, Datum) werden zu [Eigenschaften der Seite](/pages-and-spaces#tags-und-eigenschaften) mit demselben Namen; fehlende Eigenschaften legt der Import an, wenn du den Arbeitsbereich verwalten darfst. Gelöschte Eigenschaften und AFFiNEs eigene Felder (Erstellt von, Modus, Vorlage …) bleiben weg.
 - **Symbole:** Ein Emoji als Symbol eines Dokuments, Ordners oder einer Sammlung wird zum Symbol der Seite. Symbole aus AFFiNEs eigener Symbolbibliothek haben keine Entsprechung; die Vorschau nennt ihre Zahl.
@@ -85,7 +86,7 @@ Was daraus wird:
 
 - Der **Seitenbaum** des Bereichs wird zum Seitenbaum in Flowplan (aus `index.html` bzw. den Elternseiten in `entities.xml`; fehlt eine Seite dort, helfen die Brotkrumen).
 - **Info-, Tipp-, Hinweis- und Warnungs-Makros** werden zu Hinweisblöcken (Info → Hinweis, Tipp → Tipp, Hinweis → Warnung, Warnung → Achtung), **Code-Makros** zu Codeblöcken, **Aufklappen** zu Aufklappblöcken, **Aufgabenlisten** zu Aufgaben mit ihrem Status.
-- **Bilder** und **Anhänge** werden hochgeladen; Anhänge, die im Text nicht vorkommen, stehen als Links am Ende der Seite. **Links auf andere Seiten** des Bereichs zeigen auf die importierten Seiten.
+- **Bilder** und **Anhänge** werden hochgeladen; Anhänge, die im Text nicht vorkommen, stehen als Links am Ende der Seite. **Links auf andere Seiten** des Bereichs zeigen auf die importierten Seiten. Anker-Links (`Seite.html#Seite-Ueberschrift`, `#…` auf derselben Seite, im XML-Export `ac:anchor`) führen zur Überschrift bzw. zum Anker.
 - Im XML-Export zählt nur die aktuelle Fassung jeder Seite; ältere Versionen und Blogbeiträge werden übersprungen. Erstellungs- und Änderungsdatum werden übernommen.
 - Makros ohne Entsprechung (etwa Inhaltsverzeichnis, Jira-Abfragen) fallen weg; die Vorschau nennt sie.
 
@@ -110,7 +111,7 @@ Was daraus wird:
 Was daraus wird:
 
 - Jedes Dokument wird eine Seite, **Drive-Ordner** werden zu übergeordneten Seiten.
-- Überschriften, Fett, Kursiv, Unterstrichen, Durchgestrichen, **verschachtelte Listen**, Tabellen und Links werden übernommen; Googles Umleitungslinks zeigen wieder direkt auf ihr Ziel.
+- Überschriften, Fett, Kursiv, Unterstrichen, Durchgestrichen, **verschachtelte Listen**, Tabellen und Links werden übernommen; Googles Umleitungslinks zeigen wieder direkt auf ihr Ziel. Links auf Überschriften und Lesezeichen im selben Dokument (`#h.…`, `#kix.…`) bleiben Links auf diese Stelle.
 - **Bilder** werden hochgeladen – auch die, die im HTML eingebettet sind.
 - Word-Dateien: Absätze, Überschriften, Listen (nummeriert und mit Aufzählungszeichen, auch verschachtelt), Tabellen (mit verbundenen Spalten), Links und Bilder. Kommentare, Fußnoten und Kopf-/Fußzeilen fallen weg.
 
@@ -119,6 +120,7 @@ Was daraus wird:
 - **Ein Tresor als Seiten:** den Tresor-Ordner (mit dem Ordner `.obsidian`) als ZIP packen und unter **Einstellungen → Import & Export → Import** importieren – über **AFFiNE, Confluence, Evernote, Google Docs oder Obsidian** mit Vorschau oder über den Notion-/Markdown-Import, der einen Tresor ebenfalls erkennt.
   - **Ordner** werden zu Seiten mit ihren Notizen darunter. Eine **Ordnernotiz** (`Projekte/Projekte.md` oder `Projekte.md` neben dem Ordner) wird selbst zur Seite des Ordners.
   - **Wikilinks** `[[Seite]]`, `[[Seite|Text]]`, `[[Ordner/Seite]]` und `[[Seite#Überschrift]]` werden zu Links auf die importierten Seiten – aufgelöst wie in Obsidian über den Pfad oder den Dateinamen. Links auf Notizen, die es nicht gibt, bleiben Text.
+  - `[[Seite#Überschrift]]`, `[[Seite#^id]]`, `[[#Überschrift]]` und Markdown-Links mit `#^id` werden zu Links auf die Überschrift bzw. den Block; die Markierungen `^id` am Zeilenende verschwinden aus dem Text und werden zur Kennung des Blocks.
   - **Eingebettete Dateien** `![[bild.png]]` werden zu Bildern, `![[datei.pdf]]` zu Dateilinks; eingebettete Notizen `![[Notiz]]` werden zu Links.
   - **Callouts** wie `> [!note]` oder `> [!warning] Titel` werden zu Hinweisblöcken der passenden Art.
   - **Tags** aus dem Frontmatter (`tags:`) und im Text (`#tag`, nicht in Code) werden gesammelt: als Seiten als Tags der Seite, als neue Datenbank in der Eigenschaft *Tags* – zusammen mit *Ordner* für die Herkunft. Weitere Schlüssel des Frontmatters werden als Seiten zu [Eigenschaften](/import-export-versions#frontmatter-eintraege-als-markdown-dateien).
@@ -128,6 +130,7 @@ Was daraus wird:
 ## Nach dem Umzug
 
 - **Links prüfen:** Verweise zwischen importierten Seiten zeigen auf die neuen Seiten; Links auf Seiten außerhalb des Exports bleiben Links auf das alte Werkzeug.
+- **Links auf Blöcke und Überschriften bleiben erhalten.** Zeigt ein Link in der Quelle auf eine bestimmte Stelle einer anderen (oder derselben) Seite, zeigt er nach dem Import auf denselben Block in Flowplan: Ein Klick öffnet die Seite und springt dorthin (siehe [Links auf Blöcke](/documents#links-auf-bloecke)). Findet sich die Stelle nicht (etwa weil der Export sie nicht enthält), führt der Link zur Seite.
 - **Ansichten einrichten:** Ein Import legt je Datenbank eine Tabelle an. Board, Kalender, Galerie oder Zeitleiste fügst du danach hinzu – siehe [Ansichten](/views).
 - **Teilen:** Rechte werden nicht übernommen. Lade Mitglieder ein oder teile einzelne Seiten – siehe [Teilen und Veröffentlichen](/sharing).
 - **Daten bleiben mitnehmbar:** Flowplan exportiert jederzeit wieder als Markdown mit Frontmatter, CSV und ZIP, auf Wunsch geplant und per Git – siehe [Import, Export und Versionen](/import-export-versions).

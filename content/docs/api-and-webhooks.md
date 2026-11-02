@@ -34,6 +34,8 @@ curl -sf -X POST https://flowplan.example.com/api/markdown-export \
 
 Statt `pageId` exportiert `spaceId` einen ganzen [Bereich](/import-export-versions#einen-ganzen-bereich-exportieren) in ein ZIP: `{"spaceId":"<Bereichs-ID>","format":"zip","history":true}`.
 
+**Blocklinks:** `GET /api/pages/{pageId}/blocks/{blockId}` liefert Titel und Textanfang eines Blocks (mit `?row=` für Einträge), `GET /api/blocks?workspace=…&q=…` sucht Überschriften und Blöcke, und die Aktion `block.ids` gibt den Blöcken eines älteren Dokuments ihre Kennungen.
+
 Tokens bekommen nie Administratorrechte und können keine weiteren Tokens anlegen. Widerrufen geht jederzeit in derselben Liste; gesperrte Konten verlieren ihre Tokens automatisch.
 
 Um Claude, ChatGPT oder andere KI-Assistenten anzubinden, nutzt du den [MCP-Server](/mcp) mit einem solchen Token.

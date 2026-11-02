@@ -282,6 +282,37 @@ The server calculates the number for the person looking at the page and refreshe
 
 Links to pages and records stay valid even if they are renamed or moved. A link that shows the old title gets the new one on a rename – in all documents and records you may edit; a link with its own text keeps it. The target lists all links to it under **Linked from** – including records whose text contains the link. Records and pages you may not read do not appear there.
 
+## Links to blocks
+
+Every block can be linked: a paragraph, a heading, a list item, a table, an image, a diagram … The link is the page's address with the block, such as `https://flowplan.example.org/#page=…&block=k3x9a2b1` (records add `&row=…`), and works anywhere in the same workspace.
+
+**Copying a link**
+
+- in the block menu (the ⠿ handle left of the block, tap it on a phone): **Copy link to block**,
+- for headings via the link symbol that appears after the heading on hover,
+- in the [table of contents](#table-of-contents) via the link symbol next to each heading (always visible on phones),
+- with <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd> (Windows/Linux: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>L</kbd>) for the block the cursor is in.
+
+The address is copied; pasted into other apps (mail, chat, Word) it shows as a link with the text "Page › start of the block".
+
+**Pasting a link**
+
+Paste a copied block link into a document or record of the same workspace (<kbd>⌘</kbd> <kbd>V</kbd>): it becomes a link styled like a page link, with the text "Page › start of the block". If text is selected, that text becomes the link. `@` also finds headings and blocks of other pages: `@Project › Goals` (or `@Project#Goals`) shows the headings of the page "Project" that contain "Goals"; a single search word also finds paragraphs with that text. Headings of the current page are listed as "This page › …".
+
+When the linked page (or record) is renamed, the page title in the link text changes along; the part after "›" stays as it is. On hover, the preview shows the block's current text.
+
+**Opening a link**
+
+A click opens the page (for a record, the record in its dialog), scrolls to the block and briefly highlights it. A block in a collapsed section is expanded. If the block no longer exists, the page opens with the notice "This block no longer exists – the page is open."
+
+**Good to know**
+
+- A block keeps its link when it is edited, moved (also cut and pasted) or turned into another kind. Copies – **Duplicate** or copy and paste within the same document – get a link of their own. When Enter splits a block, the link stays with the first part.
+- Preview and link text only show what you may read: for a page you cannot read, only "Linked block" appears, without text.
+- In [encrypted spaces](/encrypted-spaces) block links work within the space as well; the server does not know the text there, so there is no text preview.
+- People who may only read a page can copy links to its blocks, too.
+- **Align left** no longer has a keyboard shortcut (<kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd> now copies the block link); left is the default alignment and stays in the toolbar.
+
 ## Footnotes
 
 `/footnote`, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd> (<kbd>Ctrl</kbd> <kbd>Alt</kbd> <kbd>F</kbd>) or **Footnote** in the text menu inserts a footnote at the cursor and opens its text.

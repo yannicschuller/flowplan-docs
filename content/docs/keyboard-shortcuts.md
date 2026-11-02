@@ -58,6 +58,7 @@ Die Übersicht zeigt die Tasten so, wie sie auf deinem Gerät heißen: auf dem M
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>1</kbd>–<kbd>3</kbd> | Überschrift 1–3 |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>0</kbd> | Zurück zu normalem Text |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>E</kbd> | Text zentrieren |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd> | [Link zum Block](/documents#links-auf-bloecke) mit dem Cursor kopieren |
 | <kbd>⌘</kbd> <kbd>.</kbd> / <kbd>⌘</kbd> <kbd>,</kbd> | Hochgestellt / tiefgestellt |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>8</kbd> / <kbd>7</kbd> / <kbd>9</kbd> | Aufzählung, nummerierte Liste, Aufgabenliste |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>B</kbd> | Zitat |
