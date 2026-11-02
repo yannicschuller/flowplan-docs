@@ -19,6 +19,24 @@ Content comes in as Markdown, CSV or an archive and goes out again as Markdown, 
 
 The export respects read permissions and contains all records regardless of view filters. Formulas and Mermaid are kept as source.
 
+**Captions in Markdown**: an image's [caption](/en/documents#captions) becomes its title, a table's a line `Table: …` below it (as in Pandoc), a code block's `Listing: …`:
+
+    ![Alt text](<assets/logo.png> "The Flowplan logo")
+
+    | Item | Amount |
+    | --- | --- |
+    | Server | €40 |
+
+    Table: Costs at a glance
+
+    ```ts
+    const x = 1;
+    ```
+
+    Listing: An example
+
+The Markdown import (also ZIP, Git and **Edit as Markdown**) reads these back as captions, as well as Pandoc's short form `: …` below a table. The title of an image from other sources (`![Alt](image.png "Title")`) becomes its caption. A plain paragraph that happens to start with `Table:` or `Listing:` right below a table or code block without a caption is exported as `Table\:` and so stays a paragraph. When the page numbers its captions, the frontmatter says so (`flowplan: captions: numbered`); the numbers themselves are not written into the text, so an import doesn't make them part of the caption.
+
 **Whiteboards** come along in the ZIP as SVG images under `assets/`: a whiteboard page shows its image, and a whiteboard embedded in a document becomes the image with a link to the board in Flowplan. The image is cropped like **Export as SVG** in the board; pictures on the board sit next to it under `assets/`. Covered items stay covered, comment pins are not included; an empty board gives a short note instead of an image. Since SVG is text, Git shows changes to a board as a readable diff. The board cannot be edited outside Flowplan.
 
 **Journal days** sort by path in the ZIP, in their journal's folder: `2026/10/2026-10-27.md` next to the `index.md` of an exported journal, for a journal below another page under `pages/<title>-<id>/2026/10/…`. The heading is the day's title in the export's language ("Tuesday, 27 October 2026"; a renamed day keeps its title), the frontmatter names id and date (`flowplan: id, date`). This applies to the page and space export, the scheduled export and Git. The ZIP import turns them back into a journal with its days, without folder pages "2026" or "10"; a second file of the same date does not become a second day.
@@ -35,6 +53,7 @@ Three more formats for handbooks, reports and everything that is read or edited 
 - Bulleted and numbered lists, also nested, tasks with ☐/☑ and their due date.
 - Tables with merged cells and a shaded header row.
 - Pictures (PNG, JPEG, GIF, WebP) embedded and scaled to the text width; the page's cover image at the top.
+- [Captions](/en/documents#captions) of images, tables and code in Word's "Caption" style below the block; when the page numbers its captions, the numbers are Word fields (SEQ), so a table of figures in Word picks them up.
 - Callouts (note, tip, important, warning, caution) as shaded paragraphs, quotes with a side line, code blocks, formulas and Mermaid diagrams in a monospace style, toggles with their title, columns one after another.
 - Footnotes as real Word footnotes, citations and the bibliography as text.
 - A database becomes a table of all records followed by every record's document; a single record starts with its properties as a table.
@@ -65,7 +84,7 @@ The download icon next to a space's name in the sidebar (or **Settings → Impor
 
 All imports are under **Settings → Import & export → Import**; at the top you choose the **Target space** once for all of them.
 
-- **Markdown, text or HTML**: **Markdown, text or HTML files**. Headings, lists, tasks, tables, code (also `mermaid`) and formulas become blocks.
+- **Markdown, text or HTML**: **Markdown, text or HTML files**. Headings, lists, tasks, tables, code (also `mermaid`) and formulas become blocks. Image titles and `Table:`/`Listing:` lines become [captions](/en/documents#captions), in HTML `<figure>`/`<figcaption>` and `<caption>`. The AFFiNE import takes over the captions of images and code blocks.
 - **Notion, AppFlowy or Markdown export**: **Notion, AppFlowy or Markdown export (ZIP)** accepts a ZIP with Markdown and CSV files. Markdown becomes pages, CSV databases, days of a Flowplan journal (`…/2026/10/2026-10-27.md` below the journal) days of that journal again, Excalidraw and draw.io files [whiteboards](/whiteboards#import-excalidraw-and-draw-io), folders sub-pages; linked images and files are uploaded, and Notion record pages are matched to their records. Up to 100 MB, by default 10,000 pages (`FLOWPLAN_IMPORT_MAX_DOCS`) and 5,000 records per table; you choose the target space beforehand.
 - **Jira or Trello**: **Jira or Trello** – see [Projects, tickets and sprints](/projects-and-tickets#import-from-jira-and-trello).
 - **CSV**: in a database, choose **Import CSV or Markdown** and pick a CSV file; the rows become records.

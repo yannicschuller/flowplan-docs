@@ -19,6 +19,24 @@ Inhalte kommen als Markdown, CSV oder Archiv herein und gehen als Markdown, PDF 
 
 Der Export berücksichtigt Leserechte und enthält alle Einträge unabhängig von Ansichtsfiltern. Formeln und Mermaid bleiben als Quelltext erhalten.
 
+**Beschriftungen in Markdown**: Die [Beschriftung](/documents#beschriftungen) eines Bildes wird zu seinem Titel, die einer Tabelle zu einer Zeile `Table: …` darunter (wie in Pandoc), die eines Codeblocks zu `Listing: …`:
+
+    ![Alternativtext](<assets/logo.png> "Das Flowplan-Logo")
+
+    | Posten | Betrag |
+    | --- | --- |
+    | Server | 40 € |
+
+    Table: Kosten im Überblick
+
+    ```ts
+    const x = 1;
+    ```
+
+    Listing: Ein Beispiel
+
+Der Markdown-Import (auch ZIP, Git und **Als Markdown bearbeiten**) liest das wieder als Beschriftungen ein, ebenso Pandocs Kurzform `: …` unter einer Tabelle. Der Titel eines Bildes aus anderen Quellen (`![Alt](bild.png "Titel")`) wird dabei zur Beschriftung. Ein gewöhnlicher Absatz, der zufällig mit `Table:` oder `Listing:` direkt unter einer Tabelle oder einem Codeblock ohne Beschriftung steht, wird beim Export als `Table\:` geschrieben und bleibt so ein Absatz. Nummeriert die Seite ihre Beschriftungen, steht das im Frontmatter (`flowplan: captions: numbered`); die Nummern selbst stehen nicht im Text, damit sie beim Import nicht Teil der Beschriftung werden.
+
 **Whiteboards** kommen im ZIP als SVG-Bild unter `assets/` mit: Eine Whiteboard-Seite zeigt ihr Bild, ein in ein Dokument eingebettetes Whiteboard wird zum Bild mit einem Link zum Board in Flowplan. Das Bild ist zugeschnitten wie **Als SVG exportieren** im Board, Bilder auf dem Board liegen daneben unter `assets/`. Verdeckte Elemente bleiben verdeckt, Kommentar-Pins sind nicht enthalten; ein leeres Board ergibt einen kurzen Hinweis statt eines Bildes. Weil SVG Text ist, zeigt Git Änderungen an einem Board als lesbaren Diff. Bearbeitbar ist das Board außerhalb von Flowplan nicht.
 
 **Journaltage** liegen im ZIP sortierbar im Ordner ihres Journals: `2026/10/2026-10-27.md` neben der `index.md` eines exportierten Journals, bei einem Journal unter einer anderen Seite unter `pages/<Titel>-<Kennung>/2026/10/…`. Die Überschrift ist der Titel des Tages in der Sprache des Exports („Dienstag, 27. Oktober 2026“; ein umbenannter Tag behält seinen Titel), das Frontmatter nennt Kennung und Datum (`flowplan: id, date`). Das gilt für Seiten- und Bereichs-Export, den geplanten Export und Git. Der ZIP-Import macht daraus wieder ein Journal mit seinen Tagen, ohne Ordnerseiten „2026“ oder „10“; eine zweite Datei desselben Datums wird kein zweiter Tag.
@@ -35,6 +53,7 @@ Drei weitere Formate für Handbücher, Berichte und alles, was außerhalb von Fl
 - Aufzählungen und nummerierte Listen auch verschachtelt, Aufgaben mit ☐/☑ und Fälligkeitsdatum.
 - Tabellen mit verbundenen Zellen und hervorgehobener Kopfzeile.
 - Bilder (PNG, JPEG, GIF, WebP) eingebettet und auf die Textbreite verkleinert; das Titelbild der Seite oben.
+- [Beschriftungen](/documents#beschriftungen) von Bildern, Tabellen und Code im Word-Stil „Beschriftung“ unter dem Block; nummeriert die Seite ihre Beschriftungen, sind die Nummern Word-Felder (SEQ), sodass ein Abbildungsverzeichnis in Word sie aufnimmt.
 - Hinweise (Notiz, Tipp, Wichtig, Warnung, Achtung) als farbig hinterlegte Absätze, Zitate mit Randlinie, Code-Blöcke, Formeln und Mermaid-Diagramme in Schreibmaschinenschrift, aufklappbare Abschnitte mit ihrem Titel, Spalten nacheinander.
 - Fußnoten als echte Word-Fußnoten, Zitate und das Literaturverzeichnis als Text.
 - Eine Datenbank wird zur Tabelle aller Einträge, gefolgt vom Dokument jedes Eintrags; ein einzelner Eintrag beginnt mit seinen Eigenschaften als Tabelle.
@@ -65,7 +84,7 @@ Das Download-Symbol neben dem Namen eines Bereichs in der Seitenleiste (oder **E
 
 Alle Importe stehen unter **Einstellungen → Import & Export → Import**; oben wählst du einmal den **Zielbereich** für alle.
 
-- **Markdown, Text oder HTML**: **Markdown-, Text- oder HTML-Dateien**. Überschriften, Listen, Aufgaben, Tabellen, Code (auch `mermaid`) und Formeln werden zu Blöcken.
+- **Markdown, Text oder HTML**: **Markdown-, Text- oder HTML-Dateien**. Überschriften, Listen, Aufgaben, Tabellen, Code (auch `mermaid`) und Formeln werden zu Blöcken. Bildtitel und `Table:`-/`Listing:`-Zeilen werden zu [Beschriftungen](/documents#beschriftungen), in HTML `<figure>`/`<figcaption>` und `<caption>`. Beim AFFiNE-Import werden die Beschriftungen von Bildern und Codeblöcken übernommen.
 - **Notion-, AppFlowy- oder Markdown-Export**: **Notion, AppFlowy oder Markdown-Export (ZIP)** nimmt ein ZIP mit Markdown- und CSV-Dateien an. Markdown wird zu Seiten, CSV zu Datenbanken, Tage eines Flowplan-Journals (`…/2026/10/2026-10-27.md` unter dem Journal) wieder zu Tagen dieses Journals, Excalidraw- und draw.io-Dateien zu [Whiteboards](/whiteboards#excalidraw-und-draw-io-importieren), Ordner zu Unterseiten; verlinkte Bilder und Dateien werden hochgeladen, Datensatzseiten aus Notion den Einträgen zugeordnet. Bis 100 MB, standardmäßig 10.000 Seiten (`FLOWPLAN_IMPORT_MAX_DOCS`) und 5.000 Einträge je Tabelle; den Zielbereich wählst du vorher.
 - **Jira oder Trello**: **Jira oder Trello** – siehe [Projekte, Tickets und Sprints](/projects-and-tickets#import-aus-jira-und-trello).
 - **CSV**: in einer Datenbank **CSV oder Markdown importieren** wählen und eine CSV-Datei nehmen; die Zeilen werden zu Einträgen.

@@ -229,6 +229,20 @@ Soll ein PDF zum Heft werden, in dem du Seite für Seite schreibst und Blätter 
 
 **Herunterladen** lädt weiterhin das Original. **Mit Anmerkungen herunterladen** (daneben, sobald es Anmerkungen gibt) erzeugt ein neues PDF mit denselben Seiten, auf denen die Anmerkungen als Vektorgrafik liegen – sie bleiben beim Vergrößern scharf. Geschützte (verschlüsselte) PDFs lassen sich nur ohne Anmerkungen herunterladen; Text erscheint in Helvetica, Zeichen außerhalb des westeuropäischen Zeichensatzes als „?“.
 
+## Beschriftungen
+
+Bilder, Tabellen und Codeblöcke können eine kurze **Beschriftung** bekommen – eine Zeile, die beschreibt, was der Block zeigt. Sie steht klein und gedämpft unter dem Block.
+
+- **Hinzufügen**: Fahre mit der Maus über den Block oder setze den Cursor hinein (ein Bild antippen genügt), dann erscheint darunter **Beschriftung hinzufügen**. Alternativ im Blockmenü (Griff `⋮⋮`) → **Beschriftung hinzufügen**.
+- **Tippen**: Die Beschriftung ist reiner Text in einer Zeile (bis 500 Zeichen). <kbd>Enter</kbd> oder <kbd>↓</kbd> gehen unter dem Block weiter, <kbd>Esc</kbd> oder <kbd>↑</kbd> zurück in den Block. Andere sehen die Beschriftung beim gemeinsamen Bearbeiten sofort; <kbd>⌘</kbd> <kbd>Z</kbd> im Dokument macht Änderungen rückgängig.
+- **Entfernen**: Text löschen und das Feld verlassen (oder <kbd>⌫</kbd> im leeren Feld), oder Blockmenü → **Beschriftung entfernen**.
+- **Bilder**: Die Beschriftung ersetzt nicht den Alternativtext für Screenreader. Hat ein Bild eine Beschriftung, bietet das Blockmenü **Beschriftung als Alternativtext** an.
+- Beschriftungen bleiben beim Kopieren und Einfügen, Verschieben, Duplizieren, in Vorlagen, Versionen, auf veröffentlichten Seiten, beim Drucken und in allen Exporten erhalten, und die Suche findet sie. Aus HTML (etwa beim Einfügen von Webseiten oder dem Notion-HTML-Export) werden `<figure>` mit `<figcaption>` und Tabellen mit `<caption>` zu Beschriftungen.
+
+### Beschriftungen nummerieren
+
+**Seitenaktionen (…) → Beschriftungen nummerieren** stellt den Beschriftungen einer Seite eine Nummer voran: „Abbildung 1“, „Tabelle 1“, „Listing 1“ (für Code). Gezählt wird je Art in der Reihenfolge des Dokuments, und nur Blöcke, die eine Beschriftung haben. Die Bezeichnung folgt der Sprache, in der Flowplan angezeigt wird (Deutsch: Abbildung/Tabelle/Listing, Englisch: Figure/Table/Listing, Französisch: Figure/Tableau/Listing). Der Schalter gilt für die ganze Seite und für alle, die sie lesen – auch auf veröffentlichten Seiten, beim Drucken und in den Exporten. Kopien der Seite übernehmen ihn. In Eintragsdokumenten von Datenbanken gibt es ihn nicht.
+
 ## Formeln, Diagramme und Code
 
 - **Formeln** in LaTeX: Block mit `/math`, im Text mit `/inlinemath`. Die Vorschau erscheint beim Tippen. Über dem Eingabefeld stehen Bausteine wie Bruch, Wurzel, Hoch- und Tiefstellung, Vektor, Kreuzprodukt, ±, π und Summe.

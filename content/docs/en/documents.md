@@ -229,6 +229,20 @@ To turn a PDF into a notebook you write in page by page and add sheets to, open 
 
 **Download** still downloads the original. **Download with annotations** (next to it once there are annotations) creates a new PDF with the same pages and the annotations on top as vector graphics – they stay sharp when zooming in. Protected (encrypted) PDFs can only be downloaded without annotations; text appears in Helvetica, characters outside the Western European character set as “?”.
 
+## Captions
+
+Images, tables and code blocks can have a short **caption** – one line that says what the block shows. It appears small and muted below the block.
+
+- **Add**: point at the block or put the cursor in it (tapping an image is enough), and **Add caption** appears below it. Or use the block menu (handle `⋮⋮`) → **Add caption**.
+- **Typing**: a caption is plain text on one line (up to 500 characters). <kbd>Enter</kbd> or <kbd>↓</kbd> continue below the block, <kbd>Esc</kbd> or <kbd>↑</kbd> go back into it. Others see the caption right away when editing together; <kbd>⌘</kbd> <kbd>Z</kbd> in the document undoes changes.
+- **Remove**: delete the text and leave the field (or press <kbd>⌫</kbd> in the empty field), or block menu → **Remove caption**.
+- **Images**: the caption does not replace the alt text for screen readers. When an image has a caption, the block menu offers **Use caption as alt text**.
+- Captions are kept when copying and pasting, moving, duplicating, in templates, versions, on published pages, when printing and in every export, and search finds them. From HTML (for example pasted web pages or Notion's HTML export), `<figure>` with `<figcaption>` and tables with `<caption>` become captions.
+
+### Numbering captions
+
+**Page actions (…) → Number captions** puts a number in front of the captions of a page: "Figure 1", "Table 1", "Listing 1" (for code). Each kind is counted separately in document order, and only blocks that have a caption count. The label follows the language Flowplan is shown in (English: Figure/Table/Listing, German: Abbildung/Tabelle/Listing, French: Figure/Tableau/Listing). The switch applies to the whole page and everyone who reads it – also on published pages, when printing and in the exports. Copies of the page keep it. Record documents in databases don't have it.
+
 ## Formulas, diagrams and code
 
 - **Formulas** in LaTeX: as a block with `/math`, inside the text with `/inlinemath`. The preview appears while you type. Building blocks such as fraction, root, superscript, subscript, vector, cross product, ±, π and sum sit above the input.
