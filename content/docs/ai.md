@@ -194,6 +194,25 @@ Aus einer Antwort von **KI fragen**, aus dem Schreibassistenten (**Aktionen vors
 - Die KI sieht nur einen Katalog der Bereiche, Datenbanken, Eigenschaften und Mitglieder, in die du schreiben darfst und die die KI lesen darf – keine Inhalte darüber hinaus. Die Antwort der KI ist reines JSON und wird nie direkt ausgeführt.
 - Die Funktion **KI-Aktionen** lässt sich wie alle anderen von der Administration und unter **Einstellungen → KI** ausschalten.
 
+### Daten aus Datenbanken verwenden
+
+Wenn du eine Datenbank in deinem Auftrag nennst, liest die KI ihre Einträge und arbeitet mit den echten Werten statt mit einer Vorlage voller Platzhalter. Beispiel: „Erstelle eine Dokumentation aus der Tabelle Server“ ergibt eine Tabelle mit deinen Servern, ihren IP-Adressen und URLs.
+
+Die KI liest eine Datenbank, wenn
+- du ihren Titel im Auftrag nennst (Groß- und Kleinschreibung egal, gern in Anführungszeichen, z. B. „Server“),
+- du sie im Auftrag oder im Text verlinkst (Seitenlink mit `[[`),
+- sie im geöffneten Dokument verlinkt oder als Ansicht eingebettet ist und dein Auftrag von einer Tabelle oder Datenbank spricht („Fasse die verlinkte Tabelle zusammen“) – im Schreibassistenten nur mit „Seite als Kontext“,
+- bei „KI fragen“ die Frage auf die geöffnete Datenbank beschränkt ist, oder eine gefundene Quelle die Datenbank selbst ist.
+
+Das gilt für KI-Aktionen, den Schreibassistenten (freier Auftrag mit `/ki` und eigene Anweisung zu einer Auswahl) und „KI fragen“. Unter der Antwort bzw. über den vorgeschlagenen Aktionen steht, welche Daten gelesen wurden, z. B. „Daten aus: Server (12 Einträge)“. Bei „KI fragen“ erscheint die Datenbank als Quelle.
+
+Was die KI sieht:
+- nur Einträge, die du sehen darfst und die die KI lesen darf – keine privaten Einträge anderer, nichts aus Journalen mit PIN, aus Seiten und Bereichen, die [für KI gesperrt](#seiten-und-bereiche-für-die-ki-sperren) sind, aus Ende-zu-Ende-verschlüsselten Bereichen, aus dem Papierkorb oder aus Bereichen, die du in deinen KI-Einstellungen ausgeschlossen hast,
+- nur Eigenschaften, die für dich sichtbar sind (Lese-Rechte pro Eigenschaft gelten); Verknüpfungen, Formeln, Rollups, Dateien, Fortschritt, Zeit und Sprints werden nicht mitgeschickt, ebenso wenig der Text in den Eintragsdokumenten,
+- die Einträge in der Reihenfolge der Datenbank.
+
+Grenzen: höchstens 3 Datenbanken und 200 Einträge pro Anfrage und etwa 40 000 Zeichen (mit einem Modell auf dem eigenen Server im Schreibassistenten etwa 8 000). Passt nicht alles hinein, steht das in den Daten („… und 57 weitere Einträge“), und die KI weist darauf hin. Die Apple-KI auf dem Gerät liest keine Datenbanken.
+
 ## KI auf Whiteboards
 
 Auf [Whiteboards](/whiteboards#ki-auf-dem-whiteboard) öffnet **KI** in der Werkzeugleiste drei Funktionen:

@@ -194,6 +194,25 @@ From an answer of **Ask AI**, from the writing assistant (**Propose actions** be
 - The AI only sees a catalogue of the spaces, databases, properties and members you may write to and the AI may read – no content beyond that. The AI's answer is plain JSON and is never executed directly.
 - Like every other feature, **AI actions** can be switched off by the administration and under **Settings → AI**.
 
+### Using data from databases
+
+When you name a database in your request, the AI reads its records and works with the real values instead of a template full of placeholders. Example: "Create documentation from the Server table" gives you a table of your servers with their IP addresses and URLs.
+
+The AI reads a database when
+- you name its title in the request (case does not matter, quotes are fine, e.g. "Server"),
+- you link it in the request or the text (page link with `[[`),
+- it is linked or embedded as a view in the open document and your request speaks of a table or database ("Summarise the linked table") – in the writing assistant only with "Page as context",
+- in "Ask AI" the question is limited to the open database, or a source found is the database itself.
+
+This applies to AI actions, the writing assistant (free prompt with `/ai` and a custom instruction for a selection) and "Ask AI". Below the answer or above the proposed actions you see which data was read, e.g. "Data from: Server (12 records)". In "Ask AI" the database is listed as a source.
+
+What the AI sees:
+- only records you may see and the AI may read – no private records of others, nothing from journals with a PIN, from pages and spaces [closed to AI](#close-pages-and-spaces-to-ai), from end-to-end encrypted spaces, from the trash, or from places you excluded in your AI settings,
+- only properties visible to you (per-property read permissions apply); relations, formulas, rollups, files, progress, time and sprints are not sent, nor the text of the records' documents,
+- the records in the database's order.
+
+Limits: at most 3 databases and 200 records per request and about 40,000 characters (about 8,000 in the writing assistant with a model on your own server). If not everything fits, the data says so ("… and 57 more records") and the AI points it out. Apple's on-device AI does not read databases.
+
 ## AI on whiteboards
 
 On [whiteboards](/whiteboards#ai-on-the-whiteboard), **AI** in the toolbar opens three features:
