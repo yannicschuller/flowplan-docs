@@ -38,15 +38,53 @@ These words act as filters in the search:
 
 Names with spaces go in quotes: `"Next step":Offer`. Several filters apply together; the remaining text is searched as usual. Filters without text list all matching pages, most recently changed first. Records count with their own tags and those of their database page. Words that name no tag and no property (like `#123`) stay ordinary search words.
 
-Recognised filters appear as chips under the search field; ✕ removes one. The **Tag …** choice next to the space adds a tag filter. Saved searches keep the filters. Tag names and values are also ordinary words of the page: “customer” also finds pages tagged “customer”.
+Recognised filters appear as chips under the search field; ✕ removes one. The **Tag …** choice next to the space adds a tag filter. Collections keep the filters. Tag names and values are also ordinary words of the page: “customer” also finds pages tagged “customer”.
+
+### Combine: AND, OR, NOT
+
+Conditions combine freely, in the search and in [collections](#collections):
+
+| Input | Meaning |
+| --- | --- |
+| `#customer #open` | both (AND; you may write `AND` between them) |
+| `#open OR #waiting`, `#open \| #waiting` | either |
+| `-#internal`, `NOT #internal`, `-draft` | without; `-` or `NOT` works before any condition and before parentheses |
+| `(#open OR #waiting) -#internal` | parentheses group |
+| `created_by:Anna`, `creator:me` | created by (a name, or `me` for you) |
+| `updated_by:Emil`, `editor:me` | last changed by |
+| `created:-7d`, `updated:this-week` | created or changed in the last 7 days, this week |
+| `created:2026-03`, `updated:>2026-01-01`, `created:2026-01-01..2026-01-31` | year, month or day; after (`>`, `>=`), before (`<`, `<=`), a range |
+| `type:document`, `type:database\|whiteboard`, `type:record` | only documents, databases, whiteboards or database records (also `notebook`, `journal`) |
+| `in:"Team Marketing"` | only in this space |
+| `title:offer` | only the title contains the word |
+
+**Relative dates:** `-7d`, `-2w`, `-3m` and `-1y` mean the last 7 days, 2 weeks, 3 months or a year, including today. You can also use `today`, `yesterday`, `this-week`, `last-week`, `this-month`, `last-month`, `this-year` and `last-year`. Weeks start on Monday. "Today" is the day in your time zone. These also work for date properties: `Due:this-week`.
+
+**Precedence:** `NOT`/`-` binds tightest, then AND, then OR. So `#A #B OR #C` means `(#A #B) OR #C`. Use parentheses when in doubt. `OR`, `AND` and `NOT` only count in capitals. A lower-case "or" stays a search word.
+
+**Words:** Words right next to each other are searched as one phrase, as before. With `AND` between them (`invoice AND open`), they can appear anywhere.
+
+**Keys:** `created_by`, `creator`, `updated_by`, `editor`, `created`, `updated`, `type`, `in` and `title` are English and ignore case. If a property has the same name, put its name in quotes: `"Type":Book`. For database records, `Property:value` first checks the record's own property of that name (e.g. `Priority:High`), then the database page's.
+
+All existing searches work as before. Searches that use the new conditions list the matching pages and records without a text snippet, most recently changed first. The server does not search end-to-end encrypted spaces.
 
 ### Commands
 
 The same quick search also runs commands: if the input starts with `>`, only commands appear, such as `> new database`, `> tasks`, `> dark` or `> focus`; <kbd>Enter</kbd> runs the first one. Matching commands also appear above the search hits without `>`. With a page open there are page commands as well: favourite, follow, comments, export, print/PDF, version history, share and focus mode.
 
-### Saved searches
+### Collections
 
-Save frequent searches including their filters with **Save search**. Saved searches are personal and appear when you open the search.
+A **collection** is a saved search with its own place in the sidebar. Each time you open it, Flowplan searches again. New and changed pages and records that match appear by themselves.
+
+- **Create:** In the quick search, choose **Save as collection** (the search's kind and space become `type:` and `in:`), or select **+** next to **Collections** in the sidebar.
+- **Filters or text:** In the editor, build the query under **Filters**. Groups require **all conditions (AND)** or **any condition (OR)**. You can exclude any condition or group (NOT). The conditions are tag, created by, last edited by, property (by type: select, multi-select, text, number, date, checkbox, person), created and updated (relative or fixed), type, space, title contains and text contains. **Text** shows the same query in the search language. Both views stay in step: what you change in the text shows up in the filters again. If a text cannot be shown as filters (for example because of a missing parenthesis), the editor stays in text mode and says so. Below the query you see right away how many matches there are.
+- **Results:** As a **list** or a **table** with title, type, space, tags, updated and created by. Select a column heading to sort. At most 500 matches are shown, most recently changed first.
+- **Manage:** The **…** menu next to a collection has Edit (name, emoji, filters, sharing), Duplicate, Move up/Move down and Delete. You can also drag collections into order; the order is yours alone. After you delete a collection, **Undo** brings it back.
+- **Sharing:** New collections are private. With **Share with the workspace**, all members see it under **Shared**; guests do not. Only you and the workspace's owners can change or delete it. Only you can share it or stop sharing it. Others can choose **Duplicate as my collection**.
+- **Permissions:** In a collection, each person sees only what they may read themselves. This also applies to shared collections: no private spaces, no private records of others, no hidden properties, no journals behind a PIN, nothing from the trash. End-to-end encrypted spaces are left out, and the collection says so.
+- **Limits:** 100 collections per person and workspace, 100 shared ones per workspace.
+
+Saved searches from earlier versions became private collections when you updated. Searches for comments or files keep their words, but not the kind.
 
 ## Inbox
 

@@ -67,7 +67,9 @@ Clients, die Streamable HTTP sprechen und eigene Kopfzeilen erlauben, nutzen die
 | --- | --- | --- |
 | `list_workspaces` | Deine Arbeitsbereiche mit deiner Rolle und den Bereichen, die du siehst | Lesen |
 | `list_pages` | Seiten eines Arbeitsbereichs, optional in einem Bereich oder unter einer Seite | Lesen |
-| `search` | Volltextsuche über Seiten, Datensätze, Kommentare und Dateiinhalte | Lesen |
+| `search` | Volltextsuche über Seiten, Datensätze, Kommentare und Dateiinhalte; versteht auch #Tag, OR, NOT, created_by:, created:, type:, in:, title: | Lesen |
+| `list_collections` | Sammlungen eines Arbeitsbereichs (eigene und geteilte) mit ihrer Abfrage | Lesen |
+| `run_collection` | Die Seiten und Datensätze, die jetzt zu einer Sammlung passen, mit deinen Rechten | Lesen |
 | `read_page` | Eine Seite als Markdown; Datenbanken mit ihren Datensätzen | Lesen |
 | `query_database` | Datensätze mit Eigenschaften nach Namen, Eigenschaftsdefinitionen, Ansichten; Textfilter, eine gespeicherte Ansicht, Blättern | Lesen |
 | `get_record` | Ein Datensatz mit allen Eigenschaften und seinem Datensatzdokument | Lesen |
@@ -76,6 +78,8 @@ Clients, die Streamable HTTP sprechen und eigene Kopfzeilen erlauben, nutzen die
 | `append_to_page` | Hängt Markdown ans Ende eines Dokuments an | Schreiben |
 | `create_record` | Neuer Datensatz; Eigenschaften nach Namen | Schreiben |
 | `update_record` | Ändert einzelne Eigenschaften eines Datensatzes | Schreiben |
+| `save_collection` | Neue Sammlung anlegen oder Name, Abfrage, Emoji und Teilen ändern | Schreiben |
+| `delete_collection` | Sammlung in den Papierkorb legen | Schreiben |
 
 Eigenschaften werden mit ihrem Namen (oder ihrer ID) angegeben. Datumswerte schreibst du als `JJJJ-MM-TT`, Auswahlen mit ihrem Namen, Personen mit E-Mail-Adresse oder Namen und Relationen als Liste von Datensatz-IDs. `update_record` nimmt die `version` aus `get_record` entgegen: Hat jemand den Datensatz inzwischen geändert, wird die Änderung abgelehnt und nicht überschrieben.
 

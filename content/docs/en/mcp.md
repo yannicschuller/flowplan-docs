@@ -67,7 +67,9 @@ Clients that speak Streamable HTTP and accept their own headers use this configu
 | --- | --- | --- |
 | `list_workspaces` | Your workspaces with your role and the spaces you can see | Read |
 | `list_pages` | Pages in a workspace, optionally in one space or below one page | Read |
-| `search` | Full-text search across pages, records, comments and file contents | Read |
+| `search` | Full-text search across pages, records, comments and file contents; also understands #tag, OR, NOT, created_by:, created:, type:, in:, title: | Read |
+| `list_collections` | A workspace's collections (your own and shared ones) with their query | Read |
+| `run_collection` | The pages and records that match a collection now, with your permissions | Read |
 | `read_page` | A page as Markdown; databases with their records | Read |
 | `query_database` | Records with properties by name, property definitions, views; text filter, a saved view, paging | Read |
 | `get_record` | One record with all properties and its record document | Read |
@@ -76,6 +78,8 @@ Clients that speak Streamable HTTP and accept their own headers use this configu
 | `append_to_page` | Appends Markdown to the end of a document | Write |
 | `create_record` | New record; properties by name | Write |
 | `update_record` | Changes individual properties of a record | Write |
+| `save_collection` | Creates a collection or changes its name, query, emoji and sharing | Write |
+| `delete_collection` | Moves a collection to the trash | Write |
 
 Properties are named by their name (or ID). Dates are written as `YYYY-MM-DD`, options by their name, people by e-mail address or name, and relations as a list of record IDs. `update_record` accepts the `version` from `get_record`: if someone changed the record in the meantime, the change is refused instead of being overwritten.
 

@@ -307,7 +307,21 @@ If you build Flowplan yourself, `npm run sdk` regenerates the clients; the test 
 - `pages.tag` adds or removes tags on up to 500 pages at once.
 - Owners only: `tag.save`, `tag.delete`, `tag.merge`, `tag.reorder`, `property.save`, `property.delete`, `property.reorder`. New tags (`tag.save` without `tagId`) may also be created by members with edit rights.
 - Database properties with the tags as options: in `database.update` a `multiselect` property with `"tagOptions": true` (the server sets its `options`). Cells hold tag names; a new name in `row.create`, `row.update` or `rows.bulk` creates the tag (members with edit rights, 403 otherwise); `rows.import` leaves out names that may not become tags. MCP lists such properties in `get_database` with `tagOptions: true`.
-- In `GET /api/search`, `#tag`, `-#tag` and `name:value` act as filters (see [Search](/search-and-notifications#filter-by-tags-and-properties)). MCP clients get tags and values with `read_page` as frontmatter.
+- In `GET /api/search`, `#tag`, `-#tag`, `name:value`, `OR`, `NOT`, parentheses, `created_by:`, `created:`, `type:`, `in:` and `title:` act as filters (parameter `tz`: the time zone for `today` and similar) (see [Search](/search-and-notifications#filter-by-tags-and-properties)). MCP clients get tags and values with `read_page` as frontmatter.
+
+### Collections via the API
+
+- `GET /api/collections?workspace=<id>` – your collections and those shared with the workspace, in your order: `id`, `name`, `icon`, `query`, `shared`, `mine`, `canEdit`, `ownerName`.
+- `GET /api/collections/<id>?tz=Europe/Berlin` – runs a collection. It returns `collection`, `items` (`pageId`, `rowId`, `type`, `title`, `icon`, `spaceId`, `database`, `tags`, `createdAt`, `updatedAt`, `createdBy`, `creatorName`; most recently changed first, at most 500), `total`, `truncated` and `encryptedLeftOut`. Matches always follow the permissions of the token's person.
+- `GET /api/collections/preview?workspace=<id>&q=<query>` – the first 50 matches of a query that is not saved, and its canonical form (`query`).
+- `POST /api/command`:
+  - `collection.create` `{ workspaceId, name, query, icon?, shared? }`
+  - `collection.update` `{ collectionId, name?, query?, icon?, shared? }`
+  - `collection.delete` / `collection.restore` `{ collectionId }`
+  - `collection.duplicate` `{ collectionId, name? }`
+  - `collection.reorder` `{ workspaceId, order: [ids] }`
+  The query is stored in its canonical form and returned as `query`. `search.save` and `search.delete` still work and create or delete collections.
+- MCP: `list_collections`, `run_collection` (read), `save_collection`, `delete_collection` (write).
 
 ## n8n
 

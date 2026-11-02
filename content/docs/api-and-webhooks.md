@@ -307,7 +307,21 @@ Wer Flowplan selbst baut, erzeugt die Clients mit `npm run sdk` neu; der Test `t
 - `pages.tag` vergibt oder entfernt Tags auf bis zu 500 Seiten auf einmal.
 - Nur Eigentümer: `tag.save`, `tag.delete`, `tag.merge`, `tag.reorder`, `property.save`, `property.delete`, `property.reorder`. Neue Tags (`tag.save` ohne `tagId`) dürfen auch Mitglieder mit Bearbeitungsrecht anlegen.
 - Datenbank-Eigenschaften mit den Tags als Optionen: in `database.update` eine `multiselect`-Eigenschaft mit `"tagOptions": true` (ihre `options` setzt der Server). Zellen enthalten Tag-Namen; ein neuer Name in `row.create`, `row.update` oder `rows.bulk` legt den Tag an (Mitglieder mit Bearbeitungsrecht, sonst 403); `rows.import` lässt Namen weg, die kein Tag werden dürfen. MCP nennt solche Eigenschaften in `get_database` mit `tagOptions: true`.
-- In `GET /api/search` wirken `#tag`, `-#tag` und `name:wert` als Filter (siehe [Suche](/search-and-notifications#nach-tags-und-eigenschaften-filtern)). MCP-Clients bekommen Tags und Werte mit `read_page` als Frontmatter.
+- In `GET /api/search` wirken `#tag`, `-#tag`, `name:wert`, `OR`, `NOT`, Klammern, `created_by:`, `created:`, `type:`, `in:` und `title:` als Filter (Parameter `tz`: Zeitzone für `today` usw.) (siehe [Suche](/search-and-notifications#nach-tags-und-eigenschaften-filtern)). MCP-Clients bekommen Tags und Werte mit `read_page` als Frontmatter.
+
+### Sammlungen per API
+
+- `GET /api/collections?workspace=<id>` – deine und die mit dem Arbeitsbereich geteilten Sammlungen in deiner Reihenfolge: `id`, `name`, `icon`, `query`, `shared`, `mine`, `canEdit`, `ownerName`.
+- `GET /api/collections/<id>?tz=Europe/Berlin` – führt eine Sammlung aus. Du bekommst `collection`, `items` (`pageId`, `rowId`, `type`, `title`, `icon`, `spaceId`, `database`, `tags`, `createdAt`, `updatedAt`, `createdBy`, `creatorName`; zuletzt geänderte zuerst, höchstens 500), `total`, `truncated` und `encryptedLeftOut`. Die Treffer folgen immer den Rechten des Tokens bzw. der Person.
+- `GET /api/collections/preview?workspace=<id>&q=<Abfrage>` – die ersten 50 Treffer einer nicht gespeicherten Abfrage und ihre Normalform (`query`).
+- `POST /api/command`:
+  - `collection.create` `{ workspaceId, name, query, icon?, shared? }`
+  - `collection.update` `{ collectionId, name?, query?, icon?, shared? }`
+  - `collection.delete` / `collection.restore` `{ collectionId }`
+  - `collection.duplicate` `{ collectionId, name? }`
+  - `collection.reorder` `{ workspaceId, order: [ids] }`
+  Die Abfrage wird in ihrer Normalform gespeichert und mit `query` zurückgegeben. `search.save` und `search.delete` funktionieren weiter und legen bzw. löschen Sammlungen.
+- MCP: `list_collections`, `run_collection` (lesen), `save_collection`, `delete_collection` (schreiben).
 
 ## n8n
 
