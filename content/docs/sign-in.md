@@ -95,9 +95,18 @@ SESSION_HOURS=8
 ### Gruppennamen bei verbreiteten Anbietern
 
 - **Keycloak**: Mapper „Group Membership“ zum Client hinzufügen, Token Claim Name `groups`, „Full group path“ ausschalten – sonst heißt die Gruppe `/flowplan-admins`. Für Realm-Rollen stattdessen `OIDC_GROUPS_CLAIM=realm_access.roles`.
-- **Authentik**: Der Scope `profile` liefert `groups` bereits mit den Gruppennamen.
+- **Authentik**: Der Scope `profile` liefert `groups` bereits mit den Gruppennamen – ein Scope `groups` ist nicht nötig. Der Issuer ist die Adresse des Providers mit Schrägstrich am Ende, z. B. `https://auth.example.org/application/o/flowplan/`. Ohne **Signaturschlüssel** (Signing Key) am Provider signiert Authentik das ID-Token mit dem Client-Secret (HS256); Flowplan akzeptiert das ab Version 0.8.3. Mit Signaturschlüssel (RS256) prüft Flowplan die Signatur zusätzlich gegen die veröffentlichten Schlüssel des Providers.
 - **Zitadel**: Rollen stehen unter `urn:zitadel:iam:org:project:roles`; einen eigenen Claim per Action anlegen oder den Pfad eintragen.
 - **Entra ID**: Gruppen-Claim im Token konfigurieren. Entra liefert standardmäßig Objekt-IDs; dann die ID der Admin-Gruppe als `OIDC_ADMIN_GROUP` eintragen.
+
+### Wenn die SSO-Anmeldung fehlschlägt
+
+Das Server-Log nennt den Grund: eine Zeile `OIDC sign-in failed:` mit der Art des Fehlers, seinem Code und – wenn der Provider mit einem Fehler geantwortet hat – dessen `error` und `error_description` (nie Tokens oder Secrets). Häufige Ursachen:
+
+- **Redirect-URI**: Der Provider muss genau `<APP_URL>/api/auth/callback` erlauben. `APP_URL` muss die Adresse im Browser sein – sonst lehnt der Provider die Weiterleitung ab oder das Anmelde-Cookie fehlt („Anmeldung abgelaufen“).
+- **Issuer**: `OIDC_ISSUER` muss Zeichen für Zeichen dem `issuer` in der Discovery des Providers entsprechen, einschließlich Schrägstrich am Ende.
+- **Client-Secret** falsch oder ein öffentlicher Client: Der Token-Endpunkt antwortet mit `invalid_client`.
+- **`unexpected JWT "alg"`**: Der Provider signiert ID-Tokens mit einem anderen Verfahren, als er in seiner Discovery angibt.
 
 ### SSO-Gruppen Arbeitsbereichen zuordnen
 

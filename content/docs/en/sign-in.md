@@ -95,9 +95,18 @@ SESSION_HOURS=8
 ### Group names with common providers
 
 - **Keycloak**: add the "Group Membership" mapper to the client, token claim name `groups`, turn off "Full group path" – otherwise the group is called `/flowplan-admins`. For realm roles use `OIDC_GROUPS_CLAIM=realm_access.roles` instead.
-- **Authentik**: the `profile` scope already delivers `groups` with the group names.
+- **Authentik**: the `profile` scope already delivers `groups` with the group names – a scope `groups` is not needed. The issuer is the provider's address with the trailing slash, e.g. `https://auth.example.org/application/o/flowplan/`. Without a **signing key** on the provider Authentik signs the ID token with the client secret (HS256); Flowplan accepts that from version 0.8.3 on. With a signing key (RS256) Flowplan also checks the signature against the provider's published keys.
 - **Zitadel**: roles are under `urn:zitadel:iam:org:project:roles`; create a claim of your own with an action or enter the path.
 - **Entra ID**: configure the groups claim in the token. Entra delivers object IDs by default; then enter the admin group's ID as `OIDC_ADMIN_GROUP`.
+
+### When SSO sign-in fails
+
+The server log names the reason: a line `OIDC sign-in failed:` with the kind of error, its code and – if the provider answered with an error – its `error` and `error_description` (never tokens or secrets). Common causes:
+
+- **Redirect URI**: the provider must allow exactly `<APP_URL>/api/auth/callback`. `APP_URL` has to be the address in the browser – otherwise the provider rejects the redirect or the sign-in cookie is missing ("Sign-in expired").
+- **Issuer**: `OIDC_ISSUER` must match the `issuer` in the provider's discovery character for character, including a trailing slash.
+- **Client secret** wrong or a public client: the token endpoint answers `invalid_client`.
+- **`unexpected JWT "alg"`**: the provider signs ID tokens with another algorithm than it announces in its discovery.
 
 ### Map SSO groups to workspaces
 
