@@ -207,7 +207,7 @@ Die KI liest eine Datenbank, wenn
 Das gilt für KI-Aktionen, den Schreibassistenten (freier Auftrag mit `/ki` und eigene Anweisung zu einer Auswahl) und „KI fragen“. Unter der Antwort bzw. über den vorgeschlagenen Aktionen steht, welche Daten gelesen wurden, z. B. „Daten aus: Server (12 Einträge)“. Bei „KI fragen“ erscheint die Datenbank als Quelle.
 
 Was die KI sieht:
-- nur Einträge, die du sehen darfst und die die KI lesen darf – keine privaten Einträge anderer, nichts aus Journalen mit PIN, aus Seiten und Bereichen, die [für KI gesperrt](#seiten-und-bereiche-für-die-ki-sperren) sind, aus Ende-zu-Ende-verschlüsselten Bereichen, aus dem Papierkorb oder aus Bereichen, die du in deinen KI-Einstellungen ausgeschlossen hast,
+- nur Einträge, die du sehen darfst und die die KI lesen darf – keine privaten Einträge anderer, nichts aus Journalen mit PIN, aus Seiten und Bereichen, die [für KI gesperrt](#seiten-und-bereiche-fuer-die-ki-sperren) sind, aus Ende-zu-Ende-verschlüsselten Bereichen, aus dem Papierkorb oder aus Bereichen, die du in deinen KI-Einstellungen ausgeschlossen hast,
 - nur Eigenschaften, die für dich sichtbar sind (Lese-Rechte pro Eigenschaft gelten); Verknüpfungen, Formeln, Rollups, Dateien, Fortschritt, Zeit und Sprints werden nicht mitgeschickt, ebenso wenig der Text in den Eintragsdokumenten,
 - die Einträge in der Reihenfolge der Datenbank.
 
