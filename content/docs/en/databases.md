@@ -61,7 +61,7 @@ In the dialog you choose the target database in the same workspace:
 - Properties are matched **by name**, the title always to the title. Compatible types are converted (text ↔ e-mail, select ↔ multi-select, number → text …); missing select options are added to the target. **Create missing properties in the target** adds properties the target does not have yet.
 - Calculated values (formulas, rollups, progress, created/edited) are worked out again in the target.
 
-With the mouse it is quicker: **drag records by their handle onto a database in the sidebar** to move them there; hold <kbd>Alt</kbd> to copy them instead. Flowplan saves a state of the source beforehand.
+Dragging is quicker: **drag records by their handle (with the mouse also by the card) onto a database in the sidebar** to move them there – the target database is highlighted; hold <kbd>Alt</kbd> when you let go to copy them instead. Flowplan saves a state of the source beforehand.
 
 ## Properties
 

@@ -119,6 +119,20 @@ Markdown shortcuts such as `##`, `-`, `[]` or ` ``` ` are listed under [Document
 | <kbd>⌥</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Change the selected device's height by one unit |
 | <kbd>Enter</kbd> | On a rack, device or cable: open its details |
 
+## Databases
+
+On the ⋮⋮ handle of a record (table, list, feed, board, gallery, sprints):
+
+| Shortcut | Effect |
+| --- | --- |
+| <kbd>Space</kbd> | Lift the record; then <kbd>Space</kbd> or <kbd>Enter</kbd> drops it |
+| <kbd>↑</kbd> / <kbd>↓</kbd> | Move the lifted record up/down one place (sprints: choose the section) |
+| <kbd>←</kbd> / <kbd>→</kbd> | Board: move the lifted card to the next column |
+| <kbd>Home</kbd> / <kbd>End</kbd> | Move the lifted record to the start/end |
+| <kbd>Esc</kbd> | Cancel lifting or dragging; nothing is changed |
+| <kbd>⌥</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Move the record up/down one place right away |
+| <kbd>Enter</kbd> | (not lifted) Open the **Move record** dialog |
+
 ## Calendar and timeline
 
 | Shortcut | Effect |
@@ -127,6 +141,8 @@ Markdown shortcuts such as `##`, `-`, `[]` or ` ``` ` are listed under [Document
 | <kbd>⌥</kbd> <kbd>←</kbd> / <kbd>→</kbd> | Move by one day |
 | <kbd>⌥</kbd> <kbd>⇧</kbd> <kbd>←</kbd> / <kbd>→</kbd> | Timeline: change the end |
 | <kbd>⌥</kbd> <kbd>Ctrl</kbd> <kbd>←</kbd> / <kbd>→</kbd> | Timeline: change the start |
+| <kbd>⌥</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Month view: move a whole-day entry by one week |
+| <kbd>Esc</kbd> | Cancel a drag in progress |
 
 ## In this documentation
 

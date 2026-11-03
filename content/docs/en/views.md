@@ -4,14 +4,25 @@ A database can have as many views as you like. Every view shows the same records
 
 New view: **+** next to the view tabs, then choose one of the {{facts.views|word}} layouts. **View and properties** controls which properties are visible and in which order.
 
-A **right-click on a view tab** opens its menu: **Rename**, **Duplicate**, **Settings …**, **Set as default view**, **Move left**, **Move right** and **Delete view** (the records are kept; the last view cannot be deleted). Tabs can also be **reordered by dragging**, and a double-click renames them.
+A **right-click on a view tab** opens its menu: **Rename**, **Duplicate**, **Settings …**, **Set as default view**, **Move left**, **Move right** and **Delete view** (the records are kept; the last view cannot be deleted). With the mouse, tabs can also be **reordered by dragging**, and a double-click renames them. On touch screens, swiping scrolls the tabs; a long press opens the menu with **Move left** and **Move right**.
 
 **Default view:** the view that appears first when the database is opened – the board instead of the table, for example. Without it, the first view opens. A small star in the tab marks it; it can also be set in the view settings (handy on a phone).
+
+## Reordering records by dragging
+
+In tables, lists, feeds, boards and galleries, records can be dragged to another place by their **handle** (⋮⋮); cards on boards and in galleries also by the whole card with the mouse.
+
+- **Mouse:** dragging starts only after the pointer has moved a few pixels – a simple click still opens the record, or on the handle the **Move record** dialog. While dragging, the cursor is the closed hand, a slightly lifted copy follows the pointer and a blue line shows where the record lands. Over a group header it lands at the end of that group (and changes the group).
+- **Scrolling at the edges:** near the edge of the table, the board or the window the view scrolls along, sideways as well as up and down.
+- **Cancel:** <kbd>Esc</kbd> during the drag puts everything back; nothing is changed.
+- **Touch screens:** hold the handle briefly (about 0.3 seconds) until the record lifts, then drag. A quick swipe over the handle scrolls as usual; a short tap opens **Move record**. On boards the card handle and the column handle drag right away.
+- **Keyboard:** focus the handle, <kbd>Space</kbd> lifts the record, <kbd>↑</kbd>/<kbd>↓</kbd> move it (on boards <kbd>←</kbd>/<kbd>→</kbd> to the next column, <kbd>Home</kbd>/<kbd>End</kbd> to the start or end), <kbd>Space</kbd> or <kbd>Enter</kbd> drops it, <kbd>Esc</kbd> cancels. Screen readers announce every position. <kbd>Alt</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd> still moves it by one place at once.
+- A record can also be dragged onto a **database in the sidebar** this way (see [Copy and move records](/databases#copy-and-move-records)).
 
 ## Table
 
 - Edit cells directly; open records as a page via their title.
-- Move columns by drag and drop, resize them at their edges.
+- Drag columns by their header onto another column – they land before it (blue line) – and resize them at their edges. On touch screens, hold the header briefly first.
 - Choose a calculation below every column.
 - Grouped tables fold groups and show summaries per group.
 - The title column stays in place while the table scrolls sideways. On a phone it takes at most about 60 % of the table's width, and longer titles are cut short with "…". There the column with the checkbox and drag handle scrolls with the rest. This way the table can be swiped sideways anywhere, including on the title column.
@@ -26,7 +37,7 @@ The kanban view groups cards into columns, for example by status, select, person
 - **Add group** to the right of the columns creates your own status, such as "Waiting for customer": it is saved as a new option of the grouping select property and appears right away as a column of its own.
 - Sub-groups also split the board into rows (swimlanes).
 - With multi-select and relations, a card can appear in several columns; moving it only replaces the respective assignment.
-- Cards can be dragged on touch devices too.
+- On touch devices, drag cards by their handle (swiping over a card scrolls) and columns by the ⋮⋮ handle in their header; with the mouse, drag columns by their header. <kbd>Esc</kbd> cancels and the card returns to its place.
 
 ## Calendar
 
@@ -34,6 +45,7 @@ Month, week and day view by a date field.
 
 - Week and day show an hourly grid with an all-day row and overlaps placed side by side.
 - Move appointments in 15-minute steps, extend or shorten them at their edges.
+- Drag whole-day entries (month view and the all-day row) to another day with the mouse, on touch devices by their ⋮⋮ handle; the target day gets a dashed outline, <kbd>Esc</kbd> cancels. With the keyboard, <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> moves a focused entry by one day, <kbd>Alt</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd> in the month view by one week.
 - A click on an hour creates an appointment, **All day +** an all-day record.
 - Every view has its own time zone; without a setting the browser's applies.
 - Keyboard: <kbd>Alt</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd> moves by 15 minutes, <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> by one day.
@@ -89,7 +101,7 @@ Backlog, sprints with goal and period, burndown and velocity – see [Projects, 
 
 Bars from a start to an end date field, on a scale of week, month, quarter or year.
 
-- Move bars or drag their edges. On touch devices, hold a bar briefly, then drag it; a quick swipe scrolls the timeline. The handles at the edges drag at once. The calendar icon opens a date dialog, also for unscheduled records.
+- Move bars or drag their edges. On touch devices, hold a bar briefly, then drag it; a quick swipe scrolls the timeline. The handles at the edges drag at once. <kbd>Esc</kbd> cancels a drag in progress. The calendar icon opens a date dialog, also for unscheduled records.
 - **Today** jumps to the current date; weekends can be highlighted.
 - Keyboard: <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> moves by one day, with <kbd>⇧</kbd> it changes the end, with <kbd>Ctrl</kbd> the start.
 

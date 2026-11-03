@@ -90,7 +90,7 @@ On a board, **View → WIP limits** sets a maximum per column, e.g. “In progre
 
 A view of the type **Sprints (backlog and planning)** plans work in time boxes. **Set up sprints** adds the “Sprint” property and the first sprint the first time.
 
-- **Planning**: drag records from the **backlog** into a sprint – or use **Move to**, also on phones.
+- **Planning**: drag records from the **backlog** into a sprint – with the mouse by the record, on touch devices hold the ⋮⋮ handle briefly and drag – or use **Move to**, also on phones. With the keyboard: focus the handle, press <kbd>Space</kbd>, choose the section with <kbd>↑</kbd>/<kbd>↓</kbd>, <kbd>Space</kbd> or <kbd>Enter</kbd> drops, <kbd>Esc</kbd> cancels.
 - **A sprint** has a name, start, end and goal; **+ Sprint** adds the next one.
 - **Start** and **Complete**: when completing, choose where unfinished records go – the next sprint or back to the backlog.
 - **Measure size in**: number of records or a number property such as story points.

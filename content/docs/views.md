@@ -4,14 +4,25 @@ Eine Datenbank kann beliebig viele Ansichten haben. Jede Ansicht zeigt dieselben
 
 Neue Ansicht: **+** neben den Ansichtsreitern, dann eine der {{facts.views|word}} Darstellungen wählen. **Ansicht und Eigenschaften** steuert, welche Eigenschaften sichtbar sind und in welcher Reihenfolge.
 
-Ein **Rechtsklick auf einen Ansichtsreiter** öffnet sein Menü: **Umbenennen**, **Duplizieren**, **Einstellungen …**, **Als Standardansicht festlegen**, **Nach links**, **Nach rechts** und **Ansicht löschen** (die Einträge bleiben dabei erhalten; die letzte Ansicht lässt sich nicht löschen). Reiter lassen sich auch **per Ziehen neu anordnen**, ein Doppelklick benennt sie um.
+Ein **Rechtsklick auf einen Ansichtsreiter** öffnet sein Menü: **Umbenennen**, **Duplizieren**, **Einstellungen …**, **Als Standardansicht festlegen**, **Nach links**, **Nach rechts** und **Ansicht löschen** (die Einträge bleiben dabei erhalten; die letzte Ansicht lässt sich nicht löschen). Reiter lassen sich mit der Maus auch **per Ziehen neu anordnen**, ein Doppelklick benennt sie um. Auf Touchscreens scrollen die Reiter beim Wischen; langes Drücken öffnet das Menü mit **Nach links** und **Nach rechts**.
 
 **Standardansicht:** Die Ansicht, die beim Öffnen der Datenbank zuerst erscheint – etwa das Board statt der Tabelle. Ohne Einstellung ist es die erste Ansicht. Ein kleiner Stern im Reiter markiert sie; einstellbar auch in den Einstellungen der Ansicht (praktisch auf dem Handy).
+
+## Einträge per Ziehen ordnen
+
+In Tabelle, Liste, Feed, Board und Galerie lassen sich Einträge am **Griff** (⋮⋮) an eine andere Stelle ziehen; Karten im Board und in der Galerie auch mit der Maus an der ganzen Karte.
+
+- **Maus:** Erst nach ein paar Pixeln Bewegung beginnt das Ziehen – ein einfacher Klick öffnet weiterhin den Eintrag bzw. am Griff den Dialog **Eintrag verschieben**. Während des Ziehens zeigt der Mauszeiger die geschlossene Hand, eine leicht angehobene Kopie folgt dem Zeiger, und eine blaue Linie zeigt, wo der Eintrag landet. Über einer Gruppenüberschrift landet er am Ende dieser Gruppe (und wechselt die Gruppe).
+- **Am Rand scrollen:** Nahe am Rand der Tabelle, des Boards oder des Fensters scrollt die Ansicht mit, waagrecht wie senkrecht.
+- **Abbrechen:** <kbd>Esc</kbd> während des Ziehens legt alles zurück, nichts wird geändert.
+- **Touchscreens:** Den Griff kurz halten (etwa 0,3 Sekunden), bis sich der Eintrag abhebt, dann ziehen. Ein schnelles Wischen über den Griff scrollt wie gewohnt; ein kurzes Tippen öffnet **Eintrag verschieben**. Im Board ziehen Griff und Spaltengriff sofort.
+- **Tastatur:** Den Griff fokussieren, <kbd>Leertaste</kbd> hebt den Eintrag an, <kbd>↑</kbd>/<kbd>↓</kbd> verschieben ihn (im Board <kbd>←</kbd>/<kbd>→</kbd> in die Nachbarspalte, <kbd>Pos1</kbd>/<kbd>Ende</kbd> an den Anfang oder das Ende), <kbd>Leertaste</kbd> oder <kbd>Enter</kbd> legt ab, <kbd>Esc</kbd> bricht ab. Screenreader hören jede Position. <kbd>Alt</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd> verschiebt weiterhin sofort um eine Stelle.
+- Ein Eintrag lässt sich so auch auf eine **Datenbank in der Seitenleiste** ziehen (siehe [Einträge kopieren und verschieben](/databases#eintraege-kopieren-und-verschieben)).
 
 ## Tabelle
 
 - Zellen direkt bearbeiten, Einträge über den Titel als Seite öffnen.
-- Spalten per Drag and Drop verschieben, an den Rändern in der Breite ändern.
+- Spalten an ihrer Überschrift auf eine andere Spalte ziehen – sie landen davor (blaue Linie) –, an den Rändern in der Breite ändern. Auf Touchscreens die Überschrift erst kurz halten.
 - Unter jeder Spalte eine Berechnung wählen.
 - Gruppierte Tabellen klappen Gruppen ein und zeigen Zusammenfassungen je Gruppe.
 - Beim seitlichen Scrollen bleibt die Titelspalte stehen. Auf dem Smartphone nimmt sie höchstens etwa 60 % der Tabellenbreite ein, und längere Titel werden mit „…“ gekürzt. Die Spalte mit Auswahlfeld und Ziehgriff scrollt dort mit. So lässt sich die Tabelle überall seitlich wischen, auch auf der Titelspalte.
@@ -26,7 +37,7 @@ Die Kanban-Ansicht gruppiert Karten in Spalten, etwa nach Status, Auswahl, Perso
 - **Gruppe hinzufügen** rechts neben den Spalten legt einen eigenen Status an, etwa „Warten auf Kunde“: Er wird als neue Option der gruppierenden Auswahl-Eigenschaft gespeichert und erscheint sofort als eigene Spalte.
 - Untergruppen teilen das Board zusätzlich in Zeilen (Swimlanes).
 - Bei Mehrfachauswahl und Relationen kann eine Karte in mehreren Spalten erscheinen; Verschieben ersetzt nur die jeweilige Zuordnung.
-- Auf Touchgeräten lassen sich Karten ebenfalls ziehen.
+- Auf Touchgeräten Karten am Griff ziehen (die Karte selbst scrollt beim Wischen), Spalten am Griff ⋮⋮ in ihrer Überschrift; mit der Maus Spalten an der Überschrift. <kbd>Esc</kbd> bricht ab, die Karte kehrt an ihren Platz zurück.
 
 ## Kalender
 
@@ -34,6 +45,7 @@ Monats-, Wochen- und Tagesansicht nach einem Datumsfeld.
 
 - Woche und Tag zeigen ein Stundenraster mit Ganztagszeile und nebeneinander angeordneten Überschneidungen.
 - Termine in 15-Minuten-Schritten verschieben, an den Rändern verlängern oder verkürzen.
+- Ganztägige Einträge (Monatsansicht und Ganztagszeile) mit der Maus auf einen anderen Tag ziehen, auf Touchgeräten am Griff ⋮⋮; der Zieltag ist gestrichelt umrandet, <kbd>Esc</kbd> bricht ab. Mit der Tastatur verschiebt <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> einen fokussierten Eintrag um einen Tag, <kbd>Alt</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd> in der Monatsansicht um eine Woche.
 - Klick auf eine Stunde legt einen Termin an, **Ganztägig +** einen Ganztagseintrag.
 - Jede Ansicht hat eine eigene Zeitzone; ohne Einstellung gilt die des Browsers.
 - Tastatur: <kbd>Alt</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd> verschiebt um 15 Minuten, <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> um einen Tag.
@@ -89,7 +101,7 @@ Backlog, Sprints mit Ziel und Zeitraum, Burndown und Velocity – siehe [Projekt
 
 Balken von einem Beginn- bis zu einem End-Datumsfeld, im Maßstab Woche, Monat, Quartal oder Jahr.
 
-- Balken verschieben oder an den Rändern ziehen. Auf Touchgeräten einen Balken erst kurz halten, dann ziehen; ein schnelles Wischen scrollt die Timeline. Die Griffe an den Rändern ziehen sofort. Das Kalendersymbol öffnet einen Datumsdialog, auch für ungeplante Einträge.
+- Balken verschieben oder an den Rändern ziehen. Auf Touchgeräten einen Balken erst kurz halten, dann ziehen; ein schnelles Wischen scrollt die Timeline. Die Griffe an den Rändern ziehen sofort. <kbd>Esc</kbd> bricht ein laufendes Ziehen ab. Das Kalendersymbol öffnet einen Datumsdialog, auch für ungeplante Einträge.
 - **Heute** springt zum aktuellen Datum; Wochenenden lassen sich markieren.
 - Tastatur: <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> verschiebt um einen Tag, mit <kbd>⇧</kbd> ändert es das Ende, mit <kbd>Strg</kbd> den Beginn.
 

@@ -119,6 +119,20 @@ Markdown-Kürzel wie `##`, `-`, `[]` oder ` ``` ` stehen unter [Dokumente und Ed
 | <kbd>⌥</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Höhe des ausgewählten Geräts um eine HE ändern |
 | <kbd>Enter</kbd> | Bei Rack, Gerät oder Kabel: die Details öffnen |
 
+## Datenbanken
+
+Auf dem Griff ⋮⋮ eines Eintrags (Tabelle, Liste, Feed, Board, Galerie, Sprints):
+
+| Kürzel | Wirkung |
+| --- | --- |
+| <kbd>Leertaste</kbd> | Eintrag anheben; danach legt <kbd>Leertaste</kbd> oder <kbd>Enter</kbd> ihn ab |
+| <kbd>↑</kbd> / <kbd>↓</kbd> | Angehobenen Eintrag eine Stelle nach oben/unten (Sprints: Abschnitt wählen) |
+| <kbd>←</kbd> / <kbd>→</kbd> | Board: angehobene Karte in die Nachbarspalte |
+| <kbd>Pos1</kbd> / <kbd>Ende</kbd> | Angehobenen Eintrag an den Anfang/das Ende |
+| <kbd>Esc</kbd> | Anheben oder Ziehen abbrechen, nichts wird geändert |
+| <kbd>⌥</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Eintrag sofort eine Stelle nach oben/unten |
+| <kbd>Enter</kbd> | (nicht angehoben) Dialog **Eintrag verschieben** öffnen |
+
 ## Kalender und Timeline
 
 | Kürzel | Wirkung |
@@ -127,6 +141,8 @@ Markdown-Kürzel wie `##`, `-`, `[]` oder ` ``` ` stehen unter [Dokumente und Ed
 | <kbd>⌥</kbd> <kbd>←</kbd> / <kbd>→</kbd> | Um einen Tag verschieben |
 | <kbd>⌥</kbd> <kbd>⇧</kbd> <kbd>←</kbd> / <kbd>→</kbd> | Timeline: Ende ändern |
 | <kbd>⌥</kbd> <kbd>Strg</kbd> <kbd>←</kbd> / <kbd>→</kbd> | Timeline: Beginn ändern |
+| <kbd>⌥</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Monatsansicht: ganztägigen Eintrag um eine Woche verschieben |
+| <kbd>Esc</kbd> | Laufendes Ziehen abbrechen |
 
 ## In dieser Dokumentation
 

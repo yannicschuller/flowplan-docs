@@ -61,7 +61,7 @@ Im Dialog wählst du die Ziel-Datenbank desselben Arbeitsbereichs:
 - Eigenschaften werden **nach Namen** zugeordnet, der Titel immer zum Titel. Passende Typen werden umgewandelt (Text ↔ E-Mail, Auswahl ↔ Mehrfachauswahl, Zahl → Text …); fehlende Auswahloptionen kommen im Ziel dazu. **Fehlende Eigenschaften im Ziel anlegen** erstellt Eigenschaften, die das Ziel noch nicht hat.
 - Berechnete Werte (Formeln, Rollups, Fortschritt, Erstellt/Geändert) entstehen im Ziel neu.
 
-Schneller geht es mit der Maus: Einträge am Griff **in eine Datenbank der Seitenleiste ziehen** verschiebt sie dorthin, mit gedrückter <kbd>Alt</kbd>-Taste werden sie kopiert. Vorher sichert Flowplan einen Stand der Quelle.
+Schneller geht es per Ziehen: Einträge am Griff (mit der Maus auch an der Karte) **in eine Datenbank der Seitenleiste ziehen** verschiebt sie dorthin – die Zieldatenbank wird hervorgehoben –, mit gedrückter <kbd>Alt</kbd>-Taste beim Loslassen werden sie kopiert. Vorher sichert Flowplan einen Stand der Quelle.
 
 ## Eigenschaften
 

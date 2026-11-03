@@ -90,7 +90,7 @@ In einem Board legst du unter **Ansicht → WIP-Limits** eine Höchstzahl je Spa
 
 Eine Ansicht vom Typ **Sprints (Backlog und Planung)** plant Arbeit in Zeitabschnitten. **Sprints einrichten** legt beim ersten Mal die Eigenschaft „Sprint“ und den ersten Sprint an.
 
-- **Planen**: Einträge per Drag & Drop aus dem **Backlog** in einen Sprint ziehen – oder über **Verschieben nach**, auch am Handy.
+- **Planen**: Einträge aus dem **Backlog** in einen Sprint ziehen – mit der Maus am Eintrag, auf Touchgeräten den Griff ⋮⋮ kurz halten und ziehen –, oder über **Verschieben nach**, auch am Handy. Mit der Tastatur: Griff fokussieren, <kbd>Leertaste</kbd>, mit <kbd>↑</kbd>/<kbd>↓</kbd> den Abschnitt wählen, <kbd>Leertaste</kbd> oder <kbd>Enter</kbd> legt ab, <kbd>Esc</kbd> bricht ab.
 - **Sprint**: Name, Start, Ende und Ziel; **+ Sprint** schließt den nächsten an.
 - **Starten** und **Abschließen**: Beim Abschluss wählst du, wohin Offenes geht – in den nächsten Sprint oder zurück ins Backlog.
 - **Umfang messen in**: Anzahl Einträge oder eine Zahl-Eigenschaft wie Story Points.
