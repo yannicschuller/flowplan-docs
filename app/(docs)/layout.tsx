@@ -5,7 +5,7 @@ import { localePrefix, requestLocale } from "@/lib/i18n-server";
 import { translate } from "@/lib/i18n";
 import { LanguageSwitch } from "@/components/i18n";
 import s from "@/components/docs/docs.module.css";
-import { DISCORD_URL, GITHUB_URL, imprintUrl, privacyUrl, websiteUrl } from "@/lib/links";
+import { DISCORD_URL, GITHUB_URL, imprintUrl, privacyUrl, SPONSOR_URL, websiteUrl } from "@/lib/links";
 
 // The documentation: same paper and ink as the website, calmer.
 export default async function DocsLayout({ children }: { children: React.ReactNode }) {
@@ -43,6 +43,9 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
       <footer className={s.legal}>
         <a href={DISCORD_URL} rel="noopener">{t("Community auf Discord", "Community on Discord")}</a>
         <a href={GITHUB_URL} rel="noopener">GitHub</a>
+        <a href={SPONSOR_URL} rel="noopener">
+          <span aria-hidden="true">♥</span> {t("Unterstützen", "Sponsor")}
+        </a>
         {imprint && <a href={imprint}>{t("Impressum", "Legal notice")}</a>}
         {privacy && <a href={privacy}>{t("Datenschutz", "Privacy")}</a>}
       </footer>

@@ -6,6 +6,8 @@ export const docsUrl = () => clean(process.env.DOCS_URL, "https://docs.flowplan.
 export const websiteUrl = () => clean(process.env.WEBSITE_URL, "https://flowplan.org");
 export const GITHUB_URL = "https://github.com/yannicschuller/flowplan";
 export const DISCORD_URL = "https://discord.gg/bCEdB6MPrR";
+// GitHub Sponsors, for anyone who wants to support the development.
+export const SPONSOR_URL = "https://github.com/sponsors/yannicschuller";
 // The operator's legal notice and privacy policy (IMPRINT_URL, PRIVACY_URL);
 // the footer shows only what is set.
 const legal = (value: string | undefined) => (/^https?:\/\/\S+$/i.test((value || "").trim()) ? (value || "").trim() : undefined);
