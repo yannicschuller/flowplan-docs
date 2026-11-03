@@ -18,7 +18,7 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 | Zitat | `/quote` | Hervorgehobenes Zitat (bei `/zitat` erscheint zuerst das Literaturzitat) |
 | Hinweis, Tipp, Wichtig, Warnung, Achtung | `/hinweis`, `/tipp`, `/wichtig`, `/warnung`, `/achtung` | Farbiger Kasten mit Symbol und Titel – die fünf Arten der GitHub-Hinweise |
 | Aufklappbarer Block | `/toggle` | Inhalt, der sich ein- und ausklappen lässt |
-| Code | `/code` | Syntaxhervorhebung für 192 Sprachen |
+| Code | `/code` | Syntaxhervorhebung für über 240 Sprachen (wie in VS Code) |
 | Tabelle | `/table` | Einfache Tabelle im Text |
 | Bild oder Datei | `/bild`, `/datei` | Upload oder Auswahl aus der Mediathek |
 | Mermaid-Diagramm | `/mermaid` | Ablauf-, Sequenz-, Klassendiagramme als Text |
@@ -163,6 +163,8 @@ Beim Tippen wandelt der Editor um:
 | `---` | Trennlinie |
 | `**fett**`, `*kursiv*`, `` `code` ``, `~~durch~~` | Formatierung im Text |
 
+Codeblöcke tragen ihre Sprache im Zaun: ` ```python `, ` ```typescript `, ` ```terraform `. Der Export schreibt die Kennungen von VS Code bzw. Shiki; der Import versteht auch Kürzel und ältere Namen (`js`, `ts`, `py`, `sh`, `yml`, `cpp`, `csharp`, `plaintext` …) und speichert sie mit der vollen Kennung (` ```js ` wird zu JavaScript, beim nächsten Export ` ```javascript `). Unbekannte Sprachen bleiben erhalten und erscheinen im Block als „(importiert)“, ohne Hervorhebung.
+
 ## Text formatieren
 
 Text markieren öffnet die Formatierungsleiste: Überschrift, **Fett**, *Kursiv*, Unterstrichen, Durchgestrichen, Code, Link, Farbe und Hintergrundfarbe, Hoch- und Tiefgestellt, Inline-Formel, **Verdecken (Spoiler)** und **Text kommentieren**.
@@ -248,7 +250,9 @@ Bilder, Tabellen und Codeblöcke können eine kurze **Beschriftung** bekommen �
 - **Formeln** in LaTeX: Block mit `/math`, im Text mit `/inlinemath`. Die Vorschau erscheint beim Tippen. Über dem Eingabefeld stehen Bausteine wie Bruch, Wurzel, Hoch- und Tiefstellung, Vektor, Kreuzprodukt, ±, π und Summe.
 - **Brüche** fügt `/Bruch` als Formel im Satz ein.
 - **Mermaid-Diagramme**: Klick oder <kbd>Enter</kbd> öffnet Quelltext und Vorschau. Bis 20.000 Zeichen und 500 Kanten.
-- **Codeblöcke**: Sprache im Kopf wählen, **Zeilenumbruch** und **Kopieren** stehen bereit. <kbd>Tab</kbd> rückt um zwei Leerzeichen ein.
+- **Codeblöcke**: Die Sprache steht im Kopf des Blocks mit ihrem vollen Namen („JavaScript“, „C++“, „Angular TypeScript“, „Klartext“). Ein Klick öffnet eine Liste mit Suche – sie findet Namen, Kürzel und Dateiendungen (`ts`, `py`, `yml`, `tf`, `.rs` …). Oben stehen die Sprachen, die du zuletzt gewählt hast (in diesem Browser gemerkt). Zur Auswahl stehen über 240 Sprachen mit denselben Grammatiken wie in VS Code – darunter Svelte, Vue, Astro, JSX/TSX, Terraform, TOML, Typst, Zig, Prisma, GDScript, Nushell, Systemd-Units, SSH-Konfiguration, Git-Commit-Nachrichten, Logdateien, CSV/TSV und .env-Dateien. **Zeilenumbruch** und **Kopieren** stehen bereit. <kbd>Tab</kbd> rückt um zwei Leerzeichen ein.
+- **Sprache erkennen**: Fügst du Code in einen Block ohne Sprache (Klartext) ein, schlägt Flowplan eine Sprache vor, wenn sie eindeutig erkennbar ist – „Sieht aus wie Python – übernehmen?“. Ein Klick übernimmt sie, das × blendet den Vorschlag aus. Von selbst ändert Flowplan die Sprache nie.
+- Die Hervorhebung einer Sprache wird beim ersten Codeblock dieser Sprache nachgeladen; bis dahin steht der Code kurz ohne Farben da. Sehr lange Codeblöcke (über 50 000 Zeichen) bleiben ohne Hervorhebung.
 
 ## Rechnen im Text
 

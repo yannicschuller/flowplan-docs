@@ -115,6 +115,9 @@ Markdown shortcuts such as `##`, `-`, `[]` or ` ``` ` are listed under [Document
 | <kbd>⌘</kbd> <kbd>D</kbd> | Duplicate |
 | <kbd>Del</kbd> | Delete |
 | <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Z</kbd> | Undo / redo |
+| <kbd>↑</kbd> / <kbd>↓</kbd> | Move the selected device in its rack by one unit (with <kbd>⇧</kbd> by five) |
+| <kbd>⌥</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Change the selected device's height by one unit |
+| <kbd>Enter</kbd> | On a rack, device or cable: open its details |
 
 ## Calendar and timeline
 

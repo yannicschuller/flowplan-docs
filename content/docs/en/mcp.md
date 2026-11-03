@@ -70,7 +70,7 @@ Clients that speak Streamable HTTP and accept their own headers use this configu
 | `search` | Full-text search across pages, records, comments and file contents; also understands #tag, OR, NOT, created_by:, created:, type:, in:, title: | Read |
 | `list_collections` | A workspace's collections (your own and shared ones) with their query | Read |
 | `run_collection` | The pages and records that match a collection now, with your permissions | Read |
-| `read_page` | A page as Markdown; databases with their records | Read |
+| `read_page` | A page as Markdown; databases with their records, whiteboards with their racks, devices, ports and cables | Read |
 | `query_database` | Records with properties by name, property definitions, views; text filter, a saved view, paging | Read |
 | `get_record` | One record with all properties and its record document | Read |
 | `my_tasks` | Your tasks from documents and records, with due dates | Read |

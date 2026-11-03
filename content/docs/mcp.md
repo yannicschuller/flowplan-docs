@@ -70,7 +70,7 @@ Clients, die Streamable HTTP sprechen und eigene Kopfzeilen erlauben, nutzen die
 | `search` | Volltextsuche über Seiten, Datensätze, Kommentare und Dateiinhalte; versteht auch #Tag, OR, NOT, created_by:, created:, type:, in:, title: | Lesen |
 | `list_collections` | Sammlungen eines Arbeitsbereichs (eigene und geteilte) mit ihrer Abfrage | Lesen |
 | `run_collection` | Die Seiten und Datensätze, die jetzt zu einer Sammlung passen, mit deinen Rechten | Lesen |
-| `read_page` | Eine Seite als Markdown; Datenbanken mit ihren Datensätzen | Lesen |
+| `read_page` | Eine Seite als Markdown; Datenbanken mit ihren Datensätzen, Whiteboards mit ihren Racks, Geräten, Ports und Kabeln | Lesen |
 | `query_database` | Datensätze mit Eigenschaften nach Namen, Eigenschaftsdefinitionen, Ansichten; Textfilter, eine gespeicherte Ansicht, Blättern | Lesen |
 | `get_record` | Ein Datensatz mit allen Eigenschaften und seinem Datensatzdokument | Lesen |
 | `my_tasks` | Deine Aufgaben aus Dokumenten und Datensätzen, mit Fälligkeit | Lesen |

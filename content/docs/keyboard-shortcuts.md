@@ -115,6 +115,9 @@ Markdown-Kürzel wie `##`, `-`, `[]` oder ` ``` ` stehen unter [Dokumente und Ed
 | <kbd>⌘</kbd> <kbd>D</kbd> | Duplizieren |
 | <kbd>Entf</kbd> | Löschen |
 | <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Z</kbd> | Rückgängig / Wiederholen |
+| <kbd>↑</kbd> / <kbd>↓</kbd> | Ausgewähltes Gerät im Rack um eine HE verschieben (mit <kbd>⇧</kbd> um fünf) |
+| <kbd>⌥</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Höhe des ausgewählten Geräts um eine HE ändern |
+| <kbd>Enter</kbd> | Bei Rack, Gerät oder Kabel: die Details öffnen |
 
 ## Kalender und Timeline
 

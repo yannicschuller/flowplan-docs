@@ -18,7 +18,7 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 | Quote | `/quote` | A highlighted quotation |
 | Note, Tip, Important, Warning, Caution | `/note`, `/tip`, `/important`, `/warning`, `/caution` | A coloured box with icon and title – the five kinds of GitHub alerts |
 | Toggle | `/toggle` | Content that folds in and out |
-| Code | `/code` | Syntax highlighting for 192 languages |
+| Code | `/code` | Syntax highlighting for more than 240 languages (as in VS Code) |
 | Table | `/table` | A simple table in the text |
 | Image or file | `/image`, `/file` | Upload or pick from the media library |
 | Mermaid diagram | `/mermaid` | Flowcharts, sequence and class diagrams as text |
@@ -163,6 +163,8 @@ While you type, the editor converts:
 | `---` | Divider |
 | `**bold**`, `*italic*`, `` `code` ``, `~~strike~~` | Formatting in the text |
 
+Code blocks carry their language in the fence: ` ```python `, ` ```typescript `, ` ```terraform `. The export writes the ids of VS Code/Shiki; the import also understands aliases and older names (`js`, `ts`, `py`, `sh`, `yml`, `cpp`, `csharp`, `plaintext` …) and stores them with the full id (` ```js ` becomes JavaScript, exported again as ` ```javascript `). Unknown languages are kept and show as "(imported)" in the block, without highlighting.
+
 ## Format text
 
 Selecting text – or right-clicking it – opens the text menu: reactions for the paragraph, **bold**, *italic*, underline, strikethrough, highlight, code, link, **Comment** and **Copy**, in tasks also **Due date**. The toolbar above the text adds headings, colour and background colour, superscript and subscript, inline formulas and **Hide (spoiler)**.
@@ -247,7 +249,9 @@ Images, tables and code blocks can have a short **caption** – one line that sa
 
 - **Formulas** in LaTeX: as a block with `/math`, inside the text with `/inlinemath`. The preview appears while you type. Building blocks such as fraction, root, superscript, subscript, vector, cross product, ±, π and sum sit above the input.
 - **Mermaid diagrams**: a click or <kbd>Enter</kbd> opens the source and preview. Up to 20,000 characters and 500 edges.
-- **Code blocks**: choose the language in the header; **Line wrap** and **Copy** are at hand. <kbd>Tab</kbd> indents by two spaces.
+- **Code blocks**: the language is shown in the block's header with its full name ("JavaScript", "C++", "Angular TypeScript", "Plain text"). A click opens a list with a search – it finds names, aliases and file extensions (`ts`, `py`, `yml`, `tf`, `.rs` …). The languages you chose last come first (remembered in this browser). There are more than 240 languages with the same grammars as in VS Code – among them Svelte, Vue, Astro, JSX/TSX, Terraform, TOML, Typst, Zig, Prisma, GDScript, Nushell, systemd units, SSH config, Git commit messages, log files, CSV/TSV and .env files. **Line wrap** and **Copy** are at hand. <kbd>Tab</kbd> indents by two spaces.
+- **Language detection**: when you paste code into a block without a language (plain text), Flowplan suggests a language if it is clearly recognisable – "Looks like Python – set?". One click sets it, the × dismisses the suggestion. Flowplan never changes the language by itself.
+- A language's highlighting loads with the first code block of that language; until then the code shows briefly without colours. Very long code blocks (more than 50,000 characters) stay without highlighting.
 - **Fractions**: `/Fraction` (or `/Bruch`) inserts a formula inside the sentence.
 
 ## Calculating in text
