@@ -100,6 +100,15 @@ Flowplan stores AI provider keys, the keys of authenticator apps ([two-factor si
 
 > [!IMPORTANT]
 > The instance backup deliberately leaves out `secrets.key` – it doesn't belong next to the data it protects. Back up the file separately or set the key as a variable. If it is missing after a restore, admins and users enter their AI keys and chat-app tokens again, and for two-factor sign-in recovery codes or a reset by an administrator help.
+> The [move tool](/move-instance), by contrast, takes `secrets.key` along, as it moves the whole instance.
+
+## Instance move
+
+| Variable | Default | Meaning |
+| --- | --- | --- |
+| `FLOWPLAN_MOVE_ALLOW_PRIVATE` | *empty* | On the **new** instance: `true` allows taking over an instance at an internal address (LAN, VPN, `localhost`) and over `http://` – a home server, say. Without it only public HTTPS addresses. Remove it after the move. |
+
+Details: [Moving an instance](/move-instance).
 
 ## E-mail (SMTP)
 

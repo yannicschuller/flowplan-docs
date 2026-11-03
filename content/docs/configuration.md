@@ -100,6 +100,15 @@ Schlüssel von KI-Anbietern, die Schlüssel der Authenticator-Apps ([Zwei-Faktor
 
 > [!IMPORTANT]
 > Die Instanzsicherung enthält `secrets.key` bewusst nicht – sie gehört nicht neben die Daten, die sie schützt. Sichere die Datei getrennt oder setze den Schlüssel als Variable. Fehlt er nach einer Wiederherstellung, geben Admins und Nutzer ihre KI-Schlüssel und Chat-App-Tokens neu ein, und für die Zwei-Faktor-Anmeldung helfen Wiederherstellungscodes oder ein Zurücksetzen durch die Administration.
+> Das [Umzugswerkzeug](/move-instance) nimmt `secrets.key` dagegen mit, denn es zieht die ganze Instanz um.
+
+## Instanzumzug
+
+| Variable | Standard | Bedeutung |
+| --- | --- | --- |
+| `FLOWPLAN_MOVE_ALLOW_PRIVATE` | *leer* | Auf der **neuen** Instanz: `true` erlaubt, eine Instanz unter einer internen Adresse (LAN, VPN, `localhost`) und über `http://` zu übernehmen – etwa einen Heimserver. Ohne diese Variable nur öffentliche HTTPS-Adressen. Nach dem Umzug wieder entfernen. |
+
+Details: [Instanz umziehen](/move-instance).
 
 ## E-Mail (SMTP)
 

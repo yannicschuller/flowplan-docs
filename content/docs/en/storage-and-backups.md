@@ -9,6 +9,8 @@ All data lives in one directory. With S3 storage, files are mirrored and the dat
 | `flowplan.sqlite` (+ `-wal`, `-shm`) | All content, accounts, sessions, settings |
 | `uploads/` | Uploaded files |
 | `web-push-keys.json` | Push keys, unless set via the environment |
+| `secrets.key` | Key for stored secrets, only without `FLOWPLAN_ENCRYPTION_KEY` and `FLOWPLAN_SECRETS_KEY` ([Configuration](/configuration#stored-secrets)) |
+| `pre-restore-…`, `pre-move-…` | Previous state after a restore or a [move](/move-instance); delete after a few days |
 | `ocr/` | Language data for text recognition, recreated when needed |
 
 ## Turn on S3 storage
@@ -216,7 +218,8 @@ Security:
 
 - **From an instance backup**: upload it under **Administration → Storage & backup → Restore from backup** (at the very end). Flowplan checks it and applies it on the next restart; the previous state stays as `pre-restore-…` in the data directory.
 - **From a scheduled backup**, with the app stopped: [decrypt](#emergency-decrypt-without-a-running-instance) an encrypted one first, then move the existing `flowplan.sqlite` with `-wal` and `-shm` aside and put the backup in place as `/app/data/flowplan.sqlite`. With S3, the files follow from the bucket.
-- **On a new host with S3**: start a new installation with **the same** `S3_*` variables and an empty volume. Litestream restores the database, the files follow in the background.
+- **On a new host with S3**: start a new installation with **the same** `S3_*` variables and an empty volume. Litestream restores the database, the files follow in the background. Stop the old instance first; `secrets.key` and `web-push-keys.json` are not in the bucket (see [Moving an instance, way C](/move-instance#way-c-s3-and-litestream)).
+- **Moving to another server**: see [Moving an instance](/move-instance) – the built-in move tool fetches database, files and keys straight from the old instance, with a few minutes of downtime.
 - **An earlier point in time**, with the app stopped:
 
 ```bash

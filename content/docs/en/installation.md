@@ -5,6 +5,7 @@ Flowplan runs as a single container with SQLite and a data directory. Postgres, 
 ## Requirements
 
 - A server with Docker and a persistent volume. Text recognition for scanned PDFs briefly needs noticeable CPU when uploading.
+- Already running an instance on another server? Then [move it](/move-instance) after installing instead of starting over.
 - A domain with HTTPS through a reverse proxy (Traefik, Caddy, nginx, Coolify, Pangolin …). For just trying it out it works without, see [Without HTTPS](#without-https).
 - Optionally an OpenID Connect provider for single sign-on. Without one, people sign in with e-mail and password or a passkey, see [Sign-in](/sign-in).
 - Optionally an S3-compatible storage for files and the continuous database backup, see [Storage, S3 and backups](/storage-and-backups).
@@ -156,3 +157,4 @@ For local development, `npm run dev` is enough. Development mode also offers **O
 
 - [Configuration](/configuration): all environment variables.
 - [Coolify and reverse proxies](/coolify-and-proxy): running behind Traefik, Coolify or Pangolin.
+- [Moving an instance](/move-instance): to another server, with an example for Hetzner Cloud.

@@ -9,6 +9,8 @@ Alle Daten liegen in einem Verzeichnis. Mit einem S3-Speicher werden Dateien ges
 | `flowplan.sqlite` (+ `-wal`, `-shm`) | Alle Inhalte, Konten, Sitzungen, Einstellungen |
 | `uploads/` | Hochgeladene Dateien |
 | `web-push-keys.json` | Push-Schlüssel, falls nicht per Umgebung gesetzt |
+| `secrets.key` | Schlüssel für gespeicherte Geheimnisse, nur ohne `FLOWPLAN_ENCRYPTION_KEY` und `FLOWPLAN_SECRETS_KEY` ([Konfiguration](/configuration#gespeicherte-geheimnisse)) |
+| `pre-restore-…`, `pre-move-…` | Vorheriger Stand nach einer Wiederherstellung bzw. einem [Umzug](/move-instance); nach ein paar Tagen löschen |
 | `ocr/` | Sprachdaten der Texterkennung, werden bei Bedarf neu angelegt |
 
 ## S3-Speicher einschalten
@@ -216,7 +218,8 @@ Sicherheit:
 
 - **Aus einer Instanzsicherung**: unter **Administration → Speicher & Sicherung → Aus Sicherung wiederherstellen** (ganz unten) hochladen. Flowplan prüft sie und übernimmt sie beim nächsten Neustart; der vorherige Stand bleibt unter `pre-restore-…` im Datenverzeichnis.
 - **Aus einer geplanten Sicherung** bei gestoppter App: eine verschlüsselte erst [entschlüsseln](#notfall-ohne-laufende-instanz-entschluesseln), dann die bestehende `flowplan.sqlite` samt `-wal` und `-shm` beiseitelegen und die Sicherung als `/app/data/flowplan.sqlite` einsetzen. Mit S3 kommen die Dateien aus dem Bucket nach.
-- **Auf einem neuen Host mit S3**: neue Installation mit **denselben** `S3_*`-Variablen und leerem Volume starten. Litestream stellt die Datenbank her, die Dateien folgen im Hintergrund.
+- **Auf einem neuen Host mit S3**: neue Installation mit **denselben** `S3_*`-Variablen und leerem Volume starten. Litestream stellt die Datenbank her, die Dateien folgen im Hintergrund. Die alte Instanz vorher stoppen; `secrets.key` und `web-push-keys.json` liegen nicht im Bucket (siehe [Instanz umziehen, Weg C](/move-instance#weg-c-s3-und-litestream)).
+- **Auf einen anderen Server umziehen**: siehe [Instanz umziehen](/move-instance) – das eingebaute Umzugswerkzeug holt Datenbank, Dateien und Schlüssel direkt von der alten Instanz, mit wenigen Minuten Ausfallzeit.
 - **Einen früheren Zeitpunkt** bei gestoppter App:
 
 ```bash

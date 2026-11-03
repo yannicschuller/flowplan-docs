@@ -5,6 +5,7 @@ Flowplan läuft als ein einziger Container mit SQLite und einem Datenverzeichnis
 ## Voraussetzungen
 
 - Ein Server mit Docker und einem dauerhaften Volume. Die Texterkennung gescannter PDFs braucht beim Hochladen kurzzeitig spürbar CPU.
+- Schon eine Instanz auf einem anderen Server? Dann nach der Installation [umziehen](/move-instance) statt neu anfangen.
 - Eine Domain mit HTTPS über einen Reverse Proxy (Traefik, Caddy, nginx, Coolify, Pangolin …). Zum reinen Ausprobieren geht es auch ohne, siehe [Ohne HTTPS](#ohne-https).
 - Optional ein OpenID-Connect-Anbieter für Single Sign-on. Ohne ihn melden sich Personen mit E-Mail und Passwort oder Passkey an, siehe [Anmeldung](/sign-in).
 - Optional: ein S3-kompatibler Speicher für Dateien und die laufende Datenbanksicherung, siehe [Speicher, S3 und Sicherung](/storage-and-backups).
@@ -156,3 +157,4 @@ Für die lokale Entwicklung reicht `npm run dev`. Der Entwicklungsmodus bietet z
 
 - [Konfiguration](/configuration): alle Umgebungsvariablen.
 - [Coolify und Reverse Proxy](/coolify-and-proxy): Betrieb hinter Traefik, Coolify oder Pangolin.
+- [Instanz umziehen](/move-instance): auf einen anderen Server, mit Beispiel für Hetzner Cloud.

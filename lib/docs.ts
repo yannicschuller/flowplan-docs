@@ -121,6 +121,7 @@ const groups: {
       ["sign-in", "Anmeldung: Passwort, Passkeys und OIDC", "Sign-in: password, passkeys and OIDC"],
       ["configuration", "Konfiguration", "Configuration"],
       ["storage-and-backups", "Speicher, S3 und Sicherung", "Storage, S3 and backups"],
+      ["move-instance", "Instanz umziehen", "Moving an instance"],
       ["coolify-and-proxy", "Coolify und Reverse Proxy", "Coolify and reverse proxies"],
       ["operations", "Betrieb und Fehlersuche", "Operations and troubleshooting"],
     ],
