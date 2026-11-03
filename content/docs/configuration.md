@@ -16,6 +16,8 @@ Alle Umgebungsvariablen auf einen Blick. Viele Werte lassen sich zusätzlich in 
 | `OIDC_ISSUER` | *leer* | Login-Anbieter für Single Sign-on. Ohne ihn gibt es nur E-Mail, Passwort und Passkeys. |
 | `OIDC_CLIENT_ID` | – | Client-ID. |
 | `OIDC_CLIENT_SECRET` | – | Client-Secret. Nie ins Image oder ins Git. |
+| `OIDC_LINKED_SSO_ONLY` | aus | `true`: Konten, die mit SSO verbunden sind, melden sich nur noch über SSO an. Anmelden mit Passwort oder Passkey wird mit einem Hinweis abgelehnt; Passkeys und die Authenticator-App bleiben zum Bestätigen wichtiger Schritte. Siehe [Bestehendes Konto mit SSO verbinden](/sign-in#bestehendes-konto-mit-sso-verbinden). |
+| `OIDC_NEW_ACCOUNTS` | an | `false`: Die SSO-Anmeldung legt keine neuen Konten an – nur bestehende, verbundene oder per SCIM bereitgestellte Konten melden sich an. Bei der ersten SSO-Anmeldung mit bekannter Adresse fehlt dann „Stattdessen ein eigenes Konto anlegen“. |
 | `SESSION_HOURS` | `8` | Dauer einer Sitzung in Stunden (1–24). Ohne `SESSION_REMEMBER` gilt das für alle Sitzungen, auch die der Apps. |
 | `SESSION_REMEMBER` | aus | `true` bietet beim Anmelden **Angemeldet bleiben** an – siehe [Anmeldung](/sign-in#angemeldet-bleiben). Empfohlen, wenn die Desktop- oder Handy-Apps und ihre Widgets genutzt werden. |
 | `SESSION_IDLE_HOURS` | `168` | Mit „angemeldet bleiben“: Sitzung endet so viele Stunden nach der letzten Nutzung (1–2160, höchstens `SESSION_MAX_DAYS`). |

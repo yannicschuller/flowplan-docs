@@ -17,6 +17,8 @@ Ohne weitere Einrichtung zeigt die Anmeldeseite ein Formular für E-Mail und Pas
 
 `FLOWPLAN_LOCAL_LOGIN=false` schaltet E-Mail, Passwort und Passkeys ab – dann gibt es nur Single Sign-on.
 
+Unter **Einstellungen → Konto & Sicherheit** zeigt die Karte **Anmeldemethoden**, womit du dich anmeldest: E-Mail und Passwort, das Verzeichnis (LDAP) und verbundene SSO-Konten mit Anbieter, Adresse, Datum der Verbindung und letzter Nutzung. Dort verbindest und trennst du SSO-Konten und entfernst oder setzt das Passwort – siehe [Bestehendes Konto mit SSO verbinden](#bestehendes-konto-mit-sso-verbinden).
+
 ## Passkeys
 
 Mit einem Passkey meldest du dich per Fingerabdruck, Gesichtserkennung oder Geräte-PIN an, ohne Passwort. Angelegt werden Passkeys unter **Einstellungen → Konto & Sicherheit → Passkey hinzufügen**; danach genügt auf der Anmeldeseite **Mit Passkey anmelden**.
@@ -88,6 +90,8 @@ SESSION_HOURS=8
 | `OIDC_GROUPS_CLAIM` | Claim mit den Gruppen, auch als Pfad wie `realm_access.roles`. |
 | `OIDC_ADMIN_GROUP` | Mitglieder dieser Gruppe sehen die **Administration**. Der Name wird exakt verglichen. |
 | `OIDC_ALLOWED_GROUP` | Wenn gesetzt, dürfen sich nur Mitglieder dieser Gruppe anmelden. |
+| `OIDC_LINKED_SSO_ONLY` | `true`: Konten, die mit SSO verbunden sind, melden sich nur noch über SSO an (Standard aus). Anmelden mit Passwort oder Passkey wird mit einem Hinweis abgelehnt; Passkeys und die Authenticator-App bleiben zum Bestätigen wichtiger Schritte. Siehe [Bestehendes Konto mit SSO verbinden](#bestehendes-konto-mit-sso-verbinden). |
+| `OIDC_NEW_ACCOUNTS` | `false`: Die SSO-Anmeldung legt keine neuen Konten an (Standard an) – nur bestehende, verbundene oder per SCIM bereitgestellte Konten melden sich an. Bei der ersten SSO-Anmeldung mit bekannter Adresse fehlt dann „Stattdessen ein eigenes Konto anlegen“. |
 | `OIDC_PROMPT_CREATE` | `true`: **Registrieren** öffnet direkt die Registrierung des Anbieters (`prompt=create`). |
 | `OIDC_PICTURE` | Profilbild aus dem Claim `picture` übernehmen (Standard an, `off` schaltet ab). Das Bild muss unter einer öffentlichen HTTPS-Adresse liegen; interne Adressen werden – auch über Weiterleitungen – nicht abgerufen. |
 | `SESSION_HOURS` | Gültigkeit einer Sitzung in Stunden, solange „Angemeldet bleiben“ nicht genutzt wird (siehe [Angemeldet bleiben](/sign-in#angemeldet-bleiben)). |
@@ -107,6 +111,28 @@ Das Server-Log nennt den Grund: eine Zeile `OIDC sign-in failed:` mit der Art de
 - **Issuer**: `OIDC_ISSUER` muss Zeichen für Zeichen dem `issuer` in der Discovery des Providers entsprechen, einschließlich Schrägstrich am Ende.
 - **Client-Secret** falsch oder ein öffentlicher Client: Der Token-Endpunkt antwortet mit `invalid_client`.
 - **`unexpected JWT "alg"`**: Der Provider signiert ID-Tokens mit einem anderen Verfahren, als er in seiner Discovery angibt.
+
+### Bestehendes Konto mit SSO verbinden
+
+Ein Konto kann sich auf mehreren Wegen anmelden: mit E-Mail und Passwort, über LDAP und über ein oder mehrere SSO-Konten (OIDC). Wer zuerst ein lokales Konto angelegt hat und später SSO bekommt, verbindet beides – statt ein zweites Profil zu bekommen.
+
+**Aus den Einstellungen:** Unter **Einstellungen → Konto & Sicherheit → Anmeldemethoden** wählst du **SSO verbinden …**, bestätigst mit deinem Passwort, einem Code aus der Authenticator-App oder einem Passkey und meldest dich danach beim Anbieter an. Das SSO-Konto (Anbieter und Kennung) gehört ab dann zu deinem Konto; du meldest dich mit beidem an. Der Vorgang gilt nur für dein Konto und die Sitzung, in der du ihn gestartet hast, zehn Minuten lang.
+
+- Gehört das SSO-Konto schon zu einem anderen Flowplan-Konto, wird nichts verbunden. Bitte dann die Administration, die beiden Konten [zusammenzuführen](/administration#konten-zusammenfuehren).
+- **Trennen** (Papierkorb neben dem SSO-Konto) geht nur, solange eine andere Anmeldemethode bleibt: ein Passwort, LDAP oder ein weiteres SSO-Konto.
+- **Passwort entfernen …** gibt es, sobald ein SSO-Konto verbunden ist: Danach meldest du dich nur noch über SSO an. Passkeys und die Authenticator-App bleiben, um wichtige Schritte zu bestätigen. **Passwort festlegen …** gibt dem Konto jederzeit wieder ein Passwort.
+- Verbinden, Trennen und das Passwort entfernen oder festlegen bestätigst du jedes Mal neu – mit dem Passwort, einem Code aus der App oder einem Passkey. Ein Konto ohne all das (nur SSO) bestätigt mit einer Anmeldung, die höchstens zehn Minuten zurückliegt.
+
+**Bei der ersten SSO-Anmeldung:** Meldet sich ein SSO-Konto zum ersten Mal an, dessen E-Mail-Adresse der Anbieter **bestätigt** hat (`email_verified`), und gibt es genau ein Flowplan-Konto mit dieser Adresse, das sich mit Passwort, LDAP oder Passkey anmeldet, legt Flowplan kein neues Konto an. Stattdessen fragt eine Seite: „Es gibt schon ein Konto mit dieser E-Mail-Adresse – verbinden?“ Du bestätigst das bestehende Konto mit seinem Passwort (und dem Code aus der App, wenn sie eingeschaltet ist) oder seinem Passkey; danach sind beide verbunden und du bist angemeldet. **Stattdessen ein eigenes Konto anlegen** gibt es nur, wenn die Instanz neue SSO-Konten zulässt (siehe `OIDC_NEW_ACCOUNTS` unter [Konfiguration](/configuration#anmeldung)). Ohne Nachweis wird nie verbunden; falsche Passwörter und Codes zählen wie bei der normalen Anmeldung gegen die Sperre nach zu vielen Versuchen.
+
+Gut zu wissen:
+
+- Ein verbundenes Konto mit E-Mail und Passwort behält seinen Namen, sein Bild und sein Admin-Recht; SSO-Gruppenzuordnungen ändern seine Mitgliedschaften wie bisher nicht.
+- Mit `OIDC_LINKED_SSO_ONLY=true` melden sich verbundene Konten nur noch über SSO an – mit Passwort oder Passkey kommt dann ein klarer Hinweis, „Mit SSO anmelden“ zu wählen. Passkeys und die App bleiben zum Bestätigen.
+- Verbinden, Trennen, abgelehnte Verbindungen, das Entfernen des Passworts und Zusammenführungen stehen im Sicherheitsprotokoll (**Administration → Sicherheit**).
+- LDAP-Konten bleiben über ihren DN verknüpft; sie können SSO genauso verbinden (Nachweis mit dem Verzeichnispasswort). Das LDAP-Konto selbst lässt sich nicht trennen.
+- Beim Verbinden fragt Flowplan den Anbieter mit `prompt=login`, damit nicht versehentlich ein anderes, dort noch angemeldetes Konto verbunden wird.
+- Mit `OIDC_ALLOWED_GROUP` lassen sich nur SSO-Konten dieser Gruppe verbinden – wie bei der Anmeldung.
 
 ### SSO-Gruppen Arbeitsbereichen zuordnen
 

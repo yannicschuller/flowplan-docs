@@ -17,15 +17,30 @@ Alle Konten als durchsuchbare Liste (auf dem Telefon untereinander) mit ihrem Zu
 **Verwalten** öffnet ein Konto in einem Seitenfenster (auf dem Telefon bildschirmfüllend):
 
 - **Belegung und Grenzen** für diese Person: Speicher (alles, was sie hochlädt oder kopiert – über alle Arbeitsbereiche), Anzahl eigener Arbeitsbereiche und größte Datei. Balken zeigen, wie viel davon belegt ist. Leer = Standard der Instanz, 0 = unbegrenzt; für Admins gelten keine Grenzen. **Grenzen speichern** übernimmt sie.
+- **Anmeldemethoden**: ob das Konto ein Passwort hat (oder es entfernt wurde), ob es sich über LDAP anmeldet und welche SSO-Konten verbunden sind – mit Issuer, Adresse, wann verbunden und wann zuletzt benutzt. Verbinden und trennen kann die Person selbst unter **Einstellungen → Konto & Sicherheit**. Die Liste zeigt die Methoden auch in der Spalte **Person · Anmeldung** (z. B. „E-Mail · SSO · Passkey“).
 - **Zugang**:
   - **KI-Funktionen**: Steht unter [Administration → KI](/ai#fuer-admins) „Ausgewählte Personen“, schaltest du hier die KI pro Person frei oder ab.
   - **Sitzungen beenden** meldet die Person auf allen Geräten ab.
   - Bei Konten mit E-Mail und Passwort: **Zum Admin machen** bzw. **Admin entziehen** (eine Person verwaltet die Instanz immer) und **Link zum Zurücksetzen** – ein zwei Stunden gültiger Link für ein neues Passwort, zum Weitergeben, wenn die Instanz keine E-Mails verschickt.
   - **Zwei-Faktor-Anmeldung**: „2FA an“, „2FA per Passkey“ oder „2FA aus“. **Zwei-Faktor zurücksetzen** (etwa bei verlorenem Telefon) schaltet die Authenticator-App des Kontos aus; das steht im Aktivitätsprotokoll, und die Person bekommt eine E-Mail, wenn die Instanz E-Mails versendet.
   - **E-Mail als bestätigt markieren** für Konten, die den Link aus der Bestätigungs-E-Mail noch nicht geöffnet haben.
-- **Gefahrenzone**: **Deaktivieren** sperrt das Konto sofort und beendet alle Sitzungen; **Aktivieren** gibt es wieder frei. **Konto löschen …** geht, sobald ein Konto deaktiviert ist. Der Dialog nennt vorher, was passiert: Name, E-Mail, Passwort, Passkeys, Sitzungen und persönliche Einstellungen werden gelöscht, ebenso Arbeitsbereiche, in denen nur diese Person Mitglied war, und ihre privaten Bereiche. Gemeinsame Arbeitsbereiche bekommen bei Bedarf ein anderes Mitglied als Eigentümer; Beiträge darin bleiben und erscheinen als „Gelöschtes Konto“. Das eigene Konto und das letzte Admin-Konto lassen sich nicht löschen.
+- **Gefahrenzone**: **Zusammenführen …** legt das Konto mit einem zweiten derselben Person zusammen (siehe [Konten zusammenführen](#konten-zusammenfuehren)). **Deaktivieren** sperrt das Konto sofort und beendet alle Sitzungen; **Aktivieren** gibt es wieder frei. **Konto löschen …** geht, sobald ein Konto deaktiviert ist. Der Dialog nennt vorher, was passiert: Name, E-Mail, Passwort, Passkeys, Sitzungen und persönliche Einstellungen werden gelöscht, ebenso Arbeitsbereiche, in denen nur diese Person Mitglied war, und ihre privaten Bereiche. Gemeinsame Arbeitsbereiche bekommen bei Bedarf ein anderes Mitglied als Eigentümer; Beiträge darin bleiben und erscheinen als „Gelöschtes Konto“. Das eigene Konto und das letzte Admin-Konto lassen sich nicht löschen.
 
 Konten mit E-Mail und Passwort entstehen über **Konto erstellen** (siehe [Anmeldung](/sign-in)); SSO-Konten beim ersten Anmelden über OIDC, ihr Admin-Recht kommt aus der Gruppe beim Anbieter. Ob sich Personen selbst registrieren dürfen, stellst du unter [Anmeldung & SSO](#anmeldung-sso) ein.
+
+### Konten zusammenführen
+
+Hat eine Person zwei Konten – etwa ein lokales und eines, das bei der ersten SSO-Anmeldung entstanden ist –, führst du sie in der **Gefahrenzone** ihres Kontos mit **Zusammenführen …** zusammen. Du wählst das andere Konto (Konten mit derselben E-Mail-Adresse stehen oben) und mit dem Pfeil, welches bestehen bleibt. Die Vorschau nennt, was wechselt, bevor etwas passiert.
+
+Alles des übernommenen Kontos geht auf das bleibende über: eigene Seiten und Bereiche, Mitgliedschaften in Arbeitsbereichen und Bereichen samt Freigaben (die **höhere Rolle** bleibt; Gast nur, wenn die Person überall Gast war), Gruppen, Kommentare und Reaktionen, Erwähnungen in Kommentaren und Dokumenten, Zuweisungen und Personen-Eigenschaften in Datenbanken, Favoriten, Sammlungen, Seitenleiste, Journal, Benachrichtigungen und ihre Einstellungen, Webhooks, Kalender- und Kontakt-Verbindungen, Zeiterfassung, Passkeys, SSO-Konten, das LDAP- und SCIM-Konto und der Verlauf im Aktivitäts- und Sicherheitsprotokoll. Wo beide Konten dasselbe haben (etwa einen Favoriten oder die Seitenleiste eines Arbeitsbereichs), gilt das des bleibenden Kontos.
+
+- **Sitzungen** des übernommenen Kontos enden; **API-Tokens** werden widerrufen (Skripte brauchen ein neues Token des bleibenden Kontos – so liest kein Token plötzlich die Daten eines anderen Kontos).
+- **Passwort**: Hat das bleibende Konto keins, übernimmt es das des anderen; sonst bleibt sein eigenes. Ein Admin-Recht eines lokalen Kontos geht mit.
+- **Authenticator-App**: wird übernommen, wenn das bleibende Konto keine hat; Wiederherstellungscodes müssen dann neu erzeugt werden.
+- **Ende-zu-Ende-Verschlüsselung**: Hat nur das übernommene Konto Schlüssel, gehen sie mit. Haben beide welche, bleiben die des bleibenden Kontos; verschlüsselte Bereiche, die nur das andere Konto hatte, müssen neu freigegeben werden.
+- Ältere Versionen von Dokumenten behalten ihre Erwähnungen, wie sie waren.
+
+Das Zusammenführen läuft in einem Schritt – ganz oder gar nicht –, steht im Aktivitätsprotokoll und als „Konten zusammengeführt“ im Sicherheitsprotokoll. Das übernommene Konto wird danach gelöscht. Das eigene Konto kann nur das bleibende sein.
 
 ## Anmeldung & SSO
 

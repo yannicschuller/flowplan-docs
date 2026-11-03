@@ -16,6 +16,8 @@ All environment variables at a glance. Many values can also be set in the interf
 | `OIDC_ISSUER` | *empty* | The login provider for single sign-on. Without it there are only e-mail, password and passkeys. |
 | `OIDC_CLIENT_ID` | – | Client ID. |
 | `OIDC_CLIENT_SECRET` | – | Client secret. Never put it into the image or into Git. |
+| `OIDC_LINKED_SSO_ONLY` | off | `true`: accounts connected to SSO sign in through SSO only. A password or passkey sign-in is refused with a note; passkeys and the authenticator app stay for confirming important steps. See [Connect an existing account to SSO](/en/sign-in#connect-an-existing-account-to-sso). |
+| `OIDC_NEW_ACCOUNTS` | on | `false`: SSO sign-in creates no new accounts – only existing, connected or SCIM-provisioned accounts sign in. At a first SSO sign-in with a known address, "Create a separate account instead" is then not offered. |
 | `SESSION_HOURS` | `8` | How long a session lasts in hours (1–24). Without `SESSION_REMEMBER` this applies to every session, the apps' too. |
 | `SESSION_REMEMBER` | off | `true` offers **Stay signed in** when signing in – see [Sign-in](/sign-in#stay-signed-in). Recommended when the desktop or mobile apps and their widgets are used. |
 | `SESSION_IDLE_HOURS` | `168` | With "stay signed in": the session ends this many hours after it was last used (1–2160, at most `SESSION_MAX_DAYS`). |

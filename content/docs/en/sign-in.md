@@ -17,6 +17,8 @@ Without further setup, the sign-in page shows a form for e-mail and password.
 
 `FLOWPLAN_LOCAL_LOGIN=false` turns off e-mail, password and passkeys – then only single sign-on remains.
 
+Under **Settings → Account & security**, the **Sign-in methods** card shows how you sign in: e-mail and password, the directory (LDAP) and connected SSO identities with provider, address, date connected and last use. That is where you connect and disconnect SSO identities and remove or set the password – see [Connect an existing account to SSO](#connect-an-existing-account-to-sso).
+
 ## Passkeys
 
 With a passkey you sign in with your fingerprint, face recognition or device PIN, without a password. Passkeys are created under **Settings → Account & security → Add a passkey**; afterwards **Sign in with a passkey** on the sign-in page is all it takes.
@@ -88,6 +90,8 @@ SESSION_HOURS=8
 | `OIDC_GROUPS_CLAIM` | The claim with the groups, also as a path such as `realm_access.roles`. |
 | `OIDC_ADMIN_GROUP` | Members of this group see the **Administration**. The name is compared exactly. |
 | `OIDC_ALLOWED_GROUP` | If set, only members of this group may sign in. |
+| `OIDC_LINKED_SSO_ONLY` | `true`: accounts connected to SSO sign in through SSO only (off by default). A password or passkey sign-in is refused with a note; passkeys and the authenticator app stay for confirming important steps. See [Connect an existing account to SSO](#connect-an-existing-account-to-sso). |
+| `OIDC_NEW_ACCOUNTS` | `false`: SSO sign-in creates no new accounts (on by default) – only existing, connected or SCIM-provisioned accounts sign in. At a first SSO sign-in with a known address, "Create a separate account instead" is then not offered. |
 | `OIDC_PROMPT_CREATE` | `true`: **Sign up** opens the provider's registration directly (`prompt=create`). |
 | `OIDC_PICTURE` | Take the profile picture from the `picture` claim (on by default, `off` turns it off). The image must be at a public HTTPS address; internal addresses are not fetched – not even via redirects. |
 | `SESSION_HOURS` | How long a session is valid in hours, as long as "Stay signed in" is not used (see [Stay signed in](/sign-in#stay-signed-in)). |
@@ -107,6 +111,28 @@ The server log names the reason: a line `OIDC sign-in failed:` with the kind of 
 - **Issuer**: `OIDC_ISSUER` must match the `issuer` in the provider's discovery character for character, including a trailing slash.
 - **Client secret** wrong or a public client: the token endpoint answers `invalid_client`.
 - **`unexpected JWT "alg"`**: the provider signs ID tokens with another algorithm than it announces in its discovery.
+
+### Connect an existing account to SSO
+
+An account can sign in several ways: with e-mail and password, through LDAP and through one or more SSO identities (OIDC). Whoever created a local account first and gets SSO later connects the two – instead of ending up with a second profile.
+
+**From the settings:** Under **Settings → Account & security → Sign-in methods**, choose **Connect SSO …**, confirm with your password, a code from the authenticator app or a passkey, then sign in with the provider. From then on the SSO identity (provider and subject) belongs to your account; you sign in with either. The flow only works for your account and the session you started it in, for ten minutes.
+
+- If the SSO identity already belongs to another Flowplan account, nothing is connected. Ask the administrators to [merge the two accounts](/en/administration#merge-accounts).
+- **Disconnect** (bin next to the SSO identity) works only while another sign-in method remains: a password, LDAP or another SSO identity.
+- **Remove password …** is offered once an SSO identity is connected: you then sign in through SSO only. Passkeys and the authenticator app stay for confirming important steps. **Set password …** gives the account a password again at any time.
+- Connecting, disconnecting and removing or setting the password are confirmed each time – with the password, a code from the app or a passkey. An account without any of these (SSO only) confirms with a sign-in at most ten minutes ago.
+
+**At the first SSO sign-in:** When an SSO identity signs in for the first time, its provider has **verified** its e-mail address (`email_verified`), and exactly one Flowplan account with that address signs in with a password, LDAP or a passkey, Flowplan does not create a new account. A page asks instead: "An account with this e-mail already exists – connect it?" You confirm the existing account with its password (plus the code from the app when it is turned on) or its passkey; then both are connected and you are signed in. **Create a separate account instead** is offered only when the instance allows new SSO accounts (see `OIDC_NEW_ACCOUNTS` under [Configuration](/en/configuration#sign-in)). Nothing is ever connected without that proof; wrong passwords and codes count towards the lockout after too many attempts, as at a normal sign-in.
+
+Good to know:
+
+- A connected account with e-mail and password keeps its name, picture and admin right; SSO group mappings still do not change its memberships.
+- With `OIDC_LINKED_SSO_ONLY=true`, connected accounts sign in through SSO only – a password or passkey sign-in then gets a clear note to choose "Sign in with SSO". Passkeys and the app stay for confirming steps.
+- Connecting, disconnecting, refused connections, removing the password and merges are recorded in the security log (**Administration → Security**).
+- LDAP accounts stay linked by their DN; they can connect SSO the same way (proof with the directory password). The LDAP link itself cannot be disconnected.
+- When connecting, Flowplan asks the provider with `prompt=login`, so an account still signed in there is not connected by accident.
+- With `OIDC_ALLOWED_GROUP`, only SSO identities in that group can be connected – as for signing in.
 
 ### Map SSO groups to workspaces
 

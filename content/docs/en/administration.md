@@ -17,15 +17,30 @@ All accounts as a searchable list (stacked on phones) with their state: **Active
 **Manage** opens an account in a side panel (full screen on phones):
 
 - **Usage and limits** for this person: storage (everything they upload or copy – across all workspaces), number of own workspaces and the largest file. Bars show how much is used. Empty = instance default, 0 = unlimited; admins are not limited. **Save limits** applies them.
+- **Sign-in methods**: whether the account has a password (or removed it), whether it signs in through LDAP and which SSO identities are connected – with issuer, address, when connected and last used. The person connects and disconnects them under **Settings → Account & security**. The list shows the methods in the **Person · sign-in** column too (e.g. "E-mail · SSO · Passkey").
 - **Access**:
   - **AI features**: if [Administration → AI](/ai#for-admins) is set to "Selected people", you allow or deny AI per person here.
   - **End sessions** signs the person out on all devices.
   - For accounts with e-mail and password: **Make admin** or **Revoke admin** (someone always administers the instance) and **Reset link** – a link for a new password, valid for two hours, to hand over when the instance does not send e-mails.
   - **Two-factor sign-in**: "2FA on", "2FA via passkey" or "2FA off". **Reset two-factor** (e.g. for a lost phone) turns off the account's authenticator app; this is recorded in the activity log, and the person gets an e-mail if the instance sends e-mail.
   - **Mark e-mail as confirmed** for accounts that have not opened the link from the confirmation e-mail yet.
-- **Danger zone**: **Disable** blocks the account at once and ends all sessions; **Enable** releases it again. **Delete account …** is possible once an account is disabled. The dialog says beforehand what happens: name, e-mail, password, passkeys, sessions and personal settings are deleted, as are workspaces where only this person was a member and their private spaces. Shared workspaces get another member as owner if needed; contributions there stay and appear as "Deleted account". Your own account and the last admin account cannot be deleted.
+- **Danger zone**: **Merge …** combines the account with a second account of the same person (see [Merge accounts](#merge-accounts)). **Disable** blocks the account at once and ends all sessions; **Enable** releases it again. **Delete account …** is possible once an account is disabled. The dialog says beforehand what happens: name, e-mail, password, passkeys, sessions and personal settings are deleted, as are workspaces where only this person was a member and their private spaces. Shared workspaces get another member as owner if needed; contributions there stay and appear as "Deleted account". Your own account and the last admin account cannot be deleted.
 
 Accounts with e-mail and password are created with **Create account** (see [Sign-in](/sign-in)); SSO accounts on their first sign-in via OIDC, and their admin right comes from the group at the provider. Whether people may sign up themselves is set under [Sign-in & SSO](#sign-in-sso).
+
+### Merge accounts
+
+When a person has two accounts – such as a local one and one created at their first SSO sign-in – merge them with **Merge …** in the **Danger zone** of their account. Choose the other account (accounts with the same e-mail address are listed first) and, with the arrow, which one stays. The preview lists what moves before anything happens.
+
+Everything of the account taken over moves to the one that stays: own pages and spaces, memberships of workspaces and spaces with their shares (the **higher role** stays; guest only if the person was a guest everywhere), groups, comments and reactions, mentions in comments and documents, assignments and person properties in databases, favourites, collections, sidebar, journal, notifications and their settings, webhooks, calendar and contact connections, time tracking, passkeys, SSO identities, the LDAP and SCIM link and the history in the activity and security logs. Where both accounts have the same thing (a favourite, or the sidebar of a workspace), the one of the account that stays wins.
+
+- **Sessions** of the account taken over end; its **API tokens** are revoked (scripts need a new token of the remaining account – so no token suddenly reads another account's data).
+- **Password**: if the remaining account has none, it takes over the other's; otherwise it keeps its own. A local account's admin right goes along.
+- **Authenticator app**: taken over when the remaining account has none; recovery codes must then be created again.
+- **End-to-end encryption**: if only the account taken over has keys, they move. If both have keys, those of the remaining account stay; encrypted spaces only the other account had must be shared again.
+- Older versions of documents keep their mentions as they were.
+
+The merge runs as one step – all or nothing –, is recorded in the activity log and as "Accounts merged" in the security log. The account taken over is deleted afterwards. Your own account can only be the one that stays.
 
 ## Sign-in & SSO
 
