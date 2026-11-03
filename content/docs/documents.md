@@ -18,7 +18,7 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 | Zitat | `/quote` | Hervorgehobenes Zitat (bei `/zitat` erscheint zuerst das Literaturzitat) |
 | Hinweis, Tipp, Wichtig, Warnung, Achtung | `/hinweis`, `/tipp`, `/wichtig`, `/warnung`, `/achtung` | Farbiger Kasten mit Symbol und Titel – die fünf Arten der GitHub-Hinweise |
 | Aufklappbarer Block | `/toggle` | Inhalt, der sich ein- und ausklappen lässt |
-| Code | `/code` | Syntaxhervorhebung für über 240 Sprachen (wie in VS Code) |
+| Code | `/code` | Syntaxhervorhebung für über 240 Sprachen (wie in VS Code), Vorschau für HTML, SVG, Markdown, Mermaid, LaTeX und Typst |
 | Tabelle | `/table` | Einfache Tabelle im Text |
 | Bild oder Datei | `/bild`, `/datei` | Upload oder Auswahl aus der Mediathek |
 | Mermaid-Diagramm | `/mermaid` | Ablauf-, Sequenz-, Klassendiagramme als Text |
@@ -165,6 +165,8 @@ Beim Tippen wandelt der Editor um:
 
 Codeblöcke tragen ihre Sprache im Zaun: ` ```python `, ` ```typescript `, ` ```terraform `. Der Export schreibt die Kennungen von VS Code bzw. Shiki; der Import versteht auch Kürzel und ältere Namen (`js`, `ts`, `py`, `sh`, `yml`, `cpp`, `csharp`, `plaintext` …) und speichert sie mit der vollen Kennung (` ```js ` wird zu JavaScript, beim nächsten Export ` ```javascript `). Unbekannte Sprachen bleiben erhalten und erscheinen im Block als „(importiert)“, ohne Hervorhebung.
 
+Zeilennummern, hervorgehobene Zeilen, Ansicht und Einklappen stehen hinter der Sprache im Zaun, in der üblichen Schreibweise: ` ```ts {3-5} showLineNumbers startLine=10 `, dazu `view=preview`/`view=split`/`view=code`, `collapsed` und `collapsedLines=15`. Der Import versteht auch `showLineNumbers{10}` (rehype-pretty-code), `showLineNumbers=10` und `hl_lines="3 4"`/`linenums="10"` (MkDocs). Die Nummern in `{…}` zählen ab der ersten Zeile des Blocks, unabhängig von der Startnummer. ` ```mermaid `-Zäune werden zu Codeblöcken, die das Diagramm zeigen.
+
 ## Text formatieren
 
 Text markieren öffnet die Formatierungsleiste: Überschrift, **Fett**, *Kursiv*, Unterstrichen, Durchgestrichen, Code, Link, Farbe und Hintergrundfarbe, Hoch- und Tiefgestellt, Inline-Formel, **Verdecken (Spoiler)** und **Text kommentieren**.
@@ -252,6 +254,14 @@ Bilder, Tabellen und Codeblöcke können eine kurze **Beschriftung** bekommen �
 - **Mermaid-Diagramme**: Klick oder <kbd>Enter</kbd> öffnet Quelltext und Vorschau. Bis 20.000 Zeichen und 500 Kanten.
 - **Codeblöcke**: Die Sprache steht im Kopf des Blocks mit ihrem vollen Namen („JavaScript“, „C++“, „Angular TypeScript“, „Klartext“). Ein Klick öffnet eine Liste mit Suche – sie findet Namen, Kürzel und Dateiendungen (`ts`, `py`, `yml`, `tf`, `.rs` …). Oben stehen die Sprachen, die du zuletzt gewählt hast (in diesem Browser gemerkt). Zur Auswahl stehen über 240 Sprachen mit denselben Grammatiken wie in VS Code – darunter Svelte, Vue, Astro, JSX/TSX, Terraform, TOML, Typst, Zig, Prisma, GDScript, Nushell, Systemd-Units, SSH-Konfiguration, Git-Commit-Nachrichten, Logdateien, CSV/TSV und .env-Dateien. **Zeilenumbruch** und **Kopieren** stehen bereit. <kbd>Tab</kbd> rückt um zwei Leerzeichen ein.
 - **Sprache erkennen**: Fügst du Code in einen Block ohne Sprache (Klartext) ein, schlägt Flowplan eine Sprache vor, wenn sie eindeutig erkennbar ist – „Sieht aus wie Python – übernehmen?“. Ein Klick übernimmt sie, das × blendet den Vorschlag aus. Von selbst ändert Flowplan die Sprache nie.
+- **Vorschau**: Codeblöcke in HTML, SVG (Sprache XML mit `<svg>`), Markdown, Mermaid, LaTeX und Typst zeigen im Kopf den Schalter **Code / Vorschau / Geteilt**. *Geteilt* stellt Code und Vorschau nebeneinander, auf dem Telefon untereinander. Die Ansicht wird im Block gespeichert; wer eine Seite nur liest (Leserechte, veröffentlichte Seiten, Präsentationen), sieht ohne eigene Einstellung des Blocks die Vorschau und kann für sich umschalten, ohne etwas zu ändern. Fehler (etwa ein Tippfehler im Diagramm oder in Typst, mit Zeilennummer) erscheinen an Stelle der Vorschau.
+  - **HTML** läuft in einem abgeschotteten Rahmen: keine Skripte, keine Formulare, kein Zugriff auf Flowplan oder das Netz. Bilder aus dem Netz bleiben leer, eingebettete Bilder (`data:`) und Stile funktionieren. Die Höhe passt sich dem Inhalt an.
+  - **SVG**, **Mermaid** und **Typst** erscheinen als Bild – ohne Skripte und Links.
+  - **Markdown** wird wie beim Import umgesetzt, **LaTeX** zeigt Formeln mit KaTeX (durch Leerzeilen getrennt, mit oder ohne `$$ … $$`; ganze LaTeX-Dokumente mit `\documentclass` nicht).
+  - **Typst** wird beim ersten Mal nachgeladen (einige MB, vom eigenen Server, nicht aus dem Netz); Typst-Pakete (`@preview/…`) und Dateien stehen nicht zur Verfügung.
+  - Neue Mermaid-Codeblöcke (` ```mermaid ` oder Sprache *Mermaid* gewählt) zeigen gleich das Diagramm, leere Blöcke Code und Diagramm nebeneinander. Den eigenständigen Mermaid-Block (`/mermaid`) gibt es weiterhin.
+- **Zeilennummern**: Das Menü **…** im Kopf eines Codeblocks schaltet **Zeilennummern** für diesen Block ein oder aus, legt die **erste Zeilennummer** fest (etwa 10 für einen Ausschnitt) und **hebt Zeilen hervor** – z. B. `3-5, 8`, gezählt wie angezeigt. Die Nummern lassen sich nicht markieren und werden nicht mitkopiert; bei Zeilenumbruch stehen sie an der ersten Zeile eines umbrochenen Zeilenstücks. Für Blöcke ohne eigene Einstellung gilt **Einstellungen → Darstellung & Sprache → Editor → Zeilennummern standardmäßig anzeigen** (auf diesem Gerät).
+- **Einklappen**: Codeblöcke mit mehr als 25 Zeilen erscheinen eingeklappt – 10 Zeilen hoch, darin scrollbar, unten ausgeblendet. **Alle N Zeilen anzeigen** klappt sie auf, **Einklappen** wieder zu (beides per Tastatur erreichbar). Wer bearbeiten darf, speichert den Zustand im Block; Lesende klappen nur für sich auf. Im Menü **…** lassen sich **Eingeklappt** und die **Höhe eingeklappt** (5, 10, 15, 20 oder 30 Zeilen) einstellen. Drucken und alle Exporte zeigen immer den ganzen Code.
 - Die Hervorhebung einer Sprache wird beim ersten Codeblock dieser Sprache nachgeladen; bis dahin steht der Code kurz ohne Farben da. Sehr lange Codeblöcke (über 50 000 Zeichen) bleiben ohne Hervorhebung.
 
 ## Rechnen im Text

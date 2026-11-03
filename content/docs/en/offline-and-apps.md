@@ -408,3 +408,5 @@ After signing in, the app registers with the instance: the entry belongs to that
 ## Light and dark
 
 Flowplan follows your device's light or dark mode by itself – also when it changes while Flowplan is open (for example automatically in the evening). Under **Settings → Appearance & language → Appearance** you choose a fixed **Light** or **Dark** instead; **Automatic** follows the device again. The choice applies per device. Sign-in, public pages and forms, the website and this documentation follow the device as well, the apps also with their own screens and widgets.
+
+Under **Editor**, **Show line numbers by default** turns on line numbers for every code block without a setting of its own – on this device only, like the appearance.

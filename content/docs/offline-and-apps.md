@@ -408,3 +408,5 @@ Nach dem Anmelden meldet sich die App bei der Instanz an: Der Eintrag gehört zu
 ## Hell und dunkel
 
 Flowplan folgt von sich aus dem Hell- oder Dunkelmodus deines Geräts – auch wenn er sich ändert, während Flowplan offen ist (etwa abends automatisch). Unter **Einstellungen → Darstellung & Sprache → Erscheinungsbild** wählst du stattdessen fest **Hell** oder **Dunkel**; **Automatisch** folgt wieder dem Gerät. Die Wahl gilt pro Gerät. Anmeldung, öffentliche Seiten und Formulare, die Webseite und diese Dokumentation folgen ebenfalls dem Gerät, die Apps auch mit ihren eigenen Bildschirmen und Widgets.
+
+Unter **Editor** schaltet **Zeilennummern standardmäßig anzeigen** die Zeilennummern für alle Codeblöcke ohne eigene Einstellung ein – nur auf diesem Gerät, wie das Erscheinungsbild.

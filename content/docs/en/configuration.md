@@ -60,6 +60,8 @@ The other OIDC variables and everything about passwords and passkeys are describ
 | `OTEL_EXPORTER_OTLP_ENDPOINT` | *empty* | OTLP collector (HTTP); security events go there as OpenTelemetry logs. With `OTEL_EXPORTER_OTLP_HEADERS` and `OTEL_SERVICE_NAME`. |
 | `FLOWPLAN_ANONYMOUS_UPLOAD_MB` | `1024` | How many MB visitors without an account may upload per day on the whole instance – through anonymous forms and editing links (`0` = unlimited). Each form or link additionally gets 200 MB per day, independent of the workspace's storage quota. |
 
+The Typst preview loads its compiler and fonts (WebAssembly, about 11 MB compressed) on first use from `/typst/…` of your own server; nothing is fetched from a CDN.
+
 ## S3 and database backup
 
 | Variable | Default | Meaning |

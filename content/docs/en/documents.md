@@ -18,7 +18,7 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 | Quote | `/quote` | A highlighted quotation |
 | Note, Tip, Important, Warning, Caution | `/note`, `/tip`, `/important`, `/warning`, `/caution` | A coloured box with icon and title – the five kinds of GitHub alerts |
 | Toggle | `/toggle` | Content that folds in and out |
-| Code | `/code` | Syntax highlighting for more than 240 languages (as in VS Code) |
+| Code | `/code` | Syntax highlighting for more than 240 languages (as in VS Code), preview for HTML, SVG, Markdown, Mermaid, LaTeX and Typst |
 | Table | `/table` | A simple table in the text |
 | Image or file | `/image`, `/file` | Upload or pick from the media library |
 | Mermaid diagram | `/mermaid` | Flowcharts, sequence and class diagrams as text |
@@ -165,6 +165,8 @@ While you type, the editor converts:
 
 Code blocks carry their language in the fence: ` ```python `, ` ```typescript `, ` ```terraform `. The export writes the ids of VS Code/Shiki; the import also understands aliases and older names (`js`, `ts`, `py`, `sh`, `yml`, `cpp`, `csharp`, `plaintext` …) and stores them with the full id (` ```js ` becomes JavaScript, exported again as ` ```javascript `). Unknown languages are kept and show as "(imported)" in the block, without highlighting.
 
+Line numbers, highlighted lines, the view and collapsing follow the language in the fence, in the usual notation: ` ```ts {3-5} showLineNumbers startLine=10 `, plus `view=preview`/`view=split`/`view=code`, `collapsed` and `collapsedLines=15`. The import also understands `showLineNumbers{10}` (rehype-pretty-code), `showLineNumbers=10` and `hl_lines="3 4"`/`linenums="10"` (MkDocs). The numbers in `{…}` count from the block's first line, whatever its start number. ` ```mermaid ` fences become code blocks that show the diagram.
+
 ## Format text
 
 Selecting text – or right-clicking it – opens the text menu: reactions for the paragraph, **bold**, *italic*, underline, strikethrough, highlight, code, link, **Comment** and **Copy**, in tasks also **Due date**. The toolbar above the text adds headings, colour and background colour, superscript and subscript, inline formulas and **Hide (spoiler)**.
@@ -251,6 +253,14 @@ Images, tables and code blocks can have a short **caption** – one line that sa
 - **Mermaid diagrams**: a click or <kbd>Enter</kbd> opens the source and preview. Up to 20,000 characters and 500 edges.
 - **Code blocks**: the language is shown in the block's header with its full name ("JavaScript", "C++", "Angular TypeScript", "Plain text"). A click opens a list with a search – it finds names, aliases and file extensions (`ts`, `py`, `yml`, `tf`, `.rs` …). The languages you chose last come first (remembered in this browser). There are more than 240 languages with the same grammars as in VS Code – among them Svelte, Vue, Astro, JSX/TSX, Terraform, TOML, Typst, Zig, Prisma, GDScript, Nushell, systemd units, SSH config, Git commit messages, log files, CSV/TSV and .env files. **Line wrap** and **Copy** are at hand. <kbd>Tab</kbd> indents by two spaces.
 - **Language detection**: when you paste code into a block without a language (plain text), Flowplan suggests a language if it is clearly recognisable – "Looks like Python – set?". One click sets it, the × dismisses the suggestion. Flowplan never changes the language by itself.
+- **Preview**: code blocks in HTML, SVG (language XML with `<svg>`), Markdown, Mermaid, LaTeX and Typst show the switch **Code / Preview / Split** in their header. *Split* puts code and preview side by side, on a phone one below the other. The view is stored in the block; people who only read a page (read access, published pages, presentations) see the preview unless the block says otherwise, and can switch for themselves without changing anything. Errors (such as a typo in the diagram or in Typst, with the line number) show in place of the preview.
+  - **HTML** runs in a sealed frame: no scripts, no forms, no access to Flowplan or the network. Pictures from the web stay blank; embedded pictures (`data:`) and styles work. The height follows the content.
+  - **SVG**, **Mermaid** and **Typst** show as a picture – without scripts or links.
+  - **Markdown** is converted as on import, **LaTeX** shows formulas with KaTeX (separated by blank lines, with or without `$$ … $$`; not whole LaTeX documents with `\documentclass`).
+  - **Typst** loads the first time it is used (a few MB, from your own server, not from the web); Typst packages (`@preview/…`) and files are not available.
+  - New Mermaid code blocks (` ```mermaid ` or the language *Mermaid* chosen) show the diagram right away, empty ones code and diagram side by side. The separate Mermaid block (`/mermaid`) stays.
+- **Line numbers**: the **…** menu in a code block's header turns **Line numbers** on or off for that block, sets the **First line number** (say 10 for an excerpt) and **highlights lines** – e.g. `3-5, 8`, counted as shown. The numbers cannot be selected and are not copied; with line wrap they stand at the first row of a wrapped line. Blocks without a setting of their own follow **Settings → Appearance & language → Editor → Show line numbers by default** (on this device).
+- **Collapse**: code blocks with more than 25 lines appear collapsed – 10 lines high, scrolling inside, faded at the bottom. **Show all N lines** expands them, **Collapse** folds them again (both reachable by keyboard). People who may edit store the state in the block; readers only expand for themselves. The **…** menu sets **Collapsed** and the **Collapsed height** (5, 10, 15, 20 or 30 lines). Printing and every export always show the whole code.
 - A language's highlighting loads with the first code block of that language; until then the code shows briefly without colours. Very long code blocks (more than 50,000 characters) stay without highlighting.
 - **Fractions**: `/Fraction` (or `/Bruch`) inserts a formula inside the sentence.
 
