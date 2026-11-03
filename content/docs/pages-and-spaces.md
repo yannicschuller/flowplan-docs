@@ -179,9 +179,19 @@ Andere Mitglieder sehen die neue Reihenfolge nach wenigen Sekunden, ohne neu zu 
 > [!NOTE]
 > Über die API setzt der Befehl `space.reorder` (`{ workspaceId, order: [spaceIds] }`) die Reihenfolge der Bereiche, die du in der Seitenleiste siehst; nur Eigentümerinnen und Eigentümer des Arbeitsbereichs dürfen das. Die Antwort nennt die sichtbaren Bereiche in neuer Reihenfolge.
 
-### Bereiche ein- und ausklappen
+### Seitenleiste ein- und ausklappen
 
-Ein Klick auf den Namen eines Bereichs klappt seine Seiten zu oder wieder auf. Das merkt sich jedes Gerät für sich. Öffnest du eine Seite in einem zugeklappten Bereich, klappt er von selbst auf; beim Filtern des Seitenbaums sind alle Bereiche mit Treffern offen.
+Ein Klick auf den Namen eines Bereichs klappt seine Seiten zu oder wieder auf, ebenso bei **Favoriten** und **Sammlungen**; der Pfeil vor einer Seite zeigt oder verbirgt ihre Unterseiten. Seiten mit Unterseiten sind anfangs zugeklappt.
+
+Flowplan merkt sich, was du auf- und zugeklappt hast – in deinem Konto, je Arbeitsbereich, und damit gleich auf allen Geräten (Browser, Smartphone, Desktop-App), auch nach dem Neuladen. Das gilt für Seiten, Bereiche, Favoriten, Sammlungen und die Jahres- und Monatsordner von Journalen. Andere sehen deine Auswahl nicht.
+
+- **Geöffnete Seite:** Öffnest du eine Seite, klappen ihr Bereich und die Seiten darüber auf, damit sie in der Seitenleiste zu sehen ist; anderes klappt dabei nicht zu. Dieses Aufklappen gilt nur für den Besuch – nach dem Neuladen bleibt nur offen, was du selbst aufgeklappt hast (und der Weg zur gerade geöffneten Seite).
+- **Alle aufklappen / Alle zuklappen:** im Menü **…** eines Bereichs, für alle Seiten des Bereichs.
+- Beim Filtern des Seitenbaums ist alles mit Treffern offen.
+- Gelöschte Seiten und Bereiche fallen aus der gemerkten Auswahl heraus.
+
+> [!NOTE]
+> Über die API speichert der Befehl `sidebar.state` (`{ workspaceId, changes: { "<Schlüssel>": true|false } }`) Änderungen dieser Auswahl; die Schlüssel sind `p:<Seite>` (aufgeklappt), `s:<Bereich>` (zugeklappt), `g:favorites`, `g:collections` sowie `jo:`/`jc:` für Journalordner. Der Bootstrap liefert die Auswahl als `sidebar`.
 
 ## Papierkorb
 

@@ -286,6 +286,8 @@ The server calculates the number for the person looking at the page and refreshe
 
 Links to pages and records stay valid even if they are renamed or moved. A link that shows the old title gets the new one on a rename – in all documents and records you may edit; a link with its own text keeps it. The target lists all links to it under **Linked from** – including records whose text contains the link. Records and pages you may not read do not appear there.
 
+A link to a page or record shows the target's icon in front of its text: its emoji, symbol or own picture – without one, the sign of its kind (document, database, whiteboard, record). When someone changes the icon, every link follows, just as the title does on a rename. This also applies in reading mode, comments, published pages, the hover preview, the `@` list, **Linked from**, **Related pages** and search. A link to a block keeps its paragraph mark unless the page has its own icon. For pages and records you may not read, the link shows only the general link sign. Printing includes the icons; Markdown exports contain only the link text.
+
 ## Links to blocks
 
 Every block can be linked: a paragraph, a heading, a list item, a table, an image, a diagram … The link is the page's address with the block, such as `https://flowplan.example.org/#page=…&block=k3x9a2b1` (records add `&row=…`), and works anywhere in the same workspace.

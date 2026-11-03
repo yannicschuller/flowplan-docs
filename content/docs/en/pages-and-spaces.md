@@ -179,9 +179,19 @@ Other members see the new order within a few seconds, without reloading. Whereve
 > [!NOTE]
 > Through the API the command `space.reorder` (`{ workspaceId, order: [spaceIds] }`) sets the order of the spaces you see in the sidebar; only workspace owners may do this. The answer lists the visible spaces in their new order.
 
-### Collapse and expand spaces
+### Collapse and expand the sidebar
 
-A click on a space's name collapses its pages or expands them again. Each device remembers this for itself. Opening a page in a collapsed space expands it by itself; while filtering the page tree, every space with matches stays open.
+A click on a space's name collapses its pages or expands them again, and the same works for **Favourites** and **Collections**; the arrow in front of a page shows or hides its sub-pages. Pages with sub-pages start collapsed.
+
+Flowplan remembers what you expanded and collapsed – in your account, per workspace, so it is the same on all your devices (browser, phone, desktop app) and after reloading. This covers pages, spaces, favourites, collections and the year and month folders of journals. Others do not see your choice.
+
+- **Open page:** opening a page expands its space and the pages above it so it is visible in the sidebar; nothing else collapses. This only lasts for the visit – after a reload, only what you expanded yourself stays open (plus the way to the page that is open).
+- **Expand all / Collapse all:** in a space's **…** menu, for all pages of the space.
+- While filtering the page tree, everything with matches is open.
+- Deleted pages and spaces drop out of what is remembered.
+
+> [!NOTE]
+> Through the API, the command `sidebar.state` (`{ workspaceId, changes: { "<key>": true|false } }`) saves changes; the keys are `p:<page>` (expanded), `s:<space>` (collapsed), `g:favorites`, `g:collections` and `jo:`/`jc:` for journal folders. The bootstrap returns the state as `sidebar`.
 
 ## Trash
 

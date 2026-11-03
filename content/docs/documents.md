@@ -286,6 +286,8 @@ Die Zahl rechnet der Server für die Person aus, die die Seite ansieht, und aktu
 
 Links auf Seiten und Einträge bleiben gültig, auch wenn sie umbenannt oder verschoben werden. Steht im Link der alte Titel, wird er beim Umbenennen durch den neuen ersetzt – in allen Dokumenten und Einträgen, die du bearbeiten darfst; ein Link mit eigenem Text behält ihn. Das Ziel zeigt alle Links darauf unter **Verlinkt von** (Seiten) bzw. **Verknüpft von** (Einträge). Dort stehen auch Einträge, in deren Text der Link steht. Wer einen verlinkenden Eintrag oder seine Seite nicht lesen darf, sieht ihn dort nicht.
 
+Ein Link auf eine Seite oder einen Eintrag zeigt vor dem Text das Icon des Ziels: sein Emoji, sein Symbol oder sein eigenes Bild – ohne eigenes Icon das Zeichen seiner Art (Dokument, Datenbank, Whiteboard, Eintrag). Ändert jemand das Icon, ändert es sich in allen Links mit, wie der Titel beim Umbenennen. Das gilt auch im Lesemodus, in Kommentaren, auf veröffentlichten Seiten, in der Vorschau beim Darüberfahren, in der `@`-Liste, unter **Verlinkt von**, bei **Verwandte Seiten** und in der Suche. Ein Link auf einen Block behält sein Absatzzeichen, solange die Seite kein eigenes Icon hat. Für Seiten und Einträge, die du nicht lesen darfst, zeigt der Link nur das allgemeine Link-Zeichen. Beim Drucken erscheinen die Icons mit; Markdown-Exporte enthalten nur den Linktext.
+
 ## Links auf Blöcke
 
 Jeder Block lässt sich verlinken: ein Absatz, eine Überschrift, ein Listenpunkt, eine Tabelle, ein Bild, ein Diagramm … Der Link ist die Adresse der Seite mit dem Block, etwa `https://flowplan.example.org/#page=…&block=k3x9a2b1` (bei Einträgen mit `&row=…`), und funktioniert überall im selben Arbeitsbereich.
