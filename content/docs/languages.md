@@ -1,14 +1,14 @@
 # Sprachen und Übersetzungen
 
-Flowplan gibt es in {{facts.languages|word}} Sprachen: **Deutsch, Englisch und Französisch**. Weitere Sprachen lassen sich ohne Änderungen am Code der App hinzufügen – mit jedem Übersetzungswerkzeug, das JSON-Dateien versteht.
+Flowplan gibt es in {{facts.languages|word}} Sprachen: **Deutsch, Englisch, Französisch und vereinfachtes Chinesisch (简体中文)**. Weitere Sprachen lassen sich ohne Änderungen am Code der App hinzufügen – mit jedem Übersetzungswerkzeug, das JSON-Dateien versteht.
 
 ## Sprache wählen
 
 Flowplan folgt der Sprache deines Browsers; Sprachen, die Flowplan nicht kennt, zeigen Englisch. Unter **Einstellungen → Darstellung & Sprache → Sprache** wählst du aus der Liste eine Sprache (mit Flagge) – sie gilt dann auf allen Geräten, auch für E-Mails und Push-Hinweise; **Automatisch (folgt dem Browser)** nimmt die Festlegung zurück. Auf der Anmeldeseite öffnet der kleine Knopf unten rechts (z. B. **🇩🇪 DE**) ein Menü mit allen Sprachen.
 
-Datum, Uhrzeit und Zahlen folgen der Sprache (Französisch: `fr-FR`, z. B. „15 oct. 2026“ und „2 400,5“). Beim Rechnen in Notizen gilt das Dezimalkomma auch für Französisch.
+Datum, Uhrzeit und Zahlen folgen der Sprache (Französisch: `fr-FR`, z. B. „15 oct. 2026“ und „2 400,5“; Chinesisch: `zh-CN`, z. B. „2026年10月15日“). Beim Rechnen in Notizen gilt das Dezimalkomma auch für Französisch.
 
-Was du selbst anlegst – Seiten, Datenbanken, Eigenschaften –, bleibt in der Sprache, in der es entstanden ist. Vorlagen und Beispielinhalte gibt es auf Deutsch und Englisch; französische Konten bekommen die englischen.
+Was du selbst anlegst – Seiten, Datenbanken, Eigenschaften –, bleibt in der Sprache, in der es entstanden ist. Vorlagen und Beispielinhalte gibt es auf Deutsch und Englisch; französische und chinesische Konten bekommen die englischen.
 
 ## Wie die Übersetzung funktioniert
 
