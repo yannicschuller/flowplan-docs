@@ -1,9 +1,10 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { docGroups, docSearchIndex, docSlugs, headingId, languageList, llmsIndex, loadDoc, ownSite, plain } from "../lib/docs";
-import { LOCALES } from "../lib/i18n";
+import { docGroups, docSearchIndex, docSlugs, headingId, languageList, llmsIndex, loadDoc, ownSite, plain, WHATS_NEW } from "../lib/docs";
+import { releases } from "../lib/changelog";
+import { LOCALES, type Locale } from "../lib/i18n";
 
 for (const locale of LOCALES)
   test(`every documentation page loads with title, lead and content (${locale})`, () => {
@@ -34,19 +35,105 @@ test("every page has an English translation without German left in it", () => {
   }
 });
 
+// Every link and image of a rendered page that stays on this site: pages in
+// the page's language (/slug, /en/slug on English pages, /de/slug on German
+// ones), their sections, sections of the same page, the Markdown and
+// llms.txt addresses, and files in public/. Offline: other sites are skipped.
+const headingIds = (html: string) => new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
+const sectionsOf = Object.fromEntries(
+  LOCALES.map((locale) => [
+    locale,
+    new Map<string, Set<string>>([
+      ...docSlugs.map((slug) => [slug, headingIds(loadDoc(slug, locale)!.html)] as const),
+      [WHATS_NEW.slug, new Set(releases().map((r) => r.id))],
+      ["", new Set<string>()],
+    ]),
+  ]),
+) as Record<Locale, Map<string, Set<string>>>;
+function linkProblems(html: string, locale: Locale, slug: string) {
+  const problems: string[] = [];
+  const checked = { pages: 0, sections: 0, files: 0 };
+  // A heading's own "#" link is made from its id, so it cannot break.
+  const prose = html.replace(/<a class="anchor" href="#[^"]*"/g, "<a");
+  for (const [, attr, raw] of prose.matchAll(/\s(href|src)="([^"]*)"/g)) {
+    const href = raw.replace(/&amp;/g, "&");
+    if (/^(https?:|mailto:|\/\/)/.test(href)) continue;
+    const [path, hash] = href.split("#");
+    const section = hash === undefined ? undefined : decodeURIComponent(hash);
+    if (!path) {
+      checked.sections++;
+      if (!sectionsOf[locale].get(slug)?.has(section!)) problems.push(`missing section on the same page: ${href}`);
+      continue;
+    }
+    if (!path.startsWith("/")) {
+      problems.push(`relative ${attr}: ${href}`);
+      continue;
+    }
+    const page = path.match(/^(?:\/(de|en))?(?:\/([a-z0-9-]*?)(\.md)?)?$/);
+    if (page || /^(\/(de|en))?\/llms(-full)?\.txt$/.test(path)) {
+      checked.pages++;
+      if (!page) continue;
+      const [, lang, target = "", md] = page;
+      if (lang && lang !== locale) problems.push(`links to the other language: ${href}`);
+      if (!sectionsOf[locale].has(target) || (md && !target)) problems.push(`missing page: ${href}`);
+      else if (section !== undefined) {
+        checked.sections++;
+        if (md || !sectionsOf[locale].get(target)!.has(section)) problems.push(`missing section: ${href}`);
+      }
+      continue;
+    }
+    checked.files++;
+    const file = decodeURIComponent(path);
+    if (file.includes("..") || !existsSync(join(process.cwd(), "public", file))) problems.push(`missing file in public/: ${href}`);
+  }
+  return { problems, checked };
+}
+
 for (const locale of LOCALES)
-  test(`links between documentation pages point at existing pages and sections (${locale})`, () => {
-    const anchors = new Map(
-      docSlugs.map((slug) => [slug, new Set([...loadDoc(slug, locale)!.html.matchAll(/id="([^"]+)"/g)].map((m) => m[1]))]),
-    );
+  test(`links point at existing pages, sections and files, in the page's language (${locale})`, () => {
+    const total = { pages: 0, sections: 0, files: 0, prefixed: 0 };
+    const problems: string[] = [];
     for (const slug of docSlugs) {
       const doc = loadDoc(slug, locale)!;
-      for (const [, target, anchor] of (doc.html + doc.leadHtml).matchAll(/href="\/([a-z-]+)(?:#([a-z0-9-]+))?"/g)) {
-        assert.ok(anchors.has(target), `${slug} links to missing page ${target}`);
-        if (anchor) assert.ok(anchors.get(target)!.has(anchor), `${slug} links to missing section ${target}#${anchor}`);
-      }
+      const html = doc.leadHtml + doc.html;
+      const result = linkProblems(html, locale, slug);
+      problems.push(...result.problems.map((p) => `${doc.source}: ${p}`));
+      for (const key of ["pages", "sections", "files"] as const) total[key] += result.checked[key];
+      total.prefixed += [...html.matchAll(/href="\/(de|en)\//g)].length;
     }
+    assert.deepEqual(problems, []);
+    // The check sees the links at all.
+    assert.ok(total.pages > 200 && total.sections > 200 && total.files >= 4, JSON.stringify(total));
+    if (locale === "en") assert.ok(total.prefixed > 5, "English pages link to /en/ pages");
   });
+
+test("the link check finds wrong pages, sections, languages and files", () => {
+  const html = [
+    "/en/mcp#nope",
+    "#nope",
+    "/de/mcp",
+    "mcp",
+    "/nope",
+    "/screenshots/missing.webp",
+    "/../package.json",
+    "/en/mcp.md#x",
+  ]
+    .map((href) => `<a href="${href}">x</a>`)
+    .join("");
+  assert.equal(linkProblems(html, "en", "mcp").problems.length, 8);
+  const fine = ["/en/mcp", "/mcp", "#" + [...sectionsOf.en.get("mcp")!][0], "/en/whats-new", "/en", "/en/mcp.md", "/llms.txt"];
+  assert.deepEqual(linkProblems(fine.map((href) => `<a href="${href}">x</a>`).join("") + '<img src="/screenshots/notebook.webp">', "en", "mcp").problems, []);
+});
+
+test("the fonts and icons the layout uses exist in public/", () => {
+  const css = readFileSync(join(process.cwd(), "public", "fonts.css"), "utf8");
+  const files = [...css.matchAll(/url\(["']?([^"')]+)["']?\)/g)].map((m) => m[1]);
+  assert.ok(files.length >= 4);
+  const layout = readFileSync(join(process.cwd(), "app", "layout.tsx"), "utf8");
+  files.push(...[...layout.matchAll(/["'](\/[\w/.-]+\.(?:css|ico|png|svg|webp|woff2))["']/g)].map((m) => m[1]));
+  assert.ok(files.includes("/icons/apple-touch-icon.png") && files.includes("/fonts.css"));
+  for (const file of files) assert.ok(existsSync(join(process.cwd(), "public", file)), file);
+});
 
 test("the search index covers section text", () => {
   const index = docSearchIndex("de");
