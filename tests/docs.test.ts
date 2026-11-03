@@ -94,10 +94,10 @@ test("links to other sites open in a new tab and say so; Flowplan's own sites do
 });
 
 test("llms.txt names every interface language from one list", () => {
-  assert.equal(languageList("de"), "Deutsch, Englisch und Französisch");
-  assert.equal(languageList("en"), "German, English and French");
-  assert.match(llmsIndex("https://docs.example", "de"), /Oberfläche auf Deutsch, Englisch und Französisch\./);
-  assert.match(llmsIndex("https://docs.example", "en"), /Interface in German, English and French\./);
+  assert.equal(languageList("de"), "Deutsch, Englisch, Französisch und vereinfachtes Chinesisch");
+  assert.equal(languageList("en"), "German, English, French and Simplified Chinese");
+  assert.match(llmsIndex("https://docs.example", "de"), /Oberfläche auf Deutsch, Englisch, Französisch und vereinfachtes Chinesisch\./);
+  assert.match(llmsIndex("https://docs.example", "en"), /Interface in German, English, French and Simplified Chinese\./);
 });
 
 test("pages know their source file and whether they are translated", () => {

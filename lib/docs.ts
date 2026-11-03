@@ -16,10 +16,10 @@ export type DocGroup = { title: string; intro: string; pages: { slug: string; ti
 // The languages of Flowplan's interface, in both languages of the docs; the
 // llms.txt blurb and the overview are written from this list.
 export const INTERFACE_LANGUAGES: Record<Locale, string[]> = {
-  de: ["Deutsch", "Englisch", "Französisch"],
-  en: ["German", "English", "French"],
+  de: ["Deutsch", "Englisch", "Französisch", "vereinfachtes Chinesisch"],
+  en: ["German", "English", "French", "Simplified Chinese"],
 };
-// "Deutsch, Englisch und Französisch" / "German, English and French".
+// "Deutsch, Englisch, Französisch und vereinfachtes Chinesisch" / "German, English, French and Simplified Chinese".
 export const languageList = (locale: Locale) => {
   const names = INTERFACE_LANGUAGES[locale];
   return `${names.slice(0, -1).join(", ")} ${locale === "de" ? "und" : "and"} ${names[names.length - 1]}`;

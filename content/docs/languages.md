@@ -1,6 +1,6 @@
 # Sprachen und Übersetzungen
 
-Flowplan gibt es in {{facts.languages|word}} Sprachen: **Deutsch, Englisch, Französisch und vereinfachtes Chinesisch (简体中文)**. Weitere Sprachen lassen sich ohne Änderungen am Code der App hinzufügen – mit jedem Übersetzungswerkzeug, das JSON-Dateien versteht.
+Flowplan gibt es in {{facts.languages|word}} Sprachen: **Deutsch, Englisch, Französisch und vereinfachtes Chinesisch** (简体中文). Weitere Sprachen lassen sich ohne Änderungen am Code der App hinzufügen – mit jedem Übersetzungswerkzeug, das JSON-Dateien versteht.
 
 ## Sprache wählen
 
