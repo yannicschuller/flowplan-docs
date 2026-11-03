@@ -14,6 +14,7 @@ A **right-click on a view tab** opens its menu: **Rename**, **Duplicate**, **Set
 - Move columns by drag and drop, resize them at their edges.
 - Choose a calculation below every column.
 - Grouped tables fold groups and show summaries per group.
+- The title column stays in place while the table scrolls sideways. On a phone it takes at most about 60 % of the table's width, and longer titles are cut short with "…". There the column with the checkbox and drag handle scrolls with the rest. This way the table can be swiped sideways anywhere, including on the title column.
 
 ## Board
 
@@ -88,7 +89,7 @@ Backlog, sprints with goal and period, burndown and velocity – see [Projects, 
 
 Bars from a start to an end date field, on a scale of week, month, quarter or year.
 
-- Move bars or drag their edges; the calendar icon opens a date dialog, also for unscheduled records.
+- Move bars or drag their edges. On touch devices, hold a bar briefly, then drag it; a quick swipe scrolls the timeline. The handles at the edges drag at once. The calendar icon opens a date dialog, also for unscheduled records.
 - **Today** jumps to the current date; weekends can be highlighted.
 - Keyboard: <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> moves by one day, with <kbd>⇧</kbd> it changes the end, with <kbd>Ctrl</kbd> the start.
 

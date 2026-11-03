@@ -14,6 +14,7 @@ Ein **Rechtsklick auf einen Ansichtsreiter** öffnet sein Menü: **Umbenennen**,
 - Spalten per Drag and Drop verschieben, an den Rändern in der Breite ändern.
 - Unter jeder Spalte eine Berechnung wählen.
 - Gruppierte Tabellen klappen Gruppen ein und zeigen Zusammenfassungen je Gruppe.
+- Beim seitlichen Scrollen bleibt die Titelspalte stehen. Auf dem Smartphone nimmt sie höchstens etwa 60 % der Tabellenbreite ein, und längere Titel werden mit „…“ gekürzt. Die Spalte mit Auswahlfeld und Ziehgriff scrollt dort mit. So lässt sich die Tabelle überall seitlich wischen, auch auf der Titelspalte.
 
 ## Board
 
@@ -88,7 +89,7 @@ Backlog, Sprints mit Ziel und Zeitraum, Burndown und Velocity – siehe [Projekt
 
 Balken von einem Beginn- bis zu einem End-Datumsfeld, im Maßstab Woche, Monat, Quartal oder Jahr.
 
-- Balken verschieben oder an den Rändern ziehen; das Kalendersymbol öffnet einen Datumsdialog, auch für ungeplante Einträge.
+- Balken verschieben oder an den Rändern ziehen. Auf Touchgeräten einen Balken erst kurz halten, dann ziehen; ein schnelles Wischen scrollt die Timeline. Die Griffe an den Rändern ziehen sofort. Das Kalendersymbol öffnet einen Datumsdialog, auch für ungeplante Einträge.
 - **Heute** springt zum aktuellen Datum; Wochenenden lassen sich markieren.
 - Tastatur: <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> verschiebt um einen Tag, mit <kbd>⇧</kbd> ändert es das Ende, mit <kbd>Strg</kbd> den Beginn.
 
