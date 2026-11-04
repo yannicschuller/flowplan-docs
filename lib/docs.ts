@@ -9,7 +9,8 @@ import { releases } from "./changelog";
 import { FACTS, fillFacts } from "./facts";
 import type { Locale } from "./i18n";
 import { synonymKeywords } from "./search";
-import { DISCORD_URL, GITHUB_URL, websiteUrl } from "./links";
+import { appUrl, DISCORD_URL, GITHUB_URL, websiteUrl } from "./links";
+import { outboundTarget } from "./track";
 
 export type DocGroup = { title: string; intro: string; pages: { slug: string; title: string }[] };
 
@@ -241,9 +242,12 @@ function render(markdown: string, locale: Locale) {
         // Links to other sites open in a new tab and say so for screen
         // readers; Flowplan's own sites open like internal links.
         const external = /^https?:\/\//.test(href) && !ownSite(href);
+        // Links to the app, the website, GitHub or Discord count as
+        // "outbound" in the statistics (lib/track.ts).
+        const target = outboundTarget(href, { app: appUrl(), website: websiteUrl() });
         return `<a href="${escape(href)}"${title ? ` title="${escape(title)}"` : ""}${
           external ? ' target="_blank" rel="noreferrer"' : ""
-        }>${inner}${external ? `<span class="sr-only"> (${newTab[locale]})</span>` : ""}</a>`;
+        }${target ? ` data-umami-event="outbound" data-umami-event-target="${target}"` : ""}>${inner}${external ? `<span class="sr-only"> (${newTab[locale]})</span>` : ""}</a>`;
       },
       code({ text, lang }: Tokens.Code) {
         const language = (lang || "").split(/\s/)[0];

@@ -3,9 +3,11 @@ import { notFound } from "next/navigation";
 import { docSlugs, editUrl, loadDoc } from "@/lib/docs";
 import { localePrefix, requestLocale } from "@/lib/i18n-server";
 import { websiteUrl } from "@/lib/links";
+import { trackAttrs } from "@/lib/track";
 import { absolute, jsonLd, pageAlternates, socialMetadata, softwareJson } from "@/lib/seo";
 import { translate } from "@/lib/i18n";
 import s from "@/components/docs/docs.module.css";
+import { CodeCopy } from "@/components/docs/code-copy";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -79,13 +81,14 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
         )}
         <p className={s.lead} lang={lang} dangerouslySetInnerHTML={{ __html: doc.leadHtml }} />
         <div className={s.prose} lang={lang} dangerouslySetInnerHTML={{ __html: html }} />
+        <CodeCopy slug={slug} />
         <p className={s.meta}>
           {modified && (
             <span>
               {t("Zuletzt aktualisiert am", "Last updated on")} <time dateTime={doc.modified}>{modified}</time>
             </span>
           )}
-          <a href={editUrl(doc.source)} rel="noopener">
+          <a href={editUrl(doc.source)} rel="noopener" {...trackAttrs("outbound", { target: "github" })}>
             {t("Auf GitHub bearbeiten", "Edit on GitHub")}
           </a>
         </p>

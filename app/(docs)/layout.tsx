@@ -5,6 +5,7 @@ import { localePrefix, requestLocale } from "@/lib/i18n-server";
 import { translate } from "@/lib/i18n";
 import { LanguageSwitch } from "@/components/i18n";
 import s from "@/components/docs/docs.module.css";
+import { trackAttrs } from "@/lib/track";
 import { DISCORD_URL, GITHUB_URL, imprintUrl, privacyUrl, SPONSOR_URL, websiteUrl } from "@/lib/links";
 
 // The documentation: same paper and ink as the website, calmer.
@@ -20,7 +21,7 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
         {t("Zum Inhalt", "Skip to content")}
       </a>
       <header className={s.header}>
-        <a href={websiteUrl()} className={s.brand} aria-label={t("Flowplan, zur Startseite", "Flowplan, to the start page")}>
+        <a href={websiteUrl()} className={s.brand} {...trackAttrs("outbound", { target: "website" })} aria-label={t("Flowplan, zur Startseite", "Flowplan, to the start page")}>
           <BrandMark size={26} />
           <span>flowplan</span>
         </a>
@@ -29,10 +30,10 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
         </a>
         <DocsSearch version={searchIndexVersion()} />
         <LanguageSwitch className={s.lang} />
-        <a href={DISCORD_URL} className={s.community} rel="noopener">
+        <a href={DISCORD_URL} className={s.community} rel="noopener" {...trackAttrs("outbound", { target: "discord" })}>
           {t("Community", "Community")}
         </a>
-        <a href={websiteUrl()} className={s.back}>
+        <a href={websiteUrl()} className={s.back} {...trackAttrs("outbound", { target: "website" })}>
           {t("Zur Startseite", "Start page")}
         </a>
       </header>
@@ -41,9 +42,11 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
         {children}
       </div>
       <footer className={s.legal}>
-        <a href={DISCORD_URL} rel="noopener">{t("Community auf Discord", "Community on Discord")}</a>
-        <a href={GITHUB_URL} rel="noopener">GitHub</a>
-        <a href={SPONSOR_URL} rel="noopener">
+        <a href={DISCORD_URL} rel="noopener" {...trackAttrs("outbound", { target: "discord" })}>{t("Community auf Discord", "Community on Discord")}</a>
+        <a href={GITHUB_URL} rel="noopener" {...trackAttrs("outbound", { target: "github" })}>
+          GitHub
+        </a>
+        <a href={SPONSOR_URL} rel="noopener" {...trackAttrs("outbound", { target: "sponsor" })}>
           <span aria-hidden="true">♥</span> {t("Unterstützen", "Sponsor")}
         </a>
         {imprint && <a href={imprint}>{t("Impressum", "Legal notice")}</a>}

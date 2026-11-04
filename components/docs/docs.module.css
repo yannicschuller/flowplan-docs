@@ -444,6 +444,31 @@
   font-size: 11px;
   color: #8e8a98;
 }
+/* The copy button (code-copy.tsx) sits top right, the language next to it. */
+.prose :global(.code):has(> :global(.copy))[data-lang]:not([data-lang=""])::before {
+  right: 76px;
+}
+.prose :global(.code) > :global(.copy) {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  padding: 2px 8px;
+  border: 1px solid #3a3842;
+  border-radius: 6px;
+  background: #1d1c22;
+  color: #c9c6d3;
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+.prose :global(.code) > :global(.copy):hover {
+  color: #fff;
+  border-color: #6b6776;
+}
+.prose :global(.code) > :global(.copy):focus-visible {
+  outline: 2px solid #8e8a98;
+  outline-offset: 1px;
+}
 .prose pre {
   margin: 0;
   padding: 16px 18px;

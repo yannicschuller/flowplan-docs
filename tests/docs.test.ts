@@ -175,8 +175,9 @@ test("the mobile apps keep a stable anchor while their status is a note", () => 
 test("links to other sites open in a new tab and say so; Flowplan's own sites do not", () => {
   assert.ok(ownSite("https://flowplan.org/download") && ownSite("https://app.flowplan.org/x") && !ownSite("https://github.com/x"));
   const de = loadDoc("offline-and-apps", "de")!.html;
-  assert.match(de, /<a href="https:\/\/flowplan\.org\/download">flowplan\.org\/download<\/a>/);
-  assert.match(loadDoc("configuration", "de")!.html, /href="https:\/\/github\.com\/[^"]+" target="_blank" rel="noreferrer">[^<]*<span class="sr-only"> \(öffnet in neuem Tab\)<\/span><\/a>/);
+  // Own sites open in the same tab; links to them count as "outbound" (lib/track.ts).
+  assert.match(de, /<a href="https:\/\/flowplan\.org\/download" data-umami-event="outbound" data-umami-event-target="website">flowplan\.org\/download<\/a>/);
+  assert.match(loadDoc("configuration", "de")!.html, /href="https:\/\/github\.com\/[^"]+" target="_blank" rel="noreferrer" data-umami-event="outbound" data-umami-event-target="github">[^<]*<span class="sr-only"> \(öffnet in neuem Tab\)<\/span><\/a>/);
   assert.match(loadDoc("configuration", "en")!.html, /<span class="sr-only"> \(opens in a new tab\)<\/span>/);
 });
 

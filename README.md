@@ -27,7 +27,7 @@ Checks: `npm run typecheck`, `npm test`, `npm run build`, then `npm run quality`
 | `IMPRINT_URL` | *empty* | Link to the legal notice in the footer, e.g. `https://flowplan.org/impressum`. Hidden when empty. |
 | `PRIVACY_URL` | *empty* | Link to the privacy policy in the footer, e.g. `https://flowplan.org/datenschutz`. Hidden when empty. |
 | `UMAMI_URL` | *empty* | Visitor statistics with a self-hosted [Umami](https://umami.is), without cookies: address of the instance, e.g. `https://stats.example.com`. Off unless `UMAMI_WEBSITE_ID` is set too. |
-| `UMAMI_WEBSITE_ID` | *empty* | The site's ID in Umami. Mention the statistics in the privacy policy that `PRIVACY_URL` links to. |
+| `UMAMI_WEBSITE_ID` | *empty* | The site's ID in Umami. Mention the statistics in the privacy policy that `PRIVACY_URL` links to. With Umami on, the docs also send a few events without personal data – `search` (sanitised term, result bucket, language), `search-open`, `copy`, `not-found`, `outbound` and `language`; see `lib/track.ts`. |
 
 ## Image
 

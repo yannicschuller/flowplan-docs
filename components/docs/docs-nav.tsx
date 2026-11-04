@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { List, MagnifyingGlass, X } from "@phosphor-icons/react";
 import type { DocGroup, DocSearchEntry } from "@/lib/docs";
 import { excerpt, expandWord, fold, highlight } from "@/lib/search";
+import { resultBucket, searchTerm, track } from "@/lib/track";
 import { useLocale, usePrefix, useT } from "../i18n";
 import s from "./docs.module.css";
 
@@ -79,6 +80,8 @@ export function DocsSearch({ version }: { version: string }) {
   const [failed, setFailed] = useState(false);
   const loading = useRef(false);
   const input = useRef<HTMLInputElement>(null);
+  // Search terms already counted on this page view (lib/track.ts).
+  const reported = useRef(new Set<string>());
 
   const load = useCallback(() => {
     if (loading.current) return;
@@ -115,7 +118,7 @@ export function DocsSearch({ version }: { version: string }) {
     if (!words.length || !index) return { results: [], terms: [] };
     const expanded = words.map(expandWord);
     const terms = [...new Set(expanded.flat())];
-    const hits: { href: string; title: string; context: string; snippet?: string; score: number }[] = [];
+    const hits: { href: string; slug: string; title: string; context: string; snippet?: string; score: number }[] = [];
     const all = (text: string) => words.every((w) => text.includes(w));
     // Synonyms count only after the words themselves: in a title through the
     // expanded query, in a text through the keywords of the index.
@@ -125,10 +128,11 @@ export function DocsSearch({ version }: { version: string }) {
       const head = fold(`${page.title} ${page.summary}`);
       const body = fold(page.text);
       if (all(head) || named(fold(page.title)))
-        hits.push({ href: `${prefix}/${page.slug}`, title: page.title, context: page.group, score: all(fold(page.title)) ? 0 : all(head) ? 2 : 2.5 });
+        hits.push({ href: `${prefix}/${page.slug}`, slug: page.slug, title: page.title, context: page.group, score: all(fold(page.title)) ? 0 : all(head) ? 2 : 2.5 });
       else if (all(body) || loose(`${head} ${body}`, page.keywords))
         hits.push({
           href: `${prefix}/${page.slug}`,
+          slug: page.slug,
           title: page.title,
           context: page.group,
           snippet: excerpt(page.text, terms) ?? excerpt(page.summary, terms),
@@ -140,6 +144,7 @@ export function DocsSearch({ version }: { version: string }) {
         if (all(heading) || named(fold(section.text)))
           hits.push({
             href: `${prefix}/${page.slug}#${section.id}`,
+            slug: page.slug,
             title: section.text,
             context: page.title,
             score: all(fold(section.text)) ? 1 : all(heading) ? 3 : 3.5,
@@ -147,6 +152,7 @@ export function DocsSearch({ version }: { version: string }) {
         else if (all(text) || loose(text, section.keywords))
           hits.push({
             href: `${prefix}/${page.slug}#${section.id}`,
+            slug: page.slug,
             title: section.text,
             context: page.title,
             snippet: excerpt(section.body, terms),
@@ -156,6 +162,23 @@ export function DocsSearch({ version }: { version: string }) {
     }
     return { results: hits.sort((a, b) => a.score - b.score).slice(0, 10), terms };
   }, [index, query, prefix]);
+
+  // The statistics count a query once it has settled: 1.2 s after the last
+  // keystroke, or when a result is opened – each term once per page view.
+  const report = useCallback(() => {
+    const term = searchTerm(query);
+    if (!term || !index || reported.current.has(term)) return;
+    reported.current.add(term);
+    track("search", { term, results: resultBucket(results.length), lang: locale });
+  }, [query, index, results, locale]);
+  useEffect(() => {
+    const timer = setTimeout(report, 1200);
+    return () => clearTimeout(timer);
+  }, [report]);
+  const opened = (slug: string) => {
+    report();
+    return track("search-open", { slug });
+  };
 
   const open = query.trim().length > 0;
   const listed = open && results.length > 0;
@@ -198,8 +221,11 @@ export function DocsSearch({ version }: { version: string }) {
             setActive(results.length - 1);
           } else if (e.key === "Enter" && results[active]) {
             e.preventDefault();
-            location.assign(results[active].href);
+            const href = results[active].href;
+            opened(results[active].slug).then(() => location.assign(href));
             close();
+          } else if (e.key === "Enter") {
+            report();
           } else if (e.key === "Escape") {
             if (open) e.preventDefault();
             close();
@@ -211,7 +237,15 @@ export function DocsSearch({ version }: { version: string }) {
         <ul className={s.results} role="listbox" id={LISTBOX_ID} aria-label={t("Treffer", "Results")}>
           {results.map((hit, i) => (
             <li key={hit.href} role="option" id={optionId(i)} aria-selected={i === active}>
-              <a href={hit.href} tabIndex={-1} onClick={close} onMouseEnter={() => setActive(i)}>
+              <a
+                href={hit.href}
+                tabIndex={-1}
+                onClick={() => {
+                  opened(hit.slug);
+                  close();
+                }}
+                onMouseEnter={() => setActive(i)}
+              >
                 <strong>
                   <Marked text={hit.title} terms={terms} />
                 </strong>

@@ -4,6 +4,7 @@
 // the docs and the app – and the page reloads in the new language.
 import { createContext, useCallback, useContext } from "react";
 import { LOCALE_COOKIE, translate, type Locale } from "@/lib/i18n";
+import { track } from "@/lib/track";
 
 const LocaleContext = createContext<Locale>("de");
 // "/de" or "/en" when the address fixes the language, otherwise "".
@@ -36,7 +37,8 @@ export function setLocale(locale: Locale) {
 // "DE · EN": the other language is a button.
 export function LanguageSwitch({ className }: { className?: string }) {
   const locale = useLocale();
-  const choose = useCallback((l: Locale) => l !== locale && setLocale(l), [locale]);
+  // Counted before the page reloads in the other language (lib/track.ts).
+  const choose = useCallback((l: Locale) => l !== locale && track("language", { to: l }).then(() => setLocale(l)), [locale]);
   return (
     <span className={className} role="group" aria-label={locale === "de" ? "Sprache" : "Language"}>
       {(["de", "en"] as const).map((l) => (
