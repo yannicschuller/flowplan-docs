@@ -7,6 +7,7 @@ Flowplan signs people in with e-mail and password, optionally with passkeys. In 
 Without further setup, the sign-in page shows a form for e-mail and password.
 
 - **The first account** of a new instance administers it: the sign-in page then offers **Create account** right away. This account sees the **Administration**.
+- **Instances reachable from the internet:** until the first account exists, anyone who opens the address could create it and administer the instance. Set `FLOWPLAN_SETUP_TOKEN` to a random value (e.g. `openssl rand -hex 24`): the first account can then only be created with the setup link `https://flowplan.example.com/register?setup=<token>`; without it the page offers no sign-up. Once the first account exists the token has no effect. With single sign-on you can also never use the link – the administrators then come through the group in `OIDC_ADMIN_GROUP`, and everyone else joins by invitation.
 - **Further accounts** are created when the administrators open sign-ups under **Instance → Allow sign-ups with e-mail and password** – or for addresses with an [invitation](/workspaces-and-permissions). Workspaces someone was invited to appear as soon as the address is confirmed via the e-mail link.
 - **Confirming the e-mail address:** if the instance sends e-mail (`SMTP_*` set), a new account signs in only after the address has been confirmed with the link from the e-mail – the link signs in right away. Trying earlier shows a notice and sends the link again (at most every five minutes); **Send the link again** also works after signing up. Without e-mail every account counts as confirmed immediately, as does the instance's first account. Admins can confirm an address by hand under **Administration → Users → Manage**; resetting the password via a link confirms it too. If the address already has an account, signing up shows the same as for a new address, and the account's owner gets a note by e-mail instead – so the page does not reveal which addresses have an account.
 - **Passwords** have at least 10 characters and are stored with scrypt. After 8 failed attempts for an address (or 30 from one IP address) there is a 15-minute pause.
@@ -60,7 +61,7 @@ Optional. With `OIDC_ISSUER` set, the sign-in page shows **Sign in with SSO**; n
 
 ### Create a client at the provider
 
-Register a **confidential web client**:
+Register a **confidential web client** – or a **public client**: if `OIDC_CLIENT_SECRET` is empty, Flowplan signs in without a secret and relies on PKCE alone. That suits providers that serve many instances with one client. Providers that sign ID tokens with the client secret only (HS256) need a confidential client.
 
 | Setting | Value |
 | --- | --- |
@@ -109,7 +110,7 @@ The server log names the reason: a line `OIDC sign-in failed:` with the kind of 
 
 - **Redirect URI**: the provider must allow exactly `<APP_URL>/api/auth/callback`. `APP_URL` has to be the address in the browser – otherwise the provider rejects the redirect or the sign-in cookie is missing ("Sign-in expired").
 - **Issuer**: `OIDC_ISSUER` must match the `issuer` in the provider's discovery character for character, including a trailing slash.
-- **Client secret** wrong or a public client: the token endpoint answers `invalid_client`.
+- **Client secret** wrong, or a secret set for a client the provider treats as public (or none for a confidential one): the token endpoint answers `invalid_client`.
 - **`unexpected JWT "alg"`**: the provider signs ID tokens with another algorithm than it announces in its discovery.
 
 ### Connect an existing account to SSO

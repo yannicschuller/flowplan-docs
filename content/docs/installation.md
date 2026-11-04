@@ -71,7 +71,7 @@ Das Image enthält Node, Litestream für die S3-Sicherung und `curl` für den He
 ## Erster Start
 
 1. `https://flowplan.example.com/api/health` aufrufen – die Antwort ist `200` mit `"status":"ok"`.
-2. Die Adresse im Browser öffnen: Eine neue Instanz bietet **Konto erstellen** an. Dieses erste Konto verwaltet die Instanz. (Mit Single Sign-on: **Mit SSO anmelden**; Admin ist, wer in der Gruppe aus `OIDC_ADMIN_GROUP` ist.)
+2. Die Adresse im Browser öffnen: Eine neue Instanz bietet **Konto erstellen** an. Dieses erste Konto verwaltet die Instanz. Ist die Adresse aus dem Internet erreichbar, setze vorher `FLOWPLAN_SETUP_TOKEN` und lege das Konto über `/register?setup=<token>` an – sonst könnte dir jemand zuvorkommen ([Anmeldung](/sign-in#e-mail-und-passwort)). (Mit Single Sign-on: **Mit SSO anmelden**; Admin ist, wer in der Gruppe aus `OIDC_ADMIN_GROUP` ist.)
 3. In der Seitenleiste unter **Administration** Instanzname, Upload-Grenze, Registrierung und die [weiteren Einstellungen](/administration) setzen.
 
 > [!WARNING]

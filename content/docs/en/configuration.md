@@ -13,9 +13,10 @@ All environment variables at a glance. Many values can also be set in the interf
 | Variable | Default | Meaning |
 | --- | --- | --- |
 | `FLOWPLAN_LOCAL_LOGIN` | on | `false` turns off e-mail, password and passkeys; then only single sign-on remains. |
+| `FLOWPLAN_SETUP_TOKEN` | *empty* | For instances reachable from the internet: the first account can only be created via `/register?setup=<token>`. No effect afterwards. See [Sign-in](/en/sign-in#e-mail-and-password). |
 | `OIDC_ISSUER` | *empty* | The login provider for single sign-on. Without it there are only e-mail, password and passkeys. |
 | `OIDC_CLIENT_ID` | – | Client ID. |
-| `OIDC_CLIENT_SECRET` | – | Client secret. Never put it into the image or into Git. |
+| `OIDC_CLIENT_SECRET` | – | Client secret. Never put it into the image or into Git. Empty: a public client, PKCE only. |
 | `OIDC_LINKED_SSO_ONLY` | off | `true`: accounts connected to SSO sign in through SSO only. A password or passkey sign-in is refused with a note; passkeys and the authenticator app stay for confirming important steps. See [Connect an existing account to SSO](/en/sign-in#connect-an-existing-account-to-sso). |
 | `OIDC_NEW_ACCOUNTS` | on | `false`: SSO sign-in creates no new accounts – only existing, connected or SCIM-provisioned accounts sign in. At a first SSO sign-in with a known address, "Create a separate account instead" is then not offered. |
 | `SESSION_HOURS` | `8` | How long a session lasts in hours (1–24). Without `SESSION_REMEMBER` this applies to every session, the apps' too. |

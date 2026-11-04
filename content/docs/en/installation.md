@@ -71,7 +71,7 @@ The image contains Node, Litestream for the S3 backup and `curl` for the health 
 ## First start
 
 1. Open `https://flowplan.example.com/api/health` – the answer is `200` with `"status":"ok"`.
-2. Open the address in the browser: a new instance offers **Create account**. This first account administers the instance. (With single sign-on: **Sign in with SSO**; administrators are the members of the group in `OIDC_ADMIN_GROUP`.)
+2. Open the address in the browser: a new instance offers **Create account**. This first account administers the instance. If the address is reachable from the internet, set `FLOWPLAN_SETUP_TOKEN` first and create the account via `/register?setup=<token>` – otherwise someone could beat you to it ([Sign-in](/en/sign-in#e-mail-and-password)). (With single sign-on: **Sign in with SSO**; administrators are the members of the group in `OIDC_ADMIN_GROUP`.)
 3. In the sidebar under **Administration**, set the instance name, upload limit, sign-ups and the [other settings](/administration).
 
 > [!WARNING]

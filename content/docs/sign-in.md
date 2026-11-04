@@ -7,6 +7,7 @@ Flowplan meldet Personen mit E-Mail und Passwort an, auf Wunsch mit Passkeys. Zu
 Ohne weitere Einrichtung zeigt die Anmeldeseite ein Formular für E-Mail und Passwort.
 
 - **Das erste Konto** einer neuen Instanz verwaltet sie: Die Anmeldeseite bietet dann direkt **Konto erstellen** an. Dieses Konto sieht die **Administration**.
+- **Instanzen, die aus dem Internet erreichbar sind:** Solange es noch kein Konto gibt, könnte jede Person, die die Adresse öffnet, das erste Konto anlegen und die Instanz verwalten. Setze `FLOWPLAN_SETUP_TOKEN` auf einen zufälligen Wert (z. B. `openssl rand -hex 24`): Das erste Konto lässt sich dann nur über den Einrichtungslink `https://flowplan.example.com/register?setup=<token>` anlegen, ohne ihn bietet die Seite keine Registrierung an. Sobald das erste Konto existiert, wirkt der Token nicht mehr. Mit Single Sign-on kannst du den Link auch nie benutzen – Admins kommen dann über die Gruppe aus `OIDC_ADMIN_GROUP`, alle anderen per Einladung.
 - **Weitere Konten** entstehen, wenn die Administration unter **Instanz → Registrierung mit E-Mail und Passwort erlauben** die Registrierung öffnet – oder für Adressen mit einer [Einladung](/workspaces-and-permissions). Eingeladene Arbeitsbereiche erscheinen, sobald die Adresse per E-Mail-Link bestätigt ist.
 - **E-Mail bestätigen:** Verschickt die Instanz E-Mails (`SMTP_*` gesetzt), meldet sich ein neues Konto erst an, nachdem die Adresse über den Link in der E-Mail bestätigt ist – der Link meldet direkt an. Wer es vorher versucht, bekommt einen Hinweis und den Link erneut (höchstens alle fünf Minuten); **Link erneut senden** geht auch nach der Registrierung. Ohne E-Mail-Versand gilt jedes Konto sofort als bestätigt, ebenso das erste Konto der Instanz. Admins können eine Adresse unter **Administration → Benutzer → Verwalten** von Hand bestätigen; ein Passwort-Zurücksetzen per Link bestätigt sie ebenfalls. Gibt es für die Adresse schon ein Konto, zeigt die Registrierung dasselbe wie bei einer neuen Adresse, und die Inhaberin bzw. der Inhaber bekommt stattdessen einen Hinweis per E-Mail – so verrät die Seite nicht, welche Adressen ein Konto haben.
 - **Passwörter** haben mindestens 10 Zeichen und werden mit scrypt gespeichert. Nach 8 Fehlversuchen für eine Adresse (oder 30 von einer IP-Adresse) ist für 15 Minuten Pause.
@@ -60,7 +61,7 @@ Optional. Mit gesetztem `OIDC_ISSUER` zeigt die Anmeldeseite **Mit SSO anmelden*
 
 ### Client beim Anbieter anlegen
 
-Einen **vertraulichen Web-Client** registrieren:
+Einen **vertraulichen Web-Client** registrieren – oder einen **öffentlichen Client**: Ist `OIDC_CLIENT_SECRET` leer, meldet sich Flowplan ohne Secret an und verlässt sich allein auf PKCE. Das passt zu Anbietern, die viele Instanzen mit einem Client bedienen. Anbieter, die ID-Tokens nur mit dem Client-Secret signieren (HS256), brauchen einen vertraulichen Client.
 
 | Einstellung | Wert |
 | --- | --- |
@@ -109,7 +110,7 @@ Das Server-Log nennt den Grund: eine Zeile `OIDC sign-in failed:` mit der Art de
 
 - **Redirect-URI**: Der Provider muss genau `<APP_URL>/api/auth/callback` erlauben. `APP_URL` muss die Adresse im Browser sein – sonst lehnt der Provider die Weiterleitung ab oder das Anmelde-Cookie fehlt („Anmeldung abgelaufen“).
 - **Issuer**: `OIDC_ISSUER` muss Zeichen für Zeichen dem `issuer` in der Discovery des Providers entsprechen, einschließlich Schrägstrich am Ende.
-- **Client-Secret** falsch oder ein öffentlicher Client: Der Token-Endpunkt antwortet mit `invalid_client`.
+- **Client-Secret** falsch, oder ein Secret gesetzt für einen Client, den der Anbieter als öffentlich führt (bzw. keines für einen vertraulichen): Der Token-Endpunkt antwortet mit `invalid_client`.
 - **`unexpected JWT "alg"`**: Der Provider signiert ID-Tokens mit einem anderen Verfahren, als er in seiner Discovery angibt.
 
 ### Bestehendes Konto mit SSO verbinden

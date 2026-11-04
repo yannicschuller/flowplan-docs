@@ -13,9 +13,10 @@ Alle Umgebungsvariablen auf einen Blick. Viele Werte lassen sich zusätzlich in 
 | Variable | Standard | Bedeutung |
 | --- | --- | --- |
 | `FLOWPLAN_LOCAL_LOGIN` | an | `false` schaltet E-Mail, Passwort und Passkeys ab; dann bleibt nur Single Sign-on. |
+| `FLOWPLAN_SETUP_TOKEN` | *leer* | Für Instanzen, die aus dem Internet erreichbar sind: Das erste Konto lässt sich nur über `/register?setup=<token>` anlegen. Danach ohne Wirkung. Siehe [Anmeldung](/sign-in#e-mail-und-passwort). |
 | `OIDC_ISSUER` | *leer* | Login-Anbieter für Single Sign-on. Ohne ihn gibt es nur E-Mail, Passwort und Passkeys. |
 | `OIDC_CLIENT_ID` | – | Client-ID. |
-| `OIDC_CLIENT_SECRET` | – | Client-Secret. Nie ins Image oder ins Git. |
+| `OIDC_CLIENT_SECRET` | – | Client-Secret. Nie ins Image oder ins Git. Leer: öffentlicher Client, nur mit PKCE. |
 | `OIDC_LINKED_SSO_ONLY` | aus | `true`: Konten, die mit SSO verbunden sind, melden sich nur noch über SSO an. Anmelden mit Passwort oder Passkey wird mit einem Hinweis abgelehnt; Passkeys und die Authenticator-App bleiben zum Bestätigen wichtiger Schritte. Siehe [Bestehendes Konto mit SSO verbinden](/sign-in#bestehendes-konto-mit-sso-verbinden). |
 | `OIDC_NEW_ACCOUNTS` | an | `false`: Die SSO-Anmeldung legt keine neuen Konten an – nur bestehende, verbundene oder per SCIM bereitgestellte Konten melden sich an. Bei der ersten SSO-Anmeldung mit bekannter Adresse fehlt dann „Stattdessen ein eigenes Konto anlegen“. |
 | `SESSION_HOURS` | `8` | Dauer einer Sitzung in Stunden (1–24). Ohne `SESSION_REMEMBER` gilt das für alle Sitzungen, auch die der Apps. |
