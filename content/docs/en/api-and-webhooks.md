@@ -311,6 +311,10 @@ If you build Flowplan yourself, `npm run sdk` regenerates the clients; the test 
 - Database properties with the tags as options: in `database.update` a `multiselect` property with `"tagOptions": true` (the server sets its `options`). Cells hold tag names; a new name in `row.create`, `row.update` or `rows.bulk` creates the tag (members with edit rights, 403 otherwise); `rows.import` leaves out names that may not become tags. MCP lists such properties in `get_database` with `tagOptions: true`.
 - In `GET /api/search`, `#tag`, `-#tag`, `name:value`, `OR`, `NOT`, parentheses, `created_by:`, `created:`, `type:`, `in:` and `title:` act as filters (parameter `tz`: the time zone for `today` and similar) (see [Search](/search-and-notifications#filter-by-tags-and-properties)). MCP clients get tags and values with `read_page` as frontmatter.
 
+### Record versions
+
+`row.update` carries the `version` of the record you read. If the record changed since, the server answers `409` – unless you also send `base`: the values of the changed properties as you read them. Then the change applies as long as nobody else changed those properties meanwhile, and only a real conflict (someone changed the same property) gets the `409`. Answers to `row.update` and the other changes of a record (`row.move`, `row.schedule` …) include its new `rowVersion`; send that with the next change.
+
 ### Collections via the API
 
 - `GET /api/collections?workspace=<id>` – your collections and those shared with the workspace, in your order: `id`, `name`, `icon`, `query`, `shared`, `mine`, `canEdit`, `ownerName`.

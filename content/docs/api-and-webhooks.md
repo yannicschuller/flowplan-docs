@@ -311,6 +311,10 @@ Wer Flowplan selbst baut, erzeugt die Clients mit `npm run sdk` neu; der Test `t
 - Datenbank-Eigenschaften mit den Tags als Optionen: in `database.update` eine `multiselect`-Eigenschaft mit `"tagOptions": true` (ihre `options` setzt der Server). Zellen enthalten Tag-Namen; ein neuer Name in `row.create`, `row.update` oder `rows.bulk` legt den Tag an (Mitglieder mit Bearbeitungsrecht, sonst 403); `rows.import` lässt Namen weg, die kein Tag werden dürfen. MCP nennt solche Eigenschaften in `get_database` mit `tagOptions: true`.
 - In `GET /api/search` wirken `#tag`, `-#tag`, `name:wert`, `OR`, `NOT`, Klammern, `created_by:`, `created:`, `type:`, `in:` und `title:` als Filter (Parameter `tz`: Zeitzone für `today` usw.) (siehe [Suche](/search-and-notifications#nach-tags-und-eigenschaften-filtern)). MCP-Clients bekommen Tags und Werte mit `read_page` als Frontmatter.
 
+### Datensatz-Versionen
+
+`row.update` trägt die `version` des Datensatzes, die du gelesen hast. Hat sich der Datensatz seitdem geändert, antwortet der Server mit `409` – außer du schickst zusätzlich `base` mit: die Werte der geänderten Eigenschaften, so wie du sie gelesen hast. Dann wird die Änderung übernommen, solange niemand diese Eigenschaften inzwischen geändert hat; nur ein echter Konflikt (jemand hat dieselbe Eigenschaft geändert) bekommt die `409`. Die Antworten auf `row.update` und die anderen Änderungen eines Datensatzes (`row.move`, `row.schedule` …) enthalten seine neue `rowVersion`; die schickst du mit der nächsten Änderung.
+
 ### Sammlungen per API
 
 - `GET /api/collections?workspace=<id>` – deine und die mit dem Arbeitsbereich geteilten Sammlungen in deiner Reihenfolge: `id`, `name`, `icon`, `query`, `shared`, `mine`, `canEdit`, `ownerName`.
