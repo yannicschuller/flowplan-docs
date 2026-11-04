@@ -4,7 +4,7 @@ Vorlagen sind gespeicherte Seiten – Dokumente, Datenbanken oder ganze Seitenb�
 
 ## Startervorlagen
 
-**Vorlagen** in der Seitenleiste zeigt {{facts.templates}} eingebaute Vorlagen in {{facts.templateCategories|word}} Kategorien, jeweils mit Beispieleinträgen und passenden Ansichten:
+**Vorlagen** in der Seitenleiste – oder **Aus Vorlage** im Dialog **Neue Seite** – zeigt {{facts.templates}} eingebaute Vorlagen in {{facts.templateCategories|word}} Kategorien, jeweils mit Beispieleinträgen und passenden Ansichten:
 
 | Kategorie | Vorlagen |
 | --- | --- |
@@ -16,6 +16,8 @@ Vorlagen sind gespeicherte Seiten – Dokumente, Datenbanken oder ganze Seitenb�
 | Sonstiges | Kontakte & Kunden, Bewerbungen, Inventar, Eventplanung |
 
 Ein Klick fragt nach Titel und Bereich und legt die Seite an. Datumswerte der Beispiele werden relativ zum heutigen Tag gesetzt.
+
+Öffnest du die Galerie aus dem Dialog **Neue Seite**, landet die Seite dort, wo du sie anlegen wolltest – im gewählten Bereich und unter der gewählten Seite –, auch mit einer eigenen Vorlage. Schließt du die Galerie, bist du wieder im Dialog.
 
 ## Eigene Vorlagen
 

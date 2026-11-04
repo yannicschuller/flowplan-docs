@@ -4,7 +4,7 @@ Templates are saved pages – documents, databases or whole page trees – from 
 
 ## Starter templates
 
-**Templates** in the sidebar shows {{facts.templates}} built-in templates in {{facts.templateCategories|word}} categories, each with example records and fitting views:
+**Templates** in the sidebar – or **From a template** in the **New page** dialog – shows {{facts.templates}} built-in templates in {{facts.templateCategories|word}} categories, each with example records and fitting views:
 
 | Category | Templates |
 | --- | --- |
@@ -16,6 +16,8 @@ Templates are saved pages – documents, databases or whole page trees – from 
 | Other | Contacts & customers, job applications, inventory, event planning |
 
 A click asks for a title and space and creates the page. Dates in the examples are set relative to today.
+
+If you open the gallery from the **New page** dialog, the page goes where you were creating it – in the chosen space and under the chosen page – with your own templates too. Closing the gallery takes you back to the dialog.
 
 ## Your own templates
 
