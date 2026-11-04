@@ -264,6 +264,8 @@ Images, tables and code blocks can have a short **caption** – one line that sa
 - A language's highlighting loads with the first code block of that language; until then the code shows briefly without colours. Very long code blocks (more than 50,000 characters) stay without highlighting.
 - **Fractions**: `/Fraction` (or `/Bruch`) inserts a formula inside the sentence.
 
+![A Markdown code block in the split view: the code with line numbers and a highlighted line on the left, the rendered release notes on the right](/screenshots/code-preview.webp "A code block in Markdown, with line numbers, a highlighted line and the preview beside it.")
+
 ## Calculating in text
 
 Flowplan only calculates when you want it to – exactly, with fractions, in German or English notation (`2,5` or `2.5`, `×`, `²`, `√`, `€`):

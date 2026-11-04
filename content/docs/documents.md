@@ -264,6 +264,8 @@ Bilder, Tabellen und Codeblöcke können eine kurze **Beschriftung** bekommen �
 - **Einklappen**: Codeblöcke mit mehr als 25 Zeilen erscheinen eingeklappt – 10 Zeilen hoch, darin scrollbar, unten ausgeblendet. **Alle N Zeilen anzeigen** klappt sie auf, **Einklappen** wieder zu (beides per Tastatur erreichbar). Wer bearbeiten darf, speichert den Zustand im Block; Lesende klappen nur für sich auf. Im Menü **…** lassen sich **Eingeklappt** und die **Höhe eingeklappt** (5, 10, 15, 20 oder 30 Zeilen) einstellen. Drucken und alle Exporte zeigen immer den ganzen Code.
 - Die Hervorhebung einer Sprache wird beim ersten Codeblock dieser Sprache nachgeladen; bis dahin steht der Code kurz ohne Farben da. Sehr lange Codeblöcke (über 50 000 Zeichen) bleiben ohne Hervorhebung.
 
+![Ein Markdown-Codeblock in der geteilten Ansicht: links der Code mit Zeilennummern und einer hervorgehobenen Zeile, rechts die gerenderten Release Notes](/screenshots/code-preview.webp "Ein Codeblock in Markdown, mit Zeilennummern, hervorgehobener Zeile und der Vorschau daneben.")
+
 ## Rechnen im Text
 
 Flowplan rechnet nur, wenn du es möchtest – exakt mit Brüchen, in deutscher Schreibweise (`2,5`, `2.400`, `3 : 4`, `×`, `²`, `√`, `€`):
