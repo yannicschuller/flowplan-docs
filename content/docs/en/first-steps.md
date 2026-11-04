@@ -45,12 +45,14 @@ The home page is yours: **Customize** at the top right (or “Customize home pag
 
 While customizing:
 
-- **Widget** opens the gallery: greeting, recently edited or viewed, favourites, the workspace's pages, my tasks, inbox, journal today, agenda, database view, pinned page, quick capture, focus & time, habits, counter, scratchpad, activity, this week, links and – for administrators – the instance status.
+- **Widget** opens the gallery: greeting, recently edited or viewed, favourites, the workspace's pages, my tasks, inbox, journal today, agenda, database view, pinned page, quick capture, focus & time, habits, counter, scratchpad, activity, my activity, this week, links and – for administrators – the instance status.
 - **Move**: drag the handle, use the up/down arrows, or the keyboard – focus the handle, then the arrow keys, <kbd>Home</kbd> and <kbd>End</kbd>.
 - **Size**: small (one column), medium (two), large (three) or full width. A widget never gets wider than the space there is.
 - **Settings** (gear): a heading of your own and what the widget shows – for **My tasks** “Due today and overdue”, “Due today”, “Overdue” or “All open”, from your tasks or the open records of a database view; for the **Agenda** the period (today, 3 or 7 days) and which calendar and timeline views count (also those connected to Google, Microsoft 365 or CalDAV).
 - **Appearance**: a header with a colour, a gradient or a page's cover image, an emoji as icon, comfortable or compact spacing, a subtle background (dots, grid, tinted) and a normal or wide page.
 - **Done** saves, **Cancel** discards. In the **…** menu you save the home page **for all your workspaces** (otherwise it applies to this one only) or **reset** it.
+
+**My activity** shows how many pages you created and edited – per week, month or year (switchable in the widget), with a chart and the comparison with the same stretch of the previous period. An edited page counts at most once per day, and autosaves don't add to it. Only you see these numbers; Flowplan records nothing new for them and no times – it counts from what is stored anyway (creator, versions, activity log).
 
 You tick off tasks right in the widget, habits too; the journal widget adds a few lines to today's entry, and the scratchpad holds whatever fits nowhere else – it saves as you type and is the same on all devices.
 

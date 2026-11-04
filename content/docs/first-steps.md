@@ -45,12 +45,14 @@ Die Startseite gehört dir: Mit **Anpassen** oben rechts (oder „Startseite anp
 
 Im Bearbeitungsmodus:
 
-- **Widget** öffnet die Auswahl: Begrüßung, Zuletzt bearbeitet oder angesehen, Favoriten, Seiten des Arbeitsbereichs, Meine Aufgaben, Posteingang, Journal heute, Termine, Datenbankansicht, angeheftete Seite, Schnell erfassen, Fokus & Zeit, Gewohnheiten, Zähler, Notizzettel, Aktivität, Diese Woche, Links und – für die Administration – der Instanz-Status.
+- **Widget** öffnet die Auswahl: Begrüßung, Zuletzt bearbeitet oder angesehen, Favoriten, Seiten des Arbeitsbereichs, Meine Aufgaben, Posteingang, Journal heute, Termine, Datenbankansicht, angeheftete Seite, Schnell erfassen, Fokus & Zeit, Gewohnheiten, Zähler, Notizzettel, Aktivität, Meine Aktivität, Diese Woche, Links und – für die Administration – der Instanz-Status.
 - **Verschieben**: am Griff ziehen, mit den Pfeilen nach oben/unten oder mit der Tastatur – Griff fokussieren, dann Pfeiltasten, <kbd>Pos1</kbd> und <kbd>Ende</kbd>.
 - **Größe**: klein (eine Spalte), mittel (zwei), groß (drei) oder volle Breite. Ein Widget wird nie breiter als der Platz.
 - **Einstellungen** (Zahnrad): eine eigene Überschrift und was das Widget zeigt – etwa bei **Meine Aufgaben** „Heute fällig und überfällig“, „Heute fällig“, „Überfällig“ oder „Alle offenen“, aus deinen Aufgaben oder den offenen Einträgen einer Datenbankansicht; bei **Termine** den Zeitraum (heute, 3 oder 7 Tage) und welche Kalender- und Zeitleistenansichten (auch mit Google, Microsoft 365 oder CalDAV verbundene) zählen.
 - **Darstellung**: Kopfbereich mit Farbe, Verlauf oder dem Coverbild einer Seite, ein Emoji als Symbol, großzügige oder kompakte Abstände, ein dezenter Hintergrund (Punkte, Raster, getönt) und normale oder breite Seite.
 - **Fertig** speichert, **Abbrechen** verwirft. Im Menü **…** speicherst du die Startseite **für alle deine Arbeitsbereiche** (sonst gilt sie nur für diesen) oder setzt sie **zurück**.
+
+**Meine Aktivität** zeigt, wie viele Seiten du erstellt und bearbeitet hast – pro Woche, Monat oder Jahr (im Widget umschaltbar), mit einem Verlauf und dem Vergleich zum gleichen Abschnitt des vorigen Zeitraums. Eine bearbeitete Seite zählt höchstens einmal pro Tag, automatisches Speichern zählt nicht extra. Die Zahlen sieht nur du; Flowplan erfasst dafür nichts Neues und keine Zeiten, es zählt aus dem, was ohnehin gespeichert ist (Ersteller, Versionen, Aktivitätsprotokoll).
 
 Aufgaben hakst du direkt im Widget ab, Gewohnheiten ebenso; im Journal-Widget schreibst du ein paar Zeilen in den heutigen Eintrag, im Notizzettel notierst du, was nirgends sonst hinpasst – er wird beim Tippen gespeichert und ist auf allen Geräten gleich.
 
