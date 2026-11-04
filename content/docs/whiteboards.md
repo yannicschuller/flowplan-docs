@@ -20,7 +20,18 @@ Eine unendliche Fläche für Brainstorming, Abläufe und Workshops: Notizzettel,
 | Stempel | <kbd>E</kbd> | Schnelle Reaktion (👍 ❤️ ⭐ ✅ ❓ 🔥 💡 🎉) auf ein Element; noch einmal nimmt sie zurück |
 | Laserpointer | <kbd>K</kbd> | Zeigen, ohne etwas zu verändern: alle sehen eine kurz nachleuchtende rote Spur |
 
-Dazu in der Leiste: **Bild einfügen**, **Emoji oder Sticker**, **Seite verknüpfen** (Karte mit Link auf eine Flowplan-Seite), **Formenbibliothek**, **Zeitleiste**, **Racks** (Server-Racks planen, siehe [Racks und Verkabelung](#racks-und-verkabelung)), **Einbetten** (Video, Webseite oder PDF, siehe [unten](#videos-webseiten-und-pdfs-einbetten)) und **Vorlagen** (siehe [Vorlagen](#vorlagen)).
+### So ist die Leiste aufgebaut
+
+- **Links** stehen die Werkzeuge zum Erstellen: Auswählen, Verschieben, Notizzettel, Text, Form, Verbindungslinie, **Zeichnen**, Rahmen, Tabelle und Kommentar. **Zeichnen** fasst Stift, Radierer und Laserpointer zusammen: Der Knopf zeigt das zuletzt benutzte, oben im Optionsfenster schaltest du um. Die Tasten aus der Tabelle gelten weiter für alle Werkzeuge.
+- **+** (**Einfügen und mehr**) öffnet ein Fenster mit Suche – tippen filtert, <kbd>Enter</kbd> nimmt den ersten Treffer:
+  - **Einfügen:** Bild, Bilder und Symbole, Emoji, Stempel, Seite verknüpfen (Karte mit Link auf eine Flowplan-Seite), Einbetten (Video, Webseite oder PDF, siehe [unten](#videos-webseiten-und-pdfs-einbetten)), Zeitleiste und Importieren (Excalidraw, draw.io, Mermaid, PlantUML)
+  - **Vorlagen & Bibliothek:** [Vorlagen](#vorlagen), Formenbibliothek und Racks (siehe [Racks und Verkabelung](#racks-und-verkabelung))
+  - **KI**, wenn sie für dich eingeschaltet ist
+- **Moderation** oben rechts: Abstimmung, Timer, Privater Modus, Schätzen, Alle zu mir holen und Folge mir (siehe [Gemeinsam arbeiten](#gemeinsam-arbeiten)). Ein Punkt am Knopf zeigt, dass gerade etwas läuft.
+- **Unten links** eine Leiste mit Rückgängig und Wiederholen, Zoom, den Pfeilen zum vorigen und nächsten Rahmen, **Präsentieren** (beides, sobald es Rahmen gibt) und **…** (**Ansicht und Aktionen**: Raster, Einpassen, Vollbild, Kommentare, Rahmen-Übersicht, Minikarte, Suche, Prototyp und Export).
+- **Auf dem Handy** steht die Leiste unten: Auswählen, Verschieben, Notizzettel, Text, Form, Zeichnen und **Weitere Werkzeuge** – darin dasselbe wie unter **+**, ebenfalls mit Suche. **Moderation** ist das Symbol oben rechts.
+
+Wer nur lesen darf, sieht Auswählen, Verschieben, den Laserpointer und die Leiste unten.
 
 ## Elemente gestalten
 
@@ -63,7 +74,7 @@ Einen Zettel, eine Form oder einen Text auswählen und <kbd>Tab</kbd> drücken: 
 
 ## Diagramme: Formenbibliotheken
 
-**Formenbibliothek** in der Werkzeugleiste (oder **Weitere Formen …** im Formmenü) öffnet ein durchsuchbares Seitenfeld, auf dem Telefon als Blatt von unten. Ein Klick oder <kbd>Enter</kbd> legt die Form in die Mitte der Ansicht, oder du ziehst sie an die gewünschte Stelle; Pfeiltasten wandern durch die Formen. Gesucht wird auf Deutsch und Englisch („Raute“, „decision“, „Gateway“ …).
+**Formenbibliothek** unter **+** (oder **Weitere Formen …** im Formmenü) öffnet ein durchsuchbares Seitenfeld, auf dem Telefon als Blatt von unten. Ein Klick oder <kbd>Enter</kbd> legt die Form in die Mitte der Ansicht, oder du ziehst sie an die gewünschte Stelle; Pfeiltasten wandern durch die Formen. Gesucht wird auf Deutsch und Englisch („Raute“, „decision“, „Gateway“ …).
 
 | Bibliothek | Formen |
 | --- | --- |
@@ -86,7 +97,7 @@ Mehrere verbundene Formen auswählen → **Automatisch anordnen** → **Von oben
 
 ## Mermaid und PlantUML importieren
 
-Füge Mermaid- oder PlantUML-Text einfach auf dem Board ein (<kbd>⌘</kbd> <kbd>V</kbd>), zieh eine `.mmd`- oder `.puml`-Datei darauf oder wähle **Mermaid/PlantUML importieren …** im Menü unten rechts. Daraus werden bearbeitbare Formen und Verbindungslinien, automatisch angeordnet:
+Füge Mermaid- oder PlantUML-Text einfach auf dem Board ein (<kbd>⌘</kbd> <kbd>V</kbd>), zieh eine `.mmd`- oder `.puml`-Datei darauf oder wähle **Mermaid/PlantUML importieren …** unter **+**. Daraus werden bearbeitbare Formen und Verbindungslinien, automatisch angeordnet:
 
 - **Mermaid**: `flowchart`/`graph` (mit Formen, Beschriftungen, Untergraphen als Rahmen), `sequenceDiagram`, `classDiagram`, `erDiagram` (mit Krähenfüßen), `stateDiagram`, `mindmap`.
 - **PlantUML**: Aktivitätsdiagramme (`start`, `:Aktion;`, `if`/`else`, `while`, `fork` …), Sequenz-, Klassen-, Anwendungsfall- und Komponentendiagramme sowie `@startmindmap`.
@@ -105,7 +116,7 @@ Beim Kopieren, Duplizieren und Einfügen zeigen Verknüpfungen auf die mitkopier
 
 ## Zeitleisten (Roadmaps)
 
-**Zeitleiste** in der Werkzeugleiste (oder in der Formenbibliothek unter „Planung“) legt eine Roadmap mit Zeitskala, Spuren und Balken an. Ist die Zeitleiste ausgewählt, verschiebst du Balken direkt auf dem Board – auch in eine andere Spur – und ziehst an ihren Enden, um Beginn oder Ende zu ändern. Eine rote Linie markiert heute.
+**Zeitleiste** unter **+** (oder in der Formenbibliothek unter „Planung“) legt eine Roadmap mit Zeitskala, Spuren und Balken an. Ist die Zeitleiste ausgewählt, verschiebst du Balken direkt auf dem Board – auch in eine andere Spur – und ziehst an ihren Enden, um Beginn oder Ende zu ändern. Eine rote Linie markiert heute.
 
 Doppelklick oder **Zeitleiste bearbeiten** öffnet die Einstellungen: Titel, Skala (**Wochen**, **Monate**, **Quartale**), Zeitraum (bis etwa drei Jahre), Heute-Markierung, Spuren und Balken mit Titel, Spur, Daten und Farbe (bis 40 Spuren und 400 Balken).
 
@@ -117,7 +128,7 @@ Auf einem Whiteboard planst du Server-Racks: Racks mit ihren Höheneinheiten (HE
 
 ### Racks anlegen
 
-**Racks** in der Werkzeugleiste öffnet die Gerätebibliothek (auf dem Smartphone unter **Weitere Werkzeuge** als Blatt). Oben legst du ein **Rack 42 HE**, **Rack 24 HE** oder einen **Wandschrank 12 HE** an – per Klick neben das letzte Rack oder per Ziehen an eine Stelle. Mehrere Racks stehen so nebeneinander.
+**Racks** unter **+** öffnet die Gerätebibliothek (auf dem Smartphone unter **Weitere Werkzeuge** als Blatt). Oben legst du ein **Rack 42 HE**, **Rack 24 HE** oder einen **Wandschrank 12 HE** an – per Klick neben das letzte Rack oder per Ziehen an eine Stelle. Mehrere Racks stehen so nebeneinander.
 
 Ein ausgewähltes Rack zeigt rechts seine **Details**: Name, Standort, Höhe in HE (1–60), Breite (10″, 19″ oder 23″), **Ansicht** Vorder- oder Rückseite, **Max. Leistung** (W) und **Max. Gewicht** (kg), dazu die belegten HE, die Summe aus Leistung und Gewicht und die Liste der Geräte. Die Höhe änderst du auch mit den Griffen oben und unten am Rack. **Vorne/Hinten** in der Leiste über dem Rack dreht es um.
 
@@ -180,7 +191,7 @@ Sobald du auf einem Gerät mit dem Stift gezeichnet hast, zeichnet nur noch der 
 
 ## Bilder, Symbole und Einträge
 
-- **Bilder und Symbole** (Lupe in der Werkzeugleiste) sucht frei lizenzierte Bilder bei Openverse; ausgewählte Bilder werden auf den Server geladen, der Bildnachweis steht als Tooltip am Bild. Außerdem gibt es die Symbolbibliothek in zehn Farben.
+- **Bilder und Symbole** (unter **+**) sucht frei lizenzierte Bilder bei Openverse; ausgewählte Bilder werden auf den Server geladen, der Bildnachweis steht als Tooltip am Bild. Außerdem gibt es die Symbolbibliothek in zehn Farben.
 - **Zuschneiden** (in der Leiste eines Bildes): Ausschnitt mit Maus, Finger oder Pfeiltasten wählen (<kbd>⇧</kbd> ändert die Größe). Das Bild selbst bleibt unverändert – **Ganzes Bild zeigen** macht den Zuschnitt jederzeit rückgängig, und auch Exporte zeigen den Ausschnitt.
 - **GIFs**: Hat die Instanz einen Schlüssel für GIPHY oder Tenor (siehe [Konfiguration](/configuration#integrationen)), gibt es in **Bilder und Symbole** einen Reiter **GIFs**. Die Suche läuft über den Server; ein gewähltes GIF wird wie die Openverse-Bilder auf den Server geladen (bis 8 MB), danach lädt das Board nichts mehr vom Anbieter. Ohne Schlüssel fehlt der Reiter.
 - **Seite verknüpfen → Eintrag aus „…“** legt einen Datenbankeintrag als Karte ab. Die Karte zeigt Titel und bis zu drei Eigenschaften und bleibt aktuell, wenn sich der Eintrag ändert; ein Doppelklick öffnet ihn.
@@ -189,7 +200,7 @@ Karten verknüpfter Dokumente zeigen, wenn sie hoch genug sind, die ersten Zeile
 
 ## Videos, Webseiten und PDFs einbetten
 
-**Einbetten** in der Werkzeugleiste (am Handy unter **Weitere Werkzeuge**) nimmt einen Link auf:
+**Einbetten** unter **+** (am Handy unter **Weitere Werkzeuge**) nimmt einen Link auf:
 
 - **Videos und Webseiten** von YouTube, Vimeo, Loom, Spotify, Figma und CodePen – dieselbe Liste wie für Einbettungen in Dokumenten. Andere Adressen werden abgelehnt. Das Board zeigt zuerst nur eine Vorschau mit dem Anbieter; der Inhalt lädt erst nach einem Klick auf **Laden**, in einem abgeschotteten Rahmen (Sandbox), und **Einbettung schließen** entlädt ihn wieder. YouTube läuft über `youtube-nocookie.com`.
 - **PDFs**: **PDF hochladen …** oder eine PDF-Datei aufs Board ziehen. Die Datei wird in der Seite gespeichert und zählt zum Speicherkontingent; das Board zeigt eine Seite als Vorschau, mit Pfeilen zum Blättern. Ein Doppelklick öffnet den PDF-Betrachter.
@@ -214,7 +225,7 @@ Die Karten sind live: Ändert jemand den Eintrag in der Datenbank, zeigt das Boa
 
 ## KI auf dem Whiteboard
 
-Ist [KI](/ai) für dich eingeschaltet, öffnet **KI** in der Werkzeugleiste (am Handy unter **Weitere Werkzeuge**) diese Funktionen. Ohne KI fehlt der Knopf, alles andere funktioniert wie gewohnt; auf Boards, die die KI nicht lesen darf, sind die Einträge ausgegraut mit dem Grund.
+Ist [KI](/ai) für dich eingeschaltet, öffnet **KI** unter **+** (am Handy unter **Weitere Werkzeuge**) diese Funktionen. Ohne KI fehlt der Knopf, alles andere funktioniert wie gewohnt; auf Boards, die die KI nicht lesen darf, sind die Einträge ausgegraut mit dem Grund.
 
 - **Nach Thema gruppieren (KI)** – auch im Menü **Anordnen**, sobald zwei Zettel ausgewählt sind: Die KI findet Themen in den ausgewählten Zetteln (ohne Auswahl: im sichtbaren Bereich) und ordnet sie in beschrifteten Spalten an, wie **Nach Farbe gruppieren**. Zettel ohne Text und solche, die nirgends passen, landen unter „Sonstiges“.
 - **Zusammenfassen als Seite** – liest das Board (oder die Auswahl bzw. den ausgewählten Rahmen) und legt daneben eine Seite an: Zusammenfassung, Themen, **Entscheidungen**, **Offene Fragen** und **Aufgaben**, mit einem Link zurück zum Board. Mit **Aufgaben übernehmen** werden die Aufgaben echte Aufgaben mit Person und Termin, wenn das Board sie nennt – sie erscheinen in **Meine Aufgaben**. Rahmen werden zu Abschnitten; große Boards liest die KI in Teilen, und die Seite nennt, was über die Grenze von 2.000 Elementen hinaus weggelassen wurde.
@@ -224,11 +235,11 @@ Jede Aktion zeigt ihren Fortschritt und lässt sich **abbrechen**; ein Fehler st
 
 ## Navigieren
 
-- Zoomen mit <kbd>⌘</kbd> + Mausrad, Trackpad-Geste oder den Knöpfen unten rechts.
+- Zoomen mit <kbd>⌘</kbd> + Mausrad, Trackpad-Geste oder den Knöpfen in der Leiste unten links.
 - **Alles anzeigen** (<kbd>⇧</kbd> <kbd>1</kbd>) passt die Ansicht an alle Elemente an, <kbd>⇧</kbd> <kbd>2</kbd> an die Auswahl – mit einer weichen Kamerafahrt, die jede Eingabe sofort beendet.
 - Rückgängig <kbd>⌘</kbd> <kbd>Z</kbd>, Wiederholen <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Z</kbd>.
-- **Minikarte** (Kartensymbol unten rechts, auf schmalen Boards im Menü **Ansicht und Aktionen**): eine kleine Übersicht aller Elemente mit dem sichtbaren Ausschnitt. Klicken oder Ziehen springt dorthin; mit dem Fokus auf der Minikarte verschieben die Pfeiltasten die Ansicht. Ob sie offen ist, merkt sich der Browser.
-- **Auf dem Board suchen** (<kbd>⌘</kbd> <kbd>F</kbd> auf dem Board, oder die Lupe unten): durchsucht Zettel, Formen, Texte, Tabellen, Rahmen, Kommentare, Einbettungen sowie Seiten- und Eintragskarten. <kbd>Enter</kbd> und <kbd>⇧</kbd> <kbd>Enter</kbd> (oder die Pfeile) springen zum nächsten bzw. vorigen Treffer, der hervorgehoben wird; <kbd>Esc</kbd> schließt die Suche.
+- **Minikarte** (im Menü **…** der Leiste unten, **Ansicht und Aktionen**): eine kleine Übersicht aller Elemente mit dem sichtbaren Ausschnitt. Klicken oder Ziehen springt dorthin; mit dem Fokus auf der Minikarte verschieben die Pfeiltasten die Ansicht. Ob sie offen ist, merkt sich der Browser.
+- **Auf dem Board suchen** (<kbd>⌘</kbd> <kbd>F</kbd> auf dem Board, oder im Menü **…** unten): durchsucht Zettel, Formen, Texte, Tabellen, Rahmen, Kommentare, Einbettungen sowie Seiten- und Eintragskarten. <kbd>Enter</kbd> und <kbd>⇧</kbd> <kbd>Enter</kbd> (oder die Pfeile) springen zum nächsten bzw. vorigen Treffer, der hervorgehoben wird; <kbd>Esc</kbd> schließt die Suche.
 
 ## Gemeinsam arbeiten
 
@@ -236,7 +247,7 @@ Jede Aktion zeigt ihren Fortschritt und lässt sich **abbrechen**; ein Fehler st
 - Änderungen erscheinen bei allen innerhalb von Sekunden, auch nach einer Unterbrechung ohne Verbindung.
 - **Timer** für Workshop-Phasen, sichtbar für alle. Auf Wunsch läuft dazu **Hintergrundmusik** (Ruhig, Fokus oder Lo-fi): im Timer-Fenster unter **Musik während des Timers** wählen. Sie startet und endet mit dem Timer für alle; Lautstärke und Stumm stellt jede Person für sich über das Lautsprecher-Symbol im Timer ein. Blockiert der Browser den Ton, weil auf der Seite noch nichts angeklickt wurde, erscheint **Ton an**. Die Musik entsteht im Browser, ohne Audiodateien und ohne externe Dienste.
 - **Abstimmung**: Stimmen pro Person festlegen, starten; alle vergeben Punkte auf Elemente, das **Ergebnis** zeigt die Reihenfolge. **Verdeckt abstimmen** zeigt jeder Person nur die eigenen Stimmen, bis die Abstimmung endet – so beeinflusst niemand die anderen.
-- **Folge mir** (Personen-Symbol unten): Alle anderen sehen deinen Ausschnitt und folgen dir beim Verschieben und Zoomen. Wer selbst schiebt oder zoomt, hört auf zu folgen und kann mit **Folgen** zurück. **Beenden** hebt es für alle auf.
+- **Folge mir** (unter **Moderation**): Alle anderen sehen deinen Ausschnitt und folgen dir beim Verschieben und Zoomen. Wer selbst schiebt oder zoomt, hört auf zu folgen und kann mit **Folgen** zurück. **Beenden** hebt es für alle auf.
 - **Kommentare** an Stellen der Fläche, mit Antworten und Erwähnungen.
 - **Privater Modus** (Auge-durchgestrichen-Symbol) für stilles Brainstorming: Wer das Whiteboard bearbeiten darf, startet ihn für das ganze Whiteboard oder nur für einen **Rahmen**. Solange er läuft, sieht jede Person nur ihre eigenen neuen Zettel und Elemente in diesem Bereich (gestrichelt markiert, „nur für dich“); von den anderen erscheint nur die **Anzahl** als verdeckte Platzhalter – ohne Text und ohne Namen. **Aufdecken** zeigt alle Beiträge gleichzeitig allen und beendet den Modus; das kann jede Person mit Bearbeitungsrecht, auch wenn die Moderation den Raum verlassen hat. Private Inhalte bleiben auf dem Server getrennt gespeichert und erreichen bis zum Aufdecken weder die Browser der anderen noch Suche, Exporte, Vorschauen, API oder KI-Funktionen. Neu laden, ein zweiter Tab oder später Dazukommende sind kein Problem; Änderungen ohne Verbindung werden nachgereicht.
 - **Schätzen (Planning Poker)**: Zettel oder Datensatzkarten auswählen – oder einen Rahmen, dann alle darin – und **Schätzen** wählen. Als Kartensatz gibt es Fibonacci (1, 2, 3, 5, 8, 13, 21, ?, ☕), T-Shirt-Größen (XS–XL) oder eigene Werte. Alle wählen verdeckt eine Karte; zu sehen ist nur, wer schon geschätzt hat. **Karten aufdecken** zeigt die Verteilung, Durchschnitt, Median und ob es einen **Konsens** gibt. **Ergebnis übernehmen** schreibt den Wert als Etikett an den Zettel – bei Datensatzkarten in eine Zahl-, Auswahl- oder Text-Eigenschaft des Eintrags (mit den üblichen Rechten). Danach **Nächstes Element** oder **Neu schätzen**.
@@ -244,7 +255,7 @@ Jede Aktion zeigt ihren Fortschritt und lässt sich **abbrechen**; ein Fehler st
 
 ## Rahmen-Übersicht
 
-**Rahmenübersicht** (unten rechts bzw. im Menü **Ansicht und Aktionen**) listet alle Rahmen mit kleiner Vorschau – auf dem Handy als Blatt von unten.
+**Rahmenübersicht** (im Menü **…** der Leiste unten, **Ansicht und Aktionen**) listet alle Rahmen mit kleiner Vorschau – auf dem Handy als Blatt von unten.
 
 - Ein Klick auf die Vorschau fährt zum Rahmen; der Name lässt sich direkt umbenennen.
 - **Ziehen** am Griff (oder <kbd>⌥</kbd> + Pfeiltasten) ändert die Reihenfolge – sie ist die Reihenfolge der Präsentation und wird mit dem Board gespeichert. Solange niemand sortiert, gilt die Leserichtung (von oben nach unten, links nach rechts).
@@ -254,7 +265,7 @@ Jede Aktion zeigt ihren Fortschritt und lässt sich **abbrechen**; ein Fehler st
 
 ## Präsentieren
 
-Sobald es Rahmen gibt, erscheint **Präsentieren**. Die Rahmen werden in der Reihenfolge der Rahmen-Übersicht nacheinander bildschirmfüllend gezeigt, ausgeblendete Rahmen fehlen; alles außerhalb des aktuellen Rahmens tritt zurück. Pfeiltasten oder die Knöpfe blättern, **Präsentation beenden** oder <kbd>Esc</kbd> schließt.
+Sobald es Rahmen gibt, erscheint **Präsentieren** in der Leiste unten links; die Pfeile daneben fahren auch ohne Präsentation zum vorigen bzw. nächsten Rahmen. Die Rahmen werden in der Reihenfolge der Rahmen-Übersicht nacheinander bildschirmfüllend gezeigt, ausgeblendete Rahmen fehlen; alles außerhalb des aktuellen Rahmens tritt zurück. Pfeiltasten oder die Knöpfe blättern, **Präsentation beenden** oder <kbd>Esc</kbd> schließt.
 
 - **Sprechernotizen** blendet die Notizen des Rahmens ein.
 - **Referentenansicht** öffnet dieselbe zweite Ansicht wie bei [Dokumenten](/documents#sprechernotizen-und-referentenansicht): aktuelle und nächste Folie, die Notizen und die verstrichene Zeit. Beide Fenster bleiben im Gleichschritt – Blättern geht in jedem von beiden.
@@ -278,7 +289,7 @@ Eine Vorlage landet in der Mitte der Ansicht und ist danach normaler Inhalt des 
 
 ## Excalidraw und draw.io importieren
 
-Über **Importieren …** unten rechts – oder indem du die Datei aufs Board ziehst – übernimmst du Zeichnungen aus:
+Über **Importieren …** unter **+** – oder indem du die Datei aufs Board ziehst – übernimmst du Zeichnungen aus:
 
 - **Excalidraw** (`.excalidraw`),
 - **draw.io / diagrams.net** (`.drawio`, `.xml`, auch komprimiert und mit mehreren Seiten) sowie **SVG-Exporte von draw.io** mit eingebettetem Diagramm.
