@@ -25,7 +25,7 @@ After creating an account, Flowplan walks you through the essentials once. Every
 
 Later, **Settings → Appearance & language → Start introduction** (or "introduction" in the search with `⌘/Ctrl + K`) opens it again. Accounts that existed before the introduction was added do not see it automatically.
 
-The settings open with an overview: one tile per section, grouped into **Personal**, **Connections** and **Workspace**. The search at the top (“Search settings …”) helps – “passkeys” finds **Account & security**, for example –, and every section has its own link, e.g. `/#settings/notifications`.
+The settings open with an overview: one tile per section, grouped into **Personal**, **Connections**, **Workspace** and **Help & info**. The search at the top (“Search settings …”) helps – “passkeys” finds **Account & security**, for example –, and every section has its own link, e.g. `/#settings/notifications`.
 
 ## The interface
 
@@ -80,3 +80,14 @@ In a document, `/` opens the block menu: type `/h2`, `/todo` or `/table` and pre
 ## Help and community
 
 Questions, ideas or just saying hello: in the **[Flowplan Discord](https://discord.gg/bCEdB6MPrR)** users and admins help each other. Bugs and feature requests are best filed as [GitHub issues](https://github.com/yannicschuller/flowplan/issues), so nothing gets lost.
+
+### About Flowplan
+
+**Settings → Help & info → About Flowplan** (`/#settings/about`, also in the account menu ⋯ at the bottom of the sidebar and with `⌘/Ctrl + K` → “About Flowplan”) shows:
+
+- **Version:** the running version, the commit and the build date; for our Docker images also whether it is a **beta** (`:beta`) or a **release**. Admins also see here when a newer version is known. Best mention the version when reporting a bug.
+- **Licence & source code:** Flowplan is free software under the GNU AGPL-3.0 – with links to the licence text and to the source of the code running on this instance.
+- **Links:** website, documentation, Discord and “Report a bug” (GitHub issues).
+- **Support Flowplan ♥:** a link to GitHub Sponsors. It never appears in the iPhone, iPad and Android apps (app store rules); admins can hide it with `FLOWPLAN_HIDE_SPONSOR=true` ([Configuration](/configuration#legal-and-interface)).
+
+The search finds the page with “About”, “Version”, “Licence”, “Source”, “Support” or “Sponsor” (and the German words). The sign-in page also names the licence (AGPL-3.0) and the source code at the bottom.

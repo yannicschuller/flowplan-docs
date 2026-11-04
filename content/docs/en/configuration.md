@@ -170,6 +170,8 @@ People's refresh tokens are stored sealed in the database (like all [stored secr
 | --- | --- | --- |
 | `IMPRINT_URL` | *empty* | Link to the legal notice, e.g. `https://example.com/imprint`. Shown on the sign-in page, under shared pages and forms and in the account menu – only when set. |
 | `PRIVACY_URL` | *empty* | Link to the privacy policy, in the same places and also only when set. |
+| `FLOWPLAN_SOURCE_URL` | Flowplan’s GitHub repository | Address of the source of the code running on this instance (http or https). The AGPL-3.0 requires that whoever runs a **modified** version for others offers them its source (§ 13). When set, **Settings → About Flowplan** and the sign-in page (footer “Source code”) link to this address instead of `github.com/yannicschuller/flowplan`; the commit is then no longer linked to GitHub. |
+| `FLOWPLAN_HIDE_SPONSOR` | `false` | `true` hides only the **Support Flowplan ♥** part (link to GitHub Sponsors) under **Settings → About Flowplan**. Licence and source code always stay visible. In the iPhone, iPad and Android apps the link never shows regardless; in browsers and the desktop app it does. |
 
 ## Voice notes (Whisper)
 
