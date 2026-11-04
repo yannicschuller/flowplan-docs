@@ -50,6 +50,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           crossOrigin=""
         />
         <link rel="stylesheet" href="/fonts.css" />
+        {/* Visitor statistics without cookies, only when UMAMI_URL and UMAMI_WEBSITE_ID are set (lib/analytics.ts). */}
+        <script src="/analytics.js" defer />
       </head>
       <body>
         <LocaleProvider locale={locale} prefix={prefix}>{children}</LocaleProvider>
