@@ -22,6 +22,8 @@ Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> | [Journal](/journal#von-tag-zu-tag): heutigen Tag öffnen (des zuletzt benutzten Journals) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>X</kbd> | Alle [Abschnitte einklappen](/documents#abschnitte-einklappen) (im offenen Dokument oder Eintrag) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>O</kbd> | Alle Abschnitte ausklappen |
+| <kbd>⌘</kbd> <kbd>[</kbd> oder <kbd>⌥</kbd> <kbd>←</kbd> | [Zurück](/first-steps#zurueck-und-vorwaerts) zur zuvor geöffneten Seite (<kbd>⌥</kbd> <kbd>←</kbd> nicht beim Schreiben – dort springt es wortweise) |
+| <kbd>⌘</kbd> <kbd>]</kbd> oder <kbd>⌥</kbd> <kbd>→</kbd> | Vorwärts zur nächsten Seite |
 | – | Helles oder dunkles Design (ohne Vorgabe, eigenes Kürzel möglich) |
 | <kbd>Esc</kbd> | Dialog, Menü oder Suche schließen |
 | <kbd>⌘</kbd> <kbd>Z</kbd> | Löschen, Verschieben oder eine Massenänderung zurücknehmen, solange der Hinweis mit **Rückgängig** sichtbar ist (außerhalb von Textfeldern; im Editor nimmt es die letzte Eingabe zurück) |

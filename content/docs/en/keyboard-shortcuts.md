@@ -22,6 +22,8 @@ All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> | [Journal](/journal#from-day-to-day): open today (of the journal used last) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>X</kbd> | [Collapse all sections](/documents#collapsing-sections) (of the open document or record) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>O</kbd> | Expand all sections |
+| <kbd>⌘</kbd> <kbd>[</kbd> or <kbd>⌥</kbd> <kbd>←</kbd> | [Back](/first-steps#back-and-forward) to the page opened before (<kbd>⌥</kbd> <kbd>←</kbd> not while typing – there it moves by words) |
+| <kbd>⌘</kbd> <kbd>]</kbd> or <kbd>⌥</kbd> <kbd>→</kbd> | Forward to the next page |
 | – | Light or dark theme (no default, your own shortcut possible) |
 | <kbd>Esc</kbd> | Close a dialog, menu or the search |
 | <kbd>⌘</kbd> <kbd>Z</kbd> | Take back a deletion, a move or a bulk edit while the notice with **Undo** shows (outside text fields; in the editor it undoes the last input) |
