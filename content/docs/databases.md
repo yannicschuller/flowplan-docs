@@ -69,7 +69,8 @@ Schneller geht es per Ziehen: Einträge am Griff (mit der Maus auch an der Karte
 
 | Typ | Inhalt |
 | --- | --- |
-| Text, Zahl | Zahlen mit Format: Währung, Prozent, Dezimalstellen, Tausendertrennzeichen |
+| Text | Formatierter Text: fett, kursiv, durchgestrichen, Code, Links, Zeilenumbrüche (siehe unten) |
+| Zahl | Zahlen mit Format: Währung, Prozent, Dezimalstellen, Tausendertrennzeichen |
 | Datum | Mit oder ohne Uhrzeit und Enddatum, Zeitzone, persönliche Erinnerungen, Wiederholung |
 | Auswahl, Mehrfachauswahl | Farbige Optionen, z. B. für Status oder Schlagworte |
 | Checkbox, Checkliste | Abhaken; Checklisten mit mehreren Punkten und Fortschritt |
@@ -81,6 +82,21 @@ Schneller geht es per Ziehen: Einträge am Griff (mit der Maus auch an der Karte
 | Erstellt am/von, Bearbeitet am/von | Werden automatisch gepflegt |
 
 Relationen, Rollups und Formeln sind unter [Eigenschaften, Formeln und Rollups](/properties-and-formulas) beschrieben.
+
+### Formatierter Text
+
+Text-Eigenschaften – alle außer dem Titel – können **fett**, *kursiv*, ~~durchgestrichen~~, `Code`, Links und Zeilenumbrüche enthalten. Es sind nur Auszeichnungen im Text, keine Blöcke: Überschriften, Listen, Zitate oder Tabellen gibt es darin nicht (dafür ist der Text des Eintrags da). Unterstreichen gibt es nicht.
+
+- **Bearbeiten:** In der Tabelle die Zelle anklicken, im Eintrag ins Feld klicken. Ist Text markiert, erscheint darüber eine kleine Leiste mit Fett, Kursiv, Durchgestrichen, Code und Link.
+- **Tastenkürzel:** <kbd>⌘</kbd> <kbd>B</kbd> fett, <kbd>⌘</kbd> <kbd>I</kbd> kursiv, <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>X</kbd> durchgestrichen, <kbd>⌘</kbd> <kbd>E</kbd> Code, <kbd>⌘</kbd> <kbd>K</kbd> verlinkt den markierten Text (ohne Markierung öffnet <kbd>⌘</kbd> <kbd>K</kbd> wie überall die Schnellsuche). Links gehen nur auf `http`, `https` und `mailto`; aus `example.com` wird `https://example.com`, aus einer E-Mail-Adresse ein `mailto:`-Link. Ein leeres Feld entfernt den Link.
+- **Zeilenumbruch:** <kbd>⇧</kbd> <kbd>Enter</kbd>. In einer Tabellenzelle beendet <kbd>Enter</kbd> die Bearbeitung und speichert, <kbd>Esc</kbd> verwirft sie. Im Eintrag, im Feed und beim Bearbeiten über einen Freigabelink macht auch <kbd>Enter</kbd> einen Zeilenumbruch; gespeichert wird beim Verlassen des Felds.
+- **Anzeige:** formatiert in Tabelle, Board, Galerie, Liste, Feed, im Eintrag, auf veröffentlichten Seiten und in eingebetteten Ansichten. In Tabellenzellen und auf Karten steht ein Zeilenumbruch als Leerzeichen (die Zeile bleibt eine Zeile), im Eintrag und im Feed mit Umbruch. Links öffnen in einem neuen Tab; auf Karten, die selbst ein Link sind, bleiben sie Text.
+- **Als reiner Text** zählt der Wert bei Suche, Filtern (*enthält* …), Sortierung, Gruppierung, Formeln (`prop("Notiz")` liefert den Text ohne Formatierung), beim Kopieren in die Zwischenablage, im CSV-Export, in den Widgets der Apps und in Platzhaltern von Vorlagen und Automationen.
+- **Einfügen** aus Word, Google Docs oder Webseiten behält Fett, Kursiv, Durchgestrichen, Code und Links; Überschriften werden fett, Absätze und Listenpunkte zu Zeilenumbrüchen, Bilder und Tabellen fallen weg.
+- **Import und Export:** CSV (auch Notion-Exporte), Jira und Trello, vCards, LDAP und Formularantworten sind reiner Text – Sternchen und Unterstriche bleiben, wie sie geschrieben sind. Tabellen aus AFFiNE und Tabellen aus Dokumenten (**In Datenbank umwandeln**) behalten ihre Formatierung. Der Markdown-Export schreibt die Formatierung als Markdown, der CSV-Export reinen Text. Ältere Inhaltsarchive kommen als reiner Text herein.
+- **Bestehende Werte** aus der Zeit vor dieser Funktion sehen aus wie vorher: `*Sternchen*` bleibt mit Sternchen.
+- **Typ ändern:** Wird eine andere Eigenschaft zu Text, bleiben ihre Werte, wie sie geschrieben sind; wird Text zu einem anderen Typ, zählt der Text ohne Formatierung.
+- **API und MCP:** Der Wert ist ein String mit Inline-Markdown: `**fett**`, `_kursiv_` (auch `*kursiv*`), `~~durchgestrichen~~`, `` `Code` ``, `[Text](https://…)` und `\n` für einen Zeilenumbruch. Ein Backslash hält `` \ * _ ~ ` [ ] `` als Zeichen fest – reinen Text also maskiert senden. Links mit anderen Schemata (etwa `javascript:`) zeigen nur ihren Text; `# ` oder `- ` am Anfang bleiben Text. Der Titel ist reiner Text.
 
 ### Mehrfachauswahl mit den Tags des Arbeitsbereichs
 

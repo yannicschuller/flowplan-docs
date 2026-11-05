@@ -81,7 +81,7 @@ Clients, die Streamable HTTP sprechen und eigene Kopfzeilen erlauben, nutzen die
 | `save_collection` | Neue Sammlung anlegen oder Name, Abfrage, Emoji und Teilen ändern | Schreiben |
 | `delete_collection` | Sammlung in den Papierkorb legen | Schreiben |
 
-Eigenschaften werden mit ihrem Namen (oder ihrer ID) angegeben. Datumswerte schreibst du als `JJJJ-MM-TT`, Auswahlen mit ihrem Namen, Personen mit E-Mail-Adresse oder Namen und Relationen als Liste von Datensatz-IDs. `update_record` nimmt die `version` aus `get_record` entgegen: Hat jemand den Datensatz inzwischen geändert, wird die Änderung abgelehnt und nicht überschrieben.
+Eigenschaften werden mit ihrem Namen (oder ihrer ID) angegeben. Datumswerte schreibst du als `JJJJ-MM-TT`, Auswahlen mit ihrem Namen, Personen mit E-Mail-Adresse oder Namen und Relationen als Liste von Datensatz-IDs. Text-Eigenschaften (außer dem Titel) sind formatierter Text: `get_database` kennzeichnet sie mit `markdown: true`, gelesen und geschrieben werden sie als Inline-Markdown (`**fett**`, `_kursiv_`, `~~durchgestrichen~~`, `` `Code` ``, `[Text](https://…)`, `\n`; siehe [Formatierter Text](/databases#formatierter-text)). `update_record` nimmt die `version` aus `get_record` entgegen: Hat jemand den Datensatz inzwischen geändert, wird die Änderung abgelehnt und nicht überschrieben.
 
 Außerdem ist jede Seite als **Ressource** `flowplan://page/<ID>` abrufbar (deine Favoriten sind aufgelistet). Es gibt zwei **Prompts**: *Seite zusammenfassen* und *Meinen Tag planen*.
 

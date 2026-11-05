@@ -135,6 +135,20 @@ Auf dem Griff ⋮⋮ eines Eintrags (Tabelle, Liste, Feed, Board, Galerie, Sprin
 | <kbd>⌥</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Eintrag sofort eine Stelle nach oben/unten |
 | <kbd>Enter</kbd> | (nicht angehoben) Dialog **Eintrag verschieben** öffnen |
 
+### In formatierten Text-Eigenschaften
+
+In einer Text-Eigenschaft (Tabellenzelle, Eintrag; siehe [Formatierter Text](/databases#formatierter-text)):
+
+| Kürzel | Wirkung |
+| --- | --- |
+| <kbd>⌘</kbd> <kbd>B</kbd> / <kbd>I</kbd> | Fett / kursiv |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>X</kbd> | Durchgestrichen |
+| <kbd>⌘</kbd> <kbd>E</kbd> | Code |
+| <kbd>⌘</kbd> <kbd>K</kbd> | Markierten Text verlinken (ohne Markierung: Schnellsuche) |
+| <kbd>⇧</kbd> <kbd>Enter</kbd> | Zeilenumbruch |
+| <kbd>Enter</kbd> | Tabellenzelle: speichern und beenden; im Eintrag: Zeilenumbruch |
+| <kbd>Esc</kbd> | Tabellenzelle: Bearbeitung verwerfen |
+
 ## Kalender und Timeline
 
 | Kürzel | Wirkung |
