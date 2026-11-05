@@ -35,6 +35,16 @@ The settings open with an overview: one tile per section, grouped into **Persona
 
 On a computer, drag the sidebar's right edge to make it wider or narrower (200 to 480 pixels); a double click on the edge restores the original width. Flowplan remembers the width per device. On a phone the sidebar folds away: the icon at the top left opens it, and so does a swipe to the right that starts just inside the left edge of the screen (or **Navigation** in the bar at the bottom). On the iPhone the very edge stays the back gesture. Swipe it to the left or tap beside it to close it. For iPhone and iPad there is also an **app on the App Store**, for Android an **app to download** ([Apps for iPhone, iPad and Android](/offline-and-apps#apps-for-iphone-ipad-and-android)).
 
+### Back and forward
+
+At the top left, next to the sidebar icon, the arrows **←** and **→** take you to the page opened before and forward again. Every place with an address of its own is a step: pages, databases, journal days, whiteboards, a record opened from a database, home, inbox, My tasks, tags, collections, media, trash and the sections of the settings. Dialogs, menus and the search do not count, and closing a record you opened in its database takes you back there without an extra step. When there is nothing in one direction, its arrow is greyed out.
+
+- **List:** a right click or a long press on an arrow shows the last (up to ten) pages in that direction with their icon and title – a click jumps straight there.
+- **Keyboard shortcuts:** <kbd>⌘</kbd> <kbd>[</kbd> and <kbd>⌘</kbd> <kbd>]</kbd> or <kbd>⌥</kbd> <kbd>←</kbd> and <kbd>⌥</kbd> <kbd>→</kbd> (Windows and Linux: <kbd>Alt</kbd> <kbd>←</kbd> / <kbd>Alt</kbd> <kbd>→</kbd> or <kbd>Ctrl</kbd> <kbd>[</kbd> / <kbd>Ctrl</kbd> <kbd>]</kbd>). While typing, <kbd>⌥</kbd>/<kbd>Alt</kbd> with an arrow moves the cursor as usual; the shortcuts can be changed like all others ([Keyboard shortcuts](/keyboard-shortcuts)).
+- **Browser:** the arrows take the same steps as the browser's back and forward buttons and the mouse's side buttons – you can mix them.
+- **Desktop app:** also the *Navigation* menu → **Back** / **Forward**, the mouse's side buttons and, on a Mac, swiping on the trackpad ([More from the desktop app](/offline-and-apps#more-from-the-desktop-app)).
+- **Phone:** there are no arrows there – the back gesture (iPhone) or the back button (Android) goes back.
+
 Short animations show what just moved: cards and rows glide into their new place, bars that move along in the timeline visibly follow, and the target of a jump – from the table of contents, search or a notification – lights up briefly. Moving to another page briefly cross-fades the content area; when you open a page in the page tree, its icon and title fly to their place, and a card from a board or gallery grows into its record (on a phone the record comes up as a sheet). A tap or a key ends such a transition at once, and clicking quickly from one page to the next goes without one. While uploaded images load, they show a blurred preview in their final size and then fade in – nothing below them moves. The animations follow the system setting **Reduce motion**: when it is on, everything moves to its target without motion, and jump targets are only highlighted briefly and still.
 
 ## Customize your home page
