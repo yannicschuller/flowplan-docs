@@ -1,10 +1,10 @@
-# Umzug von Notion, AppFlowy, AFFiNE, Obsidian, Confluence, Evernote und Google Docs
+# Umzug von Notion, AppFlowy, AFFiNE, Obsidian, Confluence, Evernote, Google Docs, Microsoft Word und OneNote
 
 Flowplan ist eine Open-Source-Alternative zu Notion, Confluence und AppFlowy unter der AGPL-3.0. So holst du Seiten, Datenbanken, Bilder und Dateien aus dem bisherigen Werkzeug herüber.
 
 ## Confluence, Evernote, Google Docs und Obsidian
 
-Unter **Einstellungen → Import & Export → Import** wählst du oben den Zielbereich und bei **AFFiNE, Confluence, Evernote, Google Docs oder Obsidian** die Quelle (oder lässt sie erkennen) und ob eine Seitenstruktur oder eine **neue Datenbank** entstehen soll. Dann die Datei auswählen:
+Unter **Einstellungen → Import & Export → Import** wählst du oben den Zielbereich und bei **AFFiNE, Confluence, Evernote, Google Docs, Microsoft Word oder Obsidian** die Quelle (oder lässt sie erkennen) und ob eine Seitenstruktur oder eine **neue Datenbank** entstehen soll. Dann die Datei auswählen:
 
 1. Flowplan lädt die Datei hoch (mit Fortschrittsanzeige) und zeigt eine **Vorschau**: wie viele Seiten, Ordner, Dateien (mit Größe) und Tags übernommen werden und was nicht geht – etwa verschlüsselter Text, nicht unterstützte Makros oder Bilder, die im Export fehlen.
 2. **Importieren** legt alles in einem Schritt an. Schlägt etwas fehl, bleibt nichts halb importiert zurück.
@@ -108,7 +108,7 @@ Was daraus wird:
 ## Von Google Docs
 
 1. Unter [takeout.google.com](https://takeout.google.com) **Drive** wählen und bei den Formaten für Dokumente **HTML** (empfohlen) oder **Microsoft Word** einstellen. Einzelne Dokumente gehen auch über **Datei → Herunterladen → Webseite (.html, gezippt)** oder **Microsoft Word (.docx)**.
-2. In Flowplan das Takeout-ZIP, das ZIP der Webseite oder die `.docx`-Datei importieren (Quelle **Google Docs**).
+2. In Flowplan das Takeout-ZIP, das ZIP der Webseite oder die `.docx`-Datei importieren (Quelle **Google Docs**; einzelne `.docx`-Dateien gehen auch über [Microsoft Word](#von-microsoft-word)).
 
 Was daraus wird:
 
@@ -117,9 +117,29 @@ Was daraus wird:
 - **Bilder** werden hochgeladen – auch die, die im HTML eingebettet sind.
 - Word-Dateien: Absätze, Überschriften, Listen (nummeriert und mit Aufzählungszeichen, auch verschachtelt), Tabellen (mit verbundenen Spalten), Links und Bilder. Kommentare, Fußnoten und Kopf-/Fußzeilen fallen weg.
 
+## Von Microsoft Word
+
+Word-Dokumente (`.docx`) importierst du unter **Einstellungen → Import & Export → Import** mit der Quelle **Microsoft Word** (eine `.docx`-Datei wird auch automatisch erkannt):
+
+- **Ein Dokument:** die `.docx`-Datei auswählen. Sie wird eine Seite mit dem Dateinamen als Titel.
+- **Mehrere Dokumente:** die `.docx`-Dateien als ZIP packen und das ZIP auswählen. Jedes Dokument wird eine Seite, **Ordner** im ZIP werden zu übergeordneten Seiten. Liegt alles in einem einzigen Ordner, entfällt dieser.
+
+Übernommen werden Absätze, Überschriften, Fett, Kursiv, Unterstrichen, Durchgestrichen, Listen (nummeriert und mit Aufzählungszeichen, auch verschachtelt), Tabellen (mit verbundenen Spalten), Links und Bilder. Kommentare, Fußnoten, Kopf- und Fußzeilen fallen weg. Word-Sperrdateien (`~$….docx`) werden übergangen.
+
+**Ältere Word-Dateien (`.doc`, Word 97–2003)** kann Flowplan nicht lesen. Öffne die Datei in Word, LibreOffice oder Pages und speichere sie als `.docx`; dann importieren. Enthält ein ZIP neben `.docx`- auch `.doc`- oder OneNote-Dateien, werden die `.docx`-Dateien importiert und die übrigen in der Vorschau mit Grund aufgeführt.
+
+### OneNote
+
+OneNote-Dateien (`.one`, `.onetoc2`, `.onepkg`) liest Flowplan nicht direkt – Flowplan erkennt sie und sagt, was zu tun ist. Der Weg führt über OneNotes eigenen Export:
+
+1. In OneNote für Windows die Seite oder den Abschnitt öffnen und **Datei → Exportieren** wählen; als Format **Word-Dokument (.docx)**.
+2. Die `.docx`-Datei (oder mehrere als ZIP) in Flowplan über **Microsoft Word** importieren.
+
+Bietet deine OneNote-Version keinen Export als Word-Dokument an, sondern nur PDF, lade das PDF als Datei auf eine Seite hoch.
+
 ## Von Obsidian und anderen Markdown-Ordnern
 
-- **Ein Tresor als Seiten:** den Tresor-Ordner (mit dem Ordner `.obsidian`) als ZIP packen und unter **Einstellungen → Import & Export → Import** importieren – über **AFFiNE, Confluence, Evernote, Google Docs oder Obsidian** mit Vorschau oder über den Notion-/Markdown-Import, der einen Tresor ebenfalls erkennt.
+- **Ein Tresor als Seiten:** den Tresor-Ordner (mit dem Ordner `.obsidian`) als ZIP packen und unter **Einstellungen → Import & Export → Import** importieren – über **AFFiNE, Confluence, Evernote, Google Docs, Microsoft Word oder Obsidian** mit Vorschau oder über den Notion-/Markdown-Import, der einen Tresor ebenfalls erkennt.
   - **Ordner** werden zu Seiten mit ihren Notizen darunter. Eine **Ordnernotiz** (`Projekte/Projekte.md` oder `Projekte.md` neben dem Ordner) wird selbst zur Seite des Ordners.
   - **Wikilinks** `[[Seite]]`, `[[Seite|Text]]`, `[[Ordner/Seite]]` und `[[Seite#Überschrift]]` werden zu Links auf die importierten Seiten – aufgelöst wie in Obsidian über den Pfad oder den Dateinamen. Links auf Notizen, die es nicht gibt, bleiben Text.
   - `[[Seite#Überschrift]]`, `[[Seite#^id]]`, `[[#Überschrift]]` und Markdown-Links mit `#^id` werden zu Links auf die Überschrift bzw. den Block; die Markierungen `^id` am Zeilenende verschwinden aus dem Text und werden zur Kennung des Blocks.

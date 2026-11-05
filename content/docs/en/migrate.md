@@ -1,10 +1,10 @@
-# Moving from Notion, AppFlowy, AFFiNE, Obsidian, Confluence, Evernote and Google Docs
+# Moving from Notion, AppFlowy, AFFiNE, Obsidian, Confluence, Evernote, Google Docs, Microsoft Word and OneNote
 
 Flowplan is an open-source alternative to Notion, Confluence and AppFlowy under the AGPL-3.0. This is how you bring over pages, databases, images and files from the tool you use now.
 
 ## Confluence, Evernote, Google Docs and Obsidian
 
-Under **Settings → Import & export → Import** choose the target space at the top and, at **AFFiNE, Confluence, Evernote, Google Docs or Obsidian**, the source (or let it be detected) and whether you want a page tree or a **new database**. Then choose the file:
+Under **Settings → Import & export → Import** choose the target space at the top and, at **AFFiNE, Confluence, Evernote, Google Docs, Microsoft Word or Obsidian**, the source (or let it be detected) and whether you want a page tree or a **new database**. Then choose the file:
 
 1. Flowplan uploads the file (with a progress bar) and shows a **preview**: how many pages, folders, files (with their size) and tags will be imported, and what will not work – such as encrypted text, unsupported macros or images missing from the export.
 2. **Import** creates everything in one step. If something fails, nothing is left half imported.
@@ -108,7 +108,7 @@ What it turns into:
 ## From Google Docs
 
 1. At [takeout.google.com](https://takeout.google.com) choose **Drive** and set the format for documents to **HTML** (recommended) or **Microsoft Word**. Single documents also work via **File → Download → Web page (.html, zipped)** or **Microsoft Word (.docx)**.
-2. Import the Takeout ZIP, the web page ZIP or the `.docx` file in Flowplan (source **Google Docs**).
+2. Import the Takeout ZIP, the web page ZIP or the `.docx` file in Flowplan (source **Google Docs**; single `.docx` files also work with [Microsoft Word](#from-microsoft-word)).
 
 What it turns into:
 
@@ -117,9 +117,29 @@ What it turns into:
 - **Images** are uploaded – including the ones embedded in the HTML.
 - Word files: paragraphs, headings, lists (numbered and bulleted, also nested), tables (with merged columns), links and images. Comments, footnotes and headers/footers are dropped.
 
+## From Microsoft Word
+
+Import Word documents (`.docx`) under **Settings → Import & export → Import** with the source **Microsoft Word** (a `.docx` file is also detected automatically):
+
+- **One document:** choose the `.docx` file. It becomes a page titled by its file name.
+- **Several documents:** put the `.docx` files into a ZIP and choose the ZIP. Every document becomes a page, **folders** in the ZIP become parent pages. When everything sits in a single folder, that folder is left out.
+
+Paragraphs, headings, bold, italic, underline, strike-through, lists (numbered and bulleted, also nested), tables (with merged columns), links and images come along. Comments, footnotes, headers and footers are dropped. Word's lock files (`~$….docx`) are skipped.
+
+**Older Word files (`.doc`, Word 97–2003)** cannot be read by Flowplan. Open the file in Word, LibreOffice or Pages and save it as `.docx`, then import it. When a ZIP holds `.doc` or OneNote files next to `.docx` files, the `.docx` files are imported and the others are listed in the preview with the reason.
+
+### OneNote
+
+Flowplan does not read OneNote files (`.one`, `.onetoc2`, `.onepkg`) directly – it recognises them and tells you what to do. The way goes through OneNote's own export:
+
+1. In OneNote for Windows, open the page or section and choose **File → Export**, with **Word Document (.docx)** as the format.
+2. Import the `.docx` file (or several as a ZIP) in Flowplan with **Microsoft Word**.
+
+If your version of OneNote offers no export as a Word document but only PDF, upload the PDF as a file to a page.
+
 ## From Obsidian and other Markdown folders
 
-- **A vault as pages:** make a ZIP of the vault folder (with its `.obsidian` folder) and import it under **Settings → Import & export → Import** – via **AFFiNE, Confluence, Evernote, Google Docs or Obsidian** with a preview, or via the Notion/Markdown import, which recognises a vault as well.
+- **A vault as pages:** make a ZIP of the vault folder (with its `.obsidian` folder) and import it under **Settings → Import & export → Import** – via **AFFiNE, Confluence, Evernote, Google Docs, Microsoft Word or Obsidian** with a preview, or via the Notion/Markdown import, which recognises a vault as well.
   - **Folders** become pages with their notes below. A **folder note** (`Projects/Projects.md` or `Projects.md` next to the folder) becomes the folder's page itself.
   - **Wikilinks** `[[Page]]`, `[[Page|text]]`, `[[Folder/Page]]` and `[[Page#Heading]]` become links to the imported pages – resolved like Obsidian does, by path or file name. Links to notes that do not exist stay text.
   - `[[Page#Heading]]`, `[[Page#^id]]`, `[[#Heading]]` and Markdown links with `#^id` become links to that heading or block; the `^id` markers at line ends leave the text and become the block's id.
