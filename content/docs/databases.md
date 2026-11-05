@@ -54,6 +54,8 @@ Umgekehrt macht **In Seite umwandeln …** aus einem Eintrag wieder eine Dokumen
 
 Ein **Rechtsklick** auf einen Eintrag – in Tabelle, Board, Liste, Galerie, Kalender oder Zeitleiste – öffnet sein Menü: **Öffnen**, **Duplizieren**, **Kopieren nach …**, **Verschieben nach …**, **In Seite umwandeln …** und **Löschen**. Sind mehrere Einträge ausgewählt, gilt das Menü für alle; in der Leiste der Auswahl steht dafür auch **Verschieben / kopieren nach …**.
 
+**Einträge kopieren:** Sind in der Tabellenansicht Einträge ausgewählt, kopiert **Kopieren** in der Leiste der Auswahl (oder <kbd>⌘</kbd>/<kbd>Strg</kbd>+<kbd>C</kbd>, solange kein Text markiert ist) sie in die Zwischenablage – mit den sichtbaren Spalten der Ansicht als Kopfzeile, in der Reihenfolge der Tabelle. In Excel, Numbers oder Google Sheets eingefügt, landet jeder Wert in einer eigenen Zelle; in einem Dokument entsteht eine Tabelle. Werte stehen so drin, wie die Tabelle sie zeigt: Zahlen im Format der Spalte, Auswahl- und Personenspalten mit Namen, Verknüpfungen mit dem Titel des Eintrags, Checkboxen als Ja/Nein.
+
 Im Dialog wählst du die Ziel-Datenbank desselben Arbeitsbereichs:
 
 - **Kopieren** legt neue Einträge an – mit Eigenschaften, Inhalt, Symbol und Cover. Dateien und Bilder werden mitkopiert, die Kopie hängt also nicht an der Quelle.

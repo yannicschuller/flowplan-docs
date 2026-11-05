@@ -54,6 +54,8 @@ The other way round, **Turn into page …** makes a record a document page again
 
 A **right-click** on a record – in a table, board, list, gallery, calendar or timeline – opens its menu: **Open**, **Duplicate**, **Copy to …**, **Move to …**, **Turn into page …** and **Delete**. When several records are selected, the menu applies to all of them; the selection bar also has **Move / copy to …**.
 
+**Copying records:** with records selected in the table view, **Copy** in the selection bar (or <kbd>⌘</kbd>/<kbd>Ctrl</kbd>+<kbd>C</kbd> while no text is selected) puts them on the clipboard – with the view's visible columns as the header row, in the table's order. Pasted into Excel, Numbers or Google Sheets, every value lands in its own cell; in a document it becomes a table. Values come out as the table shows them: numbers in the column's format, select and person columns by name, relations by the record's title, checkboxes as Yes/No.
+
 In the dialog you choose the target database in the same workspace:
 
 - **Copy** creates new records – with properties, content, icon and cover. Files and images are copied too, so the copy does not depend on the source.
