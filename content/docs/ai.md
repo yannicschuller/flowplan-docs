@@ -153,6 +153,8 @@ Auf Seiten, die die KI nicht lesen darf, sind alle KI-Einträge ausgegraut mit d
 
 ### Suche nach Bedeutung (optional)
 
+Fragen auf Chinesisch, Japanisch, Koreanisch oder Thai zerlegt Flowplan in Wörter, obwohl diese Sprachen keine Leerzeichen nutzen. „浦东新区的发票在哪里“ sucht also nach 浦东新区 und 发票, kleine Füllwörter wie 的 bleiben außen vor.
+
 Zusätzlich zum Volltext kann Flowplan Inhalte als Vektoren („Embeddings“) speichern. Dann findet **KI fragen** passende Stellen auch ohne gleiche Wörter – „Reise“ findet „Betriebsausflug“.
 
 1. Beim Anbieter der Instanz ein **Modell für Embeddings** eintragen:

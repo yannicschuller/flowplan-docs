@@ -153,6 +153,8 @@ On pages the AI may not read, every AI entry is greyed out with the hint "The AI
 
 ### Semantic search (optional)
 
+Questions in Chinese, Japanese, Korean or Thai are split into words even though these languages don't use spaces. "浦东新区的发票在哪里" searches for 浦东新区 and 发票; small particles like 的 are left out.
+
 In addition to full text, Flowplan can store content as vectors ("embeddings"). **Ask AI** then also finds passages without the same words – "trip" finds "company outing".
 
 1. Set an **embedding model** at the instance provider:
