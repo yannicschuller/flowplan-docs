@@ -195,7 +195,12 @@ Flowplan remembers what you expanded and collapsed – in your account, per work
 
 ## Trash
 
-Deleted pages and spaces end up in the **Trash** at the bottom of the sidebar. There they can be restored or deleted permanently. Publications, share links and forms are switched off when deleting and are not switched on again automatically when restoring.
+Deleted pages and spaces end up in the **Trash** at the bottom of the sidebar, deleted [database records](/databases) below them under **Deleted records**. There they can be restored or deleted permanently. Publications, share links and forms are switched off when deleting and are not switched on again automatically when restoring.
+
+- **Delete permanently** next to a page deletes it together with its sub-pages in the trash. The dialog names the page and how many sub-pages go with it. You need the same right as for deleting it: editing the page. Sub-pages you may not edit stay in the trash on their own.
+- **Empty trash** deletes everything in the trash you may delete: pages you may edit, spaces you manage and deleted records you may edit. The dialog shows the counts first. Pages from other people's private spaces and pages you can only read are left untouched.
+- Deleted permanently are the page with its content, versions, comments and inline comments, for databases the properties, views and records, plus uploaded files, favorites, publications, share links, notifications and search results. Links from other pages then point to a deleted page. This cannot be undone; a [backup](/storage-and-backups) is the only way back.
+- After **30 days** in the trash everything is deleted permanently by itself – pages, spaces, records and [templates](/templates#your-own-templates). The line at the top names the period, and every page shows how many days it has left. Admins change the period under [Limits & retention](/administration#limits-retention) (0 = never automatically).
 
 Right after deleting, Flowplan shows a notice at the bottom such as “‘Notes’ moved to the trash” with **Undo** – for about six seconds, longer while the pointer or the focus rests on it. **Undo** or <kbd>⌘</kbd> <kbd>Z</kbd> (outside text fields) brings the page back with its sub-pages and opens it again. The same goes for moving pages in the page tree and for several pages at once.
 

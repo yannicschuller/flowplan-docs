@@ -28,7 +28,7 @@ If you open the gallery from the **New page** dialog, the page goes where you we
    - **All workspaces** of the instance,
    - **Public gallery** (administrators only): visible even without an account.
 
-Templates store their own copies of the files and stay usable even if the source page is deleted. The page's [tags and property values](/pages-and-spaces#tags-and-properties) come along too; new pages from the template get them (missing tags are created). Database templates contain views, records with their content, record templates and the form design. Templates can be renamed, made private or shared and moved to the trash.
+Templates store their own copies of the files and stay usable even if the source page is deleted. The page's [tags and property values](/pages-and-spaces#tags-and-properties) come along too; new pages from the template get them (missing tags are created). Database templates contain views, records with their content, record templates and the form design. Templates can be renamed, made private or shared and moved to the trash. In the **Template trash**, **Restore** brings a template back, **Delete permanently** deletes it with its files, and **Empty template trash** deletes all you may manage (your own; as an owner all of the workspace; templates for all workspaces only admins). Pages already created are kept. After the [trash period](/pages-and-spaces#trash) (30 days by default) templates in the trash are deleted automatically.
 
 ## Record templates
 

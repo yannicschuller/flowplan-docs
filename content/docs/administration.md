@@ -76,6 +76,7 @@ Details: [Speicher und Sicherungen](/storage-and-backups).
 | Eigene Arbeitsbereiche je Person | Wie viele Arbeitsbereiche eine Person besitzen darf. |
 | Größte Datei beim Hochladen | Grenze je Datei in MB. Gilt auch für den [Import einer AFFiNE-Arbeitsbereichsdatei](/migrate#von-affine) (mindestens 100 MB; `FLOWPLAN_IMPORT_MAX_MB` hat Vorrang). |
 | Versionen aufbewahren | Tage, nach denen automatische Versionen gelöscht werden. |
+| Papierkorb leeren nach | Tage, nach denen gelöschte Seiten, Bereiche, Datenbankeinträge und Vorlagen samt Dateien endgültig gelöscht werden (1–3650, Standard 30, 0 = nie automatisch). Siehe [Papierkorb](/pages-and-spaces#papierkorb). |
 
 Leere Felder fallen auf die [Umgebungsvariablen](/configuration) zurück. Jede Person sieht ihre Grenzen und den belegten Speicher unter **Einstellungen → Konto & Sicherheit → Deine Grenzen**.
 

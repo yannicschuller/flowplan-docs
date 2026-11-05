@@ -28,7 +28,7 @@ Ein Klick fragt nach Titel und Bereich und legt die Seite an. Datumswerte der Be
    - **Alle Arbeitsbereiche** der Instanz,
    - **Öffentliche Galerie** (nur Admins): auch ohne Konto sichtbar.
 
-Vorlagen speichern eigene Kopien der Dateien und bleiben verwendbar, auch wenn die Quellseite gelöscht wird. Auch die [Tags und Eigenschaftswerte](/pages-and-spaces#tags-und-eigenschaften) der Seite kommen mit; neue Seiten aus der Vorlage bekommen sie (fehlende Tags werden angelegt). Datenbank-Vorlagen enthalten Ansichten, Einträge samt Inhalten, Datensatzvorlagen und die Formulargestaltung. Vorlagen lassen sich umbenennen, privat oder geteilt schalten und in den Papierkorb legen.
+Vorlagen speichern eigene Kopien der Dateien und bleiben verwendbar, auch wenn die Quellseite gelöscht wird. Auch die [Tags und Eigenschaftswerte](/pages-and-spaces#tags-und-eigenschaften) der Seite kommen mit; neue Seiten aus der Vorlage bekommen sie (fehlende Tags werden angelegt). Datenbank-Vorlagen enthalten Ansichten, Einträge samt Inhalten, Datensatzvorlagen und die Formulargestaltung. Vorlagen lassen sich umbenennen, privat oder geteilt schalten und in den Papierkorb legen. Im **Vorlagen-Papierkorb** holt **Wiederherstellen** eine Vorlage zurück, **Endgültig löschen** löscht sie samt ihren Dateien, und **Vorlagen-Papierkorb leeren** löscht alle, die du verwalten darfst (deine eigenen; als Eigentümer alle des Arbeitsbereichs; Vorlagen für alle Arbeitsbereiche nur Admins). Bereits erstellte Seiten bleiben erhalten. Nach der [Papierkorb-Frist](/pages-and-spaces#papierkorb) (Standard 30 Tage) werden Vorlagen im Papierkorb automatisch gelöscht.
 
 ## Datensatzvorlagen
 

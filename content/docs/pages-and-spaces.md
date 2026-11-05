@@ -195,7 +195,12 @@ Flowplan merkt sich, was du auf- und zugeklappt hast – in deinem Konto, je Arb
 
 ## Papierkorb
 
-Gelöschte Seiten und Bereiche landen im **Papierkorb** unten in der Seitenleiste. Dort lassen sie sich wiederherstellen oder endgültig löschen. Veröffentlichungen, Freigabelinks und Formulare werden beim Löschen deaktiviert und bei der Wiederherstellung nicht automatisch wieder eingeschaltet.
+Gelöschte Seiten und Bereiche landen im **Papierkorb** unten in der Seitenleiste, gelöschte [Datenbankeinträge](/databases) darunter unter **Gelöschte Einträge**. Dort lassen sie sich wiederherstellen oder endgültig löschen. Veröffentlichungen, Freigabelinks und Formulare werden beim Löschen deaktiviert und bei der Wiederherstellung nicht automatisch wieder eingeschaltet.
+
+- **Endgültig löschen** neben einer Seite löscht sie samt ihren Unterseiten im Papierkorb. Der Dialog nennt die Seite und wie viele Unterseiten mitgehen. Dazu brauchst du dasselbe Recht wie zum Löschen: Bearbeiten der Seite. Unterseiten, die du nicht bearbeiten darfst, bleiben einzeln im Papierkorb.
+- **Papierkorb leeren** löscht alles im Papierkorb, was du löschen darfst: Seiten, die du bearbeiten darfst, Bereiche, die du verwaltest, und gelöschte Einträge, die du bearbeiten darfst. Der Dialog zeigt vorher die Anzahl. Seiten aus privaten Bereichen anderer und Seiten, die du nur lesen kannst, bleiben unberührt.
+- Endgültig gelöscht werden die Seite mit Inhalt, Versionen, Kommentaren und Randkommentaren, bei Datenbanken Eigenschaften, Ansichten und Einträge, dazu hochgeladene Dateien, Favoriten, Veröffentlichungen, Freigabelinks, Benachrichtigungen und Suchtreffer. Links aus anderen Seiten zeigen danach auf eine gelöschte Seite. Das lässt sich nicht rückgängig machen; eine [Sicherung](/storage-and-backups) bleibt der einzige Weg zurück.
+- Nach **30 Tagen** im Papierkorb wird alles automatisch endgültig gelöscht – Seiten, Bereiche, Einträge und [Vorlagen](/templates#eigene-vorlagen). Die Zeile oben nennt die Frist, jede Seite zeigt, wie viele Tage ihr noch bleiben. Admins ändern die Frist unter [Grenzen & Aufbewahrung](/administration#grenzen-aufbewahrung) (0 = nie automatisch).
 
 Direkt nach dem Löschen zeigt Flowplan unten einen Hinweis wie „„Notizen“ in den Papierkorb gelegt“ mit **Rückgängig** – etwa sechs Sekunden lang, solange der Mauszeiger oder der Fokus darauf liegt auch länger. **Rückgängig** oder <kbd>⌘</kbd> <kbd>Z</kbd> (außerhalb von Textfeldern) holt die Seite samt Unterseiten zurück und öffnet sie wieder. Dasselbe gilt fürs Verschieben von Seiten im Seitenbaum und für mehrere Seiten auf einmal.
 
