@@ -14,7 +14,7 @@ Durchsucht werden:
 - Kommentare,
 - Dateinamen,
 - der Text von PDF-Anhängen (bis 50 MB, die ersten 100.000 Zeichen),
-- gescannte PDFs und Bilder per Texterkennung (Deutsch und Englisch, auf Wunsch Französisch über `FLOWPLAN_OCR_LANGS`),
+- gescannte PDFs und Bilder per Texterkennung (Deutsch und Englisch, auf Wunsch Französisch oder Chinesisch (Kurzzeichen) über `FLOWPLAN_OCR_LANGS`),
 - Word-, Excel-, PowerPoint- und OpenDocument-Dateien.
 
 Treffer lassen sich nach Typ und Bereich filtern. [Journaltage](/journal#tage-in-listen-suche-graph-und-export) stehen hinter allen anderen Treffern; **Ohne Journaltage** lässt sie ganz weg und bleibt für die nächste Suche eingeschaltet. Dateitexte werden im Hintergrund erfasst und sind nach wenigen Sekunden auffindbar. Die Suche zeigt nur, was du lesen darfst. <kbd>Enter</kbd> öffnet den ersten Treffer.
