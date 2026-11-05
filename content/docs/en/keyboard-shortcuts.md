@@ -135,6 +135,20 @@ On the ⋮⋮ handle of a record (table, list, feed, board, gallery, sprints):
 | <kbd>⌥</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Move the record up/down one place right away |
 | <kbd>Enter</kbd> | (not lifted) Open the **Move record** dialog |
 
+### In formatted text properties
+
+In a text property (table cell, record; see [Formatted text](/databases#formatted-text)):
+
+| Shortcut | Effect |
+| --- | --- |
+| <kbd>⌘</kbd> <kbd>B</kbd> / <kbd>I</kbd> | Bold / italic |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>X</kbd> | Strikethrough |
+| <kbd>⌘</kbd> <kbd>E</kbd> | Code |
+| <kbd>⌘</kbd> <kbd>K</kbd> | Link the selected text (without a selection: quick search) |
+| <kbd>⇧</kbd> <kbd>Enter</kbd> | Line break |
+| <kbd>Enter</kbd> | Table cell: save and finish; in the record: line break |
+| <kbd>Esc</kbd> | Table cell: discard the edit |
+
 ## Calendar and timeline
 
 | Shortcut | Effect |

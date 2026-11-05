@@ -81,7 +81,7 @@ Clients that speak Streamable HTTP and accept their own headers use this configu
 | `save_collection` | Creates a collection or changes its name, query, emoji and sharing | Write |
 | `delete_collection` | Moves a collection to the trash | Write |
 
-Properties are named by their name (or ID). Dates are written as `YYYY-MM-DD`, options by their name, people by e-mail address or name, and relations as a list of record IDs. `update_record` accepts the `version` from `get_record`: if someone changed the record in the meantime, the change is refused instead of being overwritten.
+Properties are named by their name (or ID). Dates are written as `YYYY-MM-DD`, options by their name, people by e-mail address or name, and relations as a list of record IDs. Text properties (except the title) are formatted text: `get_database` marks them with `markdown: true`, and they are read and written as inline Markdown (`**bold**`, `_italic_`, `~~strikethrough~~`, `` `code` ``, `[label](https://…)`, `\n`; see [Formatted text](/databases#formatted-text)). `update_record` accepts the `version` from `get_record`: if someone changed the record in the meantime, the change is refused instead of being overwritten.
 
 In addition, each page is available as a **resource** `flowplan://page/<ID>` (your favourites are listed). There are two **prompts**: *Summarize a page* and *Plan my day*.
 

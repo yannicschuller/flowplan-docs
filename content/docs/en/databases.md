@@ -69,7 +69,8 @@ Dragging is quicker: **drag records by their handle (with the mouse also by the 
 
 | Type | Content |
 | --- | --- |
-| Text, number | Numbers with a format: currency, percent, decimal places, thousands separators |
+| Text | Formatted text: bold, italic, strikethrough, code, links, line breaks (see below) |
+| Number | Numbers with a format: currency, percent, decimal places, thousands separators |
 | Date | With or without time and end date, time zone, personal reminders, recurrence |
 | Select, multi-select | Coloured options, e.g. for status or tags |
 | Checkbox, checklist | Tick off; checklists with several items and progress |
@@ -81,6 +82,21 @@ Dragging is quicker: **drag records by their handle (with the mouse also by the 
 | Created time/by, edited time/by | Maintained automatically |
 
 Relations, rollups and formulas are described under [Properties, formulas and rollups](/properties-and-formulas).
+
+### Formatted text
+
+Text properties – all except the title – can contain **bold**, *italic*, ~~strikethrough~~, `code`, links and line breaks. These are marks within the text only, no blocks: headings, lists, quotes or tables are not available there (that is what the record's own text is for). There is no underline.
+
+- **Editing:** click the cell in the table, or the field in the record. When text is selected, a small bar with bold, italic, strikethrough, code and link appears above it.
+- **Shortcuts:** <kbd>⌘</kbd> <kbd>B</kbd> bold, <kbd>⌘</kbd> <kbd>I</kbd> italic, <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>X</kbd> strikethrough, <kbd>⌘</kbd> <kbd>E</kbd> code, <kbd>⌘</kbd> <kbd>K</kbd> links the selected text (without a selection <kbd>⌘</kbd> <kbd>K</kbd> opens the quick search as everywhere). Links only go to `http`, `https` and `mailto`; `example.com` becomes `https://example.com`, an e-mail address a `mailto:` link. An empty field removes the link.
+- **Line break:** <kbd>⇧</kbd> <kbd>Enter</kbd>. In a table cell <kbd>Enter</kbd> ends editing and saves, <kbd>Esc</kbd> discards it. In the record, in the feed and when editing through a share link, <kbd>Enter</kbd> also makes a line break; the value is saved when you leave the field.
+- **Display:** formatted in table, board, gallery, list, feed, the record, published pages and embedded views. In table cells and on cards a line break shows as a space (the row stays one line), in the record and the feed as a break. Links open in a new tab; on cards that are links themselves they stay text.
+- **As plain text** the value counts for search, filters (*contains* …), sorting, grouping, formulas (`prop("Note")` returns the text without formatting), copying to the clipboard, the CSV export, the apps' widgets and placeholders in templates and automations.
+- **Pasting** from Word, Google Docs or web pages keeps bold, italic, strikethrough, code and links; headings become bold, paragraphs and list items line breaks, images and tables are left out.
+- **Import and export:** CSV (including Notion exports), Jira and Trello, vCards, LDAP and form answers are plain text – asterisks and underscores stay as written. Tables from AFFiNE and tables from documents (**Turn into database**) keep their formatting. The Markdown export writes the formatting as Markdown, the CSV export plain text. Older content archives come in as plain text.
+- **Existing values** from before this feature look as they did: `*asterisks*` keep their asterisks.
+- **Changing the type:** when another property becomes text, its values stay as written; when text becomes another type, the text without formatting counts.
+- **API and MCP:** the value is a string with inline Markdown: `**bold**`, `_italic_` (or `*italic*`), `~~strikethrough~~`, `` `code` ``, `[label](https://…)` and `\n` for a line break. A backslash keeps `` \ * _ ~ ` [ ] `` as characters – so send plain text escaped. Links with other schemes (such as `javascript:`) show only their label; `# ` or `- ` at the start stay text. The title is plain text.
 
 ### Multi-select with the workspace tags
 
