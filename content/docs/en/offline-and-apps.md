@@ -149,7 +149,7 @@ From desktop app 1.1.0 there is more around the window. Its switches are under *
 ## Apps for iPhone, iPad and Android
 
 > [!NOTE]
-> **There is a beta app for iPhone and iPad on TestFlight:** [testflight.apple.com/join/Yjy9aZAE](https://testflight.apple.com/join/Yjy9aZAE) – install Apple's **TestFlight** app from the App Store first, then open the link on the iPhone or iPad. The apps are not in the App Store yet.
+> **The iPhone and iPad app is on the App Store:** [Flowplan on the App Store](https://apps.apple.com/app/id6825801344) – open the link on the iPhone or iPad and download the app, or search the App Store for “Flowplan”. New versions arrive through the App Store as with any other app.
 >
 > **The Android app comes straight from us, without the Play Store:** [flowplan.org/download/android.apk](https://flowplan.org/download/android.apk) or on [flowplan.org/download](https://flowplan.org/download). See [Installing and updating the Android app](#installing-and-updating-the-android-app).
 
