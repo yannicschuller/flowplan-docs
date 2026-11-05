@@ -53,4 +53,4 @@ Texte für den Code gibt es als `t("Deutsch", "English")` in Komponenten, `tr()`
 
 ## Texterkennung
 
-Die Texterkennung für gescannte PDFs und Bilder ist davon unabhängig: Sie erkennt Deutsch und Englisch, mit `FLOWPLAN_OCR_LANGS=fra,eng` auch Französisch (siehe [Konfiguration](/configuration)).
+Die Texterkennung für gescannte PDFs und Bilder ist davon unabhängig: Sie erkennt Deutsch und Englisch, mit `FLOWPLAN_OCR_LANGS=fra,eng` auch Französisch und mit `FLOWPLAN_OCR_LANGS=chi_sim,eng` chinesische Kurzzeichen (siehe [Konfiguration](/configuration)).

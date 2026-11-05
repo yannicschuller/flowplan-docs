@@ -53,4 +53,4 @@ In the code, texts are `t("Deutsch", "English")` in components, `tr()` outside o
 
 ## Text recognition
 
-Text recognition for scanned PDFs and images is separate: it reads German and English, and French with `FLOWPLAN_OCR_LANGS=fra,eng` (see [Configuration](/configuration)).
+Text recognition for scanned PDFs and images is separate: it reads German and English, French with `FLOWPLAN_OCR_LANGS=fra,eng` and Chinese (Simplified) with `FLOWPLAN_OCR_LANGS=chi_sim,eng` (see [Configuration](/configuration)).
