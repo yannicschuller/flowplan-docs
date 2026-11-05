@@ -76,6 +76,7 @@ Details: [Storage and backups](/storage-and-backups).
 | Own workspaces per person | How many workspaces a person may own. |
 | Largest upload | The limit per file in MB. Also applies to [importing an AFFiNE workspace file](/migrate#from-affine) (at least 100 MB; `FLOWPLAN_IMPORT_MAX_MB` takes precedence). |
 | Keep versions | Days after which automatic versions are deleted. |
+| Empty the trash after | Days after which deleted pages, spaces, database records and templates are deleted permanently with their files (1–3650, default 30, 0 = never automatically). See [Trash](/pages-and-spaces#trash). |
 
 Empty fields fall back to the [environment variables](/configuration). Everyone sees their limits and the storage they use under **Settings → Account & security → Your limits**.
 
