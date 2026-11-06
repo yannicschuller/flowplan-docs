@@ -72,6 +72,16 @@ Every heading can be **collapsed**: the small arrow to the left of a heading (it
 - **Printing and PDF** always show everything; so do export, presentations and published pages.
 - Headings directly in the document collapse – in reading mode and in [encrypted spaces](/encrypted-spaces) too. Headings inside callouts, toggles, tables, columns or lists have no arrow; such blocks simply belong to the section they are in.
 
+## Toggles
+
+A **toggle** (`/toggle`) has a title and content below it that folds in and out.
+
+- **Collapse and expand:** click (or tap) the arrow in front of the title. By keyboard: <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> (Windows/Linux: <kbd>Ctrl</kbd> <kbd>Alt</kbd> <kbd>Enter</kbd>) in the content collapses it and puts the cursor in the title, where the same keys expand it again.
+- **Edit the title:** a click in the title puts the cursor there. <kbd>Enter</kbd> or <kbd>↓</kbd> moves into the content (expanding it), <kbd>↑</kbd> at the start of the content back to the title.
+- **Nothing gets lost:** when the cursor gets into a collapsed toggle (arrow keys, undo) or **Find on page** goes to a match in it, it expands. Collapse it while the cursor is inside, and the cursor moves in front of the toggle.
+- **Just for you:** as with [collapsed sections](#collapsing-sections), collapsing does not change the document – others editing at the same time keep their own state, and the toggle is expanded again the next time you open the page. It is always stored, exported (Markdown `<details>`, HTML) and published expanded; readers collapse it there themselves.
+- In **reading mode** a click on the whole title line collapses and expands it.
+
 ## Pasting answers from ChatGPT
 
 Text copied from ChatGPT or another assistant is formatted when pasted: LaTeX formulas (`\[ … \]`, `\( … \)`, `$$ … $$`) become formula blocks and inline formulas, Markdown (headings, **bold**, lists, tables) is applied, lines with tabs become a table, `☐` a task list, and each line becomes its own paragraph. Formulas already rendered on a copied web page stay formulas. This also applies when copying straight from the ChatGPT web page. If formulas are already in the document as text (such as `\[ A(3;2;1) \]`), select them – or everything with <kbd>⌘</kbd>/<kbd>Ctrl</kbd>+<kbd>A</kbd> – and choose **Turn into formulas** in the text menu. Ordinary text is pasted as before.
@@ -191,7 +201,9 @@ Hidden text stays hidden while you write. A click on the area reveals it, anothe
 
 ## Move blocks
 
-A handle (`⋮⋮`) appears to the left of every block on hover. Dragging shows an insertion line in the middle of the gap between two blocks – also into callouts, quotes or columns; when you let go, the block glides to its new place.
+A handle (`⋮⋮`) appears to the left of a block – to keep the page calm, only where you are: at the block under the mouse pointer and at the block with the cursor. You can still reach the handles by keyboard (<kbd>Tab</kbd> outside the text); a handle with keyboard focus always shows, with a ring. On touch devices only the block with the cursor has a handle, large enough to tap – so tap into the block first. Empty paragraphs have no handle unless the cursor is in them. To see every handle as before, turn on **Settings → Appearance & language → Editor → Always show block handles** (on this device). Reading mode and locked pages have no handles.
+
+Dragging shows an insertion line in the middle of the gap between two blocks – also into callouts, quotes or columns; when you let go, the block glides to its new place.
 
 A click on the handle opens the **block menu** (from the bottom on phones):
 

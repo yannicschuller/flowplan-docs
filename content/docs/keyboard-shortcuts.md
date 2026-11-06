@@ -67,7 +67,7 @@ Die Übersicht zeigt die Tasten so, wie sie auf deinem Gerät heißen: auf dem M
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>C</kbd> | Codeblock |
 | <kbd>Tab</kbd> / <kbd>⇧</kbd> <kbd>Tab</kbd> | Einrücken / zurückrücken |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Block nach oben / unten (eine eingeklappte Überschrift mit ihrem Abschnitt) |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> | In einer Überschrift: ihren [Abschnitt ein- oder ausklappen](/documents#abschnitte-einklappen) |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> | In einer Überschrift: ihren [Abschnitt ein- oder ausklappen](/documents#abschnitte-einklappen); in einem [aufklappbaren Block](/documents#aufklappbare-bloecke): ihn ein- oder ausklappen |
 | <kbd>⇧</kbd> <kbd>Enter</kbd> | Zeilenumbruch im selben Block |
 | <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>Z</kbd> | Rückgängig / Wiederholen |
 | <kbd>⌘</kbd> <kbd>Enter</kbd> | Kommentar senden; in **Als Markdown bearbeiten**: Übernehmen |

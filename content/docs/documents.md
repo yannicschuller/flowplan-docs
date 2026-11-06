@@ -72,6 +72,16 @@ Jede Überschrift lässt sich **einklappen**: Der kleine Pfeil links neben der �
 - **Drucken und PDF** zeigen immer alles; ebenso Export, Präsentation und veröffentlichte Seiten.
 - Einklappen lassen sich Überschriften direkt im Dokument – auch im Lesemodus und in [verschlüsselten Bereichen](/encrypted-spaces). Überschriften in Hinweisen, Toggles, Tabellen, Spalten oder Listen haben keinen Pfeil; solche Blöcke gehören einfach zum Abschnitt, in dem sie stehen.
 
+## Aufklappbare Blöcke
+
+Ein **aufklappbarer Block** (`/toggle`) hat einen Titel und darunter Inhalt, der sich ein- und ausklappen lässt.
+
+- **Ein- und ausklappen:** Klick (oder Tipp) auf den Pfeil vor dem Titel. Mit der Tastatur: <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> (Windows/Linux: <kbd>Strg</kbd> <kbd>Alt</kbd> <kbd>Enter</kbd>) im Inhalt klappt ein und setzt den Cursor in den Titel, dort klappen dieselben Tasten wieder auf.
+- **Titel bearbeiten:** Ein Klick in den Titel setzt den Cursor hinein. <kbd>Enter</kbd> oder <kbd>↓</kbd> springt in den Inhalt (und klappt ihn auf), <kbd>↑</kbd> am Anfang des Inhalts zurück in den Titel.
+- **Nichts geht verloren:** Kommt der Cursor in einen eingeklappten Block (Pfeiltasten, Rückgängig) oder springt **Auf der Seite suchen** zu einem Treffer darin, klappt er auf. Klappst du ein, während der Cursor darin steht, wandert der Cursor vor den Block.
+- **Nur für dich:** Wie bei [eingeklappten Abschnitten](#abschnitte-einklappen) ändert das Einklappen das Dokument nicht – andere, die gleichzeitig bearbeiten, sehen ihren eigenen Zustand, und beim nächsten Öffnen ist der Block wieder aufgeklappt. Gespeichert, exportiert (Markdown `<details>`, HTML) und veröffentlicht wird er immer aufgeklappt; Lesende klappen dort selbst ein.
+- Im **Lesemodus** klappt ein Klick auf die ganze Titelzeile ein und aus.
+
 ## Antworten aus ChatGPT einfügen
 
 Text, den du aus ChatGPT oder einem anderen Assistenten kopierst, wird beim Einfügen formatiert: Formeln in LaTeX (`\[ … \]`, `\( … \)`, `$$ … $$`) werden zu Formelblöcken und Formeln im Satz, Markdown (Überschriften, **fett**, Listen, Tabellen) wird umgesetzt, Zeilen mit Tabulatoren werden zur Tabelle, `☐` zur Aufgabenliste, und jede Zeile wird ein eigener Absatz. Aus der Webseite kopierte, bereits gerenderte Formeln bleiben als Formel erhalten. Das gilt auch für das Kopieren direkt aus der ChatGPT-Webseite. Stehen Formeln schon als Text im Dokument (etwa `\[ A(3;2;1) \]`), markiere sie – oder alles mit <kbd>⌘</kbd>/<kbd>Strg</kbd>+<kbd>A</kbd> – und wähle im Textmenü **In Formeln umwandeln**. Gewöhnlicher Text wird wie bisher eingefügt.
@@ -191,7 +201,9 @@ Verdeckter Text bleibt auch beim Schreiben verdeckt. Ein Klick auf die Fläche d
 
 ## Blöcke verschieben
 
-Links neben jedem Block erscheint beim Überfahren ein Griff (`⋮⋮`). Ziehen zeigt eine Einfügelinie – auch in Hinweise, Zitate oder Spalten hinein; nach dem Loslassen gleitet der Block an die neue Stelle.
+Links neben einem Block erscheint ein Griff (`⋮⋮`) – damit die Seite ruhig bleibt, nur dort, wo du gerade bist: am Block unter dem Mauszeiger und am Block mit dem Cursor. Mit der Tastatur erreichst du die Griffe weiterhin (<kbd>Tab</kbd> außerhalb des Textes); ein Griff mit Tastaturfokus ist immer sichtbar und umrandet. Auf Touch-Geräten hat nur der Block mit dem Cursor einen Griff, groß genug zum Antippen – tippe also zuerst in den Block. Leere Absätze haben keinen Griff, solange der Cursor nicht darin steht. Wer alle Griffe wie früher sehen möchte, schaltet **Einstellungen → Darstellung & Sprache → Editor → Griffe immer anzeigen** ein (auf diesem Gerät). Im Lesemodus und auf gesperrten Seiten gibt es keine Griffe.
+
+Ziehen zeigt eine Einfügelinie – auch in Hinweise, Zitate oder Spalten hinein; nach dem Loslassen gleitet der Block an die neue Stelle.
 
 Ein Klick auf den Griff öffnet das **Blockmenü** (am Handy von unten):
 
