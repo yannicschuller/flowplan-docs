@@ -17,7 +17,7 @@ All data lives in one directory. With S3 storage, files are mirrored and the dat
 
 With `S3_BUCKET` and credentials (see [Configuration](/configuration#s3-and-database-backup)):
 
-- **Files**: every uploaded file goes into the bucket right after saving, and deleted files are removed there. `uploads/` stays the working copy. If a file is missing there – a new host, a lost volume –, Flowplan fetches it from the bucket: right away when requested, all others in the background.
+- **Files**: every uploaded file goes into the bucket right after saving, and deleted files move to `<prefix>/.deleted/uploads/` there; they are removed only once no kept scheduled backup in the bucket needs them, after one day at the earliest ([delayed deletion](#delayed-deletion)). `uploads/` stays the working copy. If a file is missing there – a new host, a lost volume –, Flowplan fetches it from the bucket: right away when requested, all others in the background.
 - **Database**: [Litestream](https://litestream.io) transfers changes to the SQLite file to `<prefix>/db` about every second. If the container starts without a database, Litestream first restores it from the bucket.
 
 On the first start with S3, Flowplan uploads all existing files. **Administration → Storage & backup** shows the progress, the connection and the split between local and S3 (cards **Backups** and **Usage**); with `FLOWPLAN_METRICS_TOKEN`, or signed in as an administrator, `/api/health` shows it under `objectStorage.pending`.
@@ -70,7 +70,7 @@ The scheduled backup can also go to a server of your own – a NAS, a backup ser
 - **Server**, **port** (22) and **user**, sign-in with a **password** or a **private key** (OpenSSH or PEM, optionally with a passphrase). Flowplan stores password, key and passphrase only encrypted ([stored secrets](/en/configuration#stored-secrets)); afterwards the interface only shows that one is stored.
 - **Folder on the server**: relative to the login folder or absolute (`/srv/backups/flowplan`); `..` is not allowed. If it is missing, Flowplan creates it.
 - **Keep**: this many backups stay in the folder, older ones are removed.
-- **Include files**: mirrors the uploaded files to `uploads/` in the folder. New files are added with every backup; files deleted for good in Flowplan disappear there as well.
+- **Include files**: mirrors the uploaded files to `uploads/` in the folder. New files are added with every backup; files deleted for good in Flowplan move to `.deleted/uploads/` ([delayed deletion](#delayed-deletion)).
 - With `FLOWPLAN_ENCRYPTION_KEY`, everything on the server is encrypted – the database as in S3 and the data folder (`flowplan-….sqlite.enc`), every file on its own ([Encryption](#encryption)).
 
 **Host key:** on the first **Test connection**, Flowplan shows the server's fingerprint (`SHA256:…`) before it sends any credentials. Compare it on the server with `ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub` and confirm it with **Trust this key**. If the server later presents another key (a reinstall – or someone intercepting the connection), every transfer stops and the administration shows the old and the new fingerprint; it only continues after **Accept the new key**. Another server or port always needs a new confirmation.
@@ -85,6 +85,17 @@ Match User flowplan
   ForceCommand internal-sftp
   AllowTcpForwarding no
 ```
+
+### Delayed deletion
+
+A kept backup should always be fully restorable – including the files deleted since it was made. That is why Flowplan does not remove deleted files on the SFTP server (with **Include files**) and in the S3 bucket right away:
+
+- They move to `.deleted/uploads/` (SFTP: in the folder, S3: under `<prefix>/`). The time of the move is appended to the name (`<file>.<milliseconds since 1970>`), so it survives copying the folder or a restore on another instance.
+- They are removed for good by a later backup once they were moved before the oldest backup still kept – then no backup needs them any more. In the bucket also not before one day has passed, as far as Litestream's history reaches back. So a higher **Keep** also means deleted files stay longer.
+- If a deleted file comes back (after a restore, for example), the SFTP backup moves it back from `.deleted/uploads/` instead of transferring it again.
+- When [restoring](#restore-while-setting-up), Flowplan looks for a file missing from `uploads/` in `.deleted/uploads/`.
+
+Without scheduled backups (**Scheduled database backup** off), Flowplan deletes in the bucket right away – there is no backup that could need the file.
 
 ### SMB or NFS share
 
@@ -296,8 +307,8 @@ Move the existing `flowplan.sqlite` with `-wal` and `-shm` aside first.
 A new, still empty instance takes over a backup right on the setup screen: under **Create account**, click **Restore from a backup** ([Installation, first start](/en/installation#first-start)). You can use
 
 - **File**: a scheduled backup (`flowplan-….sqlite`, `.sqlite.enc`) or the backup of the whole instance (`flowplan-instanz-….zip`, `.zip.enc`), up to 50 GB. The upload is written straight to disk and shows its progress.
-- **S3**: the newest scheduled backup from `<prefix>/backups/` of a bucket, with the files from `<prefix>/uploads/`.
-- **SFTP**: the newest backup from the folder, with the files from `uploads/` (if **Include files** was on). Flowplan shows the host key first; it only signs in once you confirm **The fingerprint matches**.
+- **S3**: the newest scheduled backup from `<prefix>/backups/` of a bucket, with the files from `<prefix>/uploads/` – any missing there come from `<prefix>/.deleted/uploads/`.
+- **SFTP**: the newest backup from the folder, with the files from `uploads/` (if **Include files** was on) – any missing there come from `.deleted/uploads/`. Flowplan shows the host key first; it only signs in once you confirm **The fingerprint matches**.
 
 If the backup is encrypted, the page asks for the old instance's key (`FLOWPLAN_ENCRYPTION_KEY`) – or it is already set on the new one. Flowplan checks the database (intact, a Flowplan database, not from a newer version – older ones are brought up to date when they open, as with an update), puts the empty initial state aside as `pre-restore-…` and applies the backup right away. Afterwards you sign in with an account from the backup. If Litestream runs (S3 without `FLOWPLAN_LITESTREAM=off`), the backup is applied on the next restart of the container – the page says so.
 
