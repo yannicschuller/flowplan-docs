@@ -17,7 +17,7 @@ Alle Daten liegen in einem Verzeichnis. Mit einem S3-Speicher werden Dateien ges
 
 Mit `S3_BUCKET` und Zugangsdaten (siehe [Konfiguration](/configuration#s3-und-datenbanksicherung)):
 
-- **Dateien**: Jede hochgeladene Datei geht direkt nach dem Speichern in den Bucket, gelöschte Dateien werden dort entfernt. `uploads/` bleibt Arbeitskopie. Fehlt dort eine Datei – neuer Host, verlorenes Volume –, holt Flowplan sie aus dem Bucket: beim Abruf sofort, alle übrigen im Hintergrund.
+- **Dateien**: Jede hochgeladene Datei geht direkt nach dem Speichern in den Bucket, gelöschte Dateien wandern dort nach `<Präfix>/.deleted/uploads/` und werden erst entfernt, wenn keine aufbewahrte geplante Sicherung im Bucket sie mehr braucht, frühestens nach einem Tag ([verzögertes Löschen](#verzoegertes-loeschen)). `uploads/` bleibt Arbeitskopie. Fehlt dort eine Datei – neuer Host, verlorenes Volume –, holt Flowplan sie aus dem Bucket: beim Abruf sofort, alle übrigen im Hintergrund.
 - **Datenbank**: [Litestream](https://litestream.io) überträgt Änderungen der SQLite-Datei etwa im Sekundentakt nach `<Präfix>/db`. Startet der Container ohne Datenbank, stellt Litestream sie zuerst aus dem Bucket wieder her.
 
 Beim ersten Start mit S3 lädt Flowplan alle vorhandenen Dateien hoch. Den Fortschritt zeigen **Administration → Speicher & Sicherung** (Karten **Sicherungen** und **Belegung**, dazu die Verbindung und die Verteilung lokal/S3) und – mit `FLOWPLAN_METRICS_TOKEN` oder als Admin angemeldet – `/api/health` unter `objectStorage.pending`.
@@ -70,7 +70,7 @@ Die geplante Sicherung kann zusätzlich auf einen eigenen Server gehen – ein N
 - **Server**, **Port** (22) und **Benutzer**, Anmeldung mit **Passwort** oder **privatem Schlüssel** (OpenSSH oder PEM, optional mit Passphrase). Passwort, Schlüssel und Passphrase speichert Flowplan nur verschlüsselt ([gespeicherte Geheimnisse](/configuration#gespeicherte-geheimnisse)); die Oberfläche zeigt danach nur noch, dass eines gespeichert ist.
 - **Ordner auf dem Server**: relativ zum Anmeldeordner oder absolut (`/srv/backups/flowplan`); `..` ist nicht erlaubt. Fehlt er, legt Flowplan ihn an.
 - **Aufbewahren**: so viele Sicherungen bleiben im Ordner, ältere werden entfernt.
-- **Dateien mitsichern**: spiegelt die hochgeladenen Dateien nach `uploads/` im Ordner. Neue Dateien kommen bei jeder Sicherung dazu; Dateien, die in Flowplan endgültig gelöscht sind, verschwinden dort ebenfalls.
+- **Dateien mitsichern**: spiegelt die hochgeladenen Dateien nach `uploads/` im Ordner. Neue Dateien kommen bei jeder Sicherung dazu; Dateien, die in Flowplan endgültig gelöscht sind, wandern nach `.deleted/uploads/` ([verzögertes Löschen](#verzoegertes-loeschen)).
 - Mit `FLOWPLAN_ENCRYPTION_KEY` ist alles auf dem Server verschlüsselt – die Datenbank wie in S3 und im Datenordner (`flowplan-….sqlite.enc`), jede Datei einzeln ([Verschlüsselung](#verschluesselung)).
 
 **Hostschlüssel:** Beim ersten **Verbindung testen** zeigt Flowplan den Fingerabdruck des Servers (`SHA256:…`), noch bevor es Zugangsdaten sendet. Vergleiche ihn auf dem Server mit `ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub` und bestätige ihn mit **Schlüssel vertrauen**. Meldet sich der Server später mit einem anderen Schlüssel (Neuinstallation – oder jemand schaltet sich dazwischen), stoppt jede Übertragung, und die Administration zeigt alten und neuen Fingerabdruck; erst nach **Neuen Schlüssel annehmen** geht es weiter. Ein anderer Server oder Port braucht immer eine neue Bestätigung.
@@ -85,6 +85,17 @@ Match User flowplan
   ForceCommand internal-sftp
   AllowTcpForwarding no
 ```
+
+### Verzögertes Löschen
+
+Eine aufbewahrte Sicherung soll sich immer vollständig wiederherstellen lassen – auch mit den Dateien, die seitdem gelöscht wurden. Deshalb entfernt Flowplan gelöschte Dateien auf dem SFTP-Server (mit **Dateien mitsichern**) und im S3-Bucket nicht sofort:
+
+- Sie wandern nach `.deleted/uploads/` (SFTP: im Ordner, S3: unter `<Präfix>/`). Der Name bekommt den Zeitpunkt des Verschiebens angehängt (`<Datei>.<Millisekunden seit 1970>`), damit er auch nach dem Kopieren des Ordners oder auf einer anderen Instanz erhalten bleibt.
+- Endgültig entfernt werden sie bei einer späteren Sicherung, sobald sie vor der ältesten noch aufbewahrten Sicherung verschoben wurden – dann braucht sie keine mehr. Im Bucket zusätzlich frühestens nach einem Tag, so weit reicht der Verlauf von Litestream zurück. Mehr **Aufbewahren** heißt also auch: gelöschte Dateien bleiben länger.
+- Taucht eine gelöschte Datei wieder auf (etwa nach einer Wiederherstellung), holt die SFTP-Sicherung sie aus `.deleted/uploads/` zurück, statt sie neu zu übertragen.
+- Beim [Wiederherstellen](#beim-einrichten-wiederherstellen) sucht Flowplan eine Datei, die in `uploads/` fehlt, in `.deleted/uploads/`.
+
+Ohne geplante Sicherung (**Geplante Datenbanksicherung** aus) löscht Flowplan im Bucket sofort – es gäbe keine Sicherung, die die Datei braucht.
 
 ### SMB- oder NFS-Freigabe
 
@@ -296,8 +307,8 @@ Vorher die bestehende `flowplan.sqlite` samt `-wal` und `-shm` beiseitelegen.
 Eine neue, noch leere Instanz übernimmt eine Sicherung direkt auf dem Einrichtungsbildschirm: unter **Konto erstellen** auf **Aus Sicherung wiederherstellen** klicken ([Installation, Erster Start](/installation#erster-start)). Möglich sind
 
 - **Datei**: eine geplante Sicherung (`flowplan-….sqlite`, `.sqlite.enc`) oder die Sicherung der gesamten Instanz (`flowplan-instanz-….zip`, `.zip.enc`), bis 50 GB. Der Upload wird direkt auf die Festplatte geschrieben und zeigt seinen Fortschritt.
-- **S3**: die neueste geplante Sicherung aus `<Präfix>/backups/` eines Buckets, dazu die Dateien aus `<Präfix>/uploads/`.
-- **SFTP**: die neueste Sicherung aus dem Ordner, dazu die Dateien aus `uploads/` (wenn **Dateien mitsichern** an war). Zuerst zeigt Flowplan den Hostschlüssel; erst wenn du **Der Fingerabdruck stimmt** bestätigst, meldet es sich an.
+- **S3**: die neueste geplante Sicherung aus `<Präfix>/backups/` eines Buckets, dazu die Dateien aus `<Präfix>/uploads/` – fehlt dort eine, aus `<Präfix>/.deleted/uploads/`.
+- **SFTP**: die neueste Sicherung aus dem Ordner, dazu die Dateien aus `uploads/` (wenn **Dateien mitsichern** an war) – fehlt dort eine, aus `.deleted/uploads/`. Zuerst zeigt Flowplan den Hostschlüssel; erst wenn du **Der Fingerabdruck stimmt** bestätigst, meldet es sich an.
 
 Ist die Sicherung verschlüsselt, frag die Seite nach dem Schlüssel der alten Instanz (`FLOWPLAN_ENCRYPTION_KEY`) – oder er ist auf der neuen schon gesetzt. Flowplan prüft die Datenbank (unbeschädigt, eine Flowplan-Datenbank, nicht aus einer neueren Version – ältere werden beim Öffnen wie bei einem Update aktualisiert), legt den leeren Anfangsstand als `pre-restore-…` beiseite und übernimmt die Sicherung sofort. Danach meldest du dich mit einem Konto aus der Sicherung an. Läuft Litestream (S3 ohne `FLOWPLAN_LITESTREAM=off`), wird die Sicherung erst beim nächsten Neustart des Containers übernommen – die Seite sagt das.
 
