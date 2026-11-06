@@ -21,6 +21,8 @@ Der Stift-Knopf **Vorschlagen** in der Werkzeugleiste schaltet den Vorschlagsmod
 - Über dem Text zeigt eine Leiste die Zahl der offenen Vorschläge. Aufgeklappt listet sie jeden mit Person und Text; ein Klick springt zur Stelle. **✓** nimmt einen Vorschlag an (Einfügung bleibt, Gelöschtes verschwindet), **✗** lehnt ihn ab. **Alle annehmen** und **Alle ablehnen** erledigen alles auf einmal.
 - Vorschläge sind Teil des Dokuments: Sie erscheinen bei allen sofort und bleiben gespeichert, bis jemand sie annimmt oder ablehnt. Annehmen und ablehnen kann jeder, der die Seite bearbeiten darf.
 - Formatierungen, Absatzwechsel und verschobene Blöcke werden auch im Vorschlagsmodus direkt übernommen; Änderungen anderer Personen werden nie zu deinen Vorschlägen.
+- Auch in **Codeblöcken** werden Änderungen als Vorschläge markiert. Wird ein Absatz oder Listenpunkt durch Annehmen oder Ablehnen ganz leer (ein vorgeschlagener neuer Absatz abgelehnt, ein ganz gelöschter angenommen), verschwindet er mit.
+- **Vorschläge der KI:** In [KI fragen](/ai#fragen-an-den-arbeitsbereich) setzt **Als Änderungsvorschlag einfügen** die Antwort genauso als Vorschläge in die Seite – mit deinem Namen und „(KI)“.
 
 ## Reaktionen
 

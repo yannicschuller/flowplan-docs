@@ -21,6 +21,8 @@ The pen button **Suggest** in the toolbar turns on suggestion mode. Typing then 
 - Above the text, a bar shows the number of open suggestions. Expanded, it lists each one with person and text; a click jumps to the spot. **✓** accepts a suggestion (the insertion stays, the deleted text disappears), **✗** rejects it. **Accept all** and **Reject all** settle everything at once.
 - Suggestions are part of the document: they appear for everyone right away and stay saved until someone accepts or rejects them. Everyone who may edit the page can accept and reject.
 - Formatting, paragraph breaks and moved blocks are applied directly even in suggestion mode; other people's changes never become your suggestions.
+- Changes in **code blocks** are marked as suggestions too. When accepting or rejecting leaves a paragraph or list item completely empty (a suggested new paragraph rejected, a fully deleted one accepted), it disappears as well.
+- **Suggestions by the AI:** in [Ask AI](/ai#ask-your-workspace), **Suggest as changes** puts the answer into the page as suggestions in the same way – with your name and "(AI)".
 
 ## Reactions
 
