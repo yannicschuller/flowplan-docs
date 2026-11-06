@@ -18,6 +18,7 @@ Below are **Your templates**: saved database templates, such as your own "Notes 
 ## Records
 
 - **New** at the bottom of the table or at the top right creates a record and opens it with the title selected – just start typing, <kbd>Enter</kbd> saves.
+- **Editing:** in the table <kbd>Enter</kbd> saves numbers too; a double-click on a multi-select only opens it without ticking an option. <kbd>Esc</kbd> closes an open record – what you typed into the title or properties stays saved.
 - A click on the title opens the record as a page: the title at the top to edit directly, the properties below it, and below them a full document with the same editor as every other page – including comments, version history and editing together.
 - At the top right of a record: how it opens (as a dialog, in the side panel or as a full page – the choice applies to you in this browser; the database's default is marked "default"), the star for favourites, **Copy link** for the record's address, the lock for the record's permissions and the sliders for the layout of all records. **Icon** and **Cover** appear when the pointer is over the title.
 - **Reading mode** (book icon at the top of the record or <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd>) opens a record's text for reading only, as for pages; the device remembers it per record. Opened as a full page, **Full width** uses the whole screen – the properties keep a readable width, the text gets the space.

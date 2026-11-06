@@ -1,12 +1,12 @@
 # Languages and translations
 
-Flowplan is available in {{facts.languages|word}} languages: **German, English, French and Simplified Chinese** (简体中文). Further languages can be added without changing the app's code – with any translation tool that understands JSON files.
+Flowplan is available in {{facts.languages|word}} languages: **German, English, French and Simplified Chinese** (简体中文). English also comes as **English (US)**: the same texts, but dates with the month first and weeks starting on Sunday. Further languages can be added without changing the app's code – with any translation tool that understands JSON files.
 
 ## Choosing a language
 
-Flowplan follows your browser's language; languages Flowplan does not know show English. Under **Settings → Appearance & language → Language** you pick a language (with its flag) from the list – it then applies on all devices, also to e-mails and push notifications; **Automatic (follows the browser)** undoes the choice. On the sign-in page the small button at the bottom right (e.g. **🇬🇧 EN**) opens a menu with all languages.
+Flowplan follows your browser's language; languages Flowplan does not know show English. Under **Settings → Appearance & language → Language** you pick a language (with its flag) from the list – it then applies on all devices, also to e-mails and push notifications; **Automatic (follows the browser)** undoes the choice and picks English (US) for browsers set to US English (`en-US`), English for other English browsers. On the sign-in page the small button at the bottom right (e.g. **🇬🇧 EN**) opens a menu with all languages.
 
-Dates, times and numbers follow the language (French: `fr-FR`, e.g. “15 oct. 2026” and “2 400,5”; Chinese: `zh-CN`, e.g. “2026年10月15日”). Calculations in notes use the decimal comma in French as well.
+Dates, times and numbers follow the language (French: `fr-FR`, e.g. “15 oct. 2026” and “2 400,5”; Chinese: `zh-CN`, e.g. “2026年10月15日”). Calculations in notes use the decimal comma in French as well. Calendars start the week on Sunday in English (US) and on Monday in every other language – unless the view sets its own week start.
 
 What you create yourself – pages, databases, properties – stays in the language it was made in. Templates and example content exist in German and English; French and Chinese accounts get the English ones.
 

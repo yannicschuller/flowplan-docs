@@ -49,6 +49,7 @@ Monats-, Wochen- und Tagesansicht nach einem Datumsfeld.
 - Ganztägige Einträge (Monatsansicht und Ganztagszeile) mit der Maus auf einen anderen Tag ziehen, auf Touchgeräten am Griff ⋮⋮; der Zieltag ist gestrichelt umrandet, <kbd>Esc</kbd> bricht ab. Mit der Tastatur verschiebt <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> einen fokussierten Eintrag um einen Tag, <kbd>Alt</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd> in der Monatsansicht um eine Woche.
 - Klick auf eine Stunde legt einen Termin an, **Ganztägig +** einen Ganztagseintrag.
 - Jede Ansicht hat eine eigene Zeitzone; ohne Einstellung gilt die des Browsers.
+- **Wochenbeginn** (Montag oder Sonntag) lässt sich pro Ansicht festlegen; ohne Einstellung folgt er der Sprache der Person, die den Kalender ansieht – Sonntag in [English (US)](/languages), sonst Montag.
 - Tastatur: <kbd>Alt</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd> verschiebt um 15 Minuten, <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> um einen Tag.
 
 ### Kalender abonnieren

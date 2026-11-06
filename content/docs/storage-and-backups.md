@@ -51,7 +51,7 @@ Den S3-Dienst so starten, dass er auf allen Schnittstellen lauscht (`-ip.bind=0.
 
 1. **Instanzsicherung in Flowplan** (empfohlen): **Administration → Speicher & Sicherung → Gesamte Instanz → Herunterladen** lädt Datenbank und Dateien konsistent im laufenden Betrieb herunter.
 2. **S3 mit Litestream**: laufende Sicherung; ein früherer Zeitpunkt lässt sich wiederherstellen (unten).
-3. **Geplante Sicherung**: täglich oder stündlich eine konsistente Kopie der Datenbank, mit S3 in den Bucket unter `backups/`, sonst in den Datenordner – mit Schlüssel verschlüsselt ([Verschlüsselung](#verschluesselung)). Zusätzlich auf einen eigenen Server per [SFTP](#sicherung-per-sftp), auf Wunsch mit allen Dateien, oder über eine [SMB- oder NFS-Freigabe](#smb-oder-nfs-freigabe).
+3. **Geplante Sicherung**: täglich oder stündlich eine konsistente Kopie der Datenbank, mit S3 in den Bucket unter `backups/`, sonst in den Datenordner – mit Schlüssel verschlüsselt ([Verschlüsselung](#verschluesselung)). Zusätzlich auf einen eigenen Server per [SFTP](#sicherung-per-sftp), auf Wunsch mit allen Dateien, oder über eine [SMB- oder NFS-Freigabe](#smb-oder-nfs-freigabe). Vor dem ersten Konto entsteht keine geplante Sicherung (Demo-Konten und das Entwicklungskonto zählen nicht) – so legt eine neue Instanz keine leere Kopie neben die Sicherungen einer alten.
 4. **Volume-Backup** des Hosts oder in Coolify. Für eine konsistente Kopie den Container vorher stoppen.
 5. **Von Hand** im laufenden Betrieb:
 
@@ -70,7 +70,7 @@ Die geplante Sicherung kann zusätzlich auf einen eigenen Server gehen – ein N
 - **Server**, **Port** (22) und **Benutzer**, Anmeldung mit **Passwort** oder **privatem Schlüssel** (OpenSSH oder PEM, optional mit Passphrase). Passwort, Schlüssel und Passphrase speichert Flowplan nur verschlüsselt ([gespeicherte Geheimnisse](/configuration#gespeicherte-geheimnisse)); die Oberfläche zeigt danach nur noch, dass eines gespeichert ist.
 - **Ordner auf dem Server**: relativ zum Anmeldeordner oder absolut (`/srv/backups/flowplan`); `..` ist nicht erlaubt. Fehlt er, legt Flowplan ihn an.
 - **Aufbewahren**: so viele Sicherungen bleiben im Ordner, ältere werden entfernt.
-- **Dateien mitsichern**: spiegelt die hochgeladenen Dateien nach `uploads/` im Ordner. Neue Dateien kommen bei jeder Sicherung dazu; Dateien, die in Flowplan endgültig gelöscht sind, wandern nach `.deleted/uploads/` ([verzögertes Löschen](#verzoegertes-loeschen)).
+- **Dateien mitsichern**: spiegelt die hochgeladenen Dateien nach `uploads/` im Ordner. Neue Dateien kommen bei jeder Sicherung dazu; Dateien, die in Flowplan endgültig gelöscht sind, wandern nach `.deleted/uploads/` ([verzögertes Löschen](#verzoegertes-loeschen)). Dateien, die die Datenbank noch verzeichnet, werden dort nie weggeräumt. Fehlt der Ordner `uploads/` oder ist er leer, obwohl die Datenbank Dateien verzeichnet (etwa ein nicht eingehängtes Volume), lässt die Sicherung das Spiegeln mit einem Fehler aus; die Datenbank wird trotzdem übertragen.
 - Mit `FLOWPLAN_ENCRYPTION_KEY` ist alles auf dem Server verschlüsselt – die Datenbank wie in S3 und im Datenordner (`flowplan-….sqlite.enc`), jede Datei einzeln ([Verschlüsselung](#verschluesselung)).
 
 **Hostschlüssel:** Beim ersten **Verbindung testen** zeigt Flowplan den Fingerabdruck des Servers (`SHA256:…`), noch bevor es Zugangsdaten sendet. Vergleiche ihn auf dem Server mit `ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub` und bestätige ihn mit **Schlüssel vertrauen**. Meldet sich der Server später mit einem anderen Schlüssel (Neuinstallation – oder jemand schaltet sich dazwischen), stoppt jede Übertragung, und die Administration zeigt alten und neuen Fingerabdruck; erst nach **Neuen Schlüssel annehmen** geht es weiter. Ein anderer Server oder Port braucht immer eine neue Bestätigung.
@@ -306,7 +306,7 @@ Vorher die bestehende `flowplan.sqlite` samt `-wal` und `-shm` beiseitelegen.
 
 Eine neue, noch leere Instanz übernimmt eine Sicherung direkt auf dem Einrichtungsbildschirm: unter **Konto erstellen** auf **Aus Sicherung wiederherstellen** klicken ([Installation, Erster Start](/installation#erster-start)). Möglich sind
 
-- **Datei**: eine geplante Sicherung (`flowplan-….sqlite`, `.sqlite.enc`) oder die Sicherung der gesamten Instanz (`flowplan-instanz-….zip`, `.zip.enc`), bis 50 GB. Der Upload wird direkt auf die Festplatte geschrieben und zeigt seinen Fortschritt.
+- **Datei**: eine geplante Sicherung (`flowplan-….sqlite`, `.sqlite.enc`) oder die Sicherung der gesamten Instanz (`flowplan-instanz-….zip`, `.zip.enc`), bis 50 GB. Der Upload wird direkt auf die Festplatte geschrieben und zeigt seinen Fortschritt. Fehlen danach Anhänge, die weder in der Sicherung noch im Dateispeicher der Instanz liegen, nennt die Seite ihre Zahl – lagen die Dateien der alten Instanz in S3 oder auf einem SFTP-Server, stelle von dort wieder her.
 - **S3**: die neueste geplante Sicherung aus `<Präfix>/backups/` eines Buckets, dazu die Dateien aus `<Präfix>/uploads/` – fehlt dort eine, aus `<Präfix>/.deleted/uploads/`.
 - **SFTP**: die neueste Sicherung aus dem Ordner, dazu die Dateien aus `uploads/` (wenn **Dateien mitsichern** an war) – fehlt dort eine, aus `.deleted/uploads/`. Zuerst zeigt Flowplan den Hostschlüssel; erst wenn du **Der Fingerabdruck stimmt** bestätigst, meldet es sich an.
 

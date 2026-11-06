@@ -50,7 +50,7 @@ Die Übersicht zeigt die Tasten so, wie sie auf deinem Gerät heißen: auf dem M
 | Kürzel | Wirkung |
 | --- | --- |
 | <kbd>/</kbd> | Blockmenü |
-| <kbd>@</kbd> | Seite oder Person erwähnen |
+| <kbd>@</kbd> | Seite oder Person erwähnen (Pfeiltasten wählen, <kbd>Enter</kbd> fügt ein, <kbd>Esc</kbd> schließt) |
 | <kbd>⌘</kbd> <kbd>B</kbd> / <kbd>I</kbd> / <kbd>U</kbd> | Fett, kursiv, unterstrichen |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> | Durchgestrichen |
 | <kbd>⌘</kbd> <kbd>E</kbd> | Code im Text |

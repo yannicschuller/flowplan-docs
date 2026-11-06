@@ -13,7 +13,7 @@ Beim ersten Anmelden legt Flowplan einen privaten Arbeitsbereich mit Beispielsei
 > [!TIP]
 > Bietet die Instanz eine **Demo** an, kannst du Flowplan ohne Konto ausprobieren. Die Demo bekommt einen eigenen Beispiel-Arbeitsbereich und wird beim Beenden, beim Abmelden oder nach 45 Minuten ohne Aktivität vollständig gelöscht.
 
-**Sprache:** Flowplan folgt der Sprache deines Browsers. Unter **Einstellungen → Darstellung & Sprache → Sprache** wählst du aus der Liste Deutsch 🇩🇪, Englisch 🇬🇧 oder Französisch 🇫🇷 – dann gilt sie auf allen Geräten, auch für E-Mails und Push-Hinweise. Weitere Sprachen lassen sich hinzufügen: [Sprachen und Übersetzungen](/languages).
+**Sprache:** Flowplan folgt der Sprache deines Browsers. Unter **Einstellungen → Darstellung & Sprache → Sprache** wählst du aus der Liste Deutsch 🇩🇪, Englisch 🇬🇧, English (US) 🇺🇸, Französisch 🇫🇷 oder Chinesisch 🇨🇳 – dann gilt sie auf allen Geräten, auch für E-Mails und Push-Hinweise. Weitere Sprachen lassen sich hinzufügen: [Sprachen und Übersetzungen](/languages).
 
 ## Die Einführung
 

@@ -18,6 +18,7 @@ Darunter stehen **Deine Vorlagen**: gespeicherte Datenbank-Vorlagen, etwa eine e
 ## Einträge
 
 - **Neu** unten in der Tabelle oder oben rechts legt einen Eintrag an und öffnet ihn mit markiertem Titel – einfach lostippen, <kbd>Enter</kbd> speichert.
+- **Bearbeiten:** In der Tabelle speichert <kbd>Enter</kbd> auch Zahlen; ein Doppelklick auf eine Mehrfachauswahl öffnet sie nur, ohne eine Option anzuhaken. <kbd>Esc</kbd> schließt einen geöffneten Eintrag – was du in Titel oder Eigenschaften getippt hast, bleibt gespeichert.
 - Ein Klick auf den Titel öffnet den Eintrag als Seite: oben der Titel zum direkten Bearbeiten, darunter die Eigenschaften, darunter ein vollständiges Dokument mit demselben Editor wie jede andere Seite – samt Kommentaren, Versionsverlauf und gemeinsamer Bearbeitung.
 - Oben rechts im Eintrag: wie er sich öffnet (als Dialog, in der Seitenleiste oder als ganze Seite – die Wahl gilt für dich in diesem Browser; die Voreinstellung der Datenbank ist mit „Standard“ markiert), der Stern für die Favoriten, **Link kopieren** für die Adresse des Eintrags, das Schloss für die Rechte des Eintrags und die Regler für das Layout aller Einträge. **Symbol** und **Cover** erscheinen, wenn der Mauszeiger über dem Titel steht.
 - **Lesemodus** (Buch-Symbol oben im Eintrag oder <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd>) öffnet den Text eines Eintrags nur zum Lesen, wie bei Seiten; das Gerät merkt es sich pro Eintrag. Als ganze Seite geöffnet, nutzt **Volle Breite** den ganzen Bildschirm – die Eigenschaften bleiben lesbar schmal, der Text bekommt die Breite.

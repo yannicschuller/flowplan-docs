@@ -49,6 +49,7 @@ Month, week and day view by a date field.
 - Drag whole-day entries (month view and the all-day row) to another day with the mouse, on touch devices by their ⋮⋮ handle; the target day gets a dashed outline, <kbd>Esc</kbd> cancels. With the keyboard, <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> moves a focused entry by one day, <kbd>Alt</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd> in the month view by one week.
 - A click on an hour creates an appointment, **All day +** an all-day record.
 - Every view has its own time zone; without a setting the browser's applies.
+- The **week start** (Monday or Sunday) can be set per view; without a setting it follows the reader's language – Sunday in [English (US)](/languages), Monday otherwise.
 - Keyboard: <kbd>Alt</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd> moves by 15 minutes, <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> by one day.
 
 ### Subscribe to a calendar

@@ -315,7 +315,7 @@ The server calculates the number for the person looking at the page and refreshe
 
 ## Page links and mentions
 
-`@` searches pages, database records and people – keep typing to narrow the list. Journal days come after the other pages. `@today`, `@yesterday` (also `@heute`, `@gestern`) or a date such as `@2026-10-27` offer a link to that day of the [journal](/journal#days-in-lists-search-graph-and-export) under **Journal**. Records appear with their database, such as "Heating – maintenance · Notes"; only records you may read are offered. Mentioning a person notifies them in the inbox.
+`@` searches pages, database records and people – keep typing to narrow the list. The arrow keys move through the hits, <kbd>Enter</kbd> inserts the highlighted one, <kbd>Esc</kbd> closes the list. Journal days come after the other pages. `@today`, `@yesterday` (also `@heute`, `@gestern`) or a date such as `@2026-10-27` offer a link to that day of the [journal](/journal#days-in-lists-search-graph-and-export) under **Journal**. Records appear with their database, such as "Heating – maintenance · Notes"; only records you may read are offered. Mentioning a person notifies them in the inbox.
 
 Links to pages and records stay valid even if they are renamed or moved. A link that shows the old title gets the new one on a rename – in all documents and records you may edit; a link with its own text keeps it. The target lists all links to it under **Linked from** – including records whose text contains the link. Records and pages you may not read do not appear there.
 

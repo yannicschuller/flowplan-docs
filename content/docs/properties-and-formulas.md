@@ -84,6 +84,7 @@ if(prop("Erledigt"), "✓", concat(format(dateBetween(prop("Fällig"), today(), 
 - Syntaxfehler zeigen ihre Position und verhindern das Speichern.
 - Zahlenergebnisse stehen in Filtern, Sortierungen, Diagrammen und Spaltenberechnungen zur Verfügung.
 - Datumsfunktionen rechnen ohne ausdrückliche Zone in UTC; `now()` und `today()` aktualisieren sich minütlich.
+- Ist ein Datum leer, liefern Datumsfunktionen ein leeres Ergebnis statt `#ERROR`. Bei Vergleichen zählt ein leerer Wert als 0 – `dateBetween(prop("Fällig"), today()) < 3` trifft also auch Einträge ohne Datum; dagegen hilft `!empty(prop("Fällig")) && dateBetween(prop("Fällig"), today()) < 3`.
 - **Erstellt am** und **Bearbeitet am** lesen Formeln als Zeitpunkt in UTC (etwa `2026-11-05T17:39:02Z`), sodass alle Datumsfunktionen damit rechnen, z. B. `formatDate(prop("Erstellt am"), "DD.MM.", "Europe/Berlin")`.
 - Formeln führen kein JavaScript aus; Länge, Verschachtelung und Ergebnisgröße sind begrenzt.
 

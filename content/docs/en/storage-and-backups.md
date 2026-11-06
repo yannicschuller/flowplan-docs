@@ -51,7 +51,7 @@ Start the S3 service so that it listens on all interfaces (`-ip.bind=0.0.0.0`), 
 
 1. **Instance backup in Flowplan** (recommended): **Administration → Storage & backup → Whole instance → Download** downloads the database and files consistently while running.
 2. **S3 with Litestream**: a continuous backup; an earlier point in time can be restored (below).
-3. **Scheduled backup**: a consistent copy of the database every day or every hour, with S3 in the bucket under `backups/`, otherwise in the data folder – encrypted when a key is set ([Encryption](#encryption)). Also to a server of your own via [SFTP](#backup-via-sftp), with all files if you like, or through an [SMB or NFS share](#smb-or-nfs-share).
+3. **Scheduled backup**: a consistent copy of the database every day or every hour, with S3 in the bucket under `backups/`, otherwise in the data folder – encrypted when a key is set ([Encryption](#encryption)). Also to a server of your own via [SFTP](#backup-via-sftp), with all files if you like, or through an [SMB or NFS share](#smb-or-nfs-share). No scheduled backup is made before the first account exists (demo accounts and the development account do not count) – so a new instance does not put an empty copy next to the backups of an old one.
 4. A **volume backup** on the host or in Coolify. For a consistent copy, stop the container first.
 5. **By hand** while running:
 
@@ -70,7 +70,7 @@ The scheduled backup can also go to a server of your own – a NAS, a backup ser
 - **Server**, **port** (22) and **user**, sign-in with a **password** or a **private key** (OpenSSH or PEM, optionally with a passphrase). Flowplan stores password, key and passphrase only encrypted ([stored secrets](/en/configuration#stored-secrets)); afterwards the interface only shows that one is stored.
 - **Folder on the server**: relative to the login folder or absolute (`/srv/backups/flowplan`); `..` is not allowed. If it is missing, Flowplan creates it.
 - **Keep**: this many backups stay in the folder, older ones are removed.
-- **Include files**: mirrors the uploaded files to `uploads/` in the folder. New files are added with every backup; files deleted for good in Flowplan move to `.deleted/uploads/` ([delayed deletion](#delayed-deletion)).
+- **Include files**: mirrors the uploaded files to `uploads/` in the folder. New files are added with every backup; files deleted for good in Flowplan move to `.deleted/uploads/` ([delayed deletion](#delayed-deletion)). Files the database still lists are never moved away there. If the `uploads/` folder is missing or empty although the database lists files (a volume that is not mounted, say), the backup skips the mirror with an error; the database copy is still transferred.
 - With `FLOWPLAN_ENCRYPTION_KEY`, everything on the server is encrypted – the database as in S3 and the data folder (`flowplan-….sqlite.enc`), every file on its own ([Encryption](#encryption)).
 
 **Host key:** on the first **Test connection**, Flowplan shows the server's fingerprint (`SHA256:…`) before it sends any credentials. Compare it on the server with `ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub` and confirm it with **Trust this key**. If the server later presents another key (a reinstall – or someone intercepting the connection), every transfer stops and the administration shows the old and the new fingerprint; it only continues after **Accept the new key**. Another server or port always needs a new confirmation.
@@ -306,7 +306,7 @@ Move the existing `flowplan.sqlite` with `-wal` and `-shm` aside first.
 
 A new, still empty instance takes over a backup right on the setup screen: under **Create account**, click **Restore from a backup** ([Installation, first start](/en/installation#first-start)). You can use
 
-- **File**: a scheduled backup (`flowplan-….sqlite`, `.sqlite.enc`) or the backup of the whole instance (`flowplan-instanz-….zip`, `.zip.enc`), up to 50 GB. The upload is written straight to disk and shows its progress.
+- **File**: a scheduled backup (`flowplan-….sqlite`, `.sqlite.enc`) or the backup of the whole instance (`flowplan-instanz-….zip`, `.zip.enc`), up to 50 GB. The upload is written straight to disk and shows its progress. If attachments are then missing – neither in the backup nor in the instance's file storage –, the page says how many; if the old instance kept its files in S3 or on an SFTP server, restore from there.
 - **S3**: the newest scheduled backup from `<prefix>/backups/` of a bucket, with the files from `<prefix>/uploads/` – any missing there come from `<prefix>/.deleted/uploads/`.
 - **SFTP**: the newest backup from the folder, with the files from `uploads/` (if **Include files** was on) – any missing there come from `.deleted/uploads/`. Flowplan shows the host key first; it only signs in once you confirm **The fingerprint matches**.
 

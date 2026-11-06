@@ -84,6 +84,7 @@ if(prop("Done"), "✓", concat(format(dateBetween(prop("Due"), today(), "days"))
 - Syntax errors show their position and prevent saving.
 - Numeric results are available in filters, sorting, charts and column calculations.
 - Date functions calculate in UTC unless a zone is given; `now()` and `today()` update every minute.
+- If a date is empty, date functions return an empty result instead of `#ERROR`. In comparisons an empty value counts as 0 – so `dateBetween(prop("Due"), today()) < 3` also matches records without a date; guard it with `!empty(prop("Due")) && dateBetween(prop("Due"), today()) < 3`.
 - Formulas read **Created at** and **Edited at** as an instant in UTC (such as `2026-11-05T17:39:02Z`), so every date function works with them, e.g. `formatDate(prop("Created at"), "MM/DD", "America/New_York")`.
 - Formulas do not run JavaScript; length, nesting and result size are limited.
 

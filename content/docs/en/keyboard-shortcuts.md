@@ -50,7 +50,7 @@ The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kb
 | Shortcut | Effect |
 | --- | --- |
 | <kbd>/</kbd> | Block menu |
-| <kbd>@</kbd> | Mention a page or person |
+| <kbd>@</kbd> | Mention a page or person (arrow keys pick, <kbd>Enter</kbd> inserts, <kbd>Esc</kbd> closes) |
 | <kbd>⌘</kbd> <kbd>B</kbd> / <kbd>I</kbd> / <kbd>U</kbd> | Bold, italic, underline |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> | Strikethrough |
 | <kbd>⌘</kbd> <kbd>E</kbd> | Inline code |
