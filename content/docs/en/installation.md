@@ -74,6 +74,8 @@ The image contains Node, Litestream for the S3 backup and `curl` for the health 
 2. Open the address in the browser: a new instance offers **Create account**. This first account administers the instance. If the address is reachable from the internet, set `FLOWPLAN_SETUP_TOKEN` first and create the account via `/register?setup=<token>` – otherwise someone could beat you to it ([Sign-in](/en/sign-in#e-mail-and-password)). (With single sign-on: **Sign in with SSO**; administrators are the members of the group in `OIDC_ADMIN_GROUP`.)
 3. In the sidebar under **Administration**, set the instance name, upload limit, sign-ups and the [other settings](/administration).
 
+**Moving or reinstalling?** Instead of the first account, the setup screen offers **Restore from a backup**: upload a backup file or fetch the newest backup from S3 or via SFTP, encrypted ones with the old instance's key. Afterwards you sign in with the accounts of the backup ([Restore while setting up](/en/storage-and-backups#restore-while-setting-up)). To move from a running instance there is also [Moving an instance](/en/move-instance).
+
 > [!WARNING]
 > Flowplan is built for **exactly one running instance**. Several replicas would write to the same SQLite file. Do not scale horizontally; when updating, stop the old container before the new one.
 

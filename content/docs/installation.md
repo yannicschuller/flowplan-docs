@@ -74,6 +74,8 @@ Das Image enthält Node, Litestream für die S3-Sicherung und `curl` für den He
 2. Die Adresse im Browser öffnen: Eine neue Instanz bietet **Konto erstellen** an. Dieses erste Konto verwaltet die Instanz. Ist die Adresse aus dem Internet erreichbar, setze vorher `FLOWPLAN_SETUP_TOKEN` und lege das Konto über `/register?setup=<token>` an – sonst könnte dir jemand zuvorkommen ([Anmeldung](/sign-in#e-mail-und-passwort)). (Mit Single Sign-on: **Mit SSO anmelden**; Admin ist, wer in der Gruppe aus `OIDC_ADMIN_GROUP` ist.)
 3. In der Seitenleiste unter **Administration** Instanzname, Upload-Grenze, Registrierung und die [weiteren Einstellungen](/administration) setzen.
 
+**Umzug oder Neuinstallation?** Statt des ersten Kontos bietet der Einrichtungsbildschirm **Aus Sicherung wiederherstellen**: eine Sicherungsdatei hochladen oder die neueste Sicherung aus S3 oder per SFTP holen, verschlüsselte mit dem Schlüssel der alten Instanz. Danach meldest du dich mit den Konten der Sicherung an ([Beim Einrichten wiederherstellen](/storage-and-backups#beim-einrichten-wiederherstellen)). Für einen Umzug von einer laufenden Instanz gibt es außerdem [Instanz umziehen](/move-instance).
+
 > [!WARNING]
 > Flowplan ist für **genau eine laufende Instanz** gebaut. Mehrere Replikate würden dieselbe SQLite-Datei beschreiben. Nicht horizontal skalieren; bei Updates den alten Container vor dem neuen stoppen.
 

@@ -6,6 +6,8 @@ From signing in for the first time to your first own page: what you do with Flow
 
 You sign in with your e-mail and password, with a passkey (fingerprint, face or device PIN) or – if your organisation has set it up – with **Sign in with SSO** through your organisation's login (OpenID Connect, such as Keycloak, Authentik, Zitadel or Entra ID). You create an account with **Create account**, provided the instance allows sign-ups or you have been invited. Afterwards you set up passkeys under **Settings → Account & security**. Everything else is described under [Sign-in](/sign-in).
 
+On a brand-new instance you create the first account – it administers the instance. If you are moving or reinstalling, choose **Restore from a backup** there instead ([Restore while setting up](/en/storage-and-backups#restore-while-setting-up)).
+
 When you sign in for the first time, Flowplan creates a private workspace with example pages. With single sign-on, your name, e-mail address and – if available – your profile picture come from the login provider.
 
 > [!TIP]

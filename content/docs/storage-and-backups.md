@@ -51,7 +51,7 @@ Den S3-Dienst so starten, dass er auf allen Schnittstellen lauscht (`-ip.bind=0.
 
 1. **Instanzsicherung in Flowplan** (empfohlen): **Administration → Speicher & Sicherung → Gesamte Instanz → Herunterladen** lädt Datenbank und Dateien konsistent im laufenden Betrieb herunter.
 2. **S3 mit Litestream**: laufende Sicherung; ein früherer Zeitpunkt lässt sich wiederherstellen (unten).
-3. **Geplante Sicherung**: täglich oder stündlich eine konsistente Kopie der Datenbank, mit S3 in den Bucket unter `backups/`, sonst in den Datenordner – mit Schlüssel verschlüsselt ([Verschlüsselung](#verschluesselung)).
+3. **Geplante Sicherung**: täglich oder stündlich eine konsistente Kopie der Datenbank, mit S3 in den Bucket unter `backups/`, sonst in den Datenordner – mit Schlüssel verschlüsselt ([Verschlüsselung](#verschluesselung)). Zusätzlich auf einen eigenen Server per [SFTP](#sicherung-per-sftp), auf Wunsch mit allen Dateien, oder über eine [SMB- oder NFS-Freigabe](#smb-oder-nfs-freigabe).
 4. **Volume-Backup** des Hosts oder in Coolify. Für eine konsistente Kopie den Container vorher stoppen.
 5. **Von Hand** im laufenden Betrieb:
 
@@ -62,6 +62,68 @@ sqlite3 /app/data/flowplan.sqlite "VACUUM INTO '/backup/flowplan.sqlite'"
 Dazu `uploads/` und `web-push-keys.json` mitsichern.
 
 Das Inhaltsarchiv unter **Einstellungen → Import & Export → Export → Arbeitsbereich als ZIP** sichert einen Arbeitsbereich, ersetzt aber keine Instanzsicherung mit Konten und Rechten.
+
+## Sicherung per SFTP
+
+Die geplante Sicherung kann zusätzlich auf einen eigenen Server gehen – ein NAS, einen Backup-Server oder einen gemieteten Speicher mit SSH-Zugang. Einrichten unter **Administration → Speicher & Sicherung → SFTP-Ziel**:
+
+- **Server**, **Port** (22) und **Benutzer**, Anmeldung mit **Passwort** oder **privatem Schlüssel** (OpenSSH oder PEM, optional mit Passphrase). Passwort, Schlüssel und Passphrase speichert Flowplan nur verschlüsselt ([gespeicherte Geheimnisse](/configuration#gespeicherte-geheimnisse)); die Oberfläche zeigt danach nur noch, dass eines gespeichert ist.
+- **Ordner auf dem Server**: relativ zum Anmeldeordner oder absolut (`/srv/backups/flowplan`); `..` ist nicht erlaubt. Fehlt er, legt Flowplan ihn an.
+- **Aufbewahren**: so viele Sicherungen bleiben im Ordner, ältere werden entfernt.
+- **Dateien mitsichern**: spiegelt die hochgeladenen Dateien nach `uploads/` im Ordner. Neue Dateien kommen bei jeder Sicherung dazu; Dateien, die in Flowplan endgültig gelöscht sind, verschwinden dort ebenfalls.
+- Mit `FLOWPLAN_ENCRYPTION_KEY` ist alles auf dem Server verschlüsselt – die Datenbank wie in S3 und im Datenordner (`flowplan-….sqlite.enc`), jede Datei einzeln ([Verschlüsselung](#verschluesselung)).
+
+**Hostschlüssel:** Beim ersten **Verbindung testen** zeigt Flowplan den Fingerabdruck des Servers (`SHA256:…`), noch bevor es Zugangsdaten sendet. Vergleiche ihn auf dem Server mit `ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub` und bestätige ihn mit **Schlüssel vertrauen**. Meldet sich der Server später mit einem anderen Schlüssel (Neuinstallation – oder jemand schaltet sich dazwischen), stoppt jede Übertragung, und die Administration zeigt alten und neuen Fingerabdruck; erst nach **Neuen Schlüssel annehmen** geht es weiter. Ein anderer Server oder Port braucht immer eine neue Bestätigung.
+
+Die SFTP-Sicherung läuft mit jeder geplanten Sicherung (täglich oder stündlich, **Geplante Datenbanksicherung** muss an sein); **Jetzt sichern** im SFTP-Ziel überträgt sofort. Letzte Übertragung und letzter Fehler stehen darunter und in der Statuszeile oben.
+
+Auf dem Server reicht ein eingeschränkter Zugang, etwa mit OpenSSH:
+
+```text
+Match User flowplan
+  ChrootDirectory /srv/sftp/flowplan
+  ForceCommand internal-sftp
+  AllowTcpForwarding no
+```
+
+### SMB- oder NFS-Freigabe
+
+SMB und NFS spricht Flowplan nicht selbst – dafür bräuchte der Container Mount-Rechte. Stattdessen hängt Docker die Freigabe als Volume ein, und die geplante Sicherung schreibt in den Ordner `backups/` des Datenordners (das lokale Ziel, also ohne `S3_BUCKET`):
+
+```yaml
+services:
+  flowplan:
+    volumes:
+      - flowplan-data:/app/data
+      # Die Freigabe über den Ordner der Sicherungen legen.
+      - nas-backups:/app/data/backups
+
+volumes:
+  flowplan-data:
+  # SMB/CIFS (auf dem Docker-Host wird cifs-utils gebraucht)
+  nas-backups:
+    driver: local
+    driver_opts:
+      type: cifs
+      device: "//nas.example.lan/flowplan"
+      o: "username=flowplan,password=${NAS_PASSWORD},uid=1000,gid=1000,file_mode=0600,dir_mode=0700,vers=3.0"
+```
+
+Für NFS stattdessen:
+
+```yaml
+  nas-backups:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: "addr=nas.example.lan,nfsvers=4,rw"
+      device: ":/export/flowplan"
+```
+
+`uid=1000` ist der Benutzer `node`, unter dem Flowplan läuft; bei NFS muss der Export für diese UID beschreibbar sein. Das Passwort kommt aus einer `.env`-Datei neben der `compose.yaml`. In Panels wie 1Panel oder Portainer heißt das „Volume mit Treiber local und Optionen“ bzw. „CIFS/NFS-Volume“.
+
+> [!WARNING]
+> Nur den Ordner `backups/` auf die Freigabe legen, nie den ganzen Datenordner: SQLite braucht zuverlässige Dateisperren, die SMB und NFS nicht garantieren. Die Freigabe erhält nur die Datenbank – für die Dateien die [Instanzsicherung](#sicherungen) herunterladen oder das SFTP-Ziel mit **Dateien mitsichern** nutzen.
 
 ## Verschlüsselung
 
@@ -228,6 +290,21 @@ litestream restore -config /etc/litestream.yml \
 ```
 
 Vorher die bestehende `flowplan.sqlite` samt `-wal` und `-shm` beiseitelegen.
+
+### Beim Einrichten wiederherstellen
+
+Eine neue, noch leere Instanz übernimmt eine Sicherung direkt auf dem Einrichtungsbildschirm: unter **Konto erstellen** auf **Aus Sicherung wiederherstellen** klicken ([Installation, Erster Start](/installation#erster-start)). Möglich sind
+
+- **Datei**: eine geplante Sicherung (`flowplan-….sqlite`, `.sqlite.enc`) oder die Sicherung der gesamten Instanz (`flowplan-instanz-….zip`, `.zip.enc`), bis 50 GB. Der Upload wird direkt auf die Festplatte geschrieben und zeigt seinen Fortschritt.
+- **S3**: die neueste geplante Sicherung aus `<Präfix>/backups/` eines Buckets, dazu die Dateien aus `<Präfix>/uploads/`.
+- **SFTP**: die neueste Sicherung aus dem Ordner, dazu die Dateien aus `uploads/` (wenn **Dateien mitsichern** an war). Zuerst zeigt Flowplan den Hostschlüssel; erst wenn du **Der Fingerabdruck stimmt** bestätigst, meldet es sich an.
+
+Ist die Sicherung verschlüsselt, frag die Seite nach dem Schlüssel der alten Instanz (`FLOWPLAN_ENCRYPTION_KEY`) – oder er ist auf der neuen schon gesetzt. Flowplan prüft die Datenbank (unbeschädigt, eine Flowplan-Datenbank, nicht aus einer neueren Version – ältere werden beim Öffnen wie bei einem Update aktualisiert), legt den leeren Anfangsstand als `pre-restore-…` beiseite und übernimmt die Sicherung sofort. Danach meldest du dich mit einem Konto aus der Sicherung an. Läuft Litestream (S3 ohne `FLOWPLAN_LITESTREAM=off`), wird die Sicherung erst beim nächsten Neustart des Containers übernommen – die Seite sagt das.
+
+Die Möglichkeit gibt es nur, solange die Instanz kein Konto hat, und mit gesetztem `FLOWPLAN_SETUP_TOKEN` nur über den Einrichtungslink. Sobald ein Konto existiert, lehnt der Server jede Anfrage dazu ab; dann bleibt **Administration → Speicher & Sicherung → Aus Sicherung wiederherstellen**.
+
+> [!NOTE]
+> Gespeicherte Geheimnisse (Authenticator-Apps, KI- und Messenger-Schlüssel, das SFTP-Passwort) lassen sich nur mit demselben `FLOWPLAN_ENCRYPTION_KEY` oder `FLOWPLAN_SECRETS_KEY` wie auf der alten Instanz lesen; ohne beide liegt der Schlüssel in `secrets.key` im Datenordner, der in keiner Sicherung steckt. Hast du beim Wiederherstellen einen Schlüssel eingegeben, trage ihn danach als `FLOWPLAN_ENCRYPTION_KEY` ein.
 
 ## Kontingente
 

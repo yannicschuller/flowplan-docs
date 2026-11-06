@@ -6,6 +6,8 @@ Vom ersten Anmelden bis zur ersten eigenen Seite: was du in den ersten zehn Minu
 
 Du meldest dich mit E-Mail und Passwort an, mit einem Passkey (Fingerabdruck, Gesicht oder Geräte-PIN) oder – wenn deine Organisation das eingerichtet hat – über **Mit SSO anmelden** beim Login deiner Organisation (OpenID Connect, etwa Keycloak, Authentik, Zitadel oder Entra ID). Ein Konto legst du mit **Konto erstellen** an, sofern die Instanz die Registrierung erlaubt oder du eingeladen wurdest. Passkeys richtest du danach unter **Einstellungen → Konto & Sicherheit** ein. Alles Weitere unter [Anmeldung](/sign-in).
 
+Auf einer ganz neuen Instanz legst du das erste Konto an – es verwaltet die Instanz. Ziehst du um oder installierst neu, wählst du dort stattdessen **Aus Sicherung wiederherstellen** ([Beim Einrichten wiederherstellen](/storage-and-backups#beim-einrichten-wiederherstellen)).
+
 Beim ersten Anmelden legt Flowplan einen privaten Arbeitsbereich mit Beispielseiten an. Bei Single Sign-on kommen Name, E-Mail-Adresse und – falls vorhanden – das Profilbild vom Login-Anbieter.
 
 > [!TIP]
