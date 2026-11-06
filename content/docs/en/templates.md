@@ -17,6 +17,8 @@ Templates are saved pages – documents, databases or whole page trees – from 
 
 A click asks for a title and space and creates the page. Dates in the examples are set relative to today.
 
+As soon as there are [templates of your own](#your-own-templates), the category **My templates** comes right after **All**: it shows only the saved templates – your personal ones ("Only me"), the workspace's and those for all workspaces – without the built-in ones.
+
 If you open the gallery from the **New page** dialog, the page goes where you were creating it – in the chosen space and under the chosen page – with your own templates too. Closing the gallery takes you back to the dialog.
 
 ## Your own templates

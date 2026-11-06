@@ -36,6 +36,7 @@ Die Kanban-Ansicht gruppiert Karten in Spalten, etwa nach Status, Auswahl, Perso
 - Spalten umsortieren, ausblenden oder einklappen; „Ohne Gruppe“ sammelt Einträge ohne Wert.
 - **Gruppe hinzufügen** rechts neben den Spalten legt einen eigenen Status an, etwa „Warten auf Kunde“: Er wird als neue Option der gruppierenden Auswahl-Eigenschaft gespeichert und erscheint sofort als eigene Spalte.
 - Untergruppen teilen das Board zusätzlich in Zeilen (Swimlanes).
+- Karten zeigen jede unter **Ansicht → Eigenschaften und Spalten** angehakte Eigenschaft, die einen Wert hat, in dieser Reihenfolge; leere Eigenschaften fallen weg, das Datum steht unten auf der Karte. Mit mehr Eigenschaften wird die Karte höher.
 - Bei Mehrfachauswahl und Relationen kann eine Karte in mehreren Spalten erscheinen; Verschieben ersetzt nur die jeweilige Zuordnung.
 - Auf Touchgeräten Karten am Griff ziehen (die Karte selbst scrollt beim Wischen), Spalten am Griff ⋮⋮ in ihrer Überschrift; mit der Maus Spalten an der Überschrift. <kbd>Esc</kbd> bricht ab, die Karte kehrt an ihren Platz zurück.
 
@@ -120,11 +121,11 @@ In eingebetteten Ansichten (verknüpfte Datenbanken) sind Verknüpfen per Ziehen
 
 ## Galerie
 
-Karten mit Vorschaubild und ausgewählten Eigenschaften. Das Bild kommt wahlweise aus dem Inhalt des Eintrags, seinem Cover oder einer Dateien-Eigenschaft, füllend oder eingepasst.
+Karten mit Vorschaubild und allen angehakten Eigenschaften, die einen Wert haben (wie im Board). Das Bild kommt wahlweise aus dem Inhalt des Eintrags, seinem Cover oder einer Dateien-Eigenschaft, füllend oder eingepasst.
 
 ## Liste
 
-Kompakte Zeilen mit Titel und wenigen Eigenschaften, gut für lange Sammlungen.
+Kompakte Zeilen mit Titel und bis zu drei ausgefüllten Eigenschaften, gut für lange Sammlungen.
 
 ## Feed
 

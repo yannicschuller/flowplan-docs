@@ -17,6 +17,8 @@ Vorlagen sind gespeicherte Seiten – Dokumente, Datenbanken oder ganze Seitenb�
 
 Ein Klick fragt nach Titel und Bereich und legt die Seite an. Datumswerte der Beispiele werden relativ zum heutigen Tag gesetzt.
 
+Sobald es [eigene Vorlagen](#eigene-vorlagen) gibt, steht gleich nach **Alle** die Kategorie **Eigene Vorlagen**: Sie zeigt nur die gespeicherten Vorlagen – deine eigenen („Nur für mich“), die des Arbeitsbereichs und die für alle Arbeitsbereiche – ohne die eingebauten.
+
 Öffnest du die Galerie aus dem Dialog **Neue Seite**, landet die Seite dort, wo du sie anlegen wolltest – im gewählten Bereich und unter der gewählten Seite –, auch mit einer eigenen Vorlage. Schließt du die Galerie, bist du wieder im Dialog.
 
 ## Eigene Vorlagen

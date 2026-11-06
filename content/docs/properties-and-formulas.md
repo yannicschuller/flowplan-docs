@@ -59,7 +59,7 @@ Relationen erscheinen im Eintrag als Links. Die Datenbanksuche findet Einträge 
 2. **Eigenschaft hinzufügen → Rollup**, dann Relation und Eigenschaft der Zieldatenbank wählen.
 3. Berechnung wählen – 22 stehen zur Verfügung, passend zum Typ: Originalwerte, eindeutige Werte, Anzahl, leer/gefüllt (auch als Anteil), Summe, Mittelwert, Median, Minimum, Maximum, Spannweite, abgehakt/nicht abgehakt, frühestes und spätestes Datum, Zeitraum.
 
-Zahlen-Rollups erscheinen als Zahl, Fortschrittsbalken, Fortschrittsring oder Bewertung, mit einstellbarem Zielwert. Werte aus Datenbanken, die jemand nicht lesen darf, werden für diese Person nicht geladen.
+Frühestes und spätestes Datum über **Erstellt am** oder **Bearbeitet am** ergeben einen Zeitpunkt in UTC, angezeigt in deiner Zeitzone. Zahlen-Rollups erscheinen als Zahl, Fortschrittsbalken, Fortschrittsring oder Bewertung, mit einstellbarem Zielwert. Werte aus Datenbanken, die jemand nicht lesen darf, werden für diese Person nicht geladen.
 
 ## KI-Eigenschaften
 
@@ -81,6 +81,7 @@ if(prop("Erledigt"), "✓", concat(format(dateBetween(prop("Fällig"), today(), 
 - Syntaxfehler zeigen ihre Position und verhindern das Speichern.
 - Zahlenergebnisse stehen in Filtern, Sortierungen, Diagrammen und Spaltenberechnungen zur Verfügung.
 - Datumsfunktionen rechnen ohne ausdrückliche Zone in UTC; `now()` und `today()` aktualisieren sich minütlich.
+- **Erstellt am** und **Bearbeitet am** lesen Formeln als Zeitpunkt in UTC (etwa `2026-11-05T17:39:02Z`), sodass alle Datumsfunktionen damit rechnen, z. B. `formatDate(prop("Erstellt am"), "DD.MM.", "Europe/Berlin")`.
 - Formeln führen kein JavaScript aus; Länge, Verschachtelung und Ergebnisgröße sind begrenzt.
 
 ### Funktionsgruppen

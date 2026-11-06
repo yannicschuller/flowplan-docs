@@ -36,6 +36,7 @@ The kanban view groups cards into columns, for example by status, select, person
 - Reorder, hide or collapse columns; "No group" collects records without a value.
 - **Add group** to the right of the columns creates your own status, such as "Waiting for customer": it is saved as a new option of the grouping select property and appears right away as a column of its own.
 - Sub-groups also split the board into rows (swimlanes).
+- Cards show every property ticked under **View → Properties and columns** that has a value, in that order; empty properties are left out, and the date sits at the bottom of the card. With more properties the card grows taller.
 - With multi-select and relations, a card can appear in several columns; moving it only replaces the respective assignment.
 - On touch devices, drag cards by their handle (swiping over a card scrolls) and columns by the ⋮⋮ handle in their header; with the mouse, drag columns by their header. <kbd>Esc</kbd> cancels and the card returns to its place.
 
@@ -120,11 +121,11 @@ In embedded views (linked databases), linking by dragging and **Resolve all conf
 
 ## Gallery
 
-Cards with a preview image and selected properties. The image comes from the record's content, its cover or a files property, filling the card or fitted in.
+Cards with a preview image and every ticked property that has a value (as on the board). The image comes from the record's content, its cover or a files property, filling the card or fitted in.
 
 ## List
 
-Compact rows with the title and a few properties, good for long collections.
+Compact rows with the title and up to three filled-in properties, good for long collections.
 
 ## Feed
 

@@ -59,7 +59,7 @@ Relations appear as links in the record. The database search also finds records 
 2. **Add property → Rollup**, then choose the relation and a property of the target database.
 3. Choose a calculation – 22 are available, depending on the type: original values, unique values, count, empty/not empty (also as a percentage), sum, average, median, minimum, maximum, range, checked/unchecked, earliest and latest date, date range.
 
-Number rollups appear as a number, progress bar, progress ring or rating, with an adjustable target value. Values from databases someone may not read are not loaded for that person.
+Earliest and latest date over **Created at** or **Edited at** give an instant in UTC, shown in your time zone. Number rollups appear as a number, progress bar, progress ring or rating, with an adjustable target value. Values from databases someone may not read are not loaded for that person.
 
 ## AI properties
 
@@ -81,6 +81,7 @@ if(prop("Done"), "✓", concat(format(dateBetween(prop("Due"), today(), "days"))
 - Syntax errors show their position and prevent saving.
 - Numeric results are available in filters, sorting, charts and column calculations.
 - Date functions calculate in UTC unless a zone is given; `now()` and `today()` update every minute.
+- Formulas read **Created at** and **Edited at** as an instant in UTC (such as `2026-11-05T17:39:02Z`), so every date function works with them, e.g. `formatDate(prop("Created at"), "MM/DD", "America/New_York")`.
 - Formulas do not run JavaScript; length, nesting and result size are limited.
 
 ### Function groups
