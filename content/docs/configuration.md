@@ -19,10 +19,12 @@ Alle Umgebungsvariablen auf einen Blick. Viele Werte lassen sich zusätzlich in 
 | `OIDC_CLIENT_SECRET` | – | Client-Secret. Nie ins Image oder ins Git. Leer: öffentlicher Client, nur mit PKCE. |
 | `OIDC_LINKED_SSO_ONLY` | aus | `true`: Konten, die mit SSO verbunden sind, melden sich nur noch über SSO an. Anmelden mit Passwort oder Passkey wird mit einem Hinweis abgelehnt; Passkeys und die Authenticator-App bleiben zum Bestätigen wichtiger Schritte. Siehe [Bestehendes Konto mit SSO verbinden](/sign-in#bestehendes-konto-mit-sso-verbinden). |
 | `OIDC_NEW_ACCOUNTS` | an | `false`: Die SSO-Anmeldung legt keine neuen Konten an – nur bestehende, verbundene oder per SCIM bereitgestellte Konten melden sich an. Bei der ersten SSO-Anmeldung mit bekannter Adresse fehlt dann „Stattdessen ein eigenes Konto anlegen“. |
-| `SESSION_HOURS` | `8` | Dauer einer Sitzung in Stunden (1–24). Ohne `SESSION_REMEMBER` gilt das für alle Sitzungen, auch die der Apps. |
-| `SESSION_REMEMBER` | aus | `true` bietet beim Anmelden **Angemeldet bleiben** an – siehe [Anmeldung](/sign-in#angemeldet-bleiben). Empfohlen, wenn die Desktop- oder Handy-Apps und ihre Widgets genutzt werden. |
-| `SESSION_IDLE_HOURS` | `168` | Mit „angemeldet bleiben“: Sitzung endet so viele Stunden nach der letzten Nutzung (1–2160, höchstens `SESSION_MAX_DAYS`). |
-| `SESSION_MAX_DAYS` | `30` | Mit „angemeldet bleiben“: spätestens nach so vielen Tagen neu anmelden (1–365) – mit SSO genauso wie mit Passwort und Passkey. |
+| `SESSION_HOURS` | `8` | Browser-Sitzung ohne „Angemeldet bleiben“: endet so viele Stunden nach der Anmeldung (1–24). Auch unter **Administration → Anmeldung & SSO → Sitzungen**; ein dort gespeicherter Wert hat Vorrang (gilt für alle `SESSION_*` außer `SESSION_MAX_DAYS` und `SESSION_GROUPS_HOURS`). |
+| `SESSION_REMEMBER` | aus | `true` bietet im Browser beim Anmelden **Angemeldet bleiben** an – siehe [Anmeldung](/sign-in#angemeldet-bleiben). Die Apps bleiben unabhängig davon angemeldet. |
+| `SESSION_IDLE_HOURS` | `168` | Mit „angemeldet bleiben“ im Browser: Sitzung endet so viele Stunden nach der letzten Nutzung (1–8760). |
+| `SESSION_APP_REMEMBER` | an | Desktop- und Handy-Apps bleiben angemeldet, solange sie (oder ihre Widgets) genutzt werden. `false`: Ihre Sitzungen enden wie eine Browser-Sitzung ohne „Angemeldet bleiben“. |
+| `SESSION_APP_DAYS` | `90` | App-Sitzung endet nach so vielen Tagen ohne Nutzung (1–365). |
+| `SESSION_MAX_DAYS` | `30` / `365` | Sitzungen, die angemeldet bleiben, enden spätestens so viele Tage nach der Anmeldung (1–365; Standard 30 im Browser, 365 in den Apps; nie kürzer als die Zeit ohne Nutzung) – mit SSO genauso wie mit Passwort und Passkey. |
 | `SESSION_GROUPS_HOURS` | *leer* | Nur wenn gesetzt: SSO-Sitzungen mit „angemeldet bleiben“ enden schon nach so vielen Stunden, damit Gruppenänderungen beim Anbieter mit der neuen Anmeldung wirken. Ohne die Variable wirken sie über SCIM, den LDAP-Abgleich oder die nächste Anmeldung. |
 | `LDAP_URL` | *leer* | Anmeldung mit einem LDAP-Verzeichnis (`ldap://` oder `ldaps://`) – siehe [Anmeldung mit LDAP](/sign-in#anmeldung-mit-ldap). |
 | `LDAP_BIND_DN` / `LDAP_BIND_PASSWORD` | *leer* | Suchkonto für LDAP; ohne es anonyme Suche. |

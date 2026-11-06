@@ -19,10 +19,12 @@ All environment variables at a glance. Many values can also be set in the interf
 | `OIDC_CLIENT_SECRET` | – | Client secret. Never put it into the image or into Git. Empty: a public client, PKCE only. |
 | `OIDC_LINKED_SSO_ONLY` | off | `true`: accounts connected to SSO sign in through SSO only. A password or passkey sign-in is refused with a note; passkeys and the authenticator app stay for confirming important steps. See [Connect an existing account to SSO](/en/sign-in#connect-an-existing-account-to-sso). |
 | `OIDC_NEW_ACCOUNTS` | on | `false`: SSO sign-in creates no new accounts – only existing, connected or SCIM-provisioned accounts sign in. At a first SSO sign-in with a known address, "Create a separate account instead" is then not offered. |
-| `SESSION_HOURS` | `8` | How long a session lasts in hours (1–24). Without `SESSION_REMEMBER` this applies to every session, the apps' too. |
-| `SESSION_REMEMBER` | off | `true` offers **Stay signed in** when signing in – see [Sign-in](/sign-in#stay-signed-in). Recommended when the desktop or mobile apps and their widgets are used. |
-| `SESSION_IDLE_HOURS` | `168` | With "stay signed in": the session ends this many hours after it was last used (1–2160, at most `SESSION_MAX_DAYS`). |
-| `SESSION_MAX_DAYS` | `30` | With "stay signed in": sign in again after this many days at the latest (1–365) – with SSO just as with password and passkey. |
+| `SESSION_HOURS` | `8` | Browser session without "Stay signed in": ends this many hours after signing in (1–24). Also under **Administration → Sign-in & SSO → Sessions**; a value saved there takes precedence (for every `SESSION_*` except `SESSION_MAX_DAYS` and `SESSION_GROUPS_HOURS`). |
+| `SESSION_REMEMBER` | off | `true` offers **Stay signed in** in the browser when signing in – see [Sign-in](/sign-in#stay-signed-in). The apps stay signed in regardless. |
+| `SESSION_IDLE_HOURS` | `168` | With "stay signed in" in the browser: the session ends this many hours after it was last used (1–8760). |
+| `SESSION_APP_REMEMBER` | on | The desktop and mobile apps stay signed in while they (or their widgets) are used. `false`: their sessions end like a browser session without "Stay signed in". |
+| `SESSION_APP_DAYS` | `90` | An app's session ends after this many days without use (1–365). |
+| `SESSION_MAX_DAYS` | `30` / `365` | Sessions that stay signed in end at the latest this many days after signing in (1–365; default 30 in the browser, 365 in the apps; never shorter than the time without use) – with SSO just as with password and passkey. |
 | `SESSION_GROUPS_HOURS` | *empty* | Only when set: SSO sessions with "stay signed in" end after this many hours already, so group changes at the provider take effect with the new sign-in. Without it they follow through SCIM, the LDAP sync or the next sign-in. |
 | `LDAP_URL` | *empty* | Sign-in with an LDAP directory (`ldap://` or `ldaps://`) – see [Sign-in with LDAP](/sign-in#sign-in-with-ldap). |
 | `LDAP_BIND_DN` / `LDAP_BIND_PASSWORD` | *empty* | Search account for LDAP; without it, anonymous search. |

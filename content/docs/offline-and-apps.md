@@ -179,7 +179,7 @@ Wie die Desktop-App zeigen die mobilen Apps deine Flowplan-Instanz; alle Daten b
 - **[Sprachnotizen](#sprachnotizen-in-seiten)** in Seiten nimmt die App auf; auf iPhone und iPad werden sie auf dem Gerät selbst zu Text.
 - **[KI auf dem Gerät](#ki-auf-dem-geraet-und-schreibtools-iphone-und-ipad)** (iPhone, iPad, optional): Schreibassistent und Zusammenfassungen mit Apple Intelligence, ohne dass der Text das Gerät verlässt; Apples Schreibtools im Editor.
 - **[Kalender in Apple Kalender](#kalender-in-apple-kalender)** mit einem Konfigurationsprofil, statt CalDAV-Zugangsdaten abzutippen.
-- **App-Sperre:** Auf Wunsch entsperrt sich Flowplan nur mit Face ID, Touch ID, Fingerabdruck oder dem Gerätecode.
+- **Angemeldet bleiben und App-Sperre:** Die App bleibt angemeldet, solange du sie oder ihre Widgets nutzt (Standard: 90 Tage ohne Nutzung, siehe [Angemeldet bleiben](/sign-in#angemeldet-bleiben)). Auf Wunsch entsperrt sich Flowplan nur mit Face ID, Touch ID, Fingerabdruck oder dem Gerätecode – auf iPhone, iPad und Android, nach mehr als einer Minute im Hintergrund erneut.
 - **Zurück:** Wischen vom linken Rand (iOS) bzw. die Zurück-Geste oder -Taste (Android) schließt zuerst, was gerade offen ist (Menü, Dialog, Seitenleiste), und geht dann eine Ebene nach oben: von einem Abschnitt der Einstellungen zur Übersicht, von einem Eintrag zur Datenbank, von einer Seite zur vorherigen Seite.
 - **Exporte und Downloads** gehen in das Teilen-Menü des Systems (z. B. „In Dateien sichern“).
 - **Ohne Verbindung:** Die App öffnet die Offline-Kopie des Profils, auch auf iPhone und iPad – siehe [Offline in der App für iPhone und iPad](#offline-in-der-app-fuer-iphone-und-ipad).
