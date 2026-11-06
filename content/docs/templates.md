@@ -28,6 +28,15 @@ Ein Klick fragt nach Titel und Bereich und legt die Seite an. Datumswerte der Be
    - **Alle Arbeitsbereiche** der Instanz,
    - **Öffentliche Galerie** (nur Admins): auch ohne Konto sichtbar.
 
+### Vorlagen eines Bereichs oder des ganzen Arbeitsbereichs
+
+Wie [Tags und Eigenschaften](/pages-and-spaces#geltungsbereich-arbeitsbereich-oder-bereich) gehört eine eigene Vorlage **zu einem Bereich** oder **zum ganzen Arbeitsbereich**. Beim Speichern ist **Nur in diesem Bereich** (dem Bereich der Seite) voreingestellt; **Im ganzen Arbeitsbereich** speichern nur Eigentümer (private Vorlagen jeder). Was es vor dieser Unterscheidung gab, gilt im ganzen Arbeitsbereich.
+
+- **Die Galerie** zeigt zuerst die Vorlagen des Bereichs, in dem die neue Seite entsteht, und die des Arbeitsbereichs; **Alle Bereiche** zeigt auch die anderer Bereiche. Ein Etikett nennt den Bereich oder „Arbeitsbereich“. Vorlagen eines Bereichs sehen nur, wer ihn öffnen darf.
+- **Vorlagen für den ganzen Arbeitsbereich** verwenden nur Tags und Eigenschaften des ganzen Arbeitsbereichs. Trägt die Seite Tags oder Eigenschaften ihres Bereichs, nennt Flowplan sie; **Speichern** nimmt sie dann aus der Vorlage (oder du machst sie vorher arbeitsbereichsweit).
+- **Eine Vorlage aus einem anderen Bereich verwenden:** Bringt sie Tags oder Eigenschaften ihres Bereichs mit, fragt ein Zwischenschritt für jede: **zuordnen** (zu einem gleichnamigen oder anderen Tag bzw. einer Eigenschaft gleichen Typs im Zielbereich), **kopieren** (in den Zielbereich, Voreinstellung ohne gleichnamigen) oder **entfernen**.
+- **Kopieren** legt eine Kopie der Vorlage für einen anderen Bereich (oder den Arbeitsbereich) an – mit demselben Zwischenschritt; kopierte Tags und Eigenschaften entstehen dabei gleich im Zielbereich. **Bearbeiten → Gilt** verschiebt die Vorlage selbst dorthin.
+
 Vorlagen speichern eigene Kopien der Dateien und bleiben verwendbar, auch wenn die Quellseite gelöscht wird. Auch die [Tags und Eigenschaftswerte](/pages-and-spaces#tags-und-eigenschaften) der Seite kommen mit; neue Seiten aus der Vorlage bekommen sie (fehlende Tags werden angelegt). Datenbank-Vorlagen enthalten Ansichten, Einträge samt Inhalten, Datensatzvorlagen und die Formulargestaltung. Vorlagen lassen sich umbenennen, privat oder geteilt schalten und in den Papierkorb legen. Im **Vorlagen-Papierkorb** holt **Wiederherstellen** eine Vorlage zurück, **Endgültig löschen** löscht sie samt ihren Dateien, und **Vorlagen-Papierkorb leeren** löscht alle, die du verwalten darfst (deine eigenen; als Eigentümer alle des Arbeitsbereichs; Vorlagen für alle Arbeitsbereiche nur Admins). Bereits erstellte Seiten bleiben erhalten. Nach der [Papierkorb-Frist](/pages-and-spaces#papierkorb) (Standard 30 Tage) werden Vorlagen im Papierkorb automatisch gelöscht.
 
 ## Datensatzvorlagen

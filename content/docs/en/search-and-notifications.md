@@ -38,6 +38,8 @@ These words act as filters in the search:
 
 Names with spaces go in quotes: `"Next step":Offer`. Several filters apply together; the remaining text is searched as usual. Filters without text list all matching pages, most recently changed first. Records count with their own tags and those of their database page. Words that name no tag and no property (like `#123`) stay ordinary search words.
 
+Tags and properties can [apply in one space only](/pages-and-spaces#scope-workspace-or-space), and two spaces may have ones of the same name. `#Urgent` is a name: it finds the pages with any tag of that name you may see – in each space the one that applies there. The **Tag …** choice next to the search field shows, with a space chosen, only its tags and the workspace's; for all spaces all of them with the space's name as a hint. The [tag view](/pages-and-spaces#tag-view), in contrast, shows exactly one tag (same-named ones of other spaces on request).
+
 Recognised filters appear as chips under the search field; ✕ removes one. The **Tag …** choice next to the space adds a tag filter. Collections keep the filters. Tag names and values are also ordinary words of the page: “customer” also finds pages tagged “customer”.
 
 ### Combine: AND, OR, NOT

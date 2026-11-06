@@ -38,6 +38,8 @@ Diese Wörter wirken in der Suche als Filter:
 
 Namen mit Leerzeichen stehen in Anführungszeichen: `"Nächster Schritt":Angebot`. Mehrere Filter gelten zusammen; der übrige Text wird wie gewohnt gesucht. Nur Filter ohne Text listen alle passenden Seiten, die zuletzt geänderte zuerst. Einträge zählen dabei mit ihren eigenen Tags und denen ihrer Datenbank-Seite. Wörter, die keinen Tag und keine Eigenschaft nennen (etwa `#123`), bleiben normale Suchwörter.
 
+Tags und Eigenschaften können [nur in einem Bereich gelten](/pages-and-spaces#geltungsbereich-arbeitsbereich-oder-bereich), und zwei Bereiche dürfen gleichnamige haben. `#Dringend` ist ein Name: Es findet die Seiten mit jedem Tag dieses Namens, den du sehen darfst – in jedem Bereich den dort geltenden. Die Auswahl **Tag …** neben dem Suchfeld zeigt mit gewähltem Bereich nur dessen Tags und die des Arbeitsbereichs, für alle Bereiche alle mit dem Bereichsnamen als Hinweis. Die [Tag-Ansicht](/pages-and-spaces#tag-ansicht) zeigt dagegen genau einen Tag (gleichnamige anderer Bereiche auf Wunsch dazu).
+
 Erkannte Filter erscheinen als Chips unter dem Suchfeld; ✕ nimmt einen wieder heraus. Die Auswahl **Tag …** neben dem Bereich fügt einen Tag-Filter ein. Sammlungen behalten die Filter. Tag-Namen und Werte sind außerdem gewöhnliche Suchwörter der Seite: „Kunde“ findet auch Seiten mit dem Tag „Kunde“.
 
 ### Verknüpfen: UND, ODER, NICHT

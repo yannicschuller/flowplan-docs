@@ -2,6 +2,9 @@
 
 Relations connect databases, rollups calculate across linked records, formulas calculate values from the properties of the same record.
 
+> [!NOTE]
+> This is about the properties of database records. The [properties of pages](/pages-and-spaces#tags-and-properties) (under the page title) apply in the whole workspace or only in one space, see [Scope](/pages-and-spaces#scope-workspace-or-space).
+
 ## Edit properties
 
 A click on the column header or **View and properties** opens the property dialog: name, type (one of {{facts.fieldTypes}} property types), options and format. Changing the type keeps existing values as far as they fit. Number formats cover currencies, percent, decimal places and thousands separators and also apply to formulas with a numeric result; date fields show short, long or ISO dates and optionally times; **Remove date** below the field clears it again.
