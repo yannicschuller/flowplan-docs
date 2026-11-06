@@ -71,6 +71,12 @@ The right page is part of the address (`?split=…`): reloading and bookmarks ke
 - Reorder pages in the sidebar by drag and drop, or drag them onto another page to nest them.
 - **Select pages** (the tick icon on a space) or <kbd>⇧</kbd>-click marks several pages that can be moved or deleted together.
 - **Moving** to another workspace takes sub-pages, database records and files along. Shares with groups or people who are not members there are dropped. Databases with relations to databases staying behind have to be detached first.
+- **Moved to another space** (or workspace), pages keep the [tags and properties of the whole workspace](#scope-workspace-or-space). If they (or their sub-pages and the records of their databases) carry tags or properties that apply **only in their current space**, a step **Bring tags and properties along** asks for each one:
+  - **Map** to a tag or a property of the same type at the destination – the one with the same name is suggested if there is one,
+  - **Copy to “destination”** – a tag or property of its own in the destination space, with all values (the default when there is nothing of the same name there; if the name is taken there, the copy gets the old space's name added, e.g. “Phase (Sales)”),
+  - **Remove** – the values are lost then.
+
+  Without this choice nothing moves – not by drag and drop, not when moving several pages, not through the API: values are never dropped silently. **Undo** brings the pages back and maps their tags to the ones of the same name in the old space again. The originals in the old space stay.
 
 > [!NOTE]
 > Pages keep their address when moved. Links to the page keep working as long as the reader has access in the new workspace.
@@ -99,13 +105,13 @@ Under **… → Aliases …** a page gets further names, such as abbreviations (
 
 ## Tags and properties
 
-Every page – document, database, whiteboard, notebook, dashboard, journal day – can carry **tags** and **properties**. Both belong to the whole workspace: a tag “Customer” is the same on every page, a property “Status” has the same options everywhere. (The properties of database records are separate, see [Properties, formulas and rollups](/properties-and-formulas).)
+Every page – document, database, whiteboard, notebook, dashboard, journal day – can carry **tags** and **properties**. A tag “Customer” is the same on every page it applies to; a property “Status” has the same options everywhere there. Whether they apply in the whole workspace or only in one space is their [scope](#scope-workspace-or-space). (The properties of database records are separate, see [Properties, formulas and rollups](/properties-and-formulas).)
 
 A slim bar under the page title holds them:
 
-- **+ Tag** opens a field that suggests matching tags. <kbd>↑</kbd>/<kbd>↓</kbd> choose, <kbd>Enter</kbd> adds, <kbd>Esc</kbd> closes. If the name does not exist yet, <kbd>Enter</kbd> creates the tag. The field stays open so you can add several tags in a row. The ✕ on a tag removes it from the page.
+- **+ Tag** opens a field that suggests the tags that apply to the page (the workspace's and those of its space; a space's tags with a small folder icon). <kbd>↑</kbd>/<kbd>↓</kbd> choose, <kbd>Enter</kbd> adds, <kbd>Esc</kbd> closes. If the name does not exist yet, **Create “name” in this space** (<kbd>Enter</kbd>) creates the tag for the page's space; owners can **create it for the whole workspace** instead. The field stays open so you can add several tags in a row. The ✕ on a tag removes it from the page.
 - Clicking a tag opens the [tag view](#tag-view) with all pages that carry it.
-- **+ Property** lists the workspace's properties the page does not have yet; owners can also choose **New property …** there. You edit values right in the bar – with the same fields as in databases. The ✕ next to a value removes it.
+- **+ Property** lists the properties that apply to the page and that it does not have yet; owners of the workspace and of the space can also choose **New property …** there – with the choice **Only in this space** (the default) or **In the whole workspace** (workspace owners only). You edit values right in the bar – with the same fields as in databases. The ✕ next to a value removes it.
 
 With neither tags nor values the bar is just a faint line with **+ Tag** and **+ Property**; in reading mode, without edit rights and on locked pages it is hidden then.
 
@@ -133,19 +139,41 @@ With many tags and properties the bar gets long. The arrow at its far left colla
 **Who may do what:**
 
 - **A page's tags and values** are set by whoever may edit the page – including guests with edit rights on it.
-- **New tags** are created by members with edit rights while tagging. Guests and readers only pick existing ones.
-- **Settings → Tags & properties** can only be changed by workspace owners; others see the lists. There tags are renamed, coloured (nine colours), ordered, merged and deleted, and properties are created, changed in type and options, ordered and deleted. A changed type or a removed option converts values where possible and removes the others; a deleted property disappears with its values from every page. Renaming, merging and deleting also changes the records of database properties that have the tags as options (see [Multi-select with the workspace's tags](/databases#multi-select-with-the-workspace-tags)).
+- **New tags** are created by members with edit rights while tagging – for the page's space. Tags for the whole workspace are created by owners only. Guests and readers only pick existing ones.
+- **Settings → Tags & properties** is changed by workspace owners (everything) and a space's owners (their space's tags and properties); others see the lists. There tags are renamed, coloured (nine colours), ordered, merged and deleted, and properties are created, changed in type and options, ordered and deleted. A changed type or a removed option converts values where possible and removes the others; a deleted property disappears with its values from every page. Renaming, merging and deleting also changes the records of database properties that have the tags as options (see [Multi-select with the workspace's tags](/databases#multi-select-with-the-workspace-tags)).
 - Values are read by whoever may read the page. The tag view, search and counts only show pages you may read; guests only see the tags and properties of the pages and records shared with them.
 
 Pages in [encrypted spaces](/encrypted-spaces) have no tags or properties – the server would have to store them as plain text.
 
+### Scope: workspace or space
+
+Spaces separate topics and permissions – tags and properties can too. Every tag and every property applies either
+
+- **in the whole workspace** – to all pages of all spaces, or
+- **only in one space** – only pages of that space (and the databases in it) use it.
+
+New tags and properties belong **to the space** you create them in; what existed before this distinction keeps applying to the whole workspace. Lists show the scope with a small label: the space's name (dashed) or “Workspace”.
+
+- **Same names:** two spaces may each have their own tag “Urgent” – they are different tags. Within what a page sees (its space plus the workspace) a name is unique, ignoring case: a space cannot create a tag “customer” when “Customer” exists for the whole workspace. Same-named items are never merged on their own.
+- **Visibility:** a space's tags and properties are seen by whoever may open that space (and whoever may read a page carrying them), and by the workspace owners.
+- **Databases** with the [tags as options](/databases#multi-select-with-the-workspace-tags) offer the tags of their space and of the workspace.
+- **Settings → Tags & properties** filters by scope. A new tag or property gets a scope there (a space's owners: only their space). Merging works only into a tag of the whole workspace or of the same space.
+
+**Change scope** (arrow icon in the settings, workspace owners only):
+
+- **From a space to the workspace** (promote) always works. If other spaces have a tag of the same name, the dialog names them; **Merge same-named** moves their pages to the promoted tag (properties only with the same type) – otherwise everything stays as it is.
+- **From the workspace to a space** (or to another space) first shows where the tag or property is used **outside the target space** (spaces, pages, records). Then you choose: **Copy for the other spaces** (each space gets its own tag or property of the same name, with the values), **Remove there**, or **Do not change while it is used there**.
+
+> [!NOTE]
+> Through the API: `tag.save` and `property.save` take `spaceId` (missing or `null`: the whole workspace), `tag.scope`/`property.scope` change the scope (`resolve`: `block`, `copy`, `remove`; `mergeSameName`), `meta.usage` shows first where something is used. `GET /api/tags` returns `spaceId` for every tag and property. See [API and webhooks](/api-and-webhooks#tags-and-properties-via-the-api).
+
 ### Tag view
 
-**Tags** (the tag icon at the bottom of the sidebar, or `> tags` in quick search) shows all tags with the number of their pages and records. A tag opens the list of its pages, most recently changed first, and below them the **records** of databases whose multi-select has the [workspace's tags](/databases#multi-select-with-the-workspace-tags) as options (with database and space; a click opens the record). Only records you may read appear – no private records of others, no properties hidden from you, nothing behind a journal PIN or in the trash. Above it you narrow the list with text or further tags (“And: + Offer”). Owners reach the settings through **Manage tags**. The view has its own address (`#tags/<id>`) to share or bookmark. In the search, `#tag` finds the same, see [Filter by tags and properties](/search-and-notifications#filter-by-tags-and-properties).
+**Tags** (the tag icon at the bottom of the sidebar, or `> tags` in quick search) shows all tags with the number of their pages and records. A tag opens the list of its pages, most recently changed first, and below them the **records** of databases whose multi-select has the [workspace's tags](/databases#multi-select-with-the-workspace-tags) as options (with database and space; a click opens the record). Only records you may read appear – no private records of others, no properties hidden from you, nothing behind a journal PIN or in the trash. Above it you narrow the list with text or further tags (“And: + Offer”). A tag is exactly that tag: if other spaces have one of the same name, **Also the tag of the same name in another space** adds its pages and records. Owners reach the settings through **Manage tags**. The view has its own address (`#tags/<id>`) to share or bookmark. In the search, `#tag` finds the same, see [Filter by tags and properties](/search-and-notifications#filter-by-tags-and-properties).
 
 ### Copies, templates and trash
 
-Duplicating keeps tags and values (into another workspace by name: missing tags are created, values only for properties that exist there). [Page templates](/templates#your-own-templates) store tags and values and put them on new pages made from the template. In the trash they are kept and come back on restore; only deleting permanently removes them. Through the API, the command `page.properties` sets tags and values, see [API and webhooks](/api-and-webhooks#tags-and-properties-via-the-api).
+Duplicating keeps tags and values (into another space or workspace by name: the ones of the same name there; a space's missing tags and properties are created in the target space). [Page templates](/templates#your-own-templates) store tags and values and put them on new pages made from the template; templates of another space ask what becomes of that space's tags and properties. In the trash they are kept and come back on restore; only deleting permanently removes them. Through the API, the command `page.properties` sets tags and values, see [API and webhooks](/api-and-webhooks#tags-and-properties-via-the-api).
 
 ## Favourites and "Linked from"
 

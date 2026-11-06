@@ -30,6 +30,15 @@ If you open the gallery from the **New page** dialog, the page goes where you we
    - **All workspaces** of the instance,
    - **Public gallery** (administrators only): visible even without an account.
 
+### Templates of a space or of the whole workspace
+
+Like [tags and properties](/pages-and-spaces#scope-workspace-or-space), your own template belongs **to a space** or **to the whole workspace**. When saving, **Only in this space** (the page's space) is preset; **In the whole workspace** is saved by owners only (private templates by anyone). What existed before this distinction applies to the whole workspace.
+
+- **The gallery** first shows the templates of the space the new page is created in, and those of the workspace; **All spaces** also shows those of other spaces. A label names the space or “Workspace”. A space's templates are seen only by those who may open it.
+- **Templates for the whole workspace** use only tags and properties of the whole workspace. If the page carries tags or properties of its space, Flowplan names them; **Save** then takes them out of the template (or make them workspace-wide first).
+- **Using a template from another space:** if it brings tags or properties of its space, a step asks for each: **map** (to one of the same name or another tag, or a property of the same type, in the target space), **copy** (into the target space, the default without one of the same name) or **remove**.
+- **Copy** makes a copy of the template for another space (or the workspace) – with the same step; copied tags and properties are created in the target space right away. **Edit → Applies** moves the template itself there.
+
 Templates store their own copies of the files and stay usable even if the source page is deleted. The page's [tags and property values](/pages-and-spaces#tags-and-properties) come along too; new pages from the template get them (missing tags are created). Database templates contain views, records with their content, record templates and the form design. Templates can be renamed, made private or shared and moved to the trash. In the **Template trash**, **Restore** brings a template back, **Delete permanently** deletes it with its files, and **Empty template trash** deletes all you may manage (your own; as an owner all of the workspace; templates for all workspaces only admins). Pages already created are kept. After the [trash period](/pages-and-spaces#trash) (30 days by default) templates in the trash are deleted automatically.
 
 ## Record templates

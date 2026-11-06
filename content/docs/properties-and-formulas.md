@@ -2,6 +2,9 @@
 
 Relationen verbinden Datenbanken, Rollups rechnen über verknüpfte Einträge, Formeln berechnen Werte aus Eigenschaften desselben Eintrags.
 
+> [!NOTE]
+> Hier geht es um die Eigenschaften von Datenbank-Einträgen. Die [Eigenschaften von Seiten](/pages-and-spaces#tags-und-eigenschaften) (unter dem Seitentitel) gelten im ganzen Arbeitsbereich oder nur in einem Bereich, siehe [Geltungsbereich](/pages-and-spaces#geltungsbereich-arbeitsbereich-oder-bereich).
+
 ## Eigenschaften bearbeiten
 
 Ein Klick auf den Spaltenkopf oder **Ansicht und Eigenschaften** öffnet den Eigenschaftsdialog: Name, Typ (einer von {{facts.fieldTypes}} Eigenschaftstypen), Optionen und Format. Typwechsel übernehmen vorhandene Werte, soweit sie passen. Formate für Zahlen umfassen Währungen, Prozent, Dezimalstellen und Tausendertrennzeichen und gelten auch für Formeln mit Zahlenergebnis; Datumsfelder zeigen kurz, lang oder ISO und optional Uhrzeiten; **Datum entfernen** unter dem Feld leert es wieder.
