@@ -67,7 +67,7 @@ The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kb
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>C</kbd> | Code block |
 | <kbd>Tab</kbd> / <kbd>⇧</kbd> <kbd>Tab</kbd> | Indent / outdent |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Move block up / down (a collapsed heading with its section) |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> | In a heading: [collapse or expand its section](/documents#collapsing-sections) |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> | In a heading: [collapse or expand its section](/documents#collapsing-sections); in a [toggle](/documents#toggles): collapse or expand it |
 | <kbd>⇧</kbd> <kbd>Enter</kbd> | Line break within the same block |
 | <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>Z</kbd> | Undo / redo |
 | <kbd>⌘</kbd> <kbd>Enter</kbd> | Send a comment; in **Edit as Markdown**: apply |
