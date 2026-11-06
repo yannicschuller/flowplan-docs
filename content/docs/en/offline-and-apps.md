@@ -179,7 +179,7 @@ Like the desktop app, the mobile apps show your Flowplan instance; all data stay
 - **[Voice notes](#voice-notes-in-pages)** in pages are recorded by the app; on the iPhone and iPad they become text on the device itself.
 - **[On-device AI](#on-device-ai-and-writing-tools-iphone-and-ipad)** (iPhone, iPad, optional): writing assistant and summaries with Apple Intelligence without the text leaving the device; Apple's Writing Tools in the editor.
 - **[Calendars in Apple Calendar](#calendars-in-apple-calendar)** with one configuration profile instead of typing CalDAV credentials.
-- **App lock:** if you like, Flowplan only unlocks with Face ID, Touch ID, a fingerprint or the device code.
+- **Staying signed in and app lock:** the app stays signed in while you use it or its widgets (default: 90 days without use, see [Stay signed in](/sign-in#stay-signed-in)). If you like, Flowplan only unlocks with Face ID, Touch ID, a fingerprint or the device code – on iPhone, iPad and Android, again after more than a minute in the background.
 - **Back:** swiping from the left edge (iOS) or the back gesture or button (Android) first closes what is open (menu, dialog, sidebar) and then goes up a level: from a settings section to the overview, from a record to its database, from a page to the previous page.
 - **Exports and downloads** go to the system's share menu (e.g. "Save to Files").
 - **Without a connection:** the app opens the profile's offline copy, on iPhone and iPad too – see [Offline in the app for iPhone and iPad](#offline-in-the-app-for-iphone-and-ipad).

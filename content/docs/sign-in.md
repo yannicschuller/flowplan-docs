@@ -95,7 +95,7 @@ SESSION_HOURS=8
 | `OIDC_NEW_ACCOUNTS` | `false`: Die SSO-Anmeldung legt keine neuen Konten an (Standard an) – nur bestehende, verbundene oder per SCIM bereitgestellte Konten melden sich an. Bei der ersten SSO-Anmeldung mit bekannter Adresse fehlt dann „Stattdessen ein eigenes Konto anlegen“. |
 | `OIDC_PROMPT_CREATE` | `true`: **Registrieren** öffnet direkt die Registrierung des Anbieters (`prompt=create`). |
 | `OIDC_PICTURE` | Profilbild aus dem Claim `picture` übernehmen (Standard an, `off` schaltet ab). Das Bild muss unter einer öffentlichen HTTPS-Adresse liegen; interne Adressen werden – auch über Weiterleitungen – nicht abgerufen. |
-| `SESSION_HOURS` | Gültigkeit einer Sitzung in Stunden, solange „Angemeldet bleiben“ nicht genutzt wird (siehe [Angemeldet bleiben](/sign-in#angemeldet-bleiben)). |
+| `SESSION_HOURS` | Gültigkeit einer Browser-Sitzung in Stunden, solange „Angemeldet bleiben“ nicht genutzt wird; die Apps bleiben angemeldet (siehe [Angemeldet bleiben](/sign-in#angemeldet-bleiben)). |
 
 ### Gruppennamen bei verbreiteten Anbietern
 
@@ -245,15 +245,20 @@ Grenzen: höchstens 500 Personen je Liste im Dialog (dann suchen), 2000 verknüp
 
 ## Angemeldet bleiben
 
-Normalerweise endet eine Sitzung `SESSION_HOURS` nach der Anmeldung (Standard 8 Stunden). Mit `SESSION_REMEMBER=true` zeigt die Anmeldeseite **Angemeldet bleiben** – für Passwort, Passkey und SSO. Mit Haken lebt die Sitzung weiter, solange Flowplan genutzt wird:
+Wie lange eine Sitzung dauert, legt die Administration unter **Administration → Anmeldung & SSO → Sitzungen** fest ([Administration](/administration#anmeldung-sso)); ohne Einstellung dort gelten die Umgebungsvariablen und ihre Standards.
 
-- Sie endet `SESSION_IDLE_HOURS` nach der letzten Nutzung (Standard 168 = 7 Tage) und spätestens `SESSION_MAX_DAYS` nach der Anmeldung (Standard 30). Danach heißt es neu anmelden – das begrenzt, wie lange ein gestohlenes Cookie taugt.
-- SSO-Sitzungen verlängern sich genauso, bis `SESSION_MAX_DAYS`. Gruppenänderungen beim Anbieter wirken über SCIM, den LDAP-Abgleich oder die nächste Anmeldung. Nur wenn `SESSION_GROUPS_HOURS` gesetzt ist, endet eine SSO-Sitzung schon nach so vielen Stunden: Die neue Anmeldung beim Anbieter holt die aktuellen Gruppen, so wirken `OIDC_ALLOWED_GROUP` und `OIDC_ADMIN_GROUP` auch ohne SCIM spätestens dann.
+| Wo | Wie lange (Standard) | Einstellung · Variable |
+| --- | --- | --- |
+| Browser ohne **Angemeldet bleiben** | 8 Stunden nach der Anmeldung – auch wenn Flowplan offen ist | **Browser ohne „Angemeldet bleiben“** · `SESSION_HOURS` (1–24) |
+| Browser mit **Angemeldet bleiben** | 7 Tage nach der letzten Nutzung, höchstens 30 Tage nach der Anmeldung | **„Angemeldet bleiben“ im Browser anbieten** · `SESSION_REMEMBER` (Standard aus), **Browser mit „Angemeldet bleiben“** · `SESSION_IDLE_HOURS` |
+| Desktop- und Handy-App | 90 Tage nach der letzten Nutzung der App oder ihrer Widgets, höchstens 365 Tage nach der Anmeldung | **Desktop- und Mobil-Apps** · `SESSION_APP_REMEMBER` (Standard an), **Apps: Ende ohne Nutzung** · `SESSION_APP_DAYS` |
+
+- **Im Browser** zeigt die Anmeldeseite das Kästchen **Angemeldet bleiben**, sobald die Administration es anbietet – für Passwort, Passkey und SSO (auch über den Umweg „Konto verbinden“). Gedacht ist es für eigene Geräte: Mit Haken lebt die Sitzung weiter, solange Flowplan genutzt wird. Die längste Dauer (`SESSION_MAX_DAYS`, Standard 30 Tage, nie kürzer als die Zeit ohne Nutzung) begrenzt, wie lange ein gestohlenes Cookie taugt.
+- **Die Apps** laufen auf persönlichen Geräten und bleiben immer angemeldet – egal ob mit Passwort in der App oder mit Passkey bzw. SSO über den Browser angemeldet. Die Widgets halten die Sitzung ebenfalls am Leben. Wer das für die Instanz nicht will, stellt **Desktop- und Mobil-Apps** auf **Wie im Browser ohne „Angemeldet bleiben“** (`SESSION_APP_REMEMBER=false`). Zusätzlichen Schutz auf dem Handy gibt die **App-Sperre** in den Einstellungen der App (Face ID, Touch ID, Fingerabdruck oder Gerätecode, auf iPhone, iPad und Android).
+- SSO-Sitzungen verlängern sich genauso. Gruppenänderungen beim Anbieter wirken über SCIM, den LDAP-Abgleich oder die nächste Anmeldung. Nur wenn `SESSION_GROUPS_HOURS` gesetzt ist, endet eine SSO-Sitzung, die angemeldet bleibt, schon nach so vielen Stunden: Die neue Anmeldung beim Anbieter holt die aktuellen Gruppen, so wirken `OIDC_ALLOWED_GROUP` und `OIDC_ADMIN_GROUP` auch ohne SCIM spätestens dann.
 - Ein deaktiviertes Konto verliert den Zugriff sofort, wie bisher.
-- Die Desktop- und Handy-Apps bleiben angemeldet, sobald die Option eingeschaltet ist; sie fragen immer danach.
 - Meldet sich dieselbe Person auf einem Gerät neu an (etwa weil die Sitzung abgelaufen ist), bleibt die Registrierung der App erhalten – Mitteilungen, Widgets, Live Activities und Kurzbefehle gehen auf die neue Sitzung über. Erst ausdrückliches **Abmelden** (in der App oder unter **Angemeldete Geräte**) entfernt sie.
-
-Ohne `SESSION_REMEMBER` endet jede Sitzung – auch die der Apps und damit ihre Widgets – `SESSION_HOURS` nach der Anmeldung (Standard 8 Stunden). Wer die Apps oder ihre Widgets nutzt, setzt deshalb `SESSION_REMEMBER=true`. Wer die Option nachträglich ausschaltet, beendet das Verlängern; laufende Sitzungen enden dann zu ihrem nächsten Ablauf.
+- Kürzere Zeiten gelten ab der nächsten Anmeldung; längere verlängern Sitzungen, die angemeldet bleiben, bei ihrer nächsten Nutzung. Wer „Angemeldet bleiben“ oder das Angemeldet-Bleiben der Apps ausschaltet, beendet das Verlängern; laufende Sitzungen enden dann zu ihrem nächsten Ablauf.
 
 **Einstellungen → Konto & Sicherheit → Angemeldete Geräte** listet alle eigenen Sitzungen mit Gerät, letzter Nutzung und Ende; **Abmelden** beendet eine einzelne, **Alle anderen Geräte abmelden** alle bis auf die aktuelle.
 

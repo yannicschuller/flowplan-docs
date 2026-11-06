@@ -95,7 +95,7 @@ SESSION_HOURS=8
 | `OIDC_NEW_ACCOUNTS` | `false`: SSO sign-in creates no new accounts (on by default) – only existing, connected or SCIM-provisioned accounts sign in. At a first SSO sign-in with a known address, "Create a separate account instead" is then not offered. |
 | `OIDC_PROMPT_CREATE` | `true`: **Sign up** opens the provider's registration directly (`prompt=create`). |
 | `OIDC_PICTURE` | Take the profile picture from the `picture` claim (on by default, `off` turns it off). The image must be at a public HTTPS address; internal addresses are not fetched – not even via redirects. |
-| `SESSION_HOURS` | How long a session is valid in hours, as long as "Stay signed in" is not used (see [Stay signed in](/sign-in#stay-signed-in)). |
+| `SESSION_HOURS` | How long a browser session is valid in hours, as long as "Stay signed in" is not used; the apps stay signed in (see [Stay signed in](/sign-in#stay-signed-in)). |
 
 ### Group names with common providers
 
@@ -245,15 +245,20 @@ Limits: at most 500 people per list in the dialog (search for more), 2000 linked
 
 ## Stay signed in
 
-Normally a session ends `SESSION_HOURS` after signing in (default 8 hours). With `SESSION_REMEMBER=true` the sign-in page shows **Stay signed in** – for password, passkey and SSO. When ticked, the session lives on while Flowplan is used:
+How long a session lasts is set under **Administration → Sign-in & SSO → Sessions** ([Administration](/administration#sign-in-sso)); without a setting there, the environment variables and their defaults apply.
 
-- It ends `SESSION_IDLE_HOURS` after it was last used (default 168 = 7 days) and at the latest `SESSION_MAX_DAYS` after signing in (default 30). Then you sign in again – this limits how long a stolen cookie is good for.
-- SSO sessions extend the same way, up to `SESSION_MAX_DAYS`. Group changes at the provider follow through SCIM, the LDAP sync or the next sign-in. Only when `SESSION_GROUPS_HOURS` is set does an SSO session end after that many hours already: signing in at the provider again fetches the current groups, so `OIDC_ALLOWED_GROUP` and `OIDC_ADMIN_GROUP` apply by then at the latest, even without SCIM.
+| Where | How long (default) | Setting · variable |
+| --- | --- | --- |
+| Browser without **Stay signed in** | 8 hours after signing in – even while Flowplan is open | **Browser without “Stay signed in”** · `SESSION_HOURS` (1–24) |
+| Browser with **Stay signed in** | 7 days after the last use, at most 30 days after signing in | **Offer “Stay signed in” in the browser** · `SESSION_REMEMBER` (default off), **Browser with “Stay signed in”** · `SESSION_IDLE_HOURS` |
+| Desktop and mobile app | 90 days after the last use of the app or its widgets, at most 365 days after signing in | **Desktop and mobile apps** · `SESSION_APP_REMEMBER` (default on), **Apps: end without use** · `SESSION_APP_DAYS` |
+
+- **In the browser** the sign-in page shows the **Stay signed in** box as soon as the administration offers it – for password, passkey and SSO (also through “Connect account”). It is meant for your own devices: when ticked, the session lives on while Flowplan is used. The longest lifetime (`SESSION_MAX_DAYS`, default 30 days, never shorter than the time without use) limits how long a stolen cookie is good for.
+- **The apps** run on personal devices and always stay signed in – whether you signed in with a password in the app or with a passkey or SSO through the browser. The widgets keep the session alive as well. An instance that does not want this sets **Desktop and mobile apps** to **As in the browser without “Stay signed in”** (`SESSION_APP_REMEMBER=false`). The **app lock** in the app's settings (Face ID, Touch ID, fingerprint or device passcode, on iPhone, iPad and Android) protects the phone further.
+- SSO sessions extend the same way. Group changes at the provider follow through SCIM, the LDAP sync or the next sign-in. Only when `SESSION_GROUPS_HOURS` is set does an SSO session that stays signed in end after that many hours already: signing in at the provider again fetches the current groups, so `OIDC_ALLOWED_GROUP` and `OIDC_ADMIN_GROUP` apply by then at the latest, even without SCIM.
 - A disabled account loses access immediately, as before.
-- The desktop and mobile apps stay signed in once the option is on; they always ask for it.
 - When the same person signs in again on a device (for example because the session ran out), the app's registration survives – notifications, widgets, Live Activities and Shortcuts move over to the new session. Only an explicit **Sign out** (in the app or under **Signed-in devices**) removes it.
-
-Without `SESSION_REMEMBER` every session – the apps' too, and with them their widgets – ends `SESSION_HOURS` after signing in (default 8 hours). If you use the apps or their widgets, set `SESSION_REMEMBER=true`. Turning the option off later stops the extending; running sessions then end at their next expiry.
+- Shorter times apply from the next sign-in; longer ones extend sessions that stay signed in the next time they are used. Turning “Stay signed in” or the apps' staying signed in off stops the extending; running sessions then end at their next expiry.
 
 **Settings → Account & security → Signed-in devices** lists all your own sessions with device, last use and end; **Sign out** ends a single one, **Sign out all other devices** all but the current one.
 
