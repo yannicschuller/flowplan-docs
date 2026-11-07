@@ -274,7 +274,7 @@ Everything with addresses needs the reverse proxy to set `X-Forwarded-For` and a
 | "Invalid request origin" when saving | `APP_URL` differs from the address in use. |
 | No administration visible | With SSO the group is missing in the token: check `OIDC_SCOPES`, `OIDC_GROUPS_CLAIM`, `OIDC_ADMIN_GROUP` and sign in again. For e-mail accounts an administrator grants the right under **Users**. |
 | Everything is empty after a restart | The volume is not mounted on `/app/data`. |
-| `SQLITE_READONLY` or `EACCES` in the log | The host folder does not belong to UID 1000. |
+| `SQLITE_READONLY`, `EACCES` or `unable to open database file` in the log, nothing appears in the data folder | The mounted host folder does not belong to UID 1000: `sudo chown -R 1000:1000 /path/to/flowplan-data`, or use a named Docker volume ([Volume permissions](/coolify-and-proxy#volume-permissions)). Newer images say so at start and stop. |
 | Container "degraded" in Coolify | The health check port is empty (= 80); enter `3000`. |
 | 404 through the front proxy | No route at the inner proxy: set the host header, turn off TLS to the target, the container must be healthy. |
 | `objectStorage.retrying: true` | The bucket is unreachable or the keys are wrong. Uploads are retried with growing intervals, nothing gets lost locally. Check the endpoint from the container (typos, service only bound to an internal IP). |
