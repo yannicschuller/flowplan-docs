@@ -13,7 +13,7 @@ Alle Umgebungsvariablen auf einen Blick. Viele Werte lassen sich zusätzlich in 
 | Variable | Standard | Bedeutung |
 | --- | --- | --- |
 | `FLOWPLAN_LOCAL_LOGIN` | an | `false` schaltet E-Mail, Passwort und Passkeys ab; dann bleibt nur Single Sign-on. |
-| `FLOWPLAN_SETUP_TOKEN` | *leer* | Für Instanzen, die aus dem Internet erreichbar sind: Das erste Konto lässt sich nur über `/register?setup=<token>` anlegen. Danach ohne Wirkung. Siehe [Anmeldung](/sign-in#e-mail-und-passwort). |
+| `FLOWPLAN_SETUP_TOKEN` | *leer* (Helm: zufällig erzeugt) | Empfohlen für Instanzen, die aus dem Internet erreichbar sind: Das erste Konto und das Wiederherstellen beim Einrichten gehen nur über `/register?setup=<token>`. Danach ohne Wirkung. Fehlt er und ist `APP_URL` keine lokale Adresse, warnt Flowplan beim Start im Log und auf dem Einrichtungsbildschirm. Siehe [Anmeldung](/sign-in#e-mail-und-passwort). |
 | `OIDC_ISSUER` | *leer* | Login-Anbieter für Single Sign-on. Ohne ihn gibt es nur E-Mail, Passwort und Passkeys. |
 | `OIDC_CLIENT_ID` | – | Client-ID. |
 | `OIDC_CLIENT_SECRET` | – | Client-Secret. Nie ins Image oder ins Git. Leer: öffentlicher Client, nur mit PKCE. |
