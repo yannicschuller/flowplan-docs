@@ -43,7 +43,7 @@ Der Markdown-Import (auch ZIP, Git und **Als Markdown bearbeiten**) liest das wi
 
 **Blocklinks im Markdown-Export.** Links auf Blöcke werden im ZIP zu relativen Links mit Anker, wie Obsidian sie schreibt: `[Projekt › Ziele](<../index.md#^k3x9a2b1>)`. Der verlinkte Block trägt dazu seine Kennung als Markierung: ein Absatz, eine Überschrift oder ein Listenpunkt am Zeilenende (`Unsere Ziele für 2027 ^k3x9a2b1`), jeder andere Block (Tabelle, Code, Zitat, Liste …) in einer eigenen Zeile direkt darunter (`^k3x9a2b1`). Markiert werden nur Blöcke, auf die ein Link im Arbeitsbereich zeigt – der Rest des Markdowns bleibt sauber. Obsidian versteht beides als Blockverweis; andere Markdown-Programme zeigen die kurze Markierung als Text. Beim Import (ZIP, Obsidian-Tresor, [Git-Export](/storage-and-backups#in-ein-git-repository-uebertragen) mit Übernahme der Änderungen, **Als Markdown bearbeiten**) wird die Markierung wieder zur Kennung des Blocks, und die Links zeigen wieder auf ihn. Außerhalb eines ZIP (einzelne Markdown-Datei, MCP) bleibt der Link die Adresse in Flowplan mit `&block=…`.
 
-Grenzen je Export: 500 Seiten, 5.000 Einträge, 250 MB Inhalt.
+Grenzen je Export: 500 Seiten, 200.000 Einträge, 250 MB Inhalt (davon höchstens 200 MB Text); das ZIP darf höchstens 100 MB groß sein. Die Grenzen gelten auch für den [geplanten Markdown-Export](/storage-and-backups#markdown-export-und-git), der ganze Datenbanken samt Kommentaren und Versionen sichert.
 
 ### Word, PDF mit Unterseiten und E-Book
 

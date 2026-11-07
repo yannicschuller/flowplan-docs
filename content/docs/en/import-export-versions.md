@@ -43,7 +43,7 @@ The Markdown import (also ZIP, Git and **Edit as Markdown**) reads these back as
 
 **Block links in the Markdown export.** Links to blocks become relative links with an anchor in the ZIP, the way Obsidian writes them: `[Project › Goals](<../index.md#^k3x9a2b1>)`. The linked block carries its id as a marker: a paragraph, heading or list item at the end of its line (`Our goals for 2027 ^k3x9a2b1`), any other block (table, code, quote, list …) on a line of its own right below it (`^k3x9a2b1`). Only blocks that a link in the workspace points to are marked – the rest of the Markdown stays clean. Obsidian reads both as block references; other Markdown tools show the short marker as text. On import (ZIP, Obsidian vault, [Git export](/storage-and-backups#push-into-a-git-repository) with taking over changes, **Edit as Markdown**) the marker becomes the block's id again and the links point to it again. Outside a ZIP (a single Markdown file, MCP) the link stays the Flowplan address with `&block=…`.
 
-Limits per export: 500 pages, 5,000 records, 250 MB of content.
+Limits per export: 500 pages, 200,000 records, 250 MB of content (at most 200 MB of it text); the ZIP may be up to 100 MB. The same limits apply to the [scheduled Markdown export](/storage-and-backups#markdown-export-and-git), which backs up whole databases with their comments and versions.
 
 ### Word, PDF with sub-pages and e-book
 
