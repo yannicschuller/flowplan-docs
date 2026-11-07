@@ -227,6 +227,15 @@ List items and tasks stay what they are when moved: outside their list they form
 - **PDFs** appear as a card with a preview of the first page. A click opens the PDF viewer with all pages, zoom (also <kbd>⌘</kbd> <kbd>+</kbd>/<kbd>−</kbd>) and **Download**; <kbd>Esc</kbd> closes it. The same applies to PDFs in the media library, in files properties of databases and on published pages. In editable text, <kbd>⌘</kbd>-click a link to a PDF to open the viewer. In the viewer you can write on the PDF – see [Annotate PDFs](#annotate-pdfs).
 - **Mark up images**: double-click an image (or the pen in the toolbar while the image is selected) to open it for editing – with **pen**, **highlighter**, **arrow**, **rectangle**, **circle** and **text**, seven colours and three line widths, undo with <kbd>⌘</kbd> <kbd>Z</kbd>. **Save** creates a new image with the markings; the original and the markings stay with the image, so you can change or remove them later.
 - **Media** in the sidebar collects all uploads of the workspace for reuse.
+
+### Deleting media
+
+In **Media**, select files with their checkbox and put them in the trash with **Move to trash** (or the trash icon on the file). There is no confirmation because it can be undone. Anyone who may edit the file's page may delete it; viewers and guests can't.
+
+- **Not used**: files that no page, record, whiteboard or comment of the workspace contains any more carry this badge. The **Not used** filter shows only them, and **Delete all unused** moves them to the trash together after a confirmation. Older versions in the version history don't count as a use and may still show such files.
+- Removing an image from a document doesn't delete the file – it then just counts as not used.
+- While a file is in the trash it can't be opened anywhere, including through shares and publications. Pages that still show it have a **File missing** placeholder in its place. Restoring brings it back unchanged.
+- It is deleted for good – including in the `uploads` folder and in [object storage](/storage-and-backups) such as S3 – only when the trash is emptied, with **Delete permanently**, or when the retention period ends, see [Trash](/pages-and-spaces#trash). Until then it counts towards storage.
 - **Embed** (`/embed`) takes an address: YouTube, Vimeo, Loom, Spotify, Figma and CodePen appear as players with an adjustable width, other sites as a link card with title and preview image.
 - Links to pages and mentions of people show a preview on hover.
 - The administrators set the maximum file size (10 MB by default).

@@ -227,6 +227,15 @@ Listenpunkte und Aufgaben bleiben beim Verschieben, was sie sind: Außerhalb ihr
 - **PDFs** erscheinen als Karte mit einer Vorschau der ersten Seite. Ein Klick öffnet den PDF-Viewer mit allen Seiten, Zoom (auch <kbd>⌘</kbd> <kbd>+</kbd>/<kbd>−</kbd>) und **Herunterladen**; <kbd>Esc</kbd> schließt ihn. Dasselbe gilt für PDFs in den Medien, in Dateien-Eigenschaften von Datenbanken und auf veröffentlichten Seiten. In bearbeitbarem Text öffnet ein Link auf ein PDF den Viewer mit <kbd>⌘</kbd>-Klick. Im Viewer lässt sich auf dem PDF schreiben – siehe [PDFs anmerken](#pdfs-anmerken).
 - **Bilder markieren**: Doppelklick auf ein Bild (oder den Stift in der Werkzeugleiste, solange das Bild ausgewählt ist) öffnet es zum Bearbeiten – mit **Stift**, **Textmarker**, **Pfeil**, **Rechteck**, **Kreis** und **Text**, sieben Farben und drei Strichstärken, Rückgängig mit <kbd>⌘</kbd> <kbd>Z</kbd>. **Speichern** legt ein neues Bild mit den Markierungen an; das Original und die Markierungen bleiben am Bild, sodass sie sich später ändern oder ganz entfernen lassen.
 - Die **Medien** in der Seitenleiste sammeln alle Uploads des Arbeitsbereichs zum Wiederverwenden.
+
+### Medien löschen
+
+In den **Medien** wählst du Dateien über ihr Kästchen aus und legst sie mit **In den Papierkorb** (oder dem Papierkorb-Symbol an der Datei) in den Papierkorb. Das geht ohne Rückfrage, weil es sich rückgängig machen lässt. Löschen darf, wer die Seite der Datei bearbeiten darf; Leser und Gäste können es nicht.
+
+- **Nicht verwendet**: Dateien, die in keiner Seite, keinem Eintrag, Whiteboard oder Kommentar des Arbeitsbereichs mehr vorkommen, tragen dieses Kennzeichen. Der Filter **Nicht verwendet** zeigt nur sie, **Alle unbenutzten löschen** legt sie nach einer Rückfrage gesammelt in den Papierkorb. Ältere Versionen im Versionsverlauf zählen nicht als Verwendung und können solche Dateien noch zeigen.
+- Ein Bild aus einem Dokument zu entfernen, löscht die Datei nicht – sie gilt danach nur als nicht verwendet.
+- Solange eine Datei im Papierkorb liegt, ist sie nirgends mehr abrufbar, auch nicht über Freigaben und Veröffentlichungen. Seiten, die sie noch zeigen, haben an ihrer Stelle einen Platzhalter **Datei fehlt**. Beim Wiederherstellen kommt sie unverändert zurück.
+- Endgültig gelöscht wird sie – auch im Ordner `uploads` und in [Objektspeicher](/storage-and-backups) wie S3 – erst beim Leeren des Papierkorbs, mit **Endgültig löschen** oder nach Ablauf der Frist, siehe [Papierkorb](/pages-and-spaces#papierkorb). Bis dahin zählt sie zum Speicherplatz.
 - **Einbetten** (`/embed`) nimmt eine Adresse entgegen: YouTube, Vimeo, Loom, Spotify, Figma und CodePen erscheinen als Player mit wählbarer Breite, andere Seiten als Linkkarte mit Titel und Vorschaubild.
 - Links auf Seiten und Erwähnungen von Personen zeigen beim Überfahren eine Vorschau.
 - Die maximale Dateigröße legt die Administration fest (Standard 10 MB).
