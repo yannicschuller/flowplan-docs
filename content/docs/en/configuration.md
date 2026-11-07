@@ -82,6 +82,19 @@ The Typst preview loads its compiler and fonts (WebAssembly, about 11 MB compres
 
 Details: [Storage, S3 and backups](/storage-and-backups).
 
+## Database and cluster
+
+Without these variables, Flowplan uses SQLite in one container. Every value with its default and explanation is under [PostgreSQL](/postgresql#variables) and [Cluster mode](/cluster#more-variables).
+
+| Variable | Default | Meaning |
+| --- | --- | --- |
+| `DATABASE_URL` | *empty* | `postgres://…` switches to PostgreSQL. |
+| `FLOWPLAN_PG_SCHEMA`, `FLOWPLAN_PG_POOL`, `FLOWPLAN_PG_*_TIMEOUT` | `public`, `10`, … | Schema, connections per instance and time limits. |
+| `FLOWPLAN_BACKUP_FORMAT` | `pg_dump` | `sqlite`: scheduled backups on PostgreSQL in the portable SQLite format. |
+| `FLOWPLAN_CLUSTER` | *empty* | `1`: several instances; requires `DATABASE_URL`, `REDIS_URL` and `S3_BUCKET`. |
+| `REDIS_URL` | *empty* | Redis for cluster mode, `redis://…` or `rediss://…`. |
+| `FLOWPLAN_READY_REQUIRE` | all | Which checks decide `/api/health/ready`. |
+
 ## Encryption
 
 | Variable | Default | Meaning |

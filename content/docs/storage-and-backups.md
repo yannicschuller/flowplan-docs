@@ -45,7 +45,7 @@ garage key info flowplan --show-secret         # Key-ID und Secret
 Den S3-Dienst so starten, dass er auf allen Schnittstellen lauscht (`-ip.bind=0.0.0.0`), sonst ist er aus anderen Containern nicht erreichbar. Endpoint ist der S3-Port, standardmäßig `8333`.
 
 > [!NOTE]
-> Warum kein Postgres und kein Redis? Flowplan arbeitet in einem Prozess direkt auf SQLite – für eine Instanz pro Organisation schneller und einfacher. Sitzungen, Präsenz und Live-Abgleich laufen über die Datenbank und den Prozess selbst; Redis hätte nichts zu tun.
+> Warum standardmäßig kein Postgres und kein Redis? Flowplan arbeitet in einem Prozess direkt auf SQLite – für eine Instanz pro Organisation schneller und einfacher. Sitzungen, Präsenz und Live-Abgleich laufen über die Datenbank und den Prozess selbst; Redis hätte nichts zu tun. Für größere Teams gibt es [PostgreSQL](/postgresql) und den [Cluster-Modus](/cluster) mit Redis.
 
 ## Sicherungen
 
@@ -60,6 +60,8 @@ sqlite3 /app/data/flowplan.sqlite "VACUUM INTO '/backup/flowplan.sqlite'"
 ```
 
 Dazu `uploads/` und `web-push-keys.json` mitsichern.
+
+Mit **PostgreSQL** werden die geplanten Sicherungen und **Jetzt sichern** zu `pg_dump`-Archiven (`flowplan-….dump`), Litestream entfällt; Ziele, Verschlüsselung und Aufbewahrung bleiben gleich. Siehe [Sicherungen mit pg_dump](/postgresql#sicherungen-mit-pg-dump).
 
 Das Inhaltsarchiv unter **Einstellungen → Import & Export → Export → Arbeitsbereich als ZIP** sichert einen Arbeitsbereich, ersetzt aber keine Instanzsicherung mit Konten und Rechten.
 
@@ -293,6 +295,7 @@ Sicherheit:
 - **Aus einer geplanten Sicherung** bei gestoppter App: eine verschlüsselte erst [entschlüsseln](#notfall-ohne-laufende-instanz-entschluesseln), dann die bestehende `flowplan.sqlite` samt `-wal` und `-shm` beiseitelegen und die Sicherung als `/app/data/flowplan.sqlite` einsetzen. Mit S3 kommen die Dateien aus dem Bucket nach.
 - **Auf einem neuen Host mit S3**: neue Installation mit **denselben** `S3_*`-Variablen und leerem Volume starten. Litestream stellt die Datenbank her, die Dateien folgen im Hintergrund. Die alte Instanz vorher stoppen; `secrets.key` und `web-push-keys.json` liegen nicht im Bucket (siehe [Instanz umziehen, Weg C](/move-instance#weg-c-s3-und-litestream)).
 - **Auf einen anderen Server umziehen**: siehe [Instanz umziehen](/move-instance) – das eingebaute Umzugswerkzeug holt Datenbank, Dateien und Schlüssel direkt von der alten Instanz, mit wenigen Minuten Ausfallzeit.
+- **Ein `pg_dump`-Archiv** einer Instanz mit PostgreSQL: auf dem Einrichtungsbildschirm einer neuen Instanz mit PostgreSQL, siehe [PostgreSQL, Wiederherstellen](/postgresql#wiederherstellen).
 - **Einen früheren Zeitpunkt** bei gestoppter App:
 
 ```bash

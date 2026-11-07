@@ -28,6 +28,8 @@ curl -H "Authorization: Bearer $FLOWPLAN_METRICS_TOKEN" https://flowplan.example
 
 Personal API tokens do not unlock the details.
 
+For Kubernetes and load balancers there are also `/api/health/live` (the process answers) and `/api/health/ready` (database and, in a cluster, Redis and the bucket reachable; `503` while shutting down), see [Cluster mode](/cluster#health-readiness-and-shutdown).
+
 ## Administration → Monitoring
 
 **Administration → Monitoring** shows the instance live – refreshed every 15 seconds, paused while the tab is in the background:
