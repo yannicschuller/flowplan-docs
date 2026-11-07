@@ -32,7 +32,7 @@ The pen button **Suggest** in the toolbar turns on suggestion mode. Typing then 
 
 ## Follow pages
 
-The bell at the top of a page turns **Follow** on or off. Whoever follows a page gets a notification as soon as someone else changes it – one per page, until you have looked at it again. With e-mail set up, it lands in the e-mail digest. Whoever creates a page follows it automatically. Under **Settings → Notifications**, the kind "Changes to pages you follow" can be switched off for inbox, push and e-mail separately.
+The bell at the top of a page turns **Follow** on or off. Whoever follows a page gets a notification as soon as someone else changes it – one per page, until you have looked at it again – and for every new comment on it (for a database: also on its records). With e-mail set up, it lands in the e-mail digest. Whoever creates a page follows it automatically. Under **Settings → Notifications**, the kind "Changes to pages you follow" can be switched off for inbox, push and e-mail separately.
 
 ## Who has seen the page?
 
@@ -66,4 +66,4 @@ Text comments exist in documents and in the contents of database records, also i
 
 ## Inbox
 
-The **Inbox** in the sidebar collects mentions, comments and replies, date reminders as well as comments and records from guests. Unread items are marked; a click jumps to the spot – for text comments straight into the thread. You choose which events arrive as push notifications under **Settings → Notifications** (see [Search, inbox and push](/search-and-notifications)).
+The **Inbox** in the sidebar collects mentions, comments and replies that concern you ([who hears about comments](/search-and-notifications#who-hears-about-comments)), date reminders as well as comments and records from guests. Unread items are marked; a click jumps to the spot – for text comments straight into the thread. You choose which events arrive as push notifications under **Settings → Notifications** (see [Search, inbox and push](/search-and-notifications)).

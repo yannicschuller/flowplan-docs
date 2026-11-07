@@ -93,14 +93,28 @@ Gespeicherte Suchen aus früheren Versionen sind beim Update zu privaten Sammlun
 Der **Posteingang** sammelt:
 
 - Erwähnungen,
-- Kommentare und Antworten auf deine Beiträge,
+- Kommentare, die dich betreffen (siehe [unten](#wer-von-kommentaren-erfaehrt)), und Antworten in Textkommentaren, an denen du beteiligt bist,
 - Datums-Erinnerungen,
 - Kommentare und Einträge von Gästen über Freigabelinks,
 - mit dir geteilte Seiten und Arbeitsbereiche,
 - Änderungen an Seiten, denen du folgst (eigene Seiten folgst du beim Anlegen automatisch; die Glocke oben rechts schaltet das Folgen um),
 - Meldungen aus Automationen.
 
+### Wer von Kommentaren erfährt
+
+Ein neuer Kommentar – auf einer Seite, an einem Datenbankeintrag oder als neuer Textkommentar – benachrichtigt nicht den ganzen Arbeitsbereich, sondern nur:
+
+- wer der Seite folgt (wer eine Seite anlegt, folgt ihr automatisch; bei einem Eintrag: wer der Datenbank folgt),
+- die Besitzerin oder den Besitzer der Seite,
+- bei einem Eintrag: wer ihn angelegt hat und die Personen in seinen Personen-Eigenschaften (etwa **Zugewiesen**),
+- wer auf derselben Seite bzw. demselben Eintrag schon kommentiert hat,
+- wer im Kommentar mit `@` erwähnt wird.
+
+Antworten in einem Textkommentar erreichen alle, die in diesem Thread schon geschrieben haben, und die darin Erwähnten. Nie benachrichtigt werden die verfassende Person selbst und wer die Seite oder den Eintrag nicht sehen darf. Wer bei einer Seite mitlesen will, folgt ihr über die Glocke.
+
 **Standardmäßig** kommt, was dich direkt betrifft – Erwähnungen, geteilte Seiten, Kommentare, Erinnerungen –, im Posteingang, als Push, per E-Mail und in verbundenen [Chat-Apps](#chat-apps). Gastkommentare kommen ohne E-Mail und ohne Chat-App. **Änderungen an Seiten, denen du folgst, und Automationen landen nur im Posteingang**, damit nicht jede kleine Bearbeitung eine Mitteilung oder Mail auslöst. Unter **Einstellungen → Benachrichtigungen** lässt sich das je Art und Kanal ändern; **Auf Standard zurücksetzen** stellt den Ausgangszustand wieder her.
+
+**Aufbewahrung:** Gelesene Benachrichtigungen werden nach 90 Tagen gelöscht, ungelesene nach einem Jahr; je Person bleiben höchstens die neuesten 1.000. Der Posteingang zeigt die neuesten 100.
 
 **Für Administratoren: Sicherheitsvorfälle der Instanz.** Admins sehen bei den Benachrichtigungsarten eine eigene Zeile **Sicherheitsvorfälle der Instanz**: was die [Erkennungsregeln](/operations#sicherheit) auf der ganzen Instanz finden (Passwort-Raten, neue Adminrechte, Abtasten …). Jeder Admin stellt selbst ein, wie die Vorfälle ankommen – Posteingang, Push, E-Mail und Chat-Apps sind standardmäßig an – und welche: **Alle Vorfälle** (Standard) oder **Nur kritische**. Die Auswahl gilt für alle Kanäle dieser Art; unter **Administration → Angriffe & Vorfälle** erscheint jeder Vorfall trotzdem. Ein Klick oder Tipp auf die Mitteilung öffnet die Seite des Vorfalls. Die Zeile **Sicherheitshinweise** betrifft nur das eigene Konto (neue Anmeldung, falsche Journal-PIN, abgeschaltete Chat-App); wer dort vor dem Update Kanäle ausgeschaltet hatte, hat sie für Sicherheitsvorfälle ebenfalls aus. Andere Personen sehen die Zeile nicht.
 

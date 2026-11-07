@@ -93,14 +93,28 @@ Saved searches from earlier versions became private collections when you updated
 The **Inbox** collects:
 
 - mentions,
-- comments and replies to your posts,
+- comments that concern you (see [below](#who-hears-about-comments)) and replies in text comments you took part in,
 - date reminders,
 - comments and records from guests via share links,
 - pages and workspaces shared with you,
 - changes on pages you follow (you follow your own pages when creating them; the bell at the top right toggles following),
 - messages from automations.
 
+### Who hears about comments
+
+A new comment – on a page, on a database record or as a new text comment – does not notify the whole workspace, only:
+
+- who follows the page (whoever creates a page follows it automatically; for a record: who follows the database),
+- the page's owner,
+- for a record: who created it and the people in its person properties (such as **Assignee**),
+- who already commented on the same page or record,
+- who is mentioned in the comment with `@`.
+
+Replies in a text comment reach everyone who has written in that thread and the people mentioned in it. The author and anyone who may not see the page or the record are never notified. To keep up with a page, follow it with the bell.
+
 **By default** what concerns you directly – mentions, shared pages, comments, reminders – arrives in the inbox, as push, by e-mail and in connected [chat apps](#chat-apps). Guest comments come without e-mail and chat app. **Changes on pages you follow and automations only land in the inbox**, so that not every small edit triggers a notification or mail. Under **Settings → Notifications** this can be changed per kind and channel; **Reset to defaults** restores the initial state.
+
+**Retention:** read notifications are deleted after 90 days, unread ones after a year; at most the newest 1,000 per person are kept. The inbox shows the newest 100.
 
 **For administrators: security incidents of the instance.** Admins see their own row **Security incidents of the instance** among the notification kinds: what the [detection rules](/operations#security) find on the whole instance (password guessing, new admin rights, probing …). Each admin chooses how incidents arrive – inbox, push, e-mail and chat apps are on by default – and which: **All incidents** (default) or **Critical only**. The choice applies to every channel of this kind; every incident still shows under **Administration → Threats & incidents**. Clicking or tapping the notification opens the incident's page. The row **Security notices** is only about your own account (a new sign-in, a wrong journal PIN, a chat app switched off); whoever had switched channels off there before the update has them off for security incidents too. Other people don't see the row.
 
