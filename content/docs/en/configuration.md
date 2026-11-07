@@ -13,7 +13,7 @@ All environment variables at a glance. Many values can also be set in the interf
 | Variable | Default | Meaning |
 | --- | --- | --- |
 | `FLOWPLAN_LOCAL_LOGIN` | on | `false` turns off e-mail, password and passkeys; then only single sign-on remains. |
-| `FLOWPLAN_SETUP_TOKEN` | *empty* | For instances reachable from the internet: the first account can only be created via `/register?setup=<token>`. No effect afterwards. See [Sign-in](/en/sign-in#e-mail-and-password). |
+| `FLOWPLAN_SETUP_TOKEN` | *empty* (Helm: generated) | Recommended for instances reachable from the internet: the first account and the restore on the setup screen only work via `/register?setup=<token>`. No effect afterwards. If it is missing and `APP_URL` is not a local address, Flowplan warns at start in the log and on the setup screen. See [Sign-in](/en/sign-in#e-mail-and-password). |
 | `OIDC_ISSUER` | *empty* | The login provider for single sign-on. Without it there are only e-mail, password and passkeys. |
 | `OIDC_CLIENT_ID` | – | Client ID. |
 | `OIDC_CLIENT_SECRET` | – | Client secret. Never put it into the image or into Git. Empty: a public client, PKCE only. |

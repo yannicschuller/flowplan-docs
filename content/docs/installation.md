@@ -32,7 +32,11 @@ In `.env` mindestens die öffentliche Adresse setzen:
 
 ```dotenv
 APP_URL=https://flowplan.example.com
+# Empfohlen, sobald die Adresse aus dem Internet erreichbar ist: openssl rand -hex 24
+FLOWPLAN_SETUP_TOKEN=
 ```
+
+Mit `FLOWPLAN_SETUP_TOKEN` legst du das erste Konto über `https://flowplan.example.com/register?setup=<token>` an; ohne den Link bietet die neue Instanz weder Registrierung noch Wiederherstellen an. Fehlt der Token und ist `APP_URL` keine lokale Adresse, warnt Flowplan beim Start im Log und auf dem Einrichtungsbildschirm.
 
 Für Single Sign-on zusätzlich `OIDC_ISSUER`, `OIDC_CLIENT_ID`, `OIDC_CLIENT_SECRET` und `OIDC_ADMIN_GROUP` (siehe [Anmeldung](/sign-in)); für E-Mails (Einladungen, Passwort vergessen) die `SMTP_*`-Werte aus der [Konfiguration](/configuration#e-mail-smtp).
 
@@ -136,6 +140,7 @@ helm install flowplan deploy/helm/flowplan -n flowplan \
 
 - OIDC, SMTP und S3 setzt du über `oidc.*`, `smtp.*` und `s3.*`; Geheimnisse besser im `existingSecret` (Schlüssel = Namen der [Umgebungsvariablen](/configuration)). Weitere Variablen über `env`.
 - `appUrl` ist Pflicht (oder kommt aus dem ersten Ingress-Host).
+- Das Chart erzeugt einen zufälligen `FLOWPLAN_SETUP_TOKEN` (bleibt bei Upgrades erhalten; eigener Wert mit `setupToken` oder im `existingSecret`). Das erste Konto legst du über den Einrichtungslink an, den `helm install` am Ende ausgibt: `https://flowplan.example.org/register?setup=<token>`, den Token liest `kubectl -n flowplan get secret flowplan -o jsonpath='{.data.FLOWPLAN_SETUP_TOKEN}' | base64 -d`.
 - Ein Block- oder lokales Volume verwenden, kein NFS (SQLite).
 - Health-Checks laufen über `/api/health`; der Pod läuft als Nutzer 1000 ohne zusätzliche Rechte. `helm test flowplan` prüft die Erreichbarkeit.
 - Das Volume bleibt beim Deinstallieren erhalten.
