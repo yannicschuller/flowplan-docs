@@ -84,14 +84,16 @@ Details: [Storage, S3 and backups](/storage-and-backups).
 
 ## Database and cluster
 
-Without these variables, Flowplan uses SQLite in one container. Every value with its default and explanation is under [PostgreSQL](/postgresql#variables) and [Cluster mode](/cluster#more-variables).
+Without these variables, Flowplan uses SQLite in one container. They are also listed, with comments, in the [`.env.example`](https://github.com/yannicschuller/flowplan/blob/main/.env.example). Every value with its default and explanation is under [PostgreSQL](/postgresql#variables) and [Cluster mode](/cluster#more-variables).
 
 | Variable | Default | Meaning |
 | --- | --- | --- |
 | `DATABASE_URL` | *empty* | `postgres://…` switches to PostgreSQL. |
 | `FLOWPLAN_PG_SCHEMA`, `FLOWPLAN_PG_POOL`, `FLOWPLAN_PG_*_TIMEOUT` | `public`, `10`, … | Schema, connections per instance and time limits. |
+| `FLOWPLAN_PG_PREPARE` | on | `off`: unnamed queries instead of named prepared statements – for PgBouncer in `transaction` mode without `max_prepared_statements`. |
+| `DATABASE_SESSION_URL` | `DATABASE_URL` | A direct connection (or a `session`-mode pool) for notifications, the lead in a cluster and `pg_dump`/`pg_restore`, when `DATABASE_URL` points at PgBouncer in `transaction` mode. |
 | `FLOWPLAN_BACKUP_FORMAT` | `pg_dump` | `sqlite`: scheduled backups on PostgreSQL in the portable SQLite format. |
-| `FLOWPLAN_CLUSTER` | *empty* | `1`: several instances; requires `DATABASE_URL`, `REDIS_URL` and `S3_BUCKET`. |
+| `FLOWPLAN_CLUSTER` | *empty* | `1`: several instances; requires `DATABASE_URL`, `REDIS_URL`, `S3_BUCKET`, `FLOWPLAN_ENCRYPTION_KEY` (or `FLOWPLAN_SECRETS_KEY`) and `WEB_PUSH_PUBLIC_KEY`/`WEB_PUSH_PRIVATE_KEY`. |
 | `REDIS_URL` | *empty* | Redis for cluster mode, `redis://…` or `rediss://…`. |
 | `FLOWPLAN_READY_REQUIRE` | all | Which checks decide `/api/health/ready`. |
 
@@ -250,7 +252,7 @@ All optional; the values apply until an admin saves under **Administration → A
 | Variable | Meaning |
 | --- | --- |
 | `WEB_PUSH_SUBJECT` | Contact for the push services, e.g. `mailto:admin@example.com`. |
-| `WEB_PUSH_PUBLIC_KEY` / `WEB_PUSH_PRIVATE_KEY` | VAPID key pair. If not given, Flowplan creates one in `FLOWPLAN_DATA_DIR/web-push-keys.json`. |
+| `WEB_PUSH_PUBLIC_KEY` / `WEB_PUSH_PRIVATE_KEY` | VAPID key pair. If not given, Flowplan creates one in `FLOWPLAN_DATA_DIR/web-push-keys.json`. Required in [cluster mode](/cluster#requirements). |
 | `MOBILE_PUSH` | Notifications to the apps for iPhone, iPad and Android. Nothing to set up; `off` turns them off altogether. Default: `on`. |
 | `PUSH_RELAY_URL` | The [push relay](#push-relay-and-end-to-end-encryption) notifications to the apps go through. An HTTPS origin only (`http` only for `localhost`), without a path. Default: `https://push.flowplan.org`. |
 | `PUSH_RELAY` | `off`: no relay. Apps then only get notifications if they have an Expo token (older app versions), through Expo's push service. Default: `on`. |

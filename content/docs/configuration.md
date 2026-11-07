@@ -84,14 +84,16 @@ Details: [Speicher, S3 und Sicherung](/storage-and-backups).
 
 ## Datenbank und Cluster
 
-Ohne diese Variablen nutzt Flowplan SQLite in einem Container. Alle Werte mit Standard und Erklärung stehen unter [PostgreSQL](/postgresql#variablen) und [Cluster-Modus](/cluster#weitere-variablen).
+Ohne diese Variablen nutzt Flowplan SQLite in einem Container. Kommentiert stehen sie auch in der [`.env.example`](https://github.com/yannicschuller/flowplan/blob/main/.env.example). Alle Werte mit Standard und Erklärung stehen unter [PostgreSQL](/postgresql#variablen) und [Cluster-Modus](/cluster#weitere-variablen).
 
 | Variable | Standard | Bedeutung |
 | --- | --- | --- |
 | `DATABASE_URL` | *leer* | `postgres://…` schaltet auf PostgreSQL um. |
 | `FLOWPLAN_PG_SCHEMA`, `FLOWPLAN_PG_POOL`, `FLOWPLAN_PG_*_TIMEOUT` | `public`, `10`, … | Schema, Verbindungen je Instanz und Zeitlimits. |
+| `FLOWPLAN_PG_PREPARE` | an | `off`: Abfragen ohne Namen statt benannter Prepared Statements – für PgBouncer im Modus `transaction` ohne `max_prepared_statements`. |
+| `DATABASE_SESSION_URL` | `DATABASE_URL` | Direkte Verbindung (oder Pool im Modus `session`) für Benachrichtigungen, die Leitung im Cluster und `pg_dump`/`pg_restore`, wenn `DATABASE_URL` auf PgBouncer im Modus `transaction` zeigt. |
 | `FLOWPLAN_BACKUP_FORMAT` | `pg_dump` | `sqlite`: geplante Sicherungen auf PostgreSQL im portablen SQLite-Format. |
-| `FLOWPLAN_CLUSTER` | *leer* | `1`: mehrere Instanzen; verlangt `DATABASE_URL`, `REDIS_URL` und `S3_BUCKET`. |
+| `FLOWPLAN_CLUSTER` | *leer* | `1`: mehrere Instanzen; verlangt `DATABASE_URL`, `REDIS_URL`, `S3_BUCKET`, `FLOWPLAN_ENCRYPTION_KEY` (oder `FLOWPLAN_SECRETS_KEY`) und `WEB_PUSH_PUBLIC_KEY`/`WEB_PUSH_PRIVATE_KEY`. |
 | `REDIS_URL` | *leer* | Redis für den Cluster-Modus, `redis://…` oder `rediss://…`. |
 | `FLOWPLAN_READY_REQUIRE` | alle | Welche Prüfungen über `/api/health/ready` entscheiden. |
 
@@ -250,7 +252,7 @@ Alles optional; die Werte gelten, bis ein Admin unter **Administration → KI** 
 | Variable | Bedeutung |
 | --- | --- |
 | `WEB_PUSH_SUBJECT` | Kontakt für die Push-Dienste, z. B. `mailto:admin@example.com`. |
-| `WEB_PUSH_PUBLIC_KEY` / `WEB_PUSH_PRIVATE_KEY` | VAPID-Schlüsselpaar. Ohne Angabe erzeugt Flowplan eines unter `FLOWPLAN_DATA_DIR/web-push-keys.json`. |
+| `WEB_PUSH_PUBLIC_KEY` / `WEB_PUSH_PRIVATE_KEY` | VAPID-Schlüsselpaar. Ohne Angabe erzeugt Flowplan eines unter `FLOWPLAN_DATA_DIR/web-push-keys.json`. Im [Cluster-Modus](/cluster#voraussetzungen) Pflicht. |
 | `MOBILE_PUSH` | Mitteilungen an die Apps für iPhone, iPad und Android. Nichts einzurichten; `off` schaltet sie ganz ab. Standard: `on`. |
 | `PUSH_RELAY_URL` | Das [Push-Relay](#push-relay-und-ende-zu-ende-verschluesselung), über das Mitteilungen an die Apps gehen. Nur ein HTTPS-Origin (`http` nur für `localhost`), ohne Pfad. Standard: `https://push.flowplan.org`. |
 | `PUSH_RELAY` | `off`: kein Relay. Apps bekommen Mitteilungen dann nur noch, wenn sie ein Expo-Token haben (ältere App-Versionen), über den Push-Dienst von Expo. Standard: `on`. |

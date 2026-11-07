@@ -22,7 +22,7 @@ Flowplan still needs its data folder (`/app/data`) with PostgreSQL: it holds upl
 - **A UTF-8 locale** such as `en_US.utf8` or `de_DE.utf8` – the official `postgres` image and most managed services use one. With the `C` locale, search still finds Chinese and Japanese text correctly, but much more slowly.
 - **The `pg_trgm` extension** for full-text search. It ships with every regular PostgreSQL and is "trusted": Flowplan installs it itself into a schema of its own, `flowplan_ext`, if the role may create objects in the database (`CREATE` privilege, which the database owner has). Otherwise run `CREATE EXTENSION pg_trgm;` once as an administrator. Without `pg_trgm` search keeps working, but scans every entry each time (the log says so).
 - **Optionally `pgvector`** for [semantic AI search](/en/ai). From pgvector 0.8 on, Flowplan installs it itself like `pg_trgm`. **Before 0.8** the extension is not "trusted" – an administrator then runs `CREATE EXTENSION vector;` once in Flowplan's database, and Flowplan uses it from its next start. Without `pgvector`, Flowplan computes semantic search itself, as on SQLite; switch it off with `FLOWPLAN_PGVECTOR=off`.
-- **For backups**, `pg_dump` and `pg_restore` of at least the server's major version. The Docker image ships the PostgreSQL 18 tools and so fits servers up to version 18. Without Docker, install a matching `postgresql-client` package or point `FLOWPLAN_PG_BIN` at the folder holding the programs.
+- **For backups**, `pg_dump` and `pg_restore` of at least the server's major version. The Docker image ships the PostgreSQL 18 tools; they back up and restore on servers from version 16 to 18. Without Docker, install a matching `postgresql-client` package or point `FLOWPLAN_PG_BIN` at the folder holding the programs.
 
 ```sql
 -- as an administrator on the PostgreSQL server
@@ -94,16 +94,20 @@ volumes:
 | Variable | Default | Meaning |
 | --- | --- | --- |
 | `DATABASE_URL` | *empty* (SQLite) | Address of the PostgreSQL database, `postgres://…` or `postgresql://…`. |
+| `DATABASE_SESSION_URL` | `DATABASE_URL` | A connection of its own for notifications, the lead in a cluster and `pg_dump`/`pg_restore`/`psql` – only needed when `DATABASE_URL` points at PgBouncer in `transaction` mode ([below](#pgbouncer)). |
 | `FLOWPLAN_PG_SCHEMA` | `public` | Schema inside the database, if Flowplan shares the database with something else. Created if missing. |
 | `FLOWPLAN_PG_POOL` | `10` | Connections per instance (1–500). |
 | `FLOWPLAN_PG_STATEMENT_TIMEOUT` | `120000` | Longest a query may run, in milliseconds; `0` = no limit. |
 | `FLOWPLAN_PG_LOCK_TIMEOUT` | `10000` | Longest a query waits for a lock (ms). |
 | `FLOWPLAN_PG_IDLE_TX_TIMEOUT` | `60000` | A transaction idle this long is ended (ms). |
 | `FLOWPLAN_PG_CONNECT_TIMEOUT` | `30000` | Longest a request waits for a free connection from the pool (ms). |
+| `FLOWPLAN_PG_PREPARE` | on | `off` sends every query unnamed instead of as a named prepared statement – for PgBouncer in `transaction` mode before 1.21 or without `max_prepared_statements`. |
 | `FLOWPLAN_PG_SCHEMA_AUTO` | on | `off`: the instance does not create or update the schema itself – a separate step does (`node /app/scripts/db-schema.mjs`, see [cluster mode](/en/cluster#schema-before-the-start)). |
 | `FLOWPLAN_PGVECTOR` | on | `off` ignores `pgvector` even when it is installed. |
 | `FLOWPLAN_BACKUP_FORMAT` | `pg_dump` | `sqlite`: scheduled backups in the portable SQLite format instead of `pg_dump` (below). |
 | `FLOWPLAN_PG_BIN` | *empty* | Folder with `pg_dump`, `pg_restore` and `psql` if they are not on the `PATH`. |
+
+Every variable is also listed, with comments, in the repository's [`.env.example`](https://github.com/yannicschuller/flowplan/blob/main/.env.example).
 
 Long-running work such as backups, restores and schema changes lifts the time limits for itself.
 
@@ -139,18 +143,28 @@ The **instance backup** (Administration → Storage & backup → Whole instance 
 
 ### Restoring
 
-- **A `pg_dump` archive** (`.dump`, `.dump.enc`) is restored on the setup screen of a new instance with PostgreSQL: upload it or fetch it from S3 or via SFTP, as in [Restore while setting up](/en/storage-and-backups#restore-while-setting-up). An instance on SQLite refuses such archives – use the instance backup or [switch the database](/en/database-migration).
-- Flowplan checks the archive first (not from a newer version), then replaces the whole schema in one transaction and rebuilds the search index. The previous state is kept as `pre-restore-<time>/flowplan.dump` in the data folder – leave room for one more archive. If the restore fails, the previous state comes back.
+- **A `pg_dump` archive on a running instance** (`flowplan-….dump`, `.dump.enc`): upload it under **Administration → Storage & backup → Restore from backup**. Flowplan checks it right away and applies it on the next restart – in cluster mode the leading instance does, see [Known limits](/en/cluster#known-limits). Only the database is replaced; the files stay as they are.
+- **On a new instance** with PostgreSQL, the same works on the setup screen: upload it or fetch it from S3 or via SFTP, as in [Restore while setting up](/en/storage-and-backups#restore-while-setting-up).
+- An instance on SQLite refuses such archives – use the instance backup or [switch the database](/en/database-migration).
+- Flowplan checks the archive first (a Flowplan database, not from a newer version), then replaces the whole schema in one transaction and rebuilds the search index. The previous state is kept as `pre-restore-<time>/flowplan.dump` in the data folder – leave room for one more archive. If the restore fails, the previous state comes back.
 - An archive from another schema (`FLOWPLAN_PG_SCHEMA`) restores as well.
-- **The instance backup** (ZIP) is restored as before under **Administration → Storage & backup → Restore from backup**.
+- **The instance backup** (ZIP) is restored in the same place as before; it fits both databases.
 
 ## PgBouncer
 
-Flowplan pools its connections itself; connecting straight to the server is the simplest way. With PgBouncer in front:
+Flowplan pools its connections itself; connecting straight to the server is the simplest way. PgBouncer in front should work as follows – it has not been tested against a real PgBouncer yet:
 
-- **Version 1.21 or newer** with `max_prepared_statements` above `0`: Flowplan uses named prepared statements.
-- **Session pooling in cluster mode:** over a connection of its own, Flowplan receives notifications (`LISTEN`) and elects the leading instance (a lock that lasts as long as the connection). It uses the same `DATABASE_URL` as for the pool – so in a cluster, PgBouncer must run in `session` mode for Flowplan; otherwise several instances could each consider themselves the leader.
-- A single container also works with `transaction` mode. With S3, the notifications about new files are then lost, and uploads to the bucket only start with the check every 15 seconds.
+- **Named prepared statements:** Flowplan uses them by default. In `transaction` mode, PgBouncer needs version 1.21 or newer with `max_prepared_statements` above `0` for them. Otherwise set `FLOWPLAN_PG_PREPARE=off`: Flowplan then sends every query unnamed (costs about a third of the throughput).
+- **A session of its own for notifications, the lead and backups:** `LISTEN`, the leading instance's lock in a cluster, and `pg_dump`, `pg_restore` and `psql` need a connection to themselves. They use `DATABASE_SESSION_URL` – point it straight at the server or at a pool in `session` mode. Without it they use `DATABASE_URL`.
+- **Startup parameter `options`:** Flowplan passes the schema (`search_path`) and time limits as `options` when connecting. If PgBouncer refuses it, `ignore_startup_parameters = options` helps – then the schema must be `public`, and you set the time limits on the role (`ALTER ROLE flowplan SET statement_timeout = '120s'` and so on).
+
+```dotenv
+# pool through PgBouncer in transaction mode, own sessions straight to the server
+DATABASE_URL=postgres://flowplan:<password>@pgbouncer:6432/flowplan
+DATABASE_SESSION_URL=postgres://flowplan:<password>@postgres:5432/flowplan
+# only without max_prepared_statements or before PgBouncer 1.21:
+# FLOWPLAN_PG_PREPARE=off
+```
 
 ## Next
 

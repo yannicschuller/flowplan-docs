@@ -22,7 +22,7 @@ Auch mit PostgreSQL braucht Flowplan seinen Datenordner (`/app/data`): Dort lieg
 - **Locale mit UTF-8**, etwa `en_US.utf8` oder `de_DE.utf8` – so ist es im offiziellen `postgres`-Image und bei den meisten verwalteten Diensten. Mit der Locale `C` findet die Suche chinesischen und japanischen Text zwar weiterhin richtig, aber deutlich langsamer.
 - **Erweiterung `pg_trgm`** für die Volltextsuche. Sie gehört zu jedem normalen PostgreSQL und ist „trusted“: Flowplan installiert sie selbst in ein eigenes Schema `flowplan_ext`, wenn die Rolle in der Datenbank Objekte anlegen darf (`CREATE`-Recht, als Eigentümerin der Datenbank gegeben). Sonst einmal als Administrator: `CREATE EXTENSION pg_trgm;`. Ohne `pg_trgm` funktioniert die Suche weiter, durchsucht aber jedes Mal alle Einträge (das Log sagt das).
 - **Optional `pgvector`** für die [semantische KI-Suche](/ai). Ab pgvector 0.8 installiert Flowplan sie selbst wie `pg_trgm`. **Vor 0.8** ist die Erweiterung nicht „trusted“ – dann führt ein Administrator in der Datenbank von Flowplan einmal `CREATE EXTENSION vector;` aus, und Flowplan nutzt sie ab dem nächsten Start. Ohne `pgvector` rechnet Flowplan die semantische Suche selbst, wie auf SQLite; abschalten lässt sie sich mit `FLOWPLAN_PGVECTOR=off`.
-- **Für die Sicherungen** `pg_dump` und `pg_restore` mindestens in der Hauptversion des Servers. Das Docker-Image bringt die Werkzeuge von PostgreSQL 18 mit und passt damit zu Servern bis Version 18. Ohne Docker das Paket `postgresql-client` passend installieren oder mit `FLOWPLAN_PG_BIN` auf den Ordner mit den Programmen zeigen.
+- **Für die Sicherungen** `pg_dump` und `pg_restore` mindestens in der Hauptversion des Servers. Das Docker-Image bringt die Werkzeuge von PostgreSQL 18 mit; sie sichern und spielen auf Servern von Version 16 bis 18 ein. Ohne Docker das Paket `postgresql-client` passend installieren oder mit `FLOWPLAN_PG_BIN` auf den Ordner mit den Programmen zeigen.
 
 ```sql
 -- als Administrator auf dem PostgreSQL-Server
@@ -94,16 +94,20 @@ volumes:
 | Variable | Standard | Bedeutung |
 | --- | --- | --- |
 | `DATABASE_URL` | *leer* (SQLite) | Adresse der PostgreSQL-Datenbank, `postgres://…` oder `postgresql://…`. |
+| `DATABASE_SESSION_URL` | `DATABASE_URL` | Eigene Verbindung für Benachrichtigungen, die Leitung im Cluster und `pg_dump`/`pg_restore`/`psql` – nur nötig, wenn `DATABASE_URL` auf PgBouncer im Modus `transaction` zeigt ([unten](#pgbouncer)). |
 | `FLOWPLAN_PG_SCHEMA` | `public` | Schema innerhalb der Datenbank, falls Flowplan sich die Datenbank mit anderem teilt. Wird angelegt, wenn es fehlt. |
 | `FLOWPLAN_PG_POOL` | `10` | Verbindungen je Instanz (1–500). |
 | `FLOWPLAN_PG_STATEMENT_TIMEOUT` | `120000` | Höchstdauer einer Abfrage in Millisekunden; `0` = kein Limit. |
 | `FLOWPLAN_PG_LOCK_TIMEOUT` | `10000` | So lange wartet eine Abfrage höchstens auf eine Sperre (ms). |
 | `FLOWPLAN_PG_IDLE_TX_TIMEOUT` | `60000` | Eine Transaktion, die so lange nichts tut, wird beendet (ms). |
 | `FLOWPLAN_PG_CONNECT_TIMEOUT` | `30000` | So lange wartet eine Anfrage auf eine freie Verbindung aus dem Pool (ms). |
+| `FLOWPLAN_PG_PREPARE` | an | `off` schickt jede Abfrage ohne Namen statt als benanntes Prepared Statement – für PgBouncer im Modus `transaction` vor 1.21 oder ohne `max_prepared_statements`. |
 | `FLOWPLAN_PG_SCHEMA_AUTO` | an | `off`: Die Instanz legt das Schema nicht selbst an oder aktualisiert es – das übernimmt ein eigener Schritt (`node /app/scripts/db-schema.mjs`, siehe [Cluster-Modus](/cluster#schema-vor-dem-start)). |
 | `FLOWPLAN_PGVECTOR` | an | `off` nutzt `pgvector` nicht, auch wenn es installiert ist. |
 | `FLOWPLAN_BACKUP_FORMAT` | `pg_dump` | `sqlite`: geplante Sicherungen im portablen SQLite-Format statt mit `pg_dump` (unten). |
 | `FLOWPLAN_PG_BIN` | *leer* | Ordner mit `pg_dump`, `pg_restore` und `psql`, wenn sie nicht im `PATH` liegen. |
+
+Alle Variablen stehen auch kommentiert in der [`.env.example`](https://github.com/yannicschuller/flowplan/blob/main/.env.example) des Repositorys.
 
 Lange Arbeiten wie Sicherungen, Wiederherstellungen und Schema-Änderungen heben die Zeitlimits für sich selbst auf.
 
@@ -139,18 +143,28 @@ Die **Instanzsicherung** (Administration → Speicher & Sicherung → Gesamte In
 
 ### Wiederherstellen
 
-- **Ein `pg_dump`-Archiv** (`.dump`, `.dump.enc`) spielst du auf dem Einrichtungsbildschirm einer neuen Instanz mit PostgreSQL ein: hochladen oder aus S3 bzw. per SFTP holen, wie unter [Beim Einrichten wiederherstellen](/storage-and-backups#beim-einrichten-wiederherstellen). Eine Instanz mit SQLite lehnt solche Archive ab – dafür gibt es die Instanzsicherung oder den [Wechsel der Datenbank](/database-migration).
-- Flowplan prüft das Archiv vorher (keine neuere Version), ersetzt dann das ganze Schema in einer Transaktion und baut den Suchindex neu. Der vorherige Stand bleibt als `pre-restore-<Zeit>/flowplan.dump` im Datenordner – plane dafür Platz für ein weiteres Archiv ein. Schlägt das Einspielen fehl, kommt der vorherige Stand zurück.
+- **Ein `pg_dump`-Archiv auf einer laufenden Instanz** (`flowplan-….dump`, `.dump.enc`): unter **Administration → Speicher & Sicherung → Aus Sicherung wiederherstellen** hochladen. Flowplan prüft es sofort und spielt es beim nächsten Neustart ein – im Cluster-Modus die leitende Instanz, siehe [Grenzen](/cluster#grenzen). Nur die Datenbank wird ersetzt; die Dateien bleiben, wie sie sind.
+- **Auf einer neuen Instanz** mit PostgreSQL geht dasselbe auf dem Einrichtungsbildschirm: hochladen oder aus S3 bzw. per SFTP holen, wie unter [Beim Einrichten wiederherstellen](/storage-and-backups#beim-einrichten-wiederherstellen).
+- Eine Instanz mit SQLite lehnt solche Archive ab – dafür gibt es die Instanzsicherung oder den [Wechsel der Datenbank](/database-migration).
+- Flowplan prüft das Archiv vorher (eine Flowplan-Datenbank, nicht aus einer neueren Version), ersetzt dann das ganze Schema in einer Transaktion und baut den Suchindex neu. Der vorherige Stand bleibt als `pre-restore-<Zeit>/flowplan.dump` im Datenordner – plane dafür Platz für ein weiteres Archiv ein. Schlägt das Einspielen fehl, kommt der vorherige Stand zurück.
 - Ein Archiv aus einem anderen Schema (`FLOWPLAN_PG_SCHEMA`) lässt sich ebenfalls einspielen.
-- **Die Instanzsicherung** (ZIP) stellst du wie bisher unter **Administration → Speicher & Sicherung → Aus Sicherung wiederherstellen** wieder her.
+- **Die Instanzsicherung** (ZIP) stellst du wie bisher an derselben Stelle wieder her; sie passt auf beide Datenbanken.
 
 ## PgBouncer
 
-Flowplan hält seine Verbindungen selbst im Pool; eine direkte Verbindung zum Server ist der einfachste Weg. Mit PgBouncer davor gilt:
+Flowplan hält seine Verbindungen selbst im Pool; eine direkte Verbindung zum Server ist der einfachste Weg. PgBouncer davor sollte so funktionieren – mit einem echten PgBouncer getestet ist es bisher nicht:
 
-- **Version 1.21 oder neuer** mit `max_prepared_statements` größer als `0`: Flowplan nutzt benannte Prepared Statements.
-- **Session-Pooling im Cluster-Modus:** Über eine eigene Verbindung empfängt Flowplan Benachrichtigungen (`LISTEN`) und bestimmt die leitende Instanz (eine Sperre, die so lange hält wie die Verbindung). Dafür nutzt es dieselbe `DATABASE_URL` wie für den Pool – im Cluster muss PgBouncer für Flowplan deshalb im Modus `session` laufen, sonst könnten sich mehrere Instanzen gleichzeitig für die leitende halten.
-- Ein einzelner Container kommt auch mit dem Modus `transaction` aus. Mit S3 gehen dann die Benachrichtigungen über neue Dateien verloren, und Uploads in den Bucket starten erst mit der Abfrage alle 15 Sekunden.
+- **Benannte Prepared Statements:** Flowplan nutzt sie standardmäßig. Im Modus `transaction` braucht PgBouncer dafür Version 1.21 oder neuer mit `max_prepared_statements` größer als `0`. Sonst `FLOWPLAN_PG_PREPARE=off` setzen: Flowplan schickt dann jede Abfrage ohne Namen (kostet rund ein Drittel des Durchsatzes).
+- **Eine eigene Sitzung für Benachrichtigungen, Leitung und Sicherungen:** `LISTEN`, die Sperre der leitenden Instanz im Cluster und `pg_dump`, `pg_restore` und `psql` brauchen eine Verbindung, die ihnen allein gehört. Sie nutzen `DATABASE_SESSION_URL` – zeig damit direkt auf den Server oder auf einen Pool im Modus `session`. Ohne die Variable nehmen sie `DATABASE_URL`.
+- **Startparameter `options`:** Flowplan übergibt Schema (`search_path`) und Zeitlimits beim Verbindungsaufbau als `options`. Lehnt PgBouncer das ab, hilft `ignore_startup_parameters = options` – dann muss das Schema `public` sein, und die Zeitlimits setzt du an der Rolle (`ALTER ROLE flowplan SET statement_timeout = '120s'` usw.).
+
+```dotenv
+# Pool über PgBouncer im Modus transaction, eigene Sitzungen direkt zum Server
+DATABASE_URL=postgres://flowplan:<Passwort>@pgbouncer:6432/flowplan
+DATABASE_SESSION_URL=postgres://flowplan:<Passwort>@postgres:5432/flowplan
+# nur ohne max_prepared_statements bzw. vor PgBouncer 1.21:
+# FLOWPLAN_PG_PREPARE=off
+```
 
 ## Weiter
 

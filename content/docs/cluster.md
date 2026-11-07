@@ -18,12 +18,12 @@ Eingeschaltet wird er mit `FLOWPLAN_CLUSTER=1`. Dann sind Pflicht:
 
 Fehlt eines davon, startet eine Instanz nicht und nennt im Log alle Probleme auf einmal. `REDIS_URL` ohne Cluster-Modus wird mit einer Warnung ignoriert.
 
-Ebenfalls Pflicht, auch wenn Flowplan es beim Start nicht prüft: **Schlüssel, die auf allen Instanzen gleich sind.** Ein einzelner Container legt manche Schlüssel selbst im Datenordner an – im Cluster hat jede Instanz ihren eigenen Ordner, und jede würde andere erzeugen. Setze deshalb überall dieselben Werte:
+Ebenfalls Pflicht – auch hier startet eine Instanz ohne sie nicht: **Schlüssel, die auf allen Instanzen gleich sind.** Ein einzelner Container legt manche Schlüssel selbst im Datenordner an – im Cluster hat jede Instanz ihren eigenen Ordner, und jede würde andere erzeugen. Setze deshalb überall dieselben Werte:
 
-- `FLOWPLAN_ENCRYPTION_KEY` (oder wenigstens `FLOWPLAN_SECRETS_KEY`) – sonst kann eine Instanz gespeicherte Geheimnisse und Signaturen der anderen nicht lesen (Zwei-Faktor-Anmeldung, KI-Schlüssel, entsperrte Freigabelinks). Siehe [Gespeicherte Geheimnisse](/configuration#gespeicherte-geheimnisse).
-- `WEB_PUSH_PUBLIC_KEY` und `WEB_PUSH_PRIVATE_KEY` – sonst passen Push-Abos nur zu einer Instanz. Siehe [Push-Benachrichtigungen](/configuration#push-benachrichtigungen).
+- `FLOWPLAN_ENCRYPTION_KEY` oder `FLOWPLAN_SECRETS_KEY` (oder ihre Varianten `…_FILE`, etwa für Docker-Secrets) – sonst kann eine Instanz gespeicherte Geheimnisse und Signaturen der anderen nicht lesen (Zwei-Faktor-Anmeldung, KI-Schlüssel, entsperrte Freigabelinks). Siehe [Gespeicherte Geheimnisse](/configuration#gespeicherte-geheimnisse).
+- `WEB_PUSH_PUBLIC_KEY` und `WEB_PUSH_PRIVATE_KEY` (ein VAPID-Schlüsselpaar, z. B. aus `npx web-push generate-vapid-keys`) – sonst passen Push-Abos nur zu einer Instanz. Siehe [Push-Benachrichtigungen](/configuration#push-benachrichtigungen).
 
-Kommst du von einem einzelnen Container ohne diese Variablen, übernimm die Werte aus seinem Datenordner: den Inhalt von `secrets.key` als `FLOWPLAN_SECRETS_KEY` und `publicKey`/`privateKey` aus `web-push-keys.json` als `WEB_PUSH_PUBLIC_KEY`/`WEB_PUSH_PRIVATE_KEY`.
+Kommst du von einem einzelnen Container ohne diese Variablen, übernimm die Werte aus seinem Datenordner, damit gespeicherte Geheimnisse und Push-Abos gültig bleiben: den Inhalt von `secrets.key` als `FLOWPLAN_SECRETS_KEY` (zusätzlich zu einem `FLOWPLAN_ENCRYPTION_KEY`, beide werden gelesen) und `publicKey`/`privateKey` aus `web-push-keys.json` als `WEB_PUSH_PUBLIC_KEY`/`WEB_PUSH_PRIVATE_KEY`.
 
 ## Was die Instanzen teilen
 
@@ -70,7 +70,7 @@ docker compose up -d
 
 Darin:
 
-- `.env` enthält `APP_URL`, `FLOWPLAN_SETUP_TOKEN` und die Passwörter für PostgreSQL, Redis und MinIO – nur Platzhalter, die du ersetzt. Ergänze `FLOWPLAN_ENCRYPTION_KEY` (im Beispiel auskommentiert) sowie `WEB_PUSH_PUBLIC_KEY` und `WEB_PUSH_PRIVATE_KEY` (siehe [Voraussetzungen](#voraussetzungen)).
+- `.env` enthält `APP_URL`, `FLOWPLAN_SETUP_TOKEN` und die Passwörter für PostgreSQL, Redis und MinIO – nur Platzhalter, die du ersetzt. Pflicht sind außerdem `FLOWPLAN_ENCRYPTION_KEY`, `WEB_PUSH_PUBLIC_KEY` und `WEB_PUSH_PRIVATE_KEY` – in der `.env.example` leer; ohne sie bricht `docker compose up` mit einem Hinweis ab (siehe [Voraussetzungen](#voraussetzungen)).
 - Der Dienst `schema` läuft einmal vor den Instanzen (`node /app/scripts/db-schema.mjs`); die Instanzen haben `FLOWPLAN_PG_SCHEMA_AUTO=off`.
 - `flowplan-1` und `flowplan-2` haben je ein eigenes Volume als Zwischenspeicher, `FLOWPLAN_PG_POOL=20` und einen Healthcheck auf `/api/health/ready`. Mehr Instanzen: den Dienst `flowplan-2` kopieren und im `Caddyfile` ergänzen.
 - Caddy verteilt reihum auf bereite Instanzen (Health-Check auf `/api/health/ready`) und reicht Live-Verbindungen ungepuffert durch (`flush_interval -1`). Für HTTPS `:8080` im `Caddyfile` durch deinen Hostnamen ersetzen.
@@ -89,7 +89,9 @@ kubectl -n flowplan create secret generic flowplan-cluster \
   --from-literal=REDIS_URL='redis://:<Passwort>@redis-master:6379/0'
 kubectl -n flowplan create secret generic flowplan-env \
   --from-literal=S3_ACCESS_KEY_ID='<Key-ID>' \
-  --from-literal=S3_SECRET_ACCESS_KEY='<Secret>' \
+  --from-literal=S3_SECRET_ACCESS_KEY='<Secret>'
+# die Schlüssel, die alle Pods teilen (Push-Schlüssel: npx web-push generate-vapid-keys)
+kubectl -n flowplan create secret generic flowplan-keys \
   --from-literal=FLOWPLAN_ENCRYPTION_KEY="$(openssl rand -base64 32)" \
   --from-literal=WEB_PUSH_PUBLIC_KEY='<öffentlicher VAPID-Schlüssel>' \
   --from-literal=WEB_PUSH_PRIVATE_KEY='<privater VAPID-Schlüssel>'
@@ -101,17 +103,19 @@ helm install flowplan deploy/helm/flowplan -n flowplan \
   --set cluster.replicas=3 \
   --set cluster.database.existingSecret=flowplan-cluster \
   --set cluster.redis.existingSecret=flowplan-cluster \
+  --set cluster.keys.existingSecret=flowplan-keys \
   --set s3.bucket=flowplan --set s3.endpoint=https://s3.example.org
 ```
 
-Ein VAPID-Schlüsselpaar erzeugt z. B. `npx web-push generate-vapid-keys`. Was das Chart im Cluster-Modus tut:
+Was das Chart im Cluster-Modus tut:
 
 - **Schema-Job** als `pre-install`/`pre-upgrade`-Hook (`node /app/scripts/db-schema.mjs`), bevor Pods einer neuen Version starten. Ohne ihn (`cluster.migration.enabled=false`) erledigen die Pods das beim Start.
 - **Rolling Updates** ohne Unterbrechung (`maxUnavailable: 0`), ein **PodDisruptionBudget** (`cluster.podDisruptionBudget.minAvailable`, Standard 1) und Pods möglichst auf verschiedenen Knoten.
 - **Probes:** Liveness auf `/api/health/live`, Readiness auf `/api/health/ready`; vor dem Stoppen wartet ein Pod `cluster.preStopSeconds` (5), damit der Load Balancer ihn herausnimmt.
 - **Kein Volume:** `/app/data` ist ein `emptyDir` je Pod (`cluster.cacheSizeLimit`, 5 Gi); Dateien liegen im Bucket, Sicherungen macht PostgreSQL (`pg_dump`).
 - **Verbindungen:** `cluster.poolSize` (10) je Pod plus zwei eigene; `replicas × (poolSize + 2)` muss unter `max_connections` des Servers bleiben.
-- Das Chart verweigert die Installation, wenn Datenbank, Redis oder Bucket fehlen.
+- **Gemeinsame Schlüssel:** Aus dem Secret in `cluster.keys.existingSecret` bekommt jeder Pod `FLOWPLAN_ENCRYPTION_KEY`, `WEB_PUSH_PUBLIC_KEY` und `WEB_PUSH_PRIVATE_KEY`. Heißen die Schlüssel im Secret anders, nennst du sie mit `cluster.keys.encryptionKey`, `cluster.keys.webPushPublicKey` und `cluster.keys.webPushPrivateKey`. Bewahre eine Kopie des Verschlüsselungsschlüssels getrennt von den Sicherungen auf.
+- Das Chart verweigert die Installation, wenn Datenbank, Redis, Bucket oder `cluster.keys.existingSecret` fehlen.
 
 Mit ingress-nginx für die Live-Verbindungen die Annotationen `nginx.ingress.kubernetes.io/proxy-buffering: "off"` und `nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"` setzen, für Uploads `nginx.ingress.kubernetes.io/proxy-body-size: 110m`. Alle Werte erklärt das README des Charts.
 
