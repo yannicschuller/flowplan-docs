@@ -32,7 +32,7 @@ Der Stift-Knopf **Vorschlagen** in der Werkzeugleiste schaltet den Vorschlagsmod
 
 ## Seiten folgen
 
-Die Glocke oben auf einer Seite schaltet **Folgen** ein oder aus. Wer einer Seite folgt, bekommt eine Benachrichtigung, sobald jemand anderes sie ändert – eine pro Seite, bis du sie wieder angesehen hast. Mit E-Mail-Versand landet sie in der E-Mail-Zusammenfassung. Wer eine Seite anlegt, folgt ihr automatisch. Unter **Einstellungen → Benachrichtigungen** lässt sich die Art „Änderungen an Seiten, denen du folgst“ für Posteingang, Push und E-Mail einzeln abschalten.
+Die Glocke oben auf einer Seite schaltet **Folgen** ein oder aus. Wer einer Seite folgt, bekommt eine Benachrichtigung, sobald jemand anderes sie ändert – eine pro Seite, bis du sie wieder angesehen hast – und bei jedem neuen Kommentar darauf (bei einer Datenbank: auch zu ihren Einträgen). Mit E-Mail-Versand landet sie in der E-Mail-Zusammenfassung. Wer eine Seite anlegt, folgt ihr automatisch. Unter **Einstellungen → Benachrichtigungen** lässt sich die Art „Änderungen an Seiten, denen du folgst“ für Posteingang, Push und E-Mail einzeln abschalten.
 
 ## Wer hat die Seite gesehen?
 
@@ -66,4 +66,4 @@ Textkommentare gibt es in Dokumenten und in den Inhalten von Datenbankeinträgen
 
 ## Posteingang
 
-Der **Posteingang** in der Seitenleiste sammelt Erwähnungen, Kommentare und Antworten, Datums-Erinnerungen sowie Kommentare und Einträge von Gästen. Ungelesenes ist markiert; ein Klick springt zur Stelle – bei Textkommentaren direkt in den Thread. Welche Ereignisse als Push-Nachricht kommen, stellst du unter **Einstellungen → Benachrichtigungen** ein (siehe [Suche, Posteingang und Push](/search-and-notifications)).
+Der **Posteingang** in der Seitenleiste sammelt Erwähnungen, Kommentare und Antworten, die dich betreffen ([wer von Kommentaren erfährt](/search-and-notifications#wer-von-kommentaren-erfaehrt)), Datums-Erinnerungen sowie Kommentare und Einträge von Gästen. Ungelesenes ist markiert; ein Klick springt zur Stelle – bei Textkommentaren direkt in den Thread. Welche Ereignisse als Push-Nachricht kommen, stellst du unter **Einstellungen → Benachrichtigungen** ein (siehe [Suche, Posteingang und Push](/search-and-notifications)).

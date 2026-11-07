@@ -155,14 +155,14 @@ Enthalten: zugängliche Seiten samt Papierkorb, Datenbanken mit Ansichten und Ei
 
 Auch die Tags und Eigenschaften des Arbeitsbereichs (auch ungenutzte) und die Tags und Werte jeder Seite sind dabei. Beim Einspielen werden fehlende Tags angelegt, fehlende Eigenschaften nur, wenn du Eigentümer des Ziel-Arbeitsbereichs bist; vorhandene mit gleichem Namen werden weiterverwendet.
 
-Das Archiv enthält nur, was du selbst sehen darfst: private Einträge anderer samt ihrer Kommentare und Dateien fehlen, ebenso Journale hinter einer PIN, die du gerade nicht entsperrt hast. Versionen einer Datenbank kommen nur bei Besitzern mit, weil sie alle Einträge enthalten.
+Das Archiv enthält nur, was du selbst sehen darfst: private Einträge anderer samt ihrer Kommentare und Dateien fehlen, ebenso Journale hinter einer PIN, die du gerade nicht entsperrt hast. Versionen einer Datenbank kommen nur bei Besitzern mit, weil sie alle Einträge enthalten. Jede Version enthält die ganze Datenbank; passen bei großen Datenbanken nicht alle ins Archiv, kommen die neuesten mit und ältere bleiben zurück – die aktuellen Einträge sind immer dabei.
 
 - Beim Import entstehen neue IDs; interne Links und Relationen werden umgeschrieben – auch eingebettete Whiteboards, synchronisierte Blöcke, Kennzahlen, Zeichenblöcke und Einträge auf Whiteboard-Karten.
 - Stammt das Archiv von jemand anderem, werden dessen Zuweisungen und Erwähnungen zu deinen; Aufgaben in Dokumenten erscheinen sofort unter **Meine Aufgaben**.
 - Ältere Archive lassen sich wie bisher importieren; ältere Server überspringen, was sie nicht kennen.
 - Importierte Bereiche und Vorlagen sind privat, Freigaben und Formulare nicht aktiv.
 - Ein fehlerhafter Import wird vollständig zurückgerollt.
-- Grenzen: 2 GB ZIP, 500 Seiten, 20.000 Dateien, 5.000 Einträge je Datenbank.
+- Grenzen: 2 GB ZIP, 20.000 Dateien, 50.000 Seiten, 200.000 Einträge je Datenbank und 30 MB für Seiten, Einträge, Kommentare und Versionen ohne die Dateien – je nach Inhalt reicht das für rund 50.000 Einträge.
 
 Konten, Sitzungen und Anmeldung gehören nicht dazu – die sichert der Betrieb täglich mit der gesamten Instanz.
 

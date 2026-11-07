@@ -155,14 +155,14 @@ It contains: accessible pages including the trash, databases with views and reco
 
 The workspace's tags and properties (unused ones too) and every page's tags and values come along as well. Importing creates missing tags, and missing properties only if you own the target workspace; existing ones with the same name are reused.
 
-The archive only holds what you may see yourself: other people's private records with their comments and files are left out, as are journals behind a PIN you have not unlocked right now. Versions of a database are included only for owners, because they contain every record.
+The archive only holds what you may see yourself: other people's private records with their comments and files are left out, as are journals behind a PIN you have not unlocked right now. Versions of a database are included only for owners, because they contain every record. Each version holds the whole database; when not all of them fit into the archive of a large database, the newest come along and older ones stay behind – the current records are always included.
 
 - Importing creates new IDs; internal links and relations are rewritten – embedded whiteboards, synced blocks, metrics, drawing blocks and records on whiteboard cards too.
 - If the archive comes from someone else, their assignments and mentions become yours; tasks in documents show under **My tasks** right away.
 - Older archives import as before; older servers skip what they do not know.
 - Imported spaces and templates are private, shares and forms are not active.
 - A failed import is rolled back completely.
-- Limits: 2 GB ZIP, 500 pages, 20,000 files, 5,000 records per database.
+- Limits: 2 GB ZIP, 20,000 files, 50,000 pages, 200,000 records per database and 30 MB for pages, records, comments and versions without the files – depending on the content, enough for around 50,000 records.
 
 Accounts, sessions and sign-in are not part of it – operations back them up every day with the whole instance.
 
