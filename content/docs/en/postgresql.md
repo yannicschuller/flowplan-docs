@@ -18,20 +18,40 @@ Flowplan still needs its data folder (`/app/data`) with PostgreSQL: it holds upl
 
 ## Requirements
 
-- **PostgreSQL 16 or newer**, an empty database (or an empty schema) and a role that owns it. Flowplan needs no superuser rights.
+- **PostgreSQL 16 or newer**, an empty database (or an empty schema) and a role that owns it. Flowplan needs no superuser rights – and should not have them, see [Role without superuser rights](#role-without-superuser-rights).
 - **A UTF-8 locale** such as `en_US.utf8` or `de_DE.utf8` – the official `postgres` image and most managed services use one. With the `C` locale, search still finds Chinese and Japanese text correctly, but much more slowly.
 - **The `pg_trgm` extension** for full-text search. It ships with every regular PostgreSQL and is "trusted": Flowplan installs it itself into a schema of its own, `flowplan_ext`, if the role may create objects in the database (`CREATE` privilege, which the database owner has). Otherwise run `CREATE EXTENSION pg_trgm;` once as an administrator. Without `pg_trgm` search keeps working, but scans every entry each time (the log says so).
 - **Optionally `pgvector`** for [semantic AI search](/en/ai). From pgvector 0.8 on, Flowplan installs it itself like `pg_trgm`. **Before 0.8** the extension is not "trusted" – an administrator then runs `CREATE EXTENSION vector;` once in Flowplan's database, and Flowplan uses it from its next start. Without `pgvector`, Flowplan computes semantic search itself, as on SQLite; switch it off with `FLOWPLAN_PGVECTOR=off`.
 - **For backups**, `pg_dump` and `pg_restore` of at least the server's major version. The Docker image ships the PostgreSQL 18 tools; they back up and restore on servers from version 16 to 18. Without Docker, install a matching `postgresql-client` package or point `FLOWPLAN_PG_BIN` at the folder holding the programs.
 
 ```sql
--- as an administrator on the PostgreSQL server
-CREATE ROLE flowplan LOGIN PASSWORD '<password>';
+-- as an administrator (superuser) on the PostgreSQL server
+CREATE ROLE flowplan LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE PASSWORD '<password>';
 CREATE DATABASE flowplan OWNER flowplan;
--- optional, only for pgvector before 0.8 (in the new database):
+-- in the new database, the extensions into a schema of their own:
 \c flowplan
-CREATE EXTENSION IF NOT EXISTS vector;
+CREATE SCHEMA IF NOT EXISTS flowplan_ext AUTHORIZATION flowplan;
+CREATE EXTENSION IF NOT EXISTS pg_trgm SCHEMA flowplan_ext;
+-- optional, for semantic search (the only way before pgvector 0.8):
+CREATE EXTENSION IF NOT EXISTS vector SCHEMA flowplan_ext;
 ```
+
+### Role without superuser rights
+
+Let Flowplan connect with a role that owns the database but is **not a superuser**. Flowplan creates and alters tables, functions and triggers in its database – owning it is enough for that. A superuser, on the other hand, can read files on the database server and run programs there (`COPY … TO PROGRAM`); a flaw in Flowplan, or an administrator exploiting one, would reach the host.
+
+Many images and charts make the configured user a superuser – the official `postgres` image does so with `POSTGRES_USER`. In that case create a role of its own as above. The administrator best installs the extensions right away, into the schema `flowplan_ext`: Flowplan uses an installed extension wherever it is, and otherwise creates `pg_trgm` (and `pgvector` from 0.8) in `flowplan_ext` itself. `pgvector` before 0.8 can only be installed by an administrator; without it semantic search runs more slowly.
+
+An existing role that is a superuser is demoted by another superuser:
+
+```sql
+-- once, while flowplan is still a superuser (as flowplan):
+CREATE ROLE admin LOGIN SUPERUSER PASSWORD '<password>';
+-- then as admin:
+ALTER ROLE flowplan NOSUPERUSER NOCREATEROLE NOCREATEDB;
+```
+
+The database and its tables stay owned by `flowplan`, and the extensions installed so far stay usable. Keep the `admin` login for administration; Flowplan does not need it.
 
 ## Setting it up
 
@@ -71,13 +91,14 @@ services:
   postgres:
     image: postgres:16
     environment:
-      POSTGRES_USER: flowplan
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: flowplan
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD}
+      FLOWPLAN_DB_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - postgres-data:/var/lib/postgresql/data
+      - ./postgres-init.sh:/docker-entrypoint-initdb.d/10-flowplan.sh:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U flowplan -d flowplan"]
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U flowplan -d flowplan"]
       interval: 5s
       retries: 20
     restart: unless-stopped
@@ -87,7 +108,7 @@ volumes:
   postgres-data:
 ```
 
-`POSTGRES_PASSWORD` goes into the `.env` next to `compose.yaml` (`openssl rand -hex 24`).
+`POSTGRES_PASSWORD` (the password of the role `flowplan`) and `POSTGRES_ADMIN_PASSWORD` (that of the image's superuser `postgres`, for administration only) go into the `.env` next to `compose.yaml` (`openssl rand -hex 24` each). The script [`postgres-init.sh`](https://github.com/yannicschuller/flowplan/blob/main/deploy/compose/cluster/postgres-init.sh) from the cluster example creates the role `flowplan` without superuser rights on the database's first start, gives it the database `flowplan` and installs the extensions into `flowplan_ext` – put it next to `compose.yaml`. A volume made with an older version of this example (`POSTGRES_USER: flowplan`) keeps its roles: there `flowplan` is the superuser until you [demote it](#role-without-superuser-rights).
 
 ### Variables
 
@@ -146,7 +167,8 @@ The **instance backup** (Administration → Storage & backup → Whole instance 
 - **A `pg_dump` archive on a running instance** (`flowplan-….dump`, `.dump.enc`): upload it under **Administration → Storage & backup → Restore from backup**. Flowplan checks it right away and applies it on the next restart – in cluster mode the leading instance does, see [Known limits](/en/cluster#known-limits). Only the database is replaced; the files stay as they are.
 - **On a new instance** with PostgreSQL, the same works on the setup screen: upload it or fetch it from S3 or via SFTP, as in [Restore while setting up](/en/storage-and-backups#restore-while-setting-up).
 - An instance on SQLite refuses such archives – use the instance backup or [switch the database](/en/database-migration).
-- Flowplan checks the archive first (a Flowplan database, not from a newer version), then replaces the whole schema in one transaction and rebuilds the search index. The previous state is kept as `pre-restore-<time>/flowplan.dump` in the data folder – leave room for one more archive. If the restore fails, the previous state comes back.
+- Flowplan checks the archive first (a Flowplan database, not from a newer version), then replaces the whole schema in one transaction and rebuilds the search index. Only the data of Flowplan's tables comes from the archive; tables, functions and triggers are created by the running version itself. Older archives therefore fit into the current tables.
+- If the archive holds objects Flowplan does not create itself – custom functions, views, triggers or rules in Flowplan's schema –, Flowplan refuses it: “The backup contains database objects Flowplan does not create itself (such as functions or triggers), so it is not restored.” Keep custom objects in another schema; Flowplan's `pg_dump` does not back that up. The previous state is kept as `pre-restore-<time>/flowplan.dump` in the data folder – leave room for one more archive. If the restore fails, the previous state comes back.
 - An archive from another schema (`FLOWPLAN_PG_SCHEMA`) restores as well.
 - **The instance backup** (ZIP) is restored in the same place as before; it fits both databases.
 

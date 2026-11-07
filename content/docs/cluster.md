@@ -70,11 +70,11 @@ docker compose up -d
 
 Darin:
 
-- `.env` enthält `APP_URL`, `FLOWPLAN_SETUP_TOKEN` und die Passwörter für PostgreSQL, Redis und MinIO – nur Platzhalter, die du ersetzt. Pflicht sind außerdem `FLOWPLAN_ENCRYPTION_KEY`, `WEB_PUSH_PUBLIC_KEY` und `WEB_PUSH_PRIVATE_KEY` – in der `.env.example` leer; ohne sie bricht `docker compose up` mit einem Hinweis ab (siehe [Voraussetzungen](#voraussetzungen)).
+- `.env` enthält `APP_URL`, `FLOWPLAN_SETUP_TOKEN` und die Passwörter für PostgreSQL (`POSTGRES_PASSWORD` und `POSTGRES_ADMIN_PASSWORD`), Redis und MinIO – nur Platzhalter, die du ersetzt. Pflicht sind außerdem `FLOWPLAN_ENCRYPTION_KEY`, `WEB_PUSH_PUBLIC_KEY` und `WEB_PUSH_PRIVATE_KEY` – in der `.env.example` leer; ohne sie bricht `docker compose up` mit einem Hinweis ab (siehe [Voraussetzungen](#voraussetzungen)).
 - Der Dienst `schema` läuft einmal vor den Instanzen (`node /app/scripts/db-schema.mjs`); die Instanzen haben `FLOWPLAN_PG_SCHEMA_AUTO=off`.
 - `flowplan-1` und `flowplan-2` haben je ein eigenes Volume als Zwischenspeicher, `FLOWPLAN_PG_POOL=20` und einen Healthcheck auf `/api/health/ready`. Mehr Instanzen: den Dienst `flowplan-2` kopieren und im `Caddyfile` ergänzen.
 - Caddy verteilt reihum auf bereite Instanzen (Health-Check auf `/api/health/ready`) und reicht Live-Verbindungen ungepuffert durch (`flush_interval -1`). Für HTTPS `:8080` im `Caddyfile` durch deinen Hostnamen ersetzen.
-- PostgreSQL läuft mit `max_connections=200`.
+- PostgreSQL läuft mit `max_connections=200`. Flowplan verbindet sich als Rolle `flowplan`, der die Datenbank gehört, die aber kein Superuser ist: `POSTGRES_PASSWORD` ist ihr Passwort, `POSTGRES_ADMIN_PASSWORD` das des Superusers `postgres` aus dem Image, nur für die Verwaltung. Beim ersten Start der Datenbank legt `postgres-init.sh` die Rolle an und installiert `pg_trgm` (und `pgvector`, wenn das Image es hat) in `flowplan_ext`. Ein Volume aus einer älteren Fassung des Beispiels behält seine Rollen – dort ist `flowplan` noch Superuser, bis du ihn [zurückstufst](/postgresql#rolle-ohne-superuser-rechte).
 
 Ein anderer Load Balancer (nginx, Traefik, HAProxy) braucht dasselbe: Health-Check auf `/api/health/ready`, keine Pufferung für Server-Sent Events (`/api/documents/live` und die Cursor-Kanäle), lange Lese-Timeouts, Uploads bis 110 MB und `FLOWPLAN_TRUSTED_PROXIES` passend zur Zahl der Proxys.
 
@@ -113,6 +113,7 @@ Was das Chart im Cluster-Modus tut:
 - **Rolling Updates** ohne Unterbrechung (`maxUnavailable: 0`), ein **PodDisruptionBudget** (`cluster.podDisruptionBudget.minAvailable`, Standard 1) und Pods möglichst auf verschiedenen Knoten.
 - **Probes:** Liveness auf `/api/health/live`, Readiness auf `/api/health/ready`; vor dem Stoppen wartet ein Pod `cluster.preStopSeconds` (5), damit der Load Balancer ihn herausnimmt.
 - **Kein Volume:** `/app/data` ist ein `emptyDir` je Pod (`cluster.cacheSizeLimit`, 5 Gi); Dateien liegen im Bucket, Sicherungen macht PostgreSQL (`pg_dump`).
+- **Datenbankrolle:** Die Rolle in `DATABASE_URL` sollte die Datenbank besitzen, aber kein Superuser sein. Viele PostgreSQL-Charts machen ihren Benutzer zum Superuser – lege dann eine eigene Rolle an, siehe [Rolle ohne Superuser-Rechte](/postgresql#rolle-ohne-superuser-rechte).
 - **Verbindungen:** `cluster.poolSize` (10) je Pod plus zwei eigene; `replicas × (poolSize + 2)` muss unter `max_connections` des Servers bleiben.
 - **Gemeinsame Schlüssel:** Aus dem Secret in `cluster.keys.existingSecret` bekommt jeder Pod `FLOWPLAN_ENCRYPTION_KEY`, `WEB_PUSH_PUBLIC_KEY` und `WEB_PUSH_PRIVATE_KEY`. Heißen die Schlüssel im Secret anders, nennst du sie mit `cluster.keys.encryptionKey`, `cluster.keys.webPushPublicKey` und `cluster.keys.webPushPrivateKey`. Bewahre eine Kopie des Verschlüsselungsschlüssels getrennt von den Sicherungen auf.
 - Das Chart verweigert die Installation, wenn Datenbank, Redis, Bucket oder `cluster.keys.existingSecret` fehlen.

@@ -18,20 +18,40 @@ Auch mit PostgreSQL braucht Flowplan seinen Datenordner (`/app/data`): Dort lieg
 
 ## Voraussetzungen
 
-- **PostgreSQL 16 oder neuer**, eine leere Datenbank (oder ein leeres Schema) und eine Rolle, der sie gehört. Superuser-Rechte braucht Flowplan nicht.
+- **PostgreSQL 16 oder neuer**, eine leere Datenbank (oder ein leeres Schema) und eine Rolle, der sie gehört. Superuser-Rechte braucht Flowplan nicht – und sollte sie auch nicht haben, siehe [Rolle ohne Superuser-Rechte](#rolle-ohne-superuser-rechte).
 - **Locale mit UTF-8**, etwa `en_US.utf8` oder `de_DE.utf8` – so ist es im offiziellen `postgres`-Image und bei den meisten verwalteten Diensten. Mit der Locale `C` findet die Suche chinesischen und japanischen Text zwar weiterhin richtig, aber deutlich langsamer.
 - **Erweiterung `pg_trgm`** für die Volltextsuche. Sie gehört zu jedem normalen PostgreSQL und ist „trusted“: Flowplan installiert sie selbst in ein eigenes Schema `flowplan_ext`, wenn die Rolle in der Datenbank Objekte anlegen darf (`CREATE`-Recht, als Eigentümerin der Datenbank gegeben). Sonst einmal als Administrator: `CREATE EXTENSION pg_trgm;`. Ohne `pg_trgm` funktioniert die Suche weiter, durchsucht aber jedes Mal alle Einträge (das Log sagt das).
 - **Optional `pgvector`** für die [semantische KI-Suche](/ai). Ab pgvector 0.8 installiert Flowplan sie selbst wie `pg_trgm`. **Vor 0.8** ist die Erweiterung nicht „trusted“ – dann führt ein Administrator in der Datenbank von Flowplan einmal `CREATE EXTENSION vector;` aus, und Flowplan nutzt sie ab dem nächsten Start. Ohne `pgvector` rechnet Flowplan die semantische Suche selbst, wie auf SQLite; abschalten lässt sie sich mit `FLOWPLAN_PGVECTOR=off`.
 - **Für die Sicherungen** `pg_dump` und `pg_restore` mindestens in der Hauptversion des Servers. Das Docker-Image bringt die Werkzeuge von PostgreSQL 18 mit; sie sichern und spielen auf Servern von Version 16 bis 18 ein. Ohne Docker das Paket `postgresql-client` passend installieren oder mit `FLOWPLAN_PG_BIN` auf den Ordner mit den Programmen zeigen.
 
 ```sql
--- als Administrator auf dem PostgreSQL-Server
-CREATE ROLE flowplan LOGIN PASSWORD '<Passwort>';
+-- als Administrator (Superuser) auf dem PostgreSQL-Server
+CREATE ROLE flowplan LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE PASSWORD '<Passwort>';
 CREATE DATABASE flowplan OWNER flowplan;
--- optional, nur für pgvector vor 0.8 (in der neuen Datenbank):
+-- in der neuen Datenbank die Erweiterungen in ein eigenes Schema:
 \c flowplan
-CREATE EXTENSION IF NOT EXISTS vector;
+CREATE SCHEMA IF NOT EXISTS flowplan_ext AUTHORIZATION flowplan;
+CREATE EXTENSION IF NOT EXISTS pg_trgm SCHEMA flowplan_ext;
+-- optional, für die semantische Suche (vor pgvector 0.8 nur so):
+CREATE EXTENSION IF NOT EXISTS vector SCHEMA flowplan_ext;
 ```
+
+### Rolle ohne Superuser-Rechte
+
+Lass Flowplan mit einer Rolle verbinden, der die Datenbank gehört, die aber **kein Superuser** ist. Flowplan legt in seiner Datenbank Tabellen, Funktionen und Trigger an und ändert sie – dafür reicht die Eigentümerschaft. Ein Superuser dagegen kann Dateien auf dem Datenbankserver lesen und dort Programme starten (`COPY … TO PROGRAM`); eine Lücke in Flowplan oder ein Administrator, der sie ausnutzt, käme damit bis auf den Host.
+
+Viele Images und Charts machen den eingestellten Benutzer zum Superuser – das offizielle `postgres`-Image etwa `POSTGRES_USER`. Lege dann wie oben eine eigene Rolle an. Die Erweiterungen installiert der Administrator am besten gleich mit, in das Schema `flowplan_ext`: Flowplan nutzt eine installierte Erweiterung dort, wo sie liegt, und legt `pg_trgm` (und `pgvector` ab 0.8) sonst selbst in `flowplan_ext` an. `pgvector` vor 0.8 kann nur ein Administrator installieren; ohne läuft die semantische Suche langsamer.
+
+Eine bestehende Rolle, die Superuser ist, stuft ein anderer Superuser zurück:
+
+```sql
+-- einmalig, solange flowplan noch Superuser ist (als flowplan):
+CREATE ROLE admin LOGIN SUPERUSER PASSWORD '<Passwort>';
+-- dann als admin:
+ALTER ROLE flowplan NOSUPERUSER NOCREATEROLE NOCREATEDB;
+```
+
+Datenbank und Tabellen gehören weiter `flowplan`, und die bisher installierten Erweiterungen bleiben nutzbar. Den Zugang `admin` hebst du für die Verwaltung auf; Flowplan braucht ihn nicht.
 
 ## Einrichten
 
@@ -71,13 +91,14 @@ services:
   postgres:
     image: postgres:16
     environment:
-      POSTGRES_USER: flowplan
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: flowplan
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD}
+      FLOWPLAN_DB_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - postgres-data:/var/lib/postgresql/data
+      - ./postgres-init.sh:/docker-entrypoint-initdb.d/10-flowplan.sh:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U flowplan -d flowplan"]
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U flowplan -d flowplan"]
       interval: 5s
       retries: 20
     restart: unless-stopped
@@ -87,7 +108,7 @@ volumes:
   postgres-data:
 ```
 
-`POSTGRES_PASSWORD` steht in der `.env` neben der `compose.yaml` (`openssl rand -hex 24`).
+`POSTGRES_PASSWORD` (das Passwort der Rolle `flowplan`) und `POSTGRES_ADMIN_PASSWORD` (das des Superusers `postgres` aus dem Image, nur für die Verwaltung) stehen in der `.env` neben der `compose.yaml` (je `openssl rand -hex 24`). Das Skript [`postgres-init.sh`](https://github.com/yannicschuller/flowplan/blob/main/deploy/compose/cluster/postgres-init.sh) aus dem Cluster-Beispiel legt beim ersten Start der Datenbank die Rolle `flowplan` ohne Superuser-Rechte an, gibt ihr die Datenbank `flowplan` und installiert die Erweiterungen in `flowplan_ext` – leg es neben die `compose.yaml`. Ein Volume aus einer älteren Fassung dieses Beispiels (`POSTGRES_USER: flowplan`) behält seine Rollen: Dort ist `flowplan` der Superuser, bis du ihn [zurückstufst](#rolle-ohne-superuser-rechte).
 
 ### Variablen
 
@@ -146,7 +167,8 @@ Die **Instanzsicherung** (Administration → Speicher & Sicherung → Gesamte In
 - **Ein `pg_dump`-Archiv auf einer laufenden Instanz** (`flowplan-….dump`, `.dump.enc`): unter **Administration → Speicher & Sicherung → Aus Sicherung wiederherstellen** hochladen. Flowplan prüft es sofort und spielt es beim nächsten Neustart ein – im Cluster-Modus die leitende Instanz, siehe [Grenzen](/cluster#grenzen). Nur die Datenbank wird ersetzt; die Dateien bleiben, wie sie sind.
 - **Auf einer neuen Instanz** mit PostgreSQL geht dasselbe auf dem Einrichtungsbildschirm: hochladen oder aus S3 bzw. per SFTP holen, wie unter [Beim Einrichten wiederherstellen](/storage-and-backups#beim-einrichten-wiederherstellen).
 - Eine Instanz mit SQLite lehnt solche Archive ab – dafür gibt es die Instanzsicherung oder den [Wechsel der Datenbank](/database-migration).
-- Flowplan prüft das Archiv vorher (eine Flowplan-Datenbank, nicht aus einer neueren Version), ersetzt dann das ganze Schema in einer Transaktion und baut den Suchindex neu. Der vorherige Stand bleibt als `pre-restore-<Zeit>/flowplan.dump` im Datenordner – plane dafür Platz für ein weiteres Archiv ein. Schlägt das Einspielen fehl, kommt der vorherige Stand zurück.
+- Flowplan prüft das Archiv vorher (eine Flowplan-Datenbank, nicht aus einer neueren Version), ersetzt dann das ganze Schema in einer Transaktion und baut den Suchindex neu. Aus dem Archiv kommen dabei nur die Daten der Tabellen von Flowplan; Tabellen, Funktionen und Trigger legt die laufende Version selbst an. Ältere Archive passen so in die aktuellen Tabellen.
+- Enthält das Archiv Objekte, die Flowplan nicht selbst anlegt – eigene Funktionen, Views, Trigger oder Regeln im Schema von Flowplan –, lehnt Flowplan es ab: „Die Sicherung enthält Datenbankobjekte, die Flowplan nicht selbst anlegt (etwa Funktionen oder Trigger), und wird deshalb nicht wiederhergestellt.“ Eigene Objekte gehören in ein anderes Schema; das sichert `pg_dump` von Flowplan nicht mit. Der vorherige Stand bleibt als `pre-restore-<Zeit>/flowplan.dump` im Datenordner – plane dafür Platz für ein weiteres Archiv ein. Schlägt das Einspielen fehl, kommt der vorherige Stand zurück.
 - Ein Archiv aus einem anderen Schema (`FLOWPLAN_PG_SCHEMA`) lässt sich ebenfalls einspielen.
 - **Die Instanzsicherung** (ZIP) stellst du wie bisher an derselben Stelle wieder her; sie passt auf beide Datenbanken.
 

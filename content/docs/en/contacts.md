@@ -53,7 +53,9 @@ The address book icon in the database toolbar opens the **Contacts** menu:
 
 ## Contacts from the LDAP directory
 
-When an LDAP directory is set up (see [Contacts from LDAP](/sign-in#contacts-from-ldap)), editors of a contacts database import people from it:
+When an LDAP directory is set up (see [Contacts from LDAP](/sign-in#contacts-from-ldap)), editors of a contacts database import people from it.
+
+The directory is only for people of the organisation: instance administrators, accounts that sign in with LDAP, and full members (not guests) of at least one workspace someone else created. Guests of the contacts database's workspace can never browse or import it, and neither can an API token. Anyone without access sees **Import from LDAP** greyed out with the reason.
 
 1. **Contacts → Import from LDAP** opens the tree of organizational units (OUs) below the base DN; sub-OUs load when expanded.
 2. Pick an OU: the people in it are listed on the right (search: in the OU and everything below). People already imported are marked.
@@ -72,6 +74,8 @@ When an LDAP directory is set up (see [Contacts from LDAP](/sign-in#contacts-fro
 | Postal code / City / Country | `postalCode` / `l` / `co`, `c` |
 | Birthday | `birthDate`, `dateOfBirth` (if present) |
 | Photo | `thumbnailPhoto`, `jpegPhoto` (JPEG/PNG up to 256 KB) |
+
+Only allowed attributes can be mapped: those of the default mapping and the ones the administration allows on top (`LDAP_CONTACTS_ATTRIBUTES` or **More attributes**, see [Contacts from LDAP](/sign-in#contacts-from-ldap)). The dialog lists the allowed attributes; a mapping with any other one is refused. When the administration takes an attribute off the list again, the sync stops reading it too.
 
 **Sync** – directory → Flowplan only:
 

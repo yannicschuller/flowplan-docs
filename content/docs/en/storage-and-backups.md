@@ -295,7 +295,7 @@ Security:
 - **From a scheduled backup**, with the app stopped: [decrypt](#emergency-decrypt-without-a-running-instance) an encrypted one first, then move the existing `flowplan.sqlite` with `-wal` and `-shm` aside and put the backup in place as `/app/data/flowplan.sqlite`. With S3, the files follow from the bucket.
 - **On a new host with S3**: start a new installation with **the same** `S3_*` variables and an empty volume. Litestream restores the database, the files follow in the background. Stop the old instance first; `secrets.key` and `web-push-keys.json` are not in the bucket (see [Moving an instance, way C](/move-instance#way-c-s3-and-litestream)).
 - **Moving to another server**: see [Moving an instance](/move-instance) – the built-in move tool fetches database, files and keys straight from the old instance, with a few minutes of downtime.
-- **From a scheduled backup of an instance with PostgreSQL** (`flowplan-….dump`, `.dump.enc`): also upload it under **Restore from backup**, or on the setup screen of a new instance with PostgreSQL. Only the database is replaced, the files stay; see [PostgreSQL, restoring](/postgresql#restoring).
+- **From a scheduled backup of an instance with PostgreSQL** (`flowplan-….dump`, `.dump.enc`): also upload it under **Restore from backup**, or on the setup screen of a new instance with PostgreSQL. Only the database is replaced, the files stay. Only the data of Flowplan's tables is loaded; an archive with custom functions, views or triggers in Flowplan's schema is refused – see [PostgreSQL, restoring](/postgresql#restoring).
 - **An earlier point in time**, with the app stopped:
 
 ```bash

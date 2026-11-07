@@ -147,7 +147,7 @@ helm install flowplan deploy/helm/flowplan -n flowplan \
 - Das Volume bleibt beim Deinstallieren erhalten.
 - Aktualisieren: im Repository `git pull`, dann `helm upgrade flowplan deploy/helm/flowplan -n flowplan --reuse-values`.
 
-Alle Werte erklärt das README des Charts. Mehrere Pods mit PostgreSQL, Redis und S3 (`cluster.enabled=true`): siehe [Cluster-Modus](/cluster#kubernetes-helm).
+Alle Werte erklärt das README des Charts. Mehrere Pods mit PostgreSQL, Redis und S3 (`cluster.enabled=true`): siehe [Cluster-Modus](/cluster#kubernetes-helm). Die Datenbankrolle in `DATABASE_URL` sollte dabei die Datenbank besitzen, aber kein Superuser sein ([Rolle ohne Superuser-Rechte](/postgresql#rolle-ohne-superuser-rechte)).
 
 ## Ohne Docker
 

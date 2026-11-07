@@ -37,6 +37,7 @@ Alle Umgebungsvariablen auf einen Blick. Viele Werte lassen sich zusätzlich in 
 | `LDAP_CONTACTS_BASE_DN` | `LDAP_BASE_DN` | Basis für [Kontakte aus LDAP](/sign-in#kontakte-aus-ldap); der OU-Baum beginnt hier. |
 | `LDAP_CONTACTS_FILTER` | Personen ohne Computer | Welche Einträge als Kontakte gelten. |
 | `LDAP_CONTACTS_SYNC_MINUTES` | `60` | Abgleich der Kontakte aus dem Verzeichnis (15–1440 Minuten). |
+| `LDAP_CONTACTS_ATTRIBUTES` | – | Weitere LDAP-Attribute, die Kontakte-Datenbanken zuordnen dürfen (durch Komma oder Leerzeichen getrennt), zusätzlich zu denen der Standardzuordnung. |
 | `LDAP_CONTACTS` | an | `off` schaltet Kontakte aus LDAP ab. |
 
 Die übrigen OIDC-Variablen und alles zu Passwörtern und Passkeys stehen unter [Anmeldung](/sign-in).
@@ -88,7 +89,7 @@ Ohne diese Variablen nutzt Flowplan SQLite in einem Container. Kommentiert stehe
 
 | Variable | Standard | Bedeutung |
 | --- | --- | --- |
-| `DATABASE_URL` | *leer* | `postgres://…` schaltet auf PostgreSQL um. |
+| `DATABASE_URL` | *leer* | `postgres://…` schaltet auf PostgreSQL um. Die Rolle darin sollte die Datenbank besitzen, aber kein Superuser sein ([PostgreSQL](/postgresql#rolle-ohne-superuser-rechte)). |
 | `FLOWPLAN_PG_SCHEMA`, `FLOWPLAN_PG_POOL`, `FLOWPLAN_PG_*_TIMEOUT` | `public`, `10`, … | Schema, Verbindungen je Instanz und Zeitlimits. |
 | `FLOWPLAN_PG_PREPARE` | an | `off`: Abfragen ohne Namen statt benannter Prepared Statements – für PgBouncer im Modus `transaction` ohne `max_prepared_statements`. |
 | `DATABASE_SESSION_URL` | `DATABASE_URL` | Direkte Verbindung (oder Pool im Modus `session`) für Benachrichtigungen, die Leitung im Cluster und `pg_dump`/`pg_restore`, wenn `DATABASE_URL` auf PgBouncer im Modus `transaction` zeigt. |

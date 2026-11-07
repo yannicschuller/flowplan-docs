@@ -147,7 +147,7 @@ helm install flowplan deploy/helm/flowplan -n flowplan \
 - The volume is kept on uninstall.
 - To update: `git pull` in the repository, then `helm upgrade flowplan deploy/helm/flowplan -n flowplan --reuse-values`.
 
-The chart's README explains every value. Several pods with PostgreSQL, Redis and S3 (`cluster.enabled=true`): see [Cluster mode](/en/cluster#kubernetes-helm).
+The chart's README explains every value. Several pods with PostgreSQL, Redis and S3 (`cluster.enabled=true`): see [Cluster mode](/en/cluster#kubernetes-helm). The database role in `DATABASE_URL` should own the database but not be a superuser ([Role without superuser rights](/en/postgresql#role-without-superuser-rights)).
 
 ## Without Docker
 

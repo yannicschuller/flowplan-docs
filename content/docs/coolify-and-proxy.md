@@ -139,7 +139,7 @@ http:
           - url: http://flowplan:3000
 ```
 
-Mit einem HTTP-01-Resolver funktioniert danach auch die Prüfung per Datei (`/.well-known/flowplan-verify.txt`); mit DNS ist die Reihenfolge egal.
+Die Bestätigung hängt nicht am Router: Flowplan prüft nur den TXT-Eintrag `_flowplan-verify.<host>`.
 
 ### Coolify
 
@@ -151,3 +151,4 @@ In Coolify die zusätzliche Domain im Feld **Domains** der Flowplan-Ressource er
 - Cookies und `Authorization`-Kopfzeilen werden dort verworfen, und Flowplan setzt nie ein Cookie.
 - Die Seiten tragen `frame-ancestors 'none'` und `X-Frame-Options: DENY`.
 - Ein Eintrag für die Instanz-Adresse selbst ist nicht möglich.
+- Bestätigt wird eine Domain nur per DNS-TXT-Eintrag `_flowplan-verify.<host>` – dass die Domain schon auf die Instanz zeigt, reicht nicht. Unbestätigte Einträge verfallen nach 7 Tagen, damit niemand eine fremde Domain auf Dauer blockiert.

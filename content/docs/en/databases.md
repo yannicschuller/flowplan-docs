@@ -59,7 +59,7 @@ A **right-click** on a record – in a table, board, list, gallery, calendar or 
 
 In the dialog you choose the target database in the same workspace:
 
-- **Copy** creates new records – with properties, content, icon and cover. Files and images are copied too, so the copy does not depend on the source.
+- **Copy** creates new records – with properties, content, icon and cover. Files and images of the source database are copied too, so the copy does not depend on the source. Only files that belong to the source database, that you may see and that are not in the trash are copied; a reference to any other file stays a reference and keeps that file's permissions.
 - **Move** takes the record itself: content, comments, version history, tracked time and Git links stay with it. In the new database it gets the next number (ticket ID).
 - Properties are matched **by name**, the title always to the title. Compatible types are converted (text ↔ e-mail, select ↔ multi-select, number → text …); missing select options are added to the target. **Create missing properties in the target** adds properties the target does not have yet.
 - Calculated values (formulas, rollups, progress, created/edited) are worked out again in the target.

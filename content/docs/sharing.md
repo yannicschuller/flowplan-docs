@@ -71,9 +71,11 @@ Unter dem öffentlichen Link legst du das Aussehen der Veröffentlichung fest: *
 Ist es in der Administration eingeschaltet (**Eigene Domains für Veröffentlichungen**), zeigt eine Veröffentlichung sich auch unter deiner Domain, etwa `docs.example.org`:
 
 1. Unter **Eigene Domain** die Domain eintragen.
-2. Beim DNS-Anbieter den angezeigten TXT-Eintrag anlegen: Name `_flowplan-verify.docs.example.org`, Wert `flowplan-verify-…`. Alternativ liefert die Domain die Datei `https://docs.example.org/.well-known/flowplan-verify.txt` mit diesem Wert aus.
+2. Beim DNS-Anbieter den angezeigten TXT-Eintrag anlegen: Name `_flowplan-verify.docs.example.org`, Wert `flowplan-verify-…`. Nur dieser TXT-Eintrag bestätigt die Domain.
 3. Die Domain per CNAME (oder A/AAAA) auf die Flowplan-Instanz zeigen lassen.
 4. **Jetzt prüfen** wählen. Das HTTPS-Zertifikat besorgt der Reverse Proxy – siehe [Eigene Domains für Veröffentlichungen](/coolify-and-proxy#eigene-domains-fuer-veroeffentlichungen).
+
+Eine bestätigte Domain bleibt bestätigt, bis du sie entfernst – auch Domains, die früher auf anderem Weg bestätigt wurden. Eine Domain, die nach 7 Tagen noch nicht bestätigt ist, wird wieder freigegeben; danach kann jemand anderes sie eintragen.
 
 Unter der Domain gibt es kurze Adressen (`/` für die Startseite, `/<Seiten-ID>` für Unterseiten), eine eigene `sitemap.xml` und `robots.txt`, und Suchmaschinen dürfen die Seiten aufnehmen; der `/share/…`-Link nennt sie als kanonische Adresse. Die Domain zeigt nur diese Veröffentlichung: keine Anmeldung, keine App, keine API außer den Lesezugriffen der Veröffentlichung, keine Cookies, und die Seiten lassen sich nicht in fremde Seiten einbetten.
 

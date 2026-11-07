@@ -71,9 +71,11 @@ Below the public link you set the look of the publication: **logo** and **favico
 When the administration switched it on (**Custom domains for publications**), a publication can also be shown under your domain, such as `docs.example.org`:
 
 1. Enter the domain under **Custom domain**.
-2. At your DNS provider create the TXT record shown: name `_flowplan-verify.docs.example.org`, value `flowplan-verify-…`. Alternatively the domain serves the file `https://docs.example.org/.well-known/flowplan-verify.txt` with this value.
+2. At your DNS provider create the TXT record shown: name `_flowplan-verify.docs.example.org`, value `flowplan-verify-…`. Only this TXT record verifies the domain.
 3. Point the domain at the Flowplan instance with a CNAME (or A/AAAA) record.
 4. Choose **Check now**. The reverse proxy obtains the HTTPS certificate – see [Custom domains for publications](/coolify-and-proxy#custom-domains-for-publications).
+
+A verified domain stays verified until you remove it – including domains verified another way in the past. A domain that is still not verified after 7 days is released again; after that someone else may enter it.
 
 Under the domain there are short addresses (`/` for the start page, `/<page ID>` for sub-pages), a `sitemap.xml` and `robots.txt` of its own, and search engines may index the pages; the `/share/…` link names them as the canonical address. The domain shows only this publication: no sign-in, no app, no API apart from the publication's read access, no cookies, and the pages cannot be embedded in other sites.
 

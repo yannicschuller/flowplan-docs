@@ -139,7 +139,7 @@ http:
           - url: http://flowplan:3000
 ```
 
-With an HTTP-01 resolver the file check (`/.well-known/flowplan-verify.txt`) then works too; with DNS the order does not matter.
+Verification does not depend on the router: Flowplan only checks the TXT record `_flowplan-verify.<host>`.
 
 ### Coolify
 
@@ -151,3 +151,4 @@ In Coolify add the extra domain to the **Domains** field of the Flowplan resourc
 - Cookies and `Authorization` headers are dropped there, and Flowplan never sets a cookie.
 - The pages carry `frame-ancestors 'none'` and `X-Frame-Options: DENY`.
 - An entry for the instance's own address is not possible.
+- A domain is verified only by the DNS TXT record `_flowplan-verify.<host>` – a domain already pointing at the instance is not enough. Unverified entries expire after 7 days, so nobody can block someone else's domain for good.

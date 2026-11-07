@@ -59,7 +59,7 @@ Ein **Rechtsklick** auf einen Eintrag – in Tabelle, Board, Liste, Galerie, Kal
 
 Im Dialog wählst du die Ziel-Datenbank desselben Arbeitsbereichs:
 
-- **Kopieren** legt neue Einträge an – mit Eigenschaften, Inhalt, Symbol und Cover. Dateien und Bilder werden mitkopiert, die Kopie hängt also nicht an der Quelle.
+- **Kopieren** legt neue Einträge an – mit Eigenschaften, Inhalt, Symbol und Cover. Dateien und Bilder der Quell-Datenbank werden mitkopiert, die Kopie hängt also nicht an der Quelle. Kopiert werden nur Dateien, die zur Quell-Datenbank gehören, die du sehen darfst und die nicht im Papierkorb liegen; ein Verweis auf eine andere Datei bleibt ein Verweis und behält deren Berechtigungen.
 - **Verschieben** nimmt den Eintrag selbst mit: Inhalt, Kommentare, Versionsverlauf, erfasste Zeiten und Git-Verknüpfungen bleiben erhalten. In der neuen Datenbank bekommt er die nächste Nummer (Ticket-ID).
 - Eigenschaften werden **nach Namen** zugeordnet, der Titel immer zum Titel. Passende Typen werden umgewandelt (Text ↔ E-Mail, Auswahl ↔ Mehrfachauswahl, Zahl → Text …); fehlende Auswahloptionen kommen im Ziel dazu. **Fehlende Eigenschaften im Ziel anlegen** erstellt Eigenschaften, die das Ziel noch nicht hat.
 - Berechnete Werte (Formeln, Rollups, Fortschritt, Erstellt/Geändert) entstehen im Ziel neu.
