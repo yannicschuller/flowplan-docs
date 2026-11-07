@@ -64,7 +64,7 @@ The one place for backups:
 - **Whole instance → Download** creates a verified copy of the database and files while running. With `FLOWPLAN_ENCRYPTION_KEY` the file is encrypted (`.zip.enc`).
 - **Content**: how many workspaces, pages, databases, records, files, accounts and comments there are.
 - **Move instance**: on the old instance **Prepare the move** (a move token, visible once, valid for 24 hours, revocable; confirmed with your password or a fresh sign-in), then read-only, "moved to …" and **Redirect the web interface**. On the new instance, also in red, **Take over from another instance**: first copy with progress, **pre-flight check** of the settings (names and check values only), **Make the source read-only and fetch the last state** and **Apply** on the next restart (previous state as `pre-move-…`). Guide: [Moving an instance](/move-instance).
-- At the very end, in red: **Restore from backup**. An uploaded backup is checked and applied on the next restart; the previous state stays as `pre-restore-…` in the data directory. An encrypted backup is decrypted with the current or an earlier key.
+- At the very end, in red: **Restore from backup**. An uploaded backup is checked and applied on the next restart; the previous state stays as `pre-restore-…` in the data directory. An encrypted backup is decrypted with the current or an earlier key. With [PostgreSQL](/postgresql#restoring) it also takes a scheduled backup (`flowplan-….dump`) – then only the database is replaced, the files stay.
 
 Details: [Storage and backups](/storage-and-backups).
 

@@ -1,6 +1,6 @@
 # Installation mit Docker
 
-Flowplan läuft als ein einziger Container mit SQLite und einem Datenverzeichnis. Postgres, Redis oder ein separater Suchdienst werden nicht gebraucht.
+Flowplan läuft als ein einziger Container mit SQLite und einem Datenverzeichnis. Postgres, Redis oder ein separater Suchdienst werden nicht gebraucht – PostgreSQL und mehrere Instanzen sind möglich, aber optional.
 
 ## Voraussetzungen
 
@@ -9,6 +9,7 @@ Flowplan läuft als ein einziger Container mit SQLite und einem Datenverzeichnis
 - Eine Domain mit HTTPS über einen Reverse Proxy (Traefik, Caddy, nginx, Coolify, Pangolin …). Zum reinen Ausprobieren geht es auch ohne, siehe [Ohne HTTPS](#ohne-https).
 - Optional ein OpenID-Connect-Anbieter für Single Sign-on. Ohne ihn melden sich Personen mit E-Mail und Passwort oder Passkey an, siehe [Anmeldung](/sign-in).
 - Optional: ein S3-kompatibler Speicher für Dateien und die laufende Datenbanksicherung, siehe [Speicher, S3 und Sicherung](/storage-and-backups).
+- Optional: eine PostgreSQL-Datenbank statt SQLite, siehe [PostgreSQL](/postgresql). Wie viel Hardware du für wie viele Personen brauchst, steht unter [Dimensionierung](/sizing).
 
 ## Mit Docker Compose
 
@@ -81,7 +82,7 @@ Das Image enthält Node, Litestream für die S3-Sicherung und `curl` für den He
 **Umzug oder Neuinstallation?** Statt des ersten Kontos bietet der Einrichtungsbildschirm **Aus Sicherung wiederherstellen**: eine Sicherungsdatei hochladen oder die neueste Sicherung aus S3 oder per SFTP holen, verschlüsselte mit dem Schlüssel der alten Instanz. Danach meldest du dich mit den Konten der Sicherung an ([Beim Einrichten wiederherstellen](/storage-and-backups#beim-einrichten-wiederherstellen)). Für einen Umzug von einer laufenden Instanz gibt es außerdem [Instanz umziehen](/move-instance).
 
 > [!WARNING]
-> Flowplan ist für **genau eine laufende Instanz** gebaut. Mehrere Replikate würden dieselbe SQLite-Datei beschreiben. Nicht horizontal skalieren; bei Updates den alten Container vor dem neuen stoppen.
+> Mit SQLite läuft **genau eine Instanz**. Mehrere Replikate würden dieselbe SQLite-Datei beschreiben. Nicht einfach horizontal skalieren; bei Updates den alten Container vor dem neuen stoppen. Mehrere Instanzen gehen nur im [Cluster-Modus](/cluster) mit PostgreSQL, Redis und S3.
 
 ## Ohne HTTPS
 
@@ -146,7 +147,7 @@ helm install flowplan deploy/helm/flowplan -n flowplan \
 - Das Volume bleibt beim Deinstallieren erhalten.
 - Aktualisieren: im Repository `git pull`, dann `helm upgrade flowplan deploy/helm/flowplan -n flowplan --reuse-values`.
 
-Alle Werte erklärt das README des Charts.
+Alle Werte erklärt das README des Charts. Mehrere Pods mit PostgreSQL, Redis und S3 (`cluster.enabled=true`): siehe [Cluster-Modus](/cluster#kubernetes-helm).
 
 ## Ohne Docker
 
@@ -165,3 +166,4 @@ Für die lokale Entwicklung reicht `npm run dev`. Der Entwicklungsmodus bietet z
 - [Konfiguration](/configuration): alle Umgebungsvariablen.
 - [Coolify und Reverse Proxy](/coolify-and-proxy): Betrieb hinter Traefik, Coolify oder Pangolin.
 - [Instanz umziehen](/move-instance): auf einen anderen Server, mit Beispiel für Hetzner Cloud.
+- [PostgreSQL](/postgresql) und [Cluster-Modus](/cluster): für größere Teams.

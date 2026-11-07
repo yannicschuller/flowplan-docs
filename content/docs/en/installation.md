@@ -1,6 +1,6 @@
 # Installation with Docker
 
-Flowplan runs as a single container with SQLite and a data directory. Postgres, Redis or a separate search service are not needed.
+Flowplan runs as a single container with SQLite and a data directory. Postgres, Redis or a separate search service are not needed – PostgreSQL and several instances are possible, but optional.
 
 ## Requirements
 
@@ -9,6 +9,7 @@ Flowplan runs as a single container with SQLite and a data directory. Postgres, 
 - A domain with HTTPS through a reverse proxy (Traefik, Caddy, nginx, Coolify, Pangolin …). For just trying it out it works without, see [Without HTTPS](#without-https).
 - Optionally an OpenID Connect provider for single sign-on. Without one, people sign in with e-mail and password or a passkey, see [Sign-in](/sign-in).
 - Optionally an S3-compatible storage for files and the continuous database backup, see [Storage, S3 and backups](/storage-and-backups).
+- Optionally a PostgreSQL database instead of SQLite, see [PostgreSQL](/en/postgresql). How much hardware you need for how many people is under [Sizing](/en/sizing).
 
 ## With Docker Compose
 
@@ -81,7 +82,7 @@ The image contains Node, Litestream for the S3 backup and `curl` for the health 
 **Moving or reinstalling?** Instead of the first account, the setup screen offers **Restore from a backup**: upload a backup file or fetch the newest backup from S3 or via SFTP, encrypted ones with the old instance's key. Afterwards you sign in with the accounts of the backup ([Restore while setting up](/en/storage-and-backups#restore-while-setting-up)). To move from a running instance there is also [Moving an instance](/en/move-instance).
 
 > [!WARNING]
-> Flowplan is built for **exactly one running instance**. Several replicas would write to the same SQLite file. Do not scale horizontally; when updating, stop the old container before the new one.
+> With SQLite, **exactly one instance** runs. Several replicas would write to the same SQLite file. Do not simply scale horizontally; when updating, stop the old container before the new one. Several instances only work in [cluster mode](/en/cluster) with PostgreSQL, Redis and S3.
 
 ## Without HTTPS
 
@@ -146,7 +147,7 @@ helm install flowplan deploy/helm/flowplan -n flowplan \
 - The volume is kept on uninstall.
 - To update: `git pull` in the repository, then `helm upgrade flowplan deploy/helm/flowplan -n flowplan --reuse-values`.
 
-The chart's README explains every value.
+The chart's README explains every value. Several pods with PostgreSQL, Redis and S3 (`cluster.enabled=true`): see [Cluster mode](/en/cluster#kubernetes-helm).
 
 ## Without Docker
 
@@ -165,3 +166,4 @@ For local development, `npm run dev` is enough. Development mode also offers **O
 - [Configuration](/configuration): all environment variables.
 - [Coolify and reverse proxies](/coolify-and-proxy): running behind Traefik, Coolify or Pangolin.
 - [Moving an instance](/move-instance): to another server, with an example for Hetzner Cloud.
+- [PostgreSQL](/en/postgresql) and [cluster mode](/en/cluster): for larger teams.

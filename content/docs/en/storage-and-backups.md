@@ -45,7 +45,7 @@ garage key info flowplan --show-secret         # key ID and secret
 Start the S3 service so that it listens on all interfaces (`-ip.bind=0.0.0.0`), otherwise other containers cannot reach it. The endpoint is the S3 port, `8333` by default.
 
 > [!NOTE]
-> Why no Postgres and no Redis? Flowplan works in one process directly on SQLite – faster and simpler for one instance per organisation. Sessions, presence and live sync run through the database and the process itself; Redis would have nothing to do.
+> Why no Postgres and no Redis by default? Flowplan works in one process directly on SQLite – faster and simpler for one instance per organisation. Sessions, presence and live sync run through the database and the process itself; Redis would have nothing to do. For larger teams there is [PostgreSQL](/postgresql) and [cluster mode](/cluster) with Redis.
 
 ## Backups
 
@@ -60,6 +60,8 @@ sqlite3 /app/data/flowplan.sqlite "VACUUM INTO '/backup/flowplan.sqlite'"
 ```
 
 Back up `uploads/` and `web-push-keys.json` as well.
+
+With **PostgreSQL**, scheduled backups and **Back up now** become `pg_dump` archives (`flowplan-….dump`) and Litestream is not used; targets, encryption and retention stay the same. See [Backups with pg_dump](/postgresql#backups-with-pg-dump).
 
 The content archive under **Settings → Import & export → Export → Workspace as ZIP** backs up a workspace but does not replace an instance backup with accounts and permissions.
 
@@ -293,6 +295,7 @@ Security:
 - **From a scheduled backup**, with the app stopped: [decrypt](#emergency-decrypt-without-a-running-instance) an encrypted one first, then move the existing `flowplan.sqlite` with `-wal` and `-shm` aside and put the backup in place as `/app/data/flowplan.sqlite`. With S3, the files follow from the bucket.
 - **On a new host with S3**: start a new installation with **the same** `S3_*` variables and an empty volume. Litestream restores the database, the files follow in the background. Stop the old instance first; `secrets.key` and `web-push-keys.json` are not in the bucket (see [Moving an instance, way C](/move-instance#way-c-s3-and-litestream)).
 - **Moving to another server**: see [Moving an instance](/move-instance) – the built-in move tool fetches database, files and keys straight from the old instance, with a few minutes of downtime.
+- **From a scheduled backup of an instance with PostgreSQL** (`flowplan-….dump`, `.dump.enc`): also upload it under **Restore from backup**, or on the setup screen of a new instance with PostgreSQL. Only the database is replaced, the files stay; see [PostgreSQL, restoring](/postgresql#restoring).
 - **An earlier point in time**, with the app stopped:
 
 ```bash
