@@ -37,6 +37,7 @@ Unter **Links mit eigenen Berechtigungen** entstehen beliebig viele benannte Lin
 - Mit **Bearbeiten**-Links schreiben Gäste live mit: Änderungen von Mitgliedern und anderen Gästen erscheinen sofort, und die Cursor sind gegenseitig sichtbar – Gäste erscheinen als „Gast · <Linkname>“.
 - Optional gelten sie auch für die aktuell vorhandenen Unterseiten; neue Unterseiten kommen nicht automatisch dazu.
 - Über Bearbeitungslinks lassen sich keine Rechte, Mitglieder, privaten Relationen oder Dateien-Eigenschaften ändern. Vor jeder Gastbearbeitung sichert Flowplan den bisherigen Inhalt.
+- Ein [Journal mit PIN](/journal) lässt sich weder per Link teilen noch veröffentlichen; wer die PIN setzt, widerruft vorhandene Links und Veröffentlichungen. Beim Teilen einer übergeordneten Seite samt Unterseiten bleibt es draußen.
 
 ### Passwort und Ablaufdatum
 

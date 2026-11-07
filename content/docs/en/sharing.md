@@ -37,6 +37,7 @@ Under **Links with their own permissions** you create as many named links as you
 - With **edit** links, guests write along live: changes by members and other guests appear right away, and cursors are visible both ways – guests appear as "Guest · <link name>".
 - Optionally they also apply to the sub-pages that exist right now; new sub-pages are not added automatically.
 - Edit links cannot change permissions, members, private relations or files properties. Before every guest edit, Flowplan saves the previous content.
+- A [journal with a PIN](/journal) can be neither shared by link nor published; setting the PIN revokes existing links and publications. Sharing a page above it with its sub-pages leaves it out.
 
 ### Password and expiry date
 

@@ -162,7 +162,7 @@ The archive only holds what you may see yourself: other people's private records
 - Older archives import as before; older servers skip what they do not know.
 - Imported spaces and templates are private, shares and forms are not active.
 - A failed import is rolled back completely.
-- Limits: 2 GB ZIP, 20,000 files, 50,000 pages, 200,000 records per database and 30 MB for pages, records, comments and versions without the files – depending on the content, enough for around 50,000 records.
+- Limits: 2 GB ZIP, 20,000 files, 50,000 pages, 200,000 records per database and 64 MB for pages, records, comments and versions without the files (the file `flowplan.json` in the archive) – depending on the content, enough for around 100,000 records. The same limit applies to export, import and restore; database versions only go along as long as they fit.
 
 Accounts, sessions and sign-in are not part of it – operations back them up every day with the whole instance.
 

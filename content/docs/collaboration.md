@@ -46,7 +46,7 @@ Die Startseite listet unter **Zuletzt angesehen** die Seiten, die du zuletzt ge�
 
 ## Seitenkommentare
 
-Das Sprechblasen-Symbol in der Kopfzeile öffnet die Kommentare der Seite. Kommentare können formatiert sein (Listen, Links, Zitate, Code) und Personen mit `@` erwähnen. <kbd>⌘</kbd> <kbd>Enter</kbd> sendet.
+Das Sprechblasen-Symbol in der Kopfzeile öffnet die Kommentare der Seite; Kommentare an Datenbankeinträgen stehen unter dem Eintrag. <kbd>⌘</kbd> <kbd>Enter</kbd> sendet. Seiten- und Eintragskommentare sind reiner Text. `@` mit dem vollen Namen oder der E-Mail-Adresse eines Mitglieds – etwa `@Anna Berg` – erwähnt die Person: Sie bekommt eine Benachrichtigung, sofern sie die Seite und den Eintrag sehen darf.
 
 ## Textkommentare
 
@@ -54,7 +54,8 @@ Text markieren und **Text kommentieren** wählen oder <kbd>⌘</kbd> <kbd>⌥</k
 
 - Der kommentierte Text wird markiert; Klick darauf öffnet den Thread.
 - Antworten, Emoji-Reaktionen, **Erledigen** und **Wieder öffnen**.
-- Eigene Beiträge lassen sich bearbeiten und löschen.
+- Beiträge können formatiert sein (Listen, Links, Zitate, Code); `@` öffnet die Personensuche.
+- Eigene Beiträge lassen sich bearbeiten und löschen. Wer beim Bearbeiten neu erwähnt wird, bekommt eine Benachrichtigung; bereits Erwähnte nicht noch einmal.
 - Wird der Text später gelöscht, bleibt das Zitat im Thread erhalten.
 - Entwürfe bleiben gespeichert, bis du sie sendest oder verwirfst.
 
@@ -63,6 +64,8 @@ Textkommentare gibt es in Dokumenten und in den Inhalten von Datenbankeinträgen
 ## Erwähnungen
 
 - `@Name` in Text oder Kommentar benachrichtigt die Person. Die Personensuche zeigt nur Mitglieder, die die Seite lesen dürfen.
+- Benachrichtigt wird nur, wer die Seite und – bei einem Eintrag – den Eintrag sehen darf; die verfassende Person selbst nie. Wer ohnehin vom Kommentar erfährt, bekommt nur eine Benachrichtigung, die Erwähnung. Liegt die Seite in einem [Journal mit PIN](/journal), zeigt die Benachrichtigung nur „Dieses Journal ist gesperrt.“, bis die PIN eingegeben ist.
+- Gäste sehen keine anderen Mitglieder; ihre Erwähnungen benachrichtigen niemanden.
 
 ## Posteingang
 

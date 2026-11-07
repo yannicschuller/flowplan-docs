@@ -162,7 +162,7 @@ Das Archiv enthält nur, was du selbst sehen darfst: private Einträge anderer s
 - Ältere Archive lassen sich wie bisher importieren; ältere Server überspringen, was sie nicht kennen.
 - Importierte Bereiche und Vorlagen sind privat, Freigaben und Formulare nicht aktiv.
 - Ein fehlerhafter Import wird vollständig zurückgerollt.
-- Grenzen: 2 GB ZIP, 20.000 Dateien, 50.000 Seiten, 200.000 Einträge je Datenbank und 30 MB für Seiten, Einträge, Kommentare und Versionen ohne die Dateien – je nach Inhalt reicht das für rund 50.000 Einträge.
+- Grenzen: 2 GB ZIP, 20.000 Dateien, 50.000 Seiten, 200.000 Einträge je Datenbank und 64 MB für Seiten, Einträge, Kommentare und Versionen ohne die Dateien (die Datei `flowplan.json` im Archiv) – je nach Inhalt reicht das für rund 100.000 Einträge. Dieselbe Grenze gilt beim Export, beim Import und beim Wiederherstellen; Versionen von Datenbanken kommen nur mit, solange sie darin Platz haben.
 
 Konten, Sitzungen und Anmeldung gehören nicht dazu – die sichert der Betrieb täglich mit der gesamten Instanz.
 

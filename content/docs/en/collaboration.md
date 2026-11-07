@@ -46,7 +46,7 @@ On the home screen, **Recently viewed** lists the pages you opened last.
 
 ## Page comments
 
-The speech bubble icon in the header opens the page's comments. Comments can be formatted (lists, links, quotes, code) and mention people with `@`. <kbd>⌘</kbd> <kbd>Enter</kbd> sends.
+The speech bubble icon in the header opens the page's comments; comments on database records sit below the record. <kbd>⌘</kbd> <kbd>Enter</kbd> sends. Page and record comments are plain text. `@` followed by a member's full name or e-mail address – say `@Anna Berg` – mentions the person: they get a notification, provided they may see the page and the record.
 
 ## Text comments
 
@@ -54,7 +54,8 @@ Select text and choose **Comment on text** or press <kbd>⌘</kbd> <kbd>⌥</kbd
 
 - The commented text is highlighted; a click on it opens the thread.
 - Replies, emoji reactions, **Resolve** and **Reopen**.
-- Your own posts can be edited and deleted.
+- Posts can be formatted (lists, links, quotes, code); `@` opens the person search.
+- Your own posts can be edited and deleted. People newly mentioned in an edit get a notification; those mentioned before are not notified again.
 - If the text is deleted later, the quote stays in the thread.
 - Drafts stay saved until you send or discard them.
 
@@ -63,6 +64,8 @@ Text comments exist in documents and in the contents of database records, also i
 ## Mentions
 
 - `@Name` in text or a comment notifies the person. The person search only shows members who may read the page.
+- Only people who may see the page – and, for a record, the record – are notified; never the author. Someone who would hear about the comment anyway gets a single notification, the mention. If the page lies in a [journal with a PIN](/journal), the notification only says “This journal is locked.” until the PIN is entered.
+- Guests do not see other members; their mentions notify nobody.
 
 ## Inbox
 

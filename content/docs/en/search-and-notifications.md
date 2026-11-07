@@ -108,7 +108,7 @@ A new comment – on a page, on a database record or as a new text comment – d
 - the page's owner,
 - for a record: who created it and the people in its person properties (such as **Assignee**),
 - who already commented on the same page or record,
-- who is mentioned in the comment with `@`.
+- who is mentioned in the comment with `@` – in page and record comments by full name or e-mail address (`@Anna Berg`). Someone mentioned who would be notified anyway gets a single notification, the mention.
 
 Replies in a text comment reach everyone who has written in that thread and the people mentioned in it. The author and anyone who may not see the page or the record are never notified. To keep up with a page, follow it with the bell.
 

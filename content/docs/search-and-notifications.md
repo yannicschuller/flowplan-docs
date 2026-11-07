@@ -108,7 +108,7 @@ Ein neuer Kommentar – auf einer Seite, an einem Datenbankeintrag oder als neue
 - die Besitzerin oder den Besitzer der Seite,
 - bei einem Eintrag: wer ihn angelegt hat und die Personen in seinen Personen-Eigenschaften (etwa **Zugewiesen**),
 - wer auf derselben Seite bzw. demselben Eintrag schon kommentiert hat,
-- wer im Kommentar mit `@` erwähnt wird.
+- wer im Kommentar mit `@` erwähnt wird – bei Seiten- und Eintragskommentaren mit vollem Namen oder E-Mail-Adresse (`@Anna Berg`). Wer erwähnt wird und ohnehin dazugehört, bekommt nur eine Benachrichtigung, die Erwähnung.
 
 Antworten in einem Textkommentar erreichen alle, die in diesem Thread schon geschrieben haben, und die darin Erwähnten. Nie benachrichtigt werden die verfassende Person selbst und wer die Seite oder den Eintrag nicht sehen darf. Wer bei einer Seite mitlesen will, folgt ihr über die Glocke.
 
