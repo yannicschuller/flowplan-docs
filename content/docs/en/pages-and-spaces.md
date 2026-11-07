@@ -68,7 +68,7 @@ The right page is part of the address (`?split=…`): reloading and bookmarks ke
 
 ## Arrange and move
 
-- Reorder pages in the sidebar by drag and drop, or drag them onto another page to nest them.
+- Reorder pages in the sidebar by drag and drop, or drag them onto another page to nest them. On touch screens a handle only picks something up after a short hold (about 0.3 seconds, with a short vibration); swiping before that scrolls the page, and a quick tap works as usual. The same goes for blocks in a document, home page widgets and records, cards and columns in databases. With a mouse or pen it starts right away.
 - **Select pages** (the tick icon on a space) or <kbd>⇧</kbd>-click marks several pages that can be moved or deleted together.
 - **Moving** to another workspace takes sub-pages, database records and files along. Shares with groups or people who are not members there are dropped. Databases with relations to databases staying behind have to be detached first.
 - **Moved to another space** (or workspace), pages keep the [tags and properties of the whole workspace](#scope-workspace-or-space). If they (or their sub-pages and the records of their databases) carry tags or properties that apply **only in their current space**, a step **Bring tags and properties along** asks for each one:
