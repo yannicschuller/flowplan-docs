@@ -42,6 +42,15 @@ Above every day there is a bar:
 
 In the settings under **Day bar**, place and appointments can be switched off for the whole journal.
 
+### Completed this day
+
+Below every day, **Completed this day** lists the database records that were completed that day – with the time, a link to the record and the database's name. The list is worked out each time the day opens and is not copied into the day; tick a record off elsewhere (in another tab, too) and it is there when you come back.
+
+- A record counts on the day it was last completed, and only while it is still done by its database's done rule – reopen it and it leaves the list. The day follows your time zone.
+- **All / Only mine** at the top of the list: **Only mine** (the default) shows the records you completed yourself and those a person property assigns to you, whoever ticked them off. When an automation completes a record, it counts for the person who set up the automation. The choice is yours for this journal, on all devices.
+- Only records you may see appear – no private records of others, nothing from locked journals or encrypted spaces. On a day with nothing completed, the list is missing; beyond 100 records it ends with "and … more".
+- It can be switched off for the whole journal under **Set up journal → Day bar → Completed this day** (on by default).
+
 ### Meeting notes
 
 Next to every appointment there is **Create meeting note**. Flowplan creates a page below the journal – with the title and date of the appointment, the **Attendees**, an **Agenda**, **Notes** and **Tasks** – and opens it. Afterwards the appointment shows **Open note**.
@@ -91,6 +100,15 @@ From anywhere, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> (Windows/Linux: <kbd>C
 ## Review
 
 **Review** sums up a week or a month: days, words, completed and still open tasks, tracker averages, places and photos. **Copy as Markdown** takes the summary along, for example into a weekly report.
+
+### Summarise with AI
+
+**Summarise with AI** in the review has the [AI](/ai#summaries) sum up the week or month shown: highlights and achievements, a chronological overview and what is still open or needs following up – in the interface language. It works from each day's text, the completed and still open tasks, the trackers and places.
+
+- The result appears as a **preview** first; nothing is saved. **Copy**, **Retry** and **Discard** sit below it.
+- **Save as page** creates a sub-page of the journal, such as "AI summary October 2026", with a note that it was made with AI. There is one such page per journal and period: ask again for the same period and the review offers **Open** or **Create again and replace**. Replacing changes the page's content; the previous state stays in the version history.
+- A journal with a [PIN](#pin-lock) is closed to the AI, even while it is unlocked. Days closed to the AI ([Close pages and spaces to AI](/ai#close-pages-and-spaces-to-ai)) stay out, with everything that belongs to them.
+- The button is only there when summaries are available to you and the AI may read the journal; otherwise it is greyed out or missing. The AI reads long periods in parts.
 
 ### Monthly summary
 

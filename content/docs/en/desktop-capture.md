@@ -120,6 +120,8 @@ Each has a name, a target, a shortcut (**Change**, **Off**), **Try it** and **Re
 - **What the AI sees:** the text in the window and the names of the databases, their properties and options – no content. Databases closed to the AI are left out.
 - **Off:** the button is missing when the administration or you switched off AI (or AI actions).
 
+**Improve text** comes with the desktop app's next version: as when [capturing in the browser](/offline-and-apps#capture-into-a-database), the AI corrects spelling and grammar and you decide in a preview. The shorthand (`#tag`, `@person`, `!priority`, dates) and links stay; if the AI changed or dropped any of it, the window warns you before you take the text. Only with a connection and when the writing assistant is allowed for you.
+
 ## Setup and the one-time hint
 
 After the first sign-in the app shows one more step: **How Flowplan should run on this computer** – **Turn on quick capture** (with the shortcut, **Change**, **Try it now**; a taken shortcut is reported), **Icon in the menu bar / notification area**, **Start when you sign in to the computer** and **Start minimized / in the background** (only together with starting at sign-in). The switches start with your system's defaults (icon: on for Mac, off for Windows and Linux), everything can be skipped and changed later under **Settings** – they are the same settings.

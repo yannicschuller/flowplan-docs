@@ -11,6 +11,17 @@ A click on the column header or **View and properties** opens the property dialo
 
 **URL, email and phone** properties show as links in tables, lists, boards, galleries and records: web addresses open in a new tab (shortened to host and path, the full address in the tooltip), email addresses in your mail app, phone numbers in your phone app. To change one, click the pencil next to the link (on hover or via Tab on a computer, always shown on phones) or the empty part of the cell; <kbd>Enter</kbd> saves, <kbd>Esc</kbd> discards. Only `http://` and `https://` addresses, email addresses and phone numbers become links – anything else stays plain text.
 
+### Rename and merge options
+
+Records store a select or multi-select value as the option's name. When you rename an option in the property dialog, the dialog lists what changes along with it before saving, for example *Rename “Open” to “To do” in 12 records.*
+
+- **Update records** carries the new name everywhere: into the records (also record templates, the trash and form drafts), into the views' filters, groups and board columns, into [linked views](/views#linked-databases) of the database on other pages and into the database's rules – done rule, workflow, automations, form conditions and the issue sync's status mapping. Records keep their value under the new name; workflow checks and automations don't fire for it. Flowplan first keeps a version in the version history.
+- **Merge:** write another option's name in an option's place and the two are merged (*Merge “Done” into “Finished”*). The records get the remaining option, which keeps its own rules; the merged option's settings under **Workflow and done** go away – the dialog points this out.
+- **Save options only** saves just the list; records, filters and rules stay on the old names, as before.
+- **Formulas** are not rewritten: if a formula compares against an option's name (such as `prop("Status") == "Open"`), adjust it yourself.
+
+Renaming needs edit access to the property. For the [workspace tags](/databases#multi-select-with-the-workspace-tags), renaming happens under **Settings → Tags & properties**.
+
 ## Aliases
 
 The property type **Aliases (other names)** holds further names of a record, such as "PAC" and "Pompe à chaleur" for the record "Chauffage". A database has at most one such property. In the record you enter the names separated by commas; up to 10 aliases of up to 100 characters each count, surrounding spaces and duplicate names (ignoring case) are dropped.

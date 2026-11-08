@@ -121,6 +121,7 @@ Tables, lists and galleries first show 100 records; the next 100 follow as you s
 Every view has its own settings:
 
 - **Filters** with AND/OR groups; for date fields also relative periods ("this week", "last 30 days") that update themselves every day.
+- **Dates and time zone:** on **Created at**, **Edited at** and date fields with a time, *is*, *is not*, *before*, *after*, *on or before*, *on or after* and *is between* count the day the moment falls on in the filter's time zone – a record from 11:30 pm belongs to that day, not the next. The default is your browser's time zone; it shows in the filter and can be changed there, as for relative periods. Dates without a time stay calendar days. Older filters keep using the UTC day until you edit them. The same goes for conditions in automations.
 - **Sorting** by several properties.
 - **Grouping** by almost any property (except files and checklists), with up to five levels in tables and lists; boards show the second level as rows (swimlanes).
 - **Search** within the database, also in the text of the record documents.

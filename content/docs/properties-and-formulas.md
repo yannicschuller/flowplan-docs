@@ -11,6 +11,17 @@ Ein Klick auf den Spaltenkopf oder **Ansicht und Eigenschaften** öffnet den Eig
 
 **URL, E-Mail und Telefon** erscheinen in Tabelle, Liste, Board, Galerie und im Eintrag als Link: Webadressen öffnen sich in einem neuen Tab (gekürzt auf Host und Pfad, die volle Adresse steht im Tooltip), E-Mail-Adressen im Mailprogramm, Telefonnummern in der Telefon-App. Zum Ändern klickst du auf den Stift neben dem Link (am Computer beim Überfahren oder mit der Tab-Taste, am Handy immer sichtbar) oder auf die freie Fläche der Zelle; <kbd>Enter</kbd> speichert, <kbd>Esc</kbd> verwirft. Nur `http://`- und `https://`-Adressen, E-Mail-Adressen und Telefonnummern werden zu Links – alles andere bleibt einfacher Text.
 
+### Optionen umbenennen und zusammenführen
+
+Einträge speichern bei Auswahl und Mehrfachauswahl den Namen der Option. Benennst du im Eigenschaftsdialog eine Option um, listet der Dialog vor dem Speichern, was sich mitändert, etwa *„Offen“ in „Zu erledigen“ umbenennen (12 Einträge).*
+
+- **Einträge anpassen** nimmt den neuen Namen überall mit: in die Einträge (auch Datensatzvorlagen, Papierkorb und Formularentwürfe), in Filter, Gruppen und Board-Spalten der Ansichten, in [verknüpfte Ansichten](/views#verknuepfte-datenbanken) der Datenbank auf anderen Seiten und in die Regeln der Datenbank – Erledigt-Regel, Workflow, Automationen, Bedingungen in Formularen und die Status-Zuordnung der Issue-Synchronisierung. Die Einträge behalten ihren Wert unter dem neuen Namen; Workflow-Prüfungen und Automationen lösen dabei nicht aus. Vorher sichert Flowplan einen Stand im Versionsverlauf.
+- **Zusammenführen:** Schreibst du den Namen einer anderen Option an die Stelle einer Option, werden die beiden zusammengeführt (*„Erledigt“ mit „Fertig“ zusammenführen*). Die Einträge bekommen die verbliebene Option, die ihre eigenen Regeln behält; die Einstellungen der zusammengeführten Option unter **Workflow und Erledigt** fallen weg – der Dialog weist darauf hin.
+- **Nur Optionen speichern** speichert nur die Liste; Einträge, Filter und Regeln bleiben bei den alten Namen, wie früher.
+- **Formeln** werden nicht umgeschrieben: Vergleicht eine Formel mit dem Namen einer Option (etwa `prop("Status") == "Offen"`), passe sie selbst an.
+
+Umbenennen darf, wer die Eigenschaft bearbeiten darf. Für die [Tags des Arbeitsbereichs](/databases#mehrfachauswahl-mit-den-tags-des-arbeitsbereichs) gilt das Umbenennen unter **Einstellungen → Tags & Eigenschaften**.
+
 ## Aliasse
 
 Der Eigenschaftstyp **Aliasse (andere Namen)** hält weitere Namen eines Eintrags, etwa „PAC“ und „Pompe à chaleur“ für den Eintrag „Chauffage“. Eine Datenbank hat höchstens eine solche Eigenschaft. Im Eintrag trägst du die Namen durch Kommas getrennt ein; es zählen bis zu 10 Aliasse mit je bis zu 100 Zeichen, Leerzeichen am Rand und doppelte Namen (Groß- und Kleinschreibung egal) fallen weg.

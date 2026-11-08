@@ -40,6 +40,15 @@ Jeder Tag merkt sich, aus welcher Fassung der Vorlage er entstanden ist. Ein Tag
 - **Ort**: frei eintragen; **Standort** speichert zusätzlich die Koordinaten des Geräts mit einem Link zur Karte.
 - **Termine**: Einträge aller Datenbanken mit Datum, die du sehen darfst, samt Wiederholungen. Unter **Journal einrichten → Kalender** lässt sich zusätzlich ein Kalender per iCal-Link einbinden (Google, Apple, Outlook, Nextcloud …).
 
+### An diesem Tag erledigt
+
+Unter jedem Tag steht **An diesem Tag erledigt**: die Einträge aus Datenbanken, die an diesem Tag erledigt wurden – mit Uhrzeit, Link zum Eintrag und Name der Datenbank. Die Liste wird bei jedem Öffnen neu berechnet und nicht in den Tag kopiert; hakst du einen Eintrag anderswo ab (auch in einem anderen Tab), steht er beim Zurückkommen darin.
+
+- Ein Eintrag zählt an dem Tag, an dem er zuletzt erledigt wurde, und nur, solange er nach der Erledigt-Regel seiner Datenbank noch erledigt ist – wird er wieder geöffnet, verschwindet er aus der Liste. Der Tag richtet sich nach deiner Zeitzone.
+- **Alle / Nur meine** oben in der Liste: **Nur meine** (Voreinstellung) zeigt die Einträge, die du selbst erledigt hast, und die, die dir über eine Personen-Eigenschaft zugewiesen sind – egal, wer sie abgehakt hat. Erledigt eine Automation einen Eintrag, zählt er für die Person, die die Automation eingerichtet hat. Die Wahl gilt für dich in diesem Journal, auf allen Geräten.
+- Es erscheinen nur Einträge, die du sehen darfst – keine privaten Einträge anderer, nichts aus gesperrten Journalen oder verschlüsselten Bereichen. Ist an einem Tag nichts erledigt worden, fehlt die Liste; mehr als 100 Einträge kürzt sie mit „und … weitere“.
+- Ausschalten lässt sie sich für das ganze Journal unter **Journal einrichten → Tagesleiste → An diesem Tag erledigt** (voreingestellt an). Dort lassen sich auch Ort und Termine abschalten.
+
 ### Besprechungsnotizen
 
 Neben jedem Termin steht **Besprechungsnotiz anlegen**. Flowplan legt eine Seite unter dem Journal an – mit Titel und Datum des Termins, den **Teilnehmenden**, einer **Agenda**, **Notizen** und **Aufgaben** – und öffnet sie. Danach steht neben dem Termin **Notiz öffnen**.
@@ -89,6 +98,15 @@ Von überall geht es mit <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> (Windows/Lin
 ## Rückblick
 
 **Rückblick** fasst eine Woche oder einen Monat zusammen: Tage, Wörter, erledigte und noch offene Aufgaben, Durchschnitte der Tracker, Orte und Fotos. **Als Markdown kopieren** übernimmt die Zusammenfassung, etwa in einen Wochenbericht.
+
+### Mit KI zusammenfassen
+
+**Mit KI zusammenfassen** im Rückblick lässt die [KI](/ai#zusammenfassungen) die gezeigte Woche oder den gezeigten Monat zusammenfassen: Höhepunkte und Erreichtes, ein chronologischer Überblick und was noch offen ist bzw. nachzuverfolgen bleibt – in der Sprache der Oberfläche. Grundlage sind der Text jedes Tages, die erledigten und noch offenen Aufgaben, die Tracker und Orte.
+
+- Das Ergebnis erscheint zuerst als **Vorschau**; gespeichert wird nichts. **Kopieren**, **Erneut** und **Verwerfen** stehen darunter.
+- **Als Seite speichern** legt eine Unterseite des Journals an, etwa „KI-Zusammenfassung Oktober 2026“, mit dem Hinweis, dass sie mit KI erstellt wurde. Je Journal und Zeitraum gibt es eine solche Seite: Fragst du für denselben Zeitraum noch einmal, bietet der Rückblick **Öffnen** oder **Neu erstellen und ersetzen** an. Ersetzt wird der Inhalt der Seite; der vorige Stand bleibt im Versionsverlauf.
+- Ein Journal mit [PIN](#pin-sperre) ist für die KI gesperrt, auch während es entsperrt ist. Tage, die für die KI gesperrt sind ([Seiten für die KI sperren](/ai#seiten-und-bereiche-fuer-die-ki-sperren)), bleiben mit allem, was zu ihnen gehört, draußen.
+- Den Knopf gibt es nur, wenn Zusammenfassungen für dich freigegeben sind und die KI das Journal lesen darf; sonst ist er ausgegraut oder fehlt. Lange Zeiträume liest die KI in Teilen.
 
 ### Monatszusammenfassung
 

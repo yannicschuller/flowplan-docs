@@ -121,6 +121,7 @@ Tabellen, Listen und Galerien zeigen zuerst 100 Einträge; beim Scrollen folgen 
 Jede Ansicht hat eigene Einstellungen:
 
 - **Filter** mit UND/ODER-Gruppen, für Datumsfelder auch relative Zeiträume („diese Woche“, „letzte 30 Tage“), die sich täglich selbst aktualisieren.
+- **Datum und Zeitzone:** Bei **Erstellt am**, **Bearbeitet am** und Datumsfeldern mit Uhrzeit zählen *ist*, *ist nicht*, *vor*, *nach*, *am oder vor*, *am oder nach* und *liegt zwischen* den Tag, auf den der Zeitpunkt in der Zeitzone des Filters fällt – ein Eintrag von 23:30 Uhr gehört also zu diesem Tag, nicht zum nächsten. Voreingestellt ist die Zeitzone deines Browsers; sie steht im Filter und lässt sich dort ändern wie bei relativen Zeiträumen. Datumswerte ohne Uhrzeit bleiben Kalendertage. Ältere Filter rechnen weiter mit dem Tag in UTC, bis du sie bearbeitest. Dasselbe gilt für Bedingungen in Automationen.
 - **Sortierung** nach mehreren Eigenschaften.
 - **Gruppierung** nach fast jeder Eigenschaft (außer Dateien und Checklisten), mit bis zu fünf Ebenen in Tabellen und Listen; Boards zeigen die zweite Ebene als Zeilen (Swimlanes).
 - **Suche** innerhalb der Datenbank, auch im Text der Eintragsdokumente.

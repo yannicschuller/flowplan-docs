@@ -82,6 +82,8 @@ Under **Settings → Web clipper** you find the button **Save to Flowplan**. Dra
 
 For an inbox, e.g. with PARA: **Quick capture** on the start page, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>N</kbd>, `> capture` in the quick search or – with the installed app – a long press on the app icon → its capture shortcut open a small window with title and text. It is saved as a record in the chosen database; without a connection it waits on the device and is created once the connection is back.
 
+**Improve text** (with the AI icon) below the fields has the [writing assistant](/ai#writing-assistant) improve the spelling and grammar of title and text. The result appears as a preview: **Use** puts it into the fields, **Keep original** leaves everything as it was – nothing is saved until **Capture**. The AI is told to keep shorthand such as `#tag`, `@person`, `!high` or "tomorrow" and links as they are. The button is only there with a connection and when the writing assistant is allowed for you and the chosen database; as in the editor, it runs through the server or [on the device](/ai#on-device-ai-apple). The desktop app's capture window gets the same button with its next version (see [Quick capture (desktop)](/desktop-capture#ai-suggestion-optional)).
+
 **Use as default for capturing** (in the window) or **Settings → Web clipper → Capture** sets the database that share, the web clipper and quick capture preselect – per person and workspace. The database's default record template applies, so new records land e.g. straight in the "Inbox" view.
 
 ### Bookmarks

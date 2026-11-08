@@ -120,6 +120,8 @@ Jede hat Name, Ziel, Tastenkürzel (**Ändern**, **Aus**), **Ausprobieren** und 
 - **Was die KI sieht:** den Text im Fenster und die Namen der Datenbanken, ihrer Eigenschaften und Optionen – keinen Inhalt. Für die KI gesperrte Datenbanken fehlen.
 - **Aus:** Der Knopf fehlt, wenn die Administration oder du KI (oder KI-Aktionen) ausgeschaltet habt.
 
+**Text verbessern** kommt mit der nächsten Version der Desktop-App: Wie beim [Erfassen im Browser](/offline-and-apps#erfassen-in-eine-datenbank) korrigiert die KI Rechtschreibung und Grammatik, du entscheidest in einer Vorschau. Die Kürzel (`#tag`, `@Person`, `!Priorität`, Datumsangaben) und Links bleiben stehen; hat die KI eines davon verändert oder weggelassen, warnt das Fenster, bevor du den Text übernimmst. Nur mit Verbindung und wenn der Schreibassistent für dich erlaubt ist.
+
 ## Einrichtung und einmaliger Hinweis
 
 Nach der ersten Anmeldung zeigt die App noch einen Schritt: **So soll Flowplan auf diesem Computer laufen** – **Schnell erfassen aktivieren** (mit dem Kürzel, **Ändern**, **Jetzt ausprobieren**; ein belegtes Kürzel wird gemeldet), **Symbol in der Menüleiste / im Infobereich**, **Beim Anmelden am Computer starten** und **Minimiert / im Hintergrund starten** (nur zusammen mit dem Start beim Anmelden). Die Schalter beginnen mit den Voreinstellungen deines Systems (Symbol: Mac an, Windows und Linux aus), alles lässt sich überspringen und später unter **Einstellungen** ändern – es sind dieselben Einstellungen.
