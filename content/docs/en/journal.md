@@ -149,3 +149,7 @@ Journals behind a PIN you have not entered appear in none of these – not even 
 - Day pages are normal documents: headings, tables, images, mentions – everything works.
 - Journals can be shared like any page. Whoever may only read sees the days but does not create any.
 - The quick search finds entries across all days; **Without journal days** hides them.
+
+## Workflows: new journal day
+
+The workflow trigger **New journal day** starts a [workflow](/workflows) when a day's page is created – so when the day is first opened or written in (or automatically, if the journal creates days itself), not at midnight. For fixed times there is the **Schedule** trigger. Journals with a PIN are closed to workflows.

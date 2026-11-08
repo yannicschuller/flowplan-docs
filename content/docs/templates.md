@@ -77,3 +77,7 @@ Unter `/templates` stehen die eingebauten Vorlagen und alle Vorlagen mit der Sic
 ## Whiteboard-Vorlagen
 
 Im Whiteboard fügt **Vorlagen** eine Retrospektive, ein Kanban, eine Mindmap, eine SWOT-Analyse oder ein Flussdiagramm an der aktuellen Stelle ein.
+
+## Workflow-Vorlagen
+
+Eine neue Workflow-Seite bietet sechs Vorlagen – von „Unterseiten auf der Übersicht verlinken“ bis „Webhook → Eintrag“. Ein kurzer Assistent fragt die Lücken ab (Seite, Datenbank, Eigenschaft, Person …) und legt den Entwurf an. Siehe [Workflows](/workflows#wie-ein-workflow-beginnt).

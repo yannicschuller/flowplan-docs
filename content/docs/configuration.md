@@ -317,6 +317,30 @@ Benachrichtigungen an [Telegram, Gotify, ntfy und Matrix](/search-and-notificati
 
 Die Tokens der Personen und des Bots speichert Flowplan verschlüsselt wie andere [gespeicherte Geheimnisse](#gespeicherte-geheimnisse). Fehlt der Schlüssel nach einer Wiederherstellung, muss die Administration den Bot-Token neu eingeben; Verbindungen mit eigenem Token werden nach drei Fehlversuchen ausgeschaltet, und ihre Besitzer erfahren es im Posteingang.
 
+## Workflows
+
+Standards für [Workflows](/workflows); die [Administration](/administration#workflows) kann sie überschreiben.
+
+| Variable | Standard | Bedeutung |
+| --- | --- | --- |
+| `FLOWPLAN_WORKFLOWS` | `on` | Hauptschalter; `off`: keine neuen Workflow-Seiten, alle pausiert |
+| `FLOWPLAN_WORKFLOW_RUNS_PER_MINUTE` | 60 | Läufe je Minute und Workflow |
+| `FLOWPLAN_WORKFLOW_WORKSPACE_RUNS_PER_MINUTE` | 600 | Läufe je Minute und Arbeitsbereich |
+| `FLOWPLAN_WORKFLOW_STEPS_PER_RUN` | 200 | Schritte je Lauf |
+| `FLOWPLAN_WORKFLOW_CASCADE_DEPTH` | 5 | Tiefe gegenseitiger Auslösung |
+| `FLOWPLAN_WORKFLOW_FOREACH_MAX` | 100 | Elemente je „Für jedes“ |
+| `FLOWPLAN_WORKFLOW_AI_TOKENS_PER_DAY` | 100000 | KI-Tokens je Workflow und Tag (0 = KI-Knoten aus) |
+| `FLOWPLAN_WORKFLOW_MAILS_PER_DAY` | 100 | E-Mails je Workflow und Tag |
+| `FLOWPLAN_WORKFLOW_RUN_DAYS` | 30 | Aufbewahrung der Läufe in Tagen |
+| `FLOWPLAN_WORKFLOW_MAX_WAIT_DAYS` | 365 | längstes Warten bzw. Freigabefrist |
+| `FLOWPLAN_WORKFLOW_ACTIVE_PER_WORKSPACE` | 100 | aktive Workflows je Arbeitsbereich |
+| `FLOWPLAN_WORKFLOW_WORKERS` | 4 | gleichzeitige Schritte je Instanz |
+| `FLOWPLAN_WORKFLOW_HTTP` | `on` | HTTP-Knoten erlaubt |
+| `FLOWPLAN_WORKFLOW_HTTP_HOSTS` | leer | nur diese Hosts (kommagetrennt) |
+| `FLOWPLAN_WORKFLOW_HTTP_ALLOW_PRIVATE` | `false` | interne Adressen erlauben (Heimnetz, n8n) |
+| `FLOWPLAN_WORKFLOW_EXTERNAL_MAIL` | `on` | E-Mails an Adressen außerhalb der Mitglieder |
+| `FLOWPLAN_WORKFLOW_TEST_RUNS_PER_MINUTE` | 10 | Test- und Probeläufe je Person und Minute |
+
 ## Nicht setzen
 
 `NODE_ENV`, `PORT`, `HOSTNAME` und `NEXT_TELEMETRY_DISABLED` setzt das Image selbst. `FLOWPLAN_DIST_DIR` ist nur für parallele Entwicklungsserver gedacht, `OIDC_ALLOW_LOCAL_HTTP` nur für Tests mit einem Anbieter auf `http://localhost`, `FLOWPLAN_GIT_ALLOW_HTTP` nur für Tests des Git-Exports mit einem `http://`-Server (in Produktion wirkungslos). Version und Commit (`FLOWPLAN_VERSION`, `GIT_COMMIT`, `SOURCE_COMMIT`) kommen aus dem Build; `FLOWPLAN_VERSION` in der `.env` wählt nur das Image-Tag in `compose.yaml`.

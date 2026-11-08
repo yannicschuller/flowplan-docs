@@ -335,6 +335,51 @@ If you build Flowplan yourself, `npm run sdk` regenerates the clients; the test 
   The query is stored in its canonical form and returned as `query`. `search.save` and `search.delete` still work and create or delete collections.
 - MCP: `list_collections`, `run_collection` (read), `save_collection`, `delete_collection` (write).
 
+## Workflows
+
+[Workflows](/workflows) can be driven entirely through the API (all routes in the OpenAPI document under *Workflows*):
+
+| Route | Purpose |
+| --- | --- |
+| `GET /api/workflows?workspaceId=` | List with status, “runs as” and last run |
+| `GET /api/workflows/catalog` | Node catalogue with settings as JSON Schema |
+| `GET /api/workflows/{id}` | Status, active version, draft with its check (editors) |
+| `POST /api/workflows/{id}/draft` | Replace the draft by a graph JSON |
+| `POST /api/workflows/{id}/test` | Dry run or test run of the draft |
+| `POST /api/workflows/{id}/activate` | Activate – you become the person it runs as (write token) |
+| `POST /api/workflows/{id}/pause` | Pause, optionally cancel open runs |
+| `POST /api/workflows/{id}/run` | Start a workflow with a manual trigger |
+| `GET /api/workflows/{id}/runs`, `GET /api/workflow-runs/{runId}` | Runs and steps |
+| `POST /api/workflow-runs/{runId}/retry` / `cancel` | Retry from the failed node / cancel |
+| `GET /api/workflows/{id}/export`, `POST /api/workflows/import` | JSON export (without secrets) and import as a draft |
+
+Read tokens only read. Approvals are decided only by a signed-in person, never by a token. `activate`, `run` and `import` take an `Idempotency-Key`. The SDKs have methods for all of it (`saveWorkflowDraft`, `testWorkflow`, `activateWorkflow`, `runWorkflow` …).
+
+### Inbound workflow webhook
+
+The **Inbound webhook** trigger has an address of its own, `POST /api/workflow-hooks/<token>` (shown in the node, can be rotated). The default is **signed**: `X-Flowplan-Timestamp` (Unix seconds, at most 5 minutes old) and `X-Flowplan-Signature: sha256=<HMAC-SHA256(secret, timestamp + "." + body)>`. Each signature counts once. The answer is `202` right away, with the run's ID.
+
+```bash
+body='{"title":"Server down","description":"web-1 is not answering"}'
+ts=$(date +%s)
+sig=$(printf '%s.%s' "$ts" "$body" | openssl dgst -sha256 -hmac "$SECRET" | cut -d' ' -f2)
+curl -X POST "$URL" -H "Content-Type: application/json" -H "X-Flowplan-Timestamp: $ts" -H "X-Flowplan-Signature: sha256=$sig" -d "$body"
+```
+
+```js
+const ts = Math.floor(Date.now() / 1000).toString();
+const sig = crypto.createHmac("sha256", secret).update(`${ts}.${body}`).digest("hex");
+await fetch(url, { method: "POST", headers: { "Content-Type": "application/json", "X-Flowplan-Timestamp": ts, "X-Flowplan-Signature": `sha256=${sig}` }, body });
+```
+
+```python
+ts = str(int(time.time()))
+sig = hmac.new(secret.encode(), f"{ts}.{body}".encode(), hashlib.sha256).hexdigest()
+urllib.request.urlopen(urllib.request.Request(url, body.encode(), {"Content-Type": "application/json", "X-Flowplan-Timestamp": ts, "X-Flowplan-Signature": "sha256=" + sig}))
+```
+
+For services that cannot sign there is the deliberately chosen **Token only** mode (at most 10 calls a minute). A workflow's HTTP node sends an outgoing `Idempotency-Key: <run>:<node>:<iteration>`, so retries do not act twice at the receiver.
+
 ## n8n
 
 For [n8n](https://n8n.io) there is the community node **`n8n-nodes-flowplan`** (source under [`integrations/n8n`](https://github.com/yannicschuller/flowplan/tree/main/integrations/n8n)).

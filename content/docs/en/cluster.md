@@ -144,6 +144,10 @@ The **System** section under **Administration → Monitoring** shows how the ins
 | `FLOWPLAN_REDIS_PREFIX` | `flowplan:` | Prefix for keys and channels when several installations share one Redis. |
 | `FLOWPLAN_LEADER_INTERVAL` | `5000` | How often (ms) instances check the lead; decides how fast a failed leader is replaced. |
 
+## Workflows in a cluster
+
+The steps of [workflows](/workflows) wait in a queue in the database. Every instance claims steps that are due with a **lease** (2 minutes); a fencing token makes sure an instance whose lease has run out can no longer commit. If an instance fails, another takes over its steps once the lease has expired. New steps wake the other instances through Redis; without the bus they check on a timer. Schedules and date triggers run only on the leader and exactly once per slot. `FLOWPLAN_WORKFLOW_WORKERS` sets how many steps an instance runs at once.
+
 ## Known limits
 
 - **Files are uploaded by the instance that received them.** Until then – normally well under a second – other instances wait up to 5 seconds. A few paths read the local folder directly (exports and archives, some importers, copies when publishing) and can still miss a file just uploaded on another instance. If an instance fails before uploading, the file is lost.

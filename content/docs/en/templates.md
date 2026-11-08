@@ -77,3 +77,7 @@ Under `/templates`, the built-in templates and all templates with the visibility
 ## Whiteboard templates
 
 On a whiteboard, **Templates** inserts a retrospective, a kanban board, a mind map, a SWOT analysis or a flowchart at the current spot.
+
+## Workflow templates
+
+A new workflow page offers six templates – from “Link sub-pages on the overview” to “Webhook → record”. A short assistant asks for the gaps (page, database, property, person …) and creates the draft. See [Workflows](/workflows#how-a-workflow-starts).

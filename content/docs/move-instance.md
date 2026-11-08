@@ -138,6 +138,9 @@ Läuft die alte Instanz mit S3 (Dateien im Bucket) und Litestream (laufende Kopi
 
 Mit `FLOWPLAN_LITESTREAM=off` gibt es keine laufende Kopie: dann die neueste geplante Sicherung aus `<Präfix>/backups/` verwenden (siehe [Wiederherstellen](/storage-and-backups#wiederherstellen)). Die Vorabprüfung von Weg A erkennt eine Litestream-Kopie im Bucket und weist auf diesen Weg hin.
 
+> [!NOTE]
+> Aktive [Workflows](/workflows) kommen auf der neuen Instanz **pausiert** an – mit Entwurf, Versionen und angehaltenen Läufen. So startet nichts doppelt, solange die alte Instanz noch läuft. Prüfe sie danach und aktiviere sie wieder.
+
 ## DNS umstellen
 
 1. Nach dem letzten Abgleich (Weg A) bzw. dem Start der neuen Instanz den **A-Eintrag** (IPv4) und den **AAAA-Eintrag** (IPv6) der Domain auf den neuen Server ändern. Am alten Standort eine Portweiterleitung oder einen Tunnel entfernen.

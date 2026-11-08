@@ -260,6 +260,15 @@ Einträge in der Tabelle auswählen → **Mit KI ausfüllen** → eine Eigenscha
 
 Neue Seite → Datenbank → **Mit KI erstellen** und beschreiben, z. B. „Leseliste mit Autor, Genre, Status, Bewertung“. Die KI schlägt Eigenschaften mit Typen, Auswahloptionen und ein paar Beispieleinträge vor. Du benennst um, entfernst Eigenschaften oder lässt die Beispiele weg – erst **Seite erstellen** legt die Datenbank an. Der Vorschlag wird streng geprüft (erlaubte Typen, höchstens 25 Eigenschaften und 30 Optionen, passende Beispielwerte); aus der Antwort der KI wird nichts ausgeführt.
 
+## KI in Workflows
+
+[Workflows](/workflows) haben vier KI-Knoten: **Zusammenfassen**, **Einordnen** (in Kategorien oder die Optionen einer Auswahl, mit Ausgang „unklar“), **Felder auslesen** und **Eigene Anweisung** (Text oder JSON). Sie nutzen die KI-Funktion **KI in Workflows** – Admins schalten sie unter Administration → KI ab, jede Person für sich in den eigenen KI-Einstellungen.
+
+- **Budget**: höchstens 100 000 Tokens je Workflow und Tag (`FLOWPLAN_WORKFLOW_AI_TOKENS_PER_DAY`); ist es aufgebraucht, scheitert der Knoten mit einer Meldung.
+- **Was die KI liest**: nur Seiten und Einträge, die die ausführende Person sehen darf und die für die KI freigegeben sind; gesperrte Seiten und Journale mit PIN bleiben draußen.
+- **Prompt-Injection**: Fremder Text (E-Mails, Webhooks, Seiteninhalte) steht im Prompt markiert als Daten. Die KI liefert nur Daten, nie Aktionen – was sie antwortet, wird geprüft (Kategorien aus der Liste, typisierte Felder). Bestimmt eine KI-Ausgabe Empfänger, eine Adresse oder ein Ziel, warnt die Prüfung vor dem Aktivieren.
+- **KI-Builder**: „Mit KI entwerfen“ baut aus einem Satz einen Entwurf; die KI sieht dabei nur Namen von Datenbanken, Eigenschaften und Seiten, keine Inhalte, und es zählt dein persönliches KI-Kontingent.
+
 ## Für Admins
 
 Unter **Administration → KI**:

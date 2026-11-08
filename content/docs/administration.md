@@ -81,6 +81,10 @@ Details: [Speicher und Sicherungen](/storage-and-backups).
 
 Leere Felder fallen auf die [Umgebungsvariablen](/configuration) zurück. Jede Person sieht ihre Grenzen und den belegten Speicher unter **Einstellungen → Konto & Sicherheit → Deine Grenzen**.
 
+### Workflows
+
+Unter **Grenzen & Aufbewahrung → Workflows** stehen die Grenzen für [Workflows](/workflows): Läufe je Minute (je Workflow und Arbeitsbereich), Schritte je Lauf, Kaskadentiefe, Elemente je „Für jedes“, KI-Tokens und E-Mails je Workflow und Tag, Aufbewahrung der Läufe, längstes Warten, aktive Workflows je Arbeitsbereich, HTTP-Knoten (an/aus, nur bestimmte Hosts, interne Adressen) und E-Mails an Adressen außerhalb der Mitglieder. Leer gelassen gilt der Wert aus der [Umgebung](/configuration#workflows). Daneben zeigt die Überwachung die Auslastung: aktive Workflows, Läufe je Minute, wartende und laufende Schritte, die älteste fällige Aufgabe, Fehlerquote und KI-Tokens von heute.
+
 ## Markdown- & Git-Export
 
 Seiten und Datenbanken für den Markdown-Export wählen, den Git-Export der Bereiche einschalten und das (veraltete) Git-Repository der Instanz – siehe [Markdown-Export und Git](/storage-and-backups#markdown-export-und-git).

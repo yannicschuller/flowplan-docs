@@ -115,3 +115,7 @@ The team replies in the record under **Customer request**. Replies go to the per
 
 > [!NOTE]
 > The link is the key: anyone who has it sees the request and can reply. Switching off the customer portal or the form stops all links from working; switching it back on restores them.
+
+## Processing form answers
+
+The workflow trigger **Form answer** starts a [workflow](/workflows) for every answer – for example with the template **Form → AI category → assignment**: the AI puts the answer into a category, the person responsible is set and notified.

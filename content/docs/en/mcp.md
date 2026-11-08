@@ -85,6 +85,10 @@ Properties are named by their name (or ID). Dates are written as `YYYY-MM-DD`, o
 
 In addition, each page is available as a **resource** `flowplan://page/<ID>` (your favourites are listed). There are two **prompts**: *Summarize a page* and *Plan my day*.
 
+### Workflows
+
+For [workflows](/workflows) there are `list_workflows`, `get_workflow`, `get_workflow_catalog`, `list_workflow_runs`, `get_workflow_run` (reading) and, with a write token, `save_workflow_draft` (graph JSON into the draft, also as a new workflow page – with the check), `test_workflow` (dry run or test run) and `run_workflow` (only workflows with a manual trigger). **Activating and deciding approvals are not available over MCP** – those are a person's decisions about rights. So an assistant builds drafts, and you check and activate them in Flowplan.
+
 ## Permissions
 
 - Every call acts as the person who owns the token, with **exactly their rights**. The same checks apply as in the browser: workspace membership and guest access, private spaces, page and group permissions, private records, and journals locked with a PIN.

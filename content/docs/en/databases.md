@@ -155,3 +155,7 @@ The permissions icon at the top of a record restricts a record beyond the permis
 - **Private record**: only its managers and people it is shared with see it – together with its comments, tasks and files (in the file list, search, media library, copies, templates and backups).
 
 Shares with people or groups never go beyond their role on the database page.
+
+## Automations and workflows
+
+Recurring steps of a database – set a date, notify, apply a template – are done by [automations](/projects-and-tickets#automations) under **… → Automations**. For longer flows with branches, waits, approvals, AI, e-mails or other services there are [workflows](/workflows); every rule can be extended into one with **Open in canvas**.

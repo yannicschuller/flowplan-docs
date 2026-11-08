@@ -53,6 +53,10 @@ Owners of a workspace also manage other members' spaces, but do not get read acc
 
 **Encrypted spaces** go one step further: there, not only the permission on the server decides but the key. Whoever has not been given the space key reads nothing – not even workspace owners or the administrators. See [Encrypted spaces](/encrypted-spaces).
 
+## Workflows: permissions and “runs as”
+
+[Workflow pages](/workflows) follow the normal page permissions: readers see the status, the flow and the runs; editors (full members with edit rights) build, test, activate and pause. **Guests** do not see workflow pages and cannot start or approve a workflow. An active workflow **runs as** the person who last activated it – it only sees and changes what they may, and pauses when they lose their rights.
+
 ## Storage quota
 
 Every workspace can have a quota. Uploads, copies, templates and imports beyond it are refused. Administrators see the usage under **Administration → Workspaces**.

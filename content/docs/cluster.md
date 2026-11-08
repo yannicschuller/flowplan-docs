@@ -144,6 +144,10 @@ Der Abschnitt **System** unter **Administration → Überwachung** zeigt, wie di
 | `FLOWPLAN_REDIS_PREFIX` | `flowplan:` | Präfix für Schlüssel und Kanäle, wenn sich mehrere Installationen ein Redis teilen. |
 | `FLOWPLAN_LEADER_INTERVAL` | `5000` | Wie oft (ms) die Instanzen die Leitung prüfen; bestimmt, wie schnell eine ausgefallene leitende Instanz ersetzt wird. |
 
+## Workflows im Cluster
+
+Die Schritte von [Workflows](/workflows) stehen in einer Warteschlange in der Datenbank. Jede Instanz holt sich fällige Schritte mit einer **Lease** (2 Minuten); ein Fencing-Token sorgt dafür, dass eine Instanz, deren Lease abgelaufen ist, nichts mehr festschreibt. Fällt eine Instanz aus, übernimmt eine andere ihre Schritte nach Ablauf der Lease. Neue Schritte wecken die anderen Instanzen über Redis; ohne Bus prüfen sie im Takt. Zeitpläne und Datums-Auslöser laufen nur auf der Leader-Instanz und genau einmal je Termin. `FLOWPLAN_WORKFLOW_WORKERS` legt fest, wie viele Schritte eine Instanz gleichzeitig ausführt.
+
 ## Grenzen
 
 - **Dateien lädt die Instanz hoch, die sie angenommen hat.** Bis dahin – normalerweise deutlich unter einer Sekunde – warten andere Instanzen bis zu 5 Sekunden. Einige Wege lesen den lokalen Ordner direkt (Exporte und Archive, manche Importe, Kopien beim Veröffentlichen) und können eine gerade auf einer anderen Instanz hochgeladene Datei noch verpassen. Fällt eine Instanz aus, bevor sie hochgeladen hat, ist die Datei verloren.

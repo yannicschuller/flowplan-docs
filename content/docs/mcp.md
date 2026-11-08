@@ -85,6 +85,10 @@ Eigenschaften werden mit ihrem Namen (oder ihrer ID) angegeben. Datumswerte schr
 
 Außerdem ist jede Seite als **Ressource** `flowplan://page/<ID>` abrufbar (deine Favoriten sind aufgelistet). Es gibt zwei **Prompts**: *Seite zusammenfassen* und *Meinen Tag planen*.
 
+### Workflows
+
+Für [Workflows](/workflows) gibt es `list_workflows`, `get_workflow`, `get_workflow_catalog`, `list_workflow_runs`, `get_workflow_run` (lesen) und mit einem Schreib-Token `save_workflow_draft` (Graph-JSON in den Entwurf, auch als neue Workflow-Seite – mit Prüfergebnis), `test_workflow` (Probe- oder Testlauf) und `run_workflow` (nur Workflows mit manuellem Auslöser). **Aktivieren und Freigaben entscheiden gibt es über MCP nicht** – das sind Entscheidungen einer Person über Rechte. Ein Assistent baut also Entwürfe, du prüfst und aktivierst sie in Flowplan.
+
 ## Rechte
 
 - Jeder Aufruf handelt als die Person, der das Token gehört, mit **genau ihren Rechten**. Es gelten dieselben Prüfungen wie im Browser: Mitgliedschaft im Arbeitsbereich und Gastzugang, private Bereiche, Seiten- und Gruppenrechte, private Datensätze und mit PIN gesperrte Journale.

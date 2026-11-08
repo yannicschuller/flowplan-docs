@@ -120,6 +120,10 @@ Antworten in einem Textkommentar erreichen alle, die in diesem Thread schon gesc
 
 Ungelesenes ist markiert und lässt sich filtern. Ein Klick öffnet die Stelle, bei Textkommentaren direkt den Thread. Mitteilungen ohne Seite führen an ihren Ort in der App: ein Sicherheitsvorfall auf seine Seite unter **Administration → Angriffe & Vorfälle**, eine neue Anmeldung zu den angemeldeten Geräten, eine abgeschaltete Chat-App zu ihren Verbindungen – auch beim Tipp auf die Push-Mitteilung und über den Link in E-Mail und Chat-App.
 
+### Benachrichtigungen von Workflows
+
+[Workflows](/workflows) melden sich über zwei eigene Arten, die du unter **Einstellungen → Benachrichtigungen** je Kanal abschalten kannst: **Nachrichten von Workflows** (was ein Workflow verschickt) und **Fehler, Pausen und Freigaben von Workflows** – so verpasst du keine Freigabe, wenn du die Nachrichten stummschaltest. Eine Freigabe-Benachrichtigung öffnet die Workflow-Seite mit dem Reiter **Freigaben**.
+
 ## E-Mail
 
 Ist auf der Instanz ein Mailserver eingerichtet, kommen ungelesene Benachrichtigungen nach zehn Minuten als Zusammenfassung per E-Mail – eine Mail für alles, was sich angesammelt hat, jede Benachrichtigung höchstens einmal. Unter **Einstellungen → Benachrichtigungen** lässt sich die Spalte **E-Mail** je Art ein- und ausschalten. Einladungen in einen Arbeitsbereich und mit dir geteilte Seiten kommen sofort per E-Mail.

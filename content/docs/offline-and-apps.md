@@ -416,3 +416,7 @@ Nach dem Anmelden meldet sich die App bei der Instanz an: Der Eintrag gehört zu
 Flowplan folgt von sich aus dem Hell- oder Dunkelmodus deines Geräts – auch wenn er sich ändert, während Flowplan offen ist (etwa abends automatisch). Unter **Einstellungen → Darstellung & Sprache → Erscheinungsbild** wählst du stattdessen fest **Hell** oder **Dunkel**; **Automatisch** folgt wieder dem Gerät. Die Wahl gilt pro Gerät. Anmeldung, öffentliche Seiten und Formulare, die Webseite und diese Dokumentation folgen ebenfalls dem Gerät, die Apps auch mit ihren eigenen Bildschirmen und Widgets.
 
 Unter **Editor** zeigt **Griffe immer anzeigen** den Griff `⋮⋮` wieder neben jedem Block statt nur am Block unter dem Mauszeiger und am Block mit dem Cursor (siehe [Blöcke verschieben](/documents#bloecke-verschieben)), und **Zeilennummern standardmäßig anzeigen** schaltet die Zeilennummern für alle Codeblöcke ohne eigene Einstellung ein – beides nur auf diesem Gerät, wie das Erscheinungsbild.
+
+## Workflows auf dem Telefon
+
+Auf dem Telefon zeigt eine [Workflow-Seite](/workflows#telefon-und-tablet) Status, den Ein/Aus-Schalter, den Ablauf als Liste, die Läufe und die Freigaben; bearbeitet wird auf Tablet oder Computer. Eine Freigabe-Benachrichtigung öffnet die Seite direkt beim Reiter **Freigaben**. Workflow-Seiten sind nicht offline verfügbar.

@@ -17,6 +17,7 @@ Alles in Flowplan ist eine Seite in einem Baum. Bereiche gliedern den Baum, Arbe
 - **Whiteboard**: unendliche Fläche mit Notizzetteln, Formen, Verbindungen, Stift und Rahmen. Siehe [Whiteboards](/whiteboards).
 - **Journal**: eine Seite pro Tag, offene Aufgaben wandern mit. Siehe [Journal](/journal).
 - **Dashboard**: Kacheln mit Kennzahlen, Diagrammen, Datenbankansichten, fälligen Aufgaben und Notizen. Siehe [Dashboards](/dashboards).
+- **Workflow**: ein Ablauf aus Auslöser, Logik und Aktionen, der im Hintergrund läuft. Gäste sehen Workflow-Seiten nicht. Siehe [Workflows](/workflows).
 
 ## Seitenaktionen
 

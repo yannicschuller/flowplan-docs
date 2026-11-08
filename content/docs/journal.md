@@ -147,3 +147,7 @@ Journale hinter einer PIN, die du nicht eingegeben hast, tauchen in keinem davon
 - Tagesseiten sind normale Dokumente: Überschriften, Tabellen, Bilder, Erwähnungen – alles geht.
 - Journale lassen sich wie jede Seite teilen. Wer nur lesen darf, sieht die Tage, legt aber keine an.
 - Die Schnellsuche findet Einträge über alle Tage hinweg; **Ohne Journaltage** blendet sie aus.
+
+## Workflows: neuer Journaltag
+
+Der Workflow-Auslöser **Neuer Journaltag** startet einen [Workflow](/workflows), wenn die Seite eines Tages angelegt wird – also beim ersten Öffnen oder Schreiben des Tages (oder automatisch, wenn das Journal Tage selbst anlegt), nicht um Mitternacht. Für feste Uhrzeiten gibt es den Auslöser **Zeitplan**. Journale mit PIN sind für Workflows gesperrt.

@@ -17,6 +17,7 @@ Everything in Flowplan is a page in a tree. Spaces structure the tree, workspace
 - **Whiteboard**: an infinite canvas with sticky notes, shapes, connectors, pen and frames. See [Whiteboards](/whiteboards).
 - **Journal**: one page per day, open tasks move along. See [Journal](/journal).
 - **Dashboard**: tiles with metrics, charts, database views, tasks due and notes. See [Dashboards](/dashboards).
+- **Workflow**: a flow of trigger, logic and actions that runs in the background. Guests do not see workflow pages. See [Workflows](/workflows).
 
 ## Page actions
 

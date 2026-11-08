@@ -70,8 +70,8 @@ const groups: {
   {
     title: ["Datenbanken und Projekte", "Databases and projects"],
     intro: [
-      "Tabellen, Ansichten, Formeln, Formulare und Projektarbeit.",
-      "Tables, views, formulas, forms and project work.",
+      "Tabellen, Ansichten, Formeln, Formulare, Projektarbeit und Workflows.",
+      "Tables, views, formulas, forms, project work and workflows.",
     ],
     pages: [
       ["databases", "Datenbanken", "Databases"],
@@ -80,6 +80,8 @@ const groups: {
       ["properties-and-formulas", "Eigenschaften, Formeln und Rollups", "Properties, formulas and rollups"],
       ["forms", "Formulare", "Forms"],
       ["projects-and-tickets", "Projekte, Tickets und Sprints", "Projects, tickets and sprints"],
+      ["workflows", "Workflows", "Workflows"],
+      ["workflow-nodes", "Workflow-Knoten", "Workflow nodes"],
     ],
   },
   {

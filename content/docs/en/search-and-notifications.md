@@ -120,6 +120,10 @@ Replies in a text comment reach everyone who has written in that thread and the 
 
 Unread items are marked and can be filtered. A click opens the spot, for text comments the thread directly. Notifications without a page lead to their place in the app: a security incident to its page under **Administration → Threats & incidents**, a new sign-in to the signed-in devices, a chat app switched off to its connections – also when tapping the push notification and through the link in e-mails and chat apps.
 
+### Notifications from workflows
+
+[Workflows](/workflows) use two kinds of their own that you can switch off per channel under **Settings → Notifications**: **Messages from workflows** (what a workflow sends) and **Errors, pauses and approvals of workflows** – so you never miss an approval when you mute the messages. An approval notification opens the workflow page on the **Approvals** tab.
+
 ## E-mail
 
 If a mail server is set up on the instance, unread notifications arrive by e-mail as a digest after ten minutes – one mail for everything that has piled up, each notification at most once. Under **Settings → Notifications**, the **E-mail** column can be switched on and off per kind. Invitations to a workspace and pages shared with you arrive by e-mail right away.
