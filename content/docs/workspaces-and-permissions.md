@@ -53,6 +53,10 @@ Eigentümer eines Arbeitsbereichs verwalten auch Bereiche anderer Mitglieder, er
 
 **Verschlüsselte Bereiche** gehen einen Schritt weiter: Dort entscheidet nicht nur das Recht auf dem Server, sondern der Schlüssel. Wer keinen Bereichsschlüssel bekommen hat, liest nichts – auch nicht Eigentümer des Arbeitsbereichs oder die Administration. Siehe [Verschlüsselte Bereiche](/encrypted-spaces).
 
+## Workflows: Rechte und „läuft als“
+
+[Workflow-Seiten](/workflows) folgen den normalen Seitenrechten: Lesende sehen Status, Ablauf und Läufe; Bearbeitende (Vollmitglieder mit Bearbeitungsrecht) bauen, testen, aktivieren und pausieren. **Gäste** sehen Workflow-Seiten nicht und können keinen Workflow starten oder freigeben. Ein aktiver Workflow **läuft als** die Person, die ihn zuletzt aktiviert hat – er sieht und ändert nur, was sie darf, und pausiert, wenn sie ihre Rechte verliert.
+
 ## Speicherkontingent
 
 Jeder Arbeitsbereich kann ein Kontingent haben. Uploads, Kopien, Vorlagen und Importe darüber werden abgelehnt. Die Belegung sehen Admins unter **Administration → Arbeitsbereiche**.

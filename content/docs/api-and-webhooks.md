@@ -335,6 +335,51 @@ Wer Flowplan selbst baut, erzeugt die Clients mit `npm run sdk` neu; der Test `t
   Die Abfrage wird in ihrer Normalform gespeichert und mit `query` zurückgegeben. `search.save` und `search.delete` funktionieren weiter und legen bzw. löschen Sammlungen.
 - MCP: `list_collections`, `run_collection` (lesen), `save_collection`, `delete_collection` (schreiben).
 
+## Workflows
+
+[Workflows](/workflows) lassen sich vollständig per API steuern (alle Routen im OpenAPI-Dokument unter *Workflows*):
+
+| Route | Zweck |
+| --- | --- |
+| `GET /api/workflows?workspaceId=` | Liste mit Status, „läuft als“ und letztem Lauf |
+| `GET /api/workflows/catalog` | Knotenkatalog mit Einstellungen als JSON Schema |
+| `GET /api/workflows/{id}` | Status, aktive Version, Entwurf mit Prüfergebnis (Bearbeitende) |
+| `POST /api/workflows/{id}/draft` | Entwurf durch ein Graph-JSON ersetzen |
+| `POST /api/workflows/{id}/test` | Probe- oder Testlauf des Entwurfs |
+| `POST /api/workflows/{id}/activate` | aktivieren – du wirst die ausführende Person (Schreib-Token) |
+| `POST /api/workflows/{id}/pause` | pausieren, optional offene Läufe abbrechen |
+| `POST /api/workflows/{id}/run` | Workflow mit manuellem Auslöser starten |
+| `GET /api/workflows/{id}/runs`, `GET /api/workflow-runs/{runId}` | Läufe und Schritte |
+| `POST /api/workflow-runs/{runId}/retry` / `cancel` | wiederholen ab dem fehlgeschlagenen Knoten / abbrechen |
+| `GET /api/workflows/{id}/export`, `POST /api/workflows/import` | JSON-Export (ohne Geheimnisse) und Import als Entwurf |
+
+Lese-Tokens lesen nur. Freigaben entscheidet nur eine angemeldete Person, nie ein Token. `activate`, `run` und `import` nehmen einen `Idempotency-Key`. Die SDKs haben dafür eigene Methoden (`saveWorkflowDraft`, `testWorkflow`, `activateWorkflow`, `runWorkflow` …).
+
+### Eingehender Workflow-Webhook
+
+Der Auslöser **Eingehender Webhook** hat eine eigene Adresse `POST /api/workflow-hooks/<token>` (im Knoten zu sehen, rotierbar). Standard ist **signiert**: `X-Flowplan-Timestamp` (Unix-Sekunden, höchstens 5 Minuten alt) und `X-Flowplan-Signature: sha256=<HMAC-SHA256(Geheimnis, Zeitstempel + "." + Körper)>`. Jede Signatur zählt einmal. Die Antwort ist sofort `202` mit der Lauf-ID.
+
+```bash
+body='{"title":"Server down","description":"web-1 antwortet nicht"}'
+ts=$(date +%s)
+sig=$(printf '%s.%s' "$ts" "$body" | openssl dgst -sha256 -hmac "$SECRET" | cut -d' ' -f2)
+curl -X POST "$URL" -H "Content-Type: application/json" -H "X-Flowplan-Timestamp: $ts" -H "X-Flowplan-Signature: sha256=$sig" -d "$body"
+```
+
+```js
+const ts = Math.floor(Date.now() / 1000).toString();
+const sig = crypto.createHmac("sha256", secret).update(`${ts}.${body}`).digest("hex");
+await fetch(url, { method: "POST", headers: { "Content-Type": "application/json", "X-Flowplan-Timestamp": ts, "X-Flowplan-Signature": `sha256=${sig}` }, body });
+```
+
+```python
+ts = str(int(time.time()))
+sig = hmac.new(secret.encode(), f"{ts}.{body}".encode(), hashlib.sha256).hexdigest()
+urllib.request.urlopen(urllib.request.Request(url, body.encode(), {"Content-Type": "application/json", "X-Flowplan-Timestamp": ts, "X-Flowplan-Signature": "sha256=" + sig}))
+```
+
+Für Dienste, die nicht signieren können, gibt es bewusst gewählt **Nur Token** (höchstens 10 Aufrufe je Minute). Der HTTP-Knoten eines Workflows schickt ausgehend einen `Idempotency-Key: <Lauf>:<Knoten>:<Durchlauf>`, damit Wiederholungen beim Empfänger nicht doppelt wirken.
+
 ## n8n
 
 Für [n8n](https://n8n.io) gibt es den Community-Knoten **`n8n-nodes-flowplan`** (Quellcode unter [`integrations/n8n`](https://github.com/yannicschuller/flowplan/tree/main/integrations/n8n)).

@@ -115,3 +115,7 @@ Das Team antwortet im Eintrag unter **Kundenanfrage**. Antworten gehen per E-Mai
 
 > [!NOTE]
 > Der Link ist der Schlüssel: Wer ihn hat, sieht die Anfrage und kann antworten. Schaltest du das Kundenportal oder das Formular aus, funktionieren alle Links nicht mehr; eingeschaltet gehen sie wieder.
+
+## Formularantworten weiterverarbeiten
+
+Der Workflow-Auslöser **Formularantwort** startet einen [Workflow](/workflows) für jede Antwort – etwa mit der Vorlage **Formular → KI-Kategorie → Zuweisung**: die KI ordnet die Antwort einer Kategorie zu, die zuständige Person wird eingetragen und benachrichtigt.

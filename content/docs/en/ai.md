@@ -260,6 +260,15 @@ Select records in the table → **Fill in with AI** → choose a property (e.g. 
 
 New page → Database → **Create with AI** and describe it, e.g. "Reading list with author, genre, status, rating". The AI proposes properties with types, select options and a few example records. You rename, remove properties or leave out the examples – only **Create page** creates the database. The proposal is checked strictly (allowed types, at most 25 properties and 30 options, matching example values); nothing from the AI's answer is executed.
 
+## AI in workflows
+
+[Workflows](/workflows) have four AI nodes: **Summarize**, **Classify** (into categories or the options of a select, with an “unclear” port), **Extract fields** and **Custom prompt** (text or JSON). They use the AI feature **AI in workflows** – admins switch it off under Administration → AI, everyone for themselves in their own AI settings.
+
+- **Budget**: at most 100,000 tokens per workflow and day (`FLOWPLAN_WORKFLOW_AI_TOKENS_PER_DAY`); when it is used up, the node fails with a message.
+- **What the AI reads**: only pages and records the person the workflow runs as may see and that are open to the AI; blocked pages and journals with a PIN stay out.
+- **Prompt injection**: foreign text (e-mails, webhooks, page contents) is marked in the prompt as data. The AI only returns data, never actions – its answer is checked (categories from the list, typed fields). Where an AI output decides recipients, an address or a target, the check warns before activating.
+- **AI builder**: “Draft with AI” builds a draft from one sentence; the AI only sees names of databases, properties and pages, no contents, and it counts against your personal AI allowance.
+
 ## For admins
 
 Under **Administration → AI**:

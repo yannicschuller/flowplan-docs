@@ -155,3 +155,7 @@ Im Eintrag kann jede Person für jedes gefüllte Datumsfeld eine persönliche Er
 - **Privater Eintrag**: nur Verwaltende und Freigegebene sehen ihn – samt seinen Kommentaren, Aufgaben und Dateien (in Dateiliste, Suche, Mediathek, Kopien, Vorlagen und Sicherungen).
 
 Freigaben an Personen oder Gruppen gehen nie über die Rolle an der Datenbankseite hinaus.
+
+## Automationen und Workflows
+
+Wiederkehrende Handgriffe einer Datenbank – Datum setzen, benachrichtigen, Vorlage anwenden – erledigen [Automationen](/projects-and-tickets#automationen) unter **… → Automationen**. Für längere Abläufe mit Verzweigungen, Warten, Freigaben, KI, E-Mails oder anderen Diensten gibt es [Workflows](/workflows); jede Regel lässt sich dorthin mit **Im Canvas öffnen** erweitern.

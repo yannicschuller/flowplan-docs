@@ -160,6 +160,10 @@ In a text property (table cell, record; see [Formatted text](/databases#formatte
 | <kbd>⌥</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Month view: move a whole-day entry by one week |
 | <kbd>Esc</kbd> | Cancel a drag in progress |
 
+## Workflows
+
+On a [workflow's](/workflows) canvas: <kbd>Tab</kbd> between nodes, arrow keys move, <kbd>Enter</kbd> opens the panel, <kbd>A</kbd> appends a node, <kbd>C</kbd> connects, <kbd>Delete</kbd> deletes, <kbd>Ctrl</kbd>+<kbd>D</kbd> duplicates, <kbd>L</kbd> switches to the list, <kbd>F</kbd> fits the view. The overview is under [Workflows → Keyboard](/workflows#keyboard).
+
 ## In this documentation
 
 <kbd>/</kbd> jumps into the search, arrow keys choose a hit, <kbd>Enter</kbd> opens it.

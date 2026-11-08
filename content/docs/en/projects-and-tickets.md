@@ -2,7 +2,7 @@
 
 Tools for teams that work with tickets – all optional: a database behaves as before until you set one of them up.
 
-Most of them sit in the **…** menu on the right of a database's toolbar: record templates, **Automations**, **Workflow and done**, **Time report** and **Git connection**.
+Most of them sit in the **…** menu on the right of a database's toolbar: record templates, **Automations**, **Status rules and done**, **Time report** and **Git connection**.
 
 ## Ticket numbers
 
@@ -30,7 +30,7 @@ Sprints, progress, overdue records and “My tasks” need to know when a record
 
 Set it under **… → Workflow and done** when it should be different.
 
-## Workflows
+## Status rules
 
 In the same dialog, switch on **Set allowed changes and required properties**:
 
@@ -60,6 +60,12 @@ Suggestions add the usual rules in one click:
 Example: *When* Status changes to “Approved”, *only if* Company is not empty, *then* apply the template “Kickoff”. Every approved record gets its kickoff page with the company name and date. Applied templates are recorded in the [activity log](/administration#activity-log) (`row.template.applied`).
 
 Each rule can be switched off on its own.
+
+### Open in canvas: a rule becomes a workflow
+
+When a rule is not enough any more – several steps, waits, approvals, AI, e-mails or other services –, the **Open in canvas** icon next to the rule opens it as a [workflow](/workflows): a workflow page next to the database with the rule as its draft. The rule keeps running until you activate the workflow; then it is replaced by a reference in the same change (“Extended as a workflow”). So both never run at once, and never neither.
+
+The difference: a rule acts for the database, a workflow runs as the person who activates it – the activate dialog says so.
 
 > [!NOTE]
 > Rules run on the server, however a record changes. What a rule changes does not trigger further rules, so rules cannot loop. Flowplan checks overdue records every few minutes; each rule fires once per record and date. Notifications appear as “Database automations” and can be switched off in the settings.

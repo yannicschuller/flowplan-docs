@@ -81,6 +81,10 @@ Details: [Storage and backups](/storage-and-backups).
 
 Empty fields fall back to the [environment variables](/configuration). Everyone sees their limits and the storage they use under **Settings → Account & security → Your limits**.
 
+### Workflows
+
+**Limits & retention → Workflows** holds the limits of [workflows](/workflows): runs per minute (per workflow and workspace), steps per run, cascade depth, items per “For each”, AI tokens and e-mails per workflow and day, how long runs are kept, the longest wait, active workflows per workspace, the HTTP node (on/off, only certain hosts, internal addresses) and e-mails to addresses outside the members. Left empty, the value from the [environment](/configuration#workflows) applies. Next to it, monitoring shows the load: active workflows, runs per minute, waiting and running steps, the oldest step due, the failure rate and today's AI tokens.
+
 ## Markdown & Git export
 
 Choose pages and databases for the Markdown export, switch on the Git export of spaces, and the (deprecated) instance Git repository – see [Markdown export and Git](/storage-and-backups#markdown-export-and-git).

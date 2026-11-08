@@ -160,6 +160,10 @@ In einer Text-Eigenschaft (Tabellenzelle, Eintrag; siehe [Formatierter Text](/da
 | <kbd>⌥</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Monatsansicht: ganztägigen Eintrag um eine Woche verschieben |
 | <kbd>Esc</kbd> | Laufendes Ziehen abbrechen |
 
+## Workflows
+
+Auf der Fläche eines [Workflows](/workflows): <kbd>Tab</kbd> zwischen Knoten, Pfeiltasten verschieben, <kbd>Enter</kbd> öffnet das Panel, <kbd>A</kbd> hängt einen Knoten an, <kbd>C</kbd> verbindet, <kbd>Entf</kbd> löscht, <kbd>Strg</kbd>+<kbd>D</kbd> dupliziert, <kbd>L</kbd> wechselt zur Liste, <kbd>F</kbd> passt die Ansicht ein. Die Übersicht steht unter [Workflows → Tastatur](/workflows#tastatur).
+
 ## In dieser Dokumentation
 
 <kbd>/</kbd> springt in die Suche, Pfeiltasten wählen einen Treffer, <kbd>Enter</kbd> öffnet ihn.

@@ -266,6 +266,10 @@ Everything with addresses needs the reverse proxy to set `X-Forwarded-For` and a
 - Upload a file, restart the container, open the file again – then the volume is mounted correctly.
 - With S3: `objectStorage.pending` drops to `0`; the bucket contains `flowplan/uploads/` and `flowplan/db/`; the log shows lines from `litestream` on start.
 
+## Workflows
+
+[Workflows](/workflows) run in the server process. A restart loses nothing: running steps without a valid lease return to the queue after two minutes at most, waiting runs (waits, approvals) continue at their time, schedules make up for the last missed slot once. Under **Administration → Limits & retention → Workflows**, monitoring shows waiting steps, the oldest step due, undistributed events and the failure rate. Runs are deleted after 30 days (`FLOWPLAN_WORKFLOW_RUN_DAYS`), waiting ones never.
+
 ## Troubleshooting
 
 | Symptom | Cause and fix |

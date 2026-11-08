@@ -2,7 +2,7 @@
 
 Werkzeuge für Teams, die mit Tickets arbeiten – alle optional: Eine Datenbank verhält sich wie bisher, bis du eines davon einrichtest.
 
-Die meisten findest du im Menü **…** rechts in der Werkzeugleiste einer Datenbank: Datensatzvorlagen, **Automationen**, **Workflow und Erledigt**, **Zeiten auswerten** und **Git-Anbindung**.
+Die meisten findest du im Menü **…** rechts in der Werkzeugleiste einer Datenbank: Datensatzvorlagen, **Automationen**, **Statusregeln und Erledigt**, **Zeiten auswerten** und **Git-Anbindung**.
 
 ## Ticketnummern
 
@@ -30,7 +30,7 @@ Sprints, Fortschritt, überfällige Einträge und „Meine Aufgaben“ müssen w
 
 Unter **… → Workflow und Erledigt** legst du es fest, wenn es anders sein soll.
 
-## Workflows
+## Statusregeln
 
 Im selben Dialog schaltest du **Erlaubte Wechsel und Pflichtfelder festlegen** ein:
 
@@ -60,6 +60,12 @@ Vorschläge legen die üblichen Regeln mit einem Klick an:
 Beispiel: *Wenn* Status sich auf „Genehmigt“ ändert, *nur wenn* Firma nicht leer ist, *dann* Vorlage „Kickoff“ anwenden. Jeder genehmigte Eintrag bekommt so seine Kickoff-Seite mit Firmenname und Termin. Angewendete Vorlagen stehen im [Aktivitätsprotokoll](/administration#aktivitaetsprotokoll) (`row.template.applied`).
 
 Regeln lassen sich einzeln ausschalten.
+
+### Im Canvas öffnen: aus einer Regel wird ein Workflow
+
+Reicht eine Regel nicht mehr – mehrere Schritte, Warten, Freigaben, KI, E-Mails oder andere Dienste –, öffnet das Symbol **Im Canvas öffnen** neben der Regel sie als [Workflow](/workflows): eine Workflow-Seite neben der Datenbank mit der Regel als Entwurf. Die Regel läuft weiter, bis du den Workflow aktivierst; dann wird sie in derselben Änderung durch einen Verweis ersetzt („Erweitert als Workflow“). So läuft nie beides und nie keins von beiden.
+
+Der Unterschied: Eine Regel handelt für die Datenbank, ein Workflow läuft als die Person, die ihn aktiviert – der Aktivieren-Dialog sagt das.
 
 > [!NOTE]
 > Regeln laufen auf dem Server, egal wie ein Eintrag sich ändert. Was eine Regel ändert, löst keine weiteren Regeln aus – so entstehen keine Schleifen. Überfällige Einträge prüft Flowplan alle paar Minuten; jede Regel meldet sich einmal je Eintrag und Datum. Benachrichtigungen erscheinen als „Automationen in Datenbanken“ und lassen sich in den Einstellungen abstellen.
