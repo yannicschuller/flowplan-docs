@@ -108,6 +108,7 @@ Inhaltsarchive und der [Instanzumzug](/move-instance) nehmen Workflows mit Entwu
 
 - **Telefon**: Status mit Ein/Aus-Schalter, der Ablauf als Liste, Läufe und Freigaben. Bearbeitet wird auf Tablet oder Computer.
 - **Freigaben**: Die Benachrichtigung öffnet die Workflow-Seite mit dem Reiter **Freigaben** – Nachricht, Kommentar, **Ablehnen** oder **Genehmigen**.
+- **Freigaben in der App**: In der iPhone- und Android-App trägt die Mitteilung die Knöpfe **Genehmigen** und **Ablehnen**, sofern Mitteilungen auf dem Sperrbildschirm ihren Text zeigen. **Genehmigen** fragt vorher Face ID, Touch ID oder den Fingerabdruck ab – ohne Biometrie öffnet sich stattdessen der Reiter **Freigaben**. **Ablehnen** geht ohne Biometrie, das Telefon muss aber entsperrt sein. Das Gerät muss angemeldet und in den letzten 14 Tagen aktiv gewesen sein; auf Android öffnet das allererste Genehmigen einmal den Reiter, weil dabei der Schlüssel angelegt wird.
 - **Tablet**: der volle Editor; Verbinden auch per Tippen auf einen Ausgang und dann das Ziel.
 
 ## Tastatur

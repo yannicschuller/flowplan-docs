@@ -108,6 +108,7 @@ Content archives and the [instance move](/move-instance) take workflows along wi
 
 - **Phone**: status with an on/off switch, the flow as a list, runs and approvals. Editing happens on a tablet or computer.
 - **Approvals**: the notification opens the workflow page on the **Approvals** tab – message, comment, **Reject** or **Approve**.
+- **Approvals in the app**: in the iPhone and Android app, the notification carries **Approve** and **Reject** buttons, as long as notifications show their text on the lock screen. **Approve** asks for Face ID, Touch ID or a fingerprint first – without biometrics the **Approvals** tab opens instead. **Reject** needs no biometrics, but the phone has to be unlocked. The device must be signed in and active within the last 14 days; on Android the very first Approve opens the tab once, because that is when the key is created.
 - **Tablet**: the full editor; connecting also works by tapping an output, then the target.
 
 ## Keyboard
