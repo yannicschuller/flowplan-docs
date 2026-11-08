@@ -10,12 +10,14 @@ Vorlagen sind gespeicherte Seiten – Dokumente, Datenbanken oder ganze Seitenb�
 | --- | --- |
 | Projekte | Projektplanung, Produkt-Roadmap, Sprint-Board, Projektsteckbrief |
 | Meetings | Meeting-Notizen, Besprechungsnotiz, 1:1-Gespräch, Retrospektive, Besprechungsprotokolle |
-| Wissen & Dokumentation | Team-Wiki, Anleitung, Entscheidungsprotokoll, FAQ |
+| Wissen & Dokumentation | Team-Wiki, Anleitung, Diagramm-Seite, Entscheidungsprotokoll, FAQ |
 | Planung & Ziele | OKR-Ziele, Quartalsplanung, Content-Kalender, Budgetplanung |
 | Persönlich | Aufgabenliste, Leseliste, Gewohnheiten-Tracker, Reiseplanung |
 | Sonstiges | Kontakte & Kunden, Bewerbungen, Inventar, Eventplanung |
 
 Ein Klick fragt nach Titel und Bereich und legt die Seite an. Datumswerte der Beispiele werden relativ zum heutigen Tag gesetzt.
+
+Die **Diagramm-Seite** ist eine Seite in voller Breite mit einem leeren [draw.io-Diagramm](/documents#formeln-diagramme-und-code); draw.io öffnet sich, sobald die Seite angelegt ist (wenn die Instanz draw.io nutzt).
 
 Sobald es [eigene Vorlagen](#eigene-vorlagen) gibt, steht gleich nach **Alle** die Kategorie **Eigene Vorlagen**: Sie zeigt nur die gespeicherten Vorlagen – deine eigenen („Nur für mich“), die des Arbeitsbereichs und die für alle Arbeitsbereiche – ohne die eingebauten.
 

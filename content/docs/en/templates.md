@@ -10,12 +10,14 @@ Templates are saved pages – documents, databases or whole page trees – from 
 | --- | --- |
 | Projects | Project planning, product roadmap, sprint board, project brief |
 | Meetings | Meeting notes, meeting note, 1:1 conversation, retrospective, meeting minutes |
-| Knowledge & documentation | Team wiki, how-to guide, decision log, FAQ |
+| Knowledge & documentation | Team wiki, how-to guide, diagram page, decision log, FAQ |
 | Planning & goals | OKRs, quarterly planning, content calendar, budget planning |
 | Personal | To-do list, reading list, habit tracker, travel planning |
 | Other | Contacts & customers, job applications, inventory, event planning |
 
 A click asks for a title and space and creates the page. Dates in the examples are set relative to today.
+
+The **Diagram page** is a full-width page with one empty [draw.io diagram](/documents#formulas-diagrams-and-code); draw.io opens as soon as the page is created (if the instance uses draw.io).
 
 As soon as there are [templates of your own](#your-own-templates), the category **My templates** comes right after **All**: it shows only the saved templates – your personal ones ("Only me"), the workspace's and those for all workspaces – without the built-in ones.
 
