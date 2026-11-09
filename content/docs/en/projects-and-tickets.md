@@ -145,6 +145,23 @@ The time report sums up the time entries of a database or of the whole workspace
 
 Every request is checked against the secret. Only people who may edit the database see the address and the secret. **New address and secret** invalidates the old ones.
 
+Pull requests show their state as a badge: **Open**, **Merged** or **Closed**.
+
+### Back-link on the pull request
+
+Like Notion, Flowplan can link back to the record in the pull or merge request itself. In the dialog, under **Back-link on the pull request → Add access token**, enter the provider, the server (empty for github.com or gitlab.com, required for Gitea/Forgejo) and an access token:
+
+- **GitHub**: fine-grained token with access to the repository and *Pull requests: Read and write* (or *Issues: Read and write*).
+- **GitLab**: project or personal access token with the scope `api` (role at least Reporter).
+- **Gitea / Forgejo**: token with `write:issue` (plus `read:repository` for private repositories).
+
+When a pull/merge request names ticket numbers of this database, Flowplan writes **one** comment, e.g. `Linked in Flowplan: [WEB-123 Login form](…)` – one line per record, with a link to the record. Later events (edited title, merged, closed) **update the same comment** instead of writing new ones; if all numbers are gone, it says “No longer linked in Flowplan.”
+
+- The comment shows the ticket number and title. For **private records** and databases behind a journal PIN, only the ticket number; nothing is written for databases in the trash or in encrypted spaces.
+- The token is stored encrypted, never shown again and only sent to the server it was entered for. A webhook from another provider or server does not get it. Own servers are allowed by the administrators with [`ISSUE_SYNC_ALLOWED_HOSTS`](/configuration#integrations), as for the issue sync; internal addresses are blocked.
+- The comment is written in the background – the webhook answers at once, even when the Git server is slow. Errors (e.g. `403` for a missing permission) show in the dialog under **Last back-link failed**. Flowplan writes at most 30 comments per minute and connection.
+- Without a token nothing changes: Flowplan writes nothing to the repository. **Remove token** switches the back-link off.
+
 ## Sync GitHub, GitLab and Forgejo issues
 
 A database can keep itself in step with the issues of a GitHub, GitLab or Forgejo/Gitea repository – both ways or only one. Unlike the [Git connection](#git-connection), which only links commits and pull requests, records and issues are created and updated on both sides here.

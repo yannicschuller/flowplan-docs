@@ -145,6 +145,23 @@ Der Zeitbericht fasst die Zeiteinträge einer Datenbank oder des ganzen Arbeitsb
 
 Jede Anfrage wird gegen das Secret geprüft. Adresse und Secret sehen nur Personen, die die Datenbank bearbeiten dürfen. **Neue Adresse und neues Secret** macht die alten ungültig.
 
+Pull Requests zeigen ihren Stand als Abzeichen: **Offen**, **Zusammengeführt** oder **Geschlossen**.
+
+### Rückverweis im Pull Request
+
+Wie bei Notion kann Flowplan im Pull bzw. Merge Request selbst auf den Eintrag verweisen. Dafür im Dialog unter **Rückverweis im Pull Request → Zugangstoken hinterlegen** Anbieter, Server (leer für github.com bzw. gitlab.com, Pflicht für Gitea/Forgejo) und ein Zugangstoken eintragen:
+
+- **GitHub**: Fine-grained Token mit Zugriff auf das Repository und *Pull requests: Read and write* (oder *Issues: Read and write*).
+- **GitLab**: Projekt- oder persönliches Zugangstoken mit dem Scope `api` (Rolle mindestens Reporter).
+- **Gitea / Forgejo**: Token mit `write:issue` (bei privaten Repositorys zusätzlich `read:repository`).
+
+Nennt ein Pull/Merge Request Ticketnummern dieser Datenbank, schreibt Flowplan **einen** Kommentar, z. B. `Linked in Flowplan: [WEB-123 Login-Formular](…)` – eine Zeile je Eintrag, mit Link zum Eintrag. Spätere Ereignisse (geänderter Titel, zusammengeführt, geschlossen) **aktualisieren denselben Kommentar**, statt neue zu schreiben; fallen alle Nummern weg, steht dort „No longer linked in Flowplan.“
+
+- Der Kommentar zeigt Ticketnummer und Titel. Bei **privaten Einträgen** und Datenbanken hinter einer Journal-PIN steht nur die Ticketnummer; für Datenbanken im Papierkorb oder in verschlüsselten Bereichen wird nichts geschrieben.
+- Das Token wird verschlüsselt gespeichert, nie wieder angezeigt und nur an den Server geschickt, für den es eingetragen wurde. Ein Webhook von einem anderen Anbieter oder Server bekommt es nicht. Eigene Server gibt die Administration wie bei der Issue-Synchronisierung mit [`ISSUE_SYNC_ALLOWED_HOSTS`](/configuration#integrationen) frei; interne Adressen sind gesperrt.
+- Der Kommentar entsteht im Hintergrund – der Webhook antwortet sofort, auch wenn der Git-Server langsam ist. Fehler (z. B. `403` bei fehlender Berechtigung) stehen im Dialog unter **Letzter Rückverweis fehlgeschlagen**. Je Anbindung schreibt Flowplan höchstens 30 Kommentare pro Minute.
+- Ohne Token bleibt alles wie bisher: Flowplan schreibt nichts in das Repository. **Token entfernen** schaltet den Rückverweis ab.
+
 ## GitHub-, GitLab- und Forgejo-Issues synchronisieren
 
 Eine Datenbank kann sich mit den Issues eines GitHub-, GitLab- oder Forgejo/Gitea-Repositorys abgleichen – in beide Richtungen oder nur in eine. Anders als die [Git-Anbindung](#git-anbindung), die Commits und Pull Requests nur verlinkt, werden hier Einträge und Issues gegenseitig angelegt und aktualisiert.
