@@ -45,7 +45,7 @@ Right-clicking a page in the page tree or under favourites – a long press on a
 
 ### Filter pages
 
-The **Filter pages** field above the page tree hides everything that does not match; parent pages of the hits stay visible and expanded. <kbd>Esc</kbd> clears the filter. Templates, media, trash, settings and administration sit as a toolbar at the bottom of the sidebar.
+The **Filter pages** field above the page tree hides everything that does not match; parent pages of the hits stay visible and expanded. <kbd>Esc</kbd> clears the filter. Templates, media, tags, graph, trash, settings, help and administration sit as a toolbar at the bottom of the sidebar. On a phone they are gathered behind **More** next to your name: a tap opens a list of all of them with labels, and the page tree keeps its height.
 
 ## Split view
 

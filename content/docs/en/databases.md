@@ -84,6 +84,15 @@ Dragging is quicker: **drag records by their handle (with the mouse also by the 
 
 Relations, rollups and formulas are described under [Properties, formulas and rollups](/properties-and-formulas).
 
+### Collapsing properties in a record
+
+Below a record's title, the **Properties** arrow folds the properties into one line: the two or three most relevant values as small chips (status first, then selects, dates and people) and “+4 properties”. A tap on the line opens it again. The record's content moves up – especially useful on a phone.
+
+- The choice applies to **all records of the database** and is stored in your account, **separately for phone and computer**: collapsing on the phone leaves everything visible on the computer.
+- Without a choice of your own, properties are expanded on a computer; on a phone they are collapsed as soon as the record shows more than four properties. A record you have just created always opens expanded so you can fill it in.
+- Collapsing changes no values and no permissions and only applies to you. Printing and exports always show all properties.
+- Ordinary pages have the same in the [bar with tags and properties](/pages-and-spaces#collapsing-the-bar).
+
 ### Formatted text
 
 Text properties – all except the title – can contain **bold**, *italic*, ~~strikethrough~~, `code`, links and line breaks. These are marks within the text only, no blocks: headings, lists, quotes or tables are not available there (that is what the record's own text is for). There is no underline.

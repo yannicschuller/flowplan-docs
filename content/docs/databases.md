@@ -84,6 +84,15 @@ Schneller geht es per Ziehen: Einträge am Griff (mit der Maus auch an der Karte
 
 Relationen, Rollups und Formeln sind unter [Eigenschaften, Formeln und Rollups](/properties-and-formulas) beschrieben.
 
+### Eigenschaften im Eintrag einklappen
+
+Unter dem Titel eines Eintrags klappt der Pfeil **Eigenschaften** die Eigenschaften zu einer Zeile zusammen: die zwei bis drei wichtigsten Werte als kleine Chips (zuerst der Status, dann Auswahl, Datum und Person) und „+4 Eigenschaften“. Ein Tipp auf die Zeile klappt sie wieder auf. Der Inhalt des Eintrags rückt so nach oben – gerade auf dem Telefon.
+
+- Die Wahl gilt für **alle Einträge der Datenbank** und wird in deinem Konto gespeichert, **getrennt für Telefon und Computer**: Wer auf dem Telefon einklappt, sieht am Computer weiter alles.
+- Ohne eigene Wahl sind die Eigenschaften am Computer aufgeklappt, auf dem Telefon eingeklappt, sobald der Eintrag mehr als vier Eigenschaften zeigt. Ein gerade angelegter Eintrag öffnet immer aufgeklappt, damit du ihn ausfüllen kannst.
+- Einklappen ändert keine Werte und keine Rechte und gilt nur für dich. Drucken und Exporte zeigen immer alle Eigenschaften.
+- Für normale Seiten gibt es dasselbe in der [Leiste mit Tags und Eigenschaften](/pages-and-spaces#leiste-einklappen).
+
 ### Formatierter Text
 
 Text-Eigenschaften – alle außer dem Titel – können **fett**, *kursiv*, ~~durchgestrichen~~, `Code`, Links und Zeilenumbrüche enthalten. Es sind nur Auszeichnungen im Text, keine Blöcke: Überschriften, Listen, Zitate oder Tabellen gibt es darin nicht (dafür ist der Text des Eintrags da). Unterstreichen gibt es nicht.

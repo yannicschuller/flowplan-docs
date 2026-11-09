@@ -45,7 +45,7 @@ Ein Rechtsklick auf eine Seite im Seitenbaum oder unter Favoriten – auf dem Sm
 
 ### Seiten filtern
 
-Das Feld **Seiten filtern** über dem Seitenbaum blendet alles aus, was nicht passt; übergeordnete Seiten der Treffer bleiben sichtbar und aufgeklappt. <kbd>Esc</kbd> leert den Filter. Vorlagen, Medien, Papierkorb, Einstellungen und Administration liegen als Symbolleiste unten in der Seitenleiste.
+Das Feld **Seiten filtern** über dem Seitenbaum blendet alles aus, was nicht passt; übergeordnete Seiten der Treffer bleiben sichtbar und aufgeklappt. <kbd>Esc</kbd> leert den Filter. Vorlagen, Medien, Tags, Graph, Papierkorb, Einstellungen, Hilfe und Administration liegen als Symbolleiste unten in der Seitenleiste. Auf dem Telefon sind sie hinter **Mehr** neben deinem Namen zusammengefasst: ein Tipp öffnet eine Liste mit allen Einträgen samt Beschriftung, und der Seitenbaum behält die Höhe.
 
 ## Geteilte Ansicht
 
