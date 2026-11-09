@@ -76,8 +76,8 @@ Widgets zeigen nur, was du ohnehin sehen darfst: Seiten anderer Arbeitsbereiche 
 ## Die erste Seite
 
 1. Neben einem Bereich in der Seitenleiste auf **+** klicken oder auf der Startseite **Neue Seite** wählen.
-2. Den Typ wählen: **Dokument**, **Datenbank**, **Whiteboard** oder **Journal**.
-3. Einen Titel eingeben und losschreiben. Gespeichert wird automatisch, auch ohne Verbindung.
+2. Oben einen Namen eingeben und darunter die Art wählen: **Dokument**, **Datenbank**, **Whiteboard**, **Journal**, **Dashboard**, **Notizbuch**, **Workflow** oder **Aus Vorlage** (mit den Pfeiltasten geht es auch per Tastatur). Eine Zeile darunter beschreibt die gewählte Art, bei Datenbank und Notizbuch folgen gleich dort ihre Optionen; **Bereich** legt fest, wo die Seite entsteht.
+3. **Seite erstellen** (auf dem Telefon bleiben die Knöpfe über der Bildschirmtastatur) und losschreiben. Gespeichert wird automatisch, auch ohne Verbindung.
 
 Im Dokument öffnet `/` das Blockmenü: `/h2`, `/todo` oder `/tabelle` tippen und mit Enter einfügen. Wie der Editor im Detail funktioniert, steht unter [Dokumente und Editor](/documents).
 

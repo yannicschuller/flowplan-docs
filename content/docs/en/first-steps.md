@@ -76,8 +76,8 @@ Widgets only show what you may see anyway: pages of other workspaces do not appe
 ## Your first page
 
 1. Click **+** next to a space in the sidebar or choose **New page** on the home screen.
-2. Choose the type: **Document**, **Database**, **Whiteboard** or **Journal**.
-3. Enter a title and start writing. Everything is saved automatically, even without a connection.
+2. Enter a name at the top and choose the kind below it: **Document**, **Database**, **Whiteboard**, **Journal**, **Dashboard**, **Notebook**, **Workflow** or **From a template** (the arrow keys work too). A line below describes the chosen kind, a database or notebook shows its options right there, and **Space** sets where the page is created.
+3. **Create page** (on phones the buttons stay above the on-screen keyboard) and start writing. Everything is saved automatically, even without a connection.
 
 In a document, `/` opens the block menu: type `/h2`, `/todo` or `/table` and press Enter to insert. How the editor works in detail is explained under [Documents and the editor](/documents).
 

@@ -276,7 +276,7 @@ Under **Administration → AI**:
 1. **Turn on AI.**
 2. Choose the **instance provider** (or **No provider**, see below), enter address, model and – if needed – the **API key**. **Test connection.**
 3. **Who may use AI:**
-   - **All** or **Selected people** – enable the latter per person under **Administration → Users → Manage** (**AI features**).
+   - **All** or **Selected people** – enable the latter per person under **Administration → Users**: click the person, then **More → AI features**.
    - **Guests too** – when off, guests have no AI features.
    - **People may add their own provider/key** – then everyone can set up their own provider with their own key in their settings. This also works with no instance provider at all: people use AI with their own account at a provider, without the instance paying for it.
 4. **Features:** allow or forbid each one separately. Optionally turn on [semantic search](#semantic-search-optional).
@@ -295,7 +295,7 @@ All settings can also be preset with [environment variables](/configuration#ai),
 
 ### Close pages and spaces to AI
 
-Owners of a workspace or a space can mark a **page** (in the share dialog) or a **space** (in the space settings) **Closed to AI**. This applies to everyone and to everything below – sub-pages and database records. No AI feature reads this content, even if a person allowed it in their own rules.
+Owners of a workspace or a space can mark a **page** (under **Share → People**) or a **space** (in the space settings) **Closed to AI**. This applies to everyone and to everything below – sub-pages and database records. No AI feature reads this content, even if a person allowed it in their own rules.
 
 New [contacts databases](/contacts) start closed to the AI; whoever manages the page can open them.
 

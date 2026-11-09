@@ -4,7 +4,7 @@ A database is a collection of records with properties. The same records can be s
 
 ## Create a database
 
-**New page → Database** asks for the kind:
+**New page → Database** shows the **Kind** right below as one row to choose from, with the properties of the chosen one underneath:
 
 | Kind | Properties | First view |
 | --- | --- | --- |

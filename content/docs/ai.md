@@ -276,7 +276,7 @@ Unter **Administration → KI**:
 1. **KI einschalten.**
 2. **Anbieter der Instanz** wählen (oder **Kein Anbieter**, siehe unten), Adresse, Modell und – falls nötig – den **API-Schlüssel** eintragen. **Verbindung testen.**
 3. **Wer KI nutzen darf:**
-   - **Alle** oder **Ausgewählte Personen** – Letztere schaltest du unter **Administration → Benutzer → Verwalten** pro Person frei (**KI-Funktionen**).
+   - **Alle** oder **Ausgewählte Personen** – Letztere schaltest du unter **Administration → Benutzer** pro Person frei: die Person anklicken, dann **Weitere → KI-Funktionen**.
    - **Auch Gäste** – ausgeschaltet haben Gäste keine KI-Funktionen.
    - **Nutzer dürfen eigene Anbieter/Schlüssel hinterlegen** – dann richtet jede Person in ihren Einstellungen einen eigenen Anbieter mit eigenem Schlüssel ein. Das geht auch ganz ohne Anbieter der Instanz: So nutzen Personen KI mit ihrem eigenen Konto bei einem Anbieter, ohne dass die Instanz dafür bezahlt.
 4. **Funktionen:** jede einzeln erlauben oder verbieten. Optional die [Suche nach Bedeutung](#suche-nach-bedeutung-optional) einschalten.
@@ -295,7 +295,7 @@ Alle Einstellungen lassen sich auch über [Umgebungsvariablen](/configuration#ki
 
 ### Seiten und Bereiche für die KI sperren
 
-Eigentümer eines Arbeitsbereichs oder eines Bereichs können eine **Seite** (im Teilen-Dialog) oder einen **Bereich** (in den Bereichseinstellungen) **für KI sperren**. Das gilt für alle Personen und für alles darunter – Unterseiten und Datenbankeinträge. Keine KI-Funktion liest dann diese Inhalte, auch wenn eine Person sie in ihren eigenen Regeln erlaubt hat.
+Eigentümer eines Arbeitsbereichs oder eines Bereichs können eine **Seite** (unter **Teilen → Personen**) oder einen **Bereich** (in den Bereichseinstellungen) **für KI sperren**. Das gilt für alle Personen und für alles darunter – Unterseiten und Datenbankeinträge. Keine KI-Funktion liest dann diese Inhalte, auch wenn eine Person sie in ihren eigenen Regeln erlaubt hat.
 
 Neue [Kontakte-Datenbanken](/contacts) sind von Anfang an für die KI gesperrt; wer die Seite verwaltet, kann sie öffnen.
 

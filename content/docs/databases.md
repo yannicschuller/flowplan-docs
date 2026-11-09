@@ -4,7 +4,7 @@ Eine Datenbank ist eine Sammlung von Einträgen mit Eigenschaften. Dieselben Ein
 
 ## Datenbank anlegen
 
-**Neue Seite → Datenbank** fragt nach der Art:
+**Neue Seite → Datenbank** zeigt gleich darunter die **Art** als eine Zeile zum Wählen, darunter die Eigenschaften der gewählten:
 
 | Art | Eigenschaften | Erste Ansicht |
 | --- | --- | --- |
