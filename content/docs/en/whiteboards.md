@@ -144,7 +144,13 @@ The library contains servers (1, 2 and 4U), storage/NAS, switches (24 and 48 por
 
 Devices can have **half depth** (mounted at the front or the rear): a front and a rear device then share the same units. In the other view they only show as a dashed outline. Vertical PDUs are mounted as **0U left/right** in the side channel.
 
-A device's **details**: name, kind, manufacturer, model, serial number, height, position (lowest U), mounting, depth, colour, power (W), weight (kg), notes – for PDUs and UPSs also **Capacity** (W) with the current load. **Take out of the rack** puts it next to the rack.
+A device's **details**: name, kind, **roles**, manufacturer, model, serial number, **host name**, **IP addresses**, **MAC address**, height, position (lowest U), mounting, depth, colour, power (W), weight (kg), notes – for PDUs and UPSs also **Capacity** (W) with the current load. **Take out of the rack** puts it next to the rack.
+
+- **Roles** are free tags with suggestions such as Docker host, hypervisor, bare metal, NAS, router or firewall.
+- **IP addresses** takes one or more IPv4 or IPv6 addresses (also with `/24`), separated by commas, spaces or line breaks. Invalid entries are not saved and are pointed out when you leave the field. The **MAC address** is always stored as `aa:bb:cc:dd:ee:ff`, whether you type it with `-`, `.` or no separators.
+- Network ports (RJ45, SFP/QSFP) also have their own MAC and IP address – every network card has its own.
+- Hovering over a device for a moment shows a **card** with everything at a glance: name, kind, roles, host name, IP and MAC addresses (each with a copy button), manufacturer and model, height and position, power, used ports and the start of the notes. On a phone or tablet a long press opens the card, with the keyboard <kbd>I</kbd> for the selected device; <kbd>Esc</kbd> closes it.
+- Search, Markdown and CSV export and the [NetBox import](#racks-and-cabling) include host name, addresses and roles (from NetBox: the primary IP with its DNS name, MAC and IP of the interfaces, role and tags). **Save as own device** leaves out host name and addresses.
 
 **Save as own device** stores the device with its ports and values in the workspace's library (section **Own devices**). The person who saved it and owners of the workspace can delete it.
 

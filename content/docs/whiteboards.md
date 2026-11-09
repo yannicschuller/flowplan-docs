@@ -144,7 +144,13 @@ Die Bibliothek enthält Server (1, 2 und 4 HE), Speicher/NAS, Switches (24 und 4
 
 Geräte können **halbe Tiefe** haben (vorne oder hinten eingebaut): Ein vorderes und ein hinteres Gerät teilen sich dann dieselben HE. In der anderen Ansicht erscheinen sie nur als gestrichelter Umriss. Senkrechte PDUs baust du als **0 HE links/rechts** in den seitlichen Kanal.
 
-Die **Details** eines Geräts: Name, Art, Hersteller, Modell, Seriennummer, Höhe, Position (unterste HE), Einbau, Tiefe, Farbe, Leistung (W), Gewicht (kg), Notizen – bei PDU und USV auch **Belastbar bis** (W) mit der aktuellen Last. **Aus dem Rack nehmen** legt es neben das Rack.
+Die **Details** eines Geräts: Name, Art, **Rollen**, Hersteller, Modell, Seriennummer, **Hostname**, **IP-Adressen**, **MAC-Adresse**, Höhe, Position (unterste HE), Einbau, Tiefe, Farbe, Leistung (W), Gewicht (kg), Notizen – bei PDU und USV auch **Belastbar bis** (W) mit der aktuellen Last. **Aus dem Rack nehmen** legt es neben das Rack.
+
+- **Rollen** sind freie Schlagwörter mit Vorschlägen wie Docker-Host, Hypervisor, Bare-Metal, NAS, Router oder Firewall.
+- **IP-Adressen** nimmt eine oder mehrere IPv4- oder IPv6-Adressen (auch mit `/24`), getrennt durch Komma, Leerzeichen oder Zeilenumbruch. Ungültige Einträge werden nicht gespeichert und beim Verlassen des Felds angezeigt. Die **MAC-Adresse** wird einheitlich als `aa:bb:cc:dd:ee:ff` gespeichert, egal ob mit `-`, `.` oder ohne Trennzeichen eingegeben.
+- Netzwerk-Ports (RJ45, SFP/QSFP) haben zusätzlich eine eigene MAC- und IP-Adresse – jede Netzwerkkarte hat ihre eigene.
+- Fährt die Maus kurz über ein Gerät, zeigt eine **Visitenkarte** alles auf einen Blick: Name, Art, Rollen, Hostname, IP- und MAC-Adressen (je mit Knopf zum Kopieren), Hersteller und Modell, Höhe und Position, Leistung, belegte Ports und den Anfang der Notizen. Auf dem Telefon oder Tablet öffnet langes Drücken die Karte, mit der Tastatur <kbd>I</kbd> für das ausgewählte Gerät; <kbd>Esc</kbd> schließt sie.
+- Suche, Markdown- und CSV-Export und der [NetBox-Import](#racks-und-verkabelung) übernehmen Hostname, Adressen und Rollen (aus NetBox: primäre IP mit DNS-Name, MAC und IP der Schnittstellen, Rolle und Tags). **Als eigenes Gerät speichern** lässt Hostname und Adressen weg.
 
 **Als eigenes Gerät speichern** legt das Gerät mit seinen Ports und Werten in der Bibliothek des Arbeitsbereichs ab (Abschnitt **Eigene Geräte**). Löschen dürfen es die Person, die es gespeichert hat, und Besitzer des Arbeitsbereichs.
 
