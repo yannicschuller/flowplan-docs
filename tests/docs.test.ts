@@ -224,3 +224,19 @@ for (const locale of LOCALES)
 test("text of rendered HTML decodes each entity once", () => {
   assert.equal(plain("<code>&amp;lt;b&amp;gt;</code> &amp;amp; &lt;i&gt; &quot;q&quot;"), '&lt;b&gt; &amp; <i> "q"');
 });
+
+test("the search index route answers plain JSON, even to browsers that accept gzip", async () => {
+  // Next drops a route handler's Content-Encoding header, so a body the
+  // route gzipped itself reached the browser as unreadable JSON.
+  const { GET } = await import("../app/api/search-index/[lang]/route");
+  for (const lang of LOCALES) {
+    const request = new Request(`https://docs.example/api/search-index/${lang}?v=1`, { headers: { "Accept-Encoding": "gzip, deflate, br, zstd" } });
+    const response = await GET(request, { params: Promise.resolve({ lang }) });
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get("content-encoding"), null);
+    const index = JSON.parse(await response.text());
+    assert.equal(index.length, docSlugs.length + 1, lang);
+  }
+  const missing = await GET(new Request("https://docs.example/api/search-index/xx"), { params: Promise.resolve({ lang: "xx" }) });
+  assert.equal(missing.status, 404);
+});
