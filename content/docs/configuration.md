@@ -154,8 +154,11 @@ Für den [E-Mail-Eingang](/api-and-webhooks#e-mail-eingang) per Webhook (Mailgun
 | `INBOUND_IMAP_USER` / `INBOUND_IMAP_PASSWORD` | *leer* | Anmeldung am Postfach. Der Teil vor `@` ist auch der Teil vor `+` in den Adressen. |
 | `INBOUND_IMAP_FOLDER` | `INBOX` | Ordner, der abgefragt wird. |
 | `INBOUND_IMAP_TLS` | `true` | `false` nur für einen Mailserver auf demselben Rechner oder im selben Netz (ohne Verschlüsselung). |
+| `INBOUND_MAIL_AUTHSERV_ID` | *leer* | Kennung (authserv-id) des eigenen empfangenden Mailservers oder Anbieters, mit der sein `Authentication-Results`-Header beginnt, z. B. `mx.example.com`. Gilt auch für den Eingang per Webhook. |
 
 Der Mailserver muss Plus-Adressierung unterstützen (`inbox+irgendwas@…` landet in `inbox@…`); das tun z. B. Dovecot, Postfix, Gmail/Google Workspace und Microsoft 365 (dort einschalten). Flowplan markiert verarbeitete E-Mails als gelesen und löscht nichts.
+
+**Absenderprüfung:** Ob ein Absender als geprüft gilt (SPF/DKIM/DMARC zur From-Domain bestanden), liest Flowplan aus dem `Authentication-Results`-Header. Den kann auch der Absender selbst mitschicken – deshalb zählt nur der oberste Header mit der Kennung aus `INBOUND_MAIL_AUTHSERV_ID`. Ohne die Variable gilt kein Absender als geprüft: Workflows mit **Nur geprüfte Absender** starten dann nie, die Standardeinstellung (alle außer durchgefallenen) läuft weiter. Die Kennung steht am Anfang des Headers, den dein Server in empfangene E-Mails schreibt (`Authentication-Results: mx.example.com; spf=pass …`).
 
 ## Integrationen
 

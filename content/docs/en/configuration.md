@@ -154,8 +154,11 @@ For [inbound e-mail](/api-and-webhooks#inbound-e-mail) via webhook (Mailgun, Pos
 | `INBOUND_IMAP_USER` / `INBOUND_IMAP_PASSWORD` | *empty* | Sign-in at the mailbox. The part before `@` is also the part before `+` in the addresses. |
 | `INBOUND_IMAP_FOLDER` | `INBOX` | Folder that is polled. |
 | `INBOUND_IMAP_TLS` | `true` | `false` only for a mail server on the same host or network (unencrypted). |
+| `INBOUND_MAIL_AUTHSERV_ID` | *empty* | The id (authserv-id) your own receiving mail server or provider starts its `Authentication-Results` header with, e.g. `mx.example.com`. Also applies to inbound e-mail via webhook. |
 
 The mail server must support plus addressing (`inbox+anything@…` is delivered to `inbox@…`); Dovecot, Postfix, Gmail/Google Workspace and Microsoft 365 (switch it on there) do. Flowplan marks processed e-mails as read and deletes nothing.
+
+**Sender check:** whether a sender counts as verified (SPF/DKIM/DMARC passed for the From domain) is read from the `Authentication-Results` header. The sender can put one in the message too – so only the topmost header with the id from `INBOUND_MAIL_AUTHSERV_ID` counts. Without the variable no sender counts as verified: workflows set to **Verified senders only** then never start, the default (all but failed ones) keeps running. The id is at the start of the header your server writes into received e-mails (`Authentication-Results: mx.example.com; spf=pass …`).
 
 ## Integrations
 
