@@ -1,10 +1,10 @@
-# Umzug von Notion, AppFlowy, AFFiNE, Obsidian, Confluence, Evernote, Google Docs, Microsoft Word und OneNote
+# Umzug von Notion, AppFlowy, AFFiNE, Obsidian, Confluence, Evernote, Google Docs, Microsoft Word, OneNote und GoodNotes
 
 Flowplan ist eine Open-Source-Alternative zu Notion, Confluence und AppFlowy unter der AGPL-3.0. So holst du Seiten, Datenbanken, Bilder und Dateien aus dem bisherigen Werkzeug herüber.
 
 ## Confluence, Evernote, Google Docs und Obsidian
 
-Unter **Einstellungen → Import & Export → Import** wählst du oben den Zielbereich und bei **AFFiNE, Confluence, Evernote, Google Docs, Microsoft Word oder Obsidian** die Quelle (oder lässt sie erkennen) und ob eine Seitenstruktur oder eine **neue Datenbank** entstehen soll. Dann die Datei auswählen:
+Unter **Einstellungen → Import & Export → Import** wählst du oben den Zielbereich und bei **AFFiNE, Confluence, Evernote, Google Docs, GoodNotes, Microsoft Word oder Obsidian** die Quelle (oder lässt sie erkennen) und ob eine Seitenstruktur oder eine **neue Datenbank** entstehen soll. Dann die Datei auswählen:
 
 1. Flowplan lädt die Datei hoch (mit Fortschrittsanzeige) und zeigt eine **Vorschau**: wie viele Seiten, Ordner, Dateien (mit Größe) und Tags übernommen werden und was nicht geht – etwa verschlüsselter Text, nicht unterstützte Makros oder Bilder, die im Export fehlen.
 2. **Importieren** legt alles in einem Schritt an. Schlägt etwas fehl, bleibt nichts halb importiert zurück.
@@ -13,7 +13,7 @@ Für alle Quellen gilt:
 
 - Ende-zu-Ende-verschlüsselte Bereiche sind als Ziel ausgeschlossen (der Server sieht dort keinen Klartext).
 - Du brauchst Schreibrechte im Zielbereich; Speicherkontingente des Arbeitsbereichs und deine persönliche Grenze werden vorher geprüft (die Vorschau warnt schon).
-- Grenzen pro Import: standardmäßig 10.000 Seiten (Dokumente, Ordner, Datenbanken, Whiteboards und Sammlungen zählen je als Seite; als Datenbank: 10.000 Einträge) und 20.000 Dateien, 5.000 Einträge je Tabelle, 10 MB je Datei im ZIP. Seiten und Dateien legt der Betreiber mit `FLOWPLAN_IMPORT_MAX_DOCS` und `FLOWPLAN_IMPORT_MAX_FILES` fest ([Konfiguration](/configuration#betrieb)). Bringt eine Datei mehr Seiten, zeigt die Vorschau die Anzahl, nennt die Grenze und die Variable, und **Importieren** bleibt gesperrt; Dateien über der Grenze werden ausgelassen (die Vorschau sagt, wie viele). ZIP-Exporte und einzelne Dateien dürfen höchstens 100 MB groß sein. Die **AFFiNE-Arbeitsbereichsdatei (`.affine`)** darf so groß sein wie die **größte Datei beim Hochladen** (Administration → [Grenzen & Aufbewahrung](/administration#grenzen-aufbewahrung), je Person änderbar), mindestens aber 100 MB; `FLOWPLAN_IMPORT_MAX_MB` legt die Grenze für die ganze Instanz fest ([Konfiguration](/configuration#betrieb)). Ist eine Datei zu groß, nennt die Meldung die Grenze und wo sie geändert wird.
+- Grenzen pro Import: standardmäßig 10.000 Seiten (Dokumente, Ordner, Datenbanken, Whiteboards und Sammlungen zählen je als Seite; als Datenbank: 10.000 Einträge) und 20.000 Dateien, 5.000 Einträge je Tabelle, 10 MB je Datei im ZIP (PDFs bis 100 MB). Seiten und Dateien legt der Betreiber mit `FLOWPLAN_IMPORT_MAX_DOCS` und `FLOWPLAN_IMPORT_MAX_FILES` fest ([Konfiguration](/configuration#betrieb)). Bringt eine Datei mehr Seiten, zeigt die Vorschau die Anzahl, nennt die Grenze und die Variable, und **Importieren** bleibt gesperrt; Dateien über der Grenze werden ausgelassen (die Vorschau sagt, wie viele). ZIP-Exporte und einzelne Dateien dürfen höchstens 100 MB groß sein. Die **AFFiNE-Arbeitsbereichsdatei (`.affine`)** darf so groß sein wie die **größte Datei beim Hochladen** (Administration → [Grenzen & Aufbewahrung](/administration#grenzen-aufbewahrung), je Person änderbar), mindestens aber 100 MB; `FLOWPLAN_IMPORT_MAX_MB` legt die Grenze für die ganze Instanz fest ([Konfiguration](/configuration#betrieb)). Ist eine Datei zu groß, nennt die Meldung die Grenze und wo sie geändert wird.
 - **Vorschau und Import laufen im Hintergrund.** Nach dem Hochladen zeigt die Seite den Fortschritt und dann Vorschau bzw. Ergebnis. Ein Zeitlimit des Reverse-Proxys (etwa ein 504) bricht den Import nicht mehr ab; lass die Seite offen, bis er fertig ist. Pro Person läuft ein Import gleichzeitig. Während Flowplan die Seiten anlegt, antwortet der Server kurz nicht – bei sehr großen Arbeitsbereichen auch länger.
 - Reicht der Arbeitsspeicher für einen sehr großen Arbeitsbereich nicht, lehnt Flowplan den Import mit einer Meldung ab, die den Bedarf nennt, statt abzustürzen. Mehr Speicher bekommt Flowplan mit `NODE_OPTIONS=--max-old-space-size=<MB>` (z. B. `4096`) im Container; alternativ den Arbeitsbereich in mehreren Teilen exportieren.
 - Die Datei wird nur einmal hochgeladen: Die Vorschau behält sie auf dem Server, **Importieren** verwendet sie weiter. Brichst du ab, wird sie gelöscht, sonst spätestens nach sechs Stunden.
@@ -138,11 +138,47 @@ OneNote-Dateien (`.one`, `.onetoc2`, `.onepkg`) liest Flowplan nicht direkt – 
 1. In OneNote für Windows die Seite oder den Abschnitt öffnen und **Datei → Exportieren** wählen; als Format **Word-Dokument (.docx)**.
 2. Die `.docx`-Datei (oder mehrere als ZIP) in Flowplan über **Microsoft Word** importieren.
 
-Bietet deine OneNote-Version keinen Export als Word-Dokument an, sondern nur PDF, lade das PDF als Datei auf eine Seite hoch.
+Bietet deine OneNote-Version keinen Export als Word-Dokument an, sondern nur PDF, importiere das PDF als Notizbuch (wie [aus GoodNotes](#von-goodnotes)) oder lade es als Datei auf eine Seite hoch.
+
+## Von GoodNotes
+
+Notizbücher aus GoodNotes (5 und 6, iPad, iPhone und Mac) holst du als **PDF** herüber. Jedes PDF wird ein [Notizbuch](/notebooks) mit dem Dateinamen als Titel, jede Seite ein Blatt mit dieser Seite als Hintergrund – im selben Format und in derselben Ausrichtung. Darauf schreibst du in Flowplan weiter.
+
+### Aus GoodNotes exportieren
+
+**Ein Notizbuch:**
+
+1. Das Notizbuch in GoodNotes öffnen.
+2. Oben auf **Teilen** bzw. **Exportieren** tippen (je nach Version das Symbol mit dem Pfeil oder im Menü **⋯**) und **Dieses Notizbuch exportieren** wählen – nicht nur die aktuelle Seite.
+3. Als Format **PDF** wählen. Bietet GoodNotes **Seitenvorlagen einschließen** an, lass es eingeschaltet, sonst fehlen Linien, Karos und eingefügte PDF-Seiten im Hintergrund.
+4. Das PDF in **Dateien** sichern, per AirDrop an den Mac schicken oder direkt im Browser mit Flowplan öffnen.
+
+**Mehrere Notizbücher:** In der Dokumentübersicht von GoodNotes über **Auswählen** mehrere Notizbücher markieren und gemeinsam als PDF exportieren. Ob GoodNotes dabei einzelne PDFs oder ein ZIP liefert, hängt von der Version ab – Flowplan nimmt beides.
+
+**Alle Notizbücher auf einmal:** In den GoodNotes-Einstellungen die **automatische Sicherung** (Auto-Backup) einschalten, einen Cloud-Dienst wählen (iCloud Drive, Google Drive, Dropbox oder OneDrive) und als Format **PDF** einstellen. GoodNotes legt dann jedes Notizbuch als PDF in den Sicherungsordner, mit deinen Ordnern. Diesen Ordner lädst du als ZIP herunter (Google Drive und Dropbox bieten das im Browser an; auf dem Mac den Ordner im Finder mit **Komprimieren** packen). Die Menüs heißen je nach GoodNotes-Version etwas anders.
+
+### In Flowplan importieren
+
+1. **Einstellungen → Import & Export → Import** öffnen und den Zielbereich wählen.
+2. Als Quelle **GoodNotes** wählen (ein PDF wird auch automatisch erkannt).
+3. **Datei auswählen und prüfen** und das PDF wählen – oder mehrere PDFs auf einmal oder ein ZIP mit PDFs.
+4. Die Vorschau zeigt, wie viele Notizbücher und Blätter entstehen und was übersprungen wird. **Importieren** legt die Notizbücher an und öffnet das erste.
+
+Dabei gilt:
+
+- **Mehrere PDFs** ergeben mehrere Notizbücher. **Ordner** im ZIP (etwa die Ordner der Sicherung) werden zu übergeordneten Seiten; Notizbücher stehen in natürlicher Reihenfolge („Heft 2“ vor „Heft 10“).
+- **Handschrift und Hervorhebungen** aus GoodNotes stecken im PDF und bleiben scharf, sind in Flowplan aber Teil des Hintergrunds: Du kannst darüber weiterschreiben, die alten Striche aber nicht einzeln verschieben oder radieren.
+- **Suche:** Der Text des PDFs – getippter Text und, wenn GoodNotes ihn mit exportiert, die erkannte Handschrift – wird wie bei jedem PDF indiziert (die ersten 200 Seiten je PDF). Neue Handschrift in Flowplan wird auf iPhone und iPad [erkannt](/notebooks#handschrift-erkennen-iphone-und-ipad).
+- **Grenzen:** bis zu 500 Seiten je PDF (weitere Seiten nennt die Vorschau und lässt sie aus), 1000 Blätter je Notizbuch, ein PDF oder ZIP bis 100 MB. Beschädigte oder mit Passwort geschützte PDFs und andere Dateien im ZIP werden übersprungen und in der Vorschau genannt.
+- Notizbücher entstehen nur beim Import **als Seiten**, nicht als neue Datenbank.
+
+**Das GoodNotes-Format (`.goodnotes`)** und Sicherungen in diesem Format kann Flowplan nicht lesen: Es ist ein eigenes, nicht offengelegtes Format, das sich zwischen den GoodNotes-Versionen ändert. Flowplan erkennt solche Dateien und sagt, was zu tun ist – exportiere das Notizbuch als PDF oder stelle die automatische Sicherung auf PDF um. Liegen in einem ZIP `.goodnotes`-Dateien neben PDFs, werden die PDFs importiert und die übrigen in der Vorschau aufgeführt.
+
+Auch PDFs aus anderen Notiz-Apps wie Notability, Noteshelf oder OneNote werden so zu Notizbüchern.
 
 ## Von Obsidian und anderen Markdown-Ordnern
 
-- **Ein Tresor als Seiten:** den Tresor-Ordner (mit dem Ordner `.obsidian`) als ZIP packen und unter **Einstellungen → Import & Export → Import** importieren – über **AFFiNE, Confluence, Evernote, Google Docs, Microsoft Word oder Obsidian** mit Vorschau oder über den Notion-/Markdown-Import, der einen Tresor ebenfalls erkennt.
+- **Ein Tresor als Seiten:** den Tresor-Ordner (mit dem Ordner `.obsidian`) als ZIP packen und unter **Einstellungen → Import & Export → Import** importieren – über **AFFiNE, Confluence, Evernote, Google Docs, GoodNotes, Microsoft Word oder Obsidian** mit Vorschau oder über den Notion-/Markdown-Import, der einen Tresor ebenfalls erkennt.
   - **Ordner** werden zu Seiten mit ihren Notizen darunter. Eine **Ordnernotiz** (`Projekte/Projekte.md` oder `Projekte.md` neben dem Ordner) wird selbst zur Seite des Ordners.
   - **Wikilinks** `[[Seite]]`, `[[Seite|Text]]`, `[[Ordner/Seite]]` und `[[Seite#Überschrift]]` werden zu Links auf die importierten Seiten – aufgelöst wie in Obsidian über den Pfad oder den Dateinamen. Links auf Notizen, die es nicht gibt, bleiben Text.
   - `[[Seite#Überschrift]]`, `[[Seite#^id]]`, `[[#Überschrift]]` und Markdown-Links mit `#^id` werden zu Links auf die Überschrift bzw. den Block; die Markierungen `^id` am Zeilenende verschwinden aus dem Text und werden zur Kennung des Blocks.

@@ -1,10 +1,10 @@
-# Moving from Notion, AppFlowy, AFFiNE, Obsidian, Confluence, Evernote, Google Docs, Microsoft Word and OneNote
+# Moving from Notion, AppFlowy, AFFiNE, Obsidian, Confluence, Evernote, Google Docs, Microsoft Word, OneNote and GoodNotes
 
 Flowplan is an open-source alternative to Notion, Confluence and AppFlowy under the AGPL-3.0. This is how you bring over pages, databases, images and files from the tool you use now.
 
 ## Confluence, Evernote, Google Docs and Obsidian
 
-Under **Settings → Import & export → Import** choose the target space at the top and, at **AFFiNE, Confluence, Evernote, Google Docs, Microsoft Word or Obsidian**, the source (or let it be detected) and whether you want a page tree or a **new database**. Then choose the file:
+Under **Settings → Import & export → Import** choose the target space at the top and, at **AFFiNE, Confluence, Evernote, Google Docs, GoodNotes, Microsoft Word or Obsidian**, the source (or let it be detected) and whether you want a page tree or a **new database**. Then choose the file:
 
 1. Flowplan uploads the file (with a progress bar) and shows a **preview**: how many pages, folders, files (with their size) and tags will be imported, and what will not work – such as encrypted text, unsupported macros or images missing from the export.
 2. **Import** creates everything in one step. If something fails, nothing is left half imported.
@@ -13,7 +13,7 @@ For all sources:
 
 - End-to-end encrypted spaces cannot be targets (the server sees no plaintext there).
 - You need write access to the target space; the workspace's storage quota and your personal limit are checked first (the preview already warns).
-- Limits per import: by default 10,000 pages (documents, folders, databases, whiteboards and collections each count as a page; as a database: 10,000 records) and 20,000 files, 5,000 records per table, 10 MB per file in the ZIP. The operator sets pages and files with `FLOWPLAN_IMPORT_MAX_DOCS` and `FLOWPLAN_IMPORT_MAX_FILES` ([Configuration](/configuration#operations)). When a file brings more pages, the preview shows how many, names the limit and the variable, and **Import** stays disabled; files above the limit are left out (the preview says how many). ZIP exports and single files may be up to 100 MB. The **AFFiNE workspace file (`.affine`)** may be as large as the **largest upload** (Administration → [Limits & retention](/administration#limits-retention), can differ per person), but at least 100 MB; `FLOWPLAN_IMPORT_MAX_MB` sets the limit for the whole instance ([Configuration](/configuration#operations)). When a file is too large, the message names the limit and where to change it.
+- Limits per import: by default 10,000 pages (documents, folders, databases, whiteboards and collections each count as a page; as a database: 10,000 records) and 20,000 files, 5,000 records per table, 10 MB per file in the ZIP (PDFs up to 100 MB). The operator sets pages and files with `FLOWPLAN_IMPORT_MAX_DOCS` and `FLOWPLAN_IMPORT_MAX_FILES` ([Configuration](/configuration#operations)). When a file brings more pages, the preview shows how many, names the limit and the variable, and **Import** stays disabled; files above the limit are left out (the preview says how many). ZIP exports and single files may be up to 100 MB. The **AFFiNE workspace file (`.affine`)** may be as large as the **largest upload** (Administration → [Limits & retention](/administration#limits-retention), can differ per person), but at least 100 MB; `FLOWPLAN_IMPORT_MAX_MB` sets the limit for the whole instance ([Configuration](/configuration#operations)). When a file is too large, the message names the limit and where to change it.
 - **Preview and import run in the background.** After the upload the page shows the progress and then the preview or the result. A reverse proxy timeout (such as a 504) no longer cancels the import; keep the page open until it is done. Each person can run one import at a time. While Flowplan creates the pages, the server doesn't answer for a moment – with very large workspaces for longer.
 - If there isn't enough memory for a very large workspace, Flowplan refuses the import with a message naming what it needs, instead of crashing. Give Flowplan more memory with `NODE_OPTIONS=--max-old-space-size=<MB>` (e.g. `4096`) in the container, or export the workspace in several parts.
 - The file is uploaded only once: the preview keeps it on the server and **Import** uses it. Cancelling deletes it; otherwise it is deleted after six hours at the latest.
@@ -138,11 +138,47 @@ Flowplan does not read OneNote files (`.one`, `.onetoc2`, `.onepkg`) directly �
 1. In OneNote for Windows, open the page or section and choose **File → Export**, with **Word Document (.docx)** as the format.
 2. Import the `.docx` file (or several as a ZIP) in Flowplan with **Microsoft Word**.
 
-If your version of OneNote offers no export as a Word document but only PDF, upload the PDF as a file to a page.
+If your version of OneNote offers no export as a Word document but only PDF, import the PDF as a notebook (as [from GoodNotes](#from-goodnotes)) or upload it as a file to a page.
+
+## From GoodNotes
+
+Bring notebooks over from GoodNotes (5 and 6, on iPad, iPhone and Mac) as **PDF**. Every PDF becomes a [notebook](/notebooks) titled by its file name, every page a sheet with that page as its background – in the same size and orientation. You keep writing on it in Flowplan.
+
+### Export from GoodNotes
+
+**One notebook:**
+
+1. Open the notebook in GoodNotes.
+2. Tap **Share** or **Export** at the top (depending on the version, the icon with the arrow or in the **⋯** menu) and choose **Export this notebook** – not just the current page.
+3. Choose **PDF** as the format. If GoodNotes offers **Include page templates**, leave it on; otherwise ruling, grids and inserted PDF pages are missing from the background.
+4. Save the PDF to **Files**, AirDrop it to your Mac, or open Flowplan in the browser and import it right away.
+
+**Several notebooks:** in GoodNotes' document overview, mark several notebooks with **Select** and export them together as PDF. Whether GoodNotes hands you single PDFs or a ZIP depends on the version – Flowplan takes both.
+
+**All notebooks at once:** in GoodNotes' settings, turn on **Auto-Backup**, choose a cloud service (iCloud Drive, Google Drive, Dropbox or OneDrive) and set the format to **PDF**. GoodNotes then puts every notebook as a PDF into the backup folder, with your folders. Download that folder as a ZIP (Google Drive and Dropbox offer this in the browser; on a Mac, use **Compress** on the folder in Finder). The menus are named slightly differently depending on the GoodNotes version.
+
+### Import into Flowplan
+
+1. Open **Settings → Import & export → Import** and choose the target space.
+2. Choose **GoodNotes** as the source (a PDF is also detected automatically).
+3. Click **Choose and check file** and pick the PDF – or several PDFs at once, or a ZIP of PDFs.
+4. The preview shows how many notebooks and sheets will be created and what is skipped. **Import** creates the notebooks and opens the first one.
+
+Good to know:
+
+- **Several PDFs** give several notebooks. **Folders** in the ZIP (such as the backup's folders) become parent pages; notebooks are listed in natural order ("Book 2" before "Book 10").
+- **Handwriting and highlights** from GoodNotes are part of the PDF and stay sharp, but in Flowplan they belong to the background: you can write over them, but you cannot move or erase the old strokes one by one.
+- **Search:** the PDF's text – typed text and, when GoodNotes exports it, the recognised handwriting – is indexed as for every PDF (the first 200 pages of each PDF). New handwriting in Flowplan is [recognised](/notebooks#recognising-handwriting-iphone-and-ipad) on iPhone and iPad.
+- **Limits:** up to 500 pages per PDF (the preview names further pages and leaves them out), 1000 sheets per notebook, a PDF or ZIP of up to 100 MB. Damaged or password-protected PDFs and other files in the ZIP are skipped and named in the preview.
+- Notebooks are only created when importing **as pages**, not as a new database.
+
+Flowplan cannot read **the GoodNotes format (`.goodnotes`)** and backups in that format: it is GoodNotes' own, undocumented format and changes between versions. Flowplan recognises such files and tells you what to do – export the notebook as PDF, or switch Auto-Backup to PDF. When a ZIP holds `.goodnotes` files next to PDFs, the PDFs are imported and the others are listed in the preview.
+
+PDFs from other note apps such as Notability, Noteshelf or OneNote become notebooks the same way.
 
 ## From Obsidian and other Markdown folders
 
-- **A vault as pages:** make a ZIP of the vault folder (with its `.obsidian` folder) and import it under **Settings → Import & export → Import** – via **AFFiNE, Confluence, Evernote, Google Docs, Microsoft Word or Obsidian** with a preview, or via the Notion/Markdown import, which recognises a vault as well.
+- **A vault as pages:** make a ZIP of the vault folder (with its `.obsidian` folder) and import it under **Settings → Import & export → Import** – via **AFFiNE, Confluence, Evernote, Google Docs, GoodNotes, Microsoft Word or Obsidian** with a preview, or via the Notion/Markdown import, which recognises a vault as well.
   - **Folders** become pages with their notes below. A **folder note** (`Projects/Projects.md` or `Projects.md` next to the folder) becomes the folder's page itself.
   - **Wikilinks** `[[Page]]`, `[[Page|text]]`, `[[Folder/Page]]` and `[[Page#Heading]]` become links to the imported pages – resolved like Obsidian does, by path or file name. Links to notes that do not exist stay text.
   - `[[Page#Heading]]`, `[[Page#^id]]`, `[[#Heading]]` and Markdown links with `#^id` become links to that heading or block; the `^id` markers at line ends leave the text and become the block's id.

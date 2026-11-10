@@ -10,6 +10,8 @@ Ein **Notizbuch** ist eine Seite aus Blättern zum Beschreiben – mit dem Apple
 
 **Aus einem PDF:** Im selben Dialog unter **PDF als Notizbuch öffnen** eine Datei wählen. Jede Seite des PDFs wird ein Blatt mit dieser Seite als Hintergrund – Vorlesungsfolien, Arbeitsblätter oder Formulare beschreibst du dann wie gedruckt. In ein bestehendes Notizbuch holt **⋯ → PDF importieren …** weitere PDF-Seiten hinter das aktuelle Blatt. Bis zu 500 Seiten je Import, bis zu 1000 Blätter je Notizbuch.
 
+**Aus GoodNotes und anderen Notiz-Apps:** Notizbücher als PDF exportieren und unter **Einstellungen → Import & Export → Import** mit der Quelle **GoodNotes** importieren – mehrere auf einmal oder als ZIP, jedes PDF wird ein Notizbuch. Schritt für Schritt: [Umzug von GoodNotes](/migrate#von-goodnotes).
+
 ## Papier
 
 | Vorlage | Aussehen |
