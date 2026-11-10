@@ -77,7 +77,9 @@ export function DocsSearch({ version }: { version: string }) {
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
   const [index, setIndex] = useState<DocSearchEntry[] | null>(null);
-  const [failed, setFailed] = useState(false);
+  // Why the index could not be loaded (HTTP status or error), shown as the
+  // message's tooltip and in the console for diagnosis.
+  const [failed, setFailed] = useState<string | null>(null);
   const loading = useRef(false);
   const input = useRef<HTMLInputElement>(null);
   // Search terms already counted on this page view (lib/track.ts).
@@ -86,16 +88,27 @@ export function DocsSearch({ version }: { version: string }) {
   const load = useCallback(() => {
     if (loading.current) return;
     loading.current = true;
-    fetch(`/api/search-index/${locale}?v=${encodeURIComponent(version)}`)
-      .then((r) => (r.ok ? (r.json() as Promise<DocSearchEntry[]>) : Promise.reject(new Error(String(r.status)))))
+    const url = `/api/search-index/${locale}?v=${encodeURIComponent(version)}`;
+    const get = () =>
+      fetch(url).then((r) =>
+        r.ok
+          ? (r.json() as Promise<DocSearchEntry[]>).catch((error: unknown) => Promise.reject(new Error(`HTTP ${r.status}, unreadable JSON: ${error}`)))
+          : Promise.reject(new Error(`HTTP ${r.status}`)),
+      );
+    // One retry after a short pause covers a dropped connection or a
+    // restarting server.
+    get()
+      .catch(() => new Promise((resolve) => setTimeout(resolve, 1000)).then(get))
       .then((data) => {
         setIndex(data);
-        setFailed(false);
+        setFailed(null);
       })
-      .catch(() => {
+      .catch((error: unknown) => {
         // Try again on the next focus.
         loading.current = false;
-        setFailed(true);
+        const reason = error instanceof Error ? error.message : String(error);
+        console.warn(`Search index ${url}: ${reason}`);
+        setFailed(reason);
       });
   }, [locale, version]);
 
@@ -262,8 +275,8 @@ export function DocsSearch({ version }: { version: string }) {
       )}
       {open && !listed && (
         <div className={s.results} role="status">
-          <p className={s.noHits}>
-            {failed
+          <p className={s.noHits} title={failed ?? undefined}>
+            {failed !== null
               ? t("Die Suche ist gerade nicht erreichbar.", "Search is not available right now.")
               : index
                 ? t("Nichts gefunden.", "Nothing found.")
