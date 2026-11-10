@@ -77,6 +77,8 @@ You now sign in on the new instance with the accounts of the old one; the new on
 
 On the old instance, **Move instance** also offers **Redirect the web interface**: whoever opens it in the browser goes straight to the new address. **Lift read-only** makes it writable again – only when the move is called off.
 
+While the old instance is read-only, its background services pause: incoming mail (the IMAP mailbox stays unread for the new instance), calendar and issue sync, workflows, reminders, deliveries of e-mail, push, webhooks and messengers, and scheduled backups. The app can't change anything there either.
+
 #### Without the interface (command line)
 
 The same without a web interface on the new instance – before any account exists there, say, or over SSH while DNS still points to the old server. The tool is in the image as `/app/move.mjs` and in the source as `scripts/move.mjs` (`npm run move`). It fetches the first copy, makes the old instance read-only, fetches the last state, prepares everything for the next start and tells the old instance the new address (`--target-url`, otherwise `APP_URL`). Interrupted? Run the same command again – it continues where it stopped.

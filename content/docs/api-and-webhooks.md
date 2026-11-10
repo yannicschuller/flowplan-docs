@@ -68,6 +68,8 @@ Den Header nehmen `POST /api/command`, Uploads (`/api/upload`), Importe, Webhook
 
 Webhooks haben einen eigenen Abschnitt: **Einstellungen → Webhooks** (Gruppe „Verbindungen“, nur für Eigentümer). Eigentümer eines Arbeitsbereichs legen dort mit **Webhook anlegen** Webhooks an: Adresse, Ereignisse und optional eine einzelne Datenbank. Die Liste zeigt jeden Webhook mit Format, letzter Zustellung und Ereignissen. Jeder Webhook hat eine eigene Seite (`/#settings/webhooks/<id>`) mit den Karten **Ziel** (Format, Adresse, Datenbank, Zugangsdaten für Slack/Matrix), **Ereignisse** (ein Schalter je Ereignis), **Nachricht** (nur Chat-Formate), **Vorschau** und – bei bestehenden Webhooks – **Zustellung** mit **Testnachricht senden**; gespeichert wird mit **Änderungen speichern**, gelöscht in der **Gefahrenzone** mit **Webhook löschen …**. Der geheime Schlüssel erscheint nach dem Anlegen einmal über der Liste.
 
+Gespeicherte Zugangsdaten (das Token für Slack oder Matrix) gehen nie an eine neue Adresse: Wer die Adresse eines Webhooks mit Token oder sein Format ändert, gibt das Token erneut ein, sonst wird nicht gespeichert.
+
 Ein Webhook handelt mit den Rechten der Person, die ihn angelegt hat: Er meldet nur Seiten, Datensätze und Kommentare, die sie lesen darf – Inhalte aus privaten Bereichen anderer bleiben draußen, verborgene Eigenschaften ebenso. Wird diese Person deaktiviert oder verlässt sie den Arbeitsbereich, stellt der Webhook nichts mehr zu. Adresse und geheimer Schlüssel werden verschlüsselt gespeichert.
 
 | Ereignis | Wann |

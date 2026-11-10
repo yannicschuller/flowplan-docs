@@ -417,6 +417,10 @@ Flowplan follows your device's light or dark mode by itself – also when it cha
 
 Under **Editor**, **Always show block handles** shows the handle `⋮⋮` next to every block again instead of only at the block under the mouse pointer and the block with the cursor (see [Move blocks](/documents#move-blocks)), and **Show line numbers by default** turns on line numbers for every code block without a setting of its own – both on this device only, like the appearance.
 
+Below pages and records Flowplan shows **Related pages**, **Linked from** and **Unlinked mentions**. If you don't need them, turn off **Settings → Appearance & language → Show related pages and backlinks** – also on this device only. The panels then appear neither below pages nor in records.
+
+After a reload Flowplan opens the workspace that was last open on this device. For this the browser keeps only the workspace's id in the cookie `flowplan-workspace`; an invitation or a link to a page in another workspace takes precedence.
+
 ## Workflows on the phone
 
 On a phone, a [workflow page](/workflows#phone-and-tablet) shows the status, the on/off switch, the flow as a list, the runs and the approvals; editing happens on a tablet or computer. An approval notification opens the page right at the **Approvals** tab. Workflow pages are not available offline.

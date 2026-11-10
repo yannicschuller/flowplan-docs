@@ -68,6 +68,8 @@ The header is accepted by `POST /api/command`, uploads (`/api/upload`), imports,
 
 Webhooks have their own section: **Settings → Webhooks** (group “Connections”, owners only). Owners of a workspace create webhooks there with **Create webhook**: an address, events and optionally a single database. The list shows each webhook with its format, last delivery and events. Every webhook has a page of its own (`/#settings/webhooks/<id>`) with the cards **Target** (format, address, database, credentials for Slack/Matrix), **Events** (one switch per event), **Message** (chat formats only), **Preview** and – for an existing webhook – **Delivery** with **Send test message**; **Save changes** saves it, and it is deleted in the **Danger zone** with **Delete webhook …**. The secret key appears once above the list after creating.
 
+Stored credentials (the token for Slack or Matrix) never go to a new address: if you change the address or the format of a webhook with a token, enter the token again, otherwise it isn't saved.
+
 A webhook acts with the rights of the person who created it: it only reports pages, records and comments they may read – content from other people's private spaces stays out, as do hidden properties. If that person is deactivated or leaves the workspace, the webhook stops delivering. Its address and secret are stored encrypted.
 
 | Event | When |

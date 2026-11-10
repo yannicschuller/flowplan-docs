@@ -417,6 +417,10 @@ Flowplan folgt von sich aus dem Hell- oder Dunkelmodus deines Geräts – auch w
 
 Unter **Editor** zeigt **Griffe immer anzeigen** den Griff `⋮⋮` wieder neben jedem Block statt nur am Block unter dem Mauszeiger und am Block mit dem Cursor (siehe [Blöcke verschieben](/documents#bloecke-verschieben)), und **Zeilennummern standardmäßig anzeigen** schaltet die Zeilennummern für alle Codeblöcke ohne eigene Einstellung ein – beides nur auf diesem Gerät, wie das Erscheinungsbild.
 
+Unter Seiten und Einträgen zeigt Flowplan **Verwandte Seiten**, **Verlinkt von** bzw. **Verknüpft von** und **Nicht verlinkte Erwähnungen**. Wer sie nicht braucht, schaltet **Einstellungen → Darstellung & Sprache → Verwandte Seiten und Rückverweise anzeigen** aus – auch das nur auf diesem Gerät. Dann erscheinen die Bereiche weder unter Seiten noch im Eintrag.
+
+Nach dem Neuladen öffnet Flowplan den Arbeitsbereich, der zuletzt auf diesem Gerät offen war. Dafür merkt sich der Browser im Cookie `flowplan-workspace` nur die Kennung des Arbeitsbereichs; eine Einladung oder ein Link auf eine Seite in einem anderen Arbeitsbereich gehen vor.
+
 ## Workflows auf dem Telefon
 
 Auf dem Telefon zeigt eine [Workflow-Seite](/workflows#telefon-und-tablet) Status, den Ein/Aus-Schalter, den Ablauf als Liste, die Läufe und die Freigaben; bearbeitet wird auf Tablet oder Computer. Eine Freigabe-Benachrichtigung öffnet die Seite direkt beim Reiter **Freigaben**. Workflow-Seiten sind nicht offline verfügbar.

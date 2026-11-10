@@ -77,6 +77,8 @@ Anmelden kannst du dich auf der neuen Instanz jetzt mit den Konten der alten; da
 
 Auf der alten Instanz lässt sich unter **Instanz umziehen** noch **Weboberfläche weiterleiten** einschalten: Wer sie im Browser öffnet, landet direkt auf der neuen Adresse. **Schreibschutz aufheben** macht sie wieder beschreibbar – nur, wenn der Umzug abgebrochen wird.
 
+Solange die alte Instanz schreibgeschützt ist, pausieren ihre Hintergrunddienste: E-Mail-Eingang (das IMAP-Postfach bleibt ungelesen für die neue Instanz), Kalender- und Issue-Synchronisierung, Workflows, Erinnerungen, Zustellungen von E-Mails, Push, Webhooks und Messengern sowie geplante Sicherungen. Auch die App kann dort nichts mehr ändern.
+
 #### Ohne Oberfläche (Kommandozeile)
 
 Dasselbe ohne Weboberfläche auf der neuen Instanz – etwa bevor dort überhaupt ein Konto existiert, oder über SSH, solange das DNS noch auf den alten Server zeigt. Das Werkzeug liegt im Image unter `/app/move.mjs` und im Quellcode unter `scripts/move.mjs` (`npm run move`). Es holt die erste Kopie, schaltet die alte Instanz schreibgeschützt, holt den letzten Stand, legt alles für den nächsten Start bereit und meldet der alten Instanz die neue Adresse (`--target-url`, sonst `APP_URL`). Abgebrochen? Denselben Befehl noch einmal ausführen – er macht an derselben Stelle weiter.
