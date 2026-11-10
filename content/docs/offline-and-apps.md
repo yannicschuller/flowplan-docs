@@ -239,6 +239,8 @@ Jedes Widget zeigt **eine Sache** und hat **eigene Einstellungen**. Ein neu hinz
 | **Flowplan Posteingang** | Zahl der ungelesenen Mitteilungen | – |
 | **Flowplan Instanz, Live, Speicher** | Nur für [Administratoren](#widgets-fuer-administratoren): Zustand, eine Live-Zahl, Speicher | was es zeigt bzw. welche Kennzahl |
 
+„Meine Aufgaben“ zeigt neben den Aufgaben aus Dokumenten auch offene Einträge aus Datenbanken, in denen du in einer Personen-Eigenschaft (z. B. „Verantwortlich“) stehst – mit Datenbank und Fälligkeit, direkt abhakbar, wenn du den Eintrag bearbeiten darfst.
+
 Gut zu wissen:
 
 - **Verlauf des Zählers:** Flowplan merkt sich den Wert jeden Tag. Tage, bevor das Widget eingerichtet war, werden geschätzt und heller/gestrichelt gezeichnet.

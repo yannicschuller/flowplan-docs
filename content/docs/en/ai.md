@@ -156,6 +156,8 @@ On pages the AI may not read, every AI entry is greyed out with the hint "The AI
 - The search uses the full-text index; the best-matching passages go with your question to the provider shown at the top of the panel. The AI only reads what you may read and what is open to the AI ([What the AI may access](#what-the-ai-may-access)). A page's [tags and property values](/pages-and-spaces#tags-and-properties) count as part of its text.
 - While the answer is written, a shimmer and a typing cursor show progress; the sources appear one after another.
 
+Questions about the last or latest thing ("What did I last do with …?") always consider the newest journal days that match the question. The AI also reads handwriting in drawing blocks and notebooks (typed text and text recognised on iPhone/iPad) and the text of a page's PDFs, Office files and images – with the same rights as the page; journals with a PIN stay closed to the AI.
+
 ### Semantic search (optional)
 
 Questions in Chinese, Japanese, Korean or Thai are split into words even though these languages don't use spaces. "浦东新区的发票在哪里" searches for 浦东新区 and 发票; small particles like 的 are left out.

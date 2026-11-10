@@ -239,6 +239,8 @@ Each widget shows **one thing** and has **settings of its own**. A widget you ju
 | **Flowplan Inbox** | Number of unread notifications | – |
 | **Flowplan Instance, Live, Storage** | [Administrators](#widgets-for-administrators) only: state, one live number, storage | What to show or which metric |
 
+"My tasks" shows, besides tasks from documents, the open records of databases in which you are in a person property (such as "Assignee") – with the database and due date, and you can check them off right away if you may edit the record.
+
 Good to know:
 
 - **Counter history:** Flowplan keeps the value of every day. Days before the widget was set up are estimated and drawn lighter and dashed.

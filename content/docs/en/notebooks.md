@@ -42,6 +42,10 @@ Everything is saved as you write (on the right of the toolbar: *Saved*). Every c
 
 Readers of the page see all sheets, zoom and export, but no tools.
 
+
+Besides the preset widths, the slider button sets any line width, with a preview. The **+** after the colours opens a custom colour (colour field, hue, hex value); your recent custom colours are remembered on the device. For **Text** you choose the size (8–96 pt) and the font there: Default, Instrument Sans, Instrument Serif, JetBrains Mono, Caveat or Patrick Hand. In the PDF export Caveat and Patrick Hand come out as Helvetica, Instrument Serif as Times and JetBrains Mono as Courier.
+
+With 'Insert PDF …' (in the plus menu or under 'More actions') you add a PDF to an existing notebook – before the first sheet, after any sheet or at the end; in the page overview, a sheet's menu offers 'Insert PDF before/after …' directly. Each PDF page becomes a sheet of its own with the page as background that you write on as usual (at most 500 pages per PDF, 1000 sheets per notebook). Two fingers zoom smoothly at the spot between them and move the sheets; on a trackpad, pinch or use Ctrl + scroll, and the Apple Pencil keeps writing undisturbed.
 ### Keyboard shortcuts
 
 | Key | Does |

@@ -156,6 +156,8 @@ Auf Seiten, die die KI nicht lesen darf, sind alle KI-Einträge ausgegraut mit d
 - Gesucht wird über den Volltextindex; die passendsten Absätze gehen mit deiner Frage an den Anbieter, der oben in der Leiste steht. Die KI liest dabei nur, was du lesen darfst und was für die KI freigegeben ist ([Worauf die KI zugreifen darf](#worauf-die-ki-zugreifen-darf)). [Tags und Eigenschaftswerte](/pages-and-spaces#tags-und-eigenschaften) einer Seite gehören zu ihrem Text.
 - Während die Antwort entsteht, zeigen ein Schimmer und ein Schreibcursor den Fortschritt; die Quellen erscheinen nacheinander.
 
+Fragen nach dem Letzten oder Neuesten („Was war zuletzt mit …?“) berücksichtigen immer die jüngsten Journaltage, die zur Frage passen. Die KI liest auch Handschrift in Zeichenblöcken und Notizbüchern (getippter Text und auf dem iPhone/iPad erkannter Text) sowie den Text von PDFs, Office-Dateien und Bildern einer Seite – mit denselben Rechten wie die Seite; Journale mit PIN bleiben für die KI gesperrt.
+
 ### Suche nach Bedeutung (optional)
 
 Fragen auf Chinesisch, Japanisch, Koreanisch oder Thai zerlegt Flowplan in Wörter, obwohl diese Sprachen keine Leerzeichen nutzen. „浦东新区的发票在哪里“ sucht also nach 浦东新区 und 发票, kleine Füllwörter wie 的 bleiben außen vor.

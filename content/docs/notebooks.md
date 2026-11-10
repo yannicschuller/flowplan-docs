@@ -42,6 +42,10 @@ Alles wird beim Schreiben gespeichert (rechts in der Leiste: *Gespeichert*). Jed
 
 Wer die Seite nur lesen darf, sieht alle Blätter, Zoom und Export, aber keine Werkzeuge.
 
+Neben den festen Breiten stellt der Regler-Knopf die Strichstärke frei ein, mit Vorschau. Das **+** hinter den Farben öffnet eine eigene Farbe (Farbfeld, Farbton, Hex-Wert); zuletzt benutzte eigene Farben merkt sich das Gerät. Beim **Text** wählst du dort die Größe (8–96 pt) und die Schrift: Standard, Instrument Sans, Instrument Serif, JetBrains Mono, Caveat oder Patrick Hand. Im PDF-Export erscheinen Caveat und Patrick Hand als Helvetica, Instrument Serif als Times und JetBrains Mono als Courier.
+
+Über ‚PDF einfügen …' (im Plus-Menü oder unter ‚Weitere Aktionen') fügst du ein PDF in ein bestehendes Notizbuch ein – vor dem ersten Blatt, nach einem beliebigen Blatt oder am Ende; in der Seitenübersicht geht das auch direkt über ‚PDF davor/danach einfügen …' im Menü eines Blatts. Jede PDF-Seite wird ein eigenes Blatt mit der Seite als Hintergrund, auf dem du wie gewohnt schreibst (höchstens 500 Seiten pro PDF, 1000 Blätter pro Notizbuch). Mit zwei Fingern zoomst du stufenlos an der Stelle zwischen den Fingern und verschiebst die Blätter; auf dem Trackpad zoomst du mit der Pinch-Geste oder Strg + Scrollen, mit dem Apple Pencil schreibst du dabei ungestört weiter.
+
 ### Tastenkürzel
 
 | Taste | Wirkung |
