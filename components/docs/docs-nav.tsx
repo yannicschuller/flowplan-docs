@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { List, MagnifyingGlass, X } from "@phosphor-icons/react";
 import type { DocGroup, DocSearchEntry } from "@/lib/docs";
@@ -75,6 +75,20 @@ export function DocsSearch({ version }: { version: string }) {
   const locale = useLocale();
   const prefix = usePrefix();
   const [query, setQuery] = useState("");
+  // Safari moved the page a little with every typed letter (the results
+  // list changes height under the sticky header and it keeps the focused
+  // field "in view"): the page stays where it was while typing.
+  const scrollAt = useRef<number | null>(null);
+  useLayoutEffect(() => {
+    const y = scrollAt.current;
+    if (y === null) return;
+    scrollAt.current = null;
+    const keep = () => {
+      if (Math.abs(window.scrollY - y) > 1) window.scrollTo({ top: y, behavior: "instant" as ScrollBehavior });
+    };
+    keep();
+    requestAnimationFrame(keep);
+  }, [query]);
   const [active, setActive] = useState(0);
   const [index, setIndex] = useState<DocSearchEntry[] | null>(null);
   // Why the index could not be loaded (HTTP status or error), shown as the
@@ -217,6 +231,7 @@ export function DocsSearch({ version }: { version: string }) {
         onFocus={load}
         onChange={(e) => {
           load();
+          scrollAt.current = window.scrollY;
           setQuery(e.target.value);
           setActive(0);
         }}
