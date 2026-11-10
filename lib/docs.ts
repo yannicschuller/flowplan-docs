@@ -47,8 +47,8 @@ const groups: {
       ["encrypted-spaces", "Verschlüsselte Bereiche", "Encrypted spaces"],
       [
         "migrate",
-        "Umzug von Notion, AppFlowy, AFFiNE, Obsidian, Confluence, Evernote, Google Docs, Microsoft Word und OneNote",
-        "Moving from Notion, AppFlowy, AFFiNE, Obsidian, Confluence, Evernote, Google Docs, Microsoft Word and OneNote",
+        "Umzug von Notion, AppFlowy, AFFiNE, Obsidian, Confluence, Evernote, Google Docs, Microsoft Word, OneNote und GoodNotes",
+        "Moving from Notion, AppFlowy, AFFiNE, Obsidian, Confluence, Evernote, Google Docs, Microsoft Word, OneNote and GoodNotes",
       ],
       ["keyboard-shortcuts", "Tastenkürzel", "Keyboard shortcuts"],
       ["languages", "Sprachen und Übersetzungen", "Languages and translations"],

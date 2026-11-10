@@ -10,6 +10,8 @@ A **notebook** is a page of sheets to write on – with the Apple Pencil, anothe
 
 **From a PDF:** in the same dialog, choose a file under **Open a PDF as the notebook**. Every page of the PDF becomes a sheet with that page as its background – lecture slides, worksheets or forms are then written on as if printed. **⋯ → Import PDF …** adds more PDF pages to an existing notebook, after the current sheet. Up to 500 pages per import and 1000 sheets per notebook.
 
+**From GoodNotes and other note apps:** export the notebooks as PDF and import them under **Settings → Import & export → Import** with the source **GoodNotes** – several at once or as a ZIP, every PDF becomes a notebook. Step by step: [Moving from GoodNotes](/migrate#from-goodnotes).
+
 ## Paper
 
 | Template | Looks like |
