@@ -28,15 +28,22 @@ Flowplan sendet keinen `X-Powered-By`-Header. Der Healthcheck braucht nur den St
 
 ### Volume-Rechte
 
-Der Container läuft als Benutzer `node` (UID 1000). Ein neues Docker-Volume bekommt die Rechte automatisch. Ein eingebundener Host-Ordner muss dem Benutzer gehören, als der Flowplan läuft – sonst bricht der Start mit „Flowplan cannot write to its data folder …“ ab. Es gibt drei Wege:
+Flowplan läuft standardmäßig als UID 1000 (Benutzer `node`). Ein neues Docker-Volume bekommt die Rechte automatisch. Für einen eingebundenen Host-Ordner, der jemand anderem gehört, setzt du `PUID` und `PGID` – wie bei den Images von linuxserver.io, ohne `user:`:
 
-**Den Ordner UID 1000 geben:**
-
-```bash
-sudo chown -R 1000:1000 /pfad/zu/flowplan-data
+```yaml
+services:
+  flowplan:
+    image: ghcr.io/yannicschuller/flowplan:latest
+    environment:
+      PUID: "1001"
+      PGID: "1001"
+    volumes:
+      - /pfad/zu/flowplan-data:/app/data
 ```
 
-**Flowplan als Besitzer des Ordners starten** – mit Dockers eigenem `user:`. Jede UID/GID geht, auch eine ohne Eintrag in `/etc/passwd` des Images:
+Beim Start gibt Flowplan als Erstes den Datenordner `PUID:PGID` und startet die App dann als dieser Benutzer – nie als root. `chown` läuft nur, wenn der Ordner oder etwas direkt darin noch jemand anderem gehört – also einmal, nicht bei jedem Start. `PGID` ist ohne Angabe gleich `PUID`; beide müssen Zahlen größer als 0 sein (`0` wird abgelehnt). Ohne `PUID`/`PGID` läuft Flowplan als UID 1000 und übergibt den Ordner genauso an sie.
+
+**Alternativ Dockers eigenes `user:`** – Flowplan läuft dann von Anfang an als dieser Benutzer und ändert keine Besitzer; der Ordner muss ihm schon gehören. Jede UID/GID geht, auch eine ohne Eintrag in `/etc/passwd` des Images. So arbeitet auch Kubernetes (`runAsUser`, das [Helm-Chart](/installation#kubernetes-helm)).
 
 ```yaml
 services:
@@ -47,23 +54,9 @@ services:
       - /pfad/zu/flowplan-data:/app/data
 ```
 
-**`PUID` und `PGID` setzen** (wie bei den Images von linuxserver.io). Dafür startet der Container als root (`user: "0:0"`); Flowplan gibt den Datenordner dann `PUID:PGID`, startet die App als dieser Benutzer und läuft selbst nie als root:
+Mit `user:` wirken `PUID`/`PGID` nicht; Flowplan meldet das beim Start mit einer Zeile. Oder du gibst den Ordner UID 1000: `sudo chown -R 1000:1000 /pfad/zu/flowplan-data`. Passt nichts davon, bricht der Start mit „Flowplan cannot write to its data folder …“ ab.
 
-```yaml
-services:
-  flowplan:
-    image: ghcr.io/yannicschuller/flowplan:latest
-    user: "0:0"
-    environment:
-      PUID: "1001"
-      PGID: "1001"
-    volumes:
-      - /pfad/zu/flowplan-data:/app/data
-```
-
-`chown` läuft nur, wenn der Ordner noch jemand anderem gehört – also einmal, nicht bei jedem Start. `PGID` ist ohne Angabe gleich `PUID`; beide müssen Zahlen größer als 0 sein. Als root ohne `PUID`/`PGID` gestartet, läuft Flowplan wie gewohnt als UID 1000. Ohne `user: "0:0"` wirken `PUID`/`PGID` nicht; Flowplan meldet das beim Start mit einer Zeile.
-
-Eigene Befehle im Image (etwa `node /app/move.mjs` beim [Instanzumzug](/move-instance)) laufen mit `docker compose run`/`exec` als der Benutzer aus `user:`, mit `docker run` als UID 1000. Mit `user:` oder `PUID`/`PGID` bei `docker run` deshalb `--user 1001:1001` angeben; was ein Befehl als root für den nächsten Start bereitlegt (Umzug, Wiederherstellung), übergibt Flowplan beim Start selbst an `PUID:PGID`.
+**Befehle im Container** (`docker exec`, `docker compose exec`/`run`, `docker run … node …`) laufen ohne `user:` als root. Flowplans eigene Werkzeuge – `/app/move.mjs`, `/app/decrypt.mjs`, `/app/scripts/db-*.mjs` – wechseln selbst zu `PUID:PGID` (Standard 1000:1000), bevor sie etwas schreiben. Bei anderen Befehlen, die in den Datenordner schreiben, den Benutzer angeben: `docker compose exec -u 1001:1001 flowplan …` (ohne `PUID` `-u 1000:1000`). Was ein Befehl als root direkt im Datenordner hinterlässt, übergibt Flowplan beim nächsten Start.
 
 ### Automatisch ausrollen
 

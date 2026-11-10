@@ -92,6 +92,7 @@ docker compose up -d          # starts and applies the copy
 # docker run
 docker run --rm -v flowplan-data:/app/data -e APP_URL=https://flowplan.example.org \
   ghcr.io/yannicschuller/flowplan node /app/move.mjs --from https://flowplan.example.org --token fpmove_…
+# (writes as UID 1000; with PUID/PGID add -e PUID=… -e PGID=…, with user: --user UID:GID)
 
 # Kubernetes (Helm chart)
 kubectl -n flowplan exec deploy/flowplan -- node /app/move.mjs --from https://flowplan.example.org --token fpmove_…
@@ -124,7 +125,8 @@ The pre-flight check is only in the interface; on the command line compare the v
    # new
    docker compose cp secrets.key flowplan:/app/data/
    docker compose cp web-push-keys.json flowplan:/app/data/
-   docker compose exec -u root flowplan chown node:node /app/data/secrets.key /app/data/web-push-keys.json
+   docker compose exec -u root flowplan chown 1000:1000 /app/data/secrets.key /app/data/web-push-keys.json
+   # with PUID/PGID or user: that user and group instead of 1000:1000
    ```
 4. On the new instance **Restore from backup → Choose backup**. The proxy in front must let such large uploads through (Caddy does by itself, nginx with `client_max_body_size`, Cloudflare at most 100 MB); otherwise bring the file to the server with `scp` and upload it there. At most 50 GB.
 5. Restart; the previous state stays as `pre-restore-…`. Then switch DNS.

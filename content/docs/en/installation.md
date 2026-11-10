@@ -142,7 +142,7 @@ docker run -d --name flowplan \
   flowplan:latest
 ```
 
-The image contains Node, Litestream for the S3 backup and `curl` for the health check. It runs as the user `node` (UID 1000).
+The image contains Node, Litestream for the S3 backup and `curl` for the health check. Flowplan runs in it as UID 1000 (the user `node`), or as the user from `PUID`/`PGID` – never as root ([Volume permissions](/coolify-and-proxy#volume-permissions)).
 
 ## First start
 

@@ -92,6 +92,7 @@ docker compose up -d          # startet und übernimmt die Kopie
 # docker run
 docker run --rm -v flowplan-data:/app/data -e APP_URL=https://flowplan.example.org \
   ghcr.io/yannicschuller/flowplan node /app/move.mjs --from https://flowplan.example.org --token fpmove_…
+# (schreibt als UID 1000; mit PUID/PGID -e PUID=… -e PGID=… ergänzen, mit user: --user UID:GID)
 
 # Kubernetes (Helm-Chart)
 kubectl -n flowplan exec deploy/flowplan -- node /app/move.mjs --from https://flowplan.example.org --token fpmove_…
@@ -124,7 +125,8 @@ Die Vorabprüfung gibt es nur in der Oberfläche; auf der Kommandozeile vergleic
    # neu
    docker compose cp secrets.key flowplan:/app/data/
    docker compose cp web-push-keys.json flowplan:/app/data/
-   docker compose exec -u root flowplan chown node:node /app/data/secrets.key /app/data/web-push-keys.json
+   docker compose exec -u root flowplan chown 1000:1000 /app/data/secrets.key /app/data/web-push-keys.json
+   # mit PUID/PGID oder user: deren Benutzer und Gruppe statt 1000:1000
    ```
 4. Auf der neuen Instanz **Aus Sicherung wiederherstellen → Sicherung auswählen**. Der Proxy davor muss so große Uploads durchlassen (Caddy von sich aus, nginx mit `client_max_body_size`, Cloudflare höchstens 100 MB); sonst die Datei per `scp` auf den Server bringen und dort hochladen. Höchstens 50 GB.
 5. Neu starten; der vorherige Stand bleibt als `pre-restore-…`. Dann DNS umstellen.
