@@ -28,7 +28,7 @@ Noch kein eigener Server? Drei Wege zu einer laufenden Instanz, ohne Docker von 
 Der Button liest den Blueprint [`render.yaml`](https://github.com/yannicschuller/flowplan/blob/main/render.yaml) aus dem Repository: ein Webdienst aus dem Image `ghcr.io/yannicschuller/flowplan:latest` in Frankfurt, eine 5-GB-Disk auf `/app/data` und der Health Check auf `/api/health`.
 
 1. Button anklicken, bei Render anmelden und den Blueprint bestätigen. Die SMTP-Felder dürfen leer bleiben (siehe [E-Mail](/configuration#e-mail-smtp)).
-2. Render erzeugt `FLOWPLAN_SETUP_TOKEN`. Ist der Deploy fertig, kopierst du ihn im Tab **Environment** des Dienstes und öffnest `https://<name>.onrender.com/register?setup=<token>` – dieses erste Konto verwaltet die Instanz. Enthält der Token ein `+`, schreib es in der Adresse als `%2B`.
+2. Render erzeugt `FLOWPLAN_SETUP_TOKEN`. Ist der Deploy fertig, kopierst du ihn im Tab **Environment** des Dienstes und öffnest `https://<name>.onrender.com/register?setup=<token>` – dieses erste Konto verwaltet die Instanz.
 
 **Kosten:** Dauerhafte Disks gibt es nur mit einer bezahlten Instanz – der Blueprint nimmt **Starter**, die kleinste mit Disk; die Disk wird zusätzlich pro GB abgerechnet (siehe Preise bei Render). Für mehr als eine Handvoll Personen wähl eine größere Instanz ([Dimensionierung](/sizing)). Auf der kostenlosen Instanz gingen die Daten bei jedem Neustart verloren.
 

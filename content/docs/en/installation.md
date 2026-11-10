@@ -28,7 +28,7 @@ No server of your own yet? Three ways to a running instance without setting up D
 The button reads the Blueprint [`render.yaml`](https://github.com/yannicschuller/flowplan/blob/main/render.yaml) from the repository: a web service from the image `ghcr.io/yannicschuller/flowplan:latest` in Frankfurt, a 5 GB disk on `/app/data` and the health check on `/api/health`.
 
 1. Click the button, sign in to Render and confirm the Blueprint. The SMTP fields can stay empty (see [E-mail](/en/configuration#e-mail-smtp)).
-2. Render generates `FLOWPLAN_SETUP_TOKEN`. Once the deploy is done, copy it from the service's **Environment** tab and open `https://<name>.onrender.com/register?setup=<token>` – this first account administers the instance. If the token contains a `+`, write it as `%2B` in the address.
+2. Render generates `FLOWPLAN_SETUP_TOKEN`. Once the deploy is done, copy it from the service's **Environment** tab and open `https://<name>.onrender.com/register?setup=<token>` – this first account administers the instance.
 
 **Costs:** persistent disks need a paid instance – the Blueprint uses **Starter**, the smallest one with a disk; the disk is billed per GB on top (see Render's pricing). For more than a handful of people choose a larger instance ([Sizing](/en/sizing)). On the free instance the data would be lost on every restart.
 
