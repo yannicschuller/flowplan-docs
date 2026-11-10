@@ -76,12 +76,14 @@ Clients that speak Streamable HTTP and accept their own headers use this configu
 | `my_tasks` | Your tasks from documents and records, with due dates | Read |
 | `create_page` | New document, database or whiteboard; documents can start with Markdown content | Write |
 | `append_to_page` | Appends Markdown to the end of a document | Write |
-| `create_record` | New record; properties by name | Write |
-| `update_record` | Changes individual properties of a record | Write |
+| `create_record` | New record; properties by name, optionally with its record document (`document`, Markdown) | Write |
+| `update_record` | Changes individual properties and/or the record document of a record | Write |
 | `save_collection` | Creates a collection or changes its name, query, emoji and sharing | Write |
 | `delete_collection` | Moves a collection to the trash | Write |
 
 Properties are named by their name (or ID). Dates are written as `YYYY-MM-DD`, options by their name, people by e-mail address or name, and relations as a list of record IDs. Text properties (except the title) are formatted text: `get_database` marks them with `markdown: true`, and they are read and written as inline Markdown (`**bold**`, `_italic_`, `~~strikethrough~~`, `` `code` ``, `[label](https://…)`, `\n`; see [Formatted text](/databases#formatted-text)). `update_record` accepts the `version` from `get_record`: if someone changed the record in the meantime, the change is refused instead of being overwritten.
+
+Write the record document with `document` as Markdown – when creating with `create_record`, later with `update_record`. `update_record` replaces the document; with `documentMode: "append"` the text is added at the end. The previous state is kept as a version, and open editors see the change right away.
 
 In addition, each page is available as a **resource** `flowplan://page/<ID>` (your favourites are listed). There are two **prompts**: *Summarize a page* and *Plan my day*.
 

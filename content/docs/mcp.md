@@ -76,12 +76,14 @@ Clients, die Streamable HTTP sprechen und eigene Kopfzeilen erlauben, nutzen die
 | `my_tasks` | Deine Aufgaben aus Dokumenten und Datensätzen, mit Fälligkeit | Lesen |
 | `create_page` | Neues Dokument, neue Datenbank oder neues Whiteboard; Dokumente können mit Markdown-Inhalt beginnen | Schreiben |
 | `append_to_page` | Hängt Markdown ans Ende eines Dokuments an | Schreiben |
-| `create_record` | Neuer Datensatz; Eigenschaften nach Namen | Schreiben |
-| `update_record` | Ändert einzelne Eigenschaften eines Datensatzes | Schreiben |
+| `create_record` | Neuer Datensatz; Eigenschaften nach Namen, optional mit Datensatzdokument (`document`, Markdown) | Schreiben |
+| `update_record` | Ändert einzelne Eigenschaften und/oder das Datensatzdokument eines Datensatzes | Schreiben |
 | `save_collection` | Neue Sammlung anlegen oder Name, Abfrage, Emoji und Teilen ändern | Schreiben |
 | `delete_collection` | Sammlung in den Papierkorb legen | Schreiben |
 
 Eigenschaften werden mit ihrem Namen (oder ihrer ID) angegeben. Datumswerte schreibst du als `JJJJ-MM-TT`, Auswahlen mit ihrem Namen, Personen mit E-Mail-Adresse oder Namen und Relationen als Liste von Datensatz-IDs. Text-Eigenschaften (außer dem Titel) sind formatierter Text: `get_database` kennzeichnet sie mit `markdown: true`, gelesen und geschrieben werden sie als Inline-Markdown (`**fett**`, `_kursiv_`, `~~durchgestrichen~~`, `` `Code` ``, `[Text](https://…)`, `\n`; siehe [Formatierter Text](/databases#formatierter-text)). `update_record` nimmt die `version` aus `get_record` entgegen: Hat jemand den Datensatz inzwischen geändert, wird die Änderung abgelehnt und nicht überschrieben.
+
+Das Datensatzdokument schreibst du mit `document` als Markdown – beim Anlegen mit `create_record`, später mit `update_record`. `update_record` ersetzt das Dokument; mit `documentMode: "append"` wird der Text am Ende angefügt. Der vorherige Stand bleibt als Version erhalten, und offene Editoren sehen die Änderung sofort.
 
 Außerdem ist jede Seite als **Ressource** `flowplan://page/<ID>` abrufbar (deine Favoriten sind aufgelistet). Es gibt zwei **Prompts**: *Seite zusammenfassen* und *Meinen Tag planen*.
 
