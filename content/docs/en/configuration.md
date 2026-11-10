@@ -47,6 +47,7 @@ The other OIDC variables and everything about passwords and passkeys are describ
 | Variable | Default | Meaning |
 | --- | --- | --- |
 | `FLOWPLAN_DATA_DIR` | `/app/data` in the image, `./data` otherwise | Data directory for SQLite, uploads, push keys and text recognition data. |
+| `PUID` / `PGID` | `1000` / same as `PUID` | Only in the image and only when the container starts as root (`user: "0:0"`): Flowplan gives the data folder to this user and group and runs as them, never as root. Often simpler: `user: "UID:GID"` – see [Volume permissions](/coolify-and-proxy#volume-permissions). |
 | `FLOWPLAN_WORKSPACE_QUOTA_MB` | unlimited | Default storage quota per workspace in MB (`0` = unlimited). |
 | `FLOWPLAN_IMPORT_MAX_MB` | *empty* | Largest file for [imports from AFFiNE](/migrate#from-affine) and other tools in MB, for everyone. Without it the **largest upload** applies (Administration → Limits & retention, or the person's own limit), at least 100 MB. Only the AFFiNE workspace file (`.affine`) may exceed 100 MB; ZIP exports stay at 100 MB. A proxy in front must let such large requests through. |
 | `FLOWPLAN_MAX_DOCUMENT_MB` | `16` | Largest size of a collaboratively edited document (page or record document) in MB. Changes that would make a document grow beyond it are refused ("The document is too large …"); split larger content across several pages. Keeps every edit of a huge document from slowing the server down. |

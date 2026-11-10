@@ -28,11 +28,42 @@ Flowplan sends no `X-Powered-By` header. The health check only needs the status 
 
 ### Volume permissions
 
-The container runs as UID 1000. A new Docker volume gets the permissions automatically. A mounted host folder must belong to this UID:
+The container runs as the user `node` (UID 1000). A new Docker volume gets the permissions automatically. A mounted host folder must belong to the user Flowplan runs as – otherwise the start stops with "Flowplan cannot write to its data folder …". There are three ways:
+
+**Give the folder to UID 1000:**
 
 ```bash
 sudo chown -R 1000:1000 /path/to/flowplan-data
 ```
+
+**Run Flowplan as the folder's owner** – with Docker's own `user:`. Any UID/GID works, also one without an entry in the image's `/etc/passwd`:
+
+```yaml
+services:
+  flowplan:
+    image: ghcr.io/yannicschuller/flowplan:latest
+    user: "1001:1001"          # or "${UID}:${GID}", with UID and GID in .env
+    volumes:
+      - /path/to/flowplan-data:/app/data
+```
+
+**Set `PUID` and `PGID`** (as in the linuxserver.io images). The container then starts as root (`user: "0:0"`); Flowplan gives the data folder to `PUID:PGID`, starts the app as that user and never runs as root itself:
+
+```yaml
+services:
+  flowplan:
+    image: ghcr.io/yannicschuller/flowplan:latest
+    user: "0:0"
+    environment:
+      PUID: "1001"
+      PGID: "1001"
+    volumes:
+      - /path/to/flowplan-data:/app/data
+```
+
+`chown` only runs while the folder still belongs to someone else – so once, not on every start. Without a value, `PGID` equals `PUID`; both must be numbers greater than 0. Started as root without `PUID`/`PGID`, Flowplan runs as UID 1000 as usual. Without `user: "0:0"`, `PUID`/`PGID` have no effect; Flowplan says so in one line at start.
+
+Your own commands in the image (such as `node /app/move.mjs` for an [instance move](/move-instance)) run as the user from `user:` with `docker compose run`/`exec`, and as UID 1000 with `docker run`. With `user:` or `PUID`/`PGID`, add `--user 1001:1001` to `docker run`; whatever a command run as root prepares for the next start (a move, a restore), Flowplan hands over to `PUID:PGID` itself at start.
 
 ### Roll out automatically
 
