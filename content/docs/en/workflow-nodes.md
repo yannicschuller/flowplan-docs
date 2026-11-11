@@ -54,6 +54,9 @@ This list is generated from Flowplan's node catalogue; `GET /api/workflows/catal
 | Append to page | `action.page.append` | Adds blocks at the end, the start or below a heading. | out | `page`, `appended` |
 | Tag page | `action.page.tag` | Adds tags to a page or removes them. | out | `page` |
 | Move page | `action.page.move` | Moves a page below a new parent. | out | `page` |
+| Create task | `action.task.create` | Writes a task into a page, with a person and a due date if you like. | out | `page`, `task` |
+
+**Create task** writes a task into a chosen page (or one from a placeholder) or into the own task page of the person the workflow runs as (the page "Tasks" from **My tasks**, created the first time). Text and due date may contain placeholders; the person is a single one – the person it runs as, whoever triggered it, a person property of the record or a member. With **Below the heading**, the task goes to the end of the section under that heading (created at the end when missing); consecutive tasks join the same list. The node acts with the rights of the person it runs as: the assignee must be able to open the target page, the own task page is private and only for the person it runs as; locked pages, journals with a PIN and encrypted spaces are refused. A dry run shows what would be written and changes nothing.
 
 ## Notify
 

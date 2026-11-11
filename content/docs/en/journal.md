@@ -44,12 +44,13 @@ In the settings under **Day bar**, place and appointments can be switched off fo
 
 ### Completed this day
 
-Below every day, **Completed this day** lists the database records that were completed that day – with the time, a link to the record and the database's name. The list is worked out each time the day opens and is not copied into the day; tick a record off elsewhere (in another tab, too) and it is there when you come back.
+Below every day, **Completed this day** lists the database records that were completed that day and the tasks ticked off in a document that day – including those of your page "Tasks" from **My tasks** – each with the time, a link and the name of the database or page. Tasks carry a small task symbol. The list is worked out each time the day opens and is not copied into the day; tick a record off elsewhere (in another tab, too) and it is there when you come back.
 
 - A record counts on the day it was last completed, and only while it is still done by its database's done rule – reopen it and it leaves the list. The day follows your time zone.
 - **All / Only mine** at the top of the list: **Only mine** (the default) shows the records you completed yourself and those a person property assigns to you, whoever ticked them off. When an automation completes a record, it counts for the person who set up the automation. The choice is yours for this journal, on all devices.
 - Only records you may see appear – no private records of others, nothing from locked journals or encrypted spaces. On a day with nothing completed, the list is missing; beyond 100 records it ends with "and … more".
 - It can be switched off for the whole journal under **Set up journal → Day bar → Completed this day** (on by default).
+- A task counts on the day it was last ticked off, and only while it is done – reopened or **Cancelled**, it drops out. Tasks of the day itself are in the day already and do not appear here. With **Only mine**, the tasks you ticked off or that are given to you count.
 
 ### Meeting notes
 

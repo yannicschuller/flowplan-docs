@@ -54,6 +54,9 @@ Diese Liste wird aus dem Knotenkatalog von Flowplan erzeugt; die Einstellungen j
 | An Seite anhängen | `action.page.append` | Fügt Blöcke am Ende, am Anfang oder unter einer Überschrift ein. | out | `page`, `appended` |
 | Seite taggen | `action.page.tag` | Fügt einer Seite Tags hinzu oder entfernt sie. | out | `page` |
 | Seite verschieben | `action.page.move` | Verschiebt eine Seite unter eine neue Elternseite. | out | `page` |
+| Aufgabe erstellen | `action.task.create` | Schreibt eine Aufgabe in eine Seite, auf Wunsch mit Person und Fälligkeit. | out | `page`, `task` |
+
+**Aufgabe erstellen** schreibt eine Aufgabe in eine gewählte Seite (oder eine aus einem Platzhalter) oder in die eigene Aufgabenseite der Person, als die der Workflow läuft (die Seite „Aufgaben“ aus **Meine Aufgaben**, beim ersten Mal angelegt). Text und Fälligkeit dürfen Platzhalter enthalten; als Person geht eine einzelne – die ausführende Person, wer den Workflow ausgelöst hat, eine Personen-Eigenschaft des Eintrags oder ein Mitglied. Mit **Unter der Überschrift** kommt die Aufgabe ans Ende des Abschnitts unter dieser Überschrift (fehlt sie, wird sie am Ende angelegt); aufeinanderfolgende Aufgaben landen in derselben Liste. Der Knoten handelt mit den Rechten der ausführenden Person: Die Person muss die Zielseite öffnen können, die eigene Aufgabenseite ist privat und nur für die ausführende Person selbst; gesperrte Seiten, Journale mit PIN und verschlüsselte Bereiche lehnt er ab. Ein Probelauf zeigt, was geschrieben würde, und ändert nichts.
 
 ## Benachrichtigen
 

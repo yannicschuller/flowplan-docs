@@ -42,12 +42,13 @@ Jeder Tag merkt sich, aus welcher Fassung der Vorlage er entstanden ist. Ein Tag
 
 ### An diesem Tag erledigt
 
-Unter jedem Tag steht **An diesem Tag erledigt**: die Einträge aus Datenbanken, die an diesem Tag erledigt wurden – mit Uhrzeit, Link zum Eintrag und Name der Datenbank. Die Liste wird bei jedem Öffnen neu berechnet und nicht in den Tag kopiert; hakst du einen Eintrag anderswo ab (auch in einem anderen Tab), steht er beim Zurückkommen darin.
+Unter jedem Tag steht **An diesem Tag erledigt**: die Einträge aus Datenbanken, die an diesem Tag erledigt wurden, und die Aufgaben, die an diesem Tag in einem Dokument abgehakt wurden – auch die deiner Seite „Aufgaben“ aus **Meine Aufgaben** – jeweils mit Uhrzeit, Link und Name der Datenbank bzw. Seite. Aufgaben tragen ein kleines Aufgaben-Symbol. Die Liste wird bei jedem Öffnen neu berechnet und nicht in den Tag kopiert; hakst du einen Eintrag anderswo ab (auch in einem anderen Tab), steht er beim Zurückkommen darin.
 
 - Ein Eintrag zählt an dem Tag, an dem er zuletzt erledigt wurde, und nur, solange er nach der Erledigt-Regel seiner Datenbank noch erledigt ist – wird er wieder geöffnet, verschwindet er aus der Liste. Der Tag richtet sich nach deiner Zeitzone.
 - **Alle / Nur meine** oben in der Liste: **Nur meine** (Voreinstellung) zeigt die Einträge, die du selbst erledigt hast, und die, die dir über eine Personen-Eigenschaft zugewiesen sind – egal, wer sie abgehakt hat. Erledigt eine Automation einen Eintrag, zählt er für die Person, die die Automation eingerichtet hat. Die Wahl gilt für dich in diesem Journal, auf allen Geräten.
 - Es erscheinen nur Einträge, die du sehen darfst – keine privaten Einträge anderer, nichts aus gesperrten Journalen oder verschlüsselten Bereichen. Ist an einem Tag nichts erledigt worden, fehlt die Liste; mehr als 100 Einträge kürzt sie mit „und … weitere“.
 - Ausschalten lässt sie sich für das ganze Journal unter **Journal einrichten → Tagesleiste → An diesem Tag erledigt** (voreingestellt an). Dort lassen sich auch Ort und Termine abschalten.
+- Eine Aufgabe zählt an dem Tag, an dem sie zuletzt abgehakt wurde, und nur, solange sie erledigt ist – wieder geöffnet oder **Abgebrochen** verschwindet sie. Aufgaben des Tages selbst stehen schon im Tag und erscheinen hier nicht. Bei **Nur meine** zählen die Aufgaben, die du abgehakt hast oder die dir gegeben sind.
 
 ### Besprechungsnotizen
 
