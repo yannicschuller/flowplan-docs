@@ -36,6 +36,8 @@ In der Desktop-App wechselt <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> bzw. <kbd
 
 <kbd>?</kbd> (außerhalb von Textfeldern), <kbd>⌘</kbd> <kbd>/</kbd>, das <kbd>?</kbd> unten in der Seitenleiste oder **Tastenkürzel anzeigen** unter **Einstellungen → Darstellung & Sprache** öffnen die Übersicht. Unter **Überall** hat jede Aktion den Knopf **Ändern**: Danach die neue Kombination drücken – <kbd>Esc</kbd> bricht ab. Die Kombination gilt sofort und für dein Konto auf allen Geräten und Browsern.
 
+Das Suchfeld oben in der Übersicht filtert beim Tippen nach dem Namen einer Aktion oder nach Tasten – <kbd>Strg</kbd>, <kbd>Ctrl</kbd>, <kbd>Cmd</kbd> und <kbd>⌘</kbd> gelten dabei als dieselbe Taste, ebenso <kbd>Shift</kbd>/<kbd>⇧</kbd> und <kbd>Alt</kbd>/<kbd>Option</kbd>/<kbd>⌥</kbd>, „strg l“ findet also <kbd>⌘</kbd> <kbd>L</kbd>; <kbd>Esc</kbd> leert das Feld zuerst, ein zweites <kbd>Esc</kbd> schließt die Übersicht.
+
 - **Konflikte** zeigt die Übersicht an: Gehört die Kombination schon zu einer anderen Aktion, fragt sie nach (**Trotzdem verwenden** nimmt sie der anderen Aktion weg). Kollidiert sie mit einem Kürzel des Editors (etwa <kbd>⌘</kbd> <kbd>B</kbd> für Fett) oder behält der Browser sie meist für sich (etwa <kbd>⌘</kbd> <kbd>W</kbd>), steht ein Hinweis darunter.
 - Der Pfeil setzt eine Aktion auf ihre Vorgabe zurück, **×** entfernt ihr Kürzel ganz, **Alle zurücksetzen** stellt alle Vorgaben wieder her. Eigene Kürzel sind mit **Eigene** markiert.
 - Kombinationen ohne <kbd>⌘</kbd>, <kbd>Strg</kbd> oder <kbd>⌥</kbd> (wie <kbd>?</kbd>) wirken nur außerhalb von Textfeldern und dem Editor.

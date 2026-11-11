@@ -36,6 +36,8 @@ In the desktop app, <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> or <kbd>Ctrl</kbd
 
 <kbd>?</kbd> (outside text fields), <kbd>⌘</kbd> <kbd>/</kbd>, the <kbd>?</kbd> at the bottom of the sidebar or **Show keyboard shortcuts** under **Settings → Appearance & language** open the overview. Under **Everywhere**, every action has a **Change** button: press the new combination after it – <kbd>Esc</kbd> cancels. The combination applies at once and for your account on all devices and browsers.
 
+The search field at the top of the overview filters as you type, by action name or by keys – <kbd>Ctrl</kbd>, <kbd>Cmd</kbd> and <kbd>⌘</kbd> count as the same key, as do <kbd>Shift</kbd>/<kbd>⇧</kbd> and <kbd>Alt</kbd>/<kbd>Option</kbd>/<kbd>⌥</kbd>, so "ctrl l" finds <kbd>⌘</kbd> <kbd>L</kbd>; <kbd>Esc</kbd> clears the field first, a second <kbd>Esc</kbd> closes the overview.
+
 - The overview shows **conflicts**: if the combination already belongs to another action, it asks (**Use it anyway** takes it away from the other action). If it collides with an editor shortcut (such as <kbd>⌘</kbd> <kbd>B</kbd> for bold) or the browser usually keeps it for itself (such as <kbd>⌘</kbd> <kbd>W</kbd>), a note appears below it.
 - The arrow resets an action to its default, **×** removes its shortcut altogether, **Reset all** restores every default. Your own shortcuts are marked **Custom**.
 - Combinations without <kbd>⌘</kbd>, <kbd>Ctrl</kbd> or <kbd>⌥</kbd> (like <kbd>?</kbd>) only work outside text fields and the editor.
