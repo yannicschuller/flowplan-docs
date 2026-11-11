@@ -421,6 +421,8 @@ Under **Editor**, **Always show block handles** shows the handle `⋮⋮` next t
 
 Below pages and records Flowplan shows **Related pages**, **Linked from** and **Unlinked mentions**. If you don't need them, turn off **Settings → Appearance & language → Show related pages and backlinks** – also on this device only. The panels then appear neither below pages nor in records.
 
+**Settings → Appearance & language → Page icon** sets where a page's icon sits: **Above the title** (the default) shows it large above the title, **Next to the title** small to the left of the title on its first line – like a classic document, with less space above the text. This applies to documents, databases, whiteboards, journal days and every other page; a cover stays above it. The choice applies to your account on all devices and only changes what you see: the page's title and icon stay as they are, others keep their own setting, and published pages show the icon above the title.
+
 After a reload Flowplan opens the workspace that was last open on this device. For this the browser keeps only the workspace's id in the cookie `flowplan-workspace`; an invitation or a link to a page in another workspace takes precedence.
 
 ## Workflows on the phone

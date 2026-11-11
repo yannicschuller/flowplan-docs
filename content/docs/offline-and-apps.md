@@ -421,6 +421,8 @@ Unter **Editor** zeigt **Griffe immer anzeigen** den Griff `⋮⋮` wieder neben
 
 Unter Seiten und Einträgen zeigt Flowplan **Verwandte Seiten**, **Verlinkt von** bzw. **Verknüpft von** und **Nicht verlinkte Erwähnungen**. Wer sie nicht braucht, schaltet **Einstellungen → Darstellung & Sprache → Verwandte Seiten und Rückverweise anzeigen** aus – auch das nur auf diesem Gerät. Dann erscheinen die Bereiche weder unter Seiten noch im Eintrag.
 
+**Einstellungen → Darstellung & Sprache → Seitensymbol** legt fest, wo das Symbol einer Seite steht: **Über dem Titel** (Standard) zeigt es groß über dem Titel, **Neben dem Titel** klein links neben dem Titel in seiner ersten Zeile – wie in einem klassischen Dokument und mit weniger Platz über dem Text. Das gilt für Dokumente, Datenbanken, Whiteboards, Journal-Tage und alle anderen Seiten; ein Cover bleibt darüber. Die Wahl gilt für dein Konto auf allen Geräten und ändert nur deine Ansicht: Titel und Symbol der Seite bleiben, wie sie sind, andere sehen weiter ihre eigene Einstellung und veröffentlichte Seiten zeigen das Symbol über dem Titel.
+
 Nach dem Neuladen öffnet Flowplan den Arbeitsbereich, der zuletzt auf diesem Gerät offen war. Dafür merkt sich der Browser im Cookie `flowplan-workspace` nur die Kennung des Arbeitsbereichs; eine Einladung oder ein Link auf eine Seite in einem anderen Arbeitsbereich gehen vor.
 
 ## Workflows auf dem Telefon

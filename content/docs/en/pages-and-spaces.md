@@ -39,6 +39,8 @@ The `…` menu at the top right of every page offers:
 | Version history | Compare and restore earlier states. |
 | Move to trash | Removes the page with its sub-pages; restorable. |
 
+Clicking a page's icon also opens the picker for an emoji, a symbol or your own picture; **Add cover** appears when the pointer is over the title (always on a phone). If you prefer the icon small next to the title rather than large above it, choose **Next to the title** under **Settings → Appearance & language → Page icon** – **Add cover** then sits in a narrow row above the title. There is no need for an emoji in the title itself, so export file names stay free of emoji. The icon size you choose (small, medium, large) applies to the view above the title; next to the title the icon is as high as a line of the title. Printing shows the page as you see it.
+
 **On a phone** a page's top bar holds only ☰ (sidebar), the title – fully readable, long titles wrap – and `⋯`. **Follow** (bell), **Favourite** (star) and **Share** sit at the top of the `⋯` menu with their state, **Reading mode** below them. The comments button shows in the bar only when the page has open comments, with their count; otherwise **Comments** is in the menu. The cloud for the saving state appears only when there is something to report: offline, while changes are on their way, or after an error.
 
 ### Right-click in the sidebar

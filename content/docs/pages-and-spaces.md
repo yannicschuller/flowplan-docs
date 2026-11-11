@@ -39,6 +39,8 @@ Das Menü `…` oben rechts auf jeder Seite bietet:
 | Versionsverlauf | Frühere Stände vergleichen und wiederherstellen. |
 | In den Papierkorb | Seite samt Unterseiten entfernen, wiederherstellbar. |
 
+Ein Klick auf das Symbol einer Seite öffnet ebenfalls die Auswahl für Emoji, Symbol oder eigenes Bild; **Cover hinzufügen** erscheint, wenn der Mauszeiger über dem Titel steht (auf dem Handy immer). Wer das Symbol lieber klein neben dem Titel sieht statt groß darüber, wählt unter **Einstellungen → Darstellung & Sprache → Seitensymbol** **Neben dem Titel** – dann steht **Cover hinzufügen** in einer schmalen Zeile über dem Titel. Ein Emoji im Titel selbst ist dafür nicht nötig, und Dateinamen beim Export bleiben ohne Emoji. Die gewählte Größe des Symbols (klein, mittel, groß) gilt für die Ansicht über dem Titel; neben dem Titel ist das Symbol so hoch wie eine Titelzeile. Beim Drucken erscheint die Seite so, wie du sie siehst.
+
 **Auf dem Telefon** hat die obere Leiste einer Seite nur ☰ (Seitenleiste), den Titel – ganz lesbar, lange Titel brechen um – und `⋯`. **Folgen** (Glocke), **Favorit** (Stern) und **Teilen** stehen oben im Menü `⋯` mit ihrem Zustand, darunter **Lesemodus**. Der Kommentar-Knopf erscheint in der Leiste nur, wenn die Seite offene Kommentare hat, mit ihrer Anzahl; sonst steht **Kommentare** im Menü. Die Wolke für den Speicherstand zeigt sich nur, wenn es etwas zu melden gibt: ohne Verbindung, solange Änderungen unterwegs sind, oder bei einem Fehler.
 
 ### Rechtsklick in der Seitenleiste
