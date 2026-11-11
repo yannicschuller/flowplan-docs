@@ -10,6 +10,21 @@ A workspace belongs to a team: its own members, groups, spaces and templates. Pe
 
 When **leaving**, a last owner has to make someone else an owner first under **Settings → Members**; your own spaces are handed over to a remaining owner of your choice. **Deleting** is only possible once you have another workspace; it removes all content, templates, files and shares for all members and cannot be undone. Both are confirmed with the workspace's name.
 
+## Appearance
+
+Owners give the workspace a look of its own under **Settings → Appearance**, for example in your organisation's colours and typefaces. It applies to all members and guests while this workspace is open – switching to another workspace switches the look too – and also to its [published pages](/sharing) and [forms](/forms). Two preview cards show the changes in light and dark before you save; **Reset to default** brings back Flowplan's own look.
+
+- **Accent colour**: one from the selection or your own. Flowplan derives the colours for links, buttons, selections and highlights from it, separately for light and dark mode. So that text on the colour and the colour as text stay easy to read (at least 4.5 : 1 as WCAG asks), Flowplan darkens a colour that is too light (in dark mode it lightens one that is too dark) and shows you which colour it actually uses.
+- **Background**: Standard (warm), Neutral, Cool or Sepia – each with a matching dark counterpart. There are no free background colours, so text stays readable everywhere.
+- **Typefaces**: one each for the interface, for large headings and for code. You can choose Flowplan's own typefaces, the system font and about fifteen others, among them Inter, Atkinson Hyperlegible Next, IBM Plex, Source Sans/Serif/Code, Lora, Literata, Merriweather, EB Garamond and Fira Code. All of them are on your Flowplan server: the browser loads only the chosen ones, and no request goes to an outside font service. Pages whose font was changed to serif use the heading typeface.
+- **Own fonts**: a house font can be uploaded as WOFF2, WOFF, TTF or OTF (up to 5 MB, up to 20 per workspace) and then chosen for any of the three. It counts toward the workspace's [storage quota](#storage-quota) and is deleted with the workspace. Only upload fonts whose licence allows use on the web.
+
+Light or dark stays each person's own choice. Anyone who prefers to keep Flowplan's own look turns off **Settings → Appearance & language → Use the workspace's appearance**; this applies to your account in every workspace and on all devices.
+
+Custom CSS is deliberately not possible: CSS could quietly send content elsewhere, and it would break with updates of the app.
+
+The look and the uploaded fonts are part of the workspace's [content archive](/import-export-versions#content-archive). On import, an owner takes it over into a workspace that still has Flowplan's own look; a look that was already chosen stays.
+
 ## Roles
 
 | Role | May |

@@ -10,6 +10,21 @@ Ein Arbeitsbereich gehört einem Team: eigene Mitglieder, Gruppen, Bereiche und 
 
 Beim **Verlassen** muss ein letzter Eigentümer vorher unter **Einstellungen → Mitglieder** jemand anderen zum Eigentümer machen; eigene Bereiche gehen an einen gewählten verbleibenden Eigentümer über. **Löschen** geht erst, wenn du einen weiteren Arbeitsbereich hast, entfernt alle Inhalte, Vorlagen, Dateien und Freigaben für alle Mitglieder und lässt sich nicht rückgängig machen. Beides bestätigst du mit dem Namen des Arbeitsbereichs.
 
+## Erscheinungsbild
+
+Eigentümer geben dem Arbeitsbereich unter **Einstellungen → Erscheinungsbild** ein eigenes Aussehen, etwa in den Farben und Schriften eurer Organisation. Es gilt für alle Mitglieder und Gäste, sobald dieser Arbeitsbereich offen ist – beim Wechsel in einen anderen wechselt auch das Aussehen –, und ebenso für seine [veröffentlichten Seiten](/sharing) und [Formulare](/forms). Zwei Vorschaukarten zeigen die Änderungen hell und dunkel, bevor du speicherst; **Auf Standard zurücksetzen** stellt Flowplans eigenes Aussehen wieder her.
+
+- **Akzentfarbe**: eine Farbe aus der Auswahl oder eine eigene. Daraus leitet Flowplan die Farben für Links, Schaltflächen, Auswahl und Markierungen ab, getrennt für den hellen und den dunklen Modus. Damit Text auf der Farbe und die Farbe als Text gut lesbar bleiben (mindestens 4,5 : 1 nach WCAG), dunkelt Flowplan eine zu helle Farbe ab (im dunklen Modus hellt es eine zu dunkle auf) und zeigt dir, welche Farbe tatsächlich verwendet wird.
+- **Hintergrund**: Standard (warm), Neutral, Kühl oder Sepia – jeweils mit passender dunkler Fassung. Freie Hintergrundfarben gibt es nicht, damit Texte überall lesbar bleiben.
+- **Schriften**: je eine für die Oberfläche, für große Überschriften und für Code. Zur Wahl stehen Flowplans eigene Schriften, die Systemschrift und rund fünfzehn weitere, darunter Inter, Atkinson Hyperlegible Next, IBM Plex, Source Sans/Serif/Code, Lora, Literata, Merriweather, EB Garamond und Fira Code. Alle liegen auf deinem Flowplan-Server: Der Browser lädt nur die gewählten, und keine Anfrage geht an einen fremden Schriftdienst. Seiten, deren Schrift auf Serif gewechselt wurde, verwenden die Überschriftenschrift.
+- **Eigene Schriften**: Eine Hausschrift lässt sich als WOFF2, WOFF, TTF oder OTF hochladen (bis 5 MB, bis zu 20 je Arbeitsbereich) und dann für jeden der drei Bereiche wählen. Sie zählt zum [Speicherkontingent](#speicherkontingent) des Arbeitsbereichs und wird mit ihm gelöscht. Lade nur Schriften hoch, deren Lizenz die Nutzung im Web erlaubt.
+
+Hell oder dunkel wählt weiterhin jede Person selbst. Wer lieber Flowplans eigenes Aussehen behält, schaltet **Einstellungen → Darstellung & Sprache → Darstellung des Arbeitsbereichs verwenden** aus; das gilt für das eigene Konto in allen Arbeitsbereichen und auf allen Geräten.
+
+Eigenes CSS ist bewusst nicht möglich: Mit CSS ließen sich Inhalte unbemerkt nach außen schicken, und es würde bei Updates der App brechen.
+
+Das Aussehen und die hochgeladenen Schriften stecken im [Inhaltsarchiv](/import-export-versions#inhaltsarchiv) des Arbeitsbereichs. Beim Import übernimmt es ein Eigentümer in einen Arbeitsbereich, der noch Flowplans eigenes Aussehen hat; ein schon gewähltes Aussehen bleibt.
+
 ## Rollen
 
 | Rolle | Darf |
