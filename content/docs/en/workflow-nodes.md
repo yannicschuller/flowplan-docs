@@ -50,7 +50,7 @@ This list is generated from Flowplan's node catalogue; `GET /api/workflows/catal
 
 | Node | Type | What it does | Ports | Outputs |
 | --- | --- | --- | --- | --- |
-| Create page | `action.page.create` | Creates a page below a parent page. | out | `page` |
+| Create page | `action.page.create` | Creates a page below a parent page, from a page template if you like. The title (with placeholders) applies then as well; the template's name only when it comes out empty. | out | `page` |
 | Append to page | `action.page.append` | Adds blocks at the end, the start or below a heading. | out | `page`, `appended` |
 | Tag page | `action.page.tag` | Adds tags to a page or removes them. | out | `page` |
 | Move page | `action.page.move` | Moves a page below a new parent. | out | `page` |

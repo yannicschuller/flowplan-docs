@@ -50,7 +50,7 @@ Diese Liste wird aus dem Knotenkatalog von Flowplan erzeugt; die Einstellungen j
 
 | Knoten | Typ | Was er tut | Ausgänge | Ausgaben |
 | --- | --- | --- | --- | --- |
-| Seite anlegen | `action.page.create` | Legt eine Seite unter einer Elternseite an. | out | `page` |
+| Seite anlegen | `action.page.create` | Legt eine Seite unter einer Elternseite an, auf Wunsch aus einer Seitenvorlage. Der Titel (mit Platzhaltern) gilt auch dann; der Name der Vorlage nur, wenn er leer bleibt. | out | `page` |
 | An Seite anhängen | `action.page.append` | Fügt Blöcke am Ende, am Anfang oder unter einer Überschrift ein. | out | `page`, `appended` |
 | Seite taggen | `action.page.tag` | Fügt einer Seite Tags hinzu oder entfernt sie. | out | `page` |
 | Seite verschieben | `action.page.move` | Verschiebt eine Seite unter eine neue Elternseite. | out | `page` |

@@ -15,13 +15,15 @@ Templates are saved pages – documents, databases or whole page trees – from 
 | Personal | To-do list, reading list, habit tracker, travel planning |
 | Other | Contacts & customers, job applications, inventory, event planning |
 
-A click asks for a title and space and creates the page. Dates in the examples are set relative to today.
+A click opens the **New page** dialog with the template chosen. If you already typed a name there, it stays; otherwise the template's name is in the field – selected, so you simply type over it. **Enter** creates the page. Dates in the examples are set relative to today.
 
 The **Diagram page** is a full-width page with one empty [draw.io diagram](/documents#formulas-diagrams-and-code); draw.io opens as soon as the page is created (if the instance uses draw.io).
 
 As soon as there are [templates of your own](#your-own-templates), the category **My templates** comes right after **All**: it shows only the saved templates – your personal ones ("Only me"), the workspace's and those for all workspaces – without the built-in ones.
 
 If you open the gallery from the **New page** dialog, the page goes where you were creating it – in the chosen space and under the chosen page – with your own templates too. Closing the gallery takes you back to the dialog.
+
+The same goes for your own templates: **Use** leads to the **New page** dialog, where you give the page its own name before it is created. The template's name is only the suggestion.
 
 ## Your own templates
 
@@ -72,7 +74,7 @@ Existing text is never overwritten and filled properties stay; only empty proper
 
 ## Public template gallery
 
-Under `/templates`, the built-in templates and all templates with the visibility **Public gallery** are available even without an account, filtered by category, each with a preview. **Use in my workspace** takes the template over after signing in. Only administrators can add their own templates to the gallery.
+Under `/templates`, the built-in templates and all templates with the visibility **Public gallery** are available even without an account, filtered by category, each with a preview. **Use in my workspace** opens the **New page** dialog with the template after signing in – check or overwrite the name, then **Create page**. Only administrators can add their own templates to the gallery.
 
 ## Whiteboard templates
 

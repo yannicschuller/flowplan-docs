@@ -15,13 +15,15 @@ Vorlagen sind gespeicherte Seiten – Dokumente, Datenbanken oder ganze Seitenb�
 | Persönlich | Aufgabenliste, Leseliste, Gewohnheiten-Tracker, Reiseplanung |
 | Sonstiges | Kontakte & Kunden, Bewerbungen, Inventar, Eventplanung |
 
-Ein Klick fragt nach Titel und Bereich und legt die Seite an. Datumswerte der Beispiele werden relativ zum heutigen Tag gesetzt.
+Ein Klick öffnet den Dialog **Neue Seite** mit der gewählten Vorlage. Hast du dort schon einen Namen eingegeben, bleibt er stehen; sonst steht der Name der Vorlage im Feld – markiert, sodass du ihn einfach überschreibst. **Enter** legt die Seite an. Datumswerte der Beispiele werden relativ zum heutigen Tag gesetzt.
 
 Die **Diagramm-Seite** ist eine Seite in voller Breite mit einem leeren [draw.io-Diagramm](/documents#formeln-diagramme-und-code); draw.io öffnet sich, sobald die Seite angelegt ist (wenn die Instanz draw.io nutzt).
 
 Sobald es [eigene Vorlagen](#eigene-vorlagen) gibt, steht gleich nach **Alle** die Kategorie **Eigene Vorlagen**: Sie zeigt nur die gespeicherten Vorlagen – deine eigenen („Nur für mich“), die des Arbeitsbereichs und die für alle Arbeitsbereiche – ohne die eingebauten.
 
 Öffnest du die Galerie aus dem Dialog **Neue Seite**, landet die Seite dort, wo du sie anlegen wolltest – im gewählten Bereich und unter der gewählten Seite –, auch mit einer eigenen Vorlage. Schließt du die Galerie, bist du wieder im Dialog.
+
+Das gilt genauso für eigene Vorlagen: **Verwenden** führt in den Dialog **Neue Seite**, wo du der Seite einen eigenen Namen gibst, bevor sie entsteht. Der Name der Vorlage ist nur der Vorschlag.
 
 ## Eigene Vorlagen
 
@@ -72,7 +74,7 @@ Vorhandener Text wird nie überschrieben, ausgefüllte Eigenschaften bleiben; nu
 
 ## Öffentliche Vorlagengalerie
 
-Unter `/templates` stehen die eingebauten Vorlagen und alle Vorlagen mit der Sichtbarkeit **Öffentliche Galerie** auch ohne Konto bereit, nach Kategorien gefiltert, jeweils mit Vorschau. **In meinem Arbeitsbereich verwenden** übernimmt die Vorlage nach der Anmeldung. Nur Admins können eigene Vorlagen in die Galerie geben.
+Unter `/templates` stehen die eingebauten Vorlagen und alle Vorlagen mit der Sichtbarkeit **Öffentliche Galerie** auch ohne Konto bereit, nach Kategorien gefiltert, jeweils mit Vorschau. **In meinem Arbeitsbereich verwenden** öffnet nach der Anmeldung den Dialog **Neue Seite** mit der Vorlage – Name prüfen oder überschreiben, dann **Seite erstellen**. Nur Admins können eigene Vorlagen in die Galerie geben.
 
 ## Whiteboard-Vorlagen
 
