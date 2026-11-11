@@ -56,6 +56,7 @@ Links with their own permissions and [publications](#publish-on-the-web) can hav
 In the **Web** tab, the **Publish on the web** switch makes the page readable for everyone with the link. Then come the public link (**Copy** or open it) and the options:
 
 - **Also publish the current sub-pages**; **Add new sub-pages to the selection** brings in ones created later.
+- **Publish new sub-pages automatically** (only together with the sub-pages): pages that are later created under the published page, moved there, duplicated there or restored there – also by others and at any depth – are public without another step, with this publication's password, expiry, copy setting and look. If such a page is moved out again, it is no longer published. Never published automatically: pages you could not publish yourself (without your edit rights), journals with a PIN, workflow pages and pages of encrypted spaces. If you switch the option off, the sub-pages that joined until then stay published; new ones no longer join.
 - **Visitors may copy it into their workspace** – only what the publication shows.
 - Databases appear with their views – table, board, gallery, list, feed, calendar, timeline and chart (also with series and more values) –, records and record documents. A view is only published if all properties it needs are public. Person properties, relations, formulas, rollups and internal comments stay private.
 - Files linked in published pages are public; other uploads are not.
