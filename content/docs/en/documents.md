@@ -347,6 +347,10 @@ Links to pages and records stay valid even if they are renamed or moved. A link 
 
 A link to a page or record shows the target's icon in front of its text: its emoji, symbol or own picture – without one, the sign of its kind (document, database, whiteboard, record). When someone changes the icon, every link follows, just as the title does on a rename. This also applies in reading mode, comments, published pages, the hover preview, the `@` list, **Linked from**, **Related pages** and search. A link to a block keeps its paragraph mark unless the page has its own icon. For pages and records you may not read, the link shows only the general link sign. Printing includes the icons; Markdown exports contain only the link text.
 
+### Automatic links
+
+When an owner has set up [automatic links](/workspaces-and-permissions#automatic-links), matching text becomes a link as soon as you type a space, a punctuation mark or <kbd>Enter</kbd> after it, and also when you paste it – in pages, in documents of database records and in comments. It is an ordinary link: it stays when you collaborate, work offline or use the apps, and you edit or remove it like any other. <kbd>⌘</kbd> <kbd>Z</kbd> (<kbd>Ctrl</kbd> <kbd>Z</kbd>) right after takes back only the link; the text stays. Text that is already there does not change; nothing is linked in code, existing links, formulas, titles or database table cells.
+
 ## Links to blocks
 
 Every block can be linked: a paragraph, a heading, a list item, a table, an image, a diagram … The link is the page's address with the block, such as `https://flowplan.example.org/#page=…&block=k3x9a2b1` (records add `&row=…`), and works anywhere in the same workspace.

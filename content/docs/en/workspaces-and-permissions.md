@@ -25,6 +25,19 @@ Custom CSS is deliberately not possible: CSS could quietly send content elsewher
 
 The look and the uploaded fonts are part of the workspace's [content archive](/import-export-versions#content-archive). On import, an owner takes it over into a workspace that still has Flowplan's own look; a look that was already chosen stays.
 
+## Automatic links
+
+Owners set up rules under **Settings → Workspace → Automatic links** that turn text like `ABC-123` into a link while you write – to the ticket in Jira or the issue on GitHub, for example. The rules apply to every member and guest of the workspace. Each rule has an optional name, a **pattern** (a regular expression, at most 200 characters), a **link template** and a switch to turn it off and on; up to 50 rules are possible.
+
+In the template, `{match}` stands for the whole match, `$1` to `$9` (or `{1}` to `{9}`) for the groups in parentheses. The values are inserted URL-encoded, and the template must start with `https://`, `http://` or `mailto:`. Examples:
+
+| Pattern | Link template | Text | becomes |
+| --- | --- | --- | --- |
+| `\bABC-\d+\b` | `https://jira.example.com/browse/{match}` | ABC-123 | https://jira.example.com/browse/ABC-123 |
+| `#(\d+)` | `https://github.com/acme/app/issues/$1` | #42 | https://github.com/acme/app/issues/42 |
+
+Under **Try it** you enter a sample text and see right away which parts become which link. Invalid patterns, patterns that match empty text, nested repeats like `(a+)+` (they can slow the browser down) and templates without a valid address are marked and not saved.
+
 ## Roles
 
 | Role | May |

@@ -347,6 +347,10 @@ Links auf Seiten und Einträge bleiben gültig, auch wenn sie umbenannt oder ver
 
 Ein Link auf eine Seite oder einen Eintrag zeigt vor dem Text das Icon des Ziels: sein Emoji, sein Symbol oder sein eigenes Bild – ohne eigenes Icon das Zeichen seiner Art (Dokument, Datenbank, Whiteboard, Eintrag). Ändert jemand das Icon, ändert es sich in allen Links mit, wie der Titel beim Umbenennen. Das gilt auch im Lesemodus, in Kommentaren, auf veröffentlichten Seiten, in der Vorschau beim Darüberfahren, in der `@`-Liste, unter **Verlinkt von**, bei **Verwandte Seiten** und in der Suche. Ein Link auf einen Block behält sein Absatzzeichen, solange die Seite kein eigenes Icon hat. Für Seiten und Einträge, die du nicht lesen darfst, zeigt der Link nur das allgemeine Link-Zeichen. Beim Drucken erscheinen die Icons mit; Markdown-Exporte enthalten nur den Linktext.
 
+### Automatische Links
+
+Hat ein Eigentümer [automatische Links](/workspaces-and-permissions#automatische-links) eingerichtet, wird passender Text zum Link, sobald du danach ein Leerzeichen, ein Satzzeichen oder <kbd>Enter</kbd> tippst, und ebenso beim Einfügen – in Seiten, in Dokumenten von Datenbankeinträgen und in Kommentaren. Es ist ein gewöhnlicher Link: Er bleibt beim Zusammenarbeiten, offline und in den Apps erhalten und lässt sich wie jeder andere bearbeiten oder entfernen. <kbd>⌘</kbd> <kbd>Z</kbd> (<kbd>Strg</kbd> <kbd>Z</kbd>) direkt danach nimmt nur den Link zurück, der Text bleibt. Text, der schon dasteht, ändert sich nicht; in Code, vorhandenen Links, Formeln, Titeln und Tabellenzellen von Datenbanken wird nichts verlinkt.
+
 ## Links auf Blöcke
 
 Jeder Block lässt sich verlinken: ein Absatz, eine Überschrift, ein Listenpunkt, eine Tabelle, ein Bild, ein Diagramm … Der Link ist die Adresse der Seite mit dem Block, etwa `https://flowplan.example.org/#page=…&block=k3x9a2b1` (bei Einträgen mit `&row=…`), und funktioniert überall im selben Arbeitsbereich.
