@@ -61,6 +61,7 @@ The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kb
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>0</kbd> | Back to normal text |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>E</kbd> | Centre the text |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd> | Copy the [link to the block](/documents#links-to-blocks) with the cursor |
+| <kbd>⌘</kbd> <kbd>L</kbd> | Turn the line into a [task](/documents#task-status), then change its status: open → in progress → done → open (as in Obsidian; several selected lines change together) |
 | <kbd>⌘</kbd> <kbd>.</kbd> / <kbd>⌘</kbd> <kbd>,</kbd> | Superscript / subscript |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>8</kbd> / <kbd>7</kbd> / <kbd>9</kbd> | Bulleted list, numbered list, task list |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>B</kbd> | Quote |

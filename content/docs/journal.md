@@ -9,7 +9,7 @@ Ein Journal ist eine Seite mit einer Unterseite pro Tag. Morgens liegt die heuti
 ## Wie ein Tag entsteht
 
 - Beim ersten Öffnen eines neuen Tages legt Flowplan dessen Seite an. Der Tag beginnt um Mitternacht in deiner Zeitzone.
-- **Offene Aufgaben** vom letzten Tag ziehen um – samt verschachtelter Unteraufgaben. Ein kleines ↻ an der Ecke des Kästchens zeigt, dass eine Aufgabe von einem früheren Tag übernommen wurde.
+- **Offene Aufgaben** vom letzten Tag ziehen um – samt verschachtelter Unteraufgaben. Dazu zählen auch Aufgaben **in Arbeit** `[/]`, **verschobene** `[>]` und solche mit einem anderen Obsidian-Symbol wie `[?]`; erledigte und **abgebrochene** `[-]` bleiben auf ihrem Tag, ebenso leere Aufgaben ohne Text. Ein kleines ↻ an der Ecke des Kästchens zeigt, dass eine Aufgabe von einem früheren Tag übernommen wurde.
 - Erledigte Aufgaben und der übrige Text bleiben auf ihrem Tag.
 - **Leere Tage verschwinden**: Hat ein Tag außer übernommenen Aufgaben nichts Eigenes bekommen, wird er beim nächsten Tag wieder entfernt. Das Journal enthält so nur Tage, an denen etwas passiert ist.
 

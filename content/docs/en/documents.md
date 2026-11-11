@@ -163,6 +163,17 @@ A task (`/todo` or `[]` + space) with a mention such as `@Anna` is assigned to A
 
 **My tasks** collects all tasks given to you, your own tasks with a date and all tasks from your journals (even without @name and without a date) – grouped into Overdue, Today, Next 7 days, Later and No date. Below, **From other workspaces** lists your tasks from your other workspaces, per workspace; clicking the page switches there. Ticking off and changing the date take effect right in the document, also for others who have it open. On the due date a reminder arrives in the morning; the number next to "My tasks" shows how many are due today or overdue.
 
+## Task status
+
+A task has one of five statuses, as in Obsidian: **Open** `[ ]`, **In progress** `[/]` (a half-filled box), **Done** `[x]`, **Cancelled** `[-]` (a grey box with ×, struck through) and **Deferred** `[>]` (a box with →).
+
+- Clicking the box ticks the task off or opens it again, as before; a task **in progress** is done with one click.
+- **Right-click** the box (on tablets and phones: **long-press** it) to open a small menu with all five statuses.
+- <kbd>⌘</kbd>/<kbd>Ctrl</kbd>+<kbd>L</kbd> turns the line with the cursor into a task; on a task it changes the status: open → in progress → done → open. Cancelled and deferred tasks become open again. With several lines selected, all of them get the next status of the first one. In a bulleted or numbered list only that line becomes a task; the list is split there.
+- **In progress** and **Deferred** count as open: they are listed under **My tasks** (with their status) and in the app's widgets, get the reminder on their due date and move on to the next day in a journal. **Cancelled** counts as closed but not as done: the task leaves "My tasks", does not move to the next day and is not listed among the completed tasks in the journal review.
+- Ticking off a task in progress under **My tasks** or in a widget makes it done.
+- Older app and desktop versions show the statuses as ticked (done, cancelled) or open (all others).
+
 ## Markdown shortcuts
 
 While you type, the editor converts:

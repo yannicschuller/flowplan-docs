@@ -9,7 +9,7 @@ A journal is a page with one sub-page per day. In the morning today's page is re
 ## How a day comes about
 
 - When a new day is opened for the first time, Flowplan creates its page. The day starts at midnight in your time zone.
-- **Open tasks** from the last day move over – including nested sub-tasks. A small ↻ at the corner of the checkbox shows that a task was carried over from an earlier day.
+- **Open tasks** from the last day move over – including nested sub-tasks. This includes tasks **in progress** `[/]`, **deferred** ones `[>]` and those with another Obsidian symbol such as `[?]`; done and **cancelled** `[-]` tasks stay on their day, as do empty tasks without text. A small ↻ at the corner of the checkbox shows that a task was carried over from an earlier day.
 - Completed tasks and the rest of the text stay on their day.
 - **Empty days disappear**: if a day got nothing of its own besides carried-over tasks, it is removed again on the next day. This way the journal only contains days on which something happened.
 

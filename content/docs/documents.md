@@ -163,6 +163,17 @@ Eine Aufgabe (`/todo` oder `[]` + Leerzeichen) mit einer Erwähnung wie `@Anna` 
 
 **Meine Aufgaben** sammelt alle Aufgaben, die dir gegeben wurden, deine eigenen Aufgaben mit Datum und alle Aufgaben aus deinen Journalen (auch ohne @Name und ohne Datum) – gruppiert nach Überfällig, Heute, Nächste 7 Tage, Später und Ohne Datum. Darunter folgen unter **Aus anderen Arbeitsbereichen** deine Aufgaben aus den übrigen Arbeitsbereichen, je Arbeitsbereich; ein Klick auf die Seite wechselt dorthin. Abhaken und Datum ändern wirkt direkt im Dokument, auch bei anderen, die es gerade geöffnet haben. Am Fälligkeitstag kommt morgens eine Erinnerung; die Zahl neben „Meine Aufgaben“ zeigt, wie viele heute fällig oder überfällig sind.
 
+## Status einer Aufgabe
+
+Eine Aufgabe hat einen von fünf Status, wie in Obsidian: **Offen** `[ ]`, **In Arbeit** `[/]` (halb gefülltes Kästchen), **Erledigt** `[x]`, **Abgebrochen** `[-]` (graues Kästchen mit ×, durchgestrichen) und **Verschoben** `[>]` (Kästchen mit →).
+
+- Ein Klick auf das Kästchen hakt die Aufgabe wie bisher ab oder öffnet sie wieder; eine Aufgabe **in Arbeit** wird mit einem Klick erledigt.
+- **Rechtsklick** auf das Kästchen (auf Tablet und Handy: **lange drücken**) öffnet ein kleines Menü mit allen fünf Status.
+- <kbd>⌘</kbd>/<kbd>Strg</kbd>+<kbd>L</kbd> macht aus der Zeile mit dem Cursor eine Aufgabe; auf einer Aufgabe wechselt es den Status: offen → in Arbeit → erledigt → offen. Abgebrochene und verschobene Aufgaben werden wieder offen. Sind mehrere Zeilen markiert, bekommen alle den nächsten Status der ersten. In einer Aufzählung oder nummerierten Liste wird nur die Zeile zur Aufgabe; die Liste wird dort geteilt.
+- **In Arbeit** und **Verschoben** zählen als offen: Sie stehen unter **Meine Aufgaben** (mit ihrem Status), in den Widgets der App, bekommen die Erinnerung am Fälligkeitstag und ziehen im Journal auf den nächsten Tag um. **Abgebrochen** zählt als abgeschlossen, aber nicht als erledigt: Die Aufgabe verschwindet aus „Meine Aufgaben“, zieht nicht um und erscheint im Rückblick des Journals nicht bei den erledigten Aufgaben.
+- Abhaken unter **Meine Aufgaben** oder in einem Widget macht eine Aufgabe in Arbeit zu einer erledigten.
+- Ältere Apps und Desktop-Versionen zeigen die Status als abgehakt (erledigt, abgebrochen) oder offen (alle anderen).
+
 ## Markdown-Kürzel
 
 Beim Tippen wandelt der Editor um:
