@@ -1,6 +1,6 @@
 # Sharing and publishing
 
-**Share** at the top right of every page opens **Share page**. A line at the top sums up how the page is shared right now – space, people, links and whether it is published. Below, three tabs handle one thing each: **People** (who in the workspace may access it), **Links** (named links for outsiders; only for those who may do more than read) and **Web** (publishing). Longer explanations sit behind the small **(i)**. At the bottom, **Copy link to page** copies the page's address for everyone with access, and **Done** closes the dialog.
+**Share** at the top right of every page (on a phone at the top of the `⋯` menu) opens **Share page**. A line at the top sums up how the page is shared right now – space, people, links and whether it is published. Below, three tabs handle one thing each: **People** (who in the workspace may access it), **Links** (named links for outsiders; only for those who may do more than read) and **Web** (publishing). Longer explanations sit behind the small **(i)**. At the bottom, **Copy link to page** copies the page's address for everyone with access, and **Done** closes the dialog.
 
 ## Access in the workspace
 

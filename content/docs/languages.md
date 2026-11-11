@@ -4,7 +4,7 @@ Flowplan gibt es in {{facts.languages|word}} Sprachen: **Deutsch, Englisch, Fran
 
 ## Sprache wählen
 
-Flowplan folgt der Sprache deines Browsers; Sprachen, die Flowplan nicht kennt, zeigen Englisch. Unter **Einstellungen → Darstellung & Sprache → Sprache** wählst du aus der Liste eine Sprache (mit Flagge) – sie gilt dann auf allen Geräten, auch für E-Mails und Push-Hinweise; **Automatisch (folgt dem Browser)** nimmt die Festlegung zurück und wählt für Browser auf amerikanischem Englisch (`en-US`) English (US), für andere englische Browser Englisch. Auf der Anmeldeseite öffnet der kleine Knopf unten rechts (z. B. **🇩🇪 DE**) ein Menü mit allen Sprachen.
+Flowplan folgt der Sprache deines Browsers; Sprachen, die Flowplan nicht kennt, zeigen Englisch. Unter **Einstellungen → Darstellung & Sprache → Sprache** wählst du aus der Liste eine Sprache (mit Flagge) – sie gilt dann auf allen Geräten, auch für E-Mails und Push-Hinweise; **Automatisch (folgt dem Browser)** nimmt die Festlegung zurück und wählt für Browser auf amerikanischem Englisch (`en-US`) English (US), für andere englische Browser Englisch. Auf der Anmeldeseite öffnet der kleine Knopf in der Fußzeile (z. B. **🇩🇪 DE**) ein Menü mit allen Sprachen.
 
 Datum, Uhrzeit und Zahlen folgen der Sprache (Französisch: `fr-FR`, z. B. „15 oct. 2026“ und „2 400,5“; Chinesisch: `zh-CN`, z. B. „2026年10月15日“). Beim Rechnen in Notizen gilt das Dezimalkomma auch für Französisch. Kalender beginnen die Woche in English (US) am Sonntag, in allen anderen Sprachen am Montag – sofern die Ansicht keinen eigenen Wochenbeginn hat.
 

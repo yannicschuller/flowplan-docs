@@ -192,7 +192,7 @@ Die Aktualisierungs-Tokens der Personen liegen versiegelt in der Datenbank (wie 
 
 | Variable | Standard | Bedeutung |
 | --- | --- | --- |
-| `IMPRINT_URL` | *leer* | Link zum Impressum, z. B. `https://example.com/impressum`. Erscheint auf der Anmeldeseite, unter geteilten Seiten und Formularen und im Kontomenü – nur, wenn gesetzt. |
+| `IMPRINT_URL` | *leer* | Link zum Impressum, z. B. `https://example.com/impressum`. Erscheint auf der Anmeldeseite, unter geteilten Seiten und Formularen und im Kontomenü (auf dem Telefon unter **Mehr** in der Seitenleiste) – nur, wenn gesetzt. |
 | `PRIVACY_URL` | *leer* | Link zur Datenschutzerklärung, an denselben Stellen und ebenfalls nur, wenn gesetzt. |
 | `FLOWPLAN_SOURCE_URL` | GitHub-Repository von Flowplan | Adresse des Quellcodes, der auf dieser Instanz läuft (http oder https). Die AGPL-3.0 verlangt: Wer eine **veränderte** Fassung für andere betreibt, bietet ihnen deren Quellcode an (§ 13). Gesetzt, verlinken **Einstellungen → Über Flowplan** und die Anmeldeseite (Fußzeile „Quellcode“) diese Adresse statt `github.com/yannicschuller/flowplan`; der Commit ist dann nicht mehr auf GitHub verlinkt. |
 | `DRAWIO_URL` | `https://embed.diagrams.net` | Adresse des draw.io-Editors für den Block `/drawio`, z. B. ein eigener Container `jgraph/drawio`. Nur https (http nur für `localhost`); ein ungültiger Wert schaltet draw.io aus. Beim Ansehen wird draw.io nie geladen. |

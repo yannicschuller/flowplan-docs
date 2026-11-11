@@ -97,7 +97,7 @@ Der **Posteingang** sammelt:
 - Datums-Erinnerungen,
 - Kommentare und Einträge von Gästen über Freigabelinks,
 - mit dir geteilte Seiten und Arbeitsbereiche,
-- Änderungen an Seiten, denen du folgst (eigene Seiten folgst du beim Anlegen automatisch; die Glocke oben rechts schaltet das Folgen um),
+- Änderungen an Seiten, denen du folgst (eigene Seiten folgst du beim Anlegen automatisch; die Glocke oben rechts schaltet das Folgen um, auf dem Telefon **Folgen** im Menü `⋯`),
 - Meldungen aus Automationen.
 
 ### Wer von Kommentaren erfährt

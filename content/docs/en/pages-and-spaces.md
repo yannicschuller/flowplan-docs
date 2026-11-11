@@ -39,13 +39,15 @@ The `…` menu at the top right of every page offers:
 | Version history | Compare and restore earlier states. |
 | Move to trash | Removes the page with its sub-pages; restorable. |
 
+**On a phone** a page's top bar holds only ☰ (sidebar), the title – fully readable, long titles wrap – and `⋯`. **Follow** (bell), **Favourite** (star) and **Share** sit at the top of the `⋯` menu with their state, **Reading mode** below them. The comments button shows in the bar only when the page has open comments, with their count; otherwise **Comments** is in the menu. The cloud for the saving state appears only when there is something to report: offline, while changes are on their way, or after an error.
+
 ### Right-click in the sidebar
 
 Right-clicking a page in the page tree or under favourites – a long press on a phone – opens its actions directly: **Open in new tab**, **Open in split view**, **Copy link**, **Add to favourites**, **Share**, **Add sub-page**, **Change icon**, **Duplicate**, **Move**, **Export**, **Lock page** and **Move to trash**. Actions with a dialog open the page first.
 
 ### Filter pages
 
-The **Filter pages** field above the page tree hides everything that does not match; parent pages of the hits stay visible and expanded. <kbd>Esc</kbd> clears the filter. Templates, media, tags, graph, trash, settings, help and administration sit as a toolbar at the bottom of the sidebar. On a phone they are gathered behind **More** next to your name: a tap opens a list of all of them with labels, and the page tree keeps its height.
+The **Filter pages** field above the page tree hides everything that does not match; parent pages of the hits stay visible and expanded. <kbd>Esc</kbd> clears the filter. Templates, media, tags, graph, trash, settings, help and administration sit as a toolbar at the bottom of the sidebar. On a phone they are gathered behind **More** next to your name – the only button in that row, so your name and the connection status stay fully readable: a tap opens a list of all of them with labels, and the page tree keeps its height. Below a line it also holds what the account menu **⋯** offers on a computer: light or dark theme, **About Flowplan**, **Legal notice** and **Privacy** (when the instance has set them up) and, last and set apart, **Sign out**.
 
 ## Split view
 
@@ -178,7 +180,7 @@ Duplicating keeps tags and values (into another space or workspace by name: the 
 
 ## Favourites and "Linked from"
 
-The star in the header puts a page under **Favourites** in the sidebar – personal, others do not see your favourites. At the bottom of every page, **Linked from** shows which pages and database records refer to it.
+The star in the header (on a phone **Favourite** in the `⋯` menu) puts a page under **Favourites** in the sidebar – personal, others do not see your favourites. At the bottom of every page, **Linked from** shows which pages and database records refer to it.
 
 ## Manage spaces
 
@@ -226,6 +228,7 @@ Flowplan remembers what you expanded and collapsed – in your account, per work
 
 Deleted pages and spaces end up in the **Trash** at the bottom of the sidebar, deleted [database records](/databases) below them under **Deleted records**. Files deleted from [Media](/documents#deleting-media) are listed under **Deleted files**. There they can be restored or deleted permanently. Publications, share links and forms are switched off when deleting and are not switched on again automatically when restoring.
 
+- **Restore** brings a page back with the sub-pages that were deleted together with it. Sub-pages that were already in the trash before stay there – with their own retention period.
 - **Delete permanently** next to a page deletes it together with its sub-pages in the trash. The dialog names the page and how many sub-pages go with it. You need the same right as for deleting it: editing the page. Sub-pages you may not edit stay in the trash on their own.
 - **Empty trash** deletes everything in the trash you may delete: pages you may edit, spaces you manage and deleted records you may edit. The dialog shows the counts first. Pages from other people's private spaces and pages you can only read are left untouched.
 - Deleted permanently are the page with its content, versions, comments and inline comments, for databases the properties, views and records, plus uploaded files, favorites, publications, share links, notifications and search results. Links from other pages then point to a deleted page. This cannot be undone; a [backup](/storage-and-backups) is the only way back.

@@ -25,7 +25,7 @@ Below are **Your templates**: saved database templates, such as your own "Notes 
 - An open record has its own address (`/#page=<database>&row=<record>`) – whether it opens as a dialog, in the side panel or as a full page. It can be shared, bookmarked or linked in texts with `@`. Below the properties, **Linked from** shows which records refer to it through a relation and which pages and records link to it in their text.
 - **Record templates** give new records properties and content. One template can be the default for new records.
 - Select several records (checkboxes on the left) and edit, duplicate or delete them together – up to 500 at once. Flowplan saves a state beforehand that can be restored from the version history.
-- Deleted records sit in the database's trash and can be brought back. Right after deleting it is quicker: **Undo** in the notice at the bottom (or <kbd>⌘</kbd> <kbd>Z</kbd> while it shows). A bulk edit of several records, a record dragged into another column, a removed date and a deleted property can be taken back the same way.
+- Deleted records sit in the database's trash and can be brought back – with their versions, the comments visitors left through a share link and the reactions on comments. This also works when a record linked two-way has been deleted meanwhile; only that link is dropped. Right after deleting it is quicker: **Undo** in the notice at the bottom (or <kbd>⌘</kbd> <kbd>Z</kbd> while it shows). A bulk edit of several records, a record dragged into another column, a removed date and a deleted property can be taken back the same way.
 
 ### Move a page into a database
 
@@ -131,7 +131,7 @@ Every view has its own settings:
 
 - **Filters** with AND/OR groups; for date fields also relative periods ("this week", "last 30 days") that update themselves every day.
 - **Dates and time zone:** on **Created at**, **Edited at** and date fields with a time, *is*, *is not*, *before*, *after*, *on or before*, *on or after* and *is between* count the day the moment falls on in the filter's time zone – a record from 11:30 pm belongs to that day, not the next. The default is your browser's time zone; it shows in the filter and can be changed there, as for relative periods. Dates without a time stay calendar days. Older filters keep using the UTC day until you edit them. The same goes for conditions in automations.
-- **Sorting** by several properties.
+- **Sorting** by several properties. People, **Created by**, **Edited by** and sprints sort by name, relations by the title of the linked record – the way the table shows them.
 - **Grouping** by almost any property (except files and checklists), with up to five levels in tables and lists; boards show the second level as rows (swimlanes).
 - **Search** within the database, also in the text of the record documents.
 - **Column calculations** below table columns: sum, average, median, minimum, maximum, percentages, earliest and latest dates and more.

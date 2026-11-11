@@ -97,7 +97,7 @@ Jede Antwort ist ein Eintrag in der Datenbank. Jede Frage ist eine Eigenschaft, 
 - je Frage Anzahl und Anteil jeder Antwort,
 - Durchschnitt, Minimum und Maximum,
 - den NPS-Wert mit Promotoren, Passiven und Kritikern,
-- Matrix-Tabellen, durchschnittliche Plätze der Rangfolge und die neuesten Textantworten.
+- Matrix-Tabellen, durchschnittliche Plätze der Rangfolge (Optionen, die noch niemand eingeordnet hat, stehen mit „–“ am Ende) und die neuesten Textantworten.
 
 > [!NOTE]
 > Benennst du eine Frage um, behält sie ihre Antworten. Wechselst du den Typ so, dass sich die gespeicherte Art ändert (z. B. von Text zu Zahl), entsteht eine neue Eigenschaft – die bisherigen Antworten bleiben in der alten.

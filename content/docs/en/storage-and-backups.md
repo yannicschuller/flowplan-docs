@@ -277,6 +277,7 @@ What happens:
 
 - The repository gets the [Markdown export of the space](/import-export-versions) – every top-level page in a folder of its own (`<title>-<id>/`), plus `index.md` and `README.txt`. Other files in the repository (such as `LICENSE` or CI files) stay untouched.
 - One commit per run, and only when something changed; pages no longer in the space are deleted in the same commit.
+- Attachments above 10 MB go along, as in the Markdown export.
 - The export reads with the owner's permissions: private records of others and journals with a PIN stay out.
 - Export only: Flowplan does not take over changes made in the repository.
 - The settings show the last run (commit, files changed, error) and when the next one is due. A failed run is retried after an hour.

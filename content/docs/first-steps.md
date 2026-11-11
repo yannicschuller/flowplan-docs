@@ -4,7 +4,7 @@ Vom ersten Anmelden bis zur ersten eigenen Seite: was du in den ersten zehn Minu
 
 ## Anmelden oder registrieren
 
-Du meldest dich mit E-Mail und Passwort an, mit einem Passkey (Fingerabdruck, Gesicht oder Geräte-PIN) oder – wenn deine Organisation das eingerichtet hat – über **Mit SSO anmelden** beim Login deiner Organisation (OpenID Connect, etwa Keycloak, Authentik, Zitadel oder Entra ID). Ein Konto legst du mit **Konto erstellen** an, sofern die Instanz die Registrierung erlaubt oder du eingeladen wurdest. Passkeys richtest du danach unter **Einstellungen → Konto & Sicherheit** ein. Alles Weitere unter [Anmeldung](/sign-in).
+Du meldest dich mit E-Mail und Passwort an, mit einem Passkey (Fingerabdruck, Gesicht oder Geräte-PIN) oder – wenn deine Organisation das eingerichtet hat – über **Mit SSO anmelden** beim Login deiner Organisation (OpenID Connect, etwa Keycloak, Authentik, Zitadel oder Entra ID). Den Weg, den du auf diesem Gerät zuletzt benutzt hast, bietet die Anmeldeseite als großen Knopf an; das Formular öffnet **Mit E-Mail und Passwort**. Ein Konto legst du mit **Konto erstellen** an, sofern die Instanz die Registrierung erlaubt oder du eingeladen wurdest. Passkeys richtest du danach unter **Einstellungen → Konto & Sicherheit** ein. Alles Weitere unter [Anmeldung](/sign-in).
 
 Auf einer ganz neuen Instanz legst du das erste Konto an – es verwaltet die Instanz. Ziehst du um oder installierst neu, wählst du dort stattdessen **Aus Sicherung wiederherstellen** ([Beim Einrichten wiederherstellen](/storage-and-backups#beim-einrichten-wiederherstellen)).
 
@@ -97,7 +97,7 @@ Fragen, Ideen oder einfach Hallo sagen: Im **[Flowplan-Discord](https://discord.
 
 ### Über Flowplan
 
-**Einstellungen → Hilfe & Info → Über Flowplan** (`/#settings/about`, auch im Kontomenü ⋯ unten in der Seitenleiste und mit `⌘/Strg + K` → „Über Flowplan“) zeigt:
+**Einstellungen → Hilfe & Info → Über Flowplan** (`/#settings/about`, auch im Kontomenü ⋯ unten in der Seitenleiste – auf dem Telefon unter **Mehr** – und mit `⌘/Strg + K` → „Über Flowplan“) zeigt:
 
 - **Version:** die laufende Version, den Commit und das Build-Datum, bei unseren Docker-Images auch, ob es eine **Beta** (`:beta`) oder ein **Release** ist. Admins sehen hier zusätzlich, wenn eine neuere Version bekannt ist. Bei einer Fehlermeldung die Version am besten mit angeben.
 - **Lizenz & Quellcode:** Flowplan ist freie Software unter der GNU AGPL-3.0 – mit Link zum Lizenztext und zum Quellcode des Codes, der auf dieser Instanz läuft.

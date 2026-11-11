@@ -32,7 +32,7 @@ Der Stift-Knopf **Vorschlagen** in der Werkzeugleiste schaltet den Vorschlagsmod
 
 ## Seiten folgen
 
-Die Glocke oben auf einer Seite schaltet **Folgen** ein oder aus. Wer einer Seite folgt, bekommt eine Benachrichtigung, sobald jemand anderes sie ändert – eine pro Seite, bis du sie wieder angesehen hast – und bei jedem neuen Kommentar darauf (bei einer Datenbank: auch zu ihren Einträgen). Mit E-Mail-Versand landet sie in der E-Mail-Zusammenfassung. Wer eine Seite anlegt, folgt ihr automatisch. Unter **Einstellungen → Benachrichtigungen** lässt sich die Art „Änderungen an Seiten, denen du folgst“ für Posteingang, Push und E-Mail einzeln abschalten.
+Die Glocke oben auf einer Seite (auf dem Telefon **Folgen** oben im Menü `⋯`) schaltet **Folgen** ein oder aus. Wer einer Seite folgt, bekommt eine Benachrichtigung, sobald jemand anderes sie ändert – eine pro Seite, bis du sie wieder angesehen hast – und bei jedem neuen Kommentar darauf (bei einer Datenbank: auch zu ihren Einträgen). Mit E-Mail-Versand landet sie in der E-Mail-Zusammenfassung. Wer eine Seite anlegt, folgt ihr automatisch. Unter **Einstellungen → Benachrichtigungen** lässt sich die Art „Änderungen an Seiten, denen du folgst“ für Posteingang, Push und E-Mail einzeln abschalten.
 
 ## Wer hat die Seite gesehen?
 
@@ -46,7 +46,7 @@ Die Startseite listet unter **Zuletzt angesehen** die Seiten, die du zuletzt ge�
 
 ## Seitenkommentare
 
-Das Sprechblasen-Symbol in der Kopfzeile öffnet die Kommentare der Seite; Kommentare an Datenbankeinträgen stehen unter dem Eintrag. <kbd>⌘</kbd> <kbd>Enter</kbd> sendet. Seiten- und Eintragskommentare sind reiner Text. `@` mit dem vollen Namen oder der E-Mail-Adresse eines Mitglieds – etwa `@Anna Berg` – erwähnt die Person: Sie bekommt eine Benachrichtigung, sofern sie die Seite und den Eintrag sehen darf.
+Das Sprechblasen-Symbol in der Kopfzeile öffnet die Kommentare der Seite (auf dem Telefon steht es dort nur bei offenen Kommentaren, mit ihrer Anzahl, sonst **Kommentare** im Menü `⋯`); Kommentare an Datenbankeinträgen stehen unter dem Eintrag. <kbd>⌘</kbd> <kbd>Enter</kbd> sendet. Seiten- und Eintragskommentare sind reiner Text. `@` mit dem vollen Namen oder der E-Mail-Adresse eines Mitglieds – etwa `@Anna Berg` – erwähnt die Person: Sie bekommt eine Benachrichtigung, sofern sie die Seite und den Eintrag sehen darf.
 
 ## Textkommentare
 

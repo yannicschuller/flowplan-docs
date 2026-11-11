@@ -97,7 +97,7 @@ Every answer is a record of the database. Each question is a property, a matrix 
 - per question the count and share of every answer,
 - averages, minimum and maximum,
 - the NPS score with promoters, passives and detractors,
-- matrix tables, the average places of rankings and the latest text answers.
+- matrix tables, the average places of rankings (options nobody has ranked yet show “–” and come last) and the latest text answers.
 
 > [!NOTE]
 > Renaming a question keeps its answers. Changing the type so that the stored kind changes (e.g. from text to number) creates a new property – earlier answers stay in the old one.

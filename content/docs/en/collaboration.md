@@ -32,7 +32,7 @@ The pen button **Suggest** in the toolbar turns on suggestion mode. Typing then 
 
 ## Follow pages
 
-The bell at the top of a page turns **Follow** on or off. Whoever follows a page gets a notification as soon as someone else changes it – one per page, until you have looked at it again – and for every new comment on it (for a database: also on its records). With e-mail set up, it lands in the e-mail digest. Whoever creates a page follows it automatically. Under **Settings → Notifications**, the kind "Changes to pages you follow" can be switched off for inbox, push and e-mail separately.
+The bell at the top of a page (on a phone **Follow** at the top of the `⋯` menu) turns **Follow** on or off. Whoever follows a page gets a notification as soon as someone else changes it – one per page, until you have looked at it again – and for every new comment on it (for a database: also on its records). With e-mail set up, it lands in the e-mail digest. Whoever creates a page follows it automatically. Under **Settings → Notifications**, the kind "Changes to pages you follow" can be switched off for inbox, push and e-mail separately.
 
 ## Who has seen the page?
 
@@ -46,7 +46,7 @@ On the home screen, **Recently viewed** lists the pages you opened last.
 
 ## Page comments
 
-The speech bubble icon in the header opens the page's comments; comments on database records sit below the record. <kbd>⌘</kbd> <kbd>Enter</kbd> sends. Page and record comments are plain text. `@` followed by a member's full name or e-mail address – say `@Anna Berg` – mentions the person: they get a notification, provided they may see the page and the record.
+The speech bubble icon in the header opens the page's comments (on a phone it shows there only when there are open comments, with their count, otherwise **Comments** is in the `⋯` menu); comments on database records sit below the record. <kbd>⌘</kbd> <kbd>Enter</kbd> sends. Page and record comments are plain text. `@` followed by a member's full name or e-mail address – say `@Anna Berg` – mentions the person: they get a notification, provided they may see the page and the record.
 
 ## Text comments
 

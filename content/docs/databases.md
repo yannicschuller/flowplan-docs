@@ -25,7 +25,7 @@ Darunter stehen **Deine Vorlagen**: gespeicherte Datenbank-Vorlagen, etwa eine e
 - Ein geöffneter Eintrag hat seine eigene Adresse (`/#page=<Datenbank>&row=<Eintrag>`) – egal ob als Dialog, in der Seitenleiste oder als ganze Seite. Sie lässt sich teilen, als Lesezeichen speichern oder per `@` in Texten verlinken. Unter den Eigenschaften zeigt **Verknüpft von**, welche Einträge per Relation und welche Seiten und Einträge per Link im Text auf ihn verweisen.
 - **Datensatzvorlagen** geben neuen Einträgen Eigenschaften und Inhalt vor. Eine Vorlage kann Standard für neue Einträge sein.
 - Mehrere Einträge auswählen (Kästchen links) und gemeinsam bearbeiten, duplizieren oder löschen – bis zu 500 auf einmal. Vorher sichert Flowplan einen Stand, der sich über den Versionsverlauf wiederherstellen lässt.
-- Gelöschte Einträge liegen im Papierkorb der Datenbank und lassen sich zurückholen. Gleich nach dem Löschen geht das schneller: **Rückgängig** im Hinweis unten (oder <kbd>⌘</kbd> <kbd>Z</kbd>, solange er sichtbar ist). Ebenso lassen sich eine gemeinsame Bearbeitung mehrerer Einträge, ein in eine andere Spalte gezogener Eintrag, ein entferntes Datum und eine gelöschte Eigenschaft zurücknehmen.
+- Gelöschte Einträge liegen im Papierkorb der Datenbank und lassen sich zurückholen – mit ihren Versionen, den Kommentaren von Besuchern über einen Freigabelink und den Reaktionen auf Kommentare. Wurde ein beidseitig verknüpfter Eintrag inzwischen gelöscht, klappt das trotzdem; nur diese Verknüpfung fällt weg. Gleich nach dem Löschen geht das schneller: **Rückgängig** im Hinweis unten (oder <kbd>⌘</kbd> <kbd>Z</kbd>, solange er sichtbar ist). Ebenso lassen sich eine gemeinsame Bearbeitung mehrerer Einträge, ein in eine andere Spalte gezogener Eintrag, ein entferntes Datum und eine gelöschte Eigenschaft zurücknehmen.
 
 ### Seite in eine Datenbank verschieben
 
@@ -131,7 +131,7 @@ Jede Ansicht hat eigene Einstellungen:
 
 - **Filter** mit UND/ODER-Gruppen, für Datumsfelder auch relative Zeiträume („diese Woche“, „letzte 30 Tage“), die sich täglich selbst aktualisieren.
 - **Datum und Zeitzone:** Bei **Erstellt am**, **Bearbeitet am** und Datumsfeldern mit Uhrzeit zählen *ist*, *ist nicht*, *vor*, *nach*, *am oder vor*, *am oder nach* und *liegt zwischen* den Tag, auf den der Zeitpunkt in der Zeitzone des Filters fällt – ein Eintrag von 23:30 Uhr gehört also zu diesem Tag, nicht zum nächsten. Voreingestellt ist die Zeitzone deines Browsers; sie steht im Filter und lässt sich dort ändern wie bei relativen Zeiträumen. Datumswerte ohne Uhrzeit bleiben Kalendertage. Ältere Filter rechnen weiter mit dem Tag in UTC, bis du sie bearbeitest. Dasselbe gilt für Bedingungen in Automationen.
-- **Sortierung** nach mehreren Eigenschaften.
+- **Sortierung** nach mehreren Eigenschaften. Personen, **Erstellt von**, **Bearbeitet von** und Sprints sortieren nach dem Namen, Relationen nach dem Titel des verknüpften Eintrags – so, wie die Tabelle sie zeigt.
 - **Gruppierung** nach fast jeder Eigenschaft (außer Dateien und Checklisten), mit bis zu fünf Ebenen in Tabellen und Listen; Boards zeigen die zweite Ebene als Zeilen (Swimlanes).
 - **Suche** innerhalb der Datenbank, auch im Text der Eintragsdokumente.
 - **Spaltenberechnungen** unter Tabellenspalten: Summe, Durchschnitt, Median, Minimum, Maximum, Anteile, früheste und späteste Daten und mehr.

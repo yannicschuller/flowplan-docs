@@ -277,6 +277,7 @@ Was dabei passiert:
 
 - Ins Repository kommt der [Markdown-Export des Bereichs](/import-export-versions) – jede Seite der obersten Ebene in einem eigenen Ordner (`<Titel>-<Kennung>/`), dazu `index.md` und `README.txt`. Andere Dateien im Repository (etwa `LICENSE` oder CI-Dateien) bleiben unberührt.
 - Ein Commit je Lauf, und nur, wenn sich etwas geändert hat; Seiten, die nicht mehr im Bereich sind, werden im selben Commit gelöscht.
+- Anhänge über 10 MB gehen mit, wie im Markdown-Export.
 - Exportiert wird mit den Leserechten der Eigentümerin oder des Eigentümers: private Einträge anderer und Journale mit PIN bleiben draußen.
 - Nur Export: Änderungen im Repository übernimmt Flowplan nicht.
 - Die Einstellungen zeigen den letzten Lauf (Commit, geänderte Dateien, Fehler) und ab wann der nächste fällig ist. Ein fehlgeschlagener Lauf wird nach einer Stunde wiederholt.

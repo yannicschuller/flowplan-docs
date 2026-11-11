@@ -97,7 +97,7 @@ The **Inbox** collects:
 - date reminders,
 - comments and records from guests via share links,
 - pages and workspaces shared with you,
-- changes on pages you follow (you follow your own pages when creating them; the bell at the top right toggles following),
+- changes on pages you follow (you follow your own pages when creating them; the bell at the top right toggles following, on a phone **Follow** in the `⋯` menu),
 - messages from automations.
 
 ### Who hears about comments

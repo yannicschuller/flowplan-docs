@@ -39,13 +39,15 @@ Das Menü `…` oben rechts auf jeder Seite bietet:
 | Versionsverlauf | Frühere Stände vergleichen und wiederherstellen. |
 | In den Papierkorb | Seite samt Unterseiten entfernen, wiederherstellbar. |
 
+**Auf dem Telefon** hat die obere Leiste einer Seite nur ☰ (Seitenleiste), den Titel – ganz lesbar, lange Titel brechen um – und `⋯`. **Folgen** (Glocke), **Favorit** (Stern) und **Teilen** stehen oben im Menü `⋯` mit ihrem Zustand, darunter **Lesemodus**. Der Kommentar-Knopf erscheint in der Leiste nur, wenn die Seite offene Kommentare hat, mit ihrer Anzahl; sonst steht **Kommentare** im Menü. Die Wolke für den Speicherstand zeigt sich nur, wenn es etwas zu melden gibt: ohne Verbindung, solange Änderungen unterwegs sind, oder bei einem Fehler.
+
 ### Rechtsklick in der Seitenleiste
 
 Ein Rechtsklick auf eine Seite im Seitenbaum oder unter Favoriten – auf dem Smartphone langes Drücken – öffnet ihre Aktionen direkt: **In neuem Tab öffnen**, **In geteilter Ansicht öffnen**, **Link kopieren**, **Zu Favoriten**, **Teilen**, **Unterseite hinzufügen**, **Icon ändern**, **Duplizieren**, **Verschieben**, **Exportieren**, **Seite sperren** und **In den Papierkorb**. Aktionen mit Dialog öffnen die Seite vorher.
 
 ### Seiten filtern
 
-Das Feld **Seiten filtern** über dem Seitenbaum blendet alles aus, was nicht passt; übergeordnete Seiten der Treffer bleiben sichtbar und aufgeklappt. <kbd>Esc</kbd> leert den Filter. Vorlagen, Medien, Tags, Graph, Papierkorb, Einstellungen, Hilfe und Administration liegen als Symbolleiste unten in der Seitenleiste. Auf dem Telefon sind sie hinter **Mehr** neben deinem Namen zusammengefasst: ein Tipp öffnet eine Liste mit allen Einträgen samt Beschriftung, und der Seitenbaum behält die Höhe.
+Das Feld **Seiten filtern** über dem Seitenbaum blendet alles aus, was nicht passt; übergeordnete Seiten der Treffer bleiben sichtbar und aufgeklappt. <kbd>Esc</kbd> leert den Filter. Vorlagen, Medien, Tags, Graph, Papierkorb, Einstellungen, Hilfe und Administration liegen als Symbolleiste unten in der Seitenleiste. Auf dem Telefon sind sie hinter **Mehr** neben deinem Namen zusammengefasst – der einzige Knopf in dieser Zeile, damit Name und Verbindungsstatus ganz lesbar bleiben: ein Tipp öffnet eine Liste mit allen Einträgen samt Beschriftung, und der Seitenbaum behält die Höhe. Unter einer Linie folgt dort, was am Computer im Kontomenü **⋯** steht: helles bzw. dunkles Design, **Über Flowplan**, **Impressum** und **Datenschutz** (wenn die Instanz sie eingerichtet hat) und zuletzt, etwas abgesetzt, **Abmelden**.
 
 ## Geteilte Ansicht
 
@@ -178,7 +180,7 @@ Duplizieren übernimmt Tags und Werte (in einen anderen Bereich oder Arbeitsbere
 
 ## Favoriten und „Verlinkt von“
 
-Der Stern in der Kopfzeile legt eine Seite unter **Favoriten** in der Seitenleiste ab – persönlich, andere sehen deine Favoriten nicht. Unten auf jeder Seite zeigt **Verlinkt von**, welche Seiten und Datenbank-Einträge auf diese verweisen.
+Der Stern in der Kopfzeile (auf dem Telefon **Favorit** im Menü `⋯`) legt eine Seite unter **Favoriten** in der Seitenleiste ab – persönlich, andere sehen deine Favoriten nicht. Unten auf jeder Seite zeigt **Verlinkt von**, welche Seiten und Datenbank-Einträge auf diese verweisen.
 
 ## Bereiche verwalten
 
@@ -226,6 +228,7 @@ Flowplan merkt sich, was du auf- und zugeklappt hast – in deinem Konto, je Arb
 
 Gelöschte Seiten und Bereiche landen im **Papierkorb** unten in der Seitenleiste, gelöschte [Datenbankeinträge](/databases) darunter unter **Gelöschte Einträge**. Aus den [Medien](/documents#medien-loeschen) gelöschte Dateien stehen unter **Gelöschte Dateien**. Dort lassen sie sich wiederherstellen oder endgültig löschen. Veröffentlichungen, Freigabelinks und Formulare werden beim Löschen deaktiviert und bei der Wiederherstellung nicht automatisch wieder eingeschaltet.
 
+- **Wiederherstellen** holt eine Seite mit den Unterseiten zurück, die mit ihr zusammen gelöscht wurden. Unterseiten, die schon vorher im Papierkorb lagen, bleiben dort – mit ihrer eigenen Frist.
 - **Endgültig löschen** neben einer Seite löscht sie samt ihren Unterseiten im Papierkorb. Der Dialog nennt die Seite und wie viele Unterseiten mitgehen. Dazu brauchst du dasselbe Recht wie zum Löschen: Bearbeiten der Seite. Unterseiten, die du nicht bearbeiten darfst, bleiben einzeln im Papierkorb.
 - **Papierkorb leeren** löscht alles im Papierkorb, was du löschen darfst: Seiten, die du bearbeiten darfst, Bereiche, die du verwaltest, und gelöschte Einträge, die du bearbeiten darfst. Der Dialog zeigt vorher die Anzahl. Seiten aus privaten Bereichen anderer und Seiten, die du nur lesen kannst, bleiben unberührt.
 - Endgültig gelöscht werden die Seite mit Inhalt, Versionen, Kommentaren und Randkommentaren, bei Datenbanken Eigenschaften, Ansichten und Einträge, dazu hochgeladene Dateien, Favoriten, Veröffentlichungen, Freigabelinks, Benachrichtigungen und Suchtreffer. Links aus anderen Seiten zeigen danach auf eine gelöschte Seite. Das lässt sich nicht rückgängig machen; eine [Sicherung](/storage-and-backups) bleibt der einzige Weg zurück.

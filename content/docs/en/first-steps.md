@@ -4,7 +4,7 @@ From signing in for the first time to your first own page: what you do with Flow
 
 ## Sign in or sign up
 
-You sign in with your e-mail and password, with a passkey (fingerprint, face or device PIN) or – if your organisation has set it up – with **Sign in with SSO** through your organisation's login (OpenID Connect, such as Keycloak, Authentik, Zitadel or Entra ID). You create an account with **Create account**, provided the instance allows sign-ups or you have been invited. Afterwards you set up passkeys under **Settings → Account & security**. Everything else is described under [Sign-in](/sign-in).
+You sign in with your e-mail and password, with a passkey (fingerprint, face or device PIN) or – if your organisation has set it up – with **Sign in with SSO** through your organisation's login (OpenID Connect, such as Keycloak, Authentik, Zitadel or Entra ID). The sign-in page offers the way you last used on this device as one large button; **With e-mail and password** opens the form. You create an account with **Create account**, provided the instance allows sign-ups or you have been invited. Afterwards you set up passkeys under **Settings → Account & security**. Everything else is described under [Sign-in](/sign-in).
 
 On a brand-new instance you create the first account – it administers the instance. If you are moving or reinstalling, choose **Restore from a backup** there instead ([Restore while setting up](/en/storage-and-backups#restore-while-setting-up)).
 
@@ -97,7 +97,7 @@ Questions, ideas or just saying hello: in the **[Flowplan Discord](https://disco
 
 ### About Flowplan
 
-**Settings → Help & info → About Flowplan** (`/#settings/about`, also in the account menu ⋯ at the bottom of the sidebar and with `⌘/Ctrl + K` → “About Flowplan”) shows:
+**Settings → Help & info → About Flowplan** (`/#settings/about`, also in the account menu ⋯ at the bottom of the sidebar – on a phone under **More** – and with `⌘/Ctrl + K` → “About Flowplan”) shows:
 
 - **Version:** the running version, the commit and the build date; for our Docker images also whether it is a **beta** (`:beta`) or a **release**. Admins also see here when a newer version is known. Best mention the version when reporting a bug.
 - **Licence & source code:** Flowplan is free software under the GNU AGPL-3.0 – with links to the licence text and to the source of the code running on this instance.
