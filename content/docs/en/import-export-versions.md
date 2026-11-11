@@ -160,6 +160,8 @@ It contains: accessible pages including the trash, databases with views and reco
 
 The workspace's tags and properties (unused ones too) and every page's tags and values come along as well. Importing creates missing tags, and missing properties only if you own the target workspace; existing ones with the same name are reused.
 
+The workspace's [appearance](/workspaces-and-permissions#appearance) with its uploaded fonts and its [automatic links](/workspaces-and-permissions#automatic-links) come along as well (the JSON export holds both, without the font files): on restore only an owner of the target workspace takes them over – link rules in addition to the existing ones (an existing rule with the same pattern stays, at most 50), the appearance only where Flowplan's own look still applies. Whatever fails the settings' checks (an invalid rule, not a font file, over 5 MB, more than 20 fonts, storage quota full) is left out and counted in the message without stopping the import.
+
 The archive only holds what you may see yourself: other people's private records with their comments and files are left out, as are journals behind a PIN you have not unlocked right now. Versions of a database are included only for owners, because they contain every record. Each version holds the whole database; when not all of them fit into the archive of a large database, the newest come along and older ones stay behind – the current records are always included.
 
 - Importing creates new IDs; internal links and relations are rewritten – embedded whiteboards, synced blocks, metrics, drawing blocks and records on whiteboard cards too.
