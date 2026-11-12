@@ -12,6 +12,7 @@ import { synonymKeywords } from "./search";
 import type { AnchorMap } from "./anchors";
 import { appUrl, DISCORD_URL, GITHUB_URL, marketplaceUrl, MARKETPLACE_DEFAULT, websiteUrl } from "./links";
 import { outboundTarget } from "./track";
+import { calloutHtml, contentBlocks, type BlockState } from "./markdown-blocks";
 
 export type DocGroup = { title: string; intro: string; area: AreaId; pages: { slug: string; title: string }[] };
 export type AreaId = "use" | "extend" | "run";
@@ -206,10 +207,6 @@ export const plain = (html: string) =>
 const escape = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-const callouts: Record<Locale, Record<string, string>> = {
-  de: { NOTE: "Hinweis", TIP: "Tipp", WARNING: "Achtung" },
-  en: { NOTE: "Note", TIP: "Tip", WARNING: "Warning" },
-};
 const newTab: Record<Locale, string> = { de: "öffnet in neuem Tab", en: "opens in a new tab" };
 // flowplan.org and its subdomains (the website, the app, these docs).
 export function ownSite(href: string) {
@@ -245,10 +242,21 @@ export function imageSize(src: string) {
   return size;
 }
 
+// "/screenshots/x-light.webp" → "/screenshots/x-dark.webp" if that exists.
+export function darkVariant(src: string) {
+  if (!/^\/[\w/.-]+-light\.(webp|avif|png)$/.test(src) || src.includes("..")) return undefined;
+  const dark = src.replace(/-light\.(\w+)$/, "-dark.$1");
+  return existsSync(join(process.cwd(), "public", dark)) ? dark : undefined;
+}
+
 function render(markdown: string, locale: Locale) {
   const toc: TocEntry[] = [];
   const used = new Set<string>();
   const marked = new Marked({ gfm: true });
+  // Callouts, steps, tabs and keys (lib/markdown-blocks.ts).
+  const state: BlockState = { depth: 1, tabs: 0 };
+  let images = 0;
+  marked.use(contentBlocks(state));
   marked.use({
     renderer: {
       heading({ tokens, depth }: Tokens.Heading) {
@@ -256,6 +264,7 @@ function render(markdown: string, locale: Locale) {
         let id = headingId(inner) || (locale === "en" ? "section" : "abschnitt");
         for (let n = 2; used.has(id); n++) id = `${headingId(inner)}-${n}`;
         used.add(id);
+        state.depth = depth;
         if (depth === 2 || depth === 3) toc.push({ id, text: plain(inner), depth });
         return `<h${depth} id="${id}"><a class="anchor" href="#${id}" aria-hidden="true" tabindex="-1">#</a>${inner}</h${depth}>\n`;
       },
@@ -279,9 +288,17 @@ function render(markdown: string, locale: Locale) {
       },
       // Screenshots: ![what it shows](/screenshots/name.webp "caption"). A
       // paragraph of just an image becomes a figure with the caption below.
-      image({ href, title, text }: Tokens.Image) {
+      // A "-light" image with a "-dark" sibling in public/ follows the
+      // colour scheme; an image before the first section heading (the top
+      // of the page) loads at once, the others when they come near.
+      image({ href, text }: Tokens.Image) {
         const size = imageSize(href);
-        return `<img src="${escape(href)}" alt="${escape(text)}"${size ? ` width="${size.width}" height="${size.height}"` : ""} loading="lazy" decoding="async">`;
+        const top = images++ === 0 && state.depth < 2;
+        const img = `<img src="${escape(href)}" alt="${escape(text)}"${size ? ` width="${size.width}" height="${size.height}"` : ""}${
+          top ? ' fetchpriority="high"' : ' loading="lazy"'
+        } decoding="async">`;
+        const dark = darkVariant(href);
+        return dark ? `<picture><source media="(prefers-color-scheme: dark)" srcset="${escape(dark)}">${img}</picture>` : img;
       },
       paragraph({ tokens }: Tokens.Paragraph) {
         const only = tokens.filter((t) => !(t.type === "text" && !t.raw.trim()));
@@ -293,12 +310,7 @@ function render(markdown: string, locale: Locale) {
         return `<p>${this.parser.parseInline(tokens)}</p>\n`;
       },
       blockquote({ tokens }: Tokens.Blockquote) {
-        let body = this.parser.parse(tokens);
-        const match = body.match(/^<p>\[!(NOTE|TIP|WARNING)\]\s*/);
-        if (!match) return `<blockquote>${body}</blockquote>\n`;
-        body = body.replace(match[0], "<p>");
-        const kind = match[1];
-        return `<aside class="callout" data-kind="${kind.toLowerCase()}"><strong class="callout-label">${callouts[locale][kind]}</strong>${body}</aside>\n`;
+        return calloutHtml(this.parser.parse(tokens), locale);
       },
       table(token: Tokens.Table) {
         const head = token.header
@@ -319,6 +331,9 @@ function render(markdown: string, locale: Locale) {
   const html = marked.parse(markdown, { async: false }) as string;
   return { html, toc };
 }
+
+// Markdown to the HTML of a page body, with its table of contents (tests).
+export const renderMarkdown = (markdown: string, locale: Locale = "de") => render(markdown, locale);
 
 const directory = () => join(process.cwd(), "content", "docs");
 const fileOf = (slug: string, locale: Locale) => {

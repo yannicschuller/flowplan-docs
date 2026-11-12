@@ -9,6 +9,7 @@ import { absolute, jsonLd, pageAlternates, socialMetadata, softwareJson } from "
 import { translate } from "@/lib/i18n";
 import s from "@/components/docs/docs.module.css";
 import { CodeCopy } from "@/components/docs/code-copy";
+import c from "@/components/docs/content.module.css";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -82,7 +83,9 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
           </aside>
         )}
         <p className={s.lead} lang={lang} dangerouslySetInnerHTML={{ __html: doc.leadHtml }} />
-        <div className={s.prose} lang={lang} dangerouslySetInnerHTML={{ __html: html }} />
+        <div className={`${s.prose} ${c.content}`} lang={lang} dangerouslySetInnerHTML={{ __html: html }} />
+        {/* Tabs ("::: tabs") become tabs only on pages that have them. */}
+        {html.includes("data-tabs") && <script src="/tabs.js" async />}
         <CodeCopy slug={slug} />
         {anchors && <AnchorRedirect slug={slug} rows={anchors} />}
         <p className={s.meta}>

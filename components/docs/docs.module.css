@@ -651,16 +651,6 @@
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
-.prose kbd {
-  font-family: var(--font-mono);
-  font-size: 0.8em;
-  padding: 0.1em 0.45em;
-  border: 1px solid var(--border);
-  border-bottom-width: 2px;
-  border-radius: 5px;
-  background: var(--bg);
-  white-space: nowrap;
-}
 .prose :global(.code) {
   position: relative;
   margin: 0 0 20px;
@@ -761,37 +751,7 @@
   border-left: 3px solid var(--border);
   color: var(--secondary);
 }
-.prose :global(.callout) {
-  margin: 0 0 20px;
-  padding: 14px 18px;
-  border-radius: 12px;
-  background: var(--blue-light);
-  border: 1px solid color-mix(in srgb, var(--blue) 22%, transparent);
-}
-.prose :global(.callout)[data-kind="warning"] {
-  background: color-mix(in srgb, #f0663a 10%, var(--bg));
-  border-color: color-mix(in srgb, #f0663a 35%, transparent);
-}
-.prose :global(.callout-label) {
-  display: block;
-  margin-bottom: 2px;
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--accent-strong);
-}
-.prose :global(.callout)[data-kind="warning"] :global(.callout-label) {
-  color: #c2410c;
-}
-@media (prefers-color-scheme: dark) {
-  .prose :global(.callout)[data-kind="warning"] :global(.callout-label) {
-    color: #ff8a5c;
-  }
-}
-.prose :global(.callout) p:last-child {
-  margin-bottom: 0;
-}
+/* Callouts, steps, tabs and keys: content.module.css. */
 /* Screenshots of the app (public/screenshots), with a caption. */
 .prose :global(.shot) {
   margin: 24px 0 28px;

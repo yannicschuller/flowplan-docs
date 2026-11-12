@@ -216,7 +216,8 @@ for (const locale of LOCALES)
         assert.ok(existsSync(join(process.cwd(), "public", src)), `${slug}: ${src} exists`);
         assert.match(tag, /alt="[^"]{20,}"/, `${slug}: ${src} has a description`);
         assert.match(tag, /width="\d+" height="\d+"/, `${slug}: ${src} has its size`);
-        assert.match(tag, /loading="lazy"/);
+        // Lazy, except an image at the top of the page (before the first section).
+        assert.match(tag, /loading="lazy"|fetchpriority="high"/);
       }
     assert.ok(count >= 4, `${count} screenshots`);
     const notebook = loadDoc("notebooks", locale)!.html;
