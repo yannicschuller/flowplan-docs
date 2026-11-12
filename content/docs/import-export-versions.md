@@ -13,9 +13,13 @@ Inhalte kommen als Markdown, CSV oder Archiv herein und gehen als Markdown, PDF 
 | **Als Word (DOCX)** | Ein Word-Dokument der Seite – siehe [Word, PDF mit Unterseiten und E-Book](#word-pdf-mit-unterseiten-und-e-book). |
 | **Als PDF (mit Unterseiten)** | Die Seite mit ihren Unterseiten als ein Dokument mit Deckblatt und Inhaltsverzeichnis, das der Druckdialog als PDF sichert. |
 | **Als E-Book (EPUB)** | Die Seite mit ihren Unterseiten als E-Book für Lesegeräte und E-Book-Apps. |
+| **Jira (Wiki-Markup)** | Die Seite als Jira-Wiki-Markup zum Einfügen in Beschreibungen und Kommentare – siehe [Jira und Confluence](#jira-und-confluence). |
+| **Confluence (Speicherformat)** | Die Seite im Speicherformat von Confluence (XHTML) – siehe [Jira und Confluence](#jira-und-confluence). |
 | **HTML / JSON** | Das ältere Format für Dokumente und Datenbanken. |
 
-**Drucken / PDF** öffnet die Druckansicht des Browsers; dort als PDF sichern. Apps auf dem Home-Bildschirm von iPhone und iPad können nicht selbst drucken: Sie öffnen die Seite 15 Minuten lang unter einer geheimen Adresse in Safari. Diese Druckansicht zeigt nur Inhalt – keine Formularfelder, Knöpfe oder Skripte – und oben, wer sie erstellt hat.
+**In die Zwischenablage statt als Datei.** Bei den Textformaten – Markdown (.md), Jira, Confluence und HTML / JSON – wählst du unter **Ziel** zwischen **Datei** und **Zwischenablage**. Mit **Zwischenablage** heißt der Knopf **Kopieren**: Der Text landet direkt in der Zwischenablage, eine Meldung bestätigt es, und du fügst ihn in eine Mail, einen Chat, ein Jira-Ticket oder einen Editor ein. HTML kommt dabei zugleich als formatierter Text mit, sodass Mailprogramme und Textverarbeitungen Überschriften, Listen und Tabellen übernehmen; ein Code-Editor bekommt den HTML-Quelltext. Bilder und Anhänge kommen nicht mit – sie bleiben Links auf Flowplan mit vollständiger Adresse und öffnen sich nur für Personen mit Zugang. Flowplan merkt sich deine Wahl auf diesem Gerät. Dateiformate (Markdown mit Dateien, Word, PDF, E-Book) gibt es nur als Datei. Das funktioniert im Browser, in der Desktop-App und in den Apps für iPhone, iPad und Android.
+
+**Drucken / PDF** öffnet die Druckansicht des Browsers; dort als PDF sichern. Vorher fragt ein kleines Fenster nach den [Druckoptionen](#drucken-und-pdf). Apps auf dem Home-Bildschirm von iPhone und iPad können nicht selbst drucken: Sie öffnen die Seite 15 Minuten lang unter einer geheimen Adresse in Safari. Diese Druckansicht zeigt nur Inhalt – keine Formularfelder, Knöpfe oder Skripte – und oben, wer sie erstellt hat.
 
 Der Export berücksichtigt Leserechte und enthält alle Einträge unabhängig von Ansichtsfiltern. Formeln und Mermaid bleiben als Quelltext erhalten.
 
@@ -61,11 +65,29 @@ Drei weitere Formate für Handbücher, Berichte und alles, was außerhalb von Fl
 - Eine Datenbank wird zur Tabelle aller Einträge, gefolgt vom Dokument jedes Eintrags; ein einzelner Eintrag beginnt mit seinen Eigenschaften als Tabelle.
 - Nicht enthalten: Whiteboards, eingebettete Videos, Audios, PDFs, Linkkarten und verknüpfte Datenbanken (sie bleiben Links auf Flowplan), Funktionsgraphen und Kennzahlen (ein Hinweis), Kommentare und Versionen.
 
-**Als PDF (mit Unterseiten)** – **Seitenaktionen → Exportieren → Als PDF (mit Unterseiten)**: Die Seite mit allen zugänglichen Unterseiten (abwählbar) wird zu einer Druckansicht mit Deckblatt, Inhaltsverzeichnis und jeder Seite als nummeriertem Kapitel auf einer neuen Seite; Links zwischen den Seiten springen innerhalb des Dokuments. Wie bei **Drucken / PDF** öffnet sich der Druckdialog des Browsers – dort **als PDF sichern**. Apps auf dem Home-Bildschirm von iPhone und iPad öffnen die Ansicht wie gewohnt in Safari. Whiteboards kommen als Bild mit, Datenbanken als Tabelle mit den Dokumenten der Einträge. Seitenzahlen im Inhaltsverzeichnis und in der Fußzeile zeigen nur Renderer, die `target-counter` kennen (Prince, Paged.js); Browser lassen sie weg. Für Skripte: `GET /api/export/pdf?page=<id>&children=1` liefert das HTML der Druckansicht.
+**Als PDF (mit Unterseiten)** – **Seitenaktionen → Exportieren → Als PDF (mit Unterseiten)**: Die Seite mit allen zugänglichen Unterseiten (abwählbar) wird zu einer Druckansicht mit Deckblatt, Inhaltsverzeichnis und jeder Seite als nummeriertem Kapitel auf einer neuen Seite; Links zwischen den Seiten springen innerhalb des Dokuments. Wie bei **Drucken / PDF** öffnet sich der Druckdialog des Browsers – dort **als PDF sichern**. Apps auf dem Home-Bildschirm von iPhone und iPad öffnen die Ansicht wie gewohnt in Safari. Whiteboards kommen als Bild mit, Datenbanken als Tabelle mit den Dokumenten der Einträge. Vor dem Druckdialog lassen sich Titelseite, Inhaltsverzeichnis, Titelbilder, Seitenzahlen, Papierformat, Schriften und Links wählen ([Druckoptionen](#drucken-und-pdf)). Seitenzahlen in der Fußzeile setzen Chrome und Edge; die Seitenzahlen im Inhaltsverzeichnis zeigen nur Renderer, die `target-counter` kennen (Prince, Paged.js). Für Skripte: `GET /api/export/pdf?page=<id>&children=1` liefert das HTML der Druckansicht.
 
 **Als E-Book (EPUB)** – **Seitenaktionen → Exportieren → Als E-Book (EPUB)**: Die Seite mit ihren Unterseiten als EPUB 3 – jede Seite ein Kapitel, das Inhaltsverzeichnis verschachtelt wie der Seitenbaum, Bilder und Whiteboards als Ressourcen, Links zwischen den Seiten innerhalb des Buchs, Fußnoten am Kapitelende. Geeignet für Apple Books, Kindle (nach Umwandlung), Calibre, Thorium und andere Reader. Für Skripte: `GET /api/export/epub?page=<id>&children=1`.
 
 Grenzen: 200 Seiten je PDF- oder EPUB-Export, 5.000 Datensätze, 100 MB Anhänge (Dateien über 25 MB werden ausgelassen). Datenbanktabellen mit mehr als 200 Spalten lassen sich nicht nach Word exportieren.
+
+### Jira und Confluence
+
+Zwei Textformate für Teams, die mit Atlassian-Werkzeugen arbeiten. Beide exportieren **nur die geöffnete Seite** (oder einen einzelnen Eintrag), ohne Unterseiten – wie **Markdown (.md)**. Sie berücksichtigen Leserechte wie die anderen Exporte: Bilder aus Seiten, die du nicht öffnen darfst, werden zu einem Hinweis, Links auf unzugängliche Seiten zu Text. Links und Bilder behalten ihre vollständige Adresse in Flowplan; Jira und Confluence zeigen Bilder aus Flowplan nur, wenn der Browser dort angemeldet ist.
+
+**Jira (Wiki-Markup)** – zum Einfügen in Beschreibungen und Kommentare von Jira Server/Data Center (und in Felder von Jira Cloud, die Wiki-Markup annehmen):
+
+- Überschriften als `h1.` bis `h6.`, `*fett*`, `_kursiv_`, `-durchgestrichen-`, `+unterstrichen+`, `{{Code}}`, Hoch- und Tiefstellung, Textfarbe, Links als `[Text|Adresse]`.
+- Aufzählungen und nummerierte Listen mit `*` und `#`, auch verschachtelt (`*#`); Aufgaben als `* [ ]` und `* [x]` (abgesagte durchgestrichen).
+- Tabellen mit `||Kopf||` und `|Zelle|`; verbundene Zellen werden zu leeren Zellen.
+- Code-Blöcke als `{code:sprache}`, ohne Sprache als `{noformat}`; Formeln als `{noformat}`, Mermaid als `{code}`.
+- Zitate als `{quote}`, Hinweise als `{info}` (Notiz, Wichtig), `{tip}`, `{note}` (Warnung) und `{warning}` (Achtung), aufklappbare Abschnitte und Besprechungen als `{panel}`, Trennlinien als `----`.
+- Bilder als `!Adresse!`, Erwähnungen als Name, Fußnoten als hochgestellte Nummern mit einer Liste am Ende.
+- Zeichen, die in Jira Formatierung auslösen (`* _ { } [ ] | ! ^ ~ +`, Striche am Wortrand, `??`, `(y)` …), werden maskiert und erscheinen so, wie du sie geschrieben hast.
+
+**Confluence (Speicherformat)** – das XHTML, in dem Confluence seine Seiten speichert: für den Quelltext-Editor, die REST-API (`representation: storage`) oder Werkzeuge, die nach Confluence veröffentlichen. Code-Blöcke werden zum Code-Makro mit Sprache, Hinweise zu den Makros Info, Tipp, Notiz und Warnung, aufklappbare Abschnitte zu „Erweitern“ (expand), Besprechungen zu Panels, Aufgaben zu Confluence-Aufgabenlisten (mit Fälligkeitsdatum), Bilder zu `<ac:image>` mit ihrer Adresse in Flowplan. Tabellen, Listen, Links, Zitate und Fußnoten bleiben gewöhnliches XHTML.
+
+Als Datei heißen die Exporte `<Titel>.jira.txt` und `<Titel>.confluence.xhtml`. Für Skripte: `GET /api/export/jira?page=<id>` bzw. `GET /api/export/confluence?page=<id>`, mit `&row=<id>` für einen einzelnen Eintrag einer Datenbank; persönliche API-Tokens mit Lesezugriff genügen.
 
 ### Einen ganzen Bereich exportieren
 
@@ -80,7 +102,33 @@ Das Download-Symbol neben dem Namen eines Bereichs in der Seitenleiste (oder **E
 
 ### Drucken und PDF
 
-**Seitenaktionen → Drucken** (oder `> drucken` in der Schnellsuche) druckt die Seite als sauberes Dokument auf A4 – im Druckdialog lässt sie sich auch **als PDF sichern**. Dabei verschwinden Seitenleiste, Werkzeugleisten, Griffe, Kommentarleisten und Hinweise; die Farben sind immer hell, Blöcke werden nicht mitten auf der Seite getrennt, lange Codezeilen umbrochen und externe Links mit ihrer Adresse ausgeschrieben.
+**Seitenaktionen → Drucken / PDF** (oder `> drucken` in der Schnellsuche, oder <kbd>⌘</kbd> <kbd>P</kbd> bzw. <kbd>Strg</kbd> <kbd>P</kbd> bei geöffneter Seite) öffnet zuerst ein kleines Fenster mit den Druckoptionen; **Drucken** (oder <kbd>Enter</kbd>) öffnet dann den Druckdialog des Browsers, wo du die Seite auch **als PDF sichern** kannst. Seitenleiste, Werkzeugleisten, Griffe, Kommentarleisten, Hinweise und Knöpfe wie „Cover ändern“ oder „+ Tag“ erscheinen nie auf dem Papier; die Farben sind immer hell, Blöcke werden nicht mitten auf der Seite getrennt und lange Codezeilen umbrochen.
+
+**Inhalt** – was mitgedruckt wird:
+
+| Option | Wirkung |
+| --- | --- |
+| **Titelbild** | Das Cover der Seite oder des Eintrags (beim PDF mit Unterseiten auch die Cover der Kapitel). |
+| **Icon** | Das Seitensymbol bzw. das Symbol eines Datenbankeintrags. |
+| **Tags** | Die Tags der Seite. |
+| **Eigenschaften** | Die Eigenschaften der Seite bzw. die Felder eines Eintrags (Tag-Felder eines Eintrags gehören dazu). |
+| **Seitenzahlen** | Eine Seitenzahl unten in der Mitte. |
+| **Titelseite**, **Inhaltsverzeichnis** | Nur beim PDF mit Unterseiten und beim Bereich als PDF. |
+
+**Aussehen**: **Papierformat** (Standard – das des Druckers, beim PDF mit Unterseiten A4 –, A4 oder US Letter), **Titelgröße** (Klein, Normal, Groß – für den Seitentitel und die Überschriften), **Schrift für Text** und **Schrift für Überschriften** (Standard, Serifenschrift, serifenlose Schrift oder die [Schriften des Arbeitsbereichs](/workspaces-and-permissions#erscheinungsbild)) und **Links**: Standard (beim Drucken einer Seite wie in Flowplan, beim PDF mit Unterseiten mit der Adresse in Klammern), wie normaler Text, unterstrichen, gestrichelt unterstrichen oder mit der Adresse in Klammern.
+
+Ohne Änderung druckt Flowplan wie bisher, nur mit Seitenzahlen. Deine letzte Auswahl merkt sich Flowplan für dich auf allen Geräten.
+
+> Seitenzahlen in der Fußzeile setzen Chrome und Edge (ab Version 131). Firefox und Safari kennen diese Angabe nicht: Schalte dort im Druckdialog des Browsers **Kopf- und Fußzeilen** ein, dann druckt der Browser seine eigene Seitenzahl (zusammen mit Datum, Titel und Adresse).
+
+#### Druckvorlagen
+
+Eine **Druckvorlage** ist eine benannte Auswahl dieser Optionen, etwa „Intern“ (alles) und „Sauber für extern“ (ohne Titelbild, Icon, Tags und Eigenschaften, Links wie Text). Im Druckfenster wählst du sie oben unter **Druckvorlage**; ändert sich danach eine Option, steht dort **Eigene Auswahl**.
+
+- **Als Vorlage speichern …** legt die aktuelle Auswahl als eigene Vorlage an. Eigene Vorlagen umbenennen oder löschen die Stift- und Papierkorb-Knöpfe daneben, verwalten lassen sie sich auch unter **Einstellungen → Drucken / PDF**.
+- **Vorlagen des Arbeitsbereichs** legen Eigentümerinnen und Eigentümer an – im Druckfenster (**Speichern für → Für den Arbeitsbereich**) oder unter **Einstellungen → Arbeitsbereich → Druckvorlagen**. Alle Mitglieder und Gäste können sie wählen, aber nicht ändern; im Druckfenster tragen sie das Abzeichen **Arbeitsbereich**. Mit dem Stern wird eine von ihnen zur **Standardvorlage**: Mit ihr beginnt das Druckfenster für alle, die noch nichts gewählt haben.
+- Höchstens 30 Vorlagen je Person und je Arbeitsbereich. Die Vorlagen des Arbeitsbereichs kommen im [Inhaltsarchiv](#inhaltsarchiv) und im JSON-Export mit; beim Import ergänzen sie die vorhandenen (gleichnamige bleiben, wie sie sind).
+- Für Skripte: `profile.print` (eigene Auswahl und Vorlagen) und `workspace.printPresets` (Vorlagen des Arbeitsbereichs, nur Eigentümer) über `/api/command`; das PDF mit Unterseiten nimmt die Optionen als JSON im Parameter `print` (`GET /api/export/pdf?page=<id>&children=1&print={"toc":false}`).
 
 ## Importieren
 
@@ -144,7 +192,7 @@ Personen stehen mit ihrem Namen, Mehrfachauswahlen als Liste, Kontrollkästchen 
 
 Beim Import von Markdown-Dateien, Markdown-ZIPs und Obsidian-Tresoren unter **Einstellungen → Import & Export** wird `aliases:`/`alias:` zu den Aliassen der neuen Seite und `tags:` (oder `tag:`, als Liste oder „a, b“) zu ihren Tags; fehlende Tags werden angelegt. Weitere Schlüssel werden zu Eigenschaften: Gibt es im Arbeitsbereich schon eine Eigenschaft mit dem Namen, bekommt die Seite dort ihren Wert. Unbekannte Schlüssel legen nur **Eigentümer** des Arbeitsbereichs als neue Eigenschaften an – der Typ ergibt sich aus dem Wert (`true` → Kontrollkästchen, Zahl → Zahl, `2026-12-01` → Datum, Liste → Mehrfachauswahl, Webadresse, E-Mail, sonst Text). Schlüssel von Veröffentlichungswerkzeugen (`cssclass`, `publish`, `permalink`, `layout`, `slug`, `draft` …) werden nie zu Eigenschaften. Ist das ganze Frontmatter übernommen, verschwindet es aus dem Text; sonst bleibt es wie bisher im Text stehen. Der Git-Export liest Aliasse, Tags und Werte geänderter Seiten aus dem Repository zurück.
 
-**Wo exportieren:** In der Leiste einer Datenbank öffnet **Exportieren** ein Menü mit **CSV (aktuelle Ansicht)**, **Markdown mit Dateien (.zip)**, **Markdown (.md)** und **Als Word (DOCX)**. Einen einzelnen Eintrag exportiert das **…**-Menü im Kopf des Eintrags: **Als Markdown exportieren (.md)** (mit Frontmatter), **Markdown mit Dateien (.zip)**, **Als Word (DOCX)** (Eigenschaften als Tabelle, dann das Dokument) oder **Drucken / PDF**.
+**Wo exportieren:** In der Leiste einer Datenbank öffnet **Exportieren** ein Menü mit **CSV (aktuelle Ansicht)**, **Markdown mit Dateien (.zip)**, **Markdown (.md)** und **Als Word (DOCX)**. Einen einzelnen Eintrag exportiert das **…**-Menü im Kopf des Eintrags: **Als Markdown exportieren (.md)** (mit Frontmatter), **Markdown mit Dateien (.zip)**, **Als Word (DOCX)** (Eigenschaften als Tabelle, dann das Dokument) oder **Drucken / PDF** – mit denselben [Druckoptionen](#drucken-und-pdf); **Eigenschaften** steht dort für die Felder des Eintrags.
 
 **CSV (aktuelle Ansicht)** schreibt die sichtbaren Spalten der Ansicht in ihrer Reihenfolge (Board, Galerie und andere Kartenansichten immer mit dem Titel) und die Werte so, wie die Tabelle sie zeigt: Personen (auch Erstellt von / Bearbeitet von) mit Namen, verknüpfte Einträge mit ihrem Titel, hochgeladene Dateien mit ihrem Namen (Links bleiben Links), Sprints mit Namen. Zahlen, Datumswerte und Checkboxen stehen wie gespeichert drin. Ist der Name einer Person nicht eindeutig, steht ihre E-Mail-Adresse da. Die CSV im Markdown-ZIP enthält weiterhin alle Eigenschaften.
 

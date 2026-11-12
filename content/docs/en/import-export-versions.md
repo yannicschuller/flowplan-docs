@@ -13,9 +13,13 @@ Content comes in as Markdown, CSV or an archive and goes out again as Markdown, 
 | **As Word (DOCX)** | A Word document of the page – see [Word, PDF with sub-pages and e-book](#word-pdf-with-sub-pages-and-e-book). |
 | **As PDF (with sub-pages)** | The page with its sub-pages as one document with a cover and a table of contents, which the print dialog saves as PDF. |
 | **As e-book (EPUB)** | The page with its sub-pages as an e-book for e-readers and e-book apps. |
+| **Jira (wiki markup)** | The page as Jira wiki markup to paste into descriptions and comments – see [Jira and Confluence](#jira-and-confluence). |
+| **Confluence (storage format)** | The page in Confluence's storage format (XHTML) – see [Jira and Confluence](#jira-and-confluence). |
 | **HTML / JSON** | The older format for documents and databases. |
 
-**Print / PDF** opens the browser's print view; save as PDF there. Home screen apps on iPhone and iPad cannot print themselves: they open the page in Safari under a secret address for 15 minutes. This print view shows content only – no form fields, buttons or scripts – and at the top who created it.
+**To the clipboard instead of a file.** For the text formats – Markdown (.md), Jira, Confluence and HTML / JSON – choose between **File** and **Clipboard** under **Destination**. With **Clipboard** the button says **Copy**: the text goes straight to the clipboard, a message confirms it, and you paste it into an e-mail, a chat, a Jira ticket or an editor. HTML also comes along as formatted text, so mail programs and word processors take over headings, lists and tables; a code editor gets the HTML source. Pictures and attachments do not come along – they stay links to Flowplan with their full address and open only for people with access. Flowplan remembers your choice on this device. File formats (Markdown with files, Word, PDF, e-book) are files only. This works in the browser, in the desktop app and in the apps for iPhone, iPad and Android.
+
+**Print / PDF** opens the browser's print view; save as PDF there. First a small window asks for the [print options](#print-and-pdf). Home screen apps on iPhone and iPad cannot print themselves: they open the page in Safari under a secret address for 15 minutes. This print view shows content only – no form fields, buttons or scripts – and at the top who created it.
 
 The export respects read permissions and contains all records regardless of view filters. Formulas and Mermaid are kept as source.
 
@@ -61,11 +65,29 @@ Three more formats for handbooks, reports and everything that is read or edited 
 - A database becomes a table of all records followed by every record's document; a single record starts with its properties as a table.
 - Not included: whiteboards, embedded videos, audio, PDFs, link cards and linked databases (they stay links to Flowplan), function plots and metrics (a note), comments and versions.
 
-**As PDF (with sub-pages)** – **Page actions → Export → As PDF (with sub-pages)**: the page with all accessible sub-pages (can be turned off) becomes a print view with a cover, a table of contents and every page as a numbered chapter on a new page; links between the pages jump within the document. As with **Print / PDF**, the browser's print dialog opens – **save as PDF** there. Home screen apps on iPhone and iPad open the view in Safari as usual. Whiteboards come along as pictures, databases as a table with the records' documents. Page numbers in the table of contents and the footer appear only in renderers that know `target-counter` (Prince, Paged.js); browsers leave them out. For scripts: `GET /api/export/pdf?page=<id>&children=1` returns the HTML of the print view.
+**As PDF (with sub-pages)** – **Page actions → Export → As PDF (with sub-pages)**: the page with all accessible sub-pages (can be turned off) becomes a print view with a cover, a table of contents and every page as a numbered chapter on a new page; links between the pages jump within the document. As with **Print / PDF**, the browser's print dialog opens – **save as PDF** there. Home screen apps on iPhone and iPad open the view in Safari as usual. Whiteboards come along as pictures, databases as a table with the records' documents. Before the print dialog you can choose the title page, table of contents, cover images, page numbers, paper size, fonts and links ([print options](#print-and-pdf)). Chrome and Edge put page numbers in the footer; page numbers in the table of contents appear only in renderers that know `target-counter` (Prince, Paged.js). For scripts: `GET /api/export/pdf?page=<id>&children=1` returns the HTML of the print view.
 
 **As e-book (EPUB)** – **Page actions → Export → As e-book (EPUB)**: the page with its sub-pages as EPUB 3 – every page a chapter, the table of contents nested like the page tree, pictures and whiteboards as resources, links between the pages within the book, footnotes at the end of each chapter. Suitable for Apple Books, Kindle (after conversion), Calibre, Thorium and other readers. For scripts: `GET /api/export/epub?page=<id>&children=1`.
 
 Limits: 200 pages per PDF or EPUB export, 5,000 records, 100 MB of attachments (files over 25 MB are left out). Database tables with more than 200 columns cannot be exported to Word.
+
+### Jira and Confluence
+
+Two text formats for teams that work with Atlassian tools. Both export **only the open page** (or a single record), without sub-pages – like **Markdown (.md)**. They respect read permissions like the other exports: pictures from pages you may not open become a note, links to inaccessible pages become text. Links and pictures keep their full address in Flowplan; Jira and Confluence show pictures from Flowplan only while the browser is signed in there.
+
+**Jira (wiki markup)** – to paste into descriptions and comments of Jira Server/Data Center (and Jira Cloud fields that accept wiki markup):
+
+- Headings as `h1.` to `h6.`, `*bold*`, `_italic_`, `-strikethrough-`, `+underline+`, `{{code}}`, superscript and subscript, text colour, links as `[text|address]`.
+- Bulleted and numbered lists with `*` and `#`, nested too (`*#`); tasks as `* [ ]` and `* [x]` (cancelled ones struck through).
+- Tables with `||head||` and `|cell|`; merged cells become empty cells.
+- Code blocks as `{code:language}`, without a language as `{noformat}`; formulas as `{noformat}`, Mermaid as `{code}`.
+- Quotes as `{quote}`, callouts as `{info}` (note, important), `{tip}`, `{note}` (warning) and `{warning}` (caution), toggles and meetings as `{panel}`, dividers as `----`.
+- Pictures as `!address!`, mentions as the name, footnotes as superscript numbers with a list at the end.
+- Characters that would start formatting in Jira (`* _ { } [ ] | ! ^ ~ +`, dashes at the edge of a word, `??`, `(y)` …) are escaped and show exactly as you typed them.
+
+**Confluence (storage format)** – the XHTML Confluence stores its pages in: for the source editor, the REST API (`representation: storage`) or tools that publish to Confluence. Code blocks become the code macro with their language, callouts the info, tip, note and warning macros, toggles "expand", meetings panels, tasks Confluence task lists (with due date), pictures `<ac:image>` with their address in Flowplan. Tables, lists, links, quotes and footnotes stay plain XHTML.
+
+As files the exports are called `<title>.jira.txt` and `<title>.confluence.xhtml`. For scripts: `GET /api/export/jira?page=<id>` or `GET /api/export/confluence?page=<id>`, with `&row=<id>` for a single record of a database; personal API tokens with read access are enough.
 
 ### Export a whole space
 
@@ -80,7 +102,33 @@ The download icon next to a space's name in the sidebar (or **Settings → Impor
 
 ### Print and PDF
 
-**Page actions → Print** (or `> print` in the quick search) prints the page as a clean A4 document – in the print dialog it can also be **saved as PDF**. The sidebar, toolbars, handles, comment bars and notices disappear; colours are always light, blocks are not split in the middle of a page, long code lines wrap and external links are written out with their address.
+**Page actions → Print / PDF** (or `> print` in the quick search, or <kbd>⌘</kbd> <kbd>P</kbd> / <kbd>Ctrl</kbd> <kbd>P</kbd> with a page open) first opens a small window with the print options; **Print** (or <kbd>Enter</kbd>) then opens the browser's print dialog, where you can also **save the page as PDF**. The sidebar, toolbars, handles, comment bars, notices and buttons such as “Change cover” or “+ Tag” never appear on paper; colours are always light, blocks are not split in the middle of a page and long code lines wrap.
+
+**Content** – what is printed:
+
+| Option | Effect |
+| --- | --- |
+| **Cover image** | The cover of the page or record (in the PDF with sub-pages also the chapters' covers). |
+| **Icon** | The page icon or the icon of a database record. |
+| **Tags** | The page's tags. |
+| **Properties** | The page's properties or a record's fields (a record's tag fields included). |
+| **Page numbers** | A page number at the bottom centre. |
+| **Title page**, **Table of contents** | Only in the PDF with sub-pages and the space as PDF. |
+
+**Look**: **Paper size** (Default – the printer's, A4 for the PDF with sub-pages –, A4 or US Letter), **Title size** (Small, Normal, Large – for the page title and headings), **Body font** and **Heading font** (Default, Serif, Sans-serif or the [workspace's fonts](/workspaces-and-permissions#appearance)) and **Links**: Default (as in Flowplan when printing a page, with the address in brackets in the PDF with sub-pages), like normal text, underlined, dashed underline or with the address in brackets.
+
+Without changes Flowplan prints as before, only with page numbers. Flowplan remembers your last choice for you on all devices.
+
+> Chrome and Edge (version 131 and later) put the page numbers in the footer. Firefox and Safari do not know this setting: turn on **Headers and footers** in the browser's print dialog there, and the browser prints its own page number (together with date, title and address).
+
+#### Print presets
+
+A **print preset** is a named choice of these options, such as “Internal” (everything) and “Clean for external” (no cover image, icon, tags or properties, links as text). In the print window you pick it at the top under **Print preset**; once an option changes, it says **Custom**.
+
+- **Save as preset …** saves the current choice as your own preset. The pencil and bin buttons next to it rename or delete your own presets; you can also manage them under **Settings → Print / PDF**.
+- **Workspace presets** are created by workspace owners – in the print window (**Save for → For the workspace**) or under **Settings → Workspace → Print presets**. All members and guests can pick them but not change them; in the print window they carry a **Workspace** badge. The star makes one of them the **default preset**: the print window starts with it for everyone who has not chosen yet.
+- At most 30 presets per person and per workspace. The workspace's presets travel in the [content archive](#content-archive) and the JSON export; on import they are added to the existing ones (presets with the same name stay as they are).
+- For scripts: `profile.print` (your own choice and presets) and `workspace.printPresets` (the workspace's presets, owners only) via `/api/command`; the PDF with sub-pages takes the options as JSON in the `print` parameter (`GET /api/export/pdf?page=<id>&children=1&print={"toc":false}`).
 
 ## Import
 
@@ -145,7 +193,7 @@ People appear by name, multi-selects as a list, checkboxes as `true`/`false`; th
 
 When importing Markdown files, Markdown ZIPs and Obsidian vaults under **Settings → Import & export**, `aliases:`/`alias:` becomes the new page's aliases and `tags:` (or `tag:`, as a list or “a, b”) its tags; missing tags are created. Further keys become properties: if the workspace already has a property with that name, the page gets its value there. Unknown keys are created as new properties only by workspace **owners** – the type follows the value (`true` → checkbox, number → number, `2026-12-01` → date, list → multi-select, URL, email, otherwise text). Keys of publishing tools (`cssclass`, `publish`, `permalink`, `layout`, `slug`, `draft` …) never become properties. When the whole frontmatter is taken over, it disappears from the text; otherwise it stays in the text as before. The Git export reads aliases, tags and values of changed pages back from the repository.
 
-**Where to export:** in a database's toolbar, **Export** opens a menu with **CSV (current view)**, **Markdown with files (.zip)**, **Markdown (.md)** and **As Word (DOCX)**. A single record is exported from the **…** menu in its header: **Export as Markdown (.md)** (with frontmatter), **Markdown with files (.zip)**, **As Word (DOCX)** (properties as a table, then the document) or **Print / PDF**.
+**Where to export:** in a database's toolbar, **Export** opens a menu with **CSV (current view)**, **Markdown with files (.zip)**, **Markdown (.md)** and **As Word (DOCX)**. A single record is exported from the **…** menu in its header: **Export as Markdown (.md)** (with frontmatter), **Markdown with files (.zip)**, **As Word (DOCX)** (properties as a table, then the document) or **Print / PDF** – with the same [print options](#print-and-pdf); **Properties** there means the record's fields.
 
 **CSV (current view)** writes the view's visible columns in their order (board, gallery and other card views always with the title) and the values as the table shows them: people (also Created by / Edited by) by name, related records by title, uploaded files by name (links stay links), sprints by name. Numbers, dates and checkboxes are written as stored. If a person's name isn't unique, their e-mail address is written instead. The CSV in the Markdown ZIP still holds all properties.
 

@@ -19,6 +19,7 @@ Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>A</kbd> | [KI fragen](/ai#fragen-an-den-arbeitsbereich) öffnen oder schließen (ist die Leiste offen, springt der Fokus hinein; von dort schließt das Kürzel sie) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>S</kbd> | [Geteilte Ansicht](/pages-and-spaces#geteilte-ansicht) öffnen oder schließen |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd> | Dokument [präsentieren](/documents#praesentieren) |
+| <kbd>⌘</kbd> <kbd>P</kbd> | Bei geöffneter Seite: [Druckoptionen](/import-export-versions#drucken-und-pdf), dann drucken (<kbd>Enter</kbd>); sonst der Druck des Browsers |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> | [Journal](/journal#von-tag-zu-tag): heutigen Tag öffnen (des zuletzt benutzten Journals) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>X</kbd> | Alle [Abschnitte einklappen](/documents#abschnitte-einklappen) (im offenen Dokument oder Eintrag) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>O</kbd> | Alle Abschnitte ausklappen |

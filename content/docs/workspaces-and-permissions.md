@@ -42,6 +42,10 @@ Unter **Ausprobieren** gibst du einen Beispieltext ein und siehst sofort, welche
 
 Fertige Link-Regeln für gängige Dienste findest du im [Flowplan Marketplace](https://marketplace.flowplan.org).
 
+## Druckvorlagen
+
+Unter **Einstellungen → Arbeitsbereich → Druckvorlagen** legen Eigentümerinnen und Eigentümer [Druckvorlagen](/import-export-versions#druckvorlagen) für alle im Arbeitsbereich an – benannte Druckoptionen wie „Sauber für extern“ – und wählen mit dem Stern eine Standardvorlage. Mitglieder und Gäste wählen sie im Druckfenster, ändern können sie sie nicht.
+
 ## Rollen
 
 | Rolle | Darf |

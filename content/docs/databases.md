@@ -90,7 +90,7 @@ Unter dem Titel eines Eintrags klappt der Pfeil **Eigenschaften** die Eigenschaf
 
 - Die Wahl gilt für **alle Einträge der Datenbank** und wird in deinem Konto gespeichert, **getrennt für Telefon und Computer**: Wer auf dem Telefon einklappt, sieht am Computer weiter alles.
 - Ohne eigene Wahl sind die Eigenschaften am Computer aufgeklappt, auf dem Telefon eingeklappt, sobald der Eintrag mehr als vier Eigenschaften zeigt. Ein gerade angelegter Eintrag öffnet immer aufgeklappt, damit du ihn ausfüllen kannst.
-- Einklappen ändert keine Werte und keine Rechte und gilt nur für dich. Drucken und Exporte zeigen immer alle Eigenschaften.
+- Einklappen ändert keine Werte und keine Rechte und gilt nur für dich. Drucken und Exporte zeigen immer alle Eigenschaften – außer du schaltest sie in den [Druckoptionen](/import-export-versions#drucken-und-pdf) ab.
 - Für normale Seiten gibt es dasselbe in der [Leiste mit Tags und Eigenschaften](/pages-and-spaces#leiste-einklappen).
 
 ### Formatierter Text

@@ -35,6 +35,7 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 | Synced block | `/sync` | Content that stays the same on several pages |
 | Insert synced block | `/sync` | Show an existing synced block |
 | Divider | `/hr` | A horizontal line |
+| Page break | `/page break`, `/pagebreak` | Continue on a new page in print, PDF and Word ([Page break](#page-break)) |
 | AI | `/ai`, `/ki` | Let the [AI](/ai#writing-assistant) write (when switched on) |
 | Footnote | `/footnote`, `/fußnote` | Numbered note at the end of the page ([Footnotes](#footnotes)) |
 | Citation | `/cite`, `/zitat` | Cite a source – DOI, BibTeX or Zotero ([Citations](#citations-and-bibliography)) |
@@ -439,6 +440,15 @@ The text then reads "(Müller 2021)", "(Müller & Schmidt 2021, p. 12)" or "(Mü
 Paragraphs, headings, lists, quotes, callouts and table cells in Arabic, Hebrew or Persian run **right to left automatically**: the direction follows the block's first letter. Bullets, checkboxes, quote bars, callout icons and block handles are then on the right.
 
 In the block menu (click the handle `⋮⋮`) → **Text direction** you set **Automatic**, **Left to right** or **Right to left** for a block and everything inside it. The direction is kept in the HTML export; Markdown has no place for it.
+
+## Page break
+
+A **page break** (`/page break`, also `/pagebreak`) sets where a new page starts in print. In the editor it is a thin dashed line labelled “Page break”; a click selects it, <kbd>⌫</kbd> deletes it like a divider, and the `⋮⋮` handle moves it.
+
+- **Print / PDF** of a page and the [PDF with sub-pages](/import-export-versions#word-pdf-with-sub-pages-and-e-book) start a new page after it; the line itself is not printed. On screen, on published pages and in presentations it stays a line.
+- **Word (DOCX)** gets a real page break, **e-books** a break where the reader honours it.
+- **Markdown export** writes `<div style="page-break-after: always"></div>`, which Pandoc, Typora and most Markdown-to-PDF tools understand. The **Markdown import** turns it back into a page break, as well as `\pagebreak` or `\newpage` on a line of their own. Pasted HTML from Word or Google Docs with a page break also becomes the block.
+- There is no page break block in [encrypted spaces](/encrypted-spaces).
 
 ## More blocks
 

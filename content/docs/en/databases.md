@@ -90,7 +90,7 @@ Below a record's title, the **Properties** arrow folds the properties into one l
 
 - The choice applies to **all records of the database** and is stored in your account, **separately for phone and computer**: collapsing on the phone leaves everything visible on the computer.
 - Without a choice of your own, properties are expanded on a computer; on a phone they are collapsed as soon as the record shows more than four properties. A record you have just created always opens expanded so you can fill it in.
-- Collapsing changes no values and no permissions and only applies to you. Printing and exports always show all properties.
+- Collapsing changes no values and no permissions and only applies to you. Printing and exports always show all properties – unless you turn them off in the [print options](/import-export-versions#print-and-pdf).
 - Ordinary pages have the same in the [bar with tags and properties](/pages-and-spaces#collapsing-the-bar).
 
 ### Formatted text

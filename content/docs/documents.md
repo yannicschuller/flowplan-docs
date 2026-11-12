@@ -35,6 +35,7 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 | Synchronisierter Block | `/sync` | Inhalt, der auf mehreren Seiten gleich bleibt |
 | Synchronisierten Block einfügen | `/sync` | Einen bestehenden synchronisierten Block zeigen |
 | Trennlinie | `/hr` | Horizontale Linie |
+| Seitenumbruch | `/seitenumbruch`, `/pagebreak` | Beim Drucken, im PDF und in Word geht es auf einer neuen Seite weiter ([Seitenumbruch](#seitenumbruch)) |
 | KI | `/ki`, `/ai` | Text mit der [KI](/ai#schreibassistent) schreiben lassen (wenn eingeschaltet) |
 | Fußnote | `/fußnote`, `/footnote` | Nummerierte Anmerkung am Seitenende ([Fußnoten](#fussnoten)) |
 | Literaturzitat | `/zitat`, `/cite` | Quelle zitieren – DOI, BibTeX oder Zotero ([Zitate](#zitate-und-literaturverzeichnis)) |
@@ -439,6 +440,15 @@ Im Text steht dann „(Müller 2021)“, „(Müller & Schmidt 2021, S. 12)“ o
 Absätze, Überschriften, Listen, Zitate, Hinweise und Tabellenzellen in Arabisch, Hebräisch oder Persisch laufen **automatisch von rechts nach links**: Die Richtung folgt dem ersten Buchstaben des Blocks. Aufzählungszeichen, Kästchen, Zitatbalken, Hinweissymbole und Blockgriffe stehen dann rechts.
 
 Im Blockmenü (Klick auf den Griff `⋮⋮`) → **Textrichtung** legst du für einen Block und alles darin **Automatisch**, **Links nach rechts** oder **Rechts nach links** fest. Die Richtung bleibt im HTML-Export erhalten; Markdown kennt sie nicht.
+
+## Seitenumbruch
+
+Ein **Seitenumbruch** (`/seitenumbruch`, auch `/umbruch` oder `/pagebreak`) legt fest, wo beim Drucken eine neue Seite beginnt. Im Editor ist er eine feine gestrichelte Linie mit der Aufschrift „Seitenumbruch“; anklicken markiert ihn, <kbd>⌫</kbd> löscht ihn wie eine Trennlinie, am Griff `⋮⋮` lässt er sich verschieben.
+
+- **Drucken / PDF** einer Seite und das [PDF mit Unterseiten](/import-export-versions#word-pdf-mit-unterseiten-und-e-book) beginnen danach eine neue Seite; die Linie selbst wird nicht gedruckt. Auf dem Bildschirm, auf veröffentlichten Seiten und in der Präsentation bleibt es bei der Linie.
+- **Word (DOCX)** bekommt einen echten Seitenumbruch, **E-Books** einen Umbruch, wo das Lesegerät ihn beachtet.
+- **Markdown-Export** schreibt `<div style="page-break-after: always"></div>` – das verstehen Pandoc, Typora und die meisten Markdown-zu-PDF-Werkzeuge. Der **Markdown-Import** macht daraus wieder einen Seitenumbruch, ebenso aus `\pagebreak` oder `\newpage` auf einer eigenen Zeile. Eingefügtes HTML aus Word oder Google Docs mit einem Seitenumbruch wird ebenfalls zum Block.
+- In [verschlüsselten Bereichen](/encrypted-spaces) gibt es den Block nicht.
 
 ## Weitere Blöcke
 

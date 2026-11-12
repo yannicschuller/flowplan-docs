@@ -42,6 +42,10 @@ Under **Try it** you enter a sample text and see right away which parts become w
 
 You'll find ready-made link rules for common services in the [Flowplan Marketplace](https://marketplace.flowplan.org).
 
+## Print presets
+
+Under **Settings → Workspace → Print presets** owners create [print presets](/import-export-versions#print-presets) for everyone in the workspace – named print options such as “Clean for external” – and pick a default preset with the star. Members and guests pick them in the print window but cannot change them.
+
 ## Roles
 
 | Role | May |
