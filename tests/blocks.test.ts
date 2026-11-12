@@ -44,7 +44,7 @@ test("tabs: panels with headings (no-JS fallback), platform keys, unique ids", (
   assert.match(out, /id="tabs-2-web"/);
   // The tab script is a separate file; no inline script in the HTML.
   assert.ok(!out.includes("<script"));
-  assert.deepEqual(["Web", "Im Browser", "iOS", "iPhone", "iPad", "Android", "macOS, Windows, Linux", "Desktop-App", "Self-hosted"].map(platformKey), [
+  assert.deepEqual(["Web", "Im Browser", "iOS", "iPhone", "iPad", "Android", "macOS, Windows, Linux", "Desktop-App", "macOS", "Windows", "Browser am Computer", "Self-hosted"].map(platformKey), [
     "web",
     "web",
     "ios",
@@ -53,6 +53,9 @@ test("tabs: panels with headings (no-JS fallback), platform keys, unique ids", (
     "android",
     "desktop",
     "desktop",
+    "macos",
+    "windows",
+    "web",
     "self-hosted",
   ]);
   // Two tabs with the same platform still get their own ids.

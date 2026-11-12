@@ -79,13 +79,17 @@ export function calloutHtml(body: string, locale: Locale) {
 
 // ---------------------------------------------------------------- platforms
 // The platform a tab label names, so a choice carries over to every tab
-// group of the docs: "iPhone und iPad" and "iOS" are both "ios".
+// group of the docs: "iPhone und iPad" and "iOS" are both "ios"; web, ios,
+// android, desktop, or macos / windows / linux for one system alone.
 export function platformKey(label: string) {
   const l = label.toLowerCase();
   if (/iphone|ipad|\bios\b/.test(l)) return "ios";
   if (/android/.test(l)) return "android";
-  if (/desktop|\bmac(os)?\b|windows|linux/.test(l)) return "desktop";
+  if (/desktop/.test(l)) return "desktop";
   if (/\bweb\b|browser/.test(l)) return "web";
+  // One system names itself ("macOS"); several together are the desktop.
+  const systems = [/\bmac(os)?\b/.test(l) && "macos", /windows/.test(l) && "windows", /linux/.test(l) && "linux"].filter(Boolean) as string[];
+  if (systems.length) return systems.length > 1 ? "desktop" : systems[0];
   return (
     l
       .replace(/ä/g, "ae")

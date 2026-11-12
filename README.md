@@ -12,6 +12,22 @@ In November 2026 the long pages were split (`scripts/split`: the manifest says w
 
 Counts that the pages state come from the app's [`facts.json`](https://github.com/yannicschuller/flowplan/blob/main/facts.json): write `{{facts.templates}}` for "26" or `{{facts.views|word}}` for "zehn" / "ten" (keys: `views`, `fieldTypes`, `questionTypes`, `languages`, `templates`, `templateCategories`). **Was ist neu / What's new** (`/whats-new`) lists the releases from the app's `CHANGELOG.md`. Both files are fetched before every build (`scripts/app-files.mjs`, also `npm run app-files`) into `content/facts.json` and `content/changelog.md`; without network the committed copies are used.
 
+### Building blocks
+
+Besides GitHub Markdown, the pages know a few blocks (`lib/markdown-blocks.ts`, styles in `components/docs/content.module.css`). Everything typed into them is escaped; `npm test` checks the syntax (`tests/blocks.test.ts`).
+
+| Write | Renders as |
+| --- | --- |
+| `> [!NOTE]`, `> [!TIP]`, `> [!WARNING]`, `> [!IMPORTANT]`, `> [!CAUTION]`, then the text on the next `>` lines (or on the same line) | A callout: Hinweis / Note, Tipp / Tip, Achtung / Warning, Wichtig / Important, Vorsicht / Caution |
+| `> [!ADMIN]`, `> [!DESKTOP]` | A callout for whom or where it applies: Nur Admin / Admin only, Nur Desktop / Desktop only |
+| `::: steps`, a blank line, a numbered list, a blank line, `:::` | The list as numbered steps; items may hold code blocks and paragraphs (indent them by three spaces) |
+| `::: tabs`, then `== Label` before each panel, `:::` at the end | Tabs. Without JavaScript every panel shows under its label as a heading; `public/tabs.js` (loaded only on pages with tabs) turns them into tabs |
+| `++⌘ K++`, `++Strg Umschalt P++`, `++⌘/Strg ⇧ V++`, `++⌘ +++` | A key combination: keys are separated by spaces, `⌘/Strg` is one key with alternatives. Plain `<kbd>` still works for single keys |
+
+Containers can be nested (tabs holding steps); `:::` inside fenced code does not count. Tab labels for platforms share the reader's choice: `Web`/`Browser`, `Desktop`, `iPhone`/`iPad`/`iOS`, `Android` (and `macOS`, `Windows`, `Linux` on their own). Picking one remembers it in the browser (localStorage, no cookie) and preselects it in every tab group that has it, on all pages.
+
+A screenshot named `name-light.webp` with a `name-dark.webp` next to it follows the reader's colour scheme (`<picture>`). Put a page's key screenshot right after the lead: an image before the first `##` loads at once, all others lazily. Keep screenshots WebP, about 1360 px wide (diagrams 1600 px), under ~60 KB.
+
 ## Development
 
 ```bash
@@ -19,7 +35,7 @@ npm install
 npm run dev
 ```
 
-Checks: `npm run typecheck`, `npm test`, `npm run build`, then `npm run quality` – it starts the production build and opens `/de`, `/en/configuration`, `/de/journal` and `/en/whats-new` at 1280 and 390 px in Chromium: no serious or critical [axe](https://github.com/dequelabs/axe-core) findings (contrast included), nothing focusable inside `aria-hidden`, no horizontal scrolling, at most 150 KB of JavaScript (gzip) per page and a largest contentful paint under 2.5 s. `QUALITY_CHROMIUM` names a Chromium binary when Playwright's own is not installed (`npx playwright install chromium`).
+Checks: `npm run typecheck`, `npm test`, `npm run build`, then `npm run quality` – it starts the production build and opens `/de`, `/en/configuration`, `/de/journal`, `/en/whats-new`, `/de/formatting`, `/en/mobile-apps` (tabs) and `/de/installation` at 1280 and 390 px in Chromium: no serious or critical [axe](https://github.com/dequelabs/axe-core) findings (contrast included), nothing focusable inside `aria-hidden`, no horizontal scrolling, at most 150 KB of JavaScript (gzip) per page and a largest contentful paint under 2.5 s. `QUALITY_CHROMIUM` names a Chromium binary when Playwright's own is not installed (`npx playwright install chromium`).
 
 ## Configuration
 
