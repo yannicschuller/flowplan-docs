@@ -19,6 +19,10 @@ Voice notes in the editor are always stored as audio. With a Whisper service in 
 | `WHISPER_MAX_MB` | `200` | Largest recording in MB. |
 | `WHISPER_RESPONSE_FORMAT` | `verbose_json` | Response format of speech recognition; falls back to `json` once. |
 | `WHISPER_DIARIZE` | *empty* | `on`: ask for speaker separation (`diarize=true`), only for services that support it. |
+| `WHISPER_TIMEOUT_SECONDS` | *empty* | How long one transcription may take, in seconds. Without it a minute per MB of audio, at least 3 minutes, at most 2 hours. Raise it for slow CPUs. |
+| `WHISPER_PROMPT` | *empty* | Vocabulary for all workspaces (names, acronyms, separated by commas), sent to Whisper as `prompt` – before the workspace's glossary, together at most about 550 characters. |
+| `WHISPER_VAD` | *empty* | `on`: skip silence first (`vad_filter=true`, faster-whisper/speaches) – fewer made-up lines. |
+| `MEETING_LIVE_TRANSCRIPTION` | `on` | `off`: transcribe meetings only after they stop instead of while recording. |
 
 Example with [speaches](https://github.com/speaches-ai/speaches) (formerly faster-whisper-server) in the same Compose project:
 
@@ -37,6 +41,18 @@ node -e "fetch('http://whisper:8000/v1/models/Systran/faster-whisper-small',{met
 ```
 
 `small` needs about 1 GB of memory and transcribes roughly in real time on a normal CPU; `base` is faster and less accurate, `medium` more accurate and considerably slower. Do not make the Whisper service publicly reachable – only Flowplan talks to it.
+
+**whisper.cpp** as the Whisper service (fast on Apple Silicon or with a GPU): start `whisper-server` with the OpenAI path, with conversion of the recordings (needs ffmpeg on the service's machine, for WebM) and with voice activity detection:
+
+```sh
+whisper-server -m models/ggml-large-v3-turbo.bin --host 0.0.0.0 --port 8080 \
+  --inference-path /v1/audio/transcriptions --convert \
+  --vad -vm models/ggml-silero-v5.1.2.bin -mc 0 -ml 400 -sow
+```
+
+`--vad -vm …` skips silence (whisper.cpp's `models/download-vad-model.sh` downloads the Silero model), `-mc 0` stops Whisper from latching onto a made-up line and repeating it, `-ml 400 -sow` limits the segment length and splits on word boundaries – which gives more precise source chips. Then set `WHISPER_URL=http://whisper:8080` for Flowplan. With **faster-whisper/speaches**, `WHISPER_VAD=on` does the same.
+
+Long recordings: whisper.cpp with large-v3-turbo needed about 380 seconds for 8.4 MB on an M2; on a CPU it takes considerably longer. Flowplan waits a minute per MB; if that is not enough, raise `WHISPER_TIMEOUT_SECONDS`. When a transcription fails, admins see the cause in the meeting block.
 
 ## AI
 
