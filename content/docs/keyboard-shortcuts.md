@@ -83,7 +83,7 @@ Die Übersicht zeigt die Tasten so, wie sie auf deinem Gerät heißen: auf dem M
 | <kbd>⌘</kbd> <kbd>J</kbd> | [Schreibassistent](/ai-writing#schreibassistent) für Markierung oder Zeile (wenn KI eingeschaltet ist) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd> | Fußnote einfügen (bei ausgewählter Fußnote: bearbeiten) |
 
-Markdown-Kürzel wie `##`, `-`, `[]` oder ` ``` ` stehen unter [Dokumente und Editor](/documents#markdown-kuerzel).
+Markdown-Kürzel wie `##`, `-`, `[]` oder ` ``` ` stehen unter [Markdown im Editor](/markdown-editor#markdown-kuerzel).
 
 ## Seitenbaum
 

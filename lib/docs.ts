@@ -55,13 +55,23 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       },
       {
         title: ["Dokumente", "Documents"],
-        intro: ["Der Editor: Blöcke, Formatierung, Aufgaben, Medien, Formeln, Links und Präsentieren.", "The editor: blocks, formatting, tasks, media, formulas, links and presenting."],
-        pages: ["documents", "formatting", "tasks-in-documents", "media-and-files", "math-and-code", "links-and-mentions", "academic-writing", "reading-and-presenting"],
+        intro: ["Der Editor: Blöcke, Markdown, Formatierung, Aufgaben, Medien und Links.", "The editor: blocks, Markdown, formatting, tasks, media and links."],
+        pages: ["documents", "markdown-editor", "formatting", "tasks-in-documents", "media-and-files", "links-and-mentions"],
       },
       {
-        title: ["Whiteboards, Notizbücher und Journal", "Whiteboards, notebooks and journal"],
-        intro: ["Zeichnen, Diagramme, Handschrift und der Tag im Rückblick.", "Drawing, diagrams, handwriting and the day in review."],
-        pages: ["whiteboards", "whiteboard-diagrams", "whiteboard-collaboration", "whiteboard-racks", "notebooks", "journal", "dashboards"],
+        title: ["Formeln, Zitate und Präsentieren", "Formulas, citations and presenting"],
+        intro: ["Formeln, Diagramme und Code, wissenschaftliches Schreiben, Lesen und Präsentieren.", "Formulas, diagrams and code, academic writing, reading and presenting."],
+        pages: ["math-and-code", "academic-writing", "reading-and-presenting"],
+      },
+      {
+        title: ["Whiteboards und Dashboards", "Whiteboards and dashboards"],
+        intro: ["Zeichnen, Diagramme, gemeinsam am Board, Racks und Dashboards.", "Drawing, diagrams, working together on a board, racks and dashboards."],
+        pages: ["whiteboards", "whiteboard-diagrams", "whiteboard-collaboration", "whiteboard-racks", "dashboards"],
+      },
+      {
+        title: ["Notizbücher und Journal", "Notebooks and journal"],
+        intro: ["Handschrift mit Stift und der Tag im Rückblick.", "Handwriting with a pen and the day in review."],
+        pages: ["notebooks", "notebook-tools", "journal", "journal-review"],
       },
       {
         title: ["Datenbanken", "Databases"],

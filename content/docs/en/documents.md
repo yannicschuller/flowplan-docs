@@ -9,7 +9,7 @@ The editor works with blocks: every paragraph, list, table or embed is a block y
 
 ![A project page in the editor: the toolbar at the top, below it a blue note block with the goal, a line with four mentioned people and a date, headings and a bulleted list; the space's page tree on the left](/screenshots/document-light.webp "A document with the toolbar, a note block, mentions and headings.")
 
-**More on this topic:** [Formatting, callouts and captions](/formatting) · [Tasks in documents](/tasks-in-documents) · [Images, files and voice notes](/media-and-files) · [Math, diagrams, code and calculations](/math-and-code) · [Links, mentions and the graph](/links-and-mentions) · [Footnotes, citations and bibliography](/academic-writing) · [Reading, presenting and overview](/reading-and-presenting) · [Printing and PDF](/print-and-pdf)
+**More on this topic:** [Markdown in the editor](/markdown-editor) · [Formatting, callouts and captions](/formatting) · [Tasks in documents](/tasks-in-documents) · [Images, files and voice notes](/media-and-files) · [Math, diagrams, code and calculations](/math-and-code) · [Links, mentions and the graph](/links-and-mentions) · [Footnotes, citations and bibliography](/academic-writing) · [Reading, presenting and overview](/reading-and-presenting) · [Printing and PDF](/print-and-pdf)
 
 ## The block menu with /
 
@@ -68,10 +68,6 @@ A **toggle** has a title and content below it that folds in and out. Insert one 
 - **Just for you:** as with [collapsed sections](/reading-and-presenting#collapsing-sections), collapsing does not change the document – others editing at the same time keep their own state. Your browser or the app remembers what you collapsed on this device for your account, so it is still collapsed the next time you open the page. On another device the toggles are expanded. A toggle is always stored, exported (Markdown `<details>`, HTML) and published expanded; readers collapse it there themselves. A toggle without a title is exported to Markdown with an empty `<summary></summary>` and comes back the same way on import.
 - In **reading mode** a click on the whole title line collapses and expands it.
 
-## Pasting answers from ChatGPT
-
-Text copied from ChatGPT or another assistant is formatted when pasted: LaTeX formulas (`\[ … \]`, `\( … \)`, `$$ … $$`) become formula blocks and inline formulas, Markdown (headings, **bold**, lists, tables) is applied, lines with tabs become a table, `☐` a task list, and each line becomes its own paragraph. Formulas already rendered on a copied web page stay formulas. This also applies when copying straight from the ChatGPT web page. If formulas are already in the document as text (such as `\[ A(3;2;1) \]`), select them – or everything with <kbd>⌘</kbd>/<kbd>Ctrl</kbd>+<kbd>A</kbd> – and choose **Turn into formulas** in the text menu. Ordinary text is pasted as before.
-
 ## Synced blocks
 
 A synced block (`/sync` → **Synced block**) is content that is the same in several places – such as contact details, a checklist or a status notice. **Insert synced block** shows it on another page. You can edit it everywhere; the change appears on all pages, live on pages that are open.
@@ -80,28 +76,6 @@ A synced block (`/sync` → **Synced block**) is content that is the same in sev
 - The trash icon in the frame removes the block only in this place; it stays in the others.
 - Permissions come from the page the block was created on: whoever may not read that page sees a notice instead of the content.
 - The search finds the text on the original page. The block does not appear on published pages.
-
-## Markdown shortcuts
-
-While you type, the editor converts:
-
-| Type | Result |
-| --- | --- |
-| `#`, `##`, `###` + space | Heading 1–3 |
-| `-` or `*` + space | Bulleted list |
-| `1.` + space | Numbered list |
-| `[]` + space | Task |
-| `>` + space | [Toggle](#toggles) (or quote, see below) |
-| `"` + space | Quote (also with „ “ ”) |
-| ` ``` ` | Code block |
-| `---` | Divider |
-| `**bold**`, `*italic*`, `` `code` ``, `~~strike~~` | Formatting in the text |
-
-**`>` as a quote:** if you are used to `>` for quotes from Markdown, switch **Settings → Appearance & language → Editor → “>” creates** to **Quote**. The setting applies to your account on all devices. It only affects typing: in imported Markdown files and in answers pasted from ChatGPT & co., `> text` becomes a quote as before, and the Markdown export still writes quotes as `> text`.
-
-Code blocks carry their language in the fence: ` ```python `, ` ```typescript `, ` ```terraform `. The export writes the ids of VS Code/Shiki; the import also understands aliases and older names (`js`, `ts`, `py`, `sh`, `yml`, `cpp`, `csharp`, `plaintext` …) and stores them with the full id (` ```js ` becomes JavaScript, exported again as ` ```javascript `). Unknown languages are kept and show as "(imported)" in the block, without highlighting.
-
-Line numbers, highlighted lines, the view and collapsing follow the language in the fence, in the usual notation: ` ```ts {3-5} showLineNumbers startLine=10 `, plus `view=preview`/`view=split`/`view=code`, `collapsed` and `collapsedLines=15`. The import also understands `showLineNumbers{10}` (rehype-pretty-code), `showLineNumbers=10` and `hl_lines="3 4"`/`linenums="10"` (MkDocs). The numbers in `{…}` count from the block's first line, whatever its start number. ` ```mermaid ` fences become code blocks that show the diagram.
 
 ## Indent
 
@@ -129,17 +103,6 @@ In the **selection mode** circles take the place of the handles. A tap selects a
 List items and tasks stay what they are when moved: outside their list they form a list of the same kind of their own, and a numbered item keeps its number. Right next to a matching list they become part of it; in another kind of list they adapt.
 
 <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd>/<kbd>↓</kbd> moves the current block past its neighbour. Every block action can be undone on its own.
-
-## Edit as Markdown
-
-**Page menu … → Edit as Markdown** shows the whole page as Markdown text with line numbers – handy for big rearrangements, find and replace, or if you prefer writing Markdown.
-
-- **Apply** (<kbd>⌘</kbd> <kbd>Enter</kbd>) saves a version first and replaces the content in one step; **Undo** takes the change back.
-- Blocks without a Markdown form – embeds, whiteboards, linked databases, synced blocks, columns, tables with merged cells or widths, sized images, function graphs, metrics and bibliographies – appear as a marker `<!-- flowplan:block … -->`. You can move or delete them but not change them; they come back unchanged. If one is deleted, Flowplan asks before applying.
-- Formatting without a Markdown form (colours, superscript, spoilers, mentions, citations) is kept as HTML in the text.
-- **Alignment, indent, text direction and reactions** are lost when applying; the view says beforehand what is affected.
-- If someone changes the page while you write in Markdown, a notice appears; **Apply anyway** then overwrites their changes.
-- People who may only read – also on locked pages and in reading mode – see **View as Markdown** without Apply.
 
 ## Text direction
 

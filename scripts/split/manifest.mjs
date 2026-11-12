@@ -491,3 +491,34 @@ export const PAGES = [
   p("cluster", { kw: ["Cluster, mehrere Instanzen, Hochverfügbarkeit, Redis, Kubernetes, Skalierung", "cluster, several instances, high availability, redis, kubernetes, scaling"] }),
   p("sizing", { kw: ["Dimensionierung, RAM, CPU, Speicherplatz, Nutzerzahl, Hardware", "sizing, ram, cpu, disk space, number of users, hardware"] }),
 ];
+
+// Later splits, made by hand on the pages as they were then (split-docs.ts
+// does not apply these: it rebuilds wave 1 from BASE). Same format as
+// PAGES; their old anchors are in content/anchor-map.json as well.
+export const LATER = [
+  // Wave 4 (November 2026): pages near the word limit.
+  p("markdown-editor", {
+    title: ["Markdown im Editor", "Markdown in the editor"],
+    sections: ["documents#Markdown-Kürzel", "documents#Als Markdown bearbeiten", "documents#Antworten aus ChatGPT einfügen"],
+    kw: ["Markdown, Kürzel, Markdown-Kürzel, Quelltext, ChatGPT, einfügen, Codeblock", "markdown, shortcuts, markdown shortcuts, source, ChatGPT, paste, code block"],
+  }),
+  p("notebook-tools", {
+    title: ["Werkzeuge im Notizbuch", "Notebook tools"],
+    // The level-3 sections under "Schreiben"; its intro stays on /notebooks.
+    sections: [
+      "notebooks#Tastenkürzel",
+      "notebooks#Werkzeuge, Lieblingsstifte und Radierer",
+      "notebooks#Formen und Lineal",
+      "notebooks#Auswählen mit dem Lasso",
+      "notebooks#Handschrift in Text umwandeln",
+      "notebooks#Bilder, Sticker und eigene Papiervorlagen",
+      "notebooks#Audio aufnehmen",
+    ],
+    kw: ["Notizbuch, Stift, Radierer, Lasso, Lineal, Sticker, Tastenkürzel, Audio", "notebook, pen, eraser, lasso, ruler, stickers, keyboard shortcuts, audio"],
+  }),
+  p("journal-review", {
+    title: ["Überblick und Rückblick im Journal", "Overview and review in the journal"],
+    sections: ["journal#Überblick auf der Journalseite", "journal#Rückblick"],
+    kw: ["Journal, Rückblick, Wochenrückblick, Monatszusammenfassung, Serie, Heatmap, Statistik", "journal, review, weekly review, monthly summary, streak, heatmap, statistics"],
+  }),
+];

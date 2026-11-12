@@ -250,7 +250,7 @@ test("previous and next follow the sidebar and stay within the area", () => {
     assert.equal(last.next, undefined, `${area.id}: nothing after the last page`);
   }
   const doc = loadDoc("formatting", "en")!;
-  assert.deepEqual([doc.prev?.slug, doc.next?.slug], ["documents", "tasks-in-documents"]);
+  assert.deepEqual([doc.prev?.slug, doc.next?.slug], ["markdown-editor", "tasks-in-documents"]);
   assert.equal(doc.next?.title, "Tasks in documents");
 });
 test("related pages: at most four, existing, not the page or its neighbours, most related first", () => {

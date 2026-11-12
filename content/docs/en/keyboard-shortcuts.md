@@ -83,7 +83,7 @@ The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kb
 | <kbd>⌘</kbd> <kbd>J</kbd> | [Writing assistant](/ai-writing#writing-assistant) for the selection or line (when AI is on) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd> | Insert footnote (edits a selected one) |
 
-Markdown shortcuts such as `##`, `-`, `[]` or ` ``` ` are listed under [Documents and the editor](/documents#markdown-shortcuts).
+Markdown shortcuts such as `##`, `-`, `[]` or ` ``` ` are listed under [Markdown in the editor](/markdown-editor#markdown-shortcuts).
 
 ## Page tree
 
