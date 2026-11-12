@@ -10,9 +10,13 @@ Neben der optionalen [eingebauten KI](/ai) kannst du über MCP den Assistenten a
 
 ## Einrichten
 
+::: steps
+
 1. Lege unter **Einstellungen → API & KI-Assistenten** ein [persönliches API-Token](/api-and-webhooks) für den Assistenten an. Wähle **Nur lesen**, wenn der Assistent nur suchen und lesen soll. Wähle **Lesen und schreiben**, wenn er auch Seiten und Datensätze anlegen soll.
 2. Kopiere die Adresse unter **KI-Assistenten (MCP)**. Sie besteht aus deiner Flowplan-Adresse und `/api/mcp`, zum Beispiel `https://flowplan.example.com/api/mcp`.
 3. Trage beides in deinen Client ein (Beispiele unten). Die Einstellungsseite zeigt für jeden Client eine fertige Konfiguration und setzt ein gerade erstelltes Token gleich ein.
+
+:::
 
 Nimm für jeden Assistenten ein eigenes Token. So siehst du, wann welcher zuletzt zugegriffen hat, und kannst einen widerrufen, ohne die anderen zu treffen.
 

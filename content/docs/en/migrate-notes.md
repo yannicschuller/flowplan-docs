@@ -27,10 +27,14 @@ Bring notebooks over from GoodNotes (5 and 6, on iPad, iPhone and Mac) as **PDF*
 
 **One notebook:**
 
+::: steps
+
 1. Open the notebook in GoodNotes.
 2. Tap **Share** or **Export** at the top (depending on the version, the icon with the arrow or in the **⋯** menu) and choose **Export this notebook** – not just the current page.
 3. Choose **PDF** as the format. If GoodNotes offers **Include page templates**, leave it on; otherwise ruling, grids and inserted PDF pages are missing from the background.
 4. Save the PDF to **Files**, AirDrop it to your Mac, or open Flowplan in the browser and import it right away.
+
+:::
 
 **Several notebooks:** in GoodNotes' document overview, mark several notebooks with **Select** and export them together as PDF. Whether GoodNotes hands you single PDFs or a ZIP depends on the version – Flowplan takes both.
 
@@ -38,10 +42,14 @@ Bring notebooks over from GoodNotes (5 and 6, on iPad, iPhone and Mac) as **PDF*
 
 ### Import into Flowplan
 
+::: steps
+
 1. Open **Settings → Import & export → Import** and choose the target space.
 2. Choose **GoodNotes** as the source (a PDF is also detected automatically).
 3. Click **Choose and check file** and pick the PDF – or several PDFs at once, or a ZIP of PDFs.
 4. The preview shows how many notebooks and sheets will be created and what is skipped. **Import** creates the notebooks and opens the first one.
+
+:::
 
 Good to know:
 

@@ -10,7 +10,7 @@ Die Schnellsuche findet Inhalte bis in Dateianhänge hinein. Posteingang und Pus
 
 ## Schnellsuche
 
-<kbd>⌘</kbd> <kbd>K</kbd> (Windows/Linux <kbd>Strg</kbd> <kbd>K</kbd>) oder **Suchen** in der Seitenleiste.
+++⌘ K++ (Windows/Linux ++Strg K++) oder **Suchen** in der Seitenleiste.
 
 Durchsucht werden:
 

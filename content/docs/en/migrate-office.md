@@ -8,8 +8,12 @@ Step by step from Confluence, Evernote, Google Docs, Microsoft Word and OneNote 
 
 ## From Confluence
 
+::: steps
+
 1. In Confluence: **Space settings → Export** (Confluence Cloud: **Space settings → Export space**). Choose **HTML** or **XML**, each with all pages.
 2. Import the ZIP in Flowplan as above (source **Confluence** or automatic).
+
+:::
 
 What it turns into:
 
@@ -21,8 +25,12 @@ What it turns into:
 
 ## From Evernote
 
+::: steps
+
 1. In Evernote, save a notebook via **… → Export notebook** as **ENEX**. Put several notebooks into one ZIP.
 2. Import the `.enex` file or the ZIP in Flowplan.
+
+:::
 
 What it turns into:
 
@@ -34,8 +42,12 @@ What it turns into:
 
 ## From Google Docs
 
+::: steps
+
 1. At [takeout.google.com](https://takeout.google.com) choose **Drive** and set the format for documents to **HTML** (recommended) or **Microsoft Word**. Single documents also work via **File → Download → Web page (.html, zipped)** or **Microsoft Word (.docx)**.
 2. Import the Takeout ZIP, the web page ZIP or the `.docx` file in Flowplan (source **Google Docs**; single `.docx` files also work with [Microsoft Word](#from-microsoft-word)).
+
+:::
 
 What it turns into:
 
@@ -59,7 +71,11 @@ Paragraphs, headings, bold, italic, underline, strike-through, lists (numbered a
 
 Flowplan does not read OneNote files (`.one`, `.onetoc2`, `.onepkg`) directly – it recognises them and tells you what to do. The way goes through OneNote's own export:
 
+::: steps
+
 1. In OneNote for Windows, open the page or section and choose **File → Export**, with **Word Document (.docx)** as the format.
 2. Import the `.docx` file (or several as a ZIP) in Flowplan with **Microsoft Word**.
+
+:::
 
 If your version of OneNote offers no export as a Word document but only PDF, import the PDF as a notebook (as [from GoodNotes](/migrate-notes#from-goodnotes)) or upload it as a file to a page.

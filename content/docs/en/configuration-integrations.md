@@ -103,3 +103,8 @@ Defaults for [workflows](/workflows); the [administration](/administration#workf
 | `FLOWPLAN_WORKFLOW_HTTP_ALLOW_PRIVATE` | `false` | Allow internal addresses (home network, n8n) |
 | `FLOWPLAN_WORKFLOW_EXTERNAL_MAIL` | `on` | E-mails to addresses outside the members |
 | `FLOWPLAN_WORKFLOW_TEST_RUNS_PER_MINUTE` | 10 | Test and dry runs per person and minute |
+| `FLOWPLAN_WORKFLOW_PARALLEL_RUNS` | 10 | Runs of one workflow running at the same time (1–100); further ones wait in the queue |
+| `FLOWPLAN_WORKFLOW_RUNS_KEPT` | 10000 | Keep at most this many runs per workflow (100–1,000,000); older finished ones are deleted daily, open ones never |
+
+> [!NOTE]
+> **Development and tests only:** `FLOWPLAN_WORKFLOW_LEASE_MS` (default 120000, a step's [lease](/cluster#workflows-in-a-cluster)), `FLOWPLAN_WORKFLOW_POLL_MS` (5000, how often each instance looks for due steps) and `FLOWPLAN_WORKFLOW_SWEEP_MS` (60000, how often expired leases go back to the queue) shorten the queue's timings, in milliseconds. Do not set them in production.

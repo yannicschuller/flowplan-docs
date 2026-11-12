@@ -8,9 +8,13 @@ Block extensions bring custom block types into the editor: a poll, a counter, a 
 
 ## For owners: register an extension
 
+::: steps
+
 1. Your administrators allow the address: either through `PLUGIN_ALLOWED_ORIGINS` ([configuration](/configuration-integrations#integrations)) or with the switch **Block extensions from any HTTPS address** under **Administration → Extensions & domains**.
 2. Under **Settings → Block extensions** enter the address at **Address of the extension**, e.g. `https://plugins.example.org/poll/`, and choose **Register**. Flowplan loads `flowplan-plugin.json` from there, checks it and shows the extension as a card of its own: which blocks it brings and what it may do, below that the switches **Active** and **Also show on published pages**. It is removed with the trash icon at the top of its card.
 3. In the editor its blocks appear in the `/` menu under **Extensions**.
+
+:::
 
 Per extension there is:
 
@@ -137,6 +141,11 @@ Messages to Flowplan go out with the target `"*"`: the frame has no origin of it
 
 ### Try it
 
+::: steps
+
 1. Serve `examples/plugin-hello/` over HTTPS (for example behind your reverse proxy).
 2. Set `PLUGIN_ALLOWED_ORIGINS=https://plugins.example.org` and restart Flowplan.
 3. As an owner register `https://plugins.example.org/plugin-hello/` and type `/counter` in the editor.
+
+:::
+

@@ -8,6 +8,8 @@ A form view collects answers directly as records in the database – from member
 
 ## Design a form
 
+::: steps
+
 1. Create a view of the type **Form** in the database.
 2. **Design form** opens the editor:
    - title, description and the label of the submit button,
@@ -18,6 +20,8 @@ A form view collects answers directly as records in the database – from member
    - **title after submitting** and **confirmation text**,
    - what happens **after sending** (see [Settings](#settings)).
 3. **Save form**.
+
+:::
 
 Flowplan checks required fields and input types in the browser and on the server. Files properties allow uploads in the form.
 
@@ -110,8 +114,12 @@ Every answer is a record of the database. Each question is a property, a matrix 
 
 The customer portal turns a form into a service desk: whoever sends it can follow their request afterwards.
 
+::: steps
+
 1. Under **Share form**, switch on the **customer portal**.
 2. Choose which properties are visible in the portal – for example **Status** or a due date. A select property named “Status” is preselected when you switch it on. People, relations and files always stay internal.
+
+:::
 
 After sending, the person sees a private link to their request. If they answered an e-mail question and e-mail is set up, the link also arrives by e-mail – in their language; with the confirmation e-mail switched on, it is part of that one e-mail. The page shows the status, their answers and a conversation with the team.
 

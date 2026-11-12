@@ -8,9 +8,13 @@ Block-Erweiterungen bringen eigene Blocktypen in den Editor: eine Umfrage, ein Z
 
 ## Für Eigentümer: eine Erweiterung registrieren
 
+::: steps
+
 1. Die Administration gibt die Adresse frei: entweder über `PLUGIN_ALLOWED_ORIGINS` ([Konfiguration](/configuration-integrations#integrationen)) oder mit dem Schalter **Block-Erweiterungen von jeder HTTPS-Adresse** unter **Administration → Erweiterungen & Domains**.
 2. Unter **Einstellungen → Block-Erweiterungen** bei **Adresse der Erweiterung** die Adresse eintragen, z. B. `https://plugins.example.org/umfrage/`, und **Registrieren** wählen. Flowplan lädt `flowplan-plugin.json` von dort, prüft es und zeigt die Erweiterung als eigene Karte: welche Blöcke sie bringt und was sie darf, darunter die Schalter **Aktiv** und **Auch auf veröffentlichten Seiten zeigen**. Entfernt wird sie mit dem Papierkorb-Symbol oben in ihrer Karte.
 3. Im Editor erscheinen ihre Blöcke im `/`-Menü unter **Erweiterungen**.
+
+:::
 
 Je Erweiterung gibt es:
 
@@ -137,6 +141,11 @@ Nachrichten an Flowplan gehen mit dem Ziel `"*"` hinaus: Der Rahmen hat keinen e
 
 ### Ausprobieren
 
+::: steps
+
 1. `examples/plugin-hello/` über HTTPS ausliefern (etwa hinter dem Reverse Proxy).
 2. `PLUGIN_ALLOWED_ORIGINS=https://plugins.example.org` setzen und Flowplan neu starten.
 3. Als Eigentümer `https://plugins.example.org/plugin-hello/` registrieren und im Editor `/zähler` tippen.
+
+:::
+

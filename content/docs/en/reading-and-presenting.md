@@ -12,18 +12,18 @@ The list icon at the top right of a document opens the **table of contents** bes
 
 ## Collapsing sections
 
-Every heading can be **collapsed**: the small arrow to the left of a heading (it shows on hover; on touch devices and for collapsed headings always) hides everything below it – up to the next heading of the same or a higher level. A collapsed heading shows how much is hidden behind it (**… 3 blocks**); another click expands it again. With the cursor in the heading, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> does the same. On a phone the arrow sits at the end of the heading, in right-to-left text on the other side.
+Every heading can be **collapsed**: the small arrow to the left of a heading (it shows on hover; on touch devices and for collapsed headings always) hides everything below it – up to the next heading of the same or a higher level. A collapsed heading shows how much is hidden behind it (**… 3 blocks**); another click expands it again. With the cursor in the heading, ++⌘ ⌥ Enter++ does the same. On a phone the arrow sits at the end of the heading, in right-to-left text on the other side.
 
-- **Collapse / expand all sections:** in a document's page menu `⋯`, at the top of the [table of contents](#table-of-contents), in quick search (`> sections`) or with <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>X</kbd> and <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>O</kbd> ([changeable](/keyboard-shortcuts#your-own-shortcuts)). With a database record open, it applies to the record's text.
+- **Collapse / expand all sections:** in a document's page menu `⋯`, at the top of the [table of contents](#table-of-contents), in quick search (`> sections`) or with ++⌘ ⌥ X++ and ++⌘ ⌥ O++ ([changeable](/keyboard-shortcuts#your-own-shortcuts)). With a database record open, it applies to the record's text.
 - **Just for you:** what is collapsed is remembered on this device (per page or record) – it does not change the document, others still see everything. Documents you open for the first time are expanded.
-- **Nothing gets lost:** when the cursor gets into a collapsed part (arrow keys, undo, a click in the table of contents), it expands. So it does when **Find on page** (<kbd>⌘</kbd> <kbd>F</kbd>) goes to a match inside, or a search hit, backlink or notification leads there. You can keep typing in the collapsed heading itself; it stays collapsed.
-- **Moving:** dragging a collapsed heading by its handle `⋮⋮` (or moving it with <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd>/<kbd>↓</kbd>) takes its whole section along.
+- **Nothing gets lost:** when the cursor gets into a collapsed part (arrow keys, undo, a click in the table of contents), it expands. So it does when **Find on page** (++⌘ F++) goes to a match inside, or a search hit, backlink or notification leads there. You can keep typing in the collapsed heading itself; it stays collapsed.
+- **Moving:** dragging a collapsed heading by its handle `⋮⋮` (or moving it with ++⌘ ⇧ ↑/↓++) takes its whole section along.
 - **Printing and PDF** always show everything; so do export, presentations and published pages.
 - Headings directly in the document collapse – in reading mode and in [encrypted spaces](/encrypted-spaces) too. Headings inside callouts, toggles, tables, columns or lists have no arrow; such blocks simply belong to the section they are in.
 
 ## Reading mode
 
-The book icon in the top bar (on a phone **Reading mode** in the `⋯` menu, or <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd>, quick search → `> reading`) opens a document **for reading only**: nothing changes by accident, handles and the block menu disappear – handy on the phone and when reading aloud or presenting. The pencil switches back to editing. The device remembers the mode per page; permissions stay the same, and others keep their own mode. Database records have the same book icon at the top of the record (see [Databases](/databases)).
+The book icon in the top bar (on a phone **Reading mode** in the `⋯` menu, or ++⌘ ⌥ E++, quick search → `> reading`) opens a document **for reading only**: nothing changes by accident, handles and the block menu disappear – handy on the phone and when reading aloud or presenting. The pencil switches back to editing. The device remembers the mode per page; permissions stay the same, and others keep their own mode. Database records have the same book icon at the top of the record (see [Databases](/databases)).
 
 Reading mode also covers everything embedded in the page: in **linked databases** you can't edit cells, add, delete or move records, or change views; a record opened from there is read-only too. Other people's changes keep showing up live. Synced blocks, drawings, metrics, function graphs and extension blocks are locked in reading mode as well.
 
@@ -33,7 +33,7 @@ Reading mode also covers everything embedded in the page: in **linked databases*
 
 ## Present
 
-**Present** in the `…` menu at the top right (or <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd>, quick search → `> present`) shows a document as full-screen slides – without rebuilding it:
+**Present** in the `…` menu at the top right (or ++⌘ ⌥ P++, quick search → `> present`) shows a document as full-screen slides – without rebuilding it:
 
 - Each **heading 1** starts a new slide. If the document has none, each **heading 2** does. A **divider** (`---`) always starts a new slide.
 - Whatever comes before the first heading becomes a title slide with the page title.

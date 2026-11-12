@@ -12,9 +12,13 @@ Mit SCIM 2.0 legt der Identitätsanbieter Konten in Flowplan an, hält Name und 
 
 **Einrichten**
 
+::: steps
+
 1. **Administration → Anmeldung & SSO → SCIM-Token**: **Token erstellen**. Der Token beginnt mit `fpscim_` und wird nur einmal angezeigt; gespeichert ist nur sein Hash. Widerrufen geht jederzeit.
 2. Beim Anbieter die **SCIM-Basis-URL** `<APP_URL>/api/scim/v2` und den Token als **Bearer-Token** eintragen.
 3. Im Anbieter Personen und Gruppen der App zuweisen bzw. „Push Groups“ einschalten.
+
+:::
 
 **Was Flowplan daraus macht**
 

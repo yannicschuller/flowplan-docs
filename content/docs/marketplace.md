@@ -23,19 +23,27 @@ Gäste veröffentlichen nie etwas.
 
 ## Veröffentlichen
 
+::: steps
+
 1. Bei der Vorlage, dem Workflow oder in den Einstellungen **Im Marketplace veröffentlichen …** wählen.
 2. Im Dialog Titel, Kurzbeschreibung (Deutsch und Englisch), Kategorie, Schlagwörter und Sprache prüfen und bis zu **vier Vorschaubilder** hinzufügen (PNG, JPEG oder WebP, je höchstens 1 MB). Für Dokumente und Datenbanken lohnt sich ein Bildschirmfoto – Flowplan erstellt selbst keins.
 3. **Im Marketplace öffnen**: Flowplan erstellt die Datei, öffnet die Einreichungsseite des Marketplace in einem neuen Fenster und übergibt sie dort. Du meldest dich an, wählst die **Lizenz** (Standard CC BY 4.0, außerdem CC0 und MIT), bestätigst, dass du die Rechte am Inhalt hast, und reichst ein.
 4. Alternativ **Als Datei herunterladen**: Die `.flowplan-template`-Datei lädst du dann auf der Einreichungsseite selbst hoch.
 
+:::
+
 Was nie mitkommt: Zugangsdaten, Läufe und Webhook-Adressen eines Workflows, die Adresse deiner Instanz, Namen von Personen, hochgeladene Bilder eines Whiteboards (nur Bilder mit https-Adresse) und Datensatzkarten. Verweise eines Workflows auf Seiten, Datenbanken und Personen werden beim Übernehmen über den Namen neu zugeordnet oder bleiben leer. Bei Erscheinungsbildern mit eigenen Schriften: Veröffentliche nur Schriften, deren Lizenz das Weitergeben erlaubt.
 
 ## Übernehmen
+
+::: steps
 
 1. Auf der Seite einer Vorlage im Marketplace **In Flowplan öffnen** wählen. Ohne gespeicherte Instanz steht dort **In app.flowplan.org öffnen** – für das gehostete Flowplan reicht ein Klick. Für deine eigene Instanz wählst du **Eigene Instanz verwenden …** und gibst einmal ihre Adresse an (zum Beispiel `https://flowplan.example.org`); danach heißt die Schaltfläche **In flowplan.example.org öffnen**, **Instanz ändern** bringt das Feld zurück. Die Adresse bleibt nur in deinem Browser.
 2. Flowplan öffnet sich in einem neuen Fenster und bekommt die Vorlage. Bist du nicht angemeldet, meldest du dich zuerst an – die Vorlage wartet so lange in deinem Browser (bis zu 24 Stunden).
 3. Eine Vorschau zeigt Titel, Art, Autorin oder Autor, Lizenz und **was entsteht**. Bei Workflows siehst du alle Knoten, die externen Dienste, die er anspricht, ob er KI-Schritte nutzt oder E-Mails verschickt – und was du nach dem Import im Editor festlegen musst.
 4. Arbeitsbereich und Bereich (bei Workflows auch die übergeordnete Seite) wählen und **Übernehmen**.
+
+:::
 
 Kommst du aus Flowplan in den Marketplace – über **Mehr Vorlagen im Marketplace** in der Vorlagen-Galerie, **Marketplace öffnen** unter **Einstellungen → Import & Export** oder beim Veröffentlichen –, merkt sich der Marketplace deine Instanz von selbst und zeigt einmal kurz **Instanz übernommen: <Adresse> · ändern**. Du musst die Adresse dann gar nicht eintippen.
 

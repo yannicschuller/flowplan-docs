@@ -4,7 +4,9 @@ keywords: KI fragen, Fragen, Chat, Antworten, Quellen, semantische Suche, verwan
 
 # Fragen an den Arbeitsbereich
 
-**KI fragen** (Seitenleiste, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>A</kbd> bzw. <kbd>Strg</kbd> <kbd>Alt</kbd> <kbd>A</kbd>, <kbd>⌘</kbd> <kbd>K</kbd> → „KI fragen …“ oder der Knopf in der Suche) beantwortet Fragen zu deinen Seiten und Datenbanken – etwa „Wann ist die nächste Wartung der Heizung fällig?“ oder „Was haben wir zum Thema Onboarding beschlossen?“.
+**KI fragen** (Seitenleiste, ++⌘ ⌥ A++ bzw. ++Strg Alt A++, ++⌘ K++ → „KI fragen …“ oder der Knopf in der Suche) beantwortet Fragen zu deinen Seiten und Datenbanken – etwa „Wann ist die nächste Wartung der Heizung fällig?“ oder „Was haben wir zum Thema Onboarding beschlossen?“.
+
+![Ask AI als Leiste rechts neben der Seite „Launch plan“: oben der Bereich „Whole workspace“ und der Anbieter, darunter die Frage nach dem Launch und eine Antwort mit nummerierten Quellen-Chips, unten die Liste der Quellen mit Links zu den Seiten](/screenshots/ask-ai.webp "KI fragen als Leiste neben der Seite: eine Antwort mit Quellen.")
 
 **Als Leiste am rechten Rand:** Auf dem Computer und dem iPad öffnet sich **KI fragen** als Leiste rechts neben der Seite; die Seite wird schmaler, nichts wird verdeckt. Du kannst weiterschreiben, scrollen und andere Seiten öffnen, während die Antwort entsteht – sie läuft weiter, und das Gespräch bleibt beim Seitenwechsel erhalten. Ein Klick auf eine Quelle öffnet die Seite daneben, die Leiste bleibt offen. Die Leiste ist anfangs etwa 420 px breit und höchstens 45 % des Fensters; die Breite änderst du am linken Rand (ziehen oder mit den Pfeiltasten, Doppelklick setzt zurück), dieser Browser merkt sie sich. Die Seite daneben ordnet sich nach dem Platz, der ihr bleibt: Wird es eng, zeigt sie ihre schmale Ansicht, und das **Inhaltsverzeichnis** klappt zu einem Knopf zusammen, der die Gliederung als Liste öffnet. In schmalen Fenstern (unter etwa 1100 px) liegt die Leiste über der Seite, statt sie zusammenzudrücken; **Anheften** stellt sie wieder daneben, **Lösen** legt sie wieder darüber – auch das merkt sich der Browser. <kbd>Esc</kbd> in der Leiste, das <kbd>×</kbd> oder derselbe Kurzbefehl schließen sie wieder. **KI fragen** und die **Kommentare** teilen sich den rechten Rand: Öffnest du das eine, schließt sich das andere. Im Fokusmodus ist die Leiste ausgeblendet. Auf dem Handy erscheint **KI fragen** als Blatt über der unteren Leiste; nach unten wischen (oder der Pfeil oben) verkleinert es zu einem Knopf „KI antwortet …“ – die Antwort läuft weiter.
 
@@ -30,10 +32,14 @@ Fragen auf Chinesisch, Japanisch, Koreanisch oder Thai zerlegt Flowplan in Wört
 
 Zusätzlich zum Volltext kann Flowplan Inhalte als Vektoren („Embeddings“) speichern. Dann findet **KI fragen** passende Stellen auch ohne gleiche Wörter – „Reise“ findet „Betriebsausflug“.
 
+::: steps
+
 1. Beim Anbieter der Instanz ein **Modell für Embeddings** eintragen:
    - **Ollama:** `nomic-embed-text` herunterladen (unter **Administration → KI → Modell herunterladen** oder `ollama pull nomic-embed-text`) und eintragen.
    - **OpenAI-kompatibel:** z. B. `text-embedding-3-small`; **Gemini:** `text-embedding-004`. Anthropic bietet keine Embeddings.
 2. **Suche nach Bedeutung einschalten** und speichern. Alternativ per Umgebung: `FLOWPLAN_AI_SEMANTIC_SEARCH=on` und `FLOWPLAN_AI_EMBEDDING_MODEL=nomic-embed-text`.
+
+:::
 
 - Ein Hintergrundauftrag bettet geänderte Seiten und Einträge abschnittsweise ein; unveränderte Abschnitte werden nicht erneut eingebettet. Höchstens `FLOWPLAN_AI_EMBED_PER_HOUR` Abschnitte pro Stunde (Standard 5.000).
 - **Nie eingebettet** werden Journale mit PIN, für die KI gesperrte Seiten und Bereiche und der Papierkorb. Rechte und persönliche KI-Regeln gelten bei jeder Frage.

@@ -21,6 +21,8 @@ This holds for every way of running it: `docker run`, Docker Compose, Kubernetes
 
 ## Prepare
 
+::: steps
+
 1. **Write down the environment variables.** All the old instance gets – depending on the setup from the `.env`, with `docker inspect <container>` (section `Env`), `docker compose config` or `helm get values flowplan`. The full list is under [Configuration](/configuration).
 2. **Keep the keys safe**, apart from the data (password manager):
    - `FLOWPLAN_ENCRYPTION_KEY` (or the file of `FLOWPLAN_ENCRYPTION_KEY_FILE`) and `FLOWPLAN_ENCRYPTION_KEY_PREVIOUS`: without them, encrypted backups, the encrypted files in the bucket and the stored secrets sealed with it cannot be read.
@@ -32,6 +34,8 @@ This holds for every way of running it: `docker run`, Docker Compose, Kubernetes
 6. **Make a backup**: **Administration → Storage & backup → Whole instance → Download**. It never hurts.
 7. **Warn the users**: **Administration → Maintenance & notices** shows everyone a maintenance window.
 
+:::
+
 ## Three ways
 
 | Way | When | Downtime |
@@ -41,6 +45,8 @@ This holds for every way of running it: `docker run`, Docker Compose, Kubernetes
 | **C: S3 and Litestream** | the old instance already runs with S3 and Litestream | from stopping the old to starting the new instance |
 
 ### Way B: Download and upload a backup
+
+::: steps
 
 1. On the old instance [announce maintenance](/administration#maintenance-notices) – changes after the download are lost.
 2. **Administration → Storage & backup → Whole instance → Download**. With `FLOWPLAN_ENCRYPTION_KEY` the file is encrypted (`.zip.enc`) – the new instance then needs the same key.
@@ -58,14 +64,20 @@ This holds for every way of running it: `docker run`, Docker Compose, Kubernetes
 4. On the new instance **Restore from backup → Choose backup**. The proxy in front must let such large uploads through (Caddy does by itself, nginx with `client_max_body_size`, Cloudflare at most 100 MB); otherwise bring the file to the server with `scp` and upload it there. At most 50 GB.
 5. Restart; the previous state stays as `pre-restore-…`. Then switch DNS.
 
+:::
+
 ### Way C: S3 and Litestream
 
 If the old instance runs with S3 (files in the bucket) and Litestream (a continuous copy of the database under `<prefix>/db/`), the new instance can start straight from the bucket:
+
+::: steps
 
 1. **Stop** the old instance – the Litestream of two instances must never write into the same folder at the same time.
 2. Start the new instance with the **same** `S3_*` variables, the same `FLOWPLAN_ENCRYPTION_KEY` and an **empty** data folder. Litestream restores the database; Flowplan fetches files on first access right away and all others in the background.
 3. Copy `secrets.key` and `web-push-keys.json` as in way B unless the keys are set as variables.
 4. Switch DNS.
+
+:::
 
 With `FLOWPLAN_LITESTREAM=off` there is no continuous copy: use the newest scheduled backup from `<prefix>/backups/` instead (see [Restore](/storage-and-backups#restore)). The pre-flight check of way A notices a Litestream copy in the bucket and points to this way.
 
@@ -74,10 +86,14 @@ With `FLOWPLAN_LITESTREAM=off` there is no continuous copy: use the newest sched
 
 ## Switch DNS
 
+::: steps
+
 1. After the final sync (way A) or the start of the new instance, change the domain's **A record** (IPv4) and **AAAA record** (IPv6) to the new server. Remove a port forwarding or tunnel at the old location.
 2. The new server's proxy gets its certificate as soon as the domain points to it (with Let's Encrypt over port 80) – give it a minute.
 3. Check what the world sees with `dig +short flowplan.example.org` (or `nslookup`). Whoever still has the old address cached reaches the old instance until the TTL runs out – which then shows the notice with the new one.
 4. Raise the TTL again afterwards.
+
+:::
 
 ## Check afterwards
 
@@ -128,9 +144,13 @@ A concrete way from a home server to a server at Hetzner, with Docker Compose an
 
 ### Object Storage as S3
 
+::: steps
+
 1. In the Hetzner Console **Object Storage → Create bucket**, same location as the server (e.g. Falkenstein), visibility **private**. The name must be unique, e.g. `flowplan-<your-name>`.
 2. **Security → S3 credentials → Generate credentials**. The secret is shown only once.
 3. Into the `.env`:
+
+:::
 
 ```dotenv
 S3_BUCKET=flowplan-example
@@ -225,9 +245,14 @@ Prefer Kubernetes? The repository's [Helm chart](/installation#kubernetes-helm) 
 
 ### The run with the home server
 
+::: steps
+
 1. A day before, lower the DNS record's TTL to 300 seconds.
 2. Set up the Hetzner server as above, with the same variables as at home (the keys!), and start it with `docker compose up -d`; create the first account.
 3. At home **Prepare the move**; on the Hetzner server **Take over from another instance** with the home server's public address (or its VPN address with `FLOWPLAN_MOVE_ALLOW_PRIVATE=true`).
 4. Pre-flight check until no errors remain. **Make the source read-only and fetch the last state**, **Apply**, `docker compose restart flowplan`.
 5. Point the A and AAAA records to the Hetzner server's addresses, remove the port forwarding at the router.
 6. [Check afterwards](#check-afterwards), [clean up](#clean-up) after a few days.
+
+:::
+

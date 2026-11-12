@@ -18,12 +18,16 @@ No server of your own yet? Three ways to a running instance without setting up D
 
 The button reads the Blueprint [`render.yaml`](https://github.com/yannicschuller/flowplan/blob/main/render.yaml) from the repository: a web service from the image `ghcr.io/yannicschuller/flowplan:latest` in Frankfurt, a 5 GB disk on `/app/data` and the health check on `/api/health`.
 
+::: steps
+
 1. Click the button, sign in to Render and confirm the Blueprint. The SMTP fields can stay empty (see [E-mail](/en/configuration-integrations#e-mail-smtp)).
 2. Render generates `FLOWPLAN_SETUP_TOKEN`. Once the deploy is done, copy it from the service's **Environment** tab and open `https://<name>.onrender.com/register?setup=<token>` – this first account administers the instance.
 
+:::
+
 **Costs:** persistent disks need a paid instance – the Blueprint uses **Starter**, the smallest one with a disk; the disk is billed per GB on top (see Render's pricing). For more than a handful of people choose a larger instance ([Sizing](/en/sizing)). On the free instance the data would be lost on every restart.
 
-**Address:** without `APP_URL`, Flowplan uses Render's own address (`RENDER_EXTERNAL_URL`). For your own domain, add it under **Settings → Custom Domains** and set `APP_URL=https://flowplan.example.com` under **Environment** – ideally before the first account, because passkeys are bound to the address.
+**Address:** without `APP_URL`, Flowplan uses Render's own address (`RENDER_EXTERNAL_URL`, or else `https://` with `RENDER_EXTERNAL_HOSTNAME`). For your own domain, add it under **Settings → Custom Domains** and set `APP_URL=https://flowplan.example.com` under **Environment** – ideally before the first account, because passkeys are bound to the address.
 
 **Persistence and updates:** everything lives on the disk – Render runs a service with a disk as exactly one instance and stops it briefly on every deploy. Render keeps snapshots of the disk; for backups away from Render, add S3 ([Storage, S3 and backups](/en/storage-and-backups)). To update, start a **Manual Deploy**: Render pulls the `:latest` image again.
 
@@ -50,9 +54,13 @@ App Platform cannot generate secrets itself, so you enter these values when crea
 
 For a virtual server (VPS) with **Ubuntu 24.04 or Debian 12** at any provider. Most of them – Hetzner Cloud, Netcup, IONOS, DigitalOcean Droplets, Vultr, Scaleway, OVHcloud – accept a cloud-init file as **"user data"** or **"cloud config"** when you create the server.
 
+::: steps
+
 1. Point your domain's DNS record (A, and AAAA for IPv6) to the server – with a new server, as soon as you know its address.
 2. Copy [`deploy/cloud-init.yaml`](https://github.com/yannicschuller/flowplan/blob/main/deploy/cloud-init.yaml), set the one line `FLOWPLAN_DOMAIN=flowplan.example.com` and paste it as user data when creating the server.
 3. After a few minutes, sign in with SSH and read `/root/flowplan-README.txt`: it holds the address and the link for the first account. Progress is logged in `/var/log/flowplan-install.log`.
+
+:::
 
 On a server that already runs, the install script does the same:
 

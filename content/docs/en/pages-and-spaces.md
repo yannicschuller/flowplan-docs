@@ -64,7 +64,7 @@ Two pages side by side – say notes on the left and the task database on the ri
 - **Open in split view** in the right-click menu of a page in the page tree,
 - <kbd>⌘</kbd>-click (Windows/Linux: <kbd>Ctrl</kbd>-click) on a page in the page tree, under favourites or on a page link in the text,
 - dragging a page from the page tree to the **right edge of the window** (a drop area appears there),
-- <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>S</kbd> or **Open a page beside it …** in the `…` menu: the quick search opens the chosen page on the right.
+- ++⌘ ⌥ S++ or **Open a page beside it …** in the `…` menu: the quick search opens the chosen page on the right.
 
 Each half has its own header with the title and **×**. The **×** on the left closes the left page and the right one moves into the main view; the arrow on the right brings the right page into the main view. Documents can be edited in both halves; databases, whiteboards and dashboards work as usual.
 
@@ -148,4 +148,4 @@ Deleted pages and spaces end up in the **Trash** at the bottom of the sidebar, d
 - Deleted permanently are the page with its content, versions, comments and inline comments, for databases the properties, views and records, plus uploaded files, favorites, publications, share links, notifications and search results. Links from other pages then point to a deleted page. This cannot be undone; a [backup](/storage-and-backups) is the only way back.
 - After **30 days** in the trash everything is deleted permanently by itself – pages, spaces, records, files and [templates](/templates#your-own-templates). The line at the top names the period, and every page shows how many days it has left. Admins change the period under [Limits & retention](/administration#limits-retention) (0 = never automatically).
 
-Right after deleting, Flowplan shows a notice at the bottom such as “‘Notes’ moved to the trash” with **Undo** – for about six seconds, longer while the pointer or the focus rests on it. **Undo** or <kbd>⌘</kbd> <kbd>Z</kbd> (outside text fields) brings the page back with its sub-pages and opens it again. The same goes for moving pages in the page tree and for several pages at once.
+Right after deleting, Flowplan shows a notice at the bottom such as “‘Notes’ moved to the trash” with **Undo** – for about six seconds, longer while the pointer or the focus rests on it. **Undo** or ++⌘ Z++ (outside text fields) brings the page back with its sub-pages and opens it again. The same goes for moving pages in the page tree and for several pages at once.

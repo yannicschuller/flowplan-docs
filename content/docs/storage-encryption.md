@@ -55,9 +55,13 @@ Es gibt keinen Migrationsschritt, und beim Start wird nichts umgeschrieben. Flow
 
 ### Schlüssel wechseln
 
+::: steps
+
 1. Den neuen Schlüssel als `FLOWPLAN_ENCRYPTION_KEY` setzen und den alten nach `FLOWPLAN_ENCRYPTION_KEY_PREVIOUS` verschieben (mehrere durch Komma getrennt), dann neu starten.
 2. Unter **Administration → Verschlüsselung** **Bestehende verschlüsseln** wählen. Alle Dateien im Bucket werden mit dem neuen Schlüssel neu verschlüsselt.
 3. Den alten Schlüssel aufheben, bis die letzte damit verschlüsselte Sicherung aus der Aufbewahrung gefallen ist.
+
+:::
 
 Jede verschlüsselte Datei nennt die ID ihres Schlüssels. Fehlt dieser Schlüssel, sagt Flowplan genau das, statt still kaputte Daten zu liefern.
 

@@ -65,9 +65,13 @@ Filter und Sortierungen einer Ansicht, die eine verborgene Eigenschaft nutzen, w
 
 ## Relationen
 
+::: steps
+
 1. **Eigenschaft hinzufügen → Relation** und die Zieldatenbank wählen.
 2. Optional **in beide Richtungen**: Die Zieldatenbank erhält eine Gegen-Eigenschaft, Änderungen werden auf beiden Seiten gepflegt.
 3. In der Zelle Einträge suchen und verknüpfen; mehrere Verknüpfungen lassen sich einzeln entfernen oder gemeinsam leeren.
+
+:::
 
 Relationen erscheinen im Eintrag als Links. Die Datenbanksuche findet Einträge auch über die Namen verknüpfter Einträge, Relationsfilter bieten diese Namen direkt an.
 
@@ -75,9 +79,13 @@ Verknüpfte Einträge zeigen ihr Symbol, in der Zelle wie in der Auswahl. Ein Kl
 
 ## Rollups
 
+::: steps
+
 1. Zuerst eine Relation anlegen.
 2. **Eigenschaft hinzufügen → Rollup**, dann Relation und Eigenschaft der Zieldatenbank wählen.
 3. Berechnung wählen – 22 stehen zur Verfügung, passend zum Typ: Originalwerte, eindeutige Werte, Anzahl, leer/gefüllt (auch als Anteil), Summe, Mittelwert, Median, Minimum, Maximum, Spannweite, abgehakt/nicht abgehakt, frühestes und spätestes Datum, Zeitraum.
+
+:::
 
 Frühestes und spätestes Datum über **Erstellt am** oder **Bearbeitet am** ergeben einen Zeitpunkt in UTC, angezeigt in deiner Zeitzone. Zahlen-Rollups erscheinen als Zahl, Fortschrittsbalken, Fortschrittsring oder Bewertung, mit einstellbarem Zielwert. Werte aus Datenbanken, die jemand nicht lesen darf, werden für diese Person nicht geladen.
 

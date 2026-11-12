@@ -43,17 +43,17 @@ Wer nur lesen darf, sieht Auswählen, Verschieben, den Laserpointer und die Leis
 
 ## Elemente gestalten
 
-Ausgewählte Elemente zeigen eine Leiste mit Farbe, Schriftgröße, Fett, Ausrichtung, Linienstärke und -verlauf, **Nach vorne**/**Nach hinten**, **Duplizieren** (<kbd>⌘</kbd> <kbd>D</kbd>) und **Löschen** (<kbd>Entf</kbd>). Zettel und Texte lassen sich auch **verdecken** – wie ein Spoiler im Dokument, per Klick aufdecken.
+Ausgewählte Elemente zeigen eine Leiste mit Farbe, Schriftgröße, Fett, Ausrichtung, Linienstärke und -verlauf, **Nach vorne**/**Nach hinten**, **Duplizieren** (++⌘ D++) und **Löschen** (<kbd>Entf</kbd>). Zettel und Texte lassen sich auch **verdecken** – wie ein Spoiler im Dokument, per Klick aufdecken.
 
 Doppelklick bearbeitet den Text eines Elements. Kopieren und Einfügen funktioniert innerhalb und zwischen Whiteboards. **Kursiv** und **Unterstrichen** gelten wie **Fett** für den ganzen Text eines Elements.
 
 ## Gruppieren
 
-Mehrere Elemente auswählen und <kbd>⌘</kbd> <kbd>G</kbd> drücken (oder **Gruppieren** in der Leiste): Die Elemente verhalten sich danach wie eines. Ein Klick wählt die ganze Gruppe, und sie wird gemeinsam verschoben, an den Ecken skaliert, dupliziert, kopiert, gesperrt und gelöscht. Gruppen lassen sich wieder zu größeren Gruppen zusammenfassen.
+Mehrere Elemente auswählen und ++⌘ G++ drücken (oder **Gruppieren** in der Leiste): Die Elemente verhalten sich danach wie eines. Ein Klick wählt die ganze Gruppe, und sie wird gemeinsam verschoben, an den Ecken skaliert, dupliziert, kopiert, gesperrt und gelöscht. Gruppen lassen sich wieder zu größeren Gruppen zusammenfassen.
 
 - **Doppelklick** auf ein gruppiertes Element betritt die Gruppe: Eine gestrichelte Linie zeigt sie, und Klicks wählen nun einzelne Elemente darin (bei verschachtelten Gruppen die nächste Ebene). <kbd>Esc</kbd> oder ein Klick daneben verlässt die Gruppe.
-- <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>G</kbd> oder **Gruppierung aufheben** löst die äußerste Gruppe der Auswahl auf.
-- Kopien einer Gruppe sind eine eigene, neue Gruppe. Wie jede Änderung wird das Gruppieren live geteilt und lässt sich mit <kbd>⌘</kbd> <kbd>Z</kbd> zurücknehmen.
+- ++⇧ ⌘ G++ oder **Gruppierung aufheben** löst die äußerste Gruppe der Auswahl auf.
+- Kopien einer Gruppe sind eine eigene, neue Gruppe. Wie jede Änderung wird das Gruppieren live geteilt und lässt sich mit ++⌘ Z++ zurücknehmen.
 
 ## Listen, Links und Schlagwörter
 
@@ -63,7 +63,7 @@ In Zetteln, Formen und Texten gibt es einfache Formatierungen im Text selbst:
 | --- | --- |
 | `- Punkt` | Aufzählung (die Knöpfe **Aufzählung** und **Nummerierte Liste** in der Leiste setzen sie für die markierten Zeilen) |
 | `1. Punkt` | Nummerierte Liste; <kbd>Enter</kbd> setzt die Liste fort, eine leere Zeile beendet sie |
-| `**fett**`, `*kursiv*`, `__unterstrichen__` | Einzelne Wörter hervorheben – beim Schreiben mit <kbd>⌘</kbd> <kbd>B</kbd>, <kbd>⌘</kbd> <kbd>I</kbd>, <kbd>⌘</kbd> <kbd>U</kbd> |
+| `**fett**`, `*kursiv*`, `__unterstrichen__` | Einzelne Wörter hervorheben – beim Schreiben mit ++⌘ B++, ++⌘ I++, ++⌘ U++ |
 | `[Text](https://…)` | Link – **Link in den Text einfügen** in der Leiste fügt ihn um die Markierung ein |
 
 Links dürfen nur auf `https://`, `http://` und `mailto:` zeigen oder auf ein Element desselben Boards (siehe unten); andere Adressen bleiben einfacher Text. Web-Links öffnen sich in einem neuen Tab. Daneben kann jedes Element einen eigenen **Link** tragen (Kettensymbol in der Leiste); ein kleines Symbol an der Ecke führt dorthin.
@@ -110,10 +110,10 @@ Exporte zeigen statt des Players eine Karte mit Anbieter und Link.
 ## Navigieren
 
 - Zoomen mit <kbd>⌘</kbd> + Mausrad, Trackpad-Geste oder den Knöpfen in der Leiste unten links.
-- **Alles anzeigen** (<kbd>⇧</kbd> <kbd>1</kbd>) passt die Ansicht an alle Elemente an, <kbd>⇧</kbd> <kbd>2</kbd> an die Auswahl – mit einer weichen Kamerafahrt, die jede Eingabe sofort beendet.
-- Rückgängig <kbd>⌘</kbd> <kbd>Z</kbd>, Wiederholen <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Z</kbd>.
+- **Alles anzeigen** (++⇧ 1++) passt die Ansicht an alle Elemente an, ++⇧ 2++ an die Auswahl – mit einer weichen Kamerafahrt, die jede Eingabe sofort beendet.
+- Rückgängig ++⌘ Z++, Wiederholen ++⇧ ⌘ Z++.
 - **Minikarte** (im Menü **…** der Leiste unten, **Ansicht und Aktionen**): eine kleine Übersicht aller Elemente mit dem sichtbaren Ausschnitt. Klicken oder Ziehen springt dorthin; mit dem Fokus auf der Minikarte verschieben die Pfeiltasten die Ansicht. Ob sie offen ist, merkt sich der Browser.
-- **Auf dem Board suchen** (<kbd>⌘</kbd> <kbd>F</kbd> auf dem Board, oder im Menü **…** unten): durchsucht Zettel, Formen, Texte, Tabellen, Rahmen, Kommentare, Einbettungen sowie Seiten- und Eintragskarten. <kbd>Enter</kbd> und <kbd>⇧</kbd> <kbd>Enter</kbd> (oder die Pfeile) springen zum nächsten bzw. vorigen Treffer, der hervorgehoben wird; <kbd>Esc</kbd> schließt die Suche.
+- **Auf dem Board suchen** (++⌘ F++ auf dem Board, oder im Menü **…** unten): durchsucht Zettel, Formen, Texte, Tabellen, Rahmen, Kommentare, Einbettungen sowie Seiten- und Eintragskarten. <kbd>Enter</kbd> und ++⇧ Enter++ (oder die Pfeile) springen zum nächsten bzw. vorigen Treffer, der hervorgehoben wird; <kbd>Esc</kbd> schließt die Suche.
 
 ## Einbetten und exportieren
 

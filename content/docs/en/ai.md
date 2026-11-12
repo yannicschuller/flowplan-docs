@@ -54,7 +54,16 @@ Then choose the provider **Ollama** under **Administration → AI**. **Load inst
 > [!NOTE]
 > **Optional and can be switched off at any time.** In the Flowplan apps for iPhone, iPad and Mac, Flowplan can use **Apple Intelligence right on the device**. **The text does not leave the device** – it goes neither to the Flowplan server nor to an AI provider. AI through the server is not affected and stays available.
 
-**What you need:** the Flowplan app for iPhone or iPad with **iOS/iPadOS 26** or later, or the desktop app 1.2.0 or later on a Mac with **macOS 26** or later, a device that supports Apple Intelligence (such as iPhone 15 Pro or later, iPad and Mac with an M chip), and **Apple Intelligence switched on** (Settings → Apple Intelligence & Siri). In the browser and on other devices this path does not exist. The server needs a Flowplan version newer than 0.7.0 (currently the beta image).
+**What you need:**
+
+::: tabs
+== iPhone and iPad
+The Flowplan app for iPhone or iPad with **iOS/iPadOS 26** or later, on a device that supports Apple Intelligence (such as iPhone 15 Pro or later, iPad with an M chip).
+== Mac (desktop app)
+The desktop app 1.2.0 or later on a Mac with an M chip and **macOS 26** or later.
+:::
+
+On both, **Apple Intelligence must be switched on** (Settings → Apple Intelligence & Siri). In the browser and on other devices this path does not exist. The server needs a Flowplan version newer than 0.7.0 (currently the beta image).
 
 **What runs on the device** – the light actions on an open page:
 
@@ -83,6 +92,8 @@ Results from the device carry the label **On this device**, and the bottom line 
 
 Under **Administration → AI**:
 
+::: steps
+
 1. **Turn on AI.**
 2. Choose the **instance provider** (or **No provider**, see below), enter address, model and – if needed – the **API key**. **Test connection.**
 3. **Who may use AI:**
@@ -92,6 +103,8 @@ Under **Administration → AI**:
 4. **Features:** allow or forbid each one separately. Optionally turn on [semantic search](/ask-ai#semantic-search-optional).
 5. **On-device AI (Apple):** allowed by default, independently of the switch in step 1 ([on-device AI](#on-device-ai-apple)). Switch it off if there should be no AI on the instance at all.
 6. **Save.**
+
+:::
 
 This covers three typical setups:
 

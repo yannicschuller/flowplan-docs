@@ -6,7 +6,7 @@ keywords: docker, compose, install, self-hosting, server, update, helm, kubernet
 
 Flowplan runs as a single container with SQLite and a data directory. Postgres, Redis or a separate search service are not needed – PostgreSQL and several instances are possible, but optional.
 
-![How an instance is built: browsers, the desktop apps and the apps for iOS and Android connect through a reverse proxy with HTTPS to the Flowplan container. Inside, the Next.js server writes to SQLite and an uploads volume; Litestream backs up the database continuously to S3, and uploads are mirrored there. Optionally connected are OIDC or LDAP, SMTP, an AI provider and the push relay, which brings end-to-end encrypted notifications to the apps.](/screenshots/architecture-en-light.webp "One instance: one container behind the reverse proxy, everything else optional.")
+[![How an instance is built: browsers, the desktop apps and the apps for iOS and Android connect through a reverse proxy with HTTPS to the Flowplan container. Inside, the Next.js server writes to SQLite and an uploads volume; Litestream backs up the database continuously to S3, and uploads are mirrored there. Optionally connected are OIDC or LDAP, SMTP, an AI provider and the push relay, which brings end-to-end encrypted notifications to the apps.](/screenshots/architecture-en-light.webp "One instance: one container behind the reverse proxy, everything else optional.")](/screenshots/architecture-en-light.webp)
 
 **More on this topic:** [Deploy in one click](/one-click-deploy)
 
@@ -84,6 +84,8 @@ docker run -d --name flowplan \
   --env-file .env \
   flowplan:latest
 ```
+
+Build arguments: `PG_CLIENT_MAJOR` (default `18`) chooses the version of `pg_dump`, `pg_restore` and `psql` in the image – at least your PostgreSQL server's major version ([PostgreSQL](/postgresql)). `FLOWPLAN_SKIP_TYPECHECK=1` is meant for development only: it skips the TypeScript check during the build when it already ran, as in our CI.
 
 The image contains Node, Litestream for the S3 backup and `curl` for the health check. Flowplan runs in it as UID 1000 (the user `node`), or as the user from `PUID`/`PGID` – never as root ([Volume permissions](/coolify-and-proxy#volume-permissions)).
 

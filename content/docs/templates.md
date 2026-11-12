@@ -33,12 +33,16 @@ Das gilt genauso für eigene Vorlagen: **Verwenden** führt in den Dialog **Neue
 
 ## Eigene Vorlagen
 
+::: steps
+
 1. Auf einer Seite **Seitenaktionen → Als Vorlage speichern**.
 2. Name, Kategorie und Sichtbarkeit wählen:
    - **Nur für mich**,
    - **Arbeitsbereich**: alle Mitglieder dieses Arbeitsbereichs,
    - **Alle Arbeitsbereiche** der Instanz,
    - **Öffentliche Galerie** (nur Admins): auch ohne Konto sichtbar.
+
+:::
 
 ### Vorlagen eines Bereichs oder des ganzen Arbeitsbereichs
 

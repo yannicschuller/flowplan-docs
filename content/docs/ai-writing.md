@@ -13,7 +13,7 @@ Der Schreibassistent bearbeitet markierten Text oder schreibt neuen Text an der 
 So öffnest du ihn:
 
 - Text markieren → im Textmenü **KI**.
-- <kbd>⌘</kbd> <kbd>J</kbd> (<kbd>Strg</kbd> <kbd>J</kbd>): wirkt auf die Markierung, ohne Markierung auf die aktuelle Zeile; in einer leeren Zeile öffnet sich ein freies Eingabefeld.
+- ++⌘ J++ (++Strg J++): wirkt auf die Markierung, ohne Markierung auf die aktuelle Zeile; in einer leeren Zeile öffnet sich ein freies Eingabefeld.
 - `/ki` oder `/ai` im Blockmenü: freies Eingabefeld an der Schreibmarke.
 
 | Aktion | Was passiert |
@@ -28,7 +28,7 @@ So öffnest du ihn:
 | **Als Liste** / **Als Tabelle** | Gliedert den Text um. |
 | **Was soll die KI tun?** | Eine eigene Anweisung, z. B. „Mach daraus eine E-Mail“. |
 
-**Freies Schreiben** (`/ki`, <kbd>⌘</kbd> <kbd>J</kbd> in einer leeren Zeile): Beschreibe, was entstehen soll – etwa „Schreib eine Einleitung über …“. Mit **Seite als Kontext** (voreingestellt an) geht der Inhalt der Seite mit an die KI.
+**Freies Schreiben** (`/ki`, ++⌘ J++ in einer leeren Zeile): Beschreibe, was entstehen soll – etwa „Schreib eine Einleitung über …“. Mit **Seite als Kontext** (voreingestellt an) geht der Inhalt der Seite mit an die KI.
 
 Die KI antwortet in der Sprache des Textes, beim freien Schreiben in der Sprache deiner Anweisung. Die Antwort erscheint zuerst in einer **Vorschau** unter dem Text, nicht direkt im Dokument; ein pulsierender Cursor zeigt, dass noch Text folgt, **Stopp** bricht ab. Danach:
 
@@ -36,7 +36,7 @@ Die KI antwortet in der Sprache des Textes, beim freien Schreiben in der Sprache
 - **Darunter einfügen** – unter dem Absatz bzw. der Liste.
 - **Erneut** – dieselbe Anfrage noch einmal; **Andere Aktion** – zurück zur Auswahl; **Verwerfen** – nichts ändert sich.
 
-Überschriften, Listen, Aufgaben, Tabellen, Code und Hinweise werden als echte Blöcke eingefügt. Das Einfügen ist ein einziger Schritt, den <kbd>⌘</kbd> <kbd>Z</kbd> zurücknimmt, und funktioniert beim gemeinsamen Bearbeiten wie jede andere Änderung. Eingefügte Blöcke leuchten kurz in der Akzentfarbe auf – nur als Anzeige, nicht gespeichert und für andere unsichtbar.
+Überschriften, Listen, Aufgaben, Tabellen, Code und Hinweise werden als echte Blöcke eingefügt. Das Einfügen ist ein einziger Schritt, den ++⌘ Z++ zurücknimmt, und funktioniert beim gemeinsamen Bearbeiten wie jede andere Änderung. Eingefügte Blöcke leuchten kurz in der Akzentfarbe auf – nur als Anzeige, nicht gespeichert und für andere unsichtbar.
 
 > [!NOTE]
 > Bilder aus Antworten werden nicht übernommen (nur ihr Alternativtext), Links nur, wenn sie auf `http(s)`, E-Mail oder Flowplan selbst zeigen. So kann ein manipulierter Text keine Inhalte über Bildadressen nach außen schicken.

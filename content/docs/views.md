@@ -6,6 +6,8 @@ keywords: Ansicht, Kanban, Board, Kalender, Timeline, Gantt, Galerie, Liste
 
 Eine Datenbank kann beliebig viele Ansichten haben. Jede Ansicht zeigt dieselben Einträge mit eigener Darstellung, eigenen Filtern, Sortierungen und Gruppen.
 
+![Die Datenbank „Projects“ in der Kalenderansicht: oben die Reiter Table, Board, Calendar, Timeline, Gallery, darunter Filter, Sortierung und Eigenschaften und ein Monat November 2026 mit Einträgen wie „Weekly planning“ und „Speed up search“](/screenshots/calendar.webp "Eine Datenbank in der Kalenderansicht, mit den Reitern der anderen Ansichten.")
+
 Neue Ansicht: **+** neben den Ansichtsreitern, dann eine der {{facts.views|word}} Darstellungen wählen. **Ansicht und Eigenschaften** steuert, welche Eigenschaften sichtbar sind und in welcher Reihenfolge.
 
 Ein **Rechtsklick auf einen Ansichtsreiter** öffnet sein Menü: **Umbenennen**, **Duplizieren**, **Einstellungen …**, **Als Standardansicht festlegen**, **Nach links**, **Nach rechts** und **Ansicht löschen** (die Einträge bleiben dabei erhalten; die letzte Ansicht lässt sich nicht löschen). Reiter lassen sich mit der Maus auch **per Ziehen neu anordnen**, ein Doppelklick benennt sie um. Auf Touchscreens scrollen die Reiter beim Wischen; langes Drücken öffnet das Menü mit **Nach links** und **Nach rechts**.
@@ -20,7 +22,7 @@ In Tabelle, Liste, Feed, Board und Galerie lassen sich Einträge am **Griff** (�
 - **Am Rand scrollen:** Nahe am Rand der Tabelle, des Boards oder des Fensters scrollt die Ansicht mit, waagrecht wie senkrecht.
 - **Abbrechen:** <kbd>Esc</kbd> während des Ziehens legt alles zurück, nichts wird geändert.
 - **Touchscreens:** Den Griff kurz halten (etwa 0,3 Sekunden), bis sich der Eintrag abhebt, dann ziehen. Ein schnelles Wischen über den Griff scrollt wie gewohnt; ein kurzes Tippen öffnet **Eintrag verschieben**. Im Board ziehen Griff und Spaltengriff sofort.
-- **Tastatur:** Den Griff fokussieren, <kbd>Leertaste</kbd> hebt den Eintrag an, <kbd>↑</kbd>/<kbd>↓</kbd> verschieben ihn (im Board <kbd>←</kbd>/<kbd>→</kbd> in die Nachbarspalte, <kbd>Pos1</kbd>/<kbd>Ende</kbd> an den Anfang oder das Ende), <kbd>Leertaste</kbd> oder <kbd>Enter</kbd> legt ab, <kbd>Esc</kbd> bricht ab. Screenreader hören jede Position. <kbd>Alt</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd> verschiebt weiterhin sofort um eine Stelle.
+- **Tastatur:** Den Griff fokussieren, <kbd>Leertaste</kbd> hebt den Eintrag an, <kbd>↑</kbd>/<kbd>↓</kbd> verschieben ihn (im Board <kbd>←</kbd>/<kbd>→</kbd> in die Nachbarspalte, <kbd>Pos1</kbd>/<kbd>Ende</kbd> an den Anfang oder das Ende), <kbd>Leertaste</kbd> oder <kbd>Enter</kbd> legt ab, <kbd>Esc</kbd> bricht ab. Screenreader hören jede Position. ++Alt ↑/↓++ verschiebt weiterhin sofort um eine Stelle.
 - Ein Eintrag lässt sich so auch auf eine **Datenbank in der Seitenleiste** ziehen (siehe [Einträge kopieren und verschieben](/databases#eintraege-kopieren-und-verschieben)).
 
 ## Tabelle
@@ -50,11 +52,11 @@ Monats-, Wochen- und Tagesansicht nach einem Datumsfeld.
 
 - Woche und Tag zeigen ein Stundenraster mit Ganztagszeile und nebeneinander angeordneten Überschneidungen.
 - Termine in 15-Minuten-Schritten verschieben, an den Rändern verlängern oder verkürzen.
-- Ganztägige Einträge (Monatsansicht und Ganztagszeile) mit der Maus auf einen anderen Tag ziehen, auf Touchgeräten am Griff ⋮⋮; der Zieltag ist gestrichelt umrandet, <kbd>Esc</kbd> bricht ab. Mit der Tastatur verschiebt <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> einen fokussierten Eintrag um einen Tag, <kbd>Alt</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd> in der Monatsansicht um eine Woche.
+- Ganztägige Einträge (Monatsansicht und Ganztagszeile) mit der Maus auf einen anderen Tag ziehen, auf Touchgeräten am Griff ⋮⋮; der Zieltag ist gestrichelt umrandet, <kbd>Esc</kbd> bricht ab. Mit der Tastatur verschiebt ++Alt ←/→++ einen fokussierten Eintrag um einen Tag, ++Alt ↑/↓++ in der Monatsansicht um eine Woche.
 - Klick auf eine Stunde legt einen Termin an, **Ganztägig +** einen Ganztagseintrag.
 - Jede Ansicht hat eine eigene Zeitzone; ohne Einstellung gilt die des Browsers.
 - **Wochenbeginn** (Montag oder Sonntag) lässt sich pro Ansicht festlegen; ohne Einstellung folgt er der Sprache der Person, die den Kalender ansieht – Sonntag in [English (US)](/languages), sonst Montag.
-- Tastatur: <kbd>Alt</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd> verschiebt um 15 Minuten, <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> um einen Tag.
+- Tastatur: ++Alt ↑/↓++ verschiebt um 15 Minuten, ++Alt ←/→++ um einen Tag.
 
 ### Kalender abonnieren
 
@@ -80,8 +82,12 @@ Kontakte-Datenbanken lassen sich wie Kalender abonnieren – als Adressbuch in A
 
 Mit dem **Kalender-Sync** hältst du eine Ansicht mit Datum und einen Kalender in Google Kalender oder Microsoft Outlook / 365 in beide Richtungen gleich – persönlich, mit deinem eigenen Konto.
 
+::: steps
+
 1. **Einstellungen → Kalender & Issues → Kalender verbinden** → **Mit Google Calendar verbinden** bzw. **Mit Microsoft Outlook / 365 verbinden**. Du meldest dich beim Anbieter an und erlaubst den Zugriff auf deine Kalender.
 2. In der Datenbank das Kalendersymbol neben **…** (**Kalender-Sync**) öffnen, die Ansicht, das Konto und den Kalender wählen und **Verbinden**.
+
+:::
 
 Was synchronisiert wird:
 
@@ -109,7 +115,7 @@ Balken von einem Beginn- bis zu einem End-Datumsfeld, im Maßstab Woche, Monat, 
 
 - Balken verschieben oder an den Rändern ziehen. Auf Touchgeräten einen Balken erst kurz halten, dann ziehen; ein schnelles Wischen scrollt die Timeline. Die Griffe an den Rändern ziehen sofort. <kbd>Esc</kbd> bricht ein laufendes Ziehen ab. Das Kalendersymbol öffnet einen Datumsdialog, auch für ungeplante Einträge.
 - **Heute** springt zum aktuellen Datum; Wochenenden lassen sich markieren.
-- Tastatur: <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> verschiebt um einen Tag, mit <kbd>⇧</kbd> ändert es das Ende, mit <kbd>Strg</kbd> den Beginn.
+- Tastatur: ++Alt ←/→++ verschiebt um einen Tag, mit <kbd>⇧</kbd> ändert es das Ende, mit <kbd>Strg</kbd> den Beginn.
 
 ### Abhängigkeiten (Gantt)
 

@@ -127,14 +127,14 @@ Inhaltsarchive und der [Instanzumzug](/move-instance) nehmen Workflows mit Entwu
 
 | Taste | Wirkung |
 | --- | --- |
-| <kbd>Tab</kbd> / <kbd>Umschalt</kbd>+<kbd>Tab</kbd> | zwischen Knoten |
+| <kbd>Tab</kbd> / ++Umschalt Tab++ | zwischen Knoten |
 | Pfeiltasten (mit <kbd>Umschalt</kbd> weiter) | gewählten Knoten verschieben |
 | <kbd>Enter</kbd> / <kbd>Esc</kbd> | Panel öffnen / schließen |
 | <kbd>A</kbd> | Knoten anhängen |
 | <kbd>C</kbd> | verbinden mit … |
 | <kbd>Entf</kbd> | löschen |
-| <kbd>Strg</kbd>+<kbd>Z</kbd> / <kbd>Strg</kbd>+<kbd>Y</kbd> | rückgängig / wiederholen |
-| <kbd>Strg</kbd>+<kbd>D</kbd> | duplizieren |
+| ++Strg Z++ / ++Strg Y++ | rückgängig / wiederholen |
+| ++Strg D++ | duplizieren |
 | <kbd>L</kbd> | Liste ↔ Fläche |
 | <kbd>F</kbd> | Ansicht einpassen |
 

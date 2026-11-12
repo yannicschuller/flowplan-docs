@@ -174,11 +174,15 @@ Für Dienste, die nicht signieren können, gibt es bewusst gewählt **Nur Token*
 
 Für [n8n](https://n8n.io) gibt es den Community-Knoten **`n8n-nodes-flowplan`** (Quellcode unter [`integrations/n8n`](https://github.com/yannicschuller/flowplan/tree/main/integrations/n8n)).
 
+::: steps
+
 1. In n8n unter **Settings → Community Nodes** das Paket `n8n-nodes-flowplan` installieren.
 2. Zugangsdaten **Flowplan API** anlegen: Adresse deiner Instanz und ein [API-Token](#api-tokens).
 3. Knoten verwenden:
    - **Flowplan** liest Arbeitsbereiche und Seiten, legt Seiten an (optional mit Markdown-Inhalt), liest, erstellt und ändert Datenbankeinträge (Eigenschaften nach Namen) und sucht.
    - **Flowplan Trigger** startet Workflows bei neuen oder geänderten Einträgen, Formularantworten und neuen Seiten. Er legt seinen Webhook beim Aktivieren selbst an (dafür ein Schreib-Token eines Eigentümers), entfernt ihn beim Deaktivieren und weist Zustellungen mit falscher Signatur ab.
+
+:::
 
 Läuft n8n im eigenen Netz, `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true` setzen ([Konfiguration](/configuration-integrations#integrationen)).
 

@@ -54,7 +54,16 @@ Danach unter **Administration → KI** den Anbieter **Ollama** wählen. **Instal
 > [!NOTE]
 > **Optional und jederzeit abschaltbar.** In den Flowplan-Apps für iPhone, iPad und Mac kann Flowplan **Apple Intelligence direkt auf dem Gerät** nutzen. **Der Text verlässt das Gerät dabei nicht** – er geht weder an den Flowplan-Server noch an einen KI-Anbieter. Die KI über den Server bleibt davon unberührt und weiter verfügbar.
 
-**Was du brauchst:** die Flowplan-App für iPhone oder iPad mit **iOS/iPadOS 26** oder neuer bzw. die Desktop-App ab 1.2.0 auf einem Mac mit **macOS 26** oder neuer, ein Gerät, das Apple Intelligence unterstützt (etwa iPhone 15 Pro oder neuer, iPad und Mac mit M-Chip), und **Apple Intelligence eingeschaltet** (Einstellungen → Apple Intelligence & Siri). Im Browser und auf anderen Geräten gibt es diesen Weg nicht. Auf dem Server braucht es eine Flowplan-Version neuer als 0.7.0 (derzeit das Beta-Image).
+**Was du brauchst:**
+
+::: tabs
+== iPhone und iPad
+Die Flowplan-App für iPhone oder iPad mit **iOS/iPadOS 26** oder neuer, auf einem Gerät, das Apple Intelligence unterstützt (etwa iPhone 15 Pro oder neuer, iPad mit M-Chip).
+== Mac (Desktop-App)
+Die Desktop-App ab 1.2.0 auf einem Mac mit M-Chip und **macOS 26** oder neuer.
+:::
+
+Auf beiden muss **Apple Intelligence eingeschaltet** sein (Einstellungen → Apple Intelligence & Siri). Im Browser und auf anderen Geräten gibt es diesen Weg nicht. Auf dem Server braucht es eine Flowplan-Version neuer als 0.7.0 (derzeit das Beta-Image).
 
 **Was auf dem Gerät läuft** – die leichten Aktionen auf einer geöffneten Seite:
 
@@ -83,6 +92,8 @@ Ergebnisse vom Gerät tragen das Kennzeichen **Auf diesem Gerät**, unten steht 
 
 Unter **Administration → KI**:
 
+::: steps
+
 1. **KI einschalten.**
 2. **Anbieter der Instanz** wählen (oder **Kein Anbieter**, siehe unten), Adresse, Modell und – falls nötig – den **API-Schlüssel** eintragen. **Verbindung testen.**
 3. **Wer KI nutzen darf:**
@@ -92,6 +103,8 @@ Unter **Administration → KI**:
 4. **Funktionen:** jede einzeln erlauben oder verbieten. Optional die [Suche nach Bedeutung](/ask-ai#suche-nach-bedeutung-optional) einschalten.
 5. **KI auf dem Gerät (Apple):** standardmäßig erlaubt, unabhängig vom Schalter in Schritt 1 ([KI auf dem Gerät](#ki-auf-dem-geraet-apple)). Ausschalten, wenn es auf der Instanz gar keine KI geben soll.
 6. **Speichern.**
+
+:::
 
 So lassen sich drei typische Varianten einrichten:
 

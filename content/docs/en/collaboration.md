@@ -50,11 +50,11 @@ On the home screen, **Recently viewed** lists the pages you opened last.
 
 ## Page comments
 
-The speech bubble icon in the header opens the page's comments (on a phone it shows there only when there are open comments, with their count, otherwise **Comments** is in the `⋯` menu); comments on database records sit below the record. <kbd>⌘</kbd> <kbd>Enter</kbd> sends. Page and record comments are plain text. `@` followed by a member's full name or e-mail address – say `@Anna Berg` – mentions the person: they get a notification, provided they may see the page and the record.
+The speech bubble icon in the header opens the page's comments (on a phone it shows there only when there are open comments, with their count, otherwise **Comments** is in the `⋯` menu); comments on database records sit below the record. ++⌘ Enter++ sends. Page and record comments are plain text. `@` followed by a member's full name or e-mail address – say `@Anna Berg` – mentions the person: they get a notification, provided they may see the page and the record.
 
 ## Text comments
 
-Select text and choose **Comment on text** or press <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>M</kbd>.
+Select text and choose **Comment on text** or press ++⌘ ⌥ M++.
 
 - The commented text is highlighted; a click on it opens the thread.
 - Replies, emoji reactions, **Resolve** and **Reopen**.

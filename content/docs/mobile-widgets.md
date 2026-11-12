@@ -10,8 +10,16 @@ Auf iPhone, iPad und Android: Widgets für den Startbildschirm, Knöpfe an Mitte
 
 Jedes Widget zeigt **eine Sache** und hat **eigene Einstellungen**. Ein neu hinzugefügtes Widget funktioniert sofort mit sinnvollen Vorgaben; kleine Größen zeigen weniger. Ein Tipp öffnet die Aufgabe bzw. Seite in der App.
 
-- **Einstellungen ändern:** iPhone/iPad (iOS 17 oder neuer): Widget lange drücken → *Widget bearbeiten*. Android: Widget lange drücken → *Einstellungen* (beim Hinzufügen kann man den Schritt überspringen).
-- Die Auswahllisten (Datenbanken, Ansichten, Eigenschaften, Kalender, Formulare …) kommen direkt von deiner Flowplan-Instanz.
+**Einstellungen ändern:**
+
+::: tabs
+== iPhone und iPad
+Widget lange drücken → *Widget bearbeiten* (iOS 17 oder neuer).
+== Android
+Widget lange drücken → *Einstellungen* (beim Hinzufügen kann man den Schritt überspringen).
+:::
+
+Die Auswahllisten (Datenbanken, Ansichten, Eigenschaften, Kalender, Formulare …) kommen direkt von deiner Flowplan-Instanz.
 
 | Widget | Was es zeigt | Einstellungen |
 | --- | --- | --- |

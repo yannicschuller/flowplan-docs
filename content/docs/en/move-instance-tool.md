@@ -12,8 +12,12 @@ Under **Administration → Storage & backup** (admins only), the new instance fe
 
 **On the old instance – "Prepare the move"**
 
+::: steps
+
 1. **Move instance → Prepare the move**. For safety Flowplan asks for your password; with SSO the sign-in must be at most 15 minutes old (otherwise sign out and in once).
 2. Flowplan shows the **transfer address** and the **move token** (`fpmove_…`) – **only this once**. The token is valid for 24 hours and only for the move: it may read the instance, make it read-only for the final sync and complete the move, nothing else. Only a hash is stored; **Revoke** invalidates it at once, and a new token replaces the old one. Creating, revoking and every step of the move are in the activity log and a security event under **Administration → Security**. Ten wrong token attempts from one address lock it out for 15 minutes.
+
+:::
 
 **On the new instance – "Take over from another instance"**
 
@@ -23,6 +27,8 @@ The new instance is fresh: only the first admin account you create on first star
 > **Same domain, but DNS still points to the old server?** Then you cannot reach the new instance at its final address yet, and its proxy cannot get a certificate for it. Two options:
 > - **Temporary address:** point a second name at the new server (say `new.flowplan.example.org`), start the new instance with `APP_URL=https://new.flowplan.example.org` first and do the move there. The pre-flight check then warns about `APP_URL` – that is expected. Before the restart in step 6, set `APP_URL` to the final address (the proxy may serve both names).
 > - **Without the interface:** the [command line](#without-the-interface-command-line) on the new server.
+
+::: steps
 
 1. **Move instance → Take over from another instance**: enter the **address of the old instance** (its `APP_URL`) and the **move token**, **Start the takeover**.
    - If the old server is only in your own network (LAN, a VPN such as WireGuard or Tailscale, e.g. `http://192.168.1.10:3000`), set `FLOWPLAN_MOVE_ALLOW_PRIVATE=true` on the **new** instance for the move. Without it, as for every request the server makes, only public `https://` addresses are allowed.
@@ -44,6 +50,8 @@ The new instance is fresh: only the first admin account you create on first star
 5. **Apply on restart → Apply**: Flowplan checks the database and prepares everything for the next start – exactly like **Restore from backup**. The old instance is told: it now shows "This instance has moved to …", stays read-only, and its move token is used up.
 6. **Restart the new instance** (the container, the pod or the service). On start Flowplan swaps in database, files and keys; the new instance's previous state stays in the data folder as `pre-move-<time>`. The log says `Instanz wiederhergestellt; vorheriger Stand in …/pre-move-…`.
 7. **Switch DNS** (below) and [check afterwards](/move-instance#check-afterwards).
+
+:::
 
 You now sign in on the new instance with the accounts of the old one; the new one's first admin account is replaced. Existing sign-ins (browsers, apps) stay valid as long as the domain stays the same.
 

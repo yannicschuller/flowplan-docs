@@ -20,6 +20,8 @@ Roughly, copying takes a second per few tens of thousands of rows; documents and
 
 The commands assume the Docker Compose installation (service `flowplan`, volume on `/app/data`) and a PostgreSQL the container reaches as `postgres`. Replace `<password>` and the address with your values.
 
+::: steps
+
 1. **Same version.** Update Flowplan to the version that will run afterwards and start it once. The tool refuses a database from another version.
 2. **Prepare the target:** an empty database on PostgreSQL 16 or newer and a role that owns it – see [Requirements](/en/postgresql#requirements), also for `pg_trgm` and `pgvector`.
 3. **Back up:** **Administration → Storage & backup → Whole instance → Download**. Keep the file until the new instance runs.
@@ -50,6 +52,8 @@ The commands assume the Docker Compose installation (service `flowplan`, volume 
    Sign in, open a page, search for something (the index fills within seconds to minutes) and check that **Administration → Monitoring → System** says **PostgreSQL**.
 8. **Clean up, but not right away:** the old `flowplan.sqlite` stays in the data folder and is ignored as long as `DATABASE_URL` is set. Delete it only once the new instance's first scheduled backup has run.
 
+:::
+
 With S3: Litestream no longer runs with PostgreSQL; scheduled backups become `pg_dump` archives ([Backups with pg_dump](/en/postgresql#backups-with-pg-dump)). You can delete the old Litestream copy under `<prefix>/db/` in the bucket later.
 
 Without Docker Compose, the same works with `docker run` – pass the container's volume and network:
@@ -64,6 +68,8 @@ docker run --rm --network <network> -v flowplan-data:/app/data --entrypoint node
 ## From PostgreSQL to SQLite
 
 The same way in reverse. The target file must not exist yet – if the data folder still holds a `flowplan.sqlite` from before PostgreSQL, move it aside first.
+
+::: steps
 
 1. Same version on both sides, download the instance backup (as above).
 2. Stop Flowplan: `docker compose stop flowplan`.
@@ -85,6 +91,8 @@ The same way in reverse. The target file must not exist yet – if the data fold
 
 5. Remove `DATABASE_URL` (and `FLOWPLAN_PG_SCHEMA`) from `.env`, then `docker compose up -d` and check as above.
 6. With S3: Litestream backs up the new file continuously again from the start. If the bucket still holds a copy from before PostgreSQL under `<prefix>/db/`, delete or move it before starting – otherwise a later restore from the bucket could end up at that old state.
+
+:::
 
 The PostgreSQL database stays unchanged; keep it until the SQLite instance's first scheduled backup has run.
 

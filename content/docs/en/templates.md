@@ -33,12 +33,16 @@ The same goes for your own templates: **Use** leads to the **New page** dialog, 
 
 ## Your own templates
 
+::: steps
+
 1. On a page, choose **Page actions → Save as template**.
 2. Choose a name, category and visibility:
    - **Only me**,
    - **Workspace**: all members of this workspace,
    - **All workspaces** of the instance,
    - **Public gallery** (administrators only): visible even without an account.
+
+:::
 
 ### Templates of a space or of the whole workspace
 

@@ -4,7 +4,9 @@ keywords: ask ai, questions, chat, answers, sources, semantic search, related pa
 
 # Ask your workspace
 
-**Ask AI** (sidebar, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>A</kbd> or <kbd>Ctrl</kbd> <kbd>Alt</kbd> <kbd>A</kbd>, <kbd>⌘</kbd> <kbd>K</kbd> → "Ask AI …" or the button in search) answers questions about your pages and databases – such as "When is the next heating maintenance due?" or "What did we decide about onboarding?".
+**Ask AI** (sidebar, ++⌘ ⌥ A++ or ++Ctrl Alt A++, ++⌘ K++ → "Ask AI …" or the button in search) answers questions about your pages and databases – such as "When is the next heating maintenance due?" or "What did we decide about onboarding?".
+
+![Ask AI as a panel to the right of the page "Launch plan": at the top the scope "Whole workspace" and the provider, below the question about the launch and an answer with numbered source chips, then the list of sources with links to their pages](/screenshots/ask-ai.webp "Ask AI as a panel beside the page: an answer with sources.")
 
 **A panel at the right edge:** on a computer and an iPad, **Ask AI** opens as a panel to the right of the page; the page gets narrower, nothing is covered. You can keep writing, scrolling and opening other pages while the answer is written – it keeps going, and the conversation stays when you switch pages. A click on a source opens the page beside it, the panel stays open. The panel starts at about 420 px and takes at most 45 % of the window; drag its left edge (or use the arrow keys) to change the width – a double-click resets it – and this browser remembers it. The page beside it lays out for the room it has left: when it gets tight it switches to its narrow layout, and the **table of contents** collapses to a button that opens the outline as a list. In narrow windows (below about 1100 px) the panel lies over the page instead of squeezing it; **Pin** puts it beside the page, **Unpin** over it again – this browser remembers that too. <kbd>Esc</kbd> in the panel, the <kbd>×</kbd> or the same shortcut close it again. **Ask AI** and the **comments** share the right edge: opening one closes the other. In focus mode the panel is hidden. On phones, **Ask AI** is a sheet above the bottom bar; swiping it down (or the arrow at its top) shrinks it to an "AI is answering …" button – the answer keeps going.
 
@@ -30,10 +32,14 @@ Questions in Chinese, Japanese, Korean or Thai are split into words even though 
 
 In addition to full text, Flowplan can store content as vectors ("embeddings"). **Ask AI** then also finds passages without the same words – "trip" finds "company outing".
 
+::: steps
+
 1. Set an **embedding model** at the instance provider:
    - **Ollama:** download `nomic-embed-text` (under **Administration → AI → Download model** or `ollama pull nomic-embed-text`) and enter it.
    - **OpenAI-compatible:** e.g. `text-embedding-3-small`; **Gemini:** `text-embedding-004`. Anthropic has no embeddings.
 2. **Turn on semantic search** and save. Or via the environment: `FLOWPLAN_AI_SEMANTIC_SEARCH=on` and `FLOWPLAN_AI_EMBEDDING_MODEL=nomic-embed-text`.
+
+:::
 
 - A background job embeds changed pages and records chunk by chunk; unchanged chunks are not embedded again. At most `FLOWPLAN_AI_EMBED_PER_HOUR` chunks per hour (default 5,000).
 - **Never embedded:** journals with a PIN, pages and spaces closed to AI, and the trash. Permissions and personal AI rules apply to every question.

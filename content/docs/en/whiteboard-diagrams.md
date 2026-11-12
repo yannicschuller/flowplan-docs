@@ -8,7 +8,7 @@ On the whiteboard: mind maps with Tab, shape libraries for flowcharts and networ
 
 ## Mind maps
 
-Select a sticky note, shape or text and press <kbd>Tab</kbd>: a connected branch appears on the right, ready to be labelled. <kbd>Tab</kbd> on the new branch branches further, <kbd>⌥</kbd> <kbd>Enter</kbd> adds a sibling. The mind map arranges itself: branches sit to the right of their parent, evenly spaced and centred. **Arrange mind map** in an element's bar rearranges the whole tree. Typing on a selected sticky note starts writing right away.
+Select a sticky note, shape or text and press <kbd>Tab</kbd>: a connected branch appears on the right, ready to be labelled. <kbd>Tab</kbd> on the new branch branches further, ++⌥ Enter++ adds a sibling. The mind map arranges itself: branches sit to the right of their parent, evenly spaced and centred. **Arrange mind map** in an element's bar rearranges the whole tree. Typing on a selected sticky note starts writing right away.
 
 ## Diagrams: shape libraries
 
@@ -31,11 +31,11 @@ All shapes are vector graphics, take fill, line colour and width from the bar, c
 
 ## Arrange automatically
 
-Select several connected shapes → **Arrange automatically** → **Top to bottom** or **Left to right**. Flowplan arranges the diagram in layers (with as few crossings as it can), the top left corner stays where it was and connectors stay attached. One <kbd>⌘</kbd> <kbd>Z</kbd> undoes it all at once. Locked elements stay put.
+Select several connected shapes → **Arrange automatically** → **Top to bottom** or **Left to right**. Flowplan arranges the diagram in layers (with as few crossings as it can), the top left corner stays where it was and connectors stay attached. One ++⌘ Z++ undoes it all at once. Locked elements stay put.
 
 ## Import Mermaid and PlantUML
 
-Simply paste Mermaid or PlantUML text onto the board (<kbd>⌘</kbd> <kbd>V</kbd>), drop a `.mmd` or `.puml` file on it or choose **Import Mermaid/PlantUML …** under **+**. It becomes editable shapes and connectors, laid out automatically:
+Simply paste Mermaid or PlantUML text onto the board (++⌘ V++), drop a `.mmd` or `.puml` file on it or choose **Import Mermaid/PlantUML …** under **+**. It becomes editable shapes and connectors, laid out automatically:
 
 - **Mermaid**: `flowchart`/`graph` (with shapes, labels, subgraphs as frames), `sequenceDiagram`, `classDiagram`, `erDiagram` (with crow's feet), `stateDiagram`, `mindmap`.
 - **PlantUML**: activity diagrams (`start`, `:action;`, `if`/`else`, `while`, `fork` …), sequence, class, use case and component diagrams and `@startmindmap`.

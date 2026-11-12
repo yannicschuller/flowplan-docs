@@ -59,9 +59,13 @@ Unter **Einstellungen → Benachrichtigungen → Wöchentliche Zusammenfassung**
 
 Unter **Einstellungen → Benachrichtigungen**:
 
+::: steps
+
 1. **Push aktivieren** – der Browser fragt nach der Erlaubnis. Das gilt pro Gerät.
 2. In der Karte **Benachrichtigungsarten** je Art die Schalter **Posteingang**, **Push** und **E-Mail** setzen – jede Änderung wird sofort gespeichert. Auf dem Handy steht jede Art als eigene Karte mit drei beschrifteten Schaltern.
 3. Mit **Testbenachrichtigung senden** prüfen, ob alles ankommt (siehe [unten](#testbenachrichtigung)).
+
+:::
 
 Push-Nachrichten öffnen die betroffene Seite. Auf dem Sperrbildschirm erscheinen keine Dokumentinhalte.
 
@@ -86,7 +90,8 @@ Nach höchstens zehn Sekunden steht darunter je Gerät, über welchen Kanal es g
 
 Der Test geht nur an deine eigenen Geräte, ungeachtet der **Benachrichtigungsarten** und eines Fokus-Filters – Erlaubnis und Fokus des Geräts selbst gelten weiter. Höchstens fünf Tests in zehn Minuten. Tokens oder Schlüssel zeigt das Ergebnis nie; Administratoren sehen zusätzlich eine Diagnosezeile mit Relay-Adresse, ob `/.well-known/flowplan-push` aktiv ist, und der Adresse der Instanz (`APP_URL`).
 
-In der [Desktop-App](/desktop-app#mitteilungen-in-der-desktop-app) gibt es kein Web-Push. Die App fragt selbst nach neuen Benachrichtigungen und zeigt sie als Mitteilungen des Systems, die Zahl der ungelesenen steht am App-Symbol. **Einstellungen → Benachrichtigungen** zeigt dort statt **Push aktivieren** einen Schalter für die Mitteilungen der App; **Nicht stören** und **Alle Profile** stehen im Menü **Mitteilungen** der App. **Benachrichtigungsarten** gelten auch hier: Mitteilungen gibt es nur für Arten mit Push.
+> [!DESKTOP]
+> In der [Desktop-App](/desktop-app#mitteilungen-in-der-desktop-app) gibt es kein Web-Push. Die App fragt selbst nach neuen Benachrichtigungen und zeigt sie als Mitteilungen des Systems, die Zahl der ungelesenen steht am App-Symbol. **Einstellungen → Benachrichtigungen** zeigt dort statt **Push aktivieren** einen Schalter für die Mitteilungen der App; **Nicht stören** und **Alle Profile** stehen im Menü **Mitteilungen** der App. **Benachrichtigungsarten** gelten auch hier: Mitteilungen gibt es nur für Arten mit Push.
 
 ## Chat-Apps
 

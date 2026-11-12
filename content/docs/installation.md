@@ -6,7 +6,7 @@ keywords: Docker, Compose, installieren, Self-Hosting, Server, Update, Helm, Kub
 
 Flowplan läuft als ein einziger Container mit SQLite und einem Datenverzeichnis. Postgres, Redis oder ein separater Suchdienst werden nicht gebraucht – PostgreSQL und mehrere Instanzen sind möglich, aber optional.
 
-![Aufbau einer Instanz: Browser, Desktop-Apps und die Apps für iOS und Android verbinden sich über einen Reverse Proxy mit HTTPS mit dem Flowplan-Container. Darin schreibt der Next.js-Server in SQLite und ein Uploads-Volume; Litestream sichert die Datenbank laufend nach S3, die Uploads werden dorthin gespiegelt. Optional angebunden sind OIDC oder LDAP, SMTP, ein KI-Anbieter und das Push-Relay, das Mitteilungen Ende-zu-Ende-verschlüsselt an die Apps bringt.](/screenshots/architecture-de-light.webp "Eine Instanz: ein Container hinter dem Reverse Proxy, alles Weitere optional.")
+[![Aufbau einer Instanz: Browser, Desktop-Apps und die Apps für iOS und Android verbinden sich über einen Reverse Proxy mit HTTPS mit dem Flowplan-Container. Darin schreibt der Next.js-Server in SQLite und ein Uploads-Volume; Litestream sichert die Datenbank laufend nach S3, die Uploads werden dorthin gespiegelt. Optional angebunden sind OIDC oder LDAP, SMTP, ein KI-Anbieter und das Push-Relay, das Mitteilungen Ende-zu-Ende-verschlüsselt an die Apps bringt.](/screenshots/architecture-de-light.webp "Eine Instanz: ein Container hinter dem Reverse Proxy, alles Weitere optional.")](/screenshots/architecture-de-light.webp)
 
 **Mehr zum Thema:** [Mit einem Klick bereitstellen](/one-click-deploy)
 
@@ -84,6 +84,8 @@ docker run -d --name flowplan \
   --env-file .env \
   flowplan:latest
 ```
+
+Build-Argumente: `PG_CLIENT_MAJOR` (Standard `18`) wählt die Version von `pg_dump`, `pg_restore` und `psql` im Image – mindestens die Hauptversion deines PostgreSQL-Servers ([PostgreSQL](/postgresql)). `FLOWPLAN_SKIP_TYPECHECK=1` ist nur für die Entwicklung gedacht: Es überspringt die TypeScript-Prüfung beim Build, wenn sie wie in unserem CI schon gelaufen ist.
 
 Das Image enthält Node, Litestream für die S3-Sicherung und `curl` für den Healthcheck. Flowplan läuft darin als UID 1000 (Benutzer `node`) oder als der Benutzer aus `PUID`/`PGID` – nie als root ([Volume-Rechte](/coolify-and-proxy#volume-rechte)).
 

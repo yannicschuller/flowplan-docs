@@ -12,13 +12,13 @@ Schnell erfassen gehört zur [Desktop-App für macOS, Windows und Linux](/deskto
 
 | Taste | Was passiert |
 | --- | --- |
-| <kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>Leertaste</kbd> (Mac: <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Leertaste</kbd>) | öffnet das Fenster über jeder App – auch wenn Flowplan minimiert, ausgeblendet oder (Mac, Symbol im Infobereich) geschlossen ist |
+| ++Strg Umschalt Leertaste++ (Mac: ++⇧ ⌘ Leertaste++) | öffnet das Fenster über jeder App – auch wenn Flowplan minimiert, ausgeblendet oder (Mac, Symbol im Infobereich) geschlossen ist |
 | <kbd>Enter</kbd> | speichert |
-| <kbd>Umschalt</kbd> <kbd>Enter</kbd> | neue Zeile |
-| <kbd>Tab</kbd> | Ziel wählen: tippen filtert, <kbd>↑</kbd> <kbd>↓</kbd> wählt, <kbd>Enter</kbd> übernimmt |
-| <kbd>Alt</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | voriges / nächstes Ziel, ohne die Liste zu öffnen |
-| <kbd>⌘</kbd>/<kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>V</kbd> | Zwischenablage einfügen – ein Link bekommt seinen Titel |
-| <kbd>⌘</kbd>/<kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>R</kbd> gedrückt halten | Sprachnotiz aufnehmen, loslassen beendet |
+| ++Umschalt Enter++ | neue Zeile |
+| <kbd>Tab</kbd> | Ziel wählen: tippen filtert, ++↑ ↓++ wählt, <kbd>Enter</kbd> übernimmt |
+| ++Alt ↑++ / <kbd>↓</kbd> | voriges / nächstes Ziel, ohne die Liste zu öffnen |
+| ++⌘/Strg Umschalt V++ | Zwischenablage einfügen – ein Link bekommt seinen Titel |
+| ++⌘/Strg Umschalt R++ gedrückt halten | Sprachnotiz aufnehmen, loslassen beendet |
 | <kbd>↓</kbd> im leeren Feld | **Zuletzt erfasst** |
 | <kbd>Esc</kbd> | schließt die offene Liste, sonst das Fenster – der Text bleibt als Entwurf |
 
@@ -68,13 +68,13 @@ Was ein Chip übernimmt, verschwindet aus dem Titel. Ein **×** am Chip lässt d
 
 ## Zwischenablage und Links
 
-<kbd>⌘</kbd>/<kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>V</kbd> oder **Einfügen** setzt den Text der Zwischenablage ein. Ist es ein Link (`https://…`), erscheint er als Link-Chip mit Titel und Anbieter – die **Vorschau holt deine Instanz** (wie die Link-Karten im Editor, mit Schutz vor internen Adressen), nie die App selbst. Gespeichert wird er in die Link-Eigenschaft der Datenbank (sonst in den Text) und als Link-Karte; ist der Text leer, wird der Titel der Seite zum Titel. Ohne Verbindung wird der Link ohne Titel gespeichert.
+++⌘/Strg Umschalt V++ oder **Einfügen** setzt den Text der Zwischenablage ein. Ist es ein Link (`https://…`), erscheint er als Link-Chip mit Titel und Anbieter – die **Vorschau holt deine Instanz** (wie die Link-Karten im Editor, mit Schutz vor internen Adressen), nie die App selbst. Gespeichert wird er in die Link-Eigenschaft der Datenbank (sonst in den Text) und als Link-Karte; ist der Text leer, wird der Titel der Seite zum Titel. Ohne Verbindung wird der Link ohne Titel gespeichert.
 
 ## Dateien, Bildschirmausschnitt und Sprachnotiz
 
 - **Dateien:** Bilder (PNG, JPEG, GIF, WebP, AVIF, HEIC), PDFs, Markdown- und Textdateien ins Fenster ziehen oder mit **Anhängen …** wählen. Geprüft wird wie beim [Hineinziehen ins Hauptfenster](/desktop-app#mehr-aus-der-desktop-app): Endung **und** Inhalt, Bilder und PDFs bis 50 MB, Text bis 5 MB (die Instanz kann weniger erlauben), höchstens 10 Anhänge. Die Liste unter dem Text zeigt sie, **×** entfernt einen. Bilder und PDFs landen in der Datei-Eigenschaft der Datenbank und im Text; Markdown und Text werden zu Text.
 - **Bildschirmausschnitt:** **Ausschnitt** – das Fenster tritt zur Seite, du ziehst einen Bereich auf; er wird als PNG angehängt. Auf dem Mac nimmt das die Bildschirmaufnahme des Systems auf (Leertaste wählt ein Fenster, <kbd>Esc</kbd> bricht ab); unter Windows und Linux zeigt Flowplan den Bildschirm unter dem Mauszeiger, du ziehst den Bereich, <kbd>Enter</kbd> nimmt den ganzen Bildschirm, <kbd>Esc</kbd> bricht ab. Zwischendateien liegen nur kurz im Datenordner der App und werden sofort gelöscht.
-- **Sprachnotiz:** **Halten zum Sprechen** gedrückt halten (oder <kbd>⌘</kbd>/<kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>R</kbd>), loslassen beendet. Hat deine Instanz eine Transkription (Whisper, siehe [Konfiguration](/configuration)), wird die Aufnahme dort zu Text und erscheint im Feld – zum Prüfen vor dem Speichern. Ohne Transkription, ohne Verbindung oder wenn sie scheitert, wird die Aufnahme angehängt; die Instanz versucht es beim Speichern noch einmal.
+- **Sprachnotiz:** **Halten zum Sprechen** gedrückt halten (oder ++⌘/Strg Umschalt R++), loslassen beendet. Hat deine Instanz eine Transkription (Whisper, siehe [Konfiguration](/configuration)), wird die Aufnahme dort zu Text und erscheint im Feld – zum Prüfen vor dem Speichern. Ohne Transkription, ohne Verbindung oder wenn sie scheitert, wird die Aufnahme angehängt; die Instanz versucht es beim Speichern noch einmal.
 
 ### Berechtigungen je System
 

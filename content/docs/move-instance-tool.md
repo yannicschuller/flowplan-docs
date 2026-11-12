@@ -12,8 +12,12 @@ Unter **Administration → Speicher & Sicherung** (nur für Admins) holt die neu
 
 **Auf der alten Instanz – „Umzug vorbereiten“**
 
+::: steps
+
 1. **Instanz umziehen → Umzug vorbereiten**. Zur Sicherheit fragt Flowplan nach deinem Passwort; bei Anmeldung über SSO muss die Anmeldung höchstens 15 Minuten alt sein (sonst einmal ab- und wieder anmelden).
 2. Flowplan zeigt die **Übertragungsadresse** und das **Umzugstoken** (`fpmove_…`) – **nur dieses eine Mal**. Das Token gilt 24 Stunden und nur für den Umzug: Es darf die Instanz lesen, sie für den letzten Abgleich schreibschützen und den Umzug abschließen, sonst nichts. Gespeichert wird nur ein Hash; **Widerrufen** macht es sofort ungültig, ein neues Token ersetzt das alte. Das Erstellen, Widerrufen und jeder Schritt des Umzugs stehen im Aktivitätsprotokoll und als Sicherheitsereignis unter **Administration → Sicherheit**. Zehn falsche Token-Versuche von einer Adresse sperren sie für 15 Minuten.
+
+:::
 
 **Auf der neuen Instanz – „Von anderer Instanz übernehmen“**
 
@@ -23,6 +27,8 @@ Die neue Instanz ist frisch: nur das erste Admin-Konto, das du beim ersten Start
 > **Gleiche Domain, aber DNS zeigt noch auf den alten Server?** Dann erreichst du die neue Instanz unter ihrer endgültigen Adresse noch nicht, und der Proxy bekommt dafür noch kein Zertifikat. Zwei Möglichkeiten:
 > - **Vorübergehende Adresse:** einen zweiten Namen auf den neuen Server zeigen lassen (etwa `neu.flowplan.example.org`), die neue Instanz zuerst mit `APP_URL=https://neu.flowplan.example.org` starten und den Umzug dort durchführen. Die Vorabprüfung warnt dann bei `APP_URL` – das ist erwartet. Vor dem Neustart in Schritt 6 `APP_URL` auf die endgültige Adresse setzen (der Proxy darf beide Namen bedienen).
 > - **Ohne Oberfläche:** die [Kommandozeile](#ohne-oberflaeche-kommandozeile) auf dem neuen Server.
+
+::: steps
 
 1. **Instanz umziehen → Von anderer Instanz übernehmen**: die **Adresse der alten Instanz** (ihre `APP_URL`) und das **Umzugstoken** eintragen, **Übernahme starten**.
    - Steht der alte Server nur im eigenen Netz (LAN, VPN wie WireGuard oder Tailscale, z. B. `http://192.168.1.10:3000`), auf der **neuen** Instanz vorübergehend `FLOWPLAN_MOVE_ALLOW_PRIVATE=true` setzen. Ohne diese Variable sind wie bei allen Abrufen des Servers nur öffentliche `https://`-Adressen erlaubt.
@@ -44,6 +50,8 @@ Die neue Instanz ist frisch: nur das erste Admin-Konto, das du beim ersten Start
 5. **Beim Neustart übernehmen → Übernehmen**: Flowplan prüft die Datenbank und legt alles für den nächsten Start bereit – genau wie **Aus Sicherung wiederherstellen**. Die alte Instanz bekommt Bescheid: Sie zeigt jetzt „Diese Instanz ist umgezogen nach …“, bleibt schreibgeschützt, und ihr Umzugstoken ist verbraucht.
 6. **Die neue Instanz neu starten** (den Container, den Pod bzw. den Dienst). Beim Start ersetzt Flowplan Datenbank, Dateien und Schlüssel; der vorherige Stand der neuen Instanz bleibt als `pre-move-<Zeit>` im Datenordner. Im Protokoll steht `Instanz wiederhergestellt; vorheriger Stand in …/pre-move-…`.
 7. **DNS umstellen** (unten) und [danach prüfen](/move-instance#danach-pruefen).
+
+:::
 
 Anmelden kannst du dich auf der neuen Instanz jetzt mit den Konten der alten; das erste Admin-Konto der neuen ist ersetzt. Bestehende Anmeldungen (Browser, Apps) gelten weiter, solange die Domain gleich bleibt.
 

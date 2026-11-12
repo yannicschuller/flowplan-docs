@@ -98,3 +98,6 @@ scrape_configs:
 ```
 
 Without a token the endpoint is switched off. The same token unlocks the details of `/api/health` (see above).
+
+> [!NOTE]
+> **For load tests:** `FLOWPLAN_METRICS_LOOP=1` also measures the delay and utilisation of the Node event loop and the time spent in SQLite, and adds them to `/api/metrics`. The values cover the time since the previous scrape – meant for a single scraper such as the load test script, not for a shared Prometheus. Off by default.

@@ -21,7 +21,7 @@ export const REFERENCE = data as unknown as Reference;
 
 const pick = (locale: Locale, [de, en]: Pair) => (locale === "en" ? en : de);
 // A table cell: no line breaks, "|" escaped.
-const cell = (text: string) => text.replace(/\s+/g, " ").replace(/\|/g, "\\|").trim();
+const cell = (text: string) => text.replace(/\s+/g, " ").replace(/(?<!\\)\|/g, "\\|").trim();
 const code = (text: string) => (text.includes("`") ? `\`\` ${text} \`\`` : `\`${text}\``);
 
 // ------------------------------------------------------------ "/" menu

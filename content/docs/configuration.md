@@ -79,7 +79,7 @@ Die Typst-Vorschau lädt Compiler und Schriften (WebAssembly, etwa 11 MB komprim
 
 ## Nicht setzen
 
-`NODE_ENV`, `PORT`, `HOSTNAME` und `NEXT_TELEMETRY_DISABLED` setzt das Image selbst. `FLOWPLAN_DIST_DIR` ist nur für parallele Entwicklungsserver gedacht, `OIDC_ALLOW_LOCAL_HTTP` nur für Tests mit einem Anbieter auf `http://localhost`, `FLOWPLAN_GIT_ALLOW_HTTP` nur für Tests des Git-Exports mit einem `http://`-Server (in Produktion wirkungslos). Version und Commit (`FLOWPLAN_VERSION`, `GIT_COMMIT`, `SOURCE_COMMIT`) kommen aus dem Build; `FLOWPLAN_VERSION` in der `.env` wählt nur das Image-Tag in `compose.yaml`.
+`NODE_ENV`, `PORT`, `HOSTNAME` und `NEXT_TELEMETRY_DISABLED` setzt das Image selbst, ebenso `FLOWPLAN_DROP_ROOT=1` (Flowplans Werkzeuge im Container geben root ab und laufen als `PUID:PGID`). `FLOWPLAN_LITESTREAM_SSE_C` setzt der Start des Containers, wenn `LITESTREAM_SSE_C_KEY` gesetzt ist; die Administration zeigt daran, ob die Litestream-Kopie verschlüsselt ist. `FLOWPLAN_DIST_DIR` ist nur für parallele Entwicklungsserver gedacht, `OIDC_ALLOW_LOCAL_HTTP` nur für Tests mit einem Anbieter auf `http://localhost`, `FLOWPLAN_GIT_ALLOW_HTTP` nur für Tests des Git-Exports mit einem `http://`-Server (in Produktion wirkungslos). Version und Commit (`FLOWPLAN_VERSION`, `GIT_COMMIT`, `SOURCE_COMMIT`) kommen aus dem Build; `FLOWPLAN_VERSION` in der `.env` wählt nur das Image-Tag in `compose.yaml`.
 
 ## In der Oberfläche
 

@@ -127,3 +127,10 @@ test("the tab script stores the choice only in localStorage, guarded", () => {
   assert.equal((js.match(/localStorage\./g) || []).length, 2);
   assert.equal((js.match(/try \{/g) || []).length, 2);
 });
+
+test("a linked screenshot is a figure that opens the file in full size", () => {
+  const out = html('[![Ein Diagramm mit allen Teilen](/screenshots/architecture-de-light.webp "Bildunterschrift")](/screenshots/architecture-de-light.webp)');
+  assert.match(out, /^<figure class="shot"><a class="zoom" href="\/screenshots\/architecture-de-light\.webp"><picture>/);
+  assert.match(out, /<span class="sr-only"> \(in voller Größe öffnen\)<\/span><\/a><figcaption>Bildunterschrift<\/figcaption><\/figure>/);
+  for (const locale of LOCALES) assert.match(loadDoc("installation", locale)!.html, /<a class="zoom" href="\/screenshots\/architecture-(de|en)-light\.webp">/);
+});

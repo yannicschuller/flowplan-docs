@@ -109,6 +109,8 @@ Notifications to the apps go through the Flowplan push relay (`push.flowplan.org
 
 The relay is open source ([github.com/yannicschuller/flowplan-push](https://github.com/yannicschuller/flowplan-push)) and can be self-hosted. **The official Flowplan apps (iPhone and iPad from the [App Store](https://apps.apple.com/app/id6825801344), Android from [flowplan.org/download](https://flowplan.org/download)) don't need it** – they only accept notifications through `push.flowplan.org`, because Apple and Google deliver to these apps only with Flowplan's keys. Your own relay makes sense if you build **your own app version** (own bundle ID, own Apple team) or want to reach instances in an internal network.
 
+::: steps
+
 1. **Start the relay** – as the Docker image `ghcr.io/yannicschuller/flowplan-push:latest` (or built from the repository), e.g. in Coolify at `https://push.example.com`, port `8080`, a volume on `/data`. Environment variables:
 
    | Variable | Value |
@@ -125,5 +127,7 @@ The relay is open source ([github.com/yannicschuller/flowplan-push](https://gith
 2. **Build the app** – with your bundle ID and Apple team, `PUSH_RELAY_URL=https://push.example.com` (the app's build variable) and, for Android, your `google-services.json`. The app only registers with the relay it was built for.
 3. **Configure the instance** – `PUSH_RELAY_URL=https://push.example.com`. `APP_URL` must be the instance's HTTPS address and `/.well-known/flowplan-push` reachable for the relay. An instance can use one relay only: pointed at yours, it no longer reaches the store apps through the relay.
 4. **Check** – with the [test notification](/notifications#test-notification).
+
+:::
 
 Operations, key rotation, blocking abusive instances (`node dist/src/cli.js block <origin>` in the container) and backups are described in the relay's README.

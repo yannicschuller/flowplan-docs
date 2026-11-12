@@ -26,7 +26,7 @@ Flowplan still needs its data folder (`/app/data`) with PostgreSQL: it holds upl
 - **A UTF-8 locale** such as `en_US.utf8` or `de_DE.utf8` – the official `postgres` image and most managed services use one. With the `C` locale, search still finds Chinese and Japanese text correctly, but much more slowly.
 - **The `pg_trgm` extension** for full-text search. It ships with every regular PostgreSQL and is "trusted": Flowplan installs it itself into a schema of its own, `flowplan_ext`, if the role may create objects in the database (`CREATE` privilege, which the database owner has). Otherwise run `CREATE EXTENSION pg_trgm;` once as an administrator. Without `pg_trgm` search keeps working, but scans every entry each time (the log says so).
 - **Optionally `pgvector`** for [semantic AI search](/en/ai). From pgvector 0.8 on, Flowplan installs it itself like `pg_trgm`. **Before 0.8** the extension is not "trusted" – an administrator then runs `CREATE EXTENSION vector;` once in Flowplan's database, and Flowplan uses it from its next start. Without `pgvector`, Flowplan computes semantic search itself, as on SQLite; switch it off with `FLOWPLAN_PGVECTOR=off`.
-- **For backups**, `pg_dump` and `pg_restore` of at least the server's major version. The Docker image ships the PostgreSQL 18 tools; they back up and restore on servers from version 16 to 18. Without Docker, install a matching `postgresql-client` package or point `FLOWPLAN_PG_BIN` at the folder holding the programs.
+- **For backups**, `pg_dump` and `pg_restore` of at least the server's major version. The Docker image ships the PostgreSQL 18 tools; they back up and restore on servers from version 16 to 18. If you [build the image yourself](/installation#build-the-image-yourself), choose the version with `--build-arg PG_CLIENT_MAJOR=18`. Without Docker, install a matching `postgresql-client` package or point `FLOWPLAN_PG_BIN` at the folder holding the programs.
 
 ```sql
 -- as an administrator (superuser) on the PostgreSQL server
@@ -131,6 +131,7 @@ volumes:
 | `FLOWPLAN_PGVECTOR` | on | `off` ignores `pgvector` even when it is installed. |
 | `FLOWPLAN_BACKUP_FORMAT` | `pg_dump` | `sqlite`: scheduled backups in the portable SQLite format instead of `pg_dump` (below). |
 | `FLOWPLAN_PG_BIN` | *empty* | Folder with `pg_dump`, `pg_restore` and `psql` if they are not on the `PATH`. |
+| `PGCONNECT_TIMEOUT` | `15` | How many seconds `pg_dump`, `pg_restore` and `psql` wait at most for the connection to the server (libpq's variable). |
 
 Every variable is also listed, with comments, in the repository's [`.env.example`](https://github.com/yannicschuller/flowplan/blob/main/.env.example).
 

@@ -324,6 +324,16 @@
 .content picture {
   display: block;
 }
+/* A large diagram links to its file: it opens in full size. */
+.content :global(a.zoom) {
+  display: block;
+  cursor: zoom-in;
+  border-radius: 8px;
+}
+.content :global(a.zoom):focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 3px;
+}
 /* The first picture of a page sits under the lead, a little apart. */
 .content > :global(figure.shot):first-child {
   margin: 0 0 36px;

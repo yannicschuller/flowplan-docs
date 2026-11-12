@@ -51,7 +51,7 @@ On a computer, drag the sidebar's right edge to make it wider or narrower (200 t
 At the top left, next to the sidebar icon, the arrows **←** and **→** take you to the page opened before and forward again. Every place with an address of its own is a step: pages, databases, journal days, whiteboards, a record opened from a database (as a dialog and as a full page, one step each), home, inbox, My tasks, tags, collections, media, trash and the sections of the settings. Dialogs, menus and the search do not count, and closing a record you opened in its database takes you back there without an extra step. When there is nothing in one direction, its arrow is greyed out.
 
 - **List:** a right click or a long press on an arrow shows the last (up to ten) pages in that direction with their icon and title – a click jumps straight there.
-- **Keyboard shortcuts:** <kbd>⌘</kbd> <kbd>[</kbd> and <kbd>⌘</kbd> <kbd>]</kbd> or <kbd>⌥</kbd> <kbd>←</kbd> and <kbd>⌥</kbd> <kbd>→</kbd> (Windows and Linux: <kbd>Alt</kbd> <kbd>←</kbd> / <kbd>Alt</kbd> <kbd>→</kbd> or <kbd>Ctrl</kbd> <kbd>[</kbd> / <kbd>Ctrl</kbd> <kbd>]</kbd>). While typing, <kbd>⌥</kbd>/<kbd>Alt</kbd> with an arrow moves the cursor as usual; the shortcuts can be changed like all others ([Keyboard shortcuts](/keyboard-shortcuts)).
+- **Keyboard shortcuts:** ++⌘ [++ and ++⌘ ]++ or ++⌥ ←++ and ++⌥ →++ (Windows and Linux: ++Alt ←++ / ++Alt →++ or ++Ctrl [++ / ++Ctrl ]++). While typing, <kbd>⌥</kbd>/<kbd>Alt</kbd> with an arrow moves the cursor as usual; the shortcuts can be changed like all others ([Keyboard shortcuts](/keyboard-shortcuts)).
 - **Browser:** the arrows take the same steps as the browser's back and forward buttons and the mouse's side buttons – you can mix them.
 - **Desktop app:** also the *Navigation* menu → **Back** / **Forward**, the mouse's side buttons and, on a Mac, swiping on the trackpad ([More from the desktop app](/desktop-app#more-from-the-desktop-app)).
 - **Phone:** there are no arrows there – the back gesture (iPhone) or the back button (Android) goes back.
@@ -96,7 +96,7 @@ In a document, `/` opens the block menu: type `/h2`, `/todo` or `/table` and pre
 
 ## Find instead of search
 
-<kbd>⌘</kbd> <kbd>K</kbd> (Windows/Linux: <kbd>Ctrl</kbd> <kbd>K</kbd>) opens the quick search across titles, text, database records, comments and even the content of uploaded PDFs and Office files. More under [Search, inbox and push](/search-and-notifications).
+++⌘ K++ (Windows/Linux: ++Ctrl K++) opens the quick search across titles, text, database records, comments and even the content of uploaded PDFs and Office files. More under [Search, inbox and push](/search-and-notifications).
 
 ## Where to go next
 

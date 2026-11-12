@@ -130,21 +130,7 @@ test("the workflow nodes page has every node type with its name, and no other", 
 
 // The app reads these, but no page describes them yet. A new variable of the
 // app fails here until a page describes it (or it is added to this list).
-const UNDOCUMENTED_ENV = [
-  "FLOWPLAN_DROP_ROOT",
-  "FLOWPLAN_LITESTREAM_SSE_C",
-  "FLOWPLAN_METRICS_LOOP",
-  "FLOWPLAN_SKIP_TYPECHECK",
-  "FLOWPLAN_WORKFLOW_LEASE_MS",
-  "FLOWPLAN_WORKFLOW_PARALLEL_RUNS",
-  "FLOWPLAN_WORKFLOW_POLL_MS",
-  "FLOWPLAN_WORKFLOW_RUNS_KEPT",
-  "FLOWPLAN_WORKFLOW_SWEEP_MS",
-  "OTEL_EXPORTER_OTLP_LOGS_HEADERS",
-  "PGCONNECT_TIMEOUT",
-  "PG_CLIENT_MAJOR",
-  "RENDER_EXTERNAL_HOSTNAME",
-];
+const UNDOCUMENTED_ENV: string[] = [];
 test("every environment variable of the app is on the reference page, with a link to its section", () => {
   for (const locale of LOCALES) {
     const rows = docEnvRows(locale);
@@ -264,7 +250,7 @@ test("previous and next follow the sidebar and stay within the area", () => {
     assert.equal(last.next, undefined, `${area.id}: nothing after the last page`);
   }
   const doc = loadDoc("formatting", "en")!;
-  assert.deepEqual([doc.prev?.slug, doc.next?.slug], ["documents", "tasks-in-documents"]);
+  assert.deepEqual([doc.prev?.slug, doc.next?.slug], ["markdown-editor", "tasks-in-documents"]);
   assert.equal(doc.next?.title, "Tasks in documents");
 });
 test("related pages: at most four, existing, not the page or its neighbours, most related first", () => {
@@ -284,4 +270,11 @@ test("related pages: at most four, existing, not the page or its neighbours, mos
   assert.deepEqual(relatedPages("environment-variables", "de").slice(0, 3), ["configuration", "configuration-storage", "configuration-integrations"]);
   // Almost every page finds some.
   assert.ok(docSlugs.filter((slug) => relatedPages(slug, "de").length >= 2).length >= docSlugs.length * 0.9);
+});
+
+test("a pipe already escaped in a page's table stays one cell on the reference page", () => {
+  for (const locale of LOCALES) {
+    const row = docMarkdown("environment-variables", locale).split("\n").find((l) => l.startsWith("| `LDAP_CONTACTS_FILTER` |"))!;
+    assert.equal(row.split(/(?<!\\)\|/).length - 2, 4, `${locale}: ${row}`);
+  }
 });

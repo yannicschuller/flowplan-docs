@@ -10,8 +10,16 @@ On iPhone, iPad and Android: home screen widgets, buttons on notifications, Live
 
 Each widget shows **one thing** and has **settings of its own**. A widget you just added works right away with sensible defaults; small sizes show less. A tap opens the task or page in the app.
 
-- **Change the settings:** iPhone/iPad (iOS 17 or later): long-press the widget → *Edit Widget*. Android: long-press the widget → *Settings* (you can skip this step when adding it).
-- The lists to choose from (databases, views, properties, calendars, forms …) come straight from your Flowplan instance.
+**Change the settings:**
+
+::: tabs
+== iPhone and iPad
+Long-press the widget → *Edit Widget* (iOS 17 or later).
+== Android
+Long-press the widget → *Settings* (you can skip this step when adding it).
+:::
+
+The lists to choose from (databases, views, properties, calendars, forms …) come straight from your Flowplan instance.
 
 | Widget | What it shows | Settings |
 | --- | --- | --- |

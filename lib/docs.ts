@@ -55,13 +55,23 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       },
       {
         title: ["Dokumente", "Documents"],
-        intro: ["Der Editor: Blöcke, Formatierung, Aufgaben, Medien, Formeln, Links und Präsentieren.", "The editor: blocks, formatting, tasks, media, formulas, links and presenting."],
-        pages: ["documents", "formatting", "tasks-in-documents", "media-and-files", "math-and-code", "links-and-mentions", "academic-writing", "reading-and-presenting"],
+        intro: ["Der Editor: Blöcke, Markdown, Formatierung, Aufgaben, Medien und Links.", "The editor: blocks, Markdown, formatting, tasks, media and links."],
+        pages: ["documents", "markdown-editor", "formatting", "tasks-in-documents", "media-and-files", "links-and-mentions"],
       },
       {
-        title: ["Whiteboards, Notizbücher und Journal", "Whiteboards, notebooks and journal"],
-        intro: ["Zeichnen, Diagramme, Handschrift und der Tag im Rückblick.", "Drawing, diagrams, handwriting and the day in review."],
-        pages: ["whiteboards", "whiteboard-diagrams", "whiteboard-collaboration", "whiteboard-racks", "notebooks", "journal", "dashboards"],
+        title: ["Formeln, Zitate und Präsentieren", "Formulas, citations and presenting"],
+        intro: ["Formeln, Diagramme und Code, wissenschaftliches Schreiben, Lesen und Präsentieren.", "Formulas, diagrams and code, academic writing, reading and presenting."],
+        pages: ["math-and-code", "academic-writing", "reading-and-presenting"],
+      },
+      {
+        title: ["Whiteboards und Dashboards", "Whiteboards and dashboards"],
+        intro: ["Zeichnen, Diagramme, gemeinsam am Board, Racks und Dashboards.", "Drawing, diagrams, working together on a board, racks and dashboards."],
+        pages: ["whiteboards", "whiteboard-diagrams", "whiteboard-collaboration", "whiteboard-racks", "dashboards"],
+      },
+      {
+        title: ["Notizbücher und Journal", "Notebooks and journal"],
+        intro: ["Handschrift mit Stift und der Tag im Rückblick.", "Handwriting with a pen and the day in review."],
+        pages: ["notebooks", "notebook-tools", "journal", "journal-review"],
       },
       {
         title: ["Datenbanken", "Databases"],
@@ -247,6 +257,7 @@ const escape = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 const newTab: Record<Locale, string> = { de: "öffnet in neuem Tab", en: "opens in a new tab" };
+const fullSize: Record<Locale, string> = { de: "in voller Größe öffnen", en: "open in full size" };
 // flowplan.org and its subdomains (the website, the app, these docs).
 export function ownSite(href: string) {
   try {
@@ -345,6 +356,15 @@ function render(markdown: string, locale: Locale) {
           const image = only[0] as Tokens.Image;
           const caption = image.title ? `<figcaption>${escape(image.title)}</figcaption>` : "";
           return `<figure class="shot">${this.parser.parseInline([image])}${caption}</figure>\n`;
+        }
+        // [![…](/screenshots/x.webp "caption")](/screenshots/x.webp): a large
+        // diagram that opens in full size on click or tap.
+        const link = only.length === 1 && only[0].type === "link" ? (only[0] as Tokens.Link) : undefined;
+        const inner = link?.tokens.filter((t) => !(t.type === "text" && !t.raw.trim()));
+        if (link && inner?.length === 1 && inner[0].type === "image" && link.href.startsWith("/screenshots/")) {
+          const image = inner[0] as Tokens.Image;
+          const caption = image.title ? `<figcaption>${escape(image.title)}</figcaption>` : "";
+          return `<figure class="shot"><a class="zoom" href="${escape(link.href)}">${this.parser.parseInline([image])}<span class="sr-only"> (${fullSize[locale]})</span></a>${caption}</figure>\n`;
         }
         return `<p>${this.parser.parseInline(tokens)}</p>\n`;
       },

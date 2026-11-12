@@ -36,7 +36,8 @@ All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd
 
 Every shortcut in this table except <kbd>Esc</kbd> and <kbd>⌘</kbd> <kbd>Z</kbd> can be changed, see [Your own shortcuts](#your-own-shortcuts).
 
-In the desktop app, <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> or <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>P</kbd> switches to the next [profile](/desktop-app#several-instances-profiles) once more than one is saved.
+> [!DESKTOP]
+> In the desktop app, <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> or <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>P</kbd> switches to the next [profile](/desktop-app#several-instances-profiles) once more than one is saved.
 
 ## Your own shortcuts
 
@@ -83,7 +84,7 @@ The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kb
 | <kbd>⌘</kbd> <kbd>J</kbd> | [Writing assistant](/ai-writing#writing-assistant) for the selection or line (when AI is on) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd> | Insert footnote (edits a selected one) |
 
-Markdown shortcuts such as `##`, `-`, `[]` or ` ``` ` are listed under [Documents and the editor](/documents#markdown-shortcuts).
+Markdown shortcuts such as `##`, `-`, `[]` or ` ``` ` are listed under [Markdown in the editor](/markdown-editor#markdown-shortcuts).
 
 ## Page tree
 

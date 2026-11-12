@@ -103,3 +103,8 @@ Standards für [Workflows](/workflows); die [Administration](/administration#wor
 | `FLOWPLAN_WORKFLOW_HTTP_ALLOW_PRIVATE` | `false` | interne Adressen erlauben (Heimnetz, n8n) |
 | `FLOWPLAN_WORKFLOW_EXTERNAL_MAIL` | `on` | E-Mails an Adressen außerhalb der Mitglieder |
 | `FLOWPLAN_WORKFLOW_TEST_RUNS_PER_MINUTE` | 10 | Test- und Probeläufe je Person und Minute |
+| `FLOWPLAN_WORKFLOW_PARALLEL_RUNS` | 10 | gleichzeitig laufende Läufe je Workflow (1–100); weitere warten in der Warteschlange |
+| `FLOWPLAN_WORKFLOW_RUNS_KEPT` | 10000 | höchstens so viele Läufe je Workflow aufbewahren (100–1.000.000); ältere abgeschlossene werden täglich gelöscht, offene nie |
+
+> [!NOTE]
+> **Nur für Entwicklung und Tests:** `FLOWPLAN_WORKFLOW_LEASE_MS` (Standard 120000, die [Lease](/cluster#workflows-im-cluster) eines Schritts), `FLOWPLAN_WORKFLOW_POLL_MS` (5000, wie oft jede Instanz nach fälligen Schritten sieht) und `FLOWPLAN_WORKFLOW_SWEEP_MS` (60000, wie oft abgelaufene Leases zurück in die Warteschlange kommen) verkürzen die Zeiten der Warteschlange in Millisekunden. Im Betrieb nicht setzen.

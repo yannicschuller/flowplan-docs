@@ -22,8 +22,12 @@ The encryption protects against reading along on the server and in backups. It d
 
 With your first encrypted space – or under **Settings → Account & security → End-to-end encryption** – you set up your keys:
 
+::: steps
+
 1. Choose a **passphrase** (at least 10 characters, ideally a whole sentence). It is not your sign-in password and never leaves your browser.
 2. Keep the **recovery key** safe: 52 characters in groups of four, to **Download** or **Print**. Setup only completes once you confirm you have stored it safely.
+
+:::
 
 > [!WARNING]
 > whoever loses the passphrase **and** the recovery key loses access to their encrypted data. Neither the administrators nor the operator can restore it – the server never saw the keys.

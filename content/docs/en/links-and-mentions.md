@@ -18,7 +18,7 @@ Links to the web are underlined and carry a small outward arrow after their text
 
 ### Automatic links
 
-When an owner has set up [automatic links](/workspace-appearance#automatic-links), matching text becomes a link as soon as you type a space, a punctuation mark or <kbd>Enter</kbd> after it, and also when you paste it – in pages, in documents of database records and in comments. It is an ordinary link: it stays when you collaborate, work offline or use the apps, and you edit or remove it like any other. <kbd>⌘</kbd> <kbd>Z</kbd> (<kbd>Ctrl</kbd> <kbd>Z</kbd>) right after takes back only the link; the text stays. Text that is already there does not change; nothing is linked in code, existing links, formulas, titles or database table cells.
+When an owner has set up [automatic links](/workspace-appearance#automatic-links), matching text becomes a link as soon as you type a space, a punctuation mark or <kbd>Enter</kbd> after it, and also when you paste it – in pages, in documents of database records and in comments. It is an ordinary link: it stays when you collaborate, work offline or use the apps, and you edit or remove it like any other. ++⌘ Z++ (++Ctrl Z++) right after takes back only the link; the text stays. Text that is already there does not change; nothing is linked in code, existing links, formulas, titles or database table cells.
 
 ## Links to blocks
 
@@ -29,13 +29,13 @@ Every block can be linked: a paragraph, a heading, a list item, a table, an imag
 - in the block menu (the ⠿ handle left of the block, tap it on a phone): **Copy link to block**,
 - for headings via the link symbol that appears after the heading on hover,
 - in the [table of contents](/reading-and-presenting#table-of-contents) via the link symbol next to each heading (always visible on phones),
-- with <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd> (Windows/Linux: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>L</kbd>) for the block the cursor is in.
+- with ++⌘ ⇧ L++ (Windows/Linux: ++Ctrl Shift L++) for the block the cursor is in.
 
 The address is copied; pasted into other apps (mail, chat, Word) it shows as a link with the text "Page › start of the block".
 
 **Pasting a link**
 
-Paste a copied block link into a document or record of the same workspace (<kbd>⌘</kbd> <kbd>V</kbd>): it becomes a link styled like a page link, with the text "Page › start of the block". If text is selected, that text becomes the link. `@` also finds headings and blocks of other pages: `@Project › Goals` (or `@Project#Goals`) shows the headings of the page "Project" that contain "Goals"; a single search word also finds paragraphs with that text. Headings of the current page are listed as "This page › …".
+Paste a copied block link into a document or record of the same workspace (++⌘ V++): it becomes a link styled like a page link, with the text "Page › start of the block". If text is selected, that text becomes the link. `@` also finds headings and blocks of other pages: `@Project › Goals` (or `@Project#Goals`) shows the headings of the page "Project" that contain "Goals"; a single search word also finds paragraphs with that text. Headings of the current page are listed as "This page › …".
 
 When the linked page (or record) is renamed, the page title in the link text changes along; the part after "›" stays as it is. On hover, the preview shows the block's current text.
 
@@ -49,7 +49,7 @@ A click opens the page (for a record, the record in its dialog), scrolls to the 
 - Preview and link text only show what you may read: for a page you cannot read, only "Linked block" appears, without text.
 - In [encrypted spaces](/encrypted-spaces) block links work within the space as well; the server does not know the text there, so there is no text preview.
 - People who may only read a page can copy links to its blocks, too.
-- **Align left** no longer has a keyboard shortcut (<kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd> now copies the block link); left is the default alignment and stays in the toolbar.
+- **Align left** no longer has a keyboard shortcut (++⌘ ⇧ L++ now copies the block link); left is the default alignment and stays in the toolbar.
 
 ## Graph of links
 

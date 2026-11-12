@@ -26,7 +26,7 @@ Auch mit PostgreSQL braucht Flowplan seinen Datenordner (`/app/data`): Dort lieg
 - **Locale mit UTF-8**, etwa `en_US.utf8` oder `de_DE.utf8` – so ist es im offiziellen `postgres`-Image und bei den meisten verwalteten Diensten. Mit der Locale `C` findet die Suche chinesischen und japanischen Text zwar weiterhin richtig, aber deutlich langsamer.
 - **Erweiterung `pg_trgm`** für die Volltextsuche. Sie gehört zu jedem normalen PostgreSQL und ist „trusted“: Flowplan installiert sie selbst in ein eigenes Schema `flowplan_ext`, wenn die Rolle in der Datenbank Objekte anlegen darf (`CREATE`-Recht, als Eigentümerin der Datenbank gegeben). Sonst einmal als Administrator: `CREATE EXTENSION pg_trgm;`. Ohne `pg_trgm` funktioniert die Suche weiter, durchsucht aber jedes Mal alle Einträge (das Log sagt das).
 - **Optional `pgvector`** für die [semantische KI-Suche](/ai). Ab pgvector 0.8 installiert Flowplan sie selbst wie `pg_trgm`. **Vor 0.8** ist die Erweiterung nicht „trusted“ – dann führt ein Administrator in der Datenbank von Flowplan einmal `CREATE EXTENSION vector;` aus, und Flowplan nutzt sie ab dem nächsten Start. Ohne `pgvector` rechnet Flowplan die semantische Suche selbst, wie auf SQLite; abschalten lässt sie sich mit `FLOWPLAN_PGVECTOR=off`.
-- **Für die Sicherungen** `pg_dump` und `pg_restore` mindestens in der Hauptversion des Servers. Das Docker-Image bringt die Werkzeuge von PostgreSQL 18 mit; sie sichern und spielen auf Servern von Version 16 bis 18 ein. Ohne Docker das Paket `postgresql-client` passend installieren oder mit `FLOWPLAN_PG_BIN` auf den Ordner mit den Programmen zeigen.
+- **Für die Sicherungen** `pg_dump` und `pg_restore` mindestens in der Hauptversion des Servers. Das Docker-Image bringt die Werkzeuge von PostgreSQL 18 mit; sie sichern und spielen auf Servern von Version 16 bis 18 ein. Wer das [Image selbst baut](/installation#image-selbst-bauen), wählt die Version mit `--build-arg PG_CLIENT_MAJOR=18`. Ohne Docker das Paket `postgresql-client` passend installieren oder mit `FLOWPLAN_PG_BIN` auf den Ordner mit den Programmen zeigen.
 
 ```sql
 -- als Administrator (Superuser) auf dem PostgreSQL-Server
@@ -131,6 +131,7 @@ volumes:
 | `FLOWPLAN_PGVECTOR` | an | `off` nutzt `pgvector` nicht, auch wenn es installiert ist. |
 | `FLOWPLAN_BACKUP_FORMAT` | `pg_dump` | `sqlite`: geplante Sicherungen im portablen SQLite-Format statt mit `pg_dump` (unten). |
 | `FLOWPLAN_PG_BIN` | *leer* | Ordner mit `pg_dump`, `pg_restore` und `psql`, wenn sie nicht im `PATH` liegen. |
+| `PGCONNECT_TIMEOUT` | `15` | So viele Sekunden warten `pg_dump`, `pg_restore` und `psql` höchstens auf die Verbindung zum Server (die Variable von libpq). |
 
 Alle Variablen stehen auch kommentiert in der [`.env.example`](https://github.com/yannicschuller/flowplan/blob/main/.env.example) des Repositorys.
 
