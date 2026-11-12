@@ -808,6 +808,56 @@
   text-decoration-color: currentColor;
 }
 
+/* "War das hilfreich?" – Ja only thanks, Nein opens an issue; nothing stored. */
+.feedback {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  margin: 40px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text);
+}
+.feedback + .meta {
+  margin-top: 12px;
+  padding-top: 0;
+  border-top: 0;
+}
+.feedback details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.feedback summary,
+.feedback > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+  list-style: none;
+}
+.feedback summary::-webkit-details-marker {
+  display: none;
+}
+.feedback summary:hover,
+.feedback > a:hover {
+  border-color: var(--blue);
+}
+.feedback details[open] summary {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.feedback details > span {
+  color: var(--secondary);
+}
+
 /* ---------- On this page ---------- */
 .toc {
   position: sticky;

@@ -208,6 +208,19 @@ export type Doc = {
 };
 // Where a page's Markdown can be edited.
 export const editUrl = (source: string) => `https://github.com/yannicschuller/flowplan-docs/edit/main/${source}`;
+// "War das hilfreich? Nein": a prefilled issue for the page – no counter,
+// nothing stored (the docs run without storage, and without tracking).
+export const feedbackUrl = (page: { title: string; url: string }, locale: Locale) => {
+  const de = locale === "de";
+  const { url } = page;
+  return `https://github.com/yannicschuller/flowplan-docs/issues/new?${new URLSearchParams({
+    title: de ? `Doku: „${page.title}“ hat nicht geholfen` : `Docs: “${page.title}” didn't help`,
+    labels: "documentation",
+    body: de
+      ? `Seite: ${url}\n\nWas hast du gesucht, und was hat gefehlt oder war unklar?\n\n`
+      : `Page: ${url}\n\nWhat were you looking for, and what was missing or unclear?\n\n`,
+  })}`;
+};
 
 export function headingId(text: string) {
   return text

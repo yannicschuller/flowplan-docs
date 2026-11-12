@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { docAnchors, docSlugs, editUrl, loadDoc } from "@/lib/docs";
+import { docAnchors, docSlugs, editUrl, feedbackUrl, loadDoc } from "@/lib/docs";
 import { AnchorRedirect } from "@/components/docs/anchor-redirect";
 import { localePrefix, requestLocale } from "@/lib/i18n-server";
-import { websiteUrl } from "@/lib/links";
+import { docsUrl, websiteUrl } from "@/lib/links";
 import { trackAttrs } from "@/lib/track";
 import { absolute, jsonLd, pageAlternates, socialMetadata, softwareJson } from "@/lib/seo";
 import { translate } from "@/lib/i18n";
@@ -157,6 +157,17 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
             </ul>
           </nav>
         )}
+        <div className={s.feedback} role="group" aria-label={t("Rückmeldung zu dieser Seite", "Feedback on this page")}>
+          <span>{t("War das hilfreich?", "Was this helpful?")}</span>
+          {/* "Ja" only thanks – nothing is counted or stored. */}
+          <details>
+            <summary>{t("Ja", "Yes")}</summary>
+            <span role="status">{t("Danke!", "Thanks!")}</span>
+          </details>
+          <a href={feedbackUrl({ title: doc.title, url: `${docsUrl()}${prefix}/${slug}` }, locale)} rel="noopener" {...trackAttrs("outbound", { target: "github" })}>
+            {t("Nein – sag uns, was fehlt", "No – tell us what's missing")}
+          </a>
+        </div>
         <p className={s.meta}>
           <span>{t("Fehler gefunden oder etwas fehlt?", "Found a mistake or something missing?")}</span>
           <a href={editUrl(doc.source)} rel="noopener" {...trackAttrs("outbound", { target: "github" })}>
