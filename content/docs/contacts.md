@@ -1,3 +1,7 @@
+---
+keywords: Kontakte, CRM, Adressbuch, vCard, CardDAV, LDAP
+---
+
 # Kontakte
 
 Eine Kontakte-Datenbank ist ein Adressbuch für Personen: Jeder Eintrag hat eine Profilseite mit Kontaktkarte, darunter Platz für Notizen. Kontakte lassen sich aus einem LDAP-Verzeichnis übernehmen und abgleichen, als vCard importieren und exportieren und als Adressbuch (CardDAV) auf dem Telefon abonnieren.
@@ -53,7 +57,7 @@ Das Adressbuch-Symbol in der Werkzeugleiste der Datenbank öffnet das Menü **Ko
 
 ## Kontakte aus dem LDAP-Verzeichnis
 
-Ist ein LDAP-Verzeichnis eingerichtet (siehe [Kontakte aus LDAP](/sign-in#kontakte-aus-ldap)), übernehmen Bearbeiter einer Kontakte-Datenbank Personen daraus.
+Ist ein LDAP-Verzeichnis eingerichtet (siehe [Kontakte aus LDAP](/scim-and-ldap#kontakte-aus-ldap)), übernehmen Bearbeiter einer Kontakte-Datenbank Personen daraus.
 
 Das Verzeichnis ist nur für Leute aus der Organisation da: Administratoren der Instanz, Konten, die sich mit LDAP anmelden, und Vollmitglieder (keine Gäste) mindestens eines Arbeitsbereichs, den jemand anderes angelegt hat. Gäste des Arbeitsbereichs der Kontakte-Datenbank können es nie durchsuchen oder importieren, und mit einem API-Token geht es auch nicht. Wer keinen Zugriff hat, sieht **Aus LDAP importieren** ausgegraut mit dem Grund.
 
@@ -75,7 +79,7 @@ Das Verzeichnis ist nur für Leute aus der Organisation da: Administratoren der 
 | Geburtstag | `birthDate`, `dateOfBirth` (falls vorhanden) |
 | Foto | `thumbnailPhoto`, `jpegPhoto` (JPEG/PNG bis 256 KB) |
 
-Zuordnen lassen sich nur freigegebene Attribute: die der Standardzuordnung und die, die die Administration zusätzlich freigibt (`LDAP_CONTACTS_ATTRIBUTES` oder **Weitere Attribute**, siehe [Kontakte aus LDAP](/sign-in#kontakte-aus-ldap)). Der Dialog nennt die erlaubten Attribute; eine Zuordnung mit einem anderen wird abgelehnt. Nimmt die Administration ein Attribut wieder von der Liste, liest auch der Abgleich es nicht mehr.
+Zuordnen lassen sich nur freigegebene Attribute: die der Standardzuordnung und die, die die Administration zusätzlich freigibt (`LDAP_CONTACTS_ATTRIBUTES` oder **Weitere Attribute**, siehe [Kontakte aus LDAP](/scim-and-ldap#kontakte-aus-ldap)). Der Dialog nennt die erlaubten Attribute; eine Zuordnung mit einem anderen wird abgelehnt. Nimmt die Administration ein Attribut wieder von der Liste, liest auch der Abgleich es nicht mehr.
 
 **Abgleich** – nur Verzeichnis → Flowplan:
 

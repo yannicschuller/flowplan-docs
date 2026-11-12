@@ -1,3 +1,7 @@
+---
+keywords: form, survey, questionnaire, typeform, google forms, public
+---
+
 # Forms
 
 A form view collects answers directly as records in the database – from members or, if enabled, from anyone with the link.

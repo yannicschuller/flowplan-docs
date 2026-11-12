@@ -1,3 +1,7 @@
+---
+keywords: Dashboard, Kennzahlen, Widgets, Übersicht, KPI
+---
+
 # Dashboards
 
 Eine Seite aus Kacheln: Kennzahlen, Diagramme und Ansichten deiner Datenbanken, fällige Aufgaben, deine Journal-Serie und Notizen – auf einen Blick und für jede Person mit genau den Daten, die sie sehen darf.
@@ -15,7 +19,7 @@ Eine Seite aus Kacheln: Kennzahlen, Diagramme und Ansichten deiner Datenbanken, 
 | **Diagramm** | Säulen, Balken, Linie oder Donut über eine Eigenschaft – gezeichnet wie die Diagrammansicht; ein Klick auf einen Eintrag öffnet ihn. |
 | **Journal-Serie** | Wie viele Tage in Folge du in einem Journal geschrieben hast, dazu der heutige Eintrag oder **Heute schreiben**. |
 | **Meine fälligen Aufgaben** | Deine Aufgaben aus **Meine Aufgaben**, die heute fällig oder überfällig sind. |
-| **Zuletzt geändert** | Die zuletzt geänderten Seiten und die Zahl ungelesener Benachrichtigungen im [Posteingang](/search-and-notifications#posteingang). |
+| **Zuletzt geändert** | Die zuletzt geänderten Seiten und die Zahl ungelesener Benachrichtigungen im [Posteingang](/notifications#posteingang). |
 | **Text** | Freier Text in Markdown – für Überschriften, Hinweise oder Links. |
 
 ## Anordnen und Größe

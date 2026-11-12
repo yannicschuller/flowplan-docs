@@ -1,9 +1,13 @@
+---
+keywords: formula, rollup, relation, link, calculation
+---
+
 # Properties, formulas and rollups
 
 Relations connect databases, rollups calculate across linked records, formulas calculate values from the properties of the same record.
 
 > [!NOTE]
-> This is about the properties of database records. The [properties of pages](/pages-and-spaces#tags-and-properties) (under the page title) apply in the whole workspace or only in one space, see [Scope](/pages-and-spaces#scope-workspace-or-space).
+> This is about the properties of database records. The [properties of pages](/page-tags#tags-and-properties) (under the page title) apply in the whole workspace or only in one space, see [Scope](/page-tags#scope-workspace-or-space).
 
 ## Edit properties
 
@@ -20,7 +24,7 @@ Records store a select or multi-select value as the option's name. When you rena
 - **Save options only** saves just the list; records, filters and rules stay on the old names, as before.
 - **Formulas** are not rewritten: if a formula compares against an option's name (such as `prop("Status") == "Open"`), adjust it yourself.
 
-Renaming needs edit access to the property. For the [workspace tags](/databases#multi-select-with-the-workspace-tags), renaming happens under **Settings → Tags & properties**.
+Renaming needs edit access to the property. For the [workspace tags](/database-properties#multi-select-with-the-workspace-tags), renaming happens under **Settings → Tags & properties**.
 
 ## Aliases
 
@@ -34,7 +38,7 @@ Aliases work like the title:
 
 Filters ("contains", "is"), sorting, formulas (as a list, like multi-select), CSV and the other exports treat aliases as a list of texts. An alias may be used by several records; then both appear. Only people who may read a record find it by its aliases.
 
-Pages keep their aliases under **… → Aliases …** – see [Pages and spaces](/pages-and-spaces#aliases).
+Pages keep their aliases under **… → Aliases …** – see [Pages and spaces](/page-tags#aliases).
 
 ## Property visibility
 
@@ -79,7 +83,7 @@ Earliest and latest date over **Created at** or **Edited at** give an instant in
 
 ## AI properties
 
-When [AI](/ai) is switched on, a property can take its value from an instruction to the AI – such as a summary or a category from other properties. Everything about it under [AI in databases](/ai#ai-in-databases).
+When [AI](/ai) is switched on, a property can take its value from an instruction to the AI – such as a summary or a category from other properties. Everything about it under [AI in databases](/ai-actions#ai-in-databases).
 
 ## Formulas
 

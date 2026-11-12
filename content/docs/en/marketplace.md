@@ -1,3 +1,7 @@
+---
+keywords: marketplace, share templates, community, publish
+---
+
 # Marketplace
 
 In the **Flowplan Marketplace** (marketplace.flowplan.org) people share what they built in Flowplan: document and database templates, workflows, whiteboard templates, appearances and rules for automatic links. Browse it and take templates over into your instance with one click – or publish your own. The templates that come with Flowplan are there too (public domain, CC0).

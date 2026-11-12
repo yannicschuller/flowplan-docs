@@ -1,3 +1,7 @@
+---
+keywords: workflow, automation, zapier, n8n, trigger, canvas
+---
+
 # Workflows
 
 A workflow is a flow of nodes on a canvas: a **trigger** (a new page, a changed record, a schedule, an e-mail …), then **logic** and **actions** – change records and pages, notify people, ask the AI, call other services. No code at all.
@@ -90,7 +94,7 @@ Inputs and outputs of a run are only shown to the person it ran as; colleagues s
 - The AI only sees **names** of databases, properties, options, spaces and pages you may see and that are open to the AI – no contents.
 - Its proposal is checked against the node catalogue: unknown nodes are left out, unknown pages or properties stay empty and are marked.
 - You see the proposal first; **Use as draft** inserts it as one change. Activating is up to you.
-- It counts against your personal AI allowance, not the workflow's budget. See [AI](/ai#ai-in-workflows).
+- It counts against your personal AI allowance, not the workflow's budget. See [AI](/ai-actions#ai-in-workflows).
 
 ## Workflow button on pages
 
@@ -144,7 +148,7 @@ Content archives and the [instance move](/move-instance) take workflows along wi
 | Keeping runs | 30 days |
 | Active workflows per workspace | 100 |
 
-Admins change them in the [administration](/administration#workflows) or with an [environment variable](/configuration#workflows). Editors can set lower values per workflow.
+Admins change them in the [administration](/administration#workflows) or with an [environment variable](/configuration-integrations#workflows). Editors can set lower values per workflow.
 
 ## API, MCP and SDKs
 

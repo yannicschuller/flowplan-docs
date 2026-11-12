@@ -1,3 +1,7 @@
+---
+keywords: Dimensionierung, RAM, CPU, Speicherplatz, Nutzerzahl, Hardware
+---
+
 # Dimensionierung
 
 Wie viele Personen eine Flowplan-Instanz trägt, was zuerst knapp wird und welche Hardware du für kleine, mittlere und große Teams einplanen solltest – auf Grundlage der Lasttests.
@@ -8,7 +12,7 @@ Entscheidend ist nicht, wie viele Konten eine Instanz hat, sondern wie viele Per
 
 Die Zahlen unten zählen **aktive Personen** so, wie der Lasttest sie nachstellt: Jede schickt im Schnitt alle 1,5 Sekunden eine Anfrage oder tippt ununterbrochen in einem gemeinsam bearbeiteten Dokument. Echte Menschen lesen, denken nach und wechseln die Anwendung – sie erzeugen deutlich weniger Last. Die Zahlen sind deshalb eine vorsichtige Grenze: Eine Instanz, die 20 solche Personen trägt, kommt mit spürbar mehr echten gleichzeitig angemeldeten Personen zurecht.
 
-Wie viele bei dir gleichzeitig aktiv sind, zeigt die Administration: **gerade aktiv** in der Übersicht und das Diagramm **Aktive Personen** je Stunde unter **Administration → Überwachung** (siehe [Betrieb](/operations#administration-ueberwachung)). Nimm die Spitzen, nicht den Durchschnitt.
+Wie viele bei dir gleichzeitig aktiv sind, zeigt die Administration: **gerade aktiv** in der Übersicht und das Diagramm **Aktive Personen** je Stunde unter **Administration → Überwachung** (siehe [Betrieb](/monitoring#administration-ueberwachung)). Nimm die Spitzen, nicht den Durchschnitt.
 
 ## Was eine Instanz trägt
 

@@ -1,9 +1,13 @@
+---
+keywords: Formel, Rollup, Relation, Verknüpfung, Berechnung
+---
+
 # Eigenschaften, Formeln und Rollups
 
 Relationen verbinden Datenbanken, Rollups rechnen über verknüpfte Einträge, Formeln berechnen Werte aus Eigenschaften desselben Eintrags.
 
 > [!NOTE]
-> Hier geht es um die Eigenschaften von Datenbank-Einträgen. Die [Eigenschaften von Seiten](/pages-and-spaces#tags-und-eigenschaften) (unter dem Seitentitel) gelten im ganzen Arbeitsbereich oder nur in einem Bereich, siehe [Geltungsbereich](/pages-and-spaces#geltungsbereich-arbeitsbereich-oder-bereich).
+> Hier geht es um die Eigenschaften von Datenbank-Einträgen. Die [Eigenschaften von Seiten](/page-tags#tags-und-eigenschaften) (unter dem Seitentitel) gelten im ganzen Arbeitsbereich oder nur in einem Bereich, siehe [Geltungsbereich](/page-tags#geltungsbereich-arbeitsbereich-oder-bereich).
 
 ## Eigenschaften bearbeiten
 
@@ -20,7 +24,7 @@ Einträge speichern bei Auswahl und Mehrfachauswahl den Namen der Option. Benenn
 - **Nur Optionen speichern** speichert nur die Liste; Einträge, Filter und Regeln bleiben bei den alten Namen, wie früher.
 - **Formeln** werden nicht umgeschrieben: Vergleicht eine Formel mit dem Namen einer Option (etwa `prop("Status") == "Offen"`), passe sie selbst an.
 
-Umbenennen darf, wer die Eigenschaft bearbeiten darf. Für die [Tags des Arbeitsbereichs](/databases#mehrfachauswahl-mit-den-tags-des-arbeitsbereichs) gilt das Umbenennen unter **Einstellungen → Tags & Eigenschaften**.
+Umbenennen darf, wer die Eigenschaft bearbeiten darf. Für die [Tags des Arbeitsbereichs](/database-properties#mehrfachauswahl-mit-den-tags-des-arbeitsbereichs) gilt das Umbenennen unter **Einstellungen → Tags & Eigenschaften**.
 
 ## Aliasse
 
@@ -34,7 +38,7 @@ Aliasse wirken wie der Titel:
 
 Filter („enthält“, „ist“), Sortierung, Formeln (als Liste wie Mehrfachauswahl), CSV und die übrigen Exporte behandeln Aliasse wie eine Liste von Texten. Ein Alias darf bei mehreren Einträgen vorkommen; dann erscheinen beide. Aliasse findet nur, wer den Eintrag ohnehin lesen darf.
 
-Seiten haben ihre Aliasse unter **… → Aliasse …** – siehe [Seiten und Bereiche](/pages-and-spaces#aliasse).
+Seiten haben ihre Aliasse unter **… → Aliasse …** – siehe [Seiten und Bereiche](/page-tags#aliasse).
 
 ## Sichtbarkeit von Eigenschaften
 
@@ -79,7 +83,7 @@ Frühestes und spätestes Datum über **Erstellt am** oder **Bearbeitet am** erg
 
 ## KI-Eigenschaften
 
-Ist die [KI](/ai) eingeschaltet, kann eine Eigenschaft ihren Wert aus einem Auftrag an die KI beziehen – etwa eine Zusammenfassung oder eine Kategorie aus anderen Eigenschaften. Alles dazu unter [KI in Datenbanken](/ai#ki-in-datenbanken).
+Ist die [KI](/ai) eingeschaltet, kann eine Eigenschaft ihren Wert aus einem Auftrag an die KI beziehen – etwa eine Zusammenfassung oder eine Kategorie aus anderen Eigenschaften. Alles dazu unter [KI in Datenbanken](/ai-actions#ki-in-datenbanken).
 
 ## Formeln
 

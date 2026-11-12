@@ -1,3 +1,7 @@
+---
+keywords: comments, together, live, real time, mention, suggestions
+---
+
 # Collaboration and comments
 
 Several people write on the same page at the same time without overwriting each other. Comments, mentions and the inbox keep conversations next to the content.
@@ -10,7 +14,7 @@ Several people write on the same page at the same time without overwriting each 
 - Without a connection you keep working; changes are merged as soon as the network is back.
 - Database changes are checked for version conflicts: if someone changed the same record in the meantime, your change is not silently written over it but refused, and you see the new state.
 - Guests with an edit link also work live and see the members' cursors; members see the guests as "Guest · <link name>".
-- Whiteboards also have [live cursors](/whiteboards#work-together) as in Miro.
+- Whiteboards also have [live cursors](/whiteboard-collaboration#work-together) as in Miro.
 
 ## Suggest changes
 
@@ -22,7 +26,7 @@ The pen button **Suggest** in the toolbar turns on suggestion mode. Typing then 
 - Suggestions are part of the document: they appear for everyone right away and stay saved until someone accepts or rejects them. Everyone who may edit the page can accept and reject.
 - Formatting, paragraph breaks and moved blocks are applied directly even in suggestion mode; other people's changes never become your suggestions.
 - Changes in **code blocks** are marked as suggestions too. When accepting or rejecting leaves a paragraph or list item completely empty (a suggested new paragraph rejected, a fully deleted one accepted), it disappears as well.
-- **Suggestions by the AI:** in [Ask AI](/ai#ask-your-workspace), **Suggest as changes** puts the answer into the page as suggestions in the same way – with your name and "(AI)".
+- **Suggestions by the AI:** in [Ask AI](/ask-ai), **Suggest as changes** puts the answer into the page as suggestions in the same way – with your name and "(AI)".
 
 ## Reactions
 
@@ -69,4 +73,4 @@ Text comments exist in documents and in the contents of database records, also i
 
 ## Inbox
 
-The **Inbox** in the sidebar collects mentions, comments and replies that concern you ([who hears about comments](/search-and-notifications#who-hears-about-comments)), date reminders as well as comments and records from guests. Unread items are marked; a click jumps to the spot – for text comments straight into the thread. You choose which events arrive as push notifications under **Settings → Notifications** (see [Search, inbox and push](/search-and-notifications)).
+The **Inbox** in the sidebar collects mentions, comments and replies that concern you ([who hears about comments](/notifications#who-hears-about-comments)), date reminders as well as comments and records from guests. Unread items are marked; a click jumps to the spot – for text comments straight into the thread. You choose which events arrive as push notifications under **Settings → Notifications** (see [Search, inbox and push](/search-and-notifications)).

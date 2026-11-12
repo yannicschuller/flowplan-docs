@@ -1,8 +1,12 @@
+---
+keywords: schnell erfassen, Tastenkürzel, global, Desktop, Notiz
+---
+
 # Schnell erfassen (Desktop)
 
 Ein Tastenkürzel öffnet über jeder App ein kleines Fenster: Gedanke, Aufgabe, Link, Datei, Bildschirmausschnitt oder Sprachnotiz – in den Eingang, eine Datenbank, den heutigen Journal-Eintrag oder an eine Seite. Auch ohne Verbindung.
 
-Schnell erfassen gehört zur [Desktop-App für macOS, Windows und Linux](/offline-and-apps#desktop-app-fuer-macos-windows-und-linux). Es speichert mit der Anmeldung des aktiven Profils direkt auf deiner Instanz; nichts geht an Dritte.
+Schnell erfassen gehört zur [Desktop-App für macOS, Windows und Linux](/desktop-app). Es speichert mit der Anmeldung des aktiven Profils direkt auf deiner Instanz; nichts geht an Dritte.
 
 ## Auf einen Blick
 
@@ -68,7 +72,7 @@ Was ein Chip übernimmt, verschwindet aus dem Titel. Ein **×** am Chip lässt d
 
 ## Dateien, Bildschirmausschnitt und Sprachnotiz
 
-- **Dateien:** Bilder (PNG, JPEG, GIF, WebP, AVIF, HEIC), PDFs, Markdown- und Textdateien ins Fenster ziehen oder mit **Anhängen …** wählen. Geprüft wird wie beim [Hineinziehen ins Hauptfenster](/offline-and-apps#mehr-aus-der-desktop-app): Endung **und** Inhalt, Bilder und PDFs bis 50 MB, Text bis 5 MB (die Instanz kann weniger erlauben), höchstens 10 Anhänge. Die Liste unter dem Text zeigt sie, **×** entfernt einen. Bilder und PDFs landen in der Datei-Eigenschaft der Datenbank und im Text; Markdown und Text werden zu Text.
+- **Dateien:** Bilder (PNG, JPEG, GIF, WebP, AVIF, HEIC), PDFs, Markdown- und Textdateien ins Fenster ziehen oder mit **Anhängen …** wählen. Geprüft wird wie beim [Hineinziehen ins Hauptfenster](/desktop-app#mehr-aus-der-desktop-app): Endung **und** Inhalt, Bilder und PDFs bis 50 MB, Text bis 5 MB (die Instanz kann weniger erlauben), höchstens 10 Anhänge. Die Liste unter dem Text zeigt sie, **×** entfernt einen. Bilder und PDFs landen in der Datei-Eigenschaft der Datenbank und im Text; Markdown und Text werden zu Text.
 - **Bildschirmausschnitt:** **Ausschnitt** – das Fenster tritt zur Seite, du ziehst einen Bereich auf; er wird als PNG angehängt. Auf dem Mac nimmt das die Bildschirmaufnahme des Systems auf (Leertaste wählt ein Fenster, <kbd>Esc</kbd> bricht ab); unter Windows und Linux zeigt Flowplan den Bildschirm unter dem Mauszeiger, du ziehst den Bereich, <kbd>Enter</kbd> nimmt den ganzen Bildschirm, <kbd>Esc</kbd> bricht ab. Zwischendateien liegen nur kurz im Datenordner der App und werden sofort gelöscht.
 - **Sprachnotiz:** **Halten zum Sprechen** gedrückt halten (oder <kbd>⌘</kbd>/<kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>R</kbd>), loslassen beendet. Hat deine Instanz eine Transkription (Whisper, siehe [Konfiguration](/configuration)), wird die Aufnahme dort zu Text und erscheint im Feld – zum Prüfen vor dem Speichern. Ohne Transkription, ohne Verbindung oder wenn sie scheitert, wird die Aufnahme angehängt; die Instanz versucht es beim Speichern noch einmal.
 

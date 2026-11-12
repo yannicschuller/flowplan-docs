@@ -1,3 +1,7 @@
+---
+keywords: Sprache, Übersetzung, Deutsch, Englisch, Französisch, Chinesisch
+---
+
 # Sprachen und Übersetzungen
 
 Flowplan gibt es in {{facts.languages|word}} Sprachen: **Deutsch, Englisch, Französisch und vereinfachtes Chinesisch** (简体中文). Englisch gibt es zusätzlich als **English (US)**: dieselben Texte, aber Datumsangaben mit dem Monat zuerst und Wochen ab Sonntag. Weitere Sprachen lassen sich ohne Änderungen am Code der App hinzufügen – mit jedem Übersetzungswerkzeug, das JSON-Dateien versteht.

@@ -1,3 +1,7 @@
+---
+keywords: cluster, several instances, high availability, redis, kubernetes, scaling
+---
+
 # Cluster mode
 
 In cluster mode, several Flowplan instances serve one installation: one PostgreSQL database, one Redis, one S3 bucket and any number of instances behind a load balancer – for more people active at the same time and updates without downtime.
@@ -20,8 +24,8 @@ If one is missing, an instance does not start and lists every problem at once in
 
 Also required – here too an instance refuses to start without them: **keys that are identical on every instance.** A single container creates some keys itself in its data folder – in a cluster every instance has its own folder, and each would create different ones. So set the same values everywhere:
 
-- `FLOWPLAN_ENCRYPTION_KEY` or `FLOWPLAN_SECRETS_KEY` (or their `…_FILE` variants, e.g. for Docker secrets) – otherwise an instance cannot read stored secrets and signatures of the others (two-factor sign-in, AI keys, unlocked share links). See [Stored secrets](/en/configuration#stored-secrets).
-- `WEB_PUSH_PUBLIC_KEY` and `WEB_PUSH_PRIVATE_KEY` (a VAPID key pair, e.g. from `npx web-push generate-vapid-keys`) – otherwise push subscriptions only match one instance. See [Push notifications](/en/configuration#push-notifications).
+- `FLOWPLAN_ENCRYPTION_KEY` or `FLOWPLAN_SECRETS_KEY` (or their `…_FILE` variants, e.g. for Docker secrets) – otherwise an instance cannot read stored secrets and signatures of the others (two-factor sign-in, AI keys, unlocked share links). See [Stored secrets](/en/configuration-storage#stored-secrets).
+- `WEB_PUSH_PUBLIC_KEY` and `WEB_PUSH_PRIVATE_KEY` (a VAPID key pair, e.g. from `npx web-push generate-vapid-keys`) – otherwise push subscriptions only match one instance. See [Push notifications](/en/configuration-ai-push#push-notifications).
 
 Coming from a single container without these variables, take the values from its data folder so stored secrets and push subscriptions stay valid: the content of `secrets.key` as `FLOWPLAN_SECRETS_KEY` (in addition to a `FLOWPLAN_ENCRYPTION_KEY`; both are read), and `publicKey`/`privateKey` from `web-push-keys.json` as `WEB_PUSH_PUBLIC_KEY`/`WEB_PUSH_PRIVATE_KEY`.
 

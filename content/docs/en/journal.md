@@ -1,3 +1,7 @@
+---
+keywords: diary, daily note, tracker, habits, review
+---
+
 # Journal
 
 A journal is a page with one sub-page per day. In the morning today's page is ready, with yesterday's open tasks already on it.
@@ -104,7 +108,7 @@ From anywhere, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> (Windows/Linux: <kbd>C
 
 ### Summarise with AI
 
-**Summarise with AI** in the review has the [AI](/ai#summaries) sum up the week or month shown: highlights and achievements, a chronological overview and what is still open or needs following up – in the interface language. It works from each day's text, the completed and still open tasks, the trackers and places.
+**Summarise with AI** in the review has the [AI](/ai-writing#summaries) sum up the week or month shown: highlights and achievements, a chronological overview and what is still open or needs following up – in the interface language. It works from each day's text, the completed and still open tasks, the trackers and places.
 
 - The result appears as a **preview** first; nothing is saved. **Copy**, **Retry** and **Discard** sit below it.
 - **Save as page** creates a sub-page of the journal, such as "AI summary October 2026", with a note that it was made with AI. There is one such page per journal and period: ask again for the same period and the review offers **Open** or **Create again and replace**. Replacing changes the page's content; the previous state stays in the version history.

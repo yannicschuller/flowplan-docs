@@ -1,58 +1,18 @@
+---
+keywords: Administration, Admin, Instanz, Einstellungen, Demo, Wartung
+---
+
 # Administration der Instanz
 
 Wer die Instanz verwaltet, sieht **Administration** in der Seitenleiste: das erste Konto der Instanz und alle, denen es das Admin-Recht gibt – bei Single Sign-on zusätzlich die Mitglieder der Gruppe aus `OIDC_ADMIN_GROUP`.
+
+**Mehr zum Thema:** [Benutzer verwalten](/user-management)
 
 ## Übersicht
 
 Die Administration öffnet mit einer Übersicht. Oben steht der Zustand der Instanz: Störungen und Hinweise (mit Link zum betroffenen Bereich), sechs Live-Zahlen – gerade aktive Personen, heute aktive Personen (verschiedene Personen seit Mitternacht), Anfragen pro Minute, Fehlerquote der letzten Stunde, Anmeldungen heute und die Antwortzeit (p95: so lange brauchten die langsamsten 5 % der Anfragen der letzten Stunde) – und die Anfragen der letzten 24 Stunden als Diagramm. Die Zahlen aktualisieren sich alle 15 Sekunden, solange die Seite sichtbar ist („Live“). Darunter je Bereich eine Kachel mit seinem Zustand und, wo es passt, einer Zahl mit Verlauf: aktive Personen (Benutzer), das vollste Kontingent (Arbeitsbereiche), der Speicher der letzten 30 Tage, KI-Tokens heute, Änderungen im Aktivitätsprotokoll, Anfragen bzw. Fehler (Überwachung). Fehler sind rot markiert, Hinweise gelb. Auf dem Telefon sind die Kacheln eine Liste mit einem kleinen Verlauf rechts.
 
-Die Bereiche sind gruppiert in **Personen** (Benutzer, Anmeldung & SSO, Arbeitsbereiche), **Daten** (Speicher & Sicherung, Grenzen & Aufbewahrung, Markdown- & Git-Export), **Dienste** (E-Mail, Push-Benachrichtigungen, KI, Erweiterungen & Domains), **Sicherheit** (Angriffe & Vorfälle, Verschlüsselung, Aktivitätsprotokoll – siehe [Sicherheit](/operations#sicherheit)) und **Betrieb** (Überwachung, Wartung & Hinweise, Instanz). Jeder Bereich beginnt oben mit einer **Zustandszeile** – etwa „Geplante Sicherung aus“ mit dem Link zum Schalter oder „S3 aus“ mit dem Link zur Anleitung. Jede Einstellung hat genau einen Ort. Schalter und Auswahlfelder speichern sofort, daneben steht „Speichert …“ bzw. „Gespeichert“; einzelne Textfelder zeigen **Speichern**, sobald du sie geändert hast. Jeder Bereich hat eine eigene Adresse, z. B. `/#admin/storage` oder `/#admin/monitoring`.
-
-## Benutzer
-
-Alle Konten als durchsuchbare Tabelle (auf dem Telefon als Karten untereinander) mit ihrem Zustand: **Aktiv**, **Inaktiv** (30 Tage oder länger ohne Anmeldung), **Deaktiviert** (gesperrt), dazu **Admin** (lokale Konten mit Admin-Recht und alle, die zuletzt mit der Admin-Gruppe angemeldet waren, auch per SSO oder LDAP) und **E-Mail unbestätigt**, in wie vielen Arbeitsbereichen die Person Mitglied ist (wie viele davon ihr gehören, zeigt der Tooltip), der belegte Speicher gegen ihre Grenze, wann sie zuletzt da war und wann das Konto erstellt wurde. Ein Klick auf eine Spaltenüberschrift – **Person**, **Status**, **Arbeitsbereiche**, **Speicher**, **Zuletzt aktiv**, **Erstellt** – sortiert danach, ein zweiter dreht die Reihenfolge um; anfangs stehen die zuletzt Aktiven oben. Auf dem Telefon wählst du die Reihenfolge unter **Sortieren nach**. Unten blättert die Tabelle in Seiten zu 25, 50 oder 100 Konten („1–25 von 112“). Die Filter-Knöpfe über der Tabelle (mit der Anzahl) zeigen nur Aktive, Inaktive, Deaktivierte, Admins oder wer **gerade da** ist. Mehrere Konten auf einmal: Häkchen setzen, dann **Sitzungen beenden**, **Sperren** oder **Entsperren**. Damit die Tabelle Platz hat, stehen auf dieser Seite **Anmeldung & SSO** und **Arbeitsbereiche** als Reiter über der Überschrift statt daneben.
-
-**Wer gerade da ist** steht in der Spalte **Zuletzt aktiv** und aktualisiert sich alle 30 Sekunden: ein grüner Punkt für **Jetzt aktiv** (Flowplan ist offen und wurde in den letzten Minuten benutzt), ein gelber für **Geöffnet · inaktiv seit …** (offen, aber seit dieser Zeit nicht berührt – auch ein Tab im Hintergrund), ein grauer mit der Zeit des letzten Besuchs, wenn Flowplan geschlossen ist, und ein leerer Kreis für Konten, die noch nie da waren. Dafür meldet die geöffnete App einmal pro Minute nur, dass sie offen ist und wie lange die letzte Eingabe her ist (Tippen, Klicken, Scrollen, Tippen auf dem Bildschirm) – nicht, was jemand tut oder welche Seite offen ist.
-
-Ein Klick auf die Zeile oder den Namen öffnet das Konto in einem Seitenfenster (auf dem Telefon von unten). Schneller geht es über **⋯** am Ende der Zeile: **Details und Einstellungen**, **Überall abmelden** und **Sperren …** bzw. **Entsperren**. Das Seitenfenster zeigt oben die Arbeitsbereiche der Person (mit Namen, davon eigene), wann sie zuletzt aktiv war, wann das Konto erstellt wurde und wie sie sich anmeldet (z. B. „E-Mail + Passwort · SSO · Passkey“), darunter den belegten **Speicher** mit Balken – alles, was sie hochlädt oder kopiert, über alle Arbeitsbereiche – und:
-
-- **Rolle**: bei Konten mit E-Mail und Passwort **Mitglied** oder **Admin** (eine Person verwaltet die Instanz immer); bei SSO-Konten kommt sie aus der Gruppe der Anmeldung.
-- **Speicherlimit** für diese Person.
-- **Sitzungen**: auf wie vielen Geräten die Person angemeldet ist; **Abmelden** beendet alle Sitzungen.
-- **Passwort** (Konten mit E-Mail und Passwort): **Link erstellen** erzeugt einen zwei Stunden gültigen Link zum Zurücksetzen – zum Weitergeben, wenn die Instanz keine E-Mails verschickt.
-- **E-Mail-Adresse**: **Als bestätigt markieren** für Konten, die den Link aus der Bestätigungs-E-Mail noch nicht geöffnet haben.
-- Eingeklappt unter **Weitere: …** (die Zeile nennt, was darin steht):
-  - **Eigene Arbeitsbereiche** und **Größte Datei** als weitere Grenzen. Leer = Standard der Instanz, 0 = unbegrenzt; für Admins gelten keine Grenzen. Sobald du eine dieser Grenzen oder das Speicherlimit änderst, erscheint unten die Leiste **Grenzen speichern**.
-  - **KI-Funktionen**: Steht unter [Administration → KI](/ai#fuer-admins) „Ausgewählte Personen“, schaltest du hier die KI pro Person frei oder ab.
-  - **Zwei-Faktor-Anmeldung** (bei Konten mit Authenticator-App): **Zurücksetzen** (etwa bei verlorenem Telefon) schaltet die Authenticator-App des Kontos aus; das steht im Aktivitätsprotokoll, und die Person bekommt eine E-Mail, wenn die Instanz E-Mails versendet.
-  - **Anmeldemethoden**: ob das Konto ein Passwort hat (oder es entfernt wurde), ob es sich über LDAP anmeldet und welche SSO-Konten verbunden sind – mit Issuer, Adresse, wann verbunden und wann zuletzt benutzt. Verbinden und trennen kann die Person selbst unter **Einstellungen → Konto & Sicherheit**.
-  - **Konten zusammenführen**: **Zusammenführen …** legt das Konto mit einem zweiten derselben Person zusammen (siehe [Konten zusammenführen](#konten-zusammenfuehren)).
-- Am Ende: **Sperren** sperrt das Konto sofort und beendet alle Sitzungen; **Entsperren** gibt es wieder frei. **Konto löschen** (**Löschen …**) geht erst, sobald ein Konto gesperrt ist. Der Dialog nennt vorher, was passiert: Name, E-Mail, Passwort, Passkeys, Sitzungen und persönliche Einstellungen werden gelöscht, ebenso Arbeitsbereiche, in denen nur diese Person Mitglied war, und ihre privaten Bereiche. Gemeinsame Arbeitsbereiche bekommen bei Bedarf ein anderes Mitglied als Eigentümer; Beiträge darin bleiben und erscheinen als „Gelöschtes Konto“. Auch wenn das Konto dafür als leerer Platzhalter bleibt, verschwinden die persönlichen Daten: Kalender-Verbindungen und ihre Abgleiche, CalDAV- und CardDAV-Verknüpfungen, Gast-Zugänge, eigene Schlüssel für verschlüsselte Bereiche, Rechte an einzelnen Einträgen, Geräte, Entwürfe, Einstellungen von Widgets und Seitenleiste, Sticker und Reaktionen. Es bleiben Inhalte, Versionsverlauf und Urheberschaft sowie erfasste Zeiten (ein laufender Timer stoppt); Freigabelinks, die die Person erstellt hat, funktionieren weiter. Das eigene Konto und das letzte Admin-Konto lassen sich nicht löschen.
-
-Konten mit E-Mail und Passwort entstehen über **Konto erstellen** (siehe [Anmeldung](/sign-in)); SSO-Konten beim ersten Anmelden über OIDC, ihr Admin-Recht kommt aus der Gruppe beim Anbieter. Ob sich Personen selbst registrieren dürfen, stellst du unter [Anmeldung & SSO](#anmeldung-sso) ein.
-
-### Konten zusammenführen
-
-Hat eine Person zwei Konten – etwa ein lokales und eines, das bei der ersten SSO-Anmeldung entstanden ist –, führst du sie im Seitenfenster ihres Kontos unter **Weitere** mit **Zusammenführen …** zusammen. Du wählst das andere Konto (Konten mit derselben E-Mail-Adresse stehen oben) und mit dem Pfeil, welches bestehen bleibt. Die Vorschau nennt, was wechselt, bevor etwas passiert.
-
-Alles des übernommenen Kontos geht auf das bleibende über: eigene Seiten und Bereiche, Mitgliedschaften in Arbeitsbereichen und Bereichen samt Freigaben (die **höhere Rolle** bleibt; Gast nur, wenn die Person überall Gast war), Gruppen, Kommentare und Reaktionen, Erwähnungen in Kommentaren und Dokumenten, Zuweisungen und Personen-Eigenschaften in Datenbanken, Favoriten, Sammlungen, Seitenleiste, Journal, Benachrichtigungen und ihre Einstellungen, Webhooks, Kalender- und Kontakt-Verbindungen, Zeiterfassung, Passkeys, SSO-Konten, das LDAP- und SCIM-Konto und der Verlauf im Aktivitäts- und Sicherheitsprotokoll. Wo beide Konten dasselbe haben (etwa einen Favoriten oder die Seitenleiste eines Arbeitsbereichs), gilt das des bleibenden Kontos.
-
-- **Sitzungen** des übernommenen Kontos enden; **API-Tokens** werden widerrufen (Skripte brauchen ein neues Token des bleibenden Kontos – so liest kein Token plötzlich die Daten eines anderen Kontos).
-- **Passwort**: Hat das bleibende Konto keins, übernimmt es das des anderen; sonst bleibt sein eigenes. Ein Admin-Recht eines lokalen Kontos geht mit.
-- **Authenticator-App**: wird übernommen, wenn das bleibende Konto keine hat; Wiederherstellungscodes müssen dann neu erzeugt werden.
-- **Ende-zu-Ende-Verschlüsselung**: Hat nur das übernommene Konto Schlüssel, gehen sie mit. Haben beide welche, bleiben die des bleibenden Kontos; verschlüsselte Bereiche, die nur das andere Konto hatte, müssen neu freigegeben werden.
-- Ältere Versionen von Dokumenten behalten ihre Erwähnungen, wie sie waren.
-
-Das Zusammenführen läuft in einem Schritt – ganz oder gar nicht –, steht im Aktivitätsprotokoll und als „Konten zusammengeführt“ im Sicherheitsprotokoll. Das übernommene Konto wird danach gelöscht. Das eigene Konto kann nur das bleibende sein.
-
-## Anmeldung & SSO
-
-- **Registrierung & Zugang**: **Registrierung mit E-Mail und Passwort** (jede Person darf ein Konto anlegen; ohne diese Einstellung nur eingeladene Adressen und das erste Konto der Instanz), **Alle dürfen Arbeitsbereiche anlegen** und **Inaktive Konten sperren** nach einer Zahl von Tagen ohne Anmeldung. Gesperrte Konten verlieren ihre Sitzungen, ihre API-Tokens funktionieren nicht mehr; die Sperre steht im Aktivitätsprotokoll und lässt sich unter **Benutzer** aufheben. **Inaktive Konten löschen** geht einen Schritt weiter: Nach einer Zahl von Tagen ohne jede Nutzung (mindestens 60 und mehr als beim Sperren) wird ein Konto gelöscht – wie beim Löschen durch einen Admin: persönliche Daten, Arbeitsbereiche und private Bereiche, die nur dieser Person gehören, verschwinden, Beiträge in gemeinsamen Arbeitsbereichen bleiben unter „Gelöschtes Konto“. 14 und 3 Tage vorher bekommt die Person eine E-Mail mit dem Datum; meldet sie sich vorher an, bleibt das Konto. Ist es schon gesperrt, bittet die E-Mail, sich an die Administration zu wenden – schaltest du es unter **Benutzer** wieder frei, ist die Löschung abgesagt. Ohne eingerichteten E-Mail-Versand, für Admin-Konten und für Konten ohne E-Mail-Adresse wird nie gelöscht. Unter **Benutzer** zeigt „Wird am … gelöscht“, wo eine Löschung ansteht; jede Löschung steht im Aktivitätsprotokoll.
-- **Zwei-Faktor-Anmeldung**: **Zwei-Faktor-Anmeldung verlangen** – nicht verlangen, nur für Admins oder für alle lokalen Konten –, dazu wie viele lokale Konten schon einen zweiten Faktor haben. Konten ohne Authenticator-App und ohne Passkey richten direkt nach der Anmeldung einen zweiten Faktor ein ([Zwei-Faktor-Anmeldung](/sign-in#zwei-faktor-anmeldung)). SSO-Konten sind nicht betroffen.
-- **Sitzungen**: wie lange man angemeldet bleibt – **Browser ohne „Angemeldet bleiben“** (Stunden nach der Anmeldung, Standard 8), **„Angemeldet bleiben“ im Browser anbieten** (Standard aus), **Browser mit „Angemeldet bleiben“** (7, 30, 90 oder 365 Tage ohne Nutzung, Standard 7), **Desktop- und Mobil-Apps** (Standard: angemeldet bleiben; oder wie im Browser ohne „Angemeldet bleiben“) und **Apps: Ende ohne Nutzung** (30, 90 oder 365 Tage, Standard 90). **Standard** folgt den Umgebungsvariablen `SESSION_*` ([Konfiguration](/configuration)); ein hier gewählter Wert hat Vorrang. Die Laufzeit der Apps gilt nur für Anmeldungen, die die App belegt – die Übergabe über den Browser oder das Passwort mit dem Geräteschlüssel der App; der User-Agent allein zählt nicht, und ältere App-Versionen melden sich mit Passwort wie ein Browser an. Siehe [Angemeldet bleiben](/sign-in#angemeldet-bleiben).
-- **Single Sign-on (OIDC)**: ob ein Anbieter eingerichtet ist, die Admin-Gruppe und **SSO-Gruppen zentral zuordnen** – Gruppen des Anbieters bekommen Rollen und Gruppen in jedem Arbeitsbereich ([SSO-Gruppen](/sign-in#sso-gruppen-arbeitsbereichen-zuordnen)).
-- **SCIM-Token** und **LDAP-Verzeichnis** mit ihrem Zustand ([Benutzer bereitstellen mit SCIM](/sign-in#benutzer-bereitstellen-mit-scim), [Anmeldung mit LDAP](/sign-in#anmeldung-mit-ldap)).
-- **Kontakte aus LDAP**: Basis-DN, Personenfilter, Abgleich und **Weitere Attribute** (welche LDAP-Attribute über die Standardzuordnung hinaus zugeordnet werden dürfen, zusätzlich zu `LDAP_CONTACTS_ATTRIBUTES`) für [Kontakte-Datenbanken](/contacts#kontakte-aus-dem-ldap-verzeichnis); Änderungen werden als Sicherheitsereignis protokolliert. Siehe [Kontakte aus LDAP](/sign-in#kontakte-aus-ldap).
+Die Bereiche sind gruppiert in **Personen** (Benutzer, Anmeldung & SSO, Arbeitsbereiche), **Daten** (Speicher & Sicherung, Grenzen & Aufbewahrung, Markdown- & Git-Export), **Dienste** (E-Mail, Push-Benachrichtigungen, KI, Erweiterungen & Domains), **Sicherheit** (Angriffe & Vorfälle, Verschlüsselung, Aktivitätsprotokoll – siehe [Sicherheit](/security-monitoring#sicherheit)) und **Betrieb** (Überwachung, Wartung & Hinweise, Instanz). Jeder Bereich beginnt oben mit einer **Zustandszeile** – etwa „Geplante Sicherung aus“ mit dem Link zum Schalter oder „S3 aus“ mit dem Link zur Anleitung. Jede Einstellung hat genau einen Ort. Schalter und Auswahlfelder speichern sofort, daneben steht „Speichert …“ bzw. „Gespeichert“; einzelne Textfelder zeigen **Speichern**, sobald du sie geändert hast. Jeder Bereich hat eine eigene Adresse, z. B. `/#admin/storage` oder `/#admin/monitoring`.
 
 ## Arbeitsbereiche
 
@@ -62,7 +22,7 @@ Alle Arbeitsbereiche mit Mitgliedern, Seiten, Belegung (Balken bei einem Konting
 
 Der eine Ort für Sicherungen:
 
-- **Sicherungen**: **S3-Spiegel** und **Litestream** mit ihrem Zustand, die geplante **Tägliche Datenbanksicherung** – eine konsistente Kopie der Datenbank pro Tag, mit S3 in den Bucket unter `backups/`, sonst in den Datenordner –, **Stündlich statt täglich** (gedacht für verschlüsselte Sicherungen anstelle von Litestream, siehe [Verschlüsselung](/storage-and-backups#verschluesselung); dann mehr Kopien aufbewahren, etwa 72 für drei Tage), **Aufbewahrte Sicherungen**, die letzte Sicherung und **Jetzt sichern**. Der Markdown-Export läuft weiterhin einmal am Tag.
+- **Sicherungen**: **S3-Spiegel** und **Litestream** mit ihrem Zustand, die geplante **Tägliche Datenbanksicherung** – eine konsistente Kopie der Datenbank pro Tag, mit S3 in den Bucket unter `backups/`, sonst in den Datenordner –, **Stündlich statt täglich** (gedacht für verschlüsselte Sicherungen anstelle von Litestream, siehe [Verschlüsselung](/storage-encryption#verschluesselung); dann mehr Kopien aufbewahren, etwa 72 für drei Tage), **Aufbewahrte Sicherungen**, die letzte Sicherung und **Jetzt sichern**. Der Markdown-Export läuft weiterhin einmal am Tag.
 - **Belegung**: was lokal und was im Bucket liegt, nach Art, und die Aufteilung der Datenbank.
 - **Gesamte Instanz → Herunterladen** erzeugt im laufenden Betrieb eine geprüfte Kopie von Datenbank und Dateien. Mit `FLOWPLAN_ENCRYPTION_KEY` ist die Datei verschlüsselt (`.zip.enc`).
 - **Inhalte**: wie viele Arbeitsbereiche, Seiten, Datenbanken, Einträge, Dateien, Konten und Kommentare es gibt.
@@ -78,7 +38,7 @@ Details: [Speicher und Sicherungen](/storage-and-backups).
 | Speicher je Arbeitsbereich | Für Arbeitsbereiche ohne eigenes Kontingent. |
 | Speicher je Person | Für Personen ohne eigene Grenze; alles, was sie hochladen oder kopieren. |
 | Eigene Arbeitsbereiche je Person | Wie viele Arbeitsbereiche eine Person besitzen darf. |
-| Größte Datei beim Hochladen | Grenze je Datei in MB. Gilt auch für den [Import einer AFFiNE-Arbeitsbereichsdatei](/migrate#von-affine) (mindestens 100 MB; `FLOWPLAN_IMPORT_MAX_MB` hat Vorrang). |
+| Größte Datei beim Hochladen | Grenze je Datei in MB. Gilt auch für den [Import einer AFFiNE-Arbeitsbereichsdatei](/migrate-affine) (mindestens 100 MB; `FLOWPLAN_IMPORT_MAX_MB` hat Vorrang). |
 | Versionen aufbewahren | Tage, nach denen automatische Versionen gelöscht werden. |
 | Papierkorb leeren nach | Tage, nach denen gelöschte Seiten, Bereiche, Datenbankeinträge und Vorlagen samt Dateien endgültig gelöscht werden (1–3650, Standard 30, 0 = nie automatisch). Siehe [Papierkorb](/pages-and-spaces#papierkorb). |
 
@@ -86,23 +46,23 @@ Leere Felder fallen auf die [Umgebungsvariablen](/configuration) zurück. Jede P
 
 ### Workflows
 
-Unter **Grenzen & Aufbewahrung → Workflows** stehen die Grenzen für [Workflows](/workflows): Läufe je Minute (je Workflow und Arbeitsbereich), Schritte je Lauf, Kaskadentiefe, Elemente je „Für jedes“, KI-Tokens und E-Mails je Workflow und Tag, Aufbewahrung der Läufe, längstes Warten, aktive Workflows je Arbeitsbereich, HTTP-Knoten (an/aus, nur bestimmte Hosts, interne Adressen) und E-Mails an Adressen außerhalb der Mitglieder. Leer gelassen gilt der Wert aus der [Umgebung](/configuration#workflows). Daneben zeigt die Überwachung die Auslastung: aktive Workflows, Läufe je Minute, wartende und laufende Schritte, die älteste fällige Aufgabe, Fehlerquote und KI-Tokens von heute.
+Unter **Grenzen & Aufbewahrung → Workflows** stehen die Grenzen für [Workflows](/workflows): Läufe je Minute (je Workflow und Arbeitsbereich), Schritte je Lauf, Kaskadentiefe, Elemente je „Für jedes“, KI-Tokens und E-Mails je Workflow und Tag, Aufbewahrung der Läufe, längstes Warten, aktive Workflows je Arbeitsbereich, HTTP-Knoten (an/aus, nur bestimmte Hosts, interne Adressen) und E-Mails an Adressen außerhalb der Mitglieder. Leer gelassen gilt der Wert aus der [Umgebung](/configuration-integrations#workflows). Daneben zeigt die Überwachung die Auslastung: aktive Workflows, Läufe je Minute, wartende und laufende Schritte, die älteste fällige Aufgabe, Fehlerquote und KI-Tokens von heute.
 
 ## Markdown- & Git-Export
 
-Seiten und Datenbanken für den Markdown-Export wählen, den Git-Export der Bereiche einschalten und das (veraltete) Git-Repository der Instanz – siehe [Markdown-Export und Git](/storage-and-backups#markdown-export-und-git).
+Seiten und Datenbanken für den Markdown-Export wählen, den Git-Export der Bereiche einschalten und das (veraltete) Git-Repository der Instanz – siehe [Markdown-Export und Git](/markdown-git-export).
 
 ## E-Mail
 
-**E-Mail-Versand** zeigt den eingerichteten Server, den Absender, die Warteschlange und den letzten Fehler; ohne SMTP einen Hinweis mit den Variablen ([E-Mail (SMTP)](/configuration#e-mail-smtp)). **Test-E-Mail** prüft die Verbindung sofort.
+**E-Mail-Versand** zeigt den eingerichteten Server, den Absender, die Warteschlange und den letzten Fehler; ohne SMTP einen Hinweis mit den Variablen ([E-Mail (SMTP)](/configuration-integrations#e-mail-smtp)). **Test-E-Mail** prüft die Verbindung sofort.
 
 ## Push-Benachrichtigungen
 
 Ob Mitteilungen an die Apps ankommen können und über welchen Dienst (`/#admin/push`). Die Kachel der Übersicht zeigt das Relay mit einem grünen, gelben oder roten Hinweis – etwa „Erreichbar (85 ms)“ – und die Zustellungen der letzten 24 Stunden; dieselbe Kachel steht unter **Überwachung → Zustand**.
 
 - **Push-Relay**: die verwendete Adresse – das offizielle `https://push.flowplan.org` oder ein eigenes aus `PUSH_RELAY_URL` (Zugangsdaten in der Adresse werden nie angezeigt) –, ob es an ist und sonst genau warum (`PUSH_RELAY=off`, `APP_URL` keine HTTPS-Adresse, `PUSH_RELAY_URL` ungültig), die `APP_URL`, unter der das Relay die Instanz kennt, und ob `/.well-known/flowplan-push` veröffentlicht ist.
-- **Erreichbarkeit**: Die Instanz ruft `GET <Relay>/healthz` ab – höchstens 5 Sekunden, nur HTTPS, ohne Weiterleitungen zu folgen – und zeigt „Erreichbar“ mit der Antwortzeit (und der Version des Relays, falls es eine nennt) oder den Grund: Zeitüberschreitung, Verbindung abgelehnt, DNS, TLS, Weiterleitung, HTTP-Status. Außerdem ruft sie ihr eigenes `/.well-known/flowplan-push` unter `APP_URL` ab, wie das Relay es tut, und prüft, dass der aktuelle Signaturschlüssel darin steht. Klappt das von innen nicht, ist das nur ein Hinweis: Hinter NAT oder einem Proxy, der die eigene Adresse intern nicht auflöst, ist das normal – entscheidend ist, dass das Relay sie von außen erreicht ([Testbenachrichtigung](/search-and-notifications#testbenachrichtigung)). Das Ergebnis gilt eine Minute; **Erreichbarkeit prüfen** prüft sofort neu.
-- **Signaturschlüssel**: Schlüssel-IDs mit Status (signiert, wartet, auslaufend) und Daten. **Schlüssel wechseln …** fragt nach und wechselt wie in [Push-Relay und Ende-zu-Ende-Verschlüsselung](/configuration#push-relay-und-ende-zu-ende-verschluesselung) beschrieben, wahlweise sofort.
+- **Erreichbarkeit**: Die Instanz ruft `GET <Relay>/healthz` ab – höchstens 5 Sekunden, nur HTTPS, ohne Weiterleitungen zu folgen – und zeigt „Erreichbar“ mit der Antwortzeit (und der Version des Relays, falls es eine nennt) oder den Grund: Zeitüberschreitung, Verbindung abgelehnt, DNS, TLS, Weiterleitung, HTTP-Status. Außerdem ruft sie ihr eigenes `/.well-known/flowplan-push` unter `APP_URL` ab, wie das Relay es tut, und prüft, dass der aktuelle Signaturschlüssel darin steht. Klappt das von innen nicht, ist das nur ein Hinweis: Hinter NAT oder einem Proxy, der die eigene Adresse intern nicht auflöst, ist das normal – entscheidend ist, dass das Relay sie von außen erreicht ([Testbenachrichtigung](/notifications#testbenachrichtigung)). Das Ergebnis gilt eine Minute; **Erreichbarkeit prüfen** prüft sofort neu.
+- **Signaturschlüssel**: Schlüssel-IDs mit Status (signiert, wartet, auslaufend) und Daten. **Schlüssel wechseln …** fragt nach und wechselt wie in [Push-Relay und Ende-zu-Ende-Verschlüsselung](/configuration-ai-push#push-relay-und-ende-zu-ende-verschluesselung) beschrieben, wahlweise sofort.
 - **Zustellungen der letzten 24 Stunden** je Kanal (Relay, Expo, Web Push) und Ergebnis (zugestellt, abgemeldet, abgewiesen, ungültig, gedrosselt, Fehler), die letzte Zustellung über das Relay, der letzte Fehler als Code (etwa `signature HTTP 401` oder `unreachable`), die Warteschlange und die registrierten Geräte je Kanal. Gezählt wird nur mit eingeschalteter Statistik (siehe [Überwachung](#ueberwachung)).
 - **Expo und Web Push**: `MOBILE_PUSH` an oder aus, was `MOBILE_PUSH_CONTENT` mitschickt, woher die VAPID-Schlüssel kommen und ob `WEB_PUSH_SUBJECT` gesetzt ist.
 
@@ -110,7 +70,7 @@ Die Antworten enthalten nie Tokens, Schlüssel oder Push-Adressen. `/api/admin/p
 
 ## Chat-Apps
 
-**Administration → Chat-Apps** regelt die [Benachrichtigungen an Chat-Apps](/search-and-notifications#chat-apps). Oben stehen erlaubte Dienste, der Bot der Instanz, aktive und nach Fehlern ausgeschaltete Verbindungen und die Zustellungen der letzten 24 Stunden.
+**Administration → Chat-Apps** regelt die [Benachrichtigungen an Chat-Apps](/notifications#chat-apps). Oben stehen erlaubte Dienste, der Bot der Instanz, aktive und nach Fehlern ausgeschaltete Verbindungen und die Zustellungen der letzten 24 Stunden.
 
 - **Erlaubte Dienste:** Telegram, Gotify, ntfy und Matrix lassen sich einzeln ausschalten (Vorgabe: `FLOWPLAN_MESSENGERS`). Ausgeschaltete Dienste bekommen keine Nachrichten mehr; die Verbindungen der Personen bleiben gespeichert und laufen wieder, wenn der Dienst eingeschaltet wird.
 - **Telegram-Bot der Instanz:** Bot-Token von @BotFather und optional eine eigene API-Adresse (Bot-API-Server oder Relay/Proxy, auch im eigenen Netz). **Prüfen und speichern** fragt Telegram mit `getMe` nach dem Bot und speichert den Token nur, wenn er angenommen wird – verschlüsselt, angezeigt wird nur „…abcd“. **Bot entfernen** löscht ihn (ein Token aus `FLOWPLAN_TELEGRAM_BOT_TOKEN` gilt dann wieder). Ein Konflikt mit einem Webhook oder einem anderen Programm, das den Bot abfragt, steht unter **Letzter Fehler**.
@@ -130,7 +90,7 @@ Optional und standardmäßig aus: Anbieter (Ollama, OpenAI-kompatibel, Anthropic
 
 ## Verschlüsselung
 
-Die Schlüssel-ID, frühere Schlüssel, wie viele Dateien im Bucket noch nicht mit diesem Schlüssel verschlüsselt sind (**Bestehende verschlüsseln** holt das nach), und was trotzdem unverschlüsselt den Server verlässt (Litestream, Git-Export). Siehe [Verschlüsselung](/storage-and-backups#verschluesselung).
+Die Schlüssel-ID, frühere Schlüssel, wie viele Dateien im Bucket noch nicht mit diesem Schlüssel verschlüsselt sind (**Bestehende verschlüsseln** holt das nach), und was trotzdem unverschlüsselt den Server verlässt (Litestream, Git-Export). Siehe [Verschlüsselung](/storage-encryption#verschluesselung).
 
 ## Aktivitätsprotokoll
 
@@ -138,11 +98,11 @@ Die letzten Änderungen mit Person, Aktion und betroffener Ressource – etwa Fr
 
 ## Überwachung
 
-Zustand, Nutzung und Ereignisse der Instanz – live: oben fünf Kennzahlen (**Aktiv 24 Std.**, **Speicher**, **Zustellungen 7 Tage**, **KI-Tokens 14 Tage**, **Fehler 24 Std.**) mit Verlauf und, wo es passt, dem Vergleich zum Zeitraum davor, darunter Karten in zwei Spalten mit Diagrammen, Warteschlangen, Hintergrunddiensten, abgewiesenen Anfragen, Warnungen per Webhook und der Nutzungsstatistik. Details unter [Betrieb und Fehlersuche](/operations#administration-ueberwachung).
+Zustand, Nutzung und Ereignisse der Instanz – live: oben fünf Kennzahlen (**Aktiv 24 Std.**, **Speicher**, **Zustellungen 7 Tage**, **KI-Tokens 14 Tage**, **Fehler 24 Std.**) mit Verlauf und, wo es passt, dem Vergleich zum Zeitraum davor, darunter Karten in zwei Spalten mit Diagrammen, Warteschlangen, Hintergrunddiensten, abgewiesenen Anfragen, Warnungen per Webhook und der Nutzungsstatistik. Details unter [Betrieb und Fehlersuche](/monitoring#administration-ueberwachung).
 
 ## Wartung & Hinweise
 
-**Hinweis für alle Personen** – ein Banner für alle, bis du ihn leerst – der **Wartungshinweis** mit Beginn und Ende, der nach dem Ende von selbst verschwindet, und **Banner zum Wegklicken**, die jede Person einmal sieht, bis sie sie schließt – etwa für die Apps oder euren Discord-Server ([Wartung & Hinweise](/operations#wartung-hinweise)).
+**Hinweis für alle Personen** – ein Banner für alle, bis du ihn leerst – der **Wartungshinweis** mit Beginn und Ende, der nach dem Ende von selbst verschwindet, und **Banner zum Wegklicken**, die jede Person einmal sieht, bis sie sie schließt – etwa für die Apps oder euren Discord-Server ([Wartung & Hinweise](/monitoring#wartung-hinweise)).
 
 ## Instanz
 
@@ -154,7 +114,7 @@ Zustand, Nutzung und Ereignisse der Instanz – live: oben fünf Kennzahlen (**A
 | Admin-Gruppe | Die SSO- oder LDAP-Gruppe aus `OIDC_ADMIN_GROUP`. |
 | Neuigkeiten nach Updates für neue Konten | Womit neue Konten bei **Neuigkeiten nach Updates** beginnen: **Alle anzeigen** (Standard), **Nur Breaking Changes** oder **Nie**. Gilt nur für Konten, die danach angelegt werden; bestehende Konten behalten ihre Einstellung, und jede Person kann sie unter **Darstellung & Sprache** ändern. |
 
-Version, Lizenz und Quellcode sehen alle Personen unter **Einstellungen → Über Flowplan**; dort steht bei unseren Images auch, ob es eine Beta oder ein Release ist (eigene Builds: `--build-arg FLOWPLAN_CHANNEL=beta` oder `release`). Wer veränderten Code betreibt, nennt dessen Quellcode mit `FLOWPLAN_SOURCE_URL`; den Link zu GitHub Sponsors blendet `FLOWPLAN_HIDE_SPONSOR=true` aus ([Konfiguration](/configuration#rechtliches-und-oberflaeche)).
+Version, Lizenz und Quellcode sehen alle Personen unter **Einstellungen → Über Flowplan**; dort steht bei unseren Images auch, ob es eine Beta oder ein Release ist (eigene Builds: `--build-arg FLOWPLAN_CHANNEL=beta` oder `release`). Wer veränderten Code betreibt, nennt dessen Quellcode mit `FLOWPLAN_SOURCE_URL`; den Link zu GitHub Sponsors blendet `FLOWPLAN_HIDE_SPONSOR=true` aus ([Konfiguration](/configuration-storage#rechtliches-und-oberflaeche)).
 
 Darunter führt **Weitere Einstellungen der Instanz** zu den Bereichen, in die frühere Einstellungen der Instanz umgezogen sind.
 

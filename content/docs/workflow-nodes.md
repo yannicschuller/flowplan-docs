@@ -1,3 +1,7 @@
+---
+keywords: Knoten, Auslöser, Aktion, Bedingung, Schleife, HTTP
+---
+
 # Workflow-Knoten
 
 Alle Knoten, die ein [Workflow](/workflows) kennt – mit Typ (so steht er im JSON und in der API), Ausgängen und den Ausgaben, die spätere Knoten als Platzhalter nutzen.

@@ -1,3 +1,7 @@
+---
+keywords: Formular, Umfrage, Fragebogen, Typeform, Google Forms, öffentlich
+---
+
 # Formulare
 
 Eine Formularansicht sammelt Antworten direkt als Einträge in der Datenbank – von Mitgliedern oder, wenn freigegeben, von jeder Person mit dem Link.

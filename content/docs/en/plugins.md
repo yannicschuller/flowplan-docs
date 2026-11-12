@@ -1,10 +1,14 @@
+---
+keywords: plugin, extension, custom block, iframe, developer
+---
+
 # Block extensions
 
 Block extensions bring custom block types into the editor: a poll, a counter, a chart from a database, your team's own widget. An extension is a static web page with a manifest. Flowplan shows it isolated in a frame and only talks to it through messages.
 
 ## For owners: register an extension
 
-1. Your administrators allow the address: either through `PLUGIN_ALLOWED_ORIGINS` ([configuration](/configuration#integrations)) or with the switch **Block extensions from any HTTPS address** under **Administration → Extensions & domains**.
+1. Your administrators allow the address: either through `PLUGIN_ALLOWED_ORIGINS` ([configuration](/configuration-integrations#integrations)) or with the switch **Block extensions from any HTTPS address** under **Administration → Extensions & domains**.
 2. Under **Settings → Block extensions** enter the address at **Address of the extension**, e.g. `https://plugins.example.org/poll/`, and choose **Register**. Flowplan loads `flowplan-plugin.json` from there, checks it and shows the extension as a card of its own: which blocks it brings and what it may do, below that the switches **Active** and **Also show on published pages**. It is removed with the trash icon at the top of its card.
 3. In the editor its blocks appear in the `/` menu under **Extensions**.
 

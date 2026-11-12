@@ -1,6 +1,12 @@
+---
+keywords: operations, healthcheck, troubleshooting, logs, desktop apps, prometheus
+---
+
 # Operations and troubleshooting
 
 Health check, metrics, the storage overview and the most common causes when something does not run.
+
+**More on this topic:** [Monitoring and maintenance](/monitoring) · [Security and attack detection](/security-monitoring)
 
 ## Health check
 
@@ -29,234 +35,6 @@ curl -H "Authorization: Bearer $FLOWPLAN_METRICS_TOKEN" https://flowplan.example
 Personal API tokens do not unlock the details.
 
 For Kubernetes and load balancers there are also `/api/health/live` (the process answers) and `/api/health/ready` (database and, in a cluster, Redis and the bucket reachable; `503` while shutting down), see [Cluster mode](/cluster#health-readiness-and-shutdown).
-
-## Administration → Monitoring
-
-**Administration → Monitoring** shows the instance live – refreshed every 15 seconds, paused while the tab is in the background:
-
-- **Health**: database, file storage (with disk usage), S3 mirror, backup, e-mail, AI provider (reachable and response time, checked at most every five minutes), push relay (reachable, checked at most every minute, see [Push notifications](/administration#push-notifications)), background workers and update. Each tile leads to the section in charge.
-- **Key figures**: five tiles in a row, each with a value and a small trend; storage, AI tokens and errors compare with the period before once it has been collected: **Active 24 h** (plus active now and since midnight), **Storage** (change over 7 days, with disk usage), **Deliveries 7 days** (plus those given up), **AI tokens 14 days** (vs. last week) and **Errors 24 h** (5xx, vs. the day before, with the error rate). Each tile jumps to its card.
-- **Charts**: across the full width **Requests & errors** (5xx) – 1 hour, 24 hours or 7 days, with requests per minute and p95 response time –, below it the cards in two columns (one on narrow screens): **Active people** per hour (7 days), **Sign-ins** successful and failed per day (14 days), **Refused requests**, **Storage** by kind and the largest workspaces, **Deliveries** (webhooks, push, e-mail) per day and **AI usage** (tokens per day and per feature). Every chart shows its values on hover, tap or with the arrow keys and has **As a table**.
-- **Queues**: what is waiting to be processed right now – search index, mail queue, push delivery, AI fields and AI search index, S3 upload, webhooks retrying.
-- **Events**: errors, warnings and notes of the last 14 days, filterable.
-- **Quick actions**: **Back up now**, **Check AI provider**, **Check alerts**, **Test alert**, the way to Maintenance & notices and the activity log as CSV.
-- Below: **Background workers**, **Instance in numbers** (size of the database and uploads, versions, uptime, demos …), **Alerts by webhook** and **Statistics**.
-
-In detail:
-
-- **Refused requests**: failed sign-ins, requests a limit refused with 429 (sign-in attempts, invitations, AI, MCP, forms …) and anonymous uploads over the daily budget (forms, share links) – per day over the last 14 days. A rise points to attacks or limits that are too tight. The counters are kept for 35 days and cleaned up daily.
-- **Background workers**: last run and last error of backup, Markdown export, AI background work, calendar and issue sync and LDAP sync; “off” means not set up.
-- **Storage**: usage by kind and the largest workspaces with bars against the quota (yellow from 80 %, red from 95 %). Quotas are set under **Administration → Workspaces** and **Administration → Limits & retention**.
-- **Deliveries**: delivered webhooks, push messages and e-mails per day; what is waiting, given up and the latest errors are under **Queues**. Only the host of a webhook address is shown, never its path or token.
-
-### Statistics
-
-For the charts, Flowplan counts requests, errors and response times per minute, active people per hour, storage per day and AI tokens per feature – numbers only, without IP addresses, paths, user agents or names. Who was active is held in memory for the running hour only, so that each person counts once. Successful sign-ins are counted with their time (without the person). AI tokens come from the provider where it reports them, otherwise they are estimated (four characters per token).
-
-| Resolution | Kept for |
-| --- | --- |
-| Minutes | 48 hours |
-| Hours | 35 days |
-| Days (storage, AI tokens) | 400 days |
-
-Switch the statistics off under **Administration → Monitoring → Statistics** (**Collect usage statistics**) or for the whole instance with `FLOWPLAN_METRICS=off` (see [Configuration](/configuration#operations)); the switch is then locked. **Delete statistics** removes all counted requests, active people, storage history, AI tokens and successful sign-ins; the counters of refused requests stay.
-
-### Alerts by webhook
-
-Under **Administration → Monitoring → Alerts by webhook**, enter an `https://` address (with `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true` also `http://` and internal addresses) and choose the events:
-
-| Event | When |
-| --- | --- |
-| Backup failed | The last scheduled backup ended with an error. |
-| Storage > 90 % | A workspace with a quota is more than 90 % full. |
-| Worker error | A worker that is set up reported an error in the last 24 hours. |
-| Many failed sign-ins | 50 or more failed sign-ins within an hour. |
-| Security incidents | Right away for every new incident of the [detection rules](#detection-rules) (`ops.security`, with `rule` and `severity`). |
-
-Flowplan checks every ten minutes and sends at most **one message per event and day** as a `POST` with JSON:
-
-```json
-{ "event": "ops.storage_high", "title": "Speicher > 90 %", "detail": "Agency: 93 %", "instance": "Flowplan", "url": "https://flowplan.example.org", "at": "2026-10-22T08:10:00.000Z" }
-```
-
-The `title` is in German, as alerts are sent outside of a request; match on `event`.
-
-The header `X-Flowplan-Signature: sha256=<HMAC-SHA256 of the body>` is made with the **signing secret** shown, `X-Flowplan-Event` names the event. **Send test** sends `ops.test` right away, **Check now** checks out of turn, **New secret** creates a new signing secret. The latest alerts sent are listed below with their status code. An empty address turns alerts off.
-
-### Maintenance & notices
-
-**Administration → Maintenance & notices** holds two banners and the banners to click away. The **notice for everyone** – e.g. “The new filing applies from Monday” – stays until you clear the field. A **maintenance notice** with text, start and end appears to everyone signed in as a banner at the top of the window from saving on – before the start as “Scheduled maintenance”, during it as “Maintenance in progress”, in each person's time zone and language. After the end it disappears by itself, also in windows already open (they check every five minutes). Everyone can hide the notice for themselves. **Remove notice** withdraws it at once. Saving and removing are in the activity log.
-
-#### Banners to click away
-
-For news each person should see only once – e.g. “Flowplan is now an app” or your Discord server – **New banner** creates a banner everyone sees until they close it or follow its link. After that it never appears for them again, on no device; whoever opens Flowplan next sees it at the top of the window.
-
-- **Content:** an optional **heading** (bold), the **text** (at most 300 characters) and an optional **link** with its own label – an `https://` address (opens in a new tab) or a page of this instance (`#…` or `/…`). The **preview** shows it while you write.
-- **Colour:** notice (blue), promotion (accent), news (green) or important (yellow).
-- **Who and where:** everyone or administrators only; everywhere or **browser only** – then not in the desktop app and the apps, e.g. when it promotes the apps.
-- **Period:** optional **From** and **Until**; without them it applies right away and until you end it.
-- **Templates** fill in the form for the apps (link to flowplan.org/download, browser only) or for Discord.
-
-The list shows each banner with its state (shown, planned, paused, ended) and how many closed it and how many followed the link. **Pause** hides it without losing its numbers; **Show again** shows it to everyone once more, also to those who closed it; **Delete** removes it with its numbers for everyone right away. At most three banners appear at a time, newest first. Creating, changing and deleting are in the activity log.
-
-### Storage overview
-
-**Administration → Storage & backup** shows in the cards **Backups**, **Usage** and **Content**:
-
-- whether the S3 storage is reachable, how long the check took and how many files are still waiting,
-- what is local and what is in the bucket: files by kind (images, videos, documents …) and how the database is split,
-- how many workspaces, pages, databases, records, whiteboards, files, accounts and comments there are.
-
-## Prometheus
-
-With `FLOWPLAN_METRICS_TOKEN` (at least 16 characters), `/api/metrics` delivers metrics: sizes, queues, search backlog, storage and quota per workspace, `flowplan_object_storage_pending` and `flowplan_build_info` with version and commit.
-
-```yaml
-scrape_configs:
-  - job_name: flowplan
-    metrics_path: /api/metrics
-    authorization:
-      credentials: <FLOWPLAN_METRICS_TOKEN>
-    static_configs:
-      - targets: ["flowplan:3000"]
-```
-
-Without a token the endpoint is switched off. The same token unlocks the details of `/api/health` (see above).
-
-## Security
-
-Flowplan records security-relevant events, detects typical attacks in them and hands both to your own tools. It all works without setup; the variables below only connect it to the outside.
-
-### What is recorded
-
-- **Sign-in:** successful, failed, refused (limit or block), from a new device
-- **Account:** password changed or reset, passkey added or removed, two-factor on or off, API token created or revoked, sessions ended, account deleted
-- **Rights:** admin rights granted or removed (also through SSO or LDAP groups at sign-in), roles, invitations, accounts disabled or reset by admins
-- **Sharing and data:** share links, published pages, all exports and backups
-- **Refused:** requests from a foreign origin, internal addresses (SSRF), scripts in submitted content, many refused API requests from one address
-- **Administration:** LDAP, SCIM, restore, extensions, domains, AI provider, alerts and other security-relevant settings
-
-**Privacy:** for an address, the database keeps only its network (IPv4 `/24`, IPv6 `/48`) and a hash keyed with a secret of the instance – enough to group and block, not the address itself. Accounts of failed sign-ins are only stored masked (`ma***@example.com`). Events are deleted after 90 days (`FLOWPLAN_SECURITY_RETENTION_DAYS`).
-
-### Administration → Threats & incidents
-
-The page `/#admin/threats` (group **Security**) sums it up and refreshes every 30 seconds:
-
-- **State:** open incidents (critical ones in red), hints on missing connections, numbers of the last 24 hours and sign-ins per hour
-- **Incidents** of the detection rules, with actions right next to them: resolved, block the address or network for 24 hours, end all sessions of the person, disable the account. **Details & next steps** opens an incident's own page (`/#admin/threats/incident/<id>`): on the left what happened – why the rule fired (with its thresholds), the period, the origin and whether it is already blocked, the accounts tried, successful sign-ins in the same period (red when an account may have been taken over afterwards), networks, countries, devices and the timeline of all its events; for probing also the requested paths with answer and count (IDs and tokens replaced by `:id`, `:n` and `:token`). On the right what the incident means, when it is harmless and what to do step by step – with the matching action (block the address, end sessions, disable the account, resolve) or the link to it right at the step.
-- **Addresses with failures**, **events** with filters (severity, kind) and export as CSV or JSON
-- **Signed-in people** (admins first), **open ways in** (API tokens, share links, public pages of the whole instance) to revoke
-- **Blocks** of addresses and networks, for a time or indefinitely. Blocked addresses only get `403` – signed-in people in them too. Your own address and network cannot be blocked.
-
-New incidents go to all instance admins as notifications of the kind **Security incidents of the instance**. Each admin chooses how under **Settings → Notifications**: the channels (by default inbox, push, e-mail and chat apps) and whether **all incidents** or **critical only** arrive; the notification leads straight to the incident's page, and the top of the incident list says how you are notified right now. When a webhook is set up under **Monitoring → Alerts by webhook**, every incident also goes there right away (event `ops.security` with `rule` and `severity`). At most 30 reports an hour, so an attack floods nobody.
-
-Whoever signs in with a device not seen for 90 days gets a security notice themselves – a taken-over account is often noticed by its owner first.
-
-### Detection rules
-
-| Rule | Trigger | Severity |
-| --- | --- | --- |
-| Password guessing on an account | 10 failures on one account in 15 minutes | warning |
-| Many failures from one address | 20 failures from one address in 15 minutes | warning |
-| Many accounts from one address | 5 different accounts from one address in 15 minutes (credential stuffing) | critical |
-| Sign-in after many failures | successful sign-in after 5 failures on the same account | critical |
-| Admin from a new device | an admin signs in with a device not seen for 90 days | warning |
-| Two countries in a short time | sign-ins from two countries within 2 hours (needs `FLOWPLAN_COUNTRY_HEADER`) | critical |
-| Rights changed | admin rights, LDAP/SCIM, restore, extensions, domains | critical |
-| Many exports | more than 20 exports by one person in an hour (and far above their usual) | warning |
-| Probing | 60 refused API requests (401/403/404) from one address in 10 minutes | warning |
-| Attacks through content | 5 refused scripts or internal addresses in an hour | warning |
-
-The same thing within a day counts on the open incident instead of opening a new one.
-
-### Logs (stdout, JSON)
-
-Every event is a JSON line on stdout – Docker, Loki, Elastic, Graylog or Datadog pick them up as they are:
-
-```json
-{"ts":"2026-10-30T19:11:27.536Z","level":"warn","logger":"flowplan.security","event":"login.failure","severity":"warn","ip":"203.0.113.7","network":"203.0.113.0/24","subject":"ma***@example.com","device":"Chrome · macOS","detail":"password"}
-```
-
-More fields depending on the event: `user` (account id), `country`. The full address (`ip`) is only in this line – for fail2ban and CrowdSec. `FLOWPLAN_SECURITY_LOG=anonymous` leaves it out, `=off` writes no lines.
-
-### OpenTelemetry
-
-With `OTEL_EXPORTER_OTLP_ENDPOINT` (or `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`) Flowplan sends the events as OTLP logs (HTTP/JSON, `/v1/logs`) to your collector, e.g. Grafana Alloy, the OpenTelemetry Collector, Grafana Cloud, Honeycomb or Datadog. Credentials go in `OTEL_EXPORTER_OTLP_HEADERS` (`api-key=…,x-scope-orgid=…`), the service name in `OTEL_SERVICE_NAME` (default `flowplan`). The fields of the log line arrive as attributes `flowplan.*`.
-
-### Prometheus
-
-`/api/metrics` also has `flowplan_security_events_total{event,severity}`, `flowplan_security_incidents_open{rule,severity}` and `flowplan_security_blocks`. An alert in Prometheus or Grafana:
-
-```yaml
-- alert: FlowplanSecurityIncident
-  expr: sum(flowplan_security_incidents_open{severity="critical"}) > 0
-  for: 1m
-```
-
-### fail2ban
-
-With the `journald` logging driver (`logging: { driver: journald }` in the Compose service) fail2ban reads the lines directly:
-
-```ini
-# /etc/fail2ban/filter.d/flowplan.conf
-[Definition]
-failregex = "logger":"flowplan\.security","event":"login\.(failure|refused)","severity":"[a-z]+","ip":"<HOST>"
-            "logger":"flowplan\.security","event":"request\.probing","severity":"[a-z]+","ip":"<HOST>"
-
-# /etc/fail2ban/jail.d/flowplan.conf
-[flowplan]
-enabled = true
-backend = systemd
-journalmatch = CONTAINER_NAME=flowplan
-filter = flowplan
-maxretry = 10
-findtime = 10m
-bantime = 1h
-```
-
-When fail2ban blocks in the firewall in front of the reverse proxy, the request never arrives. The blocks in Flowplan itself also work behind Cloudflare or a proxy fail2ban does not control.
-
-### CrowdSec
-
-A parser for the log lines and a scenario for password guessing (example; the acquisition with `labels: { type: flowplan }`):
-
-```yaml
-# parsers/s01-parse/flowplan.yaml
-name: flowplan/flowplan-logs
-description: "Flowplan security events"
-filter: "evt.Line.Labels.type == 'flowplan'"
-onsuccess: next_stage
-nodes:
-  - filter: "UnmarshalJSON(evt.Line.Raw, evt.Unmarshaled, 'flowplan') in ['', nil] && evt.Unmarshaled.flowplan.logger == 'flowplan.security'"
-    statics:
-      - meta: log_type
-        expression: "'flowplan_' + replace(evt.Unmarshaled.flowplan.event, '.', '_')"
-      - meta: source_ip
-        expression: evt.Unmarshaled.flowplan.ip
-
-# scenarios/flowplan-bf.yaml
-type: leaky
-name: flowplan/login-bf
-description: "Flowplan password guessing"
-filter: "evt.Meta.log_type in ['flowplan_login_failure', 'flowplan_login_refused']"
-groupby: evt.Meta.source_ip
-capacity: 10
-leakspeed: 30s
-blackhole: 5m
-labels:
-  remediation: true
-```
-
-### More variables
-
-| Variable | Default | Effect |
-| --- | --- | --- |
-| `FLOWPLAN_SECURITY_LOG` | `on` | `on` (with address), `anonymous` (without), `off` (no log lines) |
-| `FLOWPLAN_SECURITY_RETENTION_DAYS` | `90` | How long events stay in the database (at least 7) |
-| `FLOWPLAN_COUNTRY_HEADER` | *empty* | The proxy's header with the country of the request, e.g. `CF-IPCountry` behind Cloudflare – turns on the rule "two countries". Only set it when the proxy sets the header itself. |
-| `OTEL_EXPORTER_OTLP_ENDPOINT` | *empty* | OTLP collector for the events (see above) |
-
-Everything with addresses needs the reverse proxy to set `X-Forwarded-For` and a correct `FLOWPLAN_TRUSTED_PROXIES` ([Configuration](/en/configuration)). When no address arrives, the page shows a hint.
 
 ## Check after the first start
 
@@ -311,7 +89,7 @@ From version 1.0.6 the Mac app is signed with a Developer ID and notarized by Ap
 
 ### Profiles
 
-The desktop app can keep several instances as profiles (how to use them: [Several instances](/offline-and-apps#several-instances-profiles)). Under the hood:
+The desktop app can keep several instances as profiles (how to use them: [Several instances](/desktop-app#several-instances-profiles)). Under the hood:
 
 - Every profile has its own Electron session (`persist:profile-<id>`): cookies, service worker, offline copy, IndexedDB and cache are separate, also for two profiles on the same instance. Permissions (notifications, microphone) go only to the active profile's instance, and a sign-in started in the browser is dropped on a switch.
 - The profiles live in `config.json` in the app's user data folder (`profiles`, `activeProfile`). An address from version 1.0.4 or older becomes the first profile automatically on first start and keeps its session; `server` still mirrors the active profile, so an older version finds an address after a downgrade.
@@ -343,4 +121,3 @@ From the version after 1.0.8 no dialog interrupts any more: the answer to **Chec
 New versions are made in the flowplan-desktop repository via **Actions → Release → Run workflow**: the version goes up, the apps are built and attached for all three systems, and the release is published only once everything is there. Installed apps find it within six hours.
 
 The apps are signed as soon as the secrets `CSC_LINK`/`CSC_KEY_PASSWORD` (macOS, plus `APPLE_ID`, `APPLE_APP_SPECIFIC_PASSWORD`, `APPLE_TEAM_ID` for notarization) or `WIN_CSC_LINK`/`WIN_CSC_KEY_PASSWORD` (Windows) are set there; a signed Mac app then updates itself like on Windows. To build yourself: in the repository run `npm run dist:mac`, `dist:win` or `dist:linux`.
-

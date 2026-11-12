@@ -1,3 +1,7 @@
+---
+keywords: notebook, handwriting, apple pencil, stylus, goodnotes, paper
+---
+
 # Notebooks and handwriting
 
 A **notebook** is a page of sheets to write on – with the Apple Pencil, another tablet pen, a mouse or a finger, like a paper notebook. The sheets sit one below the other and you scroll through them. Each sheet has its paper (lined, grid, dotted, Cornell, music staff …) or a page of a PDF as its background. There is also **handwriting in documents**: a drawing block in the middle of the text.
@@ -10,7 +14,7 @@ A **notebook** is a page of sheets to write on – with the Apple Pencil, anothe
 
 **From a PDF:** in the same dialog, choose a file under **Open a PDF as the notebook**. Every page of the PDF becomes a sheet with that page as its background – lecture slides, worksheets or forms are then written on as if printed. **⋯ → Import PDF …** adds more PDF pages to an existing notebook, after the current sheet. Up to 500 pages per import and 1000 sheets per notebook.
 
-**From GoodNotes and other note apps:** export the notebooks as PDF and import them under **Settings → Import & export → Import** with the source **GoodNotes** – several at once or as a ZIP, every PDF becomes a notebook. Step by step: [Moving from GoodNotes](/migrate#from-goodnotes).
+**From GoodNotes and other note apps:** export the notebooks as PDF and import them under **Settings → Import & export → Import** with the source **GoodNotes** – several at once or as a ZIP, every PDF becomes a notebook. Step by step: [Moving from GoodNotes](/migrate-notes#from-goodnotes).
 
 ## Paper
 
@@ -36,12 +40,11 @@ Sheets from a PDF keep their PDF page and its size.
 
 ## Writing
 
-Whoever may edit the page writes right away – there is no "Annotate" step as in the PDF viewer. At the top is the toolbar: **Pen** (with pressure), **Highlighter**, **Eraser** (whole strokes or partial), **Lasso** (move, resize, recolour, copy, duplicate, delete), **Text** and **Laser pointer**, three favourite pens, colours, widths and the pen settings. They work as when [annotating PDFs](/documents#annotate-pdfs): only the pen writes once you have used it, fingers scroll and zoom, a resting hand leaves no marks; holding still at the end of a stroke straightens it into a line, rectangle, ellipse …
+Whoever may edit the page writes right away – there is no "Annotate" step as in the PDF viewer. At the top is the toolbar: **Pen** (with pressure), **Highlighter**, **Eraser** (whole strokes or partial), **Lasso** (move, resize, recolour, copy, duplicate, delete), **Text** and **Laser pointer**, three favourite pens, colours, widths and the pen settings. They work as when [annotating PDFs](/media-and-files#annotate-pdfs): only the pen writes once you have used it, fingers scroll and zoom, a resting hand leaves no marks; holding still at the end of a stroke straightens it into a line, rectangle, ellipse …
 
 Everything is saved as you write (on the right of the toolbar: *Saved*). Every change of a sheet is a version. When two people write on the same sheet at the same time, both keep their strokes; a notice says that someone wrote along. What others write appears after a few seconds.
 
 Readers of the page see all sheets, zoom and export, but no tools.
-
 
 Besides the preset widths, the slider button sets any line width, with a preview. The **+** after the colours opens a custom colour (colour field, hue, hex value); your recent custom colours are remembered on the device. For **Text** you choose the size (8–96 pt) and the font there: Default, Instrument Sans, Instrument Serif, JetBrains Mono, Caveat or Patrick Hand. In the PDF export Caveat and Patrick Hand come out as Helvetica, Instrument Serif as Times and JetBrains Mono as Courier.
 

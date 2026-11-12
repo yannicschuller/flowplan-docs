@@ -1,3 +1,7 @@
+---
+keywords: language, translation, German, English, French, Chinese
+---
+
 # Languages and translations
 
 Flowplan is available in {{facts.languages|word}} languages: **German, English, French and Simplified Chinese** (简体中文). English also comes as **English (US)**: the same texts, but dates with the month first and weeks starting on Sunday. Further languages can be added without changing the app's code – with any translation tool that understands JSON files.

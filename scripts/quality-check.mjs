@@ -16,7 +16,7 @@ import { createServer } from "node:net";
 import { chromium } from "@playwright/test";
 
 // ---------------------------------------------------------------- settings
-const PAGES = ["/de", "/en/configuration", "/de/journal", "/en/whats-new"];
+const PAGES = ["/de", "/en/configuration", "/de/journal", "/en/whats-new", "/de/formatting"];
 const HEALTH = "/api/health";
 // Measured 2026-10-22 (gzip): 137.0 KB on every page – React, Next's
 // runtime and the search box (the search index itself loads on focus);

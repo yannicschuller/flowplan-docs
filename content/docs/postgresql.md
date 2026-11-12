@@ -1,3 +1,7 @@
+---
+keywords: PostgreSQL, Postgres, Datenbank, DATABASE_URL
+---
+
 # PostgreSQL
 
 Statt SQLite kann Flowplan eine PostgreSQL-Datenbank nutzen – wenn du ohnehin einen gepflegten Datenbankserver betreibst, mehr Personen gleichzeitig arbeiten oder du mehrere Instanzen im [Cluster-Modus](/cluster) laufen lassen willst.
@@ -154,7 +158,7 @@ Das Skript liest `DATABASE_URL` und `FLOWPLAN_PG_SCHEMA` aus der Umgebung des Co
 Auf PostgreSQL schreiben die **geplante Sicherung** und **Jetzt sichern** (Administration → Speicher & Sicherung) ein Archiv von `pg_dump` im Custom-Format: `flowplan-2026-11-07-03-00.dump`, mit `FLOWPLAN_ENCRYPTION_KEY` verschlüsselt als `.dump.enc`. Sonst bleibt alles wie bei SQLite:
 
 - Ziele: S3 unter `<Präfix>/backups/`, [SFTP](/storage-and-backups#sicherung-per-sftp) oder der Datenordner – mit derselben Aufbewahrung und demselben [verzögerten Löschen](/storage-and-backups#verzoegertes-loeschen) der Dateien.
-- [Verschlüsselung](/storage-and-backups#verschluesselung) wie gehabt; `decrypt.mjs` entschlüsselt auch `.dump.enc`.
+- [Verschlüsselung](/storage-encryption#verschluesselung) wie gehabt; `decrypt.mjs` entschlüsselt auch `.dump.enc`.
 - Das Archiv enthält nur das Schema von Flowplan, ohne Suchindex und `pgvector`-Tabelle – beide baut Flowplan nach dem Einspielen neu auf. Es ist dadurch kleiner und lässt sich auch auf einem Server ohne `pg_trgm` oder `pgvector` einspielen.
 - `pg_dump` läuft außerhalb von Flowplan und belastet die Instanz kaum.
 

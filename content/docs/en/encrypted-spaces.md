@@ -1,3 +1,7 @@
+---
+keywords: end-to-end, e2e, encryption, password, private
+---
+
 # Encrypted spaces
 
 An encrypted space is meant for journals, passwords and other confidential notes. Content, files and – if you choose – titles are encrypted and decrypted in your browser. The server – and with it the operators, backups and the storage provider – only sees ciphertext.
@@ -50,7 +54,7 @@ Everything that would need the server to read the content is switched off here a
 - Comments and text comments, mentions with notifications
 - Share links, sharing single pages and publishing
 - Version history, templates, duplicating, moving to other spaces (in or out)
-- [Tags and page properties](/pages-and-spaces#tags-and-properties)
+- [Tags and page properties](/page-tags#tags-and-properties)
 - Export as PDF, DOCX, EPUB, server-side Markdown, Git export
 - Webhooks only receive the page ID, MCP clients only metadata
 

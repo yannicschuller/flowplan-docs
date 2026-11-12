@@ -1,3 +1,7 @@
+---
+keywords: Notizbuch, Handschrift, Apple Pencil, Stift, GoodNotes, Papier
+---
+
 # Notizbücher und Handschrift
 
 Ein **Notizbuch** ist eine Seite aus Blättern zum Beschreiben – mit dem Apple Pencil, einem anderen Tablet-Stift, der Maus oder dem Finger, wie in einem Papierheft. Die Blätter stehen untereinander, du scrollst durch sie hindurch. Jedes Blatt hat sein Papier (liniert, kariert, gepunktet, Cornell, Notenlinien …) oder eine Seite aus einem PDF als Hintergrund. Dazu gibt es **Handschrift in Dokumenten**: einen Zeichenblock mitten im Text.
@@ -10,7 +14,7 @@ Ein **Notizbuch** ist eine Seite aus Blättern zum Beschreiben – mit dem Apple
 
 **Aus einem PDF:** Im selben Dialog unter **PDF als Notizbuch öffnen** eine Datei wählen. Jede Seite des PDFs wird ein Blatt mit dieser Seite als Hintergrund – Vorlesungsfolien, Arbeitsblätter oder Formulare beschreibst du dann wie gedruckt. In ein bestehendes Notizbuch holt **⋯ → PDF importieren …** weitere PDF-Seiten hinter das aktuelle Blatt. Bis zu 500 Seiten je Import, bis zu 1000 Blätter je Notizbuch.
 
-**Aus GoodNotes und anderen Notiz-Apps:** Notizbücher als PDF exportieren und unter **Einstellungen → Import & Export → Import** mit der Quelle **GoodNotes** importieren – mehrere auf einmal oder als ZIP, jedes PDF wird ein Notizbuch. Schritt für Schritt: [Umzug von GoodNotes](/migrate#von-goodnotes).
+**Aus GoodNotes und anderen Notiz-Apps:** Notizbücher als PDF exportieren und unter **Einstellungen → Import & Export → Import** mit der Quelle **GoodNotes** importieren – mehrere auf einmal oder als ZIP, jedes PDF wird ein Notizbuch. Schritt für Schritt: [Umzug von GoodNotes](/migrate-notes#von-goodnotes).
 
 ## Papier
 
@@ -36,7 +40,7 @@ Blätter aus einem PDF behalten ihre PDF-Seite und deren Format.
 
 ## Schreiben
 
-Wer die Seite bearbeiten darf, schreibt sofort – es gibt kein „Anmerken“ wie beim PDF-Viewer. Oben steht die Werkzeugleiste: **Stift** (mit Druckstärke), **Textmarker**, **Radierer** (ganze Striche oder teilweise), **Lasso** (verschieben, Größe ändern, umfärben, kopieren, duplizieren, löschen), **Text** und **Laserpointer**, drei Lieblingsstifte, Farben, Breiten und die Stifteinstellungen. Sie arbeiten wie beim [Anmerken von PDFs](/documents#pdfs-anmerken): Nur der Stift schreibt, sobald du einmal mit ihm geschrieben hast, Finger blättern und zoomen, die aufliegende Hand hinterlässt keine Spuren; kurz stillhalten am Ende eines Strichs begradigt ihn zu Linie, Rechteck, Ellipse …
+Wer die Seite bearbeiten darf, schreibt sofort – es gibt kein „Anmerken“ wie beim PDF-Viewer. Oben steht die Werkzeugleiste: **Stift** (mit Druckstärke), **Textmarker**, **Radierer** (ganze Striche oder teilweise), **Lasso** (verschieben, Größe ändern, umfärben, kopieren, duplizieren, löschen), **Text** und **Laserpointer**, drei Lieblingsstifte, Farben, Breiten und die Stifteinstellungen. Sie arbeiten wie beim [Anmerken von PDFs](/media-and-files#pdfs-anmerken): Nur der Stift schreibt, sobald du einmal mit ihm geschrieben hast, Finger blättern und zoomen, die aufliegende Hand hinterlässt keine Spuren; kurz stillhalten am Ende eines Strichs begradigt ihn zu Linie, Rechteck, Ellipse …
 
 Alles wird beim Schreiben gespeichert (rechts in der Leiste: *Gespeichert*). Jede Änderung eines Blatts ist eine Version. Schreiben zwei Personen gleichzeitig auf dasselbe Blatt, bleiben die Striche beider erhalten; ein Hinweis sagt, dass jemand mitgeschrieben hat. Was andere schreiben, erscheint nach wenigen Sekunden.
 

@@ -1,3 +1,7 @@
+---
+keywords: Ansicht, Kanban, Board, Kalender, Timeline, Gantt, Galerie, Liste
+---
+
 # Ansichten
 
 Eine Datenbank kann beliebig viele Ansichten haben. Jede Ansicht zeigt dieselben Einträge mit eigener Darstellung, eigenen Filtern, Sortierungen und Gruppen.
@@ -93,7 +97,7 @@ Gut zu wissen:
 - **Rechte**: Nur Einträge, die du sehen und bearbeiten darfst, gehen in den Kalender und werden vom Kalender geändert. Workflow und Automationen gelten wie bei jeder Änderung.
 - **Zeitraum**: Termine von 90 Tagen zurück bis ein Jahr voraus. Wiederholte Termine aus dem Kalender kommen als einzelne Einträge an; ein wiederholter Eintrag geht mit seinem ersten Termin in den Kalender.
 - **Trennen** unter **Einstellungen → Kalender & Issues** beendet alle Synchronisierungen dieser Verbindung. Den Zugriff kannst du zusätzlich in deinem Google- oder Microsoft-Konto widerrufen.
-- Die Administration muss die Anbieter einmal einrichten, siehe [Konfiguration](/configuration#kalender-sync).
+- Die Administration muss die Anbieter einmal einrichten, siehe [Konfiguration](/configuration-integrations#kalender-sync).
 
 ## Sprints
 

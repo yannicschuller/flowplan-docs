@@ -1,3 +1,7 @@
+---
+keywords: Start, Einstieg, Konto, Oberfläche, Startseite, Hilfe
+---
+
 # Erste Schritte
 
 Vom ersten Anmelden bis zur ersten eigenen Seite: was du in den ersten zehn Minuten mit Flowplan tust.
@@ -35,7 +39,7 @@ Die Einstellungen öffnen mit einer Übersicht: je Abschnitt eine Kachel, gruppi
 - **Startseite**: zuletzt bearbeitete Seiten, Schnellstarts für eine neue Idee oder ein Projekt und alle Seiten deines Arbeitsbereichs – mit Widgets nach deinen Wünschen anpassbar (siehe [Startseite anpassen](#startseite-anpassen)).
 - **Kopfzeile** einer Seite: Pfad, Teilen, Kommentare, Favorit und das Menü **Seitenaktionen** (`…`).
 
-Am Computer ziehst du den rechten Rand der Seitenleiste, um sie breiter oder schmaler zu machen (200 bis 480 Pixel); ein Doppelklick auf den Rand stellt die ursprüngliche Breite wieder her. Die Breite merkt sich Flowplan pro Gerät. Auf dem Smartphone klappt die Seitenleiste ein: Das Symbol oben links öffnet sie, ebenso ein Wischen nach rechts, das knapp neben dem linken Bildschirmrand beginnt (oder **Navigation** in der Leiste unten). Ganz am Rand bleibt auf dem iPhone die Zurück-Geste. Nach links gewischt oder mit einem Tipp daneben schließt sie wieder. Für iPhone und iPad gibt es außerdem eine **App im App Store**, für Android eine **App zum Herunterladen** ([Apps für iPhone, iPad und Android](/offline-and-apps#apps-fuer-iphone-ipad-und-android)).
+Am Computer ziehst du den rechten Rand der Seitenleiste, um sie breiter oder schmaler zu machen (200 bis 480 Pixel); ein Doppelklick auf den Rand stellt die ursprüngliche Breite wieder her. Die Breite merkt sich Flowplan pro Gerät. Auf dem Smartphone klappt die Seitenleiste ein: Das Symbol oben links öffnet sie, ebenso ein Wischen nach rechts, das knapp neben dem linken Bildschirmrand beginnt (oder **Navigation** in der Leiste unten). Ganz am Rand bleibt auf dem iPhone die Zurück-Geste. Nach links gewischt oder mit einem Tipp daneben schließt sie wieder. Für iPhone und iPad gibt es außerdem eine **App im App Store**, für Android eine **App zum Herunterladen** ([Apps für iPhone, iPad und Android](/mobile-apps)).
 
 ### Zurück und vorwärts
 
@@ -44,7 +48,7 @@ Oben links, neben dem Symbol der Seitenleiste, führen die Pfeile **←** und **
 - **Liste:** Ein Rechtsklick oder langes Drücken auf einen Pfeil zeigt die letzten (bis zu zehn) Seiten in dieser Richtung mit Symbol und Titel – ein Klick springt direkt dorthin.
 - **Tastenkürzel:** <kbd>⌘</kbd> <kbd>[</kbd> und <kbd>⌘</kbd> <kbd>]</kbd> oder <kbd>⌥</kbd> <kbd>←</kbd> und <kbd>⌥</kbd> <kbd>→</kbd> (Windows und Linux: <kbd>Alt</kbd> <kbd>←</kbd> / <kbd>Alt</kbd> <kbd>→</kbd> oder <kbd>Strg</kbd> <kbd>[</kbd> / <kbd>Strg</kbd> <kbd>]</kbd>). Beim Schreiben bewegt <kbd>⌥</kbd>/<kbd>Alt</kbd> mit Pfeil wie gewohnt den Cursor; ändern lassen sich die Kürzel wie alle anderen ([Tastenkürzel](/keyboard-shortcuts)).
 - **Browser:** Die Pfeile gehen denselben Weg wie die Zurück- und Vorwärts-Knöpfe des Browsers und die Seitentasten der Maus – beides lässt sich mischen.
-- **Desktop-App:** zusätzlich das Menü *Navigation* → **Zurück** / **Vorwärts**, die Seitentasten der Maus und auf dem Mac das Wischen auf dem Trackpad ([Mehr aus der Desktop-App](/offline-and-apps#mehr-aus-der-desktop-app)).
+- **Desktop-App:** zusätzlich das Menü *Navigation* → **Zurück** / **Vorwärts**, die Seitentasten der Maus und auf dem Mac das Wischen auf dem Trackpad ([Mehr aus der Desktop-App](/desktop-app#mehr-aus-der-desktop-app)).
 - **Smartphone:** Dort gibt es die Pfeile nicht – zurück geht es mit der Zurück-Geste (iPhone) oder der Zurück-Taste (Android).
 
 Kurze Animationen zeigen, was sich gerade bewegt hat: Karten und Zeilen gleiten an ihren neuen Platz, mitverschobene Balken in der Timeline rücken sichtbar nach, und das Ziel eines Sprungs – aus dem Inhaltsverzeichnis, der Suche oder einer Benachrichtigung – leuchtet kurz auf. Beim Wechsel zu einer anderen Seite blendet der Inhaltsbereich kurz über; öffnest du eine Seite im Seitenbaum, fliegen ihr Symbol und ihr Titel an ihren Platz, und eine Karte aus Board oder Galerie wächst zum Eintrag (auf dem Smartphone kommt er als Blatt von unten). Ein Tippen oder eine Taste beendet so einen Übergang sofort, und wer schnell hintereinander klickt, wechselt ohne Übergang. Hochgeladene Bilder zeigen, solange sie laden, eine unscharfe Vorschau in ihrer endgültigen Größe und blenden dann ein – nichts darunter verrutscht. Die Animationen folgen der Systemeinstellung **Bewegung reduzieren**: Ist sie aktiv, springt alles ohne Bewegung an sein Ziel, und Sprungziele werden nur kurz ruhig hervorgehoben.
@@ -103,6 +107,6 @@ Fragen, Ideen oder einfach Hallo sagen: Im **[Flowplan-Discord](https://discord.
 - **Was ist neu:** öffnet die Versionshinweise der letzten Versionen (siehe [Neuigkeiten nach Updates](/offline-and-apps#hell-und-dunkel)).
 - **Lizenz & Quellcode:** Flowplan ist freie Software unter der GNU AGPL-3.0 – mit Link zum Lizenztext und zum Quellcode des Codes, der auf dieser Instanz läuft.
 - **Links:** Website, Dokumentation, Discord und „Fehler melden“ (GitHub Issues).
-- **Flowplan unterstützen ♥:** ein Link zu GitHub Sponsors. In den Apps für iPhone, iPad und Android erscheint er nie (Regeln der App Stores); Admins können ihn mit `FLOWPLAN_HIDE_SPONSOR=true` ausblenden ([Konfiguration](/configuration#rechtliches-und-oberflaeche)).
+- **Flowplan unterstützen ♥:** ein Link zu GitHub Sponsors. In den Apps für iPhone, iPad und Android erscheint er nie (Regeln der App Stores); Admins können ihn mit `FLOWPLAN_HIDE_SPONSOR=true` ausblenden ([Konfiguration](/configuration-storage#rechtliches-und-oberflaeche)).
 
 Die Suche findet die Seite unter „Über“, „Version“, „Lizenz“, „Quellcode“, „Unterstützen“ oder „Sponsor“. Die Anmeldeseite nennt unten ebenfalls Lizenz (AGPL-3.0) und Quellcode.

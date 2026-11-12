@@ -1,3 +1,7 @@
+---
+keywords: Cluster, mehrere Instanzen, Hochverfügbarkeit, Redis, Kubernetes, Skalierung
+---
+
 # Cluster-Modus
 
 Im Cluster-Modus bedienen mehrere Flowplan-Instanzen eine Installation: eine PostgreSQL-Datenbank, ein Redis, ein S3-Bucket und beliebig viele Instanzen hinter einem Load Balancer – für mehr gleichzeitig aktive Personen und Updates ohne Unterbrechung.
@@ -20,8 +24,8 @@ Fehlt eines davon, startet eine Instanz nicht und nennt im Log alle Probleme auf
 
 Ebenfalls Pflicht – auch hier startet eine Instanz ohne sie nicht: **Schlüssel, die auf allen Instanzen gleich sind.** Ein einzelner Container legt manche Schlüssel selbst im Datenordner an – im Cluster hat jede Instanz ihren eigenen Ordner, und jede würde andere erzeugen. Setze deshalb überall dieselben Werte:
 
-- `FLOWPLAN_ENCRYPTION_KEY` oder `FLOWPLAN_SECRETS_KEY` (oder ihre Varianten `…_FILE`, etwa für Docker-Secrets) – sonst kann eine Instanz gespeicherte Geheimnisse und Signaturen der anderen nicht lesen (Zwei-Faktor-Anmeldung, KI-Schlüssel, entsperrte Freigabelinks). Siehe [Gespeicherte Geheimnisse](/configuration#gespeicherte-geheimnisse).
-- `WEB_PUSH_PUBLIC_KEY` und `WEB_PUSH_PRIVATE_KEY` (ein VAPID-Schlüsselpaar, z. B. aus `npx web-push generate-vapid-keys`) – sonst passen Push-Abos nur zu einer Instanz. Siehe [Push-Benachrichtigungen](/configuration#push-benachrichtigungen).
+- `FLOWPLAN_ENCRYPTION_KEY` oder `FLOWPLAN_SECRETS_KEY` (oder ihre Varianten `…_FILE`, etwa für Docker-Secrets) – sonst kann eine Instanz gespeicherte Geheimnisse und Signaturen der anderen nicht lesen (Zwei-Faktor-Anmeldung, KI-Schlüssel, entsperrte Freigabelinks). Siehe [Gespeicherte Geheimnisse](/configuration-storage#gespeicherte-geheimnisse).
+- `WEB_PUSH_PUBLIC_KEY` und `WEB_PUSH_PRIVATE_KEY` (ein VAPID-Schlüsselpaar, z. B. aus `npx web-push generate-vapid-keys`) – sonst passen Push-Abos nur zu einer Instanz. Siehe [Push-Benachrichtigungen](/configuration-ai-push#push-benachrichtigungen).
 
 Kommst du von einem einzelnen Container ohne diese Variablen, übernimm die Werte aus seinem Datenordner, damit gespeicherte Geheimnisse und Push-Abos gültig bleiben: den Inhalt von `secrets.key` als `FLOWPLAN_SECRETS_KEY` (zusätzlich zu einem `FLOWPLAN_ENCRYPTION_KEY`, beide werden gelesen) und `publicKey`/`privateKey` aus `web-push-keys.json` als `WEB_PUSH_PUBLIC_KEY`/`WEB_PUSH_PRIVATE_KEY`.
 

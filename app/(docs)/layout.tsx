@@ -1,6 +1,7 @@
 import { BrandMark } from "@/components/brand-mark";
 import { DocsNav, DocsSearch } from "@/components/docs/docs-nav";
-import { docGroups, searchIndexVersion } from "@/lib/docs";
+import { docAreas, docTitle, searchIndexVersion } from "@/lib/docs";
+import { POPULAR } from "@/lib/home";
 import { localePrefix, requestLocale } from "@/lib/i18n-server";
 import { translate } from "@/lib/i18n";
 import { LanguageSwitch } from "@/components/i18n";
@@ -29,7 +30,7 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
         <a href={prefix || "/"} className={s.section}>
           {t("Dokumentation", "Documentation")}
         </a>
-        <DocsSearch version={searchIndexVersion()} />
+        <DocsSearch version={searchIndexVersion()} popular={POPULAR.map((slug) => ({ slug, title: docTitle(slug, locale) }))} />
         <LanguageSwitch className={s.lang} />
         <a href={DISCORD_URL} className={s.community} rel="noopener" {...trackAttrs("outbound", { target: "discord" })}>
           {t("Community", "Community")}
@@ -44,7 +45,7 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
         </a>
       </header>
       <div className={s.shell}>
-        <DocsNav groups={docGroups(locale)} />
+        <DocsNav areas={docAreas(locale)} />
         {children}
       </div>
       <footer className={s.legal}>

@@ -1,3 +1,7 @@
+---
+keywords: Tastatur, Kürzel, Hotkeys, Cmd, Strg
+---
+
 # Tastenkürzel
 
 Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <kbd>⌘</kbd> und <kbd>Alt</kbd> für <kbd>⌥</kbd>.
@@ -16,12 +20,12 @@ Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>B</kbd> | Seitenleiste ein- oder ausblenden |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Z</kbd> | Fokusmodus ein oder aus |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>K</kbd> | Kommentare ein- oder ausblenden |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>A</kbd> | [KI fragen](/ai#fragen-an-den-arbeitsbereich) öffnen oder schließen (ist die Leiste offen, springt der Fokus hinein; von dort schließt das Kürzel sie) |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>A</kbd> | [KI fragen](/ask-ai) öffnen oder schließen (ist die Leiste offen, springt der Fokus hinein; von dort schließt das Kürzel sie) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>S</kbd> | [Geteilte Ansicht](/pages-and-spaces#geteilte-ansicht) öffnen oder schließen |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd> | Dokument [präsentieren](/documents#praesentieren) |
-| <kbd>⌘</kbd> <kbd>P</kbd> | Bei geöffneter Seite: [Druckoptionen](/import-export-versions#drucken-und-pdf), dann drucken (<kbd>Enter</kbd>); sonst der Druck des Browsers |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd> | Dokument [präsentieren](/reading-and-presenting#praesentieren) |
+| <kbd>⌘</kbd> <kbd>P</kbd> | Bei geöffneter Seite: [Druckoptionen](/print-and-pdf#drucken-und-pdf), dann drucken (<kbd>Enter</kbd>); sonst der Druck des Browsers |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> | [Journal](/journal#von-tag-zu-tag): heutigen Tag öffnen (des zuletzt benutzten Journals) |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>X</kbd> | Alle [Abschnitte einklappen](/documents#abschnitte-einklappen) (im offenen Dokument oder Eintrag) |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>X</kbd> | Alle [Abschnitte einklappen](/reading-and-presenting#abschnitte-einklappen) (im offenen Dokument oder Eintrag) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>O</kbd> | Alle Abschnitte ausklappen |
 | <kbd>⌘</kbd> <kbd>[</kbd> oder <kbd>⌥</kbd> <kbd>←</kbd> | [Zurück](/first-steps#zurueck-und-vorwaerts) zur zuvor geöffneten Seite (<kbd>⌥</kbd> <kbd>←</kbd> nicht beim Schreiben – dort springt es wortweise) |
 | <kbd>⌘</kbd> <kbd>]</kbd> oder <kbd>⌥</kbd> <kbd>→</kbd> | Vorwärts zur nächsten Seite |
@@ -31,7 +35,7 @@ Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <
 
 Alle Kürzel dieser Tabelle außer <kbd>Esc</kbd> und <kbd>⌘</kbd> <kbd>Z</kbd> lassen sich ändern, siehe [Eigene Tastenkürzel](#eigene-tastenkuerzel).
 
-In der Desktop-App wechselt <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> bzw. <kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>P</kbd> zum nächsten [Profil](/offline-and-apps#mehrere-instanzen-profile), sobald mehr als eines gespeichert ist.
+In der Desktop-App wechselt <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> bzw. <kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>P</kbd> zum nächsten [Profil](/desktop-app#mehrere-instanzen-profile), sobald mehr als eines gespeichert ist.
 
 ## Eigene Tastenkürzel
 
@@ -44,7 +48,7 @@ Das Suchfeld oben in der Übersicht filtert beim Tippen nach dem Namen einer Akt
 - Kombinationen ohne <kbd>⌘</kbd>, <kbd>Strg</kbd> oder <kbd>⌥</kbd> (wie <kbd>?</kbd>) wirken nur außerhalb von Textfeldern und dem Editor.
 - Die Kürzel des Editors, des Seitenbaums, der Präsentation und der geteilten Ansicht sind fest; die Übersicht listet sie zum Nachschlagen.
 
-In der [iPad-App](/offline-and-apps#ipad-fenster-tastatur-und-handoff) mit Hardware-Tastatur listet das iPad die Kürzel mit <kbd>⌘</kbd>, <kbd>⌃</kbd> oder <kbd>⌥</kbd> – auch deine eigenen –, wenn du <kbd>⌘</kbd> hältst.
+In der [iPad-App](/mobile-capture#ipad-fenster-tastatur-und-handoff) mit Hardware-Tastatur listet das iPad die Kürzel mit <kbd>⌘</kbd>, <kbd>⌃</kbd> oder <kbd>⌥</kbd> – auch deine eigenen –, wenn du <kbd>⌘</kbd> hältst.
 
 Die Übersicht zeigt die Tasten so, wie sie auf deinem Gerät heißen: auf dem Mac <kbd>⌘</kbd> und <kbd>⌥</kbd>, sonst <kbd>Ctrl</kbd> und <kbd>Alt</kbd>. Über die API speichert der Befehl `shortcuts.save` dieselben Einstellungen (siehe [API und Webhooks](/api-and-webhooks)).
 
@@ -63,19 +67,19 @@ Die Übersicht zeigt die Tasten so, wie sie auf deinem Gerät heißen: auf dem M
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>1</kbd>–<kbd>3</kbd> | Überschrift 1–3 |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>0</kbd> | Zurück zu normalem Text |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>E</kbd> | Text zentrieren |
-| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd> | [Link zum Block](/documents#links-auf-bloecke) mit dem Cursor kopieren |
-| <kbd>⌘</kbd> <kbd>L</kbd> | Zeile zur [Aufgabe](/documents#status-einer-aufgabe) machen, dann ihren Status wechseln: offen → in Arbeit → erledigt → offen (wie in Obsidian; mehrere markierte Zeilen wechseln gemeinsam) |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd> | [Link zum Block](/links-and-mentions#links-auf-bloecke) mit dem Cursor kopieren |
+| <kbd>⌘</kbd> <kbd>L</kbd> | Zeile zur [Aufgabe](/tasks-in-documents#status-einer-aufgabe) machen, dann ihren Status wechseln: offen → in Arbeit → erledigt → offen (wie in Obsidian; mehrere markierte Zeilen wechseln gemeinsam) |
 | <kbd>⌘</kbd> <kbd>.</kbd> / <kbd>⌘</kbd> <kbd>,</kbd> | Hochgestellt / tiefgestellt |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>8</kbd> / <kbd>7</kbd> / <kbd>9</kbd> | Aufzählung, nummerierte Liste, Aufgabenliste |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>B</kbd> | Zitat |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>C</kbd> | Codeblock |
 | <kbd>Tab</kbd> / <kbd>⇧</kbd> <kbd>Tab</kbd> | Einrücken / zurückrücken |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Block nach oben / unten (eine eingeklappte Überschrift mit ihrem Abschnitt) |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> | In einer Überschrift: ihren [Abschnitt ein- oder ausklappen](/documents#abschnitte-einklappen); in einem [aufklappbaren Block](/documents#aufklappbare-bloecke): ihn ein- oder ausklappen |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> | In einer Überschrift: ihren [Abschnitt ein- oder ausklappen](/reading-and-presenting#abschnitte-einklappen); in einem [aufklappbaren Block](/documents#aufklappbare-bloecke): ihn ein- oder ausklappen |
 | <kbd>⇧</kbd> <kbd>Enter</kbd> | Zeilenumbruch im selben Block |
 | <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>Z</kbd> | Rückgängig / Wiederholen |
 | <kbd>⌘</kbd> <kbd>Enter</kbd> | Kommentar senden; in **Als Markdown bearbeiten**: Übernehmen |
-| <kbd>⌘</kbd> <kbd>J</kbd> | [Schreibassistent](/ai#schreibassistent) für Markierung oder Zeile (wenn KI eingeschaltet ist) |
+| <kbd>⌘</kbd> <kbd>J</kbd> | [Schreibassistent](/ai-writing#schreibassistent) für Markierung oder Zeile (wenn KI eingeschaltet ist) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd> | Fußnote einfügen (bei ausgewählter Fußnote: bearbeiten) |
 
 Markdown-Kürzel wie `##`, `-`, `[]` oder ` ``` ` stehen unter [Dokumente und Editor](/documents#markdown-kuerzel).
@@ -141,7 +145,7 @@ Auf dem Griff ⋮⋮ eines Eintrags (Tabelle, Liste, Feed, Board, Galerie, Sprin
 
 ### In formatierten Text-Eigenschaften
 
-In einer Text-Eigenschaft (Tabellenzelle, Eintrag; siehe [Formatierter Text](/databases#formatierter-text)):
+In einer Text-Eigenschaft (Tabellenzelle, Eintrag; siehe [Formatierter Text](/database-properties#formatierter-text)):
 
 | Kürzel | Wirkung |
 | --- | --- |

@@ -1,3 +1,7 @@
+---
+keywords: browser, extension, chrome, firefox, web clipper, bookmarks
+---
+
 # Browser extension
 
 With the browser extension you save web pages to Flowplan in one click: the whole article, just the selection, a bookmark or single highlights. It runs in Chrome, Edge, Brave, Opera and Firefox.
