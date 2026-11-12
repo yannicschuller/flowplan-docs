@@ -1,3 +1,7 @@
+---
+keywords: Workflow, Automatisierung, Zapier, n8n, Auslöser, Canvas
+---
+
 # Workflows
 
 Ein Workflow ist ein Ablauf aus Knoten auf einer Fläche: ein **Auslöser** (eine neue Seite, ein geänderter Eintrag, ein Zeitplan, eine E-Mail …), dann **Logik** und **Aktionen** – Einträge und Seiten ändern, Personen benachrichtigen, KI fragen, andere Dienste aufrufen. Ganz ohne Code.
@@ -90,7 +94,7 @@ Ein- und Ausgaben eines Laufs sieht nur die Person, als die er lief; Kolleginnen
 - Die KI sieht nur **Namen** von Datenbanken, Eigenschaften, Optionen, Bereichen und Seiten, die du sehen darfst und die für die KI freigegeben sind – keine Inhalte.
 - Was sie vorschlägt, wird gegen den Knotenkatalog geprüft: Unbekannte Knoten fallen weg, unbekannte Seiten oder Eigenschaften bleiben leer und sind markiert.
 - Du siehst den Vorschlag zuerst; **In den Entwurf übernehmen** fügt ihn als eine Änderung ein. Aktivieren musst du selbst.
-- Es zählt dein persönliches KI-Kontingent, nicht das Budget des Workflows. Siehe [KI](/ai#ki-in-workflows).
+- Es zählt dein persönliches KI-Kontingent, nicht das Budget des Workflows. Siehe [KI](/ai-actions#ki-in-workflows).
 
 ## Workflow-Knopf auf Seiten
 
@@ -144,7 +148,7 @@ Inhaltsarchive und der [Instanzumzug](/move-instance) nehmen Workflows mit Entwu
 | Aufbewahrung der Läufe | 30 Tage |
 | Aktive Workflows je Arbeitsbereich | 100 |
 
-Admins ändern die Werte in der [Administration](/administration#workflows) oder per [Umgebungsvariable](/configuration#workflows). Bearbeitende können je Workflow niedrigere Werte setzen.
+Admins ändern die Werte in der [Administration](/administration#workflows) oder per [Umgebungsvariable](/configuration-integrations#workflows). Bearbeitende können je Workflow niedrigere Werte setzen.
 
 ## API, MCP und SDKs
 

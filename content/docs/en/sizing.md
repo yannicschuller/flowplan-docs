@@ -1,3 +1,7 @@
+---
+keywords: sizing, ram, cpu, disk space, number of users, hardware
+---
+
 # Sizing
 
 How many people a Flowplan instance carries, what runs out first and what hardware to plan for small, medium and large teams – based on the load tests.
@@ -8,7 +12,7 @@ What matters is not how many accounts an instance has, but how many people work 
 
 The figures below count **active people** the way the load test simulates them: each sends a request every 1.5 seconds on average, or types continuously in a shared document. Real people read, think and switch to other apps – they create far less load. So the figures are a cautious limit: an instance that carries 20 such people copes with noticeably more real people signed in at the same time.
 
-The administration shows how many are active at once on your instance: **people active now** on the overview and the **Active people** per hour chart under **Administration → Monitoring** (see [Operations](/en/operations#administration-monitoring)). Take the peaks, not the average.
+The administration shows how many are active at once on your instance: **people active now** on the overview and the **Active people** per hour chart under **Administration → Monitoring** (see [Operations](/en/monitoring#administration-monitoring)). Take the peaks, not the average.
 
 ## What one instance carries
 

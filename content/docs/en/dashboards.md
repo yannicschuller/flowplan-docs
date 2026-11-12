@@ -1,3 +1,7 @@
+---
+keywords: dashboard, metrics, widgets, overview, kpi
+---
+
 # Dashboards
 
 A page made of tiles: metrics, charts and views of your databases, tasks due, your journal streak and notes – at a glance, and for everyone with exactly the data they may see.
@@ -15,7 +19,7 @@ A page made of tiles: metrics, charts and views of your databases, tasks due, yo
 | **Chart** | Columns, bars, line or donut over a property – drawn like the chart view; a click on a record opens it. |
 | **Journal streak** | How many days in a row you have written in a journal, plus today's entry or **Write today**. |
 | **My due tasks** | Your tasks from **My tasks** that are due today or overdue. |
-| **Recently changed** | The most recently changed pages and the number of unread notifications in the [inbox](/search-and-notifications#inbox). |
+| **Recently changed** | The most recently changed pages and the number of unread notifications in the [inbox](/notifications#inbox). |
 | **Text** | Free text in Markdown – for headings, notes or links. |
 
 ## Arranging and sizing

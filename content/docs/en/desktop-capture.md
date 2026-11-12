@@ -1,8 +1,12 @@
+---
+keywords: quick capture, global shortcut, desktop, note
+---
+
 # Quick capture (desktop)
 
 A shortcut opens a small window above every app: a thought, a task, a link, a file, a screen region or a voice note – into the inbox, a database, today's journal entry or a page. Offline too.
 
-Quick capture is part of the [desktop app for macOS, Windows and Linux](/offline-and-apps#desktop-app-for-macos-windows-and-linux). It saves straight to your instance with the active profile's sign-in; nothing goes to third parties.
+Quick capture is part of the [desktop app for macOS, Windows and Linux](/desktop-app). It saves straight to your instance with the active profile's sign-in; nothing goes to third parties.
 
 ## At a glance
 
@@ -68,7 +72,7 @@ What a chip takes over disappears from the title. The **×** on a chip keeps the
 
 ## Files, screen regions and voice notes
 
-- **Files:** drop images (PNG, JPEG, GIF, WebP, AVIF, HEIC), PDFs, Markdown and text files on the window, or choose them with **Attach…**. They are checked as when [dropping files on the main window](/offline-and-apps#more-from-the-desktop-app): extension **and** content, images and PDFs up to 50 MB, text up to 5 MB (the instance may allow less), at most 10 attachments. The list below the text shows them, **×** removes one. Images and PDFs go into the database's files property and into the text; Markdown and text become text.
+- **Files:** drop images (PNG, JPEG, GIF, WebP, AVIF, HEIC), PDFs, Markdown and text files on the window, or choose them with **Attach…**. They are checked as when [dropping files on the main window](/desktop-app#more-from-the-desktop-app): extension **and** content, images and PDFs up to 50 MB, text up to 5 MB (the instance may allow less), at most 10 attachments. The list below the text shows them, **×** removes one. Images and PDFs go into the database's files property and into the text; Markdown and text become text.
 - **Screen region:** **Region** – the window steps aside and you drag a region; it is attached as a PNG. On the Mac this uses the system's screenshot tool (Space picks a window, <kbd>Esc</kbd> cancels); on Windows and Linux Flowplan shows the screen under the pointer, you drag the region, <kbd>Enter</kbd> takes the whole screen, <kbd>Esc</kbd> cancels. Temporary files sit only briefly in the app's data folder and are deleted right away.
 - **Voice note:** press and hold **Hold to talk** (or <kbd>⌘</kbd>/<kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>R</kbd>), release to stop. If your instance has transcription (Whisper, see [Configuration](/configuration)), the recording becomes text there and appears in the field – to check before saving. Without transcription, offline or if it fails, the recording is attached; the instance tries again when it is saved.
 
@@ -116,7 +120,7 @@ Each has a name, a target, a shortcut (**Change**, **Off**), **Try it** and **Re
 
 **Suggest** asks an AI where the text belongs: database, a short title and properties the text clearly names. The result appears as chips with **✓** (accept) and **×** (ignore) – **nothing is applied by itself**. Every suggestion is checked on the server: only databases you may write to, only existing options, only real people and days.
 
-- **Where the AI runs:** through your instance's AI (the **AI actions** feature, see [AI](/ai#ai-actions)) – or on a Mac with macOS 26 and Apple Intelligence switched on, **on the Mac itself** ([On-device AI](/ai#on-device-ai-apple)): the instance only builds the question, the Mac answers it, and the text reaches no AI on the server. Which is preferred follows your setting for on-device AI.
+- **Where the AI runs:** through your instance's AI (the **AI actions** feature, see [AI](/ai-actions#ai-actions)) – or on a Mac with macOS 26 and Apple Intelligence switched on, **on the Mac itself** ([On-device AI](/ai#on-device-ai-apple)): the instance only builds the question, the Mac answers it, and the text reaches no AI on the server. Which is preferred follows your setting for on-device AI.
 - **What the AI sees:** the text in the window and the names of the databases, their properties and options – no content. Databases closed to the AI are left out.
 - **Off:** the button is missing when the administration or you switched off AI (or AI actions).
 

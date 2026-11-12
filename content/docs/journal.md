@@ -1,3 +1,7 @@
+---
+keywords: Tagebuch, Daily Note, Tagesnotiz, Tracker, Gewohnheiten, Rückblick
+---
+
 # Journal
 
 Ein Journal ist eine Seite mit einer Unterseite pro Tag. Morgens liegt die heutige Seite bereit, offene Aufgaben von gestern stehen schon darauf.
@@ -102,7 +106,7 @@ Von überall geht es mit <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> (Windows/Lin
 
 ### Mit KI zusammenfassen
 
-**Mit KI zusammenfassen** im Rückblick lässt die [KI](/ai#zusammenfassungen) die gezeigte Woche oder den gezeigten Monat zusammenfassen: Höhepunkte und Erreichtes, ein chronologischer Überblick und was noch offen ist bzw. nachzuverfolgen bleibt – in der Sprache der Oberfläche. Grundlage sind der Text jedes Tages, die erledigten und noch offenen Aufgaben, die Tracker und Orte.
+**Mit KI zusammenfassen** im Rückblick lässt die [KI](/ai-writing#zusammenfassungen) die gezeigte Woche oder den gezeigten Monat zusammenfassen: Höhepunkte und Erreichtes, ein chronologischer Überblick und was noch offen ist bzw. nachzuverfolgen bleibt – in der Sprache der Oberfläche. Grundlage sind der Text jedes Tages, die erledigten und noch offenen Aufgaben, die Tracker und Orte.
 
 - Das Ergebnis erscheint zuerst als **Vorschau**; gespeichert wird nichts. **Kopieren**, **Erneut** und **Verwerfen** stehen darunter.
 - **Als Seite speichern** legt eine Unterseite des Journals an, etwa „KI-Zusammenfassung Oktober 2026“, mit dem Hinweis, dass sie mit KI erstellt wurde. Je Journal und Zeitraum gibt es eine solche Seite: Fragst du für denselben Zeitraum noch einmal, bietet der Rückblick **Öffnen** oder **Neu erstellen und ersetzen** an. Ersetzt wird der Inhalt der Seite; der vorige Stand bleibt im Versionsverlauf.

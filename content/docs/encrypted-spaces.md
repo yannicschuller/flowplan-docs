@@ -1,3 +1,7 @@
+---
+keywords: Ende-zu-Ende, E2E, Verschlüsselung, Passwort, privat
+---
+
 # Verschlüsselte Bereiche
 
 Ein verschlüsselter Bereich ist für Tagebücher, Passwörter und andere vertrauliche Notizen gedacht. Inhalte, Dateien und auf Wunsch die Titel werden in deinem Browser ver- und entschlüsselt. Der Server – und damit auch Betreiber, Sicherungen und der Speicheranbieter – sieht nur Chiffretext.
@@ -50,7 +54,7 @@ Alles, wofür der Server den Inhalt lesen müsste, ist hier abgeschaltet und wir
 - Kommentare und Textkommentare, Erwähnungen mit Benachrichtigung
 - Freigabelinks, Teilen einzelner Seiten und Veröffentlichung
 - Versionsverlauf, Vorlagen, Duplizieren, Verschieben in andere Bereiche (hinein wie heraus)
-- [Tags und Seiteneigenschaften](/pages-and-spaces#tags-und-eigenschaften)
+- [Tags und Seiteneigenschaften](/page-tags#tags-und-eigenschaften)
 - Export als PDF, DOCX, EPUB, Markdown vom Server, Git-Export
 - Webhooks erhalten nur die Seiten-ID, MCP-Clients nur Metadaten
 

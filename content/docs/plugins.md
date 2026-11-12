@@ -1,10 +1,14 @@
+---
+keywords: Plugin, Erweiterung, eigener Block, iframe, Entwickler
+---
+
 # Block-Erweiterungen
 
 Block-Erweiterungen bringen eigene Blocktypen in den Editor: eine Umfrage, ein Zähler, ein Diagramm aus einer Datenbank, ein Widget eures Teams. Eine Erweiterung ist eine statische Webseite mit einem Manifest. Flowplan zeigt sie abgeschottet in einem Rahmen und spricht nur über Nachrichten mit ihr.
 
 ## Für Eigentümer: eine Erweiterung registrieren
 
-1. Die Administration gibt die Adresse frei: entweder über `PLUGIN_ALLOWED_ORIGINS` ([Konfiguration](/configuration#integrationen)) oder mit dem Schalter **Block-Erweiterungen von jeder HTTPS-Adresse** unter **Administration → Erweiterungen & Domains**.
+1. Die Administration gibt die Adresse frei: entweder über `PLUGIN_ALLOWED_ORIGINS` ([Konfiguration](/configuration-integrations#integrationen)) oder mit dem Schalter **Block-Erweiterungen von jeder HTTPS-Adresse** unter **Administration → Erweiterungen & Domains**.
 2. Unter **Einstellungen → Block-Erweiterungen** bei **Adresse der Erweiterung** die Adresse eintragen, z. B. `https://plugins.example.org/umfrage/`, und **Registrieren** wählen. Flowplan lädt `flowplan-plugin.json` von dort, prüft es und zeigt die Erweiterung als eigene Karte: welche Blöcke sie bringt und was sie darf, darunter die Schalter **Aktiv** und **Auch auf veröffentlichten Seiten zeigen**. Entfernt wird sie mit dem Papierkorb-Symbol oben in ihrer Karte.
 3. Im Editor erscheinen ihre Blöcke im `/`-Menü unter **Erweiterungen**.
 

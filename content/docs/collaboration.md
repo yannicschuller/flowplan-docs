@@ -1,3 +1,7 @@
+---
+keywords: Kommentare, gemeinsam, Live, Echtzeit, Erwähnung, Vorschläge
+---
+
 # Zusammenarbeit und Kommentare
 
 Mehrere Personen schreiben gleichzeitig in derselben Seite, ohne sich zu überschreiben. Kommentare, Erwähnungen und der Posteingang halten Gespräche beim Inhalt.
@@ -10,7 +14,7 @@ Mehrere Personen schreiben gleichzeitig in derselben Seite, ohne sich zu übersc
 - Ohne Verbindung arbeitest du weiter; die Änderungen werden abgeglichen, sobald das Netz zurück ist.
 - Datenbank-Änderungen werden auf Versionskonflikte geprüft: Hat jemand denselben Eintrag inzwischen geändert, wird deine Änderung nicht stillschweigend darübergeschrieben, sondern abgelehnt, und du siehst den neuen Stand.
 - Gäste mit Bearbeitungslink arbeiten ebenfalls live mit und sehen die Cursor der Mitglieder; Mitglieder sehen die Gäste als „Gast · <Linkname>“.
-- Auf Whiteboards gibt es zusätzlich [Live-Cursor](/whiteboards#gemeinsam-arbeiten) wie in Miro.
+- Auf Whiteboards gibt es zusätzlich [Live-Cursor](/whiteboard-collaboration#gemeinsam-arbeiten) wie in Miro.
 
 ## Änderungen vorschlagen
 
@@ -22,7 +26,7 @@ Der Stift-Knopf **Vorschlagen** in der Werkzeugleiste schaltet den Vorschlagsmod
 - Vorschläge sind Teil des Dokuments: Sie erscheinen bei allen sofort und bleiben gespeichert, bis jemand sie annimmt oder ablehnt. Annehmen und ablehnen kann jeder, der die Seite bearbeiten darf.
 - Formatierungen, Absatzwechsel und verschobene Blöcke werden auch im Vorschlagsmodus direkt übernommen; Änderungen anderer Personen werden nie zu deinen Vorschlägen.
 - Auch in **Codeblöcken** werden Änderungen als Vorschläge markiert. Wird ein Absatz oder Listenpunkt durch Annehmen oder Ablehnen ganz leer (ein vorgeschlagener neuer Absatz abgelehnt, ein ganz gelöschter angenommen), verschwindet er mit.
-- **Vorschläge der KI:** In [KI fragen](/ai#fragen-an-den-arbeitsbereich) setzt **Als Änderungsvorschlag einfügen** die Antwort genauso als Vorschläge in die Seite – mit deinem Namen und „(KI)“.
+- **Vorschläge der KI:** In [KI fragen](/ask-ai) setzt **Als Änderungsvorschlag einfügen** die Antwort genauso als Vorschläge in die Seite – mit deinem Namen und „(KI)“.
 
 ## Reaktionen
 
@@ -69,4 +73,4 @@ Textkommentare gibt es in Dokumenten und in den Inhalten von Datenbankeinträgen
 
 ## Posteingang
 
-Der **Posteingang** in der Seitenleiste sammelt Erwähnungen, Kommentare und Antworten, die dich betreffen ([wer von Kommentaren erfährt](/search-and-notifications#wer-von-kommentaren-erfaehrt)), Datums-Erinnerungen sowie Kommentare und Einträge von Gästen. Ungelesenes ist markiert; ein Klick springt zur Stelle – bei Textkommentaren direkt in den Thread. Welche Ereignisse als Push-Nachricht kommen, stellst du unter **Einstellungen → Benachrichtigungen** ein (siehe [Suche, Posteingang und Push](/search-and-notifications)).
+Der **Posteingang** in der Seitenleiste sammelt Erwähnungen, Kommentare und Antworten, die dich betreffen ([wer von Kommentaren erfährt](/notifications#wer-von-kommentaren-erfaehrt)), Datums-Erinnerungen sowie Kommentare und Einträge von Gästen. Ungelesenes ist markiert; ein Klick springt zur Stelle – bei Textkommentaren direkt in den Thread. Welche Ereignisse als Push-Nachricht kommen, stellst du unter **Einstellungen → Benachrichtigungen** ein (siehe [Suche, Posteingang und Push](/search-and-notifications)).

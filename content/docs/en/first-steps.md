@@ -1,3 +1,7 @@
+---
+keywords: start, getting started, account, interface, home page, help
+---
+
 # First steps
 
 From signing in for the first time to your first own page: what you do with Flowplan in the first ten minutes.
@@ -35,7 +39,7 @@ The settings open with an overview: one tile per section, grouped into **Persona
 - **Home**: recently edited pages, quick starts for a new idea or project, and all pages of your workspace – customizable with widgets (see [Customize your home page](#customize-your-home-page)).
 - **Header** of a page: path, share, comments, favourite and the **Page actions** menu (`…`).
 
-On a computer, drag the sidebar's right edge to make it wider or narrower (200 to 480 pixels); a double click on the edge restores the original width. Flowplan remembers the width per device. On a phone the sidebar folds away: the icon at the top left opens it, and so does a swipe to the right that starts just inside the left edge of the screen (or **Navigation** in the bar at the bottom). On the iPhone the very edge stays the back gesture. Swipe it to the left or tap beside it to close it. For iPhone and iPad there is also an **app on the App Store**, for Android an **app to download** ([Apps for iPhone, iPad and Android](/offline-and-apps#apps-for-iphone-ipad-and-android)).
+On a computer, drag the sidebar's right edge to make it wider or narrower (200 to 480 pixels); a double click on the edge restores the original width. Flowplan remembers the width per device. On a phone the sidebar folds away: the icon at the top left opens it, and so does a swipe to the right that starts just inside the left edge of the screen (or **Navigation** in the bar at the bottom). On the iPhone the very edge stays the back gesture. Swipe it to the left or tap beside it to close it. For iPhone and iPad there is also an **app on the App Store**, for Android an **app to download** ([Apps for iPhone, iPad and Android](/mobile-apps)).
 
 ### Back and forward
 
@@ -44,7 +48,7 @@ At the top left, next to the sidebar icon, the arrows **←** and **→** take y
 - **List:** a right click or a long press on an arrow shows the last (up to ten) pages in that direction with their icon and title – a click jumps straight there.
 - **Keyboard shortcuts:** <kbd>⌘</kbd> <kbd>[</kbd> and <kbd>⌘</kbd> <kbd>]</kbd> or <kbd>⌥</kbd> <kbd>←</kbd> and <kbd>⌥</kbd> <kbd>→</kbd> (Windows and Linux: <kbd>Alt</kbd> <kbd>←</kbd> / <kbd>Alt</kbd> <kbd>→</kbd> or <kbd>Ctrl</kbd> <kbd>[</kbd> / <kbd>Ctrl</kbd> <kbd>]</kbd>). While typing, <kbd>⌥</kbd>/<kbd>Alt</kbd> with an arrow moves the cursor as usual; the shortcuts can be changed like all others ([Keyboard shortcuts](/keyboard-shortcuts)).
 - **Browser:** the arrows take the same steps as the browser's back and forward buttons and the mouse's side buttons – you can mix them.
-- **Desktop app:** also the *Navigation* menu → **Back** / **Forward**, the mouse's side buttons and, on a Mac, swiping on the trackpad ([More from the desktop app](/offline-and-apps#more-from-the-desktop-app)).
+- **Desktop app:** also the *Navigation* menu → **Back** / **Forward**, the mouse's side buttons and, on a Mac, swiping on the trackpad ([More from the desktop app](/desktop-app#more-from-the-desktop-app)).
 - **Phone:** there are no arrows there – the back gesture (iPhone) or the back button (Android) goes back.
 
 Short animations show what just moved: cards and rows glide into their new place, bars that move along in the timeline visibly follow, and the target of a jump – from the table of contents, search or a notification – lights up briefly. Moving to another page briefly cross-fades the content area; when you open a page in the page tree, its icon and title fly to their place, and a card from a board or gallery grows into its record (on a phone the record comes up as a sheet). A tap or a key ends such a transition at once, and clicking quickly from one page to the next goes without one. While uploaded images load, they show a blurred preview in their final size and then fade in – nothing below them moves. The animations follow the system setting **Reduce motion**: when it is on, everything moves to its target without motion, and jump targets are only highlighted briefly and still.
@@ -103,6 +107,6 @@ Questions, ideas or just saying hello: in the **[Flowplan Discord](https://disco
 - **What's new:** opens the release notes of the latest versions (see [What's new after updates](/en/offline-and-apps#light-and-dark)).
 - **Licence & source code:** Flowplan is free software under the GNU AGPL-3.0 – with links to the licence text and to the source of the code running on this instance.
 - **Links:** website, documentation, Discord and “Report a bug” (GitHub issues).
-- **Support Flowplan ♥:** a link to GitHub Sponsors. It never appears in the iPhone, iPad and Android apps (app store rules); admins can hide it with `FLOWPLAN_HIDE_SPONSOR=true` ([Configuration](/configuration#legal-and-interface)).
+- **Support Flowplan ♥:** a link to GitHub Sponsors. It never appears in the iPhone, iPad and Android apps (app store rules); admins can hide it with `FLOWPLAN_HIDE_SPONSOR=true` ([Configuration](/configuration-storage#legal-and-interface)).
 
 The search finds the page with “About”, “Version”, “Licence”, “Source”, “Support” or “Sponsor” (and the German words). The sign-in page also names the licence (AGPL-3.0) and the source code at the bottom.

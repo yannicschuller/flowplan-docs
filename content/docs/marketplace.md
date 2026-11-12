@@ -1,3 +1,7 @@
+---
+keywords: Marketplace, Vorlagen teilen, Community, veröffentlichen
+---
+
 # Marketplace
 
 Im **Flowplan Marketplace** (marketplace.flowplan.org) teilen Menschen, was sie in Flowplan gebaut haben: Dokument- und Datenbankvorlagen, Workflows, Whiteboard-Vorlagen, Erscheinungsbilder und Regeln für automatische Links. Du kannst dort stöbern und Vorlagen mit einem Klick in deine Instanz übernehmen – oder eigene Vorlagen veröffentlichen. Die Vorlagen, die mit Flowplan kommen, stehen dort ebenfalls (gemeinfrei, CC0).

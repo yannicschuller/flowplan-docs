@@ -1,3 +1,7 @@
+---
+keywords: nodes, trigger, action, condition, loop, http
+---
+
 # Workflow nodes
 
 Every node a [workflow](/workflows) knows – with its type (as it appears in the JSON and the API), its ports and the values later nodes use as placeholders.

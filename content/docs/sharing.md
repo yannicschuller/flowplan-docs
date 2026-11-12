@@ -1,3 +1,7 @@
+---
+keywords: Teilen, veröffentlichen, Link, öffentlich, Website, Gäste
+---
+
 # Teilen und Veröffentlichen
 
 **Teilen** oben rechts auf jeder Seite (auf dem Telefon oben im Menü `⋯`) öffnet **Seite teilen**. Eine Zeile oben fasst zusammen, wie die Seite gerade geteilt ist – Bereich, Personen, Links und ob sie veröffentlicht ist. Darunter regeln drei Reiter je eine Sache: **Personen** (wer im Arbeitsbereich zugreifen darf), **Links** (benannte Links für Außenstehende; nur für alle, die mehr als lesen dürfen) und **Web** (die Veröffentlichung). Längere Erklärungen stehen hinter dem kleinen **(i)**. Unten kopiert **Link zur Seite kopieren** die Adresse der Seite für alle mit Zugriff, **Fertig** schließt den Dialog.

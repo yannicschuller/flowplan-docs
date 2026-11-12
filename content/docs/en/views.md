@@ -1,3 +1,7 @@
+---
+keywords: view, kanban, board, calendar, timeline, gantt, gallery, list
+---
+
 # Views
 
 A database can have as many views as you like. Every view shows the same records with its own layout, filters, sorting and groups.
@@ -93,7 +97,7 @@ Good to know:
 - **Permissions**: only records you may see and edit go to the calendar and are changed by it. Workflow and automations apply as for any change.
 - **Range**: events from 90 days back to one year ahead. Recurring events from the calendar arrive as single records; a recurring record goes to the calendar with its first date.
 - **Disconnect** under **Settings → Calendars & issues** ends every sync of that connection. You can also revoke access in your Google or Microsoft account.
-- An administrator sets up the providers once, see [Configuration](/configuration#calendar-sync).
+- An administrator sets up the providers once, see [Configuration](/configuration-integrations#calendar-sync).
 
 ## Sprints
 

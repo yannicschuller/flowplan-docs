@@ -1,3 +1,7 @@
+---
+keywords: sqlite, postgresql, switch, migration, database
+---
+
 # Switching the database: SQLite and PostgreSQL
 
 With the bundled tool you move an instance from SQLite to PostgreSQL – or back. The downtime is the copy itself, usually a few minutes; afterwards every table is compared row by row.

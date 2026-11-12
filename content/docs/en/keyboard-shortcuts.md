@@ -1,3 +1,7 @@
+---
+keywords: keyboard, shortcuts, hotkeys, cmd, ctrl
+---
+
 # Keyboard shortcuts
 
 All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd>⌘</kbd> and <kbd>Alt</kbd> for <kbd>⌥</kbd>.
@@ -16,12 +20,12 @@ All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>B</kbd> | Show or hide the sidebar |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Z</kbd> | Focus mode on or off |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>K</kbd> | Show or hide comments |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>A</kbd> | Open or close [Ask AI](/ai#ask-your-workspace) (when the panel is open, focus moves into it; from there the shortcut closes it) |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>A</kbd> | Open or close [Ask AI](/ask-ai) (when the panel is open, focus moves into it; from there the shortcut closes it) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>S</kbd> | Open or close the [split view](/pages-and-spaces#split-view) |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd> | [Present](/documents#present) the document |
-| <kbd>⌘</kbd> <kbd>P</kbd> | With a page open: [print options](/import-export-versions#print-and-pdf), then print (<kbd>Enter</kbd>); otherwise the browser's print |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd> | [Present](/reading-and-presenting#present) the document |
+| <kbd>⌘</kbd> <kbd>P</kbd> | With a page open: [print options](/print-and-pdf#print-and-pdf), then print (<kbd>Enter</kbd>); otherwise the browser's print |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> | [Journal](/journal#from-day-to-day): open today (of the journal used last) |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>X</kbd> | [Collapse all sections](/documents#collapsing-sections) (of the open document or record) |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>X</kbd> | [Collapse all sections](/reading-and-presenting#collapsing-sections) (of the open document or record) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>O</kbd> | Expand all sections |
 | <kbd>⌘</kbd> <kbd>[</kbd> or <kbd>⌥</kbd> <kbd>←</kbd> | [Back](/first-steps#back-and-forward) to the page opened before (<kbd>⌥</kbd> <kbd>←</kbd> not while typing – there it moves by words) |
 | <kbd>⌘</kbd> <kbd>]</kbd> or <kbd>⌥</kbd> <kbd>→</kbd> | Forward to the next page |
@@ -31,7 +35,7 @@ All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd
 
 Every shortcut in this table except <kbd>Esc</kbd> and <kbd>⌘</kbd> <kbd>Z</kbd> can be changed, see [Your own shortcuts](#your-own-shortcuts).
 
-In the desktop app, <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> or <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>P</kbd> switches to the next [profile](/offline-and-apps#several-instances-profiles) once more than one is saved.
+In the desktop app, <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> or <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>P</kbd> switches to the next [profile](/desktop-app#several-instances-profiles) once more than one is saved.
 
 ## Your own shortcuts
 
@@ -44,7 +48,7 @@ The search field at the top of the overview filters as you type, by action name 
 - Combinations without <kbd>⌘</kbd>, <kbd>Ctrl</kbd> or <kbd>⌥</kbd> (like <kbd>?</kbd>) only work outside text fields and the editor.
 - The shortcuts of the editor, the page tree, presentations and the split view are fixed; the overview lists them for reference.
 
-In the [iPad app](/offline-and-apps#ipad-windows-keyboard-and-handoff) with a hardware keyboard, holding <kbd>⌘</kbd> lists the shortcuts with <kbd>⌘</kbd>, <kbd>⌃</kbd> or <kbd>⌥</kbd> – your own combinations included – in the iPad's overlay.
+In the [iPad app](/mobile-capture#ipad-windows-keyboard-and-handoff) with a hardware keyboard, holding <kbd>⌘</kbd> lists the shortcuts with <kbd>⌘</kbd>, <kbd>⌃</kbd> or <kbd>⌥</kbd> – your own combinations included – in the iPad's overlay.
 
 The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kbd> on a Mac, <kbd>Ctrl</kbd> and <kbd>Alt</kbd> elsewhere. Through the API, the command `shortcuts.save` stores the same settings (see [API and webhooks](/api-and-webhooks)).
 
@@ -63,19 +67,19 @@ The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kb
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>1</kbd>–<kbd>3</kbd> | Heading 1–3 |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>0</kbd> | Back to normal text |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>E</kbd> | Centre the text |
-| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd> | Copy the [link to the block](/documents#links-to-blocks) with the cursor |
-| <kbd>⌘</kbd> <kbd>L</kbd> | Turn the line into a [task](/documents#task-status), then change its status: open → in progress → done → open (as in Obsidian; several selected lines change together) |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd> | Copy the [link to the block](/links-and-mentions#links-to-blocks) with the cursor |
+| <kbd>⌘</kbd> <kbd>L</kbd> | Turn the line into a [task](/tasks-in-documents#task-status), then change its status: open → in progress → done → open (as in Obsidian; several selected lines change together) |
 | <kbd>⌘</kbd> <kbd>.</kbd> / <kbd>⌘</kbd> <kbd>,</kbd> | Superscript / subscript |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>8</kbd> / <kbd>7</kbd> / <kbd>9</kbd> | Bulleted list, numbered list, task list |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>B</kbd> | Quote |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>C</kbd> | Code block |
 | <kbd>Tab</kbd> / <kbd>⇧</kbd> <kbd>Tab</kbd> | Indent / outdent |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Move block up / down (a collapsed heading with its section) |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> | In a heading: [collapse or expand its section](/documents#collapsing-sections); in a [toggle](/documents#toggles): collapse or expand it |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> | In a heading: [collapse or expand its section](/reading-and-presenting#collapsing-sections); in a [toggle](/documents#toggles): collapse or expand it |
 | <kbd>⇧</kbd> <kbd>Enter</kbd> | Line break within the same block |
 | <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>Z</kbd> | Undo / redo |
 | <kbd>⌘</kbd> <kbd>Enter</kbd> | Send a comment; in **Edit as Markdown**: apply |
-| <kbd>⌘</kbd> <kbd>J</kbd> | [Writing assistant](/ai#writing-assistant) for the selection or line (when AI is on) |
+| <kbd>⌘</kbd> <kbd>J</kbd> | [Writing assistant](/ai-writing#writing-assistant) for the selection or line (when AI is on) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd> | Insert footnote (edits a selected one) |
 
 Markdown shortcuts such as `##`, `-`, `[]` or ` ``` ` are listed under [Documents and the editor](/documents#markdown-shortcuts).
@@ -141,7 +145,7 @@ On the ⋮⋮ handle of a record (table, list, feed, board, gallery, sprints):
 
 ### In formatted text properties
 
-In a text property (table cell, record; see [Formatted text](/databases#formatted-text)):
+In a text property (table cell, record; see [Formatted text](/database-properties#formatted-text)):
 
 | Shortcut | Effect |
 | --- | --- |

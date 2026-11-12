@@ -1,6 +1,12 @@
+---
+keywords: Umgebungsvariablen, env, Konfiguration, APP_URL, Docker
+---
+
 # Konfiguration
 
 Alle Umgebungsvariablen auf einen Blick. Viele Werte lassen sich zusätzlich in der Oberfläche der **Administration** setzen (siehe [In der Oberfläche](#in-der-oberflaeche)); dort gesetzte Werte haben Vorrang.
+
+**Mehr zum Thema:** [Konfiguration: Speicher, Datenbank und Sicherheit](/configuration-storage) · [Konfiguration: E-Mail, Integrationen und Workflows](/configuration-integrations) · [Konfiguration: KI, Sprachnotizen und Push](/configuration-ai-push)
 
 ## Pflicht
 
@@ -17,16 +23,16 @@ Alle Umgebungsvariablen auf einen Blick. Viele Werte lassen sich zusätzlich in 
 | `OIDC_ISSUER` | *leer* | Login-Anbieter für Single Sign-on. Ohne ihn gibt es nur E-Mail, Passwort und Passkeys. |
 | `OIDC_CLIENT_ID` | – | Client-ID. |
 | `OIDC_CLIENT_SECRET` | – | Client-Secret. Nie ins Image oder ins Git. Leer: öffentlicher Client, nur mit PKCE. |
-| `OIDC_LINKED_SSO_ONLY` | aus | `true`: Konten, die mit SSO verbunden sind, melden sich nur noch über SSO an. Anmelden mit Passwort oder Passkey wird mit einem Hinweis abgelehnt; Passkeys und die Authenticator-App bleiben zum Bestätigen wichtiger Schritte. Siehe [Bestehendes Konto mit SSO verbinden](/sign-in#bestehendes-konto-mit-sso-verbinden). |
+| `OIDC_LINKED_SSO_ONLY` | aus | `true`: Konten, die mit SSO verbunden sind, melden sich nur noch über SSO an. Anmelden mit Passwort oder Passkey wird mit einem Hinweis abgelehnt; Passkeys und die Authenticator-App bleiben zum Bestätigen wichtiger Schritte. Siehe [Bestehendes Konto mit SSO verbinden](/sso-oidc#bestehendes-konto-mit-sso-verbinden). |
 | `OIDC_NEW_ACCOUNTS` | an | `false`: Die SSO-Anmeldung legt keine neuen Konten an – nur bestehende, verbundene oder per SCIM bereitgestellte Konten melden sich an. Bei der ersten SSO-Anmeldung mit bekannter Adresse fehlt dann „Stattdessen ein eigenes Konto anlegen“. |
 | `SESSION_HOURS` | `8` | Browser-Sitzung ohne „Angemeldet bleiben“: endet so viele Stunden nach der Anmeldung (1–24). Auch unter **Administration → Anmeldung & SSO → Sitzungen**; ein dort gespeicherter Wert hat Vorrang (gilt für alle `SESSION_*` außer `SESSION_MAX_DAYS` und `SESSION_GROUPS_HOURS`). |
-| `SESSION_REMEMBER` | aus | `true` bietet im Browser beim Anmelden **Angemeldet bleiben** an – siehe [Anmeldung](/sign-in#angemeldet-bleiben). Die Apps bleiben unabhängig davon angemeldet. |
+| `SESSION_REMEMBER` | aus | `true` bietet im Browser beim Anmelden **Angemeldet bleiben** an – siehe [Anmeldung](/sessions). Die Apps bleiben unabhängig davon angemeldet. |
 | `SESSION_IDLE_HOURS` | `168` | Mit „angemeldet bleiben“ im Browser: Sitzung endet so viele Stunden nach der letzten Nutzung (1–8760). |
-| `SESSION_APP_REMEMBER` | an | Desktop- und Handy-Apps bleiben angemeldet, solange sie (oder ihre Widgets) genutzt werden – bei Anmeldungen, die die App belegt (Übergabe über den Browser oder Passwort mit dem Geräteschlüssel der App; siehe [Anmeldung](/sign-in#angemeldet-bleiben)). `false`: Ihre Sitzungen enden wie eine Browser-Sitzung ohne „Angemeldet bleiben“. |
+| `SESSION_APP_REMEMBER` | an | Desktop- und Handy-Apps bleiben angemeldet, solange sie (oder ihre Widgets) genutzt werden – bei Anmeldungen, die die App belegt (Übergabe über den Browser oder Passwort mit dem Geräteschlüssel der App; siehe [Anmeldung](/sessions)). `false`: Ihre Sitzungen enden wie eine Browser-Sitzung ohne „Angemeldet bleiben“. |
 | `SESSION_APP_DAYS` | `90` | App-Sitzung endet nach so vielen Tagen ohne Nutzung (1–365). |
 | `SESSION_MAX_DAYS` | `30` / `365` | Sitzungen, die angemeldet bleiben, enden spätestens so viele Tage nach der Anmeldung (1–365; Standard 30 im Browser, 365 in den Apps; nie kürzer als die Zeit ohne Nutzung) – mit SSO genauso wie mit Passwort und Passkey. |
 | `SESSION_GROUPS_HOURS` | *leer* | Nur wenn gesetzt: SSO-Sitzungen mit „angemeldet bleiben“ enden schon nach so vielen Stunden, damit Gruppenänderungen beim Anbieter mit der neuen Anmeldung wirken. Ohne die Variable wirken sie über SCIM, den LDAP-Abgleich oder die nächste Anmeldung. |
-| `LDAP_URL` | *leer* | Anmeldung mit einem LDAP-Verzeichnis (`ldap://` oder `ldaps://`) – siehe [Anmeldung mit LDAP](/sign-in#anmeldung-mit-ldap). |
+| `LDAP_URL` | *leer* | Anmeldung mit einem LDAP-Verzeichnis (`ldap://` oder `ldaps://`) – siehe [Anmeldung mit LDAP](/scim-and-ldap#anmeldung-mit-ldap). |
 | `LDAP_BIND_DN` / `LDAP_BIND_PASSWORD` | *leer* | Suchkonto für LDAP; ohne es anonyme Suche. |
 | `LDAP_BASE_DN` | – | Wo LDAP-Konten gesucht werden. |
 | `LDAP_USER_FILTER` | `(\|(uid={user})(mail={user}))` | Suchfilter; `{user}` ist der maskierte Anmeldename. |
@@ -34,7 +40,7 @@ Alle Umgebungsvariablen auf einen Blick. Viele Werte lassen sich zusätzlich in 
 | `LDAP_TLS_CA` | *leer* | CA für `ldaps://`/StartTLS (Pfad oder PEM). |
 | `LDAP_STARTTLS` | `false` | `ldap://` mit StartTLS. |
 | `LDAP_TIMEOUT_MS` | `8000` | Zeitlimit je LDAP-Operation. |
-| `LDAP_CONTACTS_BASE_DN` | `LDAP_BASE_DN` | Basis für [Kontakte aus LDAP](/sign-in#kontakte-aus-ldap); der OU-Baum beginnt hier. |
+| `LDAP_CONTACTS_BASE_DN` | `LDAP_BASE_DN` | Basis für [Kontakte aus LDAP](/scim-and-ldap#kontakte-aus-ldap); der OU-Baum beginnt hier. |
 | `LDAP_CONTACTS_FILTER` | Personen ohne Computer | Welche Einträge als Kontakte gelten. |
 | `LDAP_CONTACTS_SYNC_MINUTES` | `60` | Abgleich der Kontakte aus dem Verzeichnis (15–1440 Minuten). |
 | `LDAP_CONTACTS_ATTRIBUTES` | – | Weitere LDAP-Attribute, die Kontakte-Datenbanken zuordnen dürfen (durch Komma oder Leerzeichen getrennt), zusätzlich zu denen der Standardzuordnung. |
@@ -49,302 +55,27 @@ Die übrigen OIDC-Variablen und alles zu Passwörtern und Passkeys stehen unter 
 | `FLOWPLAN_DATA_DIR` | `/app/data` im Image, sonst `./data` | Datenverzeichnis für SQLite, Uploads, Push-Schlüssel und Texterkennungsdaten. |
 | `PUID` / `PGID` | `1000` / wie `PUID` | Nur im Image, ohne `user:` (wie bei linuxserver.io): Flowplan gibt den Datenordner beim Start diesem Benutzer und dieser Gruppe und läuft als sie, nie als root; `0` wird abgelehnt. Mit `user: "UID:GID"` läuft Flowplan stattdessen gleich als dieser Benutzer – siehe [Volume-Rechte](/coolify-and-proxy#volume-rechte). |
 | `FLOWPLAN_WORKSPACE_QUOTA_MB` | unbegrenzt | Standard-Speicherkontingent je Arbeitsbereich in MB (`0` = unbegrenzt). |
-| `FLOWPLAN_IMPORT_MAX_MB` | *leer* | Größte Datei für [Importe aus AFFiNE](/migrate#von-affine) und anderen Werkzeugen in MB, für alle Personen. Ohne die Variable gilt die **größte Datei beim Hochladen** (Administration → Grenzen & Aufbewahrung bzw. die Grenze der Person), mindestens 100 MB. Größer als 100 MB darf nur die AFFiNE-Arbeitsbereichsdatei (`.affine`) sein; ZIP-Exporte bleiben bei 100 MB. Ein Proxy davor muss so große Anfragen durchlassen. |
+| `FLOWPLAN_IMPORT_MAX_MB` | *leer* | Größte Datei für [Importe aus AFFiNE](/migrate-affine) und anderen Werkzeugen in MB, für alle Personen. Ohne die Variable gilt die **größte Datei beim Hochladen** (Administration → Grenzen & Aufbewahrung bzw. die Grenze der Person), mindestens 100 MB. Größer als 100 MB darf nur die AFFiNE-Arbeitsbereichsdatei (`.affine`) sein; ZIP-Exporte bleiben bei 100 MB. Ein Proxy davor muss so große Anfragen durchlassen. |
 | `FLOWPLAN_MAX_DOCUMENT_MB` | `16` | Größe eines gemeinsam bearbeiteten Dokuments (Seite oder Datensatz-Dokument) in MB. Änderungen, die ein Dokument darüber hinaus wachsen lassen, werden abgelehnt („Das Dokument ist zu groß …“); größere Inhalte auf mehrere Seiten verteilen. Schützt den Server davor, dass jede Bearbeitung eines riesigen Dokuments ihn ausbremst. |
 | `FLOWPLAN_IMPORT_MAX_DOCS` | `10000` | Höchstzahl der Seiten je [Import](/migrate) aus AFFiNE, Confluence, Evernote, Google Docs, Obsidian und Notion/Markdown: Dokumente, Ordner, Datenbanken, Whiteboards und Sammlungen; beim Import als neue Datenbank die Zahl der Einträge. Darüber zeigt die Vorschau die Anzahl und der Import wird abgelehnt (die Meldung nennt die Variable). Dokumente werden einzeln umgewandelt; ein höherer Wert kostet Zeit, kaum Speicher. |
 | `FLOWPLAN_IMPORT_MAX_FILES` | `20000` | Höchstzahl der Dateien (Bilder, Anhänge) je Import aus einem AFFiNE-Arbeitsbereich oder -Snapshot; weitere werden ausgelassen, die Vorschau nennt ihre Zahl und die Variable. ZIP-Exporte dürfen so viele Einträge haben wie Seiten und Dateien zusammen (mindestens 12.000). |
 | `FLOWPLAN_SNAPSHOT_RETENTION_DAYS` | `180` | Aufbewahrung automatischer Versionen in Tagen (`0` = unbegrenzt). |
 | `FLOWPLAN_OCR` | an | `0` schaltet die Texterkennung für gescannte PDFs und Bilder ab. |
 | `FLOWPLAN_OCR_LANGS` | `deu,eng` | Sprachen der Texterkennung, z. B. `fra,eng`; die erste ist die Hauptsprache. Mitgeliefert sind `deu`, `eng`, `fra` und `chi_sim` (Chinesisch, Kurzzeichen, z. B. `chi_sim,eng`). Jede weitere Sprache kostet Speicher und Zeit pro Seite; Chinesisch am meisten (rund 100 MB mehr Arbeitsspeicher, etwa anderthalbmal so lange pro Seite). |
-| `FLOWPLAN_METRICS` | an | `off` schaltet die Nutzungsstatistik der [Überwachung](/operations#statistik) aus: Anfragen, Fehler und Antwortzeiten je Minute, aktive Personen je Stunde, Speicherverlauf und KI-Tokens. Erfasst werden nur Zahlen – keine IP-Adressen, Pfade oder Namen; Minuten bleiben 48 Stunden, Stunden 35 Tage, Tage 400 Tage. Mit `off` wird nichts erfasst, und der Schalter **Nutzungsstatistik erfassen** unter **Administration → Überwachung → Statistik** ist gesperrt. `/api/metrics` hängt davon nicht ab. |
+| `FLOWPLAN_METRICS` | an | `off` schaltet die Nutzungsstatistik der [Überwachung](/monitoring#statistik) aus: Anfragen, Fehler und Antwortzeiten je Minute, aktive Personen je Stunde, Speicherverlauf und KI-Tokens. Erfasst werden nur Zahlen – keine IP-Adressen, Pfade oder Namen; Minuten bleiben 48 Stunden, Stunden 35 Tage, Tage 400 Tage. Mit `off` wird nichts erfasst, und der Schalter **Nutzungsstatistik erfassen** unter **Administration → Überwachung → Statistik** ist gesperrt. `/api/metrics` hängt davon nicht ab. |
 | `FLOWPLAN_METRICS_TOKEN` | *leer* | Mindestens 16 Zeichen; aktiviert `/api/metrics` im Prometheus-Format. Als `Authorization: Bearer …` mitgeschickt, liefert `/api/health` damit auch die Details (siehe [Healthcheck](/operations#healthcheck)). |
 | `FLOWPLAN_PUBLIC_API_DOCS` | `false` | `true` macht `/api/openapi.json` und `/api/docs` ohne Anmeldung lesbar; Besucher sehen darin nur die Hauptversion (`0.x`). Sonst nur für Angemeldete und API-Tokens. |
 | `FLOWPLAN_UPDATE_CHECK` | an | `false` schaltet die Suche nach neuen Versionen ab (für Instanzen ohne Internet). Sonst fragt der Server höchstens alle 12 Stunden bei GitHub nach dem neuesten Release und zeigt Admins in der Administration einen Hinweis. |
 | `FLOWPLAN_MARKETPLACE_URL` | `https://marketplace.flowplan.org` | Adresse des Flowplan Marketplace (Standard `https://marketplace.flowplan.org`); `off` schaltet ihn ab. Die Instanz verbindet sich nie selbst damit – die Adresse legt nur fest, mit welchem Fenster der Browser Vorlagen austauscht. Siehe [Marketplace](/marketplace). |
-| `FLOWPLAN_UPDATE_URL` | GitHub-API | Andere Adresse für das neueste Release (gleiches Format wie `api.github.com/repos/yannicschuller/flowplan/releases/latest`), etwa ein interner Spiegel. Nicht zu verwechseln mit der gleichnamigen Variable der [Desktop-App](/offline-and-apps#desktop-app-fuer-macos-windows-und-linux), die auf dem Rechner der App deren Update-Quelle nennt. |
+| `FLOWPLAN_UPDATE_URL` | GitHub-API | Andere Adresse für das neueste Release (gleiches Format wie `api.github.com/repos/yannicschuller/flowplan/releases/latest`), etwa ein interner Spiegel. Nicht zu verwechseln mit der gleichnamigen Variable der [Desktop-App](/desktop-app), die auf dem Rechner der App deren Update-Quelle nennt. |
 | `FLOWPLAN_TRUSTED_PROXIES` | `1` | Anzahl der Proxys vor Flowplan (Traefik allein: `1`, Pangolin vor Traefik: `2`, `0` = keinem Header vertrauen). Bestimmt, welcher Eintrag in `X-Forwarded-For` die echte Adresse ist – für die Begrenzung von Anmeldeversuchen, Demo-Starts und anonymen Formularantworten. Frei erfundene Einträge des Browsers werden so ignoriert. Kommt gar keine Adresse an (der Proxy setzt den Header nicht), gelten nur die Limits je Konto und je Link, und das Protokoll zeigt einmalig einen Hinweis. |
-| `FLOWPLAN_SECURITY_LOG` | `on` | Sicherheitsereignisse als JSON-Zeile auf stdout: `on` (mit Adresse, für fail2ban/CrowdSec), `anonymous`, `off` ([Sicherheit](/operations#sicherheit)). |
+| `FLOWPLAN_SECURITY_LOG` | `on` | Sicherheitsereignisse als JSON-Zeile auf stdout: `on` (mit Adresse, für fail2ban/CrowdSec), `anonymous`, `off` ([Sicherheit](/security-monitoring#sicherheit)). |
 | `FLOWPLAN_SECURITY_RETENTION_DAYS` | `90` | Wie lange Sicherheitsereignisse in der Datenbank bleiben (mindestens 7). |
 | `FLOWPLAN_COUNTRY_HEADER` | *leer* | Header des Proxys mit dem Land der Anfrage (z. B. `CF-IPCountry`); schaltet die Regel „zwei Länder kurz nacheinander“ ein. |
 | `OTEL_EXPORTER_OTLP_ENDPOINT` | *leer* | OTLP-Collector (HTTP); Sicherheitsereignisse gehen als OpenTelemetry-Logs dorthin. Dazu `OTEL_EXPORTER_OTLP_HEADERS` und `OTEL_SERVICE_NAME`. |
 | `FLOWPLAN_ANONYMOUS_UPLOAD_MB` | `1024` | Wie viele MB Besucher ohne Konto pro Tag auf der ganzen Instanz hochladen dürfen – über anonyme Formulare und Bearbeiten-Links (`0` = unbegrenzt). Je Formular bzw. Link gelten zusätzlich 200 MB pro Tag, unabhängig vom Speicherkontingent des Arbeitsbereichs. |
 
 Die Typst-Vorschau lädt Compiler und Schriften (WebAssembly, etwa 11 MB komprimiert) beim ersten Gebrauch von `/typst/…` des eigenen Servers; es gibt keine Verbindung zu einem CDN.
-
-## S3 und Datenbanksicherung
-
-| Variable | Standard | Bedeutung |
-| --- | --- | --- |
-| `S3_BUCKET` | *leer* | Schaltet S3 ein. Ohne diese Variable bleibt alles lokal. |
-| `S3_ENDPOINT` | AWS | API-Adresse des Speichers, z. B. `http://minio:9000`. |
-| `S3_ACCESS_KEY_ID` / `S3_SECRET_ACCESS_KEY` | – | Zugangsschlüssel mit Lese- und Schreibrecht auf den Bucket. |
-| `S3_REGION` | `us-east-1` | Region. Garage verlangt seinen eigenen Wert (oft `garage`). |
-| `S3_PREFIX` | `flowplan` | Ordner im Bucket; Dateien unter `<Präfix>/uploads/`, Datenbank unter `<Präfix>/db/`. |
-| `FLOWPLAN_LITESTREAM` | an | `off`: nur Dateien spiegeln, Datenbank nicht sichern. |
-| `LITESTREAM_SSE_C_KEY` | *leer* | Optional: der Speicheranbieter verschlüsselt die Litestream-Kopie (SSE-C, 32 Bytes base64, nur über https und bei Anbietern, die SSE-C können). |
-
-Details: [Speicher, S3 und Sicherung](/storage-and-backups).
-
-## Datenbank und Cluster
-
-Ohne diese Variablen nutzt Flowplan SQLite in einem Container. Kommentiert stehen sie auch in der [`.env.example`](https://github.com/yannicschuller/flowplan/blob/main/.env.example). Alle Werte mit Standard und Erklärung stehen unter [PostgreSQL](/postgresql#variablen) und [Cluster-Modus](/cluster#weitere-variablen).
-
-| Variable | Standard | Bedeutung |
-| --- | --- | --- |
-| `DATABASE_URL` | *leer* | `postgres://…` schaltet auf PostgreSQL um. Die Rolle darin sollte die Datenbank besitzen, aber kein Superuser sein ([PostgreSQL](/postgresql#rolle-ohne-superuser-rechte)). |
-| `FLOWPLAN_PG_SCHEMA`, `FLOWPLAN_PG_POOL`, `FLOWPLAN_PG_*_TIMEOUT` | `public`, `10`, … | Schema, Verbindungen je Instanz und Zeitlimits. |
-| `FLOWPLAN_PG_PREPARE` | an | `off`: Abfragen ohne Namen statt benannter Prepared Statements – für PgBouncer im Modus `transaction` ohne `max_prepared_statements`. |
-| `DATABASE_SESSION_URL` | `DATABASE_URL` | Direkte Verbindung (oder Pool im Modus `session`) für Benachrichtigungen, die Leitung im Cluster und `pg_dump`/`pg_restore`, wenn `DATABASE_URL` auf PgBouncer im Modus `transaction` zeigt. |
-| `FLOWPLAN_BACKUP_FORMAT` | `pg_dump` | `sqlite`: geplante Sicherungen auf PostgreSQL im portablen SQLite-Format. |
-| `FLOWPLAN_CLUSTER` | *leer* | `1`: mehrere Instanzen; verlangt `DATABASE_URL`, `REDIS_URL`, `S3_BUCKET`, `FLOWPLAN_ENCRYPTION_KEY` (oder `FLOWPLAN_SECRETS_KEY`) und `WEB_PUSH_PUBLIC_KEY`/`WEB_PUSH_PRIVATE_KEY`. |
-| `REDIS_URL` | *leer* | Redis für den Cluster-Modus, `redis://…` oder `rediss://…`. |
-| `FLOWPLAN_READY_REQUIRE` | alle | Welche Prüfungen über `/api/health/ready` entscheiden. |
-
-## Verschlüsselung
-
-| Variable | Standard | Bedeutung |
-| --- | --- | --- |
-| `FLOWPLAN_ENCRYPTION_KEY` | *leer* | 32 Bytes, base64 (`openssl rand -base64 32`). Verschlüsselt Dateien im Bucket, geplante Sicherungen, Markdown-Exporte und die Instanzsicherung. Ohne Schlüssel ändert sich nichts. |
-| `FLOWPLAN_ENCRYPTION_KEY_FILE` | *leer* | Statt der Variablen: Pfad zu einer Datei mit dem Schlüssel (Docker-Secret). |
-| `FLOWPLAN_ENCRYPTION_KEY_PREVIOUS` | *leer* | Frühere Schlüssel, durch Komma getrennt – nur zum Lesen nach einem Schlüsselwechsel. |
-
-Details: [Verschlüsselung](/storage-and-backups#verschluesselung).
-
-## Gespeicherte Geheimnisse
-
-Schlüssel von KI-Anbietern, die Schlüssel der Authenticator-Apps ([Zwei-Faktor-Anmeldung](/sign-in#zwei-faktor-anmeldung)) die Zugangstokens des [Git-Exports der Bereiche](/storage-and-backups#git-export-eines-bereichs) und die Tokens der [Chat-Apps](/search-and-notifications#chat-apps) speichert Flowplan nur verschlüsselt (AES-256-GCM, an ihren Platz gebunden). Der Schlüssel dafür kommt, in dieser Reihenfolge, aus:
-
-| Quelle | Bedeutung |
-| --- | --- |
-| `FLOWPLAN_ENCRYPTION_KEY` | Wenn gesetzt, verschlüsselt er auch die gespeicherten Geheimnisse. |
-| `FLOWPLAN_SECRETS_KEY` / `FLOWPLAN_SECRETS_KEY_FILE` | Ein eigener Schlüssel nur dafür: 32 Bytes, base64 oder hex (`openssl rand -base64 32`), oder Pfad zu einer Datei (Docker-Secret). |
-| `secrets.key` im Datenordner | Ohne die beiden Variablen legt Flowplan diese Datei beim ersten Bedarf selbst an (nur für den Besitzer lesbar). |
-
-> [!IMPORTANT]
-> Die Instanzsicherung enthält `secrets.key` bewusst nicht – sie gehört nicht neben die Daten, die sie schützt. Sichere die Datei getrennt oder setze den Schlüssel als Variable. Fehlt er nach einer Wiederherstellung, geben Admins und Nutzer ihre KI-Schlüssel und Chat-App-Tokens neu ein, und für die Zwei-Faktor-Anmeldung helfen Wiederherstellungscodes oder ein Zurücksetzen durch die Administration.
-> Das [Umzugswerkzeug](/move-instance) nimmt `secrets.key` dagegen mit, denn es zieht die ganze Instanz um.
-
-## Instanzumzug
-
-| Variable | Standard | Bedeutung |
-| --- | --- | --- |
-| `FLOWPLAN_MOVE_ALLOW_PRIVATE` | *leer* | Auf der **neuen** Instanz: `true` erlaubt, eine Instanz unter einer internen Adresse (LAN, VPN, `localhost`) und über `http://` zu übernehmen – etwa einen Heimserver. Ohne diese Variable nur öffentliche HTTPS-Adressen. Nach dem Umzug wieder entfernen. |
-
-Details: [Instanz umziehen](/move-instance).
-
-## E-Mail (SMTP)
-
-| Variable | Standard | Bedeutung |
-| --- | --- | --- |
-| `SMTP_HOST` | *leer* | Schaltet den E-Mail-Versand ein: Einladungen und Zusammenfassungen ungelesener Benachrichtigungen. |
-| `SMTP_PORT` | `587` | Port. Bei `465` spricht Flowplan direkt TLS, sonst STARTTLS. |
-| `SMTP_SECURE` | nach Port | `true`/`false` erzwingt TLS ab Verbindungsbeginn. |
-| `SMTP_USER` / `SMTP_PASSWORD` | *leer* | Anmeldung am Mailserver. |
-| `SMTP_FROM` | `Flowplan <SMTP_USER>` | Absender, z. B. `Flowplan <flowplan@example.com>`. |
-
-Den Versand prüfst du unter **Administration → E-Mail → Test-E-Mail senden**.
-
-## E-Mail-Eingang (IMAP)
-
-Für den [E-Mail-Eingang](/api-and-webhooks#e-mail-eingang) per Webhook (Mailgun, Postmark, SendGrid, Cloudflare) ist nichts zu setzen. Ein eigenes Postfach fragt Flowplan alle zwei Minuten per IMAP ab:
-
-| Variable | Standard | Bedeutung |
-| --- | --- | --- |
-| `INBOUND_MAIL_DOMAIN` | *leer* | Domain der Eingangsadressen, z. B. `mail.example.com`. Die Einstellungen zeigen dann je Adresse `inbox+<token>@mail.example.com`. |
-| `INBOUND_IMAP_HOST` | *leer* | Schaltet die IMAP-Abfrage ein (zusammen mit `INBOUND_IMAP_USER`). |
-| `INBOUND_IMAP_PORT` | `993` | Port (`143`, wenn `INBOUND_IMAP_TLS=false`). |
-| `INBOUND_IMAP_USER` / `INBOUND_IMAP_PASSWORD` | *leer* | Anmeldung am Postfach. Der Teil vor `@` ist auch der Teil vor `+` in den Adressen. |
-| `INBOUND_IMAP_FOLDER` | `INBOX` | Ordner, der abgefragt wird. |
-| `INBOUND_IMAP_TLS` | `true` | `false` nur für einen Mailserver auf demselben Rechner oder im selben Netz (ohne Verschlüsselung). |
-| `INBOUND_MAIL_AUTHSERV_ID` | *leer* | Kennung (authserv-id) des eigenen empfangenden Mailservers oder Anbieters, mit der sein `Authentication-Results`-Header beginnt, z. B. `mx.example.com`. Gilt auch für den Eingang per Webhook. |
-
-Der Mailserver muss Plus-Adressierung unterstützen (`inbox+irgendwas@…` landet in `inbox@…`); das tun z. B. Dovecot, Postfix, Gmail/Google Workspace und Microsoft 365 (dort einschalten). Flowplan markiert verarbeitete E-Mails als gelesen und löscht nichts.
-
-**Absenderprüfung:** Ob ein Absender als geprüft gilt (SPF/DKIM/DMARC zur From-Domain bestanden), liest Flowplan aus dem `Authentication-Results`-Header. Den kann auch der Absender selbst mitschicken – deshalb zählt nur der oberste Header mit der Kennung aus `INBOUND_MAIL_AUTHSERV_ID`. Ohne die Variable gilt kein Absender als geprüft: Workflows mit **Nur geprüfte Absender** starten dann nie, die Standardeinstellung (alle außer durchgefallenen) läuft weiter. Die Kennung steht am Anfang des Headers, den dein Server in empfangene E-Mails schreibt (`Authentication-Results: mx.example.com; spf=pass …`).
-
-## Integrationen
-
-| Variable | Standard | Bedeutung |
-| --- | --- | --- |
-| `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE` | *leer* | `true` erlaubt Webhooks an interne Adressen und `http://` – etwa Home Assistant oder n8n im selben Netz. Ohne diese Variable sind nur öffentliche HTTPS-Adressen erlaubt. |
-| `SPACE_GIT_EXPORT` | *leer* | `true` schaltet den [Git-Export der Bereiche](/storage-and-backups#git-export-eines-bereichs) ein: Bereichseigentümer übertragen ihren Bereich täglich oder wöchentlich in ein eigenes Repository. |
-| `SPACE_GIT_ALLOWED_HOSTS` | *leer* | Erlaubte Git-Server dafür, durch Komma getrennt (z. B. `git.example.org`). Ohne die Variable ist jeder öffentliche `https://`-Server erlaubt; interne Adressen nie. |
-| `SPACE_GIT_ALLOW_PRIVATE` | *leer* | `true` erlaubt den in `SPACE_GIT_ALLOWED_HOSTS` genannten Servern auch interne Adressen – etwa ein Forgejo auf demselben Host, den der Container über `--add-host git.example.org:host-gateway` erreicht. Wirkt nur zusammen mit der Liste; alle anderen Server bleiben auf öffentliche Adressen beschränkt. |
-| `ISSUE_SYNC_ALLOWED_HOSTS` | *leer* | Eigene Server für die [Synchronisierung von GitHub-, GitLab- und Forgejo-Issues](/projects-and-tickets#github-gitlab-und-forgejo-issues-synchronisieren), durch Komma getrennt (z. B. `gitlab.example.org`). github.com, gitlab.com und codeberg.org sind immer erlaubt; andere Server nur, wenn sie hier stehen. |
-| `ISSUE_SYNC_ALLOW_PRIVATE` | *leer* | `true` erlaubt den in `ISSUE_SYNC_ALLOWED_HOSTS` genannten Servern auch interne Adressen – etwa ein GitLab im selben Netz. Wirkt nur zusammen mit der Liste. |
-| `NETBOX_ALLOW_PRIVATE` | *leer* | `true` erlaubt den [NetBox-Import auf Whiteboards](/whiteboards#importieren-und-exportieren) auch interne Adressen und `http://` – etwa ein NetBox im selben Netz. Ohne diese Variable nur öffentliche HTTPS-Adressen. Adresse und Token werden nie auf dem Server gespeichert. |
-| `PLUGIN_ALLOWED_ORIGINS` | *leer* | HTTPS-Ursprünge, von denen Eigentümer [Block-Erweiterungen](/plugins) registrieren dürfen, durch Komma getrennt (z. B. `https://plugins.example.org`). Ohne die Variable nur, wenn die Administration **Block-Erweiterungen von jeder HTTPS-Adresse** einschaltet. Die Ursprünge werden auch in die `frame-src` der Content Security Policy aufgenommen. |
-| `GIPHY_API_KEY` / `TENOR_API_KEY` | *leer* | Schlüssel für die [GIF-Suche auf Whiteboards](/whiteboards#bilder-symbole-und-eintraege) bei GIPHY bzw. Tenor (ist beides gesetzt, gilt GIPHY). Ohne Schlüssel fehlt der Reiter **GIFs**. Gesucht wird über den Server; gewählte GIFs werden bis 8 MB auf dem Server gespeichert. |
-| `EXPORT_GIT_*` | *leer* | Veraltet: der Git-Export der ganzen Instanz, siehe [In ein Git-Repository übertragen](/storage-and-backups#in-ein-git-repository-uebertragen). Läuft weiter; besser ist der Git-Export der Bereiche. |
-
-## Kalender-Sync
-
-Zwei-Wege-Synchronisierung von Datenbankansichten mit [Google Kalender und Microsoft Outlook / 365](/views#mit-google-kalender-oder-outlook-synchronisieren). Jede Person verbindet ihr eigenes Konto; ohne Client-ID bleibt der jeweilige Anbieter ausgeblendet. Flowplan fragt alle zehn Minuten nach Änderungen (Push-Benachrichtigungen der Anbieter werden nicht genutzt – sie bräuchten eine öffentlich erreichbare, beim Anbieter bestätigte HTTPS-Adresse).
-
-| Variable | Standard | Bedeutung |
-| --- | --- | --- |
-| `GOOGLE_CALENDAR_CLIENT_ID` / `GOOGLE_CALENDAR_CLIENT_SECRET` | *leer* | OAuth-Client (Typ „Webanwendung“) aus der Google Cloud Console, mit aktivierter Google Calendar API und dem Bereich `…/auth/calendar`. Weiterleitungs-URI: `<APP_URL>/api/calendar-sync/callback/google`. |
-| `MS_CALENDAR_CLIENT_ID` / `MS_CALENDAR_CLIENT_SECRET` | *leer* | App-Registrierung in Microsoft Entra ID (Web-Plattform) mit den delegierten Berechtigungen `Calendars.ReadWrite` und `offline_access`. Weiterleitungs-URI: `<APP_URL>/api/calendar-sync/callback/microsoft`. |
-| `MS_CALENDAR_TENANT` | `common` | `common` (Geschäfts- und private Konten), `organizations` oder die ID eines Mandanten. |
-
-Die Aktualisierungs-Tokens der Personen liegen versiegelt in der Datenbank (wie alle [gespeicherten Geheimnisse](#gespeicherte-geheimnisse)).
-
-## Rechtliches und Oberfläche
-
-| Variable | Standard | Bedeutung |
-| --- | --- | --- |
-| `IMPRINT_URL` | *leer* | Link zum Impressum, z. B. `https://example.com/impressum`. Erscheint auf der Anmeldeseite, unter geteilten Seiten und Formularen und im Kontomenü (auf dem Telefon unter **Mehr** in der Seitenleiste) – nur, wenn gesetzt. |
-| `PRIVACY_URL` | *leer* | Link zur Datenschutzerklärung, an denselben Stellen und ebenfalls nur, wenn gesetzt. |
-| `FLOWPLAN_SOURCE_URL` | GitHub-Repository von Flowplan | Adresse des Quellcodes, der auf dieser Instanz läuft (http oder https). Die AGPL-3.0 verlangt: Wer eine **veränderte** Fassung für andere betreibt, bietet ihnen deren Quellcode an (§ 13). Gesetzt, verlinken **Einstellungen → Über Flowplan** und die Anmeldeseite (Fußzeile „Quellcode“) diese Adresse statt `github.com/yannicschuller/flowplan`; der Commit ist dann nicht mehr auf GitHub verlinkt. |
-| `DRAWIO_URL` | `https://embed.diagrams.net` | Adresse des draw.io-Editors für den Block `/drawio`, z. B. ein eigener Container `jgraph/drawio`. Nur https (http nur für `localhost`); ein ungültiger Wert schaltet draw.io aus. Beim Ansehen wird draw.io nie geladen. |
-| `FLOWPLAN_HIDE_SPONSOR` | `false` | `true` blendet unter **Einstellungen → Über Flowplan** nur den Teil **Flowplan unterstützen ♥** (Link zu GitHub Sponsors) aus. Lizenz und Quellcode bleiben immer sichtbar. In den Apps für iPhone, iPad und Android ist der Link unabhängig davon nie zu sehen; in Browsern und der Desktop-App schon. |
-
-## Sprachnotizen (Whisper)
-
-Sprachnotizen im Editor werden immer als Audio gespeichert. Mit einem Whisper-Dienst im eigenen Netz macht Flowplan daraus zusätzlich Text; die Aufnahme verlässt dabei deinen Server nicht.
-
-| Variable | Standard | Bedeutung |
-| --- | --- | --- |
-| `WHISPER_URL` | *leer* | Adresse eines OpenAI-kompatiblen Whisper-Servers (`POST /v1/audio/transcriptions`), z. B. `http://whisper:8000`. Schaltet die Transkription ein. |
-| `WHISPER_MODEL` | `Systran/faster-whisper-small` | Modellname, wie ihn der Dienst erwartet. |
-| `WHISPER_LANGUAGE` | `de` | Sprache der Aufnahmen. |
-| `WHISPER_API_KEY` | *leer* | Nur falls der Dienst einen Schlüssel verlangt. |
-| `WHISPER_MAX_MB` | `200` | Größte Aufnahme in MB. |
-| `WHISPER_RESPONSE_FORMAT` | `verbose_json` | Antwortformat der Spracherkennung; bei Fehler einmal `json`. |
-| `WHISPER_DIARIZE` | *leer* | `on`: Sprechertrennung anfragen (`diarize=true`), nur bei Diensten, die es können. |
-
-Beispiel mit [speaches](https://github.com/speaches-ai/speaches) (früher faster-whisper-server) im selben Compose-Projekt:
-
-```yaml
-  whisper:
-    image: ghcr.io/speaches-ai/speaches:latest-cpu
-    volumes:
-      - whisper-models:/home/ubuntu/.cache/huggingface/hub
-    restart: unless-stopped
-```
-
-Bei Flowplan dann `WHISPER_URL=http://whisper:8000` setzen. Neuere speaches-Versionen laden Modelle nicht selbst; einmalig herunterladen, etwa aus dem Flowplan-Container:
-
-```sh
-node -e "fetch('http://whisper:8000/v1/models/Systran/faster-whisper-small',{method:'POST'}).then(r=>console.log(r.status))"
-```
-
-`small` braucht rund 1 GB Arbeitsspeicher und transkribiert auf einer normalen CPU etwa in Echtzeit; `base` ist schneller und ungenauer, `medium` genauer und deutlich langsamer. Den Whisper-Dienst nicht öffentlich erreichbar machen – nur Flowplan spricht mit ihm.
-
-## KI
-
-Alles optional; die Werte gelten, bis ein Admin unter **Administration → KI** speichert. Details: [KI](/ai).
-
-| Variable | Standard | Bedeutung |
-| --- | --- | --- |
-| `FLOWPLAN_AI` | *aus* | `on` schaltet KI ein. |
-| `FLOWPLAN_AI_PROVIDER` | *leer* | `ollama`, `openai` (OpenAI-kompatibel), `anthropic` oder `gemini`. Ist nur `OLLAMA_URL` gesetzt, gilt Ollama. |
-| `OLLAMA_URL` | *leer* | Adresse von Ollama, z. B. `http://ollama:11434` mit dem Compose-Dienst. |
-| `FLOWPLAN_AI_BASE_URL` | *je Anbieter* | Adresse des Anbieters, z. B. `https://api.mistral.ai/v1` für einen OpenAI-kompatiblen Dienst. |
-| `FLOWPLAN_AI_MODEL` | *leer* | Modell, z. B. `llama3.1` oder `gpt-4o-mini`. |
-| `FLOWPLAN_AI_EMBEDDING_MODEL` | *leer* | Modell für die Suche nach Bedeutung, z. B. `nomic-embed-text` (Ollama). Ohne: nur Volltextsuche. |
-| `FLOWPLAN_AI_API_KEY` / `FLOWPLAN_AI_API_KEY_FILE` | *leer* | Schlüssel des Anbieters. Wird nie in der Datenbank gespeichert und nur für den Anbieter aus den Variablen verwendet. |
-| `FLOWPLAN_AI_ACCESS` | `everyone` | `selected`: nur freigeschaltete Personen. |
-| `FLOWPLAN_AI_GUESTS` | *aus* | `on`: auch Gäste dürfen KI nutzen. |
-| `FLOWPLAN_AI_USER_PROVIDERS` | *aus* | `on`: Personen dürfen eigene Anbieter und Schlüssel hinterlegen. |
-| `FLOWPLAN_AI_FEATURES` | *alle* | Erlaubte Funktionen, durch Komma getrennt: `write`, `summarize`, `ask`, `database`, `actions`, `whiteboard`. |
-| `FLOWPLAN_AI_DEVICE` | *an* | `off`: keine [KI auf dem Gerät](/ai#ki-auf-dem-geraet-apple) in den Apps für iPhone, iPad und Mac. Unabhängig von `FLOWPLAN_AI`. |
-| `FLOWPLAN_AI_SEMANTIC_SEARCH` | *aus* | `on`: [Suche nach Bedeutung](/ai#suche-nach-bedeutung-optional) mit dem Embedding-Modell. |
-| `FLOWPLAN_AI_EMBED_PER_HOUR` | `5000` | Höchstzahl eingebetteter Abschnitte pro Stunde für die Suche nach Bedeutung. |
-| `FLOWPLAN_AI_REQUESTS_PER_HOUR` | `300` | Höchstzahl an KI-Anfragen pro Person und Stunde (zusätzlich 30 pro Minute, 3 gleichzeitig). |
-
-## Push-Benachrichtigungen
-
-| Variable | Bedeutung |
-| --- | --- |
-| `WEB_PUSH_SUBJECT` | Kontakt für die Push-Dienste, z. B. `mailto:admin@example.com`. |
-| `WEB_PUSH_PUBLIC_KEY` / `WEB_PUSH_PRIVATE_KEY` | VAPID-Schlüsselpaar. Ohne Angabe erzeugt Flowplan eines unter `FLOWPLAN_DATA_DIR/web-push-keys.json`. Im [Cluster-Modus](/cluster#voraussetzungen) Pflicht. |
-| `MOBILE_PUSH` | Mitteilungen an die Apps für iPhone, iPad und Android. Nichts einzurichten; `off` schaltet sie ganz ab. Standard: `on`. |
-| `PUSH_RELAY_URL` | Das [Push-Relay](#push-relay-und-ende-zu-ende-verschluesselung), über das Mitteilungen an die Apps gehen. Nur ein HTTPS-Origin (`http` nur für `localhost`), ohne Pfad. Standard: `https://push.flowplan.org`. |
-| `PUSH_RELAY` | `off`: kein Relay. Apps bekommen Mitteilungen dann nur noch, wenn sie ein Expo-Token haben (ältere App-Versionen), über den Push-Dienst von Expo. Standard: `on`. |
-| `MOBILE_PUSH_CONTENT` | Ob der Text der Benachrichtigung mitkommt – und damit die Knöpfe **Erledigt** und **Morgen** an fälligen Aufgaben und **Antworten** an Kommentaren ([Knöpfe an Mitteilungen](/offline-and-apps#knoepfe-an-mitteilungen)); **Als gelesen markieren** gibt es immer. *Leer* (Standard): nur, wo er Ende-zu-Ende-verschlüsselt ist, also über das Relay; über Expo (ältere Apps) wie bei Web-Push nur „Neues im Posteingang“, Live-Aktivitäten nur mit Zeiten, ohne Titel. `on`: auch über Expo und mit Titeln in Live-Aktivitäten – lesbar für Expo, Apple und Google. `off`: nie, auch nicht über das Relay. |
-
-Die VAPID-Schlüssel dürfen sich nicht ändern, sonst verlieren alle Browser ihr Abonnement. Ausgehendes HTTPS zu den Push-Diensten von Apple, Google und Mozilla (Web-Push) und zum Push-Relay muss möglich sein.
-
-### Push-Relay und Ende-zu-Ende-Verschlüsselung
-
-Mitteilungen an die Apps gehen über das Flowplan-Push-Relay (`push.flowplan.org`). Nur das Relay hat die Zugangsdaten für Apple (APNs) und Google (Firebase); deine Instanz braucht keine eigenen – auch selbst gehostete Instanzen schicken so an die Apps aus dem App Store und Google Play.
-
-- **Ende-zu-Ende-verschlüsselt:** Jede App-Installation erzeugt pro Instanz ein Schlüsselpaar (X25519) und gibt der Instanz nur den öffentlichen Schlüssel. Die Instanz verschlüsselt jede Mitteilung damit (HKDF-SHA256, AES-256-GCM, ein neuer Einmalschlüssel je Mitteilung); erst die App auf dem Gerät entschlüsselt sie. Relay, Apple und Google sehen nur Chiffretext – dazu die Art der Mitteilung, welche Knöpfe sie hat, die Zahl am App-Symbol und wann sie geschickt wurde. Lässt sich eine Mitteilung nicht entschlüsseln, zeigt die App „Neue Mitteilung“.
-- **Signiert:** Die Instanz hat ein eigenes Signaturschlüsselpaar (Ed25519), das beim ersten Gebrauch entsteht. Der private Schlüssel liegt nur verschlüsselt in der Datenbank (wie gespeicherte Geheimnisse, siehe oben); den öffentlichen veröffentlicht die Instanz unter `/.well-known/flowplan-push`. Das Relay nimmt nur signierte Anfragen an und nur für Geräte, die sich für genau diese Instanz angemeldet haben. Dafür muss `APP_URL` die öffentliche HTTPS-Adresse sein, und `/.well-known/flowplan-push` muss von außen erreichbar sein.
-- **Was gespeichert wird:** Pro App-Installation das Relay-Token (nur verschlüsselt) und der öffentliche Schlüssel. Beides verschwindet mit dem Abmelden, dem Entfernen unter *Angemeldete Geräte* oder wenn das Relay meldet, dass das Gerät nicht mehr erreichbar ist. Protokolliert werden weder Tokens noch Schlüssel noch Inhalte.
-- **Live-Aktivitäten** (iPhone) für Zeiterfassung und Fokus aktualisiert die Instanz ebenfalls über das Relay, wenn sich der Zustand ändert. Ihren Inhalt zeichnet iOS selbst – er lässt sich nicht verschlüsseln. Deshalb enthält er standardmäßig nur Zeiten und die Phase, keine Titel (`MOBILE_PUSH_CONTENT=on` schickt den Titel mit).
-- **Ältere App-Versionen** ohne Relay bekommen Mitteilungen weiter über den Push-Dienst von Expo (`exp.host`), standardmäßig ohne Text.
-- **Signaturschlüssel wechseln:** `node --import tsx scripts/push-relay-key.mjs rotate` im Repository bzw. als Administrator `POST /api/admin/operations` mit `{"action":"pushRelay.rotate"}`. Der neue Schlüssel wird sofort veröffentlicht und signiert nach gut einer Stunde; der alte bleibt 7 Tage gelistet (`--grace-days` bzw. `graceDays`). Bei einem womöglich bekannt gewordenen Schlüssel `--immediate` bzw. `"immediate": true`: der neue signiert sofort, alle alten verschwinden. `{"action":"pushRelay.keys"}` listet die Schlüssel (nur IDs und Daten). Oder unter **Administration → Push-Benachrichtigungen → Schlüssel wechseln …**.
-- **Eigenes Relay:** nur zusammen mit einer eigenen App-Version – siehe [Eigenes Push-Relay betreiben](#eigenes-push-relay-betreiben).
-- **Prüfen:** **Einstellungen → Benachrichtigungen → Testbenachrichtigung senden** schickt sofort über Relay, Expo und Web-Push an die eigenen Geräte und zeigt je Gerät das Ergebnis – etwa dass das Relay die Instanz nicht verifizieren konnte (`/.well-known/flowplan-push` nicht erreichbar) oder nicht erreichbar ist. Administratoren sehen dazu Relay-Adresse, ob `/.well-known/flowplan-push` aktiv ist, und die verwendete `APP_URL`. Siehe [Testbenachrichtigung](/search-and-notifications#testbenachrichtigung).
-- **Zustand in der Administration:** **Administration → Push-Benachrichtigungen** zeigt das verwendete Relay (offiziell oder eigenes), ob es an ist und sonst warum, ob es gerade erreichbar ist (`/healthz`, mit Antwortzeit), ob die Instanz ihr `/.well-known/flowplan-push` unter `APP_URL` selbst abrufen kann, die Signaturschlüssel mit **Schlüssel wechseln …**, die Zustellungen der letzten 24 Stunden je Kanal und den letzten Fehler. Siehe [Administration → Push-Benachrichtigungen](/administration#push-benachrichtigungen).
-
-**Für die Datenschutzerklärung** einer Instanz etwa: „Push-Mitteilungen an die Flowplan-Apps werden Ende-zu-Ende-verschlüsselt über den Push-Dienst von Flowplan (push.flowplan.org) und die Dienste von Apple (APNs) bzw. Google (Firebase Cloud Messaging) zugestellt. Diese Dienste erhalten ein Geräte-Token, die Adresse dieser Instanz, den Zeitpunkt und die Art der Mitteilung, nicht aber ihren Inhalt.“ – mit `MOBILE_PUSH_CONTENT=on` oder Mitteilungen über Expo entsprechend ergänzen.
-
-### Eigenes Push-Relay betreiben
-
-Das Relay ist Open Source ([github.com/yannicschuller/flowplan-push](https://github.com/yannicschuller/flowplan-push)) und lässt sich selbst betreiben. **Für die offiziellen Flowplan-Apps (iPhone und iPad aus dem [App Store](https://apps.apple.com/app/id6825801344), Android von [flowplan.org/download](https://flowplan.org/download)) brauchst du das nicht** – sie nehmen nur Mitteilungen über `push.flowplan.org` an, denn Apple und Google stellen an diese Apps nur mit Flowplans Schlüsseln zu. Ein eigenes Relay ist sinnvoll, wenn du **eine eigene App-Version** baust (eigene Bundle-ID, eigenes Apple-Team) oder Instanzen im internen Netz erreichen willst.
-
-1. **Relay starten** – als Docker-Image `ghcr.io/yannicschuller/flowplan-push:latest` (oder selbst aus dem Repository gebaut), z. B. in Coolify unter `https://push.example.com`, Port `8080`, ein Volume auf `/data`. Umgebungsvariablen:
-
-   | Variable | Wert |
-   | --- | --- |
-   | `RELAY_STORAGE_KEY` | `openssl rand -base64 32` – verschlüsselt die gespeicherten Geräte-Tokens |
-   | `RELAY_PUBLIC_URL` | die öffentliche Adresse des Relays ohne Pfad, z. B. `https://push.example.com` (sonst gilt `https://push.flowplan.org`) |
-   | `APNS_KEY_ID`, `APNS_TEAM_ID`, `APNS_KEY` | APNs-Schlüssel (`.p8`) deines Apple-Teams: Key ID, Team ID und Inhalt der Datei (auch als Base64) |
-   | `ALLOWED_BUNDLE_IDS` | die Bundle-ID deiner App, z. B. `com.example.notes` |
-   | `FCM_SERVICE_ACCOUNT` | optional, Dienstkonto-JSON deines Firebase-Projekts für Android |
-   | `TRUST_PROXY` | `1` hinter Coolify/Traefik |
-   | `ALLOW_PRIVATE_INSTANCES` | `true`, wenn Instanzen im internen Netz (private Adressen, `http://localhost`) Mitteilungen schicken sollen – laut README des Relays nur für Entwicklung und geschlossene Netze gedacht |
-
-   `https://push.example.com/healthz` antwortet mit `{"status":"ok"}`; im Log steht beim Start, ob APNs und FCM eingerichtet sind.
-2. **App bauen** – mit deiner Bundle-ID und deinem Apple-Team sowie `PUSH_RELAY_URL=https://push.example.com` (Build-Variable der App) und für Android deiner `google-services.json`. Die App meldet sich nur bei dem Relay an, mit dem sie gebaut wurde.
-3. **Instanz einstellen** – `PUSH_RELAY_URL=https://push.example.com`. `APP_URL` muss die HTTPS-Adresse der Instanz sein und `/.well-known/flowplan-push` für das Relay erreichbar. Eine Instanz kann nur ein Relay nutzen: Zeigt sie auf dein Relay, bekommen die Store-Apps von ihr keine Mitteilungen mehr über das Relay.
-4. **Prüfen** – mit der [Testbenachrichtigung](/search-and-notifications#testbenachrichtigung).
-
-Betrieb, Schlüsselwechsel, Sperren missbräuchlicher Instanzen (`node dist/src/cli.js block <origin>` im Container) und Sicherungen beschreibt die README des Relays.
-
-## Chat-Apps
-
-Benachrichtigungen an [Telegram, Gotify, ntfy und Matrix](/search-and-notifications#chat-apps). Alles lässt sich auch unter **Administration → Chat-Apps** einstellen; dort gespeicherte Werte haben Vorrang.
-
-| Variable | Standard | Bedeutung |
-| --- | --- | --- |
-| `FLOWPLAN_MESSENGERS` | *alle* | Dienste, die Personen verbinden dürfen, durch Komma getrennt: `telegram`, `gotify`, `ntfy`, `matrix`; `off` für keinen. |
-| `FLOWPLAN_TELEGRAM_BOT_TOKEN` | *leer* | Token des Telegram-Bots der Instanz (von @BotFather). Damit verbinden Personen Telegram über einen Link mit Einmal-Code, ohne eigenen Bot. |
-| `FLOWPLAN_TELEGRAM_API_URL` | `https://api.telegram.org` | Adresse der Bot-API für den Bot der Instanz – ein selbst betriebener [Telegram-Bot-API-Server](https://github.com/tdlib/telegram-bot-api) oder ein Relay/Proxy. Darf im eigenen Netz liegen und `http://` sein. |
-| `FLOWPLAN_MESSENGER_ALLOW_PRIVATE` | wie `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE` | `true`: Personen dürfen Server im eigenen Netz angeben (interne Adressen, `http://`) – etwa Gotify oder ntfy im Heimnetz. Sonst sind interne Adressen gesperrt, auch wenn ein Name später auf eine umgestellt wird. |
-
-**Bot der Instanz ohne öffentliche Adresse:** Flowplan nutzt keinen Webhook, sondern fragt die Nachrichten des Bots mit `getUpdates` ab – nur solange ein Verbindungscode wartet (höchstens 15 Minuten). Ausgehendes HTTPS zur Bot-API genügt. Der Bot darf deshalb nicht gleichzeitig einen Webhook haben oder von einem anderen Programm abgefragt werden (Telegram meldet dann einen Konflikt, die Administration zeigt ihn an) – nimm einen eigenen Bot nur für Flowplan.
-
-**Ausgehende Verbindungen:** zu `api.telegram.org` (oder der eigenen API-Adresse), `ntfy.sh` und den Servern, die Personen angeben. Sie laufen über dieselbe Prüfung wie Link-Vorschauen und Webhooks: Adresse auflösen, interne Adressen abweisen, genau die geprüfte Adresse verwenden, keine Weiterleitungen. Abgewiesene Versuche erscheinen als Sicherheitsereignis „Interne Adresse abgewiesen (SSRF)“.
-
-Die Tokens der Personen und des Bots speichert Flowplan verschlüsselt wie andere [gespeicherte Geheimnisse](#gespeicherte-geheimnisse). Fehlt der Schlüssel nach einer Wiederherstellung, muss die Administration den Bot-Token neu eingeben; Verbindungen mit eigenem Token werden nach drei Fehlversuchen ausgeschaltet, und ihre Besitzer erfahren es im Posteingang.
-
-## Workflows
-
-Standards für [Workflows](/workflows); die [Administration](/administration#workflows) kann sie überschreiben.
-
-| Variable | Standard | Bedeutung |
-| --- | --- | --- |
-| `FLOWPLAN_WORKFLOWS` | `on` | Hauptschalter; `off`: keine neuen Workflow-Seiten, alle pausiert |
-| `FLOWPLAN_WORKFLOW_RUNS_PER_MINUTE` | 60 | Läufe je Minute und Workflow |
-| `FLOWPLAN_WORKFLOW_WORKSPACE_RUNS_PER_MINUTE` | 600 | Läufe je Minute und Arbeitsbereich |
-| `FLOWPLAN_WORKFLOW_STEPS_PER_RUN` | 200 | Schritte je Lauf |
-| `FLOWPLAN_WORKFLOW_CASCADE_DEPTH` | 5 | Tiefe gegenseitiger Auslösung |
-| `FLOWPLAN_WORKFLOW_FOREACH_MAX` | 100 | Elemente je „Für jedes“ |
-| `FLOWPLAN_WORKFLOW_AI_TOKENS_PER_DAY` | 100000 | KI-Tokens je Workflow und Tag (0 = KI-Knoten aus) |
-| `FLOWPLAN_WORKFLOW_MAILS_PER_DAY` | 100 | E-Mails je Workflow und Tag |
-| `FLOWPLAN_WORKFLOW_RUN_DAYS` | 30 | Aufbewahrung der Läufe in Tagen |
-| `FLOWPLAN_WORKFLOW_MAX_WAIT_DAYS` | 365 | längstes Warten bzw. Freigabefrist |
-| `FLOWPLAN_WORKFLOW_ACTIVE_PER_WORKSPACE` | 100 | aktive Workflows je Arbeitsbereich |
-| `FLOWPLAN_WORKFLOW_WORKERS` | 4 | gleichzeitige Schritte je Instanz |
-| `FLOWPLAN_WORKFLOW_HTTP` | `on` | HTTP-Knoten erlaubt |
-| `FLOWPLAN_WORKFLOW_HTTP_HOSTS` | leer | nur diese Hosts (kommagetrennt) |
-| `FLOWPLAN_WORKFLOW_HTTP_ALLOW_PRIVATE` | `false` | interne Adressen erlauben (Heimnetz, n8n) |
-| `FLOWPLAN_WORKFLOW_EXTERNAL_MAIL` | `on` | E-Mails an Adressen außerhalb der Mitglieder |
-| `FLOWPLAN_WORKFLOW_TEST_RUNS_PER_MINUTE` | 10 | Test- und Probeläufe je Person und Minute |
 
 ## Nicht setzen
 

@@ -1,3 +1,7 @@
+---
+keywords: SQLite, PostgreSQL, wechseln, Migration, Datenbank
+---
+
 # Datenbank wechseln: SQLite und PostgreSQL
 
 Mit dem mitgelieferten Werkzeug ziehst du eine Instanz von SQLite nach PostgreSQL um – oder zurück. Die Ausfallzeit ist das Kopieren selbst, meist wenige Minuten; jede Tabelle wird danach Zeile für Zeile verglichen.

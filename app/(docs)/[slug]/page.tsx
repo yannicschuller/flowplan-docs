@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { docSlugs, editUrl, loadDoc } from "@/lib/docs";
+import { docAnchors, docSlugs, editUrl, loadDoc } from "@/lib/docs";
+import { AnchorRedirect } from "@/components/docs/anchor-redirect";
 import { localePrefix, requestLocale } from "@/lib/i18n-server";
 import { websiteUrl } from "@/lib/links";
 import { trackAttrs } from "@/lib/track";
@@ -37,6 +38,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
   const doc = loadDoc(slug, locale);
   if (!doc) notFound();
   const prefix = await localePrefix();
+  const anchors = docAnchors(slug);
   // Links between pages stay in the language of the address.
   const html = prefix ? doc.html.replace(/href="\/(?=[a-z0-9-]+(?:#[^"]*)?")/g, `href="${prefix}/`) : doc.html;
   const structured = {
@@ -82,6 +84,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
         <p className={s.lead} lang={lang} dangerouslySetInnerHTML={{ __html: doc.leadHtml }} />
         <div className={s.prose} lang={lang} dangerouslySetInnerHTML={{ __html: html }} />
         <CodeCopy slug={slug} />
+        {anchors && <AnchorRedirect slug={slug} rows={anchors} />}
         <p className={s.meta}>
           {modified && (
             <span>

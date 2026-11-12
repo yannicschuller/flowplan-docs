@@ -1,3 +1,7 @@
+---
+keywords: Browser, Erweiterung, Chrome, Firefox, Web-Clipper, Lesezeichen
+---
+
 # Browser-Erweiterung
 
 Mit der Browser-Erweiterung speicherst du Webseiten mit einem Klick in Flowplan: den ganzen Artikel, nur die Auswahl, ein Lesezeichen oder einzelne Markierungen. Sie läuft in Chrome, Edge, Brave, Opera und Firefox.

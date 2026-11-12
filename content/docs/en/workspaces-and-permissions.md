@@ -1,6 +1,12 @@
-# Workspaces, members and permissions
+---
+keywords: invite team, members, roles, guests, groups, permissions, workspace
+---
+
+# Members, roles and permissions
 
 A workspace belongs to a team: its own members, groups, spaces and templates. Permissions work from the workspace via the space down to the single page and the single record.
+
+**More on this topic:** [Customizing a workspace](/workspace-appearance)
 
 ## Workspaces
 
@@ -10,47 +16,11 @@ A workspace belongs to a team: its own members, groups, spaces and templates. Pe
 
 When **leaving**, a last owner has to make someone else an owner first under **Settings → Members**; your own spaces are handed over to a remaining owner of your choice. **Deleting** is only possible once you have another workspace; it removes all content, templates, files and shares for all members and cannot be undone. Both are confirmed with the workspace's name.
 
-## Appearance
-
-Owners give the workspace a look of its own under **Settings → Appearance**, for example in your organisation's colours and typefaces. It applies to all members and guests while this workspace is open – switching to another workspace switches the look too – and also to its [published pages](/sharing) and [forms](/forms). Two preview cards show the changes in light and dark before you save; **Reset to default** brings back Flowplan's own look.
-
-- **Accent colour**: one from the selection or your own. Flowplan derives the colours for links, buttons, selections and highlights from it, separately for light and dark mode. So that text on the colour and the colour as text stay easy to read (at least 4.5 : 1 as WCAG asks), Flowplan darkens a colour that is too light (in dark mode it lightens one that is too dark) and shows you which colour it actually uses.
-- **Background**: Standard (warm), Neutral, Cool or Sepia – each with a matching dark counterpart. There are no free background colours, so text stays readable everywhere.
-- **Typefaces**: one each for the interface, for large headings and for code. You can choose Flowplan's own typefaces, the system font and about fifteen others, among them Inter, Atkinson Hyperlegible Next, IBM Plex, Source Sans/Serif/Code, Lora, Literata, Merriweather, EB Garamond and Fira Code. All of them are on your Flowplan server: the browser loads only the chosen ones, and no request goes to an outside font service. Pages whose font was changed to serif use the heading typeface.
-- **Own fonts**: a house font can be uploaded as WOFF2, WOFF, TTF or OTF (up to 5 MB, up to 20 per workspace) and then chosen for any of the three. It counts toward the workspace's [storage quota](#storage-quota) and is deleted with the workspace. Only upload fonts whose licence allows use on the web.
-
-Light or dark stays each person's own choice. Anyone who prefers to keep Flowplan's own look turns off **Settings → Appearance & language → Use the workspace's appearance**; this applies to your account in every workspace and on all devices.
-
-Custom CSS is deliberately not possible: CSS could quietly send content elsewhere, and it would break with updates of the app.
-
-The look and the uploaded fonts are part of the workspace's [content archive](/import-export-versions#content-archive). On import, an owner takes it over into a workspace that still has Flowplan's own look; a look that was already chosen stays.
-
-You'll find ready-made appearances, fonts included, in the [Flowplan Marketplace](https://marketplace.flowplan.org).
-
-## Automatic links
-
-Owners set up rules under **Settings → Workspace → Automatic links** that turn text like `ABC-123` into a link while you write – to the ticket in Jira or the issue on GitHub, for example. The rules apply to every member and guest of the workspace. Each rule has an optional name, a **pattern** (a regular expression, at most 200 characters), a **link template** and a switch to turn it off and on; up to 50 rules are possible.
-
-In the template, `{match}` stands for the whole match, `$1` to `$9` (or `{1}` to `{9}`) for the groups in parentheses. The values are inserted URL-encoded, and the template must start with `https://`, `http://` or `mailto:`. Examples:
-
-| Pattern | Link template | Text | becomes |
-| --- | --- | --- | --- |
-| `\bABC-\d+\b` | `https://jira.example.com/browse/{match}` | ABC-123 | https://jira.example.com/browse/ABC-123 |
-| `#(\d+)` | `https://github.com/acme/app/issues/$1` | #42 | https://github.com/acme/app/issues/42 |
-
-Under **Try it** you enter a sample text and see right away which parts become which link. Invalid patterns, patterns that match empty text, nested repeats like `(a+)+` (they can slow the browser down) and templates without a valid address are marked and not saved.
-
-You'll find ready-made link rules for common services in the [Flowplan Marketplace](https://marketplace.flowplan.org).
-
-## Print presets
-
-Under **Settings → Workspace → Print presets** owners create [print presets](/import-export-versions#print-presets) for everyone in the workspace – named print options such as “Clean for external” – and pick a default preset with the star. Members and guests pick them in the print window but cannot change them.
-
 ## Roles
 
 | Role | May |
 | --- | --- |
-| **Owner** | Everything, plus managing members, groups, spaces (including their order in the sidebar), [tags and page properties](/pages-and-spaces#tags-and-properties) and the workspace itself |
+| **Owner** | Everything, plus managing members, groups, spaces (including their order in the sidebar), [tags and page properties](/page-tags#tags-and-properties) and the workspace itself |
 | **Edit** | Create and change pages, set tags and property values, create new tags, comment, share |
 | **View** | Read and comment |
 | **Guest** | Only explicitly shared pages and spaces, with view or edit access |
@@ -75,7 +45,7 @@ Guests are people outside the team, such as customers or freelancers. They only 
 
 **Settings → Groups & permissions**: under **Groups** create a group such as "Design" or "Sales" and tick members with **Manage** (with a search when there are many). Under **Access to spaces** set each space's visibility and below it **View** or **Edit** per group; single pages get a group through **Share**. New members of a group get its permissions right away.
 
-With single sign-on, groups from the identity provider can maintain members and groups automatically – see [Map SSO groups](/sign-in#map-sso-groups-to-workspaces).
+With single sign-on, groups from the identity provider can maintain members and groups automatically – see [Map SSO groups](/sso-oidc#map-sso-groups-to-workspaces).
 
 ## How permissions work together
 

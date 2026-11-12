@@ -9,10 +9,13 @@ import { releases } from "./changelog";
 import { FACTS, fillFacts } from "./facts";
 import type { Locale } from "./i18n";
 import { synonymKeywords } from "./search";
+import type { AnchorMap } from "./anchors";
 import { appUrl, DISCORD_URL, GITHUB_URL, marketplaceUrl, MARKETPLACE_DEFAULT, websiteUrl } from "./links";
 import { outboundTarget } from "./track";
 
-export type DocGroup = { title: string; intro: string; pages: { slug: string; title: string }[] };
+export type DocGroup = { title: string; intro: string; area: AreaId; pages: { slug: string; title: string }[] };
+export type AreaId = "use" | "extend" | "run";
+export type DocArea = { id: AreaId; title: string; intro: string; groups: DocGroup[] };
 
 // The languages of Flowplan's interface, in both languages of the docs; the
 // llms.txt blurb and the overview are written from this list.
@@ -26,133 +29,132 @@ export const languageList = (locale: Locale) => {
   return `${names.slice(0, -1).join(", ")} ${locale === "de" ? "und" : "and"} ${names[names.length - 1]}`;
 };
 
-// Page order, groups and titles in both languages, with one line under each
-// group on the overview. English pages live in content/docs/en with the same
+type Pair = [de: string, en: string];
+// Three areas – using Flowplan, extending it, running it – with groups of
+// pages, each with one line on the overview. A page's title is the "# Title"
+// of its Markdown file. English pages live in content/docs/en with the same
 // file name; a missing one falls back to German.
-const groups: {
-  title: [de: string, en: string];
-  intro: [de: string, en: string];
-  pages: [slug: string, de: string, en: string][];
-}[] = [
+const areas: { id: AreaId; title: Pair; intro: Pair; groups: { title: Pair; intro: Pair; pages: string[] }[] }[] = [
   {
-    title: ["Einstieg", "Getting started"],
-    intro: [
-      "Konto, erster Arbeitsbereich, Seitenbaum, Mitglieder und Rechte.",
-      "Account, first workspace, page tree, members and permissions.",
-    ],
-    pages: [
-      ["first-steps", "Erste Schritte", "First steps"],
-      ["pages-and-spaces", "Seiten und Bereiche", "Pages and spaces"],
-      ["workspaces-and-permissions", "Arbeitsbereiche, Mitglieder und Rechte", "Workspaces, members and permissions"],
-      ["encrypted-spaces", "Verschlüsselte Bereiche", "Encrypted spaces"],
-      [
-        "migrate",
-        "Umzug von Notion, AppFlowy, AFFiNE, Obsidian, Confluence, Evernote, Google Docs, Microsoft Word, OneNote und GoodNotes",
-        "Moving from Notion, AppFlowy, AFFiNE, Obsidian, Confluence, Evernote, Google Docs, Microsoft Word, OneNote and GoodNotes",
-      ],
-      ["keyboard-shortcuts", "Tastenkürzel", "Keyboard shortcuts"],
-      ["languages", "Sprachen und Übersetzungen", "Languages and translations"],
+    id: "use",
+    title: ["Benutzen", "Using Flowplan"],
+    intro: ["Schreiben, planen, zeichnen und gemeinsam arbeiten – im Browser und in den Apps.", "Write, plan, draw and work together – in the browser and in the apps."],
+    groups: [
+      {
+        title: ["Einstieg", "Getting started"],
+        intro: ["Konto, erster Arbeitsbereich, Seitenbaum, Mitglieder und Rechte.", "Account, first workspace, page tree, members and permissions."],
+        pages: ["first-steps", "pages-and-spaces", "page-tags", "workspaces-and-permissions", "workspace-appearance", "encrypted-spaces", "keyboard-shortcuts", "languages"],
+      },
+      {
+        title: ["Umzug, Import und Export", "Moving, import and export"],
+        intro: ["Von Notion, AFFiNE, Obsidian und anderen umziehen, importieren, exportieren, drucken.", "Move from Notion, AFFiNE, Obsidian and others, import, export, print."],
+        pages: ["migrate", "migrate-affine", "migrate-office", "migrate-notes", "import-export-versions", "export", "print-and-pdf"],
+      },
+      {
+        title: ["Dokumente", "Documents"],
+        intro: ["Der Editor: Blöcke, Formatierung, Aufgaben, Medien, Formeln, Links und Präsentieren.", "The editor: blocks, formatting, tasks, media, formulas, links and presenting."],
+        pages: ["documents", "formatting", "tasks-in-documents", "media-and-files", "math-and-code", "links-and-mentions", "academic-writing", "reading-and-presenting"],
+      },
+      {
+        title: ["Whiteboards, Notizbücher und Journal", "Whiteboards, notebooks and journal"],
+        intro: ["Zeichnen, Diagramme, Handschrift und der Tag im Rückblick.", "Drawing, diagrams, handwriting and the day in review."],
+        pages: ["whiteboards", "whiteboard-diagrams", "whiteboard-collaboration", "whiteboard-racks", "notebooks", "journal", "dashboards"],
+      },
+      {
+        title: ["Datenbanken", "Databases"],
+        intro: ["Tabellen, Eigenschaften, Ansichten, Formeln, Formulare und Kontakte.", "Tables, properties, views, formulas, forms and contacts."],
+        pages: ["databases", "database-properties", "views", "properties-and-formulas", "forms", "contacts"],
+      },
+      {
+        title: ["Projekte und Automatisierung", "Projects and automation"],
+        intro: ["Tickets, Sprints, Git, Workflows und Vorlagen.", "Tickets, sprints, Git, workflows and templates."],
+        pages: ["projects-and-tickets", "git-and-issues", "workflows", "workflow-nodes", "templates", "marketplace"],
+      },
+      {
+        title: ["Zusammenarbeit und Suche", "Collaboration and search"],
+        intro: ["Gemeinsam arbeiten, teilen, finden und benachrichtigt werden.", "Work together, share, find things and get notified."],
+        pages: ["collaboration", "sharing", "search-and-notifications", "notifications"],
+      },
+      {
+        title: ["Apps und Geräte", "Apps and devices"],
+        intro: ["Offline, Desktop-App, Apps für iPhone, iPad und Android, Browser-Erweiterung.", "Offline, desktop app, apps for iPhone, iPad and Android, browser extension."],
+        pages: ["offline-and-apps", "desktop-app", "mobile-apps", "mobile-widgets", "mobile-capture", "desktop-capture", "browser-extension"],
+      },
+      {
+        title: ["KI", "AI"],
+        intro: ["Optionale KI – lokal oder mit eigenem Schlüssel: schreiben, fragen, Besprechungen.", "Optional AI – local or with your own key: writing, asking, meetings."],
+        pages: ["ai", "ai-writing", "ask-ai", "ai-actions", "meetings"],
+      },
     ],
   },
   {
-    title: ["Inhalte", "Content"],
-    intro: ["Schreiben, zeichnen, Tag für Tag festhalten.", "Write, draw, keep a record day by day."],
-    pages: [
-      ["documents", "Dokumente und Editor", "Documents and the editor"],
-      ["whiteboards", "Whiteboards", "Whiteboards"],
-      ["notebooks", "Notizbücher und Handschrift", "Notebooks and handwriting"],
-      ["dashboards", "Dashboards", "Dashboards"],
-      ["journal", "Journal", "Journal"],
-      ["templates", "Vorlagen", "Templates"],
-      ["marketplace", "Marketplace", "Marketplace"],
-      ["import-export-versions", "Import, Export und Versionen", "Import, export and versions"],
+    id: "extend",
+    title: ["Erweitern", "Extending"],
+    intro: ["Flowplan mit anderen Diensten verbinden und um eigene Blöcke erweitern.", "Connect Flowplan to other services and add your own blocks."],
+    groups: [
+      {
+        title: ["API und Integrationen", "API and integrations"],
+        intro: ["API, Webhooks, SDKs, E-Mail-Eingang, Chat, MCP und Block-Erweiterungen.", "API, webhooks, SDKs, inbound e-mail, chat, MCP and block extensions."],
+        pages: ["api-and-webhooks", "openapi", "inbound-email", "chat-notifications", "mcp", "plugins"],
+      },
     ],
   },
   {
-    title: ["Datenbanken und Projekte", "Databases and projects"],
-    intro: [
-      "Tabellen, Ansichten, Formeln, Formulare, Projektarbeit und Workflows.",
-      "Tables, views, formulas, forms, project work and workflows.",
-    ],
-    pages: [
-      ["databases", "Datenbanken", "Databases"],
-      ["views", "Ansichten", "Views"],
-      ["contacts", "Kontakte", "Contacts"],
-      ["properties-and-formulas", "Eigenschaften, Formeln und Rollups", "Properties, formulas and rollups"],
-      ["forms", "Formulare", "Forms"],
-      ["projects-and-tickets", "Projekte, Tickets und Sprints", "Projects, tickets and sprints"],
-      ["workflows", "Workflows", "Workflows"],
-      ["workflow-nodes", "Workflow-Knoten", "Workflow nodes"],
-    ],
-  },
-  {
-    title: ["Zusammenarbeit und Teilen", "Collaboration and sharing"],
-    intro: [
-      "Gemeinsam arbeiten, veröffentlichen, finden – auch offline und in den Apps.",
-      "Work together, publish, find things – offline and in the apps too.",
-    ],
-    pages: [
-      ["collaboration", "Zusammenarbeit und Kommentare", "Collaboration and comments"],
-      ["sharing", "Teilen und Veröffentlichen", "Sharing and publishing"],
-      ["search-and-notifications", "Suche, Posteingang und Push", "Search, inbox and push"],
-      ["offline-and-apps", "Offline, Web-App und Desktop", "Offline, web app and desktop"],
-      ["desktop-capture", "Schnell erfassen (Desktop)", "Quick capture (desktop)"],
-    ],
-  },
-  {
-    title: ["Erweiterungen", "Extensions"],
-    intro: [
-      "API, Webhooks, KI, MCP, eigene Blöcke und die Browser-Erweiterung.",
-      "API, webhooks, AI, MCP, custom blocks and the browser extension.",
-    ],
-    pages: [
-      ["api-and-webhooks", "API und Webhooks", "API and webhooks"],
-      ["ai", "KI", "AI"],
-      ["mcp", "MCP: KI-Assistenten", "MCP: AI assistants"],
-      ["browser-extension", "Browser-Erweiterung", "Browser extension"],
-      ["plugins", "Block-Erweiterungen", "Block extensions"],
-    ],
-  },
-  {
-    title: ["Selbst hosten", "Self-hosting"],
-    intro: [
-      "Flowplan auf dem eigenen Server: Docker, Anmeldung, Speicher, Sicherung und Betrieb.",
-      "Flowplan on your own server: Docker, sign-in, storage, backups and operations.",
-    ],
-    pages: [
-      ["installation", "Installation mit Docker", "Installation with Docker"],
-      ["administration", "Administration der Instanz", "Administering the instance"],
-      ["sign-in", "Anmeldung: Passwort, Passkeys und OIDC", "Sign-in: password, passkeys and OIDC"],
-      ["configuration", "Konfiguration", "Configuration"],
-      ["storage-and-backups", "Speicher, S3 und Sicherung", "Storage, S3 and backups"],
-      ["move-instance", "Instanz umziehen", "Moving an instance"],
-      ["coolify-and-proxy", "Coolify und Reverse Proxy", "Coolify and reverse proxies"],
-      ["operations", "Betrieb und Fehlersuche", "Operations and troubleshooting"],
-    ],
-  },
-  {
-    title: ["Skalieren", "Scaling"],
-    intro: [
-      "PostgreSQL statt SQLite, der Wechsel zwischen beiden, mehrere Instanzen und die passende Größe.",
-      "PostgreSQL instead of SQLite, switching between them, several instances and the right size.",
-    ],
-    pages: [
-      ["postgresql", "PostgreSQL", "PostgreSQL"],
-      ["database-migration", "Datenbank wechseln: SQLite und PostgreSQL", "Switching the database: SQLite and PostgreSQL"],
-      ["cluster", "Cluster-Modus", "Cluster mode"],
-      ["sizing", "Dimensionierung", "Sizing"],
+    id: "run",
+    title: ["Betreiben", "Running Flowplan"],
+    intro: ["Flowplan auf dem eigenen Server: installieren, anmelden, konfigurieren, sichern, überwachen, skalieren.", "Flowplan on your own server: install, sign-in, configure, back up, monitor, scale."],
+    groups: [
+      {
+        title: ["Installieren und umziehen", "Installing and moving"],
+        intro: ["Docker, ein Klick, Reverse Proxy und der Umzug auf einen neuen Server.", "Docker, one click, reverse proxies and moving to a new server."],
+        pages: ["installation", "one-click-deploy", "coolify-and-proxy", "move-instance", "move-instance-tool"],
+      },
+      {
+        title: ["Anmeldung und Administration", "Sign-in and administration"],
+        intro: ["Die Administration der Instanz, Benutzer, Passwort, Passkeys, SSO, SCIM und LDAP.", "Administering the instance, users, password, passkeys, SSO, SCIM and LDAP."],
+        pages: ["administration", "user-management", "sign-in", "sessions", "sso-oidc", "scim-and-ldap"],
+      },
+      {
+        title: ["Konfiguration", "Configuration"],
+        intro: ["Alle Umgebungsvariablen, nach Thema.", "Every environment variable, by topic."],
+        pages: ["configuration", "configuration-storage", "configuration-integrations", "configuration-ai-push"],
+      },
+      {
+        title: ["Speicher und Betrieb", "Storage and operations"],
+        intro: ["S3, Sicherungen, Verschlüsselung, Überwachung und Fehlersuche.", "S3, backups, encryption, monitoring and troubleshooting."],
+        pages: ["storage-and-backups", "storage-encryption", "markdown-git-export", "operations", "monitoring", "security-monitoring"],
+      },
+      {
+        title: ["Skalieren", "Scaling"],
+        intro: [
+          "PostgreSQL statt SQLite, der Wechsel zwischen beiden, mehrere Instanzen und die passende Größe.",
+          "PostgreSQL instead of SQLite, switching between them, several instances and the right size.",
+        ],
+        pages: ["postgresql", "database-migration", "cluster", "sizing"],
+      },
     ],
   },
 ];
 const pick = (locale: Locale, [de, en]: [string, string]) => (locale === "en" ? en : de);
-export function docGroups(locale: Locale = "de"): DocGroup[] {
-  return groups.map((g) => ({
-    title: pick(locale, g.title),
-    intro: pick(locale, g.intro),
-    pages: g.pages.map(([slug, de, en]) => ({ slug, title: pick(locale, [de, en]) })),
+export const docSlugs = areas.flatMap((a) => a.groups.flatMap((g) => g.pages));
+export function docAreas(locale: Locale = "de"): DocArea[] {
+  return areas.map((a) => ({
+    id: a.id,
+    title: pick(locale, a.title),
+    intro: pick(locale, a.intro),
+    groups: a.groups.map((g) => ({
+      title: pick(locale, g.title),
+      intro: pick(locale, g.intro),
+      area: a.id,
+      pages: g.pages.map((slug) => ({ slug, title: docTitle(slug, locale) })),
+    })),
   }));
 }
-export const docSlugs = groups.flatMap((g) => g.pages.map(([slug]) => slug));
+export function docGroups(locale: Locale = "de"): DocGroup[] {
+  return docAreas(locale).flatMap((a) => a.groups);
+}
+// The area a page belongs to.
+export const docArea = (slug: string): AreaId | undefined => areas.find((a) => a.groups.some((g) => g.pages.includes(slug)))?.id;
 
 export type TocEntry = { id: string; text: string; depth: number };
 export type Doc = {
@@ -342,8 +344,30 @@ export function lastModified(source: string): string | undefined {
   return modifiedDates![source];
 }
 
-// A page's Markdown with the counts filled in (see lib/facts.ts).
-export const docMarkdown = (slug: string, locale: Locale) => fillFacts(readFileSync(fileOf(slug, locale), "utf8"), locale);
+// Front matter at the top of a page: "---\nkeywords: a, b\n---". Only
+// keywords so far (for the search); the rest is the Markdown.
+export function frontMatter(text: string): { keywords: string[]; body: string } {
+  const m = text.match(/^---\n([\s\S]*?)\n---\n+/);
+  if (!m) return { keywords: [], body: text };
+  const line = m[1].match(/^keywords:\s*(.*)$/m)?.[1] ?? "";
+  return { keywords: line.split(",").map((k) => k.trim()).filter(Boolean), body: text.slice(m[0].length) };
+}
+const raw = (slug: string, locale: Locale) => frontMatter(readFileSync(fileOf(slug, locale), "utf8"));
+// A page's Markdown without front matter, with the counts filled in (see lib/facts.ts).
+export const docMarkdown = (slug: string, locale: Locale) => fillFacts(raw(slug, locale).body, locale);
+// The keywords of a page's front matter.
+export const docKeywords = (slug: string, locale: Locale) => raw(slug, locale).keywords;
+// A page's title, its "# Title" line.
+const titles = new Map<string, string>();
+export function docTitle(slug: string, locale: Locale) {
+  const k = `${locale}:${slug}`;
+  let title = titles.get(k);
+  if (title === undefined) {
+    title = raw(slug, locale).body.match(/^# (.+)$/m)?.[1]?.trim() || slug;
+    titles.set(k, title);
+  }
+  return title;
+}
 
 function read(slug: string, locale: Locale) {
   const text = docMarkdown(slug, locale);
@@ -391,27 +415,37 @@ export const WHATS_NEW = { slug: "whats-new", title: ["Was ist neu", "What's new
 export const whatsNewTitle = (locale: Locale) => pick(locale, WHATS_NEW.title);
 
 // Search index: every page with its sections and their plain text, so the
-// search box also finds words that only appear in the body. "keywords" holds
-// the synonyms of terms in the text (lib/search.ts), so "login" finds a
-// section about the Anmeldung and "S3" one about Speicher.
-export function docSearchIndex(locale: Locale = "de") {
-  const pages = docSlugs.map((slug) => {
+// search box also finds words that only appear in the body. "tags" are the
+// keywords of the page's front matter ("Kanban" on Views, "Notion" on the
+// move); "keywords" holds the synonyms of terms in the text (lib/search.ts),
+// so "login" finds a section about the Anmeldung and "S3" one about
+// Speicher. A level-3 section names its level-2 section as "parent", for the
+// breadcrumb "Page › Section › Subsection".
+export type DocSearchSection = { id: string; text: string; parent?: string; body: string; keywords: string };
+export type DocSearchPage = { slug: string; title: string; group: string; summary: string; text: string; tags: string[]; keywords: string; sections: DocSearchSection[] };
+export function docSearchIndex(locale: Locale = "de"): DocSearchPage[] {
+  const pages: DocSearchPage[] = docSlugs.map((slug) => {
     const doc = loadDoc(slug, locale)!;
     const parts = doc.html.split(/(?=<h[23] id=")/);
     const intro = parts[0].startsWith("<h") ? "" : parts.shift()!;
     const text = blockText(intro);
+    const tags = docKeywords(slug, locale);
+    let parent: string | undefined;
     return {
       slug,
       title: doc.title,
       group: doc.group,
       summary: doc.summary,
       text,
-      keywords: synonymKeywords(`${doc.title} ${doc.summary} ${text}`),
+      tags,
+      keywords: synonymKeywords(`${doc.title} ${doc.summary} ${tags.join(" ")} ${text}`),
       sections: parts.map((part) => {
         const id = part.match(/^<h[23] id="([^"]+)"/)![1];
-        const heading = plain(part.slice(0, part.indexOf("</h")).replace(/<a class="anchor"[^>]*>#<\/a>/, ""));
+        const heading = plain(part.slice(0, part.indexOf("</h")).replace(/<a class="anchor"[^>]*>#<\/a>/, "")).trim();
         const body = blockText(part.slice(part.indexOf("</h") + 5));
-        return { id, text: heading.trim(), body, keywords: synonymKeywords(`${heading} ${body}`) };
+        const level3 = part.startsWith("<h3");
+        if (!level3) parent = heading;
+        return { id, text: heading, ...(level3 && parent ? { parent } : {}), body, keywords: synonymKeywords(`${heading} ${body}`) };
       }),
     };
   });
@@ -425,6 +459,7 @@ export function docSearchIndex(locale: Locale = "de") {
     group: title,
     summary,
     text: "",
+    tags: locale === "en" ? ["changelog", "release notes", "new"] : ["Changelog", "Versionshinweise", "neu"],
     keywords: synonymKeywords(`${title} ${summary}`),
     sections: releases().map((r) => {
       const body = r.entries.map((e) => e.text).join(" ");
@@ -433,7 +468,7 @@ export function docSearchIndex(locale: Locale = "de") {
   });
   return pages;
 }
-export type DocSearchEntry = ReturnType<typeof docSearchIndex>[number];
+export type DocSearchEntry = DocSearchPage;
 
 // A short fingerprint of all Markdown files: the browser fetches the search
 // index as /api/search-index/<locale>?v=<version>, so the address changes
@@ -493,4 +528,17 @@ export function llmsFull(base: string, locale: Locale) {
       return `<!-- ${base}/${locale}/${slug} -->\n\n${text}`;
     })
     .join("\n\n---\n\n");
+}
+
+// Old anchors of a page that lead elsewhere now (lib/anchors.ts).
+let anchorMap: AnchorMap | undefined;
+export function docAnchors(slug: string) {
+  if (!anchorMap) {
+    try {
+      anchorMap = JSON.parse(readFileSync(join(process.cwd(), "content", "anchor-map.json"), "utf8")) as AnchorMap;
+    } catch {
+      anchorMap = {};
+    }
+  }
+  return anchorMap[slug];
 }

@@ -1,3 +1,7 @@
+---
+keywords: contacts, crm, address book, vcard, carddav, ldap
+---
+
 # Contacts
 
 A contacts database is an address book for people: every record has a profile page with a contact card, with room for notes below. Contacts can be imported from an LDAP directory and kept in sync, imported and exported as vCard, and subscribed to as an address book (CardDAV) on your phone.
@@ -53,7 +57,7 @@ The address book icon in the database toolbar opens the **Contacts** menu:
 
 ## Contacts from the LDAP directory
 
-When an LDAP directory is set up (see [Contacts from LDAP](/sign-in#contacts-from-ldap)), editors of a contacts database import people from it.
+When an LDAP directory is set up (see [Contacts from LDAP](/scim-and-ldap#contacts-from-ldap)), editors of a contacts database import people from it.
 
 The directory is only for people of the organisation: instance administrators, accounts that sign in with LDAP, and full members (not guests) of at least one workspace someone else created. Guests of the contacts database's workspace can never browse or import it, and neither can an API token. Anyone without access sees **Import from LDAP** greyed out with the reason.
 
@@ -75,7 +79,7 @@ The directory is only for people of the organisation: instance administrators, a
 | Birthday | `birthDate`, `dateOfBirth` (if present) |
 | Photo | `thumbnailPhoto`, `jpegPhoto` (JPEG/PNG up to 256 KB) |
 
-Only allowed attributes can be mapped: those of the default mapping and the ones the administration allows on top (`LDAP_CONTACTS_ATTRIBUTES` or **More attributes**, see [Contacts from LDAP](/sign-in#contacts-from-ldap)). The dialog lists the allowed attributes; a mapping with any other one is refused. When the administration takes an attribute off the list again, the sync stops reading it too.
+Only allowed attributes can be mapped: those of the default mapping and the ones the administration allows on top (`LDAP_CONTACTS_ATTRIBUTES` or **More attributes**, see [Contacts from LDAP](/scim-and-ldap#contacts-from-ldap)). The dialog lists the allowed attributes; a mapping with any other one is refused. When the administration takes an attribute off the list again, the sync stops reading it too.
 
 **Sync** – directory → Flowplan only:
 
