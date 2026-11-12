@@ -1,5 +1,6 @@
 ---
 keywords: Tastatur, Kürzel, Hotkeys, Cmd, Strg
+filter: true
 ---
 
 # Tastenkürzel

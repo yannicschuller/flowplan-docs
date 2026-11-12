@@ -7,7 +7,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { Marked } from "marked";
-import { docAnchors, docAreas, docKeywords, docMarkdown, docSearchIndex, docSlugs, frontMatter, headingId, loadDoc } from "../lib/docs";
+import { docAnchors, docAreas, docKeywords, docMarkdown, docSearchIndex, docSlugs, docSource, frontMatter, headingId, loadDoc } from "../lib/docs";
 import { resolveAnchor, type AnchorMap } from "../lib/anchors";
 import { editDistance, searchDocs, sentence, suggest } from "../lib/search";
 import { LOCALES, type Locale } from "../lib/i18n";
@@ -124,7 +124,8 @@ test("old anchors resolve, also in the other language", () => {
 
 test("pages are at most about 2,600 words, in both languages", () => {
   for (const locale of LOCALES)
-    for (const slug of docSlugs) {
+    // Reference pages (lib/reference.ts) are long tables to filter, not text to read.
+    for (const slug of docSlugs.filter((slug) => !loadDoc(slug, locale)!.filter || !/\{\{\s*reference:/.test(readFileSync(docSource(slug, locale), "utf8")))) {
       const words = docMarkdown(slug, locale).split(/\s+/).length;
       assert.ok(words <= 2800, `${locale}/${slug}: ${words} words`);
     }

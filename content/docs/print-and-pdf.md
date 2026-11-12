@@ -1,5 +1,6 @@
 ---
 keywords: Drucken, PDF, Seitenumbruch, Druckvorlage, Querformat
+new: seitenumbruch 2026-11-12
 ---
 
 # Drucken und PDF

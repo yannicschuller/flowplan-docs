@@ -1,5 +1,6 @@
 ---
 keywords: keyboard, shortcuts, hotkeys, cmd, ctrl
+filter: true
 ---
 
 # Keyboard shortcuts

@@ -1,5 +1,6 @@
 ---
 keywords: Erscheinungsbild, Logo, Farben, Schrift, Branding, automatische Links, Druckvorlage
+new: druckvorlagen 2026-11-12
 ---
 
 # Arbeitsbereich gestalten
