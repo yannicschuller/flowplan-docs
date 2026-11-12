@@ -27,10 +27,12 @@ What is never included: a workflow's credentials, runs and webhook addresses, th
 
 ## Taking over
 
-1. On a template's page in the marketplace, choose **Open in Flowplan** and enter your instance's address once (e.g. `https://flowplan.example.org`). It stays in your browser only.
+1. On a template's page in the marketplace, choose **Open in Flowplan**. Without a saved instance it says **Open in app.flowplan.org** – for the hosted Flowplan one click is enough. For your own instance, choose **Use your own instance …** and enter its address once (e.g. `https://flowplan.example.org`); from then on the button says **Open in flowplan.example.org**, and **Change instance** brings the field back. The address stays in your browser only.
 2. Flowplan opens in a new window and receives the template. If you're not signed in, sign in first – the template waits in your browser meanwhile (up to 24 hours).
 3. A preview shows the title, kind, author, licence and **what will be created**. For workflows you see every node, the external services it talks to, whether it uses AI steps or sends e-mail – and what you need to set in the editor after the import.
 4. Choose the workspace and space (for workflows also the parent page) and **Take over**.
+
+When you come to the marketplace from Flowplan – via **More templates in the marketplace** in the template gallery, **Open the marketplace** under **Settings → Import & export**, or when publishing – the marketplace remembers your instance by itself and briefly shows **Instance saved: <address> · change** once. You don't have to type the address at all.
 
 Workflows always arrive **paused, as a draft**. Check them, fill in what's missing and activate them yourself.
 
@@ -41,7 +43,7 @@ Flowplan checks every file again itself: size (25 MB at most), the file's struct
 ## Privacy
 
 - **Your instance never connects to the marketplace.** The hand-over runs in your browser between the two windows; Flowplan only sends to the configured marketplace address and only accepts something from there.
-- The marketplace doesn't learn your instance's address. It only counts anonymously how often a template was downloaded or opened in Flowplan – without IP addresses and without cookies for visitors.
+- The marketplace's server doesn't learn your instance's address. Flowplan adds it to its marketplace links only after the `#`, a part browsers never send to a server; the marketplace keeps it in your browser and removes it from the address bar right away. It only counts anonymously how often a template was downloaded or opened in Flowplan – without IP addresses and without cookies for visitors.
 - When you publish, only the file you saw in the dialog goes to the marketplace.
 
 ## Switching it off

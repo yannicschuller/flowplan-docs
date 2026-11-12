@@ -27,10 +27,12 @@ Was nie mitkommt: Zugangsdaten, Läufe und Webhook-Adressen eines Workflows, die
 
 ## Übernehmen
 
-1. Auf der Seite einer Vorlage im Marketplace **In Flowplan öffnen** wählen und einmal die Adresse deiner Instanz angeben (zum Beispiel `https://flowplan.example.org`). Sie bleibt nur in deinem Browser.
+1. Auf der Seite einer Vorlage im Marketplace **In Flowplan öffnen** wählen. Ohne gespeicherte Instanz steht dort **In app.flowplan.org öffnen** – für das gehostete Flowplan reicht ein Klick. Für deine eigene Instanz wählst du **Eigene Instanz verwenden …** und gibst einmal ihre Adresse an (zum Beispiel `https://flowplan.example.org`); danach heißt die Schaltfläche **In flowplan.example.org öffnen**, **Instanz ändern** bringt das Feld zurück. Die Adresse bleibt nur in deinem Browser.
 2. Flowplan öffnet sich in einem neuen Fenster und bekommt die Vorlage. Bist du nicht angemeldet, meldest du dich zuerst an – die Vorlage wartet so lange in deinem Browser (bis zu 24 Stunden).
 3. Eine Vorschau zeigt Titel, Art, Autorin oder Autor, Lizenz und **was entsteht**. Bei Workflows siehst du alle Knoten, die externen Dienste, die er anspricht, ob er KI-Schritte nutzt oder E-Mails verschickt – und was du nach dem Import im Editor festlegen musst.
 4. Arbeitsbereich und Bereich (bei Workflows auch die übergeordnete Seite) wählen und **Übernehmen**.
+
+Kommst du aus Flowplan in den Marketplace – über **Mehr Vorlagen im Marketplace** in der Vorlagen-Galerie, **Marketplace öffnen** unter **Einstellungen → Import & Export** oder beim Veröffentlichen –, merkt sich der Marketplace deine Instanz von selbst und zeigt einmal kurz **Instanz übernommen: <Adresse> · ändern**. Du musst die Adresse dann gar nicht eintippen.
 
 Workflows kommen immer **pausiert, als Entwurf** an. Prüfe sie, ergänze fehlende Angaben und aktiviere sie selbst.
 
@@ -41,7 +43,7 @@ Flowplan prüft jede Datei selbst noch einmal: Größe (höchstens 25 MB), Aufba
 ## Datenschutz
 
 - **Deine Instanz verbindet sich nie mit dem Marketplace.** Die Übergabe läuft in deinem Browser zwischen den beiden Fenstern; Flowplan schickt nur an die eingestellte Marketplace-Adresse und nimmt nur von dort etwas an.
-- Der Marketplace erfährt die Adresse deiner Instanz nicht. Er zählt nur anonym, wie oft eine Vorlage heruntergeladen oder in Flowplan geöffnet wurde – ohne IP-Adressen und ohne Cookies für Besucher.
+- Der Marketplace-Server erfährt die Adresse deiner Instanz nicht. Flowplan hängt sie an seine Marketplace-Links nur als Teil hinter dem `#` an, den Browser nie an einen Server schicken; der Marketplace speichert sie in deinem Browser und entfernt sie sofort aus der Adresszeile. Er zählt nur anonym, wie oft eine Vorlage heruntergeladen oder in Flowplan geöffnet wurde – ohne IP-Adressen und ohne Cookies für Besucher.
 - Beim Veröffentlichen geht nur die Datei an den Marketplace, die du im Dialog gesehen hast.
 
 ## Ausschalten
