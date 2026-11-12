@@ -51,7 +51,7 @@ Short animations show what just moved: cards and rows glide into their new place
 
 ## Customize your home page
 
-The home page is yours: **Customize** at the top right (or “Customize home page” in quick search) lets you arrange it from widgets the way you work. On phones everything sits in one column, on tablets in two, on large screens in three or four – the iPhone, iPad and Android apps and the desktop app show the same home page.
+The home page is yours: **Customize** at the top right (or “Customize home page” in quick search) lets you arrange it from widgets the way you work. On phones everything sits in one column, on tablets in two, on large screens in three or four – the iPhone, iPad and Android apps and the desktop app show the same home page. Widgets of different heights leave no gaps: the first row follows your order from left to right, then each widget moves into the column with the least above it – so next to a tall **My activity**, short widgets such as **Agenda** stack on top of each other. Wide widgets sit under the lowest point of the columns they cover. With the keyboard and a screen reader you still go through the widgets in your order.
 
 ![The home page while customizing: a bar with Widget, Appearance, Cancel and Done, a header with a gradient and widgets with handle, arrows, size, settings and remove](/screenshots/home-customize.webp "The home page while customizing: greeting, my tasks, scratchpad, focus & time, agenda and journal today.")
 

@@ -27,6 +27,8 @@ A page made of tiles: metrics, charts and views of your databases, tasks due, yo
 - Choose the **size** in the tile menu: Small (a quarter), Medium (half), Large (two thirds) or Full width. On phones all tiles stack.
 - **Configure …** changes source, title and values; **Remove** deletes the tile.
 
+Tiles of different heights leave no gaps: the first row follows the order from left to right, then each tile moves up into the column with the least above it. Wide tiles sit under the lowest point of the columns they cover. Edit mode shows the same arrangement.
+
 **Done** leaves edit mode. Every change is saved right away.
 
 ## Permissions

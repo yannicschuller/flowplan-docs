@@ -27,6 +27,8 @@ Eine Seite aus Kacheln: Kennzahlen, Diagramme und Ansichten deiner Datenbanken, 
 - Im Kachel-Menü die **Größe** wählen: Klein (ein Viertel), Mittel (die Hälfte), Groß (zwei Drittel) oder Volle Breite. Auf dem Telefon stehen alle Kacheln untereinander.
 - **Einstellen …** ändert Quelle, Titel und Werte; **Entfernen** löscht die Kachel.
 
+Kacheln unterschiedlicher Höhe lassen keine Lücken: Die erste Reihe folgt der Reihenfolge von links nach rechts, danach rückt jede Kachel nach oben in die Spalte, in der darüber am wenigsten steht. Breite Kacheln stehen unter der niedrigsten Stelle der Spalten, die sie überdecken. Im Bearbeitungsmodus siehst du dieselbe Anordnung.
+
 **Fertig** beendet den Bearbeitungsmodus. Jede Änderung wird sofort gespeichert.
 
 ## Rechte
