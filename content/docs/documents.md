@@ -1,5 +1,6 @@
 ---
 keywords: Editor, Blöcke, Blockmenü, Slash, Markdown, schreiben, Absatz
+new: aufklappbare-bloecke 2026-11-12
 ---
 
 # Dokumente und Editor
@@ -57,12 +58,14 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 
 ## Aufklappbare Blöcke
 
-Ein **aufklappbarer Block** (`/toggle`) hat einen Titel und darunter Inhalt, der sich ein- und ausklappen lässt.
+Ein **aufklappbarer Block** hat einen Titel und darunter Inhalt, der sich ein- und ausklappen lässt. Du legst ihn mit `/toggle` an oder tippst am Anfang einer leeren Zeile `>` und ein Leerzeichen. Der Cursor steht dann im leeren Titel (grau „Aufklappbarer Block“); Text, der schon hinter `>` steht, wird zum Titel.
 
 - **Ein- und ausklappen:** Klick (oder Tipp) auf den Pfeil vor dem Titel. Mit der Tastatur: <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> (Windows/Linux: <kbd>Strg</kbd> <kbd>Alt</kbd> <kbd>Enter</kbd>) im Inhalt klappt ein und setzt den Cursor in den Titel, dort klappen dieselben Tasten wieder auf.
-- **Titel bearbeiten:** Ein Klick in den Titel setzt den Cursor hinein. <kbd>Enter</kbd> oder <kbd>↓</kbd> springt in den Inhalt (und klappt ihn auf), <kbd>↑</kbd> am Anfang des Inhalts zurück in den Titel.
+- **Titel bearbeiten:** Ein Klick in den Titel setzt den Cursor hinein. Bei einem aufgeklappten Block springen <kbd>Enter</kbd> oder <kbd>↓</kbd> in den Inhalt, <kbd>↑</kbd> am Anfang des Inhalts zurück in den Titel. Bei einem eingeklappten Block klappt <kbd>↓</kbd> ihn auf und springt in den Inhalt.
+- **Liste aus aufklappbaren Blöcken:** <kbd>Enter</kbd> am Ende des Titels eines **eingeklappten** Blocks legt direkt darunter einen neuen, eingeklappten Block an, der Cursor steht in seinem Titel – praktisch für häufige Fragen. <kbd>Enter</kbd> in einem **leeren** Titel beendet die Liste: Der Block wird ein normaler Absatz, sein Inhalt bleibt darunter stehen.
+- **Aus vorhandenem Text:** Im Blockmenü macht **Umwandeln in … → Aufklappbarer Block** aus einem Absatz einen aufklappbaren Block mit dem Text als Titel. Aus einem Listenpunkt wird ein Block mit dem Text des Punkts als Titel, seine eingerückten Unterpunkte kommen in den Inhalt. Ein Mal **Rückgängig** macht das wieder rückgängig.
 - **Nichts geht verloren:** Kommt der Cursor in einen eingeklappten Block (Pfeiltasten, Rückgängig) oder springt **Auf der Seite suchen** zu einem Treffer darin, klappt er auf. Klappst du ein, während der Cursor darin steht, wandert der Cursor vor den Block.
-- **Nur für dich:** Wie bei [eingeklappten Abschnitten](/reading-and-presenting#abschnitte-einklappen) ändert das Einklappen das Dokument nicht – andere, die gleichzeitig bearbeiten, sehen ihren eigenen Zustand, und beim nächsten Öffnen ist der Block wieder aufgeklappt. Gespeichert, exportiert (Markdown `<details>`, HTML) und veröffentlicht wird er immer aufgeklappt; Lesende klappen dort selbst ein.
+- **Nur für dich:** Wie bei [eingeklappten Abschnitten](/reading-and-presenting#abschnitte-einklappen) ändert das Einklappen das Dokument nicht – andere, die gleichzeitig bearbeiten, sehen ihren eigenen Zustand. Was du eingeklappt hast, merkt sich dein Browser bzw. die App auf diesem Gerät für dein Konto: Beim nächsten Öffnen der Seite ist es wieder eingeklappt. Auf einem anderen Gerät sind die Blöcke aufgeklappt. Gespeichert, exportiert (Markdown `<details>`, HTML) und veröffentlicht wird ein Block immer aufgeklappt; Lesende klappen dort selbst ein. Ein Block ohne Titel wird in Markdown mit leerem `<summary></summary>` exportiert und kommt beim Import genauso zurück.
 - Im **Lesemodus** klappt ein Klick auf die ganze Titelzeile ein und aus.
 
 ## Antworten aus ChatGPT einfügen
@@ -88,10 +91,13 @@ Beim Tippen wandelt der Editor um:
 | `-` oder `*` + Leerzeichen | Aufzählung |
 | `1.` + Leerzeichen | Nummerierte Liste |
 | `[]` + Leerzeichen | Aufgabe |
-| `>` + Leerzeichen | Zitat |
+| `>` + Leerzeichen | [Aufklappbarer Block](#aufklappbare-bloecke) (oder Zitat, siehe unten) |
+| `"` + Leerzeichen | Zitat (auch mit „ “ ”) |
 | ` ``` ` | Codeblock |
 | `---` | Trennlinie |
 | `**fett**`, `*kursiv*`, `` `code` ``, `~~durch~~` | Formatierung im Text |
+
+**`>` als Zitat:** Wer `>` wie in Markdown für Zitate gewohnt ist, stellt unter **Einstellungen → Darstellung & Sprache → Editor → „>“ erzeugt** auf **Zitat** um. Die Einstellung gilt für dein Konto auf allen Geräten. Sie betrifft nur das Tippen: In importierten Markdown-Dateien und in eingefügten Antworten aus ChatGPT & Co. wird `> Text` wie bisher ein Zitat, und der Markdown-Export schreibt Zitate weiter als `> Text`.
 
 Codeblöcke tragen ihre Sprache im Zaun: ` ```python `, ` ```typescript `, ` ```terraform `. Der Export schreibt die Kennungen von VS Code bzw. Shiki; der Import versteht auch Kürzel und ältere Namen (`js`, `ts`, `py`, `sh`, `yml`, `cpp`, `csharp`, `plaintext` …) und speichert sie mit der vollen Kennung (` ```js ` wird zu JavaScript, beim nächsten Export ` ```javascript `). Unbekannte Sprachen bleiben erhalten und erscheinen im Block als „(importiert)“, ohne Hervorhebung.
 
@@ -114,7 +120,7 @@ Ein Klick auf den Griff öffnet das **Blockmenü** (am Handy von unten):
 - **Nach oben** / **Nach unten** – am Nachbarn vorbei
 - **Verschieben unter …** – direkt unter eine Überschrift der Seite, an den Anfang oder ans Ende
 - **Duplizieren** und **Löschen**
-- **Umwandeln in …** – Text, Überschrift 1–3, Aufzählung, nummerierte Liste, Aufgabenliste, Zitat, Hinweis oder Code; Listenpunkte wechseln die Listenart, Zitate und Hinweise lassen sich auflösen
+- **Umwandeln in …** – Text, Überschrift 1–3, Aufzählung, nummerierte Liste, Aufgabenliste, Zitat, Hinweis, [aufklappbarer Block](#aufklappbare-bloecke) oder Code; Listenpunkte wechseln die Listenart oder werden zum aufklappbaren Block (mit ihren Unterpunkten als Inhalt), Zitate und Hinweise lassen sich auflösen
 - **Hinweistyp**, **Symbol** und **Farbe** (Hinweise), **Breite** (Videos und Einbettungen) und **Textrichtung**, wo sie passen
 - **Mehrere auswählen** – der Auswahlmodus
 

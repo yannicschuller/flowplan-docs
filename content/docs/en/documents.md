@@ -1,5 +1,6 @@
 ---
 keywords: editor, blocks, block menu, slash command, markdown, write, paragraph
+new: toggles 2026-11-12
 ---
 
 # Documents and the editor
@@ -57,12 +58,14 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 
 ## Toggles
 
-A **toggle** (`/toggle`) has a title and content below it that folds in and out.
+A **toggle** has a title and content below it that folds in and out. Insert one with `/toggle`, or type `>` and a space at the start of an empty line. The cursor lands in the empty title (grey "Toggle"); text already after the `>` becomes the title.
 
 - **Collapse and expand:** click (or tap) the arrow in front of the title. By keyboard: <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> (Windows/Linux: <kbd>Ctrl</kbd> <kbd>Alt</kbd> <kbd>Enter</kbd>) in the content collapses it and puts the cursor in the title, where the same keys expand it again.
-- **Edit the title:** a click in the title puts the cursor there. <kbd>Enter</kbd> or <kbd>↓</kbd> moves into the content (expanding it), <kbd>↑</kbd> at the start of the content back to the title.
+- **Edit the title:** a click in the title puts the cursor there. In an expanded toggle, <kbd>Enter</kbd> or <kbd>↓</kbd> moves into the content, and <kbd>↑</kbd> at the start of the content moves back to the title. In a collapsed toggle, <kbd>↓</kbd> expands it and moves into the content.
+- **A list of toggles:** <kbd>Enter</kbd> at the end of the title of a **collapsed** toggle adds a new collapsed toggle right below it, with the cursor in its title – handy for an FAQ. <kbd>Enter</kbd> in an **empty** title ends the list: the toggle becomes a normal paragraph, its content stays below.
+- **From existing text:** in the block menu, **Turn into … → Toggle** turns a paragraph into a toggle with the text as its title. A list item becomes a toggle with the item's text as its title, and its indented sub-items go into the content. A single **Undo** reverses it.
 - **Nothing gets lost:** when the cursor gets into a collapsed toggle (arrow keys, undo) or **Find on page** goes to a match in it, it expands. Collapse it while the cursor is inside, and the cursor moves in front of the toggle.
-- **Just for you:** as with [collapsed sections](/reading-and-presenting#collapsing-sections), collapsing does not change the document – others editing at the same time keep their own state, and the toggle is expanded again the next time you open the page. It is always stored, exported (Markdown `<details>`, HTML) and published expanded; readers collapse it there themselves.
+- **Just for you:** as with [collapsed sections](/reading-and-presenting#collapsing-sections), collapsing does not change the document – others editing at the same time keep their own state. Your browser or the app remembers what you collapsed on this device for your account, so it is still collapsed the next time you open the page. On another device the toggles are expanded. A toggle is always stored, exported (Markdown `<details>`, HTML) and published expanded; readers collapse it there themselves. A toggle without a title is exported to Markdown with an empty `<summary></summary>` and comes back the same way on import.
 - In **reading mode** a click on the whole title line collapses and expands it.
 
 ## Pasting answers from ChatGPT
@@ -88,10 +91,13 @@ While you type, the editor converts:
 | `-` or `*` + space | Bulleted list |
 | `1.` + space | Numbered list |
 | `[]` + space | Task |
-| `>` + space | Quote |
+| `>` + space | [Toggle](#toggles) (or quote, see below) |
+| `"` + space | Quote (also with „ “ ”) |
 | ` ``` ` | Code block |
 | `---` | Divider |
 | `**bold**`, `*italic*`, `` `code` ``, `~~strike~~` | Formatting in the text |
+
+**`>` as a quote:** if you are used to `>` for quotes from Markdown, switch **Settings → Appearance & language → Editor → “>” creates** to **Quote**. The setting applies to your account on all devices. It only affects typing: in imported Markdown files and in answers pasted from ChatGPT & co., `> text` becomes a quote as before, and the Markdown export still writes quotes as `> text`.
 
 Code blocks carry their language in the fence: ` ```python `, ` ```typescript `, ` ```terraform `. The export writes the ids of VS Code/Shiki; the import also understands aliases and older names (`js`, `ts`, `py`, `sh`, `yml`, `cpp`, `csharp`, `plaintext` …) and stores them with the full id (` ```js ` becomes JavaScript, exported again as ` ```javascript `). Unknown languages are kept and show as "(imported)" in the block, without highlighting.
 
@@ -114,7 +120,7 @@ A click on the handle opens the **block menu** (from the bottom on phones):
 - **Move up** / **Move down** – past the neighbour
 - **Move below …** – right below a heading of the page, to the top or to the end
 - **Duplicate** and **Delete**
-- **Turn into …** – text, heading 1–3, bulleted list, numbered list, task list, quote, callout or code; list items switch the kind of list, quotes and callouts can be dissolved
+- **Turn into …** – text, heading 1–3, bulleted list, numbered list, task list, quote, callout, [toggle](#toggles) or code; list items switch the kind of list or become a toggle (with their sub-items as its content), quotes and callouts can be dissolved
 - **Callout type**, **Symbol** and **Colour** (callouts), **Width** (videos and embeds) and **Text direction** where they fit
 - **Select several** – the selection mode
 
