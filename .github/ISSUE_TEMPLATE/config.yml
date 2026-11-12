@@ -1,8 +1,12 @@
+# All issues live in the flowplan repository – this one has no issue forms.
 blank_issues_enabled: false
 contact_links:
-  - name: Bug, idea or question about Flowplan itself
+  - name: Documentation is missing, wrong or unclear – or the docs site is broken
+    url: https://github.com/yannicschuller/flowplan/issues/new?template=documentation.yml
+    about: Issues about the docs are collected in the flowplan repository.
+  - name: Bug, idea or question about Flowplan
     url: https://github.com/yannicschuller/flowplan/issues/new/choose
-    about: This repository is only about the documentation site.
+    about: All issues are collected in the flowplan repository.
   - name: Security issue
     url: https://github.com/yannicschuller/flowplan/security/advisories/new
     about: Please report vulnerabilities in Flowplan privately, never in a public issue.
