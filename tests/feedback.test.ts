@@ -4,7 +4,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { feedbackUrl } from "../lib/docs";
 
-test("feedback: the "Documentation" form of the flowplan repository, naming the page, in the page's language", () => {
+test("feedback: the Documentation form of the flowplan repository, naming the page, in the page's language", () => {
   for (const [locale, title] of [
     ["de", "Doku: „Installation mit Docker“ hat nicht geholfen"],
     ["en", "Docs: “Installation with Docker” didn't help"],
