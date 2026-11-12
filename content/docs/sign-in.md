@@ -43,7 +43,7 @@ Unter **Einstellungen → Konto & Sicherheit** stehen in der Karte **Anmeldung &
 
 ## Zwei-Faktor-Anmeldung
 
-Konten mit E-Mail und Passwort können zusätzlich eine Authenticator-App nutzen, etwa Aegis, 2FAS, Google Authenticator oder 1Password.
+Konten mit E-Mail und Passwort können zusätzlich eine Authenticator-App nutzen (Zwei-Faktor-Authentifizierung, 2FA), etwa Aegis, 2FAS, Google Authenticator oder 1Password.
 
 1. **Einstellungen → Konto & Sicherheit → Zwei-Faktor-Anmeldung → Authenticator-App einrichten.**
 2. Den QR-Code mit der App scannen – oder den angezeigten Schlüssel abtippen.

@@ -43,7 +43,7 @@ Under **Settings → Account & security**, the card **Sign-in & security** lists
 
 ## Two-factor sign-in
 
-Accounts with e-mail and password can add an authenticator app, such as Aegis, 2FAS, Google Authenticator or 1Password.
+Accounts with e-mail and password can add an authenticator app (two-factor authentication, 2FA), such as Aegis, 2FAS, Google Authenticator or 1Password.
 
 1. **Settings → Account & security → Two-factor sign-in → Set up an authenticator app.**
 2. Scan the QR code with the app – or type the key shown.
