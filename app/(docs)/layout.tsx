@@ -6,7 +6,7 @@ import { translate } from "@/lib/i18n";
 import { LanguageSwitch } from "@/components/i18n";
 import s from "@/components/docs/docs.module.css";
 import { trackAttrs } from "@/lib/track";
-import { DISCORD_URL, GITHUB_URL, imprintUrl, privacyUrl, SPONSOR_URL, websiteUrl } from "@/lib/links";
+import { DISCORD_URL, GITHUB_URL, imprintUrl, marketplaceUrl, privacyUrl, SPONSOR_URL, websiteUrl } from "@/lib/links";
 
 // The documentation: same paper and ink as the website, calmer.
 export default async function DocsLayout({ children }: { children: React.ReactNode }) {
@@ -14,7 +14,8 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
   const t = translate(locale);
   const prefix = await localePrefix();
   const imprint = imprintUrl(),
-    privacy = privacyUrl();
+    privacy = privacyUrl(),
+    marketplace = marketplaceUrl();
   return (
     <div className={s.root}>
       <a href="#inhalt" className={s.skip}>
@@ -33,6 +34,11 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
         <a href={DISCORD_URL} className={s.community} rel="noopener" {...trackAttrs("outbound", { target: "discord" })}>
           {t("Community", "Community")}
         </a>
+        {marketplace && (
+          <a href={marketplace} className={s.community} {...trackAttrs("outbound", { target: "marketplace" })}>
+            Marketplace
+          </a>
+        )}
         <a href={websiteUrl()} className={s.back} {...trackAttrs("outbound", { target: "website" })}>
           {t("Zur Startseite", "Start page")}
         </a>
@@ -49,6 +55,11 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
         <a href={SPONSOR_URL} rel="noopener" {...trackAttrs("outbound", { target: "sponsor" })}>
           <span aria-hidden="true">♥</span> {t("Unterstützen", "Sponsor")}
         </a>
+        {marketplace && (
+          <a href={marketplace} {...trackAttrs("outbound", { target: "marketplace" })}>
+            {t("Vorlagen im Marketplace", "Templates in the Marketplace")}
+          </a>
+        )}
         {imprint && <a href={imprint}>{t("Impressum", "Legal notice")}</a>}
         {privacy && <a href={privacy}>{t("Datenschutz", "Privacy")}</a>}
       </footer>

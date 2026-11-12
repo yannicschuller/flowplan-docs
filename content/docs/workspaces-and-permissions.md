@@ -25,6 +25,8 @@ Eigenes CSS ist bewusst nicht möglich: Mit CSS ließen sich Inhalte unbemerkt n
 
 Das Aussehen und die hochgeladenen Schriften stecken im [Inhaltsarchiv](/import-export-versions#inhaltsarchiv) des Arbeitsbereichs. Beim Import übernimmt es ein Eigentümer in einen Arbeitsbereich, der noch Flowplans eigenes Aussehen hat; ein schon gewähltes Aussehen bleibt.
 
+Fertige Erscheinungsbilder, auch mit Schriften, findest du im [Flowplan Marketplace](https://marketplace.flowplan.org).
+
 ## Automatische Links
 
 Eigentümer legen unter **Einstellungen → Arbeitsbereich → Automatische Links** Regeln an, die Text wie `ABC-123` beim Schreiben zu einem Link machen – etwa auf das Ticket in Jira oder das Issue auf GitHub. Die Regeln gelten für alle Mitglieder und Gäste des Arbeitsbereichs. Jede Regel hat einen optionalen Namen, ein **Muster** (ein regulärer Ausdruck, höchstens 200 Zeichen), eine **Link-Vorlage** und einen Schalter zum Aus- und Einschalten; bis zu 50 Regeln sind möglich.
@@ -37,6 +39,8 @@ In der Vorlage steht `{match}` für den ganzen Treffer, `$1` bis `$9` (oder `{1}
 | `#(\d+)` | `https://github.com/acme/app/issues/$1` | #42 | https://github.com/acme/app/issues/42 |
 
 Unter **Ausprobieren** gibst du einen Beispieltext ein und siehst sofort, welche Stellen zu welchem Link werden. Ungültige Muster, Muster, die auf leeren Text passen, verschachtelte Wiederholungen wie `(a+)+` (sie können den Browser ausbremsen) und Vorlagen ohne gültige Adresse werden markiert und nicht gespeichert.
+
+Fertige Link-Regeln für gängige Dienste findest du im [Flowplan Marketplace](https://marketplace.flowplan.org).
 
 ## Rollen
 

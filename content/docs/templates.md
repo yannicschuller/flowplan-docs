@@ -2,6 +2,8 @@
 
 Vorlagen sind gespeicherte Seiten – Dokumente, Datenbanken oder ganze Seitenbäume –, aus denen neue Seiten entstehen. Dazu kommen Datensatzvorlagen innerhalb einer Datenbank.
 
+Mehr Vorlagen – aus der Community und offizielle von Flowplan, auch für Workflows, Whiteboards, Erscheinungsbilder und automatische Links – findest du im [Flowplan Marketplace](https://marketplace.flowplan.org).
+
 ## Startervorlagen
 
 **Vorlagen** in der Seitenleiste – oder **Aus Vorlage** im Dialog **Neue Seite** – zeigt {{facts.templates}} eingebaute Vorlagen in {{facts.templateCategories|word}} Kategorien, jeweils mit Beispieleinträgen und passenden Ansichten:

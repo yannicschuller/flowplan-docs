@@ -9,7 +9,7 @@ import { releases } from "./changelog";
 import { FACTS, fillFacts } from "./facts";
 import type { Locale } from "./i18n";
 import { synonymKeywords } from "./search";
-import { appUrl, DISCORD_URL, GITHUB_URL, websiteUrl } from "./links";
+import { appUrl, DISCORD_URL, GITHUB_URL, marketplaceUrl, MARKETPLACE_DEFAULT, websiteUrl } from "./links";
 import { outboundTarget } from "./track";
 
 export type DocGroup = { title: string; intro: string; pages: { slug: string; title: string }[] };
@@ -259,7 +259,7 @@ function render(markdown: string, locale: Locale) {
         const external = /^https?:\/\//.test(href) && !ownSite(href);
         // Links to the app, the website, GitHub or Discord count as
         // "outbound" in the statistics (lib/track.ts).
-        const target = outboundTarget(href, { app: appUrl(), website: websiteUrl() });
+        const target = outboundTarget(href, { app: appUrl(), website: websiteUrl(), marketplace: marketplaceUrl() ?? MARKETPLACE_DEFAULT });
         return `<a href="${escape(href)}"${title ? ` title="${escape(title)}"` : ""}${
           external ? ' target="_blank" rel="noreferrer"' : ""
         }${target ? ` data-umami-event="outbound" data-umami-event-target="${target}"` : ""}>${inner}${external ? `<span class="sr-only"> (${newTab[locale]})</span>` : ""}</a>`;
@@ -480,6 +480,7 @@ export function llmsIndex(base: string, locale: Locale) {
     `- [${de ? "Quellcode auf GitHub" : "Source code on GitHub"}](${GITHUB_URL})`,
     `- [${de ? "Community auf Discord" : "Community on Discord"}](${DISCORD_URL})`,
     `- [Website](${websiteUrl()})`,
+    ...(marketplaceUrl() ? [`- [Flowplan Marketplace](${marketplaceUrl()}): ${de ? "Vorlagen aus der Community" : "templates from the community"}`] : []),
     "",
   );
   return lines.join("\n");

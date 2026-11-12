@@ -4,6 +4,17 @@ const clean = (value: string | undefined, fallback: string) => (value || fallbac
 export const appUrl = () => clean(process.env.APP_URL, "https://app.flowplan.org");
 export const docsUrl = () => clean(process.env.DOCS_URL, "https://docs.flowplan.org");
 export const websiteUrl = () => clean(process.env.WEBSITE_URL, "https://flowplan.org");
+// The template marketplace. MARKETPLACE_URL changes the address; set to
+// empty, "off" or "false" it hides the links in the header, the footer and
+// llms.txt (links inside the pages' text stay).
+export const MARKETPLACE_DEFAULT = "https://marketplace.flowplan.org";
+export function marketplaceUrl(): string | null {
+  const value = process.env.MARKETPLACE_URL;
+  if (value === undefined) return MARKETPLACE_DEFAULT;
+  const trimmed = value.trim();
+  if (!trimmed || /^(off|false|0|no)$/i.test(trimmed)) return null;
+  return trimmed.replace(/\/$/, "");
+}
 export const GITHUB_URL = "https://github.com/yannicschuller/flowplan";
 export const DISCORD_URL = "https://discord.gg/bCEdB6MPrR";
 // GitHub Sponsors, for anyone who wants to support the development.

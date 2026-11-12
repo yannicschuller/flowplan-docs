@@ -2,6 +2,8 @@
 
 Templates are saved pages – documents, databases or whole page trees – from which new pages are created. On top of that there are record templates within a database.
 
+You'll find more templates – from the community and official ones from Flowplan, also for workflows, whiteboards, appearances and automatic links – in the [Flowplan Marketplace](https://marketplace.flowplan.org).
+
 ## Starter templates
 
 **Templates** in the sidebar – or **From a template** in the **New page** dialog – shows {{facts.templates}} built-in templates in {{facts.templateCategories|word}} categories, each with example records and fitting views:

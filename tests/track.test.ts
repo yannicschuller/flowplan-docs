@@ -107,6 +107,9 @@ test("links to Flowplan's places are recognised", () => {
   assert.equal(outboundTarget("https://n8n.io", sites), null);
   assert.equal(outboundTarget("/en/mcp", sites), null);
   assert.equal(outboundTarget("https://docs.flowplan.org/en", sites), null);
+  assert.equal(outboundTarget("https://marketplace.flowplan.org/t/kanban", sites), null);
+  const withMarketplace = { ...sites, marketplace: "https://marketplace.flowplan.org" };
+  assert.equal(outboundTarget("https://marketplace.flowplan.org/t/kanban", withMarketplace), "marketplace");
 });
 
 test("track is safe without Umami and passes events on when it is there", async () => {
@@ -130,4 +133,22 @@ test("track is safe without Umami and passes events on when it is there", async 
     delete g.window;
   }
   assert.deepEqual(events, [["copy", { page: "mcp", lang: "bash" }]]);
+});
+
+test("the marketplace link: default, own address, or switched off", async () => {
+  const { marketplaceUrl } = await import("../lib/links");
+  const before = process.env.MARKETPLACE_URL;
+  try {
+    delete process.env.MARKETPLACE_URL;
+    assert.equal(marketplaceUrl(), "https://marketplace.flowplan.org");
+    process.env.MARKETPLACE_URL = "https://templates.example.test/";
+    assert.equal(marketplaceUrl(), "https://templates.example.test");
+    for (const off of ["", "off", "false"]) {
+      process.env.MARKETPLACE_URL = off;
+      assert.equal(marketplaceUrl(), null);
+    }
+  } finally {
+    if (before === undefined) delete process.env.MARKETPLACE_URL;
+    else process.env.MARKETPLACE_URL = before;
+  }
 });

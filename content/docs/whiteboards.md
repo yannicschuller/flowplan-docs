@@ -293,6 +293,8 @@ Eine Vorlage landet in der Mitte der Ansicht und ist danach normaler Inhalt des 
 
 **Eigene Vorlagen**: Unter **Als Vorlage speichern** wird das ganze Board oder die Auswahl zur Vorlage – **Für den Arbeitsbereich** oder **Nur für mich**. Kommentare, Stimmen und Stempel bleiben draußen, Bilder und PDFs bleiben Dateien des Arbeitsbereichs. Eigene Vorlagen stehen im Reiter **Eigene Vorlagen**; löschen können sie die Person, die sie gespeichert hat, und Besitzer. Höchstens 500 Vorlagen je Arbeitsbereich.
 
+Mehr Whiteboard-Vorlagen aus der Community findest du im [Flowplan Marketplace](https://marketplace.flowplan.org).
+
 ## Excalidraw und draw.io importieren
 
 Über **Importieren …** unter **+** – oder indem du die Datei aufs Board ziehst – übernimmst du Zeichnungen aus:
