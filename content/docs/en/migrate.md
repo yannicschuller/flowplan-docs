@@ -43,7 +43,7 @@ What it turns into:
 - From the HTML export: toggles become [toggles](/documents#toggles), toggle headings become headings that fold (or, where their content does not reach the next heading, toggles with the heading as their title). Text and background colours, tasks, nested lists, tables, formulas and image captions are kept.
 - Every CSV file becomes a database. When both versions are there, Flowplan takes `Name_all.csv` (all records) instead of the current view.
 - Columns get a fitting type: numbers, checkboxes, dates (also in Notion's format "September 24, 2026") and selects with their options; the rest stays text.
-- Record pages are matched to their records as their document.
+- Record pages are matched to their records as their document. Pages below a record in Notion (the folder named like the record) become its [sub-pages](/databases#sub-pages-of-a-record) – no loose pages and no stand-in pages any more.
 - Images and files the pages refer to are uploaded.
 - Callouts become [callouts](/formatting#callouts) and keep their emoji as their symbol.
 - Links to headings (`Page.md#heading`) lead to the heading; `notion.so` links to pages of the export lead to the imported page (Notion's Markdown has no block ids, so links to single paragraphs lead to the page).

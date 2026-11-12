@@ -37,6 +37,17 @@ Darunter stehen **Deine Vorlagen**: gespeicherte Datenbank-Vorlagen, etwa eine e
 - Mehrere Einträge auswählen (Kästchen links) und gemeinsam bearbeiten, duplizieren oder löschen – bis zu 500 auf einmal. Vorher sichert Flowplan einen Stand, der sich über den Versionsverlauf wiederherstellen lässt.
 - Gelöschte Einträge liegen im Papierkorb der Datenbank und lassen sich zurückholen – mit ihren Versionen, den Kommentaren von Besuchern über einen Freigabelink und den Reaktionen auf Kommentare. Wurde ein beidseitig verknüpfter Eintrag inzwischen gelöscht, klappt das trotzdem; nur diese Verknüpfung fällt weg. Gleich nach dem Löschen geht das schneller: **Rückgängig** im Hinweis unten (oder ++⌘ Z++, solange er sichtbar ist). Ebenso lassen sich eine gemeinsame Bearbeitung mehrerer Einträge, ein in eine andere Spalte gezogener Eintrag, ein entferntes Datum und eine gelöschte Eigenschaft zurücknehmen.
 
+### Unterseiten eines Eintrags
+
+Ein Eintrag kann eigene Seiten enthalten – etwa Gesprächsnotizen, eine Spezifikation und Flussdiagramme unter einer Anforderung:
+
+- **Unterseite hinzufügen** unter dem Dokument des Eintrags (im Dialog und als ganze Seite) legt eine Seite unter dem Eintrag an und öffnet sie. Darüber stehen seine **Unterseiten**.
+- Vorhandene Seiten kommen per **Seitenaktionen → Verschieben** dorthin (Datenbank als übergeordnete Seite, dann **Unter Eintrag** wählen) oder per Drag and Drop auf die Unterseiten des Eintrags oder auf den Eintrag in der Seitenleiste. Mehrere ausgewählte Seiten lassen sich auf einen Eintrag verschieben, der schon Unterseiten hat.
+- In der **Seitenleiste** erscheinen unter der aufgeklappten Datenbank die Einträge, die Unterseiten haben, mit ihren Unterseiten; die übrigen Einträge bleiben in der Datenbank. Der Pfad in der Kopfzeile zeigt Datenbank → Eintrag → Unterseite.
+- Unterseiten folgen den **Rechten des Eintrags**: Wer einen privaten Eintrag nicht sieht, sieht auch seine Unterseiten nicht; ein schreibgeschützter Eintrag macht sie für Bearbeitende schreibgeschützt. Anlegen und Hineinverschieben braucht Bearbeitungsrechte am Eintrag.
+- **Löschen** des Eintrags verschiebt seine Unterseiten mit in den Papierkorb; **Wiederherstellen** holt sie zurück, endgültiges Löschen entfernt sie. **Verschieben nach …** in eine andere Datenbank nimmt sie mit; **In Seite umwandeln** macht sie zu Unterseiten der neuen Seite. **Duplizieren** und **Kopieren nach …** kopieren nur den Eintrag selbst; eine Kopie der ganzen Datenbank enthält die Unterseiten.
+- Ersatzseiten aus einer früheren Notion-Übernahme (eine gleichnamige Seite mit den Unterseiten) löst du auf, indem du ihre Unterseiten unter den Eintrag verschiebst und die leere Seite löschst.
+
 ### Seite in eine Datenbank verschieben
 
 **Seitenaktionen → In Datenbank verschieben …** macht aus einer Dokumentseite einen Eintrag einer Datenbank, in die du schreiben darfst – etwa um gewachsene Dokumentation in eine Notizen-Datenbank zu holen:
@@ -45,7 +56,7 @@ Darunter stehen **Deine Vorlagen**: gespeicherte Datenbank-Vorlagen, etwa eine e
 - Die Tags der Seite kommen in die (erste) Mehrfachauswahl der Datenbank mit den [Tags des Arbeitsbereichs](/database-properties#mehrfachauswahl-mit-den-tags-des-arbeitsbereichs), sofern es eine gibt und du sie ändern darfst.
 - Kommentare, Textkommentare, Aufgaben und Versionen ziehen mit; Favoriten werden Eintrags-Favoriten.
 - Links auf die Seite in allen Seiten und Einträgen des Arbeitsbereichs zeigen danach auf den Eintrag.
-- Unterseiten bleiben Seiten und rücken eine Ebene nach oben. Rechte für Personen, die auf der Seite gesetzt waren, gelten für sie weiter – sie werden dadurch weder für mehr noch für weniger Personen sichtbar.
+- Unterseiten bleiben Seiten und werden [Unterseiten des Eintrags](#unterseiten-eines-eintrags); liegt die Datenbank in einem anderen Bereich, rücken sie eine Ebene nach oben. Rechte für Personen, die auf der Seite gesetzt waren, gelten für sie weiter.
 - Freigaben nur dieser Seite (Rechte für Personen, Freigabelinks, Veröffentlichung) enden – der Dialog nennt sie vorher; der Eintrag folgt den Rechten der Datenbank. Die Standardvorlage der Datenbank wird übernommen.
 - Die Seite selbst kommt in den Papierkorb.
 

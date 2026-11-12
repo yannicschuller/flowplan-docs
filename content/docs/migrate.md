@@ -43,7 +43,7 @@ Was daraus wird:
 - Aus dem HTML-Export: Toggles werden zu [aufklappbaren Blöcken](/documents#aufklappbare-bloecke), Toggle-Überschriften zu Überschriften, die sich einklappen lassen (oder, wo ihr Inhalt nicht bis zur nächsten Überschrift reicht, zu aufklappbaren Blöcken mit der Überschrift als Titel). Text- und Hintergrundfarben, Aufgaben, verschachtelte Listen, Tabellen, Formeln und Bildunterschriften bleiben erhalten.
 - Jede CSV-Datei wird zu einer Datenbank. Liegen beide Fassungen vor, nimmt Flowplan `Name_all.csv` (alle Einträge) statt der aktuellen Ansicht.
 - Spalten bekommen eine passende Art: Zahlen, Kontrollkästchen, Daten (auch im Notion-Format „September 24, 2026“) und Auswahlen mit ihren Optionen; der Rest bleibt Text.
-- Die Seiten der Einträge werden ihren Einträgen als Dokument zugeordnet.
+- Die Seiten der Einträge werden ihren Einträgen als Dokument zugeordnet. Seiten, die in Notion unter einem Eintrag liegen (der Ordner mit dem Namen des Eintrags), werden zu seinen [Unterseiten](/databases#unterseiten-eines-eintrags) – keine losen Seiten und keine Ersatzseiten mehr.
 - Bilder und Dateien, auf die Seiten verweisen, werden hochgeladen.
 - Callouts werden zu [Hinweisen](/formatting#hinweise) und behalten ihr Emoji als Symbol.
 - Links auf Überschriften (`Seite.md#ueberschrift`) führen zur Überschrift; `notion.so`-Links auf Seiten des Exports führen zur importierten Seite (Notions Markdown enthält keine Blockkennungen, Links auf einzelne Absätze führen daher zur Seite).
