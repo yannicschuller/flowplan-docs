@@ -942,7 +942,11 @@
   grid-template-columns: auto minmax(0, 1fr);
   grid-template-rows: auto auto;
   gap: 2px 12px;
-  align-items: center;
+  /* A tile is as tall as the tallest in its row: keep title and text
+     together and centre them as one block instead of spreading the
+     extra height over both rows. */
+  align-content: center;
+  align-items: start;
   height: 100%;
   padding: 14px 16px;
   border: 1px solid var(--border);
@@ -959,6 +963,7 @@
 }
 .tasks svg {
   grid-row: span 2;
+  align-self: center;
   color: var(--blue);
 }
 .tasks strong {
