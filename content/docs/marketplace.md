@@ -44,6 +44,31 @@ Eine heruntergeladene `.flowplan-template`-Datei übernimmst du unter **Einstell
 
 Flowplan prüft jede Datei selbst noch einmal: Größe (höchstens 25 MB), Aufbau der Datei, Pfade, Kompression und den Inhalt jeder Art – genau wie beim Import aus einer anderen Instanz.
 
+## Import prüfen
+
+Bevor eine Einreichung öffentlich wird, prüft das Team des Marketplace sie in flowplan-admin auf zwei Arten: Eine **Sicherheitsprüfung** sucht im Paket nach riskanten Inhalten – etwa ausführbaren Dateien, Skripten in Dokumenten oder Anhängen, Zugangsdaten, persönlichen Daten oder Workflow-Schritten, die interne Adressen ansprechen –, und ein **Import-Test** spielt den Import in einem eigenen Test-Arbeitsbereich einer Flowplan-Instanz durch. Ein Paket mit einem blockierenden Fund wird nur veröffentlicht, wenn das Team das ausdrücklich begründet.
+
+Den Import-Test kannst du auch selbst machen: Ob sich ein Paket in deiner Instanz importieren ließe, beantwortet `POST /api/marketplace/check`.
+
+1. Flowplan liest das Paket genau wie beim Import: Größe (höchstens 25 MB), ZIP-Sicherheit, `template.json`, das Format der Art.
+2. Dann folgt ein **Probelauf** im Arbeitsbereich: Der Import der Art läuft in einer Datenbank-Transaktion, die immer zurückgenommen wird – die Vorlage und eine Seite daraus mit Eigenschaften, Ansichten, Einträgen und Anhängen, die Whiteboard-Vorlage, das Erscheinungsbild mit seinen Schriften, die Linkregeln. So fallen auch Fehler auf, die erst beim Anlegen entstehen (doppelte Kennungen in einer Datenbank, Speicherplatz). Workflows werden gelesen, mit dem Arbeitsbereich abgeglichen und geprüft, aber nicht angelegt.
+
+Es bleibt nichts zurück: keine Seite, keine Datei, kein Protokolleintrag, keine Webhooks oder Benachrichtigungen.
+
+```bash
+curl -X POST https://flowplan.example.com/api/marketplace/check \
+  -H "Authorization: Bearer fp_…" \
+  -F file=@vorlage.flowplan-template -F workspaceId=<Arbeitsbereichs-ID>
+```
+
+- `workspaceId` (optional): der Arbeitsbereich des Probelaufs – du musst Mitglied sein (nicht Gast); Vorlagen brauchen Bearbeitungsrechte, Erscheinungsbild und Linkregeln Besitzerrechte. Ohne die Angabe nimmt Flowplan einen Arbeitsbereich, der dir gehört, sonst einen, in dem du bearbeiten darfst.
+- `dryRun=0`: nur lesen, kein Probelauf.
+- Die Antwort ist 200, auch wenn sich das Paket nicht importieren ließe, mit `ok: true|false`, `kind`, `creates` (was angelegt würde: `templates`, `pages`, `fields`, `views`, `records`, `files`, `nodes`, `items`, `fonts`, `rules`, `theme`), `errors` und `warnings` (jeweils `code`, `de`, `en`, ggf. `at`) und `dryRun` (`ran`, `rolledBack`, `ms`).
+- Grenzen: 25 MB pro Paket, 30 Prüfungen in 10 Minuten pro Person. Ist der Marketplace ausgeschaltet, antwortet der Endpunkt mit 404.
+- API-Tokens brauchen die Berechtigung **Marketplace-Prüfung** (siehe [API und Webhooks](/api-and-webhooks#api-tokens)).
+
+**Für flowplan-admin:** Lege in einem eigenen Konto einen Test-Arbeitsbereich an, darin ein Token **Nur lesen** mit **Marketplace-Prüfung**, und trage Adresse, Token und Arbeitsbereichs-ID in flowplan-admin als `MARKETPLACE_IMPORT_CHECK_URL`, `MARKETPLACE_IMPORT_CHECK_TOKEN` und `MARKETPLACE_IMPORT_CHECK_WORKSPACE` ein.
+
 ## Datenschutz
 
 - **Deine Instanz verbindet sich nie mit dem Marketplace.** Die Übergabe läuft in deinem Browser zwischen den beiden Fenstern; Flowplan schickt nur an die eingestellte Marketplace-Adresse und nimmt nur von dort etwas an.

@@ -13,6 +13,7 @@ Mit persönlichen API-Tokens greifen Skripte, n8n oder Home Assistant auf Flowpl
 Unter **Einstellungen → API & KI-Assistenten** legst du Tokens an: mit Namen, **Nur lesen**, **Lesen und schreiben** oder **Nur Browser-Erweiterung**. Das Token erscheint nur einmal – danach sieht man nur seinen Anfang. Ein Token **Nur lesen** wird bei jeder schreibenden Anfrage abgewiesen, auch bei Backup-Wiederherstellung und Datei-Uploads.
 
 - **Nur Browser-Erweiterung:** für die [Browser-Erweiterung](/browser-extension). Das Token erreicht nur /api/clipper/targets und /api/clipper/save; überall sonst gilt es als kein Token.
+- **Marketplace-Prüfung:** ein Häkchen beim Anlegen, standardmäßig aus (nicht bei Tokens **Nur Browser-Erweiterung**). Damit erreicht das Token die [Import-Prüfung](/marketplace#import-pruefen) für Marketplace-Pakete (`POST /api/marketplace/check`) – auch als Token **Nur lesen**, denn die Prüfung behält nichts. Einen echten Import erlaubt die Berechtigung nie; dafür braucht es wie bisher ein Token **Lesen und schreiben**. Ohne die Berechtigung antwortet `/api/marketplace/check` mit 403.
 
 Jede Anfrage mit dem Token handelt mit deinen Rechten:
 

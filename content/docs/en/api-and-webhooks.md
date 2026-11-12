@@ -13,6 +13,7 @@ With personal API tokens, scripts, n8n or Home Assistant access Flowplan; webhoo
 Under **Settings → API & AI assistants** you create tokens: with a name, **Read only**, **Read and write** or **Browser extension only**. The token is shown only once – afterwards only its beginning is visible. A **Read only** token is refused for every request that writes, including restoring backups and uploading files.
 
 - **Browser extension only:** for the [browser extension](/browser-extension). The token only reaches /api/clipper/targets and /api/clipper/save; everywhere else it counts as no token.
+- **Marketplace check:** a tick when you create the token, off by default (not for **Browser extension only** tokens). The token then reaches the [import check](/marketplace#checking-an-import) of marketplace packages (`POST /api/marketplace/check`) – also as a **Read only** token, because the check keeps nothing. The permission never allows a real import; that still needs a **Read and write** token. Without the permission `/api/marketplace/check` answers 403.
 
 Every request with the token acts with your permissions:
 

@@ -44,6 +44,31 @@ Take over a downloaded `.flowplan-template` file under **Settings → Import & e
 
 Flowplan checks every file again itself: size (25 MB at most), the file's structure, paths, compression and the content of each kind – just like an import from another instance.
 
+## Checking an import
+
+Before a submission goes public, the marketplace team checks it in flowplan-admin in two ways: a **security scan** looks for risky content in the package – such as executable files, scripts in documents or attachments, credentials, personal data or workflow steps that call internal addresses –, and an **import test** runs the import in a test workspace of its own on a Flowplan instance. A package with a blocking finding is only published when the team gives an explicit reason.
+
+You can run the import test yourself too: `POST /api/marketplace/check` tells whether a package would import on your instance.
+
+1. Flowplan reads the package exactly like the import: size (25 MB at most), ZIP safety, `template.json`, the kind's format.
+2. Then a **dry run** in the workspace: the kind's import runs inside a database transaction that is always rolled back – the template and a page made from it with its properties, views, records and attachments, the whiteboard template, the appearance with its typefaces, the link rules. That also catches errors that only show when things are created (duplicate ids in a database, storage). Workflows are read, matched against the workspace and validated, but not created.
+
+Nothing stays behind: no page, no file, no log entry, no webhooks or notifications.
+
+```bash
+curl -X POST https://flowplan.example.com/api/marketplace/check \
+  -H "Authorization: Bearer fp_…" \
+  -F file=@template.flowplan-template -F workspaceId=<workspace ID>
+```
+
+- `workspaceId` (optional): the workspace of the dry run – you must be a member (not a guest); templates need edit rights, the appearance and link rules owner rights. Without it Flowplan uses a workspace you own, otherwise one you can edit.
+- `dryRun=0`: only read, no dry run.
+- The answer is 200, also when the package would not import, with `ok: true|false`, `kind`, `creates` (what would be created: `templates`, `pages`, `fields`, `views`, `records`, `files`, `nodes`, `items`, `fonts`, `rules`, `theme`), `errors` and `warnings` (each `code`, `de`, `en`, maybe `at`) and `dryRun` (`ran`, `rolledBack`, `ms`).
+- Limits: 25 MB per package, 30 checks in 10 minutes per person. When the marketplace is switched off, the endpoint answers 404.
+- API tokens need the permission **Marketplace check** (see [API and webhooks](/api-and-webhooks#api-tokens)).
+
+**For flowplan-admin:** create a test workspace in an account of its own, a **Read only** token with **Marketplace check** there, and set the address, the token and the workspace ID as `MARKETPLACE_IMPORT_CHECK_URL`, `MARKETPLACE_IMPORT_CHECK_TOKEN` and `MARKETPLACE_IMPORT_CHECK_WORKSPACE` in flowplan-admin.
+
 ## Privacy
 
 - **Your instance never connects to the marketplace.** The hand-over runs in your browser between the two windows; Flowplan only sends to the configured marketplace address and only accepts something from there.
