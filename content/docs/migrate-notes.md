@@ -27,10 +27,14 @@ Notizbücher aus GoodNotes (5 und 6, iPad, iPhone und Mac) holst du als **PDF** 
 
 **Ein Notizbuch:**
 
+::: steps
+
 1. Das Notizbuch in GoodNotes öffnen.
 2. Oben auf **Teilen** bzw. **Exportieren** tippen (je nach Version das Symbol mit dem Pfeil oder im Menü **⋯**) und **Dieses Notizbuch exportieren** wählen – nicht nur die aktuelle Seite.
 3. Als Format **PDF** wählen. Bietet GoodNotes **Seitenvorlagen einschließen** an, lass es eingeschaltet, sonst fehlen Linien, Karos und eingefügte PDF-Seiten im Hintergrund.
 4. Das PDF in **Dateien** sichern, per AirDrop an den Mac schicken oder direkt im Browser mit Flowplan öffnen.
+
+:::
 
 **Mehrere Notizbücher:** In der Dokumentübersicht von GoodNotes über **Auswählen** mehrere Notizbücher markieren und gemeinsam als PDF exportieren. Ob GoodNotes dabei einzelne PDFs oder ein ZIP liefert, hängt von der Version ab – Flowplan nimmt beides.
 
@@ -38,10 +42,14 @@ Notizbücher aus GoodNotes (5 und 6, iPad, iPhone und Mac) holst du als **PDF** 
 
 ### In Flowplan importieren
 
+::: steps
+
 1. **Einstellungen → Import & Export → Import** öffnen und den Zielbereich wählen.
 2. Als Quelle **GoodNotes** wählen (ein PDF wird auch automatisch erkannt).
 3. **Datei auswählen und prüfen** und das PDF wählen – oder mehrere PDFs auf einmal oder ein ZIP mit PDFs.
 4. Die Vorschau zeigt, wie viele Notizbücher und Blätter entstehen und was übersprungen wird. **Importieren** legt die Notizbücher an und öffnet das erste.
+
+:::
 
 Dabei gilt:
 

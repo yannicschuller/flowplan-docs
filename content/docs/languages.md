@@ -31,6 +31,8 @@ Deutsch und Englisch stehen direkt im Code nebeneinander. Jede weitere Sprache i
 
 ## Eine Sprache hinzufügen
 
+::: steps
+
 1. Katalog anlegen, z. B. für Italienisch:
 
    ```sh
@@ -46,6 +48,8 @@ Deutsch und Englisch stehen direkt im Code nebeneinander. Jede weitere Sprache i
    npm run i18n -- --check            # Fortschritt und falsche Platzhalter
    npm run i18n -- --check --missing  # was noch fehlt, mit Fundstelle im Code
    ```
+
+:::
 
 Die Sprache erscheint danach in der Auswahl auf der Anmeldeseite und im Profil, und Browser in dieser Sprache bekommen sie automatisch.
 

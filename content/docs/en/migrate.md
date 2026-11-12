@@ -29,9 +29,13 @@ For all sources:
 
 ## From Notion
 
+::: steps
+
 1. In Notion: **Settings → Export** (for the whole workspace) or **Export** in a page's **…** menu. Choose the format **HTML** (recommended) or **Markdown & CSV** and turn on **Include subpages**. Only the HTML export keeps toggles, toggle headings and colours.
 2. In Flowplan: **Settings → Import & export → Import**, choose the target space at the top and the ZIP at **Notion, AppFlowy or Markdown export (ZIP)**.
 3. Done – the import runs in one step. If it fails, nothing is left half imported.
+
+:::
 
 What it turns into:
 
@@ -49,9 +53,13 @@ Limits per import: 100 MB, by default 10,000 pages (`FLOWPLAN_IMPORT_MAX_DOCS`) 
 
 ## From AppFlowy
 
+::: steps
+
 1. In AppFlowy, export pages as **Markdown** and databases as **CSV**.
 2. Put the files into one folder – sub-folders become sub-pages – and make a ZIP of it.
 3. Import it in Flowplan under **Settings → Import & export → Import**.
+
+:::
 
 Markdown becomes pages, CSV becomes databases; linked images and files come along.
 

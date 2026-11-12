@@ -20,7 +20,7 @@ In tables, lists, feeds, boards and galleries, records can be dragged to another
 - **Scrolling at the edges:** near the edge of the table, the board or the window the view scrolls along, sideways as well as up and down.
 - **Cancel:** <kbd>Esc</kbd> during the drag puts everything back; nothing is changed.
 - **Touch screens:** hold the handle briefly (about 0.3 seconds) until the record lifts, then drag. A quick swipe over the handle scrolls as usual; a short tap opens **Move record**. On boards the card handle and the column handle drag right away.
-- **Keyboard:** focus the handle, <kbd>Space</kbd> lifts the record, <kbd>↑</kbd>/<kbd>↓</kbd> move it (on boards <kbd>←</kbd>/<kbd>→</kbd> to the next column, <kbd>Home</kbd>/<kbd>End</kbd> to the start or end), <kbd>Space</kbd> or <kbd>Enter</kbd> drops it, <kbd>Esc</kbd> cancels. Screen readers announce every position. <kbd>Alt</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd> still moves it by one place at once.
+- **Keyboard:** focus the handle, <kbd>Space</kbd> lifts the record, <kbd>↑</kbd>/<kbd>↓</kbd> move it (on boards <kbd>←</kbd>/<kbd>→</kbd> to the next column, <kbd>Home</kbd>/<kbd>End</kbd> to the start or end), <kbd>Space</kbd> or <kbd>Enter</kbd> drops it, <kbd>Esc</kbd> cancels. Screen readers announce every position. ++Alt ↑/↓++ still moves it by one place at once.
 - A record can also be dragged onto a **database in the sidebar** this way (see [Copy and move records](/databases#copy-and-move-records)).
 
 ## Table
@@ -50,11 +50,11 @@ Month, week and day view by a date field.
 
 - Week and day show an hourly grid with an all-day row and overlaps placed side by side.
 - Move appointments in 15-minute steps, extend or shorten them at their edges.
-- Drag whole-day entries (month view and the all-day row) to another day with the mouse, on touch devices by their ⋮⋮ handle; the target day gets a dashed outline, <kbd>Esc</kbd> cancels. With the keyboard, <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> moves a focused entry by one day, <kbd>Alt</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd> in the month view by one week.
+- Drag whole-day entries (month view and the all-day row) to another day with the mouse, on touch devices by their ⋮⋮ handle; the target day gets a dashed outline, <kbd>Esc</kbd> cancels. With the keyboard, ++Alt ←/→++ moves a focused entry by one day, ++Alt ↑/↓++ in the month view by one week.
 - A click on an hour creates an appointment, **All day +** an all-day record.
 - Every view has its own time zone; without a setting the browser's applies.
 - The **week start** (Monday or Sunday) can be set per view; without a setting it follows the reader's language – Sunday in [English (US)](/languages), Monday otherwise.
-- Keyboard: <kbd>Alt</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd> moves by 15 minutes, <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> by one day.
+- Keyboard: ++Alt ↑/↓++ moves by 15 minutes, ++Alt ←/→++ by one day.
 
 ### Subscribe to a calendar
 
@@ -80,8 +80,12 @@ Contacts databases can be subscribed to like calendars – as an address book in
 
 **Calendar sync** keeps a view with a date and a calendar in Google Calendar or Microsoft Outlook / 365 in step both ways – personally, with your own account.
 
+::: steps
+
 1. **Settings → Calendars & issues → Connect calendar** → **Connect Google Calendar** or **Connect Microsoft Outlook / 365**. You sign in with the provider and allow access to your calendars.
 2. In the database, open the calendar icon next to **…** (**Calendar sync**), pick the view, the account and the calendar, and **Connect**.
+
+:::
 
 What is synced:
 
@@ -109,7 +113,7 @@ Bars from a start to an end date field, on a scale of week, month, quarter or ye
 
 - Move bars or drag their edges. On touch devices, hold a bar briefly, then drag it; a quick swipe scrolls the timeline. The handles at the edges drag at once. <kbd>Esc</kbd> cancels a drag in progress. The calendar icon opens a date dialog, also for unscheduled records.
 - **Today** jumps to the current date; weekends can be highlighted.
-- Keyboard: <kbd>Alt</kbd> + <kbd>←</kbd>/<kbd>→</kbd> moves by one day, with <kbd>⇧</kbd> it changes the end, with <kbd>Ctrl</kbd> the start.
+- Keyboard: ++Alt ←/→++ moves by one day, with <kbd>⇧</kbd> it changes the end, with <kbd>Ctrl</kbd> the start.
 
 ### Dependencies (Gantt)
 

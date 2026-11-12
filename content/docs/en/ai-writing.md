@@ -13,7 +13,7 @@ The writing assistant edits selected text or writes new text at the caret. It is
 How to open it:
 
 - Select text → **AI** in the text menu.
-- <kbd>⌘</kbd> <kbd>J</kbd> (<kbd>Ctrl</kbd> <kbd>J</kbd>): works on the selection; without one, on the current line; on an empty line, a free prompt opens.
+- ++⌘ J++ (++Ctrl J++): works on the selection; without one, on the current line; on an empty line, a free prompt opens.
 - `/ai` or `/ki` in the block menu: free prompt at the caret.
 
 | Action | What happens |
@@ -28,7 +28,7 @@ How to open it:
 | **As a list** / **As a table** | Restructures the text. |
 | **What should the AI do?** | Your own instruction, e.g. "Turn this into an email". |
 
-**Free writing** (`/ai`, <kbd>⌘</kbd> <kbd>J</kbd> on an empty line): describe what you want – e.g. "Write an introduction about …". With **Page as context** (on by default), the page's content is sent along.
+**Free writing** (`/ai`, ++⌘ J++ on an empty line): describe what you want – e.g. "Write an introduction about …". With **Page as context** (on by default), the page's content is sent along.
 
 The AI answers in the language of the text; for free writing, in the language of your instruction. The answer first appears in a **preview** under the text, not in the document; a pulsing caret shows more is coming, **Stop** ends it early. Then:
 
@@ -36,7 +36,7 @@ The AI answers in the language of the text; for free writing, in the language of
 - **Insert below** – under the paragraph or list.
 - **Retry** – the same request again; **Other action** – back to the choices; **Discard** – nothing changes.
 
-Headings, lists, tasks, tables, code and callouts are inserted as real blocks. Inserting is a single step that <kbd>⌘</kbd> <kbd>Z</kbd> undoes, and it works during collaboration like any other edit. Inserted blocks briefly light up in the accent colour – display only, not saved and invisible to others.
+Headings, lists, tasks, tables, code and callouts are inserted as real blocks. Inserting is a single step that ++⌘ Z++ undoes, and it works during collaboration like any other edit. Inserted blocks briefly light up in the accent colour – display only, not saved and invisible to others.
 
 > [!NOTE]
 > Images in answers are not inserted (only their alt text), and links only if they point to `http(s)`, e-mail or Flowplan itself. This stops manipulated content from sending text out through image addresses.

@@ -65,9 +65,13 @@ Filters and sorting of a view that use a hidden property work on empty values fo
 
 ## Relations
 
+::: steps
+
 1. **Add property → Relation** and choose the target database.
 2. Optionally **in both directions**: the target database gets a counterpart property, and changes are kept in sync on both sides.
 3. In the cell, search for records and link them; several links can be removed one by one or cleared together.
+
+:::
 
 Relations appear as links in the record. The database search also finds records by the names of linked records, and relation filters offer these names directly.
 
@@ -75,9 +79,13 @@ Linked records show their icon, in the cell and in the picker. Clicking a linked
 
 ## Rollups
 
+::: steps
+
 1. Create a relation first.
 2. **Add property → Rollup**, then choose the relation and a property of the target database.
 3. Choose a calculation – 22 are available, depending on the type: original values, unique values, count, empty/not empty (also as a percentage), sum, average, median, minimum, maximum, range, checked/unchecked, earliest and latest date, date range.
+
+:::
 
 Earliest and latest date over **Created at** or **Edited at** give an instant in UTC, shown in your time zone. Number rollups appear as a number, progress bar, progress ring or rating, with an adjustable target value. Values from databases someone may not read are not loaded for that person.
 

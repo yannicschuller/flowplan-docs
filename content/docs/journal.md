@@ -90,7 +90,7 @@ Ist ein Tag geöffnet, zeigt die Seitenleiste ihn immer an – auch wenn er ält
 - **Heute** öffnet den heutigen Tag.
 - Der **Monat** (etwa „Oktober 2026“) öffnet einen kleinen Kalender: Tage mit Eintrag sind hervorgehoben und lassen sich öffnen. Mit den Pfeiltasten wanderst du um einen Tag oder eine Woche, mit <kbd>Bild ↑</kbd>/<kbd>Bild ↓</kbd> um einen Monat; <kbd>Esc</kbd> schließt ihn.
 
-Von überall geht es mit <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> (Windows/Linux: <kbd>Strg</kbd> <kbd>Alt</kbd> <kbd>Y</kbd>) oder dem Befehl **Journal: Heute** in der Schnellsuche (<kbd>⌘</kbd> <kbd>K</kbd>) zum heutigen Tag – des zuletzt benutzten Journals. Bei mehreren Journalen bietet die Schnellsuche einen Eintrag pro Journal an. Das Kürzel lässt sich ändern (siehe [Tastenkürzel](/keyboard-shortcuts#eigene-tastenkuerzel)).
+Von überall geht es mit ++⌘ ⌥ Y++ (Windows/Linux: ++Strg Alt Y++) oder dem Befehl **Journal: Heute** in der Schnellsuche (++⌘ K++) zum heutigen Tag – des zuletzt benutzten Journals. Bei mehreren Journalen bietet die Schnellsuche einen Eintrag pro Journal an. Das Kürzel lässt sich ändern (siehe [Tastenkürzel](/keyboard-shortcuts#eigene-tastenkuerzel)).
 
 Serie, Heatmap und Verlauf der Tracker auf der Journalseite und den Rückblick auf eine Woche oder einen Monat beschreibt [Überblick und Rückblick im Journal](/journal-review).
 

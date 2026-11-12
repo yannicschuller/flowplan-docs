@@ -8,7 +8,7 @@ Format text, use callouts in five kinds and with your own icon, caption and numb
 
 ## Format text
 
-The **toolbar** above the text has all formatting and blocks: bold, italic, underline, strikethrough, highlight, colour and background colour, superscript and subscript, **Hide (spoiler)**, link, heading, task, alignment, lists, inline formulas and more blocks. Selecting text – or right-clicking it – opens the **text menu** with the quick actions right at the text: reactions for the paragraph, **bold**, *italic*, link, code, **Comment**, **Footnote** and **Copy**, the results of a selected calculation, and in tasks also **Due date**. The text menu appears above the selection – right under the toolbar it appears below it, so it never covers the toolbar. Underline, strikethrough and highlight are in the toolbar and on their shortcuts (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>U</kbd>, <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>⇧</kbd> + <kbd>S</kbd>, <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>⇧</kbd> + <kbd>H</kbd>); where no toolbar is shown (e.g. in focus mode), the text menu offers them as well.
+The **toolbar** above the text has all formatting and blocks: bold, italic, underline, strikethrough, highlight, colour and background colour, superscript and subscript, **Hide (spoiler)**, link, heading, task, alignment, lists, inline formulas and more blocks. Selecting text – or right-clicking it – opens the **text menu** with the quick actions right at the text: reactions for the paragraph, **bold**, *italic*, link, code, **Comment**, **Footnote** and **Copy**, the results of a selected calculation, and in tasks also **Due date**. The text menu appears above the selection – right under the toolbar it appears below it, so it never covers the toolbar. Underline, strikethrough and highlight are in the toolbar and on their shortcuts (++Ctrl/⌘ U++, ++Ctrl/⌘ ⇧ S++, ++Ctrl/⌘ ⇧ H++); where no toolbar is shown (e.g. in focus mode), the text menu offers them as well.
 
 - **Menu on text selection**: under **Settings → Appearance & language → Editor → Menu on text selection** you choose when selecting shows the text menu – **Always**, **Only on a computer** (the default) or **Never**. "Only on a computer" depends on what you select with: with a mouse, trackpad or the keyboard (<kbd>⇧</kbd> + arrow keys) the menu appears, with a finger on a phone or tablet it does not – there the system's selection menu (cut, copy, paste) and the toolbar above the keyboard, with formatting and **Comment**, take over. On an iPad with a trackpad it appears when you select with the trackpad, not with your finger. A **right click** opens the text menu with every setting, also with "Never". The setting applies to your account on all devices.
 - **On a phone**: **Comment** is in the toolbar above the keyboard (and as **Comment on text** below the document), **Footnote** in the **+** menu or with `/footnote`. Reactions are in the text menu – with **Always** when selecting, and on Android also by a long press where the browser reports it as a right click.
@@ -19,7 +19,7 @@ The **toolbar** above the text has all formatting and blocks: bold, italic, unde
 
 ### Spoiler
 
-Hidden text stays hidden while you write. A click on the area reveals it, another one hides it again. <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>H</kbd> hides the selection. Sticky notes and text on whiteboards can be hidden too.
+Hidden text stays hidden while you write. A click on the area reveals it, another one hides it again. ++⌘ ⌥ H++ hides the selection. Sticky notes and text on whiteboards can be hidden too.
 
 ## Callouts
 
@@ -53,7 +53,7 @@ Import (Markdown, ZIP, Notion) turns `> [!NOTE]` to `> [!CAUTION]` back into cal
 Images, tables and code blocks can have a short **caption** – one line that says what the block shows. It appears small and muted below the block.
 
 - **Add**: point at the block or put the cursor in it (tapping an image is enough), and **Add caption** appears below it. Or use the block menu (handle `⋮⋮`) → **Add caption**.
-- **Typing**: a caption is plain text on one line (up to 500 characters). <kbd>Enter</kbd> or <kbd>↓</kbd> continue below the block, <kbd>Esc</kbd> or <kbd>↑</kbd> go back into it. Others see the caption right away when editing together; <kbd>⌘</kbd> <kbd>Z</kbd> in the document undoes changes.
+- **Typing**: a caption is plain text on one line (up to 500 characters). <kbd>Enter</kbd> or <kbd>↓</kbd> continue below the block, <kbd>Esc</kbd> or <kbd>↑</kbd> go back into it. Others see the caption right away when editing together; ++⌘ Z++ in the document undoes changes.
 - **Remove**: delete the text and leave the field (or press <kbd>⌫</kbd> in the empty field), or block menu → **Remove caption**.
 - **Images**: the caption does not replace the alt text for screen readers. When an image has a caption, the block menu offers **Use caption as alt text**.
 - Captions are kept when copying and pasting, moving, duplicating, in templates, versions, on published pages, when printing and in every export, and search finds them. From HTML (for example pasted web pages or Notion's HTML export), `<figure>` with `<figcaption>` and tables with `<caption>` become captions.

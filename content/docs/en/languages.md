@@ -31,6 +31,8 @@ German and English sit side by side in the code. Every further language is a **c
 
 ## Adding a language
 
+::: steps
+
 1. Create the catalogue, e.g. for Italian:
 
    ```sh
@@ -46,6 +48,8 @@ German and English sit side by side in the code. Every further language is a **c
    npm run i18n -- --check            # progress and wrong placeholders
    npm run i18n -- --check --missing  # what is still missing, with the place in the code
    ```
+
+:::
 
 The language then appears in the choice on the sign-in page and in the profile, and browsers in that language get it automatically.
 

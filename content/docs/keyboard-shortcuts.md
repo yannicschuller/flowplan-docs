@@ -36,7 +36,8 @@ Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <
 
 Alle Kürzel dieser Tabelle außer <kbd>Esc</kbd> und <kbd>⌘</kbd> <kbd>Z</kbd> lassen sich ändern, siehe [Eigene Tastenkürzel](#eigene-tastenkuerzel).
 
-In der Desktop-App wechselt <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> bzw. <kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>P</kbd> zum nächsten [Profil](/desktop-app#mehrere-instanzen-profile), sobald mehr als eines gespeichert ist.
+> [!DESKTOP]
+> In der Desktop-App wechselt <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> bzw. <kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>P</kbd> zum nächsten [Profil](/desktop-app#mehrere-instanzen-profile), sobald mehr als eines gespeichert ist.
 
 ## Eigene Tastenkürzel
 

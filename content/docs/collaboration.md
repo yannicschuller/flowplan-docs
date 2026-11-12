@@ -50,11 +50,11 @@ Die Startseite listet unter **Zuletzt angesehen** die Seiten, die du zuletzt ge�
 
 ## Seitenkommentare
 
-Das Sprechblasen-Symbol in der Kopfzeile öffnet die Kommentare der Seite (auf dem Telefon steht es dort nur bei offenen Kommentaren, mit ihrer Anzahl, sonst **Kommentare** im Menü `⋯`); Kommentare an Datenbankeinträgen stehen unter dem Eintrag. <kbd>⌘</kbd> <kbd>Enter</kbd> sendet. Seiten- und Eintragskommentare sind reiner Text. `@` mit dem vollen Namen oder der E-Mail-Adresse eines Mitglieds – etwa `@Anna Berg` – erwähnt die Person: Sie bekommt eine Benachrichtigung, sofern sie die Seite und den Eintrag sehen darf.
+Das Sprechblasen-Symbol in der Kopfzeile öffnet die Kommentare der Seite (auf dem Telefon steht es dort nur bei offenen Kommentaren, mit ihrer Anzahl, sonst **Kommentare** im Menü `⋯`); Kommentare an Datenbankeinträgen stehen unter dem Eintrag. ++⌘ Enter++ sendet. Seiten- und Eintragskommentare sind reiner Text. `@` mit dem vollen Namen oder der E-Mail-Adresse eines Mitglieds – etwa `@Anna Berg` – erwähnt die Person: Sie bekommt eine Benachrichtigung, sofern sie die Seite und den Eintrag sehen darf.
 
 ## Textkommentare
 
-Text markieren und **Text kommentieren** wählen oder <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>M</kbd> drücken.
+Text markieren und **Text kommentieren** wählen oder ++⌘ ⌥ M++ drücken.
 
 - Der kommentierte Text wird markiert; Klick darauf öffnet den Thread.
 - Antworten, Emoji-Reaktionen, **Erledigen** und **Wieder öffnen**.

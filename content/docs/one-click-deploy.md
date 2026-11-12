@@ -18,8 +18,12 @@ Noch kein eigener Server? Drei Wege zu einer laufenden Instanz, ohne Docker von 
 
 Der Button liest den Blueprint [`render.yaml`](https://github.com/yannicschuller/flowplan/blob/main/render.yaml) aus dem Repository: ein Webdienst aus dem Image `ghcr.io/yannicschuller/flowplan:latest` in Frankfurt, eine 5-GB-Disk auf `/app/data` und der Health Check auf `/api/health`.
 
+::: steps
+
 1. Button anklicken, bei Render anmelden und den Blueprint bestätigen. Die SMTP-Felder dürfen leer bleiben (siehe [E-Mail](/configuration-integrations#e-mail-smtp)).
 2. Render erzeugt `FLOWPLAN_SETUP_TOKEN`. Ist der Deploy fertig, kopierst du ihn im Tab **Environment** des Dienstes und öffnest `https://<name>.onrender.com/register?setup=<token>` – dieses erste Konto verwaltet die Instanz.
+
+:::
 
 **Kosten:** Dauerhafte Disks gibt es nur mit einer bezahlten Instanz – der Blueprint nimmt **Starter**, die kleinste mit Disk; die Disk wird zusätzlich pro GB abgerechnet (siehe Preise bei Render). Für mehr als eine Handvoll Personen wähl eine größere Instanz ([Dimensionierung](/sizing)). Auf der kostenlosen Instanz gingen die Daten bei jedem Neustart verloren.
 
@@ -50,9 +54,13 @@ App Platform kann keine Geheimnisse selbst erzeugen, deshalb trägst du diese We
 
 Für einen virtuellen Server (VPS) mit **Ubuntu 24.04 oder Debian 12** bei einem beliebigen Anbieter. Die meisten – Hetzner Cloud, Netcup, IONOS, DigitalOcean Droplets, Vultr, Scaleway, OVHcloud – nehmen beim Anlegen des Servers eine cloud-init-Datei als **„User Data“** oder **„Cloud Config“** an.
 
+::: steps
+
 1. Den DNS-Eintrag deiner Domain (A, für IPv6 auch AAAA) auf den Server zeigen lassen – bei einem neuen Server, sobald du seine Adresse kennst.
 2. [`deploy/cloud-init.yaml`](https://github.com/yannicschuller/flowplan/blob/main/deploy/cloud-init.yaml) kopieren, die eine Zeile `FLOWPLAN_DOMAIN=flowplan.example.com` setzen und beim Anlegen des Servers als User Data einfügen.
 3. Nach ein paar Minuten per SSH anmelden und `/root/flowplan-README.txt` lesen: Dort stehen die Adresse und der Link für das erste Konto. Den Fortschritt protokolliert `/var/log/flowplan-install.log`.
+
+:::
 
 Auf einem Server, der schon läuft, erledigt das Installationsskript dasselbe:
 

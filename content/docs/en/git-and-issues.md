@@ -10,6 +10,8 @@ Connect databases to GitHub, GitLab and Forgejo: branches, commits and pull requ
 
 **… → Git connection** connects the database to GitHub, GitLab or Gitea/Forgejo:
 
+::: steps
+
 1. **Set up Git connection** creates a webhook address and a secret.
 2. **In the repository**, add a webhook with both:
    - content type JSON,
@@ -17,6 +19,8 @@ Connect databases to GitHub, GitLab and Forgejo: branches, commits and pull requ
    The exact steps are in the dialog.
 3. **Commits and pull requests** that mention a ticket number of this database like `WEB-123` appear in the record under **Development**. Numbers of other databases are left alone – they have their own connection.
 4. **“closes WEB-123”** (also *fixes*, *resolves*) marks the record done. This happens once the commit is on the default branch or the pull request is merged – through the database's workflow and automations.
+
+:::
 
 Every request is checked against the secret. Only people who may edit the database see the address and the secret. **New address and secret** invalidates the old ones.
 
@@ -43,11 +47,15 @@ A database can keep itself in step with the issues of a GitHub, GitLab or Forgej
 
 **Setting up the connection** (workspace owners and administrators):
 
+::: steps
+
 1. **Settings → Calendars & issues → Connect GitHub, GitLab or Forgejo**.
 2. Choose the provider; for an own server enter its address (empty for github.com or gitlab.com), the repository (`owner/name`) or project (`group/project`) and an access token that may read and write issues – on GitHub a fine-grained token with *Issues: Read and write*, on GitLab a token with the `api` scope. For **Forgejo / Gitea** the server address is required (e.g. `https://codeberg.org`); create the token there under **Settings → Applications → Generate token** with `write:issue` and `read:repository` (`read:organization` optional, so organisation labels are found too).
 3. **Test connection** makes one call with the token; **Save** stores the token encrypted. It is never shown again.
 4. Optional **People**: one `login = e-mail` of a member per line. Assignees are matched through it.
 5. For immediate updates, add the shown **webhook address** with the **secret** in the repository – on GitHub with content type JSON and the events *Issues* and *Issue comments*, on GitLab as *Secret token* with *Issues events* and *Comments*, on Forgejo/Gitea under **Settings → Webhooks → Add webhook → Forgejo** (or Gitea) with POST, content type `application/json`, the secret and the custom events *Issues* and *Issue comments*. Without a webhook, Flowplan syncs every 10 minutes.
+
+:::
 
 The sync acts as the person who set up the connection: they need edit rights on the database, and records they may not read are skipped. If they are no longer an owner of the workspace, the connection pauses until someone saves the token again.
 

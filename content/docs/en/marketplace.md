@@ -23,19 +23,27 @@ Guests never publish anything.
 
 ## Publishing
 
+::: steps
+
 1. Choose **Publish to the marketplace …** on the template, the workflow or in the settings.
 2. In the dialog, check the title, the summary (German and English), category, tags and language, and add up to **four preview pictures** (PNG, JPEG or WebP, 1 MB each at most). For documents and databases a screenshot pays off – Flowplan doesn't create one itself.
 3. **Open in the marketplace**: Flowplan builds the file, opens the marketplace's submit page in a new window and hands it over there. You sign in, choose the **licence** (default CC BY 4.0, also CC0 and MIT), confirm that you hold the rights to the content and submit.
 4. Or **Download as a file**: upload the `.flowplan-template` file on the submit page yourself.
 
+:::
+
 What is never included: a workflow's credentials, runs and webhook addresses, the address of your instance, names of people, pictures uploaded to a whiteboard (only pictures with an https address go along) and record cards. A workflow's references to pages, databases and people are matched by name on import or stay empty. For appearances with own typefaces: only publish typefaces whose licence allows passing them on.
 
 ## Taking over
+
+::: steps
 
 1. On a template's page in the marketplace, choose **Open in Flowplan**. Without a saved instance it says **Open in app.flowplan.org** – for the hosted Flowplan one click is enough. For your own instance, choose **Use your own instance …** and enter its address once (e.g. `https://flowplan.example.org`); from then on the button says **Open in flowplan.example.org**, and **Change instance** brings the field back. The address stays in your browser only.
 2. Flowplan opens in a new window and receives the template. If you're not signed in, sign in first – the template waits in your browser meanwhile (up to 24 hours).
 3. A preview shows the title, kind, author, licence and **what will be created**. For workflows you see every node, the external services it talks to, whether it uses AI steps or sends e-mail – and what you need to set in the editor after the import.
 4. Choose the workspace and space (for workflows also the parent page) and **Take over**.
+
+:::
 
 When you come to the marketplace from Flowplan – via **More templates in the marketplace** in the template gallery, **Open the marketplace** under **Settings → Import & export**, or when publishing – the marketplace remembers your instance by itself and briefly shows **Instance saved: <address> · change** once. You don't have to type the address at all.
 

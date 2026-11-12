@@ -8,9 +8,13 @@ Mit der Browser-Erweiterung speicherst du Webseiten mit einem Klick in Flowplan:
 
 ## Einrichten
 
+::: steps
+
 1. Lege in Flowplan unter **Einstellungen → API & KI-Assistenten** (oder **Einstellungen → Web-Clipper → Token anlegen**) ein [persönliches API-Token](/api-and-webhooks) an und wähle als Recht **Nur Browser-Erweiterung**. Ein solches Token kann nichts anderes: Es öffnet weder die API noch MCP und kann nichts lesen außer der Liste deiner Ziele.
 2. Installiere die Erweiterung (siehe unten) und klicke auf ihr Symbol.
 3. Trage die Adresse deiner Instanz ein, zum Beispiel `https://flowplan.example.com`, und das Token. Der Browser fragt jetzt einmal nach dem Zugriff auf genau diese Adresse – auf andere Seiten greift die Erweiterung nie zu.
+
+:::
 
 **Abmelden** im Fenster der Erweiterung löscht das Token aus dem Browser und gibt den Zugriff auf die Instanz wieder ab. Widerrufen kannst du das Token jederzeit in den Einstellungen.
 

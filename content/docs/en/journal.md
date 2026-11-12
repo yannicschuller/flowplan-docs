@@ -92,7 +92,7 @@ Above every day page there is a bar:
 - **Today** opens today's day.
 - The **month** (such as "October 2026") opens a small calendar: days with an entry are highlighted and can be opened. The arrow keys move by a day or a week, <kbd>Page ↑</kbd>/<kbd>Page ↓</kbd> by a month; <kbd>Esc</kbd> closes it.
 
-From anywhere, <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> (Windows/Linux: <kbd>Ctrl</kbd> <kbd>Alt</kbd> <kbd>Y</kbd>) or the command **Journal: Today** in the quick search (<kbd>⌘</kbd> <kbd>K</kbd>) takes you to today – of the journal used last. With several journals the quick search offers one entry per journal. The shortcut can be changed (see [Keyboard shortcuts](/keyboard-shortcuts#your-own-shortcuts)).
+From anywhere, ++⌘ ⌥ Y++ (Windows/Linux: ++Ctrl Alt Y++) or the command **Journal: Today** in the quick search (++⌘ K++) takes you to today – of the journal used last. With several journals the quick search offers one entry per journal. The shortcut can be changed (see [Keyboard shortcuts](/keyboard-shortcuts#your-own-shortcuts)).
 
 The streak, heatmap and tracker history on the journal page and the review of a week or a month are described in [Overview and review in the journal](/journal-review).
 

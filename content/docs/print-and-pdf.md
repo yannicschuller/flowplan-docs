@@ -9,7 +9,7 @@ Seiten drucken oder als PDF sichern – mit Druckoptionen, Vorlagen und Seitenum
 
 ## Drucken und PDF
 
-**Seitenaktionen → Drucken / PDF** (oder `> drucken` in der Schnellsuche, oder <kbd>⌘</kbd> <kbd>P</kbd> bzw. <kbd>Strg</kbd> <kbd>P</kbd> bei geöffneter Seite) öffnet zuerst ein kleines Fenster mit den Druckoptionen; **Drucken** (oder <kbd>Enter</kbd>) öffnet dann den Druckdialog des Browsers, wo du die Seite auch **als PDF sichern** kannst. Seitenleiste, Werkzeugleisten, Griffe, Kommentarleisten, Hinweise und Knöpfe wie „Cover ändern“ oder „+ Tag“ erscheinen nie auf dem Papier; die Farben sind immer hell, Blöcke werden nicht mitten auf der Seite getrennt und lange Codezeilen umbrochen.
+**Seitenaktionen → Drucken / PDF** (oder `> drucken` in der Schnellsuche, oder ++⌘ P++ bzw. ++Strg P++ bei geöffneter Seite) öffnet zuerst ein kleines Fenster mit den Druckoptionen; **Drucken** (oder <kbd>Enter</kbd>) öffnet dann den Druckdialog des Browsers, wo du die Seite auch **als PDF sichern** kannst. Seitenleiste, Werkzeugleisten, Griffe, Kommentarleisten, Hinweise und Knöpfe wie „Cover ändern“ oder „+ Tag“ erscheinen nie auf dem Papier; die Farben sind immer hell, Blöcke werden nicht mitten auf der Seite getrennt und lange Codezeilen umbrochen.
 
 **Inhalt** – was mitgedruckt wird:
 

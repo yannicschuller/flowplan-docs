@@ -22,11 +22,15 @@ Live mit anderen auf einem Board, Zettel als Datenbankeinträge, KI für Ideen u
 
 Aus einem Brainstorming wird ein Backlog: Zettel auswählen → in der Leiste **Als Einträge in Datenbank …** (Datenbank-Symbol). Ohne Auswahl nimmt der Dialog die Zettel im sichtbaren Bereich, mit einem ausgewählten Rahmen dessen Zettel. Das funktioniert auch ganz ohne KI.
 
+::: steps
+
 1. **Ziel-Datenbank** wählen – angeboten werden Datenbanken, in die du Einträge schreiben darfst.
 2. **Zuordnung:** Die erste Zeile des Zettels wird zum **Titel**, weitere Zeilen zum Inhalt des Eintrags. Optional wird die **Farbe** zu einer Auswahl-Eigenschaft (für jede Zettelfarbe eine Option; gleichnamige Optionen wie „Gelb“ oder „Rot“ sind vorbelegt) und der **Autor** des Zettels zu einer Personen-Eigenschaft.
 3. **Durch Karten ersetzen** tauscht die Zettel gegen Eintragskarten an derselben Stelle – Verbindungslinien hängen danach an der Karte. **Behalten und verknüpfen** lässt die Zettel stehen und legt die Karten daneben, mit einer gestrichelten Linie verbunden.
 
-Die Karten sind live: Ändert jemand den Eintrag in der Datenbank, zeigt das Board es sofort. Andere sehen die neuen Karten wie jede Änderung; ein <kbd>⌘</kbd> <kbd>Z</kbd> nimmt die Änderung am Board in einem Schritt zurück (die Einträge bleiben in der Datenbank).
+:::
+
+Die Karten sind live: Ändert jemand den Eintrag in der Datenbank, zeigt das Board es sofort. Andere sehen die neuen Karten wie jede Änderung; ein ++⌘ Z++ nimmt die Änderung am Board in einem Schritt zurück (die Einträge bleiben in der Datenbank).
 
 - Höchstens 500 Zettel auf einmal; der Server legt sie in Paketen zu 100 an, ein Fortschritt zeigt den Stand, **Abbrechen** hält an – was schon angelegt ist, kommt aufs Board.
 - Ein zweiter Versuch nach einem Fehler legt nichts doppelt an.
@@ -42,7 +46,7 @@ Ist [KI](/ai) für dich eingeschaltet, öffnet **KI** unter **+** (am Handy unte
 - **Zusammenfassen als Seite** – liest das Board (oder die Auswahl bzw. den ausgewählten Rahmen) und legt daneben eine Seite an: Zusammenfassung, Themen, **Entscheidungen**, **Offene Fragen** und **Aufgaben**, mit einem Link zurück zum Board. Mit **Aufgaben übernehmen** werden die Aufgaben echte Aufgaben mit Person und Termin, wenn das Board sie nennt – sie erscheinen in **Meine Aufgaben**. Rahmen werden zu Abschnitten; große Boards liest die KI in Teilen, und die Seite nennt, was über die Grenze von 2.000 Elementen hinaus weggelassen wurde.
 - **Mit KI erzeugen …** – eine **Mindmap** oder ein **Flussdiagramm** aus einer Beschreibung, etwa „Ablauf einer Urlaubsanfrage mit Genehmigung“. Es entsteht in der Mitte des sichtbaren Bereichs (oder rechts daneben, wenn dort schon etwas liegt) aus normalen Formen und Verbindungslinien; die Mindmap nutzt das Layout von **Mindmap anordnen**. Höchstens 60 bzw. 40 Knoten.
 
-Jede Aktion zeigt ihren Fortschritt und lässt sich **abbrechen**; ein Fehler steht mit **Erneut versuchen** im Dialog. Das Ergebnis ist eine gewöhnliche Änderung am Board: Alle sehen sie live, und **ein** <kbd>⌘</kbd> <kbd>Z</kbd> nimmt sie ganz zurück. Verdeckte Zettel bleiben vor der KI verborgen, verknüpfte Seiten und Einträge liest sie nur, wenn sie sie lesen darf.
+Jede Aktion zeigt ihren Fortschritt und lässt sich **abbrechen**; ein Fehler steht mit **Erneut versuchen** im Dialog. Das Ergebnis ist eine gewöhnliche Änderung am Board: Alle sehen sie live, und **ein** ++⌘ Z++ nimmt sie ganz zurück. Verdeckte Zettel bleiben vor der KI verborgen, verknüpfte Seiten und Einträge liest sie nur, wenn sie sie lesen darf.
 
 ## Rahmen-Übersicht
 

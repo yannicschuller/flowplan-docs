@@ -10,13 +10,13 @@ Stifte, Radierer, Formen, Lasso, Bilder und Audio im Notizbuch – und die Taste
 
 | Taste | Wirkung |
 | --- | --- |
-| <kbd>P</kbd> <kbd>H</kbd> <kbd>E</kbd> <kbd>L</kbd> <kbd>T</kbd> <kbd>K</kbd> | Stift, Textmarker, Radierer, Lasso, Text, Laserpointer |
-| <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Z</kbd> | Rückgängig / Wiederholen |
-| <kbd>⌘</kbd> <kbd>C</kbd>, <kbd>⌘</kbd> <kbd>V</kbd>, <kbd>⌘</kbd> <kbd>D</kbd>, <kbd>Entf</kbd> | Auswahl kopieren, einfügen, duplizieren, löschen |
-| <kbd>⌘</kbd> <kbd>+</kbd> / <kbd>⌘</kbd> <kbd>−</kbd> / <kbd>⌘</kbd> <kbd>0</kbd> | Vergrößern, verkleinern, an die Breite anpassen |
-| <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>↵</kbd> | Neues Blatt nach dem aktuellen |
-| <kbd>⌥</kbd> <kbd>↓</kbd> / <kbd>⌥</kbd> <kbd>↑</kbd> | Nächstes / voriges Blatt |
-| <kbd>⌘</kbd> <kbd>S</kbd> | Sofort speichern |
+| ++P H E L T K++ | Stift, Textmarker, Radierer, Lasso, Text, Laserpointer |
+| ++⌘ Z++ / ++⇧ ⌘ Z++ | Rückgängig / Wiederholen |
+| ++⌘ C++, ++⌘ V++, ++⌘ D++, <kbd>Entf</kbd> | Auswahl kopieren, einfügen, duplizieren, löschen |
+| <kbd>⌘</kbd> <kbd>+</kbd> / ++⌘ −++ / ++⌘ 0++ | Vergrößern, verkleinern, an die Breite anpassen |
+| ++⇧ ⌘ ↵++ | Neues Blatt nach dem aktuellen |
+| ++⌥ ↓++ / ++⌥ ↑++ | Nächstes / voriges Blatt |
+| ++⌘ S++ | Sofort speichern |
 
 Unter Windows und Linux <kbd>Strg</kbd> statt <kbd>⌘</kbd> und <kbd>Alt</kbd> statt <kbd>⌥</kbd>. Auf dem iPad mit Tastatur gelten dieselben Kürzel.
 

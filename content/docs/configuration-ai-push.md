@@ -109,6 +109,8 @@ Mitteilungen an die Apps gehen über das Flowplan-Push-Relay (`push.flowplan.org
 
 Das Relay ist Open Source ([github.com/yannicschuller/flowplan-push](https://github.com/yannicschuller/flowplan-push)) und lässt sich selbst betreiben. **Für die offiziellen Flowplan-Apps (iPhone und iPad aus dem [App Store](https://apps.apple.com/app/id6825801344), Android von [flowplan.org/download](https://flowplan.org/download)) brauchst du das nicht** – sie nehmen nur Mitteilungen über `push.flowplan.org` an, denn Apple und Google stellen an diese Apps nur mit Flowplans Schlüsseln zu. Ein eigenes Relay ist sinnvoll, wenn du **eine eigene App-Version** baust (eigene Bundle-ID, eigenes Apple-Team) oder Instanzen im internen Netz erreichen willst.
 
+::: steps
+
 1. **Relay starten** – als Docker-Image `ghcr.io/yannicschuller/flowplan-push:latest` (oder selbst aus dem Repository gebaut), z. B. in Coolify unter `https://push.example.com`, Port `8080`, ein Volume auf `/data`. Umgebungsvariablen:
 
    | Variable | Wert |
@@ -125,5 +127,7 @@ Das Relay ist Open Source ([github.com/yannicschuller/flowplan-push](https://git
 2. **App bauen** – mit deiner Bundle-ID und deinem Apple-Team sowie `PUSH_RELAY_URL=https://push.example.com` (Build-Variable der App) und für Android deiner `google-services.json`. Die App meldet sich nur bei dem Relay an, mit dem sie gebaut wurde.
 3. **Instanz einstellen** – `PUSH_RELAY_URL=https://push.example.com`. `APP_URL` muss die HTTPS-Adresse der Instanz sein und `/.well-known/flowplan-push` für das Relay erreichbar. Eine Instanz kann nur ein Relay nutzen: Zeigt sie auf dein Relay, bekommen die Store-Apps von ihr keine Mitteilungen mehr über das Relay.
 4. **Prüfen** – mit der [Testbenachrichtigung](/notifications#testbenachrichtigung).
+
+:::
 
 Betrieb, Schlüsselwechsel, Sperren missbräuchlicher Instanzen (`node dist/src/cli.js block <origin>` im Container) und Sicherungen beschreibt die README des Relays.

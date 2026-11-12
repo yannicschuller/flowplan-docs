@@ -75,10 +75,14 @@ Im Reiter **Web** klappt unter den Optionen **Aussehen** auf. Dort legst du das 
 
 Ist es in der Administration eingeschaltet (**Eigene Domains für Veröffentlichungen**), zeigt eine Veröffentlichung sich auch unter deiner Domain, etwa `docs.example.org`:
 
+::: steps
+
 1. Im Reiter **Web** **Eigene Domain** aufklappen, die Domain eintragen und **Domain hinzufügen**.
 2. Beim DNS-Anbieter den angezeigten TXT-Eintrag anlegen: Name `_flowplan-verify.docs.example.org`, Wert `flowplan-verify-…`. Nur dieser TXT-Eintrag bestätigt die Domain.
 3. Die Domain per CNAME (oder A/AAAA) auf die Flowplan-Instanz zeigen lassen.
 4. **Jetzt prüfen** wählen. Das HTTPS-Zertifikat besorgt der Reverse Proxy – siehe [Eigene Domains für Veröffentlichungen](/coolify-and-proxy#eigene-domains-fuer-veroeffentlichungen).
+
+:::
 
 Eine bestätigte Domain bleibt bestätigt, bis du sie entfernst – auch Domains, die früher auf anderem Weg bestätigt wurden. Eine Domain, die nach 7 Tagen noch nicht bestätigt ist, wird wieder freigegeben; danach kann jemand anderes sie eintragen.
 

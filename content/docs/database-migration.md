@@ -20,6 +20,8 @@ Grob dauert das Kopieren eine Sekunde je einige zehntausend Zeilen; Dokumente un
 
 Die Befehle gehen von der Installation mit Docker Compose aus (Dienst `flowplan`, Volume auf `/app/data`) und von einem PostgreSQL, das der Container unter dem Namen `postgres` erreicht. Ersetze `<Passwort>` und die Adresse durch deine Werte.
 
+::: steps
+
 1. **Gleiche Version.** Aktualisiere Flowplan auf die Version, die danach laufen soll, und starte es einmal. Das Werkzeug lehnt eine Datenbank aus einer anderen Version ab.
 2. **Ziel vorbereiten:** eine leere Datenbank auf PostgreSQL 16 oder neuer und eine Rolle, der sie gehört – siehe [Voraussetzungen](/postgresql#voraussetzungen), dort auch zu `pg_trgm` und `pgvector`.
 3. **Sichern:** **Administration → Speicher & Sicherung → Gesamte Instanz → Herunterladen**. Bewahre die Datei auf, bis die neue Instanz läuft.
@@ -50,6 +52,8 @@ Die Befehle gehen von der Installation mit Docker Compose aus (Dienst `flowplan`
    Anmelden, eine Seite öffnen, etwas suchen (der Index füllt sich in Sekunden bis Minuten) und unter **Administration → Überwachung → System** nachsehen, dass dort **PostgreSQL** steht.
 8. **Aufräumen, aber nicht sofort:** Die alte `flowplan.sqlite` bleibt im Datenordner liegen und wird ignoriert, solange `DATABASE_URL` gesetzt ist. Lösche sie erst, wenn die erste geplante Sicherung der neuen Instanz gelaufen ist.
 
+:::
+
 Mit S3: Litestream läuft mit PostgreSQL nicht mehr; die geplanten Sicherungen werden zu `pg_dump`-Archiven ([Sicherungen mit pg_dump](/postgresql#sicherungen-mit-pg-dump)). Die alte Litestream-Kopie unter `<Präfix>/db/` im Bucket kannst du später löschen.
 
 Ohne Docker Compose geht dasselbe mit `docker run` – Volume und Netzwerk des Containers mitgeben:
@@ -64,6 +68,8 @@ docker run --rm --network <Netzwerk> -v flowplan-data:/app/data --entrypoint nod
 ## Von PostgreSQL zu SQLite
 
 Derselbe Weg in der anderen Richtung. Die Zieldatei darf noch nicht existieren – liegt im Datenordner noch eine `flowplan.sqlite` aus der Zeit vor PostgreSQL, schiebe sie zuerst beiseite.
+
+::: steps
 
 1. Gleiche Version auf beiden Seiten, Instanzsicherung herunterladen (wie oben).
 2. Flowplan stoppen: `docker compose stop flowplan`.
@@ -85,6 +91,8 @@ Derselbe Weg in der anderen Richtung. Die Zieldatei darf noch nicht existieren �
 
 5. `DATABASE_URL` (und `FLOWPLAN_PG_SCHEMA`) aus der `.env` entfernen, dann `docker compose up -d` und prüfen wie oben.
 6. Mit S3: Litestream sichert die neue Datei ab dem Start wieder laufend. Liegt im Bucket unter `<Präfix>/db/` noch eine Kopie aus der Zeit vor PostgreSQL, lösche oder verschiebe sie vor dem Start – sonst könnte ein späteres Wiederherstellen aus dem Bucket bei diesem alten Stand landen.
+
+:::
 
 Die PostgreSQL-Datenbank bleibt unverändert; behalte sie, bis die erste geplante Sicherung der SQLite-Instanz gelaufen ist.
 

@@ -59,9 +59,13 @@ Under **Settings → Notifications → Weekly digest** you subscribe to an e-mai
 
 Under **Settings → Notifications**:
 
+::: steps
+
 1. **Enable push** – the browser asks for permission. This applies per device.
 2. In the card **Notification kinds**, set the switches **Inbox**, **Push** and **E-mail** per kind – every change is saved at once. On a phone every kind is a card of its own with three labelled switches.
 3. Use **Send test notification** to check that everything arrives (see [below](#test-notification)).
+
+:::
 
 Push notifications open the page concerned. No document content appears on the lock screen.
 
@@ -86,7 +90,8 @@ After at most ten seconds, each device is listed with the channel it went throug
 
 The test only goes to your own devices, regardless of **Notification kinds** and Focus filters – the device's own permission and Focus still apply. At most five tests in ten minutes. The result never shows tokens or keys; administrators also see a diagnostics line with the relay address, whether `/.well-known/flowplan-push` is enabled and the instance's address (`APP_URL`).
 
-The [desktop app](/desktop-app#notifications-in-the-desktop-app) has no Web Push. It asks for new notifications itself and shows them as system notifications, with the unread count on the app icon. There, **Settings → Notifications** shows a switch for the app's notifications instead of **Enable push**; **Do Not Disturb** and **All Profiles** are in the app's **Notifications** menu. **Notification kinds** apply here too: only kinds with push pop up.
+> [!DESKTOP]
+> The [desktop app](/desktop-app#notifications-in-the-desktop-app) has no Web Push. It asks for new notifications itself and shows them as system notifications, with the unread count on the app icon. There, **Settings → Notifications** shows a switch for the app's notifications instead of **Enable push**; **Do Not Disturb** and **All Profiles** are in the app's **Notifications** menu. **Notification kinds** apply here too: only kinds with push pop up.
 
 ## Chat apps
 

@@ -61,10 +61,14 @@ Ist ein LDAP-Verzeichnis eingerichtet (siehe [Kontakte aus LDAP](/scim-and-ldap#
 
 Das Verzeichnis ist nur für Leute aus der Organisation da: Administratoren der Instanz, Konten, die sich mit LDAP anmelden, und Vollmitglieder (keine Gäste) mindestens eines Arbeitsbereichs, den jemand anderes angelegt hat. Gäste des Arbeitsbereichs der Kontakte-Datenbank können es nie durchsuchen oder importieren, und mit einem API-Token geht es auch nicht. Wer keinen Zugriff hat, sieht **Aus LDAP importieren** ausgegraut mit dem Grund.
 
+::: steps
+
 1. **Kontakte → Aus LDAP importieren** öffnet den Baum der Organisationseinheiten (OU) unter dem Basis-DN; Unter-OUs laden beim Aufklappen.
 2. Eine OU wählen: rechts stehen die Personen darin (Suche: in der OU und allen darunter). Bereits übernommene sind markiert.
 3. Personen ankreuzen und **übernehmen** – oder **Ganze OU übernehmen (auch künftige)**: alle Personen der OU und ihrer Unter-OUs, neue kommen beim Abgleich dazu.
 4. **Zuordnung der Attribute** (aufklappbar) legt fest, welches LDAP-Attribut welche Eigenschaft füllt; das erste Attribut mit Wert gilt. Standard:
+
+:::
 
 | Eigenschaft | LDAP-Attribute |
 | --- | --- |

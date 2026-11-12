@@ -127,14 +127,14 @@ Content archives and the [instance move](/move-instance) take workflows along wi
 
 | Key | Action |
 | --- | --- |
-| <kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd> | between nodes |
+| <kbd>Tab</kbd> / ++Shift Tab++ | between nodes |
 | Arrow keys (further with <kbd>Shift</kbd>) | move the selected node |
 | <kbd>Enter</kbd> / <kbd>Esc</kbd> | open / close the panel |
 | <kbd>A</kbd> | append a node |
 | <kbd>C</kbd> | connect to … |
 | <kbd>Delete</kbd> | delete |
-| <kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Ctrl</kbd>+<kbd>Y</kbd> | undo / redo |
-| <kbd>Ctrl</kbd>+<kbd>D</kbd> | duplicate |
+| ++Ctrl Z++ / ++Ctrl Y++ | undo / redo |
+| ++Ctrl D++ | duplicate |
 | <kbd>L</kbd> | list ↔ canvas |
 | <kbd>F</kbd> | fit the view |
 

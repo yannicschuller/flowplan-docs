@@ -18,8 +18,8 @@ The library contains servers (1, 2 and 4U), storage/NAS, switches (24 and 48 por
 
 - **Drag** a device to a spot: over a rack it snaps to whole units, next to it it lies freely on the board.
 - **Click** it (or press <kbd>Enter</kbd> in the search field) to put it into the selected rack – or the rack in the middle of the view – at the highest free place. When the rack is full, the device lies next to it.
-- Move mounted devices with the mouse to other units or another rack; with <kbd>↑</kbd>/<kbd>↓</kbd> by one unit (<kbd>⇧</kbd>: five units), <kbd>⌥</kbd> <kbd>↑</kbd>/<kbd>↓</kbd> changes the height. The handles at the top and bottom change the height in whole units too.
-- **Duplicate** (<kbd>⌘</kbd> <kbd>D</kbd>) puts the copy at the next free place of the same rack. Deleting a rack deletes its devices.
+- Move mounted devices with the mouse to other units or another rack; with <kbd>↑</kbd>/<kbd>↓</kbd> by one unit (<kbd>⇧</kbd>: five units), ++⌥ ↑/↓++ changes the height. The handles at the top and bottom change the height in whole units too.
+- **Duplicate** (++⌘ D++) puts the copy at the next free place of the same rack. Deleting a rack deletes its devices.
 - When two devices overlap or one sticks out of the rack, both are hatched red and marked with **!**; the rack counts them in its details.
 
 Devices can have **half depth** (mounted at the front or the rear): a front and a rear device then share the same units. In the other view they only show as a dashed outline. Vertical PDUs are mounted as **0U left/right** in the side channel.

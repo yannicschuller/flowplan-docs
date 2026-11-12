@@ -6,10 +6,14 @@ keywords: AFFiNE, Import, Umzug, Snapshot, Whiteboard
 
 Aus AFFiNE kommen Dokumente, Datenbanken und Whiteboards samt Bildern und Anhängen nach Flowplan – über den Export des Arbeitsbereichs.
 
+::: steps
+
 1. In der AFFiNE-Desktop-App in den **Einstellungen des Arbeitsbereichs** den Export **Full Backup** („Export a complete workspace backup“) wählen. Es entsteht eine Datei `Name_….affine` – die ganze Datenbank des Arbeitsbereichs mit Dokumenten, Ordnern, Sammlungen, Journal und Dateien.
    In der Web-App gibt es diese Datei nicht; dort exportierst du Dokumente als **Snapshot** (ZIP) – dafür muss in den Einstellungen des Arbeitsbereichs unter den experimentellen Funktionen **Enable Snapshot Import Export** eingeschaltet sein. Ein Snapshot enthält Dokumente, Datenbanken, Whiteboards und Dateien, aber keine Ordner, Sammlungen, Journal-Zuordnungen, Eigenschaften und Symbole. Tags enthalten nur Snapshots aus AFFiNE-Versionen bis Ende 2024 (mit einer Datei `info.json`); neuere Versionen schreiben keine Tags mehr in Snapshots. Wer Tags, Eigenschaften und Symbole mitnehmen will, nimmt die Arbeitsbereichsdatei (`.affine`) – die Vorschau weist darauf hin.
 2. In Flowplan: **Einstellungen → Import & Export → Import**, den Zielbereich wählen und bei **AFFiNE, Confluence, Evernote, Google Docs oder Obsidian** die `.affine`-Datei oder das Snapshot-ZIP auswählen (Quelle **AFFiNE** oder automatisch).
 3. Die Vorschau zeigt, was kommt: Seiten, Ordner, Dateien, Tags, Eigenschaften, Seitensymbole, Whiteboards, Datenbanken, Sammlungen, Tage fürs Journal und wie viele Dokumente als Inhalt von Datenbankeinträgen übernommen werden – und was nicht übernommen werden kann. **Importieren** legt alles in einem Schritt an.
+
+:::
 
 Was daraus wird:
 

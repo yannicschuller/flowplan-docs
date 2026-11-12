@@ -12,13 +12,13 @@ Quick capture is part of the [desktop app for macOS, Windows and Linux](/desktop
 
 | Key | What happens |
 | --- | --- |
-| <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>Space</kbd> (Mac: <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Space</kbd>) | opens the window above every app – also while Flowplan is minimised, hidden or (Mac, tray icon) closed |
+| ++Ctrl Shift Space++ (Mac: ++⇧ ⌘ Space++) | opens the window above every app – also while Flowplan is minimised, hidden or (Mac, tray icon) closed |
 | <kbd>Enter</kbd> | saves |
-| <kbd>Shift</kbd> <kbd>Enter</kbd> | new line |
-| <kbd>Tab</kbd> | choose the target: typing filters, <kbd>↑</kbd> <kbd>↓</kbd> moves, <kbd>Enter</kbd> takes it |
-| <kbd>Alt</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | previous / next target without opening the list |
-| <kbd>⌘</kbd>/<kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>V</kbd> | paste the clipboard – a link gets its title |
-| hold <kbd>⌘</kbd>/<kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>R</kbd> | record a voice note, release to stop |
+| ++Shift Enter++ | new line |
+| <kbd>Tab</kbd> | choose the target: typing filters, ++↑ ↓++ moves, <kbd>Enter</kbd> takes it |
+| ++Alt ↑++ / <kbd>↓</kbd> | previous / next target without opening the list |
+| ++⌘/Ctrl Shift V++ | paste the clipboard – a link gets its title |
+| hold ++⌘/Ctrl Shift R++ | record a voice note, release to stop |
 | <kbd>↓</kbd> in the empty field | **Recently captured** |
 | <kbd>Esc</kbd> | closes an open list, otherwise the window – the text stays as a draft |
 
@@ -68,13 +68,13 @@ What a chip takes over disappears from the title. The **×** on a chip keeps the
 
 ## Clipboard and links
 
-<kbd>⌘</kbd>/<kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>V</kbd> or **Paste** inserts the clipboard text. If it is a link (`https://…`), it appears as a link chip with title and provider – **your instance fetches the preview** (like link cards in the editor, protected against internal addresses), never the app itself. It is saved into the database's link property (otherwise into the text) and as a link card; with an empty text, the page's title becomes the title. Offline, the link is saved without a title.
+++⌘/Ctrl Shift V++ or **Paste** inserts the clipboard text. If it is a link (`https://…`), it appears as a link chip with title and provider – **your instance fetches the preview** (like link cards in the editor, protected against internal addresses), never the app itself. It is saved into the database's link property (otherwise into the text) and as a link card; with an empty text, the page's title becomes the title. Offline, the link is saved without a title.
 
 ## Files, screen regions and voice notes
 
 - **Files:** drop images (PNG, JPEG, GIF, WebP, AVIF, HEIC), PDFs, Markdown and text files on the window, or choose them with **Attach…**. They are checked as when [dropping files on the main window](/desktop-app#more-from-the-desktop-app): extension **and** content, images and PDFs up to 50 MB, text up to 5 MB (the instance may allow less), at most 10 attachments. The list below the text shows them, **×** removes one. Images and PDFs go into the database's files property and into the text; Markdown and text become text.
 - **Screen region:** **Region** – the window steps aside and you drag a region; it is attached as a PNG. On the Mac this uses the system's screenshot tool (Space picks a window, <kbd>Esc</kbd> cancels); on Windows and Linux Flowplan shows the screen under the pointer, you drag the region, <kbd>Enter</kbd> takes the whole screen, <kbd>Esc</kbd> cancels. Temporary files sit only briefly in the app's data folder and are deleted right away.
-- **Voice note:** press and hold **Hold to talk** (or <kbd>⌘</kbd>/<kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>R</kbd>), release to stop. If your instance has transcription (Whisper, see [Configuration](/configuration)), the recording becomes text there and appears in the field – to check before saving. Without transcription, offline or if it fails, the recording is attached; the instance tries again when it is saved.
+- **Voice note:** press and hold **Hold to talk** (or ++⌘/Ctrl Shift R++), release to stop. If your instance has transcription (Whisper, see [Configuration](/configuration)), the recording becomes text there and appears in the field – to check before saving. Without transcription, offline or if it fails, the recording is attached; the instance tries again when it is saved.
 
 ### Permissions per system
 

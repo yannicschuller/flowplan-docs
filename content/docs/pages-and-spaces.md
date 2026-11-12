@@ -64,7 +64,7 @@ Zwei Seiten nebeneinander – etwa Notizen links und die Aufgaben-Datenbank rech
 - **In geteilter Ansicht öffnen** im Rechtsklick-Menü einer Seite im Seitenbaum,
 - <kbd>⌘</kbd>-Klick (Windows/Linux: <kbd>Strg</kbd>-Klick) auf eine Seite im Seitenbaum, unter Favoriten oder auf einen Seitenlink im Text,
 - Ziehen einer Seite aus dem Seitenbaum an den **rechten Fensterrand** (dort erscheint eine Ablagefläche),
-- <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>S</kbd> oder **Seite daneben öffnen …** im Menü `…`: Die Schnellsuche öffnet die gewählte Seite rechts.
+- ++⌘ ⌥ S++ oder **Seite daneben öffnen …** im Menü `…`: Die Schnellsuche öffnet die gewählte Seite rechts.
 
 Jede Hälfte hat eine eigene Kopfzeile mit Titel und **×**. Das **×** links schließt die linke Seite, die rechte rückt in die Hauptansicht; der Pfeil rechts holt die rechte Seite in die Hauptansicht. Dokumente lassen sich in beiden Hälften bearbeiten, Datenbanken, Whiteboards und Dashboards funktionieren wie gewohnt.
 
@@ -148,4 +148,4 @@ Gelöschte Seiten und Bereiche landen im **Papierkorb** unten in der Seitenleist
 - Endgültig gelöscht werden die Seite mit Inhalt, Versionen, Kommentaren und Randkommentaren, bei Datenbanken Eigenschaften, Ansichten und Einträge, dazu hochgeladene Dateien, Favoriten, Veröffentlichungen, Freigabelinks, Benachrichtigungen und Suchtreffer. Links aus anderen Seiten zeigen danach auf eine gelöschte Seite. Das lässt sich nicht rückgängig machen; eine [Sicherung](/storage-and-backups) bleibt der einzige Weg zurück.
 - Nach **30 Tagen** im Papierkorb wird alles automatisch endgültig gelöscht – Seiten, Bereiche, Einträge, Dateien und [Vorlagen](/templates#eigene-vorlagen). Die Zeile oben nennt die Frist, jede Seite zeigt, wie viele Tage ihr noch bleiben. Admins ändern die Frist unter [Grenzen & Aufbewahrung](/administration#grenzen-aufbewahrung) (0 = nie automatisch).
 
-Direkt nach dem Löschen zeigt Flowplan unten einen Hinweis wie „„Notizen“ in den Papierkorb gelegt“ mit **Rückgängig** – etwa sechs Sekunden lang, solange der Mauszeiger oder der Fokus darauf liegt auch länger. **Rückgängig** oder <kbd>⌘</kbd> <kbd>Z</kbd> (außerhalb von Textfeldern) holt die Seite samt Unterseiten zurück und öffnet sie wieder. Dasselbe gilt fürs Verschieben von Seiten im Seitenbaum und für mehrere Seiten auf einmal.
+Direkt nach dem Löschen zeigt Flowplan unten einen Hinweis wie „„Notizen“ in den Papierkorb gelegt“ mit **Rückgängig** – etwa sechs Sekunden lang, solange der Mauszeiger oder der Fokus darauf liegt auch länger. **Rückgängig** oder ++⌘ Z++ (außerhalb von Textfeldern) holt die Seite samt Unterseiten zurück und öffnet sie wieder. Dasselbe gilt fürs Verschieben von Seiten im Seitenbaum und für mehrere Seiten auf einmal.

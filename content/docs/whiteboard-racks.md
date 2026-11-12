@@ -18,8 +18,8 @@ Die Bibliothek enthält Server (1, 2 und 4 HE), Speicher/NAS, Switches (24 und 4
 
 - **Ziehen** legt ein Gerät an eine Stelle: über einem Rack rastet es an ganzen HE ein, daneben liegt es frei auf dem Board.
 - **Klicken** (oder <kbd>Enter</kbd> im Suchfeld) setzt es in das ausgewählte Rack – oder in das Rack in der Mitte der Ansicht – an den obersten freien Platz. Ist das Rack voll, liegt das Gerät daneben.
-- Eingebaute Geräte verschiebst du mit der Maus in andere HE oder in ein anderes Rack; mit <kbd>↑</kbd>/<kbd>↓</kbd> um eine HE (<kbd>⇧</kbd>: fünf HE), mit <kbd>⌥</kbd> <kbd>↑</kbd>/<kbd>↓</kbd> änderst du die Höhe. Die Griffe oben und unten ändern die Höhe ebenfalls in ganzen HE.
-- **Duplizieren** (<kbd>⌘</kbd> <kbd>D</kbd>) setzt die Kopie an den nächsten freien Platz desselben Racks. Wird ein Rack gelöscht, gehen seine Geräte mit.
+- Eingebaute Geräte verschiebst du mit der Maus in andere HE oder in ein anderes Rack; mit <kbd>↑</kbd>/<kbd>↓</kbd> um eine HE (<kbd>⇧</kbd>: fünf HE), mit ++⌥ ↑/↓++ änderst du die Höhe. Die Griffe oben und unten ändern die Höhe ebenfalls in ganzen HE.
+- **Duplizieren** (++⌘ D++) setzt die Kopie an den nächsten freien Platz desselben Racks. Wird ein Rack gelöscht, gehen seine Geräte mit.
 - Überschneiden sich zwei Geräte oder ragt eines aus dem Rack, werden beide rot schraffiert und mit **!** markiert; das Rack zählt sie in seinen Details.
 
 Geräte können **halbe Tiefe** haben (vorne oder hinten eingebaut): Ein vorderes und ein hinteres Gerät teilen sich dann dieselben HE. In der anderen Ansicht erscheinen sie nur als gestrichelter Umriss. Senkrechte PDUs baust du als **0 HE links/rechts** in den seitlichen Kanal.

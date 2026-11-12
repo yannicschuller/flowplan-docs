@@ -8,12 +8,16 @@ Flowplan only needs an HTTPS proxy in front of it. WebSockets are not needed: co
 
 ## Coolify
 
+::: steps
+
 1. Choose **New resource → Docker Image** (`ghcr.io/yannicschuller/flowplan:latest`) or **Dockerfile** from the Git repository.
 2. **Ports Exposes**: `3000`.
 3. Enter the domain, e.g. `https://flowplan.example.com`. Coolify gets the certificate via Traefik.
 4. **Persistent Storage**: a volume with the target `/app/data`.
 5. Set the environment variables from the [configuration](/configuration).
 6. Deploy. After about 20 seconds the health check reports the container as healthy.
+
+:::
 
 ### Health check
 
@@ -66,10 +70,14 @@ With `user:`, `PUID`/`PGID` have no effect; Flowplan says so in one line at star
 
 Coolify does not watch the registry itself. The repositories' image workflows therefore trigger a deployment through the Coolify API after pushing a new image (`POST /api/v1/deploy?uuid=…` with an API token). Coolify's built-in GitHub webhook does not fit: it builds from source and fires on the push, before the image is ready.
 
+::: steps
+
 1. In Coolify, turn on API access under **Settings** (and allow the CI runner's address if needed).
 2. Under **Keys & Tokens → API tokens**, create a token with the *deploy* permission.
 3. In the resource under **Webhooks**, copy the *Deploy Webhook* address, e.g. `https://coolify.example.com/api/v1/deploy?uuid=…&force=false`.
 4. In the GitHub repository under **Settings → Secrets and variables → Actions**, create two secrets: `COOLIFY_WEBHOOK` (the address) and `COOLIFY_TOKEN` (the token).
+
+:::
 
 | Repository | Image in Coolify | Rolled out on |
 | --- | --- | --- |

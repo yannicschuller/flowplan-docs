@@ -43,17 +43,17 @@ Readers who may only view see Select, Move, the laser pointer and the bottom bar
 
 ## Style elements
 
-Selected elements show a bar with colour, font size, bold, alignment, line width and style, **Bring forward**/**Send backward**, **Duplicate** (<kbd>⌘</kbd> <kbd>D</kbd>) and **Delete** (<kbd>Del</kbd>). Sticky notes and text can also be **hidden** – like a spoiler in a document, revealed with a click.
+Selected elements show a bar with colour, font size, bold, alignment, line width and style, **Bring forward**/**Send backward**, **Duplicate** (++⌘ D++) and **Delete** (<kbd>Del</kbd>). Sticky notes and text can also be **hidden** – like a spoiler in a document, revealed with a click.
 
 A double click edits an element's text. Copy and paste work within and between whiteboards. **Italic** and **Underline** apply to the whole text of an element, like **Bold**.
 
 ## Group
 
-Select several elements and press <kbd>⌘</kbd> <kbd>G</kbd> (or **Group** in the bar): from then on they behave like one. A click selects the whole group, and it is moved, scaled at the corners, duplicated, copied, locked and deleted together. Groups can be combined into larger groups.
+Select several elements and press ++⌘ G++ (or **Group** in the bar): from then on they behave like one. A click selects the whole group, and it is moved, scaled at the corners, duplicated, copied, locked and deleted together. Groups can be combined into larger groups.
 
 - A **double click** on a grouped element enters the group: a dashed outline shows it, and clicks now select single elements inside (in nested groups, the next level). <kbd>Esc</kbd> or a click elsewhere leaves the group.
-- <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>G</kbd> or **Ungroup** dissolves the outermost group of the selection.
-- Copies of a group are a new group of their own. Like every change, grouping is shared live and can be undone with <kbd>⌘</kbd> <kbd>Z</kbd>.
+- ++⇧ ⌘ G++ or **Ungroup** dissolves the outermost group of the selection.
+- Copies of a group are a new group of their own. Like every change, grouping is shared live and can be undone with ++⌘ Z++.
 
 ## Lists, links and tags
 
@@ -63,7 +63,7 @@ Sticky notes, shapes and texts know a few formats right in the text:
 | --- | --- |
 | `- item` | Bulleted list (the **Bulleted list** and **Numbered list** buttons in the bar set it for the marked lines) |
 | `1. item` | Numbered list; <kbd>Enter</kbd> continues the list, an empty line ends it |
-| `**bold**`, `*italic*`, `__underline__` | Emphasise single words – while typing with <kbd>⌘</kbd> <kbd>B</kbd>, <kbd>⌘</kbd> <kbd>I</kbd>, <kbd>⌘</kbd> <kbd>U</kbd> |
+| `**bold**`, `*italic*`, `__underline__` | Emphasise single words – while typing with ++⌘ B++, ++⌘ I++, ++⌘ U++ |
 | `[text](https://…)` | Link – **Insert a link into the text** in the bar puts it around the marked text |
 
 Links may only point to `https://`, `http://` and `mailto:` or to an element of the same board (see below); other addresses stay plain text. Web links open in a new tab. In addition, every element can carry a **link** of its own (chain icon in the bar); a small icon at its corner leads there.
@@ -110,10 +110,10 @@ Exports show a card with the provider and link instead of the player.
 ## Navigate
 
 - Zoom with <kbd>⌘</kbd> + scroll wheel, trackpad gestures or the buttons in the bar at the bottom left.
-- **Show everything** (<kbd>⇧</kbd> <kbd>1</kbd>) fits the view to all elements, <kbd>⇧</kbd> <kbd>2</kbd> to the selection – with a smooth camera move that any input stops at once.
-- Undo <kbd>⌘</kbd> <kbd>Z</kbd>, redo <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Z</kbd>.
+- **Show everything** (++⇧ 1++) fits the view to all elements, ++⇧ 2++ to the selection – with a smooth camera move that any input stops at once.
+- Undo ++⌘ Z++, redo ++⇧ ⌘ Z++.
 - **Minimap** (in the **…** menu of the bottom bar, **View and actions**): a small overview of all elements with the visible part. Click or drag to go there; with the focus on the minimap the arrow keys move the view. The browser remembers whether it is open.
-- **Search the board** (<kbd>⌘</kbd> <kbd>F</kbd> on the board, or in the **…** menu at the bottom): searches sticky notes, shapes, texts, tables, frames, comments, embeds and page and record cards. <kbd>Enter</kbd> and <kbd>⇧</kbd> <kbd>Enter</kbd> (or the arrows) jump to the next or previous match, which is highlighted; <kbd>Esc</kbd> closes the search.
+- **Search the board** (++⌘ F++ on the board, or in the **…** menu at the bottom): searches sticky notes, shapes, texts, tables, frames, comments, embeds and page and record cards. <kbd>Enter</kbd> and ++⇧ Enter++ (or the arrows) jump to the next or previous match, which is highlighted; <kbd>Esc</kbd> closes the search.
 
 ## Embed and export
 

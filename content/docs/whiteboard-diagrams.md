@@ -8,7 +8,7 @@ Auf dem Whiteboard: Mindmaps per Tab, Formenbibliotheken für Flussdiagramme und
 
 ## Mindmaps
 
-Einen Zettel, eine Form oder einen Text auswählen und <kbd>Tab</kbd> drücken: Rechts entsteht ein verbundener Zweig, der sofort beschriftet werden kann. <kbd>Tab</kbd> am neuen Zweig verzweigt weiter, <kbd>⌥</kbd> <kbd>Enter</kbd> legt ein Geschwister an. Die Mindmap ordnet sich dabei selbst: Zweige stehen rechts neben ihrem Elternteil, gleichmäßig verteilt und mittig ausgerichtet. **Mindmap anordnen** in der Leiste eines Elements ordnet den ganzen Baum neu. Tippen auf einem ausgewählten Zettel beginnt direkt mit dem Schreiben.
+Einen Zettel, eine Form oder einen Text auswählen und <kbd>Tab</kbd> drücken: Rechts entsteht ein verbundener Zweig, der sofort beschriftet werden kann. <kbd>Tab</kbd> am neuen Zweig verzweigt weiter, ++⌥ Enter++ legt ein Geschwister an. Die Mindmap ordnet sich dabei selbst: Zweige stehen rechts neben ihrem Elternteil, gleichmäßig verteilt und mittig ausgerichtet. **Mindmap anordnen** in der Leiste eines Elements ordnet den ganzen Baum neu. Tippen auf einem ausgewählten Zettel beginnt direkt mit dem Schreiben.
 
 ## Diagramme: Formenbibliotheken
 
@@ -31,11 +31,11 @@ Alle Formen sind Vektorgrafiken, übernehmen Füllung, Linienfarbe und -stärke 
 
 ## Automatisch anordnen
 
-Mehrere verbundene Formen auswählen → **Automatisch anordnen** → **Von oben nach unten** oder **Von links nach rechts**. Flowplan ordnet das Diagramm in Ebenen an (mit möglichst wenig Kreuzungen), die linke obere Ecke bleibt, wo sie war, und die Verbindungslinien bleiben angeheftet. Ein <kbd>⌘</kbd> <kbd>Z</kbd> macht alles auf einmal rückgängig. Gesperrte Elemente bleiben stehen.
+Mehrere verbundene Formen auswählen → **Automatisch anordnen** → **Von oben nach unten** oder **Von links nach rechts**. Flowplan ordnet das Diagramm in Ebenen an (mit möglichst wenig Kreuzungen), die linke obere Ecke bleibt, wo sie war, und die Verbindungslinien bleiben angeheftet. Ein ++⌘ Z++ macht alles auf einmal rückgängig. Gesperrte Elemente bleiben stehen.
 
 ## Mermaid und PlantUML importieren
 
-Füge Mermaid- oder PlantUML-Text einfach auf dem Board ein (<kbd>⌘</kbd> <kbd>V</kbd>), zieh eine `.mmd`- oder `.puml`-Datei darauf oder wähle **Mermaid/PlantUML importieren …** unter **+**. Daraus werden bearbeitbare Formen und Verbindungslinien, automatisch angeordnet:
+Füge Mermaid- oder PlantUML-Text einfach auf dem Board ein (++⌘ V++), zieh eine `.mmd`- oder `.puml`-Datei darauf oder wähle **Mermaid/PlantUML importieren …** unter **+**. Daraus werden bearbeitbare Formen und Verbindungslinien, automatisch angeordnet:
 
 - **Mermaid**: `flowchart`/`graph` (mit Formen, Beschriftungen, Untergraphen als Rahmen), `sequenceDiagram`, `classDiagram`, `erDiagram` (mit Krähenfüßen), `stateDiagram`, `mindmap`.
 - **PlantUML**: Aktivitätsdiagramme (`start`, `:Aktion;`, `if`/`else`, `while`, `fork` …), Sequenz-, Klassen-, Anwendungsfall- und Komponentendiagramme sowie `@startmindmap`.

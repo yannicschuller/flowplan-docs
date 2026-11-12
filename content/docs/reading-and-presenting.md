@@ -12,18 +12,18 @@ Das Listen-Symbol oben rechts im Dokument öffnet das **Inhaltsverzeichnis** neb
 
 ## Abschnitte einklappen
 
-Jede Überschrift lässt sich **einklappen**: Der kleine Pfeil links neben der Überschrift (erscheint beim Darüberfahren; auf Touch-Geräten und bei eingeklappten Überschriften immer) blendet alles darunter aus – bis zur nächsten Überschrift derselben oder einer höheren Ebene. Eine eingeklappte Überschrift zeigt dahinter, wie viel verborgen ist (**… 3 Blöcke**); ein zweiter Klick klappt wieder aus. Steht der Cursor in der Überschrift, geht das auch mit <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd>. Auf dem Handy sitzt der Pfeil am Ende der Überschrift, in Texten von rechts nach links auf der anderen Seite.
+Jede Überschrift lässt sich **einklappen**: Der kleine Pfeil links neben der Überschrift (erscheint beim Darüberfahren; auf Touch-Geräten und bei eingeklappten Überschriften immer) blendet alles darunter aus – bis zur nächsten Überschrift derselben oder einer höheren Ebene. Eine eingeklappte Überschrift zeigt dahinter, wie viel verborgen ist (**… 3 Blöcke**); ein zweiter Klick klappt wieder aus. Steht der Cursor in der Überschrift, geht das auch mit ++⌘ ⌥ Enter++. Auf dem Handy sitzt der Pfeil am Ende der Überschrift, in Texten von rechts nach links auf der anderen Seite.
 
-- **Alle Abschnitte einklappen / ausklappen:** im Seitenmenü `⋯` eines Dokuments, oben im [Inhaltsverzeichnis](#inhaltsverzeichnis), in der Schnellsuche (`> abschnitte`) oder mit <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>X</kbd> bzw. <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>O</kbd> ([änderbar](/keyboard-shortcuts#eigene-tastenkuerzel)). Ist ein Datenbank-Eintrag offen, gilt es für seinen Text.
+- **Alle Abschnitte einklappen / ausklappen:** im Seitenmenü `⋯` eines Dokuments, oben im [Inhaltsverzeichnis](#inhaltsverzeichnis), in der Schnellsuche (`> abschnitte`) oder mit ++⌘ ⌥ X++ bzw. ++⌘ ⌥ O++ ([änderbar](/keyboard-shortcuts#eigene-tastenkuerzel)). Ist ein Datenbank-Eintrag offen, gilt es für seinen Text.
 - **Nur für dich:** Was eingeklappt ist, merkt sich dieses Gerät (pro Seite bzw. Eintrag) – es ändert das Dokument nicht, andere sehen alles wie bisher. Neu geöffnete Dokumente sind ausgeklappt.
-- **Nichts geht verloren:** Kommt der Cursor in einen eingeklappten Teil (Pfeiltasten, Rückgängig, ein Klick im Inhaltsverzeichnis), klappt er auf. Ebenso, wenn **Auf der Seite suchen** (<kbd>⌘</kbd> <kbd>F</kbd>) einen Treffer darin anspringt oder ein Suchtreffer, Rückverweis oder eine Benachrichtigung dorthin führt. In der eingeklappten Überschrift selbst kannst du weiterschreiben, sie bleibt eingeklappt.
-- **Verschieben:** Ziehst du eine eingeklappte Überschrift am Griff `⋮⋮` (oder verschiebst sie mit <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd>/<kbd>↓</kbd>), wandert ihr ganzer Abschnitt mit.
+- **Nichts geht verloren:** Kommt der Cursor in einen eingeklappten Teil (Pfeiltasten, Rückgängig, ein Klick im Inhaltsverzeichnis), klappt er auf. Ebenso, wenn **Auf der Seite suchen** (++⌘ F++) einen Treffer darin anspringt oder ein Suchtreffer, Rückverweis oder eine Benachrichtigung dorthin führt. In der eingeklappten Überschrift selbst kannst du weiterschreiben, sie bleibt eingeklappt.
+- **Verschieben:** Ziehst du eine eingeklappte Überschrift am Griff `⋮⋮` (oder verschiebst sie mit ++⌘ ⇧ ↑/↓++), wandert ihr ganzer Abschnitt mit.
 - **Drucken und PDF** zeigen immer alles; ebenso Export, Präsentation und veröffentlichte Seiten.
 - Einklappen lassen sich Überschriften direkt im Dokument – auch im Lesemodus und in [verschlüsselten Bereichen](/encrypted-spaces). Überschriften in Hinweisen, Toggles, Tabellen, Spalten oder Listen haben keinen Pfeil; solche Blöcke gehören einfach zum Abschnitt, in dem sie stehen.
 
 ## Lesemodus
 
-Das Buch-Symbol oben in der Leiste (auf dem Telefon **Lesemodus** im Menü `⋯`, oder <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>E</kbd>, Schnellsuche → `> lesemodus`) öffnet ein Dokument **nur zum Lesen**: Nichts lässt sich versehentlich ändern, Griffe und Blockmenü verschwinden – praktisch auf dem Handy und beim Vorlesen oder Präsentieren. Der Stift wechselt zurück zum Bearbeiten. Das Gerät merkt sich den Modus pro Seite; die Rechte ändern sich dadurch nicht, und andere sehen weiter ihren eigenen Modus. Datenbank-Einträge haben dasselbe Buch-Symbol oben im Eintrag (siehe [Datenbanken](/databases)).
+Das Buch-Symbol oben in der Leiste (auf dem Telefon **Lesemodus** im Menü `⋯`, oder ++⌘ ⌥ E++, Schnellsuche → `> lesemodus`) öffnet ein Dokument **nur zum Lesen**: Nichts lässt sich versehentlich ändern, Griffe und Blockmenü verschwinden – praktisch auf dem Handy und beim Vorlesen oder Präsentieren. Der Stift wechselt zurück zum Bearbeiten. Das Gerät merkt sich den Modus pro Seite; die Rechte ändern sich dadurch nicht, und andere sehen weiter ihren eigenen Modus. Datenbank-Einträge haben dasselbe Buch-Symbol oben im Eintrag (siehe [Datenbanken](/databases)).
 
 Der Lesemodus gilt auch für alles, was in der Seite eingebettet ist: In **verknüpften Datenbanken** lassen sich keine Zellen bearbeiten, keine Einträge anlegen, löschen oder verschieben und keine Ansichten ändern; ein von dort geöffneter Eintrag ist ebenfalls nur lesbar. Änderungen anderer erscheinen weiter live. Synchronisierte Blöcke, Zeichnungen, Kennzahlen, Funktionsgraphen und Erweiterungsblöcke sind im Lesemodus ebenfalls gesperrt.
 
@@ -33,7 +33,7 @@ Der Lesemodus gilt auch für alles, was in der Seite eingebettet ist: In **verkn
 
 ## Präsentieren
 
-**Präsentieren** im Menü `…` oben rechts (oder <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd>, Schnellsuche → `> präsentieren`) zeigt ein Dokument als Folien im Vollbild – ohne es umzubauen:
+**Präsentieren** im Menü `…` oben rechts (oder ++⌘ ⌥ P++, Schnellsuche → `> präsentieren`) zeigt ein Dokument als Folien im Vollbild – ohne es umzubauen:
 
 - Jede **Überschrift 1** beginnt eine neue Folie. Hat das Dokument keine, beginnt jede **Überschrift 2** eine. Eine **Trennlinie** (`---`) beginnt immer eine neue Folie.
 - Was vor der ersten Überschrift steht, wird zur Titelfolie mit dem Seitentitel.

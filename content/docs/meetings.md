@@ -29,9 +29,19 @@ Tippe **/meet** (oder **/besprechung**) in einem Dokument oder im Dokument eines
 **Aufnehmen**
 
 - **Aufnahme starten**, **Pause**, **Fortsetzen**, **Beenden** (fragt einmal „Besprechung beenden?“ – danach wird transkribiert und zusammengefasst). Während der Aufnahme zeigt je Quelle (Mikrofon, Systemton) eine kleine **Pegelanzeige**, ob Ton ankommt; bleibt eine Quelle über 30 Sekunden still, während die andere Ton hat (stummes oder falsches Mikrofon, Tab ohne geteilten Ton), weist der Block darauf hin. **Weiter aufnehmen** (im Menü) setzt eine Besprechung später fort – das Transkript wird fortgeschrieben. Endete eine Aufnahme unerwartet (Fenster geschlossen, Verbindung weg), bietet der Block **Fortsetzen** an.
-- In der **Desktop-App** (Windows 10+, macOS 13+) werden Mikrofon und **Systemton** als zwei getrennte Spuren aufgenommen: Das Mikrofon bist du (dein Name), der Systemton sind die anderen („Andere“). Mit `WHISPER_DIARIZE=on` und einem Dienst, der Sprecher trennt, werden die anderen weiter unterschieden („Andere 1“, „Andere 2“). macOS fragt einmal nach der Berechtigung „Bildschirm- & Systemaudioaufnahme“; fehlt sie, nimmt Flowplan nur das Mikrofon auf und sagt, wo sie sich einschalten lässt.
+
+Welcher Ton aufgenommen wird, hängt davon ab, wo du aufnimmst:
+
+::: tabs
+== Desktop-App
+In der **Desktop-App** (Windows 10+, macOS 13+) werden Mikrofon und **Systemton** als zwei getrennte Spuren aufgenommen: Das Mikrofon bist du (dein Name), der Systemton sind die anderen („Andere“). Mit `WHISPER_DIARIZE=on` und einem Dienst, der Sprecher trennt, werden die anderen weiter unterschieden („Andere 1“, „Andere 2“). macOS fragt einmal nach der Berechtigung „Bildschirm- & Systemaudioaufnahme“; fehlt sie, nimmt Flowplan nur das Mikrofon auf und sagt, wo sie sich einschalten lässt.
+== Browser
+Im **Browser** nimmt **Aufnahme starten** das Mikrofon auf (alle im Raum auf einer Spur); in Chrome und Edge weist der Block vorher darauf hin. In **Chrome und Edge** nimmt **Alle Teilnehmenden aufnehmen** zusätzlich den Ton eines Tabs oder des Bildschirms auf: Im Freigabedialog den Tab der Videokonferenz (oder den Bildschirm) wählen und den Haken zum Teilen des Tons setzen (bei einem Tab „Tab-Audio teilen“); das Bild verwirft Flowplan sofort. Firefox und Safari geben dabei keinen Ton weiter – dort (und für den Ton anderer Programme) die Desktop-App nutzen.
+== Mobile Apps
+Die Apps für iPhone, iPad und Android nehmen nur das Mikrofon auf.
+:::
+
 - **Kopfhörer** sind am besten. Mit Lautsprechern hört das Mikrofon die anderen mit; Flowplan entfernt solche doppelten Passagen aus der Mikrofonspur (gleiche Zeit, nahezu gleicher Text).
-- Im **Browser** nimmt **Aufnahme starten** das Mikrofon auf (alle im Raum auf einer Spur); in Chrome und Edge weist der Block vorher darauf hin. In **Chrome und Edge** nimmt **Alle Teilnehmenden aufnehmen** zusätzlich den Ton eines Tabs oder des Bildschirms auf: Im Freigabedialog den Tab der Videokonferenz (oder den Bildschirm) wählen und den Haken zum Teilen des Tons setzen (bei einem Tab „Tab-Audio teilen“); das Bild verwirft Flowplan sofort. Firefox und Safari geben dabei keinen Ton weiter – dort (und für den Ton anderer Programme) die Desktop-App nutzen. Die mobilen Apps nehmen nur das Mikrofon auf.
 - **Eine gemeinsame Tonspur** (Menü): Mikrofon und Ton der Besprechung werden zu einer Spur gemischt statt getrennt aufgenommen. Sprecher unterscheidet dann nur noch der Whisper-Dienst (`WHISPER_DIARIZE=on`); Standard bleiben getrennte Spuren.
 - Die Aufnahme geht in 30-Sekunden-Stücken an den Server; bricht die Verbindung ab, bleiben die Stücke im Browser und werden nachgereicht. Bis zu 3 Stunden pro Besprechung. Der Server transkribiert die Stücke schon **während der Aufnahme** – nach dem Beenden bleiben nur das letzte Stück und die Zusammenfassung, das Ergebnis ist also viel schneller da. Klappt das nicht (anderes Format, Dienst kurz weg), wird die ganze Aufnahme am Ende transkribiert; das Audio geht dabei nie verloren.
 - **Aufnahme hochladen …** (Menü): M4A, MP3, WAV, AAC oder WebM – eine Datei mit allen oder zwei Dateien (zuerst das Mikrofon, dann der Ton der Besprechung).

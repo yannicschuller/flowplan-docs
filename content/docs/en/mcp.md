@@ -10,9 +10,13 @@ Besides the optional [built-in AI](/ai), MCP connects the assistant *you* choose
 
 ## Set up
 
+::: steps
+
 1. Under **Settings → API & AI assistants**, create a [personal API token](/api-and-webhooks) for the assistant. Choose **Read only** if the assistant should only search and read. Choose **Read and write** if it should also create pages and records.
 2. Copy the address shown under **AI assistants (MCP)**. It is your Flowplan address followed by `/api/mcp`, for example `https://flowplan.example.com/api/mcp`.
 3. Enter both in your client (examples below). The settings page has a ready-made configuration for each client and fills in a token you have just created.
+
+:::
 
 Use a separate token for each assistant. That way you can see when each one was last used, and you can revoke one without affecting the others.
 

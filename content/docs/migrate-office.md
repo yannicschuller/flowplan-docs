@@ -8,8 +8,12 @@ Schritt für Schritt aus Confluence, Evernote, Google Docs, Microsoft Word und O
 
 ## Von Confluence
 
+::: steps
+
 1. In Confluence: **Bereichseinstellungen → Exportieren** (Confluence Cloud: **Bereichseinstellungen → Bereich exportieren**). Wähle **HTML** oder **XML**, jeweils mit allen Seiten.
 2. In Flowplan das ZIP wie oben importieren (Quelle **Confluence** oder automatisch).
+
+:::
 
 Was daraus wird:
 
@@ -21,8 +25,12 @@ Was daraus wird:
 
 ## Von Evernote
 
+::: steps
+
 1. In Evernote ein Notizbuch über **… → Notizbuch exportieren** als **ENEX** speichern. Mehrere Notizbücher packst du zusammen in ein ZIP.
 2. In Flowplan die `.enex`-Datei oder das ZIP importieren.
+
+:::
 
 Was daraus wird:
 
@@ -34,8 +42,12 @@ Was daraus wird:
 
 ## Von Google Docs
 
+::: steps
+
 1. Unter [takeout.google.com](https://takeout.google.com) **Drive** wählen und bei den Formaten für Dokumente **HTML** (empfohlen) oder **Microsoft Word** einstellen. Einzelne Dokumente gehen auch über **Datei → Herunterladen → Webseite (.html, gezippt)** oder **Microsoft Word (.docx)**.
 2. In Flowplan das Takeout-ZIP, das ZIP der Webseite oder die `.docx`-Datei importieren (Quelle **Google Docs**; einzelne `.docx`-Dateien gehen auch über [Microsoft Word](#von-microsoft-word)).
+
+:::
 
 Was daraus wird:
 
@@ -59,7 +71,11 @@ Word-Dokumente (`.docx`) importierst du unter **Einstellungen → Import & Expor
 
 OneNote-Dateien (`.one`, `.onetoc2`, `.onepkg`) liest Flowplan nicht direkt – Flowplan erkennt sie und sagt, was zu tun ist. Der Weg führt über OneNotes eigenen Export:
 
+::: steps
+
 1. In OneNote für Windows die Seite oder den Abschnitt öffnen und **Datei → Exportieren** wählen; als Format **Word-Dokument (.docx)**.
 2. Die `.docx`-Datei (oder mehrere als ZIP) in Flowplan über **Microsoft Word** importieren.
+
+:::
 
 Bietet deine OneNote-Version keinen Export als Word-Dokument an, sondern nur PDF, importiere das PDF als Notizbuch (wie [aus GoodNotes](/migrate-notes#von-goodnotes)) oder lade es als Datei auf eine Seite hoch.

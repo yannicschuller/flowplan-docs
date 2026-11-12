@@ -75,10 +75,14 @@ In the **Web** tab, **Appearance** folds open below the options. There you set t
 
 When the administration switched it on (**Custom domains for publications**), a publication can also be shown under your domain, such as `docs.example.org`:
 
+::: steps
+
 1. In the **Web** tab, open **Custom domain**, enter the domain and choose **Add domain**.
 2. At your DNS provider create the TXT record shown: name `_flowplan-verify.docs.example.org`, value `flowplan-verify-…`. Only this TXT record verifies the domain.
 3. Point the domain at the Flowplan instance with a CNAME (or A/AAAA) record.
 4. Choose **Check now**. The reverse proxy obtains the HTTPS certificate – see [Custom domains for publications](/coolify-and-proxy#custom-domains-for-publications).
+
+:::
 
 A verified domain stays verified until you remove it – including domains verified another way in the past. A domain that is still not verified after 7 days is released again; after that someone else may enter it.
 

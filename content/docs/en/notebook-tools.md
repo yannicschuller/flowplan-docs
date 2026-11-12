@@ -10,13 +10,13 @@ Pens, eraser, shapes, lasso, pictures and audio in a notebook – and the keyboa
 
 | Key | Does |
 | --- | --- |
-| <kbd>P</kbd> <kbd>H</kbd> <kbd>E</kbd> <kbd>L</kbd> <kbd>T</kbd> <kbd>K</kbd> | Pen, highlighter, eraser, lasso, text, laser pointer |
-| <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>Z</kbd> | Undo / redo |
-| <kbd>⌘</kbd> <kbd>C</kbd>, <kbd>⌘</kbd> <kbd>V</kbd>, <kbd>⌘</kbd> <kbd>D</kbd>, <kbd>Delete</kbd> | Copy, paste, duplicate, delete the selection |
-| <kbd>⌘</kbd> <kbd>+</kbd> / <kbd>⌘</kbd> <kbd>−</kbd> / <kbd>⌘</kbd> <kbd>0</kbd> | Zoom in, zoom out, fit to width |
-| <kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>↵</kbd> | New sheet after the current one |
-| <kbd>⌥</kbd> <kbd>↓</kbd> / <kbd>⌥</kbd> <kbd>↑</kbd> | Next / previous sheet |
-| <kbd>⌘</kbd> <kbd>S</kbd> | Save now |
+| ++P H E L T K++ | Pen, highlighter, eraser, lasso, text, laser pointer |
+| ++⌘ Z++ / ++⇧ ⌘ Z++ | Undo / redo |
+| ++⌘ C++, ++⌘ V++, ++⌘ D++, <kbd>Delete</kbd> | Copy, paste, duplicate, delete the selection |
+| <kbd>⌘</kbd> <kbd>+</kbd> / ++⌘ −++ / ++⌘ 0++ | Zoom in, zoom out, fit to width |
+| ++⇧ ⌘ ↵++ | New sheet after the current one |
+| ++⌥ ↓++ / ++⌥ ↑++ | Next / previous sheet |
+| ++⌘ S++ | Save now |
 
 On Windows and Linux use <kbd>Ctrl</kbd> instead of <kbd>⌘</kbd> and <kbd>Alt</kbd> instead of <kbd>⌥</kbd>. On an iPad with a keyboard the same shortcuts apply.
 

@@ -8,6 +8,8 @@ Eine Formularansicht sammelt Antworten direkt als Einträge in der Datenbank –
 
 ## Formular gestalten
 
+::: steps
+
 1. In der Datenbank eine Ansicht vom Typ **Formular** anlegen.
 2. **Formular gestalten** öffnet den Editor:
    - Titel, Beschreibung und Beschriftung des Absenden-Knopfs,
@@ -18,6 +20,8 @@ Eine Formularansicht sammelt Antworten direkt als Einträge in der Datenbank –
    - **Titel nach dem Absenden** und **Bestätigungstext**,
    - was **nach dem Absenden** passiert (siehe [Einstellungen](#einstellungen)).
 3. **Formular speichern**.
+
+:::
 
 Pflichtfelder und Eingabetypen prüft Flowplan im Browser und auf dem Server. Dateien-Eigenschaften erlauben Uploads im Formular.
 
@@ -110,8 +114,12 @@ Jede Antwort ist ein Eintrag in der Datenbank. Jede Frage ist eine Eigenschaft, 
 
 Mit dem Kundenportal wird ein Formular zum Service-Desk: Wer es absendet, kann seine Anfrage danach verfolgen.
 
+::: steps
+
 1. Unter **Formular teilen** das **Kundenportal** einschalten.
 2. Auswählen, welche Eigenschaften im Portal sichtbar sind – etwa **Status** oder ein Fälligkeitsdatum. Eine Auswahl-Eigenschaft namens „Status“ ist beim Einschalten schon vorgewählt. Personen, Relationen und Dateien bleiben immer intern.
+
+:::
 
 Nach dem Absenden sieht die Person einen privaten Link zu ihrer Anfrage. Hat sie eine E-Mail-Frage beantwortet und ist E-Mail eingerichtet, kommt der Link auch per E-Mail – in ihrer Sprache; mit eingeschalteter Bestätigung per E-Mail steht er in dieser einen E-Mail. Auf der Seite stehen der Stand, ihre Angaben und eine Unterhaltung mit dem Team.
 

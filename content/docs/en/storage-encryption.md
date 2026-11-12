@@ -55,9 +55,13 @@ There is no migration step, and nothing is rewritten at startup. Flowplan recogn
 
 ### Change the key
 
+::: steps
+
 1. Set the new key as `FLOWPLAN_ENCRYPTION_KEY` and move the old one to `FLOWPLAN_ENCRYPTION_KEY_PREVIOUS` (several separated by commas), then restart.
 2. Under **Administration → Encryption**, choose **Encrypt existing objects**. All files in the bucket are re-encrypted with the new key.
 3. Keep the old key until the last backup encrypted with it has dropped out of retention.
+
+:::
 
 Every encrypted file names the ID of its key. If that key is missing, Flowplan says exactly that instead of silently returning broken data.
 

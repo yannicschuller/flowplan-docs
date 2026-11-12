@@ -52,7 +52,7 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 
 **Tables:** with the cursor in a table, a small bar appears right below it: insert a row above or below, a column left or right; under **…** turn the header row on or off and delete a row, a column or the whole table. When the end of the table is off screen, the bar stays at the bottom of the visible area – above the keyboard on phones. <kbd>Tab</kbd> moves to the next cell and adds a row in the last one.
 
-**Convert a table to a database:** when a table outgrows itself, choose **Convert to database** under **…** in the table bar. Flowplan creates a [database](/databases) from it below the document and puts an embedded view of it where the table was. The first row gives the column names, the first column becomes the records' titles. The other columns get their type from the filled cells: number (German or English separators), date (`2026-11-04` or `04.11.2026`), checkbox (✓, x, yes/no, ja/nein, true/false), URL, otherwise text. The database is named after the table's caption, else the nearest heading above it, else "Table". <kbd>⌘</kbd>/<kbd>Ctrl</kbd>+<kbd>Z</kbd> brings the table back. Limits as for CSV import: up to 80 columns and 5,000 rows. Encrypted spaces don't offer it; in a database record the new database goes to the top of the space.
+**Convert a table to a database:** when a table outgrows itself, choose **Convert to database** under **…** in the table bar. Flowplan creates a [database](/databases) from it below the document and puts an embedded view of it where the table was. The first row gives the column names, the first column becomes the records' titles. The other columns get their type from the filled cells: number (German or English separators), date (`2026-11-04` or `04.11.2026`), checkbox (✓, x, yes/no, ja/nein, true/false), URL, otherwise text. The database is named after the table's caption, else the nearest heading above it, else "Table". ++⌘/Ctrl Z++ brings the table back. Limits as for CSV import: up to 80 columns and 5,000 rows. Encrypted spaces don't offer it; in a database record the new database goes to the top of the space.
 
 **Hiding the keyboard (phone):** while you write, the formatting bar sits above the on-screen keyboard. Its last button on the right, **Hide keyboard**, closes the keyboard so you see more of the document; the text and the cursor position stay. A tap into the text brings it back. In the content of a database record the bar sits above the keyboard in the same way while you write. For every other text field – titles of pages, databases and records, tags, properties, the name in the **New page** dialog, search fields, comments – the same button appears as a round button on the right, just above the keyboard. This works in the browser and in the apps.
 
@@ -60,7 +60,7 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 
 A **toggle** has a title and content below it that folds in and out. Insert one with `/toggle`, or type `>` and a space at the start of an empty line. The cursor lands in the empty title (grey "Toggle"); text already after the `>` becomes the title.
 
-- **Collapse and expand:** click (or tap) the arrow in front of the title. By keyboard: <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> (Windows/Linux: <kbd>Ctrl</kbd> <kbd>Alt</kbd> <kbd>Enter</kbd>) in the content collapses it and puts the cursor in the title, where the same keys expand it again.
+- **Collapse and expand:** click (or tap) the arrow in front of the title. By keyboard: ++⌘ ⌥ Enter++ (Windows/Linux: ++Ctrl Alt Enter++) in the content collapses it and puts the cursor in the title, where the same keys expand it again.
 - **Edit the title:** a click in the title puts the cursor there. In an expanded toggle, <kbd>Enter</kbd> or <kbd>↓</kbd> moves into the content, and <kbd>↑</kbd> at the start of the content moves back to the title. In a collapsed toggle, <kbd>↓</kbd> expands it and moves into the content.
 - **A list of toggles:** <kbd>Enter</kbd> at the end of the title of a **collapsed** toggle adds a new collapsed toggle right below it, with the cursor in its title – handy for an FAQ. <kbd>Enter</kbd> in an **empty** title ends the list: the toggle becomes a normal paragraph, its content stays below.
 - **From existing text:** in the block menu, **Turn into … → Toggle** turns a paragraph into a toggle with the text as its title. A list item becomes a toggle with the item's text as its title, and its indented sub-items go into the content. A single **Undo** reverses it.
@@ -79,7 +79,7 @@ A synced block (`/sync` → **Synced block**) is content that is the same in sev
 
 ## Indent
 
-- <kbd>Tab</kbd> at the start of a paragraph or heading indents it (up to eight levels), <kbd>⇧</kbd> <kbd>Tab</kbd> outdents it.
+- <kbd>Tab</kbd> at the start of a paragraph or heading indents it (up to eight levels), ++⇧ Tab++ outdents it.
 - <kbd>Backspace</kbd> at the start of an indented line first removes one level.
 - In lists <kbd>Tab</kbd> nests the item below the previous one; in code blocks it inserts two spaces.
 
@@ -102,7 +102,7 @@ In the **selection mode** circles take the place of the handles. A tap selects a
 
 List items and tasks stay what they are when moved: outside their list they form a list of the same kind of their own, and a numbered item keeps its number. Right next to a matching list they become part of it; in another kind of list they adapt.
 
-<kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd>/<kbd>↓</kbd> moves the current block past its neighbour. Every block action can be undone on its own.
+++⌘ ⇧ ↑/↓++ moves the current block past its neighbour. Every block action can be undone on its own.
 
 ## Text direction
 

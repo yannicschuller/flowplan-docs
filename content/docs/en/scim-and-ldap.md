@@ -12,9 +12,13 @@ With SCIM 2.0 your identity provider creates accounts in Flowplan, keeps name an
 
 **Setting up**
 
+::: steps
+
 1. **Administration → Sign-in & SSO → SCIM tokens**: **Create token**. The token starts with `fpscim_` and is shown only once; only its hash is stored. You can revoke it at any time.
 2. At the provider, enter the **SCIM base URL** `<APP_URL>/api/scim/v2` and the token as **bearer token**.
 3. Assign people and groups to the app at the provider, or turn on "Push Groups".
+
+:::
 
 **What Flowplan does with it**
 

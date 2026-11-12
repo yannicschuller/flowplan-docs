@@ -61,10 +61,14 @@ When an LDAP directory is set up (see [Contacts from LDAP](/scim-and-ldap#contac
 
 The directory is only for people of the organisation: instance administrators, accounts that sign in with LDAP, and full members (not guests) of at least one workspace someone else created. Guests of the contacts database's workspace can never browse or import it, and neither can an API token. Anyone without access sees **Import from LDAP** greyed out with the reason.
 
+::: steps
+
 1. **Contacts → Import from LDAP** opens the tree of organizational units (OUs) below the base DN; sub-OUs load when expanded.
 2. Pick an OU: the people in it are listed on the right (search: in the OU and everything below). People already imported are marked.
 3. Tick people and **import** them – or **Import the whole OU (also future members)**: everyone in the OU and its sub-OUs; new people are added by the sync.
 4. **Attribute mapping** (expandable) sets which LDAP attribute fills which property; the first attribute with a value wins. Default:
+
+:::
 
 | Property | LDAP attributes |
 | --- | --- |

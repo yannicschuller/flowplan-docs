@@ -21,6 +21,8 @@ Das gilt für jede Art des Betriebs: `docker run`, Docker Compose, Kubernetes mi
 
 ## Vorbereiten
 
+::: steps
+
 1. **Umgebungsvariablen aufschreiben.** Alle, die die alte Instanz bekommt – je nach Betrieb aus der `.env`, mit `docker inspect <container>` (Abschnitt `Env`), `docker compose config` oder `helm get values flowplan`. Die vollständige Liste steht unter [Konfiguration](/configuration).
 2. **Die Schlüssel sichern**, getrennt von den Daten (Passwortmanager):
    - `FLOWPLAN_ENCRYPTION_KEY` (oder die Datei aus `FLOWPLAN_ENCRYPTION_KEY_FILE`) und `FLOWPLAN_ENCRYPTION_KEY_PREVIOUS`: Ohne sie sind verschlüsselte Sicherungen, die verschlüsselten Dateien im Bucket und die damit verschlüsselten gespeicherten Geheimnisse unlesbar.
@@ -32,6 +34,8 @@ Das gilt für jede Art des Betriebs: `docker run`, Docker Compose, Kubernetes mi
 6. **Eine Sicherung anlegen**: **Administration → Speicher & Sicherung → Gesamte Instanz → Herunterladen**. Sie schadet nie.
 7. **Die Nutzer vorwarnen**: **Administration → Wartung & Hinweise** zeigt allen ein Wartungsfenster an.
 
+:::
+
 ## Drei Wege
 
 | Weg | Wann | Ausfallzeit |
@@ -41,6 +45,8 @@ Das gilt für jede Art des Betriebs: `docker run`, Docker Compose, Kubernetes mi
 | **C: S3 und Litestream** | die alte Instanz läuft schon mit S3 und Litestream | Stoppen der alten bis Start der neuen Instanz |
 
 ### Weg B: Sicherung herunterladen und hochladen
+
+::: steps
 
 1. Auf der alten Instanz [Wartung ankündigen](/administration#wartung-hinweise) – Änderungen nach dem Herunterladen gehen verloren.
 2. **Administration → Speicher & Sicherung → Gesamte Instanz → Herunterladen**. Mit `FLOWPLAN_ENCRYPTION_KEY` ist die Datei verschlüsselt (`.zip.enc`) – die neue Instanz braucht dann denselben Schlüssel.
@@ -58,14 +64,20 @@ Das gilt für jede Art des Betriebs: `docker run`, Docker Compose, Kubernetes mi
 4. Auf der neuen Instanz **Aus Sicherung wiederherstellen → Sicherung auswählen**. Der Proxy davor muss so große Uploads durchlassen (Caddy von sich aus, nginx mit `client_max_body_size`, Cloudflare höchstens 100 MB); sonst die Datei per `scp` auf den Server bringen und dort hochladen. Höchstens 50 GB.
 5. Neu starten; der vorherige Stand bleibt als `pre-restore-…`. Dann DNS umstellen.
 
+:::
+
 ### Weg C: S3 und Litestream
 
 Läuft die alte Instanz mit S3 (Dateien im Bucket) und Litestream (laufende Kopie der Datenbank unter `<Präfix>/db/`), kann die neue Instanz direkt aus dem Bucket starten:
+
+::: steps
 
 1. Die alte Instanz **stoppen** – Litestream beider Instanzen dürfen nie gleichzeitig in denselben Ordner schreiben.
 2. Die neue Instanz mit **denselben** `S3_*`-Variablen, demselben `FLOWPLAN_ENCRYPTION_KEY` und einem **leeren** Datenordner starten. Litestream stellt die Datenbank wieder her, die Dateien holt Flowplan beim ersten Abruf sofort und alle übrigen im Hintergrund.
 3. `secrets.key` und `web-push-keys.json` wie in Weg B kopieren, falls die Schlüssel nicht als Variablen gesetzt sind.
 4. DNS umstellen.
+
+:::
 
 Mit `FLOWPLAN_LITESTREAM=off` gibt es keine laufende Kopie: dann die neueste geplante Sicherung aus `<Präfix>/backups/` verwenden (siehe [Wiederherstellen](/storage-and-backups#wiederherstellen)). Die Vorabprüfung von Weg A erkennt eine Litestream-Kopie im Bucket und weist auf diesen Weg hin.
 
@@ -74,10 +86,14 @@ Mit `FLOWPLAN_LITESTREAM=off` gibt es keine laufende Kopie: dann die neueste gep
 
 ## DNS umstellen
 
+::: steps
+
 1. Nach dem letzten Abgleich (Weg A) bzw. dem Start der neuen Instanz den **A-Eintrag** (IPv4) und den **AAAA-Eintrag** (IPv6) der Domain auf den neuen Server ändern. Am alten Standort eine Portweiterleitung oder einen Tunnel entfernen.
 2. Der Proxy des neuen Servers holt das Zertifikat, sobald die Domain auf ihn zeigt (bei Let's Encrypt über Port 80) – eine Minute Geduld.
 3. Mit `dig +short flowplan.example.org` (oder `nslookup`) prüfen, was die Welt sieht. Wer die alte Adresse noch im Cache hat, landet bis zum Ablauf der TTL auf der alten Instanz – dort steht dann der Hinweis auf die neue.
 4. Danach die TTL wieder anheben.
+
+:::
 
 ## Danach prüfen
 
@@ -128,9 +144,13 @@ Ein konkreter Weg vom Heimserver auf einen Server bei Hetzner, mit Docker Compos
 
 ### Object Storage als S3
 
+::: steps
+
 1. In der Hetzner Console **Object Storage → Bucket erstellen**, Standort wie der Server (z. B. Falkenstein), Sichtbarkeit **privat**. Der Name muss eindeutig sein, z. B. `flowplan-<dein-name>`.
 2. **Sicherheit → S3-Zugangsdaten → Zugangsdaten erstellen**. Das Secret wird nur einmal angezeigt.
 3. In die `.env`:
+
+:::
 
 ```dotenv
 S3_BUCKET=flowplan-beispiel
@@ -225,9 +245,14 @@ Lieber Kubernetes? Das [Helm-Chart](/installation#kubernetes-helm) aus dem Repos
 
 ### Ablauf mit dem Heimserver
 
+::: steps
+
 1. Einen Tag vorher die TTL des DNS-Eintrags auf 300 Sekunden senken.
 2. Den Hetzner-Server wie oben einrichten, mit denselben Variablen wie zu Hause (Schlüssel!), und mit `docker compose up -d` starten; das erste Konto anlegen.
 3. Zu Hause **Umzug vorbereiten**, auf dem Hetzner-Server **Von anderer Instanz übernehmen** mit der öffentlichen Adresse des Heimservers (oder seiner VPN-Adresse mit `FLOWPLAN_MOVE_ALLOW_PRIVATE=true`).
 4. Vorabprüfung, bis keine Fehler bleiben. **Quelle schreibschützen und letzten Stand holen**, **Übernehmen**, `docker compose restart flowplan`.
 5. A- und AAAA-Eintrag auf die Adressen des Hetzner-Servers stellen, Portweiterleitung am Router entfernen.
 6. [Danach prüfen](#danach-pruefen), nach ein paar Tagen [aufräumen](#aufraeumen).
+
+:::
+

@@ -8,9 +8,13 @@ With the browser extension you save web pages to Flowplan in one click: the whol
 
 ## Setting up
 
+::: steps
+
 1. In Flowplan, create a [personal API token](/api-and-webhooks) under **Settings → API & AI assistants** (or **Settings → Web clipper → Create token**) and choose the permission **Browser extension only**. Such a token can do nothing else: it opens neither the API nor MCP and cannot read anything but the list of your targets.
 2. Install the extension (see below) and click its icon.
 3. Enter the address of your instance, for example `https://flowplan.example.com`, and the token. The browser now asks once for access to exactly this address – the extension never accesses other sites.
+
+:::
 
 **Sign out** in the extension's window removes the token from the browser and gives up the access to the instance. You can revoke the token in the settings at any time.
 

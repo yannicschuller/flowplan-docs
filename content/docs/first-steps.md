@@ -50,7 +50,7 @@ Am Computer ziehst du den rechten Rand der Seitenleiste, um sie breiter oder sch
 Oben links, neben dem Symbol der Seitenleiste, führen die Pfeile **←** und **→** zur zuvor geöffneten Seite und wieder vor. Jeder Ort mit eigener Adresse ist ein Schritt: Seiten, Datenbanken, Journal-Tage, Whiteboards, ein geöffneter Eintrag einer Datenbank, die Startseite, Posteingang, Meine Aufgaben, Tags, Sammlungen, Medien, Papierkorb und die Bereiche der Einstellungen. Dialoge, Menüs und die Suche zählen nicht mit, und wer einen Eintrag schließt, den er in seiner Datenbank geöffnet hat, ist wieder dort, ohne einen Schritt mehr. Gibt es in einer Richtung nichts, ist der Pfeil ausgegraut.
 
 - **Liste:** Ein Rechtsklick oder langes Drücken auf einen Pfeil zeigt die letzten (bis zu zehn) Seiten in dieser Richtung mit Symbol und Titel – ein Klick springt direkt dorthin.
-- **Tastenkürzel:** <kbd>⌘</kbd> <kbd>[</kbd> und <kbd>⌘</kbd> <kbd>]</kbd> oder <kbd>⌥</kbd> <kbd>←</kbd> und <kbd>⌥</kbd> <kbd>→</kbd> (Windows und Linux: <kbd>Alt</kbd> <kbd>←</kbd> / <kbd>Alt</kbd> <kbd>→</kbd> oder <kbd>Strg</kbd> <kbd>[</kbd> / <kbd>Strg</kbd> <kbd>]</kbd>). Beim Schreiben bewegt <kbd>⌥</kbd>/<kbd>Alt</kbd> mit Pfeil wie gewohnt den Cursor; ändern lassen sich die Kürzel wie alle anderen ([Tastenkürzel](/keyboard-shortcuts)).
+- **Tastenkürzel:** ++⌘ [++ und ++⌘ ]++ oder ++⌥ ←++ und ++⌥ →++ (Windows und Linux: ++Alt ←++ / ++Alt →++ oder ++Strg [++ / ++Strg ]++). Beim Schreiben bewegt <kbd>⌥</kbd>/<kbd>Alt</kbd> mit Pfeil wie gewohnt den Cursor; ändern lassen sich die Kürzel wie alle anderen ([Tastenkürzel](/keyboard-shortcuts)).
 - **Browser:** Die Pfeile gehen denselben Weg wie die Zurück- und Vorwärts-Knöpfe des Browsers und die Seitentasten der Maus – beides lässt sich mischen.
 - **Desktop-App:** zusätzlich das Menü *Navigation* → **Zurück** / **Vorwärts**, die Seitentasten der Maus und auf dem Mac das Wischen auf dem Trackpad ([Mehr aus der Desktop-App](/desktop-app#mehr-aus-der-desktop-app)).
 - **Smartphone:** Dort gibt es die Pfeile nicht – zurück geht es mit der Zurück-Geste (iPhone) oder der Zurück-Taste (Android).
@@ -95,7 +95,7 @@ Im Dokument öffnet `/` das Blockmenü: `/h2`, `/todo` oder `/tabelle` tippen un
 
 ## Finden statt suchen
 
-<kbd>⌘</kbd> <kbd>K</kbd> (Windows/Linux: <kbd>Strg</kbd> <kbd>K</kbd>) öffnet die Schnellsuche über Titel, Texte, Datenbankeinträge, Kommentare und sogar den Inhalt hochgeladener PDFs und Office-Dateien. Mehr dazu unter [Suche, Posteingang und Push](/search-and-notifications).
+++⌘ K++ (Windows/Linux: ++Strg K++) öffnet die Schnellsuche über Titel, Texte, Datenbankeinträge, Kommentare und sogar den Inhalt hochgeladener PDFs und Office-Dateien. Mehr dazu unter [Suche, Posteingang und Push](/search-and-notifications).
 
 ## Wie es weitergeht
 

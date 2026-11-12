@@ -22,8 +22,12 @@ Die Verschlüsselung schützt vor dem Mitlesen auf dem Server und in Sicherungen
 
 Beim ersten verschlüsselten Bereich – oder unter **Einstellungen → Konto & Sicherheit → Ende-zu-Ende-Verschlüsselung** – richtest du deine Schlüssel ein:
 
+::: steps
+
 1. Eine **Passphrase** wählen (mindestens 10 Zeichen, am besten ein ganzer Satz). Sie ist nicht dein Anmeldepasswort und verlässt deinen Browser nie.
 2. Den **Wiederherstellungsschlüssel** sichern: 52 Zeichen in Vierergruppen, zum **Herunterladen** oder **Drucken**. Erst wenn du bestätigst, ihn sicher aufbewahrt zu haben, wird eingerichtet.
+
+:::
 
 > [!WARNING]
 > Wer Passphrase **und** Wiederherstellungsschlüssel verliert, verliert den Zugang zu seinen verschlüsselten Daten. Weder die Administration noch der Betreiber können sie wiederherstellen – der Server hat die Schlüssel nie gesehen.

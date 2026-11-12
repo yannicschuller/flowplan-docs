@@ -10,7 +10,7 @@ The quick search finds content right down into file attachments. The inbox and p
 
 ## Quick search
 
-<kbd>⌘</kbd> <kbd>K</kbd> (Windows/Linux <kbd>Ctrl</kbd> <kbd>K</kbd>) or **Search** in the sidebar.
+++⌘ K++ (Windows/Linux ++Ctrl K++) or **Search** in the sidebar.
 
 It searches:
 

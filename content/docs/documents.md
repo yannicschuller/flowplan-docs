@@ -52,7 +52,7 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 
 **Tabellen:** Steht der Cursor in einer Tabelle, erscheint direkt darunter eine kleine Leiste: Zeile darüber oder darunter, Spalte links oder rechts einfügen; unter **…** Kopfzeile ein/aus, Zeile, Spalte oder die ganze Tabelle löschen. Ist das Ende der Tabelle nicht zu sehen, bleibt die Leiste unten im sichtbaren Bereich – auf dem Handy über der Tastatur. <kbd>Tab</kbd> springt zur nächsten Zelle und legt in der letzten Zelle eine neue Zeile an.
 
-**Tabelle in Datenbank umwandeln:** Wird aus einer Tabelle mehr, wählst du in der Tabellenleiste unter **…** den Punkt **In Datenbank umwandeln**. Flowplan legt daraus eine [Datenbank](/databases) unter dem Dokument an und setzt an die Stelle der Tabelle eine eingebettete Ansicht davon. Die erste Zeile liefert die Spaltennamen, die erste Spalte wird zum Titel der Einträge. Die übrigen Spalten bekommen ihren Typ aus den ausgefüllten Zellen: Zahl (mit deutschem oder englischem Trennzeichen), Datum (`2026-11-04` oder `04.11.2026`), Checkbox (✓, x, ja/nein, yes/no, true/false), URL, sonst Text. Benannt wird die Datenbank nach der Beschriftung der Tabelle, sonst nach der nächsten Überschrift darüber, sonst „Tabelle“. Mit <kbd>⌘</kbd>/<kbd>Strg</kbd>+<kbd>Z</kbd> kommt die Tabelle zurück. Grenzen wie beim CSV-Import: bis 80 Spalten und 5.000 Zeilen. In verschlüsselten Bereichen gibt es den Punkt nicht; in einem Datenbankeintrag landet die neue Datenbank oben im Bereich.
+**Tabelle in Datenbank umwandeln:** Wird aus einer Tabelle mehr, wählst du in der Tabellenleiste unter **…** den Punkt **In Datenbank umwandeln**. Flowplan legt daraus eine [Datenbank](/databases) unter dem Dokument an und setzt an die Stelle der Tabelle eine eingebettete Ansicht davon. Die erste Zeile liefert die Spaltennamen, die erste Spalte wird zum Titel der Einträge. Die übrigen Spalten bekommen ihren Typ aus den ausgefüllten Zellen: Zahl (mit deutschem oder englischem Trennzeichen), Datum (`2026-11-04` oder `04.11.2026`), Checkbox (✓, x, ja/nein, yes/no, true/false), URL, sonst Text. Benannt wird die Datenbank nach der Beschriftung der Tabelle, sonst nach der nächsten Überschrift darüber, sonst „Tabelle“. Mit ++⌘/Strg Z++ kommt die Tabelle zurück. Grenzen wie beim CSV-Import: bis 80 Spalten und 5.000 Zeilen. In verschlüsselten Bereichen gibt es den Punkt nicht; in einem Datenbankeintrag landet die neue Datenbank oben im Bereich.
 
 **Tastatur ausblenden (Handy):** Beim Schreiben sitzt die Formatierungsleiste über der Bildschirmtastatur. Der letzte Knopf rechts, **Tastatur ausblenden**, schließt die Tastatur, damit du mehr vom Dokument siehst; Text und Cursorposition bleiben. Ein Tipp in den Text holt sie zurück. Im Inhalt eines Datenbank-Eintrags sitzt die Leiste beim Schreiben genauso über der Tastatur. Bei allen anderen Textfeldern – Titel von Seiten, Datenbanken und Einträgen, Tags, Eigenschaften, der Name im Dialog **Neue Seite**, Suchfelder, Kommentare – erscheint derselbe Knopf als runder Knopf rechts direkt über der Tastatur. Das gilt im Browser und in den Apps.
 
@@ -60,7 +60,7 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 
 Ein **aufklappbarer Block** hat einen Titel und darunter Inhalt, der sich ein- und ausklappen lässt. Du legst ihn mit `/toggle` an oder tippst am Anfang einer leeren Zeile `>` und ein Leerzeichen. Der Cursor steht dann im leeren Titel (grau „Aufklappbarer Block“); Text, der schon hinter `>` steht, wird zum Titel.
 
-- **Ein- und ausklappen:** Klick (oder Tipp) auf den Pfeil vor dem Titel. Mit der Tastatur: <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> (Windows/Linux: <kbd>Strg</kbd> <kbd>Alt</kbd> <kbd>Enter</kbd>) im Inhalt klappt ein und setzt den Cursor in den Titel, dort klappen dieselben Tasten wieder auf.
+- **Ein- und ausklappen:** Klick (oder Tipp) auf den Pfeil vor dem Titel. Mit der Tastatur: ++⌘ ⌥ Enter++ (Windows/Linux: ++Strg Alt Enter++) im Inhalt klappt ein und setzt den Cursor in den Titel, dort klappen dieselben Tasten wieder auf.
 - **Titel bearbeiten:** Ein Klick in den Titel setzt den Cursor hinein. Bei einem aufgeklappten Block springen <kbd>Enter</kbd> oder <kbd>↓</kbd> in den Inhalt, <kbd>↑</kbd> am Anfang des Inhalts zurück in den Titel. Bei einem eingeklappten Block klappt <kbd>↓</kbd> ihn auf und springt in den Inhalt.
 - **Liste aus aufklappbaren Blöcken:** <kbd>Enter</kbd> am Ende des Titels eines **eingeklappten** Blocks legt direkt darunter einen neuen, eingeklappten Block an, der Cursor steht in seinem Titel – praktisch für häufige Fragen. <kbd>Enter</kbd> in einem **leeren** Titel beendet die Liste: Der Block wird ein normaler Absatz, sein Inhalt bleibt darunter stehen.
 - **Aus vorhandenem Text:** Im Blockmenü macht **Umwandeln in … → Aufklappbarer Block** aus einem Absatz einen aufklappbaren Block mit dem Text als Titel. Aus einem Listenpunkt wird ein Block mit dem Text des Punkts als Titel, seine eingerückten Unterpunkte kommen in den Inhalt. Ein Mal **Rückgängig** macht das wieder rückgängig.
@@ -79,7 +79,7 @@ Ein synchronisierter Block (`/sync` → **Synchronisierter Block**) ist Inhalt, 
 
 ## Einrücken
 
-- <kbd>Tab</kbd> am Anfang eines Absatzes oder einer Überschrift rückt ein (bis zu acht Stufen), <kbd>⇧</kbd> <kbd>Tab</kbd> rückt zurück.
+- <kbd>Tab</kbd> am Anfang eines Absatzes oder einer Überschrift rückt ein (bis zu acht Stufen), ++⇧ Tab++ rückt zurück.
 - <kbd>Backspace</kbd> am Anfang einer eingerückten Zeile nimmt zuerst eine Stufe weg.
 - In Listen verschachtelt <kbd>Tab</kbd> den Eintrag unter den vorigen, in Codeblöcken fügt es zwei Leerzeichen ein.
 
@@ -102,7 +102,7 @@ Im **Auswahlmodus** stehen Kreise statt der Griffe. Ein Tipp wählt einen Block 
 
 Listenpunkte und Aufgaben bleiben beim Verschieben, was sie sind: Außerhalb ihrer Liste bilden sie eine eigene Liste derselben Art, ein nummerierter Punkt behält seine Nummer. Direkt neben einer passenden Liste werden sie Teil davon; in einer anderen Listenart passen sie sich an.
 
-<kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd>/<kbd>↓</kbd> verschiebt den aktuellen Block unter seinen Nachbarn. Jede Blockaktion lässt sich einzeln rückgängig machen.
+++⌘ ⇧ ↑/↓++ verschiebt den aktuellen Block unter seinen Nachbarn. Jede Blockaktion lässt sich einzeln rückgängig machen.
 
 ## Textrichtung
 

@@ -18,7 +18,7 @@ Links ins Web sind unterstrichen und tragen hinter dem Text einen kleinen Pfeil 
 
 ### Automatische Links
 
-Hat ein Eigentümer [automatische Links](/workspace-appearance#automatische-links) eingerichtet, wird passender Text zum Link, sobald du danach ein Leerzeichen, ein Satzzeichen oder <kbd>Enter</kbd> tippst, und ebenso beim Einfügen – in Seiten, in Dokumenten von Datenbankeinträgen und in Kommentaren. Es ist ein gewöhnlicher Link: Er bleibt beim Zusammenarbeiten, offline und in den Apps erhalten und lässt sich wie jeder andere bearbeiten oder entfernen. <kbd>⌘</kbd> <kbd>Z</kbd> (<kbd>Strg</kbd> <kbd>Z</kbd>) direkt danach nimmt nur den Link zurück, der Text bleibt. Text, der schon dasteht, ändert sich nicht; in Code, vorhandenen Links, Formeln, Titeln und Tabellenzellen von Datenbanken wird nichts verlinkt.
+Hat ein Eigentümer [automatische Links](/workspace-appearance#automatische-links) eingerichtet, wird passender Text zum Link, sobald du danach ein Leerzeichen, ein Satzzeichen oder <kbd>Enter</kbd> tippst, und ebenso beim Einfügen – in Seiten, in Dokumenten von Datenbankeinträgen und in Kommentaren. Es ist ein gewöhnlicher Link: Er bleibt beim Zusammenarbeiten, offline und in den Apps erhalten und lässt sich wie jeder andere bearbeiten oder entfernen. ++⌘ Z++ (++Strg Z++) direkt danach nimmt nur den Link zurück, der Text bleibt. Text, der schon dasteht, ändert sich nicht; in Code, vorhandenen Links, Formeln, Titeln und Tabellenzellen von Datenbanken wird nichts verlinkt.
 
 ## Links auf Blöcke
 
@@ -29,13 +29,13 @@ Jeder Block lässt sich verlinken: ein Absatz, eine Überschrift, ein Listenpunk
 - im Blockmenü (Griff ⠿ links neben dem Block, auf dem Handy antippen): **Link zum Block kopieren**,
 - bei Überschriften über das Link-Symbol, das beim Darüberfahren hinter der Überschrift erscheint,
 - im [Inhaltsverzeichnis](/reading-and-presenting#inhaltsverzeichnis) über das Link-Symbol neben jeder Überschrift (auf dem Handy immer sichtbar),
-- mit <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd> (Windows/Linux: <kbd>Strg</kbd> <kbd>Umschalt</kbd> <kbd>L</kbd>) für den Block, in dem der Cursor steht.
+- mit ++⌘ ⇧ L++ (Windows/Linux: ++Strg Umschalt L++) für den Block, in dem der Cursor steht.
 
 Kopiert wird die Adresse; in andere Programme eingefügt (Mail, Chat, Word) erscheint sie als Link mit dem Text „Seite › Anfang des Blocks“.
 
 **Link einfügen**
 
-Einen kopierten Blocklink einfach in ein Dokument oder einen Eintrag desselben Arbeitsbereichs einfügen (<kbd>⌘</kbd> <kbd>V</kbd>): Er wird zu einem Link wie ein Seitenlink, mit dem Text „Seite › Anfang des Blocks“. Ist vorher Text markiert, wird dieser Text zum Link. Über `@` lassen sich auch Überschriften und Blöcke anderer Seiten suchen: `@Projekt › Ziele` (oder `@Projekt#Ziele`) zeigt die Überschriften der Seite „Projekt“, die „Ziele“ enthalten; ein Suchwort allein findet auch Absätze mit diesem Text. Überschriften der eigenen Seite stehen als „Diese Seite › …“ dabei.
+Einen kopierten Blocklink einfach in ein Dokument oder einen Eintrag desselben Arbeitsbereichs einfügen (++⌘ V++): Er wird zu einem Link wie ein Seitenlink, mit dem Text „Seite › Anfang des Blocks“. Ist vorher Text markiert, wird dieser Text zum Link. Über `@` lassen sich auch Überschriften und Blöcke anderer Seiten suchen: `@Projekt › Ziele` (oder `@Projekt#Ziele`) zeigt die Überschriften der Seite „Projekt“, die „Ziele“ enthalten; ein Suchwort allein findet auch Absätze mit diesem Text. Überschriften der eigenen Seite stehen als „Diese Seite › …“ dabei.
 
 Wird die verlinkte Seite (oder der Eintrag) umbenannt, ändert sich der Seitentitel im Linktext mit; der Teil hinter „›“ bleibt, wie er ist. Beim Darüberfahren zeigt die Vorschau den aktuellen Text des Blocks.
 
@@ -49,7 +49,7 @@ Ein Klick öffnet die Seite (bei einem Eintrag den Eintrag im Dialog), scrollt z
 - Vorschau und Linktext zeigen nur, was du lesen darfst: Für eine Seite ohne Leserecht erscheint nur „Verlinkter Block“, ohne Text.
 - In [verschlüsselten Bereichen](/encrypted-spaces) funktionieren Blocklinks innerhalb des Bereichs ebenso; der Server kennt den Text dort nicht, deshalb gibt es keine Textvorschau.
 - Auch wer eine Seite nur lesen darf, kann Links auf ihre Blöcke kopieren.
-- Für **Text links ausrichten** gibt es kein Tastenkürzel mehr (<kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd> kopiert jetzt den Blocklink); links ist die Standardausrichtung, die Werkzeugleiste bietet sie weiter an.
+- Für **Text links ausrichten** gibt es kein Tastenkürzel mehr (++⌘ ⇧ L++ kopiert jetzt den Blocklink); links ist die Standardausrichtung, die Werkzeugleiste bietet sie weiter an.
 
 ## Graph der Verlinkungen
 

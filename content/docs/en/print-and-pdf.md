@@ -9,7 +9,7 @@ Print pages or save them as PDF – with print options, presets and page breaks 
 
 ## Print and PDF
 
-**Page actions → Print / PDF** (or `> print` in the quick search, or <kbd>⌘</kbd> <kbd>P</kbd> / <kbd>Ctrl</kbd> <kbd>P</kbd> with a page open) first opens a small window with the print options; **Print** (or <kbd>Enter</kbd>) then opens the browser's print dialog, where you can also **save the page as PDF**. The sidebar, toolbars, handles, comment bars, notices and buttons such as “Change cover” or “+ Tag” never appear on paper; colours are always light, blocks are not split in the middle of a page and long code lines wrap.
+**Page actions → Print / PDF** (or `> print` in the quick search, or ++⌘ P++ / ++Ctrl P++ with a page open) first opens a small window with the print options; **Print** (or <kbd>Enter</kbd>) then opens the browser's print dialog, where you can also **save the page as PDF**. The sidebar, toolbars, handles, comment bars, notices and buttons such as “Change cover” or “+ Tag” never appear on paper; colours are always light, blocks are not split in the middle of a page and long code lines wrap.
 
 **Content** – what is printed:
 
