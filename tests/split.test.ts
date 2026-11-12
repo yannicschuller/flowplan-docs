@@ -187,3 +187,14 @@ test("a typo finds suggestions that have results", () => {
   assert.ok(suggest(index.de, "whitebaord").includes("whiteboard"));
   assert.deepEqual(suggest(index.en, "qqqqqqqq"), []);
 });
+
+test("the start page's tasks and popular pages lead to existing pages and headings", async () => {
+  const { TASKS, POPULAR } = await import("../lib/home");
+  for (const slug of POPULAR) assert.ok(docSlugs.includes(slug), slug);
+  for (const task of TASKS)
+    for (const locale of LOCALES) {
+      assert.ok(docSlugs.includes(task.slug), task.slug);
+      if (task.hash) assert.ok(idsOn(task.slug, locale).has(task.hash[locale === "en" ? 1 : 0]), `${locale}: ${task.slug}#${task.hash}`);
+    }
+  assert.ok(TASKS.length >= 8 && TASKS.length <= 12);
+});

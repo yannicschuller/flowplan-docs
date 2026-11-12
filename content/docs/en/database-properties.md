@@ -2,9 +2,11 @@
 keywords: property, field, column, type, select, multi-select, rich text
 ---
 
-# Properties
+# Database properties
 
 A database's property types at a glance, formatted text in fields and multi-selects with the workspace's tags.
+
+## Properties
 
 | Type | Content |
 | --- | --- |
@@ -22,7 +24,7 @@ A database's property types at a glance, formatted text in fields and multi-sele
 
 Relations, rollups and formulas are described under [Properties, formulas and rollups](/properties-and-formulas).
 
-## Collapsing properties in a record
+### Collapsing properties in a record
 
 Below a record's title, the **Properties** arrow folds the properties into one line: the two or three most relevant values as small chips (status first, then selects, dates and people) and “+4 properties”. A tap on the line opens it again. The record's content moves up – especially useful on a phone.
 
@@ -31,7 +33,7 @@ Below a record's title, the **Properties** arrow folds the properties into one l
 - Collapsing changes no values and no permissions and only applies to you. Printing and exports always show all properties – unless you turn them off in the [print options](/print-and-pdf#print-and-pdf).
 - Ordinary pages have the same in the [bar with tags and properties](/page-tags#collapsing-the-bar).
 
-## Formatted text
+### Formatted text
 
 Text properties – all except the title – can contain **bold**, *italic*, ~~strikethrough~~, `code`, links and line breaks. These are marks within the text only, no blocks: headings, lists, quotes or tables are not available there (that is what the record's own text is for). There is no underline.
 
@@ -46,7 +48,7 @@ Text properties – all except the title – can contain **bold**, *italic*, ~~s
 - **Changing the type:** when another property becomes text, its values stay as written; when text becomes another type, the text without formatting counts.
 - **API and MCP:** the value is a string with inline Markdown: `**bold**`, `_italic_` (or `*italic*`), `~~strikethrough~~`, `` `code` ``, `[label](https://…)` and `\n` for a line break. A backslash keeps `` \ * _ ~ ` [ ] `` as characters – so send plain text escaped. Links with other schemes (such as `javascript:`) show only their label; `# ` or `- ` at the start stay text. The title is plain text.
 
-## Multi-select with the workspace tags
+### Multi-select with the workspace tags
 
 Instead of its own list, a multi-select can have the **workspace's tags** as its options – the same tags pages carry. In the property's settings (click the column header), under **Options**, choose between **Own list** and **Workspace tags**.
 

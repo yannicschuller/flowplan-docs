@@ -6,7 +6,7 @@ keywords: database, table, records, rows, airtable, recurring, reminder
 
 A database is a collection of records with properties. The same records can be shown as a table, board, calendar, timeline, gallery, list, feed, chart or form.
 
-**More on this topic:** [Properties](/database-properties)
+**More on this topic:** [Database properties](/database-properties)
 
 ## Create a database
 

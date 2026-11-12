@@ -179,7 +179,7 @@ export function searchDocs(index: SearchPage[], query: string, prefix = "", limi
     else if (tags && (all(tags) || named(tags)))
       hits.push({ ...base, href: `${prefix}/${page.slug}`, snippet: page.summary, score: 1.5 });
     else if (all(body) || loose(`${head} ${body}`, page.keywords))
-      hits.push({ ...base, href: `${prefix}/${page.slug}`, snippet: sentence(page.text, terms) ?? page.summary, score: all(body) ? 4 : 6 });
+      hits.push({ ...base, href: `${prefix}/${page.slug}`, snippet: sentence(page.text, terms) ?? page.summary, score: all(body) ? 5.5 : 6.5 });
     for (const section of page.sections) {
       const heading = fold(`${section.text} ${section.parent ?? ""} ${page.title}`);
       const text = fold(`${section.text} ${section.body}`);

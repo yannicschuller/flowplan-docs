@@ -49,7 +49,7 @@
 ["eigenes-push-relay-betreiben","running-your-own-push-relay","configuration-ai-push","eigenes-push-relay-betreiben","running-your-own-push-relay"],
 ["chat-apps","chat-apps","configuration-integrations","chat-apps","chat-apps"],
 ["workflows","workflows","configuration-integrations","workflows","workflows"]],"databases":[
-["eigenschaften","properties","database-properties","",""],
+["eigenschaften","properties","database-properties","eigenschaften","properties"],
 ["eigenschaften-im-eintrag-einklappen","collapsing-properties-in-a-record","database-properties","eigenschaften-im-eintrag-einklappen","collapsing-properties-in-a-record"],
 ["formatierter-text","formatted-text","database-properties","formatierter-text","formatted-text"],
 ["mehrfachauswahl-mit-den-tags-des-arbeitsbereichs","multi-select-with-the-workspace-tags","database-properties","mehrfachauswahl-mit-den-tags-des-arbeitsbereichs","multi-select-with-the-workspace-tags"]],"documents":[

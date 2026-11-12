@@ -15,7 +15,7 @@ import { outboundTarget } from "./track";
 
 export type DocGroup = { title: string; intro: string; area: AreaId; pages: { slug: string; title: string }[] };
 export type AreaId = "use" | "extend" | "run";
-export type DocArea = { id: AreaId; title: string; intro: string; groups: DocGroup[] };
+export type DocArea = { id: AreaId; title: string; short: string; intro: string; groups: DocGroup[] };
 
 // The languages of Flowplan's interface, in both languages of the docs; the
 // llms.txt blurb and the overview are written from this list.
@@ -34,10 +34,11 @@ type Pair = [de: string, en: string];
 // pages, each with one line on the overview. A page's title is the "# Title"
 // of its Markdown file. English pages live in content/docs/en with the same
 // file name; a missing one falls back to German.
-const areas: { id: AreaId; title: Pair; intro: Pair; groups: { title: Pair; intro: Pair; pages: string[] }[] }[] = [
+const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { title: Pair; intro: Pair; pages: string[] }[] }[] = [
   {
     id: "use",
     title: ["Benutzen", "Using Flowplan"],
+    short: ["Benutzen", "Using"],
     intro: ["Schreiben, planen, zeichnen und gemeinsam arbeiten – im Browser und in den Apps.", "Write, plan, draw and work together – in the browser and in the apps."],
     groups: [
       {
@@ -90,6 +91,7 @@ const areas: { id: AreaId; title: Pair; intro: Pair; groups: { title: Pair; intr
   {
     id: "extend",
     title: ["Erweitern", "Extending"],
+    short: ["Erweitern", "Extending"],
     intro: ["Flowplan mit anderen Diensten verbinden und um eigene Blöcke erweitern.", "Connect Flowplan to other services and add your own blocks."],
     groups: [
       {
@@ -102,6 +104,7 @@ const areas: { id: AreaId; title: Pair; intro: Pair; groups: { title: Pair; intr
   {
     id: "run",
     title: ["Betreiben", "Running Flowplan"],
+    short: ["Betreiben", "Running"],
     intro: ["Flowplan auf dem eigenen Server: installieren, anmelden, konfigurieren, sichern, überwachen, skalieren.", "Flowplan on your own server: install, sign-in, configure, back up, monitor, scale."],
     groups: [
       {
@@ -141,6 +144,7 @@ export function docAreas(locale: Locale = "de"): DocArea[] {
   return areas.map((a) => ({
     id: a.id,
     title: pick(locale, a.title),
+    short: pick(locale, a.short),
     intro: pick(locale, a.intro),
     groups: a.groups.map((g) => ({
       title: pick(locale, g.title),
@@ -501,7 +505,7 @@ export function llmsIndex(base: string, locale: Locale) {
       : "Every page is available as Markdown at the linked address; the German version is under /de/…md.",
     "",
   ];
-  for (const group of docGroups(locale)) {
+  for (const group of docAreas(locale).flatMap((a) => a.groups.map((g) => ({ ...g, title: `${a.title}: ${g.title}` })))) {
     lines.push(`## ${group.title}`, "");
     for (const page of group.pages) {
       const doc = loadDoc(page.slug, locale)!;

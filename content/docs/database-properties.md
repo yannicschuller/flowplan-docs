@@ -2,9 +2,11 @@
 keywords: Eigenschaft, Feld, Spalte, Typ, Auswahl, Mehrfachauswahl, Rich Text
 ---
 
-# Eigenschaften
+# Eigenschaften von Datenbanken
 
 Die Eigenschaftstypen einer Datenbank im Überblick, formatierter Text in Feldern und Mehrfachauswahlen mit den Tags des Arbeitsbereichs.
+
+## Eigenschaften
 
 | Typ | Inhalt |
 | --- | --- |
@@ -22,7 +24,7 @@ Die Eigenschaftstypen einer Datenbank im Überblick, formatierter Text in Felder
 
 Relationen, Rollups und Formeln sind unter [Eigenschaften, Formeln und Rollups](/properties-and-formulas) beschrieben.
 
-## Eigenschaften im Eintrag einklappen
+### Eigenschaften im Eintrag einklappen
 
 Unter dem Titel eines Eintrags klappt der Pfeil **Eigenschaften** die Eigenschaften zu einer Zeile zusammen: die zwei bis drei wichtigsten Werte als kleine Chips (zuerst der Status, dann Auswahl, Datum und Person) und „+4 Eigenschaften“. Ein Tipp auf die Zeile klappt sie wieder auf. Der Inhalt des Eintrags rückt so nach oben – gerade auf dem Telefon.
 
@@ -31,7 +33,7 @@ Unter dem Titel eines Eintrags klappt der Pfeil **Eigenschaften** die Eigenschaf
 - Einklappen ändert keine Werte und keine Rechte und gilt nur für dich. Drucken und Exporte zeigen immer alle Eigenschaften – außer du schaltest sie in den [Druckoptionen](/print-and-pdf#drucken-und-pdf) ab.
 - Für normale Seiten gibt es dasselbe in der [Leiste mit Tags und Eigenschaften](/page-tags#leiste-einklappen).
 
-## Formatierter Text
+### Formatierter Text
 
 Text-Eigenschaften – alle außer dem Titel – können **fett**, *kursiv*, ~~durchgestrichen~~, `Code`, Links und Zeilenumbrüche enthalten. Es sind nur Auszeichnungen im Text, keine Blöcke: Überschriften, Listen, Zitate oder Tabellen gibt es darin nicht (dafür ist der Text des Eintrags da). Unterstreichen gibt es nicht.
 
@@ -46,7 +48,7 @@ Text-Eigenschaften – alle außer dem Titel – können **fett**, *kursiv*, ~~d
 - **Typ ändern:** Wird eine andere Eigenschaft zu Text, bleiben ihre Werte, wie sie geschrieben sind; wird Text zu einem anderen Typ, zählt der Text ohne Formatierung.
 - **API und MCP:** Der Wert ist ein String mit Inline-Markdown: `**fett**`, `_kursiv_` (auch `*kursiv*`), `~~durchgestrichen~~`, `` `Code` ``, `[Text](https://…)` und `\n` für einen Zeilenumbruch. Ein Backslash hält `` \ * _ ~ ` [ ] `` als Zeichen fest – reinen Text also maskiert senden. Links mit anderen Schemata (etwa `javascript:`) zeigen nur ihren Text; `# ` oder `- ` am Anfang bleiben Text. Der Titel ist reiner Text.
 
-## Mehrfachauswahl mit den Tags des Arbeitsbereichs
+### Mehrfachauswahl mit den Tags des Arbeitsbereichs
 
 Eine Mehrfachauswahl kann statt einer eigenen Liste die **Tags des Arbeitsbereichs** als Optionen haben – dieselben Tags, die auch Seiten tragen. In den Einstellungen der Eigenschaft (Klick auf die Spaltenüberschrift) unter **Optionen** zwischen **Eigene Liste** und **Tags des Arbeitsbereichs** wählen.
 

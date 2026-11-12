@@ -6,7 +6,7 @@ keywords: Datenbank, Tabelle, Einträge, Notion-Datenbank, Airtable, wiederkehre
 
 Eine Datenbank ist eine Sammlung von Einträgen mit Eigenschaften. Dieselben Einträge lassen sich als Tabelle, Board, Kalender, Timeline, Galerie, Liste, Feed, Diagramm oder Formular zeigen.
 
-**Mehr zum Thema:** [Eigenschaften](/database-properties)
+**Mehr zum Thema:** [Eigenschaften von Datenbanken](/database-properties)
 
 ## Datenbank anlegen
 

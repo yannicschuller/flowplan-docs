@@ -232,11 +232,12 @@ export const PAGES = [
   // ------------------------------------------------------------ Databases
   p("databases", { hub: true, kw: ["Datenbank, Tabelle, Einträge, Notion-Datenbank, Airtable, wiederkehrend, Erinnerung", "database, table, records, rows, airtable, recurring, reminder"] }),
   p("database-properties", {
-    page: "databases#Eigenschaften",
+    title: ["Eigenschaften von Datenbanken", "Database properties"],
     lead: [
       "Die Eigenschaftstypen einer Datenbank im Überblick, formatierter Text in Feldern und Mehrfachauswahlen mit den Tags des Arbeitsbereichs.",
       "A database's property types at a glance, formatted text in fields and multi-selects with the workspace's tags.",
     ],
+    sections: ["databases#Eigenschaften"],
     kw: ["Eigenschaft, Feld, Spalte, Typ, Auswahl, Mehrfachauswahl, Rich Text", "property, field, column, type, select, multi-select, rich text"],
   }),
   p("views", { kw: ["Ansicht, Kanban, Board, Kalender, Timeline, Gantt, Galerie, Liste", "view, kanban, board, calendar, timeline, gantt, gallery, list"] }),
