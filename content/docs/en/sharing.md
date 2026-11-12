@@ -93,6 +93,20 @@ Publications with a password cannot be shown under a custom domain. When the pub
 > [!WARNING]
 > Embedded videos and external images load content from their provider when viewed. This also applies to published pages.
 
+## Share a single record
+
+A record of a database can be shared without opening the database: **Share** at the top of the record (the share icon in the dialog, the **Share** button on the record's own page) opens **Share record**. Anyone who may edit the record may share it.
+
+- **Links**: as for pages – a name, a permission (read, comment, edit), optionally a [password and expiry date](#password-and-expiry-date); every link can be revoked on its own.
+- **Web**: **Publish on the web** makes the record readable for everyone with the link, again with password and expiry date. Guest comments stay with the links; search engines do not index it.
+- **Properties**: which properties visitors see – for all links and the publication of this record. Preselected are those a publication shows anyway, plus the record's files; empty ones are not shown. **Relations** (show the titles of linked records, without a link) and **people** (show names) only appear when you tick them. Properties with read permissions and rollups always stay private.
+
+Visitors see the record's title, icon, cover, the chosen properties and its document – no other records, no views, not the database; the path starts at the record. Links in the document to other pages or records are removed for them, and files are only visible when the record itself uses them. With **edit**, guests change the document (live) and the visible properties, but no relations.
+
+- Members reach the record as before through the database and the [record's permissions](/databases#permissions-per-record); there are no guests of single records – that is what the link is for.
+- **Private** records cannot be shared; if a shared record becomes private, is deleted, is moved to another database or its database is deleted, its links and its publication end at once.
+- Your links appear under **Settings → Security**, all of them under **Administration → Security**.
+
 ## Forms
 
 Forms have a link of their own, see [Forms](/forms#share-a-form).

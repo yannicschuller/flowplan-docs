@@ -93,6 +93,20 @@ Veröffentlichungen mit Passwort lassen sich nicht unter einer eigenen Domain ze
 > [!WARNING]
 > Eingebettete Videos und externe Bilder laden beim Ansehen Inhalte vom jeweiligen Anbieter. Das gilt auch für veröffentlichte Seiten.
 
+## Einzelne Einträge teilen
+
+Ein Eintrag einer Datenbank lässt sich teilen, ohne die Datenbank zu öffnen: **Teilen** oben im Eintrag (im Dialog das Teilen-Symbol, als ganze Seite der Knopf **Teilen**) öffnet **Eintrag teilen**. Teilen darf, wer den Eintrag bearbeiten darf.
+
+- **Links**: wie bei Seiten – Name, Berechtigung (Lesen, Kommentieren, Bearbeiten), auf Wunsch [Passwort und Ablaufdatum](#passwort-und-ablaufdatum); jeder Link lässt sich einzeln widerrufen.
+- **Web**: **Im Web veröffentlichen** macht den Eintrag für alle mit dem Link lesbar, wieder mit Passwort und Ablaufdatum. Gastkommentare bleiben bei den Links; Suchmaschinen nehmen ihn nicht auf.
+- **Eigenschaften**: welche Eigenschaften Besucher sehen – für alle Links und die Veröffentlichung dieses Eintrags. Voreingestellt sind alle, die auch eine Veröffentlichung zeigt, dazu die Dateien des Eintrags; leere werden nicht angezeigt. **Relationen** (zeigen die Titel verknüpfter Einträge, ohne Link) und **Personen** (zeigen Namen) erscheinen nur, wenn du sie anhakst. Eigenschaften mit Leserechten und Rollups bleiben immer privat.
+
+Besucher sehen Titel, Symbol, Cover, die gewählten Eigenschaften und das Dokument des Eintrags – keine anderen Einträge, keine Ansichten, nicht die Datenbank; der Pfad beginnt beim Eintrag. Links im Dokument auf andere Seiten oder Einträge sind für sie entfernt, Dateien nur sichtbar, wenn der Eintrag sie selbst verwendet. Mit **Bearbeiten** ändern Gäste das Dokument (live) und die sichtbaren Eigenschaften, aber keine Relationen.
+
+- Mitglieder erreichen den Eintrag wie bisher über die Datenbank und die [Rechte des Eintrags](/databases#rechte-pro-eintrag); Gäste einzelner Einträge gibt es nicht – dafür ist der Link da.
+- **Private** Einträge lassen sich nicht teilen; wird ein geteilter Eintrag privat, gelöscht, in eine andere Datenbank verschoben oder die Datenbank gelöscht, enden seine Links und seine Veröffentlichung sofort.
+- Deine Links erscheinen unter **Einstellungen → Sicherheit**, alle unter **Administration → Sicherheit**.
+
 ## Formulare
 
 Formulare haben einen eigenen Link, siehe [Formulare](/forms#formular-teilen).
