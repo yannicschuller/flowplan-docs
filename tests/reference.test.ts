@@ -271,3 +271,10 @@ test("related pages: at most four, existing, not the page or its neighbours, mos
   // Almost every page finds some.
   assert.ok(docSlugs.filter((slug) => relatedPages(slug, "de").length >= 2).length >= docSlugs.length * 0.9);
 });
+
+test("a pipe already escaped in a page's table stays one cell on the reference page", () => {
+  for (const locale of LOCALES) {
+    const row = docMarkdown("environment-variables", locale).split("\n").find((l) => l.startsWith("| `LDAP_CONTACTS_FILTER` |"))!;
+    assert.equal(row.split(/(?<!\\)\|/).length - 2, 4, `${locale}: ${row}`);
+  }
+});
