@@ -1,5 +1,6 @@
 ---
 keywords: appearance, logo, colours, font, branding, automatic links, print template
+new: print-presets 2026-11-12
 ---
 
 # Customizing a workspace

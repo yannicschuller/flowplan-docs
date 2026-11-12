@@ -884,6 +884,228 @@
 .toc a:hover {
   color: var(--blue);
 }
+/* The section being read (page-tools.tsx: aria-current="location"). */
+.toc a[aria-current="location"],
+.tocInline a[aria-current="location"] {
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+.toc a[aria-current="location"] {
+  position: relative;
+}
+.toc a[aria-current="location"]::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: -13px;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--blue);
+}
+.toc li[data-depth="3"] a[aria-current="location"]::before {
+  left: -25px;
+}
+.tocNew {
+  margin-left: 6px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--blue-light);
+  color: var(--accent-strong);
+  font-size: 10.5px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+/* On small screens the list sits folded above the article. */
+.tocInline {
+  display: none;
+  margin: 24px 0 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 14px;
+}
+.tocInline summary {
+  padding: 11px 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tocInline summary:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+.tocInline ol {
+  margin: 0;
+  padding: 4px 16px 12px;
+  list-style: none;
+  border-top: 1px solid var(--border);
+}
+.tocInline li[data-depth="3"] {
+  padding-left: 14px;
+}
+.tocInline a {
+  display: block;
+  padding: 6px 0;
+  color: var(--secondary);
+  text-decoration: none;
+}
+@media (max-width: 1180px) {
+  .tocInline {
+    display: block;
+  }
+}
+
+/* ---------- Reading time, date and new sections, under the lead ---------- */
+.pageMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 0;
+  margin: 18px 0 0;
+  font-size: 13.5px;
+  color: var(--secondary);
+}
+.pageMeta > span + span::before {
+  content: "·";
+  margin: 0 10px;
+  color: var(--muted);
+}
+.pageMeta .newBadge {
+  vertical-align: 0.05em;
+  margin-right: 2px;
+}
+.pageMeta a {
+  color: var(--blue);
+  text-underline-offset: 3px;
+}
+.newBadge,
+.prose :global(.new-badge) {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--blue-light);
+  color: var(--accent-strong);
+  font-family: var(--font-ui);
+  font-size: 11.5px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  vertical-align: 0.25em;
+}
+.prose :global(.new-badge) {
+  margin-left: 6px;
+}
+
+/* ---------- Table filter (reference pages) ---------- */
+/* Room for the field, which only exists with JavaScript; without it the
+   tables stand as they are. */
+@media (scripting: enabled) {
+  .prose :global(.filter-slot) {
+    min-height: 72px;
+    margin: 28px 0 8px;
+  }
+}
+.prose :global(.filter-slot) + h2,
+.prose :global(.filter-slot) + h3 {
+  margin-top: 0;
+}
+.filter {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 6px 14px;
+}
+.filter label {
+  grid-column: 1 / -1;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--secondary);
+}
+.filterField {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--muted);
+}
+.filterField:focus-within {
+  border-color: var(--blue);
+  outline: 2px solid color-mix(in srgb, var(--blue) 30%, transparent);
+}
+.filterField input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  outline: none;
+}
+.filterField input::placeholder {
+  color: var(--muted);
+}
+.filterCount {
+  margin: 0;
+  font-size: 13px;
+  color: var(--secondary);
+  white-space: nowrap;
+}
+
+/* ---------- Related pages ---------- */
+.related {
+  margin-top: 48px;
+}
+.related h2 {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.related ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.related a {
+  display: block;
+  height: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 14.5px;
+  font-weight: 550;
+  text-decoration: none;
+}
+.related a:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+@media (max-width: 520px) {
+  .related ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .filter {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  @media (scripting: enabled) {
+    .prose :global(.filter-slot) {
+      min-height: 98px;
+    }
+  }
+}
 
 /* ---------- Pager ---------- */
 .pager {

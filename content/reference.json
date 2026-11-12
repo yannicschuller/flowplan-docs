@@ -1,0 +1,2067 @@
+{
+  "source": "github.com/yannicschuller/flowplan@b363fbe",
+  "slash": {
+    "groups": {
+      "recent": [
+        "Zuletzt verwendet",
+        "Recently used"
+      ],
+      "ai": [
+        "KI",
+        "AI"
+      ],
+      "text": [
+        "Text",
+        "Text"
+      ],
+      "lists": [
+        "Listen",
+        "Lists"
+      ],
+      "blocks": [
+        "Blöcke",
+        "Blocks"
+      ],
+      "media": [
+        "Medien",
+        "Media"
+      ],
+      "math": [
+        "Mathematik",
+        "Math"
+      ],
+      "database": [
+        "Datenbank & Einbettungen",
+        "Database & embeds"
+      ],
+      "extensions": [
+        "Erweiterungen",
+        "Extensions"
+      ],
+      "advanced": [
+        "Weitere",
+        "More"
+      ]
+    },
+    "commands": [
+      {
+        "id": "ai",
+        "group": "ai",
+        "name": [
+          "KI-Assistent",
+          "AI assistant"
+        ],
+        "keywords": [
+          "ki",
+          "ai",
+          "assistent",
+          "assistant",
+          "schreiben",
+          "write",
+          "gpt"
+        ],
+        "description": [
+          "Text von der KI schreiben lassen",
+          "Let the AI write text"
+        ],
+        "note": [
+          "Wenn KI zum Schreiben eingeschaltet ist",
+          "When AI writing is on"
+        ]
+      },
+      {
+        "id": "text",
+        "group": "text",
+        "name": [
+          "Text",
+          "Text"
+        ],
+        "keywords": [
+          "text",
+          "p",
+          "absatz",
+          "paragraph"
+        ],
+        "description": [
+          "Einfach losschreiben",
+          "Just start writing"
+        ]
+      },
+      {
+        "id": "h1",
+        "group": "text",
+        "name": [
+          "Überschrift 1",
+          "Heading 1"
+        ],
+        "keywords": [
+          "h1",
+          "#",
+          "titel",
+          "heading1"
+        ],
+        "description": [
+          "Große Überschrift",
+          "Large heading"
+        ]
+      },
+      {
+        "id": "h2",
+        "group": "text",
+        "name": [
+          "Überschrift 2",
+          "Heading 2"
+        ],
+        "keywords": [
+          "h2",
+          "##",
+          "heading2"
+        ],
+        "description": [
+          "Mittlere Überschrift",
+          "Medium heading"
+        ]
+      },
+      {
+        "id": "h3",
+        "group": "text",
+        "name": [
+          "Überschrift 3",
+          "Heading 3"
+        ],
+        "keywords": [
+          "h3",
+          "###",
+          "heading3"
+        ],
+        "description": [
+          "Kleine Überschrift",
+          "Small heading"
+        ]
+      },
+      {
+        "id": "todo",
+        "group": "lists",
+        "name": [
+          "Aufgabenliste",
+          "Task list"
+        ],
+        "keywords": [
+          "todo",
+          "aufgabe",
+          "task",
+          "checkbox",
+          "[]"
+        ],
+        "description": [
+          "Schritt für Schritt abhaken",
+          "Tick off step by step"
+        ]
+      },
+      {
+        "id": "bullets",
+        "group": "lists",
+        "name": [
+          "Aufzählung",
+          "Bulleted list"
+        ],
+        "keywords": [
+          "ul",
+          "liste",
+          "bullet",
+          "punkte",
+          "-"
+        ],
+        "description": [
+          "Eine Liste mit Punkten",
+          "A list with bullets"
+        ]
+      },
+      {
+        "id": "numbered",
+        "group": "lists",
+        "name": [
+          "Nummerierte Liste",
+          "Numbered list"
+        ],
+        "keywords": [
+          "ol",
+          "1.",
+          "nummer",
+          "numbered"
+        ],
+        "description": [
+          "Eine geordnete Liste",
+          "An ordered list"
+        ]
+      },
+      {
+        "id": "citation",
+        "group": "blocks",
+        "name": [
+          "Literaturzitat",
+          "Citation"
+        ],
+        "keywords": [
+          "zitat",
+          "cite",
+          "citation",
+          "doi",
+          "bibtex",
+          "zotero",
+          "literatur",
+          "quelle",
+          "source",
+          "reference"
+        ],
+        "description": [
+          "Quelle zitieren: DOI, BibTeX oder Zotero",
+          "Cite a source: DOI, BibTeX or Zotero"
+        ]
+      },
+      {
+        "id": "bibliography",
+        "group": "blocks",
+        "name": [
+          "Literaturverzeichnis",
+          "Bibliography"
+        ],
+        "keywords": [
+          "bibliography",
+          "literatur",
+          "references",
+          "quellen",
+          "bibliographie",
+          "literaturliste"
+        ],
+        "description": [
+          "Alle zitierten Werke als Liste",
+          "All cited works as a list"
+        ]
+      },
+      {
+        "id": "quote",
+        "group": "text",
+        "name": [
+          "Zitat",
+          "Quote"
+        ],
+        "keywords": [
+          "quote",
+          ">"
+        ],
+        "description": [
+          "Einen Gedanken hervorheben",
+          "Highlight a thought"
+        ]
+      },
+      {
+        "id": "callout",
+        "group": "blocks",
+        "name": [
+          "Callout",
+          "Callout"
+        ],
+        "keywords": [
+          "callout",
+          "hinweis",
+          "note",
+          "info",
+          "alert",
+          "admonition",
+          "box"
+        ],
+        "description": [
+          "Hervorgehobener Kasten: Hinweis, Tipp, Wichtig, Warnung oder Achtung",
+          "Highlighted box: note, tip, important, warning or caution"
+        ],
+        "children": [
+          {
+            "id": "callout-note",
+            "name": [
+              "Nützliche Information",
+              "Useful information"
+            ],
+            "keywords": [
+              "info",
+              "note",
+              "hinweis"
+            ],
+            "description": [
+              "Nützliche Information",
+              "Useful information"
+            ]
+          },
+          {
+            "id": "callout-tip",
+            "name": [
+              "Hilfreicher Rat",
+              "Helpful advice"
+            ],
+            "keywords": [
+              "tip",
+              "tipp",
+              "hint"
+            ],
+            "description": [
+              "Hilfreicher Rat",
+              "Helpful advice"
+            ]
+          },
+          {
+            "id": "callout-important",
+            "name": [
+              "Das Wichtigste auf einen Blick",
+              "Key information"
+            ],
+            "keywords": [
+              "important",
+              "wichtig"
+            ],
+            "description": [
+              "Das Wichtigste auf einen Blick",
+              "Key information"
+            ]
+          },
+          {
+            "id": "callout-warning",
+            "name": [
+              "Braucht Aufmerksamkeit",
+              "Needs attention"
+            ],
+            "keywords": [
+              "warning",
+              "warnung"
+            ],
+            "description": [
+              "Braucht Aufmerksamkeit",
+              "Needs attention"
+            ]
+          },
+          {
+            "id": "callout-caution",
+            "name": [
+              "Risiko oder unerwünschte Folge",
+              "Risk or negative outcome"
+            ],
+            "keywords": [
+              "caution",
+              "danger",
+              "achtung",
+              "gefahr"
+            ],
+            "description": [
+              "Risiko oder unerwünschte Folge",
+              "Risk or negative outcome"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "toggle",
+        "group": "blocks",
+        "name": [
+          "Aufklappbarer Block",
+          "Toggle"
+        ],
+        "keywords": [
+          "toggle",
+          "details",
+          "aufklappen"
+        ],
+        "description": [
+          "Details ein- und ausblenden",
+          "Show and hide details"
+        ]
+      },
+      {
+        "id": "code",
+        "group": "blocks",
+        "name": [
+          "Code",
+          "Code"
+        ],
+        "keywords": [
+          "codeblock",
+          "```"
+        ],
+        "description": [
+          "Codeblock einfügen",
+          "Insert a code block"
+        ]
+      },
+      {
+        "id": "table",
+        "group": "blocks",
+        "name": [
+          "Tabelle",
+          "Table"
+        ],
+        "keywords": [
+          "table"
+        ],
+        "description": [
+          "Zeilen und Spalten",
+          "Rows and columns"
+        ]
+      },
+      {
+        "id": "file",
+        "group": "media",
+        "name": [
+          "Bild oder Datei",
+          "Image or file"
+        ],
+        "keywords": [
+          "bild",
+          "image",
+          "img",
+          "datei",
+          "file",
+          "upload",
+          "foto"
+        ],
+        "description": [
+          "Datei vom Gerät hochladen",
+          "Upload a file from your device"
+        ]
+      },
+      {
+        "id": "mermaid",
+        "group": "media",
+        "name": [
+          "Mermaid-Diagramm",
+          "Mermaid diagram"
+        ],
+        "keywords": [
+          "mermaid",
+          "diagramm",
+          "flowchart",
+          "chart"
+        ],
+        "description": [
+          "Abläufe, Sequenzen und Beziehungen",
+          "Flows, sequences and relationships"
+        ]
+      },
+      {
+        "id": "drawio",
+        "group": "media",
+        "name": [
+          "draw.io-Diagramm",
+          "draw.io diagram"
+        ],
+        "keywords": [
+          "drawio",
+          "draw.io",
+          "diagrams.net",
+          "diagramm",
+          "diagram",
+          "flowchart",
+          "uml",
+          "visio",
+          "schema"
+        ],
+        "description": [
+          "Diagramme zeichnen mit draw.io",
+          "Draw diagrams with draw.io"
+        ],
+        "note": [
+          "Wenn die Instanz draw.io anbietet",
+          "When the instance offers draw.io"
+        ]
+      },
+      {
+        "id": "math",
+        "group": "math",
+        "name": [
+          "Formel",
+          "Formula"
+        ],
+        "keywords": [
+          "math",
+          "latex",
+          "katex",
+          "tex"
+        ],
+        "description": [
+          "Mathematischer Ausdruck",
+          "Mathematical expression"
+        ]
+      },
+      {
+        "id": "inline-math",
+        "group": "math",
+        "name": [
+          "Inline-Formel",
+          "Inline formula"
+        ],
+        "keywords": [
+          "inlinemath"
+        ],
+        "description": [
+          "Mathematik direkt im Satz",
+          "Math right inside a sentence"
+        ]
+      },
+      {
+        "id": "plot",
+        "group": "math",
+        "name": [
+          "Funktionsgraph",
+          "Function graph"
+        ],
+        "keywords": [
+          "graph",
+          "plot",
+          "funktion",
+          "function",
+          "kurve",
+          "diagramm"
+        ],
+        "description": [
+          "Funktionen von x zeichnen, live bearbeitbar",
+          "Draw functions of x, editable live"
+        ]
+      },
+      {
+        "id": "metric",
+        "group": "database",
+        "name": [
+          "Kennzahl",
+          "Metric"
+        ],
+        "keywords": [
+          "metric",
+          "kpi",
+          "zahl",
+          "anzahl",
+          "summe",
+          "dashboard"
+        ],
+        "description": [
+          "Eine Zahl aus einer Datenbank, aktuell gehalten",
+          "A number from a database, kept up to date"
+        ]
+      },
+      {
+        "id": "dashboard",
+        "group": "database",
+        "name": [
+          "Dashboard",
+          "Dashboard"
+        ],
+        "keywords": [
+          "dashboard",
+          "kennzahlen",
+          "metrics",
+          "kpi",
+          "übersicht",
+          "overview"
+        ],
+        "description": [
+          "Drei Kennzahlen nebeneinander, darunter Diagramme einbinden",
+          "Three metrics side by side, embed charts below"
+        ]
+      },
+      {
+        "id": "fraction",
+        "group": "math",
+        "name": [
+          "Bruch",
+          "Fraction"
+        ],
+        "keywords": [
+          "fraction",
+          "bruch",
+          "frac",
+          "geteilt"
+        ],
+        "description": [
+          "Zähler über Nenner, im Satz",
+          "Numerator over denominator, inside a sentence"
+        ]
+      },
+      {
+        "id": "footnote",
+        "group": "blocks",
+        "name": [
+          "Fußnote",
+          "Footnote"
+        ],
+        "keywords": [
+          "fussnote",
+          "footnote",
+          "fn",
+          "anmerkung",
+          "quelle",
+          "note"
+        ],
+        "description": [
+          "Nummerierte Anmerkung am Seitenende",
+          "Numbered note at the end of the page"
+        ]
+      },
+      {
+        "id": "mention",
+        "group": "database",
+        "name": [
+          "Seite, Eintrag oder Person erwähnen",
+          "Mention a page, record or person"
+        ],
+        "keywords": [
+          "mention",
+          "link",
+          "@",
+          "seite",
+          "person",
+          "eintrag",
+          "record"
+        ],
+        "description": [
+          "Mit @ Wissen verknüpfen",
+          "Connect knowledge with @"
+        ]
+      },
+      {
+        "id": "draw",
+        "group": "media",
+        "name": [
+          "Zeichnen",
+          "Draw"
+        ],
+        "keywords": [
+          "zeichnen",
+          "draw",
+          "dessin",
+          "dessiner",
+          "handschrift",
+          "handwriting",
+          "sketch",
+          "skizze",
+          "croquis",
+          "stift",
+          "pencil",
+          "ink",
+          "tinte",
+          "scribble"
+        ],
+        "description": [
+          "Handschrift und Skizzen mit Stift oder Finger",
+          "Handwriting and sketches with a pen or finger"
+        ],
+        "note": [
+          "Nicht in Einträgen einer Datenbank",
+          "Not in database records"
+        ]
+      },
+      {
+        "id": "whiteboard",
+        "group": "media",
+        "name": [
+          "Whiteboard",
+          "Whiteboard"
+        ],
+        "keywords": [
+          "board",
+          "canvas"
+        ],
+        "description": [
+          "Board anzeigen oder neu anlegen",
+          "Show or create a board"
+        ]
+      },
+      {
+        "id": "meet",
+        "group": "media",
+        "name": [
+          "Besprechung",
+          "Meeting"
+        ],
+        "keywords": [
+          "meet",
+          "besprechung",
+          "meeting",
+          "protokoll",
+          "minutes",
+          "transkript",
+          "transcript",
+          "aufnahme",
+          "notes",
+          "réunion",
+          "会议"
+        ],
+        "description": [
+          "Aufnehmen, transkribieren und automatisch zusammenfassen",
+          "Record, transcribe and summarise automatically"
+        ]
+      },
+      {
+        "id": "voice",
+        "group": "media",
+        "name": [
+          "Sprachnotiz",
+          "Voice note"
+        ],
+        "keywords": [
+          "audio",
+          "aufnahme",
+          "mikrofon",
+          "diktat",
+          "voice",
+          "sprache"
+        ],
+        "description": [
+          "Aufnehmen und als Text einfügen",
+          "Record and insert as text"
+        ]
+      },
+      {
+        "id": "synced",
+        "group": "advanced",
+        "name": [
+          "Synchronisierter Block",
+          "Synced block"
+        ],
+        "keywords": [
+          "sync",
+          "synced",
+          "synchron",
+          "wiederverwenden"
+        ],
+        "description": [
+          "Inhalt, der auf mehreren Seiten gleich bleibt",
+          "Content that stays the same on several pages"
+        ]
+      },
+      {
+        "id": "workflow-button",
+        "group": "advanced",
+        "name": [
+          "Workflow-Knopf",
+          "Workflow button"
+        ],
+        "keywords": [
+          "workflow",
+          "knopf",
+          "button",
+          "automation",
+          "starten",
+          "run"
+        ],
+        "description": [
+          "Startet einen Workflow mit manuellem Auslöser",
+          "Starts a workflow with a manual trigger"
+        ]
+      },
+      {
+        "id": "synced-insert",
+        "group": "advanced",
+        "name": [
+          "Synchronisierten Block einfügen",
+          "Insert synced block"
+        ],
+        "keywords": [
+          "sync",
+          "synced",
+          "einfuegen",
+          "kopie"
+        ],
+        "description": [
+          "Einen bestehenden synchronisierten Block zeigen",
+          "Show an existing synced block"
+        ]
+      },
+      {
+        "id": "linked-database",
+        "group": "database",
+        "name": [
+          "Verknüpfte Datenbank",
+          "Linked database"
+        ],
+        "keywords": [
+          "datenbank",
+          "db",
+          "database",
+          "linked"
+        ],
+        "description": [
+          "Bestehende Einträge mit eigener Ansicht",
+          "Existing records with a view of their own"
+        ]
+      },
+      {
+        "id": "columns",
+        "group": "blocks",
+        "name": [
+          "Zwei Spalten",
+          "Two columns"
+        ],
+        "keywords": [
+          "spalten",
+          "columns",
+          "cols"
+        ],
+        "description": [
+          "Inhalte nebeneinander",
+          "Content side by side"
+        ]
+      },
+      {
+        "id": "embed",
+        "group": "media",
+        "name": [
+          "Einbetten",
+          "Embed"
+        ],
+        "keywords": [
+          "embed",
+          "youtube",
+          "video",
+          "figma",
+          "loom"
+        ],
+        "description": [
+          "YouTube, Vimeo, Loom, Spotify, Figma oder CodePen",
+          "YouTube, Vimeo, Loom, Spotify, Figma or CodePen"
+        ]
+      },
+      {
+        "id": "spoiler",
+        "group": "text",
+        "name": [
+          "Spoiler",
+          "Spoiler"
+        ],
+        "keywords": [
+          "verdecken",
+          "versteckt",
+          "hide",
+          "geheim"
+        ],
+        "description": [
+          "Text verdecken, bis jemand darauf klickt",
+          "Hide text until someone clicks it"
+        ]
+      },
+      {
+        "id": "divider",
+        "group": "text",
+        "name": [
+          "Trennlinie",
+          "Divider"
+        ],
+        "keywords": [
+          "hr",
+          "divider",
+          "linie",
+          "---"
+        ],
+        "description": [
+          "Inhalte voneinander trennen",
+          "Separate content"
+        ]
+      },
+      {
+        "id": "page-break",
+        "group": "text",
+        "name": [
+          "Seitenumbruch",
+          "Page break"
+        ],
+        "keywords": [
+          "seitenumbruch",
+          "pagebreak",
+          "page break",
+          "umbruch",
+          "newpage",
+          "break",
+          "drucken",
+          "print",
+          "pdf"
+        ],
+        "description": [
+          "Beim Drucken und im PDF auf einer neuen Seite weiter",
+          "Continue on a new page in print and PDF"
+        ]
+      },
+      {
+        "id": "scan",
+        "group": "media",
+        "name": [
+          "Dokument scannen",
+          "Scan document"
+        ],
+        "keywords": [
+          "scan",
+          "scanner",
+          "kamera",
+          "camera",
+          "pdf",
+          "ocr",
+          "beleg",
+          "receipt"
+        ],
+        "description": [
+          "Mit der Kamera, als durchsuchbares PDF",
+          "With the camera, as a searchable PDF"
+        ],
+        "note": [
+          "In den Apps für iPhone, iPad und Android",
+          "In the apps for iPhone, iPad and Android"
+        ]
+      }
+    ]
+  },
+  "shortcuts": {
+    "global": [
+      {
+        "id": "search",
+        "name": [
+          "Suchen und Befehle",
+          "Search and commands"
+        ],
+        "combos": [
+          "Mod+K"
+        ]
+      },
+      {
+        "id": "find",
+        "name": [
+          "Auf der Seite suchen",
+          "Find on page"
+        ],
+        "combos": [
+          "Mod+F"
+        ]
+      },
+      {
+        "id": "newPage",
+        "name": [
+          "Neue Seite",
+          "New page"
+        ],
+        "combos": [
+          "Mod+N"
+        ]
+      },
+      {
+        "id": "capture",
+        "name": [
+          "Schnell erfassen",
+          "Quick capture"
+        ],
+        "combos": [
+          "Mod+Alt+N"
+        ]
+      },
+      {
+        "id": "shortcuts",
+        "name": [
+          "Diese Übersicht",
+          "This overview"
+        ],
+        "combos": [
+          "?",
+          "Mod+/"
+        ]
+      },
+      {
+        "id": "readMode",
+        "name": [
+          "Lesen oder bearbeiten umschalten",
+          "Switch between reading and editing"
+        ],
+        "combos": [
+          "Mod+Alt+E"
+        ]
+      },
+      {
+        "id": "sidebar",
+        "name": [
+          "Seitenleiste ein- oder ausblenden",
+          "Show or hide the sidebar"
+        ],
+        "combos": [
+          "Mod+Alt+B"
+        ]
+      },
+      {
+        "id": "focusMode",
+        "name": [
+          "Fokusmodus ein oder aus",
+          "Focus mode on or off"
+        ],
+        "combos": [
+          "Mod+Alt+Z"
+        ]
+      },
+      {
+        "id": "comments",
+        "name": [
+          "Kommentare ein- oder ausblenden",
+          "Show or hide comments"
+        ],
+        "combos": [
+          "Mod+Alt+K"
+        ]
+      },
+      {
+        "id": "ask",
+        "name": [
+          "KI fragen öffnen oder schließen",
+          "Open or close Ask AI"
+        ],
+        "combos": [
+          "Mod+Alt+A"
+        ]
+      },
+      {
+        "id": "theme",
+        "name": [
+          "Helles oder dunkles Design",
+          "Light or dark theme"
+        ],
+        "combos": []
+      },
+      {
+        "id": "splitView",
+        "name": [
+          "Geteilte Ansicht öffnen oder schließen",
+          "Open or close the split view"
+        ],
+        "combos": [
+          "Mod+Alt+S"
+        ]
+      },
+      {
+        "id": "present",
+        "name": [
+          "Dokument präsentieren",
+          "Present the document"
+        ],
+        "combos": [
+          "Mod+Alt+P"
+        ]
+      },
+      {
+        "id": "journalToday",
+        "name": [
+          "Journal: heutigen Tag öffnen",
+          "Journal: open today"
+        ],
+        "combos": [
+          "Mod+Alt+Y"
+        ]
+      },
+      {
+        "id": "foldAll",
+        "name": [
+          "Alle Abschnitte einklappen",
+          "Collapse all sections"
+        ],
+        "combos": [
+          "Mod+Alt+X"
+        ]
+      },
+      {
+        "id": "unfoldAll",
+        "name": [
+          "Alle Abschnitte ausklappen",
+          "Expand all sections"
+        ],
+        "combos": [
+          "Mod+Alt+O"
+        ]
+      },
+      {
+        "id": "back",
+        "name": [
+          "Zurück zur vorherigen Seite",
+          "Back to the previous page"
+        ],
+        "combos": [
+          "Mod+[",
+          "Alt+ArrowLeft"
+        ]
+      },
+      {
+        "id": "forward",
+        "name": [
+          "Vorwärts zur nächsten Seite",
+          "Forward to the next page"
+        ],
+        "combos": [
+          "Mod+]",
+          "Alt+ArrowRight"
+        ]
+      }
+    ],
+    "editor": [
+      {
+        "combo": "Mod+B",
+        "id": "bold",
+        "name": [
+          "Fett",
+          "Bold"
+        ]
+      },
+      {
+        "combo": "Mod+I",
+        "id": "italic",
+        "name": [
+          "Kursiv",
+          "Italic"
+        ]
+      },
+      {
+        "combo": "Mod+U",
+        "id": "underline",
+        "name": [
+          "Unterstreichen",
+          "Underline"
+        ]
+      },
+      {
+        "combo": "Mod+Shift+S",
+        "id": "strike",
+        "name": [
+          "Durchstreichen",
+          "Strikethrough"
+        ]
+      },
+      {
+        "combo": "Mod+E",
+        "id": "code",
+        "name": [
+          "Code im Text",
+          "Inline code"
+        ]
+      },
+      {
+        "combo": "Mod+Shift+E",
+        "id": "center",
+        "name": [
+          "Text zentrieren",
+          "Centre the text"
+        ]
+      },
+      {
+        "combo": "Mod+Shift+H",
+        "id": "highlight",
+        "name": [
+          "Markieren",
+          "Highlight"
+        ]
+      },
+      {
+        "combo": "Mod+Alt+H",
+        "id": "spoiler",
+        "name": [
+          "Verdecken",
+          "Spoiler"
+        ]
+      },
+      {
+        "combo": "Mod+.",
+        "id": "superscript",
+        "name": [
+          "Hochgestellt",
+          "Superscript"
+        ]
+      },
+      {
+        "combo": "Mod+,",
+        "id": "subscript",
+        "name": [
+          "Tiefgestellt",
+          "Subscript"
+        ]
+      },
+      {
+        "combo": "Mod+Alt+F",
+        "id": "footnote",
+        "name": [
+          "Fußnote",
+          "Footnote"
+        ]
+      },
+      {
+        "combo": "Mod+Alt+M",
+        "id": "comment",
+        "name": [
+          "Textkommentar",
+          "Text comment"
+        ]
+      },
+      {
+        "combo": "Mod+Shift+ArrowUp",
+        "id": "moveBlock",
+        "name": [
+          "Block verschieben",
+          "Move the block"
+        ]
+      },
+      {
+        "combo": "Mod+Shift+ArrowDown",
+        "id": "moveBlock",
+        "name": [
+          "Block verschieben",
+          "Move the block"
+        ]
+      },
+      {
+        "combo": "Mod+Alt+0",
+        "id": "paragraph",
+        "name": [
+          "Text",
+          "Text"
+        ]
+      },
+      {
+        "combo": "Mod+Alt+1",
+        "id": "heading",
+        "name": [
+          "Überschrift",
+          "Heading"
+        ]
+      },
+      {
+        "combo": "Mod+Alt+2",
+        "id": "heading",
+        "name": [
+          "Überschrift",
+          "Heading"
+        ]
+      },
+      {
+        "combo": "Mod+Alt+3",
+        "id": "heading",
+        "name": [
+          "Überschrift",
+          "Heading"
+        ]
+      },
+      {
+        "combo": "Mod+Alt+4",
+        "id": "heading",
+        "name": [
+          "Überschrift",
+          "Heading"
+        ]
+      },
+      {
+        "combo": "Mod+Alt+5",
+        "id": "heading",
+        "name": [
+          "Überschrift",
+          "Heading"
+        ]
+      },
+      {
+        "combo": "Mod+Alt+6",
+        "id": "heading",
+        "name": [
+          "Überschrift",
+          "Heading"
+        ]
+      },
+      {
+        "combo": "Mod+Shift+7",
+        "id": "orderedList",
+        "name": [
+          "Nummerierte Liste",
+          "Numbered list"
+        ]
+      },
+      {
+        "combo": "Mod+Shift+8",
+        "id": "bulletList",
+        "name": [
+          "Aufzählung",
+          "Bulleted list"
+        ]
+      },
+      {
+        "combo": "Mod+Shift+9",
+        "id": "taskList",
+        "name": [
+          "Aufgabenliste",
+          "Task list"
+        ]
+      },
+      {
+        "combo": "Mod+Shift+B",
+        "id": "blockquote",
+        "name": [
+          "Zitat",
+          "Quote"
+        ]
+      },
+      {
+        "combo": "Mod+Alt+C",
+        "id": "codeBlock",
+        "name": [
+          "Codeblock",
+          "Code block"
+        ]
+      },
+      {
+        "combo": "Mod+Z",
+        "id": "undo",
+        "name": [
+          "Rückgängig",
+          "Undo"
+        ]
+      },
+      {
+        "combo": "Mod+Shift+Z",
+        "id": "redo",
+        "name": [
+          "Wiederholen",
+          "Redo"
+        ]
+      },
+      {
+        "combo": "Mod+J",
+        "id": "ai",
+        "name": [
+          "KI-Schreibassistent",
+          "AI writing assistant"
+        ]
+      },
+      {
+        "combo": "Mod+Alt+Enter",
+        "id": "foldSection",
+        "name": [
+          "Abschnitt (in der Überschrift) oder aufklappbaren Block ein- oder ausklappen",
+          "Collapse or expand the section (in the heading) or the toggle"
+        ]
+      },
+      {
+        "combo": "Mod+Shift+L",
+        "id": "blockLink",
+        "name": [
+          "Link zum Block kopieren",
+          "Copy link to block"
+        ]
+      },
+      {
+        "combo": "Mod+L",
+        "id": "taskStatus",
+        "name": [
+          "Aufgabe anlegen oder ihren Status wechseln",
+          "Make a task or change its status"
+        ]
+      }
+    ]
+  },
+  "workflow": {
+    "categories": [
+      "trigger",
+      "logic",
+      "records",
+      "pages",
+      "notify",
+      "ai",
+      "http"
+    ],
+    "nodes": [
+      {
+        "type": "trigger.record.created",
+        "category": "trigger",
+        "name": [
+          "Neuer Eintrag",
+          "New record"
+        ],
+        "description": [
+          "Ein Eintrag wird in einer Datenbank angelegt.",
+          "A record is created in a database."
+        ]
+      },
+      {
+        "type": "trigger.record.changed",
+        "category": "trigger",
+        "name": [
+          "Eintrag geändert",
+          "Record changed"
+        ],
+        "description": [
+          "Eigenschaften eines Eintrags ändern sich.",
+          "Properties of a record change."
+        ]
+      },
+      {
+        "type": "trigger.record.done",
+        "category": "trigger",
+        "name": [
+          "Eintrag erledigt",
+          "Record done"
+        ],
+        "description": [
+          "Ein Eintrag wird erledigt.",
+          "A record becomes done."
+        ]
+      },
+      {
+        "type": "trigger.record.date",
+        "category": "trigger",
+        "name": [
+          "Datum erreicht",
+          "Date reached"
+        ],
+        "description": [
+          "Ein Datum eines Eintrags ist erreicht oder überfällig.",
+          "A date of a record is reached or overdue."
+        ]
+      },
+      {
+        "type": "trigger.form.submitted",
+        "category": "trigger",
+        "name": [
+          "Formularantwort",
+          "Form answer"
+        ],
+        "description": [
+          "Jemand schickt das Formular einer Datenbank ab.",
+          "Someone submits a database's form."
+        ]
+      },
+      {
+        "type": "trigger.schedule",
+        "category": "trigger",
+        "name": [
+          "Zeitplan",
+          "Schedule"
+        ],
+        "description": [
+          "Täglich, wöchentlich oder monatlich zu einer Uhrzeit.",
+          "Daily, weekly or monthly at a time."
+        ]
+      },
+      {
+        "type": "trigger.page.created",
+        "category": "trigger",
+        "name": [
+          "Neue Seite",
+          "New page"
+        ],
+        "description": [
+          "Eine Seite wird angelegt.",
+          "A page is created."
+        ]
+      },
+      {
+        "type": "trigger.page.changed",
+        "category": "trigger",
+        "name": [
+          "Seite geändert",
+          "Page changed"
+        ],
+        "description": [
+          "Titel oder Inhalt einer Seite ändert sich (2 Minuten nach der letzten Änderung).",
+          "A page's title or content changes (2 minutes after the last change)."
+        ]
+      },
+      {
+        "type": "trigger.page.moved",
+        "category": "trigger",
+        "name": [
+          "Seite verschoben",
+          "Page moved"
+        ],
+        "description": [
+          "Eine Seite bekommt eine neue Elternseite oder einen neuen Bereich.",
+          "A page gets a new parent or space."
+        ]
+      },
+      {
+        "type": "trigger.page.tagged",
+        "category": "trigger",
+        "name": [
+          "Tag hinzugefügt",
+          "Tag added"
+        ],
+        "description": [
+          "Eine Seite bekommt einen Tag.",
+          "A page gets a tag."
+        ]
+      },
+      {
+        "type": "trigger.comment.created",
+        "category": "trigger",
+        "name": [
+          "Neuer Kommentar",
+          "New comment"
+        ],
+        "description": [
+          "Jemand kommentiert eine Seite oder einen Eintrag.",
+          "Someone comments on a page or record."
+        ]
+      },
+      {
+        "type": "trigger.mention",
+        "category": "trigger",
+        "name": [
+          "Erwähnung",
+          "Mention"
+        ],
+        "description": [
+          "Jemand wird in einer Seite, einem Eintrag oder Kommentar erwähnt.",
+          "Someone is mentioned in a page, record or comment."
+        ]
+      },
+      {
+        "type": "trigger.manual",
+        "category": "trigger",
+        "name": [
+          "Manuell starten",
+          "Start manually"
+        ],
+        "description": [
+          "Startet über „Ausführen“, die API oder einen Knopf.",
+          "Starts with “Run”, the API or a button."
+        ]
+      },
+      {
+        "type": "trigger.webhook",
+        "category": "trigger",
+        "name": [
+          "Eingehender Webhook",
+          "Inbound webhook"
+        ],
+        "description": [
+          "Ein anderer Dienst ruft die Adresse des Workflows auf.",
+          "Another service calls the workflow’s address."
+        ]
+      },
+      {
+        "type": "trigger.mail.received",
+        "category": "trigger",
+        "name": [
+          "E-Mail empfangen",
+          "E-mail received"
+        ],
+        "description": [
+          "Eine E-Mail kommt an einer Adresse an, die an diesen Workflow geht.",
+          "An e-mail arrives at an address that goes to this workflow."
+        ]
+      },
+      {
+        "type": "trigger.journal.day",
+        "category": "trigger",
+        "name": [
+          "Neuer Journaltag",
+          "New journal day"
+        ],
+        "description": [
+          "Die Seite eines Tages wird im Journal angelegt.",
+          "A day’s page is created in a journal."
+        ]
+      },
+      {
+        "type": "logic.if",
+        "category": "logic",
+        "name": [
+          "Wenn",
+          "If"
+        ],
+        "description": [
+          "Verzweigt nach Bedingungen.",
+          "Branches on conditions."
+        ]
+      },
+      {
+        "type": "logic.set",
+        "category": "logic",
+        "name": [
+          "Werte setzen",
+          "Set values"
+        ],
+        "description": [
+          "Benannte Werte für spätere Knoten.",
+          "Named values for later nodes."
+        ]
+      },
+      {
+        "type": "logic.stop",
+        "category": "logic",
+        "name": [
+          "Beenden",
+          "Stop"
+        ],
+        "description": [
+          "Beendet den Lauf erfolgreich oder als Fehler.",
+          "Ends the run as succeeded or failed."
+        ]
+      },
+      {
+        "type": "logic.switch",
+        "category": "logic",
+        "name": [
+          "Unterscheiden",
+          "Switch"
+        ],
+        "description": [
+          "Verzweigt nach dem ersten passenden Fall.",
+          "Branches on the first matching case."
+        ]
+      },
+      {
+        "type": "logic.foreach",
+        "category": "logic",
+        "name": [
+          "Für jedes",
+          "For each"
+        ],
+        "description": [
+          "Führt die folgenden Knoten für jedes Element einer Liste aus.",
+          "Runs the following nodes for every item of a list."
+        ]
+      },
+      {
+        "type": "logic.wait",
+        "category": "logic",
+        "name": [
+          "Warten",
+          "Wait"
+        ],
+        "description": [
+          "Wartet eine Dauer, bis zu einem Zeitpunkt oder bis zur nächsten Uhrzeit.",
+          "Waits for a duration, until a point in time or until the next time of day."
+        ]
+      },
+      {
+        "type": "logic.approval",
+        "category": "logic",
+        "name": [
+          "Freigabe",
+          "Approval"
+        ],
+        "description": [
+          "Wartet, bis eine Person genehmigt oder ablehnt.",
+          "Waits until a person approves or rejects."
+        ]
+      },
+      {
+        "type": "action.record.create",
+        "category": "records",
+        "name": [
+          "Eintrag anlegen",
+          "Create record"
+        ],
+        "description": [
+          "Legt einen Eintrag in einer Datenbank an.",
+          "Creates a record in a database."
+        ]
+      },
+      {
+        "type": "action.record.update",
+        "category": "records",
+        "name": [
+          "Eintrag ändern",
+          "Update record"
+        ],
+        "description": [
+          "Ändert Eigenschaften eines Eintrags.",
+          "Changes properties of a record."
+        ]
+      },
+      {
+        "type": "action.record.find",
+        "category": "records",
+        "name": [
+          "Einträge finden",
+          "Find records"
+        ],
+        "description": [
+          "Sucht Einträge nach Bedingungen.",
+          "Finds records by conditions."
+        ]
+      },
+      {
+        "type": "action.record.template",
+        "category": "records",
+        "name": [
+          "Vorlage anwenden",
+          "Apply template"
+        ],
+        "description": [
+          "Wendet eine Eintragsvorlage auf einen Eintrag an.",
+          "Applies a record template to a record."
+        ]
+      },
+      {
+        "type": "action.page.create",
+        "category": "pages",
+        "name": [
+          "Seite anlegen",
+          "Create page"
+        ],
+        "description": [
+          "Legt eine Seite unter einer Elternseite an, auf Wunsch aus einer Seitenvorlage. Der Titel (mit Platzhaltern) gilt auch dann; der Name der Vorlage nur, wenn er leer bleibt.",
+          "Creates a page below a parent page, from a page template if you like. The title (with placeholders) applies then as well; the template’s name only when it comes out empty."
+        ]
+      },
+      {
+        "type": "action.page.append",
+        "category": "pages",
+        "name": [
+          "An Seite anhängen",
+          "Append to page"
+        ],
+        "description": [
+          "Fügt Blöcke am Ende, am Anfang oder unter einer Überschrift ein.",
+          "Adds blocks at the end, the start or below a heading."
+        ]
+      },
+      {
+        "type": "action.page.tag",
+        "category": "pages",
+        "name": [
+          "Seite taggen",
+          "Tag page"
+        ],
+        "description": [
+          "Fügt einer Seite Tags hinzu oder entfernt sie.",
+          "Adds tags to a page or removes them."
+        ]
+      },
+      {
+        "type": "action.page.move",
+        "category": "pages",
+        "name": [
+          "Seite verschieben",
+          "Move page"
+        ],
+        "description": [
+          "Verschiebt eine Seite unter eine neue Elternseite.",
+          "Moves a page below a new parent."
+        ]
+      },
+      {
+        "type": "action.task.create",
+        "category": "pages",
+        "name": [
+          "Aufgabe erstellen",
+          "Create task"
+        ],
+        "description": [
+          "Schreibt eine Aufgabe in eine Seite, auf Wunsch mit Person und Fälligkeit.",
+          "Writes a task into a page, with a person and a due date if you like."
+        ]
+      },
+      {
+        "type": "notify.person",
+        "category": "notify",
+        "name": [
+          "Person benachrichtigen",
+          "Notify person"
+        ],
+        "description": [
+          "Benachrichtigung in der App, per Push, E-Mail oder Chat-App.",
+          "A notification in the app, by push, email or chat app."
+        ]
+      },
+      {
+        "type": "notify.email",
+        "category": "notify",
+        "name": [
+          "E-Mail senden",
+          "Send e-mail"
+        ],
+        "description": [
+          "Schickt eine E-Mail an Personen oder Adressen.",
+          "Sends an e-mail to people or addresses."
+        ]
+      },
+      {
+        "type": "notify.chat",
+        "category": "notify",
+        "name": [
+          "Chat-Nachricht",
+          "Chat message"
+        ],
+        "description": [
+          "Postet in einen Chat-Webhook des Arbeitsbereichs (Slack, Matrix, Teams, Discord).",
+          "Posts to a chat webhook of the workspace (Slack, Matrix, Teams, Discord)."
+        ]
+      },
+      {
+        "type": "ai.summarize",
+        "category": "ai",
+        "name": [
+          "KI: Zusammenfassen",
+          "AI: Summarize"
+        ],
+        "description": [
+          "Fasst einen Text zusammen.",
+          "Summarizes a text."
+        ]
+      },
+      {
+        "type": "ai.classify",
+        "category": "ai",
+        "name": [
+          "KI: Einordnen",
+          "AI: Classify"
+        ],
+        "description": [
+          "Ordnet einen Text einer der Kategorien zu.",
+          "Puts a text into one of the categories."
+        ]
+      },
+      {
+        "type": "ai.extract",
+        "category": "ai",
+        "name": [
+          "KI: Felder auslesen",
+          "AI: Extract fields"
+        ],
+        "description": [
+          "Liest benannte Werte aus einem Text.",
+          "Reads named values from a text."
+        ]
+      },
+      {
+        "type": "ai.prompt",
+        "category": "ai",
+        "name": [
+          "KI: Eigene Anweisung",
+          "AI: Custom prompt"
+        ],
+        "description": [
+          "Eine eigene Anweisung, Antwort als Text oder JSON.",
+          "A prompt of your own, answered as text or JSON."
+        ]
+      },
+      {
+        "type": "http.request",
+        "category": "http",
+        "name": [
+          "HTTP-Anfrage",
+          "HTTP request"
+        ],
+        "description": [
+          "Ruft eine HTTPS-Adresse auf (fester Host).",
+          "Calls an HTTPS address (fixed host)."
+        ]
+      }
+    ]
+  },
+  "env": [
+    "APP_URL",
+    "DATABASE_SESSION_URL",
+    "DATABASE_URL",
+    "DRAWIO_URL",
+    "EXPORT_GIT_AUTHOR",
+    "EXPORT_GIT_BRANCH",
+    "EXPORT_GIT_EMAIL",
+    "EXPORT_GIT_IMPORT",
+    "EXPORT_GIT_TOKEN",
+    "EXPORT_GIT_URL",
+    "EXPORT_GIT_USERNAME",
+    "FLOWPLAN_AI",
+    "FLOWPLAN_AI_ACCESS",
+    "FLOWPLAN_AI_API_KEY",
+    "FLOWPLAN_AI_API_KEY_FILE",
+    "FLOWPLAN_AI_BASE_URL",
+    "FLOWPLAN_AI_DEVICE",
+    "FLOWPLAN_AI_EMBEDDING_MODEL",
+    "FLOWPLAN_AI_EMBED_PER_HOUR",
+    "FLOWPLAN_AI_FEATURES",
+    "FLOWPLAN_AI_GUESTS",
+    "FLOWPLAN_AI_MODEL",
+    "FLOWPLAN_AI_PROVIDER",
+    "FLOWPLAN_AI_REQUESTS_PER_HOUR",
+    "FLOWPLAN_AI_SEMANTIC_SEARCH",
+    "FLOWPLAN_AI_TOKENS",
+    "FLOWPLAN_AI_USER_PROVIDERS",
+    "FLOWPLAN_ANONYMOUS_UPLOAD_MB",
+    "FLOWPLAN_BACKUP_FORMAT",
+    "FLOWPLAN_CLUSTER",
+    "FLOWPLAN_COUNTRY_HEADER",
+    "FLOWPLAN_DATA_DIR",
+    "FLOWPLAN_DIST_DIR",
+    "FLOWPLAN_DROP_ROOT",
+    "FLOWPLAN_ENCRYPTION_KEY",
+    "FLOWPLAN_ENCRYPTION_KEY_FILE",
+    "FLOWPLAN_ENCRYPTION_KEY_PREVIOUS",
+    "FLOWPLAN_GIT_ALLOW_HTTP",
+    "FLOWPLAN_HIDE_SPONSOR",
+    "FLOWPLAN_IMPORT_MAX_DOCS",
+    "FLOWPLAN_IMPORT_MAX_FILES",
+    "FLOWPLAN_IMPORT_MAX_MB",
+    "FLOWPLAN_INSTANCE_ID",
+    "FLOWPLAN_LEADER_INTERVAL",
+    "FLOWPLAN_LITESTREAM",
+    "FLOWPLAN_LITESTREAM_SSE_C",
+    "FLOWPLAN_LOCAL_LOGIN",
+    "FLOWPLAN_MARKETPLACE_URL",
+    "FLOWPLAN_MAX_DOCUMENT_MB",
+    "FLOWPLAN_MESSENGERS",
+    "FLOWPLAN_MESSENGER_ALLOW_PRIVATE",
+    "FLOWPLAN_METRICS",
+    "FLOWPLAN_METRICS_LOOP",
+    "FLOWPLAN_METRICS_TOKEN",
+    "FLOWPLAN_MODE",
+    "FLOWPLAN_MOVE_ALLOW_PRIVATE",
+    "FLOWPLAN_OCR",
+    "FLOWPLAN_OCR_LANGS",
+    "FLOWPLAN_PGVECTOR",
+    "FLOWPLAN_PG_BIN",
+    "FLOWPLAN_PG_CONNECT_TIMEOUT",
+    "FLOWPLAN_PG_IDLE_TX_TIMEOUT",
+    "FLOWPLAN_PG_LOCK_TIMEOUT",
+    "FLOWPLAN_PG_POOL",
+    "FLOWPLAN_PG_PREPARE",
+    "FLOWPLAN_PG_SCHEMA",
+    "FLOWPLAN_PG_SCHEMA_AUTO",
+    "FLOWPLAN_PG_STATEMENT_TIMEOUT",
+    "FLOWPLAN_PUBLIC_API_DOCS",
+    "FLOWPLAN_READY_REQUIRE",
+    "FLOWPLAN_REDIS_PREFIX",
+    "FLOWPLAN_SECRETS_KEY",
+    "FLOWPLAN_SECRETS_KEY_FILE",
+    "FLOWPLAN_SECURITY_LOG",
+    "FLOWPLAN_SECURITY_RETENTION_DAYS",
+    "FLOWPLAN_SETUP_TOKEN",
+    "FLOWPLAN_SKIP_TYPECHECK",
+    "FLOWPLAN_SNAPSHOT_RETENTION_DAYS",
+    "FLOWPLAN_SOURCE_URL",
+    "FLOWPLAN_TELEGRAM_API_URL",
+    "FLOWPLAN_TELEGRAM_BOT_TOKEN",
+    "FLOWPLAN_TRUSTED_PROXIES",
+    "FLOWPLAN_UPDATE_CHECK",
+    "FLOWPLAN_UPDATE_URL",
+    "FLOWPLAN_VERSION",
+    "FLOWPLAN_WEBHOOK_ALLOW_PRIVATE",
+    "FLOWPLAN_WORKFLOWS",
+    "FLOWPLAN_WORKFLOW_ACTIVE_PER_WORKSPACE",
+    "FLOWPLAN_WORKFLOW_AI_TOKENS_PER_DAY",
+    "FLOWPLAN_WORKFLOW_CASCADE_DEPTH",
+    "FLOWPLAN_WORKFLOW_EXTERNAL_MAIL",
+    "FLOWPLAN_WORKFLOW_FOREACH_MAX",
+    "FLOWPLAN_WORKFLOW_HTTP",
+    "FLOWPLAN_WORKFLOW_HTTP_ALLOW_PRIVATE",
+    "FLOWPLAN_WORKFLOW_HTTP_HOSTS",
+    "FLOWPLAN_WORKFLOW_LEASE_MS",
+    "FLOWPLAN_WORKFLOW_MAILS_PER_DAY",
+    "FLOWPLAN_WORKFLOW_MAX_WAIT_DAYS",
+    "FLOWPLAN_WORKFLOW_PARALLEL_RUNS",
+    "FLOWPLAN_WORKFLOW_POLL_MS",
+    "FLOWPLAN_WORKFLOW_RUNS_KEPT",
+    "FLOWPLAN_WORKFLOW_RUNS_PER_MINUTE",
+    "FLOWPLAN_WORKFLOW_RUN_DAYS",
+    "FLOWPLAN_WORKFLOW_STEPS_PER_RUN",
+    "FLOWPLAN_WORKFLOW_SWEEP_MS",
+    "FLOWPLAN_WORKFLOW_TEST_RUNS_PER_MINUTE",
+    "FLOWPLAN_WORKFLOW_WORKERS",
+    "FLOWPLAN_WORKFLOW_WORKSPACE_RUNS_PER_MINUTE",
+    "FLOWPLAN_WORKSPACE_QUOTA_MB",
+    "GIPHY_API_KEY",
+    "GIT_COMMIT",
+    "GOOGLE_CALENDAR_CLIENT_ID",
+    "GOOGLE_CALENDAR_CLIENT_SECRET",
+    "IMPRINT_URL",
+    "INBOUND_IMAP_FOLDER",
+    "INBOUND_IMAP_HOST",
+    "INBOUND_IMAP_PASSWORD",
+    "INBOUND_IMAP_PORT",
+    "INBOUND_IMAP_TLS",
+    "INBOUND_IMAP_USER",
+    "INBOUND_MAIL_AUTHSERV_ID",
+    "INBOUND_MAIL_DOMAIN",
+    "ISSUE_SYNC_ALLOWED_HOSTS",
+    "ISSUE_SYNC_ALLOW_PRIVATE",
+    "LDAP_BASE_DN",
+    "LDAP_BIND_DN",
+    "LDAP_BIND_PASSWORD",
+    "LDAP_CONTACTS",
+    "LDAP_CONTACTS_ATTRIBUTES",
+    "LDAP_CONTACTS_BASE_DN",
+    "LDAP_CONTACTS_FILTER",
+    "LDAP_CONTACTS_SYNC_MINUTES",
+    "LDAP_GROUP_ATTRIBUTE",
+    "LDAP_STARTTLS",
+    "LDAP_TIMEOUT_MS",
+    "LDAP_TLS_CA",
+    "LDAP_URL",
+    "LDAP_USER_FILTER",
+    "LITESTREAM_SSE_C_KEY",
+    "MEETING_LIVE_TRANSCRIPTION",
+    "MOBILE_PUSH",
+    "MOBILE_PUSH_CONTENT",
+    "MS_CALENDAR_CLIENT_ID",
+    "MS_CALENDAR_CLIENT_SECRET",
+    "MS_CALENDAR_TENANT",
+    "NETBOX_ALLOW_PRIVATE",
+    "NEXT_TELEMETRY_DISABLED",
+    "OIDC_ADMIN_GROUP",
+    "OIDC_ALLOWED_GROUP",
+    "OIDC_ALLOW_LOCAL_HTTP",
+    "OIDC_CLIENT_ID",
+    "OIDC_CLIENT_SECRET",
+    "OIDC_GROUPS_CLAIM",
+    "OIDC_ISSUER",
+    "OIDC_LINKED_SSO_ONLY",
+    "OIDC_NEW_ACCOUNTS",
+    "OIDC_PICTURE",
+    "OIDC_PROMPT_CREATE",
+    "OIDC_SCOPES",
+    "OLLAMA_URL",
+    "OTEL_EXPORTER_OTLP_ENDPOINT",
+    "OTEL_EXPORTER_OTLP_HEADERS",
+    "OTEL_EXPORTER_OTLP_LOGS_ENDPOINT",
+    "OTEL_EXPORTER_OTLP_LOGS_HEADERS",
+    "OTEL_SERVICE_NAME",
+    "PGCONNECT_TIMEOUT",
+    "PGID",
+    "PG_CLIENT_MAJOR",
+    "PLUGIN_ALLOWED_ORIGINS",
+    "PRIVACY_URL",
+    "PUID",
+    "PUSH_RELAY",
+    "PUSH_RELAY_URL",
+    "REDIS_URL",
+    "RENDER_EXTERNAL_HOSTNAME",
+    "RENDER_EXTERNAL_URL",
+    "S3_ACCESS_KEY_ID",
+    "S3_BUCKET",
+    "S3_ENDPOINT",
+    "S3_PREFIX",
+    "S3_REGION",
+    "S3_SECRET_ACCESS_KEY",
+    "SESSION_APP_DAYS",
+    "SESSION_APP_REMEMBER",
+    "SESSION_GROUPS_HOURS",
+    "SESSION_HOURS",
+    "SESSION_IDLE_HOURS",
+    "SESSION_MAX_DAYS",
+    "SESSION_REMEMBER",
+    "SMTP_FROM",
+    "SMTP_HOST",
+    "SMTP_PASSWORD",
+    "SMTP_PORT",
+    "SMTP_SECURE",
+    "SMTP_USER",
+    "SOURCE_COMMIT",
+    "SPACE_GIT_ALLOWED_HOSTS",
+    "SPACE_GIT_ALLOW_PRIVATE",
+    "SPACE_GIT_EXPORT",
+    "TENOR_API_KEY",
+    "WEB_PUSH_PRIVATE_KEY",
+    "WEB_PUSH_PUBLIC_KEY",
+    "WEB_PUSH_SUBJECT",
+    "WHISPER_API_KEY",
+    "WHISPER_DIARIZE",
+    "WHISPER_LANGUAGE",
+    "WHISPER_MAX_MB",
+    "WHISPER_MODEL",
+    "WHISPER_PROMPT",
+    "WHISPER_RESPONSE_FORMAT",
+    "WHISPER_TIMEOUT_SECONDS",
+    "WHISPER_URL",
+    "WHISPER_VAD"
+  ]
+}

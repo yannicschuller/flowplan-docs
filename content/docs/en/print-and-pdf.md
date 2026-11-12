@@ -1,5 +1,6 @@
 ---
 keywords: print, pdf, page break, print preset, landscape
+new: page-break 2026-11-12
 ---
 
 # Printing and PDF

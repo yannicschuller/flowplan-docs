@@ -12,6 +12,7 @@ import { synonymKeywords } from "./search";
 import type { AnchorMap } from "./anchors";
 import { appUrl, DISCORD_URL, GITHUB_URL, marketplaceUrl, MARKETPLACE_DEFAULT, websiteUrl } from "./links";
 import { outboundTarget } from "./track";
+import { envRows, fillReference, hasReference, REFERENCE, type EnvRow } from "./reference";
 
 export type DocGroup = { title: string; intro: string; area: AreaId; pages: { slug: string; title: string }[] };
 export type AreaId = "use" | "extend" | "run";
@@ -44,7 +45,7 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       {
         title: ["Einstieg", "Getting started"],
         intro: ["Konto, erster Arbeitsbereich, Seitenbaum, Mitglieder und Rechte.", "Account, first workspace, page tree, members and permissions."],
-        pages: ["first-steps", "pages-and-spaces", "page-tags", "workspaces-and-permissions", "workspace-appearance", "encrypted-spaces", "keyboard-shortcuts", "languages"],
+        pages: ["first-steps", "pages-and-spaces", "page-tags", "workspaces-and-permissions", "workspace-appearance", "encrypted-spaces", "languages"],
       },
       {
         title: ["Umzug, Import und Export", "Moving, import and export"],
@@ -69,7 +70,7 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       {
         title: ["Projekte und Automatisierung", "Projects and automation"],
         intro: ["Tickets, Sprints, Git, Workflows und Vorlagen.", "Tickets, sprints, Git, workflows and templates."],
-        pages: ["projects-and-tickets", "git-and-issues", "workflows", "workflow-nodes", "templates", "marketplace"],
+        pages: ["projects-and-tickets", "git-and-issues", "workflows", "templates", "marketplace"],
       },
       {
         title: ["Zusammenarbeit und Suche", "Collaboration and search"],
@@ -80,6 +81,11 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
         title: ["Apps und Geräte", "Apps and devices"],
         intro: ["Offline, Desktop-App, Apps für iPhone, iPad und Android, Browser-Erweiterung.", "Offline, desktop app, apps for iPhone, iPad and Android, browser extension."],
         pages: ["offline-and-apps", "desktop-app", "mobile-apps", "mobile-widgets", "mobile-capture", "desktop-capture", "browser-extension"],
+      },
+      {
+        title: ["Nachschlagen", "Reference"],
+        intro: ["Alle Tastenkürzel, Befehle im Blockmenü und Workflow-Knoten, zum Filtern.", "Every keyboard shortcut, block menu command and workflow node, to filter."],
+        pages: ["keyboard-shortcuts", "slash-commands", "workflow-nodes"],
       },
       {
         title: ["KI", "AI"],
@@ -120,7 +126,7 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       {
         title: ["Konfiguration", "Configuration"],
         intro: ["Alle Umgebungsvariablen, nach Thema.", "Every environment variable, by topic."],
-        pages: ["configuration", "configuration-storage", "configuration-integrations", "configuration-ai-push"],
+        pages: ["configuration", "configuration-storage", "configuration-integrations", "configuration-ai-push", "environment-variables"],
       },
       {
         title: ["Speicher und Betrieb", "Storage and operations"],
@@ -159,6 +165,17 @@ export function docGroups(locale: Locale = "de"): DocGroup[] {
 }
 // The area a page belongs to.
 export const docArea = (slug: string): AreaId | undefined => areas.find((a) => a.groups.some((g) => g.pages.includes(slug)))?.id;
+// The pages of a page's area in sidebar order: "Previous" and "Next" stay
+// within it, so the last page of "Using" does not lead on to "Extending".
+export function areaPages(slug: string) {
+  const area = areas.find((a) => a.groups.some((g) => g.pages.includes(slug)));
+  return area ? area.groups.flatMap((g) => g.pages) : [];
+}
+export function neighbours(slug: string) {
+  const pages = areaPages(slug);
+  const i = pages.indexOf(slug);
+  return { prev: i > 0 ? pages[i - 1] : undefined, next: i >= 0 ? pages[i + 1] : undefined };
+}
 
 export type TocEntry = { id: string; text: string; depth: number };
 export type Doc = {
@@ -178,6 +195,15 @@ export type Doc = {
   modified?: string;
   prev?: { slug: string; title: string };
   next?: { slug: string; title: string };
+  // Up to four pages on the same subject (relatedPages).
+  related: { slug: string; title: string }[];
+  // Minutes to read the lead and the article (readingMinutes).
+  minutes: number;
+  // Sections marked new in the front matter, newest first, while recent.
+  fresh: { id: string; date: string }[];
+  // The page's tables get a filter field (front matter "filter: true",
+  // and every page with a {{reference:…}} table).
+  filter: boolean;
 };
 // Where a page's Markdown can be edited.
 export const editUrl = (source: string) => `https://github.com/yannicschuller/flowplan-docs/edit/main/${source}`;
@@ -348,17 +374,88 @@ export function lastModified(source: string): string | undefined {
   return modifiedDates![source];
 }
 
-// Front matter at the top of a page: "---\nkeywords: a, b\n---". Only
-// keywords so far (for the search); the rest is the Markdown.
-export function frontMatter(text: string): { keywords: string[]; body: string } {
+// Front matter at the top of a page, then the Markdown:
+//
+//   ---
+//   keywords: Kanban, Board        search keywords
+//   new: import-pruefen 2026-11-12 sections added then ("Neu" for 60 days)
+//   filter: true                   a filter field for the page's tables
+//   ---
+export type FrontMatter = { keywords: string[]; fresh: { id: string; date: string }[]; filter: boolean; body: string };
+export function frontMatter(text: string): FrontMatter {
   const m = text.match(/^---\n([\s\S]*?)\n---\n+/);
-  if (!m) return { keywords: [], body: text };
-  const line = m[1].match(/^keywords:\s*(.*)$/m)?.[1] ?? "";
-  return { keywords: line.split(",").map((k) => k.trim()).filter(Boolean), body: text.slice(m[0].length) };
+  if (!m) return { keywords: [], fresh: [], filter: false, body: text };
+  const field = (name: string) => m[1].match(new RegExp(`^${name}:\\s*(.*)$`, "m"))?.[1]?.trim() ?? "";
+  const list = (name: string) =>
+    field(name)
+      .split(",")
+      .map((k) => k.trim())
+      .filter(Boolean);
+  const fresh = list("new").map((entry) => {
+    const [id, date = ""] = entry.split(/\s+/);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error(`front matter "new: ${entry}": write "section-id YYYY-MM-DD"`);
+    return { id, date };
+  });
+  return { keywords: list("keywords"), fresh, filter: field("filter") === "true", body: text.slice(m[0].length) };
+}
+// How long a section counts as new.
+export const NEW_DAYS = 60;
+export const freshSections = (marks: { id: string; date: string }[], now = Date.now()) =>
+  marks
+    .filter((m) => {
+      const age = now - Date.parse(`${m.date}T00:00:00Z`);
+      return age >= 0 && age < NEW_DAYS * 86_400_000;
+    })
+    .sort((a, b) => b.date.localeCompare(a.date));
+
+// Reading time: words of the lead and the article at 200 words a minute
+// (code included – it is read too), at least one minute.
+export const WORDS_PER_MINUTE = 200;
+export function readingMinutes(html: string) {
+  const words = blockText(html).split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
+  return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
 }
 const raw = (slug: string, locale: Locale) => frontMatter(readFileSync(fileOf(slug, locale), "utf8"));
-// A page's Markdown without front matter, with the counts filled in (see lib/facts.ts).
-export const docMarkdown = (slug: string, locale: Locale) => fillFacts(raw(slug, locale).body, locale);
+// A page's Markdown without front matter, with the counts (lib/facts.ts) and
+// the reference tables (lib/reference.ts) filled in.
+export const docMarkdown = (slug: string, locale: Locale) => fillReference(fillFacts(raw(slug, locale).body, locale), locale, () => docEnvRows(locale));
+// Every environment variable the pages describe (the reference page itself
+// left out), for {{reference:env}}.
+const envCache = new Map<Locale, EnvRow[]>();
+export function docEnvRows(locale: Locale) {
+  let rows = envCache.get(locale);
+  if (!rows) {
+    const pages = docSlugs
+      .filter((slug) => !hasReference(raw(slug, locale).body))
+      .map((slug) => ({ slug, title: docTitle(slug, locale), body: fillFacts(raw(slug, locale).body, locale) }));
+    rows = envRows(pages, headingId);
+    envCache.set(locale, rows);
+  }
+  return rows;
+}
+// Pages on the same subject, for "Related pages" under a page: points for
+// each shared keyword (3), the same group (2) and a link between the two
+// pages (2 each way); the page itself and its previous and next page are
+// left out. Ties keep the sidebar order; at most `max`, none without points.
+const linksOf = (slug: string, locale: Locale) =>
+  new Set([...raw(slug, locale).body.matchAll(/\]\(\/([a-z0-9-]+)(?:#[^)]*)?\)/g)].map((m) => m[1]));
+export function relatedPages(slug: string, locale: Locale, max = 4): string[] {
+  const own = new Set(docKeywords(slug, locale).map((k) => k.toLowerCase()));
+  const group = areas.flatMap((a) => a.groups).find((g) => g.pages.includes(slug));
+  const out = linksOf(slug, locale);
+  const { prev, next } = neighbours(slug);
+  return docSlugs
+    .filter((other) => other !== slug && other !== prev && other !== next)
+    .map((other, order) => {
+      const shared = docKeywords(other, locale).filter((k) => own.has(k.toLowerCase())).length;
+      const score = shared * 3 + (group?.pages.includes(other) ? 2 : 0) + (out.has(other) ? 2 : 0) + (linksOf(other, locale).has(slug) ? 2 : 0);
+      return { other, score, order };
+    })
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score || a.order - b.order)
+    .slice(0, max)
+    .map((x) => x.other);
+}
 // The keywords of a page's front matter.
 export const docKeywords = (slug: string, locale: Locale) => raw(slug, locale).keywords;
 // A page's title, its "# Title" line.
@@ -389,8 +486,9 @@ export function loadDoc(slug: string, locale: Locale = "de"): Doc | null {
   const { html, toc } = render(body, locale);
   const leadHtml = new Marked({ gfm: true }).parseInline(lead, { async: false }) as string;
   const all = docGroups(locale);
-  const pages = all.flatMap((g) => g.pages);
-  const index = docSlugs.indexOf(slug);
+  const { prev, next } = neighbours(slug);
+  const page = (s: string) => ({ slug: s, title: docTitle(s, locale) });
+  const front = raw(slug, locale);
   return {
     slug,
     title,
@@ -402,8 +500,12 @@ export function loadDoc(slug: string, locale: Locale = "de"): Doc | null {
     translated: locale === "de" || source.startsWith("content/docs/en/"),
     source,
     modified: lastModified(source),
-    prev: index > 0 ? pages[index - 1] : undefined,
-    next: pages[index + 1],
+    prev: prev ? page(prev) : undefined,
+    next: next ? page(next) : undefined,
+    related: relatedPages(slug, locale).map(page),
+    minutes: readingMinutes(`<p>${leadHtml}</p>${html}`),
+    fresh: freshSections(front.fresh.filter((m) => toc.some((e) => e.id === m.id))),
+    filter: front.filter || hasReference(front.body),
   };
 }
 
@@ -483,6 +585,7 @@ export function searchIndexVersion() {
     const hash = createHash("sha1");
     for (const slug of docSlugs) for (const locale of ["de", "en"] as const) hash.update(readFileSync(fileOf(slug, locale)));
     hash.update(JSON.stringify(FACTS));
+    hash.update(JSON.stringify(REFERENCE));
     hash.update(JSON.stringify(releases()));
     indexVersion = hash.digest("hex").slice(0, 12);
   }

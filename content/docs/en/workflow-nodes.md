@@ -1,5 +1,6 @@
 ---
 keywords: nodes, trigger, action, condition, loop, http
+filter: true
 ---
 
 # Workflow nodes
