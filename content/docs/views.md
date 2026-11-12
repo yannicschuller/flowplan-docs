@@ -6,6 +6,8 @@ keywords: Ansicht, Kanban, Board, Kalender, Timeline, Gantt, Galerie, Liste
 
 Eine Datenbank kann beliebig viele Ansichten haben. Jede Ansicht zeigt dieselben Einträge mit eigener Darstellung, eigenen Filtern, Sortierungen und Gruppen.
 
+![Die Datenbank „Projects“ in der Kalenderansicht: oben die Reiter Table, Board, Calendar, Timeline, Gallery, darunter Filter, Sortierung und Eigenschaften und ein Monat November 2026 mit Einträgen wie „Weekly planning“ und „Speed up search“](/screenshots/calendar.webp "Eine Datenbank in der Kalenderansicht, mit den Reitern der anderen Ansichten.")
+
 Neue Ansicht: **+** neben den Ansichtsreitern, dann eine der {{facts.views|word}} Darstellungen wählen. **Ansicht und Eigenschaften** steuert, welche Eigenschaften sichtbar sind und in welcher Reihenfolge.
 
 Ein **Rechtsklick auf einen Ansichtsreiter** öffnet sein Menü: **Umbenennen**, **Duplizieren**, **Einstellungen …**, **Als Standardansicht festlegen**, **Nach links**, **Nach rechts** und **Ansicht löschen** (die Einträge bleiben dabei erhalten; die letzte Ansicht lässt sich nicht löschen). Reiter lassen sich mit der Maus auch **per Ziehen neu anordnen**, ein Doppelklick benennt sie um. Auf Touchscreens scrollen die Reiter beim Wischen; langes Drücken öffnet das Menü mit **Nach links** und **Nach rechts**.

@@ -257,6 +257,7 @@ const escape = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 const newTab: Record<Locale, string> = { de: "öffnet in neuem Tab", en: "opens in a new tab" };
+const fullSize: Record<Locale, string> = { de: "in voller Größe öffnen", en: "open in full size" };
 // flowplan.org and its subdomains (the website, the app, these docs).
 export function ownSite(href: string) {
   try {
@@ -355,6 +356,15 @@ function render(markdown: string, locale: Locale) {
           const image = only[0] as Tokens.Image;
           const caption = image.title ? `<figcaption>${escape(image.title)}</figcaption>` : "";
           return `<figure class="shot">${this.parser.parseInline([image])}${caption}</figure>\n`;
+        }
+        // [![…](/screenshots/x.webp "caption")](/screenshots/x.webp): a large
+        // diagram that opens in full size on click or tap.
+        const link = only.length === 1 && only[0].type === "link" ? (only[0] as Tokens.Link) : undefined;
+        const inner = link?.tokens.filter((t) => !(t.type === "text" && !t.raw.trim()));
+        if (link && inner?.length === 1 && inner[0].type === "image" && link.href.startsWith("/screenshots/")) {
+          const image = inner[0] as Tokens.Image;
+          const caption = image.title ? `<figcaption>${escape(image.title)}</figcaption>` : "";
+          return `<figure class="shot"><a class="zoom" href="${escape(link.href)}">${this.parser.parseInline([image])}<span class="sr-only"> (${fullSize[locale]})</span></a>${caption}</figure>\n`;
         }
         return `<p>${this.parser.parseInline(tokens)}</p>\n`;
       },

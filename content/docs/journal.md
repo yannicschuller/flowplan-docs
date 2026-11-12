@@ -6,6 +6,8 @@ keywords: Tagebuch, Daily Note, Tagesnotiz, Tracker, Gewohnheiten, Rückblick
 
 Ein Journal ist eine Seite mit einer Unterseite pro Tag. Morgens liegt die heutige Seite bereit, offene Aufgaben von gestern stehen schon darauf.
 
+![Die Seite eines Journals: oben „Heute“ mit dem Mittwoch, 4. November, und dem Anfang des Tages, darunter Serie, längste Serie, Einträge und Wörter, eine Heatmap des Jahres und die Tracker der letzten 30 Tage für Stimmung, Schlaf und Sport](/screenshots/journal.webp "Die Journalseite mit dem heutigen Tag, der Serie und den Trackern.")
+
 ## Journal anlegen
 
 **Neue Seite → Journal**. Die Seite zeigt oben **Heute** und darunter die vergangenen Tage mit relativen Angaben wie „Gestern“. Die Tagesseiten heißen automatisch nach dem Datum, etwa „Samstag, 26. September 2026“.

@@ -6,6 +6,8 @@ keywords: diary, daily note, tracker, habits, review
 
 A journal is a page with one sub-page per day. In the morning today's page is ready, with yesterday's open tasks already on it.
 
+![A journal's page: "Today" at the top with Wednesday, 4 November, and the start of the day, below it the streak, longest streak, entries and words, a heatmap of the year and the last 30 days of the mood, sleep and exercise trackers](/screenshots/journal.webp "The journal page with today, the streak and the trackers.")
+
 ## Create a journal
 
 **New page → Journal**. The page shows **Today** at the top and the past days below it with relative labels such as "Yesterday". The day pages are named after the date automatically, such as "Saturday, 26 September 2026".

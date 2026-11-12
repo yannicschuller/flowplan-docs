@@ -6,7 +6,7 @@ keywords: docker, compose, install, self-hosting, server, update, helm, kubernet
 
 Flowplan runs as a single container with SQLite and a data directory. Postgres, Redis or a separate search service are not needed – PostgreSQL and several instances are possible, but optional.
 
-![How an instance is built: browsers, the desktop apps and the apps for iOS and Android connect through a reverse proxy with HTTPS to the Flowplan container. Inside, the Next.js server writes to SQLite and an uploads volume; Litestream backs up the database continuously to S3, and uploads are mirrored there. Optionally connected are OIDC or LDAP, SMTP, an AI provider and the push relay, which brings end-to-end encrypted notifications to the apps.](/screenshots/architecture-en-light.webp "One instance: one container behind the reverse proxy, everything else optional.")
+[![How an instance is built: browsers, the desktop apps and the apps for iOS and Android connect through a reverse proxy with HTTPS to the Flowplan container. Inside, the Next.js server writes to SQLite and an uploads volume; Litestream backs up the database continuously to S3, and uploads are mirrored there. Optionally connected are OIDC or LDAP, SMTP, an AI provider and the push relay, which brings end-to-end encrypted notifications to the apps.](/screenshots/architecture-en-light.webp "One instance: one container behind the reverse proxy, everything else optional.")](/screenshots/architecture-en-light.webp)
 
 **More on this topic:** [Deploy in one click](/one-click-deploy)
 

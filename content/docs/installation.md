@@ -6,7 +6,7 @@ keywords: Docker, Compose, installieren, Self-Hosting, Server, Update, Helm, Kub
 
 Flowplan läuft als ein einziger Container mit SQLite und einem Datenverzeichnis. Postgres, Redis oder ein separater Suchdienst werden nicht gebraucht – PostgreSQL und mehrere Instanzen sind möglich, aber optional.
 
-![Aufbau einer Instanz: Browser, Desktop-Apps und die Apps für iOS und Android verbinden sich über einen Reverse Proxy mit HTTPS mit dem Flowplan-Container. Darin schreibt der Next.js-Server in SQLite und ein Uploads-Volume; Litestream sichert die Datenbank laufend nach S3, die Uploads werden dorthin gespiegelt. Optional angebunden sind OIDC oder LDAP, SMTP, ein KI-Anbieter und das Push-Relay, das Mitteilungen Ende-zu-Ende-verschlüsselt an die Apps bringt.](/screenshots/architecture-de-light.webp "Eine Instanz: ein Container hinter dem Reverse Proxy, alles Weitere optional.")
+[![Aufbau einer Instanz: Browser, Desktop-Apps und die Apps für iOS und Android verbinden sich über einen Reverse Proxy mit HTTPS mit dem Flowplan-Container. Darin schreibt der Next.js-Server in SQLite und ein Uploads-Volume; Litestream sichert die Datenbank laufend nach S3, die Uploads werden dorthin gespiegelt. Optional angebunden sind OIDC oder LDAP, SMTP, ein KI-Anbieter und das Push-Relay, das Mitteilungen Ende-zu-Ende-verschlüsselt an die Apps bringt.](/screenshots/architecture-de-light.webp "Eine Instanz: ein Container hinter dem Reverse Proxy, alles Weitere optional.")](/screenshots/architecture-de-light.webp)
 
 **Mehr zum Thema:** [Mit einem Klick bereitstellen](/one-click-deploy)
 

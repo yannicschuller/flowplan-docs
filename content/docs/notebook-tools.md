@@ -6,6 +6,8 @@ keywords: Notizbuch, Stift, Radierer, Lasso, Lineal, Sticker, Tastenkürzel, Aud
 
 Stifte, Radierer, Formen, Lasso, Bilder und Audio im Notizbuch – und die Tastenkürzel, mit denen du zwischen ihnen wechselst.
 
+![Ein Notizbuch beim Schreiben: oben die Werkzeugleiste mit Stift, Textmarker, Radierer, Lasso, Text und Laserpointer, drei Lieblingsstiften, Farben und Breiten; links die Seitenübersicht mit zwei Blättern, rechts ein liniertes Blatt mit handschriftlichen Notizen zu Newtons Gesetzen und einer Skizze](/screenshots/notebook-tools-light.webp "Die Werkzeugleiste eines Notizbuchs über einem beschriebenen Blatt.")
+
 ## Tastenkürzel
 
 | Taste | Wirkung |

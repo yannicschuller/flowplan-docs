@@ -6,6 +6,8 @@ keywords: notebook, pen, eraser, lasso, ruler, stickers, keyboard shortcuts, aud
 
 Pens, eraser, shapes, lasso, pictures and audio in a notebook – and the keyboard shortcuts that switch between them.
 
+![A notebook while writing: at the top the toolbar with pen, highlighter, eraser, lasso, text and laser pointer, three favourite pens, colours and widths; on the left the page overview with two sheets, on the right a lined sheet with handwritten notes on Newton's laws and a sketch](/screenshots/notebook-tools-light.webp "The toolbar of a notebook above a written sheet.")
+
 ## Keyboard shortcuts
 
 | Key | Does |

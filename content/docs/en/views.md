@@ -6,6 +6,8 @@ keywords: view, kanban, board, calendar, timeline, gantt, gallery, list
 
 A database can have as many views as you like. Every view shows the same records with its own layout, filters, sorting and groups.
 
+![The "Projects" database in the calendar view: the tabs Table, Board, Calendar, Timeline, Gallery at the top, below them filter, sort and properties and the month of November 2026 with entries such as "Weekly planning" and "Speed up search"](/screenshots/calendar.webp "A database in the calendar view, with the tabs of the other views.")
+
 New view: **+** next to the view tabs, then choose one of the {{facts.views|word}} layouts. **View and properties** controls which properties are visible and in which order.
 
 A **right-click on a view tab** opens its menu: **Rename**, **Duplicate**, **Settings …**, **Set as default view**, **Move left**, **Move right** and **Delete view** (the records are kept; the last view cannot be deleted). With the mouse, tabs can also be **reordered by dragging**, and a double-click renames them. On touch screens, swiping scrolls the tabs; a long press opens the menu with **Move left** and **Move right**.
