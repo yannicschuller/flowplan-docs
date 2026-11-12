@@ -1,22 +1,22 @@
-// "War das hilfreich?": "Nein" opens a prefilled GitHub issue for the page
+// "War das hilfreich?": "Nein" opens the flowplan repository's "Documentation" issue form for the page
 // (lib/docs.ts feedbackUrl) – no counter, nothing stored.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { feedbackUrl } from "../lib/docs";
 
-test("feedback: a prefilled documentation issue naming the page, in the page's language", () => {
-  for (const [locale, title, words] of [
-    ["de", "Doku: „Installation mit Docker“ hat nicht geholfen", "Was hast du gesucht"],
-    ["en", "Docs: “Installation with Docker” didn't help", "What were you looking for"],
+test("feedback: the "Documentation" form of the flowplan repository, naming the page, in the page's language", () => {
+  for (const [locale, title] of [
+    ["de", "Doku: „Installation mit Docker“ hat nicht geholfen"],
+    ["en", "Docs: “Installation with Docker” didn't help"],
   ] as const) {
     const page = { title: locale === "de" ? "Installation mit Docker" : "Installation with Docker", url: `https://docs.flowplan.org/${locale}/installation` };
     const url = new URL(feedbackUrl(page, locale));
-    assert.equal(url.origin + url.pathname, "https://github.com/yannicschuller/flowplan-docs/issues/new");
+    assert.equal(url.origin + url.pathname, "https://github.com/yannicschuller/flowplan/issues/new");
     assert.equal(url.searchParams.get("title"), title);
-    assert.equal(url.searchParams.get("labels"), "documentation");
-    const body = url.searchParams.get("body") ?? "";
-    assert.ok(body.includes(page.url), "names the page");
-    assert.ok(body.includes(words));
+    // The flowplan repository's "Documentation" form (it sets the labels; blank issues are off).
+    assert.equal(url.searchParams.get("template"), "documentation.yml");
+    assert.equal(url.searchParams.get("page"), page.url, "names the page");
+    assert.equal(url.searchParams.get("labels"), null);
   }
 });
 

@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, MagnifyingGlass } from "@phosphor-icons/react";
 import type { DocSearchEntry } from "@/lib/docs";
+import { docsIssueUrl } from "@/lib/issue-url";
 import { highlight, searchDocs, suggest, type SearchHit } from "@/lib/search";
 import { looksSensitive, resultBucket, searchTerm, track } from "@/lib/track";
 import { useLocale, usePrefix, useT } from "../i18n";
@@ -14,7 +15,6 @@ function Marked({ text, terms }: { text: string; terms: string[] }) {
 
 const LISTBOX_ID = "docs-search-results";
 const optionId = (i: number) => `docs-search-option-${i}`;
-const ISSUE_URL = "https://github.com/yannicschuller/flowplan-docs/issues/new";
 
 // The search: the field in the header opens a dialog, so do ⌘K / Ctrl+K and
 // "/". Results are pages and sections ("Page › Section") with the matching
@@ -113,10 +113,11 @@ export default function SearchDialog({ version, popular, opens }: { version: str
   // A prefilled issue on GitHub for a search that found nothing – the term
   // only if it does not look personal.
   const term = query.trim().slice(0, 80);
-  const issue = `${ISSUE_URL}?${new URLSearchParams({
+  const issue = docsIssueUrl({
     title: looksSensitive(term) ? t("Doku: nichts gefunden", "Docs: nothing found") : t(`Doku: nichts gefunden zu „${term}“`, `Docs: nothing found for “${term}”`),
-    labels: "documentation",
-  })}`;
+    page: t("Suche in der Dokumentation", "Search in the documentation"),
+    kind: "Something is missing",
+  });
 
   return (
       <dialog

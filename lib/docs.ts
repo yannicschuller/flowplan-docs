@@ -8,6 +8,7 @@ import { Marked, type Tokens } from "marked";
 import { releases } from "./changelog";
 import { FACTS, fillFacts } from "./facts";
 import type { Locale } from "./i18n";
+import { docsIssueUrl } from "./issue-url";
 import { synonymKeywords } from "./search";
 import type { AnchorMap } from "./anchors";
 import { appUrl, DISCORD_URL, GITHUB_URL, marketplaceUrl, MARKETPLACE_DEFAULT, websiteUrl } from "./links";
@@ -218,19 +219,13 @@ export type Doc = {
 };
 // Where a page's Markdown can be edited.
 export const editUrl = (source: string) => `https://github.com/yannicschuller/flowplan-docs/edit/main/${source}`;
-// "War das hilfreich? Nein": a prefilled issue for the page – no counter,
-// nothing stored (the docs run without storage, and without tracking).
-export const feedbackUrl = (page: { title: string; url: string }, locale: Locale) => {
-  const de = locale === "de";
-  const { url } = page;
-  return `https://github.com/yannicschuller/flowplan-docs/issues/new?${new URLSearchParams({
-    title: de ? `Doku: „${page.title}“ hat nicht geholfen` : `Docs: “${page.title}” didn't help`,
-    labels: "documentation",
-    body: de
-      ? `Seite: ${url}\n\nWas hast du gesucht, und was hat gefehlt oder war unklar?\n\n`
-      : `Page: ${url}\n\nWhat were you looking for, and what was missing or unclear?\n\n`,
-  })}`;
-};
+// "War das hilfreich? Nein": the "Documentation" issue form of the flowplan
+// repository (lib/issue-url.ts) with the page filled in.
+export const feedbackUrl = (page: { title: string; url: string }, locale: Locale) =>
+  docsIssueUrl({
+    title: locale === "de" ? `Doku: „${page.title}“ hat nicht geholfen` : `Docs: “${page.title}” didn't help`,
+    page: page.url,
+  });
 
 export function headingId(text: string) {
   return text
