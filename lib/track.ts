@@ -7,7 +7,7 @@
 //   search-open    slug                                       search result opened
 //   copy           page, lang                                 code block copied
 //   not-found      path                                       404 page shown
-//   outbound       target (app | demo | website | github | discord | sponsor)
+//   outbound       target (app | demo | website | marketplace | github | discord | sponsor)
 //   language       to                                         language switched
 //
 // Without Umami (not configured, blocked, Do Not Track) nothing happens.
@@ -93,10 +93,10 @@ export function codeLanguage(lang: string | null | undefined): string {
   return /^[a-z0-9+#-]{1,20}$/.test(l) ? l : "text";
 }
 
-export type OutboundTarget = "app" | "demo" | "website" | "github" | "discord" | "sponsor";
+export type OutboundTarget = "app" | "demo" | "website" | "marketplace" | "github" | "discord" | "sponsor";
 
 // Which of Flowplan's places a link leads to, or null for any other one.
-export function outboundTarget(href: string, sites: { app: string; website: string }): OutboundTarget | null {
+export function outboundTarget(href: string, sites: { app: string; website: string; marketplace?: string | null }): OutboundTarget | null {
   let url: URL;
   try {
     url = new URL(href);
@@ -114,5 +114,6 @@ export function outboundTarget(href: string, sites: { app: string; website: stri
   if (url.host === "discord.gg" || url.host === "discord.com") return "discord";
   if (url.host === host(sites.app)) return /^\/demo(\/|$)/.test(url.pathname) ? "demo" : "app";
   if (url.host === host(sites.website)) return "website";
+  if (sites.marketplace && url.host === host(sites.marketplace)) return "marketplace";
   return null;
 }

@@ -293,6 +293,8 @@ A template lands in the middle of the view and is ordinary board content afterwa
 
 **Own templates**: **Save as template** turns the whole board or the selection into a template – **For the workspace** or **Only for me**. Comments, votes and stamps stay out; images and PDFs remain files of the workspace. Own templates are in the **Own templates** tab; the person who saved one and owners can delete it. At most 500 templates per workspace.
 
+You'll find more whiteboard templates from the community in the [Flowplan Marketplace](https://marketplace.flowplan.org).
+
 ## Import Excalidraw and draw.io
 
 Use **Import …** under **+** – or drop the file onto the board – to bring in drawings from:

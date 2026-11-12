@@ -102,6 +102,8 @@ The trigger decides who may press it: by default the **editors of the workflow**
 
 **Import from a file** matches references in the workspace: same ID, otherwise same title (pages, databases), same name (people, properties). What stays open, the assistant asks for, or it stays empty. An import is always a draft.
 
+You'll find ready-made workflows shared by others in the [Flowplan Marketplace](https://marketplace.flowplan.org).
+
 Content archives and the [instance move](/move-instance) take workflows along with their draft and versions, without runs and secrets. Active workflows arrive **paused**, so nothing starts unexpectedly on the new instance.
 
 ## Phone and tablet

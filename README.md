@@ -24,6 +24,7 @@ Checks: `npm run typecheck`, `npm test`, `npm run build`, then `npm run quality`
 | Variable | Default | Meaning |
 | --- | --- | --- |
 | `WEBSITE_URL` | `https://flowplan.org` | The logo and "Start page" link. |
+| `MARKETPLACE_URL` | `https://marketplace.flowplan.org` | The template marketplace: "Marketplace" in the header, a footer link and a line in `llms.txt`. Empty or `off` hides them; links in the pages' text stay. |
 | `IMPRINT_URL` | *empty* | Link to the legal notice in the footer, e.g. `https://flowplan.org/impressum`. Hidden when empty. |
 | `PRIVACY_URL` | *empty* | Link to the privacy policy in the footer, e.g. `https://flowplan.org/datenschutz`. Hidden when empty. |
 | `UMAMI_URL` | *empty* | Visitor statistics with a self-hosted [Umami](https://umami.is), without cookies: address of the instance, e.g. `https://stats.example.com`. Off unless `UMAMI_WEBSITE_ID` is set too. |

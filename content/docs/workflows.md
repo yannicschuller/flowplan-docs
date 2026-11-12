@@ -102,6 +102,8 @@ Wer drücken darf, legt der Auslöser fest: standardmäßig die **Bearbeitenden 
 
 **Aus Datei importieren** ordnet Verweise im Arbeitsbereich zu: gleiche ID, sonst gleicher Titel (Seiten, Datenbanken), gleicher Name (Personen, Eigenschaften). Was offen bleibt, fragt der Assistent ab oder bleibt leer. Importiert wird immer als Entwurf.
 
+Fertige Workflows anderer zum Übernehmen findest du im [Flowplan Marketplace](https://marketplace.flowplan.org).
+
 Inhaltsarchive und der [Instanzumzug](/move-instance) nehmen Workflows mit Entwurf und Versionen mit, ohne Läufe und Geheimnisse. Aktive Workflows kommen **pausiert** an, damit auf der neuen Instanz nichts unbeabsichtigt loslegt.
 
 ## Telefon und Tablet
