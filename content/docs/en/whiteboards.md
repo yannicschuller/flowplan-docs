@@ -6,6 +6,8 @@ keywords: whiteboard, canvas, sticky notes, shapes, pen, draw, miro
 
 An infinite canvas for brainstorming, processes and workshops: sticky notes, shapes, connectors, pen, frames and tables – together and live.
 
+![A brainstorming whiteboard: the toolbar on the left, two frames in the middle – one with five coloured sticky notes, one with shapes joined by arrows – and the bar at the bottom with zoom, import and export as SVG or PNG](/screenshots/whiteboard-light.webp "A whiteboard with two frames, sticky notes and connected shapes.")
+
 **More on this topic:** [Diagrams, mind maps and prototypes](/whiteboard-diagrams) · [Whiteboards: together, with AI and presenting](/whiteboard-collaboration) · [Racks and cabling](/whiteboard-racks)
 
 ## Tools

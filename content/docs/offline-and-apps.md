@@ -67,10 +67,22 @@ Die App für iPhone und iPad hält die Offline-Kopie selbst – für jede Instan
 
 ## Als App installieren
 
+::: tabs
+
+== Browser am Computer
+
 - **Chrome, Edge**: Installieren-Symbol in der Adressleiste.
 - **Safari auf dem Mac**: **Ablage → Zum Dock hinzufügen**.
-- **iPhone, iPad**: Teilen → **Zum Home-Bildschirm**. Nur so sind dort Push-Nachrichten möglich.
-- **Android**: Menü → **App installieren**.
+
+== iPhone und iPad
+
+Teilen → **Zum Home-Bildschirm**. Nur so sind dort Push-Nachrichten möglich.
+
+== Android
+
+Menü → **App installieren**.
+
+:::
 
 Die installierte App öffnet in einem eigenen Fenster ohne Browserleisten.
 
@@ -106,7 +118,7 @@ Unter Seiten und Einträgen zeigt Flowplan **Verwandte Seiten**, **Verlinkt von*
 
 **Einstellungen → Darstellung & Sprache → Seitensymbol** legt fest, wo das Symbol einer Seite steht: **Über dem Titel** (Standard) zeigt es groß über dem Titel, **Neben dem Titel** klein links neben dem Titel in seiner ersten Zeile – wie in einem klassischen Dokument und mit weniger Platz über dem Text. Das gilt für Dokumente, Datenbanken, Whiteboards, Journal-Tage und alle anderen Seiten; ein Cover bleibt darüber. Die Wahl gilt für dein Konto auf allen Geräten und ändert nur deine Ansicht: Titel und Symbol der Seite bleiben, wie sie sind, andere sehen weiter ihre eigene Einstellung und veröffentlichte Seiten zeigen das Symbol über dem Titel.
 
-**Einstellungen → Darstellung & Sprache → Neuigkeiten nach Updates** legt fest, ob nach einem Update von Flowplan einmal **Neu in Flowplan** erscheint: **Alle anzeigen** (Standard) zeigt die Hinweise aller übersprungenen Versionen, **Nur Breaking Changes** erscheint nur, wenn eine davon Änderungen enthält, auf die du dich einstellen musst, und zeigt nur diese, **Nie** zeigt den Dialog nicht. Die Wahl gilt für dein Konto auf allen Geräten, auch in den Apps für iPhone, iPad und Android. Unabhängig davon öffnet **Was ist neu** die Hinweise der letzten Versionen jederzeit: im Kontomenü ⋯ unten in der Seitenleiste (auf dem Telefon unter **Mehr**), mit `⌘/Strg + K` → „Was ist neu“, unter **Einstellungen → Darstellung & Sprache** und unter **Über Flowplan**. Veröffentlichte Seiten zeigen den Dialog nie.
+**Einstellungen → Darstellung & Sprache → Neuigkeiten nach Updates** legt fest, ob nach einem Update von Flowplan einmal **Neu in Flowplan** erscheint: **Alle anzeigen** (Standard) zeigt die Hinweise aller übersprungenen Versionen, **Nur Breaking Changes** erscheint nur, wenn eine davon Änderungen enthält, auf die du dich einstellen musst, und zeigt nur diese, **Nie** zeigt den Dialog nicht. Die Wahl gilt für dein Konto auf allen Geräten, auch in den Apps für iPhone, iPad und Android. Unabhängig davon öffnet **Was ist neu** die Hinweise der letzten Versionen jederzeit: im Kontomenü ⋯ unten in der Seitenleiste (auf dem Telefon unter **Mehr**), mit ++⌘/Strg K++ → „Was ist neu“, unter **Einstellungen → Darstellung & Sprache** und unter **Über Flowplan**. Veröffentlichte Seiten zeigen den Dialog nie.
 
 Nach dem Neuladen öffnet Flowplan den Arbeitsbereich, der zuletzt auf diesem Gerät offen war. Dafür merkt sich der Browser im Cookie `flowplan-workspace` nur die Kennung des Arbeitsbereichs; eine Einladung oder ein Link auf eine Seite in einem anderen Arbeitsbereich gehen vor.
 

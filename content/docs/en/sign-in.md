@@ -45,10 +45,14 @@ Under **Settings → Account & security**, the card **Sign-in & security** lists
 
 Accounts with e-mail and password can add an authenticator app (two-factor authentication, 2FA), such as Aegis, 2FAS, Google Authenticator or 1Password.
 
+::: steps
+
 1. **Settings → Account & security → Two-factor sign-in → Set up an authenticator app.**
 2. Scan the QR code with the app – or type the key shown.
 3. Confirm with the current six-digit code.
 4. Keep the ten **recovery codes** safe. They are shown only once, and each works exactly once.
+
+:::
 
 When signing in, Flowplan asks for the code from the app (or a recovery code) after the password.
 
@@ -60,7 +64,8 @@ When signing in, Flowplan asks for the code from the app (or a recovery code) af
 - **Forgot password** does not skip the second step.
 - Lost your phone and your codes? An administrator can reset two-factor sign-in ([Administration → Users](/user-management#users)).
 
-Admins can require two-factor sign-in for all local accounts or only for admins ([Administration → Sign-in & SSO](/user-management#sign-in-sso)). Accounts without an app and without a passkey then set up a second factor right after signing in, before using Flowplan; accounts with a passkey but no app sign in with the passkey.
+> [!ADMIN]
+> Admins can require two-factor sign-in for all local accounts or only for admins ([Administration → Sign-in & SSO](/user-management#sign-in-sso)). Accounts without an app and without a passkey then set up a second factor right after signing in, before using Flowplan; accounts with a passkey but no app sign in with the passkey.
 
 > [!IMPORTANT]
 > The apps' keys are stored encrypted – with `FLOWPLAN_ENCRYPTION_KEY`, otherwise `FLOWPLAN_SECRETS_KEY`, otherwise with the generated file `secrets.key` in the data folder ([Configuration](/configuration-storage#stored-secrets)). Be sure to back up this file or the key: the instance backup deliberately leaves it out. Without it, only the recovery codes work after a restore.

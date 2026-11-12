@@ -77,6 +77,7 @@ curl -X POST https://flowplan.example.com/api/marketplace/check \
 
 ## Ausschalten
 
-Administratoren schalten den Marketplace unter **Administration → Erweiterungen & Domains → Marketplace** für die ganze Instanz aus. Dann zeigt Flowplan keine Marketplace-Schaltflächen und nimmt keine Vorlagen mehr an.
+> [!ADMIN]
+> Administratoren schalten den Marketplace unter **Administration → Erweiterungen & Domains → Marketplace** für die ganze Instanz aus. Dann zeigt Flowplan keine Marketplace-Schaltflächen und nimmt keine Vorlagen mehr an.
 
 Über die Umgebung geht es auch: `FLOWPLAN_MARKETPLACE_URL=off` schaltet den Marketplace ab, eine andere Adresse (etwa ein eigener Marketplace) ersetzt `https://marketplace.flowplan.org`.

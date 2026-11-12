@@ -14,7 +14,7 @@ Type **/meet** in a document or a record's document. The block records a meeting
   - **Continue recording** (red dot), **Re-generate summary**, **Transcribe again** (while the audio is kept),
   - the meeting's **Language** (for transcription and summary; *Automatic* = the interface language), **Instructions** (presets or *Custom …* with your own text), **Consent** (confirm before recording, notice text, play the notice – applies to the whole workspace), **Upload recording …**, **One combined track** (when the meeting's sound is recorded too),
   - **Copy link to meeting**,
-  - **Delete audio now …** and **Delete transcript …** (red, asks first; the transcript comes back with ⌘Z / Ctrl+Z).
+  - **Delete audio now …** and **Delete transcript …** (red, asks first; the transcript comes back with ++⌘ Z++ / ++Ctrl Z++).
 
   Menus and pickers float above the content; the block does not move. Escape closes them and returns the focus to their button.
 

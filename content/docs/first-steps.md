@@ -23,13 +23,17 @@ Beim ersten Anmelden legt Flowplan einen privaten Arbeitsbereich mit Beispielsei
 
 Nach dem Anlegen eines Kontos führt Flowplan einmal kurz durch das Wichtigste. Jeder Schritt lässt sich überspringen, und alles ist später in den Einstellungen änderbar:
 
+::: steps
+
 1. **Willkommen**: Sprache und Erscheinungsbild (automatisch, hell oder dunkel).
 2. **Womit möchtest du starten?** Den Namen des Arbeitsbereichs festlegen (als Eigentümer) und auf Wunsch gleich Seiten anlegen: eine **Aufgaben**-Datenbank, eine **Notizen**-Datenbank, ein **Journal** oder ein **Whiteboard**.
 3. **Das kann Flowplan**: eine kurze Tour durch Seiten und Blöcke, Datenbanken, Whiteboards, Journal, Zusammenarbeit, Teilen, Suche und Offline – mit einem Tipp und einem Link in diese Dokumentation.
 4. **Benachrichtigungen**: E-Mail-Zusammenfassungen (wenn die Instanz E-Mails verschickt) und Push auf diesem Gerät.
 5. **Fertig**: die angelegten Seiten zum Öffnen und die wichtigsten Tastenkürzel.
 
-Später öffnet **Einstellungen → Darstellung & Sprache → Einführung starten** (oder „Einführung“ in der Suche mit `⌘/Strg + K`) sie wieder. Konten, die es schon vor der Einführung gab, sehen sie nicht automatisch.
+:::
+
+Später öffnet **Einstellungen → Darstellung & Sprache → Einführung starten** (oder „Einführung“ in der Suche mit ++⌘/Strg K++) sie wieder. Konten, die es schon vor der Einführung gab, sehen sie nicht automatisch.
 
 Die Einstellungen öffnen mit einer Übersicht: je Abschnitt eine Kachel, gruppiert in **Persönlich**, **Verbindungen**, **Arbeitsbereich** und **Hilfe & Info**. Oben hilft die Suche („Einstellung suchen …“) – „Passkeys“ findet etwa **Konto & Sicherheit** –, und jeder Abschnitt hat einen eigenen Link, z. B. `/#settings/notifications`.
 
@@ -79,9 +83,13 @@ Widgets zeigen nur, was du ohnehin sehen darfst: Seiten anderer Arbeitsbereiche 
 
 ## Die erste Seite
 
+::: steps
+
 1. Neben einem Bereich in der Seitenleiste auf **+** klicken oder auf der Startseite **Neue Seite** wählen.
 2. Oben einen Namen eingeben und darunter die Art wählen: **Dokument**, **Datenbank**, **Whiteboard**, **Journal**, **Dashboard**, **Notizbuch**, **Workflow** oder **Aus Vorlage** (mit den Pfeiltasten geht es auch per Tastatur). Eine Zeile darunter beschreibt die gewählte Art, bei Datenbank und Notizbuch folgen gleich dort ihre Optionen; **Bereich** legt fest, wo die Seite entsteht.
 3. **Seite erstellen** (auf dem Telefon bleiben die Knöpfe über der Bildschirmtastatur) und losschreiben. Gespeichert wird automatisch, auch ohne Verbindung.
+
+:::
 
 Im Dokument öffnet `/` das Blockmenü: `/h2`, `/todo` oder `/tabelle` tippen und mit Enter einfügen. Wie der Editor im Detail funktioniert, steht unter [Dokumente und Editor](/documents).
 
@@ -101,7 +109,7 @@ Fragen, Ideen oder einfach Hallo sagen: Im **[Flowplan-Discord](https://discord.
 
 ### Über Flowplan
 
-**Einstellungen → Hilfe & Info → Über Flowplan** (`/#settings/about`, auch im Kontomenü ⋯ unten in der Seitenleiste – auf dem Telefon unter **Mehr** – und mit `⌘/Strg + K` → „Über Flowplan“) zeigt:
+**Einstellungen → Hilfe & Info → Über Flowplan** (`/#settings/about`, auch im Kontomenü ⋯ unten in der Seitenleiste – auf dem Telefon unter **Mehr** – und mit ++⌘/Strg K++ → „Über Flowplan“) zeigt:
 
 - **Version:** die laufende Version, den Commit und das Build-Datum, bei unseren Docker-Images auch, ob es eine **Beta** (`:beta`) oder ein **Release** ist. Admins sehen hier zusätzlich, wenn eine neuere Version bekannt ist. Bei einer Fehlermeldung die Version am besten mit angeben.
 - **Was ist neu:** öffnet die Versionshinweise der letzten Versionen (siehe [Neuigkeiten nach Updates](/offline-and-apps#hell-und-dunkel)).
