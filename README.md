@@ -28,7 +28,7 @@ Besides GitHub Markdown, the pages know a few blocks (`lib/markdown-blocks.ts`, 
 
 Containers can be nested (tabs holding steps); `:::` inside fenced code does not count. Tab labels for platforms share the reader's choice: `Web`/`Browser`, `Desktop`, `iPhone`/`iPad`/`iOS`, `Android` (and `macOS`, `Windows`, `Linux` on their own). Picking one remembers it in the browser (localStorage, no cookie) and preselects it in every tab group that has it, on all pages.
 
-A screenshot named `name-light.webp` with a `name-dark.webp` next to it follows the reader's colour scheme (`<picture>`). Put a page's key screenshot right after the lead: an image before the first `##` loads at once, all others lazily. Keep screenshots WebP, about 1360 px wide (diagrams 1600 px), under ~60 KB.
+A screenshot wrapped in a link to its own file – `[![what it shows](/screenshots/name.webp "caption")](/screenshots/name.webp)` – is a figure that opens the image in full size on click or tap; use it for large diagrams. A screenshot named `name-light.webp` with a `name-dark.webp` next to it follows the reader's colour scheme (`<picture>`). Put a page's key screenshot right after the lead: an image before the first `##` loads at once, all others lazily. Keep screenshots WebP, about 1360 px wide (diagrams 1600 px), under ~60 KB.
 
 ## Development
 
