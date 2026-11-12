@@ -29,13 +29,14 @@ Für alle Quellen gilt:
 
 ## Von Notion
 
-1. In Notion: **Einstellungen → Exportieren** (für den ganzen Arbeitsbereich) oder im Menü **…** einer Seite **Exportieren**. Als Format **Markdown & CSV** wählen und **Unterseiten einschließen** aktivieren.
+1. In Notion: **Einstellungen → Exportieren** (für den ganzen Arbeitsbereich) oder im Menü **…** einer Seite **Exportieren**. Als Format **HTML** (empfohlen) oder **Markdown & CSV** wählen und **Unterseiten einschließen** aktivieren. Nur der HTML-Export enthält Toggles (aufklappbare Blöcke), Toggle-Überschriften und Farben.
 2. In Flowplan: **Einstellungen → Import & Export → Import**, oben den Zielbereich wählen und bei **Notion, AppFlowy oder Markdown-Export (ZIP)** das ZIP auswählen.
 3. Fertig – der Import läuft in einem Schritt. Schlägt er fehl, bleibt nichts halb importiert zurück.
 
 Was daraus wird:
 
-- Jede Markdown-Datei wird zu einer Seite, jeder Ordner mit dem Namen einer Seite zu ihren Unterseiten. Die Kennungen, die Notion an Datei- und Ordnernamen hängt, fallen weg.
+- Jede HTML- oder Markdown-Datei wird zu einer Seite, jeder Ordner mit dem Namen einer Seite zu ihren Unterseiten. Die Kennungen, die Notion an Datei- und Ordnernamen hängt, fallen weg.
+- Aus dem HTML-Export: Toggles werden zu [aufklappbaren Blöcken](/documents#aufklappbare-bloecke), Toggle-Überschriften zu Überschriften, die sich einklappen lassen (oder, wo ihr Inhalt nicht bis zur nächsten Überschrift reicht, zu aufklappbaren Blöcken mit der Überschrift als Titel). Text- und Hintergrundfarben, Aufgaben, verschachtelte Listen, Tabellen, Formeln und Bildunterschriften bleiben erhalten.
 - Jede CSV-Datei wird zu einer Datenbank. Liegen beide Fassungen vor, nimmt Flowplan `Name_all.csv` (alle Einträge) statt der aktuellen Ansicht.
 - Spalten bekommen eine passende Art: Zahlen, Kontrollkästchen, Daten (auch im Notion-Format „September 24, 2026“) und Auswahlen mit ihren Optionen; der Rest bleibt Text.
 - Die Seiten der Einträge werden ihren Einträgen als Dokument zugeordnet.

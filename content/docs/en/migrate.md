@@ -29,13 +29,14 @@ For all sources:
 
 ## From Notion
 
-1. In Notion: **Settings → Export** (for the whole workspace) or **Export** in a page's **…** menu. Choose the format **Markdown & CSV** and turn on **Include subpages**.
+1. In Notion: **Settings → Export** (for the whole workspace) or **Export** in a page's **…** menu. Choose the format **HTML** (recommended) or **Markdown & CSV** and turn on **Include subpages**. Only the HTML export keeps toggles, toggle headings and colours.
 2. In Flowplan: **Settings → Import & export → Import**, choose the target space at the top and the ZIP at **Notion, AppFlowy or Markdown export (ZIP)**.
 3. Done – the import runs in one step. If it fails, nothing is left half imported.
 
 What it turns into:
 
-- Every Markdown file becomes a page, every folder named like a page holds its sub-pages. The IDs Notion appends to file and folder names are dropped.
+- Every HTML or Markdown file becomes a page, every folder named like a page holds its sub-pages. The IDs Notion appends to file and folder names are dropped.
+- From the HTML export: toggles become [toggles](/documents#toggles), toggle headings become headings that fold (or, where their content does not reach the next heading, toggles with the heading as their title). Text and background colours, tasks, nested lists, tables, formulas and image captions are kept.
 - Every CSV file becomes a database. When both versions are there, Flowplan takes `Name_all.csv` (all records) instead of the current view.
 - Columns get a fitting type: numbers, checkboxes, dates (also in Notion's format "September 24, 2026") and selects with their options; the rest stays text.
 - Record pages are matched to their records as their document.

@@ -15,6 +15,7 @@ Die **Werkzeugleiste** über dem Text hat alle Formatierungen und Blöcke: Fett,
 
 - Formatierungen gelten nur für die aktuelle Zeile. Nach <kbd>Enter</kbd> beginnt die neue Zeile als normaler Text – nur Listen und Aufgaben setzen sich mit einem neuen Eintrag fort, nach einer Überschrift folgt ein Absatz.
 - **Umwandeln in**: Im Textmenü (auch per Rechtsklick in eine Zeile) wechselt eine Zeile ihren Typ, ohne dass der Text verloren geht – Text, Überschrift 1–3, Aufzählung, nummerierte Liste, Aufgabe, Zitat oder Codeblock. Der aktuelle Typ ist hervorgehoben.
+- **Verschachtelte Listen** wechseln je Ebene ihre Zeichen: nummeriert 1. → a. → i., Aufzählungen • → ◦ → ▪, ab der vierten Ebene wieder von vorn. Die Ebene zählt über Listenarten hinweg – eine nummerierte Liste unter einer Aufzählung oder Aufgabe beginnt mit a. So sieht es auch auf veröffentlichten Seiten, im Druck, im PDF und in Word aus; der Markdown-Export schreibt weiter `1.`.
 
 ### Spoiler
 

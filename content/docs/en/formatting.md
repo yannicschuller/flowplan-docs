@@ -15,6 +15,7 @@ The **toolbar** above the text has all formatting and blocks: bold, italic, unde
 
 - Formatting only applies to the current line. After <kbd>Enter</kbd> the new line starts as normal text – only lists and tasks continue with a new item, and a heading is followed by a paragraph.
 - **Turn into**: in the text menu (also on right-click in a line) a line changes its type without losing its text – text, heading 1–3, bulleted list, numbered list, task, quote or code block. The current type is highlighted.
+- **Nested lists** change their markers per level: numbered 1. → a. → i., bullets • → ◦ → ▪, starting over from the fourth level. The level counts across list types – a numbered list below a bullet or a task starts with a. Published pages, print, PDF and Word look the same; the Markdown export keeps writing `1.`.
 
 ### Spoiler
 
