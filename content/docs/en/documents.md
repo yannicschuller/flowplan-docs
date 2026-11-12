@@ -6,6 +6,8 @@ keywords: editor, blocks, block menu, slash command, markdown, write, paragraph
 
 The editor works with blocks: every paragraph, list, table or embed is a block you can insert, format, indent and move. Everything is saved continuously, even without a connection.
 
+![A project page in the editor: the toolbar at the top, below it a blue note block with the goal, a line with four mentioned people and a date, headings and a bulleted list; the space's page tree on the left](/screenshots/document-light.webp "A document with the toolbar, a note block, mentions and headings.")
+
 **More on this topic:** [Formatting, callouts and captions](/formatting) · [Tasks in documents](/tasks-in-documents) · [Images, files and voice notes](/media-and-files) · [Math, diagrams, code and calculations](/math-and-code) · [Links, mentions and the graph](/links-and-mentions) · [Footnotes, citations and bibliography](/academic-writing) · [Reading, presenting and overview](/reading-and-presenting) · [Printing and PDF](/print-and-pdf)
 
 ## The block menu with /

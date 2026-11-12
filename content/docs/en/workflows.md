@@ -12,11 +12,15 @@ Workflows are a page type of their own. They run in the background on the server
 
 This links every new sub-page of an overview page there automatically – with a one-sentence description:
 
+::: steps
+
 1. In the sidebar choose **+ → Workflow** and give it a title.
 2. On the empty canvas, pick the template **Link sub-pages on the overview**.
 3. The short assistant asks for the **overview page** and whether a **short description with AI** comes along. **Create the draft**.
 4. **Dry run** (nothing changes) or **Test run** (for real, as you) – the result shows at every node.
 5. **Activate**. From now on every new sub-page lands on the overview as “• link – short text”, never twice.
+
+:::
 
 ## How a workflow starts
 
@@ -148,7 +152,8 @@ Content archives and the [instance move](/move-instance) take workflows along wi
 | Keeping runs | 30 days |
 | Active workflows per workspace | 100 |
 
-Admins change them in the [administration](/administration#workflows) or with an [environment variable](/configuration-integrations#workflows). Editors can set lower values per workflow.
+> [!ADMIN]
+> Admins change them in the [administration](/administration#workflows) or with an [environment variable](/configuration-integrations#workflows). Editors can set lower values per workflow.
 
 ## API, MCP and SDKs
 

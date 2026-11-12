@@ -6,6 +6,8 @@ keywords: Docker, Compose, installieren, Self-Hosting, Server, Update, Helm, Kub
 
 Flowplan läuft als ein einziger Container mit SQLite und einem Datenverzeichnis. Postgres, Redis oder ein separater Suchdienst werden nicht gebraucht – PostgreSQL und mehrere Instanzen sind möglich, aber optional.
 
+![Aufbau einer Instanz: Browser, Desktop-Apps und die Apps für iOS und Android verbinden sich über einen Reverse Proxy mit HTTPS mit dem Flowplan-Container. Darin schreibt der Next.js-Server in SQLite und ein Uploads-Volume; Litestream sichert die Datenbank laufend nach S3, die Uploads werden dorthin gespiegelt. Optional angebunden sind OIDC oder LDAP, SMTP, ein KI-Anbieter und das Push-Relay, das Mitteilungen Ende-zu-Ende-verschlüsselt an die Apps bringt.](/screenshots/architecture-de-light.webp "Eine Instanz: ein Container hinter dem Reverse Proxy, alles Weitere optional.")
+
 **Mehr zum Thema:** [Mit einem Klick bereitstellen](/one-click-deploy)
 
 ## Voraussetzungen
@@ -27,29 +29,35 @@ Flowplan ist Open Source (AGPL-3.0). Das fertige Image liegt in der GitHub Conta
 | `ghcr.io/yannicschuller/flowplan:0.7.0` | Feste Version (derzeit 0.7.0), auch als `:0.7` und `:0` |
 | `ghcr.io/yannicschuller/flowplan:beta` | Letzter manuell gestarteter Entwicklungsstand oder ein neueres Release – zum Ausprobieren, nicht für den Betrieb |
 
-Compose-Datei und Beispielkonfiguration herunterladen:
+::: steps
 
-```bash
-mkdir flowplan && cd flowplan
-curl -O https://raw.githubusercontent.com/yannicschuller/flowplan/main/compose.yaml
-curl -o .env https://raw.githubusercontent.com/yannicschuller/flowplan/main/.env.example
-```
+1. Compose-Datei und Beispielkonfiguration herunterladen:
 
-In `.env` mindestens die öffentliche Adresse setzen:
+   ```bash
+   mkdir flowplan && cd flowplan
+   curl -O https://raw.githubusercontent.com/yannicschuller/flowplan/main/compose.yaml
+   curl -o .env https://raw.githubusercontent.com/yannicschuller/flowplan/main/.env.example
+   ```
 
-```dotenv
-APP_URL=https://flowplan.example.com
-# Empfohlen, sobald die Adresse aus dem Internet erreichbar ist: openssl rand -hex 24
-FLOWPLAN_SETUP_TOKEN=
-```
+2. In `.env` mindestens die öffentliche Adresse setzen:
 
-Mit `FLOWPLAN_SETUP_TOKEN` legst du das erste Konto über `https://flowplan.example.com/register?setup=<token>` an; ohne den Link bietet die neue Instanz weder Registrierung noch Wiederherstellen an. Fehlt der Token und ist `APP_URL` keine lokale Adresse, warnt Flowplan beim Start im Log und auf dem Einrichtungsbildschirm.
+   ```dotenv
+   APP_URL=https://flowplan.example.com
+   # Empfohlen, sobald die Adresse aus dem Internet erreichbar ist: openssl rand -hex 24
+   FLOWPLAN_SETUP_TOKEN=
+   ```
 
-Für Single Sign-on zusätzlich `OIDC_ISSUER`, `OIDC_CLIENT_ID`, `OIDC_CLIENT_SECRET` und `OIDC_ADMIN_GROUP` (siehe [Anmeldung](/sign-in)); für E-Mails (Einladungen, Passwort vergessen) die `SMTP_*`-Werte aus der [Konfiguration](/configuration-integrations#e-mail-smtp).
+   Mit `FLOWPLAN_SETUP_TOKEN` legst du das erste Konto über `https://flowplan.example.com/register?setup=<token>` an; ohne den Link bietet die neue Instanz weder Registrierung noch Wiederherstellen an. Fehlt der Token und ist `APP_URL` keine lokale Adresse, warnt Flowplan beim Start im Log und auf dem Einrichtungsbildschirm.
 
-```bash
-docker compose up -d
-```
+   Für Single Sign-on zusätzlich `OIDC_ISSUER`, `OIDC_CLIENT_ID`, `OIDC_CLIENT_SECRET` und `OIDC_ADMIN_GROUP` (siehe [Anmeldung](/sign-in)); für E-Mails (Einladungen, Passwort vergessen) die `SMTP_*`-Werte aus der [Konfiguration](/configuration-integrations#e-mail-smtp).
+
+3. Starten:
+
+   ```bash
+   docker compose up -d
+   ```
+
+:::
 
 Der Container lauscht auf Port `3000` (in der Compose-Datei nur an `127.0.0.1` gebunden, damit der Proxy davor sitzt). Das Volume `flowplan-data` auf `/app/data` hält alle Inhalte unabhängig vom Container. Eine feste Version wählst du mit `FLOWPLAN_VERSION=0.7.0` in der `.env`.
 
@@ -81,9 +89,13 @@ Das Image enthält Node, Litestream für die S3-Sicherung und `curl` für den He
 
 ## Erster Start
 
+::: steps
+
 1. `https://flowplan.example.com/api/health` aufrufen – die Antwort ist `200` mit `"status":"ok"`.
 2. Die Adresse im Browser öffnen: Eine neue Instanz bietet **Konto erstellen** an. Dieses erste Konto verwaltet die Instanz. Ist die Adresse aus dem Internet erreichbar, setze vorher `FLOWPLAN_SETUP_TOKEN` und lege das Konto über `/register?setup=<token>` an – sonst könnte dir jemand zuvorkommen ([Anmeldung](/sign-in#e-mail-und-passwort)). (Mit Single Sign-on: **Mit SSO anmelden**; Admin ist, wer in der Gruppe aus `OIDC_ADMIN_GROUP` ist.)
 3. In der Seitenleiste unter **Administration** Instanzname, Upload-Grenze, Registrierung und die [weiteren Einstellungen](/administration) setzen.
+
+:::
 
 **Umzug oder Neuinstallation?** Statt des ersten Kontos bietet der Einrichtungsbildschirm **Aus Sicherung wiederherstellen**: eine Sicherungsdatei hochladen oder die neueste Sicherung aus S3 oder per SFTP holen, verschlüsselte mit dem Schlüssel der alten Instanz. Danach meldest du dich mit den Konten der Sicherung an ([Beim Einrichten wiederherstellen](/storage-and-backups#beim-einrichten-wiederherstellen)). Für einen Umzug von einer laufenden Instanz gibt es außerdem [Instanz umziehen](/move-instance).
 

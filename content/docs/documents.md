@@ -6,6 +6,8 @@ keywords: Editor, Blöcke, Blockmenü, Slash, Markdown, schreiben, Absatz
 
 Der Editor arbeitet mit Blöcken: Jeder Absatz, jede Liste, Tabelle oder Einbettung ist ein Block, den du einfügen, formatieren, einrücken und verschieben kannst. Gespeichert wird laufend, auch ohne Verbindung.
 
+![Eine Projektseite im Editor: oben die Werkzeugleiste, darunter ein blauer Hinweis-Block mit dem Ziel, eine Zeile mit vier erwähnten Personen und Datum, Überschriften und eine Aufzählung; links der Seitenbaum des Bereichs](/screenshots/document-light.webp "Ein Dokument mit Werkzeugleiste, Hinweis-Block, Erwähnungen und Überschriften.")
+
 **Mehr zum Thema:** [Formatieren, Hinweise und Beschriftungen](/formatting) · [Aufgaben in Dokumenten](/tasks-in-documents) · [Bilder, Dateien und Sprachnotizen](/media-and-files) · [Formeln, Diagramme, Code und Rechnen](/math-and-code) · [Links, Erwähnungen und Graph](/links-and-mentions) · [Fußnoten, Zitate und Literatur](/academic-writing) · [Lesen, Präsentieren und Überblick](/reading-and-presenting) · [Drucken und PDF](/print-and-pdf)
 
 ## Das Blockmenü mit /

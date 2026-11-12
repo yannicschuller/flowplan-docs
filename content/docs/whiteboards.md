@@ -6,6 +6,8 @@ keywords: Whiteboard, Canvas, Zettel, Formen, Stift, zeichnen, Miro
 
 Eine unendliche Fläche für Brainstorming, Abläufe und Workshops: Notizzettel, Formen, Verbindungen, Stift, Rahmen und Tabellen – gemeinsam und live.
 
+![Ein Whiteboard zum Brainstorming: links die Werkzeugleiste, in der Mitte zwei Rahmen – einer mit fünf farbigen Notizzetteln, einer mit Formen, die durch Pfeile verbunden sind –, unten die Leiste mit Zoom, Import und Export als SVG oder PNG](/screenshots/whiteboard-light.webp "Ein Whiteboard mit zwei Rahmen, Notizzetteln und verbundenen Formen.")
+
 **Mehr zum Thema:** [Diagramme, Mindmaps und Prototypen](/whiteboard-diagrams) · [Whiteboards: gemeinsam, mit KI und präsentieren](/whiteboard-collaboration) · [Racks und Verkabelung](/whiteboard-racks)
 
 ## Werkzeuge

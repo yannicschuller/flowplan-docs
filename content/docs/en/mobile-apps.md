@@ -6,17 +6,30 @@ keywords: iphone, ipad, android, app, apk, app store, mobile, phone
 
 The apps for iPhone, iPad and Android: install and update them, connect them to your own instance, several instances as profiles.
 
-> [!NOTE]
-> **The iPhone and iPad app is on the App Store:** [Flowplan on the App Store](https://apps.apple.com/app/id6825801344) – open the link on the iPhone or iPad and download the app, or search the App Store for “Flowplan”. New versions arrive through the App Store as with any other app.
->
-> **The Android app comes straight from us, without the Play Store:** [flowplan.org/download/android.apk](https://flowplan.org/download/android.apk) or on [flowplan.org/download](https://flowplan.org/download). See [Installing and updating the Android app](#installing-and-updating-the-android-app).
+![Flowplan on two phones: the roadmap as a board with the columns Backlog and Planned on the left, the team wiki with a task list on the right; each with the bottom bar with Home, Search, New page, Inbox and Navigation](/screenshots/phone-light.webp "Board and wiki in the app, with the phone's bottom bar.")
+
+::: tabs
+
+== iPhone and iPad
+
+**The iPhone and iPad app is on the App Store:** [Flowplan on the App Store](https://apps.apple.com/app/id6825801344) – open the link on the iPhone or iPad and download the app, or search the App Store for “Flowplan”. New versions arrive through the App Store as with any other app.
+
+== Android
+
+**The Android app comes straight from us, without the Play Store:** [flowplan.org/download/android.apk](https://flowplan.org/download/android.apk) or on [flowplan.org/download](https://flowplan.org/download). See [Installing and updating the Android app](#installing-and-updating-the-android-app).
+
+:::
 
 ## Installing and updating the Android app
+
+::: steps
 
 1. On the Android device, open [flowplan.org/download](https://flowplan.org/download) and tap **Download the app**.
 2. Open the downloaded file (the browser's notification or *Downloads*).
 3. The first time, Android asks whether the browser may install apps: **Settings** → **Allow from this source**, then go back and tap **Install**.
 4. If Google Play Protect warns about an unknown app: **More details** → **Install anyway**. The app is signed with our key, just not distributed through Google Play.
+
+:::
 
 **Updates:** once a day the app checks whether there is a new version and then asks: **Download** fetches it in the browser, opening the file and tapping **Update** installs it over the old one – sign-in, profiles and settings stay. **Later** asks again for that version only after a week. New Flowplan features arrive through the server anyway, no app update needed.
 

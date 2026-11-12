@@ -12,11 +12,15 @@ Workflows sind ein eigener Seitentyp. Sie laufen im Hintergrund auf dem Server, 
 
 So verlinkst du jede neue Unterseite einer Übersichtsseite automatisch dort – mit einem Satz Beschreibung:
 
+::: steps
+
 1. In der Seitenleiste **+ → Workflow** wählen und einen Titel geben.
 2. Auf der leeren Fläche die Vorlage **Unterseiten auf der Übersicht verlinken** wählen.
 3. Der kurze Assistent fragt nach der **Übersichtsseite** und ob eine **Kurzbeschreibung mit KI** dazukommt. **Als Entwurf anlegen**.
 4. **Probelauf** (nichts wird verändert) oder **Testlauf** (echt, als du) – das Ergebnis steht an jedem Knoten.
 5. **Aktivieren**. Ab jetzt landet jede neue Unterseite als „• Link – Kurztext“ auf der Übersicht, nie doppelt.
+
+:::
 
 ## Wie ein Workflow beginnt
 
@@ -148,7 +152,8 @@ Inhaltsarchive und der [Instanzumzug](/move-instance) nehmen Workflows mit Entwu
 | Aufbewahrung der Läufe | 30 Tage |
 | Aktive Workflows je Arbeitsbereich | 100 |
 
-Admins ändern die Werte in der [Administration](/administration#workflows) oder per [Umgebungsvariable](/configuration-integrations#workflows). Bearbeitende können je Workflow niedrigere Werte setzen.
+> [!ADMIN]
+> Admins ändern die Werte in der [Administration](/administration#workflows) oder per [Umgebungsvariable](/configuration-integrations#workflows). Bearbeitende können je Workflow niedrigere Werte setzen.
 
 ## API, MCP und SDKs
 

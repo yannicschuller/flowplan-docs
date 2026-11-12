@@ -1,0 +1,330 @@
+/* Building blocks of the Markdown pages (lib/markdown-blocks.ts): callouts,
+   steps, tabs and keys, plus wide tables and reading comfort. The HTML
+   comes from the Markdown renderer, so its classes are global; .content is
+   the article body (next to .prose from docs.module.css). */
+
+.content {
+  --tip: #17703d;
+  --tip-bg: color-mix(in srgb, #1f8a4c 8%, var(--bg));
+  --tip-border: color-mix(in srgb, #1f8a4c 30%, transparent);
+  --warn: #b33a0b;
+  --warn-bg: color-mix(in srgb, #f0663a 9%, var(--bg));
+  --warn-border: color-mix(in srgb, #f0663a 36%, transparent);
+  --scope: #5b39b8;
+  --scope-bg: color-mix(in srgb, #7c5ce0 8%, var(--bg));
+  --scope-border: color-mix(in srgb, #7c5ce0 30%, transparent);
+}
+@media (prefers-color-scheme: dark) {
+  .content {
+    --tip: #74d9a0;
+    --tip-bg: color-mix(in srgb, #2fb36a 10%, var(--bg));
+    --tip-border: color-mix(in srgb, #2fb36a 32%, transparent);
+    --warn: #ff9a70;
+    --warn-bg: color-mix(in srgb, #f0663a 11%, var(--bg));
+    --warn-border: color-mix(in srgb, #f0663a 38%, transparent);
+    --scope: #c9b5ff;
+    --scope-bg: color-mix(in srgb, #8f72ff 12%, var(--bg));
+    --scope-border: color-mix(in srgb, #8f72ff 34%, transparent);
+  }
+}
+
+/* Calmer running text: balanced last lines; on phones German compounds
+   may break with a hyphen instead of running out of the column. */
+.content p,
+.content li {
+  text-wrap: pretty;
+}
+@media (max-width: 600px) {
+  .content p,
+  .content li {
+    hyphens: auto;
+  }
+}
+
+/* ---------- Callouts: > [!NOTE] / [!TIP] / [!WARNING] / [!ADMIN] … ---------- */
+.content :global(.callout) {
+  margin: 0 0 22px;
+  padding: 14px 18px 14px 16px;
+  border: 1px solid color-mix(in srgb, var(--blue) 22%, transparent);
+  border-left-width: 4px;
+  border-radius: 10px;
+  background: var(--blue-light);
+  --kind: var(--accent-strong);
+}
+.content :global(.callout)[data-kind="tip"] {
+  background: var(--tip-bg);
+  border-color: var(--tip-border);
+  --kind: var(--tip);
+}
+.content :global(.callout)[data-kind="warning"] {
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+  --kind: var(--warn);
+}
+.content :global(.callout)[data-kind="scope"] {
+  background: var(--scope-bg);
+  border-color: var(--scope-border);
+  --kind: var(--scope);
+}
+.content :global(.callout) {
+  border-left-color: var(--kind);
+}
+.content :global(.callout-label) {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 4px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kind);
+}
+.content :global(.callout-icon) {
+  flex: none;
+  fill: currentColor;
+}
+.content :global(.callout) > :last-child,
+.content :global(.callout) li:last-child > :last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Steps: ::: steps around a numbered list ---------- */
+.content :global(.steps) {
+  margin: 0 0 22px;
+}
+.content :global(.steps) > ol {
+  list-style: none;
+  counter-reset: step;
+  margin: 0;
+  padding: 0;
+}
+.content :global(.steps) > ol > li {
+  counter-increment: step;
+  position: relative;
+  margin: 0;
+  padding: 2px 0 18px 46px;
+}
+.content :global(.steps) > ol > li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 1px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--blue-light);
+  color: var(--accent-strong);
+  border: 1px solid color-mix(in srgb, var(--blue) 28%, transparent);
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+/* The line from one step to the next. */
+.content :global(.steps) > ol > li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 36px;
+  bottom: 4px;
+  width: 1px;
+  background: var(--border);
+}
+.content :global(.steps) > ol > li:last-child {
+  padding-bottom: 0;
+}
+.content :global(.steps) > ol > li > :last-child {
+  margin-bottom: 0;
+}
+.content :global(.steps) > ol[start] {
+  counter-reset: none;
+}
+
+/* ---------- Keys: ++⌘ K++ (and plain <kbd>) ---------- */
+.content kbd {
+  display: inline-block;
+  min-width: 1.75em;
+  padding: 0.08em 0.45em;
+  font-family: var(--font-ui);
+  font-size: 0.84em;
+  font-weight: 550;
+  line-height: 1.45;
+  text-align: center;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--border) 60%, transparent);
+  white-space: nowrap;
+  vertical-align: 0.06em;
+}
+.content :global(kbd.keys) {
+  display: inline-flex;
+  gap: 3px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  font-size: 1em;
+  vertical-align: baseline;
+}
+.content :global(kbd.keys) kbd {
+  font-size: 0.84em;
+}
+@media (prefers-color-scheme: dark) {
+  .content kbd {
+    background: var(--surface);
+    border-color: #3a3842;
+  }
+  .content :global(kbd.keys) {
+    background: none;
+  }
+}
+
+/* ---------- Tabs: ::: tabs with == Label (public/tabs.js) ---------- */
+.content :global(.tabs) {
+  margin: 0 0 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+}
+/* Without JavaScript: every panel, each under its label. */
+.content :global(.tab-panel) {
+  padding: 16px 18px;
+}
+.content :global(.tab-panel) + :global(.tab-panel) {
+  border-top: 1px solid var(--border);
+}
+.content :global(.tab-panel) > :last-child {
+  margin-bottom: 0;
+}
+.content :global(.tab-title) {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+/* With JavaScript: a row of tabs, one panel at a time. */
+.content :global(.tabs)[data-ready] :global(.tab-title) {
+  display: none;
+}
+.content :global(.tabs)[data-ready] :global(.tab-panel) + :global(.tab-panel) {
+  border-top: 0;
+}
+.content :global(.tab-panel)[hidden] {
+  display: none;
+}
+.content :global(.tab-panel):focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: -2px;
+  border-radius: 0 0 12px 12px;
+}
+.content :global(.tab-list) {
+  display: flex;
+  gap: 2px;
+  padding: 0 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 12px 12px 0 0;
+}
+.content :global(.tab-list) button {
+  flex: none;
+  padding: 11px 12px 10px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--secondary);
+  box-shadow: inset 0 -2px 0 transparent;
+  cursor: pointer;
+}
+.content :global(.tab-list) button:hover {
+  color: var(--text);
+}
+.content :global(.tab-list) button[aria-selected="true"] {
+  color: var(--accent-strong);
+  box-shadow: inset 0 -2px 0 var(--blue);
+}
+.content :global(.tab-list) button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: -4px;
+  border-radius: 6px;
+}
+
+/* ---------- Tables: a little wider than the text, scrolling on phones ---------- */
+/* The cell padding lines the text up with the column; shadows at the edges
+   show that a wide table scrolls (they move with the content). */
+.content :global(div.table) {
+  margin-inline: -14px;
+  background:
+    linear-gradient(to right, var(--bg) 30%, transparent) left / 32px 100% no-repeat local,
+    linear-gradient(to left, var(--bg) 30%, transparent) right / 32px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, #1d1a1424, transparent) left / 12px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, #1d1a1424, transparent) right / 12px 100% no-repeat scroll;
+  background-color: var(--bg);
+}
+.content table {
+  font-variant-numeric: tabular-nums;
+}
+.content table th {
+  color: var(--text);
+}
+.content tbody tr:hover td {
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+}
+@media (prefers-color-scheme: dark) {
+  .content :global(div.table) {
+    background:
+      linear-gradient(to right, var(--bg) 30%, transparent) left / 32px 100% no-repeat local,
+      linear-gradient(to left, var(--bg) 30%, transparent) right / 32px 100% no-repeat local,
+      radial-gradient(farthest-side at 0 50%, #000000a0, transparent) left / 12px 100% no-repeat scroll,
+      radial-gradient(farthest-side at 100% 50%, #000000a0, transparent) right / 12px 100% no-repeat scroll;
+    background-color: var(--bg);
+  }
+  .content table th {
+    background: #1f1e26;
+  }
+}
+@media (max-width: 600px) {
+  /* Edge to edge on phones: more room, and the scroll is obvious. */
+  .content :global(div.table) {
+    margin-inline: calc(-1 * var(--gutter));
+    border-radius: 0;
+    border-inline: 0;
+  }
+  .content :global(div.table) th:first-child,
+  .content :global(div.table) td:first-child {
+    padding-left: var(--gutter);
+  }
+  .content td {
+    min-width: 8.5em;
+  }
+  .content td:first-child {
+    min-width: 6em;
+  }
+  .content :global(.tabs) :global(.table),
+  .content :global(.callout) :global(.table) {
+    margin-inline: 0;
+    border-radius: 10px;
+    border-inline: 1px solid var(--border);
+  }
+}
+
+/* ---------- Pictures that follow the colour scheme ---------- */
+.content picture {
+  display: block;
+}
+/* The first picture of a page sits under the lead, a little apart. */
+.content > :global(figure.shot):first-child {
+  margin: 0 0 36px;
+}

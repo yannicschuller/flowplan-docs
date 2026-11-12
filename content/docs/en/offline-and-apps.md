@@ -67,10 +67,22 @@ The app for iPhone and iPad keeps the offline copy itself – for every instance
 
 ## Install as an app
 
+::: tabs
+
+== Browser on a computer
+
 - **Chrome, Edge**: the install icon in the address bar.
 - **Safari on the Mac**: **File → Add to Dock**.
-- **iPhone, iPad**: Share → **Add to Home Screen**. Only this way are push notifications possible there.
-- **Android**: menu → **Install app**.
+
+== iPhone and iPad
+
+Share → **Add to Home Screen**. Only this way are push notifications possible there.
+
+== Android
+
+Menu → **Install app**.
+
+:::
 
 The installed app opens in its own window without browser bars.
 
@@ -106,7 +118,7 @@ Below pages and records Flowplan shows **Related pages**, **Linked from** and **
 
 **Settings → Appearance & language → Page icon** sets where a page's icon sits: **Above the title** (the default) shows it large above the title, **Next to the title** small to the left of the title on its first line – like a classic document, with less space above the text. This applies to documents, databases, whiteboards, journal days and every other page; a cover stays above it. The choice applies to your account on all devices and only changes what you see: the page's title and icon stay as they are, others keep their own setting, and published pages show the icon above the title.
 
-**Settings → Appearance & language → What's new after updates** decides whether **New in Flowplan** appears once after Flowplan was updated: **Show all** (the default) shows the notes of every skipped version, **Only breaking changes** appears only when one of them has changes you need to adapt to, and shows only those, **Never** does not show the dialog. The choice applies to your account on all devices, including the iPhone, iPad and Android apps. Whatever you choose, **What's new** opens the latest versions' notes any time: in the account menu ⋯ at the bottom of the sidebar (on a phone under **More**), with `⌘/Ctrl + K` → "What's new", under **Settings → Appearance & language** and under **About Flowplan**. Published pages never show the dialog.
+**Settings → Appearance & language → What's new after updates** decides whether **New in Flowplan** appears once after Flowplan was updated: **Show all** (the default) shows the notes of every skipped version, **Only breaking changes** appears only when one of them has changes you need to adapt to, and shows only those, **Never** does not show the dialog. The choice applies to your account on all devices, including the iPhone, iPad and Android apps. Whatever you choose, **What's new** opens the latest versions' notes any time: in the account menu ⋯ at the bottom of the sidebar (on a phone under **More**), with ++⌘/Ctrl K++ → "What's new", under **Settings → Appearance & language** and under **About Flowplan**. Published pages never show the dialog.
 
 After a reload Flowplan opens the workspace that was last open on this device. For this the browser keeps only the workspace's id in the cookie `flowplan-workspace`; an invitation or a link to a page in another workspace takes precedence.
 

@@ -45,10 +45,14 @@ Unter **Einstellungen → Konto & Sicherheit** stehen in der Karte **Anmeldung &
 
 Konten mit E-Mail und Passwort können zusätzlich eine Authenticator-App nutzen (Zwei-Faktor-Authentifizierung, 2FA), etwa Aegis, 2FAS, Google Authenticator oder 1Password.
 
+::: steps
+
 1. **Einstellungen → Konto & Sicherheit → Zwei-Faktor-Anmeldung → Authenticator-App einrichten.**
 2. Den QR-Code mit der App scannen – oder den angezeigten Schlüssel abtippen.
 3. Mit dem aktuellen sechsstelligen Code bestätigen.
 4. Die zehn **Wiederherstellungscodes** sicher aufbewahren. Sie werden nur einmal angezeigt, jeder funktioniert genau einmal.
+
+:::
 
 Bei der Anmeldung fragt Flowplan nach dem Passwort nach dem Code aus der App (oder einem Wiederherstellungscode).
 
@@ -60,7 +64,8 @@ Bei der Anmeldung fragt Flowplan nach dem Passwort nach dem Code aus der App (od
 - Auch nach **Passwort vergessen** bleibt der zweite Schritt bestehen.
 - Telefon verloren und keine Codes mehr? Die Administration kann die Zwei-Faktor-Anmeldung zurücksetzen ([Administration → Benutzer](/user-management#benutzer)).
 
-Admins können die Zwei-Faktor-Anmeldung für alle lokalen Konten oder nur für Admins verlangen ([Administration → Anmeldung & SSO](/user-management#anmeldung-sso)). Konten ohne App und ohne Passkey richten dann direkt nach der Anmeldung einen zweiten Faktor ein, bevor sie Flowplan nutzen; Konten mit Passkey, aber ohne App melden sich mit dem Passkey an.
+> [!ADMIN]
+> Admins können die Zwei-Faktor-Anmeldung für alle lokalen Konten oder nur für Admins verlangen ([Administration → Anmeldung & SSO](/user-management#anmeldung-sso)). Konten ohne App und ohne Passkey richten dann direkt nach der Anmeldung einen zweiten Faktor ein, bevor sie Flowplan nutzen; Konten mit Passkey, aber ohne App melden sich mit dem Passkey an.
 
 > [!IMPORTANT]
 > Die Schlüssel der Apps werden verschlüsselt gespeichert – mit `FLOWPLAN_ENCRYPTION_KEY`, sonst `FLOWPLAN_SECRETS_KEY`, sonst mit der automatisch angelegten Datei `secrets.key` im Datenordner ([Konfiguration](/configuration-storage#gespeicherte-geheimnisse)). Diese Datei oder den Schlüssel unbedingt mitsichern: Die Instanzsicherung enthält sie bewusst nicht. Ohne sie funktionieren nach einer Wiederherstellung nur noch die Wiederherstellungscodes.

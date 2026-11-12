@@ -6,6 +6,8 @@ keywords: docker, compose, install, self-hosting, server, update, helm, kubernet
 
 Flowplan runs as a single container with SQLite and a data directory. Postgres, Redis or a separate search service are not needed – PostgreSQL and several instances are possible, but optional.
 
+![How an instance is built: browsers, the desktop apps and the apps for iOS and Android connect through a reverse proxy with HTTPS to the Flowplan container. Inside, the Next.js server writes to SQLite and an uploads volume; Litestream backs up the database continuously to S3, and uploads are mirrored there. Optionally connected are OIDC or LDAP, SMTP, an AI provider and the push relay, which brings end-to-end encrypted notifications to the apps.](/screenshots/architecture-en-light.webp "One instance: one container behind the reverse proxy, everything else optional.")
+
 **More on this topic:** [Deploy in one click](/one-click-deploy)
 
 ## Requirements
@@ -27,29 +29,35 @@ Flowplan is open source (AGPL-3.0). The ready-made image is in the GitHub Contai
 | `ghcr.io/yannicschuller/flowplan:0.7.0` | A fixed version (currently 0.7.0), also as `:0.7` and `:0` |
 | `ghcr.io/yannicschuller/flowplan:beta` | The latest manually built development state, or a release if that is newer – for trying out, not for production |
 
-Download the Compose file and the example configuration:
+::: steps
 
-```bash
-mkdir flowplan && cd flowplan
-curl -O https://raw.githubusercontent.com/yannicschuller/flowplan/main/compose.yaml
-curl -o .env https://raw.githubusercontent.com/yannicschuller/flowplan/main/.env.example
-```
+1. Download the Compose file and the example configuration:
 
-In `.env`, set at least the public address:
+   ```bash
+   mkdir flowplan && cd flowplan
+   curl -O https://raw.githubusercontent.com/yannicschuller/flowplan/main/compose.yaml
+   curl -o .env https://raw.githubusercontent.com/yannicschuller/flowplan/main/.env.example
+   ```
 
-```dotenv
-APP_URL=https://flowplan.example.com
-# Recommended once the address is reachable from the internet: openssl rand -hex 24
-FLOWPLAN_SETUP_TOKEN=
-```
+2. In `.env`, set at least the public address:
 
-With `FLOWPLAN_SETUP_TOKEN` you create the first account via `https://flowplan.example.com/register?setup=<token>`; without the link a new instance offers neither sign-up nor restore. If the token is missing and `APP_URL` is not a local address, Flowplan warns at start in the log and on the setup screen.
+   ```dotenv
+   APP_URL=https://flowplan.example.com
+   # Recommended once the address is reachable from the internet: openssl rand -hex 24
+   FLOWPLAN_SETUP_TOKEN=
+   ```
 
-For single sign-on also set `OIDC_ISSUER`, `OIDC_CLIENT_ID`, `OIDC_CLIENT_SECRET` and `OIDC_ADMIN_GROUP` (see [Sign-in](/sign-in)); for e-mails (invitations, forgotten passwords) the `SMTP_*` values from the [configuration](/configuration-integrations#e-mail-smtp).
+   With `FLOWPLAN_SETUP_TOKEN` you create the first account via `https://flowplan.example.com/register?setup=<token>`; without the link a new instance offers neither sign-up nor restore. If the token is missing and `APP_URL` is not a local address, Flowplan warns at start in the log and on the setup screen.
 
-```bash
-docker compose up -d
-```
+   For single sign-on also set `OIDC_ISSUER`, `OIDC_CLIENT_ID`, `OIDC_CLIENT_SECRET` and `OIDC_ADMIN_GROUP` (see [Sign-in](/sign-in)); for e-mails (invitations, forgotten passwords) the `SMTP_*` values from the [configuration](/configuration-integrations#e-mail-smtp).
+
+3. Start it:
+
+   ```bash
+   docker compose up -d
+   ```
+
+:::
 
 The container listens on port `3000` (bound to `127.0.0.1` only in the Compose file, so that the proxy sits in front of it). The volume `flowplan-data` on `/app/data` holds all content independently of the container. Choose a fixed version with `FLOWPLAN_VERSION=0.7.0` in `.env`.
 
@@ -81,9 +89,13 @@ The image contains Node, Litestream for the S3 backup and `curl` for the health 
 
 ## First start
 
+::: steps
+
 1. Open `https://flowplan.example.com/api/health` – the answer is `200` with `"status":"ok"`.
 2. Open the address in the browser: a new instance offers **Create account**. This first account administers the instance. If the address is reachable from the internet, set `FLOWPLAN_SETUP_TOKEN` first and create the account via `/register?setup=<token>` – otherwise someone could beat you to it ([Sign-in](/en/sign-in#e-mail-and-password)). (With single sign-on: **Sign in with SSO**; administrators are the members of the group in `OIDC_ADMIN_GROUP`.)
 3. In the sidebar under **Administration**, set the instance name, upload limit, sign-ups and the [other settings](/administration).
+
+:::
 
 **Moving or reinstalling?** Instead of the first account, the setup screen offers **Restore from a backup**: upload a backup file or fetch the newest backup from S3 or via SFTP, encrypted ones with the old instance's key. Afterwards you sign in with the accounts of the backup ([Restore while setting up](/en/storage-and-backups#restore-while-setting-up)). To move from a running instance there is also [Moving an instance](/en/move-instance).
 

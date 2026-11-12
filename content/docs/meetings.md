@@ -14,7 +14,7 @@ Tippe **/meet** (oder **/besprechung**) in einem Dokument oder im Dokument eines
   - **Weiter aufnehmen** (roter Punkt), **Zusammenfassung neu erstellen**, **Erneut transkribieren** (solange das Audio aufbewahrt wird),
   - **Sprache** der Besprechung (für Transkription und Zusammenfassung; *Automatisch* = Sprache der Oberfläche), **Anweisungen** (Vorlagen oder *Eigene Anweisung …* mit eigenem Text), **Einwilligung** (vor der Aufnahme bestätigen, Hinweistext, Hinweis abspielen – gilt für den ganzen Arbeitsbereich), **Aufnahme hochladen …**, **Eine gemeinsame Tonspur** (wenn der Ton der Besprechung mit aufgenommen wird),
   - **Link zur Besprechung kopieren**,
-  - **Audio jetzt löschen …** und **Transkript löschen …** (rot, mit Rückfrage; das Transkript lässt sich mit ⌘Z / Strg+Z zurückholen).
+  - **Audio jetzt löschen …** und **Transkript löschen …** (rot, mit Rückfrage; das Transkript lässt sich mit ++⌘ Z++ / ++Strg Z++ zurückholen).
 
   Menüs und Auswahllisten liegen über dem Inhalt; der Block verschiebt sich nicht. Escape schließt sie, der Fokus kehrt zum Knopf zurück.
 

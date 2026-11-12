@@ -6,6 +6,8 @@ keywords: database, table, records, rows, airtable, recurring, reminder
 
 A database is a collection of records with properties. The same records can be shown as a table, board, calendar, timeline, gallery, list, feed, chart or form.
 
+![A roadmap database as a board: the views Table, Board, Calendar and Timeline, below them filter, sort and grouping by status, and the columns Backlog, Planned, In progress and Done with cards showing person, priority, team and date](/screenshots/database-light.webp "A database in the board view, grouped by status.")
+
 **More on this topic:** [Database properties](/database-properties)
 
 ## Create a database
