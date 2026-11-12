@@ -23,7 +23,7 @@ Der Button liest den Blueprint [`render.yaml`](https://github.com/yannicschuller
 
 **Kosten:** Dauerhafte Disks gibt es nur mit einer bezahlten Instanz – der Blueprint nimmt **Starter**, die kleinste mit Disk; die Disk wird zusätzlich pro GB abgerechnet (siehe Preise bei Render). Für mehr als eine Handvoll Personen wähl eine größere Instanz ([Dimensionierung](/sizing)). Auf der kostenlosen Instanz gingen die Daten bei jedem Neustart verloren.
 
-**Adresse:** Ohne `APP_URL` nimmt Flowplan Renders eigene Adresse (`RENDER_EXTERNAL_URL`). Für deine Domain trägst du sie unter **Settings → Custom Domains** ein und setzt unter **Environment** `APP_URL=https://flowplan.example.com` – am besten vor dem ersten Konto, denn Passkeys sind an die Adresse gebunden.
+**Adresse:** Ohne `APP_URL` nimmt Flowplan Renders eigene Adresse (`RENDER_EXTERNAL_URL`, ersatzweise `https://` mit `RENDER_EXTERNAL_HOSTNAME`). Für deine Domain trägst du sie unter **Settings → Custom Domains** ein und setzt unter **Environment** `APP_URL=https://flowplan.example.com` – am besten vor dem ersten Konto, denn Passkeys sind an die Adresse gebunden.
 
 **Daten und Updates:** Alles liegt auf der Disk – einen Dienst mit Disk betreibt Render als genau eine Instanz und hält ihn bei jedem Deploy kurz an. Render hebt Snapshots der Disk auf; für Sicherungen außerhalb von Render kommt S3 dazu ([Speicher, S3 und Sicherung](/storage-and-backups)). Zum Aktualisieren startest du einen **Manual Deploy**: Render holt das Image `:latest` neu.
 

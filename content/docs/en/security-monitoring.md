@@ -138,5 +138,6 @@ labels:
 | `FLOWPLAN_SECURITY_RETENTION_DAYS` | `90` | How long events stay in the database (at least 7) |
 | `FLOWPLAN_COUNTRY_HEADER` | *empty* | The proxy's header with the country of the request, e.g. `CF-IPCountry` behind Cloudflare – turns on the rule "two countries". Only set it when the proxy sets the header itself. |
 | `OTEL_EXPORTER_OTLP_ENDPOINT` | *empty* | OTLP collector for the events (see above) |
+| `OTEL_EXPORTER_OTLP_LOGS_HEADERS` | `OTEL_EXPORTER_OTLP_HEADERS` | Headers for the collector, for the logs only: `api-key=abc,x-scope=flowplan` (comma-separated, values URL-encoded). Without it, `OTEL_EXPORTER_OTLP_HEADERS` applies. |
 
 Everything with addresses needs the reverse proxy to set `X-Forwarded-For` and a correct `FLOWPLAN_TRUSTED_PROXIES` ([Configuration](/en/configuration)). When no address arrives, the page shows a hint.

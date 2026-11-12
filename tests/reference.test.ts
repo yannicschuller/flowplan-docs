@@ -130,21 +130,7 @@ test("the workflow nodes page has every node type with its name, and no other", 
 
 // The app reads these, but no page describes them yet. A new variable of the
 // app fails here until a page describes it (or it is added to this list).
-const UNDOCUMENTED_ENV = [
-  "FLOWPLAN_DROP_ROOT",
-  "FLOWPLAN_LITESTREAM_SSE_C",
-  "FLOWPLAN_METRICS_LOOP",
-  "FLOWPLAN_SKIP_TYPECHECK",
-  "FLOWPLAN_WORKFLOW_LEASE_MS",
-  "FLOWPLAN_WORKFLOW_PARALLEL_RUNS",
-  "FLOWPLAN_WORKFLOW_POLL_MS",
-  "FLOWPLAN_WORKFLOW_RUNS_KEPT",
-  "FLOWPLAN_WORKFLOW_SWEEP_MS",
-  "OTEL_EXPORTER_OTLP_LOGS_HEADERS",
-  "PGCONNECT_TIMEOUT",
-  "PG_CLIENT_MAJOR",
-  "RENDER_EXTERNAL_HOSTNAME",
-];
+const UNDOCUMENTED_ENV: string[] = [];
 test("every environment variable of the app is on the reference page, with a link to its section", () => {
   for (const locale of LOCALES) {
     const rows = docEnvRows(locale);

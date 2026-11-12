@@ -85,6 +85,8 @@ docker run -d --name flowplan \
   flowplan:latest
 ```
 
+Build arguments: `PG_CLIENT_MAJOR` (default `18`) chooses the version of `pg_dump`, `pg_restore` and `psql` in the image – at least your PostgreSQL server's major version ([PostgreSQL](/postgresql)). `FLOWPLAN_SKIP_TYPECHECK=1` is meant for development only: it skips the TypeScript check during the build when it already ran, as in our CI.
+
 The image contains Node, Litestream for the S3 backup and `curl` for the health check. Flowplan runs in it as UID 1000 (the user `node`), or as the user from `PUID`/`PGID` – never as root ([Volume permissions](/coolify-and-proxy#volume-permissions)).
 
 ## First start

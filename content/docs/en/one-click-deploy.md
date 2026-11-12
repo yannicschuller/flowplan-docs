@@ -23,7 +23,7 @@ The button reads the Blueprint [`render.yaml`](https://github.com/yannicschuller
 
 **Costs:** persistent disks need a paid instance – the Blueprint uses **Starter**, the smallest one with a disk; the disk is billed per GB on top (see Render's pricing). For more than a handful of people choose a larger instance ([Sizing](/en/sizing)). On the free instance the data would be lost on every restart.
 
-**Address:** without `APP_URL`, Flowplan uses Render's own address (`RENDER_EXTERNAL_URL`). For your own domain, add it under **Settings → Custom Domains** and set `APP_URL=https://flowplan.example.com` under **Environment** – ideally before the first account, because passkeys are bound to the address.
+**Address:** without `APP_URL`, Flowplan uses Render's own address (`RENDER_EXTERNAL_URL`, or else `https://` with `RENDER_EXTERNAL_HOSTNAME`). For your own domain, add it under **Settings → Custom Domains** and set `APP_URL=https://flowplan.example.com` under **Environment** – ideally before the first account, because passkeys are bound to the address.
 
 **Persistence and updates:** everything lives on the disk – Render runs a service with a disk as exactly one instance and stops it briefly on every deploy. Render keeps snapshots of the disk; for backups away from Render, add S3 ([Storage, S3 and backups](/en/storage-and-backups)). To update, start a **Manual Deploy**: Render pulls the `:latest` image again.
 

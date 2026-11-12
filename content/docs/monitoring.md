@@ -96,3 +96,6 @@ scrape_configs:
 ```
 
 Ohne gesetztes Token ist der Endpunkt abgeschaltet. Dasselbe Token schaltet die Details von `/api/health` frei (siehe oben).
+
+> [!NOTE]
+> **Für Lasttests:** `FLOWPLAN_METRICS_LOOP=1` misst zusätzlich die Verzögerung und Auslastung der Node-Event-Loop und die Zeit in SQLite und hängt sie an `/api/metrics` an. Die Werte gelten jeweils seit der letzten Abfrage – gedacht für einen einzelnen Abrufer wie das Lasttest-Skript, nicht für einen gemeinsam genutzten Prometheus. Standardmäßig aus.
