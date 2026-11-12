@@ -47,6 +47,8 @@ Like [tags and properties](/pages-and-spaces#scope-workspace-or-space), your own
 
 Templates store their own copies of the files and stay usable even if the source page is deleted. The page's [tags and property values](/pages-and-spaces#tags-and-properties) come along too; new pages from the template get them (missing tags are created). Database templates contain views, records with their content, record templates and the form design. Templates can be renamed, made private or shared and moved to the trash. In the **Template trash**, **Restore** brings a template back, **Delete permanently** deletes it with its files, and **Empty template trash** deletes all you may manage (your own; as an owner all of the workspace; templates for all workspaces only admins). Pages already created are kept. After the [trash period](/pages-and-spaces#trash) (30 days by default) templates in the trash are deleted automatically.
 
+You can publish your own document and database templates to the [marketplace](/marketplace) (**Publish to the marketplace …** in the template's row). Take over templates from the marketplace with **Open in Flowplan** there, or as a `.flowplan-template` file with **Import template**.
+
 ## Record templates
 
 In a database, **Record templates** opens the templates for records: property values and content are applied to every new record. One template can be the default, so that **New** uses it automatically.
@@ -81,6 +83,8 @@ Under `/templates`, the built-in templates and all templates with the visibility
 ## Whiteboard templates
 
 On a whiteboard, **Templates** inserts a retrospective, a kanban board, a mind map, a SWOT analysis or a flowchart at the current spot.
+
+Own whiteboard templates can be published to the [marketplace](/marketplace) with the marketplace icon under **Own templates**; uploaded pictures and record cards stay in the workspace.
 
 ## Workflow templates
 

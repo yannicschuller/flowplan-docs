@@ -64,6 +64,7 @@ const groups: {
       ["dashboards", "Dashboards", "Dashboards"],
       ["journal", "Journal", "Journal"],
       ["templates", "Vorlagen", "Templates"],
+      ["marketplace", "Marketplace", "Marketplace"],
       ["import-export-versions", "Import, Export und Versionen", "Import, export and versions"],
     ],
   },

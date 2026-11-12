@@ -126,6 +126,8 @@ Optional und standardmäßig aus: Anbieter (Ollama, OpenAI-kompatibel, Anthropic
 
 **Block-Erweiterungen von jeder HTTPS-Adresse** (aus: nur aus `PLUGIN_ALLOWED_ORIGINS`) und **Eigene Domains für Veröffentlichungen** – siehe [Block-Erweiterungen](/plugins) und [Coolify und Reverse Proxy](/coolify-and-proxy#eigene-domains-fuer-veroeffentlichungen).
 
+**Marketplace**: Veröffentlichen im und Übernehmen aus dem [Flowplan Marketplace](/marketplace) für die ganze Instanz ein- oder ausschalten.
+
 ## Verschlüsselung
 
 Die Schlüssel-ID, frühere Schlüssel, wie viele Dateien im Bucket noch nicht mit diesem Schlüssel verschlüsselt sind (**Bestehende verschlüsseln** holt das nach), und was trotzdem unverschlüsselt den Server verlässt (Litestream, Git-Export). Siehe [Verschlüsselung](/storage-and-backups#verschluesselung).

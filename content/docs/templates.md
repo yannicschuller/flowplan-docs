@@ -47,6 +47,8 @@ Wie [Tags und Eigenschaften](/pages-and-spaces#geltungsbereich-arbeitsbereich-od
 
 Vorlagen speichern eigene Kopien der Dateien und bleiben verwendbar, auch wenn die Quellseite gelöscht wird. Auch die [Tags und Eigenschaftswerte](/pages-and-spaces#tags-und-eigenschaften) der Seite kommen mit; neue Seiten aus der Vorlage bekommen sie (fehlende Tags werden angelegt). Datenbank-Vorlagen enthalten Ansichten, Einträge samt Inhalten, Datensatzvorlagen und die Formulargestaltung. Vorlagen lassen sich umbenennen, privat oder geteilt schalten und in den Papierkorb legen. Im **Vorlagen-Papierkorb** holt **Wiederherstellen** eine Vorlage zurück, **Endgültig löschen** löscht sie samt ihren Dateien, und **Vorlagen-Papierkorb leeren** löscht alle, die du verwalten darfst (deine eigenen; als Eigentümer alle des Arbeitsbereichs; Vorlagen für alle Arbeitsbereiche nur Admins). Bereits erstellte Seiten bleiben erhalten. Nach der [Papierkorb-Frist](/pages-and-spaces#papierkorb) (Standard 30 Tage) werden Vorlagen im Papierkorb automatisch gelöscht.
 
+Eigene Dokument- und Datenbankvorlagen kannst du im [Marketplace](/marketplace) veröffentlichen (**Im Marketplace veröffentlichen …** in der Zeile der Vorlage). Vorlagen aus dem Marketplace übernimmst du mit **In Flowplan öffnen** dort oder als `.flowplan-template`-Datei über **Vorlage importieren**.
+
 ## Datensatzvorlagen
 
 In einer Datenbank öffnet **Datensatzvorlagen** die Vorlagen für Einträge: Eigenschaftswerte und Inhalt werden bei jedem neuen Eintrag übernommen. Eine Vorlage kann Standard sein, sodass **Neu** sie automatisch nutzt.
@@ -81,6 +83,8 @@ Unter `/templates` stehen die eingebauten Vorlagen und alle Vorlagen mit der Sic
 ## Whiteboard-Vorlagen
 
 Im Whiteboard fügt **Vorlagen** eine Retrospektive, ein Kanban, eine Mindmap, eine SWOT-Analyse oder ein Flussdiagramm an der aktuellen Stelle ein.
+
+Eigene Whiteboard-Vorlagen lassen sich unter **Eigene Vorlagen** über das Marketplace-Symbol im [Marketplace](/marketplace) veröffentlichen; hochgeladene Bilder und Datensatzkarten bleiben dabei im Arbeitsbereich.
 
 ## Workflow-Vorlagen
 

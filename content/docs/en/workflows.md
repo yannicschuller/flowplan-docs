@@ -35,6 +35,8 @@ A new workflow page offers four ways:
 
 Whatever you choose lands on the canvas as a **draft** – **Undo** takes it away again. A workflow never becomes active by itself.
 
+Find more workflows in the [marketplace](/marketplace). Share one of your own with the marketplace icon in the head of the workflow page – without credentials, runs, webhook addresses and names of people. Workflows you take over always arrive paused, as a draft; what belongs to your workspace (page, database, person …) you set in the editor afterwards.
+
 ## The canvas
 
 - **Node list** on the left: triggers, logic, records, pages, notify, AI, HTTP – with a search. Drag, or click (appends after the selected node).

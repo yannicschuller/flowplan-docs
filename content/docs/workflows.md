@@ -35,6 +35,8 @@ Eine neue Workflow-Seite zeigt vier Wege:
 
 Was du wählst, landet als **Entwurf** auf der Fläche – mit **Rückgängig** wieder weg. Aktiv wird ein Workflow nie von selbst.
 
+Weitere Workflows findest du im [Marketplace](/marketplace). Einen eigenen Workflow teilst du über das Marketplace-Symbol im Kopf der Workflow-Seite – ohne Zugangsdaten, Läufe, Webhook-Adressen und Namen von Personen. Übernommene Workflows kommen immer pausiert als Entwurf an; Angaben, die zu deinem Arbeitsbereich gehören (Seite, Datenbank, Person …), legst du danach im Editor fest.
+
 ## Die Fläche
 
 - **Knotenliste** links: Auslöser, Logik, Einträge, Seiten, Benachrichtigen, KI, HTTP – mit Suche. Ziehen oder anklicken (hängt hinter dem gewählten Knoten an).

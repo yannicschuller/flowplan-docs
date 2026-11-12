@@ -126,6 +126,8 @@ Optional and off by default: provider (Ollama, OpenAI-compatible, Anthropic, Gem
 
 **Block extensions from any HTTPS address** (off: only from `PLUGIN_ALLOWED_ORIGINS`) and **Custom domains for publications** – see [Block extensions](/plugins) and [Coolify and reverse proxies](/coolify-and-proxy#custom-domains-for-publications).
 
+**Marketplace**: switch publishing to and taking over from the [Flowplan Marketplace](/marketplace) on or off for the whole instance.
+
 ## Encryption
 
 The key ID, earlier keys, how many files in the bucket are not yet encrypted with this key (**Encrypt existing objects** catches up), and what leaves the server unencrypted regardless (Litestream, Git export). See [Encryption](/storage-and-backups#encryption).
