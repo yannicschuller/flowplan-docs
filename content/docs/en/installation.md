@@ -186,6 +186,8 @@ With a self-built image, use `git pull` and `docker compose up -d --build` inste
 
 On start, Flowplan migrates the database itself. Make a backup beforehand (see [Storage, S3 and backups](/storage-and-backups)); going back to an older version after a migration is not supported.
 
+After the update everyone sees **New in Flowplan** once the next time they open Flowplan: the release notes of every version since the one they last saw – the newest unfolded, older ones folded, grouped into **Breaking changes**, **Security**, **New**, **Improved** and **Bug fixes**; breaking changes are highlighted at the top. **Close** (or Esc) and **Settings** dismiss the dialog for this version. The notes are part of the image: Flowplan does not ask the internet for them. New accounts start at the running version and see no older notes; accounts from before 0.9.4 see only 0.9.4's notes after updating to it. Beta images (`:beta`) show the notes up to the version they report – the next release's notes only with that release. Everyone chooses what they get under **Settings → Appearance & language → What's new after updates** ([Light and dark](/en/offline-and-apps#light-and-dark)); administrators set the default for new accounts under **Administration → Instance** ([Instance](/en/administration#instance)). The complete list of changes is in the [changelog on GitHub](https://github.com/yannicschuller/flowplan/blob/main/CHANGELOG.md).
+
 ### Upgrading to 0.7.0
 
 Nothing to do by hand; Flowplan creates the new tables (for idempotency keys and the push relay, among others) on start. What changes for operations:

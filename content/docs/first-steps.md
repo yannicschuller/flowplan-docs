@@ -100,6 +100,7 @@ Fragen, Ideen oder einfach Hallo sagen: Im **[Flowplan-Discord](https://discord.
 **Einstellungen → Hilfe & Info → Über Flowplan** (`/#settings/about`, auch im Kontomenü ⋯ unten in der Seitenleiste – auf dem Telefon unter **Mehr** – und mit `⌘/Strg + K` → „Über Flowplan“) zeigt:
 
 - **Version:** die laufende Version, den Commit und das Build-Datum, bei unseren Docker-Images auch, ob es eine **Beta** (`:beta`) oder ein **Release** ist. Admins sehen hier zusätzlich, wenn eine neuere Version bekannt ist. Bei einer Fehlermeldung die Version am besten mit angeben.
+- **Was ist neu:** öffnet die Versionshinweise der letzten Versionen (siehe [Neuigkeiten nach Updates](/offline-and-apps#hell-und-dunkel)).
 - **Lizenz & Quellcode:** Flowplan ist freie Software unter der GNU AGPL-3.0 – mit Link zum Lizenztext und zum Quellcode des Codes, der auf dieser Instanz läuft.
 - **Links:** Website, Dokumentation, Discord und „Fehler melden“ (GitHub Issues).
 - **Flowplan unterstützen ♥:** ein Link zu GitHub Sponsors. In den Apps für iPhone, iPad und Android erscheint er nie (Regeln der App Stores); Admins können ihn mit `FLOWPLAN_HIDE_SPONSOR=true` ausblenden ([Konfiguration](/configuration#rechtliches-und-oberflaeche)).

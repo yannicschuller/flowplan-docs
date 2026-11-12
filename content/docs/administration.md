@@ -152,6 +152,7 @@ Zustand, Nutzung und Ereignisse der Instanz – live: oben fünf Kennzahlen (**A
 | Öffentliche Demo | Besucher probieren Flowplan ohne Konto aus, siehe [Demo](#demo). |
 | Version | Laufende **Version**, **Commit** (verlinkt auf GitHub) und Build-Datum. Docker-Images aus unserem Workflow kennen ihren Commit; bei Coolify kommt er aus `SOURCE_COMMIT`. Bei einem eigenen Build `--build-arg GIT_COMMIT=$(git rev-parse HEAD)` mitgeben, sonst steht dort „Commit unbekannt“. Ist eine neuere Version da, steht dort ein Hinweis mit **So aktualisierst du**. |
 | Admin-Gruppe | Die SSO- oder LDAP-Gruppe aus `OIDC_ADMIN_GROUP`. |
+| Neuigkeiten nach Updates für neue Konten | Womit neue Konten bei **Neuigkeiten nach Updates** beginnen: **Alle anzeigen** (Standard), **Nur Breaking Changes** oder **Nie**. Gilt nur für Konten, die danach angelegt werden; bestehende Konten behalten ihre Einstellung, und jede Person kann sie unter **Darstellung & Sprache** ändern. |
 
 Version, Lizenz und Quellcode sehen alle Personen unter **Einstellungen → Über Flowplan**; dort steht bei unseren Images auch, ob es eine Beta oder ein Release ist (eigene Builds: `--build-arg FLOWPLAN_CHANNEL=beta` oder `release`). Wer veränderten Code betreibt, nennt dessen Quellcode mit `FLOWPLAN_SOURCE_URL`; den Link zu GitHub Sponsors blendet `FLOWPLAN_HIDE_SPONSOR=true` aus ([Konfiguration](/configuration#rechtliches-und-oberflaeche)).
 
