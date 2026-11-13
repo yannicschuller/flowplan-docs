@@ -26,11 +26,13 @@ Gäste veröffentlichen nie etwas.
 ::: steps
 
 1. Bei der Vorlage, dem Workflow oder in den Einstellungen **Im Marketplace veröffentlichen …** wählen.
-2. Im Dialog Titel, Kurzbeschreibung (Deutsch und Englisch), Kategorie, Schlagwörter und Sprache prüfen und bis zu **vier Vorschaubilder** hinzufügen (PNG, JPEG oder WebP, je höchstens 1 MB). Für Dokumente und Datenbanken lohnt sich ein Bildschirmfoto – Flowplan erstellt selbst keins.
+2. Im Dialog den Titel auf Deutsch (optional) und auf Englisch, die Kurzbeschreibung (Deutsch und Englisch), Kategorie, Schlagwörter und Sprache prüfen und bis zu **vier Vorschaubilder** hinzufügen (PNG, JPEG oder WebP, je höchstens 1 MB). Für Dokumente und Datenbanken lohnt sich ein Bildschirmfoto – Flowplan erstellt selbst keins.
 3. **Im Marketplace öffnen**: Flowplan erstellt die Datei, öffnet die Einreichungsseite des Marketplace in einem neuen Fenster und übergibt sie dort. Du meldest dich an, wählst die **Lizenz** (Standard CC BY 4.0, außerdem CC0 und MIT), bestätigst, dass du die Rechte am Inhalt hast, und reichst ein.
 4. Alternativ **Als Datei herunterladen**: Die `.flowplan-template`-Datei lädst du dann auf der Einreichungsseite selbst hoch.
 
 :::
+
+Der Marketplace zeigt Besucher:innen den Titel in ihrer Sprache – oben rechts wechselst du zwischen **DE** und **EN**. Deshalb braucht jede Vorlage einen englischen Titel; Flowplan füllt das Feld deiner Oberflächensprache mit dem Seitentitel vor, den anderen ergänzt du. Mit der nächsten Flowplan-Version wird der englische Titel Pflicht; Pakete älterer Versionen ohne ihn nimmt der Marketplace bis dahin noch an und zeigt den deutschen Titel.
 
 Was nie mitkommt: Zugangsdaten, Läufe und Webhook-Adressen eines Workflows, die Adresse deiner Instanz, Namen von Personen, hochgeladene Bilder eines Whiteboards (nur Bilder mit https-Adresse) und Datensatzkarten. Verweise eines Workflows auf Seiten, Datenbanken und Personen werden beim Übernehmen über den Namen neu zugeordnet oder bleiben leer. Bei Erscheinungsbildern mit eigenen Schriften: Veröffentliche nur Schriften, deren Lizenz das Weitergeben erlaubt.
 
