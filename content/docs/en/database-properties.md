@@ -1,10 +1,11 @@
 ---
-keywords: property, field, column, type, select, multi-select, rich text
+keywords: property, field, column, type, select, multi-select, rich text, colour, color
+new: option-colours 2026-11-13
 ---
 
 # Database properties
 
-A database's property types at a glance, formatted text in fields and multi-selects with the workspace's tags.
+A database's property types at a glance, colours for select options, formatted text in fields and multi-selects with the workspace's tags.
 
 ## Properties
 
@@ -13,7 +14,7 @@ A database's property types at a glance, formatted text in fields and multi-sele
 | Text | Formatted text: bold, italic, strikethrough, code, links, line breaks (see below) |
 | Number | Numbers with a format: currency, percent, decimal places, thousands separators |
 | Date | With or without time and end date, time zone, personal reminders, recurrence |
-| Select, multi-select | Coloured options, e.g. for status or tags |
+| Select, multi-select | Options with a colour each ([see below](#option-colours)), e.g. for status or tags |
 | Checkbox, checklist | Tick off; checklists with several items and progress |
 | URL, e-mail, phone | Clickable |
 | Person | Members of the workspace; assigning someone notifies them |
@@ -32,6 +33,18 @@ Below a record's title, the **Properties** arrow folds the properties into one l
 - Without a choice of your own, properties are expanded on a computer; on a phone they are collapsed as soon as the record shows more than four properties. A record you have just created always opens expanded so you can fill it in.
 - Collapsing changes no values and no permissions and only applies to you. Printing and exports always show all properties – unless you turn them off in the [print options](/print-and-pdf#print-and-pdf).
 - Ordinary pages have the same in the [bar with tags and properties](/page-tags#collapsing-the-bar).
+
+### Option colours
+
+Every option of a select or multi-select can have its own colour – grey, blue, green, red, yellow, orange, purple, pink or teal, the same colours as [tags](/page-tags). The colour shows wherever the value appears: table, board columns, list, gallery, feed, groups, filters, in the record, in forms (multi-selects) and on published pages.
+
+- **Changing it:** in the property's settings (click the column header), every option is listed as a chip below the options – click one to pick its colour. Faster, on the value itself: right-click a chip in the table or the header of a board column and choose a colour. It is saved at once; **Undo** in the notice brings the old colour back.
+- **New options** get the next colour in turn by themselves – whether you type them in the settings, add a board column or they come in through an import, the API or AI. A renamed option keeps its colour.
+- **Assign colours automatically** colours all options of the property in turn at once (replacing the colours set so far). **Undo** next to it or closing without saving discards it, **Save** keeps it.
+- **Existing databases** look as before until you set colours: options without a colour are grey, only a few fixed words such as “Done” or “High” are coloured.
+- **Import:** Notion's HTML export brings the options' colours along (Notion's brown becomes orange, “default” grey), as does AFFiNE; CSV, Markdown, Jira and Trello get colours in turn. When records are moved or copied to another database, new options take their colour along. The CSV export has no colours.
+- **API and MCP:** `database.update` accepts and returns `optionColors`, e.g. `{"Open": "blue"}`. Without `optionColors` the stored colours stay; `{}` removes them.
+- A multi-select with the workspace's tags ([below](#multi-select-with-the-workspace-tags)) shows the tags' colours.
 
 ### Formatted text
 
@@ -57,6 +70,6 @@ Instead of its own list, a multi-select can have the **workspace's tags** as its
 - It stays a multi-select: filters, sorting, grouping, board columns, formulas, automations, import and export (Markdown, CSV, Git), API and MCP work as usual. The tag names are stored.
 - **Renaming, merging and deleting** a tag (Settings → Tags & properties) changes every record with that tag as well: a renamed tag shows under its new name, merging turns the one tag into the other (without duplicates), a deleted tag disappears from the records. Filters and board columns of views follow; Flowplan first keeps a version of every database affected in its version history.
 - Records with tags appear in the [tag view](/page-tags#tag-view) next to the pages and are found with `#tag` / `-#tag` in the search.
-- **Switching** an existing multi-select to the tags: its options are matched to tags (ignoring case), missing tags are created; the records keep their values, now with the tag's exact name. **Back to “Own list”**, the tags become its own options – the ones in use first, at most 100; the values stay.
+- **Switching** an existing multi-select to the tags: its options are matched to tags (ignoring case), missing tags are created; the records keep their values, now with the tag's exact name. **Back to “Own list”**, the tags become its own options – the ones in use first, at most 100; the values stay. The options keep the tags' colours.
 - Guests only see the tags used in the records shared with them as options and create none. Through share links a record only offers its own tags.
 - In [encrypted spaces](/encrypted-spaces) the option does not exist (like tags on pages).

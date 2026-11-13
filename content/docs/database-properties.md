@@ -1,10 +1,11 @@
 ---
-keywords: Eigenschaft, Feld, Spalte, Typ, Auswahl, Mehrfachauswahl, Rich Text
+keywords: Eigenschaft, Feld, Spalte, Typ, Auswahl, Mehrfachauswahl, Rich Text, Farbe
+new: farben-der-optionen 2026-11-13
 ---
 
 # Eigenschaften von Datenbanken
 
-Die Eigenschaftstypen einer Datenbank im Überblick, formatierter Text in Feldern und Mehrfachauswahlen mit den Tags des Arbeitsbereichs.
+Die Eigenschaftstypen einer Datenbank im Überblick, Farben für Auswahl-Optionen, formatierter Text in Feldern und Mehrfachauswahlen mit den Tags des Arbeitsbereichs.
 
 ## Eigenschaften
 
@@ -13,7 +14,7 @@ Die Eigenschaftstypen einer Datenbank im Überblick, formatierter Text in Felder
 | Text | Formatierter Text: fett, kursiv, durchgestrichen, Code, Links, Zeilenumbrüche (siehe unten) |
 | Zahl | Zahlen mit Format: Währung, Prozent, Dezimalstellen, Tausendertrennzeichen |
 | Datum | Mit oder ohne Uhrzeit und Enddatum, Zeitzone, persönliche Erinnerungen, Wiederholung |
-| Auswahl, Mehrfachauswahl | Farbige Optionen, z. B. für Status oder Schlagworte |
+| Auswahl, Mehrfachauswahl | Optionen mit eigener Farbe ([siehe unten](#farben-der-optionen)), z. B. für Status oder Schlagworte |
 | Checkbox, Checkliste | Abhaken; Checklisten mit mehreren Punkten und Fortschritt |
 | URL, E-Mail, Telefon | Anklickbar |
 | Person | Mitglieder des Arbeitsbereichs; Zuweisung benachrichtigt |
@@ -32,6 +33,18 @@ Unter dem Titel eines Eintrags klappt der Pfeil **Eigenschaften** die Eigenschaf
 - Ohne eigene Wahl sind die Eigenschaften am Computer aufgeklappt, auf dem Telefon eingeklappt, sobald der Eintrag mehr als vier Eigenschaften zeigt. Ein gerade angelegter Eintrag öffnet immer aufgeklappt, damit du ihn ausfüllen kannst.
 - Einklappen ändert keine Werte und keine Rechte und gilt nur für dich. Drucken und Exporte zeigen immer alle Eigenschaften – außer du schaltest sie in den [Druckoptionen](/print-and-pdf#drucken-und-pdf) ab.
 - Für normale Seiten gibt es dasselbe in der [Leiste mit Tags und Eigenschaften](/page-tags#leiste-einklappen).
+
+### Farben der Optionen
+
+Jede Option einer Auswahl oder Mehrfachauswahl kann ihre eigene Farbe haben – Grau, Blau, Grün, Rot, Gelb, Orange, Lila, Rosa oder Türkis, dieselben Farben wie bei den [Tags](/page-tags). Die Farbe zeigt sich überall, wo der Wert steht: Tabelle, Board-Spalten, Liste, Galerie, Feed, Gruppen, Filter, im Eintrag, bei Mehrfachauswahlen in Formularen und auf veröffentlichten Seiten.
+
+- **Ändern:** In den Einstellungen der Eigenschaft (Klick auf die Spaltenüberschrift) steht unter den Optionen jede Option als Chip – ein Klick darauf öffnet die Farben. Schneller geht es am Wert selbst: Rechtsklick auf einen Chip in der Tabelle oder auf die Überschrift einer Board-Spalte, Farbe wählen. Das wird sofort gespeichert; **Rückgängig** im Hinweis stellt die alte Farbe wieder her.
+- **Neue Optionen** bekommen von selbst die nächste Farbe der Reihe – ob du sie in den Einstellungen tippst, auf dem Board eine Spalte anlegst oder sie per Import, API oder KI dazukommen. Eine umbenannte Option behält ihre Farbe.
+- **Farben automatisch vergeben** färbt alle Optionen der Eigenschaft auf einmal der Reihe nach (vorhandene Farben werden ersetzt). **Rückgängig** daneben oder Schließen ohne Speichern verwirft das, **Speichern** übernimmt es.
+- **Bestehende Datenbanken** sehen aus wie vorher, bis du Farben setzt: Optionen ohne Farbe sind grau, nur einige feste Wörter wie „Erledigt“ oder „Hoch“ sind farbig.
+- **Import:** Der HTML-Export von Notion bringt die Farben der Optionen mit (Notions Braun wird Orange, „Standard“ Grau), ebenso AFFiNE; CSV, Markdown, Jira und Trello bekommen Farben der Reihe nach. Beim Verschieben oder Kopieren von Einträgen in eine andere Datenbank nehmen neue Optionen ihre Farbe mit. Der CSV-Export enthält keine Farben.
+- **API und MCP:** `database.update` nimmt und liefert `optionColors`, z. B. `{"Offen": "blue"}`. Ohne `optionColors` bleiben die gespeicherten Farben, `{}` entfernt sie.
+- Eine Mehrfachauswahl mit den Tags des Arbeitsbereichs ([unten](#mehrfachauswahl-mit-den-tags-des-arbeitsbereichs)) zeigt die Farben der Tags.
 
 ### Formatierter Text
 
@@ -57,6 +70,6 @@ Eine Mehrfachauswahl kann statt einer eigenen Liste die **Tags des Arbeitsbereic
 - Es bleibt eine Mehrfachauswahl: Filter, Sortierung, Gruppierung, Board-Spalten, Formeln, Automationen, Import und Export (Markdown, CSV, Git), API und MCP funktionieren wie gewohnt. Gespeichert werden die Tag-Namen.
 - **Umbenennen, Zusammenführen und Löschen** eines Tags (Einstellungen → Tags & Eigenschaften) ändert alle Einträge mit diesem Tag gleich mit: Ein umbenannter Tag erscheint unter seinem neuen Namen, beim Zusammenführen wird aus dem einen Tag der andere (ohne Doppel), ein gelöschter Tag verschwindet aus den Einträgen. Filter und Board-Spalten der Ansichten folgen; vorher sichert Flowplan einen Stand jeder betroffenen Datenbank im Versionsverlauf.
 - Einträge mit Tags erscheinen in der [Tag-Ansicht](/page-tags#tag-ansicht) neben den Seiten und werden mit `#Tag` / `-#Tag` in der Suche gefunden.
-- **Umstellen** einer vorhandenen Mehrfachauswahl auf die Tags: Ihre Optionen werden den Tags zugeordnet (ohne Rücksicht auf Groß-/Kleinschreibung), fehlende Tags werden angelegt; die Werte der Einträge bleiben und tragen danach den genauen Namen des Tags. **Zurück auf „Eigene Liste“** werden die Tags zu eigenen Optionen – die verwendeten zuerst, höchstens 100; die Werte bleiben.
+- **Umstellen** einer vorhandenen Mehrfachauswahl auf die Tags: Ihre Optionen werden den Tags zugeordnet (ohne Rücksicht auf Groß-/Kleinschreibung), fehlende Tags werden angelegt; die Werte der Einträge bleiben und tragen danach den genauen Namen des Tags. **Zurück auf „Eigene Liste“** werden die Tags zu eigenen Optionen – die verwendeten zuerst, höchstens 100; die Werte bleiben. Die Optionen behalten dabei die Farben der Tags.
 - Gäste sehen als Optionen nur die Tags, die in den für sie freigegebenen Einträgen vorkommen, und legen keine an. Über Freigabelinks bietet ein Eintrag nur seine eigenen Tags an.
 - In [verschlüsselten Bereichen](/encrypted-spaces) gibt es diese Option nicht (wie Tags auf Seiten).
