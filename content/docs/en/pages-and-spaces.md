@@ -32,7 +32,7 @@ The `…` menu at the top right of every page offers:
 | Action | Effect |
 | --- | --- |
 | Change icon, change cover | Emoji, symbol or your own image; upload a cover image or choose an existing one and set its position. |
-| Full width | The content uses the whole window width. |
+| Full width | The content uses the whole window width – for everyone who opens the page. If you turned on [Show pages at full width](/offline-and-apps#light-and-dark) under **Settings → Appearance & language → Editor**, you see every page this way; the entry then says "Your setting". |
 | Change font | Default, serif or mono for this page. |
 | Lock page | Protects against accidental changes until someone unlocks it. |
 | Duplicate | A copy including sub-pages, databases and files; internal links point to the copies. |

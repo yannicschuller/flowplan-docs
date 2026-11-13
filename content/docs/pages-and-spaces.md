@@ -32,7 +32,7 @@ Das Menü `…` oben rechts auf jeder Seite bietet:
 | Aktion | Wirkung |
 | --- | --- |
 | Icon ändern, Cover ändern | Emoji, Symbol oder eigenes Bild; Titelbild hochladen oder ein vorhandenes Bild wählen und die Position einstellen. |
-| Volle Breite | Inhalt nutzt die ganze Fensterbreite. |
+| Volle Breite | Inhalt nutzt die ganze Fensterbreite – für alle, die die Seite öffnen. Wer unter **Einstellungen → Darstellung & Sprache → Editor** [Seiten in voller Breite anzeigen](/offline-and-apps#hell-und-dunkel) eingeschaltet hat, sieht jede Seite so; dann steht hier „Deine Einstellung“. |
 | Schrift wechseln | Standard, Serif oder Mono für diese Seite. |
 | Seite sperren | Schützt vor versehentlichen Änderungen, bis jemand entsperrt. |
 | Duplizieren | Kopie samt Unterseiten, Datenbanken und Dateien; interne Links zeigen auf die Kopien. |

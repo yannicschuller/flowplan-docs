@@ -8,7 +8,7 @@ Inhaltsverzeichnis, einklappbare Abschnitte, Lese- und Fokusmodus, Autoren anzei
 
 ## Inhaltsverzeichnis
 
-Das Listen-Symbol oben rechts im Dokument öffnet das **Inhaltsverzeichnis** neben dem Text – in allen Dokumenten, auch in Journal-Tagen und Einträgen einer Datenbank. Es entsteht aus den Überschriften und wächst beim Schreiben mit, markiert den Abschnitt, in dem du gerade liest, und springt per Klick zur Überschrift. Ob es offen ist, merkt sich Flowplan in diesem Browser für alle Dokumente. Auf dem Handy öffnet es ein runder Knopf unten rechts.
+Das Listen-Symbol oben rechts im Dokument öffnet das **Inhaltsverzeichnis** neben dem Text – in allen Dokumenten, auch in Journal-Tagen und Einträgen einer Datenbank. Es entsteht aus den Überschriften und wächst beim Schreiben mit, markiert den Abschnitt, in dem du gerade liest, und springt per Klick zur Überschrift. Der Kopf des Inhaltsverzeichnisses mit dem Schließen-Knopf bleibt oben stehen, auch wenn du in einer langen Liste nach unten scrollst; mit <kbd>Esc</kbd> schließt du die Liste. Ob es offen ist, merkt sich Flowplan in diesem Browser für alle Dokumente. Auf dem Handy öffnet es ein runder Knopf unten rechts.
 
 ## Abschnitte einklappen
 

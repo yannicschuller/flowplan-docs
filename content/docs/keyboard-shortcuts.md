@@ -79,8 +79,9 @@ Die Übersicht zeigt die Tasten so, wie sie auf deinem Gerät heißen: auf dem M
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Block nach oben / unten (eine eingeklappte Überschrift mit ihrem Abschnitt); bei ausgewählter Tabellenzeile: Zeile nach oben / unten |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>←</kbd> / <kbd>→</kbd> | Bei ausgewählter Tabellenspalte: Spalte nach links / rechts |
 | <kbd>⌘</kbd> <kbd>D</kbd> | Block duplizieren, auch ausgewählte Blöcke oder eine ausgewählte Tabellenzeile oder -spalte |
-| <kbd>Esc</kbd> | Block mit dem Cursor auswählen ([mehrere Blöcke auswählen](/blocks#mehrere-bloecke-auswaehlen)) |
-| <kbd>⌘</kbd> <kbd>A</kbd> zweimal | Alle Blöcke auswählen |
+| <kbd>Esc</kbd> | Block mit dem Cursor auswählen ([mehrere Blöcke auswählen](/blocks#mehrere-bloecke-auswaehlen)); bei offenem Blockmenü: Menü schließen, der Block bleibt ausgewählt; bei ausgewählten Blöcken: Auswahl beenden |
+| <kbd>⌘</kbd> <kbd>A</kbd> | Im Text: zuerst den Text des Blocks, beim zweiten Mal alle Blöcke auswählen; bei ausgewählten Blöcken: gleich alle Blöcke |
+| <kbd>⌘</kbd> <kbd>C</kbd> / <kbd>⌘</kbd> <kbd>X</kbd> | Bei ausgewählten Blöcken: Blöcke kopieren / ausschneiden – <kbd>⌘</kbd> <kbd>V</kbd> fügt sie wieder als Blöcke ein, auch in einer anderen Seite |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> | In einer Überschrift: ihren [Abschnitt ein- oder ausklappen](/reading-and-presenting#abschnitte-einklappen); in einem [aufklappbaren Block](/documents#aufklappbare-bloecke): ihn ein- oder ausklappen |
 | <kbd>⇧</kbd> <kbd>Enter</kbd> | Zeilenumbruch im selben Block |
 | <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>Z</kbd> | Rückgängig / Wiederholen |

@@ -8,7 +8,7 @@ Table of contents, collapsible sections, reading and focus mode, showing authors
 
 ## Table of contents
 
-The list icon at the top right of a document opens the **table of contents** beside the text – in every document, journal days and database records included. It is built from the headings and grows while you write, marks the section you are reading and jumps to a heading on click. Whether it is open is remembered in this browser for all documents. On a phone a round button at the bottom right opens it.
+The list icon at the top right of a document opens the **table of contents** beside the text – in every document, journal days and database records included. It is built from the headings and grows while you write, marks the section you are reading and jumps to a heading on click. Its header with the close button stays at the top while you scroll a long list; press <kbd>Esc</kbd> to close the list. Whether it is open is remembered in this browser for all documents. On a phone a round button at the bottom right opens it.
 
 ## Collapsing sections
 
