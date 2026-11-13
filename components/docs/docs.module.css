@@ -981,6 +981,39 @@
   margin: 0 10px;
   color: var(--muted);
 }
+/* "Ask Claude", "Ask ChatGPT", "Copy as Markdown", "View as Markdown" (page-ai.tsx). */
+.pageAi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
+  font-size: 13px;
+}
+.pageAi a,
+.pageAi button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--secondary);
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 120ms var(--ease), color 120ms var(--ease);
+}
+.pageAi a:hover,
+.pageAi button:hover {
+  border-color: var(--blue);
+  color: var(--text);
+}
+.pageAi a:focus-visible,
+.pageAi button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
 .pageMeta .newBadge {
   vertical-align: 0.05em;
   margin-right: 2px;
