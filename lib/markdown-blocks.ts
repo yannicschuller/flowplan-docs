@@ -18,10 +18,16 @@
 //   ++⌘ K++             a key combination: one <kbd> per key, keys split
 //                       by spaces; "⌘/Strg" is one key with alternatives.
 //
+//   {since=0.9.6}       a version marker after a heading or what is new in
+//                       a paragraph, list item or table cell: "Neu in 0.9.6
+//                       · im :beta-Image" until that version is released,
+//                       "Seit 0.9.6" afterwards (lib/release.ts).
+//
 // Everything a writer types here is escaped; only the Markdown inside a
 // container is rendered as Markdown.
 import type { MarkedExtension, Tokens } from "marked";
 import type { Locale } from "./i18n";
+import { SINCE_START, sinceHtml } from "./release";
 
 export const esc = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
@@ -160,7 +166,7 @@ export function splitTabs(body: string) {
 // heading (tab titles sit one below it) and a counter for unique ids.
 export type BlockState = { depth: number; tabs: number };
 
-export function contentBlocks(state: BlockState): MarkedExtension {
+export function contentBlocks(state: BlockState, locale: Locale = "de"): MarkedExtension {
   return {
     extensions: [
       {
@@ -203,6 +209,19 @@ export function contentBlocks(state: BlockState): MarkedExtension {
           return { type: "keys", raw: m[0], text: m[1] };
         },
         renderer: (token) => keysHtml(token.text),
+      },
+      {
+        name: "since",
+        level: "inline",
+        start: (src) => {
+          const i = src.indexOf(SINCE_START);
+          return i < 0 ? undefined : i;
+        },
+        tokenizer(src) {
+          const m = /^\{since=(\d+\.\d+\.\d+)\}/.exec(src);
+          if (m) return { type: "since", raw: m[0], version: m[1] };
+        },
+        renderer: (token) => sinceHtml(token.version, locale),
       },
     ],
   };

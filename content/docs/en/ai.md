@@ -150,7 +150,7 @@ The AI **never** reads:
 
 On a page the AI may not read, AI features are greyed out with a note saying why.
 
-When you ask the AI about a journal day (**This page**, the writing assistant, summaries), it also gets the "Completed this day" list – as you see it, and only what it may read. In workflows, the step [Read journal day](/en/workflow-nodes) hands a day to the AI.
+When you ask the AI about a journal day (**This page**, the writing assistant, summaries), it also gets the "Completed this day" list – as you see it, and only what it may read. In workflows, the step [Read journal day](/en/workflow-nodes) hands a day to the AI. {since=0.9.6}
 
 ## Security of keys
 

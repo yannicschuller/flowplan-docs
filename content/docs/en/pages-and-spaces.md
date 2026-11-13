@@ -32,7 +32,7 @@ The `…` menu at the top right of every page offers:
 | Action | Effect |
 | --- | --- |
 | Change icon, change cover | Emoji, symbol or your own image; upload a cover image or choose an existing one and set its position. |
-| Full width | The content uses the whole window width – for everyone who opens the page. If you turned on [Show pages at full width](/offline-and-apps#light-and-dark) under **Settings → Appearance & language → Editor**, you see every page this way; the entry then says "Your setting". |
+| Full width | The content uses the whole window width – for everyone who opens the page. If you turned on [Show pages at full width](/offline-and-apps#light-and-dark) under **Settings → Appearance & language → Editor**, you see every page this way; the entry then says "Your setting". {since=0.9.6} |
 | Change font | Default, serif or mono for this page. |
 | Lock page | Protects against accidental changes until someone unlocks it. |
 | Duplicate | A copy including sub-pages, databases and files; internal links point to the copies. |
@@ -51,7 +51,7 @@ Clicking a page's icon also opens the picker for an emoji, a symbol or your own 
 
 ### Right-click in the sidebar
 
-Right-clicking a page in the page tree or under favourites – a long press on a phone – opens its actions directly: **Open in new tab**, **Open in split view**, **Copy link**, **Add to favourites**, **Share**, **Add sub-page**, **Change icon**, **Duplicate**, **Move**, **Export**, **Lock page** and **Move to trash**. Actions with a dialog open the page first. If the page is part of a selection of several pages, the actions apply to all selected pages.
+Right-clicking a page in the page tree or under favourites – a long press on a phone – opens its actions directly: **Open in new tab**, **Open in split view**, **Copy link**, **Add to favourites**, **Share**, **Add sub-page**, **Change icon**, **Duplicate**, **Move**, **Export**, **Lock page** and **Move to trash**. Actions with a dialog open the page first. If the page is part of a selection of several pages, the actions apply to all selected pages. {since=0.9.6}
 
 ### Filter pages
 
@@ -80,7 +80,7 @@ The right page is part of the address (`?split=…`): reloading and bookmarks ke
 ## Arrange and move
 
 - Reorder pages in the sidebar by drag and drop, or drag them onto another page to nest them. Dropped onto a record with sub-pages (below its database) or onto the sub-pages of an open record, the page becomes its [sub-page](/databases#sub-pages-of-a-record). On touch screens a handle only picks something up after a short hold (about 0.3 seconds, with a short vibration); swiping before that scrolls the page, and a quick tap works as usual. The same goes for blocks in a document, home page widgets and records, cards and columns in databases. With a mouse or pen it starts right away.
-- **Select pages** (the tick icon on a space) or <kbd>⇧</kbd>-click marks several pages (<kbd>Ctrl</kbd>/<kbd>⌘</kbd>-click then adds more). The selection bar offers **Move**, **Duplicate** and **Trash**; under `⋯` – or by right-clicking (long-pressing) a selected page – you also find **Lock pages** and **Unlock pages**, **Add to favourites** or **Remove from favourites**, and **Copy links** (one link per line). If only part of the selection is locked or starred, both actions show with their count, e.g. "Lock 2 pages". Pages you may not edit are skipped when locking, and the message tells you how many. Only the selected pages are locked, not their sub-pages.
+- **Select pages** (the tick icon on a space) or <kbd>⇧</kbd>-click marks several pages (<kbd>Ctrl</kbd>/<kbd>⌘</kbd>-click then adds more). The selection bar offers **Move**, **Duplicate** and **Trash**; under `⋯` – or by right-clicking (long-pressing) a selected page – you also find **Lock pages** and **Unlock pages**, **Add to favourites** or **Remove from favourites**, and **Copy links** (one link per line). If only part of the selection is locked or starred, both actions show with their count, e.g. "Lock 2 pages". Pages you may not edit are skipped when locking, and the message tells you how many. Only the selected pages are locked, not their sub-pages. {since=0.9.6}
 - **Moving** to another workspace takes sub-pages, database records and files along. Shares with groups or people who are not members there are dropped. Databases with relations to databases staying behind have to be detached first.
 - **Moved to another space** (or workspace), pages keep the [tags and properties of the whole workspace](/page-tags#scope-workspace-or-space). If they (or their sub-pages and the records of their databases) carry tags or properties that apply **only in their current space**, a step **Bring tags and properties along** asks for each one:
   - **Map** to a tag or a property of the same type at the destination – the one with the same name is suggested if there is one,

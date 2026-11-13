@@ -4,11 +4,15 @@
 //   CHANGELOG.md → content/changelog.md   the "What's new" page
 //   facts.json   → content/facts.json     counts the pages state ({{facts.…}})
 //
+// and the latest release's tag (GitHub API, scripts/latest-release.mjs) into
+// content/release.json, for the version markers {since=X.Y.Z} of the pages.
+//
 // Like scripts/last-modified.mjs it never fails the build: without network,
 // or when a file looks wrong, the committed copy stays. FLOWPLAN_APP_RAW
 // points to another base address (a branch, or file:///path/to/flowplan/).
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { fetchLatestRelease, releaseFile } from "./latest-release.mjs";
 
 const base = (process.env.FLOWPLAN_APP_RAW || "https://raw.githubusercontent.com/yannicschuller/flowplan/main/").replace(/\/?$/, "/");
 const root = process.cwd();
@@ -57,3 +61,17 @@ await copy("facts.json", "content/facts.json", (text) => {
   }
   return { text: JSON.stringify(facts, null, 2) + "\n", label: `facts ${FACT_KEYS.map((k) => `${k} ${facts[k]}`).join(", ")}` };
 });
+
+try {
+  const release = await fetchLatestRelease();
+  // The release page (the fallback) has no date; keep the one we know.
+  if (!release.published) {
+    try {
+      const known = JSON.parse(readFileSync(join(root, "content/release.json"), "utf8"));
+      if (known.tag === release.tag) release.published = known.published ?? null;
+    } catch {}
+  }
+  write("content/release.json", releaseFile(release), `latest release ${release.tag}`);
+} catch (error) {
+  console.log(`app-files: could not read the latest release (${error.message}), keeping content/release.json`);
+}

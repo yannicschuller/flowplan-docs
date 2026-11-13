@@ -26,13 +26,13 @@ Guests never publish anything.
 ::: steps
 
 1. Choose **Publish to the marketplace …** on the template, the workflow or in the settings.
-2. In the dialog, check the title in German (optional) and English, the summary (German and English), category, tags and language, and add up to **four preview pictures** (PNG, JPEG or WebP, 1 MB each at most). For documents and databases a screenshot pays off – Flowplan doesn't create one itself.
+2. In the dialog, check the title in German (optional) and English {since=0.9.6}, the summary (German and English), category, tags and language, and add up to **four preview pictures** (PNG, JPEG or WebP, 1 MB each at most). For documents and databases a screenshot pays off – Flowplan doesn't create one itself.
 3. **Open in the marketplace**: Flowplan builds the file, opens the marketplace's submit page in a new window and hands it over there. You sign in, choose the **licence** (default CC BY 4.0, also CC0 and MIT), confirm that you hold the rights to the content and submit.
 4. Or **Download as a file**: upload the `.flowplan-template` file on the submit page yourself.
 
 :::
 
-The marketplace shows visitors the title in their language – switch between **DE** and **EN** at the top right. That is why every template needs an English title; Flowplan fills the field of your interface language with the page title, and you add the other one. With the next Flowplan version the English title becomes required; until then the marketplace still accepts packages from older versions without one and shows the German title.
+The marketplace shows visitors the title in their language – switch between **DE** and **EN** at the top right. That is why every template needs an English title; Flowplan fills the field of your interface language with the page title, and you add the other one. With the next Flowplan version the English title becomes required; until then the marketplace still accepts packages from older versions without one and shows the German title. {since=0.9.6}
 
 What is never included: a workflow's credentials, runs and webhook addresses, the address of your instance, names of people, pictures uploaded to a whiteboard (only pictures with an https address go along) and record cards. A workflow's references to pages, databases and people are matched by name on import or stay empty. For appearances with own typefaces: only publish typefaces whose licence allows passing them on.
 
