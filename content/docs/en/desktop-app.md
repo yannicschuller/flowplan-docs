@@ -47,6 +47,18 @@ On a Mac the app keeps running in the Dock after closing the window and keeps no
 
 This needs a Flowplan server 0.7.0 or newer and desktop app 1.0.7 or newer. The app only asks the profile's own instance, with its sign-in; nothing is stored on the server for it.
 
+## Self-signed certificates
+
+The desktop app connects to your server the way Chrome does: it trusts every certificate your system trusts. If your server uses its own certificate authority (CA), install it once in your system's certificate store and everything works without asking:
+
+- **macOS:** double-click the CA file (`.crt`/`.pem`), add it to the "System" keychain in Keychain Access, open it there and set "Trust" to "Always Trust".
+- **Windows:** double-click the CA file → "Install Certificate" → "Current User" → "Place all certificates in the following store" → "Trusted Root Certification Authorities".
+- **Linux:** `certutil -d sql:$HOME/.pki/nssdb -A -t "C,," -n "My CA" -i ca.crt` (package `libnss3-tools` or `nss-tools`), then restart Flowplan.
+
+If your system does not trust the certificate – a self-signed one, for example –, the app shows it when you add the server: server, issued to, issued by, validity and SHA-256 fingerprint. Compare the fingerprint with the one on your server (`openssl x509 -in cert.pem -noout -fingerprint -sha256`) and choose **Trust This Certificate**. Flowplan then trusts exactly this certificate for exactly this server in this profile. Expired or revoked certificates are never accepted.
+
+If the server later presents a different certificate, the app loads nothing and warns you with the old and the new fingerprint. Only trust the new one if you know the certificate was renewed. **Manage Profiles…** shows which certificate a profile trusts, and **Stop Trusting Certificate** removes it (Flowplan restarts for this). From version 1.3.9.
+
 ## More from the desktop app
 
 From desktop app 1.1.0 there is more around the window. Its switches are under **Settings…** (macOS: in the *Flowplan* menu, Windows and Linux: in the *File* menu).

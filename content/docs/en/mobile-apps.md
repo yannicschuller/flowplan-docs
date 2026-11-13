@@ -90,6 +90,15 @@ As soon as an `http://` address is in the field, the app warns before connecting
 
 For real use, set up HTTPS, see [Without HTTPS](/installation#without-https). With a Tailscale name (`*.ts.net`) you get HTTPS even without a public domain.
 
+## Own certificates
+
+If your instance uses a self-signed certificate or a private certificate authority (CA), ideally install the CA certificate on the device:
+
+- **iPhone/iPad:** download it (for example in Safari or via AirDrop), install it in **Settings → General → VPN & Device Management** and turn on full trust in **Settings → General → About → Certificate Trust Settings**. iOS requires the server name in the Subject Alternative Name and at most 825 days of validity.
+- **Android:** **Settings → Security → Encryption & credentials → Install a certificate → CA certificate**. The app trusts CAs you installed yourself.
+
+Without an installed certificate, the app shows issuer, validity and SHA-256 fingerprint when connecting. On **Android** you can then choose **Trust this certificate**: the app trusts exactly that certificate, only for that instance. If it changes, the app loads nothing and asks again; you can remove it in the app settings. On Android, the offline copy works only with an installed CA, not with a certificate confirmed this way. On **iPhone and iPad** the app explains how to install the certificate. From app version 1.0.12.
+
 ## Profiles in the mobile apps
 
 The apps for iPhone, iPad and Android also keep several instances as profiles:

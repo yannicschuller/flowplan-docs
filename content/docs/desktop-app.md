@@ -47,6 +47,18 @@ Auf dem Mac läuft die App nach dem Schließen des Fensters im Dock weiter und m
 
 Das braucht einen Flowplan-Server ab 0.7.0 und die Desktop-App 1.0.7 oder neuer. Die App fragt nur die eigene Instanz des Profils, mit dessen Anmeldung; auf dem Server wird dafür nichts hinterlegt.
 
+## Selbstsignierte Zertifikate
+
+Die Desktop-App verbindet sich wie Chrome mit deinem Server: Sie vertraut allen Zertifikaten, denen dein System vertraut. Nutzt dein Server eine eigene Zertifizierungsstelle (CA), installiere sie einmal in der Zertifikatsverwaltung deines Systems – dann funktioniert alles ohne Rückfrage:
+
+- **macOS:** Doppelklicke die CA-Datei (`.crt`/`.pem`), füge sie in der Schlüsselbundverwaltung zum Schlüsselbund „System“ hinzu, öffne sie dort und stelle unter „Vertrauen“ „Immer vertrauen“ ein.
+- **Windows:** Doppelklicke die CA-Datei → „Zertifikat installieren“ → „Aktueller Benutzer“ → „Alle Zertifikate in folgendem Speicher speichern“ → „Vertrauenswürdige Stammzertifizierungsstellen“.
+- **Linux:** `certutil -d sql:$HOME/.pki/nssdb -A -t "C,," -n "Meine CA" -i ca.crt` (Paket `libnss3-tools` bzw. `nss-tools`), danach Flowplan neu starten.
+
+Vertraut dein System dem Zertifikat nicht – zum Beispiel einem selbstsignierten –, zeigt dir die App beim Hinzufügen des Servers das Zertifikat: Server, ausgestellt für, ausgestellt von, Gültigkeit und SHA-256-Fingerabdruck. Vergleiche den Fingerabdruck mit dem auf deinem Server (`openssl x509 -in cert.pem -noout -fingerprint -sha256`) und wähle **Diesem Zertifikat vertrauen**. Flowplan vertraut dann genau diesem Zertifikat für genau diesen Server in diesem Profil. Abgelaufene oder widerrufene Zertifikate werden nie akzeptiert.
+
+Zeigt der Server später ein anderes Zertifikat, lädt die App nichts und warnt dich mit dem alten und dem neuen Fingerabdruck. Vertraue dem neuen nur, wenn du weißt, dass das Zertifikat erneuert wurde. Unter **Profile verwalten …** siehst du, welchem Zertifikat ein Profil vertraut, und entfernst es mit **Zertifikat nicht mehr vertrauen** (Flowplan startet dafür neu). Ab Version 1.3.9.
+
 ## Mehr aus der Desktop-App
 
 Seit der Desktop-App 1.1.0 kommt rund um das Fenster einiges dazu. Die Schalter dafür stehen unter **Einstellungen …** (macOS: im Menü *Flowplan*, Windows und Linux: im Menü *Datei*).
