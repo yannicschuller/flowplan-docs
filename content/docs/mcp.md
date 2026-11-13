@@ -6,6 +6,8 @@ keywords: MCP, Claude, ChatGPT, Cursor, KI-Assistent, Model Context Protocol
 
 Verbinde Claude, ChatGPT und andere KI-Assistenten über das Model Context Protocol (MCP) mit deinem Flowplan. Sie suchen, lesen und schreiben mit genau deinen Rechten und nicht mehr.
 
+Suchst du stattdessen diese Doku in deinem Assistenten? Das steht unter [Flowplan-Doku in deiner KI](/docs-in-your-ai).
+
 Neben der optionalen [eingebauten KI](/ai) kannst du über MCP den Assistenten anbinden, den *du* wählst. Er arbeitet mit deinen Seiten, Datenbanken und Aufgaben. Er sieht nur, was du in Flowplan sehen kannst.
 
 ## Einrichten

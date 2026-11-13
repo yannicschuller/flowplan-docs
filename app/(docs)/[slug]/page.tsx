@@ -11,6 +11,9 @@ import s from "@/components/docs/docs.module.css";
 import { CodeCopy } from "@/components/docs/code-copy";
 import { TableFilterSlot, TocSpy } from "@/components/docs/page-tools";
 import c from "@/components/docs/content.module.css";
+import { PageAi } from "@/components/docs/page-ai";
+import { askLinks } from "@/lib/ask-ai";
+import { mcpUrl } from "@/lib/mcp-request";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -58,6 +61,13 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
     const at = html.search(/<h[23] id=|<div class="table"/);
     if (at >= 0) html = `${html.slice(0, at)}<div id="table-filter" class="filter-slot"></div>${html.slice(at)}`;
   }
+  // The page's Markdown in the page's language, for "Ask Claude" and others.
+  const ask = askLinks(locale, {
+    title: doc.title,
+    markdownUrl: absolute(`/${locale}/${slug}.md`),
+    llmsUrl: absolute(locale === "de" ? "/de/llms.txt" : "/llms.txt"),
+    mcpUrl: mcpUrl(),
+  });
   const freshTitles = doc.fresh.map((m) => ({ id: m.id, text: doc.toc.find((e) => e.id === m.id)?.text ?? m.id }));
   const structured = {
     "@graph": [
@@ -132,6 +142,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
             )}
           </p>
         )}
+        <PageAi claude={ask.claude} chatgpt={ask.chatgpt} markdown={`/${locale}/${slug}.md`} />
         {doc.toc.length > 2 && (
           <details className={s.tocInline}>
             <summary>{t("Auf dieser Seite", "On this page")}</summary>

@@ -114,8 +114,8 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
     groups: [
       {
         title: ["API und Integrationen", "API and integrations"],
-        intro: ["API, Webhooks, SDKs, E-Mail-Eingang, Chat, MCP und Block-Erweiterungen.", "API, webhooks, SDKs, inbound e-mail, chat, MCP and block extensions."],
-        pages: ["api-and-webhooks", "openapi", "inbound-email", "chat-notifications", "mcp", "plugins"],
+        intro: ["API, Webhooks, SDKs, E-Mail-Eingang, Chat, MCP, die Doku in deiner KI und Block-Erweiterungen.", "API, webhooks, SDKs, inbound e-mail, chat, MCP, these docs in your AI and block extensions."],
+        pages: ["api-and-webhooks", "openapi", "inbound-email", "chat-notifications", "mcp", "docs-in-your-ai", "plugins"],
       },
     ],
   },
@@ -650,6 +650,10 @@ export function llmsIndex(base: string, locale: Locale) {
       ? "Jede Seite gibt es als Markdown unter der verlinkten Adresse; die englische Fassung unter /en/…md."
       : "Every page is available as Markdown at the linked address; the German version is under /de/…md.",
     "",
+    de
+      ? `Zum Durchsuchen aus einem KI-Assistenten: der MCP-Server ${base}/mcp (Streamable HTTP, öffentlich, ohne Anmeldung) mit den Werkzeugen search_docs, get_page und list_pages.`
+      : `To search the docs from an AI assistant: the MCP server ${base}/mcp (Streamable HTTP, public, no sign-in) with the tools search_docs, get_page and list_pages.`,
+    "",
   ];
   for (const group of docAreas(locale).flatMap((a) => a.groups.map((g) => ({ ...g, title: `${a.title}: ${g.title}` })))) {
     lines.push(`## ${group.title}`, "");
@@ -663,6 +667,7 @@ export function llmsIndex(base: string, locale: Locale) {
     "## Optional",
     "",
     `- [${de ? "Alle Seiten in einer Datei" : "All pages in one file"}](${base}${de ? "/de" : ""}/llms-full.txt)`,
+    `- [${de ? "MCP-Server der Doku" : "MCP server of the docs"}](${base}/mcp): search_docs, get_page, list_pages`,
     `- [${de ? "Quellcode auf GitHub" : "Source code on GitHub"}](${GITHUB_URL})`,
     `- [${de ? "Community auf Discord" : "Community on Discord"}](${DISCORD_URL})`,
     `- [Website](${websiteUrl()})`,
