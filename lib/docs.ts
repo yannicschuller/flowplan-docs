@@ -57,7 +57,7 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       {
         title: ["Dokumente", "Documents"],
         intro: ["Der Editor: Blöcke, Markdown, Formatierung, Aufgaben, Medien und Links.", "The editor: blocks, Markdown, formatting, tasks, media and links."],
-        pages: ["documents", "markdown-editor", "formatting", "tasks-in-documents", "media-and-files", "links-and-mentions"],
+        pages: ["documents", "blocks", "markdown-editor", "formatting", "tasks-in-documents", "media-and-files", "links-and-mentions"],
       },
       {
         title: ["Formeln, Zitate und Präsentieren", "Formulas, citations and presenting"],

@@ -1,0 +1,49 @@
+---
+keywords: Block, Griff, Blockmenü, verschieben, ziehen, auswählen, duplizieren, einrücken, Textrichtung
+new: mehrere-bloecke-auswaehlen 2026-11-13
+---
+
+# Blöcke bearbeiten
+
+Jeder Block hat links einen Griff: Daran ziehst du ihn an eine andere Stelle, ein Klick öffnet das Blockmenü zum Umwandeln, Färben, Duplizieren und Verschieben. Mehrere Blöcke wählst du mit der Maus oder der Tastatur auf einmal aus.
+
+**Mehr zum Thema:** [Dokumente und Editor](/documents) · [Formatieren, Hinweise und Beschriftungen](/formatting) · [Tastenkürzel](/keyboard-shortcuts#im-dokument)
+
+## Griff und Ziehen
+
+Links neben einem Block erscheinen **+** und ein Griff (`⋮⋮`) – damit die Seite ruhig bleibt, nur dort, wo du gerade bist: am Block unter dem Mauszeiger (irgendwo in seiner Zeile, auch im Rand links davon) und am Block mit dem Cursor. Auch Blöcke in aufklappbaren Blöcken, Hinweisen und Zitaten haben einen eigenen Griff; der Kasten selbst behält seinen. Mit der Tastatur erreichst du die Griffe weiterhin (<kbd>Tab</kbd> außerhalb des Textes); ein Griff mit Tastaturfokus ist immer sichtbar und umrandet. Auf Touch-Geräten hat nur der Block mit dem Cursor einen Griff, groß genug zum Antippen – tippe also zuerst in den Block. Leere Absätze haben keinen Griff, solange der Cursor nicht darin steht. Wer alle Griffe sehen möchte, schaltet **Einstellungen → Darstellung & Sprache → Editor → Griffe immer anzeigen** ein (auf diesem Gerät). Im Lesemodus und auf gesperrten Seiten gibt es keine Griffe.
+
+- **+** fügt darunter einen leeren Block ein und öffnet gleich das [Blockmenü mit /](/documents#das-blockmenue-mit); mit gedrückter <kbd>⌥</kbd>/<kbd>Alt</kbd> darüber.
+- **Ziehen** am Griff zeigt eine Einfügelinie – auch in Hinweise, Zitate oder Spalten hinein. Wie weit links oder rechts du ziehst, bestimmt die Ebene: Nach rechts über einem Listenpunkt wird der Block sein Unterpunkt (die Linie rückt ein), nach links landet er eine Ebene höher – so verschachtelst du Listen und ziehst Blöcke in aufklappbare Blöcke hinein oder heraus. Am linken oder rechten Rand eines Blocks entstehen Spalten. Mit gedrückter <kbd>⌥</kbd>/<kbd>Alt</kbd> beim Loslassen wird eine **Kopie** eingefügt, das Original bleibt.
+
+Listenpunkte und Aufgaben bleiben beim Verschieben, was sie sind: Außerhalb ihrer Liste bilden sie eine eigene Liste derselben Art, ein nummerierter Punkt behält seine Nummer. Direkt neben einer passenden Liste werden sie Teil davon; in einer anderen Listenart passen sie sich an.
+
+++⌘ ⇧ ↑/↓++ verschiebt den aktuellen Block unter seinen Nachbarn. Jede Blockaktion lässt sich einzeln rückgängig machen.
+
+## Blockmenü
+
+Ein Klick auf den Griff hebt den Block hervor und öffnet das **Blockmenü** (am Handy von unten). Oben steht ein **Suchfeld**: Tippen filtert alle Aktionen und Blocktypen, <kbd>Enter</kbd> führt den ersten Treffer aus. Mit der Maus öffnen sich Untermenüs seitlich, am Handy an Ort und Stelle. Neben den Einträgen stehen ihre Tastenkürzel.
+
+- **Umwandeln in …** – Text, Überschrift 1–4, Aufzählung, nummerierte Liste, Aufgabenliste, [aufklappbarer Block](/documents#aufklappbare-bloecke), aufklappbare Überschrift 1–4, Zitat, Hinweis, Code, Formel, **Seite** (der Block wird eine Unterseite, ein Link darauf bleibt stehen) oder **2 bzw. 3 Spalten**; Listenpunkte werden zum aufklappbaren Block mit ihren Unterpunkten als Inhalt, Zitate und Hinweise lassen sich auflösen
+- **Farbe** – Text- oder Hintergrundfarbe für den ganzen Block (siehe [Blockfarben](/formatting#blockfarben))
+- **Duplizieren** (++⌘ D++), **Verschieben** (nach oben, nach unten, unter eine Überschrift der Seite, an den Anfang oder ans Ende), **Kommentieren**, **KI fragen**, **Link zum Block kopieren** und **Löschen**
+- **Hinweistyp**, **Symbol** und **Farbe** (Hinweise), **Breite** (Videos und Einbettungen) und **Textrichtung**, wo sie passen
+- **Mehrere auswählen** – der Auswahlmodus auf Touch-Geräten
+
+## Mehrere Blöcke auswählen
+
+Mit der Maus ziehst du aus dem Rand oder einer freien Stelle ein **Rechteck** auf: Jeder Block, den es berührt, wird ausgewählt und hellblau hinterlegt. <kbd>Esc</kbd> in einem Block wählt ihn aus, ++↑++/++↓++ wählen den Block davor oder danach, ++⇧ ↑++/++⇧ ↓++ oder ++⇧++-Klick auf einen Griff erweitern die Auswahl, zweimal ++⌘ A++ wählt alle Blöcke. Für die Auswahl gelten <kbd>Entf</kbd>, ++⌘ D++ (duplizieren), ++⌘ ⇧ ↑/↓++ (verschieben), <kbd>Tab</kbd>/++⇧ Tab++ (einrücken), ++⌘ C++/++⌘ X++/++⌘ V++ (Blöcke kopieren, ausschneiden, dahinter einfügen) und `/` (Blockmenü für alle); Ziehen an einem ihrer Griffe verschiebt alle. Ein Klick in den Text oder <kbd>Esc</kbd> beendet die Auswahl.
+
+Auf Touch-Geräten startet **Mehrere auswählen** im Blockmenü den **Auswahlmodus**: Kreise stehen statt der Griffe, ein Tipp wählt einen Block aus, ein weiterer erweitert die Auswahl bis dorthin; sind alle Punkte einer Liste gewählt, gilt die ganze Liste. Die Leiste unten verschiebt, dupliziert, verschiebt unter eine Überschrift oder löscht die Auswahl, **⋯** hat den Rest des Blockmenüs. **Fertig** oder <kbd>Esc</kbd> beendet den Modus.
+
+## Einrücken
+
+- <kbd>Tab</kbd> am Anfang eines Absatzes oder einer Überschrift rückt ein (bis zu acht Stufen), ++⇧ Tab++ rückt zurück. Steht direkt darüber ein [aufklappbarer Block](/documents#aufklappbare-bloecke), schiebt <kbd>Tab</kbd> den Block stattdessen hinein und ++⇧ Tab++ wieder heraus. Früher eingerückte Zeilen bleiben, wie sie sind.
+- <kbd>Backspace</kbd> am Anfang einer eingerückten Zeile nimmt zuerst eine Stufe weg.
+- In Listen verschachtelt <kbd>Tab</kbd> den Eintrag unter den vorigen, in Codeblöcken fügt es zwei Leerzeichen ein, in Tabellen springt es zur nächsten Zelle. Über die [Blockauswahl](#mehrere-bloecke-auswaehlen) schiebt <kbd>Tab</kbd> auch Codeblöcke und Tabellen in einen aufklappbaren Block.
+
+## Textrichtung
+
+Absätze, Überschriften, Listen, Zitate, Hinweise und Tabellenzellen in Arabisch, Hebräisch oder Persisch laufen **automatisch von rechts nach links**: Die Richtung folgt dem ersten Buchstaben des Blocks. Aufzählungszeichen, Kästchen, Zitatbalken, Hinweissymbole und Blockgriffe stehen dann rechts.
+
+Im Blockmenü (Klick auf den Griff `⋮⋮`) → **Textrichtung** legst du für einen Block und alles darin **Automatisch**, **Links nach rechts** oder **Rechts nach links** fest. Die Richtung bleibt im HTML-Export erhalten; Markdown kennt sie nicht.

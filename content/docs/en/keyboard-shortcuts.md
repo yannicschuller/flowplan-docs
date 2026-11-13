@@ -66,7 +66,7 @@ The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kb
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>H</kbd> | Highlight |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>H</kbd> | Hide (spoiler) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>M</kbd> | Comment on text |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>1</kbd>–<kbd>3</kbd> | Heading 1–3 |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>1</kbd>–<kbd>4</kbd> | Heading 1–4 |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>0</kbd> | Back to normal text |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>E</kbd> | Centre the text |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd> | Copy the [link to the block](/links-and-mentions#links-to-blocks) with the cursor |
@@ -75,8 +75,12 @@ The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kb
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>8</kbd> / <kbd>7</kbd> / <kbd>9</kbd> | Bulleted list, numbered list, task list |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>B</kbd> | Quote |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>C</kbd> | Code block |
-| <kbd>Tab</kbd> / <kbd>⇧</kbd> <kbd>Tab</kbd> | Indent / outdent |
-| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Move block up / down (a collapsed heading with its section) |
+| <kbd>Tab</kbd> / <kbd>⇧</kbd> <kbd>Tab</kbd> | [Indent](/blocks#indent) / outdent; right below a [toggle](/documents#toggles): move into it / back out (in its title too) |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Move block up / down (a collapsed heading with its section); with a table row selected: move the row up / down |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>←</kbd> / <kbd>→</kbd> | With a table column selected: move the column left / right |
+| <kbd>⌘</kbd> <kbd>D</kbd> | Duplicate the block, also selected blocks or a selected table row or column |
+| <kbd>Esc</kbd> | Select the block with the cursor ([selecting several blocks](/blocks#selecting-several-blocks)) |
+| <kbd>⌘</kbd> <kbd>A</kbd> twice | Select all blocks |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> | In a heading: [collapse or expand its section](/reading-and-presenting#collapsing-sections); in a [toggle](/documents#toggles): collapse or expand it |
 | <kbd>⇧</kbd> <kbd>Enter</kbd> | Line break within the same block |
 | <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>Z</kbd> | Undo / redo |

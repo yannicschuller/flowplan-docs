@@ -521,4 +521,13 @@ export const LATER = [
     sections: ["journal#Überblick auf der Journalseite", "journal#Rückblick"],
     kw: ["Journal, Rückblick, Wochenrückblick, Monatszusammenfassung, Serie, Heatmap, Statistik", "journal, review, weekly review, monthly summary, streak, heatmap, statistics"],
   }),
+  // Wave 5 (November 2026): block handle, block menu and selection (#236–#239,
+  // #246) pushed /documents past the limit. "Blöcke verschieben" became the
+  // page itself (its sections "Griff und Ziehen", "Blockmenü", "Mehrere Blöcke
+  // auswählen"), written by hand rather than by the split script.
+  p("blocks", {
+    title: ["Blöcke bearbeiten", "Working with blocks"],
+    sections: ["documents#Blöcke verschieben", "documents#Einrücken", "documents#Textrichtung"],
+    kw: ["Block, Griff, Blockmenü, verschieben, ziehen, auswählen, duplizieren, einrücken, Textrichtung", "block, handle, block menu, move, drag, select, duplicate, indent, text direction"],
+  }),
 ];

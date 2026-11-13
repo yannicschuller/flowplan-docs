@@ -66,7 +66,7 @@ Die Übersicht zeigt die Tasten so, wie sie auf deinem Gerät heißen: auf dem M
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>H</kbd> | Markieren |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>H</kbd> | Verdecken (Spoiler) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>M</kbd> | Text kommentieren |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>1</kbd>–<kbd>3</kbd> | Überschrift 1–3 |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>1</kbd>–<kbd>4</kbd> | Überschrift 1–4 |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>0</kbd> | Zurück zu normalem Text |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>E</kbd> | Text zentrieren |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>L</kbd> | [Link zum Block](/links-and-mentions#links-auf-bloecke) mit dem Cursor kopieren |
@@ -75,8 +75,12 @@ Die Übersicht zeigt die Tasten so, wie sie auf deinem Gerät heißen: auf dem M
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>8</kbd> / <kbd>7</kbd> / <kbd>9</kbd> | Aufzählung, nummerierte Liste, Aufgabenliste |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>B</kbd> | Zitat |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>C</kbd> | Codeblock |
-| <kbd>Tab</kbd> / <kbd>⇧</kbd> <kbd>Tab</kbd> | Einrücken / zurückrücken |
-| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Block nach oben / unten (eine eingeklappte Überschrift mit ihrem Abschnitt) |
+| <kbd>Tab</kbd> / <kbd>⇧</kbd> <kbd>Tab</kbd> | [Einrücken](/blocks#einruecken) / zurückrücken; direkt unter einem [aufklappbaren Block](/documents#aufklappbare-bloecke): hineinschieben / herausholen (auch im Titel) |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Block nach oben / unten (eine eingeklappte Überschrift mit ihrem Abschnitt); bei ausgewählter Tabellenzeile: Zeile nach oben / unten |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>←</kbd> / <kbd>→</kbd> | Bei ausgewählter Tabellenspalte: Spalte nach links / rechts |
+| <kbd>⌘</kbd> <kbd>D</kbd> | Block duplizieren, auch ausgewählte Blöcke oder eine ausgewählte Tabellenzeile oder -spalte |
+| <kbd>Esc</kbd> | Block mit dem Cursor auswählen ([mehrere Blöcke auswählen](/blocks#mehrere-bloecke-auswaehlen)) |
+| <kbd>⌘</kbd> <kbd>A</kbd> zweimal | Alle Blöcke auswählen |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> | In einer Überschrift: ihren [Abschnitt ein- oder ausklappen](/reading-and-presenting#abschnitte-einklappen); in einem [aufklappbaren Block](/documents#aufklappbare-bloecke): ihn ein- oder ausklappen |
 | <kbd>⇧</kbd> <kbd>Enter</kbd> | Zeilenumbruch im selben Block |
 | <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>Z</kbd> | Rückgängig / Wiederholen |

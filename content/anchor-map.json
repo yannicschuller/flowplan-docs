@@ -53,6 +53,9 @@
 ["eigenschaften-im-eintrag-einklappen","collapsing-properties-in-a-record","database-properties","eigenschaften-im-eintrag-einklappen","collapsing-properties-in-a-record"],
 ["formatierter-text","formatted-text","database-properties","formatierter-text","formatted-text"],
 ["mehrfachauswahl-mit-den-tags-des-arbeitsbereichs","multi-select-with-the-workspace-tags","database-properties","mehrfachauswahl-mit-den-tags-des-arbeitsbereichs","multi-select-with-the-workspace-tags"]],"documents":[
+["bloecke-verschieben","move-blocks","blocks","",""],
+["einruecken","indent","blocks","einruecken","indent"],
+["textrichtung","text-direction","blocks","textrichtung","text-direction"],
 ["sprachnotizen-und-besprechungen","voice-notes-and-meetings","media-and-files","sprachnotizen-und-besprechungen","voice-notes-and-meetings"],
 ["inhaltsverzeichnis","table-of-contents","reading-and-presenting","inhaltsverzeichnis","table-of-contents"],
 ["abschnitte-einklappen","collapsing-sections","reading-and-presenting","abschnitte-einklappen","collapsing-sections"],

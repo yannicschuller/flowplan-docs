@@ -1,5 +1,6 @@
 ---
-keywords: bold, italic, colour, highlight, spoiler, callout, admonition, caption, figure
+keywords: formatting toolbar, block colour, inline code, bold, italic, colour, highlight, spoiler, callout, admonition, caption, figure
+new: block-colours 2026-11-13
 ---
 
 # Formatting, callouts and captions
@@ -11,15 +12,29 @@ Format text, use callouts in five kinds and with your own icon, caption and numb
 The **toolbar** above the text has all formatting and blocks: bold, italic, underline, strikethrough, highlight, colour and background colour, superscript and subscript, **Hide (spoiler)**, link, heading, task, alignment, lists, inline formulas and more blocks. Selecting text – or right-clicking it – opens the **text menu** with the quick actions right at the text: reactions for the paragraph, **bold**, *italic*, link, code, **Comment**, **Footnote** and **Copy**, the results of a selected calculation, and in tasks also **Due date**. The text menu appears above the selection – right under the toolbar it appears below it, so it never covers the toolbar. Underline, strikethrough and highlight are in the toolbar and on their shortcuts (++Ctrl/⌘ U++, ++Ctrl/⌘ ⇧ S++, ++Ctrl/⌘ ⇧ H++); where no toolbar is shown (e.g. in focus mode), the text menu offers them as well.
 
 - **Menu on text selection**: under **Settings → Appearance & language → Editor → Menu on text selection** you choose when selecting shows the text menu – **Always**, **Only on a computer** (the default) or **Never**. "Only on a computer" depends on what you select with: with a mouse, trackpad or the keyboard (<kbd>⇧</kbd> + arrow keys) the menu appears, with a finger on a phone or tablet it does not – there the system's selection menu (cut, copy, paste) and the toolbar above the keyboard, with formatting and **Comment**, take over. On an iPad with a trackpad it appears when you select with the trackpad, not with your finger. A **right click** opens the text menu with every setting, also with "Never". The setting applies to your account on all devices.
+- **Formatting toolbar**: under **Settings → Appearance & language → Editor → Formatting toolbar** you can hide the fixed bar above the text of pages and records (**Show** is the default, **Hide**). Hidden, the text menu over selected text offers all formatting, as in focus mode: **Turn into** at its start with the current block type ("Text ⌄" – text, heading 1–3, bulleted list, numbered list, task list, toggle, quote, callout, code, block equation), then **bold**, *italic*, underline, strikethrough, code, highlight, **colour** (text and background), link, **inline formula** and **clear formatting** (links and comments stay). **…** holds superscript and subscript, hide (spoiler), alignment, move block up/down, suggest, show authors and the table of contents. Comment, AI, footnote and copy stay as before; undo and redo are ++⌘ Z++ and ++⌘ ⇧ Z++. On a phone the bar above the keyboard stays – there it is the keyboard's formatting row. The setting applies to your account on all devices.
 - **On a phone**: **Comment** is in the toolbar above the keyboard (and as **Comment on text** below the document), **Footnote** in the **+** menu or with `/footnote`. Reactions are in the text menu – with **Always** when selecting, and on Android also by a long press where the browser reports it as a right click.
 
 - Formatting only applies to the current line. After <kbd>Enter</kbd> the new line starts as normal text – only lists and tasks continue with a new item, and a heading is followed by a paragraph.
-- **Turn into**: in the text menu (also on right-click in a line) a line changes its type without losing its text – text, heading 1–3, bulleted list, numbered list, task, quote or code block. The current type is highlighted.
+- **Turn into**: in the text menu (also on right-click in a line; with the formatting toolbar hidden or in focus mode as the list "Text ⌄" at its start) a line changes its type without losing its text – text, heading 1–3, bulleted list, numbered list, task, quote or code block. The current type is highlighted.
 - **Nested lists** change their markers per level: numbered 1. → a. → i., bullets • → ◦ → ▪, starting over from the fourth level. The level counts across list types – a numbered list below a bullet or a task starts with a. Published pages, print, PDF and Word look the same; the Markdown export keeps writing `1.`.
+- **Code and highlight**: inline code shows in an accent colour on a grey background and can be combined with bold, italic, strikethrough and links (also when importing `**`code`**` from Markdown). A highlight without a colour is yellow, see-through in dark mode.
 
 ### Spoiler
 
 Hidden text stays hidden while you write. A click on the area reveals it, another one hides it again. ++⌘ ⌥ H++ hides the selection. Sticky notes and text on whiteboards can be hidden too.
+
+### Block colours
+
+In the [block menu](/blocks#block-menu), **Colour** gives a whole block (paragraph, heading, list item, quote, toggle) a **text colour** or a **background colour** – the same nine colours as for text; **Default** removes it. Several [selected blocks](/blocks#selecting-several-blocks) are coloured at once. The colours adapt to the light and dark theme.
+
+The Markdown export writes the colour as a comment before the block (for list items at the end of the line); other apps don't show it, and the import reads it back:
+
+```markdown
+<!-- flowplan:color red-background -->
+
+Important paragraph
+```
 
 ## Callouts
 
@@ -52,7 +67,7 @@ Import (Markdown, ZIP, Notion) turns `> [!NOTE]` to `> [!CAUTION]` back into cal
 
 Images, tables and code blocks can have a short **caption** – one line that says what the block shows. It appears small and muted below the block.
 
-- **Add**: point at the block or put the cursor in it (tapping an image is enough), and **Add caption** appears below it. Or use the block menu (handle `⋮⋮`) → **Add caption**.
+- **Add**: for an image, **Caption** in its [toolbar](/media-and-files#images-files-and-embeds) at the top right; for a table, **Caption** in the menu of a row or column handle; for a code block, **Add caption** in its bottom corner (when you point at it or the cursor is in it). Or use the block menu (handle `⋮⋮`) → **Add caption**.
 - **Typing**: a caption is plain text on one line (up to 500 characters). <kbd>Enter</kbd> or <kbd>↓</kbd> continue below the block, <kbd>Esc</kbd> or <kbd>↑</kbd> go back into it. Others see the caption right away when editing together; ++⌘ Z++ in the document undoes changes.
 - **Remove**: delete the text and leave the field (or press <kbd>⌫</kbd> in the empty field), or block menu → **Remove caption**.
 - **Images**: the caption does not replace the alt text for screen readers. When an image has a caption, the block menu offers **Use caption as alt text**.

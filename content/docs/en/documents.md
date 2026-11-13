@@ -1,15 +1,15 @@
 ---
-keywords: editor, blocks, block menu, slash command, markdown, write, paragraph
+keywords: editor, blocks, block menu, slash command, markdown, write, paragraph, table, toggle
 new: toggles 2026-11-12
 ---
 
 # Documents and the editor
 
-The editor works with blocks: every paragraph, list, table or embed is a block you can insert, format, indent and move. Everything is saved continuously, even without a connection.
+The editor works with blocks: every paragraph, list, table or embed is a block you can insert, format, indent and [move](/blocks). Everything is saved continuously, even without a connection.
 
 ![A project page in the editor: the toolbar at the top, below it a blue note block with the goal, a line with four mentioned people and a date, headings and a bulleted list; the space's page tree on the left](/screenshots/document-light.webp "A document with the toolbar, a note block, mentions and headings.")
 
-**More on this topic:** [Markdown in the editor](/markdown-editor) · [Formatting, callouts and captions](/formatting) · [Tasks in documents](/tasks-in-documents) · [Images, files and voice notes](/media-and-files) · [Math, diagrams, code and calculations](/math-and-code) · [Links, mentions and the graph](/links-and-mentions) · [Footnotes, citations and bibliography](/academic-writing) · [Reading, presenting and overview](/reading-and-presenting) · [Printing and PDF](/print-and-pdf)
+**More on this topic:** [Working with blocks](/blocks) · [Markdown in the editor](/markdown-editor) · [Formatting, callouts and captions](/formatting) · [Tasks in documents](/tasks-in-documents) · [Images, files and voice notes](/media-and-files) · [Math, diagrams, code and calculations](/math-and-code) · [Links, mentions and the graph](/links-and-mentions) · [Footnotes, citations and bibliography](/academic-writing) · [Reading, presenting and overview](/reading-and-presenting) · [Printing and PDF](/print-and-pdf)
 
 ## The block menu with /
 
@@ -21,7 +21,7 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 | Block | Shortcut in the menu | What for |
 | --- | --- | --- |
 | Text | `/text` | A normal paragraph |
-| Heading 1–3 | `/h1`, `/h2`, `/h3` | Structure; they appear in the table of contents |
+| Heading 1–4 | `/h1`, `/h2`, `/h3`, `/h4` | Structure; they appear in the table of contents |
 | Task list | `/todo` | Tasks to tick off |
 | Bulleted list, numbered list | `/ul`, `/ol` | Lists, nested as deep as you like |
 | Quote | `/quote` | A highlighted quotation |
@@ -50,9 +50,9 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 | Citation | `/cite`, `/zitat` | Cite a source – DOI, BibTeX or Zotero ([Citations](/academic-writing#citations-and-bibliography)) |
 | Bibliography | `/bibliography`, `/references` | All cited works as a list |
 
-**Tables:** with the cursor in a table, a small bar appears right below it: insert a row above or below, a column left or right; under **…** turn the header row on or off and delete a row, a column or the whole table. When the end of the table is off screen, the bar stays at the bottom of the visible area – above the keyboard on phones. <kbd>Tab</kbd> moves to the next cell and adds a row in the last one.
+**Tables:** tables are compact – low rows, a left-aligned header, as wide as their content (dragged column widths stay). Point at a cell and two handles ⋮⋮ appear: on the left edge of its row and on the top edge of its column. A click selects the row or column (outlined in blue) and opens its menu: a search field, **Colour** (text or background), **Insert row above/below** or **Insert column left/right**, **Duplicate** (++⌘ D++), **Clear contents**, **Delete row/column**, **Header row** or **Header column**, **Caption** and **Convert to database**. Drag a handle to move the row or column – a line shows where it lands; the header row stays the first row. With a row selected, ++⌘ ⇧ ↑/↓++ moves it (++⌘ ⇧ ←/→++ a column). The **+** bars below the table and at its right edge add a row or a column at the end. Drag across several cells and the selection gets a button at its top right with **Colour**, **Clear contents**, **Merge cells** and **Split cell**. Rows across merged cells, and columns in tables with merged cells, cannot be moved. On phones and tablets the handles and **+** bars belong to the cell you tap; the menu opens as a sheet from the bottom. Cell colours survive the Markdown export (as a comment before the table that other tools ignore) and come back as colours on import. <kbd>Tab</kbd> moves to the next cell and adds a row in the last one.
 
-**Convert a table to a database:** when a table outgrows itself, choose **Convert to database** under **…** in the table bar. Flowplan creates a [database](/databases) from it below the document and puts an embedded view of it where the table was. The first row gives the column names, the first column becomes the records' titles. The other columns get their type from the filled cells: number (German or English separators), date (`2026-11-04` or `04.11.2026`), checkbox (✓, x, yes/no, ja/nein, true/false), URL, otherwise text. The database is named after the table's caption, else the nearest heading above it, else "Table". ++⌘/Ctrl Z++ brings the table back. Limits as for CSV import: up to 80 columns and 5,000 rows. Encrypted spaces don't offer it; in a database record the new database goes to the top of the space.
+**Convert a table to a database:** when a table outgrows itself, choose **Convert to database** in the menu of a row or column handle. Flowplan creates a [database](/databases) from it below the document and puts an embedded view of it where the table was. The first row gives the column names, the first column becomes the records' titles. The other columns get their type from the filled cells: number (German or English separators), date (`2026-11-04` or `04.11.2026`), checkbox (✓, x, yes/no, ja/nein, true/false), URL, otherwise text. The database is named after the table's caption, else the nearest heading above it, else "Table". ++⌘/Ctrl Z++ brings the table back. Limits as for CSV import: up to 80 columns and 5,000 rows. Encrypted spaces don't offer it; in a database record the new database goes to the top of the space.
 
 **Hiding the keyboard (phone):** while you write, the formatting bar sits above the on-screen keyboard. Its last button on the right, **Hide keyboard**, closes the keyboard so you see more of the document; the text and the cursor position stay. A tap into the text brings it back. In the content of a database record the bar sits above the keyboard in the same way while you write. For every other text field – titles of pages, databases and records, tags, properties, the name in the **New page** dialog, search fields, comments – the same button appears as a round button on the right, just above the keyboard. This works in the browser and in the apps.
 
@@ -64,8 +64,13 @@ A **toggle** has a title and content below it that folds in and out. Insert one 
 - **Edit the title:** a click in the title puts the cursor there. In an expanded toggle, <kbd>Enter</kbd> or <kbd>↓</kbd> moves into the content, and <kbd>↑</kbd> at the start of the content moves back to the title. In a collapsed toggle, <kbd>↓</kbd> expands it and moves into the content.
 - **A list of toggles:** <kbd>Enter</kbd> at the end of the title of a **collapsed** toggle adds a new collapsed toggle right below it, with the cursor in its title – handy for an FAQ. <kbd>Enter</kbd> in an **empty** title ends the list: the toggle becomes a normal paragraph, its content stays below.
 - **From existing text:** in the block menu, **Turn into … → Toggle** turns a paragraph into a toggle with the text as its title. A list item becomes a toggle with the item's text as its title, and its indented sub-items go into the content. A single **Undo** reverses it.
+- **Toggle headings:** **Turn into … → Toggle heading 1–4** shows the title as a heading. In Markdown it is then a heading inside `<summary>` (`<summary><h2>Title</h2></summary>`), as GitHub renders it.
+- **Back to text:** **Turn into** also makes a toggle text, a heading, a list, a quote, a callout or code again: the title becomes the block, its content follows below. <kbd>⌫</kbd> at the start of the title turns it into plain text in the same way.
+- **Move in with Tab:** <kbd>Tab</kbd> at the start of a block right below a toggle moves the block into the toggle, as the last block of its content. This works with paragraphs, headings, quotes, callouts, other toggles and the first items of a list; a collapsed toggle expands. So what is indented belongs to the toggle and hides with it when you collapse it. ++⇧ Tab++ moves a block back out, right below the toggle; the blocks after it stay inside. One **Undo** reverts each step.
+- **Nesting:** <kbd>Tab</kbd> in a toggle's title moves the whole toggle into the toggle above it (or under the last item of a list above it), ++⇧ Tab++ moves it back out. The cursor stays in the title, and from there <kbd>Tab</kbd> never moves the focus out of the document. To undo, press <kbd>Esc</kbd> first – in the title, ++⌘/Ctrl Z++ only undoes typing in the title.
+- **What belongs to it:** when the mouse is over a toggle's arrow or its ⋮⋮ handle, the whole toggle (title and content) is lightly shaded. The content is indented by exactly one Tab step.
 - **Nothing gets lost:** when the cursor gets into a collapsed toggle (arrow keys, undo) or **Find on page** goes to a match in it, it expands. Collapse it while the cursor is inside, and the cursor moves in front of the toggle.
-- **Just for you:** as with [collapsed sections](/reading-and-presenting#collapsing-sections), collapsing does not change the document – others editing at the same time keep their own state. Your browser or the app remembers what you collapsed on this device for your account, so it is still collapsed the next time you open the page. On another device the toggles are expanded. A toggle is always stored, exported (Markdown `<details>`, HTML) and published expanded; readers collapse it there themselves. A toggle without a title is exported to Markdown with an empty `<summary></summary>` and comes back the same way on import.
+- **Just for you:** as with [collapsed sections](/reading-and-presenting#collapsing-sections), collapsing does not change the document – others editing at the same time keep their own state. Your browser or the app remembers what you collapsed on this device for your account, so it is still collapsed the next time you open the page. On another device the toggles are expanded. A toggle is always stored, exported (Markdown `<details>`, HTML) and published expanded; readers collapse it there themselves. What you collapsed is remembered on imported and API-created pages too. A toggle without a title is exported to Markdown with an empty `<summary></summary>` and comes back the same way on import.
 - In **reading mode** a click on the whole title line collapses and expands it.
 
 ## Synced blocks
@@ -76,39 +81,6 @@ A synced block (`/sync` → **Synced block**) is content that is the same in sev
 - The trash icon in the frame removes the block only in this place; it stays in the others.
 - Permissions come from the page the block was created on: whoever may not read that page sees a notice instead of the content.
 - The search finds the text on the original page. The block does not appear on published pages.
-
-## Indent
-
-- <kbd>Tab</kbd> at the start of a paragraph or heading indents it (up to eight levels), ++⇧ Tab++ outdents it.
-- <kbd>Backspace</kbd> at the start of an indented line first removes one level.
-- In lists <kbd>Tab</kbd> nests the item below the previous one; in code blocks it inserts two spaces.
-
-## Move blocks
-
-A handle (`⋮⋮`) appears to the left of a block – to keep the page calm, only where you are: at the block under the mouse pointer and at the block with the cursor. You can still reach the handles by keyboard (<kbd>Tab</kbd> outside the text); a handle with keyboard focus always shows, with a ring. On touch devices only the block with the cursor has a handle, large enough to tap – so tap into the block first. Empty paragraphs have no handle unless the cursor is in them. To see every handle as before, turn on **Settings → Appearance & language → Editor → Always show block handles** (on this device). Reading mode and locked pages have no handles.
-
-Dragging shows an insertion line in the middle of the gap between two blocks – also into callouts, quotes or columns; when you let go, the block glides to its new place.
-
-A click on the handle opens the **block menu** (from the bottom on phones):
-
-- **Move up** / **Move down** – past the neighbour
-- **Move below …** – right below a heading of the page, to the top or to the end
-- **Duplicate** and **Delete**
-- **Turn into …** – text, heading 1–3, bulleted list, numbered list, task list, quote, callout, [toggle](#toggles) or code; list items switch the kind of list or become a toggle (with their sub-items as its content), quotes and callouts can be dissolved
-- **Callout type**, **Symbol** and **Colour** (callouts), **Width** (videos and embeds) and **Text direction** where they fit
-- **Select several** – the selection mode
-
-In the **selection mode** circles take the place of the handles. A tap selects a block, another one extends the selection up to it; when all items of a list are chosen, the whole list is. The bar at the bottom moves, duplicates, moves below a heading or deletes the selection, **⋯** holds the rest of the block menu. **Done** or <kbd>Esc</kbd> ends the mode.
-
-List items and tasks stay what they are when moved: outside their list they form a list of the same kind of their own, and a numbered item keeps its number. Right next to a matching list they become part of it; in another kind of list they adapt.
-
-++⌘ ⇧ ↑/↓++ moves the current block past its neighbour. Every block action can be undone on its own.
-
-## Text direction
-
-Paragraphs, headings, lists, quotes, callouts and table cells in Arabic, Hebrew or Persian run **right to left automatically**: the direction follows the block's first letter. Bullets, checkboxes, quote bars, callout icons and block handles are then on the right.
-
-In the block menu (click the handle `⋮⋮`) → **Text direction** you set **Automatic**, **Left to right** or **Right to left** for a block and everything inside it. The direction is kept in the HTML export; Markdown has no place for it.
 
 ## More blocks
 
