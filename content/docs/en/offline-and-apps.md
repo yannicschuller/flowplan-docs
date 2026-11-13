@@ -120,7 +120,7 @@ Below pages and records Flowplan shows **Related pages**, **Linked from** and **
 
 **Settings → Appearance & language → What's new after updates** decides whether **New in Flowplan** appears once after Flowplan was updated: **Show all** (the default) shows the notes of every skipped version, **Only breaking changes** appears only when one of them has changes you need to adapt to, and shows only those, **Never** does not show the dialog. The choice applies to your account on all devices, including the iPhone, iPad and Android apps. Whatever you choose, **What's new** opens the latest versions' notes any time: in the account menu ⋯ at the bottom of the sidebar (on a phone under **More**), with ++⌘/Ctrl K++ → "What's new", under **Settings → Appearance & language** and under **About Flowplan**. Published pages never show the dialog.
 
-After a reload Flowplan opens the workspace that was last open on this device. For this the browser keeps only the workspace's id in the cookie `flowplan-workspace`; an invitation or a link to a page in another workspace takes precedence.
+After a reload Flowplan opens the workspace that was last open on this device. For this the browser keeps only the workspace's id in the cookie `flowplan-workspace`; an invitation or a link to a page in another workspace takes precedence. The width of the sidebar and the width and pinned state of the **Ask AI** panel are kept in the cookie `flowplan-layout` – a functional cookie holding just three numbers, valid for one year.
 
 ## Workflows on the phone
 

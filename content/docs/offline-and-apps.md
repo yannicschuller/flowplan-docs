@@ -120,7 +120,7 @@ Unter Seiten und Einträgen zeigt Flowplan **Verwandte Seiten**, **Verlinkt von*
 
 **Einstellungen → Darstellung & Sprache → Neuigkeiten nach Updates** legt fest, ob nach einem Update von Flowplan einmal **Neu in Flowplan** erscheint: **Alle anzeigen** (Standard) zeigt die Hinweise aller übersprungenen Versionen, **Nur Breaking Changes** erscheint nur, wenn eine davon Änderungen enthält, auf die du dich einstellen musst, und zeigt nur diese, **Nie** zeigt den Dialog nicht. Die Wahl gilt für dein Konto auf allen Geräten, auch in den Apps für iPhone, iPad und Android. Unabhängig davon öffnet **Was ist neu** die Hinweise der letzten Versionen jederzeit: im Kontomenü ⋯ unten in der Seitenleiste (auf dem Telefon unter **Mehr**), mit ++⌘/Strg K++ → „Was ist neu“, unter **Einstellungen → Darstellung & Sprache** und unter **Über Flowplan**. Veröffentlichte Seiten zeigen den Dialog nie.
 
-Nach dem Neuladen öffnet Flowplan den Arbeitsbereich, der zuletzt auf diesem Gerät offen war. Dafür merkt sich der Browser im Cookie `flowplan-workspace` nur die Kennung des Arbeitsbereichs; eine Einladung oder ein Link auf eine Seite in einem anderen Arbeitsbereich gehen vor.
+Nach dem Neuladen öffnet Flowplan den Arbeitsbereich, der zuletzt auf diesem Gerät offen war. Dafür merkt sich der Browser im Cookie `flowplan-workspace` nur die Kennung des Arbeitsbereichs; eine Einladung oder ein Link auf eine Seite in einem anderen Arbeitsbereich gehen vor. Die Breite der Seitenleiste sowie Breite und Anheften der Leiste **KI fragen** merkt sich das Cookie `flowplan-layout` – ein funktionales Cookie mit nur drei Zahlen, gültig für ein Jahr.
 
 ## Workflows auf dem Telefon
 
