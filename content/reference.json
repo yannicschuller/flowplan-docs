@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@92bf025",
+  "source": "github.com/yannicschuller/flowplan@f4dbf64",
   "slash": {
     "groups": {
       "recent": [
@@ -822,6 +822,23 @@
         "description": [
           "Inhalte nebeneinander",
           "Content side by side"
+        ]
+      },
+      {
+        "id": "tabs",
+        "group": "blocks",
+        "name": [
+          "Tabs",
+          "Tabs"
+        ],
+        "keywords": [
+          "tabs",
+          "reiter",
+          "registerkarten"
+        ],
+        "description": [
+          "Inhalte in Tabs umschalten",
+          "Switch between content in tabs"
         ]
       },
       {

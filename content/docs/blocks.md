@@ -1,5 +1,5 @@
 ---
-keywords: Block, Griff, Blockmenü, verschieben, ziehen, auswählen, duplizieren, einrücken, Textrichtung
+keywords: Block, Griff, Blockmenü, verschieben, ziehen, auswählen, duplizieren, einrücken, Textrichtung, Tabs, Reiter
 new: mehrere-bloecke-auswaehlen 2026-11-13
 ---
 
@@ -44,6 +44,37 @@ Auf Touch-Geräten startet **Mehrere auswählen** im Blockmenü den **Auswahlmod
 - <kbd>Tab</kbd> am Anfang eines Absatzes oder einer Überschrift rückt ein (bis zu acht Stufen), ++⇧ Tab++ rückt zurück. Steht direkt darüber ein [aufklappbarer Block](/documents#aufklappbare-bloecke), schiebt <kbd>Tab</kbd> den Block stattdessen hinein und ++⇧ Tab++ wieder heraus. Früher eingerückte Zeilen bleiben, wie sie sind.
 - <kbd>Backspace</kbd> am Anfang einer eingerückten Zeile nimmt zuerst eine Stufe weg.
 - In Listen verschachtelt <kbd>Tab</kbd> den Eintrag unter den vorigen; geht das nicht, passiert nichts – <kbd>Tab</kbd> verlässt den Text nie. <kbd>Enter</kbd> in einem leeren Listenpunkt rückt nur diesen Punkt eine Ebene höher, eine Ebene pro <kbd>Enter</kbd>; auf der obersten Ebene wird er ein normaler Absatz. <kbd>Enter</kbd> am Ende eines Punkts mit Unterpunkten beginnt einen neuen ersten Unterpunkt. In Codeblöcken fügt <kbd>Tab</kbd> zwei Leerzeichen ein, in Tabellen springt es zur nächsten Zelle. Über die [Blockauswahl](#mehrere-bloecke-auswaehlen) schiebt <kbd>Tab</kbd> auch Codeblöcke und Tabellen in einen aufklappbaren Block.
+
+## Tabs
+
+Mit dem Block **Tabs** legst du Inhalte in Reitern übereinander – etwa Anleitungen für verschiedene Systeme oder Varianten eines Textes. Tippe `/tabs`, um ihn einzufügen. Jeder Tab hat einen Titel und kann beliebige Blöcke enthalten: Absätze, Listen, Tabellen, Bilder, aufklappbare Blöcke und sogar weitere Tabs.
+
+- **Hinzufügen:** **+** rechts in der Tableiste – den Namen tippst du gleich ein.
+- **Umbenennen:** Doppelklick auf den Tab oder <kbd>F2</kbd>.
+- **Verschieben:** den Tab mit der Maus ziehen oder ++⌘ ⇧ ←++/++⌘ ⇧ →++ (Windows/Linux: <kbd>Strg</kbd>+<kbd>Umschalt</kbd>+<kbd>←</kbd>/<kbd>→</kbd>).
+- **Löschen:** <kbd>Entf</kbd> auf dem Tab; **Rückgängig** holt ihn zurück. Der letzte Tab bleibt – den ganzen Block löschst du über sein Blockmenü.
+- **Am Handy:** Die Tableiste lässt sich wischen, alle Aktionen stehen im Menü **⋯**.
+- **Tastatur:** <kbd>←</kbd>/<kbd>→</kbd>, <kbd>Pos1</kbd> und <kbd>Ende</kbd> wechseln den Tab, <kbd>Enter</kbd> springt in seinen Inhalt.
+
+Welchen Tab du siehst, merkt sich Flowplan für dich auf diesem Gerät. Andere sehen ihren eigenen Tab, und durchs Umschalten entsteht keine neue Version. Ihr könnt gleichzeitig in verschiedenen Tabs schreiben.
+
+**Umwandeln in → Tabs** macht aus markierten Blöcken Tabs: Jede Überschrift beginnt einen neuen Tab. **Umwandeln in → Überschriften mit Inhalt** macht daraus wieder normalen Text.
+
+Beim Drucken, als PDF, in E-Books, im HTML-Export und auf veröffentlichten Seiten stehen alle Tabs untereinander, jeweils mit ihrem Titel als Überschrift; Word, Confluence und Jira bekommen ebenso eine Überschrift pro Tab.
+
+**Markdown:** Flowplan schreibt und liest das Format des Obsidian-Plugins „Tabs“:
+
+````markdown
+```tabs
+tab: Windows
+Lade das Installationsprogramm herunter.
+
+tab: Linux
+Installiere das Paket mit deinem Paketmanager.
+```
+````
+
+Enthält ein Tab selbst Codeblöcke, wird der äußere Zaun länger (`` ````tabs ``) – oder du nimmst `~~~tabs`. Eine Optionszeile des Plugins wie `top, multi` wird beim Import ignoriert.
 
 ## Textrichtung
 

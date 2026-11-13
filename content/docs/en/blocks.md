@@ -1,5 +1,5 @@
 ---
-keywords: block, handle, block menu, move, drag, select, duplicate, indent, text direction
+keywords: block, handle, block menu, move, drag, select, duplicate, indent, text direction, tabs
 new: selecting-several-blocks 2026-11-13
 ---
 
@@ -44,6 +44,37 @@ On touch devices **Select several** in the block menu starts the **selection mod
 - <kbd>Tab</kbd> at the start of a paragraph or heading indents it (up to eight levels), ++⇧ Tab++ outdents it. If a [toggle](/documents#toggles) is directly above, <kbd>Tab</kbd> moves the block into it instead, and ++⇧ Tab++ moves it back out. Lines indented before stay as they are.
 - <kbd>Backspace</kbd> at the start of an indented line first removes one level.
 - In lists <kbd>Tab</kbd> nests the item below the previous one; if it can't be indented, nothing happens – <kbd>Tab</kbd> never leaves the text. <kbd>Enter</kbd> in an empty list item moves only that item one level up, one level per <kbd>Enter</kbd>; at the top level it becomes a normal paragraph. <kbd>Enter</kbd> at the end of an item with sub-items starts a new first sub-item. In code blocks <kbd>Tab</kbd> inserts two spaces, in tables it moves to the next cell. With a [block selection](#selecting-several-blocks), <kbd>Tab</kbd> also moves code blocks and tables into a toggle.
+
+## Tabs
+
+The **Tabs** block stacks content in tabs – for example instructions for different systems or variants of a text. Type `/tabs` to insert it. Each tab has a title and can hold any blocks: paragraphs, lists, tables, images, toggles and even more tabs.
+
+- **Add:** **+** at the right of the tab strip – type its name right away.
+- **Rename:** double-click the tab or press <kbd>F2</kbd>.
+- **Reorder:** drag the tab or press ++⌘ ⇧ ←++/++⌘ ⇧ →++ (Windows/Linux: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>←</kbd>/<kbd>→</kbd>).
+- **Delete:** <kbd>Delete</kbd> on the tab; **Undo** brings it back. The last tab stays – delete the whole block from its block menu.
+- **On phones:** swipe the tab strip; every action is in the **⋯** menu.
+- **Keyboard:** <kbd>←</kbd>/<kbd>→</kbd>, <kbd>Home</kbd> and <kbd>End</kbd> switch tabs, <kbd>Enter</kbd> jumps into the tab's content.
+
+Flowplan remembers which tab you're looking at, for you on this device. Others see their own tab, and switching never creates a new version. You can write in different tabs at the same time.
+
+**Turn into → Tabs** makes tabs from selected blocks, each heading starting a new tab. **Turn into → Headings with content** turns them back into plain text.
+
+Printing, PDF, e-books, the HTML export and published pages show all tabs one after another, each with its title as a heading; Word, Confluence and Jira also get a heading per tab.
+
+**Markdown:** Flowplan writes and reads the format of the Obsidian "Tabs" plugin:
+
+````markdown
+```tabs
+tab: Windows
+Download the installer.
+
+tab: Linux
+Install the package with your package manager.
+```
+````
+
+If a tab contains code blocks itself, the outer fence gets longer (`` ````tabs ``) – or use `~~~tabs`. A plugin options line such as `top, multi` is ignored on import.
 
 ## Text direction
 
