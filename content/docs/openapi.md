@@ -71,7 +71,7 @@ Wer Flowplan selbst baut, erzeugt die Clients mit `npm run sdk` neu; der Test `t
 ## Sammlungen per API
 
 - `GET /api/collections?workspace=<id>` – deine und die mit dem Arbeitsbereich geteilten Sammlungen in deiner Reihenfolge: `id`, `name`, `icon`, `query`, `shared`, `mine`, `canEdit`, `ownerName`.
-- `GET /api/collections/<id>?tz=Europe/Berlin&offset=0&limit=500` – führt eine Sammlung aus. Du bekommst `collection`, `items` (`pageId`, `rowId`, `type`, `title`, `icon`, `spaceId`, `database`, `tags`, `createdAt`, `updatedAt`, `createdBy`, `creatorName`; zuletzt geänderte zuerst, je Seite `limit` Treffer, Standard 500, höchstens 5000), `total`, `offset`, `nextOffset` (der `offset` der nächsten Seite, `null` auf der letzten), `truncated` (weitere Seiten folgen) und `encryptedLeftOut`. Die Treffer folgen immer den Rechten des Tokens bzw. der Person.
+- `GET /api/collections/<id>?tz=Europe/Berlin&offset=0&limit=500` – führt eine Sammlung aus. Du bekommst `collection`, `items` (`pageId`, `rowId`, `type`, `title`, `icon`, `spaceId`, `database`, `tags`, `createdAt`, `updatedAt`, `createdBy`, `creatorName`; zuletzt geänderte zuerst, je Seite `limit` Treffer, Standard 500, höchstens 5000), `total`, `offset`, `nextOffset` (der `offset` der nächsten Seite, `null` auf der letzten), `truncated` (weitere Seiten folgen) {since=0.9.6} und `encryptedLeftOut`. Die Treffer folgen immer den Rechten des Tokens bzw. der Person.
 - `GET /api/collections/preview?workspace=<id>&q=<Abfrage>` – die ersten 50 Treffer einer nicht gespeicherten Abfrage und ihre Normalform (`query`).
 - `POST /api/command`:
   - `collection.create` `{ workspaceId, name, query, icon?, shared? }`

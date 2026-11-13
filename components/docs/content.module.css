@@ -89,6 +89,42 @@
   margin-bottom: 0;
 }
 
+/* ---------- Version markers: {since=0.9.6} (lib/release.ts) ---------- */
+/* Not released yet: an accent pill. Released: a quiet outline. */
+.content :global(.since) {
+  display: inline-block;
+  margin: 0 2px 0 4px;
+  padding: 0 7px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-size: 11.5px;
+  font-weight: 650;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  line-height: 1.55;
+  text-transform: none;
+  vertical-align: 0.1em;
+  white-space: nowrap;
+}
+.content :global(.since)[data-state="beta"] {
+  background: var(--blue-light);
+  border-color: color-mix(in srgb, var(--blue) 28%, transparent);
+  color: var(--accent-strong);
+}
+.content :global(.since)[data-state="released"] {
+  border-color: var(--border);
+  color: var(--muted);
+  font-weight: 550;
+}
+.content h2 :global(.since),
+.content h3 :global(.since),
+.content h4 :global(.since) {
+  margin-left: 8px;
+  font-size: 12px;
+  vertical-align: 0.3em;
+}
+
 /* ---------- Steps: ::: steps around a numbered list ---------- */
 .content :global(.steps) {
   margin: 0 0 22px;

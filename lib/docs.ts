@@ -15,6 +15,7 @@ import { appUrl, DISCORD_URL, GITHUB_URL, marketplaceUrl, MARKETPLACE_DEFAULT, w
 import { outboundTarget } from "./track";
 import { envRows, fillReference, hasReference, REFERENCE, type EnvRow } from "./reference";
 import { calloutHtml, contentBlocks, type BlockState } from "./markdown-blocks";
+import { sinceText, stripSince, stripSinceHtml } from "./release";
 
 export type DocGroup = { title: string; intro: string; area: AreaId; pages: { slug: string; title: string }[] };
 export type AreaId = "use" | "extend" | "run";
@@ -227,13 +228,16 @@ export const feedbackUrl = (page: { title: string; url: string }, locale: Locale
     page: page.url,
   });
 
+// A version marker ({since=…}, rendered or not) is not part of the id.
+const SINCE_IN_ID = /\{since=[^}]*\}/g;
 export function headingId(text: string) {
-  return text
+  return stripSinceHtml(text)
     .toLowerCase()
     .replace(/ä/g, "ae")
     .replace(/ö/g, "oe")
     .replace(/ü/g, "ue")
     .replace(/ß/g, "ss")
+    .replace(SINCE_IN_ID, "")
     .replace(/<[^>]+>/g, "")
     .replace(/&[a-z]+;/g, "")
     .replace(/[^a-z0-9]+/g, "-")
@@ -301,16 +305,19 @@ function render(markdown: string, locale: Locale) {
   // Callouts, steps, tabs and keys (lib/markdown-blocks.ts).
   const state: BlockState = { depth: 1, tabs: 0 };
   let images = 0;
-  marked.use(contentBlocks(state));
+  marked.use(contentBlocks(state, locale));
   marked.use({
     renderer: {
       heading({ tokens, depth }: Tokens.Heading) {
         const inner = this.parser.parseInline(tokens);
-        let id = headingId(inner) || (locale === "en" ? "section" : "abschnitt");
-        for (let n = 2; used.has(id); n++) id = `${headingId(inner)}-${n}`;
+        // The version badge ({since=…}) shows after the text, but is not
+        // part of the id or of the table of contents.
+        const text = stripSinceHtml(inner);
+        let id = headingId(text) || (locale === "en" ? "section" : "abschnitt");
+        for (let n = 2; used.has(id); n++) id = `${headingId(text)}-${n}`;
         used.add(id);
         state.depth = depth;
-        if (depth === 2 || depth === 3) toc.push({ id, text: plain(inner), depth });
+        if (depth === 2 || depth === 3) toc.push({ id, text: plain(text), depth });
         return `<h${depth} id="${id}"><a class="anchor" href="#${id}" aria-hidden="true" tabindex="-1">#</a>${inner}</h${depth}>\n`;
       },
       link({ href, title, tokens }: Tokens.Link) {
@@ -461,7 +468,10 @@ export function readingMinutes(html: string) {
 const raw = (slug: string, locale: Locale) => frontMatter(readFileSync(fileOf(slug, locale), "utf8"));
 // A page's Markdown without front matter, with the counts (lib/facts.ts) and
 // the reference tables (lib/reference.ts) filled in.
-export const docMarkdown = (slug: string, locale: Locale) => fillReference(fillFacts(raw(slug, locale).body, locale), locale, () => docEnvRows(locale));
+const pageMarkdown = (slug: string, locale: Locale) => fillReference(fillFacts(raw(slug, locale).body, locale), locale, () => docEnvRows(locale));
+// … and with the version markers in words: "(new in 0.9.6, in the :beta
+// image)" or "(since 0.9.6)" (lib/release.ts). This is what tools read.
+export const docMarkdown = (slug: string, locale: Locale) => sinceText(pageMarkdown(slug, locale), locale);
 // Every environment variable the pages describe (the reference page itself
 // left out), for {{reference:env}}.
 const envCache = new Map<Locale, EnvRow[]>();
@@ -470,7 +480,7 @@ export function docEnvRows(locale: Locale) {
   if (!rows) {
     const pages = docSlugs
       .filter((slug) => !hasReference(raw(slug, locale).body))
-      .map((slug) => ({ slug, title: docTitle(slug, locale), body: fillFacts(raw(slug, locale).body, locale) }));
+      .map((slug) => ({ slug, title: docTitle(slug, locale), body: fillFacts(raw(slug, locale).body, locale).replace(/^(#{2,6} .*)$/gm, (h) => stripSince(h)) }));
     rows = envRows(pages, headingId);
     envCache.set(locale, rows);
   }
@@ -514,7 +524,7 @@ export function docTitle(slug: string, locale: Locale) {
 }
 
 function read(slug: string, locale: Locale) {
-  const text = docMarkdown(slug, locale);
+  const text = pageMarkdown(slug, locale);
   const title = text.match(/^# (.+)$/m)?.[1]?.trim() || slug;
   const rest = text.replace(/^[\s\S]*?^# .+\n+/m, "");
   // The first paragraph is the lead, the rest the article.
@@ -555,7 +565,7 @@ export function loadDoc(slug: string, locale: Locale = "de"): Doc | null {
 // Plain text of a rendered part; block ends become spaces so table cells
 // and list items do not run together.
 const blockText = (html: string) =>
-  plain(html.replace(/<\/(p|li|td|th|tr|h\d|div|pre|aside|blockquote)>/g, " $&"))
+  plain(stripSinceHtml(html).replace(/<\/(p|li|td|th|tr|h\d|div|pre|aside|blockquote)>/g, " $&"))
     .replace(/\s+/g, " ")
     .trim();
 
@@ -590,7 +600,7 @@ export function docSearchIndex(locale: Locale = "de"): DocSearchPage[] {
       keywords: synonymKeywords(`${doc.title} ${doc.summary} ${tags.join(" ")} ${text}`),
       sections: parts.map((part) => {
         const id = part.match(/^<h[23] id="([^"]+)"/)![1];
-        const heading = plain(part.slice(0, part.indexOf("</h")).replace(/<a class="anchor"[^>]*>#<\/a>/, "")).trim();
+        const heading = plain(stripSinceHtml(part.slice(0, part.indexOf("</h"))).replace(/<a class="anchor"[^>]*>#<\/a>/, "")).trim();
         const body = blockText(part.slice(part.indexOf("</h") + 5));
         const level3 = part.startsWith("<h3");
         if (!level3) parent = heading;

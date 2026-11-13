@@ -150,7 +150,7 @@ Mit **Regel hinzufügen** wählst du einen Arbeitsbereich, Bereich, eine Seite o
 
 Auf einer Seite, die die KI nicht lesen darf, sind KI-Funktionen ausgegraut, mit dem Hinweis, warum.
 
-Fragst du die KI zu einem Journaltag (**Diese Seite**, Schreibassistent, Zusammenfassung), bekommt sie auch die Liste „An diesem Tag erledigt“ mit – so, wie du sie siehst, und nur, was sie lesen darf. In Workflows gibst du einen Tag mit dem Schritt [Journaltag lesen](/workflow-nodes) an die KI weiter.
+Fragst du die KI zu einem Journaltag (**Diese Seite**, Schreibassistent, Zusammenfassung), bekommt sie auch die Liste „An diesem Tag erledigt“ mit – so, wie du sie siehst, und nur, was sie lesen darf. In Workflows gibst du einen Tag mit dem Schritt [Journaltag lesen](/workflow-nodes) an die KI weiter. {since=0.9.6}
 
 ## Sicherheit der Schlüssel
 

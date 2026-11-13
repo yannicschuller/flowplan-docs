@@ -79,9 +79,9 @@ The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kb
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Move block up / down (a collapsed heading with its section); with a table row selected: move the row up / down |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>←</kbd> / <kbd>→</kbd> | With a table column selected: move the column left / right |
 | <kbd>⌘</kbd> <kbd>D</kbd> | Duplicate the block, also selected blocks or a selected table row or column |
-| <kbd>Esc</kbd> | Select the block with the cursor ([selecting several blocks](/blocks#selecting-several-blocks)); with the block menu open: close the menu, the block stays selected; with blocks selected: end the selection |
-| <kbd>⌘</kbd> <kbd>A</kbd> | In text: first the block's text, the second time all blocks; with blocks selected: all blocks at once |
-| <kbd>⌘</kbd> <kbd>C</kbd> / <kbd>⌘</kbd> <kbd>X</kbd> | With blocks selected: copy / cut the blocks – <kbd>⌘</kbd> <kbd>V</kbd> pastes them back as blocks, also in another page |
+| <kbd>Esc</kbd> | Select the block with the cursor ([selecting several blocks](/blocks#selecting-several-blocks)); with the block menu open: close the menu, the block stays selected; with blocks selected: end the selection {since=0.9.6} |
+| <kbd>⌘</kbd> <kbd>A</kbd> | In text: first the block's text, the second time all blocks; with blocks selected: all blocks at once {since=0.9.6} |
+| <kbd>⌘</kbd> <kbd>C</kbd> / <kbd>⌘</kbd> <kbd>X</kbd> | With blocks selected: copy / cut the blocks – <kbd>⌘</kbd> <kbd>V</kbd> pastes them back as blocks, also in another page {since=0.9.6} |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Enter</kbd> | In a heading: [collapse or expand its section](/reading-and-presenting#collapsing-sections); in a [toggle](/documents#toggles): collapse or expand it |
 | <kbd>⇧</kbd> <kbd>Enter</kbd> | Line break within the same block |
 | <kbd>⌘</kbd> <kbd>Z</kbd> / <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>Z</kbd> | Undo / redo |

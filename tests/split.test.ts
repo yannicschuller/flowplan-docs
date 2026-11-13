@@ -12,6 +12,7 @@ import { resolveAnchor, type AnchorMap } from "../lib/anchors";
 import { editDistance, searchDocs, sentence, suggest } from "../lib/search";
 import { LOCALES, type Locale } from "../lib/i18n";
 import { blockKey } from "../scripts/split/block-key";
+import { stripSince } from "../lib/release";
 
 type Fixture = { base: string } & Record<Locale, Record<string, { headings: string[]; blocks: string[] }>>;
 const fixture = JSON.parse(readFileSync(join(process.cwd(), "tests", "fixtures", "pre-split.json"), "utf8")) as Fixture;
@@ -20,13 +21,14 @@ const OLD = Object.keys(fixture.de);
 const file = (slug: string, locale: Locale) => join(process.cwd(), "content", "docs", ...(locale === "en" ? ["en"] : []), `${slug}.md`);
 
 // Headings and blocks of the pages as they are now (raw Markdown, like the
-// fixture, so the counts in {{facts.…}} do not matter).
+// fixture, so the counts in {{facts.…}} do not matter). Version markers
+// ({since=0.9.6}) are left out: marking a block does not change it.
 function current(locale: Locale) {
   const headings = new Set<string>();
   const blocks = new Set<string>();
   for (const slug of docSlugs) {
     const { body } = frontMatter(readFileSync(file(slug, locale), "utf8"));
-    for (const token of new Marked({ gfm: true }).lexer(body)) {
+    for (const token of new Marked({ gfm: true }).lexer(stripSince(body))) {
       if (token.type === "space") continue;
       if (token.type === "heading") headings.add(token.text.replace(/\]\([^)]*\)/g, "]()"));
       else blocks.add(blockKey(token.raw));
