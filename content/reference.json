@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@f4dbf64",
+  "source": "github.com/yannicschuller/flowplan@032f998",
   "slash": {
     "groups": {
       "recent": [
@@ -1795,6 +1795,18 @@
         "description": [
           "Schreibt Markdown mit Platzhaltern in den heutigen, gestrigen oder einen bestimmten Tag eines Journals – am Ende oder unter einer Überschrift. Fehlt der Tag, wird er wie beim Öffnen angelegt.",
           "Writes Markdown with placeholders into today’s, yesterday’s or a given day of a journal – at the end or below a heading. A missing day is created as opening it would."
+        ]
+      },
+      {
+        "type": "action.journal.read",
+        "category": "pages",
+        "name": [
+          "Journaltag lesen",
+          "Read journal day"
+        ],
+        "description": [
+          "Liest den heutigen, gestrigen oder einen bestimmten Tag eines Journals – seinen Text und was „An diesem Tag erledigt“ wurde – zum Beispiel für einen KI-Schritt. Ändert nichts.",
+          "Reads today’s, yesterday’s or a given day of a journal – its text and what was “Completed this day” – for an AI step, for example. Changes nothing."
         ]
       },
       {

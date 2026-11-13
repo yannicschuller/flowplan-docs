@@ -150,6 +150,8 @@ The AI **never** reads:
 
 On a page the AI may not read, AI features are greyed out with a note saying why.
 
+When you ask the AI about a journal day (**This page**, the writing assistant, summaries), it also gets the "Completed this day" list – as you see it, and only what it may read. In workflows, the step [Read journal day](/en/workflow-nodes) hands a day to the AI.
+
 ## Security of keys
 
 - **Stored encrypted:** API keys – the instance's and everyone's – are only stored encrypted in the database (AES-256-GCM, bound to their owner; a copied value can't be decrypted elsewhere). The key for this comes from `FLOWPLAN_ENCRYPTION_KEY`, `FLOWPLAN_SECRETS_KEY` or the file `secrets.key` in the data folder ([Stored secrets](/configuration-storage#stored-secrets)).

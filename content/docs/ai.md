@@ -150,6 +150,8 @@ Mit **Regel hinzufügen** wählst du einen Arbeitsbereich, Bereich, eine Seite o
 
 Auf einer Seite, die die KI nicht lesen darf, sind KI-Funktionen ausgegraut, mit dem Hinweis, warum.
 
+Fragst du die KI zu einem Journaltag (**Diese Seite**, Schreibassistent, Zusammenfassung), bekommt sie auch die Liste „An diesem Tag erledigt“ mit – so, wie du sie siehst, und nur, was sie lesen darf. In Workflows gibst du einen Tag mit dem Schritt [Journaltag lesen](/workflow-nodes) an die KI weiter.
+
 ## Sicherheit der Schlüssel
 
 - **Verschlüsselt gespeichert:** API-Schlüssel – der Instanz und jeder Person – liegen nur verschlüsselt in der Datenbank (AES-256-GCM, an ihren Besitzer gebunden; ein kopierter Wert lässt sich an anderer Stelle nicht entschlüsseln). Der Schlüssel dafür kommt aus `FLOWPLAN_ENCRYPTION_KEY`, `FLOWPLAN_SECRETS_KEY` oder der Datei `secrets.key` im Datenordner ([Gespeicherte Geheimnisse](/configuration-storage#gespeicherte-geheimnisse)).
