@@ -1,5 +1,6 @@
 ---
-keywords: Projekt, Ticket, Sprint, Scrum, Jira, Epic, Zeiterfassung, Automation
+keywords: Projekt, Ticket, Sprint, Scrum, Jira, Epic, Zeiterfassung, Automation, Fälligkeitsdatum, erledigt
+new: wann-ist-ein-eintrag-faellig 2026-11-13
 ---
 
 # Projekte, Tickets und Sprints
@@ -31,10 +32,19 @@ Der Typ **Übergeordneter Eintrag (Unteraufgaben)** lässt Einträge unter einem
 ## Wann ist ein Eintrag erledigt?
 
 Sprints, Fortschritt, überfällige Einträge und „Meine Aufgaben“ müssen wissen, wann ein Eintrag erledigt ist. Flowplan erkennt das selbst:
-- an einer Status-Auswahl mit einer Option wie „Erledigt“ oder „Done“,
-- sonst an einer Checkbox „Erledigt“.
+- an einer Status-Auswahl mit einer Option wie „Erledigt“, „Done“, „Terminé“, „Fermé“, „Completato“, „Hecho“ oder „已完成“,
+- sonst an einer Checkbox „Erledigt“ (oder „Done“, „Terminé“ …).
 
-Unter **… → Workflow und Erledigt** legst du es fest, wenn es anders sein soll.
+Unter **… → Statusregeln und Erledigt** legst du es fest, wenn es anders sein soll. Status wie „Abgelaufen“, „Expiré“ oder „Utilisé“ zählen nicht von selbst als erledigt – sollen sie das, hakst du sie dort an.
+
+## Wann ist ein Eintrag fällig?
+
+„Meine Aufgaben“, die Erinnerungen an fällige Einträge (auch die tägliche Übersicht für Chat-Apps und Webhooks), die Widgets der App und die Schnellerfassung nehmen das Fälligkeitsdatum einer Datenbank. Unter **… → Statusregeln und Erledigt → Fälligkeitsdatum** wählst du:
+- **Automatisch** (Standard): eine Datums-Eigenschaft, die wie ein Fälligkeitsdatum heißt – etwa „Fällig“, „Deadline“, „Frist“, „Échéance“, „Date limite“, „Scadenza“, „Vencimiento“ oder „截止日期“, danach Namen wie „Termin“, „Gültig bis“ oder „Fin de validité“ –, sonst die erste Datums-Eigenschaft. Die Auswahl zeigt, welche das gerade ist.
+- **Eine bestimmte Datums-Eigenschaft**, z. B. „Fin de validité“ statt „Date d'achat“.
+- **Kein Fälligkeitsdatum**: Einträge erscheinen ohne Datum in „Meine Aufgaben“ und in den Widgets und lösen keine Erinnerungen an Fälligkeiten aus.
+
+Wird die gewählte Eigenschaft gelöscht, gilt wieder **Automatisch**.
 
 ## Statusregeln
 
@@ -142,6 +152,7 @@ Der Zeitbericht fasst die Zeiteinträge einer Datenbank oder des ganzen Arbeitsb
 **Meine Aufgaben → Einträge aus Datenbanken** zeigt Einträge aus allen Datenbanken des Arbeitsbereichs in einer Liste. Standardmäßig sind das die offenen, die dir zugewiesen sind – über irgendeine Personen-Eigenschaft.
 
 - Filtern kannst du nach Fälligkeit, Datenbank und Text.
+- Welches Datum als Fälligkeit gilt, legt jede Datenbank fest – siehe [Wann ist ein Eintrag fällig?](#wann-ist-ein-eintrag-faellig)
 - **Als Ansicht speichern** macht daraus eine eigene, persönliche Ansicht, z. B. „Alle meine offenen Tickets in allen Projekten“.
 
 ## Import aus Jira und Trello

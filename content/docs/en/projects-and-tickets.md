@@ -1,5 +1,6 @@
 ---
-keywords: project, ticket, sprint, scrum, jira, epic, time tracking, automation
+keywords: due date, done, project, ticket, sprint, scrum, jira, epic, time tracking, automation
+new: when-is-a-record-due 2026-11-13
 ---
 
 # Projects, tickets and sprints
@@ -31,10 +32,19 @@ The type **Parent record (subtasks)** lets records sit below another record of t
 ## When is a record done?
 
 Sprints, progress, overdue records and “My tasks” need to know when a record is done. Flowplan detects it:
-- from a status select with an option like “Done” or “Erledigt”,
-- otherwise from a “Done” checkbox.
+- from a status select with an option like “Done”, “Erledigt”, “Terminé”, “Fermé”, “Completato”, “Hecho” or “已完成”,
+- otherwise from a “Done” checkbox (or “Erledigt”, “Terminé” …).
 
-Set it under **… → Workflow and done** when it should be different.
+Set it under **… → Status rules and done** when it should be different. Statuses such as “Expired”, “Expiré” or “Utilisé” do not count as done by themselves – tick them there if they should.
+
+## When is a record due?
+
+“My tasks”, reminders of due records (including the daily summary for chat apps and webhooks), the app's widgets and quick capture use a database's due date. Under **… → Status rules and done → Due date** you choose:
+- **Automatic** (default): a date property named like a due date – such as “Due”, “Deadline”, “Fällig”, “Échéance”, “Date limite”, “Scadenza”, “Vencimiento” or “截止日期”, then names like “Termin”, “Valid until” or “Fin de validité” –, otherwise the first date property. The option shows which one that currently is.
+- **A specific date property**, e.g. “Fin de validité” rather than “Date d'achat”.
+- **No due date**: records show without a date in “My tasks” and the widgets and trigger no due reminders.
+
+If the chosen property is deleted, **Automatic** applies again.
 
 ## Status rules
 
@@ -142,6 +152,7 @@ The time report sums up the time entries of a database or of the whole workspace
 **My tasks → Records from databases** shows records from every database of the workspace in one list. By default these are the open ones assigned to you – through any person property.
 
 - You can filter by due date, database and text.
+- Which date counts as the due date is set per database – see [When is a record due?](#when-is-a-record-due)
 - **Save as view** turns a filter into a personal view of its own, e.g. “All my open tickets in all projects”.
 
 ## Import from Jira and Trello
