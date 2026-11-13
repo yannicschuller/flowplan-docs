@@ -46,7 +46,7 @@ The eye next to the bell shows who opened the page and when. A tick means the pe
 
 If someone else changed a page since you last opened it, a notice with their names appears at the top. For documents, **Show changes** shows the text changes since your last visit (inserted and deleted, as in the version history). For databases the notice gives the number of edited records.
 
-On the home screen, **Recently viewed** lists the pages you opened last.
+On the home screen, **Recently viewed** lists the pages you opened last; the [quick search](/search-and-notifications#order-path-and-recently-viewed) with nothing typed shows records too, grouped by day.
 
 ## Page comments
 

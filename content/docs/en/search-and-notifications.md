@@ -1,5 +1,6 @@
 ---
 keywords: search, quick search, cmd k, filter, collection, saved search, commands
+new: order-path-and-recently-viewed 2026-11-13
 ---
 
 # Quick search and collections
@@ -26,6 +27,14 @@ It searches:
 Hits can be filtered by type and space. [Journal days](/journal#days-in-lists-search-graph-and-export) come after all other hits; **Without journal days** leaves them out completely and stays on for the next search. File text is indexed in the background and can be found after a few seconds. The search only shows what you may read. <kbd>Enter</kbd> opens the first hit.
 
 Aliases of pages and records weigh as much as the title. When the search only matches an alias, the hit shows the real title with the alias in grey, e.g. "Chauffage · PAC". The same applies in the @ mention dialog.
+
+### Order, path and recently viewed
+
+Hits whose title is exactly your search come first, then titles that start with it (or have a word that does), then other title hits, and hits only in the text last. Within these, pages and records **you** open often and recently move up; pages you edited lately and your favourites count a little too. Each hit shows its path (space / … / parent page, for records including the database) and when it was last edited. Above the list are the number of hits and the order: **Best match**, **Last edited** or **Recently created**.
+
+With nothing typed, the quick search lists the pages and records you opened last (up to 20, newest first), grouped by day: Today, Yesterday, then the date.
+
+For this, Flowplan keeps the times of your last ten visits per page and record (to the minute). This history is yours alone: it only affects your own search and nobody else sees it, not even administrators in the app. Visits older than 180 days are deleted, and at most 500 pages and records per person are kept; the history goes when you leave a workspace and when your account is deleted. Access through API tokens does not count.
 
 ### Filter by tags and properties
 

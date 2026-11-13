@@ -1,5 +1,6 @@
 ---
 keywords: Suche, Schnellsuche, Cmd K, Filter, Sammlung, gespeicherte Suche, Befehle
+new: reihenfolge-pfad-und-zuletzt-angesehen 2026-11-13
 ---
 
 # Schnellsuche und Sammlungen
@@ -26,6 +27,14 @@ Durchsucht werden:
 Treffer lassen sich nach Typ und Bereich filtern. [Journaltage](/journal#tage-in-listen-suche-graph-und-export) stehen hinter allen anderen Treffern; **Ohne Journaltage** lässt sie ganz weg und bleibt für die nächste Suche eingeschaltet. Dateitexte werden im Hintergrund erfasst und sind nach wenigen Sekunden auffindbar. Die Suche zeigt nur, was du lesen darfst. <kbd>Enter</kbd> öffnet den ersten Treffer.
 
 Aliasse von Seiten und Einträgen zählen so viel wie der Titel. Passt die Suche nur zu einem Alias, zeigt der Treffer den echten Titel mit dem Alias in Grau, etwa „Chauffage · PAC“. Dasselbe gilt im Dialog der @-Erwähnung.
+
+### Reihenfolge, Pfad und zuletzt angesehen
+
+Ganz oben stehen Treffer, deren Titel genau deiner Suche entspricht, dann Titel, die mit ihr (oder einem Wort darin) beginnen, dann die übrigen Titeltreffer und zuletzt Treffer nur im Text. Innerhalb davon rücken Seiten und Einträge nach oben, die **du** oft und zuletzt geöffnet hast; etwas Gewicht haben auch Seiten, die du kürzlich bearbeitet hast, und deine Favoriten. Unter jedem Treffer steht sein Pfad (Bereich / … / übergeordnete Seite, bei Einträgen mit der Datenbank) und wann er zuletzt bearbeitet wurde. Über der Liste stehen die Zahl der Treffer und die Sortierung: **Beste Treffer**, **Zuletzt bearbeitet** oder **Zuletzt erstellt**.
+
+Ohne Suchtext zeigt die Schnellsuche die Seiten und Einträge, die du zuletzt geöffnet hast (bis zu 20, neueste zuerst), nach Tagen gruppiert: Heute, Gestern, dann das Datum.
+
+Dafür merkt sich Flowplan pro Seite und Eintrag die Zeitpunkte deiner letzten zehn Besuche (minutengenau). Dieser Verlauf gehört nur dir: Er beeinflusst nur deine eigene Suche, andere sehen ihn nicht, auch Administratoren nicht in der Oberfläche. Besuche älter als 180 Tage werden gelöscht, höchstens 500 Seiten und Einträge pro Person bleiben gespeichert; beim Verlassen eines Arbeitsbereichs und beim Löschen deines Kontos verschwindet er. Zugriffe über API-Tokens zählen nicht.
 
 ### Nach Tags und Eigenschaften filtern
 

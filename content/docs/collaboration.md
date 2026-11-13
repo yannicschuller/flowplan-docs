@@ -46,7 +46,7 @@ Das Auge neben der Glocke zeigt, wer die Seite geöffnet hat und wann. Ein Haken
 
 Hat jemand anderes eine Seite geändert, seit du sie zuletzt geöffnet hast, erscheint oben ein Hinweis mit den Namen. Bei Dokumenten zeigt **Änderungen zeigen** die Textänderungen seit deinem letzten Besuch (eingefügt und gelöscht, wie im Versionsverlauf). Bei Datenbanken nennt der Hinweis die Zahl der bearbeiteten Einträge.
 
-Die Startseite listet unter **Zuletzt angesehen** die Seiten, die du zuletzt geöffnet hast.
+Die Startseite listet unter **Zuletzt angesehen** die Seiten, die du zuletzt geöffnet hast; die [Schnellsuche](/search-and-notifications#reihenfolge-pfad-und-zuletzt-angesehen) zeigt ohne Suchtext auch Einträge, nach Tagen gruppiert.
 
 ## Seitenkommentare
 
