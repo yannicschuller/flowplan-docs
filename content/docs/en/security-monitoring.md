@@ -46,6 +46,8 @@ Whoever signs in with a device not seen for 90 days gets a security notice thems
 | Admin from a new device | an admin signs in with a device not seen for 90 days | warning |
 | Two countries in a short time | sign-ins from two countries within 2 hours (needs `FLOWPLAN_COUNTRY_HEADER`) | critical |
 | Rights changed | admin rights, LDAP/SCIM, restore, extensions, domains | critical |
+| Encryption key reset | an account resets its key for [encrypted spaces](/en/encrypted-spaces) (passphrase and recovery key lost) – only affects its own access to those spaces | warning |
+| Several keys reset | 3 accounts reset their encryption key within an hour | critical |
 | Many exports | more than 20 exports by one person in an hour (and far above their usual) | warning |
 | Probing | 60 refused API requests (401/403/404) from one address in 10 minutes | warning |
 | Attacks through content | 5 refused scripts or internal addresses in an hour | warning |

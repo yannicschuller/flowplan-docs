@@ -46,6 +46,8 @@ Wer sich mit einem Gerät anmeldet, das 90 Tage nicht dabei war, bekommt selbst 
 | Admin von neuem Gerät | ein Admin meldet sich mit einem Gerät an, das 90 Tage nicht dabei war | Warnung |
 | Zwei Länder kurz nacheinander | Anmeldungen aus zwei Ländern innerhalb von 2 Stunden (braucht `FLOWPLAN_COUNTRY_HEADER`) | kritisch |
 | Rechte geändert | Adminrechte, LDAP/SCIM, Wiederherstellung, Erweiterungen, Domains | kritisch |
+| Verschlüsselungsschlüssel zurückgesetzt | ein Konto setzt seinen Schlüssel für [verschlüsselte Bereiche](/encrypted-spaces) zurück (Passphrase und Wiederherstellungsschlüssel verloren) – betrifft nur den eigenen Zugang zu diesen Bereichen | Warnung |
+| Mehrere Schlüssel zurückgesetzt | 3 Konten setzen ihren Verschlüsselungsschlüssel innerhalb einer Stunde zurück | kritisch |
 | Viele Exporte | mehr als 20 Exporte einer Person in einer Stunde (und weit über ihrem Üblichen) | Warnung |
 | Abtasten | 60 abgewiesene API-Anfragen (401/403/404) einer Adresse in 10 Minuten | Warnung |
 | Angriffe über Inhalte | 5 abgewehrte Skripte oder interne Adressen in einer Stunde | Warnung |
