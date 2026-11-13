@@ -36,7 +36,9 @@ Jeder Tag merkt sich, aus welcher Fassung der Vorlage er entstanden ist. Ein Tag
 
 ## Tagesvorlage
 
-**Journal einrichten** (Zahnrad auf der Journalseite) → **Vorlage**: Jeder neue Tag beginnt mit diesem Inhalt, etwa „Dankbar für“, „Fokus heute“ und „Rückblick am Abend“. Zur Wahl stehen fertige Vorlagen (Dankbarkeit & Fokus, 5-Minuten-Journal, Arbeitslog, Tagesrückblick); **Heutigen Tag übernehmen** macht den aktuellen Tag zur Vorlage den aktuellen Tag. Aufgaben aus der Vorlage kommen jeden Tag neu und werden nicht zusätzlich übernommen. Ein Tag, auf dem nur die Vorlage steht, gilt als leer und verschwindet wie jeder leere Tag.
+**Journal einrichten** (Zahnrad auf der Journalseite) → **Vorlage**: Jeder neue Tag beginnt mit diesem Inhalt, etwa „Dankbar für“, „Fokus heute“ und „Rückblick am Abend“. Zur Wahl stehen fertige Vorlagen (Dankbarkeit & Fokus, 5-Minuten-Journal, Arbeitslog, Tagesrückblick); **Heutigen Tag übernehmen** macht den aktuellen Tag zur Vorlage. Aufgaben aus der Vorlage kommen jeden Tag neu und werden nicht zusätzlich übernommen. Ein Tag, auf dem nur die Vorlage steht, gilt als leer und verschwindet wie jeder leere Tag.
+
+**Übernommene Aufgaben** (ebenfalls unter **Vorlage**) legt fest, wo die offenen Aufgaben des Vortags in einem neuen Tag stehen: **Oben** (Voreinstellung, vor der Vorlage), **Nach der Vorlage** oder **Unter der Überschrift …** – zur Wahl stehen die Überschriften der Vorlage. Mit einer Überschrift kommt die Aufgabenliste direkt darunter, vor das, was die Vorlage dort vorsieht. Fehlt die Überschrift später in der Vorlage, stehen die Aufgaben nach der Vorlage. Das gilt für Tage, die automatisch entstehen, genauso wie für den Entwurf bei **Beim ersten Schreiben**.
 
 ## Tracker, Ort und Termine
 
@@ -55,6 +57,7 @@ Unter jedem Tag steht **An diesem Tag erledigt**: die Einträge aus Datenbanken,
 - Es erscheinen nur Einträge, die du sehen darfst – keine privaten Einträge anderer, nichts aus gesperrten Journalen oder verschlüsselten Bereichen. Ist an einem Tag nichts erledigt worden, fehlt die Liste; mehr als 100 Einträge kürzt sie mit „und … weitere“.
 - Ausschalten lässt sie sich für das ganze Journal unter **Journal einrichten → Tagesleiste → An diesem Tag erledigt** (voreingestellt an). Dort lassen sich auch Ort und Termine abschalten.
 - Eine Aufgabe zählt an dem Tag, an dem sie zuletzt abgehakt wurde, und nur, solange sie erledigt ist – wieder geöffnet oder **Abgebrochen** verschwindet sie. Aufgaben des Tages selbst stehen schon im Tag und erscheinen hier nicht. Bei **Nur meine** zählen die Aufgaben, die du abgehakt hast oder die dir gegeben sind.
+- Änderst du den Text einer erledigten Aufgabe, bleibt sie in der Liste – mit dem neuen Text.
 
 ### Besprechungsnotizen
 
@@ -125,6 +128,8 @@ Journale hinter einer PIN, die du nicht eingegeben hast, tauchen in keinem davon
 - Journale lassen sich wie jede Seite teilen. Wer nur lesen darf, sieht die Tage, legt aber keine an.
 - Die Schnellsuche findet Einträge über alle Tage hinweg; **Ohne Journaltage** blendet sie aus.
 
-## Workflows: neuer Journaltag
+## Workflows
 
 Der Workflow-Auslöser **Neuer Journaltag** startet einen [Workflow](/workflows), wenn die Seite eines Tages angelegt wird – also beim ersten Öffnen oder Schreiben des Tages (oder automatisch, wenn das Journal Tage selbst anlegt), nicht um Mitternacht. Für feste Uhrzeiten gibt es den Auslöser **Zeitplan**. Journale mit PIN sind für Workflows gesperrt.
+
+Mit dem Schritt **An Journaltag anhängen** schreibt ein Workflow in einen Tag: heute, gestern oder ein bestimmtes Datum, am Ende des Tages oder unter einer Überschrift. Fehlt der Tag, legt der Workflow ihn so an, wie das Öffnen es täte – mit Vorlage und übernommenen Aufgaben. Mehr unter [Workflow-Knoten](/workflow-nodes#seiten).

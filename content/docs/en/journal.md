@@ -38,6 +38,8 @@ Every day remembers which version of the template it was created from. A day tha
 
 **Set up journal** (gear on the journal page) → **Template**: every new day starts with this content, such as "Grateful for", "Focus today" and "Evening review". Ready-made templates are available (gratitude & focus, 5-minute journal, work log, daily review); **Use today** makes the current day the template. Tasks from the template come back every day and are not carried over in addition. A day that only holds the template counts as empty and disappears like any empty day.
 
+**Carried-over tasks** (also under **Template**) decides where the open tasks of the day before go in a new day: **At the top** (the default, before the template), **After the template** or **Below the heading …** – the template's headings are offered. With a heading, the task list goes directly below it, before whatever the template puts there. If the template no longer has the heading, the tasks go after the template. This applies to days created automatically as well as to the draft with **On the first write**.
+
 ## Trackers, place and appointments
 
 Above every day there is a bar:
@@ -57,6 +59,7 @@ Below every day, **Completed this day** lists the database records that were com
 - Only records you may see appear – no private records of others, nothing from locked journals or encrypted spaces. On a day with nothing completed, the list is missing; beyond 100 records it ends with "and … more".
 - It can be switched off for the whole journal under **Set up journal → Day bar → Completed this day** (on by default).
 - A task counts on the day it was last ticked off, and only while it is done – reopened or **Cancelled**, it drops out. Tasks of the day itself are in the day already and do not appear here. With **Only mine**, the tasks you ticked off or that are given to you count.
+- If you change the text of a completed task, it stays in the list – with its new text.
 
 ### Meeting notes
 
@@ -127,6 +130,8 @@ Journals behind a PIN you have not entered appear in none of these – not even 
 - Journals can be shared like any page. Whoever may only read sees the days but does not create any.
 - The quick search finds entries across all days; **Without journal days** hides them.
 
-## Workflows: new journal day
+## Workflows
 
 The workflow trigger **New journal day** starts a [workflow](/workflows) when a day's page is created – so when the day is first opened or written in (or automatically, if the journal creates days itself), not at midnight. For fixed times there is the **Schedule** trigger. Journals with a PIN are closed to workflows.
+
+With the step **Append to journal day**, a workflow writes into a day: today, yesterday or a given date, at the end of the day or below a heading. If the day does not exist yet, the workflow creates it the way opening it would – with the template and the carried-over tasks. More under [Workflow nodes](/workflow-nodes#pages).

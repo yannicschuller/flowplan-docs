@@ -96,6 +96,7 @@
 ["render","render","one-click-deploy","render","render"],
 ["digitalocean-app-platform","digitalocean-app-platform","one-click-deploy","digitalocean-app-platform","digitalocean-app-platform"],
 ["jeder-server-cloud-init-oder-installationsskript","any-server-cloud-init-or-install-script","one-click-deploy","jeder-server-cloud-init-oder-installationsskript","any-server-cloud-init-or-install-script"]],"journal":[
+["workflows-neuer-journaltag","workflows-new-journal-day","journal","workflows","workflows"],
 ["ueberblick-auf-der-journalseite","overview-on-the-journal-page","journal-review","ueberblick-auf-der-journalseite","overview-on-the-journal-page"],
 ["rueckblick","review","journal-review","rueckblick","review"],
 ["mit-ki-zusammenfassen","summarise-with-ai","journal-review","mit-ki-zusammenfassen","summarise-with-ai"],
