@@ -71,7 +71,7 @@ If you build Flowplan yourself, `npm run sdk` regenerates the clients; the test 
 ## Collections via the API
 
 - `GET /api/collections?workspace=<id>` – your collections and those shared with the workspace, in your order: `id`, `name`, `icon`, `query`, `shared`, `mine`, `canEdit`, `ownerName`.
-- `GET /api/collections/<id>?tz=Europe/Berlin` – runs a collection. It returns `collection`, `items` (`pageId`, `rowId`, `type`, `title`, `icon`, `spaceId`, `database`, `tags`, `createdAt`, `updatedAt`, `createdBy`, `creatorName`; most recently changed first, at most 500), `total`, `truncated` and `encryptedLeftOut`. Matches always follow the permissions of the token's person.
+- `GET /api/collections/<id>?tz=Europe/Berlin&offset=0&limit=500` – runs a collection. It returns `collection`, `items` (`pageId`, `rowId`, `type`, `title`, `icon`, `spaceId`, `database`, `tags`, `createdAt`, `updatedAt`, `createdBy`, `creatorName`; most recently changed first, `limit` matches per page, default 500, at most 5000), `total`, `offset`, `nextOffset` (the `offset` of the next page, `null` on the last one), `truncated` (more pages follow) and `encryptedLeftOut`. Matches always follow the permissions of the token's person.
 - `GET /api/collections/preview?workspace=<id>&q=<query>` – the first 50 matches of a query that is not saved, and its canonical form (`query`).
 - `POST /api/command`:
   - `collection.create` `{ workspaceId, name, query, icon?, shared? }`
