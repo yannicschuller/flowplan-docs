@@ -100,7 +100,7 @@ The star in the header (on a phone **Favourite** in the `⋯` menu) puts a page 
 
 Via `…` next to a space → **Edit space …** or **Settings → Spaces**:
 
-- rename it, give it an emoji or symbol and one of nine colours,
+- rename it, give it an emoji or symbol and one of nine colours, or an image of your own: **Upload image** next to **Choose icon** crops a PNG, JPEG, WebP or GIF to a small square (as for the workspace image); only people who can see the space receive it, and **Remove** goes back to the default folder icon,
 - switch the visibility between open (all members) and private,
 - **Duplicate space**: an independent copy of all active pages, records and attachments; comments, versions and shares are not copied,
 - **Git export** (only for the owner of the space, when the administration has switched it on): push the space into a Git repository daily or weekly, see [Git export of a space](/markdown-git-export#git-export-of-a-space),

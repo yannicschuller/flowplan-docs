@@ -100,7 +100,7 @@ Der Stern in der Kopfzeile (auf dem Telefon **Favorit** im Menü `⋯`) legt ein
 
 Über `…` neben einem Bereich → **Bereich bearbeiten …** oder **Einstellungen → Bereiche**:
 
-- umbenennen, Emoji oder Symbol und eine von neun Farben vergeben,
+- umbenennen, Emoji oder Symbol und eine von neun Farben vergeben oder ein eigenes Bild: **Bild hochladen** neben **Symbol auswählen** schneidet ein PNG, JPEG, WebP oder GIF quadratisch zu (wie beim Bild des Arbeitsbereichs); nur wer den Bereich sehen darf, bekommt es, und **Entfernen** führt zurück zum Standard-Ordnersymbol,
 - Sichtbarkeit zwischen öffentlich (alle Mitglieder) und privat wechseln,
 - **Bereich duplizieren**: unabhängige Kopie aller aktiven Seiten, Einträge und Anhänge; Kommentare, Versionen und Freigaben werden nicht übernommen,
 - **Git-Export** (nur für die Eigentümerin oder den Eigentümer des Bereichs, wenn die Administration ihn eingeschaltet hat): den Bereich täglich oder wöchentlich in ein Git-Repository übertragen, siehe [Git-Export eines Bereichs](/markdown-git-export#git-export-eines-bereichs),
