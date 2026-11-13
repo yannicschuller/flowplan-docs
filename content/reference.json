@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@b363fbe",
+  "source": "github.com/yannicschuller/flowplan@92bf025",
   "slash": {
     "groups": {
       "recent": [
@@ -137,6 +137,23 @@
         "description": [
           "Kleine Überschrift",
           "Small heading"
+        ]
+      },
+      {
+        "id": "h4",
+        "group": "text",
+        "name": [
+          "Überschrift 4",
+          "Heading 4"
+        ],
+        "keywords": [
+          "h4",
+          "####",
+          "heading4"
+        ],
+        "description": [
+          "Kleinste Überschrift",
+          "Smallest heading"
         ]
       },
       {
@@ -1749,6 +1766,18 @@
         "description": [
           "Schreibt eine Aufgabe in eine Seite, auf Wunsch mit Person und Fälligkeit.",
           "Writes a task into a page, with a person and a due date if you like."
+        ]
+      },
+      {
+        "type": "action.journal.append",
+        "category": "pages",
+        "name": [
+          "An Journaltag anhängen",
+          "Append to journal day"
+        ],
+        "description": [
+          "Schreibt Markdown mit Platzhaltern in den heutigen, gestrigen oder einen bestimmten Tag eines Journals – am Ende oder unter einer Überschrift. Fehlt der Tag, wird er wie beim Öffnen angelegt.",
+          "Writes Markdown with placeholders into today’s, yesterday’s or a given day of a journal – at the end or below a heading. A missing day is created as opening it would."
         ]
       },
       {
