@@ -43,6 +43,15 @@ In the **Links** tab, **+ New link** creates as many named links as you like, e.
 - Edit links cannot change permissions, members, private relations or files properties. Before every guest edit, Flowplan saves the previous content.
 - A [journal with a PIN](/journal) can be neither shared by link nor published; setting the PIN revokes existing links and publications. Sharing a page above it with its sub-pages leaves it out.
 
+### Editing whiteboards and notebooks with guests {since=0.9.6}
+
+If you share a whiteboard or notebook via a link with **Read, comment and edit**, guests see an **Edit whiteboard** or **Edit notebook** button above the preview picture. They then work in the same editor as you, without an account and live: everyone sees the others' changes right away.
+
+- **Whiteboard:** add, move and delete notes, text, shapes, connectors, frames, tables and emoji, draw and comment. Their pointer shows as "Guest · <link name>".
+- **Notebook:** write and draw on the sheets and add, duplicate, delete and reorder sheets.
+- **Not possible:** uploading files, templates, AI and facilitation features (votes, timer, private mode), linking pages and exporting. Guests see existing images and PDFs, but not references to pages outside the link.
+- If the page is locked, or the link expires or is revoked, editing stops right away. Pages in encrypted spaces and journals with a PIN can't be edited this way.
+
 ### Password and expiry date
 
 Links with their own permissions and [publications](#publish-on-the-web) can have a **password** and an **expiry date** – when creating them or later: for links via **⋯ → Password and expiry date**, for the publication in the **Web** tab under **Password** and **Expires**. The list shows "Password" or "expires on …".

@@ -43,6 +43,15 @@ Im Reiter **Links** entstehen mit **+ Neuer Link** beliebig viele benannte Links
 - Über Bearbeitungslinks lassen sich keine Rechte, Mitglieder, privaten Relationen oder Dateien-Eigenschaften ändern. Vor jeder Gastbearbeitung sichert Flowplan den bisherigen Inhalt.
 - Ein [Journal mit PIN](/journal) lässt sich weder per Link teilen noch veröffentlichen; wer die PIN setzt, widerruft vorhandene Links und Veröffentlichungen. Beim Teilen einer übergeordneten Seite samt Unterseiten bleibt es draußen.
 
+### Whiteboards und Notizbücher mit Gästen bearbeiten {since=0.9.6}
+
+Teilst du ein Whiteboard oder ein Notizbuch per Link mit **Lesen, kommentieren und bearbeiten**, zeigt die Seite für Gäste über dem Vorschaubild den Knopf **Whiteboard bearbeiten** bzw. **Notizbuch bearbeiten**. Dann arbeiten sie ohne Konto im selben Editor wie du – live, ihr seht die Änderungen der anderen sofort.
+
+- **Whiteboard:** Notizen, Texte, Formen, Verbindungen, Rahmen, Tabellen und Emojis anlegen, verschieben und löschen, zeichnen und kommentieren. Ihr Zeiger erscheint als „Gast · <Linkname>“.
+- **Notizbuch:** auf den Blättern schreiben und zeichnen sowie Blätter hinzufügen, duplizieren, löschen und umsortieren.
+- **Nicht möglich:** Dateien hochladen, Vorlagen, KI- und Moderationsfunktionen (Abstimmungen, Timer, Privatmodus), Seiten verknüpfen und exportieren. Vorhandene Bilder und PDFs sehen Gäste; Verweise auf Seiten außerhalb des Links nicht.
+- Ist die Seite gesperrt, der Link abgelaufen oder widerrufen, endet die Bearbeitung sofort. Seiten in verschlüsselten Bereichen und Journale mit PIN lassen sich so nicht bearbeiten.
+
 ### Passwort und Ablaufdatum
 
 Links mit eigenen Berechtigungen und [Veröffentlichungen](#im-web-veroeffentlichen) können ein **Passwort** und ein **Ablaufdatum** haben – beim Erstellen oder später: bei Links über **⋯ → Passwort und Ablaufdatum**, bei der Veröffentlichung im Reiter **Web** unter **Passwort** und **Läuft ab**. Die Liste zeigt „Passwort“ bzw. „läuft ab am …“.
