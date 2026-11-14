@@ -32,6 +32,7 @@ In Tabelle, Liste, Feed, Board und Galerie lassen sich Einträge am **Griff** (�
 - Unter jeder Spalte eine Berechnung wählen.
 - Gruppierte Tabellen klappen Gruppen ein und zeigen Zusammenfassungen je Gruppe.
 - Beim seitlichen Scrollen bleibt die Titelspalte stehen. Auf dem Smartphone nimmt sie höchstens etwa 60 % der Tabellenbreite ein, und längere Titel werden mit „…“ gekürzt. Die Spalte mit Auswahlfeld und Ziehgriff scrollt dort mit. So lässt sich die Tabelle überall seitlich wischen, auch auf der Titelspalte.
+- Beim Scrollen nach unten bleibt die Kopfzeile mit den Spaltennamen oben stehen – auf der ganzen Seite, in einer Datenbank in einem Dokument, in einem geöffneten Eintrag und in der geteilten Ansicht. So siehst du immer, in welcher Spalte du bist. Sie scrollt seitlich mit den Zeilen mit und verschwindet erst, wenn das Ende der Tabelle vorbei ist. {since=0.9.7}
 
 ## Board
 
