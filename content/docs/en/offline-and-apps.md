@@ -12,6 +12,8 @@ Flowplan runs in the browser, can be installed as an app and keeps working witho
 
 Flowplan always saves documents locally in the browser first (IndexedDB) and syncs them with the server as soon as it can be reached. If the connection drops, you simply keep writing; other people's changes are merged when you reconnect.
 
+**While the server restarts** (an update, maintenance) the reverse proxy answers instead of Flowplan – Traefik for example with “404 page not found”. Flowplan stays on the page you are on and keeps what you type; it is sent as soon as the server is back. Reloading the page in that time opens the stored copy if [offline use](#turn-on-offline-use) is on on this device. {since=0.9.7}
+
 ### Turn on offline use
 
 Under **Settings → Offline & devices**, the device also stores the app, the workspace, all readable pages and the records and files you open later. Then you can open pages, read documents and databases and edit text even without a connection.

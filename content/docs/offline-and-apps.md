@@ -12,6 +12,8 @@ Flowplan läuft im Browser, lässt sich als App installieren und funktioniert au
 
 Dokumente speichert Flowplan immer zuerst lokal im Browser (IndexedDB) und gleicht sie mit dem Server ab, sobald er erreichbar ist. Bricht die Verbindung ab, schreibst du einfach weiter; Änderungen anderer werden beim Wiederverbinden zusammengeführt.
 
+**Während der Server neu startet** (Update, Wartung), antwortet der Reverse Proxy statt Flowplan – Traefik etwa mit „404 page not found“. Flowplan bleibt auf der Seite, auf der du bist, und behält, was du tippst; es geht an den Server, sobald er wieder da ist. Lädst du die Seite in der Zeit neu, öffnet sich die gespeicherte Kopie, wenn auf diesem Gerät die [Offline-Nutzung](#offline-nutzung-einschalten) an ist. {since=0.9.7}
+
 ### Offline-Nutzung einschalten
 
 Unter **Einstellungen → Offline & Geräte** speichert das Gerät zusätzlich die App, den Arbeitsbereich, alle lesbaren Seiten und später geöffnete Einträge und Dateien. Dann lassen sich auch ohne Verbindung Seiten öffnen, Dokumente und Datenbanken lesen und Text bearbeiten.
