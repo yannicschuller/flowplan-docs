@@ -55,7 +55,9 @@ With `LDAP_URL` set, the password field of the sign-in page checks names against
 | `LDAP_BASE_DN` | – | Where people are searched, e.g. `ou=people,dc=example,dc=org`. |
 | `LDAP_USER_FILTER` | `(\|(uid={user})(mail={user}))` | `{user}` is replaced by the escaped name. Active Directory: `(\|(sAMAccountName={user})(userPrincipalName={user})(mail={user}))`. |
 | `LDAP_GROUP_ATTRIBUTE` | `memberOf` | Attribute with the person's groups. |
-| `LDAP_TLS_CA` | *empty* | CA certificate for `ldaps://` or StartTLS (file path or PEM text). Certificates are always verified. |
+| `LDAP_TLS_CA` | *empty* | CA certificate for `ldaps://` or StartTLS (file path or PEM text). |
+| `LDAP_TLS_SERVERNAME` | *empty* | The name the certificate is checked against when `LDAP_URL` uses an IP address or another name (e.g. `dc1.corp.local`). {since=0.9.7} |
+| `LDAP_TLS_REJECT_UNAUTHORIZED` | *empty* (verify) | `false` turns certificate verification off – only this value; Flowplan then warns at startup, under Sign-in & SSO and in the security overview. Better: `LDAP_TLS_CA` and `LDAP_TLS_SERVERNAME`. Also applies to contacts from the directory. {since=0.9.7} |
 | `LDAP_STARTTLS` | `false` | `true`: encrypt `ldap://` with StartTLS. |
 | `LDAP_TIMEOUT_MS` | `8000` | Time limit per LDAP operation. |
 

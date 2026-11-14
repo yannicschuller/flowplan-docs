@@ -55,7 +55,9 @@ Ist `LDAP_URL` gesetzt, prüft das Passwortfeld der Anmeldeseite Namen gegen ein
 | `LDAP_BASE_DN` | – | Wo Personen gesucht werden, z. B. `ou=people,dc=example,dc=org`. |
 | `LDAP_USER_FILTER` | `(\|(uid={user})(mail={user}))` | `{user}` wird durch den maskierten Namen ersetzt. Active Directory: `(\|(sAMAccountName={user})(userPrincipalName={user})(mail={user}))`. |
 | `LDAP_GROUP_ATTRIBUTE` | `memberOf` | Attribut mit den Gruppen der Person. |
-| `LDAP_TLS_CA` | *leer* | CA-Zertifikat für `ldaps://` oder StartTLS (Dateipfad oder PEM-Text). Zertifikate werden immer geprüft. |
+| `LDAP_TLS_CA` | *leer* | CA-Zertifikat für `ldaps://` oder StartTLS (Dateipfad oder PEM-Text). |
+| `LDAP_TLS_SERVERNAME` | *leer* | Name, auf den das Zertifikat geprüft wird, wenn `LDAP_URL` eine IP-Adresse oder einen anderen Namen enthält (z. B. `dc1.corp.local`). {since=0.9.7} |
+| `LDAP_TLS_REJECT_UNAUTHORIZED` | *leer* (prüfen) | `false` schaltet die Zertifikatsprüfung ab – nur dieser Wert; Flowplan warnt dann beim Start, unter Anmeldung & SSO und in der Sicherheitsübersicht. Besser: `LDAP_TLS_CA` und `LDAP_TLS_SERVERNAME`. Gilt auch für Kontakte aus dem Verzeichnis. {since=0.9.7} |
 | `LDAP_STARTTLS` | `false` | `true`: `ldap://` mit StartTLS verschlüsseln. |
 | `LDAP_TIMEOUT_MS` | `8000` | Zeitlimit je LDAP-Operation. |
 

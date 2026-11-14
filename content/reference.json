@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@cd1d26f",
+  "source": "github.com/yannicschuller/flowplan@8f9a70a",
   "slash": {
     "groups": {
       "recent": [
@@ -2046,6 +2046,8 @@
     "LDAP_STARTTLS",
     "LDAP_TIMEOUT_MS",
     "LDAP_TLS_CA",
+    "LDAP_TLS_REJECT_UNAUTHORIZED",
+    "LDAP_TLS_SERVERNAME",
     "LDAP_URL",
     "LDAP_USER_FILTER",
     "LITESTREAM_SSE_C_KEY",
@@ -2105,6 +2107,8 @@
     "SMTP_PORT",
     "SMTP_SECURE",
     "SMTP_TLS_CA",
+    "SMTP_TLS_REJECT_UNAUTHORIZED",
+    "SMTP_TLS_SERVERNAME",
     "SMTP_USER",
     "SOURCE_COMMIT",
     "SPACE_GIT_ALLOWED_HOSTS",
