@@ -23,7 +23,7 @@ Every heading can be **collapsed**: the small arrow to the left of a heading (it
 
 ## Reading mode
 
-The book icon in the top bar (on a phone **Reading mode** in the `⋯` menu, or ++⌘ ⌥ E++, quick search → `> reading`) opens a document **for reading only**: nothing changes by accident, handles and the block menu disappear – handy on the phone and when reading aloud or presenting. The pencil switches back to editing. The device remembers the mode per page; permissions stay the same, and others keep their own mode. Database records have the same book icon at the top of the record (see [Databases](/databases)).
+The book icon in the top bar (on a phone **Reading mode** in the `⋯` menu, or ++⌘ ⌥ E++, quick search → `> reading`) opens a document **for reading only**: nothing changes by accident, handles and the block menu disappear – handy on the phone and when reading aloud or presenting. The pencil switches back to editing. Tasks cannot be ticked off in reading mode – hovering the box shows "Cannot be changed in reading mode". {since=0.9.6} The device remembers the mode per page; permissions stay the same, and others keep their own mode. Database records have the same book icon at the top of the record (see [Databases](/databases)).
 
 Reading mode also covers everything embedded in the page: in **linked databases** you can't edit cells, add, delete or move records, or change views; a record opened from there is read-only too. Other people's changes keep showing up live. Synced blocks, drawings, metrics, function graphs and extension blocks are locked in reading mode as well.
 

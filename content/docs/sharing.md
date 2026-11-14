@@ -38,7 +38,7 @@ Im Reiter **Links** entstehen mit **+ Neuer Link** beliebig viele benannte Links
 | **Lesen, kommentieren und bearbeiten** | zusätzlich Titel, Text und sichtbare Eigenschaften bestehender Einträge ändern |
 
 - Links funktionieren ohne Konto und lassen sich einzeln widerrufen (**⋯ → Widerrufen**).
-- Mit **Bearbeiten**-Links schreiben Gäste live mit: Änderungen von Mitgliedern und anderen Gästen erscheinen sofort, und die Cursor sind gegenseitig sichtbar – Gäste erscheinen als „Gast · <Linkname>“.
+- Mit **Bearbeiten**-Links schreiben Gäste live mit: Änderungen von Mitgliedern und anderen Gästen erscheinen sofort, und die Cursor sind gegenseitig sichtbar – Gäste erscheinen als „Gast · <Linkname>“. Sie schreiben im selben Editor wie im Arbeitsbereich: Werkzeugleiste mit Textstil, Formatierungen, Listen, Ausrichtung, Formel, Diagramm und Datei; `/` oder **+** öffnet das Blockmenü (Überschriften, Listen, Zitat, Hinweis, Code, Trennlinie, Formeln, Mermaid, Datei). {since=0.9.6}
 - Optional gelten sie auch für die aktuell vorhandenen Unterseiten; neue Unterseiten kommen nicht automatisch dazu.
 - Über Bearbeitungslinks lassen sich keine Rechte, Mitglieder, privaten Relationen oder Dateien-Eigenschaften ändern. Vor jeder Gastbearbeitung sichert Flowplan den bisherigen Inhalt.
 - Ein [Journal mit PIN](/journal) lässt sich weder per Link teilen noch veröffentlichen; wer die PIN setzt, widerruft vorhandene Links und Veröffentlichungen. Beim Teilen einer übergeordneten Seite samt Unterseiten bleibt es draußen.

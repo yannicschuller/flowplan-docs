@@ -38,7 +38,7 @@ In the **Links** tab, **+ New link** creates as many named links as you like, e.
 | **Read, comment and edit** | also change the title, text and visible properties of existing records |
 
 - Links work without an account and can be revoked one by one (**⋯ → Revoke**).
-- With **edit** links, guests write along live: changes by members and other guests appear right away, and cursors are visible both ways – guests appear as "Guest · <link name>".
+- With **edit** links, guests write along live: changes by members and other guests appear right away, and cursors are visible both ways – guests appear as "Guest · <link name>". They write in the same editor as in the workspace: a toolbar with text style, formatting, lists, alignment, formula, diagram and file; `/` or **+** opens the block menu (headings, lists, quote, callout, code, divider, formulas, Mermaid, file). {since=0.9.6}
 - Optionally they also apply to the sub-pages that exist right now; new sub-pages are not added automatically.
 - Edit links cannot change permissions, members, private relations or files properties. Before every guest edit, Flowplan saves the previous content.
 - A [journal with a PIN](/journal) can be neither shared by link nor published; setting the PIN revokes existing links and publications. Sharing a page above it with its sub-pages leaves it out.
