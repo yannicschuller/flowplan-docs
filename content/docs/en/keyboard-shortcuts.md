@@ -22,7 +22,7 @@ All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Z</kbd> | Focus mode on or off |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>K</kbd> | Show or hide comments |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>A</kbd> | Open or close [Ask AI](/ask-ai) (when the panel is open, focus moves into it; from there the shortcut closes it) |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>S</kbd> | Open or close the [split view](/pages-and-spaces#split-view) |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>S</kbd> | Open or close the [split view](/tabs-and-split-view#split-view) |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd> | [Present](/reading-and-presenting#present) the document |
 | <kbd>⌘</kbd> <kbd>P</kbd> | With a page open: [print options](/print-and-pdf#print-and-pdf), then print (<kbd>Enter</kbd>); otherwise the browser's print |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> | [Journal](/journal#from-day-to-day): open today (of the journal used last) |
@@ -99,7 +99,8 @@ Markdown shortcuts such as `##`, `-`, `[]` or ` ``` ` are listed under [Markdown
 | <kbd>→</kbd> / <kbd>←</kbd> | Expand or collapse sub-pages – also the year and month folders of a [journal](/journal#in-the-sidebar) |
 | <kbd>Enter</kbd> | Open the page |
 | <kbd>⇧</kbd>-click | Select several pages |
-| <kbd>⌘</kbd>-click | Open in the [split view](#split-view) |
+| <kbd>⌘</kbd>-click / middle mouse button | Open in a new [tab](/tabs-and-split-view#tabs) {since=0.9.6} |
+| <kbd>⌘</kbd> <kbd>⇧</kbd>-click | Open in the [split view](#split-view) {since=0.9.6} |
 
 ## Presentation
 
@@ -110,11 +111,23 @@ Markdown shortcuts such as `##`, `-`, `[]` or ` ``` ` are listed under [Markdown
 | <kbd>Home</kbd> / <kbd>End</kbd> | First / last slide |
 | <kbd>Esc</kbd> | End the presentation |
 
+## Tabs {since=0.9.6}
+
+| Shortcut | Effect |
+| --- | --- |
+| ++⌥ W++ (desktop app also ++⌘ W++), middle mouse button | Close the tab |
+| ++⌘ ⌥ PageDown++ / ++⌘ ⌥ PageUp++ (desktop app also ++⌃ Tab++ / ++⌃ ⇧ Tab++) | Next / previous tab |
+| ++⌘ ⌥ ⇧ PageDown++ / ++⌘ ⌥ ⇧ PageUp++ (desktop app also ++⌃ ⇧ PageDown++ / ++⌃ ⇧ PageUp++) | Move the tab right / left |
+| ++⌘ 1++ … ++⌘ 9++ (desktop app only) | Tab 1–8 / last tab |
+| <kbd>←</kbd> <kbd>→</kbd> <kbd>Home</kbd> <kbd>End</kbd> (tab focused) | Move between tabs; <kbd>Enter</kbd> opens, <kbd>Delete</kbd> closes, ++⌥ ⇧ ←++/++⌥ ⇧ →++ moves |
+
+In a browser, ++⌘ W++, ++⌃ Tab++ and ++⌘ 1++ … ++⌘ 9++ belong to the browser's own tabs – Flowplan uses them only in the desktop app. The tab shortcuts only act from two tabs on.
+
 ## Split view
 
 | Shortcut | Effect |
 | --- | --- |
-| <kbd>⌘</kbd>-click | Open a page in the page tree or a page link on the right |
+| <kbd>⌘</kbd> <kbd>⇧</kbd>-click | Open a page in the page tree or a page link in the other view {since=0.9.6} |
 | <kbd>←</kbd> / <kbd>→</kbd> (divider focused) | Change the width, with <kbd>⇧</kbd> in large steps |
 | <kbd>Enter</kbd> (divider focused) | Half and half |
 

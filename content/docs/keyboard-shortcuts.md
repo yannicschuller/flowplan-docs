@@ -22,7 +22,7 @@ Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Z</kbd> | Fokusmodus ein oder aus |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>K</kbd> | Kommentare ein- oder ausblenden |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>A</kbd> | [KI fragen](/ask-ai) öffnen oder schließen (ist die Leiste offen, springt der Fokus hinein; von dort schließt das Kürzel sie) |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>S</kbd> | [Geteilte Ansicht](/pages-and-spaces#geteilte-ansicht) öffnen oder schließen |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>S</kbd> | [Geteilte Ansicht](/tabs-and-split-view#geteilte-ansicht) öffnen oder schließen |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>P</kbd> | Dokument [präsentieren](/reading-and-presenting#praesentieren) |
 | <kbd>⌘</kbd> <kbd>P</kbd> | Bei geöffneter Seite: [Druckoptionen](/print-and-pdf#drucken-und-pdf), dann drucken (<kbd>Enter</kbd>); sonst der Druck des Browsers |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>Y</kbd> | [Journal](/journal#von-tag-zu-tag): heutigen Tag öffnen (des zuletzt benutzten Journals) |
@@ -99,7 +99,8 @@ Markdown-Kürzel wie `##`, `-`, `[]` oder ` ``` ` stehen unter [Markdown im Edit
 | <kbd>→</kbd> / <kbd>←</kbd> | Unterseiten öffnen oder schließen – auch die Jahres- und Monatsordner eines [Journals](/journal#in-der-seitenleiste) |
 | <kbd>Enter</kbd> | Seite öffnen |
 | <kbd>⇧</kbd>-Klick | Mehrere Seiten auswählen |
-| <kbd>⌘</kbd>-Klick | In der [geteilten Ansicht](#geteilte-ansicht) öffnen |
+| <kbd>⌘</kbd>-Klick / mittlere Maustaste | In neuem [Tab](/tabs-and-split-view#tabs) öffnen {since=0.9.6} |
+| <kbd>⌘</kbd> <kbd>⇧</kbd>-Klick | In der [geteilten Ansicht](#geteilte-ansicht) öffnen {since=0.9.6} |
 
 ## Präsentation
 
@@ -110,11 +111,23 @@ Markdown-Kürzel wie `##`, `-`, `[]` oder ` ``` ` stehen unter [Markdown im Edit
 | <kbd>Pos1</kbd> / <kbd>Ende</kbd> | Erste / letzte Folie |
 | <kbd>Esc</kbd> | Präsentation beenden |
 
+## Tabs {since=0.9.6}
+
+| Kürzel | Wirkung |
+| --- | --- |
+| ++⌥ W++ (Desktop-App auch ++⌘ W++), mittlere Maustaste | Tab schließen |
+| ++⌘ ⌥ Bild↓++ / ++⌘ ⌥ Bild↑++ (Desktop-App auch ++⌃ Tab++ / ++⌃ ⇧ Tab++) | Nächster / vorheriger Tab |
+| ++⌘ ⌥ ⇧ Bild↓++ / ++⌘ ⌥ ⇧ Bild↑++ (Desktop-App auch ++⌃ ⇧ Bild↓++ / ++⌃ ⇧ Bild↑++) | Tab nach rechts / links verschieben |
+| ++⌘ 1++ … ++⌘ 9++ (nur Desktop-App) | Tab 1–8 / letzter Tab |
+| <kbd>←</kbd> <kbd>→</kbd> <kbd>Pos1</kbd> <kbd>Ende</kbd> (Tab fokussiert) | Zwischen Tabs bewegen; <kbd>Enter</kbd> öffnet, <kbd>Entf</kbd> schließt, ++⌥ ⇧ ←++/++⌥ ⇧ →++ verschiebt |
+
+Im Browser gehören ++⌘ W++, ++⌃ Tab++ und ++⌘ 1++ … ++⌘ 9++ den Tabs des Browsers – Flowplan nutzt sie nur in der Desktop-App. Die Tab-Kürzel wirken erst ab zwei Tabs.
+
 ## Geteilte Ansicht
 
 | Kürzel | Wirkung |
 | --- | --- |
-| <kbd>⌘</kbd>-Klick | Seite im Seitenbaum oder Seitenlink rechts daneben öffnen |
+| <kbd>⌘</kbd> <kbd>⇧</kbd>-Klick | Seite im Seitenbaum oder Seitenlink in der anderen Ansicht öffnen {since=0.9.6} |
 | <kbd>←</kbd> / <kbd>→</kbd> (Trennlinie fokussiert) | Breite ändern, mit <kbd>⇧</kbd> in großen Schritten |
 | <kbd>Enter</kbd> (Trennlinie fokussiert) | Halbe-halbe |
 

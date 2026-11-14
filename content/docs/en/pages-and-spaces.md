@@ -1,5 +1,5 @@
 ---
-keywords: page tree, sidebar, space, trash, favorites, move, split view
+keywords: page tree, sidebar, space, trash, favorites, move
 ---
 
 # Pages and spaces
@@ -40,7 +40,7 @@ The `…` menu at the top right of every page offers:
 | Save as template | See [Templates](/templates). |
 | Export, print / PDF | See [Import, export and versions](/import-export-versions). |
 | Present | Show a document as full-screen slides, see [Present](/reading-and-presenting#present). |
-| Open a page beside it … | Open a second page on the right in the [split view](#split-view). |
+| Open a page beside it … | Open a second page on the right in the [split view](/tabs-and-split-view#split-view). |
 | Owner and review … | Who looks after the page and when it should be checked again, see [Owner and review date](/page-tags#owner-and-review-date). |
 | Version history | Compare and restore earlier states. |
 | Move to trash | Removes the page with its sub-pages; restorable. |
@@ -56,26 +56,6 @@ Right-clicking a page in the page tree or under favourites – a long press on a
 ### Filter pages
 
 The **Filter pages** field above the page tree hides everything that does not match; parent pages of the hits stay visible and expanded. <kbd>Esc</kbd> clears the filter. Templates, media, tags, graph, trash, settings, help and administration sit as a toolbar at the bottom of the sidebar. On a phone they are gathered behind **More** next to your name – the only button in that row, so your name and the connection status stay fully readable: a tap opens a list of all of them with labels, and the page tree keeps its height. Below a line it also holds what the account menu **⋯** offers on a computer: light or dark theme, **About Flowplan**, **Legal notice** and **Privacy** (when the instance has set them up) and, last and set apart, **Sign out**.
-
-## Split view
-
-Two pages side by side – say notes on the left and the task database on the right. A page opens on the right with:
-
-- **Open in split view** in the right-click menu of a page in the page tree,
-- <kbd>⌘</kbd>-click (Windows/Linux: <kbd>Ctrl</kbd>-click) on a page in the page tree, under favourites or on a page link in the text,
-- dragging a page from the page tree to the **right edge of the window** (a drop area appears there),
-- ++⌘ ⌥ S++ or **Open a page beside it …** in the `…` menu: the quick search opens the chosen page on the right.
-
-Each half has its own header with the title and **×**. The **×** on the left closes the left page and the right one moves into the main view; the arrow on the right brings the right page into the main view. Documents can be edited in both halves; databases, whiteboards and dashboards work as usual.
-
-Drag the **divider** between the halves with the mouse; with the keyboard, tab to it, then <kbd>←</kbd> / <kbd>→</kbd> (with <kbd>⇧</kbd> in large steps), <kbd>Home</kbd> / <kbd>End</kbd> for the narrowest and widest position, <kbd>Enter</kbd> or a double-click for half and half. The device remembers the width.
-
-Dragging a page from the page tree into a document in the other half inserts a **link** to it there; selected text and blocks can be dragged between the two documents (they are copied).
-
-The right page is part of the address (`?split=…`): reloading and bookmarks keep the split view. Windows up to 1024 pixels wide and phones do not have it – there, the same ways open the page as usual.
-
-> [!NOTE]
-> Since <kbd>⌘</kbd>/<kbd>Ctrl</kbd>-click in the page tree now opens the split view, a multiple selection starts with <kbd>⇧</kbd>-click or the tick icon of the space; after that, <kbd>⌘</kbd>/<kbd>Ctrl</kbd>-click adds more pages too.
 
 ## Arrange and move
 

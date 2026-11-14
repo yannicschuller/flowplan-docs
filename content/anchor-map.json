@@ -162,6 +162,7 @@
 ["fail2ban","fail2ban","security-monitoring","fail2ban","fail2ban"],
 ["crowdsec","crowdsec","security-monitoring","crowdsec","crowdsec"],
 ["weitere-variablen","more-variables","security-monitoring","weitere-variablen","more-variables"]],"pages-and-spaces":[
+["geteilte-ansicht","split-view","tabs-and-split-view","geteilte-ansicht","split-view"],
 ["besitzer-und-pruefdatum","owner-and-review-date","page-tags","besitzer-und-pruefdatum","owner-and-review-date"],
 ["aliasse","aliases","page-tags","aliasse","aliases"],
 ["tags-und-eigenschaften","tags-and-properties","page-tags","tags-und-eigenschaften","tags-and-properties"],
