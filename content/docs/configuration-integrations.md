@@ -15,8 +15,11 @@ Die Umgebungsvariablen für Mailversand und E-Mail-Eingang, Integrationen wie Gi
 | `SMTP_SECURE` | nach Port | `true`/`false` erzwingt TLS ab Verbindungsbeginn. |
 | `SMTP_USER` / `SMTP_PASSWORD` | *leer* | Anmeldung am Mailserver. |
 | `SMTP_FROM` | `Flowplan <SMTP_USER>` | Absender, z. B. `Flowplan <flowplan@example.com>`. |
+| `SMTP_TLS_CA` | *leer* | CA-Zertifikat eines Mailservers mit eigenem oder selbst signiertem Zertifikat (Dateipfad oder PEM-Text, auch einzeilig mit `\n`). Gilt zusätzlich zu den öffentlichen Zertifizierungsstellen. {since=0.9.7} |
 
 Den Versand prüfst du unter **Administration → E-Mail → Test-E-Mail senden**.
+
+**Interne Server mit eigenen Zertifikaten:** Flowplan prüft Zertifikate immer – einen Schalter zum Abschalten gibt es nicht, weil sonst jeder im Netz das SMTP- oder LDAP-Passwort mitlesen könnte. Für einen Mail- oder Verzeichnisserver mit eigenem oder selbst signiertem Zertifikat gibst du stattdessen dessen CA an: `SMTP_TLS_CA` für E-Mail, [`LDAP_TLS_CA`](/scim-and-ldap) für LDAP. Mit Docker bindest du die CA-Datei in den Container ein (etwa `./ca.pem:/certs/ca.pem:ro`) und setzt `SMTP_TLS_CA=/certs/ca.pem`. Für alle Verbindungen von Flowplan – auch Webhooks oder KI-Anbieter in deinem Netz – ergänzt Nodes `NODE_EXTRA_CA_CERTS=/certs/ca.pem` die CA überall; es wird beim Start gelesen. Scheitert die Test-E-Mail mit „unable to verify the first certificate“, fehlt die CA. {since=0.9.7}
 
 ## E-Mail-Eingang (IMAP)
 

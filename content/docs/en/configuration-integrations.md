@@ -15,8 +15,11 @@ The environment variables for sending mail and inbound e-mail, integrations such
 | `SMTP_SECURE` | by port | `true`/`false` forces TLS from the start of the connection. |
 | `SMTP_USER` / `SMTP_PASSWORD` | *empty* | Sign-in at the mail server. |
 | `SMTP_FROM` | `Flowplan <SMTP_USER>` | Sender, e.g. `Flowplan <flowplan@example.com>`. |
+| `SMTP_TLS_CA` | *empty* | CA certificate of a mail server with a private or self-signed certificate (file path or PEM text, also on one line with `\n`). It is trusted in addition to the public CAs. {since=0.9.7} |
 
 Check delivery under **Administration → E-mail → Send test email**.
+
+**Internal servers with their own certificates:** Flowplan always verifies certificates – there is no switch to turn that off, because otherwise anyone on the network could read the SMTP or LDAP password. For a mail or directory server with a private or self-signed certificate, give its CA instead: `SMTP_TLS_CA` for e-mail, [`LDAP_TLS_CA`](/scim-and-ldap) for LDAP. In Docker, mount the CA file into the container (for example `./ca.pem:/certs/ca.pem:ro`) and set `SMTP_TLS_CA=/certs/ca.pem`. For every connection Flowplan makes – also webhooks or AI providers inside your network – Node's `NODE_EXTRA_CA_CERTS=/certs/ca.pem` adds the CA to all of them; it is read at startup. If the test e-mail fails with "unable to verify the first certificate", the CA is missing. {since=0.9.7}
 
 ## Inbound e-mail (IMAP)
 

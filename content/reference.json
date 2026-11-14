@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@040dff7",
+  "source": "github.com/yannicschuller/flowplan@cd1d26f",
   "slash": {
     "groups": {
       "recent": [
@@ -2104,6 +2104,7 @@
     "SMTP_PASSWORD",
     "SMTP_PORT",
     "SMTP_SECURE",
+    "SMTP_TLS_CA",
     "SMTP_USER",
     "SOURCE_COMMIT",
     "SPACE_GIT_ALLOWED_HOSTS",
