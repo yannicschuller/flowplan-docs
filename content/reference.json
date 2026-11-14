@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@7eb27a0",
+  "source": "github.com/yannicschuller/flowplan@040dff7",
   "slash": {
     "groups": {
       "recent": [
@@ -1940,6 +1940,7 @@
     "FLOWPLAN_CLUSTER",
     "FLOWPLAN_COUNTRY_HEADER",
     "FLOWPLAN_DATA_DIR",
+    "FLOWPLAN_DEAD_MAN_SWITCH",
     "FLOWPLAN_DIST_DIR",
     "FLOWPLAN_DROP_ROOT",
     "FLOWPLAN_EMERGENCY_ACCESS",
