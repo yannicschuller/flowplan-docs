@@ -134,7 +134,7 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       {
         title: ["Anmeldung und Administration", "Sign-in and administration"],
         intro: ["Die Administration der Instanz, Benutzer, Passwort, Passkeys, SSO, SCIM und LDAP.", "Administering the instance, users, password, passkeys, SSO, SCIM and LDAP."],
-        pages: ["administration", "user-management", "sign-in", "sessions", "sso-oidc", "scim-and-ldap"],
+        pages: ["administration", "user-management", "sign-in", "emergency-access", "sessions", "sso-oidc", "scim-and-ldap"],
       },
       {
         title: ["Konfiguration", "Configuration"],

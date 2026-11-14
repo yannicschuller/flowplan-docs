@@ -81,17 +81,6 @@ When signing in, Flowplan asks for the code from the app (or a recovery code) af
 
 When someone signs in with a device not seen for 90 days, a security notice arrives as well.
 
-## Emergency access {since=0.9.6}
-
-Under **Settings → Account & security → Emergency access** you name up to five **trusted contacts** – people with an account on this instance – each with a waiting period (1, 2, 7, 14 or 30 days) and an access length (until you end it, or 7, 30 or 90 days). The person has to accept the role.
-
-- **Request:** In an emergency they request access under "I am a trusted contact for …". You are told right away – in Flowplan, by push, chat app and an e-mail whose link denies the request without signing in – and reminded before the waiting period ends. After a denial they can ask again after 24 hours at the earliest.
-- **Grant:** Unless you deny, after the waiting period the person can read your private spaces and export them as Markdown or ZIP. They cannot change, delete or share anything or touch your settings, and they don't take over your account; only admins reset credentials.
-- **Not included:** team spaces, content you only see through a workspace (the person needs their own membership for that), other people's private spaces shared with you, and journals with a PIN.
-- **Encrypted spaces** are included once the person has set up encryption: your browser seals the keys for them the next time you unlock, and the server never sees them in plaintext. When the access ends, those spaces get a new key at your next visit.
-- You can end an access or remove a trusted contact at any time; every step is in the activity log and the security events, and an export also notifies you.
-- Admins switch the feature off under **Administration → Sign-in & SSO → Emergency access** (or with `FLOWPLAN_EMERGENCY_ACCESS=off`); granted access is suspended then.
-
 ## Security
 
 With OIDC, Flowplan checks the discovery, issuer, audience, signature, PKCE, state and nonce. Sessions are random tokens, stored hashed in SQLite; cookies are `HttpOnly`, `SameSite=Lax` and `Secure` with HTTPS. Groups or roles are never taken from browser data.

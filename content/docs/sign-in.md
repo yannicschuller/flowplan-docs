@@ -81,17 +81,6 @@ Bei der Anmeldung fragt Flowplan nach dem Passwort nach dem Code aus der App (od
 
 Meldet sich jemand mit einem Gerät an, das 90 Tage nicht dabei war, kommt außerdem ein Sicherheitshinweis.
 
-## Notfallzugriff {since=0.9.6}
-
-Unter **Einstellungen → Konto & Sicherheit → Notfallzugriff** trägst du bis zu fünf **Vertrauenspersonen** ein – Personen mit einem Konto auf dieser Instanz –, jeweils mit einer Wartezeit (1, 2, 7, 14 oder 30 Tage) und einer Dauer des Zugriffs (bis du ihn beendest, oder 7, 30 oder 90 Tage). Die Person muss die Rolle annehmen.
-
-- **Anfragen:** Im Notfall fragt sie unter „Ich bin Vertrauensperson für …“ Notfallzugriff an. Du wirst sofort benachrichtigt – in Flowplan, per Push, Chat-App und mit einer E-Mail, deren Link die Anfrage ohne Anmeldung ablehnt – und vor Ablauf der Wartezeit noch einmal erinnert. Nach einer Ablehnung kann sie frühestens nach 24 Stunden erneut fragen.
-- **Freigabe:** Lehnst du nicht ab, kann die Person nach der Wartezeit deine privaten Bereiche lesen und als Markdown oder ZIP exportieren. Ändern, löschen, teilen oder deine Einstellungen anfassen kann sie nichts, und dein Konto übernimmt sie nicht; Anmeldedaten setzen weiterhin nur Admins zurück.
-- **Nicht enthalten:** Teambereiche, Inhalte, die du nur über einen Arbeitsbereich siehst (dafür braucht die Person eine eigene Mitgliedschaft), mit dir geteilte private Bereiche anderer und Journale mit PIN.
-- **Verschlüsselte Bereiche** sind enthalten, wenn die Person die Verschlüsselung eingerichtet hat: Dein Browser gibt die Schlüssel beim nächsten Entsperren für sie frei, der Server sieht sie nie im Klartext. Endet der Zugriff, bekommen diese Bereiche beim nächsten Besuch einen neuen Schlüssel.
-- Du beendest einen Zugriff oder entfernst eine Vertrauensperson jederzeit; jeder Schritt steht im Aktivitätsprotokoll und bei den Sicherheitsereignissen, ein Export meldet sich zusätzlich bei dir.
-- Admins schalten die Funktion unter **Administration → Anmeldung & SSO → Notfallzugriff** aus (oder mit `FLOWPLAN_EMERGENCY_ACCESS=off`); freigegebene Zugriffe ruhen dann.
-
 ## Sicherheit
 
 Bei OIDC prüft Flowplan Discovery, Issuer, Audience, Signatur, PKCE, State und Nonce. Sitzungen sind zufällige Tokens, gehasht in SQLite gespeichert; Cookies sind `HttpOnly`, `SameSite=Lax` und bei HTTPS `Secure`. Gruppen oder Rollen werden nie aus Browserdaten übernommen.
