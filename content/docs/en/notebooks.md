@@ -66,6 +66,8 @@ The sidebar icon on the left of the toolbar shows all sheets as previews; a tap 
 
 Type `/draw` in a document (also `/zeichnen`, `/dessin`, `/handwriting` or `/sketch`): a **drawing block** across the full width appears. With a pen you write on it right away; with a mouse or finger after a tap into the block (or on **Draw**) – so a finger keeps scrolling the document. Then the toolbar appears with the block's **paper** (**Blank**, **Lined**, **Grid**) and **Done**. Drag the bottom edge to change the **height** (or use the arrow keys on the handle).
 
+**Resting your hand** {since=0.9.8}: when you open the block with a pen or a finger, the rest of the app is protected from touches until **Done** – a resting hand or a stray pen stroke next to the block doesn't scroll, tap anything or move the cursor. To finish, use **Done** on the block, the **Done** button at the top (or bottom) of the screen, or <kbd>Esc</kbd>. Opened with the mouse, there is no protection; a click next to the block ends drawing as before.
+
 ![A drawing block on grid paper in a document: three sketched app screens with arrows and a red note, the toolbar above it](/screenshots/draw-block.webp "A drawing block in the middle of a document, with Grid paper and the toolbar.")
 
 The handwriting belongs to the block and is saved as you draw. For working together this means: when several people draw in the same block at once, their strokes are merged instead of overwritten; the text around it you edit together as always. Copied or duplicated blocks (also into another document) take their drawing along and are independent afterwards. Permissions, locking and the trash work as for the document; on published pages, in share links and in exports the block shows as a picture.
