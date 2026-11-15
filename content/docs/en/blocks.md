@@ -42,6 +42,7 @@ On touch devices **Select several** in the block menu starts the **selection mod
 ## Indent
 
 - <kbd>Tab</kbd> at the start of a paragraph or heading indents it (up to eight levels), ++⇧ Tab++ outdents it. If a [toggle](/documents#toggles) is directly above, <kbd>Tab</kbd> moves the block into it instead, and ++⇧ Tab++ moves it back out. Lines indented before stay as they are.
+- **Without a keyboard** {since=0.9.8}: the [block menu](#block-menu) has **Indent** and **Outdent** – they do the same as <kbd>Tab</kbd> and ++⇧ Tab++ and are greyed out when nothing would move. With [several blocks selected](#selecting-several-blocks) (on touch devices via **Select several**) they all move at once, and one undo brings them all back. As buttons in the formatting toolbar you can add them under [Customize formatting toolbar](/formatting#format-text).
 - <kbd>Backspace</kbd> at the start of an indented line first removes one level.
 - In lists <kbd>Tab</kbd> nests the item below the previous one; if it can't be indented, nothing happens – <kbd>Tab</kbd> never leaves the text. <kbd>Enter</kbd> in an empty list item moves only that item one level up, one level per <kbd>Enter</kbd>; at the top level it becomes a normal paragraph. <kbd>Enter</kbd> at the end of an item with sub-items starts a new first sub-item. In code blocks <kbd>Tab</kbd> inserts two spaces, in tables it moves to the next cell. With a [block selection](#selecting-several-blocks), <kbd>Tab</kbd> also moves code blocks and tables into a toggle.
 

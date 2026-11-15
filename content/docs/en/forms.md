@@ -25,6 +25,8 @@ A form view collects answers directly as records in the database – from member
 
 Flowplan checks required fields and input types in the browser and on the server. Files properties allow uploads in the form.
 
+**Formatted descriptions** {since=0.9.8}: the form's description and the questions' help texts are small editors. Selected text gets **bold**, *italic*, underline, strikethrough, `code`, a link (http, https or mailto) or a text colour from a small bar; ++⌘ B++, ++⌘ I++, ++⌘ U++, ++⌘ ⇧ X++, ++⌘ E++ and ++⌘ K++ work too. <kbd>Enter</kbd> starts a new line. It shows like that in the form in Flowplan and on the published form; existing descriptions stay as they are.
+
 ### Conditions and pages
 
 Every question, text block and page break can **Only show if …** an earlier answer matches – for example “Kind **is** Bug”, “Topics **includes** Billing”, “Subject **contains the text** invoice”, “Importance **is greater than** 7” or “E-mail **is answered**”. A hidden page break hides its whole page.

@@ -25,6 +25,8 @@ Eine Formularansicht sammelt Antworten direkt als Einträge in der Datenbank –
 
 Pflichtfelder und Eingabetypen prüft Flowplan im Browser und auf dem Server. Dateien-Eigenschaften erlauben Uploads im Formular.
 
+**Formatierte Beschreibungen** {since=0.9.8}: Die Beschreibung des Formulars und die Hilfetexte der Fragen sind kleine Editoren. Markierter Text bekommt über eine kleine Leiste **fett**, *kursiv*, unterstrichen, durchgestrichen, `Code`, einen Link (http, https oder mailto) oder eine Textfarbe; ++⌘ B++, ++⌘ I++, ++⌘ U++, ++⌘ ⇧ X++, ++⌘ E++ und ++⌘ K++ gehen auch. <kbd>Enter</kbd> beginnt eine neue Zeile. So erscheint es im Formular in Flowplan und im veröffentlichten Formular; bisherige Beschreibungen bleiben, wie sie sind.
+
 ### Bedingungen und Seiten
 
 Jede Frage, jeder Textblock und jeder Seitenumbruch kann **Nur zeigen, wenn …** eine frühere Antwort passt – etwa „Art **ist** Fehler“, „Themen **enthält** Abrechnung“, „Betreff **enthält den Text** Rechnung“, „Wichtigkeit **ist größer als** 7“ oder „E-Mail **ist beantwortet**“. Ein ausgeblendeter Seitenumbruch blendet die ganze Seite aus.
