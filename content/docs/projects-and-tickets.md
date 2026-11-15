@@ -16,6 +16,7 @@ Die meisten findest du im Menü **…** rechts in der Werkzeugleiste einer Daten
 Eine Eigenschaft vom Typ **ID (Ticketnummer)** zeigt für jeden Eintrag eine fortlaufende Nummer wie `WEB-123`.
 
 - Das **Präfix** wählst du beim Anlegen; es ist im Arbeitsbereich eindeutig. Eine kopierte Datenbank, eine aus einer Vorlage angelegte und eine wiederhergestellte, deren Präfix inzwischen vergeben ist, bekommen das nächste freie (`WEB2`, `WEB3`, …).
+- **Ohne Präfix** {since=0.9.8}: Das Präfix ist optional – leerst du das Feld, zählt die ID einfach hoch (1, 2, 3 …). Verweise wie `WEB-123` in Texten und Git-Commits gibt es nur mit Präfix. Setzt du später eins, behalten die Einträge ihre Nummern (aus 3 wird `WEB-3`), und umgekehrt.
 - Nummern werden nie doppelt vergeben, auch nicht nach dem Löschen. Ein wiederhergestellter Eintrag behält seine Nummer.
 - **Im Text** wird `WEB-123` in jedem Dokument hervorgehoben: Beim Darüberfahren siehst du Titel und Status, <kbd>⌘</kbd>/<kbd>Strg</kbd>-Klick öffnet den Eintrag. Das klappt auch für Text, der vor der ID-Eigenschaft geschrieben wurde.
 - Die **Suche** findet Einträge über ihre Nummer, und **Git-Commits** können darauf verweisen (siehe unten).

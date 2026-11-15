@@ -16,6 +16,7 @@ Most of them sit in the **…** menu on the right of a database's toolbar: recor
 A property of the type **ID (ticket number)** shows a running number for every record, such as `WEB-123`.
 
 - You choose the **prefix** when adding the property; it is unique in the workspace. A copied database, one created from a template and a restored one whose prefix has been taken meanwhile get the next free one (`WEB2`, `WEB3`, …).
+- **Without a prefix** {since=0.9.8}: the prefix is optional – clear the field and the ID simply counts up (1, 2, 3 …). References like `WEB-123` in text and Git commits only work with a prefix. Setting one later keeps the numbers (3 becomes `WEB-3`), and the other way round.
 - Numbers are never handed out twice, not even after deleting. A restored record keeps its number.
 - **In text**, `WEB-123` is highlighted in every document: hovering shows title and status, <kbd>⌘</kbd>/<kbd>Ctrl</kbd>-click opens the record. This also works for text written before the ID property existed.
 - **Search** finds records by their number, and **Git commits** can refer to them (see below).
