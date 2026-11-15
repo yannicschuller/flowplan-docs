@@ -28,7 +28,7 @@ Optional AI for writing, summaries, questions to your workspace and databases �
 | **Anthropic** (Claude) | yes, to Anthropic | `https://api.anthropic.com` |
 | **Google Gemini** | yes, to Google | `https://generativelanguage.googleapis.com` |
 
-You enter the model freely – any model ID the provider knows. **Test connection** checks address, key and model with a short request.
+You enter the model freely – any model ID the provider knows. **Fetch models** next to the model field asks the provider for its models, with the values currently in the form – saved or not; without a typed key Flowplan uses the saved one, but only for exactly the same provider and address. The list can be searched (arrow keys, <kbd>Enter</kbd>, <kbd>Esc</kbd>); picking a model puts it in the field, which stays free text. This works for the instance provider and for your own. {since=0.9.7} **Test connection** checks address, key and model with a short request.
 
 ### Ollama: completely local
 

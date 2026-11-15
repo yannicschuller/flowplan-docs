@@ -14,6 +14,10 @@ The administration opens with an overview. At the top is the state of the instan
 
 The sections are grouped into **People** (Users, Sign-in & SSO, Workspaces), **Data** (Storage & backup, Limits & retention, Markdown & Git export), **Services** (E-mail, Push notifications, AI, Extensions & domains), **Security** (Threats & incidents, Encryption, Activity log – see [Security](/en/security-monitoring#security)) and **Operations** (Monitoring, Maintenance & notices, Instance). Every section starts with a **status line** – e.g. “Scheduled backup off” with a link to the switch, or “S3 off” with a link to the guide. Every setting has exactly one home. Switches and choices save at once, with “Saving …” or “Saved” next to them; single text fields show **Save** once you have changed them. Every section has its own address, e.g. `/#admin/storage` or `/#admin/monitoring`.
 
+### Set up the instance {since=0.9.7}
+
+Admins first see the step **Set up the instance** in the [introduction](/settings#the-introduction): a traffic light for the basics, in the order you set up a new instance – **Address and HTTPS (APP_URL)**, **E-mail delivery**, **Backup**, **Sign-in (SSO)** and **AI provider**. Red means tackle it first (for example no scheduled backup, no e-mail delivery, or Flowplan over unencrypted http); yellow is optional or worth a look (no `APP_URL` set, the first backup is still to come, only accounts with e-mail and password, no AI); green is set up. Each line leads with **Set up** (**View** when green) to the matching section of the administration. Later the command palette (++⌘/Ctrl K++) opens the overview again with "Set up the instance".
+
 ## Workspaces
 
 All workspaces with members, pages, usage (a bar when there is a quota) and **Own quota** – saved when you leave the field. Empty = default, 0 = unlimited. The default is set under [Limits & retention](#limits-retention).
@@ -112,7 +116,8 @@ Health, usage and events of the instance – live: five key figures at the top (
 | Public demo | Visitors try Flowplan without an account, see [Demo](#demo). |
 | Version | Running **version**, **commit** (linked to GitHub) and build date. Docker images from our workflow know their commit; with Coolify it comes from `SOURCE_COMMIT`. For your own build pass `--build-arg GIT_COMMIT=$(git rev-parse HEAD)`, otherwise it says "commit unknown". When a newer version is out, a notice with **How to update** shows there. |
 | Admin group | The SSO or LDAP group from `OIDC_ADMIN_GROUP`. |
-| What's new after updates for new accounts | What new accounts start with for **What's new after updates**: **Show all** (default), **Only breaking changes** or **Never**. Only for accounts created afterwards; existing accounts keep their setting, and everyone can change it under **Appearance & language**. |
+| What's new after updates for new accounts | What new accounts start with for **What's new after updates**: **Show all** (default), **Only breaking changes** or **Never**. Only for accounts created afterwards; existing accounts keep their setting, and everyone can change it under **Appearance & language**. You set it per person under [Users](/user-management#users); accounts on **Instance default** follow this setting. {since=0.9.7} |
+| Settings level for new accounts | Which settings new accounts see: **Beginner** the essentials, **Normal** (default) most of them, **Expert** all ([Settings levels](/settings#settings-levels)). The search in Settings always finds all of them, and everyone can change their level at the top of Settings; you set it per person under [Users](/user-management#users). Accounts that existed before this setting keep seeing everything (Expert). {since=0.9.7} |
 
 Everyone sees version, licence and source code under **Settings → About Flowplan**; for our images it also says whether it is a beta or a release (own builds: `--build-arg FLOWPLAN_CHANNEL=beta` or `release`). If you run modified code, name its source with `FLOWPLAN_SOURCE_URL`; `FLOWPLAN_HIDE_SPONSOR=true` hides the link to GitHub Sponsors ([Configuration](/configuration-storage#legal-and-interface)).
 

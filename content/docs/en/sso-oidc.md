@@ -53,6 +53,18 @@ SESSION_HOURS=8
 - **Zitadel**: roles are under `urn:zitadel:iam:org:project:roles`; create a claim of your own with an action or enter the path.
 - **Entra ID**: configure the groups claim in the token. Entra delivers object IDs by default; then enter the admin group's ID as `OIDC_ADMIN_GROUP`.
 
+## Check the admin group {since=0.9.7}
+
+People who sign in with SSO get the **Administration** when the group from `OIDC_ADMIN_GROUP` is among the groups the provider sends in the claim from `OIDC_GROUPS_CLAIM` (default `groups`; a path such as `realm_access.roles` works too). Flowplan compares the names **exactly**, including case and slashes.
+
+Whether it works shows under **Administration → Users** in the person's side panel: **Groups from the provider (last sign-in)** shows which claim was read, which groups arrived and whether the admin group was among them ([Users](/user-management#users)). Typical causes when it is missing:
+
+- **"missing from token and userinfo":** the provider does not send the claim – usually the group mapper or the scope for groups (`OIDC_SCOPES`) is missing, or the claim has another name than `OIDC_GROUPS_CLAIM`.
+- **Keycloak with "Full group path":** the group then arrives as `/flowplan-admins`, with a leading slash – which does not match `OIDC_ADMIN_GROUP=flowplan-admins`. Turn **Full group path** off in the "Group Membership" mapper, or enter the name exactly as it arrives (`OIDC_ADMIN_GROUP=/flowplan-admins`; for sub-groups the whole path, such as `/company/flowplan-admins`).
+- **Entra ID:** object IDs arrive instead of names; enter the ID as `OIDC_ADMIN_GROUP`.
+
+The display is renewed at every SSO sign-in; after a change at the provider or to the variables, the person signs in again once.
+
 ## When SSO sign-in fails
 
 The server log names the reason: a line `OIDC sign-in failed:` with the kind of error, its code and – if the provider answered with an error – its `error` and `error_description` (never tokens or secrets). Common causes:

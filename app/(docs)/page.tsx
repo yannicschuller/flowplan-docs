@@ -73,7 +73,9 @@ export default async function DocsHome() {
           {t(
             "Flowplan ist ein Arbeitsbereich für Dokumente, Datenbanken, Whiteboards und ein tägliches Journal – Open Source, gehostet in Deutschland oder auf deinem eigenen Server. Diese Dokumentation erklärt jede Funktion und den Betrieb einer eigenen Instanz.",
             "Flowplan is a workspace for documents, databases, whiteboards and a daily journal – open source, hosted in Germany or on your own server. This documentation explains every feature and how to run your own instance.",
-          )}
+          )}{" "}
+          {t("Du kommst von Notion, AFFiNE, Obsidian oder Evernote?", "Coming from Notion, AFFiNE, Obsidian or Evernote?")}{" "}
+          <a href={`${prefix}/migrate`}>{t("So ziehst du um.", "Here is how to move.")}</a>
         </p>
 
         <section aria-labelledby="ich-will" className={s.homeSection}>

@@ -12,6 +12,8 @@ Flowplan läuft im Browser, lässt sich als App installieren und funktioniert au
 
 Dokumente speichert Flowplan immer zuerst lokal im Browser (IndexedDB) und gleicht sie mit dem Server ab, sobald er erreichbar ist. Bricht die Verbindung ab, schreibst du einfach weiter; Änderungen anderer werden beim Wiederverbinden zusammengeführt.
 
+Ohne Verbindung steht rechts in der oberen Leiste ein kleines gelbes Symbol statt eines Banners über die ganze Breite. Ein Tipp darauf erklärt, dass du den zuletzt gespeicherten Stand siehst; <kbd>Esc</kbd> oder ein Tipp daneben schließt die Erklärung. Screenreader sagen den Wechsel weiter an. {since=0.9.7}
+
 **Während der Server neu startet** (Update, Wartung), antwortet der Reverse Proxy statt Flowplan – Traefik etwa mit „404 page not found“. Flowplan bleibt auf der Seite, auf der du bist, und behält, was du tippst; es geht an den Server, sobald er wieder da ist. Lädst du die Seite in der Zeit neu, öffnet sich die gespeicherte Kopie, wenn auf diesem Gerät die [Offline-Nutzung](#offline-nutzung-einschalten) an ist. {since=0.9.7}
 
 ### Offline-Nutzung einschalten
@@ -21,6 +23,8 @@ Unter **Einstellungen → Offline & Geräte** speichert das Gerät zusätzlich d
 - Online kommt immer der aktuelle Stand vom Server; die Kopie dient nur ohne Verbindung.
 - Ist die Anmeldung abgelaufen, zeigt Flowplan online die Anmeldeseite – ohne Verbindung öffnet die gespeicherte Kopie trotzdem.
 - Die Kopien enthalten private Inhalte. Sie werden beim Abmelden, beim Ausschalten und bei der Anmeldung einer anderen Person entfernt.
+
+**Flowplan fragt nach.** {since=0.9.7} Offline ist auf jedem neuen Gerät aus. Die [Einführung](/settings#die-einfuehrung) bietet es auf ihrem Gerät an; in jedem weiteren Browser und auf jedem weiteren Gerät fragt einmal eine kleine Karte **Auf diesem Gerät auch offline arbeiten?** mit **Offline nutzen**, **Später** und **Nicht mehr fragen**. Die Antwort merkt sich das Gerät; **Später** fragt nach einer Woche wieder. Keine Karte gibt es, wo Offline nicht geht (etwa über unverschlüsseltes http), in den Apps für Telefon und Tablet (sie fragen selbst), für Gäste, in der Demo und bei schon eingeschalteter Kopie.
 
 #### Die ganze App auf dem Gerät
 
@@ -44,7 +48,7 @@ Unter **Einstellungen → Offline & Geräte** steht der Stand, etwa „Offline-K
 
 **Auch Eintragsinhalte und Dateien speichern** legt zusätzlich die Dokumente aller Datenbank-Einträge und die Dateien der Seiten ab, auch wenn du sie noch nie geöffnet hast – höchstens 200 MB und nur, solange das Gerät genug Platz hat. Ohne Haken bleiben nur Einträge und Dateien, die du schon einmal geöffnet hast. Ausschalten entfernt die zusätzlich gespeicherten Einträge und Dateien.
 
-Ohne Verbindung zeigt Flowplan unter dem Offline-Hinweis das Datum der Kopie, wenn sie älter als 7 Tage ist („Offline-Kopie vom 12. Okt.“).
+Ohne Verbindung zeigt Flowplan außerdem das Datum der Kopie, wenn sie älter als 7 Tage ist („Offline-Kopie vom 12. Okt.“).
 
 > [!NOTE]
 > Als App installiert (Chrome, Edge, Android), gleicht Flowplan die Kopie auf Wunsch des Browsers auch im Hintergrund ab, wenn die App geschlossen ist (Periodic Background Sync). Ob und wie oft, entscheidet der Browser – meist nur bei häufig genutzten Apps. Einträge und Dateien, die noch nie geöffnet wurden, lädt erst die geöffnete App.
@@ -61,7 +65,7 @@ Ohne Verbindung zeigt Flowplan unter dem Offline-Hinweis das Datum der Kopie, we
 Die App für iPhone und iPad hält die Offline-Kopie selbst – für jede Instanz, auch eine selbst gehostete. (iOS erlaubt Apps keinen Service Worker für frei gewählte Adressen; in Safari und in der Android-App arbeitet Flowplan offline wie im Browser.)
 
 - **Einschalten** wie überall unter **Einstellungen → Offline & Geräte** – je Profil der App. Dort steht zusätzlich „In der Flowplan-App gespeichert“; Stand, Größe, Version, **Jetzt aktualisieren**, **Auch Eintragsinhalte und Dateien speichern** und **Offline-Kopien entfernen** funktionieren wie im Browser.
-- **Ohne Verbindung** – beim Start oder wenn die Instanz nicht erreichbar ist – öffnet die App die gespeicherte Kopie: dieselbe Seite, auf der du warst, mit dem Hinweis „Offline – du siehst den zuletzt gespeicherten Stand“. Seiten, Datenbanken, Einträge, Kalender, Dashboards und der Editor laufen aus der Kopie. Den Bildschirm „Keine Verbindung“ zeigt die App nur noch, wenn es für das Profil keine Kopie gibt.
+- **Ohne Verbindung** – beim Start oder wenn die Instanz nicht erreichbar ist – öffnet die App die gespeicherte Kopie: dieselbe Seite, auf der du warst, mit dem [Offline-Symbol](#ohne-verbindung-arbeiten) in der oberen Leiste. {since=0.9.7} Seiten, Datenbanken, Einträge, Kalender, Dashboards und der Editor laufen aus der Kopie. Den Bildschirm „Keine Verbindung“ zeigt die App nur noch, wenn es für das Profil keine Kopie gibt.
 - **Offline ändern:** Text in Dokumenten und Änderungen an Einträgen werden wie im Browser auf dem Gerät gesammelt und abgeglichen, sobald die Instanz wieder antwortet. Danach wechselt die App von selbst zur aktuellen Seite – erst, wenn du gerade nicht tippst.
 - **Aktuell halten:** wie im Browser, solange die App offen ist, und zusätzlich jedes Mal, wenn sie in den Vordergrund kommt; nur Geändertes wird geladen.
 - **Speicherort:** im Container der App, verschlüsselt bis zum ersten Entsperren nach einem Neustart und nicht in Backups. Die Kopie gehört zum Profil: **Abmelden** in Flowplan und **Abmelden und Profil entfernen** in den Einstellungen der App löschen sie; ein anderes Profil sieht sie nie.
@@ -103,6 +107,8 @@ Unter **Einstellungen → Web-Clipper** liegt der Knopf **In Flowplan speichern*
 Für einen Eingang („Inbox“), etwa nach PARA: **Schnell erfassen** auf der Startseite, ++⌘ ⌥ N++, `> erfassen` in der Schnellsuche oder – bei der installierten App – ein langer Druck auf das App-Symbol → **Erfassen** öffnen ein kleines Fenster mit Titel und Text. Gespeichert wird als Eintrag in der gewählten Datenbank; ohne Verbindung wartet er auf dem Gerät und wird angelegt, sobald die Verbindung zurück ist.
 
 **Text verbessern** (mit dem KI-Symbol) unter den Feldern lässt den [Schreibassistenten](/ai-writing#schreibassistent) Rechtschreibung und Grammatik von Titel und Text verbessern. Das Ergebnis erscheint als Vorschau: **Übernehmen** setzt es in die Felder, **Original behalten** lässt alles, wie es war – gespeichert wird erst mit **Erfassen**. Kürzel wie `#tag`, `@Person`, `!hoch` oder „morgen“ und Links soll die KI unverändert lassen; hat sie eines davon verändert oder entfernt, nennt die Vorschau es, bevor du übernimmst. Den Knopf gibt es nur mit Verbindung und wenn der Schreibassistent für dich und die gewählte Datenbank erlaubt ist; er läuft wie im Editor über den Server oder [auf dem Gerät](/ai#ki-auf-dem-geraet-apple). Das Erfassen-Fenster der Desktop-App bekommt denselben Knopf mit der nächsten Version (siehe [Schnell erfassen (Desktop)](/desktop-capture#ki-vorschlag-optional)).
+
+Auf dem Handy kann Flowplan gleich mit dem Erfassen starten: [Beim Öffnen gleich erfassen](/mobile-capture#beim-oeffnen-gleich-erfassen). {since=0.9.7}
 
 **Als Standard zum Erfassen verwenden** (im Fenster) oder **Einstellungen → Web-Clipper → Erfassen** legt die Datenbank fest, die Teilen, Web-Clipper und Schnell erfassen vorwählen – je Person und Arbeitsbereich. Die Standardvorlage der Datenbank wird übernommen, so landen neue Einträge zum Beispiel direkt in der Ansicht „Eingang“.
 

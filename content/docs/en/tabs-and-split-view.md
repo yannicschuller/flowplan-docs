@@ -8,7 +8,7 @@ Keep several pages open: in tabs above the page and in two views side by side.
 
 ## Tabs {since=0.9.6}
 
-On computers and tablets you open pages in **tabs**, as in a code editor. <kbd>⌘</kbd>-click (Windows/Linux: <kbd>Ctrl</kbd>-click) or the middle mouse button on a page in the page tree, under favourites, on a page link, or on Home, Inbox or My tasks opens a new tab, in the quick search ++⌘ Enter++; if the place is already open in a tab, you switch to it. A plain click opens the page in the active tab. From two tabs on, the tab bar appears above the page, with each page's icon and title.
+On computers and tablets you open pages in **tabs**, as in a code editor. <kbd>⌘</kbd>-click (Windows/Linux: <kbd>Ctrl</kbd>-click) or the middle mouse button on a page in the page tree, under favourites, on a page link, or on Home, Inbox or My tasks opens a new tab, in the quick search ++⌘ Enter++; if the place is already open in a tab, you switch to it. A plain click opens the page in the active tab. From two tabs on, the tab bar appears above the page, with each page's icon and title. Only the tabs you can see count: when a narrow window (such as an iPad in portrait) hides the right view, a single tab on the left gets no tab bar. {since=0.9.7}
 
 - **Reorder:** drag a tab, or press ++⌥ ⇧ ←++/++⌥ ⇧ →++ while a tab is focused.
 - **Close:** **×**, the middle mouse button, ++⌥ W++, or <kbd>Delete</kbd> on the focused tab; in the desktop app also ++⌘ W++.

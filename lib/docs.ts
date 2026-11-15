@@ -47,13 +47,18 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
     groups: [
       {
         title: ["Einstieg", "Getting started"],
-        intro: ["Konto, erster Arbeitsbereich, Seitenbaum, Mitglieder und Rechte.", "Account, first workspace, page tree, members and permissions."],
-        pages: ["first-steps", "pages-and-spaces", "tabs-and-split-view", "page-tags", "workspaces-and-permissions", "workspace-appearance", "encrypted-spaces", "languages"],
+        intro: ["Konto, Einführung und Einstellungen, Seitenbaum, Tabs, Mitglieder und Rechte.", "Account, introduction and settings, page tree, tabs, members and permissions."],
+        pages: ["first-steps", "settings", "pages-and-spaces", "tabs-and-split-view", "workspaces-and-permissions", "encrypted-spaces"],
       },
       {
         title: ["Umzug, Import und Export", "Moving, import and export"],
-        intro: ["Von Notion, AFFiNE, Obsidian und anderen umziehen, importieren, exportieren, drucken.", "Move from Notion, AFFiNE, Obsidian and others, import, export, print."],
-        pages: ["migrate", "migrate-affine", "migrate-office", "migrate-notes", "import-export-versions", "export", "print-and-pdf"],
+        intro: ["Von Notion, AFFiNE, Obsidian, Evernote, Confluence und Google Docs umziehen, importieren, exportieren, drucken.", "Move from Notion, AFFiNE, Obsidian, Evernote, Confluence and Google Docs, import, export, print."],
+        pages: ["migrate", "migrate-glossary", "migrate-affine", "migrate-office", "migrate-notes", "import-export-versions", "export", "print-and-pdf"],
+      },
+      {
+        title: ["Ordnen und anpassen", "Organising and customising"],
+        intro: ["Tags und Aliasse, das Aussehen des Arbeitsbereichs und die Sprache der Oberfläche.", "Tags and aliases, the workspace's look and the interface language."],
+        pages: ["page-tags", "workspace-appearance", "languages"],
       },
       {
         title: ["Dokumente", "Documents"],

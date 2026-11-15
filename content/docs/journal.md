@@ -94,6 +94,7 @@ Ist ein Tag geöffnet, zeigt die Seitenleiste ihn immer an – auch wenn er ält
 - **← Vorheriger Tag** und **Nächster Tag →** springen zum vorigen bzw. nächsten Tag mit Eintrag – Lücken werden übersprungen.
 - **Heute** öffnet den heutigen Tag.
 - Der **Monat** (etwa „Oktober 2026“) öffnet einen kleinen Kalender: Tage mit Eintrag sind hervorgehoben und lassen sich öffnen. Mit den Pfeiltasten wanderst du um einen Tag oder eine Woche, mit <kbd>Bild ↑</kbd>/<kbd>Bild ↓</kbd> um einen Monat; <kbd>Esc</kbd> schließt ihn.
+- **Einen früheren Tag nachtragen:** Darfst du im Journal schreiben, ist im Kalender auch ein vergangener Tag ohne Eintrag wählbar (**Eintrag anlegen**). Flowplan legt die Seite für diesen Tag an und öffnet sie – mit der [Tagesvorlage](#tagesvorlage), aber ohne offene Aufgaben herüberzuholen. Heute geht wie gewohnt; Tage nach heute bleiben gesperrt, ebenso Tage, deren Seite im Papierkorb liegt, und ein Journal hinter seiner [PIN](#pin-sperre). {since=0.9.7}
 
 Von überall geht es mit ++⌘ ⌥ Y++ (Windows/Linux: ++Strg Alt Y++) oder dem Befehl **Journal: Heute** in der Schnellsuche (++⌘ K++) zum heutigen Tag – des zuletzt benutzten Journals. Bei mehreren Journalen bietet die Schnellsuche einen Eintrag pro Journal an. Das Kürzel lässt sich ändern (siehe [Tastenkürzel](/keyboard-shortcuts#eigene-tastenkuerzel)).
 

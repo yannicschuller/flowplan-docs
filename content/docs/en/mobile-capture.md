@@ -30,6 +30,10 @@ What Siri does without opening the app:
 
 Siri, Shortcuts and the controls use the **active** profile. Pages of end-to-end encrypted spaces do not appear (not even their titles). Adding tasks, what's due, opening pages, searching, the new controls and focus filters need a Flowplan server 0.7.0 or newer.
 
+## Capture right on opening {since=0.9.7}
+
+Under **Settings → Appearance & language → On opening** you choose for **When opening on a phone** between **Home** (the default) and **Quick capture** (from the Normal [level](/settings#settings-levels) on). With **Quick capture**, Flowplan on a phone – in the app, as an installed web app or in the browser – opens with capturing over the full screen: the title has the cursor, the target is your default capture database, and **Improve text** works as in the [capture window](/offline-and-apps#capture-into-a-database). After saving it shows "Captured." with **One more** and **To the app** (the workspace's home page). This applies when you open or reload the plain address; links to a page, notifications, quick actions, invitations, sharing to Flowplan and back/forward still open their target, and tablets and computers always open the app. Without a connection the record waits on the device ("Saved on this device …"). The choice applies to your account on all devices.
+
 ## Share from other apps
 
 In any app that can share (browser, Photos or gallery, Files, mail, scanner …), **Share → Flowplan** (iPhone, iPad) or **Share → Save to Flowplan** (Android) opens a small window with title, text, link and files.

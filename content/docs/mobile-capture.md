@@ -30,6 +30,10 @@ Was Siri erledigt, ohne die App zu öffnen:
 
 Siri, Kurzbefehle und Steuerelemente nutzen das **aktive** Profil. Seiten aus Ende-zu-Ende-verschlüsselten Bereichen erscheinen nicht (auch nicht ihre Titel). Aufgaben hinzufügen, Fälliges, Seiten öffnen, Suchen, die neuen Steuerelemente und Fokus-Filter brauchen einen Flowplan-Server ab 0.7.0.
 
+## Beim Öffnen gleich erfassen {since=0.9.7}
+
+Unter **Einstellungen → Darstellung & Sprache → Beim Öffnen** wählst du für **Beim Öffnen auf dem Handy** zwischen **Startseite** (Standard) und **Schnellerfassung** (ab der [Stufe](/settings#einstellungsstufen) Normal). Mit **Schnellerfassung** öffnet Flowplan auf dem Handy – in der App, als installierte Web-App oder im Browser – zuerst das Erfassen über den ganzen Bildschirm: Der Titel hat den Cursor, Ziel ist deine Standard-Datenbank zum Erfassen, **Text verbessern** gibt es wie im [Erfassen-Fenster](/offline-and-apps#erfassen-in-eine-datenbank). Nach dem Speichern zeigt es „Erfasst.“ mit **Noch eins** und **Zur App** (zur Startseite des Arbeitsbereichs). Das gilt beim Öffnen und Neuladen der normalen Adresse; Links auf eine Seite, Mitteilungen, Schnellaktionen, Einladungen, Teilen an Flowplan und Zurück/Vorwärts öffnen weiter ihr Ziel, Tablets und Computer immer die App. Ohne Verbindung wartet der Eintrag auf dem Gerät („Gespeichert auf diesem Gerät …“). Die Wahl gilt für dein Konto auf allen Geräten.
+
 ## Teilen aus anderen Apps
 
 In jeder App, die etwas teilen kann (Browser, Fotos bzw. Galerie, Dateien, Mail, Scanner …), öffnet **Teilen → Flowplan** (iPhone, iPad) bzw. **Teilen → In Flowplan speichern** (Android) ein kleines Fenster mit Titel, Text, Link und Dateien.

@@ -21,21 +21,14 @@ Beim ersten Anmelden legt Flowplan einen privaten Arbeitsbereich mit Beispielsei
 
 ## Die Einführung
 
-Nach dem Anlegen eines Kontos führt Flowplan einmal kurz durch das Wichtigste. Jeder Schritt lässt sich überspringen, und alles ist später in den Einstellungen änderbar:
+Nach dem Anlegen eines Kontos führt Flowplan einmal kurz durch das Wichtigste: Sprache und Erscheinungsbild, für Admins die Einrichtung der Instanz, auf Wunsch der Umzug aus deinem bisherigen Werkzeug, erste Seiten, Benachrichtigungen und Offline auf diesem Gerät. Jeder Schritt lässt sich überspringen, und danach hilft die Liste **Erste Schritte** in der Seitenleiste weiter. Die Schritte im Einzelnen stehen unter [Einführung und Einstellungen](/settings#die-einfuehrung). {since=0.9.7}
 
-::: steps
-
-1. **Willkommen**: Sprache und Erscheinungsbild (automatisch, hell oder dunkel).
-2. **Womit möchtest du starten?** Den Namen des Arbeitsbereichs festlegen (als Eigentümer) und auf Wunsch gleich Seiten anlegen: eine **Aufgaben**-Datenbank, eine **Notizen**-Datenbank, ein **Journal** oder ein **Whiteboard**.
-3. **Das kann Flowplan**: eine kurze Tour durch Seiten und Blöcke, Datenbanken, Whiteboards, Journal, Zusammenarbeit, Teilen, Suche und Offline – mit einem Tipp und einem Link in diese Dokumentation.
-4. **Benachrichtigungen**: E-Mail-Zusammenfassungen (wenn die Instanz E-Mails verschickt) und Push auf diesem Gerät.
-5. **Fertig**: die angelegten Seiten zum Öffnen und die wichtigsten Tastenkürzel.
-
-:::
-
-Später öffnet **Einstellungen → Darstellung & Sprache → Einführung starten** (oder „Einführung“ in der Suche mit ++⌘/Strg K++) sie wieder. Konten, die es schon vor der Einführung gab, sehen sie nicht automatisch.
+> [!TIP]
+> Du ziehst von Notion, AFFiNE, Obsidian, Evernote, Confluence oder Google Docs um? Das geht in der Einführung (Schritt **Woher kommst du?**) und jederzeit unter **Einstellungen → Import & Export**. Was mitkommt und wie du am besten vorgehst, steht unter [Umzug zu Flowplan](/migrate).
 
 Die Einstellungen öffnen mit einer Übersicht: je Abschnitt eine Kachel, gruppiert in **Persönlich**, **Verbindungen**, **Arbeitsbereich** und **Hilfe & Info**. Oben hilft die Suche („Einstellung suchen …“) – „Passkeys“ findet etwa **Konto & Sicherheit** –, und jeder Abschnitt hat einen eigenen Link, z. B. `/#settings/notifications`.
+
+Welche Einstellungen du siehst, hängt von deiner [Einstellungsstufe](/settings#einstellungsstufen) ab: **Einsteiger**, **Normal** oder **Experte**. {since=0.9.7}
 
 ## Die Oberfläche
 
@@ -44,7 +37,7 @@ Die Einstellungen öffnen mit einer Übersicht: je Abschnitt eine Kachel, gruppi
 - **Kopfzeile** einer Seite: Pfad, Teilen, Kommentare, Favorit und das Menü **Seitenaktionen** (`…`).
 - **Pfad:** Arbeitsbereich → übergeordnete Seiten → Seite, bei einem geöffneten Eintrag weiter → Datenbank → Eintrag. Jeder Teil ist ein Link (auch in einen neuen Tab). Der Pfad folgt dem Aufbau, nicht dem Weg, auf dem du gekommen bist. Ist er lang, fasst **…** die Mitte zusammen – ein Klick zeigt die ausgelassenen Ebenen; auf dem Smartphone stehen nur **…** und die aktuelle Seite da. Seiten, die du nicht lesen darfst, erscheinen nicht: Gäste sehen den Pfad erst ab der Seite, die mit ihnen geteilt ist.
 
-Am Computer ziehst du den rechten Rand der Seitenleiste, um sie breiter oder schmaler zu machen (200 bis 480 Pixel); ein Doppelklick auf den Rand stellt die ursprüngliche Breite wieder her. Die Breite merkt sich Flowplan pro Gerät. Auf dem Smartphone klappt die Seitenleiste ein: Das Symbol oben links öffnet sie, ebenso ein Wischen nach rechts vom linken Rand (oder **Navigation** in der Leiste unten). Sie legt sich über die aktuelle Seite, die daneben gedimmt sichtbar bleibt – nichts wird verlassen. Nach links gewischt, mit einem Tipp daneben oder mit Esc schließt sie wieder. Über der Seite hat sie eine eigene Breite, standardmäßig breiter als angedockt (Telefon bis 360 Pixel, Tablet 400 Pixel); zieh ihren rechten Rand, um sie zu ändern, zweimal tippen stellt die Standardbreite wieder her. Flowplan merkt sich diese Breite pro Gerät, getrennt von der angedockten. Auf dem iPad und anderen Tablets öffnet dasselbe Wischen die eingeklappte Seitenleiste über der Seite. In Safari bleibt ganz am Rand die Zurück-Geste von Safari – dort beginnt das Wischen knapp neben dem Rand; zurück geht es mit den Pfeilen oben links. {since=0.9.7} Für iPhone und iPad gibt es außerdem eine **App im App Store**, für Android eine **App zum Herunterladen** ([Apps für iPhone, iPad und Android](/mobile-apps)).
+Am Computer ziehst du den rechten Rand der Seitenleiste, um sie breiter oder schmaler zu machen (200 bis 480 Pixel); ein Doppelklick auf den Rand stellt die ursprüngliche Breite wieder her. Die Breite merkt sich Flowplan pro Gerät. Auf dem Smartphone klappt die Seitenleiste ein: Das Symbol oben links öffnet sie, ebenso ein Wischen nach rechts vom linken Rand (oder **Navigation** in der Leiste unten). In der Leiste unten stehen außerdem **Start**, **Suchen**, **Posteingang** und in der Mitte das runde **+** für eine neue Seite (ohne Beschriftung; Screenreader nennen es „Neue Seite“). {since=0.9.7} Sie legt sich über die aktuelle Seite, die daneben gedimmt sichtbar bleibt – nichts wird verlassen. Nach links gewischt, mit einem Tipp daneben oder mit Esc schließt sie wieder. Über der Seite hat sie eine eigene Breite, standardmäßig breiter als angedockt (Telefon bis 360 Pixel, Tablet 400 Pixel); zieh ihren rechten Rand, um sie zu ändern, zweimal tippen stellt die Standardbreite wieder her. Flowplan merkt sich diese Breite pro Gerät, getrennt von der angedockten. Auf dem iPad und anderen Tablets öffnet dasselbe Wischen die eingeklappte Seitenleiste über der Seite. In Safari bleibt ganz am Rand die Zurück-Geste von Safari – dort beginnt das Wischen knapp neben dem Rand; zurück geht es mit den Pfeilen oben links. {since=0.9.7} Für iPhone und iPad gibt es außerdem eine **App im App Store**, für Android eine **App zum Herunterladen** ([Apps für iPhone, iPad und Android](/mobile-apps)).
 
 ### Zurück und vorwärts
 

@@ -53,6 +53,18 @@ SESSION_HOURS=8
 - **Zitadel**: Rollen stehen unter `urn:zitadel:iam:org:project:roles`; einen eigenen Claim per Action anlegen oder den Pfad eintragen.
 - **Entra ID**: Gruppen-Claim im Token konfigurieren. Entra liefert standardmäßig Objekt-IDs; dann die ID der Admin-Gruppe als `OIDC_ADMIN_GROUP` eintragen.
 
+## Admin-Gruppe prüfen {since=0.9.7}
+
+Wer mit SSO angemeldet ist, bekommt die **Administration**, wenn die Gruppe aus `OIDC_ADMIN_GROUP` unter den Gruppen steht, die der Anbieter im Claim aus `OIDC_GROUPS_CLAIM` schickt (Standard `groups`; auch ein Pfad wie `realm_access.roles`). Flowplan vergleicht die Namen **exakt**, auch Groß- und Kleinschreibung und Schrägstriche.
+
+Ob das klappt, siehst du unter **Administration → Benutzer** im Seitenfenster der Person: **Gruppen vom Anbieter (letzte Anmeldung)** zeigt, welcher Claim gelesen wurde, welche Gruppen ankamen und ob die Admin-Gruppe dabei war ([Benutzer](/user-management#benutzer)). Typische Ursachen, wenn sie fehlt:
+
+- **„fehlte in Token und Userinfo“:** Der Anbieter schickt den Claim nicht – meist fehlt der Gruppen-Mapper oder der Scope für Gruppen (`OIDC_SCOPES`), oder der Claim heißt anders als `OIDC_GROUPS_CLAIM`.
+- **Keycloak mit „Full group path“:** Dann kommt die Gruppe als `/flowplan-admins` an, mit Schrägstrich vorn – das passt nicht zu `OIDC_ADMIN_GROUP=flowplan-admins`. Schalte im Mapper „Group Membership“ **Full group path** aus, oder trag den Namen genau so ein, wie er ankommt (`OIDC_ADMIN_GROUP=/flowplan-admins`; bei Untergruppen den ganzen Pfad, etwa `/firma/flowplan-admins`).
+- **Entra ID:** Statt Namen kommen Objekt-IDs; dann die ID als `OIDC_ADMIN_GROUP` eintragen.
+
+Die Anzeige erneuert sich bei jeder SSO-Anmeldung; nach einer Änderung am Anbieter oder an den Variablen meldet sich die Person also einmal neu an.
+
 ## Wenn die SSO-Anmeldung fehlschlägt
 
 Das Server-Log nennt den Grund: eine Zeile `OIDC sign-in failed:` mit der Art des Fehlers, seinem Code und – wenn der Provider mit einem Fehler geantwortet hat – dessen `error` und `error_description` (nie Tokens oder Secrets). Häufige Ursachen:

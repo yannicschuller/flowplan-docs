@@ -21,21 +21,14 @@ When you sign in for the first time, Flowplan creates a private workspace with e
 
 ## The introduction
 
-After creating an account, Flowplan walks you through the essentials once. Every step can be skipped, and everything can be changed later in the settings:
+After creating an account, Flowplan walks you through the essentials once: language and appearance, for admins the setup of the instance, if you like the move from the tool you used so far, first pages, notifications and offline on this device. Every step can be skipped, and afterwards the **Getting started** list in the sidebar helps you on. The steps in detail are in [Introduction and settings](/settings#the-introduction). {since=0.9.7}
 
-::: steps
-
-1. **Welcome**: language and appearance (automatic, light or dark).
-2. **What would you like to start with?** Set the workspace's name (as its owner) and, if you like, create pages right away: a **Tasks** database, a **Notes** database, a **Journal** or a **Whiteboard**.
-3. **What Flowplan does**: a short tour of pages and blocks, databases, whiteboards, the journal, collaboration, sharing, search and offline – each with a tip and a link into this documentation.
-4. **Notifications**: e-mail summaries (when the instance sends e-mail) and push on this device.
-5. **All set**: the created pages to open and the most important shortcuts.
-
-:::
-
-Later, **Settings → Appearance & language → Start introduction** (or "introduction" in the search with ++⌘/Ctrl K++) opens it again. Accounts that existed before the introduction was added do not see it automatically.
+> [!TIP]
+> Moving from Notion, AFFiNE, Obsidian, Evernote, Confluence or Google Docs? You can do it in the introduction (step **Where are you coming from?**) and at any time under **Settings → Import & export**. What comes along and how best to go about it is in [Moving to Flowplan](/migrate).
 
 The settings open with an overview: one tile per section, grouped into **Personal**, **Connections**, **Workspace** and **Help & info**. The search at the top (“Search settings …”) helps – “passkeys” finds **Account & security**, for example –, and every section has its own link, e.g. `/#settings/notifications`.
+
+Which settings you see depends on your [settings level](/settings#settings-levels): **Beginner**, **Normal** or **Expert**. {since=0.9.7}
 
 ## The interface
 
@@ -44,7 +37,7 @@ The settings open with an overview: one tile per section, grouped into **Persona
 - **Header** of a page: path, share, comments, favourite and the **Page actions** menu (`…`).
 - **Path:** workspace → parent pages → page, and for an open record → database → record. Every part is a link (also into a new tab). The path follows the structure, not the way you came. When it gets long, **…** folds the middle – a click lists the hidden levels; on a phone only **…** and the current page remain. Pages you may not read do not appear: guests see the path from the page shared with them.
 
-On a computer, drag the sidebar's right edge to make it wider or narrower (200 to 480 pixels); a double click on the edge restores the original width. Flowplan remembers the width per device. On a phone the sidebar folds away: the icon at the top left opens it, and so does a swipe to the right from the left edge (or **Navigation** in the bar at the bottom). It lies over the current page, which stays visible, dimmed, beside it – nothing is left. Swipe it to the left, tap beside it or press Esc to close it. Over the page it has a width of its own, wider than docked by default (up to 360 pixels on a phone, 400 on a tablet); drag its right edge to change it, a double tap restores the default. Flowplan remembers this width per device, separately from the docked width. On an iPad and other tablets the same swipe opens the collapsed sidebar over the page. In Safari the very edge stays Safari's back gesture – there the swipe starts just inside the edge; the arrows at the top left go back. {since=0.9.7} For iPhone and iPad there is also an **app on the App Store**, for Android an **app to download** ([Apps for iPhone, iPad and Android](/mobile-apps)).
+On a computer, drag the sidebar's right edge to make it wider or narrower (200 to 480 pixels); a double click on the edge restores the original width. Flowplan remembers the width per device. On a phone the sidebar folds away: the icon at the top left opens it, and so does a swipe to the right from the left edge (or **Navigation** in the bar at the bottom). The bar at the bottom also has **Home**, **Search**, **Inbox** and, in the middle, the round **+** for a new page (without a label; screen readers call it "New page"). {since=0.9.7} It lies over the current page, which stays visible, dimmed, beside it – nothing is left. Swipe it to the left, tap beside it or press Esc to close it. Over the page it has a width of its own, wider than docked by default (up to 360 pixels on a phone, 400 on a tablet); drag its right edge to change it, a double tap restores the default. Flowplan remembers this width per device, separately from the docked width. On an iPad and other tablets the same swipe opens the collapsed sidebar over the page. In Safari the very edge stays Safari's back gesture – there the swipe starts just inside the edge; the arrows at the top left go back. {since=0.9.7} For iPhone and iPad there is also an **app on the App Store**, for Android an **app to download** ([Apps for iPhone, iPad and Android](/mobile-apps)).
 
 ### Back and forward
 

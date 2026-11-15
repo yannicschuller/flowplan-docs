@@ -5,8 +5,8 @@
 export type Task = { icon: string; title: [de: string, en: string]; text: [de: string, en: string]; slug: string; hash?: [de: string, en: string] };
 
 export const TASKS: Task[] = [
+  { icon: "ArrowsLeftRight", title: ["Von Notion & Co. umziehen", "Move from Notion & co."], text: ["Notion, AFFiNE, Obsidian, Evernote …", "Notion, AFFiNE, Obsidian, Evernote …"], slug: "migrate" },
   { icon: "UsersThree", title: ["Team einladen", "Invite your team"], text: ["Mitglieder, Gäste und Rollen", "Members, guests and roles"], slug: "workspaces-and-permissions", hash: ["mitglieder-einladen", "invite-members"] },
-  { icon: "ArrowsLeftRight", title: ["Von Notion umziehen", "Move from Notion"], text: ["Seiten und Datenbanken übernehmen", "Bring pages and databases along"], slug: "migrate", hash: ["von-notion", "from-notion"] },
   { icon: "CheckSquare", title: ["Aufgaben verwalten", "Manage tasks"], text: ["Abhaken, zuweisen, fällig", "Tick off, assign, due dates"], slug: "tasks-in-documents" },
   { icon: "Database", title: ["Datenbank anlegen", "Create a database"], text: ["Tabelle, Einträge, Eigenschaften", "Table, records, properties"], slug: "databases", hash: ["datenbank-anlegen", "create-a-database"] },
   { icon: "Kanban", title: ["Board oder Kalender nutzen", "Use a board or calendar"], text: ["Ansichten für jede Datenbank", "Views for every database"], slug: "views" },
@@ -19,7 +19,7 @@ export const TASKS: Task[] = [
   { icon: "CloudArrowUp", title: ["Sicherungen einrichten", "Set up backups"], text: ["S3, SFTP und Wiederherstellen", "S3, SFTP and restoring"], slug: "storage-and-backups", hash: ["sicherungen", "backups"] },
 ];
 
-export const POPULAR = ["first-steps", "documents", "views", "databases", "workflows", "migrate", "installation", "configuration"];
+export const POPULAR = ["first-steps", "migrate", "documents", "views", "databases", "workflows", "installation", "configuration"];
 
 export const taskHref = (task: Task, prefix: string, locale: "de" | "en") =>
   `${prefix}/${task.slug}${task.hash ? `#${task.hash[locale === "en" ? 1 : 0]}` : ""}`;

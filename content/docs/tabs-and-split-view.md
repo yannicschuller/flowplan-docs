@@ -8,7 +8,7 @@ Mehrere Seiten offen halten: in Tabs über der Seite und in zwei Ansichten neben
 
 ## Tabs {since=0.9.6}
 
-Am Computer und Tablet öffnest du Seiten in **Tabs** – wie in einem Code-Editor. <kbd>⌘</kbd>-Klick (Windows/Linux: <kbd>Strg</kbd>-Klick) oder die mittlere Maustaste auf eine Seite im Seitenbaum, unter Favoriten, auf einen Seitenlink, auf Startseite, Posteingang oder Meine Aufgaben öffnet einen neuen Tab, in der Schnellsuche ++⌘ Enter++; ist der Ort schon in einem Tab offen, wechselst du dorthin. Ein normaler Klick öffnet die Seite im aktiven Tab. Ab zwei Tabs erscheint über der Seite die Tableiste mit Symbol und Titel jeder Seite.
+Am Computer und Tablet öffnest du Seiten in **Tabs** – wie in einem Code-Editor. <kbd>⌘</kbd>-Klick (Windows/Linux: <kbd>Strg</kbd>-Klick) oder die mittlere Maustaste auf eine Seite im Seitenbaum, unter Favoriten, auf einen Seitenlink, auf Startseite, Posteingang oder Meine Aufgaben öffnet einen neuen Tab, in der Schnellsuche ++⌘ Enter++; ist der Ort schon in einem Tab offen, wechselst du dorthin. Ein normaler Klick öffnet die Seite im aktiven Tab. Ab zwei Tabs erscheint über der Seite die Tableiste mit Symbol und Titel jeder Seite. Dabei zählen nur die Tabs, die du sehen kannst: Blendet ein schmales Fenster (etwa ein iPad hochkant) die rechte Ansicht aus, bekommt ein einzelner Tab links keine Tableiste. {since=0.9.7}
 
 - **Umsortieren:** Tab ziehen oder bei fokussiertem Tab ++⌥ ⇧ ←++/++⌥ ⇧ →++.
 - **Schließen:** **×**, mittlere Maustaste, ++⌥ W++ oder <kbd>Entf</kbd> auf dem fokussierten Tab; in der Desktop-App auch ++⌘ W++.

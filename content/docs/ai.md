@@ -28,7 +28,7 @@ Optionale KI für Texte, Zusammenfassungen, Fragen an den Arbeitsbereich und Dat
 | **Anthropic** (Claude) | ja, an Anthropic | `https://api.anthropic.com` |
 | **Google Gemini** | ja, an Google | `https://generativelanguage.googleapis.com` |
 
-Das Modell trägst du frei ein – jede Modell-ID, die der Anbieter kennt. **Verbindung testen** prüft Adresse, Schlüssel und Modell mit einer kurzen Anfrage.
+Das Modell trägst du frei ein – jede Modell-ID, die der Anbieter kennt. **Modelle abrufen** neben dem Modellfeld fragt den Anbieter nach seinen Modellen, mit den Werten, die gerade im Formular stehen – auch ungespeichert; ohne eingetippten Schlüssel nimmt Flowplan den gespeicherten, aber nur für genau denselben Anbieter und dieselbe Adresse. Die Liste lässt sich durchsuchen (Pfeiltasten, <kbd>Enter</kbd>, <kbd>Esc</kbd>); ein gewähltes Modell landet im Feld, das weiter frei bearbeitbar bleibt. Das geht für den Anbieter der Instanz und für deinen eigenen. {since=0.9.7} **Verbindung testen** prüft Adresse, Schlüssel und Modell mit einer kurzen Anfrage.
 
 ### Ollama: komplett lokal
 

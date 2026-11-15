@@ -1,12 +1,33 @@
 ---
-keywords: Umzug, Import, Notion, AppFlowy, wechseln, Migration
+keywords: Umzug, Import, Notion, AppFlowy, AFFiNE, Obsidian, Evernote, Confluence, wechseln, Migration, Notion-API, Importbericht
 ---
 
 # Umzug zu Flowplan
 
 Flowplan ist eine Open-Source-Alternative zu Notion, Confluence und AppFlowy unter der AGPL-3.0. So holst du Seiten, Datenbanken, Bilder und Dateien aus dem bisherigen Werkzeug herüber.
 
-**Mehr zum Thema:** [Von AFFiNE](/migrate-affine) · [Von Confluence, Evernote, Google Docs und Word](/migrate-office) · [Von Obsidian und GoodNotes](/migrate-notes)
+**Mehr zum Thema:** [Begriffe beim Umzug](/migrate-glossary) · [Von AFFiNE](/migrate-affine) · [Von Confluence, Evernote, Google Docs und Word](/migrate-office) · [Von Obsidian und GoodNotes](/migrate-notes)
+
+## So ziehst du um {since=0.9.7}
+
+Drei Wege führen herüber:
+
+- **In der Einführung:** Gleich nach dem Anlegen des Kontos fragt die [Einführung](/settings#die-einfuehrung) **Woher kommst du?** – Notion, AFFiNE, Obsidian, Evernote, Confluence, Google Docs / Word oder **Neu anfangen**. Sie zeigt Schritt für Schritt, wo das Werkzeug seinen Export hat, importiert die Datei gleich in deinen ersten Bereich und erklärt danach unter **So heißt das hier**, wie die gewohnten Dinge in Flowplan heißen ([Begriffe beim Umzug](/migrate-glossary)).
+- **Jederzeit** unter **Einstellungen → Import & Export → Import**, mit Zielbereich, Vorschau und allen Quellen – siehe unten.
+- **Notion ohne Export:** direkt über die Notion-API mit einem Integrations-Token ([Über die Notion-API](#ueber-die-notion-api)).
+
+| Von | Was du brauchst | Anleitung |
+| --- | --- | --- |
+| Notion | ZIP-Export (am besten HTML) oder ein Integrations-Token | [Von Notion](#von-notion) |
+| AFFiNE | `.affine`-Datei des Arbeitsbereichs oder Snapshot-ZIP | [Von AFFiNE](/migrate-affine) |
+| Obsidian | den Ordner des Tresors als ZIP | [Von Obsidian](/migrate-notes#von-obsidian-und-anderen-markdown-ordnern) |
+| Evernote | `.enex`-Datei oder eine ZIP mit mehreren | [Von Evernote](/migrate-office#von-evernote) |
+| Confluence | ZIP des Bereichsexports | [Von Confluence](/migrate-office#von-confluence) |
+| Google Docs, Word | Takeout-ZIP, `.docx`- oder HTML-Datei | [Von Google Docs](/migrate-office#von-google-docs), [Von Word](/migrate-office#von-microsoft-word) |
+| AppFlowy | Markdown und CSV als ZIP | [Von AppFlowy](#von-appflowy) |
+| GoodNotes | Export der Notizbücher | [Von GoodNotes](/migrate-notes#von-goodnotes) |
+
+Was ein Import nicht oder nur angenähert übernehmen konnte, steht danach im [Importbericht](#importbericht) oben im Zielbereich.
 
 ## Confluence, Evernote, Google Docs und Obsidian
 
@@ -42,7 +63,8 @@ Was daraus wird:
 - Jede HTML- oder Markdown-Datei wird zu einer Seite, jeder Ordner mit dem Namen einer Seite zu ihren Unterseiten. Die Kennungen, die Notion an Datei- und Ordnernamen hängt, fallen weg.
 - Aus dem HTML-Export: Toggles werden zu [aufklappbaren Blöcken](/documents#aufklappbare-bloecke), Toggle-Überschriften zu Überschriften, die sich einklappen lassen (oder, wo ihr Inhalt nicht bis zur nächsten Überschrift reicht, zu aufklappbaren Blöcken mit der Überschrift als Titel). Text- und Hintergrundfarben, Aufgaben, verschachtelte Listen, Tabellen, Formeln und Bildunterschriften bleiben erhalten.
 - Jede CSV-Datei wird zu einer Datenbank. Liegen beide Fassungen vor, nimmt Flowplan `Name_all.csv` (alle Einträge) statt der aktuellen Ansicht.
-- Spalten bekommen eine passende Art: Zahlen, Kontrollkästchen, Daten (auch im Notion-Format „September 24, 2026“) und Auswahlen mit ihren Optionen; der Rest bleibt Text.
+- Eigenschaften bekommen ihre Art. Aus dem HTML-Export liest Flowplan sie an den Symbolen der Tabellen und den Zeilen der Eintragsseiten ab: Auswahl und Status, Mehrfachauswahl mit Notions Farben, Datum mit Uhrzeit und Zeiträumen, Zahl mit ihrem Format, Kontrollkästchen, URL, E-Mail, Telefon, Person (wenn jeder Name ein Mitglied des Arbeitsbereichs ist); Erstellt und Zuletzt bearbeitet werden zu den Zeitstempeln des Eintrags. Ohne HTML erkennt Flowplan Zahlen, Kontrollkästchen, Daten (auch im Notion-Format „September 24, 2026“), Auswahlen, Mehrfachauswahlen, Links, E-Mails und Relationen an den Werten; der Rest bleibt Text. {since=0.9.7}
+- **Relationen** zeigen auf die importierten Einträge – über die Pfade der Eintragsseiten, Notion-Adressen oder Titel, auch zwischen Datenbanken desselben Exports. Formeln und Rollups enthält der Export nur als Werte: Sie kommen als Text und stehen im [Importbericht](#importbericht). {since=0.9.7}
 - Die Seiten der Einträge werden ihren Einträgen als Dokument zugeordnet. Seiten, die in Notion unter einem Eintrag liegen (der Ordner mit dem Namen des Eintrags), werden zu seinen [Unterseiten](/databases#unterseiten-eines-eintrags) – keine losen Seiten und keine Ersatzseiten mehr.
 - Bilder und Dateien, auf die Seiten verweisen, werden hochgeladen.
 - Callouts werden zu [Hinweisen](/formatting#hinweise) und behalten ihr Emoji als Symbol.
@@ -50,6 +72,25 @@ Was daraus wird:
 - Große Exporte, die Notion in mehrere ZIP-Dateien innerhalb des ZIPs aufteilt, werden erkannt.
 
 Grenzen pro Import: 100 MB, standardmäßig 10.000 Seiten (`FLOWPLAN_IMPORT_MAX_DOCS`) und 5.000 Einträge je Tabelle. Größere Arbeitsbereiche exportierst du in Teilen, etwa Seite für Seite.
+
+### Über die Notion-API {since=0.9.7}
+
+Statt über eine Export-Datei holt Flowplan Seiten und Datenbanken auch direkt aus Notion – mit dem Token einer internen Integration, die du in Notion anlegst.
+
+::: steps
+
+1. In Notion **notion.so/profile/integrations** öffnen und mit **Neue Integration** („New integration“) eine **interne** Integration für deinen Arbeitsbereich anlegen.
+2. Als Berechtigung **Inhalte lesen** („Read content“) geben; mit **Benutzerinformationen lesen** („Read user information“) kann Flowplan Personen-Eigenschaften den Mitgliedern deines Arbeitsbereichs zuordnen. Unter **Konfiguration** das Secret kopieren – es beginnt mit `ntn_`.
+3. In Notion die Seiten und Datenbanken mit der Integration teilen: auf der Seite oben rechts **…** → **Verbindungen** („Connections“) → die Integration wählen. Unterseiten gehören dazu.
+4. In Flowplan: **Einstellungen → Import & Export → Import**, oben den Zielbereich wählen, als Quelle **Notion (API)**, das Token in das Feld **Integrations-Token** einfügen und **Geteilte Seiten laden**.
+5. Unter **Was importiert werden soll** stehen die obersten geteilten Seiten und Datenbanken, alle angehakt. Abwählen, was nicht mit soll, dann **… importieren**. Sieht die Integration nichts, sagt Flowplan, dass du die Seiten erst über **Verbindungen** teilen sollst.
+
+:::
+
+> [!WARNING]
+> Das Token liest alles, was mit der Integration geteilt ist. Füge es nur in Flowplan in das Feld **Integrations-Token** ein – nirgendwo sonst, auch nicht in Chats, Issues oder E-Mails. Flowplan verwendet es nur für diesen Import und speichert oder protokolliert es nicht. Brauchst du die Integration danach nicht mehr, lösche sie in Notion.
+
+Der Import läuft im Hintergrund wie ein Datei-Import und holt alles unterhalb der gewählten Seiten: Absätze, Überschriften (auch aufklappbare), Listen, Aufgaben, aufklappbare Blöcke, Zitate, Callouts, Code, Formeln, Trennlinien, Tabellen, Bilder und Dateien, Unterseiten und Datenbanken in Seiten, synchronisierte Blöcke mit dem Inhalt des Originals, Spalten untereinander, Seiten-Links und Erwähnungen als Links auf die importierten Seiten, Textauszeichnungen und Farben, Emoji-Symbole und Cover. Lesezeichen und Einbettungen werden zu Links. Dateien, die Notion selbst speichert, lädt Flowplan während des Imports herunter (bis zur Grenze für die größte Datei); Dateien von anderswo bleiben Links. Datenbanken behalten Arten, Optionen und Farben ihrer Eigenschaften; Relationen zu mitimportierten Datenbanken, Rollups mit Berechnungen, die Flowplan kennt, und Formeln, die Flowplan lesen kann, werden zu ihrem Gegenstück, der Rest zu Text – das steht im [Importbericht](#importbericht). Notion erlaubt höchstens drei Anfragen pro Sekunde; große Arbeitsbereiche brauchen deshalb eine Weile.
 
 ## Von AppFlowy
 
@@ -62,6 +103,12 @@ Grenzen pro Import: 100 MB, standardmäßig 10.000 Seiten (`FLOWPLAN_IMPORT_MAX_
 :::
 
 Markdown wird zu Seiten, CSV zu Datenbanken; verlinkte Bilder und Dateien werden mitgenommen.
+
+## Importbericht {since=0.9.7}
+
+Was ein Import nicht oder nur angenähert übernehmen konnte, sammelt Flowplan auf einer Seite **Importbericht: …** mit 📋 oben im Zielbereich, etwa „Importbericht: Notion“. Sie ist nach Art gegliedert, mit der Anzahl: **Nicht übernommene Blöcke**, **Synchronisierte Blöcke (Inhalt kopiert)**, **Einbettungen und Lesezeichen als Link**, **Formeln** und **Rollups ohne Gegenstück (Werte als Text)**, **Eigenschaften mit angenähertem Typ**, **Nicht aufgelöste Verknüpfungen** und **Dateien zu groß, fehlend oder nicht geladen** – jeder Punkt mit einem Link auf die betroffene Seite oder den Eintrag. Unter **Einstellungen → Import & Export** nennt das Ergebnis die Zahl mit einem Link dorthin („12 Hinweise im Importbericht“). Gibt es nichts zu berichten, entsteht keine Seite.
+
+Den Bericht schreiben der Notion-Import (Export und API), der Markdown-ZIP-Import und die Importe aus AFFiNE, Obsidian und Evernote – auch in der Einführung. Er ist eine normale Seite: Geh die Punkte durch und lösche ihn, wenn du fertig bist.
 
 ## Nach dem Umzug
 

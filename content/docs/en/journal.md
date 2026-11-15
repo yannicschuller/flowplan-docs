@@ -96,6 +96,7 @@ Above every day page there is a bar:
 - **← Previous day** and **Next day →** jump to the previous or next day with an entry – gaps are skipped.
 - **Today** opens today's day.
 - The **month** (such as "October 2026") opens a small calendar: days with an entry are highlighted and can be opened. The arrow keys move by a day or a week, <kbd>Page ↑</kbd>/<kbd>Page ↓</kbd> by a month; <kbd>Esc</kbd> closes it.
+- **Fill in an earlier day:** if you may write in the journal, a past day without an entry can be chosen in the calendar too (**Create entry**). Flowplan creates the page for that day and opens it – with the [daily template](#daily-template), but without carrying over open tasks. Today works as usual; days after today stay locked, as do days whose page is in the trash and a journal behind its [PIN](#pin-lock). {since=0.9.7}
 
 From anywhere, ++⌘ ⌥ Y++ (Windows/Linux: ++Ctrl Alt Y++) or the command **Journal: Today** in the quick search (++⌘ K++) takes you to today – of the journal used last. With several journals the quick search offers one entry per journal. The shortcut can be changed (see [Keyboard shortcuts](/keyboard-shortcuts#your-own-shortcuts)).
 
