@@ -7,6 +7,8 @@ filter: true
 
 Alle Kürzel auf einen Blick. Auf Windows und Linux steht <kbd>Strg</kbd> für <kbd>⌘</kbd> und <kbd>Alt</kbd> für <kbd>⌥</kbd>.
 
+Kürzel mit Buchstaben funktionieren auch mit nicht-lateinischen Tastaturbelegungen (Kyrillisch, Griechisch …): Es zählt die Taste, auf der der lateinische Buchstabe liegt – <kbd>⌘</kbd> <kbd>Z</kbd> ist mit russischer Belegung die Taste mit „Я“. {since=0.9.8}
+
 ## Überall
 
 | Kürzel | Wirkung |
