@@ -15,6 +15,16 @@ export function marketplaceUrl(): string | null {
   if (!trimmed || /^(off|false|0|no)$/i.test(trimmed)) return null;
   return trimmed.replace(/\/$/, "");
 }
+// The status page of the hosted service (app.flowplan.org). STATUS_URL
+// changes the address; empty, "off" or "false" hides the footer link.
+export const STATUS_DEFAULT = "https://status.flowplan.org";
+export function statusUrl(): string | null {
+  const value = process.env.STATUS_URL;
+  if (value === undefined) return STATUS_DEFAULT;
+  const trimmed = value.trim();
+  if (!trimmed || /^(off|false|0|no)$/i.test(trimmed)) return null;
+  return trimmed.replace(/\/$/, "");
+}
 export const GITHUB_URL = "https://github.com/yannicschuller/flowplan";
 export const DISCORD_URL = "https://discord.gg/bCEdB6MPrR";
 // GitHub Sponsors, for anyone who wants to support the development.

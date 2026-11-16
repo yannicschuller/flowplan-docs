@@ -101,6 +101,8 @@ Im Dokument öffnet `/` das Blockmenü: `/h2`, `/todo` oder `/tabelle` tippen un
 
 Fragen, Ideen oder einfach Hallo sagen: Im **[Flowplan-Discord](https://discord.gg/bCEdB6MPrR)** helfen sich Nutzerinnen, Nutzer und Admins gegenseitig. Fehler und Funktionswünsche am besten als [GitHub-Issue](https://github.com/yannicschuller/flowplan/issues) melden, damit nichts verloren geht.
 
+Nutzt du flowplan.org und etwas geht gerade nicht? Ob eine Störung oder Wartung läuft, zeigt die [Statusseite](https://status.flowplan.org). {since=0.9.8}
+
 ### Über Flowplan
 
 **Einstellungen → Hilfe & Info → Über Flowplan** (`/#settings/about`, auch im Kontomenü ⋯ unten in der Seitenleiste – auf dem Telefon unter **Mehr** – und mit ++⌘/Strg K++ → „Über Flowplan“) zeigt:

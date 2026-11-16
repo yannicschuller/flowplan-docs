@@ -7,7 +7,7 @@ import { translate } from "@/lib/i18n";
 import { LanguageSwitch } from "@/components/i18n";
 import s from "@/components/docs/docs.module.css";
 import { trackAttrs } from "@/lib/track";
-import { DISCORD_URL, GITHUB_URL, imprintUrl, marketplaceUrl, privacyUrl, SPONSOR_URL, websiteUrl } from "@/lib/links";
+import { DISCORD_URL, GITHUB_URL, imprintUrl, marketplaceUrl, privacyUrl, SPONSOR_URL, statusUrl, websiteUrl } from "@/lib/links";
 
 // The documentation: same paper and ink as the website, calmer.
 export default async function DocsLayout({ children }: { children: React.ReactNode }) {
@@ -16,7 +16,8 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
   const prefix = await localePrefix();
   const imprint = imprintUrl(),
     privacy = privacyUrl(),
-    marketplace = marketplaceUrl();
+    marketplace = marketplaceUrl(),
+    status = statusUrl();
   return (
     <div className={s.root}>
       <a href="#inhalt" className={s.skip}>
@@ -59,6 +60,11 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
         {marketplace && (
           <a href={marketplace} {...trackAttrs("outbound", { target: "marketplace" })}>
             {t("Vorlagen im Marketplace", "Templates in the Marketplace")}
+          </a>
+        )}
+        {status && (
+          <a href={status} rel="noopener" {...trackAttrs("outbound", { target: "status" })}>
+            {t("Status von flowplan.org", "flowplan.org status")}
           </a>
         )}
         {imprint && <a href={imprint}>{t("Impressum", "Legal notice")}</a>}

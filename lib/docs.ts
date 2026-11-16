@@ -11,7 +11,7 @@ import type { Locale } from "./i18n";
 import { docsIssueUrl } from "./issue-url";
 import { synonymKeywords } from "./search";
 import type { AnchorMap } from "./anchors";
-import { appUrl, DISCORD_URL, GITHUB_URL, marketplaceUrl, MARKETPLACE_DEFAULT, websiteUrl } from "./links";
+import { appUrl, DISCORD_URL, GITHUB_URL, marketplaceUrl, MARKETPLACE_DEFAULT, STATUS_DEFAULT, statusUrl, websiteUrl } from "./links";
 import { outboundTarget } from "./track";
 import { envRows, fillReference, hasReference, REFERENCE, type EnvRow } from "./reference";
 import { calloutHtml, contentBlocks, type BlockState } from "./markdown-blocks";
@@ -332,7 +332,7 @@ function render(markdown: string, locale: Locale) {
         const external = /^https?:\/\//.test(href) && !ownSite(href);
         // Links to the app, the website, GitHub or Discord count as
         // "outbound" in the statistics (lib/track.ts).
-        const target = outboundTarget(href, { app: appUrl(), website: websiteUrl(), marketplace: marketplaceUrl() ?? MARKETPLACE_DEFAULT });
+        const target = outboundTarget(href, { app: appUrl(), website: websiteUrl(), marketplace: marketplaceUrl() ?? MARKETPLACE_DEFAULT, status: statusUrl() ?? STATUS_DEFAULT });
         return `<a href="${escape(href)}"${title ? ` title="${escape(title)}"` : ""}${
           external ? ' target="_blank" rel="noreferrer"' : ""
         }${target ? ` data-umami-event="outbound" data-umami-event-target="${target}"` : ""}>${inner}${external ? `<span class="sr-only"> (${newTab[locale]})</span>` : ""}</a>`;

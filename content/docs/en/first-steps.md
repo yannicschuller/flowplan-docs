@@ -101,6 +101,8 @@ In a document, `/` opens the block menu: type `/h2`, `/todo` or `/table` and pre
 
 Questions, ideas or just saying hello: in the **[Flowplan Discord](https://discord.gg/bCEdB6MPrR)** users and admins help each other. Bugs and feature requests are best filed as [GitHub issues](https://github.com/yannicschuller/flowplan/issues), so nothing gets lost.
 
+Using flowplan.org and something isn't working right now? The [status page](https://status.flowplan.org) shows whether there is a disruption or maintenance. {since=0.9.8}
+
 ### About Flowplan
 
 **Settings → Help & info → About Flowplan** (`/#settings/about`, also in the account menu ⋯ at the bottom of the sidebar – on a phone under **More** – and with ++⌘/Ctrl K++ → “About Flowplan”) shows:
