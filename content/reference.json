@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@b4ba35f9",
+  "source": "github.com/yannicschuller/flowplan@1e66936b",
   "slash": {
     "groups": {
       "recent": [
@@ -1965,6 +1965,7 @@
     "FLOWPLAN_IMPORT_MAX_FILES",
     "FLOWPLAN_IMPORT_MAX_MB",
     "FLOWPLAN_INSTANCE_ID",
+    "FLOWPLAN_INVITE_LINKS",
     "FLOWPLAN_LEADER_INTERVAL",
     "FLOWPLAN_LITESTREAM",
     "FLOWPLAN_LITESTREAM_SSE_C",

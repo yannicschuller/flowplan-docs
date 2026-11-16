@@ -35,6 +35,14 @@ Beim **Verlassen** muss ein letzter Eigentümer vorher unter **Einstellungen →
 
 **Wo die Einladung ankommt:** Offene Einladungen stehen unter **Einstellungen → Mitglieder → Ausstehende Einladungen** – mit Rolle, Gast-Status und geteilten Seiten, wann und von wem eingeladen wurde. Dort lassen sie sich **erneut senden** (mit E-Mail-Versand) oder **zurückziehen**. Die eingeladene Person findet den Arbeitsbereich im Arbeitsbereich-Wechsel oben links und eine Benachrichtigung im **Posteingang** – mit einem neuen Konto sofort, mit einem bestehenden beim nächsten Öffnen von Flowplan (bei Single Sign-on beim nächsten Anmelden). Eine Seite lässt sich auch einzeln teilen, ohne den ganzen Arbeitsbereich: [Eine Seite mit einer Person teilen](/sharing#eine-seite-mit-einer-person-teilen).
 
+**Registrierte Personen kommen sofort dazu:** Gehört die Adresse zu einem Konto mit bestätigter Adresse, ist die Person gleich Mitglied – ohne ausstehende Einladung, sie steht unter **Mitglieder**. Nach wenigen Sekunden erscheint der Arbeitsbereich in ihrem Wechsel, und der Posteingang meldet „Ada hat dich zu ‚Team‘ hinzugefügt“ mit **Öffnen** und **Verlassen** (Verlassen fragt wie unter **Einstellungen → Allgemein** nach dem Namen des Arbeitsbereichs). Für dich sieht die Antwort in beiden Fällen gleich aus – das Einladen verrät also nicht, welche Adressen ein Konto haben. Unbestätigte Adressen behalten die Einladung wie oben beschrieben. {since=0.9.8}
+
+### Einladungslinks für mehrere Personen {since=0.9.8}
+
+**Einstellungen → Mitglieder → Einladungslink erstellen** macht einen Link für mehrere Personen: Du wählst die Rolle (**Bearbeiten** oder **Ansehen**, auf Wunsch **Als Gast beitreten** – nie Eigentümer), wie lange er gilt (**24 Stunden**, **7 Tage** oder **30 Tage**) und auf Wunsch **Höchstens so viele Beitritte**. Links erstellen nur Eigentümer. Wer den Link öffnet, meldet sich an oder legt ein Konto an – auch wenn die Registrierung sonst geschlossen ist – und tritt mit der Rolle des Links bei. Öffnet ein Mitglied ihn noch einmal, ändert sich nichts und es zählt kein Beitritt.
+
+Unter **Einladungslinks** stehen die offenen Links mit ihren Beitritten („1 von 5 Beitritten“), Ablauf und wer sie erstellt hat; **Kopieren** kopiert einen Link erneut, **Zurückziehen** beendet ihn sofort – wer schon beigetreten ist, bleibt Mitglied. Ein abgelaufener, zurückgezogener oder ausgeschöpfter Link sagt das beim Öffnen. Wer den Link hat, kann beitreten, solange er gilt – teile ihn also nur dort, wo er hingehört. Die Administration kann Einladungslinks für die ganze Instanz ausschalten ([Registrierung & Zugang](/user-management#anmeldung-sso)).
+
 Bestehende Mitglieder lassen sich **Zum Gast machen** und umgekehrt **Zum Mitglied machen**.
 
 ## Gäste

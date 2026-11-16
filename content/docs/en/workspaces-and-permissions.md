@@ -35,6 +35,14 @@ When **leaving**, a last owner has to make someone else an owner first under **S
 
 **Where the invitation arrives:** open invitations are listed under **Settings → Members → Pending invitations** – with role, guest status and shared pages, when and by whom they were invited. There they can be **sent again** (with e-mail) or **withdrawn**. The invited person finds the workspace in the workspace switcher at the top left and a notification in the **inbox** – right away with a new account, with an existing one the next time they open Flowplan (with single sign-on, at the next sign-in). A single page can also be shared without the whole workspace: [Share a page with a person](/sharing#share-a-page-with-a-person).
 
+**Registered people are added right away:** if the address belongs to an account whose address is confirmed, the person becomes a member at once – no pending invitation, they appear under **Members**. Within a few seconds the workspace shows in their switcher, and the inbox says “Ada added you to ‘Team’”, with **Open** and **Leave** (leaving asks for the workspace name, as under **Settings → General**). For you the answer looks the same either way, so inviting doesn't reveal which addresses have an account. Unconfirmed addresses keep the invitation as described above. {since=0.9.8}
+
+### Invite links for several people {since=0.9.8}
+
+**Settings → Members → Create invite link** makes one link for several people: choose the role (**Edit** or **View**, optionally **Join as a guest** – never owner), how long it is valid (**24 hours**, **7 days** or **30 days**) and, if you like, **At most this many joins**. Only owners create links. Whoever opens the link signs in or creates an account – even if sign-ups are otherwise closed – and joins the workspace with the link's role. Opening it again as a member changes nothing and counts no join.
+
+Under **Invite links**, the open links show with their joins (“1 of 5 joins”), expiry and creator; **Copy** copies a link again, **Revoke** ends it at once – people who already joined stay members. An expired, revoked or used-up link says so when opened. Anyone who has the link can join while it is valid, so share it only where it belongs. Administrators can switch invite links off for the whole instance ([Sign-up & access](/user-management#sign-in-sso)).
+
 Existing members can be turned into guests with **Make guest** and back with **Make member**.
 
 ## Guests
