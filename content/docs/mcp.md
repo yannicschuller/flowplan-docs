@@ -86,14 +86,29 @@ Clients, die Streamable HTTP sprechen und eigene Kopfzeilen erlauben, nutzen die
 | `my_tasks` | Deine Aufgaben aus Dokumenten und Datensätzen, mit Fälligkeit | Lesen |
 | `create_page` | Neues Dokument, neue Datenbank oder neues Whiteboard; Dokumente können mit Markdown-Inhalt beginnen | Schreiben |
 | `append_to_page` | Hängt Markdown ans Ende eines Dokuments an | Schreiben |
+| `update_page` | Ändert Titel und Emoji eines Dokuments, ersetzt seinen Text oder einen Abschnitt oder hängt an {since=0.9.8} | Schreiben |
+| `move_page` | Verschiebt eine Seite unter eine andere Seite oder einen Datensatz, an den Anfang eines Bereichs oder neben eine Seite {since=0.9.8} | Schreiben |
+| `trash_page` | Legt eine Seite samt Unterseiten in den Papierkorb {since=0.9.8} | Schreiben |
+| `set_task` | Hakt eine Aufgabe ab oder wieder auf, setzt Status, Fälligkeit und zugewiesene Person {since=0.9.8} | Schreiben |
 | `create_record` | Neuer Datensatz; Eigenschaften nach Namen, optional mit Datensatzdokument (`document`, Markdown) | Schreiben |
 | `update_record` | Ändert einzelne Eigenschaften und/oder das Datensatzdokument eines Datensatzes | Schreiben |
+| `trash_record` | Legt einen Datensatz in den Papierkorb {since=0.9.8} | Schreiben |
 | `save_collection` | Neue Sammlung anlegen oder Name, Abfrage, Emoji und Teilen ändern | Schreiben |
 | `delete_collection` | Sammlung in den Papierkorb legen | Schreiben |
 
 Eigenschaften werden mit ihrem Namen (oder ihrer ID) angegeben. Datumswerte schreibst du als `JJJJ-MM-TT`, Auswahlen mit ihrem Namen, Personen mit E-Mail-Adresse oder Namen und Relationen als Liste von Datensatz-IDs. Text-Eigenschaften (außer dem Titel) sind formatierter Text: `get_database` kennzeichnet sie mit `markdown: true`, gelesen und geschrieben werden sie als Inline-Markdown (`**fett**`, `_kursiv_`, `~~durchgestrichen~~`, `` `Code` ``, `[Text](https://…)`, `\n`; siehe [Formatierter Text](/database-properties#formatierter-text)). `update_record` nimmt die `version` aus `get_record` entgegen: Hat jemand den Datensatz inzwischen geändert, wird die Änderung abgelehnt und nicht überschrieben.
 
 Das Datensatzdokument schreibst du mit `document` als Markdown – beim Anlegen mit `create_record`, später mit `update_record`. `update_record` ersetzt das Dokument; mit `documentMode: "append"` wird der Text am Ende angefügt. Der vorherige Stand bleibt als Version erhalten, und offene Editoren sehen die Änderung sofort.
+
+### Seiten ändern {since=0.9.8}
+
+`update_page` ersetzt den Text eines Dokuments durch Markdown (`mode: "replace"`, der Standard), hängt ihn ans Ende (`"append"`) oder ersetzt einen Abschnitt: `section` nennt eine Überschrift, ersetzt werden die Überschrift und alles darunter bis zur nächsten Überschrift gleicher oder höherer Ebene. Beginnt das Markdown mit einer Überschrift, tritt sie an die Stelle der alten; sonst bleibt die Überschrift stehen. Gibt es die Überschrift nicht oder mehrfach, bekommt der Assistent die Liste der Überschriften (eine doppelte wählt er mit `occurrence`). Vor jedem Ersetzen hält Flowplan den Text als [Version](/import-export-versions#versionsverlauf) fest, und offene Editoren sehen die Änderung sofort.
+
+`read_page` liefert zusätzlich die `revision` des Dokuments. Gib sie an `update_page` mit: Hat sich die Seite inzwischen geändert – auch weil jemand im Editor tippt –, wird die Änderung abgelehnt, und der Assistent liest die Seite neu, statt neueren Text zu überschreiben. `update_page` ändert nur Dokumente; gesperrte Seiten und Seiten in [verschlüsselten Bereichen](/encrypted-spaces) werden abgelehnt.
+
+`move_page` folgt denselben Regeln wie das Verschieben in der Seitenleiste: Schreibrechte an beiden Enden und nie unter die Seite selbst oder eine ihrer Unterseiten. `trash_page` und `trash_record` legen nur in den [Papierkorb](/pages-and-spaces#papierkorb) – dort holst du es unter **Papierkorb → Wiederherstellen** zurück, und die Antwort nennt, wie lange der Papierkorb es aufbewahrt. **Endgültig löschen gibt es über MCP nicht.**
+
+`set_task` ändert eine Aufgabe, ohne den Text zu ersetzen: abhaken oder wieder aufhaken, Status, Fälligkeit oder zugewiesene Person setzen (per E-Mail-Adresse oder Name; die Person wird benachrichtigt). `read_page`, `get_record` und `my_tasks` nennen jede Aufgabe mit `index` und `key`; mit beiden lehnt `set_task` ab, wenn sich die Aufgabe inzwischen geändert hat. Der Text der Aufgabe allein geht auch, solange er eindeutig ist.
 
 Außerdem ist jede Seite als **Ressource** `flowplan://page/<ID>` abrufbar (deine Favoriten sind aufgelistet). Es gibt zwei **Prompts**: *Seite zusammenfassen* und *Meinen Tag planen*.
 
@@ -121,7 +136,8 @@ Für [Workflows](/workflows) gibt es `list_workflows`, `get_workflow`, `get_work
 
 - Transport: **Streamable HTTP** (`POST /api/mcp`, JSON-Antworten, ohne Sitzung). Protokollversionen 2025-06-18, 2025-03-26 und 2024-11-05.
 - Anmeldung: persönliche API-Tokens als `Authorization: Bearer fp_…`. Eine Anmeldung per **OAuth** (für Clients, die nur OAuth können) gibt es noch nicht.
-- Nicht enthalten: Inhalte löschen, Verwaltung, Dateien und Uploads, Whiteboard-Inhalte.
+- Seiten lassen sich ändern, verschieben und in den Papierkorb legen, Datensätze in den Papierkorb legen. {since=0.9.8}
+- Nicht enthalten: Inhalte endgültig löschen, Verwaltung, Dateien und Uploads, Whiteboard-Inhalte.
 
 ## Beispiele
 
