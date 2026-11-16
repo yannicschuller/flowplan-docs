@@ -65,7 +65,7 @@ Die Übersicht zeigt die Tasten so, wie sie auf deinem Gerät heißen: auf dem M
 | <kbd>⌘</kbd> <kbd>E</kbd> | Code im Text |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>H</kbd> | Markieren |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>H</kbd> | Verdecken (Spoiler) |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>M</kbd> | Text kommentieren |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>M</kbd> | Neuer Textkommentar zum markierten Text {since=0.9.8} |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>1</kbd>–<kbd>4</kbd> | Überschrift 1–4 |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>0</kbd> | Zurück zu normalem Text |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>E</kbd> | Text zentrieren |

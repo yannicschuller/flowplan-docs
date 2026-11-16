@@ -31,6 +31,7 @@ Eine unendliche Fläche für Brainstorming, Abläufe und Workshops: Notizzettel,
 ### So ist die Leiste aufgebaut
 
 - **Links** stehen die Werkzeuge zum Erstellen: Auswählen, Verschieben, Notizzettel, Text, Form, Verbindungslinie, **Zeichnen**, Rahmen, Tabelle und Kommentar. **Zeichnen** fasst Stift, Radierer und Laserpointer zusammen: Der Knopf zeigt das zuletzt benutzte, oben im Optionsfenster schaltest du um. Die Tasten aus der Tabelle gelten weiter für alle Werkzeuge.
+- **Optionen:** Ein kleines Dreieck in der Ecke markiert Werkzeuge mit Optionen. Der erste Tipp öffnet ihr Fenster, ein zweiter Tipp auf dasselbe Werkzeug schließt es; auf Touchscreens schließt es auch die erste Berührung des Boards. {since=0.9.8}
 - **+** (**Einfügen und mehr**) öffnet ein Fenster mit Suche – tippen filtert, <kbd>Enter</kbd> nimmt den ersten Treffer:
   - **Einfügen:** Bild, Bilder und Symbole, Emoji, Stempel, Seite verknüpfen (Karte mit Link auf eine Flowplan-Seite), Einbetten (Video, Webseite oder PDF, siehe [unten](#videos-webseiten-und-pdfs-einbetten)), Zeitleiste und Importieren (Excalidraw, draw.io, Mermaid, PlantUML)
   - **Vorlagen & Bibliothek:** [Vorlagen](/whiteboard-collaboration#vorlagen), Formenbibliothek und Racks (siehe [Racks und Verkabelung](/whiteboard-racks))
@@ -43,7 +44,7 @@ Wer nur lesen darf, sieht Auswählen, Verschieben, den Laserpointer und die Leis
 
 ## Elemente gestalten
 
-Ausgewählte Elemente zeigen eine Leiste mit Farbe, Schriftgröße, Fett, Ausrichtung, Linienstärke und -verlauf, **Nach vorne**/**Nach hinten**, **Duplizieren** (++⌘ D++) und **Löschen** (<kbd>Entf</kbd>). Zettel und Texte lassen sich auch **verdecken** – wie ein Spoiler im Dokument, per Klick aufdecken.
+Ausgewählte Elemente zeigen eine Leiste mit Farbe, Schriftgröße, Fett, Ausrichtung, Linienstärke und -verlauf, **Nach vorne**/**Nach hinten**, **Duplizieren** (++⌘ D++) und **Löschen** (<kbd>Entf</kbd>). Zettel und Texte lassen sich auch **verdecken** – wie ein Spoiler im Dokument, per Klick aufdecken. Auf dem Handy ist diese Leiste eine Zeile, die du seitwärts scrollst. Ein Klick oder Tipp auf eine leere Stelle des Boards hebt die Auswahl auf – auch auf Touchscreens –, ebenso der Wechsel zum Werkzeug Verschieben. {since=0.9.8}
 
 Doppelklick bearbeitet den Text eines Elements. Kopieren und Einfügen funktioniert innerhalb und zwischen Whiteboards. **Kursiv** und **Unterstrichen** gelten wie **Fett** für den ganzen Text eines Elements.
 

@@ -31,6 +31,7 @@ An infinite canvas for brainstorming, processes and workshops: sticky notes, sha
 ### How the toolbar is laid out
 
 - **On the left** are the tools for creating: Select, Move, Sticky note, Text, Shape, Connector, **Draw**, Frame, Table and Comment. **Draw** combines pen, eraser and laser pointer: the button shows the one used last, and you switch at the top of its options. The keys in the table still work for every tool.
+- **Options:** a small triangle in the corner marks tools with options. The first tap opens their pop-out, a second tap on the same tool closes it; on touch screens the first touch on the board closes it too. {since=0.9.8}
 - **+** (**Insert and more**) opens a panel with a search – typing filters, <kbd>Enter</kbd> takes the first match:
   - **Insert:** image, images and icons, emoji, stamp, link page (a card linking to a Flowplan page), embed (video, web page or PDF, see [below](#embed-videos-web-pages-and-pdfs)), timeline and import (Excalidraw, draw.io, Mermaid, PlantUML)
   - **Templates & library:** [templates](/whiteboard-collaboration#templates), shape library and racks (see [Racks and cabling](/whiteboard-racks))
@@ -43,7 +44,7 @@ Readers who may only view see Select, Move, the laser pointer and the bottom bar
 
 ## Style elements
 
-Selected elements show a bar with colour, font size, bold, alignment, line width and style, **Bring forward**/**Send backward**, **Duplicate** (++⌘ D++) and **Delete** (<kbd>Del</kbd>). Sticky notes and text can also be **hidden** – like a spoiler in a document, revealed with a click.
+Selected elements show a bar with colour, font size, bold, alignment, line width and style, **Bring forward**/**Send backward**, **Duplicate** (++⌘ D++) and **Delete** (<kbd>Del</kbd>). Sticky notes and text can also be **hidden** – like a spoiler in a document, revealed with a click. On a phone this bar is one row that scrolls sideways. A click or tap on an empty spot of the board deselects – on touch screens too –, and so does picking the Hand tool. {since=0.9.8}
 
 A double click edits an element's text. Copy and paste work within and between whiteboards. **Italic** and **Underline** apply to the whole text of an element, like **Bold**.
 

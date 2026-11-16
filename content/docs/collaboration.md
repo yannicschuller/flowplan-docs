@@ -54,13 +54,14 @@ Das Sprechblasen-Symbol in der Kopfzeile öffnet die Kommentare der Seite (auf d
 
 ## Textkommentare
 
-Text markieren und **Text kommentieren** wählen oder ++⌘ ⌥ M++ drücken.
+Unter einem Dokument und im Inhalt eines Datenbankeintrags öffnet **Textkommentare (n)** das Kommentarfeld mit allen Threads und dem Filter **Anzeigen**. Markiere Text oder einen Block und klicke im Feld oben auf **Neu**, um einen Kommentar zu schreiben; ohne Markierung erinnert dich Flowplan daran. Direkt zum neuen Kommentar kommst du über das Sprechblasen-Symbol in der Werkzeugleiste, im Textmenü oder mit ++⌘/Strg ⌥/Alt M++. Das X oder ein erneuter Klick auf **Textkommentare** schließt das Feld. {since=0.9.8}
 
 - Der kommentierte Text wird markiert; Klick darauf öffnet den Thread.
 - Antworten, Emoji-Reaktionen, **Erledigen** und **Wieder öffnen**.
 - Beiträge können formatiert sein (Listen, Links, Zitate, Code); `@` öffnet die Personensuche.
 - Eigene Beiträge lassen sich bearbeiten und löschen. Wer beim Bearbeiten neu erwähnt wird, bekommt eine Benachrichtigung; bereits Erwähnte nicht noch einmal.
 - Wird der Text später gelöscht, bleibt das Zitat im Thread erhalten.
+- Zeilenumbrüche der Textstelle bleiben im Zitat erhalten, eingebettete Medien erscheinen als „Medienblock“. Verschiebst du einen Block nach oben oder unten (oder ziehst ihn), wandern seine Kommentare mit. {since=0.9.8}
 - Entwürfe bleiben gespeichert, bis du sie sendest oder verwirfst.
 
 Textkommentare gibt es in Dokumenten und in den Inhalten von Datenbankeinträgen, auch in Exporten und Inhaltsarchiven.

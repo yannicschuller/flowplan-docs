@@ -150,9 +150,9 @@ Der Zeitbericht fasst die Zeiteinträge einer Datenbank oder des ganzen Arbeitsb
 
 ## Einträge aus allen Datenbanken
 
-**Meine Aufgaben → Einträge aus Datenbanken** zeigt Einträge aus allen Datenbanken des Arbeitsbereichs in einer Liste. Standardmäßig sind das die offenen, die dir zugewiesen sind – über irgendeine Personen-Eigenschaft.
+**Meine Aufgaben** zeigt zusammen mit den Aufgaben aus Dokumenten die Einträge aller Datenbanken des Arbeitsbereichs, die einen Status oder ein Erledigt-Häkchen haben, in einer Liste ([Meine Aufgaben](/tasks-in-documents#aufgaben-mit-person-und-datum)). {since=0.9.8} Standardmäßig sind das die offenen, die dir zugewiesen sind – über irgendeine Personen-Eigenschaft.
 
-- Filtern kannst du nach Fälligkeit, Datenbank und Text.
+- Filtern kannst du nach Fälligkeit und Person; **Quelle: Datenbanken** zeigt nur Einträge, unter **Nur Datenbanken:** wählst du Datenbank und Suchtext. {since=0.9.8}
 - Welches Datum als Fälligkeit gilt, legt jede Datenbank fest – siehe [Wann ist ein Eintrag fällig?](#wann-ist-ein-eintrag-faellig)
 - **Als Ansicht speichern** macht daraus eine eigene, persönliche Ansicht, z. B. „Alle meine offenen Tickets in allen Projekten“.
 

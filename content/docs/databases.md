@@ -109,7 +109,7 @@ Datumsfelder lassen sich täglich, wöchentlich, monatlich oder jährlich wieder
 
 ### Wiederkehrende Aufgaben
 
-Für Aufgaben, die jedes Mal einzeln abgehakt werden („Monatsabschluss“, „Server-Updates“), stellst du im Eintrag unter **Wiederkehrende Aufgabe** einen Rhythmus ein: täglich, wöchentlich (wahlweise an bestimmten Wochentagen, z. B. Mo, Mi, Fr), monatlich oder jährlich, jeweils alle N Tage, Wochen, Monate oder Jahre. Gibt es mehrere Datumsfelder, wählst du, welches weiterrückt.
+Für Aufgaben, die jedes Mal einzeln abgehakt werden („Monatsabschluss“, „Server-Updates“), stellst du im Eintrag unter **Wiederkehrende Aufgabe** einen Rhythmus ein: täglich, wöchentlich (wahlweise an bestimmten Wochentagen, z. B. Mo, Mi, Fr), monatlich oder jährlich, jeweils alle N Tage, Wochen, Monate oder Jahre. Die Einstellung liest sich als ein Satz, etwa „Wöchentlich · alle 1 Wochen · Mo · gerechnet ab Fällig“. **Gerechnet ab** erscheint nur bei mehreren Datumseigenschaften und legt fest, von welchem Datum aus der nächste Eintrag weiterrechnet; darunter steht, wann er folgt. {since=0.9.8}
 
 Sobald der Eintrag erledigt ist (Status oder Häkchen, siehe [Wann ist ein Eintrag erledigt?](/projects-and-tickets#wann-ist-ein-eintrag-erledigt)), legt Flowplan den nächsten Eintrag an: eine Kopie mit dem Status von vorher, das gewählte Datum auf dem nächsten Termin und alle anderen Datumsfelder um gleich viele Tage verschoben. Der Rhythmus wandert zum neuen Eintrag; wird der alte noch einmal geöffnet und erledigt, entsteht kein weiterer.
 
