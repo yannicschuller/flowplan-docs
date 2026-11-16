@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@8f9a70a",
+  "source": "github.com/yannicschuller/flowplan@b0650cb2",
   "slash": {
     "groups": {
       "recent": [
@@ -1909,6 +1909,18 @@
   },
   "env": [
     "APP_URL",
+    "AUTH_PROXY_ADMIN_USERS",
+    "AUTH_PROXY_AUTO_CREATE",
+    "AUTH_PROXY_DEBUG",
+    "AUTH_PROXY_EMAIL_HEADER",
+    "AUTH_PROXY_GROUPS_HEADER",
+    "AUTH_PROXY_LOGIN_URL",
+    "AUTH_PROXY_LOGOUT_URL",
+    "AUTH_PROXY_NAME",
+    "AUTH_PROXY_NAME_HEADER",
+    "AUTH_PROXY_ONLY",
+    "AUTH_PROXY_TRUSTED_PROXIES",
+    "AUTH_PROXY_USER_HEADER",
     "DATABASE_SESSION_URL",
     "DATABASE_URL",
     "DRAWIO_URL",

@@ -1,5 +1,5 @@
 ---
-keywords: sso, oidc, keycloak, authentik, entra id, azure ad, google, okta
+keywords: sso, oidc, keycloak, authentik, entra id, azure ad, google, okta, yunohost, authelia, forward auth, reverse proxy, remote-user
 ---
 
 # Single sign-on with OIDC
@@ -117,3 +117,78 @@ At every SSO sign-in Flowplan applies them:
 > **Note: changes by hand while SSO is active.** If an owner changes the role or a group of a member who comes from an SSO group (marked "via SSO group …" in the member list), the change lasts only until that person's next SSO sign-in or the next change of the mappings. Then the mapping sets the role and groups again. Flowplan says so right after the change. For a lasting difference, the administration changes the mapping – or the person's groups in the identity provider.
 
 In the member list and the group dialog, such members show "via SSO group “X”".
+
+## Sign-in through a reverse proxy (YunoHost, Authelia, Authentik) {since=0.9.8}
+
+If a portal in front of Flowplan already signs people in – YunoHost's SSO (SSOwat), or forward auth with Authelia or Authentik –, Flowplan takes that sign-in over: the proxy names the person in a request header, and Flowplan signs them in. Off while `AUTH_PROXY_USER_HEADER` is empty.
+
+> **Warning:** Only turn this on when Flowplan's port is reachable **through the proxy alone** – anyone reaching it directly could set the header and sign in as anyone. The headers count only on connections from `AUTH_PROXY_TRUSTED_PROXIES` (default `127.0.0.1,::1`): the address of the TCP connection, never `X-Forwarded-For`. Bind the port to `127.0.0.1` (Docker: `127.0.0.1:3000:3000`) or to a network only the proxy reaches, and let the proxy drop such headers from the browser. SSOwat does that for every header starting with `ynh_`; in nginx `proxy_set_header` overwrites them.
+
+### How it works
+
+- **Signing in:** A request without a Flowplan session that carries the header from a trusted proxy gets a normal session – already on the first page load.
+- **Which account:** the account that signed in through the proxy before (by user name, ignoring case); else an [LDAP](/scim-and-ldap#sign-in-with-ldap) or SCIM account with that user name; else a directory or SSO account with the same confirmed e-mail address; else a new account (unless `AUTH_PROXY_AUTO_CREATE=false`). An account with e-mail and password is never taken over – the sign-in is refused, as with LDAP. Disabled accounts are refused.
+- **Name and address** come from the proxy at every sign-in (UTF-8, accents and other scripts included); the proxy vouches for the address.
+- **Switching or signing out at the portal** ends the session the proxy started. Sessions from password, passkey, OIDC or the apps do not depend on the headers; API tokens, share links and webhooks work without the portal.
+- **Signing out in Flowplan** leads to `AUTH_PROXY_LOGOUT_URL` – without it, the next page load signs you in again.
+- **Sign-in page:** `AUTH_PROXY_LOGIN_URL` adds a button such as **Sign in with YunoHost** (name from `AUTH_PROXY_NAME`). `AUTH_PROXY_ONLY=true` hides password, passkeys and sign-up; `FLOWPLAN_LOCAL_LOGIN=false` also turns password sign-in off on the server.
+- **Admins and groups:** with `AUTH_PROXY_GROUPS_HEADER`, `OIDC_ADMIN_GROUP` and the [SSO group mappings](#map-sso-groups-to-workspaces) work as with OIDC; without groups (YunoHost), `AUTH_PROXY_ADMIN_USERS` names the admins. The second factor is the portal's business, as with SSO.
+
+**Administration → Sign-in & SSO** shows the settings read-only; trusted proxies beyond this machine are warned about there and under **Administration → Security**.
+
+### Variables
+
+| Variable | Default | Meaning |
+| --- | --- | --- |
+| `AUTH_PROXY_USER_HEADER` | *empty* | Header with the user name (`YNH_USER`, `Remote-User`). Empty: off. |
+| `AUTH_PROXY_EMAIL_HEADER` | *empty* | Header with the e-mail address. |
+| `AUTH_PROXY_NAME_HEADER` | *empty* | Header with the full name; without it the user name. |
+| `AUTH_PROXY_GROUPS_HEADER` | *empty* | Header with the groups, separated by `,` or `\|`. |
+| `AUTH_PROXY_TRUSTED_PROXIES` | `127.0.0.1,::1` | Addresses or networks (`172.18.0.0/16`) the headers count from. |
+| `AUTH_PROXY_LOGIN_URL` | *empty* | The portal's sign-in page; `{return}` is the address to come back to, `{return_b64}` the same in Base64. |
+| `AUTH_PROXY_LOGOUT_URL` | *empty* | The portal's sign-out page after signing out (also with `{return}`). |
+| `AUTH_PROXY_NAME` | `SSO` | The portal's name on the sign-in button. |
+| `AUTH_PROXY_ONLY` | `false` | `true`: the sign-in page shows the portal only. |
+| `AUTH_PROXY_AUTO_CREATE` | `true` | `false`: only people with an account sign in. |
+| `AUTH_PROXY_ADMIN_USERS` | *empty* | User names (comma-separated) that administer the instance. |
+| `AUTH_PROXY_DEBUG` | `false` | `true`: one log line per decision, with user names only. |
+
+### Example: YunoHost
+
+The YunoHost package gives the app the permission "visitors" with the auth header on: portal users bring their headers, everyone else still reaches Flowplan (apps with tokens, share links, webhooks). Flowplan listens on `127.0.0.1`.
+
+```dotenv
+AUTH_PROXY_USER_HEADER=YNH_USER
+AUTH_PROXY_EMAIL_HEADER=YNH_USER_EMAIL
+AUTH_PROXY_NAME_HEADER=YNH_USER_FULLNAME
+AUTH_PROXY_LOGIN_URL=https://example.org/yunohost/sso/?r={return_b64}
+AUTH_PROXY_LOGOUT_URL=https://example.org/yunohost/sso/?action=logout
+AUTH_PROXY_NAME=YunoHost
+AUTH_PROXY_ADMIN_USERS=alice
+```
+
+### Example: Authelia (nginx)
+
+```nginx
+auth_request /internal/authelia/authz;
+auth_request_set $user $upstream_http_remote_user;
+auth_request_set $email $upstream_http_remote_email;
+auth_request_set $name $upstream_http_remote_name;
+auth_request_set $groups $upstream_http_remote_groups;
+proxy_set_header Remote-User $user;
+proxy_set_header Remote-Email $email;
+proxy_set_header Remote-Name $name;
+proxy_set_header Remote-Groups $groups;
+```
+
+```dotenv
+AUTH_PROXY_USER_HEADER=Remote-User
+AUTH_PROXY_EMAIL_HEADER=Remote-Email
+AUTH_PROXY_NAME_HEADER=Remote-Name
+AUTH_PROXY_GROUPS_HEADER=Remote-Groups
+AUTH_PROXY_LOGIN_URL=https://auth.example.org/?rd={return}
+AUTH_PROXY_LOGOUT_URL=https://auth.example.org/logout
+AUTH_PROXY_NAME=Authelia
+```
+
+**Authentik** (forward auth) sends `X-authentik-username`, `X-authentik-email`, `X-authentik-name` and `X-authentik-groups`. With Flowplan in Docker and the proxy on the host, the connection comes from the Docker network (often `172.17.0.1`): trust exactly that address. `AUTH_PROXY_DEBUG=true` logs when a header came from a proxy that is not trusted.
