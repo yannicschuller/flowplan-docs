@@ -86,14 +86,29 @@ Clients that speak Streamable HTTP and accept their own headers use this configu
 | `my_tasks` | Your tasks from documents and records, with due dates | Read |
 | `create_page` | New document, database or whiteboard; documents can start with Markdown content | Write |
 | `append_to_page` | Appends Markdown to the end of a document | Write |
+| `update_page` | Changes a document's title and emoji, replaces its text or one section, or appends to it {since=0.9.8} | Write |
+| `move_page` | Moves a page below another page or record, to the top of a space or next to a page {since=0.9.8} | Write |
+| `trash_page` | Moves a page and the pages below it to the trash {since=0.9.8} | Write |
+| `set_task` | Checks or unchecks a task, sets its state, due date and assignee {since=0.9.8} | Write |
 | `create_record` | New record; properties by name, optionally with its record document (`document`, Markdown) | Write |
 | `update_record` | Changes individual properties and/or the record document of a record | Write |
+| `trash_record` | Moves a record to the trash {since=0.9.8} | Write |
 | `save_collection` | Creates a collection or changes its name, query, emoji and sharing | Write |
 | `delete_collection` | Moves a collection to the trash | Write |
 
 Properties are named by their name (or ID). Dates are written as `YYYY-MM-DD`, options by their name, people by e-mail address or name, and relations as a list of record IDs. Text properties (except the title) are formatted text: `get_database` marks them with `markdown: true`, and they are read and written as inline Markdown (`**bold**`, `_italic_`, `~~strikethrough~~`, `` `code` ``, `[label](https://…)`, `\n`; see [Formatted text](/database-properties#formatted-text)). `update_record` accepts the `version` from `get_record`: if someone changed the record in the meantime, the change is refused instead of being overwritten.
 
 Write the record document with `document` as Markdown – when creating with `create_record`, later with `update_record`. `update_record` replaces the document; with `documentMode: "append"` the text is added at the end. The previous state is kept as a version, and open editors see the change right away.
+
+### Change pages {since=0.9.8}
+
+`update_page` replaces a document's text with Markdown (`mode: "replace"`, the default), adds it at the end (`"append"`), or replaces one section: `section` names a heading, and the heading with everything below it up to the next heading of the same or a higher level is replaced. If the Markdown starts with a heading, it takes the old heading's place; otherwise the heading stays. If the heading doesn't exist or appears more than once, the assistant gets the list of headings (pick a duplicate with `occurrence`). Before every replacement Flowplan keeps the text as a [version](/import-export-versions#version-history), and open editors see the change right away.
+
+`read_page` also returns the document's `revision`. Pass it to `update_page`: if the page changed in the meantime – also through someone typing in the editor – the change is refused, and the assistant reads the page again instead of overwriting newer text. `update_page` only changes documents; locked pages and pages in [encrypted spaces](/encrypted-spaces) are refused.
+
+`move_page` follows the same rules as moving in the sidebar: editor rights at both ends, and never below the page itself or one of its sub-pages. `trash_page` and `trash_record` only move to the [trash](/pages-and-spaces#trash) – you restore from there under **Trash → Restore**, and the answer says how long the trash keeps it. **Permanent deletion is not available over MCP.**
+
+`set_task` changes one task without replacing the text: check or uncheck it, set its state, its due date or its assignee (by e-mail address or name; the person is notified). `read_page`, `get_record` and `my_tasks` name each task by `index` and `key`; with both, `set_task` refuses if the task changed in the meantime. The task's text alone works too, as long as it is unique.
 
 In addition, each page is available as a **resource** `flowplan://page/<ID>` (your favourites are listed). There are two **prompts**: *Summarize a page* and *Plan my day*.
 
@@ -121,7 +136,8 @@ For [workflows](/workflows) there are `list_workflows`, `get_workflow`, `get_wor
 
 - Transport: **Streamable HTTP** (`POST /api/mcp`, JSON answers, no session). Protocol versions 2025-06-18, 2025-03-26 and 2024-11-05.
 - Sign-in: personal API tokens as `Authorization: Bearer fp_…`. **OAuth** sign-in (for clients that only support OAuth) is not available yet.
-- Not included: deleting content, administration, files and uploads, whiteboard contents.
+- Pages can be updated, moved and moved to the trash, records moved to the trash. {since=0.9.8}
+- Not included: deleting content permanently, administration, files and uploads, whiteboard contents.
 
 ## Examples
 
