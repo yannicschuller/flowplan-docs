@@ -17,7 +17,7 @@ Flowplan records security-relevant events, detects typical attacks in them and h
 - **Rights:** admin rights granted or removed (also through SSO or LDAP groups at sign-in), roles, invitations, accounts disabled or reset by admins
 - **Sharing and data:** share links, published pages, all exports and backups
 - **Refused:** requests from a foreign origin, internal addresses (SSRF), scripts in submitted content, many refused API requests from one address
-- **Administration:** LDAP, SCIM, restore, extensions, domains, AI provider, alerts and other security-relevant settings
+- **Administration:** LDAP, SCIM, restore, extensions, domains, AI provider, alerts and other security-relevant settings; sign-up, demo, invite links, the two-factor requirement and emergency access switched on or off, SSO group mappings added or removed {since=0.9.8}
 
 **Privacy:** for an address, the database keeps only its network (IPv4 `/24`, IPv6 `/48`) and a hash keyed with a secret of the instance – enough to group and block, not the address itself. Accounts of failed sign-ins are only stored masked (`ma***@example.com`). Events are deleted after 90 days (`FLOWPLAN_SECURITY_RETENTION_DAYS`).
 
@@ -45,14 +45,19 @@ Whoever signs in with a device not seen for 90 days gets a security notice thems
 | Sign-in after many failures | successful sign-in after 5 failures on the same account | critical |
 | Admin from a new device | an admin signs in with a device not seen for 90 days | warning |
 | Two countries in a short time | sign-ins from two countries within 2 hours (needs `FLOWPLAN_COUNTRY_HEADER`) | critical |
-| Rights changed | admin rights, LDAP/SCIM, restore, extensions, domains | critical |
+| Rights changed | admin rights granted or removed (also through the SSO or LDAP group at sign-in), LDAP/SCIM, restore, extensions, domains. Removed admin rights count too: whoever takes over an admin account locks the others out this way. {since=0.9.8} | critical |
+| Two-factor of an admin off | an admin turns off their two-factor sign-in, or another admin resets it – from then on the password alone opens the account that runs the instance. For other accounts this is only an event. | critical {since=0.9.8} |
+| Access to the instance opened | sign-up for everyone, demo, invite links or emergency access switched on, the two-factor requirement relaxed, or an SSO group mapping added or removed. Closing something again is only an event. | warning {since=0.9.8} |
+| Emergency access granted | a trusted contact gets read access to an account's content (waiting period over or [inactivity message](/en/emergency-access#inactivity-message)) or exports through it; one incident per account and trusted contact a day | warning {since=0.9.8} |
 | Encryption key reset | an account resets its key for [encrypted spaces](/en/encrypted-spaces) (passphrase and recovery key lost) – only affects its own access to those spaces | warning {since=0.9.6} |
 | Several keys reset | 3 accounts reset their encryption key within an hour | critical {since=0.9.6} |
 | Many exports | more than 20 exports by one person in an hour (and far above their usual) | warning |
 | Probing | 60 refused API requests (401/403/404) from one address in 10 minutes | warning |
 | Attacks through content | 5 refused scripts or internal addresses in an hour | warning |
 
-The same thing within a day counts on the open incident instead of opening a new one.
+The same thing within a day counts on the open incident instead of opening a new one. For **Access to the instance opened** that is the same setting or, for SSO group mappings, the same admin – ten mappings in a row are one incident. {since=0.9.8}
+
+**Critical or warning:** admin rights and an admin's two-factor sign-in concern the whole instance and are critical – they arrive even with “critical only” in the notifications. Emergency access and opened access are warnings: usually they are meant that way (the person had the waiting period to deny it, an admin chose the setting on purpose), but you should know. {since=0.9.8}
 
 ### Logs (stdout, JSON)
 

@@ -17,7 +17,7 @@ Flowplan hält sicherheitsrelevante Ereignisse fest, erkennt typische Angriffe d
 - **Rechte:** Adminrechte vergeben oder entzogen (auch über SSO- oder LDAP-Gruppen bei der Anmeldung), Rollen, Einladungen, Konten durch Admins gesperrt oder zurückgesetzt
 - **Freigaben und Daten:** Freigabelinks, veröffentlichte Seiten, alle Exporte und Sicherungen
 - **Abgewehrtes:** Anfragen von fremder Herkunft, interne Adressen (SSRF), Skripte in eingereichten Inhalten, viele abgewiesene API-Anfragen einer Adresse
-- **Administration:** LDAP, SCIM, Wiederherstellung, Erweiterungen, Domains, KI-Anbieter, Warnungen und weitere sicherheitsrelevante Einstellungen
+- **Administration:** LDAP, SCIM, Wiederherstellung, Erweiterungen, Domains, KI-Anbieter, Warnungen und weitere sicherheitsrelevante Einstellungen; Registrierung, Demo, Einladungslinks, Zwei-Faktor-Pflicht und Notfallzugriff an oder aus, SSO-Gruppenzuordnungen angelegt oder entfernt {since=0.9.8}
 
 **Datenschutz:** In der Datenbank steht von einer Adresse nur ihr Netz (IPv4 `/24`, IPv6 `/48`) und ein Hash mit einem Schlüssel der Instanz – genug zum Gruppieren und Sperren, nicht die Adresse selbst. Konten fehlgeschlagener Anmeldungen stehen nur maskiert da (`ma***@example.com`). Nach 90 Tagen werden die Ereignisse gelöscht (`FLOWPLAN_SECURITY_RETENTION_DAYS`).
 
@@ -45,14 +45,19 @@ Wer sich mit einem Gerät anmeldet, das 90 Tage nicht dabei war, bekommt selbst 
 | Anmeldung nach vielen Fehlversuchen | erfolgreiche Anmeldung nach 5 Fehlversuchen beim selben Konto | kritisch |
 | Admin von neuem Gerät | ein Admin meldet sich mit einem Gerät an, das 90 Tage nicht dabei war | Warnung |
 | Zwei Länder kurz nacheinander | Anmeldungen aus zwei Ländern innerhalb von 2 Stunden (braucht `FLOWPLAN_COUNTRY_HEADER`) | kritisch |
-| Rechte geändert | Adminrechte, LDAP/SCIM, Wiederherstellung, Erweiterungen, Domains | kritisch |
+| Rechte geändert | Adminrechte vergeben oder entzogen (auch über die SSO- oder LDAP-Gruppe bei der Anmeldung), LDAP/SCIM, Wiederherstellung, Erweiterungen, Domains. Entzogene Adminrechte zählen mit: Wer ein Admin-Konto übernimmt, sperrt so die anderen aus. {since=0.9.8} | kritisch |
+| Zwei-Faktor eines Admins aus | ein Admin schaltet seine Zwei-Faktor-Anmeldung aus, oder ein anderer Admin setzt sie zurück – danach reicht das Passwort für das Konto, das die Instanz verwaltet. Bei anderen Konten ist das nur ein Ereignis. | kritisch {since=0.9.8} |
+| Zugang zur Instanz geöffnet | Registrierung für alle, Demo, Einladungslinks oder Notfallzugriff eingeschaltet, die Zwei-Faktor-Pflicht gelockert oder eine SSO-Gruppenzuordnung angelegt oder entfernt. Etwas wieder schließen ist nur ein Ereignis. | Warnung {since=0.9.8} |
+| Notfallzugriff freigegeben | eine Vertrauensperson bekommt Lesezugriff auf die Inhalte eines Kontos (Wartezeit abgelaufen oder [Nachricht bei Inaktivität](/emergency-access#nachricht-bei-inaktivitaet)) oder exportiert darüber; ein Vorfall pro Konto und Vertrauensperson am Tag | Warnung {since=0.9.8} |
 | Verschlüsselungsschlüssel zurückgesetzt | ein Konto setzt seinen Schlüssel für [verschlüsselte Bereiche](/encrypted-spaces) zurück (Passphrase und Wiederherstellungsschlüssel verloren) – betrifft nur den eigenen Zugang zu diesen Bereichen | Warnung {since=0.9.6} |
 | Mehrere Schlüssel zurückgesetzt | 3 Konten setzen ihren Verschlüsselungsschlüssel innerhalb einer Stunde zurück | kritisch {since=0.9.6} |
 | Viele Exporte | mehr als 20 Exporte einer Person in einer Stunde (und weit über ihrem Üblichen) | Warnung |
 | Abtasten | 60 abgewiesene API-Anfragen (401/403/404) einer Adresse in 10 Minuten | Warnung |
 | Angriffe über Inhalte | 5 abgewehrte Skripte oder interne Adressen in einer Stunde | Warnung |
 
-Gleiches innerhalb eines Tages zählt beim offenen Vorfall weiter, statt einen neuen zu öffnen.
+Gleiches innerhalb eines Tages zählt beim offenen Vorfall weiter, statt einen neuen zu öffnen. Bei **Zugang zur Instanz geöffnet** ist das dieselbe Einstellung oder, bei SSO-Gruppenzuordnungen, derselbe Admin – zehn Zuordnungen hintereinander sind ein Vorfall. {since=0.9.8}
+
+**Kritisch oder Warnung:** Adminrechte und die Zwei-Faktor-Anmeldung eines Admins betreffen die ganze Instanz und sind kritisch – mit „nur kritische“ in den Benachrichtigungen kommen sie trotzdem an. Notfallzugriff und geöffneter Zugang sind Warnungen: Meist ist es so gewollt (die Person hatte die Wartezeit zum Ablehnen, die Einstellung hat ein Admin bewusst gesetzt), du sollst es aber erfahren. {since=0.9.8}
 
 ### Logs (stdout, JSON)
 
