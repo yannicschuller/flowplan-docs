@@ -54,13 +54,14 @@ The speech bubble icon in the header opens the page's comments (on a phone it sh
 
 ## Text comments
 
-Select text and choose **Comment on text** or press ++⌘ ⌥ M++.
+Below a document and in a database record's content, **Text comments (n)** opens the comment panel with all threads and the **Show** filter. Select text or a block and click **New** at the top of the panel to write a comment; if nothing is selected, Flowplan reminds you to select something first. The speech-bubble icon in the toolbar, in the text menu, or ++⌘/Ctrl ⌥/Alt M++ takes you straight to a new comment. The X or clicking **Text comments** again closes the panel. {since=0.9.8}
 
 - The commented text is highlighted; a click on it opens the thread.
 - Replies, emoji reactions, **Resolve** and **Reopen**.
 - Posts can be formatted (lists, links, quotes, code); `@` opens the person search.
 - Your own posts can be edited and deleted. People newly mentioned in an edit get a notification; those mentioned before are not notified again.
 - If the text is deleted later, the quote stays in the thread.
+- Line breaks in the passage stay line breaks in the quote, and embedded media show as “media block”. When you move a block up or down (or drag it), its comments move with it. {since=0.9.8}
 - Drafts stay saved until you send or discard them.
 
 Text comments exist in documents and in the contents of database records, also in exports and content archives.

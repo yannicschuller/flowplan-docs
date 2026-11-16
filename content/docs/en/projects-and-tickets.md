@@ -150,9 +150,9 @@ The time report sums up the time entries of a database or of the whole workspace
 
 ## Records from all databases
 
-**My tasks → Records from databases** shows records from every database of the workspace in one list. By default these are the open ones assigned to you – through any person property.
+**My tasks** shows the records of every database of the workspace that has a status or a done checkbox in one list, together with the tasks from documents ([My tasks](/tasks-in-documents#tasks-with-assignee-and-date)). {since=0.9.8} By default these are the open ones assigned to you – through any person property.
 
-- You can filter by due date, database and text.
+- You can filter by due date and person; **Source: Databases** shows only records, and under **Databases only:** you pick databases and search text. {since=0.9.8}
 - Which date counts as the due date is set per database – see [When is a record due?](#when-is-a-record-due)
 - **Save as view** turns a filter into a personal view of its own, e.g. “All my open tickets in all projects”.
 

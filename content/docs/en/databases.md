@@ -109,7 +109,7 @@ Date fields can repeat daily, weekly, monthly or yearly. Calendar and timeline s
 
 ### Repeating tasks
 
-For tasks that are ticked off one by one each time (“monthly closing”, “server updates”), set a rhythm in the record under **Repeating task**: daily, weekly (optionally on certain weekdays, e.g. Mo, We, Fr), monthly or yearly, each every N days, weeks, months or years. With several date fields you choose which one moves on.
+For tasks that are ticked off one by one each time (“monthly closing”, “server updates”), set a rhythm in the record under **Repeating task**: daily, weekly (optionally on certain weekdays, e.g. Mo, We, Fr), monthly or yearly, each every N days, weeks, months or years. The setting reads as one sentence, e.g. “Weekly · every 1 weeks · Mo · counted from Due”. **Counted from** only appears when there are several date properties and sets which date the next record counts on from; below it, a hint says when it follows. {since=0.9.8}
 
 As soon as the record is done (status or checkbox, see [When is a record done?](/projects-and-tickets#when-is-a-record-done)), Flowplan creates the next record: a copy with the status it had before, the chosen date on the next occurrence and every other date field moved by as many days. The rhythm moves to the new record; reopening and completing the old one again creates nothing more.
 
