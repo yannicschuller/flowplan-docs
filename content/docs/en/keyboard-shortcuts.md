@@ -7,6 +7,8 @@ filter: true
 
 All shortcuts at a glance. On Windows and Linux, <kbd>Ctrl</kbd> stands for <kbd>⌘</kbd> and <kbd>Alt</kbd> for <kbd>⌥</kbd>.
 
+Letter shortcuts also work with non-Latin keyboard layouts (Cyrillic, Greek …): the key that carries the Latin letter counts – with a Russian layout, <kbd>⌘</kbd> <kbd>Z</kbd> is the key with “Я”. {since=0.9.8}
+
 ## Everywhere
 
 | Shortcut | Effect |
