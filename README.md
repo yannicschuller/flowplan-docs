@@ -50,7 +50,8 @@ Checks: `npm run typecheck`, `npm test`, `npm run build`, then `npm run quality`
 | --- | --- | --- |
 | `WEBSITE_URL` | `https://flowplan.org` | The logo and "Start page" link. |
 | `MARKETPLACE_URL` | `https://marketplace.flowplan.org` | The template marketplace: "Marketplace" in the header, a footer link and a line in `llms.txt`. Empty or `off` hides them; links in the pages' text stay. |
-| `STATUS_URL` | `https://status.flowplan.org` | The status page of the hosted service: a footer link ("Status von flowplan.org"). Empty or `off` hides it. |
+| `STATUS_URL` | `https://status.flowplan.org` | The status page of the hosted service: a footer link. Empty or `off` hides it. |
+| `STATUS_SUMMARY_URL` | `https://raw.githubusercontent.com/yannicschuller/flowplan-status/status-data/summary.json` | Where the footer reads the services' state (a dot plus text, e.g. "Alle Systeme laufen"). Fetched on the server, cached for 3 minutes, 3 s timeout; unreachable, invalid or older than 30 minutes → only the plain "Status" link. Empty or `off` shows only the link. |
 | `IMPRINT_URL` | *empty* | Link to the legal notice in the footer, e.g. `https://flowplan.org/impressum`. Hidden when empty. |
 | `PRIVACY_URL` | *empty* | Link to the privacy policy in the footer, e.g. `https://flowplan.org/datenschutz`. Hidden when empty. |
 | `FLOWPLAN_RELEASE` | *empty* | The latest released Flowplan version, e.g. `0.9.6`, instead of `content/release.json` – for the version markers. Read by the server when it renders a page, so it also works on a running container. |
