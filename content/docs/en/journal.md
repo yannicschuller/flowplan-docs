@@ -36,7 +36,9 @@ Every day remembers which version of the template it was created from. A day tha
 
 ## Daily template
 
-**Set up journal** (gear on the journal page) → **Template**: every new day starts with this content, such as "Grateful for", "Focus today" and "Evening review". Ready-made templates are available (gratitude & focus, 5-minute journal, work log, daily review); **Use today** makes the current day the template. Tasks from the template come back every day and are not carried over in addition. A day that only holds the template counts as empty and disappears like any empty day.
+**Set up journal** (gear on the journal page) → **Template**: every new day starts with this content, such as "Grateful for", "Focus today" and "Evening review". Ready-made templates are available (gratitude & focus, 5-minute journal, work log, daily review); **Save today as template** {since=0.9.8} makes the current day's content the template for every new day. Tasks from the template come back every day and are not carried over in addition. A day that only holds the template counts as empty and disappears like any empty day.
+
+**Choose from templates …** {since=0.9.8} lists your saved [document templates](/templates#your-own-templates) that apply in the journal's space: those of this space, those of the whole workspace and your private ones. Choosing one copies its content into the daily template. Later changes to the saved template don't change the journal – only when you choose it again. Database templates and templates of other spaces are not offered. **Remove** clears the daily template; new days then start empty.
 
 **Carried-over tasks** (also under **Template**) decides where the open tasks of the day before go in a new day: **At the top** (the default, before the template), **After the template** or **Below the heading …** – the template's headings are offered. With a heading, the task list goes directly below it, before whatever the template puts there. If the template no longer has the heading, the tasks go after the template. This applies to days created automatically as well as to the draft with **On the first write**.
 
