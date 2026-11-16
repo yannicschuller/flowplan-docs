@@ -118,6 +118,14 @@ Flowplan remembers what you expanded and collapsed – in your account, per work
 > [!NOTE]
 > Through the API, the command `sidebar.state` (`{ workspaceId, changes: { "<key>": true|false } }`) saves changes; the keys are `p:<page>` (expanded), `s:<space>` (collapsed), `g:favorites`, `g:collections` and `jo:`/`jc:` for journal folders. The bootstrap returns the state as `sidebar`.
 
+### Focus a branch in the sidebar {since=0.9.8}
+
+With many nested pages the tree gets long. Right-click a page with sub-pages (a long press on a phone) → **Focus in sidebar**, or `⋯` on the open page → **Focus in sidebar**: the page tree then shows only this page and its sub-pages, the page itself at the top and always expanded.
+
+- Above the tree, **←** goes up one level, and the path shows where you are: a click on a page above focuses it, a click on the space shows the whole tree. **×** (or <kbd>Esc</kbd> in the tree) ends the focus.
+- Opening a page outside the branch – via search, a link or back/forward – shows the whole tree again, with a short note and **Focus again**. That way the open page is always in the sidebar.
+- Flowplan remembers the focus per workspace on this device, also after reloading. Drag and drop works within the branch.
+
 ## Trash
 
 Deleted pages and spaces end up in the **Trash** at the bottom of the sidebar, deleted [database records](/databases) below them under **Deleted records**. Files deleted from [Media](/media-and-files#deleting-media) are listed under **Deleted files**. There they can be restored or deleted permanently. Publications, share links and forms are switched off when deleting and are not switched on again automatically when restoring.
