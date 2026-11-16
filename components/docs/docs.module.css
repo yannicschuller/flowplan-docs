@@ -1505,11 +1505,39 @@
 .legal {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px 18px;
-  padding: 28px 16px 36px;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px 32px;
+  padding: 28px 24px 36px;
   border-top: 1px solid var(--border);
   font-size: 13px;
+}
+.legalLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px 28px;
+  margin-left: auto;
+}
+.legalGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+}
+/* Phones: one column, aligned left – the state first. */
+@media (max-width: 640px) {
+  .legal {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 24px 16px calc(32px + env(safe-area-inset-bottom));
+  }
+  .legalLinks {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-left: 0;
+  }
 }
 .legal a {
   color: var(--muted);
@@ -1518,6 +1546,51 @@
 .legal a:hover {
   color: var(--text);
   text-decoration: underline;
+}
+/* The services' state (lib/status.ts): a dot in the status page's colours
+   and the state as text. Only a disruption pulses, and not with reduced
+   motion. */
+.status {
+  --status-ok: #2f8f5b;
+  --status-slow: #c98a12;
+  --status-down: #d2462f;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.statusDot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--status-ok);
+}
+.status[data-state="degraded"] .statusDot {
+  background: var(--status-slow);
+}
+.status[data-state="partial_outage"] .statusDot,
+.status[data-state="major_outage"] .statusDot {
+  background: var(--status-down);
+}
+.status[data-state="maintenance"] .statusDot {
+  background: var(--blue);
+}
+@media (prefers-color-scheme: dark) {
+  .status {
+    --status-ok: #5cc58b;
+    --status-slow: #e8b04a;
+    --status-down: #ff7a62;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .status:is([data-state="degraded"], [data-state="partial_outage"], [data-state="major_outage"]) .statusDot {
+    animation: statusPulse 1.8s ease-in-out infinite;
+  }
+}
+@keyframes statusPulse {
+  50% {
+    opacity: 0.35;
+  }
 }
 
 /* ---------- What's new ---------- */

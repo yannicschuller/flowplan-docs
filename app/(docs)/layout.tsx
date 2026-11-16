@@ -7,6 +7,7 @@ import { translate } from "@/lib/i18n";
 import { LanguageSwitch } from "@/components/i18n";
 import s from "@/components/docs/docs.module.css";
 import { trackAttrs } from "@/lib/track";
+import { fetchStatusSummary, type StatusState } from "@/lib/status";
 import { DISCORD_URL, GITHUB_URL, imprintUrl, marketplaceUrl, privacyUrl, SPONSOR_URL, statusUrl, websiteUrl } from "@/lib/links";
 
 // The documentation: same paper and ink as the website, calmer.
@@ -18,6 +19,15 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
     privacy = privacyUrl(),
     marketplace = marketplaceUrl(),
     status = statusUrl();
+  // The services' state next to the link; null shows the plain link.
+  const summary = status ? await fetchStatusSummary() : null;
+  const stateText: Record<StatusState, string> = {
+    operational: t("Alle Systeme laufen", "All systems operational"),
+    degraded: t("Verlangsamt", "Degraded performance"),
+    partial_outage: t("Teilweise gestört", "Partial outage"),
+    major_outage: t("Gestört", "Major outage"),
+    maintenance: t("Wartung", "Maintenance"),
+  };
   return (
     <div className={s.root}>
       <a href="#inhalt" className={s.skip}>
@@ -49,26 +59,50 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
         <DocsNav areas={docAreas(locale)} />
         {children}
       </div>
+      {/* The services' state on its own at the start; then the community
+          links and the legal ones as two groups. */}
       <footer className={s.legal}>
-        <a href={DISCORD_URL} rel="noopener" {...trackAttrs("outbound", { target: "discord" })}>{t("Community auf Discord", "Community on Discord")}</a>
-        <a href={GITHUB_URL} rel="noopener" {...trackAttrs("outbound", { target: "github" })}>
-          GitHub
-        </a>
-        <a href={SPONSOR_URL} rel="noopener" {...trackAttrs("outbound", { target: "sponsor" })}>
-          <span aria-hidden="true">♥</span> {t("Unterstützen", "Sponsor")}
-        </a>
-        {marketplace && (
-          <a href={marketplace} {...trackAttrs("outbound", { target: "marketplace" })}>
-            {t("Vorlagen im Marketplace", "Templates in the Marketplace")}
-          </a>
-        )}
         {status && (
-          <a href={status} rel="noopener" {...trackAttrs("outbound", { target: "status" })}>
-            {t("Status von flowplan.org", "flowplan.org status")}
+          <a
+            href={status}
+            rel="noopener"
+            className={summary ? `${s.legalStatus} ${s.status}` : s.legalStatus}
+            data-state={summary?.state}
+            title={summary ? t("Status von flowplan.org", "flowplan.org status") : undefined}
+            {...trackAttrs("outbound", { target: "status" })}
+          >
+            {summary ? (
+              <>
+                <span className={s.statusDot} aria-hidden="true" />
+                {stateText[summary.state]}
+              </>
+            ) : (
+              t("Status", "Status")
+            )}
           </a>
         )}
-        {imprint && <a href={imprint}>{t("Impressum", "Legal notice")}</a>}
-        {privacy && <a href={privacy}>{t("Datenschutz", "Privacy")}</a>}
+        <div className={s.legalLinks}>
+          <span className={s.legalGroup}>
+            <a href={DISCORD_URL} rel="noopener" {...trackAttrs("outbound", { target: "discord" })}>{t("Community auf Discord", "Community on Discord")}</a>
+            <a href={GITHUB_URL} rel="noopener" {...trackAttrs("outbound", { target: "github" })}>
+              GitHub
+            </a>
+            <a href={SPONSOR_URL} rel="noopener" {...trackAttrs("outbound", { target: "sponsor" })}>
+              <span aria-hidden="true">♥</span> {t("Unterstützen", "Sponsor")}
+            </a>
+            {marketplace && (
+              <a href={marketplace} {...trackAttrs("outbound", { target: "marketplace" })}>
+                {t("Vorlagen im Marketplace", "Templates in the Marketplace")}
+              </a>
+            )}
+          </span>
+          {(imprint || privacy) && (
+            <span className={s.legalGroup}>
+              {imprint && <a href={imprint}>{t("Impressum", "Legal notice")}</a>}
+              {privacy && <a href={privacy}>{t("Datenschutz", "Privacy")}</a>}
+            </span>
+          )}
+        </div>
       </footer>
     </div>
   );
