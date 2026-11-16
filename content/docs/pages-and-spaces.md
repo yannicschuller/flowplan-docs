@@ -118,6 +118,14 @@ Flowplan merkt sich, was du auf- und zugeklappt hast – in deinem Konto, je Arb
 > [!NOTE]
 > Über die API speichert der Befehl `sidebar.state` (`{ workspaceId, changes: { "<Schlüssel>": true|false } }`) Änderungen dieser Auswahl; die Schlüssel sind `p:<Seite>` (aufgeklappt), `s:<Bereich>` (zugeklappt), `g:favorites`, `g:collections` sowie `jo:`/`jc:` für Journalordner. Der Bootstrap liefert die Auswahl als `sidebar`.
 
+### Einen Zweig in der Seitenleiste fokussieren {since=0.9.8}
+
+Bei vielen verschachtelten Seiten wird der Baum lang. Rechtsklick auf eine Seite mit Unterseiten (auf dem Smartphone langes Drücken) → **Im Seitenbaum fokussieren**, oder `⋯` auf der geöffneten Seite → **Im Seitenbaum fokussieren**: Der Seitenbaum zeigt dann nur diese Seite und ihre Unterseiten, die Seite selbst oben und immer aufgeklappt.
+
+- Über dem Baum führt **←** eine Ebene höher, und der Pfad zeigt, wo du bist: Ein Klick auf eine Seite darüber fokussiert sie, ein Klick auf den Bereich zeigt den ganzen Baum. **×** (oder <kbd>Esc</kbd> im Baum) beendet den Fokus.
+- Öffnest du eine Seite außerhalb des Zweigs – über die Suche, einen Link oder Zurück/Vor –, zeigt der Seitenbaum wieder alles, mit einem kurzen Hinweis und **Wieder fokussieren**. So steht die geöffnete Seite immer in der Seitenleiste.
+- Flowplan merkt sich den Fokus je Arbeitsbereich auf diesem Gerät, auch nach dem Neuladen. Ziehen und Ablegen funktioniert innerhalb des Zweigs.
+
 ## Papierkorb
 
 Gelöschte Seiten und Bereiche landen im **Papierkorb** unten in der Seitenleiste, gelöschte [Datenbankeinträge](/databases) darunter unter **Gelöschte Einträge**. Aus den [Medien](/media-and-files#medien-loeschen) gelöschte Dateien stehen unter **Gelöschte Dateien**. Dort lassen sie sich wiederherstellen oder endgültig löschen. Veröffentlichungen, Freigabelinks und Formulare werden beim Löschen deaktiviert und bei der Wiederherstellung nicht automatisch wieder eingeschaltet.
