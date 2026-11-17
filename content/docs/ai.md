@@ -164,6 +164,15 @@ Fragst du die KI zu einem Journaltag (**Diese Seite**, Schreibassistent, Zusamme
 - **Grenzen:** höchstens 30 Anfragen pro Minute, 300 pro Stunde (`FLOWPLAN_AI_REQUESTS_PER_HOUR`) und 3 gleichzeitig pro Person.
 - **Sicherungen:** `secrets.key` ist nicht Teil der Instanzsicherung. Nach einer Wiederherstellung auf einem anderen Server ohne diese Datei zeigt Flowplan „gespeichert, aber nicht lesbar – bitte ersetzen“, und die Schlüssel werden neu eingegeben.
 
+## Schutz vor Prompt-Injection {since=0.9.9}
+
+Texte, die die KI liest – Seiten, Einträge, E-Mails, Formularantworten, Transkripte –, können Anweisungen enthalten, die jemand dort versteckt hat. Flowplan behandelt solches Material als Daten und lässt es nicht über Empfänger, Ziele oder Benachrichtigungen entscheiden:
+
+- **Material bleibt in seinem Block:** Im Prompt steht fremder Text zwischen Markierungen, die er selbst weder schließen noch neu öffnen kann. Eine Seite kann so keine Quelle der Flowplan-Hilfe vortäuschen; Eigenschaften mit KI bekommen ihren Auftrag und die Werte des Eintrags getrennt; bei **Frag diese Besprechung** und der Zusammenfassung stehen Transkript und Notizen als Daten neben der Frage, nicht in den Regeln.
+- **Workflows:** Eine KI-Antwort oder Daten von außen bestimmen Empfänger, Freigebende und Ziele nur, wenn die [Einstellung des Workflows](/workflows#einstellungen-des-workflows) es erlaubt; Ziele bleiben immer im Arbeitsbereich des Workflows. E-Mails an Adressen aus Platzhaltern und die Hosts von HTTP-Anfragen sind eingeschränkt ([Knoten-Referenz](/workflow-nodes#benachrichtigen)).
+- **Besprechungen:** Aufgaben aus der KI-Zusammenfassung benachrichtigen ihre Zuständigen erst, wenn jemand **Zuständige benachrichtigen** bestätigt ([Besprechungen](/meetings)).
+- **MCP:** Tests von Workflows sind Probeläufe ohne Verbindung nach außen, Inhalte anderer kommen als Daten markiert zurück, und über MCP geschriebenes Markdown behält keine fremden Bilder ([MCP](/mcp#sicherheitshinweise)).
+
 ## Häufige Fragen
 
 **Muss ich KI nutzen?** Nein. KI über den Server ist aus, bis die Administration sie einschaltet, und jede Person kann sie für sich ausschalten. Die KI auf Apple-Geräten ist erlaubt, weil der Text das Gerät nicht verlässt, und ebenso optional: **Einstellungen → KI → Auf diesem Gerät (Apple) → Aus**.

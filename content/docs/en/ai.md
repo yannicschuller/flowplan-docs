@@ -164,6 +164,15 @@ When you ask the AI about a journal day (**This page**, the writing assistant, s
 - **Limits:** at most 30 requests per minute, 300 per hour (`FLOWPLAN_AI_REQUESTS_PER_HOUR`) and 3 at once per person.
 - **Backups:** `secrets.key` is not part of the instance backup. After restoring on another server without this file, Flowplan shows "stored but unreadable – please replace", and the keys are entered again.
 
+## Protection against prompt injection {since=0.9.9}
+
+Texts the AI reads – pages, records, e-mails, form answers, transcripts – can contain instructions someone hid there. Flowplan treats such material as data and does not let it decide recipients, targets or notifications:
+
+- **Material stays in its block:** in the prompt, outside text sits between markers it can neither close nor open anew. So a page cannot pass for a source of the Flowplan help; AI properties get their task and the record's values apart; in **Ask this meeting** and the summary, the transcript and notes are data next to the question, not part of the rules.
+- **Workflows:** an AI answer or outside data choose recipients, approvers and targets only when the [workflow setting](/workflows#workflow-settings) allows it; targets always stay in the workflow's workspace. E-mail to addresses from placeholders and the hosts of HTTP requests are restricted ([node reference](/workflow-nodes#notify)).
+- **Meetings:** tasks from the AI summary notify their owners only once someone confirms **Notify assignees** ([Meetings](/meetings)).
+- **MCP:** workflow tests are dry runs without outside connections, other people's content comes back marked as data, and Markdown written through MCP keeps no remote images ([MCP](/mcp#security-notes)).
+
 ## Frequently asked questions
 
 **Do I have to use AI?** No. AI through the server is off until administrators switch it on, and everyone can switch it off for themselves. AI on Apple devices is allowed because the text does not leave the device, and it is just as optional: **Settings → AI → On this device (Apple) → Off**.

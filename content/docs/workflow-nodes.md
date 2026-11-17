@@ -77,6 +77,8 @@ Diese Liste wird aus dem Knotenkatalog von Flowplan erzeugt; die Einstellungen j
 | E-Mail senden | `notify.email` | Schickt eine E-Mail an Personen oder Adressen. | out | `sent` |
 | Chat-Nachricht | `notify.chat` | Postet in einen Chat-Webhook des Arbeitsbereichs (Slack, Matrix, Teams, Discord). | out | `sent` |
 
+**E-Mails nach außen**: An Mitglieder geht eine E-Mail immer. An eine Adresse außerhalb der Mitglieder, die fest im Knoten steht, geht sie, solange die Administration E-Mails nach außen erlaubt. Kommt die Adresse aus einem Platzhalter oder einer Eigenschaft – einer Formularantwort, dem Absender einer E-Mail, einer KI-Antwort –, braucht es zusätzlich den Schalter **… auch an Adressen aus Platzhaltern** in der [Administration](/administration#workflows) (`FLOWPLAN_WORKFLOW_EXTERNAL_MAIL_DYNAMIC`), standardmäßig aus; die Prüfung weist auf solche Knoten hin. Bestimmen Daten von außen den Empfänger, braucht der Workflow außerdem die [Einstellung dafür](/workflows#einstellungen-des-workflows). {since=0.9.9}
+
 ## KI
 
 | Knoten | Typ | Was er tut | Ausgänge | Ausgaben |
@@ -91,6 +93,8 @@ Diese Liste wird aus dem Knotenkatalog von Flowplan erzeugt; die Einstellungen j
 | Knoten | Typ | Was er tut | Ausgänge | Ausgaben |
 | --- | --- | --- | --- | --- |
 | HTTP-Anfrage | `http.request` | Ruft eine HTTPS-Adresse auf (fester Host). | out | `status`, `headers`, `body`, `json` |
+
+**Hosts und Weiterleitungen**: Der Host steht als fester Text im Knoten; Platzhalter gehen nur in Pfad, Abfrage, Kopfzeilen und Inhalt. Ein Lauf ruft nur die Hosts auf, die in seiner aktivierten Version fest in den HTTP-Knoten stehen (ein Test die des Entwurfs). Leitet ein Dienst mit 307 oder 308 auf einen anderen Ursprung weiter, geht der Inhalt nicht mit, und die eigenen Kopfzeilen des Knotens – etwa ein eingetragener API-Schlüssel – gehen nur an seinen eigenen Ursprung; 303 sowie 301 und 302 nach einem POST werden wie bisher zu einem GET. Eine KI-Antwort in Pfad oder Abfrage meldet die Prüfung als Hinweis. {since=0.9.9}
 
 ⚡ – kann im Sofortteil laufen: direkt beim Speichern eines Eintrags, in derselben Änderung.
 

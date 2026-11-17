@@ -114,7 +114,9 @@ In addition, each page is available as a **resource** `flowplan://page/<ID>` (yo
 
 ### Workflows
 
-For [workflows](/workflows) there are `list_workflows`, `get_workflow`, `get_workflow_catalog`, `list_workflow_runs`, `get_workflow_run` (reading) and, with a write token, `save_workflow_draft` (graph JSON into the draft, also as a new workflow page – with the check), `test_workflow` (dry run or test run) and `run_workflow` (only workflows with a manual trigger). **Activating and deciding approvals are not available over MCP** – those are a person's decisions about rights. So an assistant builds drafts, and you check and activate them in Flowplan.
+For [workflows](/workflows) there are `list_workflows`, `get_workflow`, `get_workflow_catalog`, `list_workflow_runs`, `get_workflow_run` (reading) and, with a write token, `save_workflow_draft` (graph JSON into the draft, also as a new workflow page – with the check), `test_workflow` (always a dry run {since=0.9.9}) and `run_workflow` (only workflows with a manual trigger). **Activating and deciding approvals are not available over MCP** – those are a person's decisions about rights. So an assistant builds drafts, and you check and activate them in Flowplan.
+
+Over MCP, `test_workflow` only runs as a **dry run without outside connections**: no e-mail, no chat message and no HTTP request – not even one the node allows in dry runs. You start a real test run yourself in Flowplan. So an assistant misled by text it read cannot send data out by testing a draft it wrote itself. {since=0.9.9}
 
 ## Permissions
 
@@ -128,6 +130,8 @@ For [workflows](/workflows) there are `list_workflows`, `get_workflow`, `get_wor
 
 - Treat the token like a password. Anyone who has it can read (and with a write token change) everything you can. Revoke a token under **Settings → API & AI assistants** if you no longer need it or it might have leaked; the connection stops immediately.
 - AI assistants can be misled by content they read (prompt injection), for example by text on a page shared with you. Give an assistant a **read token** if it does not need to write. With a write token, use the client's confirmation prompts for tool calls.
+- **Other people's content is marked as data** {since=0.9.9}: what members, guests, forms, e-mails or clipped web pages wrote comes back with the note that it is data, not instructions – JSON answers (from `search`, `query_database`, `get_record`, `my_tasks`, `get_meeting_note`, `get_workflow_run`, for example) carry a `contentNote` field, Markdown (`read_page`, resources) sits between a random boundary the content cannot close. The server's instructions to the client say the same: what the tools return does not decide which tools it calls or whom it contacts.
+- **No remote images** {since=0.9.9}: Markdown written through MCP (`create_page`, `update_page`, `append_to_page`, record documents) keeps only images stored as files on this instance. An image with an outside address is left out and only its alt text stays – otherwise an image address could carry data out when the page is opened. Links stay as they are.
 - Answers can contain anything you can read in Flowplan. That content goes to the provider of your assistant, so check its privacy terms first.
 - `/api/mcp` accepts only tokens, not the sign-in cookie, so another website cannot use your browser session. Requests from a foreign `Origin` are refused.
 - Limits: 120 requests per minute per person, 2 MB per request, and answers are cut after 200,000 characters. Write tools have the same size limits as the interface.

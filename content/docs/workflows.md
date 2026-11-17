@@ -72,7 +72,7 @@ Eingebaute Werte: `$heute`, `$jetzt`, `$lauf`, `$workflow`, `$ausführende`, in 
 ## Testen
 
 - **Probelauf**: Schreibende Knoten berichten nur, was sie täten („würde Eintrag anlegen …“); E-Mail, Chat und Push gehen nicht raus, Warten wird übersprungen, Freigaben gelten als genehmigt oder abgelehnt (wählbar). KI-Knoten laufen und kosten Tokens.
-- **Testlauf**: führt echt aus – als **du**, nicht als die ausführende Person.
+- **Testlauf**: führt echt aus – als **du**, nicht als die ausführende Person. Bestimmen KI- oder Auslöser-Daten Empfänger oder Ziele, braucht auch ein Testlauf die [Einstellung dafür](#einstellungen-des-workflows); ein Probelauf geht immer. {since=0.9.9}
 - Daten des Auslösers: **Beispiel**, **letztes echtes Ereignis**, ein **Eintrag** oder eine **Seite** zum Auswählen oder **eigene Werte**.
 
 Tests nutzen immer den Entwurf. Das Ergebnis steht als Statusring an jedem Knoten; ein Klick zeigt Ein- und Ausgabe.
@@ -82,6 +82,24 @@ Tests nutzen immer den Entwurf. Das Ergebnis steht als Statusring an jedem Knote
 **Aktivieren** prüft den Entwurf (fehlende Angaben, gelöschte Datenbanken, Seiten ohne Zugriff …) und zeigt, was der Workflow tun wird und **als wer** er läuft: als die Person, die aktiviert. Er sieht und ändert nur, was diese Person darf. Verliert sie ihre Rechte, pausiert der Workflow und meldet sich.
 
 **Pausieren** hält offene Läufe an (wahlweise brechen sie ab); nach dem Aktivieren laufen sie auf ihrer Version weiter. Nach zehn Fehlschlägen in Folge oder wenn die Hälfte der letzten Läufe scheitert, pausiert ein Workflow von selbst.
+
+## Einstellungen des Workflows {since=0.9.9}
+
+Das Zahnrad oben im Editor öffnet **Einstellungen des Workflows**. Sie gehören zum Entwurf und gelten ab dem nächsten Aktivieren.
+
+**KI und Auslöser-Daten dürfen Empfänger und Ziele bestimmen** – standardmäßig aus. Dann darf nicht aus einer KI-Antwort, einer HTTP-Antwort oder aus Daten, die der Auslöser von außen bringt (Formularantworten, Webhook-Inhalte, eingehende E-Mails, Kommentartexte), kommen,
+
+- wen der Workflow benachrichtigt oder wem er E-Mails schickt,
+- wer eine Freigabe erteilt,
+- welche Seite oder welchen Eintrag er ändert.
+
+Wer solche Daten schickt, könnte darin Anweisungen verstecken (Prompt-Injection) und so bestimmen, an wen der Workflow schreibt oder was er ändert. Die Prüfung verfolgt Platzhalter auch über Zwischenschritte (Werte setzen, „Für jedes“, eine Suche mit dem Wert im Filter) und meldet jede solche Stelle als **Fehler** – aktivieren lässt sich der Workflow dann nicht. Schalte die Einstellung nur ein, wenn genau das gewollt ist, etwa eine Bestätigung an die Adresse aus dem Formular: Die Stellen erscheinen dann als Hinweis. Die Vorlage **Eingehende Mail → Ticket** und der offizielle Workflow „Formular: Bestätigung“ antworten dem Absender und bringen die Einstellung schon mit.
+
+Auch mit der Einstellung bleiben Ziele im **Arbeitsbereich des Workflows**: Seiten, Datenbanken und Einträge eines anderen Arbeitsbereichs erreicht ein Knoten nie, auch nicht im Probelauf und auch dann nicht, wenn die ausführende Person dort Mitglied ist.
+
+**Bestehende Workflows**: Aktive Versionen werden nicht neu geprüft und laufen unverändert weiter. Lässt eine solche Version Daten von außen Empfänger oder Ziele bestimmen, steht im Kopf der Workflow-Seite ein Hinweis; beim nächsten Aktivieren – auch nach einer Pause – legst du die Empfänger und Ziele fest oder schaltest die Einstellung ein.
+
+E-Mails an Adressen aus Platzhaltern und die Hosts von HTTP-Anfragen haben eigene Regeln, siehe [Knoten-Referenz](/workflow-nodes#benachrichtigen).
 
 ## Läufe und Versionen
 
@@ -157,7 +175,7 @@ Inhaltsarchive und der [Instanzumzug](/move-instance) nehmen Workflows mit Entwu
 
 ## API, MCP und SDKs
 
-Workflows lassen sich per [REST-API](/api-and-webhooks#workflows) anlegen, prüfen, testen, **aktivieren** (mit Schreib-Token) und starten; die SDKs bringen fertige Methoden mit. Über [MCP](/mcp#workflows) liest ein KI-Assistent Workflows und Läufe, speichert Entwürfe, testet und startet – aktivieren und Freigaben entscheiden kann er nicht.
+Workflows lassen sich per [REST-API](/api-and-webhooks#workflows) anlegen, prüfen, testen, **aktivieren** (mit Schreib-Token) und starten; die SDKs bringen fertige Methoden mit. Über [MCP](/mcp#workflows) liest ein KI-Assistent Workflows und Läufe, speichert Entwürfe, testet und startet – aktivieren und Freigaben entscheiden kann er nicht. Tests über MCP sind immer Probeläufe, die nichts außerhalb von Flowplan erreichen. {since=0.9.9}
 
 ## Häufige Fragen
 
