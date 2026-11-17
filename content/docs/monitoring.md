@@ -1,5 +1,6 @@
 ---
-keywords: Überwachung, Monitoring, Statistik, Warnung, Webhook, Prometheus, Grafana, Wartung
+keywords: Überwachung, Monitoring, Statistik, Warnung, Webhook, Prometheus, Grafana, Wartung, Fehler-ID
+new: fehler-im-detail 2026-11-17
 ---
 
 # Überwachung und Wartung
@@ -24,6 +25,16 @@ Im Einzelnen:
 - **Hintergrunddienste**: letzter Lauf und letzter Fehler von Sicherung, Markdown-Export, KI-Hintergrundarbeit, Kalender- und Issue-Synchronisierung und LDAP-Abgleich; „aus“ heißt nicht eingerichtet.
 - **Speicher**: Belegung nach Art und die größten Arbeitsbereiche mit Balken gegen das Kontingent (ab 80 % gelb, ab 95 % rot). Kontingente stellst du unter **Administration → Arbeitsbereiche** und **Administration → Grenzen & Aufbewahrung** ein.
 - **Zustellungen**: zugestellte Webhooks, Push-Nachrichten und E-Mails je Tag; Wartendes, Aufgegebenes und die letzten Fehler stehen unter **Warteschlangen**. Von Webhook-Adressen erscheint nur der Host, nie Pfad oder Token.
+
+### Fehler im Detail {since=0.9.9}
+
+Unter dem Fehlerdiagramm zeigt **Fehler im Detail**, woher die Fehler (5xx) kommen – je Art eines Fehlers eine Zeile mit Route oder Befehl (etwa `POST /api/command · row.update`), Fehlername und kurzer Meldung, Anzahl und Verlauf im gewählten Zeitraum und wann er zuletzt auftrat; sortiert nach zuletzt aufgetreten oder Anzahl. Ein Klick ins Fehlerdiagramm zeigt nur die Fehler dieses Zeitabschnitts. Die Kachel **Fehler 24 Std.** springt hierher.
+
+Aufgeklappt stehen die **Stelle im Code** (die obersten Stack-Frames in Flowplans eigenem Code, zum Kopieren) und die letzten 20 **Vorkommen** mit Zeit, Fehler-ID, Status, Instanz (im Cluster), Version und Rolle. **Kopieren für ein Issue** kopiert einen Bericht als Text, ohne persönliche Daten. Im Docker-Image stehen kompilierte Dateien und Funktionsnamen da; Quelldateien mit Zeile nur, wenn die Source-Maps des Builds daneben liegen. **Zurücksetzen** löscht alle Fehlerdetails; die Zählung im Diagramm bleibt.
+
+Jede Antwort trägt eine **Fehler-ID** in der Kopfzeile `X-Request-Id`, bei einem Fehler auch im JSON (`requestId`). Die App zeigt sie in der Meldung „Auf dem Server ist etwas schiefgelaufen“ als „Fehler-ID: …“ – damit findest du das Vorkommen.
+
+Erfasst werden Antworten ab 500, Fehler von Hintergrunddiensten und -aufträgen und fehlgeschlagene MCP-Werkzeuge, auch bei ausgeschalteter Statistik. Gespeichert sind nur Route als Muster (ohne IDs und Query), Befehl, Status, Fehlername, die Meldung (höchstens 500 Zeichen; Schlüssel, Token, Passwörter, E-Mail- und IP-Adressen sowie IDs ausgeblendet), Stack-Frames, Datenbank-Fehlercode, Fehler-ID, Instanz, Version und Rolle (Administration, Mitglied, Gast, nicht angemeldet, API-Token, MCP). Nie gespeichert: IP-Adressen, Inhalte von Anfragen, Kopfzeilen oder wer es war. Aufbewahrt werden 14 Tage und höchstens 500 Fehlerarten.
 
 ### Statistik
 
