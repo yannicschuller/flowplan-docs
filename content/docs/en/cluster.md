@@ -33,23 +33,23 @@ Coming from a single container without these variables, take the values from its
 
 - **Live editing and presence:** changes to documents, records and whiteboards, cursors and "who is here" reach every instance through Redis. Two people on different instances work together as on one. The data itself is in PostgreSQL; if a message is lost, the browser catches up on its next sync. **No sticky sessions are needed.**
 - **Rate limits:** limits such as those for AI requests count across all instances (through Redis). Limits already kept in the database (failed sign-ins, demos, MCP) applied to all of them anyway.
-- **Leader-only jobs:** exactly one instance leads at any time (elected through a lock in PostgreSQL). Only it runs the timed jobs: reminders, automations, page reviews, the search indexer, text extraction from files, cleanup and retention, digests, scheduled backups and Markdown exports, LDAP, calendar and issue sync, inbound e-mail, Telegram, AI background work and the monitoring alerts. If it fails, another one takes over within seconds.
+- **Leader-only jobs:** exactly one instance leads at any time (elected through a lock in PostgreSQL). Only it runs the timed jobs: reminders, automations, page reviews, the search indexer, text extraction from files, cleanup and retention, digests, scheduled backups and Markdown exports, LDAP, calendar and issue sync, inbound e-mail, Telegram, AI background work and the monitoring alerts. If it fails, another one takes over within seconds. Every round is guarded: taking the lead raises a counter in the database, a round starts only while it is still its own, and each job holds a lock of its own while its round runs – so a round of an instance that lost its connection never runs twice beside the new leader's. {since=0.9.9}
 - **Queues:** every instance sends e-mails, push messages, webhooks and chat-app messages; each message is taken by exactly one instance.
-- **Files:** an uploaded file first lands in the cache of the instance that received it, which uploads it to the bucket right away (usually well under a second). Other instances fetch it from the bucket when needed and wait up to 5 seconds for it.
+- **Files:** the bucket is the truth. A request that stores a file answers only once the file is in the bucket; every instance reads through its cache and fetches from the bucket what it lacks. Uploads in several requests (long transcriptions, recordings of meetings and notebooks, an import between its preview and the import) keep their parts in the bucket under `<prefix>/tmp/`, so each request may reach another instance. {since=0.9.9}
 
 ## Health, readiness and shutdown
 
 | Address | Answers | Meant for |
 | --- | --- | --- |
 | `/api/health/live` | `200` as long as the process answers – no database check, since a restart does not fix a database outage | Liveness probe |
-| `/api/health/ready` | `200` when the database, Redis and the bucket answer; `503` otherwise and while shutting down | Readiness probe, load balancer |
+| `/api/health/ready` | `200` when the schema and the data steps are done {since=0.9.9} and the database, Redis and the bucket answer; `503` otherwise and while shutting down | Readiness probe, load balancer |
 | `/api/health` | as before, see [Health check](/en/operations#health-check) | Docker health check, apps |
 
 Without a token, `/api/health/ready` only answers `ok`/`error` per check; with `FLOWPLAN_METRICS_TOKEN` as a bearer token, response times and error messages are added.
 
-`FLOWPLAN_READY_REQUIRE` decides which checks count for readiness – a list of `database`, `redis` and `objectStorage`, by default all three. The database always counts. If Redis fails, the default turns every instance "not ready" at once and the load balancer has nothing left. With `FLOWPLAN_READY_REQUIRE=database,objectStorage` they stay ready: editing and saving keep working, only live changes between instances arrive on the next sync, and each instance counts rate limits on its own.
+`FLOWPLAN_READY_REQUIRE` decides which checks count for readiness – a list of `database`, `redis` and `objectStorage`, by default all three. The database always counts. If Redis fails, the default turns every instance "not ready" at once and the load balancer has nothing left. With `FLOWPLAN_READY_REQUIRE=database,objectStorage` they stay ready: editing and saving keep working, only live changes between instances arrive on the next sync, and each instance counts rate limits on its own. The Helm chart sets it so. {since=0.9.9}
 
-**Shutdown:** on `SIGTERM` the instance immediately answers `503` on `/api/health/ready`, closes its live connections (browsers reconnect through the load balancer to another instance), finishes open requests, hands over the lead and signs off from the others. Give it 30 seconds for this (`stop_grace_period`, `terminationGracePeriodSeconds`).
+**Shutdown:** on `SIGTERM` the instance immediately answers `503` on `/api/health/ready`, closes its live connections (browsers reconnect through the load balancer to another instance), finishes open requests, hands over the lead and signs off from the others. Give it 30 seconds for this (`stop_grace_period`, `terminationGracePeriodSeconds`). Running jobs and workflow steps still finish, uploads under way reach the bucket, then it hands back leases and the lead – all within `FLOWPLAN_SHUTDOWN_SECONDS` (20). {since=0.9.9}
 
 ## Schema before the start
 
@@ -59,7 +59,7 @@ Each instance brings the database schema up to its version on start (under a loc
 DATABASE_URL=postgres://… node /app/scripts/db-schema.mjs
 ```
 
-Then set `FLOWPLAN_PG_SCHEMA_AUTO=off` for the instances. The Docker Compose example and the Helm chart work this way. The schema is only extended, never shrunk: during a rolling update, old and new instances run side by side.
+The Docker Compose example and the Helm chart work this way. The instances still check the schema at their start under the same lock (nothing to do then) and are ready only once it is current; `FLOWPLAN_PG_SCHEMA_AUTO=off` leaves it to the separate step alone. {since=0.9.9} The schema is only extended, never shrunk: during a rolling update, old and new instances run side by side.
 
 ## Docker Compose
 
@@ -84,6 +84,8 @@ Another load balancer (nginx, Traefik, HAProxy) needs the same: health check on 
 
 ## Kubernetes (Helm)
 
+Installation, moving from a SQLite container, updates, backups and troubleshooting are on the page [Kubernetes](/en/kubernetes). {since=0.9.9}
+
 The chart in [`deploy/helm/flowplan`](https://github.com/yannicschuller/flowplan/tree/main/deploy/helm/flowplan) has cluster mode built in (`cluster.enabled=true`). It does not create PostgreSQL, Redis or S3 – use managed services or their own charts. The connection addresses live only in Secrets you create yourself:
 
 ```bash
@@ -91,7 +93,7 @@ kubectl create namespace flowplan
 kubectl -n flowplan create secret generic flowplan-cluster \
   --from-literal=DATABASE_URL='postgres://flowplan:<password>@postgres:5432/flowplan' \
   --from-literal=REDIS_URL='redis://:<password>@redis-master:6379/0'
-kubectl -n flowplan create secret generic flowplan-env \
+kubectl -n flowplan create secret generic flowplan-s3 \
   --from-literal=S3_ACCESS_KEY_ID='<key-id>' \
   --from-literal=S3_SECRET_ACCESS_KEY='<secret>'
 # the keys every pod shares (push keys: npx web-push generate-vapid-keys)
@@ -102,27 +104,29 @@ kubectl -n flowplan create secret generic flowplan-keys \
 
 helm install flowplan deploy/helm/flowplan -n flowplan \
   --set appUrl=https://flowplan.example.org \
-  --set existingSecret=flowplan-env \
   --set cluster.enabled=true \
   --set cluster.replicas=3 \
   --set cluster.database.existingSecret=flowplan-cluster \
   --set cluster.redis.existingSecret=flowplan-cluster \
   --set cluster.keys.existingSecret=flowplan-keys \
-  --set s3.bucket=flowplan --set s3.endpoint=https://s3.example.org
+  --set s3.bucket=flowplan --set s3.endpoint=https://s3.example.org \
+  --set s3.existingSecret=flowplan-s3
 ```
+
+The example [`values-ha.yaml`](https://github.com/yannicschuller/flowplan/blob/main/deploy/helm/flowplan/values-ha.yaml) holds the same with ingress, SSO, metrics and network policy. The chart takes secrets only as references to Secrets (`s3.existingSecret`, `existingSecret`), not as values. {since=0.9.9}
 
 What the chart does in cluster mode:
 
 - **Schema job** as a `pre-install`/`pre-upgrade` hook (`node /app/scripts/db-schema.mjs`) before pods of a new version start. Without it (`cluster.migration.enabled=false`) the pods do it on start.
 - **Rolling updates** without downtime (`maxUnavailable: 0`), a **PodDisruptionBudget** (`cluster.podDisruptionBudget.minAvailable`, default 1) and pods spread over nodes where possible.
-- **Probes:** liveness on `/api/health/live`, readiness on `/api/health/ready`; before stopping, a pod waits `cluster.preStopSeconds` (5) so the load balancer takes it out.
-- **No volume:** `/app/data` is an `emptyDir` per pod (`cluster.cacheSizeLimit`, 5 Gi); files live in the bucket, backups come from PostgreSQL (`pg_dump`).
+- **Probes:** liveness on `/api/health/live`, readiness on `/api/health/ready` – without Redis (`cluster.readyRequire: database,objectStorage`) {since=0.9.9}; before stopping, a pod waits `cluster.preStopSeconds` (5) so the load balancer takes it out.
+- **No volume:** `/app/data` is an `emptyDir` per pod (`cluster.cacheSizeLimit`, 5 Gi) that keeps itself below 70 % of its limit (`FLOWPLAN_CACHE_MAX_MB`) {since=0.9.9}; files live in the bucket, backups come from PostgreSQL (`pg_dump`).
 - **Database role:** the role in `DATABASE_URL` should own the database but not be a superuser. Many PostgreSQL charts make their user a superuser – create a role of its own then, see [Role without superuser rights](/en/postgresql#role-without-superuser-rights).
-- **Connections:** `cluster.poolSize` (10) per pod plus two of its own; `replicas × (poolSize + 2)` must stay below the server's `max_connections`.
+- **Connections:** `cluster.poolSize` (10) per pod plus three of its own {since=0.9.9}; `replicas × (poolSize + 3)` must stay below the server's `max_connections`.
 - **Shared keys:** every pod gets `FLOWPLAN_ENCRYPTION_KEY`, `WEB_PUSH_PUBLIC_KEY` and `WEB_PUSH_PRIVATE_KEY` from the Secret in `cluster.keys.existingSecret`. If the keys are named differently in your Secret, name them with `cluster.keys.encryptionKey`, `cluster.keys.webPushPublicKey` and `cluster.keys.webPushPrivateKey`. Keep a copy of the encryption key apart from the backups.
 - The chart refuses to install if the database, Redis, the bucket or `cluster.keys.existingSecret` is missing.
 
-With ingress-nginx, set the annotations `nginx.ingress.kubernetes.io/proxy-buffering: "off"` and `nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"` for live connections, and `nginx.ingress.kubernetes.io/proxy-body-size: 110m` for uploads. The chart's README explains every value.
+For ingress-nginx, the chart sets the annotations for live connections and uploads itself (no buffering, timeouts of an hour, `ingress.bodySize`); the chart's README describes other controllers and explains every value. {since=0.9.9}
 
 ## Administration → Monitoring → System
 
@@ -147,6 +151,8 @@ The **System** section under **Administration → Monitoring** shows how the ins
 | `FLOWPLAN_INSTANCE_ID` | host name + random | Name of the instance in the overview and in the `application_name` of its database connections. The Helm chart uses the pod name. |
 | `FLOWPLAN_REDIS_PREFIX` | `flowplan:` | Prefix for keys and channels when several installations share one Redis. |
 | `FLOWPLAN_LEADER_INTERVAL` | `5000` | How often (ms) instances check the lead; decides how fast a failed leader is replaced. |
+| `FLOWPLAN_SHUTDOWN_SECONDS` | `20` | How long stopping on `SIGTERM` may take (running jobs, uploads, handing over the lead) – a few seconds below the platform's grace period. Applies to the single container too. The Helm chart sets `terminationGracePeriodSeconds` less the pause less 5. {since=0.9.9} |
+| `FLOWPLAN_CACHE_MAX_MB` | *empty* | Size (MB) above which an instance in a cluster removes the longest unused files from its cache; they stay in the bucket. Empty: no limit. The Helm chart sets 70 % of `cluster.cacheSizeLimit`. {since=0.9.9} |
 
 ## Workflows in a cluster
 
@@ -154,9 +160,9 @@ The steps of [workflows](/workflows) wait in a queue in the database. Every inst
 
 ## Known limits
 
-- **Files are uploaded by the instance that received them.** Until then – normally well under a second – other instances wait up to 5 seconds. A few paths read the local folder directly (exports and archives, some importers, copies when publishing) and can still miss a file just uploaded on another instance. If an instance fails before uploading, the file is lost.
+- **Files:** if the bucket does not answer, uploads fail with `503` – a file counts as stored only once it is in the bucket. {since=0.9.9}
 - **Restores and instance moves with one instance.** An uploaded backup sits in the cache of the instance that received it and is only applied once that instance leads. Applying it replaces every table in one transaction; requests from other instances wait meanwhile and fail after `FLOWPLAN_PG_LOCK_TIMEOUT`. On Kubernetes, an `emptyDir` is lost on restart. So scale down to **one instance** first (`cluster.replicas=1`, or only `flowplan-1`), restore, then scale up again. The same goes for the [move tool](/en/move-instance).
-- **Redis is a single point:** if it fails, editing and saving keep working, but live changes between instances only arrive on the next sync, each instance counts rate limits on its own, and with the default `FLOWPLAN_READY_REQUIRE` every instance turns "not ready" (above).
+- **Redis is a single point:** if it fails, editing and saving keep working, but live changes between instances only arrive on the next sync, each instance counts rate limits on its own, and with the default `FLOWPLAN_READY_REQUIRE` every instance turns "not ready" (above; the Helm chart leaves Redis out {since=0.9.9}).
 - **No Redis Sentinel and no Redis Cluster:** Flowplan talks to exactly one Redis address. A managed Redis with a stable address works.
 - **Per instance** remain the progress displays of restores and moves and the search indexer's backlog figures.
 

@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@1e66936b",
+  "source": "github.com/yannicschuller/flowplan@5dabc0b9",
   "slash": {
     "groups": {
       "recent": [
@@ -1949,6 +1949,7 @@
     "FLOWPLAN_AI_USER_PROVIDERS",
     "FLOWPLAN_ANONYMOUS_UPLOAD_MB",
     "FLOWPLAN_BACKUP_FORMAT",
+    "FLOWPLAN_CACHE_MAX_MB",
     "FLOWPLAN_CLUSTER",
     "FLOWPLAN_COUNTRY_HEADER",
     "FLOWPLAN_DATA_DIR",
@@ -1999,6 +2000,7 @@
     "FLOWPLAN_SECURITY_LOG",
     "FLOWPLAN_SECURITY_RETENTION_DAYS",
     "FLOWPLAN_SETUP_TOKEN",
+    "FLOWPLAN_SHUTDOWN_SECONDS",
     "FLOWPLAN_SKIP_TYPECHECK",
     "FLOWPLAN_SNAPSHOT_RETENTION_DAYS",
     "FLOWPLAN_SOURCE_URL",

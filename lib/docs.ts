@@ -134,7 +134,7 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       {
         title: ["Installieren und umziehen", "Installing and moving"],
         intro: ["Docker, ein Klick, Reverse Proxy und der Umzug auf einen neuen Server.", "Docker, one click, reverse proxies and moving to a new server."],
-        pages: ["installation", "one-click-deploy", "coolify-and-proxy", "move-instance", "move-instance-tool"],
+        pages: ["installation", "kubernetes", "one-click-deploy", "coolify-and-proxy", "move-instance", "move-instance-tool"],
       },
       {
         title: ["Anmeldung und Administration", "Sign-in and administration"],

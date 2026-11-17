@@ -33,23 +33,23 @@ Kommst du von einem einzelnen Container ohne diese Variablen, übernimm die Wert
 
 - **Live-Bearbeitung und Präsenz:** Änderungen an Dokumenten, Datensätzen und Whiteboards, Cursor und „wer ist gerade hier“ gehen über Redis an alle Instanzen. Zwei Personen auf verschiedenen Instanzen arbeiten also gemeinsam wie auf einer. Die Daten selbst stehen in PostgreSQL; geht eine Nachricht verloren, holt der Browser den Stand beim nächsten Abgleich nach. **Sticky Sessions braucht es nicht.**
 - **Rate-Limits:** Grenzen etwa für KI-Anfragen zählen über alle Instanzen (über Redis). Grenzen, die schon in der Datenbank stehen (fehlgeschlagene Anmeldungen, Demos, MCP), galten ohnehin für alle.
-- **Aufgaben der leitenden Instanz:** Genau eine Instanz ist jeweils die leitende (bestimmt über eine Sperre in PostgreSQL). Nur sie erledigt die zeitgesteuerten Aufgaben: Erinnerungen, Automationen, Seitenprüfungen, Suchindex, Texterkennung von Dateien, Aufräumen und Aufbewahrung, Zusammenfassungen, geplante Sicherungen und Markdown-Exporte, LDAP-, Kalender- und Issue-Abgleich, E-Mail-Eingang, Telegram, KI-Hintergrundarbeit und die Warnungen der Überwachung. Fällt sie aus, übernimmt innerhalb weniger Sekunden eine andere.
+- **Aufgaben der leitenden Instanz:** Genau eine Instanz ist jeweils die leitende (bestimmt über eine Sperre in PostgreSQL). Nur sie erledigt die zeitgesteuerten Aufgaben: Erinnerungen, Automationen, Seitenprüfungen, Suchindex, Texterkennung von Dateien, Aufräumen und Aufbewahrung, Zusammenfassungen, geplante Sicherungen und Markdown-Exporte, LDAP-, Kalender- und Issue-Abgleich, E-Mail-Eingang, Telegram, KI-Hintergrundarbeit und die Warnungen der Überwachung. Fällt sie aus, übernimmt innerhalb weniger Sekunden eine andere. Jede Runde ist abgesichert: Wer die Leitung übernimmt, erhöht einen Zähler in der Datenbank, eine Runde startet nur, solange er noch ihr eigener ist, und jede Aufgabe hält während ihrer Runde eine eigene Sperre – eine Runde einer Instanz, die ihre Verbindung verloren hat, läuft also nie doppelt mit der der neuen. {since=0.9.9}
 - **Warteschlangen:** E-Mails, Push, Webhooks und Chat-Apps verschickt jede Instanz; jede Nachricht wird genau einmal von einer Instanz übernommen.
-- **Dateien:** Eine hochgeladene Datei landet zuerst im Zwischenspeicher der Instanz, die sie angenommen hat, und diese lädt sie sofort in den Bucket (meist in deutlich unter einer Sekunde). Andere Instanzen holen sie bei Bedarf aus dem Bucket und warten dafür bis zu 5 Sekunden.
+- **Dateien:** Der Bucket ist maßgeblich. Eine Anfrage, die eine Datei speichert, antwortet erst, wenn die Datei im Bucket liegt; jede Instanz liest über ihren Zwischenspeicher und holt aus dem Bucket, was ihr fehlt. Uploads in mehreren Anfragen (lange Transkriptionen, Aufnahmen von Besprechungen und Notizbüchern, ein Import zwischen Vorschau und Import) legen ihre Teile im Bucket unter `<prefix>/tmp/` ab, sodass jede Anfrage eine andere Instanz erreichen darf. {since=0.9.9}
 
 ## Gesundheit, Bereitschaft und Herunterfahren
 
 | Adresse | Antwortet | Gedacht für |
 | --- | --- | --- |
 | `/api/health/live` | `200`, solange der Prozess antwortet – ohne Datenbank-Prüfung, denn ein Neustart behebt keinen Datenbankausfall | Liveness-Probe |
-| `/api/health/ready` | `200`, wenn Datenbank, Redis und Bucket erreichbar sind; sonst `503`, ebenso beim Herunterfahren | Readiness-Probe, Load Balancer |
+| `/api/health/ready` | `200`, wenn Schema und Datenschritte durch sind {since=0.9.9} und Datenbank, Redis und Bucket erreichbar sind; sonst `503`, ebenso beim Herunterfahren | Readiness-Probe, Load Balancer |
 | `/api/health` | wie bisher, siehe [Healthcheck](/operations#healthcheck) | Docker-Healthcheck, Apps |
 
 Ohne Token antwortet `/api/health/ready` nur mit `ok`/`error` je Prüfung; mit `FLOWPLAN_METRICS_TOKEN` als Bearer-Token kommen Antwortzeiten und Fehlermeldungen dazu.
 
-Welche Prüfungen über die Bereitschaft entscheiden, legt `FLOWPLAN_READY_REQUIRE` fest – eine Liste aus `database`, `redis` und `objectStorage`, Standard: alle drei. Die Datenbank zählt immer. Fällt Redis aus, werden mit dem Standard alle Instanzen zugleich „nicht bereit“, und der Load Balancer hat nichts mehr. Mit `FLOWPLAN_READY_REQUIRE=database,objectStorage` bleiben sie bereit: Bearbeiten und Speichern funktionieren weiter, nur Live-Änderungen zwischen den Instanzen kommen erst beim nächsten Abgleich an, und Rate-Limits zählt jede Instanz für sich.
+Welche Prüfungen über die Bereitschaft entscheiden, legt `FLOWPLAN_READY_REQUIRE` fest – eine Liste aus `database`, `redis` und `objectStorage`, Standard: alle drei. Die Datenbank zählt immer. Fällt Redis aus, werden mit dem Standard alle Instanzen zugleich „nicht bereit“, und der Load Balancer hat nichts mehr. Mit `FLOWPLAN_READY_REQUIRE=database,objectStorage` bleiben sie bereit: Bearbeiten und Speichern funktionieren weiter, nur Live-Änderungen zwischen den Instanzen kommen erst beim nächsten Abgleich an, und Rate-Limits zählt jede Instanz für sich. Das Helm-Chart setzt das so. {since=0.9.9}
 
-**Herunterfahren:** Auf `SIGTERM` meldet die Instanz sofort `503` auf `/api/health/ready`, schließt die Live-Verbindungen (die Browser verbinden sich über den Load Balancer mit einer anderen Instanz), beantwortet offene Anfragen, gibt die Leitung ab und meldet sich bei den anderen ab. Gib ihr dafür 30 Sekunden (`stop_grace_period`, `terminationGracePeriodSeconds`).
+**Herunterfahren:** Auf `SIGTERM` meldet die Instanz sofort `503` auf `/api/health/ready`, schließt die Live-Verbindungen (die Browser verbinden sich über den Load Balancer mit einer anderen Instanz), beantwortet offene Anfragen, gibt die Leitung ab und meldet sich bei den anderen ab. Gib ihr dafür 30 Sekunden (`stop_grace_period`, `terminationGracePeriodSeconds`). Laufende Aufgaben und Workflow-Schritte werden noch fertig, Uploads, die unterwegs sind, erreichen den Bucket, dann gibt sie Leases und Leitung zurück – alles innerhalb von `FLOWPLAN_SHUTDOWN_SECONDS` (20). {since=0.9.9}
 
 ## Schema vor dem Start
 
@@ -59,7 +59,7 @@ Jede Instanz bringt das Datenbankschema beim Start selbst auf ihren Stand (unter
 DATABASE_URL=postgres://… node /app/scripts/db-schema.mjs
 ```
 
-Dann `FLOWPLAN_PG_SCHEMA_AUTO=off` für die Instanzen setzen. Das Docker-Compose-Beispiel und das Helm-Chart machen es so. Das Schema wird nur ergänzt, nie verkleinert: Während eines Rolling Updates laufen alte und neue Instanzen nebeneinander.
+Das Docker-Compose-Beispiel und das Helm-Chart machen es so. Die Instanzen prüfen das Schema beim Start trotzdem noch einmal unter derselben Sperre (dann ist nichts zu tun) und sind erst bereit, wenn es aktuell ist; `FLOWPLAN_PG_SCHEMA_AUTO=off` überlässt es allein dem eigenen Schritt. {since=0.9.9} Das Schema wird nur ergänzt, nie verkleinert: Während eines Rolling Updates laufen alte und neue Instanzen nebeneinander.
 
 ## Docker Compose
 
@@ -84,6 +84,8 @@ Ein anderer Load Balancer (nginx, Traefik, HAProxy) braucht dasselbe: Health-Che
 
 ## Kubernetes (Helm)
 
+Installation, Umzug von einem SQLite-Container, Updates, Sicherungen und Fehlersuche beschreibt die Seite [Kubernetes](/kubernetes). {since=0.9.9}
+
 Das Chart unter [`deploy/helm/flowplan`](https://github.com/yannicschuller/flowplan/tree/main/deploy/helm/flowplan) hat den Cluster-Modus eingebaut (`cluster.enabled=true`). PostgreSQL, Redis und S3 legt es nicht an – nimm verwaltete Dienste oder eigene Charts. Die Verbindungsadressen stehen nur in Secrets, die du selbst anlegst:
 
 ```bash
@@ -91,7 +93,7 @@ kubectl create namespace flowplan
 kubectl -n flowplan create secret generic flowplan-cluster \
   --from-literal=DATABASE_URL='postgres://flowplan:<Passwort>@postgres:5432/flowplan' \
   --from-literal=REDIS_URL='redis://:<Passwort>@redis-master:6379/0'
-kubectl -n flowplan create secret generic flowplan-env \
+kubectl -n flowplan create secret generic flowplan-s3 \
   --from-literal=S3_ACCESS_KEY_ID='<Key-ID>' \
   --from-literal=S3_SECRET_ACCESS_KEY='<Secret>'
 # die Schlüssel, die alle Pods teilen (Push-Schlüssel: npx web-push generate-vapid-keys)
@@ -102,27 +104,29 @@ kubectl -n flowplan create secret generic flowplan-keys \
 
 helm install flowplan deploy/helm/flowplan -n flowplan \
   --set appUrl=https://flowplan.example.org \
-  --set existingSecret=flowplan-env \
   --set cluster.enabled=true \
   --set cluster.replicas=3 \
   --set cluster.database.existingSecret=flowplan-cluster \
   --set cluster.redis.existingSecret=flowplan-cluster \
   --set cluster.keys.existingSecret=flowplan-keys \
-  --set s3.bucket=flowplan --set s3.endpoint=https://s3.example.org
+  --set s3.bucket=flowplan --set s3.endpoint=https://s3.example.org \
+  --set s3.existingSecret=flowplan-s3
 ```
+
+Das Beispiel [`values-ha.yaml`](https://github.com/yannicschuller/flowplan/blob/main/deploy/helm/flowplan/values-ha.yaml) enthält dasselbe mit Ingress, SSO, Metriken und Network Policy. Geheimnisse nimmt das Chart nur als Verweis auf Secrets (`s3.existingSecret`, `existingSecret`), nicht als Werte. {since=0.9.9}
 
 Was das Chart im Cluster-Modus tut:
 
 - **Schema-Job** als `pre-install`/`pre-upgrade`-Hook (`node /app/scripts/db-schema.mjs`), bevor Pods einer neuen Version starten. Ohne ihn (`cluster.migration.enabled=false`) erledigen die Pods das beim Start.
 - **Rolling Updates** ohne Unterbrechung (`maxUnavailable: 0`), ein **PodDisruptionBudget** (`cluster.podDisruptionBudget.minAvailable`, Standard 1) und Pods möglichst auf verschiedenen Knoten.
-- **Probes:** Liveness auf `/api/health/live`, Readiness auf `/api/health/ready`; vor dem Stoppen wartet ein Pod `cluster.preStopSeconds` (5), damit der Load Balancer ihn herausnimmt.
-- **Kein Volume:** `/app/data` ist ein `emptyDir` je Pod (`cluster.cacheSizeLimit`, 5 Gi); Dateien liegen im Bucket, Sicherungen macht PostgreSQL (`pg_dump`).
+- **Probes:** Liveness auf `/api/health/live`, Readiness auf `/api/health/ready` – ohne Redis (`cluster.readyRequire: database,objectStorage`) {since=0.9.9}; vor dem Stoppen wartet ein Pod `cluster.preStopSeconds` (5), damit der Load Balancer ihn herausnimmt.
+- **Kein Volume:** `/app/data` ist ein `emptyDir` je Pod (`cluster.cacheSizeLimit`, 5 Gi), das sich unter 70 % seiner Grenze hält (`FLOWPLAN_CACHE_MAX_MB`) {since=0.9.9}; Dateien liegen im Bucket, Sicherungen macht PostgreSQL (`pg_dump`).
 - **Datenbankrolle:** Die Rolle in `DATABASE_URL` sollte die Datenbank besitzen, aber kein Superuser sein. Viele PostgreSQL-Charts machen ihren Benutzer zum Superuser – lege dann eine eigene Rolle an, siehe [Rolle ohne Superuser-Rechte](/postgresql#rolle-ohne-superuser-rechte).
-- **Verbindungen:** `cluster.poolSize` (10) je Pod plus zwei eigene; `replicas × (poolSize + 2)` muss unter `max_connections` des Servers bleiben.
+- **Verbindungen:** `cluster.poolSize` (10) je Pod plus drei eigene {since=0.9.9}; `replicas × (poolSize + 3)` muss unter `max_connections` des Servers bleiben.
 - **Gemeinsame Schlüssel:** Aus dem Secret in `cluster.keys.existingSecret` bekommt jeder Pod `FLOWPLAN_ENCRYPTION_KEY`, `WEB_PUSH_PUBLIC_KEY` und `WEB_PUSH_PRIVATE_KEY`. Heißen die Schlüssel im Secret anders, nennst du sie mit `cluster.keys.encryptionKey`, `cluster.keys.webPushPublicKey` und `cluster.keys.webPushPrivateKey`. Bewahre eine Kopie des Verschlüsselungsschlüssels getrennt von den Sicherungen auf.
 - Das Chart verweigert die Installation, wenn Datenbank, Redis, Bucket oder `cluster.keys.existingSecret` fehlen.
 
-Mit ingress-nginx für die Live-Verbindungen die Annotationen `nginx.ingress.kubernetes.io/proxy-buffering: "off"` und `nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"` setzen, für Uploads `nginx.ingress.kubernetes.io/proxy-body-size: 110m`. Alle Werte erklärt das README des Charts.
+Für ingress-nginx setzt das Chart die Annotationen für die Live-Verbindungen und Uploads selbst (keine Pufferung, Zeitlimits von einer Stunde, `ingress.bodySize`); andere Controller beschreibt das README des Charts, das auch alle Werte erklärt. {since=0.9.9}
 
 ## Administration → Überwachung → System
 
@@ -147,6 +151,8 @@ Der Abschnitt **System** unter **Administration → Überwachung** zeigt, wie di
 | `FLOWPLAN_INSTANCE_ID` | Hostname + Zufall | Name der Instanz in der Übersicht und in `application_name` der Datenbankverbindungen. Das Helm-Chart nimmt den Pod-Namen. |
 | `FLOWPLAN_REDIS_PREFIX` | `flowplan:` | Präfix für Schlüssel und Kanäle, wenn sich mehrere Installationen ein Redis teilen. |
 | `FLOWPLAN_LEADER_INTERVAL` | `5000` | Wie oft (ms) die Instanzen die Leitung prüfen; bestimmt, wie schnell eine ausgefallene leitende Instanz ersetzt wird. |
+| `FLOWPLAN_SHUTDOWN_SECONDS` | `20` | Wie lange das Herunterfahren auf `SIGTERM` dauern darf (laufende Aufgaben, Uploads, Übergabe der Leitung) – einige Sekunden unter der Frist der Plattform. Gilt auch für den einzelnen Container. Das Helm-Chart setzt `terminationGracePeriodSeconds` minus Pause minus 5. {since=0.9.9} |
+| `FLOWPLAN_CACHE_MAX_MB` | *leer* | Größe (MB), ab der eine Instanz im Cluster die am längsten ungenutzten Dateien aus ihrem Zwischenspeicher nimmt; sie liegen weiter im Bucket. Leer: keine Grenze. Das Helm-Chart setzt 70 % von `cluster.cacheSizeLimit`. {since=0.9.9} |
 
 ## Workflows im Cluster
 
@@ -154,9 +160,9 @@ Die Schritte von [Workflows](/workflows) stehen in einer Warteschlange in der Da
 
 ## Grenzen
 
-- **Dateien lädt die Instanz hoch, die sie angenommen hat.** Bis dahin – normalerweise deutlich unter einer Sekunde – warten andere Instanzen bis zu 5 Sekunden. Einige Wege lesen den lokalen Ordner direkt (Exporte und Archive, manche Importe, Kopien beim Veröffentlichen) und können eine gerade auf einer anderen Instanz hochgeladene Datei noch verpassen. Fällt eine Instanz aus, bevor sie hochgeladen hat, ist die Datei verloren.
+- **Dateien:** Ist der Bucket nicht erreichbar, scheitern Uploads mit `503` – eine Datei gilt erst als gespeichert, wenn sie im Bucket liegt. {since=0.9.9}
 - **Wiederherstellen und Instanzumzug mit einer Instanz.** Eine hochgeladene Sicherung liegt im Zwischenspeicher der Instanz, die sie angenommen hat, und wird erst eingespielt, wenn diese leitet. Das Einspielen ersetzt alle Tabellen in einer Transaktion; Anfragen anderer Instanzen warten so lange und schlagen nach `FLOWPLAN_PG_LOCK_TIMEOUT` fehl. Im Kubernetes geht ein `emptyDir` beim Neustart verloren. Daher: vorher auf **eine Instanz** herunterskalieren (`cluster.replicas=1` bzw. nur `flowplan-1`), wiederherstellen, dann wieder hochskalieren. Dasselbe gilt für das [Umzugswerkzeug](/move-instance).
-- **Redis ist ein Single Point:** Fällt es aus, funktionieren Bearbeiten und Speichern weiter, aber Live-Änderungen zwischen den Instanzen kommen erst beim nächsten Abgleich an, Rate-Limits zählt jede Instanz für sich, und mit dem Standard von `FLOWPLAN_READY_REQUIRE` werden alle Instanzen „nicht bereit“ (oben).
+- **Redis ist ein Single Point:** Fällt es aus, funktionieren Bearbeiten und Speichern weiter, aber Live-Änderungen zwischen den Instanzen kommen erst beim nächsten Abgleich an, Rate-Limits zählt jede Instanz für sich, und mit dem Standard von `FLOWPLAN_READY_REQUIRE` werden alle Instanzen „nicht bereit“ (oben; das Helm-Chart lässt Redis heraus {since=0.9.9}).
 - **Kein Redis Sentinel und kein Redis Cluster:** Flowplan spricht mit genau einer Redis-Adresse. Ein verwalteter Redis mit fester Adresse funktioniert.
 - **Pro Instanz** bleiben die Fortschrittsanzeigen von Wiederherstellen und Umzug sowie die Rückstandszahlen des Suchindex.
 
