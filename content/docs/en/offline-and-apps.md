@@ -6,7 +6,7 @@ keywords: offline, no internet, pwa, install, web app, dark mode
 
 Flowplan runs in the browser, can be installed as an app and keeps working without a connection.
 
-**More on this topic:** [Desktop app for macOS, Windows and Linux](/desktop-app) · [Apps for iPhone, iPad and Android](/mobile-apps) · [Widgets and notifications in the apps](/mobile-widgets) · [Capturing, sharing and scanning in the apps](/mobile-capture)
+**More on this topic:** [What works offline](/what-works-offline) · [Desktop app for macOS, Windows and Linux](/desktop-app) · [Apps for iPhone, iPad and Android](/mobile-apps) · [Widgets and notifications](/mobile-widgets) · [Capturing, sharing and scanning in the apps](/mobile-capture)
 
 ## Work without a connection
 

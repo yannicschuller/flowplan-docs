@@ -28,6 +28,8 @@ Under **Set up journal → Days** you decide when today's page is created:
 
 The draft is the same on every device: if two devices start writing at the same time, exactly one page is created and both texts end up in it. If what the day starts with changed in the meantime (for example because a task was ticked yesterday on another device), Flowplan opens the stored page and says so. Text typed offline stays on the device and creates the page as soon as the connection is back.
 
+Without a connection, **Today** opens even when the draft could not be loaded: you write into an entry on this device, and its text goes into the day once it is created (see [What works offline](/what-works-offline)). {since=0.9.9}
+
 Every day remembers which version of the template it was created from. A day that only holds that template counts as empty even if the template was changed later.
 
 ### Remove empty days

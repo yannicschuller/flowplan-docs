@@ -28,6 +28,8 @@ Unter **Journal einrichten → Tage** legst du fest, wann die heutige Seite ents
 
 Der Entwurf ist auf allen Geräten derselbe: Beginnen zwei Geräte gleichzeitig zu schreiben, entsteht trotzdem genau eine Seite, und beide Texte landen darin. Hat sich inzwischen geändert, womit der Tag beginnt (etwa weil gestern auf einem anderen Gerät eine Aufgabe abgehakt wurde), öffnet Flowplan die gespeicherte Seite und sagt das. Offline Getipptes bleibt auf dem Gerät und legt die Seite an, sobald die Verbindung wieder da ist.
 
+Ohne Verbindung öffnet **Heute** auch dann, wenn der Entwurf nicht geladen werden konnte: Du schreibst in einen Eintrag auf diesem Gerät, und sein Text kommt in den Tag, sobald er angelegt ist (siehe [Was offline geht](/what-works-offline)). {since=0.9.9}
+
 Jeder Tag merkt sich, aus welcher Fassung der Vorlage er entstanden ist. Ein Tag, auf dem nur diese Vorlage steht, gilt auch dann als leer, wenn die Vorlage später geändert wurde.
 
 ### Leere Tage entfernen

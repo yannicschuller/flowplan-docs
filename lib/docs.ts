@@ -98,7 +98,7 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       {
         title: ["Apps und Geräte", "Apps and devices"],
         intro: ["Offline, Desktop-App, Apps für iPhone, iPad und Android, Browser-Erweiterung.", "Offline, desktop app, apps for iPhone, iPad and Android, browser extension."],
-        pages: ["offline-and-apps", "desktop-app", "mobile-apps", "mobile-widgets", "mobile-capture", "desktop-capture", "browser-extension"],
+        pages: ["offline-and-apps", "what-works-offline", "desktop-app", "mobile-apps", "mobile-widgets", "mobile-capture", "desktop-capture", "browser-extension"],
       },
       {
         title: ["Nachschlagen", "Reference"],
