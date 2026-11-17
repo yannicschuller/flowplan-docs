@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@858577ff",
+  "source": "github.com/yannicschuller/flowplan@ac355fbb",
   "slash": {
     "groups": {
       "recent": [
@@ -2018,6 +2018,7 @@
     "FLOWPLAN_WORKFLOW_AI_TOKENS_PER_DAY",
     "FLOWPLAN_WORKFLOW_CASCADE_DEPTH",
     "FLOWPLAN_WORKFLOW_EXTERNAL_MAIL",
+    "FLOWPLAN_WORKFLOW_EXTERNAL_MAIL_DYNAMIC",
     "FLOWPLAN_WORKFLOW_FOREACH_MAX",
     "FLOWPLAN_WORKFLOW_HTTP",
     "FLOWPLAN_WORKFLOW_HTTP_ALLOW_PRIVATE",
