@@ -27,6 +27,9 @@ export function statusUrl(): string | null {
 }
 export const GITHUB_URL = "https://github.com/yannicschuller/flowplan";
 export const DISCORD_URL = "https://discord.gg/bCEdB6MPrR";
+// The community translation tool: anyone signs in with GitHub and suggests
+// translations of the apps' texts (/languages#help-translate).
+export const TRANSLATE_URL = "https://translate.flowplan.org";
 // GitHub Sponsors, for anyone who wants to support the development.
 export const SPONSOR_URL = "https://github.com/sponsors/yannicschuller";
 // The operator's legal notice and privacy policy (IMPRINT_URL, PRIVACY_URL);

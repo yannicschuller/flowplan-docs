@@ -8,7 +8,7 @@ import { LanguageSwitch } from "@/components/i18n";
 import s from "@/components/docs/docs.module.css";
 import { trackAttrs } from "@/lib/track";
 import { fetchStatusSummary, type StatusState } from "@/lib/status";
-import { DISCORD_URL, GITHUB_URL, imprintUrl, marketplaceUrl, privacyUrl, SPONSOR_URL, statusUrl, websiteUrl } from "@/lib/links";
+import { DISCORD_URL, GITHUB_URL, imprintUrl, marketplaceUrl, privacyUrl, SPONSOR_URL, statusUrl, TRANSLATE_URL, websiteUrl } from "@/lib/links";
 
 // The documentation: same paper and ink as the website, calmer.
 export default async function DocsLayout({ children }: { children: React.ReactNode }) {
@@ -95,6 +95,9 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
                 {t("Vorlagen im Marketplace", "Templates in the Marketplace")}
               </a>
             )}
+            <a href={TRANSLATE_URL} rel="noopener" {...trackAttrs("outbound", { target: "translate" })}>
+              {t("Beim Übersetzen helfen", "Help translate")}
+            </a>
           </span>
           {(imprint || privacy) && (
             <span className={s.legalGroup}>

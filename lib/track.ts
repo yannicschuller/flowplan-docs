@@ -7,7 +7,7 @@
 //   search-open    slug                                       search result opened
 //   copy           page, lang                                 code block copied
 //   not-found      path                                       404 page shown
-//   outbound       target (app | demo | website | marketplace | github | discord | sponsor | status)
+//   outbound       target (app | demo | website | marketplace | translate | github | discord | sponsor | status)
 //   language       to                                         language switched
 //
 // Without Umami (not configured, blocked, Do Not Track) nothing happens.
@@ -93,10 +93,10 @@ export function codeLanguage(lang: string | null | undefined): string {
   return /^[a-z0-9+#-]{1,20}$/.test(l) ? l : "text";
 }
 
-export type OutboundTarget = "app" | "demo" | "website" | "marketplace" | "github" | "discord" | "sponsor" | "status";
+export type OutboundTarget = "app" | "demo" | "website" | "marketplace" | "translate" | "github" | "discord" | "sponsor" | "status";
 
 // Which of Flowplan's places a link leads to, or null for any other one.
-export function outboundTarget(href: string, sites: { app: string; website: string; marketplace?: string | null; status?: string | null }): OutboundTarget | null {
+export function outboundTarget(href: string, sites: { app: string; website: string; marketplace?: string | null; translate?: string | null; status?: string | null }): OutboundTarget | null {
   let url: URL;
   try {
     url = new URL(href);
@@ -115,6 +115,7 @@ export function outboundTarget(href: string, sites: { app: string; website: stri
   if (url.host === host(sites.app)) return /^\/demo(\/|$)/.test(url.pathname) ? "demo" : "app";
   if (url.host === host(sites.website)) return "website";
   if (sites.marketplace && url.host === host(sites.marketplace)) return "marketplace";
+  if (sites.translate && url.host === host(sites.translate)) return "translate";
   if (sites.status && url.host === host(sites.status)) return "status";
   return null;
 }

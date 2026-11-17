@@ -110,6 +110,8 @@ test("links to Flowplan's places are recognised", () => {
   assert.equal(outboundTarget("https://marketplace.flowplan.org/t/kanban", sites), null);
   const withMarketplace = { ...sites, marketplace: "https://marketplace.flowplan.org" };
   assert.equal(outboundTarget("https://marketplace.flowplan.org/t/kanban", withMarketplace), "marketplace");
+  assert.equal(outboundTarget("https://translate.flowplan.org", sites), null);
+  assert.equal(outboundTarget("https://translate.flowplan.org/fr", { ...sites, translate: "https://translate.flowplan.org" }), "translate");
 });
 
 test("track is safe without Umami and passes events on when it is there", async () => {
