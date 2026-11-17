@@ -77,6 +77,7 @@ Clients that speak Streamable HTTP and accept their own headers use this configu
 | --- | --- | --- |
 | `list_workspaces` | Your workspaces with your role and the spaces you can see | Read |
 | `list_pages` | Pages in a workspace, optionally in one space or below one page | Read |
+| `get_library` | A space as a [library](/pages-and-spaces#a-space-as-a-library): books, chapters and pages you can read, with their counts {since=0.9.9} | Read |
 | `search` | Full-text search across pages, records, comments and file contents; also understands #tag, OR, NOT, created_by:, created:, type:, in:, title: | Read |
 | `list_collections` | A workspace's collections (your own and shared ones) with their query | Read |
 | `run_collection` | The pages and records that match a collection now, with your permissions | Read |
