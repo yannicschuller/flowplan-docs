@@ -1,10 +1,10 @@
 ---
-keywords: Begriffe, Glossar, Umzug, Notion, AFFiNE, Obsidian, Evernote, Confluence, Google Docs, Word, Entsprechung
+keywords: Begriffe, Glossar, Umzug, Notion, AFFiNE, Obsidian, Evernote, Confluence, Google Docs, Word, BookStack, Entsprechung
 ---
 
 # Begriffe beim Umzug
 
-Was du aus Notion, AFFiNE, Obsidian, Evernote, Confluence oder Google Docs kennst – und wie es in Flowplan heißt.
+Was du aus Notion, AFFiNE, Obsidian, Evernote, Confluence, Google Docs oder BookStack kennst – und wie es in Flowplan heißt.
 
 Dieselbe Übersicht zeigt die [Einführung](/settings#die-einfuehrung) im Schritt **So heißt das hier**, nachdem du unter **Woher kommst du?** ein Werkzeug gewählt hast. **Gleich** heißt: dieselbe Idee unter diesem Namen; **ähnlich**: nah dran, mit dem Unterschied im Hinweis; **keine Entsprechung**: Flowplan hat nichts Vergleichbares – der Hinweis sagt, was du stattdessen nimmst. Wie du die Inhalte herüberholst, steht unter [Umzug zu Flowplan](/migrate).
 
@@ -133,3 +133,23 @@ So ziehst du um: [Google Docs / Word](/migrate-office#von-google-docs).
 | Page setup / print layout | Drucken / PDF | ähnlich | Seiten fließen am Bildschirm; Papierformat, Seitenzahlen und Seitenumbrüche gibt es beim Drucken. |
 | Google Sheets / Excel | Datenbank | ähnlich | Eine Datenbank hat Eigenschaften je Spalte und Formeln je Eintrag, aber keine freien Zellformeln. |
 | Google Forms | Formular | gleich |  |
+
+## BookStack {since=0.9.9}
+
+So ziehst du um: [BookStack](/migrate-office#von-bookstack).
+
+| In BookStack | Flowplan | Passt | Hinweis |
+| --- | --- | --- | --- |
+| Shelf | Seite | ähnlich | Ein Regal wird eine Seite mit seinen Büchern als Unterseiten; ein Buch in mehreren Regalen kommt einmal unter das erste. |
+| Book | Seite | ähnlich | Ein Buch wird eine Seite mit seiner Beschreibung als Text und Kapiteln und Seiten darunter. |
+| Chapter | Unterseiten | ähnlich | Ein Kapitel wird eine Unterseite des Buchs mit seinen Seiten darunter. |
+| Page | Seite | gleich | Seiten lassen sich beliebig tief verschachteln. |
+| Tags (name: value) | Tags | ähnlich | Ein Tag mit Wert wird ein Tag „Name: Wert“. |
+| Callouts | Callout | gleich |  |
+| Attachments | Dateien | gleich | Dateien kommen als Anhang auf die Seite; Link-Anhänge bleiben Links. |
+| Image gallery / Diagrams.net | Bilder | ähnlich | Bilder und gezeichnete Diagramme kommen als Bilder auf ihre Seite; ein Diagramm zeichnest du in Flowplan auf einem Whiteboard. |
+| Revisions | Versionen | gleich | Frühere Fassungen aus BookStack werden nicht übernommen; Flowplan legt ab dem Import eigene Versionen an. |
+| Page templates | Vorlagen | ähnlich | Vorlagen aus BookStack kommen als normale Seiten; speichere eine Seite in Flowplan als Vorlage. |
+| Roles & permissions | Rechte (Teilen) | ähnlich | Rechte werden nicht übernommen; du teilst Bereiche und Seiten in Flowplan neu. |
+| Comments | Kommentare | gleich | Kommentare aus BookStack werden nicht übernommen. |
+| Recycle bin | Papierkorb | gleich |  |

@@ -1,20 +1,20 @@
 ---
-keywords: Umzug, Import, Notion, AppFlowy, AFFiNE, Obsidian, Evernote, Confluence, wechseln, Migration, Notion-API, Importbericht
+keywords: Umzug, Import, Notion, AppFlowy, AFFiNE, Obsidian, Evernote, Confluence, BookStack, wechseln, Migration, Notion-API, Importbericht
 ---
 
 # Umzug zu Flowplan
 
 Flowplan ist eine Open-Source-Alternative zu Notion, Confluence und AppFlowy unter der AGPL-3.0. So holst du Seiten, Datenbanken, Bilder und Dateien aus dem bisherigen Werkzeug herüber.
 
-**Mehr zum Thema:** [Begriffe beim Umzug](/migrate-glossary) · [Von AFFiNE](/migrate-affine) · [Von Confluence, Evernote, Google Docs und Word](/migrate-office) · [Von Obsidian und GoodNotes](/migrate-notes)
+**Mehr zum Thema:** [Begriffe beim Umzug](/migrate-glossary) · [Von AFFiNE](/migrate-affine) · [Von Confluence, BookStack, Evernote, Google Docs und Word](/migrate-office) · [Von Obsidian und GoodNotes](/migrate-notes)
 
 ## So ziehst du um {since=0.9.7}
 
 Drei Wege führen herüber:
 
-- **In der Einführung:** Gleich nach dem Anlegen des Kontos fragt die [Einführung](/settings#die-einfuehrung) **Woher kommst du?** – Notion, AFFiNE, Obsidian, Evernote, Confluence, Google Docs / Word oder **Neu anfangen**. Sie zeigt Schritt für Schritt, wo das Werkzeug seinen Export hat, importiert die Datei gleich in deinen ersten Bereich und erklärt danach unter **So heißt das hier**, wie die gewohnten Dinge in Flowplan heißen ([Begriffe beim Umzug](/migrate-glossary)).
+- **In der Einführung:** Gleich nach dem Anlegen des Kontos fragt die [Einführung](/settings#die-einfuehrung) **Woher kommst du?** – Notion, AFFiNE, Obsidian, Evernote, Confluence, Google Docs / Word, BookStack {since=0.9.9} oder **Neu anfangen**. Sie zeigt Schritt für Schritt, wo das Werkzeug seinen Export hat, importiert die Datei gleich in deinen ersten Bereich und erklärt danach unter **So heißt das hier**, wie die gewohnten Dinge in Flowplan heißen ([Begriffe beim Umzug](/migrate-glossary)).
 - **Jederzeit** unter **Einstellungen → Import & Export → Import**, mit Zielbereich, Vorschau und allen Quellen – siehe unten.
-- **Notion ohne Export:** direkt über die Notion-API mit einem Integrations-Token ([Über die Notion-API](#ueber-die-notion-api)).
+- **Notion und BookStack ohne Export:** direkt über die Notion-API mit einem Integrations-Token ([Über die Notion-API](#ueber-die-notion-api)) oder über die BookStack-API mit einem API-Token ([Von BookStack](/migrate-office#von-bookstack)). {since=0.9.9}
 
 | Von | Was du brauchst | Anleitung |
 | --- | --- | --- |
@@ -24,6 +24,7 @@ Drei Wege führen herüber:
 | Evernote | `.enex`-Datei oder eine ZIP mit mehreren | [Von Evernote](/migrate-office#von-evernote) |
 | Confluence | ZIP des Bereichsexports | [Von Confluence](/migrate-office#von-confluence) |
 | Google Docs, Word | Takeout-ZIP, `.docx`- oder HTML-Datei | [Von Google Docs](/migrate-office#von-google-docs), [Von Word](/migrate-office#von-microsoft-word) |
+| BookStack | Adresse der Instanz und ein API-Token {since=0.9.9} | [Von BookStack](/migrate-office#von-bookstack) |
 | AppFlowy | Markdown und CSV als ZIP | [Von AppFlowy](#von-appflowy) |
 | GoodNotes | Export der Notizbücher | [Von GoodNotes](/migrate-notes#von-goodnotes) |
 
@@ -108,7 +109,7 @@ Markdown wird zu Seiten, CSV zu Datenbanken; verlinkte Bilder und Dateien werden
 
 Was ein Import nicht oder nur angenähert übernehmen konnte, sammelt Flowplan auf einer Seite **Importbericht: …** mit 📋 oben im Zielbereich, etwa „Importbericht: Notion“. Sie ist nach Art gegliedert, mit der Anzahl: **Nicht übernommene Blöcke**, **Synchronisierte Blöcke (Inhalt kopiert)**, **Einbettungen und Lesezeichen als Link**, **Formeln** und **Rollups ohne Gegenstück (Werte als Text)**, **Eigenschaften mit angenähertem Typ**, **Nicht aufgelöste Verknüpfungen** und **Dateien zu groß, fehlend oder nicht geladen** – jeder Punkt mit einem Link auf die betroffene Seite oder den Eintrag. Unter **Einstellungen → Import & Export** nennt das Ergebnis die Zahl mit einem Link dorthin („12 Hinweise im Importbericht“). Gibt es nichts zu berichten, entsteht keine Seite.
 
-Den Bericht schreiben der Notion-Import (Export und API), der Markdown-ZIP-Import und die Importe aus AFFiNE, Obsidian und Evernote – auch in der Einführung. Er ist eine normale Seite: Geh die Punkte durch und lösche ihn, wenn du fertig bist.
+Den Bericht schreiben der Notion-Import (Export und API), der Markdown-ZIP-Import und die Importe aus AFFiNE, Obsidian, Evernote und BookStack {since=0.9.9} – auch in der Einführung. Er ist eine normale Seite: Geh die Punkte durch und lösche ihn, wenn du fertig bist.
 
 ## Nach dem Umzug
 
