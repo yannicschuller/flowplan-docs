@@ -69,6 +69,8 @@ Diese Liste wird aus dem Knotenkatalog von Flowplan erzeugt; die Einstellungen j
 
 **Journaltag lesen** gibt einen Journaltag an die folgenden Schritte weiter – praktisch, wenn dein Workflow manuell oder per Zeitplan startet und ein KI-Schritt den Tag kennen soll. Journal und Tag wählst du wie bei **An Journaltag anhängen**. Setz `{{…content}}` in die Anweisung, dann bekommt die KI den Text des Tages und die Liste „An diesem Tag erledigt“, so wie du sie unter dem Tag siehst (Nur meine/Alle). `completed` enthält nur die Liste, `found` ist `false`, wenn es den Tag noch nicht gibt (die Liste zählt trotzdem). Der Schritt liest mit den Rechten der ausführenden Person; Journale mit PIN und verschlüsselte Bereiche lehnt er ab. **Neuer Journaltag** und **An Journaltag anhängen** liefern die Liste ebenfalls als `completed`, etwa `{{trigger.completed | join: "\n"}}`. {since=0.9.6}
 
+**Zeitzone und „Heute“**: Uhrzeiten im **Zeitplan** gelten in der Zeitzone des Workflows – neue Workflows bekommen die Zeitzone der Person, die sie anlegt; ändern kannst du sie in den Workflow-Einstellungen unter **Zeitzone**. Weicht sie von deiner ab, zeigt der Zeitplan sie an, etwa „täglich · 23:55 (UTC)“. **Heute** ist bei allen Schritten eines Laufs derselbe Tag: der Tag, an dem der Lauf begann (nach einer Wartezeit oder Freigabe der Tag, an dem er weiterläuft) – auch wenn ein Schritt erst nach Mitternacht dran ist. Ältere Workflows stehen auf UTC, bis du die Zeitzone änderst. {since=0.9.9}
+
 ## Benachrichtigen
 
 | Knoten | Typ | Was er tut | Ausgänge | Ausgaben |

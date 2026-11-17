@@ -19,6 +19,8 @@ Ein Journal ist eine Seite mit einer Unterseite pro Tag. Morgens liegt die heuti
 - Erledigte Aufgaben und der übrige Text bleiben auf ihrem Tag.
 - **Leere Tage verschwinden**: Hat ein Tag außer übernommenen Aufgaben nichts Eigenes bekommen, wird er beim nächsten Tag wieder entfernt. Das Journal enthält so nur Tage, an denen etwas passiert ist.
 
+{since=0.9.9} Aufgaben, die du an einem Tag in anderen Seiten abhakst (die Liste „An diesem Tag erledigt“), zählen dabei nicht als eigener Inhalt. Schreibt ein Workflow in einen Tag (**An Journaltag anhängen**), entfernt er den Tag davor nie – auch keinen leeren.
+
 ### Seite des Tages anlegen: automatisch oder beim ersten Schreiben
 
 Unter **Journal einrichten → Tage** legst du fest, wann die heutige Seite entsteht:

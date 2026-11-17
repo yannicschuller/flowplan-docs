@@ -69,6 +69,8 @@ This list is generated from Flowplan's node catalogue; `GET /api/workflows/catal
 
 **Read journal day** hands a journal day to the next steps – useful when your workflow starts manually or on a schedule and an AI step should know the day. Pick the journal and the day as in **Append to journal day**. Put `{{…content}}` into the prompt and the AI gets the day's text plus the "Completed this day" list, just as you see it below the day (Only mine/All). `completed` holds only the list; `found` is `false` when the day doesn't exist yet (the list still counts). The step reads with the rights of the person the workflow runs as; journals with a PIN and encrypted spaces are refused. **New journal day** and **Append to journal day** also output the list as `completed`, e.g. `{{trigger.completed | join: "\n"}}`. {since=0.9.6}
 
+**Time zone and “Today”**: times in a **Schedule** are in the workflow's time zone – new workflows get the zone of the person who creates them; change it in the workflow settings under **Time zone**. If it differs from yours, the schedule shows it, such as “daily · 23:55 (UTC)”. **Today** is the same day for every step of a run: the day the run started (after a wait or approval, the day it continues) – even if a step only runs after midnight. Older workflows stay on UTC until you change the zone. {since=0.9.9}
+
 ## Notify
 
 | Node | Type | What it does | Ports | Outputs |
