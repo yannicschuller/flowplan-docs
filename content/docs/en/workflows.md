@@ -72,7 +72,7 @@ Built-in values: `$today`, `$now`, `$run`, `$workflow`, `$runner`, and inside �
 ## Testing
 
 - **Dry run**: writing nodes only report what they would do (“would create record …”); e-mail, chat and push are not sent, waits are skipped, approvals count as approved or rejected (your choice). AI nodes run and cost tokens.
-- **Test run**: acts for real – as **you**, not as the person the workflow runs as.
+- **Test run**: acts for real – as **you**, not as the person the workflow runs as. When AI or trigger data choose recipients or targets, a test run needs the [setting for that](#workflow-settings) too; a dry run always works. {since=0.9.9}
 - Trigger data: **example**, the **last real event**, a **record** or **page** to pick, or **your own values**.
 
 Tests always use the draft. The result shows as a status ring at every node; a click shows input and output.
@@ -82,6 +82,24 @@ Tests always use the draft. The result shows as a status ring at every node; a c
 **Activate** checks the draft (missing settings, deleted databases, pages without access …) and shows what the workflow will do and **who it runs as**: the person who activates it. It only sees and changes what this person may. If they lose their rights, the workflow pauses and says so.
 
 **Pause** holds open runs (or cancels them, if you choose); after activating they continue on their version. After ten failures in a row, or when half of the recent runs fail, a workflow pauses itself.
+
+## Workflow settings {since=0.9.9}
+
+The gear at the top of the editor opens **Workflow settings**. They belong to the draft and apply from the next activation.
+
+**AI and trigger data may choose recipients and targets** – off by default. Then an AI answer, an HTTP answer or data the trigger brings from outside (form answers, webhook bodies, inbound e-mails, comment texts) must not decide
+
+- whom the workflow notifies or e-mails,
+- who approves,
+- which page or record it changes.
+
+Whoever sends such data could hide instructions in it (prompt injection) and so decide whom the workflow writes to or what it changes. The check follows placeholders through the steps in between (Set values, "For each", a search with the value in its filter) and reports every such place as an **error** – the workflow cannot be activated then. Turn the setting on only when that is exactly what you want, a confirmation to the address from the form, say: the places then show as notes. The template **Inbound e-mail → ticket** and the official workflow "Form: confirmation" reply to the sender and come with the setting on.
+
+Even with the setting, targets stay in the **workflow's workspace**: a node never reaches pages, databases or records of another workspace, not in a dry run either, and not even when the person it runs as is a member there.
+
+**Existing workflows**: active versions are not checked again and keep running unchanged. When such a version lets outside data choose recipients or targets, the header of the workflow page says so; on the next activation – also after a pause – you set the recipients and targets yourself or turn the setting on.
+
+E-mail to addresses from placeholders and the hosts of HTTP requests have rules of their own, see the [node reference](/workflow-nodes#notify).
 
 ## Runs and versions
 
@@ -157,7 +175,7 @@ Content archives and the [instance move](/move-instance) take workflows along wi
 
 ## API, MCP and SDKs
 
-Workflows can be created, checked, tested, **activated** (with a write token) and started through the [REST API](/api-and-webhooks#workflows); the SDKs come with ready methods. Through [MCP](/mcp#workflows), an AI assistant reads workflows and runs, saves drafts, tests and starts them – it cannot activate them or decide approvals.
+Workflows can be created, checked, tested, **activated** (with a write token) and started through the [REST API](/api-and-webhooks#workflows); the SDKs come with ready methods. Through [MCP](/mcp#workflows), an AI assistant reads workflows and runs, saves drafts, tests and starts them – it cannot activate them or decide approvals. Tests over MCP are always dry runs that reach nothing outside Flowplan. {since=0.9.9}
 
 ## Frequently asked questions
 

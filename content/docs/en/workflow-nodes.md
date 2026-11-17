@@ -77,6 +77,8 @@ This list is generated from Flowplan's node catalogue; `GET /api/workflows/catal
 | Send e-mail | `notify.email` | Sends an e-mail to people or addresses. | out | `sent` |
 | Chat message | `notify.chat` | Posts to a chat webhook of the workspace (Slack, Matrix, Teams, Discord). | out | `sent` |
 
+**E-mail to outside addresses**: e-mail to members always goes out. To an address outside the members that is written in the node, it goes out as long as the administration allows outside e-mail. When the address comes from a placeholder or a property – a form answer, the sender of an e-mail, an AI answer –, the switch **… also to addresses from placeholders** in the [administration](/administration#workflows) (`FLOWPLAN_WORKFLOW_EXTERNAL_MAIL_DYNAMIC`) is needed as well, off by default; the check points out such nodes. When outside data choose the recipient, the workflow also needs the [setting for that](/workflows#workflow-settings). {since=0.9.9}
+
 ## AI
 
 | Node | Type | What it does | Ports | Outputs |
@@ -91,6 +93,8 @@ This list is generated from Flowplan's node catalogue; `GET /api/workflows/catal
 | Node | Type | What it does | Ports | Outputs |
 | --- | --- | --- | --- | --- |
 | HTTP request | `http.request` | Calls an HTTPS address (fixed host). | out | `status`, `headers`, `body`, `json` |
+
+**Hosts and redirects**: the host is fixed text in the node; placeholders only go into the path, query, headers and body. A run calls only the hosts written as fixed text in the HTTP nodes of its activated version (a test: those of the draft). When a service redirects with 307 or 308 to another origin, the body does not go along, and the node's own headers – an API key typed in, say – go to its own origin only; 303, and 301 or 302 after a POST, still become a GET. The check reports an AI answer in the path or query as a note. {since=0.9.9}
 
 ⚡ – can run in the immediate part: right when a record is saved, in the same change.
 

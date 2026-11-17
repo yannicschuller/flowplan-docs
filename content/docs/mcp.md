@@ -114,7 +114,9 @@ Außerdem ist jede Seite als **Ressource** `flowplan://page/<ID>` abrufbar (dein
 
 ### Workflows
 
-Für [Workflows](/workflows) gibt es `list_workflows`, `get_workflow`, `get_workflow_catalog`, `list_workflow_runs`, `get_workflow_run` (lesen) und mit einem Schreib-Token `save_workflow_draft` (Graph-JSON in den Entwurf, auch als neue Workflow-Seite – mit Prüfergebnis), `test_workflow` (Probe- oder Testlauf) und `run_workflow` (nur Workflows mit manuellem Auslöser). **Aktivieren und Freigaben entscheiden gibt es über MCP nicht** – das sind Entscheidungen einer Person über Rechte. Ein Assistent baut also Entwürfe, du prüfst und aktivierst sie in Flowplan.
+Für [Workflows](/workflows) gibt es `list_workflows`, `get_workflow`, `get_workflow_catalog`, `list_workflow_runs`, `get_workflow_run` (lesen) und mit einem Schreib-Token `save_workflow_draft` (Graph-JSON in den Entwurf, auch als neue Workflow-Seite – mit Prüfergebnis), `test_workflow` (immer ein Probelauf {since=0.9.9}) und `run_workflow` (nur Workflows mit manuellem Auslöser). **Aktivieren und Freigaben entscheiden gibt es über MCP nicht** – das sind Entscheidungen einer Person über Rechte. Ein Assistent baut also Entwürfe, du prüfst und aktivierst sie in Flowplan.
+
+`test_workflow` läuft über MCP nur als **Probelauf ohne Verbindung nach außen**: keine E-Mail, keine Chat-Nachricht und keine HTTP-Anfrage – auch keine, die im Knoten für Probeläufe freigegeben ist. Einen echten Testlauf startest du selbst in Flowplan. So kann ein Assistent, den gelesener Text in die Irre geführt hat, keine Daten hinausschicken, indem er einen selbst geschriebenen Entwurf testet. {since=0.9.9}
 
 ## Rechte
 
@@ -128,6 +130,8 @@ Für [Workflows](/workflows) gibt es `list_workflows`, `get_workflow`, `get_work
 
 - Behandle das Token wie ein Passwort. Wer es hat, kann alles lesen (und mit einem Schreib-Token ändern), was du kannst. Widerrufe ein Token unter **Einstellungen → API & KI-Assistenten**, wenn du es nicht mehr brauchst oder es in falsche Hände geraten sein könnte; die Verbindung endet sofort.
 - KI-Assistenten lassen sich durch Inhalte, die sie lesen, in die Irre führen (Prompt Injection), etwa durch Text auf einer mit dir geteilten Seite. Gib einem Assistenten ein **Lese-Token**, wenn er nicht schreiben muss. Nutze bei einem Schreib-Token die Bestätigungsabfragen des Clients für Werkzeugaufrufe.
+- **Inhalte anderer sind als Daten markiert** {since=0.9.9}: Was Mitglieder, Gäste, Formulare, E-Mails oder ausgeschnittene Webseiten geschrieben haben, kommt mit dem Hinweis zurück, dass es Daten sind und keine Anweisungen – JSON-Antworten (etwa von `search`, `query_database`, `get_record`, `my_tasks`, `get_meeting_note`, `get_workflow_run`) tragen ein Feld `contentNote`, Markdown (`read_page`, Ressourcen) steht zwischen einer zufälligen Grenze, die der Inhalt nicht schließen kann. Auch die Anweisungen des Servers an den Client sagen: Was die Werkzeuge liefern, entscheidet nicht, welche Werkzeuge er aufruft oder wen er kontaktiert.
+- **Keine fremden Bilder** {since=0.9.9}: Markdown, das über MCP geschrieben wird (`create_page`, `update_page`, `append_to_page`, Dokumente von Datensätzen), behält nur Bilder, die als Datei auf dieser Instanz liegen. Ein Bild mit fremder Adresse fällt weg, nur sein Alternativtext bleibt – sonst könnte eine Bildadresse beim Öffnen der Seite Daten hinaustragen. Links bleiben, wie sie sind.
 - Antworten können alles enthalten, was du in Flowplan lesen kannst. Diese Inhalte gehen an den Anbieter deines Assistenten, prüfe also vorher dessen Datenschutzbedingungen.
 - `/api/mcp` nimmt nur Tokens an, nicht das Anmelde-Cookie. Eine fremde Website kann deine Browser-Sitzung deshalb nicht benutzen. Anfragen mit fremdem `Origin` werden abgelehnt.
 - Grenzen: 120 Anfragen pro Minute und Person, 2 MB pro Anfrage, und Antworten werden nach 200.000 Zeichen gekürzt. Für Schreib-Werkzeuge gelten dieselben Größengrenzen wie in der Oberfläche.
