@@ -1,10 +1,10 @@
 ---
-keywords: terms, glossary, moving, Notion, AFFiNE, Obsidian, Evernote, Confluence, Google Docs, Word, counterpart
+keywords: terms, glossary, moving, Notion, AFFiNE, Obsidian, Evernote, Confluence, Google Docs, Word, BookStack, counterpart
 ---
 
 # Terms when moving
 
-What you know from Notion, AFFiNE, Obsidian, Evernote, Confluence or Google Docs – and what it is called in Flowplan.
+What you know from Notion, AFFiNE, Obsidian, Evernote, Confluence, Google Docs or BookStack – and what it is called in Flowplan.
 
 The [introduction](/settings#the-introduction) shows the same overview in the step **What it's called here**, after you picked a tool under **Where are you coming from?**. **The same** means the same idea under this name; **similar**: close, with the difference in the note; **no counterpart**: Flowplan has nothing comparable – the note says what to use instead. How to bring your content over is in [Moving to Flowplan](/migrate).
 
@@ -133,3 +133,23 @@ How to move: [Google Docs / Word](/migrate-office#from-google-docs).
 | Page setup / print layout | Print / PDF | similar | Pages flow on screen; paper size, page numbers and page breaks come with printing. |
 | Google Sheets / Excel | Database | similar | A database has properties per column and formulas per record, but no free cell formulas. |
 | Google Forms | Form | the same |  |
+
+## BookStack {since=0.9.9}
+
+How to move: [BookStack](/migrate-office#from-bookstack).
+
+| In BookStack | Flowplan | Match | Note |
+| --- | --- | --- | --- |
+| Shelf | Page | similar | A shelf becomes a page with its books as sub-pages; a book on several shelves comes once, below the first. |
+| Book | Page | similar | A book becomes a page with its description as text and chapters and pages below it. |
+| Chapter | Sub-pages | similar | A chapter becomes a sub-page of the book with its pages below it. |
+| Page | Page | the same | Pages nest as deep as you like. |
+| Tags (name: value) | Tags | similar | A tag with a value becomes a tag “name: value”. |
+| Callouts | Callout | the same |  |
+| Attachments | Files | the same | Files come as attachments on the page; link attachments stay links. |
+| Image gallery / Diagrams.net | Images | similar | Images and drawn diagrams come as images on their page; in Flowplan you draw a diagram on a whiteboard. |
+| Revisions | Versions | the same | Earlier revisions from BookStack are not imported; Flowplan keeps its own versions from the import on. |
+| Page templates | Templates | similar | Templates from BookStack come as normal pages; save a page as a template in Flowplan. |
+| Roles & permissions | Permissions (Share) | similar | Permissions are not imported; you share spaces and pages in Flowplan again. |
+| Comments | Comments | the same | Comments from BookStack are not imported. |
+| Recycle bin | Trash | the same |  |

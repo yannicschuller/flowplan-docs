@@ -1,20 +1,20 @@
 ---
-keywords: move, import, Notion, AppFlowy, AFFiNE, Obsidian, Evernote, Confluence, switch, migration, Notion API, import report
+keywords: move, import, Notion, AppFlowy, AFFiNE, Obsidian, Evernote, Confluence, BookStack, switch, migration, Notion API, import report
 ---
 
 # Moving to Flowplan
 
 Flowplan is an open-source alternative to Notion, Confluence and AppFlowy under the AGPL-3.0. This is how you bring over pages, databases, images and files from the tool you use now.
 
-**More on this topic:** [Terms when moving](/migrate-glossary) · [From AFFiNE](/migrate-affine) · [From Confluence, Evernote, Google Docs and Word](/migrate-office) · [From Obsidian and GoodNotes](/migrate-notes)
+**More on this topic:** [Terms when moving](/migrate-glossary) · [From AFFiNE](/migrate-affine) · [From Confluence, BookStack, Evernote, Google Docs and Word](/migrate-office) · [From Obsidian and GoodNotes](/migrate-notes)
 
 ## How to move {since=0.9.7}
 
 Three ways lead over:
 
-- **In the introduction:** right after creating your account, the [introduction](/settings#the-introduction) asks **Where are you coming from?** – Notion, AFFiNE, Obsidian, Evernote, Confluence, Google Docs / Word or **Start fresh**. It shows step by step where the tool keeps its export, imports the file right into your first space and then explains under **What it's called here** what the things you know are called in Flowplan ([Terms when moving](/migrate-glossary)).
+- **In the introduction:** right after creating your account, the [introduction](/settings#the-introduction) asks **Where are you coming from?** – Notion, AFFiNE, Obsidian, Evernote, Confluence, Google Docs / Word, BookStack {since=0.9.9} or **Start fresh**. It shows step by step where the tool keeps its export, imports the file right into your first space and then explains under **What it's called here** what the things you know are called in Flowplan ([Terms when moving](/migrate-glossary)).
 - **At any time** under **Settings → Import & export → Import**, with target space, preview and every source – see below.
-- **Notion without an export:** straight through the Notion API with an integration token ([Through the Notion API](#through-the-notion-api)).
+- **Notion and BookStack without an export:** straight through the Notion API with an integration token ([Through the Notion API](#through-the-notion-api)) or through the BookStack API with an API token ([From BookStack](/migrate-office#from-bookstack)). {since=0.9.9}
 
 | From | What you need | Guide |
 | --- | --- | --- |
@@ -24,6 +24,7 @@ Three ways lead over:
 | Evernote | an `.enex` file or a ZIP with several | [From Evernote](/migrate-office#from-evernote) |
 | Confluence | the space export's ZIP | [From Confluence](/migrate-office#from-confluence) |
 | Google Docs, Word | Takeout ZIP, `.docx` or HTML file | [From Google Docs](/migrate-office#from-google-docs), [From Word](/migrate-office#from-microsoft-word) |
+| BookStack | the instance's address and an API token {since=0.9.9} | [From BookStack](/migrate-office#from-bookstack) |
 | AppFlowy | Markdown and CSV as a ZIP | [From AppFlowy](#from-appflowy) |
 | GoodNotes | the notebooks' export | [From GoodNotes](/migrate-notes#from-goodnotes) |
 
@@ -108,7 +109,7 @@ Markdown becomes pages, CSV becomes databases; linked images and files come alon
 
 What an import could not carry over, or only approximately, Flowplan collects on a page **Import report: …** with 📋 at the top of the target space, such as "Import report: Notion". It is grouped by kind, with the count: **Blocks not carried over**, **Synced blocks (content copied)**, **Embeds and bookmarks kept as links**, **Formulas** and **Rollups without counterpart (values as text)**, **Properties with an approximated type**, **Relations that could not be resolved** and **Files too large, missing or not downloaded** – each item with a link to the page or record concerned. Under **Settings → Import & export** the result names the count with a link to it ("12 notes in the import report"). With nothing to report, no page is created.
 
-The report is written by the Notion import (export and API), the Markdown ZIP import and the imports from AFFiNE, Obsidian and Evernote – in the introduction too. It is an ordinary page: work through it and delete it when you are done.
+The report is written by the Notion import (export and API), the Markdown ZIP import and the imports from AFFiNE, Obsidian, Evernote and BookStack {since=0.9.9} – in the introduction too. It is an ordinary page: work through it and delete it when you are done.
 
 ## After the move
 

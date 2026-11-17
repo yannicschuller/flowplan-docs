@@ -52,7 +52,7 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       },
       {
         title: ["Umzug, Import und Export", "Moving, import and export"],
-        intro: ["Von Notion, AFFiNE, Obsidian, Evernote, Confluence und Google Docs umziehen, importieren, exportieren, drucken.", "Move from Notion, AFFiNE, Obsidian, Evernote, Confluence and Google Docs, import, export, print."],
+        intro: ["Von Notion, AFFiNE, Obsidian, Evernote, Confluence, Google Docs und BookStack umziehen, importieren, exportieren, drucken.", "Move from Notion, AFFiNE, Obsidian, Evernote, Confluence, Google Docs and BookStack, import, export, print."],
         pages: ["migrate", "migrate-glossary", "migrate-affine", "migrate-office", "migrate-notes", "import-export-versions", "export", "print-and-pdf"],
       },
       {

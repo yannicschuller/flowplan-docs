@@ -1,10 +1,10 @@
 ---
-keywords: Confluence, Evernote, ENEX, Google Docs, Takeout, Word, docx, OneNote, import
+keywords: Confluence, BookStack, Evernote, ENEX, Google Docs, Takeout, Word, docx, OneNote, import
 ---
 
-# From Confluence, Evernote, Google Docs and Word
+# From Confluence, BookStack, Evernote, Google Docs and Word
 
-Step by step from Confluence, Evernote, Google Docs, Microsoft Word and OneNote to Flowplan – with the page tree, images and attachments.
+Step by step from Confluence, BookStack, Evernote, Google Docs, Microsoft Word and OneNote to Flowplan – with the page tree, images and attachments.
 
 ## From Confluence
 
@@ -22,6 +22,41 @@ What it turns into:
 - **Images** and **attachments** are uploaded; attachments the text does not show are listed as links at the end of the page. **Links to other pages** of the space point to the imported pages. Anchor links (`Page.html#Page-Heading`, `#…` on the same page, `ac:anchor` in the XML export) lead to the heading or anchor.
 - In the XML export only the current version of each page counts; older versions and blog posts are skipped. Creation and modification dates are kept.
 - Macros without a counterpart (such as table of contents or Jira queries) are dropped; the preview names them.
+
+## From BookStack {since=0.9.9}
+
+Flowplan brings pages over from BookStack once, through BookStack's REST API – without an export file, with shelves, books, chapters, images, attachments and tags. There is no ongoing sync: what you change in BookStack afterwards does not come over.
+
+::: steps
+
+1. In BookStack, your account's role needs the permission **Access system API** (**Settings → Roles**, among the system permissions). Exactly what your account may see is imported.
+2. In your profile (top right → **My Account** → **Access & Security**, in older versions **Edit Profile**), create a token under **API Tokens** with **Create Token** and copy the **Token ID** and **Token Secret** – BookStack shows the secret only once.
+3. In Flowplan: **Settings → Import & export → Import**, choose the target space at the top, **BookStack (API)** as the source, enter the **BookStack address** (such as `https://wiki.example.org`, also with a path like `https://example.org/wiki`), the **Token ID** and **Token secret** and choose **Load shelves and books**.
+4. **What to import** lists the shelves with their books and the **Books without a shelf**, all ticked. Untick what should stay behind – ticking or unticking a shelf takes its books along –, then **Check**.
+5. The **preview** counts shelves, books, chapters, pages, images, attachments and tags and names notes, such as books on several shelves. **Import** creates everything; then the first imported page opens.
+
+:::
+
+> [!WARNING]
+> The token may do everything your account may do in BookStack. Enter it only into the **Token ID** and **Token secret** fields in Flowplan – nowhere else. Flowplan sends it only to the address you gave, uses it for this import only and neither stores nor logs it. If you no longer need it afterwards, delete it in BookStack.
+
+### What it becomes {since=0.9.9}
+
+- Each **shelf** becomes a top-level page with its **books** below it, in the shelf's order. A book on several shelves comes only once, below the first (shelves by name); the preview names these books. Books on no shelf become top-level pages.
+- **Chapters** become sub-pages of their book, **pages** sub-pages of their chapter or book – in BookStack's order. The **description** of a shelf, book or chapter becomes the text of its page.
+- **Content:** headings, lists, task lists, tables, code blocks with their language, quotes, collapsible blocks and callouts (info, success, warning, danger become note, tip, warning and caution) become their blocks. Pages from the Markdown editor come through their Markdown as long as it holds no HTML, otherwise through their HTML like the others.
+- **Images** from BookStack (gallery and draw.io drawings, in original size) and **file attachments** are downloaded and stored as files of the page, each at most as large as the largest upload. Attachments linked in the text link to the file, the others are listed below the text; **link attachments** stay links, images from other addresses stay where they are. What cannot be downloaded is named as a note in the result and in the [import report](/migrate#import-report) – the import carries on regardless.
+- **Links** to pages (`/books/…/page/…`, `/link/123`), chapters, books and shelves of the import lead to the new pages, links to a paragraph (`#bkmrk-…`) to the same block. Links to anything not imported stay links to BookStack.
+- **Tags** become [tags of the page](/page-tags#tags-and-properties): `name` stays `name`, a tag with a value becomes `name: value`.
+- Drafts, earlier revisions, comments, permissions and the recycle bin are not imported; templates come as ordinary pages.
+
+### Time and limits {since=0.9.9}
+
+Preview and import run in the background, one at a time per person; the preview does not download images and attachments yet. BookStack limits API requests per minute (180 by default) – when it answers "too many requests", Flowplan waits as long as asked (at most a minute per request). A few hundred pages therefore take a few minutes. The limits of every import apply (`FLOWPLAN_IMPORT_MAX_DOCS`, `FLOWPLAN_IMPORT_MAX_FILES`); shelves, books and chapters count as pages.
+
+### BookStack in your own network {since=0.9.9}
+
+For the import, Flowplan only calls public HTTPS addresses. If BookStack runs in your local network or a VPN (such as `http://192.168.1.20`), the administration has to set `FLOWPLAN_IMPORT_ALLOW_PRIVATE=true` ([Configuration](/configuration#operations)) – then internal addresses and `http://` are allowed as well. Without the variable, Flowplan refuses such addresses with a note pointing to it.
 
 ## From Evernote
 

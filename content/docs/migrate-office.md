@@ -1,10 +1,10 @@
 ---
-keywords: Confluence, Evernote, ENEX, Google Docs, Takeout, Word, docx, OneNote, Import
+keywords: Confluence, BookStack, Evernote, ENEX, Google Docs, Takeout, Word, docx, OneNote, Import
 ---
 
-# Von Confluence, Evernote, Google Docs und Word
+# Von Confluence, BookStack, Evernote, Google Docs und Word
 
-Schritt für Schritt aus Confluence, Evernote, Google Docs, Microsoft Word und OneNote nach Flowplan – mit Seitenbaum, Bildern und Anhängen.
+Schritt für Schritt aus Confluence, BookStack, Evernote, Google Docs, Microsoft Word und OneNote nach Flowplan – mit Seitenbaum, Bildern und Anhängen.
 
 ## Von Confluence
 
@@ -22,6 +22,41 @@ Was daraus wird:
 - **Bilder** und **Anhänge** werden hochgeladen; Anhänge, die im Text nicht vorkommen, stehen als Links am Ende der Seite. **Links auf andere Seiten** des Bereichs zeigen auf die importierten Seiten. Anker-Links (`Seite.html#Seite-Ueberschrift`, `#…` auf derselben Seite, im XML-Export `ac:anchor`) führen zur Überschrift bzw. zum Anker.
 - Im XML-Export zählt nur die aktuelle Fassung jeder Seite; ältere Versionen und Blogbeiträge werden übersprungen. Erstellungs- und Änderungsdatum werden übernommen.
 - Makros ohne Entsprechung (etwa Inhaltsverzeichnis, Jira-Abfragen) fallen weg; die Vorschau nennt sie.
+
+## Von BookStack {since=0.9.9}
+
+Seiten aus BookStack holt Flowplan einmalig über die REST-API von BookStack – ohne Export-Datei, mit Regalen, Büchern, Kapiteln, Bildern, Anhängen und Tags. Ein laufender Abgleich findet nicht statt: Was du danach in BookStack änderst, kommt nicht mehr herüber.
+
+::: steps
+
+1. In BookStack braucht die Rolle deines Kontos die Berechtigung **Access system API** (**Settings → Roles**, bei den Systemberechtigungen). Importiert wird genau das, was dein Konto sehen darf.
+2. In deinem Profil (oben rechts → **My Account** → **Access & Security**, in älteren Versionen **Edit Profile**) unter **API Tokens** mit **Create Token** ein Token anlegen und **Token ID** und **Token Secret** kopieren – das Secret zeigt BookStack nur einmal.
+3. In Flowplan: **Einstellungen → Import & Export → Import**, oben den Zielbereich wählen, als Quelle **BookStack (API)**, die **Adresse von BookStack** (etwa `https://wiki.example.org`, auch mit Pfad wie `https://example.org/wiki`), **Token-ID** und **Token-Secret** eintragen und **Regale und Bücher laden**.
+4. Unter **Was importiert werden soll** stehen die Regale mit ihren Büchern und die **Bücher ohne Regal**, alle angehakt. Abwählen, was nicht mit soll – ein Regal ab- oder anhaken nimmt seine Bücher mit –, dann **Prüfen**.
+5. Die **Vorschau** zählt Regale, Bücher, Kapitel, Seiten, Bilder, Anhänge und Tags und nennt Hinweise, etwa Bücher in mehreren Regalen. **Importieren** legt alles an; danach öffnet sich die erste importierte Seite.
+
+:::
+
+> [!WARNING]
+> Das Token darf alles, was dein Konto in BookStack darf. Gib es nur in Flowplan in die Felder **Token-ID** und **Token-Secret** ein – nirgendwo sonst. Flowplan schickt es nur an die angegebene Adresse, verwendet es nur für diesen Import und speichert oder protokolliert es nicht. Brauchst du es danach nicht mehr, lösche es in BookStack.
+
+### Was daraus wird {since=0.9.9}
+
+- Jedes **Regal** wird eine Seite auf oberster Ebene mit seinen **Büchern** darunter, in der Reihenfolge des Regals. Steht ein Buch in mehreren Regalen, kommt es nur einmal unter das erste (die Regale nach Namen); die Vorschau nennt diese Bücher. Bücher ohne Regal werden Seiten auf oberster Ebene.
+- **Kapitel** werden Unterseiten ihres Buchs, **Seiten** Unterseiten ihres Kapitels oder Buchs – in der Reihenfolge aus BookStack. Die **Beschreibung** eines Regals, Buchs oder Kapitels wird der Text seiner Seite.
+- **Inhalt:** Überschriften, Listen, Aufgabenlisten, Tabellen, Codeblöcke mit ihrer Sprache, Zitate, aufklappbare Blöcke und Hinweisboxen (Info, Success, Warning, Danger werden zu Hinweis, Tipp, Warnung und Achtung) werden zu ihren Blöcken. Seiten aus dem Markdown-Editor kommen über ihr Markdown, solange es kein HTML enthält, sonst wie die übrigen über ihr HTML.
+- **Bilder** aus BookStack (Galerie und draw.io-Zeichnungen, in Originalgröße) und **Dateianhänge** werden heruntergeladen und als Dateien der Seite gespeichert, jede höchstens so groß wie die größte Datei beim Hochladen. Im Text verlinkte Anhänge verlinken auf die Datei, die übrigen stehen unter dem Text; **Link-Anhänge** bleiben Links, Bilder von anderen Adressen bleiben, wo sie sind. Was sich nicht laden lässt, nennt das Ergebnis als Hinweis und der [Importbericht](/migrate#importbericht) – der Import läuft trotzdem weiter.
+- **Links** auf Seiten (`/books/…/page/…`, `/link/123`), Kapitel, Bücher und Regale des Imports zeigen auf die neuen Seiten, Links auf einen Absatz (`#bkmrk-…`) auf denselben Block. Links auf nicht Importiertes bleiben Links auf BookStack.
+- **Tags** werden zu [Tags der Seite](/page-tags#tags-und-eigenschaften): `Name` bleibt `Name`, ein Tag mit Wert wird `Name: Wert`.
+- Nicht übernommen werden Entwürfe, frühere Fassungen (Revisions), Kommentare, Rechte und der Papierkorb; Vorlagen kommen als normale Seiten.
+
+### Dauer und Grenzen {since=0.9.9}
+
+Vorschau und Import laufen im Hintergrund, pro Person einer gleichzeitig; die Vorschau lädt noch keine Bilder und Anhänge. BookStack begrenzt die API-Anfragen je Minute (standardmäßig 180) – meldet es „zu viele Anfragen“, wartet Flowplan so lange wie verlangt (höchstens eine Minute je Anfrage). Einige hundert Seiten brauchen daher ein paar Minuten. Es gelten die Grenzen jedes Imports (`FLOWPLAN_IMPORT_MAX_DOCS`, `FLOWPLAN_IMPORT_MAX_FILES`); Regale, Bücher und Kapitel zählen als Seiten.
+
+### BookStack im eigenen Netz {since=0.9.9}
+
+Flowplan ruft für den Import nur öffentliche HTTPS-Adressen auf. Läuft BookStack im lokalen Netz oder einem VPN (etwa `http://192.168.1.20`), muss die Administration `FLOWPLAN_IMPORT_ALLOW_PRIVATE=true` setzen ([Konfiguration](/configuration#betrieb)) – dann sind auch interne Adressen und `http://` erlaubt. Ohne die Variable lehnt Flowplan solche Adressen mit einem Hinweis darauf ab.
 
 ## Von Evernote
 
