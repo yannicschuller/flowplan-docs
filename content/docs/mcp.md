@@ -77,6 +77,7 @@ Clients, die Streamable HTTP sprechen und eigene Kopfzeilen erlauben, nutzen die
 | --- | --- | --- |
 | `list_workspaces` | Deine Arbeitsbereiche mit deiner Rolle und den Bereichen, die du siehst | Lesen |
 | `list_pages` | Seiten eines Arbeitsbereichs, optional in einem Bereich oder unter einer Seite | Lesen |
+| `get_library` | Ein Bereich als [Bibliothek](/pages-and-spaces#bereich-als-bibliothek): Bücher, Kapitel und Seiten, die du lesen darfst, mit ihren Zahlen {since=0.9.9} | Lesen |
 | `search` | Volltextsuche über Seiten, Datensätze, Kommentare und Dateiinhalte; versteht auch #Tag, OR, NOT, created_by:, created:, type:, in:, title: | Lesen |
 | `list_collections` | Sammlungen eines Arbeitsbereichs (eigene und geteilte) mit ihrer Abfrage | Lesen |
 | `run_collection` | Die Seiten und Datensätze, die jetzt zu einer Sammlung passen, mit deinen Rechten | Lesen |
