@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@5dabc0b9",
+  "source": "github.com/yannicschuller/flowplan@858577ff",
   "slash": {
     "groups": {
       "recent": [
@@ -1956,6 +1956,8 @@
     "FLOWPLAN_DEAD_MAN_SWITCH",
     "FLOWPLAN_DIST_DIR",
     "FLOWPLAN_DROP_ROOT",
+    "FLOWPLAN_E2E_BUILD",
+    "FLOWPLAN_E2E_DEMO",
     "FLOWPLAN_EMERGENCY_ACCESS",
     "FLOWPLAN_ENCRYPTION_KEY",
     "FLOWPLAN_ENCRYPTION_KEY_FILE",
