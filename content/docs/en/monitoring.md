@@ -59,6 +59,7 @@ Under **Administration → Monitoring → Alerts by webhook**, enter an `https:/
 | Worker error | A worker that is set up reported an error in the last 24 hours. |
 | Many failed sign-ins | 50 or more failed sign-ins within an hour. |
 | Security incidents | Right away for every new incident of the [detection rules](/security-monitoring#detection-rules) (`ops.security`, with `rule` and `severity`). |
+| Litestream replica stuck | Right away, once per incident: the [Litestream replica in the bucket is stuck](/storage-and-backups#repair-the-litestream-state) (`ops.litestream_stuck`). {since=0.9.9} |
 
 Flowplan checks every ten minutes and sends at most **one message per event and day** as a `POST` with JSON:
 

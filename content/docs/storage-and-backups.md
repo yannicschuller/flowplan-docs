@@ -164,7 +164,13 @@ Vorher die bestehende `flowplan.sqlite` samt `-wal` und `-shm` beiseitelegen.
 
 Haben zwei Container gleichzeitig auf demselben Volume repliziert (siehe [SQLite ohne Überlappung ausrollen](/coolify-and-proxy#sqlite-ohne-ueberlappung-ausrollen)), meldet das Log alle 30 Sekunden `compaction failed … level=1 … close reader 0: file checksum mismatch`. Die Datenbank selbst ist in Ordnung – kaputt ist eine Änderungsdatei (LTX) von Litestream. Litestream repariert sie nicht von selbst: Die Zusammenfassung der Änderungen bleibt an dieser Datei hängen, alte Änderungsdateien werden nicht mehr aufgeräumt und eine Wiederherstellung aus dem Bucket, die über diese Datei läuft, bricht ab.
 
-**Schritt 1 – den lokalen Zustand zurücksetzen.** Das entfernt nur die lokalen Änderungsdateien in `.flowplan.sqlite-litestream/ltx`, nie die Datenbank (`litestream reset`):
+**Flowplan erkennt und repariert das selbst.** {since=0.9.9} Alle 15 Minuten listet der Container, der repliziert, einmal `<Präfix>/db/0000/` im Bucket. Liegen dort Änderungsdateien, die älter als eine Stunde sind, während Litestream in diesem Container schon länger als 30 Minuten läuft, hängt die Replik (kurz nach einer Pause warten alte Dateien zu Recht auf ihre erste Zusammenfassung). Dann zeigt **Administration → Überwachung** eine Warnung, Administratoren bekommen eine Nachricht je Vorfall ([Warnungen per Webhook](/monitoring#warnungen-per-webhook), Ereignis `ops.litestream_stuck`, und ihre Chat-Apps), und das Aktivitätsprotokoll einen Eintrag. Flowplan legt eine geplante Sicherung an, wenn sie eingeschaltet sind, und merkt die Reparatur für den **nächsten Neustart** vor; scheitert die Sicherung, merkt es nichts vor und versucht es nach sechs Stunden wieder.
+
+Bei diesem Start löscht Flowplan im Bucket nur `<Präfix>/db/`, setzt den lokalen Zustand zurück, und Litestream beginnt mit einem vollständigen Snapshot. Dateien, Sicherungen und die Datenbank im Volume bleiben; ohne Datenbank im Volume bleibt auch die Replik. Scheitert das Löschen, startet Flowplan normal, meldet es im Log und versucht es beim nächsten Start wieder.
+
+Von selbst startet Flowplan nicht neu: Die Warnung sagt „wird beim nächsten Neustart repariert“ (beim nächsten Update oder Neustart). **Jetzt neu starten** erledigt es sofort – der Container kommt über seine Neustart-Richtlinie wieder (`restart: unless-stopped`, in Coolify Standard). **Reparatur abbrechen** nimmt es zurück. Mit `FLOWPLAN_LITESTREAM_AUTOHEAL=off` gibt es nur Warnung und Nachricht; **Replik jetzt neu aufbauen** in der Warnung merkt die Reparatur von Hand vor.
+
+**Von Hand, Schritt 1 – den lokalen Zustand zurücksetzen.** Das entfernt nur die lokalen Änderungsdateien in `.flowplan.sqlite-litestream/ltx`, nie die Datenbank (`litestream reset`):
 
 ::: steps
 
@@ -181,11 +187,12 @@ Ohne laufenden Container geht dasselbe von Hand: Container stoppen, im Volume nu
 ::: steps
 
 1. Zur Vorsicht unter **Administration → Speicher & Sicherung** eine Sicherung erstellen und herunterladen.
-2. In der laufenden Instanz `touch /app/data/litestream-reset`, dann den Container **stoppen**.
-3. Im Bucket nur den Ordner `<Präfix>/db/` löschen (oder in einen anderen Ordner kopieren und dann löschen). **Nicht** `<Präfix>/uploads/` oder `<Präfix>/backups/` – das sind die Dateien und Sicherungen.
-4. Den Container starten. Litestream findet keinen Stand im Bucket, beginnt von vorn und lädt sofort einen vollständigen Snapshot der Datenbank hoch (`<Präfix>/db/0009/`).
+2. In der laufenden Instanz `echo remote > /app/data/litestream-reset` (dasselbe wie **Replik jetzt neu aufbauen**), dann den Container **stoppen** und wieder **starten**. {since=0.9.9}
+3. Beim Start löscht Flowplan im Bucket nur `<Präfix>/db/`, setzt den lokalen Zustand zurück und startet Litestream. Litestream findet keinen Stand im Bucket, beginnt von vorn und lädt sofort einen vollständigen Snapshot der Datenbank hoch (`<Präfix>/db/0009/`).
 
 :::
+
+Ohne `remote` (eine leere Datei `litestream-reset`) setzt Flowplan wie in Schritt 1 nur den lokalen Zustand zurück. Den Ordner `<Präfix>/db/` kannst du auch selbst im Bucket löschen, während der Container gestoppt ist – **nicht** `<Präfix>/uploads/` oder `<Präfix>/backups/`, das sind die Dateien und Sicherungen.
 
 Bis dieser Snapshot im Bucket liegt, gibt es dort keinen früheren Zeitpunkt zum Wiederherstellen; die Datenbank im Volume und deine Sicherungen bleiben unberührt. Ein neues `S3_PREFIX` statt des Löschens ist keine Alternative: Unter demselben Präfix liegen auch die Dateien.
 

@@ -16,6 +16,7 @@ Die Umgebungsvariablen für S3 und Datenbanksicherung, PostgreSQL und Cluster, V
 | `S3_REGION` | `us-east-1` | Region. Garage verlangt seinen eigenen Wert (oft `garage`). |
 | `S3_PREFIX` | `flowplan` | Ordner im Bucket; Dateien unter `<Präfix>/uploads/`, Datenbank unter `<Präfix>/db/`. |
 | `FLOWPLAN_LITESTREAM` | an | `off`: nur Dateien spiegeln, Datenbank nicht sichern. |
+| `FLOWPLAN_LITESTREAM_AUTOHEAL` | an | `off`: eine [hängende Litestream-Replik](/storage-and-backups#litestream-zustand-reparieren) nur melden, nicht beim nächsten Neustart von selbst neu aufbauen. {since=0.9.9} |
 | `LITESTREAM_SSE_C_KEY` | *leer* | Optional: der Speicheranbieter verschlüsselt die Litestream-Kopie (SSE-C, 32 Bytes base64, nur über https und bei Anbietern, die SSE-C können). |
 
 Details: [Speicher, S3 und Sicherung](/storage-and-backups).
