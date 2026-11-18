@@ -101,6 +101,8 @@ Vermeide deshalb:
 - mehr als eine Instanz, Replica oder Kopie der Ressource mit demselben Volume (auch eine zweite Ressource, etwa für `:beta`, braucht ihr **eigenes** Volume und ihr eigenes `S3_PREFIX`);
 - `docker compose up` mit einem zweiten Projektnamen auf demselben Volume oder einen zusätzlichen `docker run … -v flowplan-data:/app/data`, während die Instanz läuft.
 
+**In Coolify:** in den Einstellungen der Ressource, Abschnitt **Container**, bei **Container naming** **Consistent name (no rolling updates)** wählen und einen **Custom container name** eintragen (z. B. `flowplan-production`), dann einmal deployen. Coolify stoppt dann den alten Container, bevor es den neuen startet; ein Update unterbricht Flowplan ein paar Sekunden. Den Healthcheck an lassen und die **Stop grace period** bei 30 Sekunden oder mehr, damit Flowplan und Litestream sauber enden.
+
 Brauchst du Updates ohne Unterbrechung, nimm [PostgreSQL](/postgresql) – dort darf ein Update kurz überlappen – oder den [Cluster-Modus](/cluster).
 
 **Das Sicherheitsnetz:** Jeder Container hält beim Start eine exklusive Sperre auf `/app/data/.flowplan.lock` (`flock`), solange er läuft. Findet ein zweiter Container die Sperre belegt,
