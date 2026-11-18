@@ -81,7 +81,7 @@ Coolify beobachtet die Registry nicht selbst. Die Image-Workflows der Repositori
 
 | Repository | Image in Coolify | Ausgerollt bei |
 | --- | --- | --- |
-| flowplan, Beta-Instanz (`COOLIFY_BETA_WEBHOOK`) | `ghcr.io/yannicschuller/flowplan:beta` | jedem manuellen Build (**Actions → Docker image → Run workflow**) und jedem Release, das neuer ist als die aktuelle Beta |
+| flowplan, Beta-Instanz (`COOLIFY_BETA_WEBHOOK`) | `ghcr.io/yannicschuller/flowplan:beta` | jedem Beta-Build (**Actions → Docker image → Run workflow**) |
 | flowplan, Produktiv-Instanz (`COOLIFY_WEBHOOK`) | `ghcr.io/yannicschuller/flowplan:latest` | jedem Release |
 | flowplan-website | `ghcr.io/yannicschuller/flowplan-website:latest` | jedem Push auf `main`, sobald CI grün ist und das neue Image seine Seiten ausliefert |
 | flowplan-docs | `ghcr.io/yannicschuller/flowplan-docs:latest` | jedem Push auf `main`, sobald CI grün ist und das neue Image seine Seiten ausliefert |
