@@ -64,7 +64,7 @@ The repair is a marker file `/app/data/litestream-reset`, read on the next start
 | empty (`touch`) | Resets only the local state (`.flowplan.sqlite-litestream`); Litestream carries on from the bucket. |
 | `remote` as its first line {since=0.10.0} | Also deletes `<prefix>/db/` in the bucket; Litestream starts afresh with a full snapshot. Written by the self-healing and by **Rebuild the replica now**. |
 
-Never the database, uploads or backups are touched. The steps, what the log shows and what to do without a running container are under [Repair the Litestream state](/storage-and-backups#repair-the-litestream-state).
+Never the database, uploads or backups are touched. The steps, what the log shows and what to do without a running container are under [Repair the Litestream state](/restore#repair-the-litestream-state).
 
 ## Two containers on one data folder
 

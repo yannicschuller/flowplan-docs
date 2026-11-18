@@ -6,7 +6,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { Marked } from "marked";
 import { docMarkdown, docSearchIndex, docSlugs, docSource, frontMatter, headingId, llmsFull, loadDoc, renderMarkdown } from "../lib/docs";
-import { compareVersions, isUnreleased, latestRelease, RELEASE, sinceHtml, sinceText, stripSince, stripSinceHtml } from "../lib/release";
+import { compareVersions, isOldMarker, isUnreleased, latestRelease, MARKER_MINORS, RELEASE, sinceHtml, sinceText, stripSince, stripSinceHtml } from "../lib/release";
 import { handleMessage } from "../lib/mcp";
 import { LOCALES } from "../lib/i18n";
 import { blockKey } from "../scripts/split/block-key";
@@ -48,6 +48,32 @@ test("the badge: new in the :beta image before the release, a quiet since afterw
   assert.equal(sinceHtml("0.9.6", "en", "0.9.6"), '<span class="since" data-state="released">Since 0.9.6</span>');
   assert.equal(sinceHtml("0.9.6", "de", "1.0.0"), '<span class="since" data-state="released">Seit 0.9.6</span>');
   for (const html of [beta, sinceHtml("0.9.6", "de", "0.9.6")]) assert.equal(stripSinceHtml(`Tabs ${html}`), "Tabs");
+});
+
+test("markers more than three minor versions behind the latest release are hidden, but stay in the source (#362)", () => {
+  assert.equal(MARKER_MINORS, 3);
+  assert.equal(isOldMarker("0.7.0", "0.10.1"), false, "three minors behind still shows");
+  assert.equal(isOldMarker("0.6.9", "0.10.1"), true);
+  assert.equal(isOldMarker("0.10.2", "0.10.1"), false, "unreleased is never old");
+  assert.equal(isOldMarker("0.9.6", "1.2.0"), false, "the previous major counts as one step before 1.0");
+  assert.equal(isOldMarker("0.9.6", "1.3.0"), true);
+  assert.equal(isOldMarker("0.9.6", "2.0.0"), true);
+  assert.equal(sinceHtml("0.6.0", "de", "0.10.1"), "");
+  assert.equal(sinceHtml("0.7.0", "de", "0.10.1"), '<span class="since" data-state="released">Seit 0.7.0</span>');
+  const md = "## Tabs {since=0.6.0}\n\nText. {since=0.6.0} More. {since=0.10.0} Newer.";
+  assert.equal(sinceText(md, "en", "0.10.1"), "## Tabs\n\nText. More. (since 0.10.0) Newer.");
+  const old = withRelease("0.10.1", () => renderMarkdown("## Tabs {since=0.6.0}\n\nText. {since=0.6.0} More.", "en"));
+  assert.doesNotMatch(old.html, /class="since"|\{since/);
+  assert.match(old.html, /<h2 id="tabs">/);
+  // A release far in the future hides every marker; the pages stay intact.
+  withRelease("9.0.0", () => {
+    for (const locale of LOCALES)
+      for (const slug of ["blocks", "first-steps"]) {
+        assert.doesNotMatch(loadDoc(slug, locale)!.html, /class="since"/, `${locale}/${slug}`);
+        assert.doesNotMatch(docMarkdown(slug, locale), /\((since|seit) \d/, `${locale}/${slug}.md`);
+      }
+  });
+  assert.match(readFileSync(docSource("blocks", "en"), "utf8"), /\{since=0\.9\.6\}/, "the source keeps the marker");
 });
 
 test("in Markdown for tools the marker becomes words", () => {

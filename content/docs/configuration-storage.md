@@ -17,7 +17,7 @@ Die Umgebungsvariablen für S3 und Datenbanksicherung, PostgreSQL und Cluster, V
 | `S3_PREFIX` | `flowplan` | Ordner im Bucket; Dateien unter `<Präfix>/uploads/`, Datenbank unter `<Präfix>/db/`. |
 | `FLOWPLAN_LITESTREAM` | an | `off`: nur Dateien spiegeln, Datenbank nicht sichern. |
 | `FLOWPLAN_LITESTREAM_LOG_LEVEL` | `info` | Wie viel Litestream ins Log schreibt: `debug`, `info`, `warn` oder `error`. `warn` lässt die Routinezeilen jeder Verdichtung weg und behält Warnungen und Fehler. {since=0.10.2} |
-| `FLOWPLAN_LITESTREAM_AUTOHEAL` | an | `off`: eine [hängende Litestream-Replik](/storage-and-backups#litestream-zustand-reparieren) nur melden, nicht beim nächsten Neustart von selbst neu aufbauen. {since=0.10.0} |
+| `FLOWPLAN_LITESTREAM_AUTOHEAL` | an | `off`: eine [hängende Litestream-Replik](/restore#litestream-zustand-reparieren) nur melden, nicht beim nächsten Neustart von selbst neu aufbauen. {since=0.10.0} |
 | `LITESTREAM_SSE_C_KEY` | *leer* | Optional: der Speicheranbieter verschlüsselt die Litestream-Kopie (SSE-C, 32 Bytes base64, nur über https und bei Anbietern, die SSE-C können). |
 
 Details: [Speicher, S3 und Sicherung](/storage-and-backups).

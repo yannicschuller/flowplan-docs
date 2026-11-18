@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { LOCALE_HEADER } from "@/lib/i18n-server";
+import { LOCALE_HEADER, PAGE_LOCALE_HEADER } from "@/lib/i18n-server";
 import { isMcpRequest } from "@/lib/mcp-request";
 
 // /de/… and /en/… are the same pages in a fixed language (one address per
@@ -19,8 +19,11 @@ export function proxy(request: NextRequest) {
     url.pathname = "/api/mcp";
     return NextResponse.rewrite(url);
   }
-  const match = pathname.match(/^\/(de|en)(\/.*)?$/);
-  const locale = match?.[1];
+  // /fr/… and /zh/… are English addresses with single translated pages
+  // (lib/i18n.ts, PAGE_LOCALES).
+  const match = pathname.match(/^\/(de|en|fr|zh)(\/.*)?$/);
+  const page = match?.[1] === "fr" || match?.[1] === "zh" ? match[1] : undefined;
+  const locale = page ? "en" : match?.[1];
   const rest = match ? match[2] || "/" : pathname;
   const url = request.nextUrl.clone();
   const markdown = rest.match(/^\/([a-z0-9-]+)\.md$/);
@@ -29,10 +32,12 @@ export function proxy(request: NextRequest) {
   else return NextResponse.next();
   const headers = new Headers(request.headers);
   headers.delete(LOCALE_HEADER);
+  headers.delete(PAGE_LOCALE_HEADER);
   if (locale) headers.set(LOCALE_HEADER, locale);
+  if (page) headers.set(PAGE_LOCALE_HEADER, page);
   return NextResponse.rewrite(url, { request: { headers } });
 }
 
 export const config = {
-  matcher: ["/mcp", "/de", "/en", "/de/:path*", "/en/:path*", "/:slug.md"],
+  matcher: ["/mcp", "/de", "/en", "/fr", "/zh", "/de/:path*", "/en/:path*", "/fr/:path*", "/zh/:path*", "/:slug.md"],
 };

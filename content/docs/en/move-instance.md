@@ -79,7 +79,7 @@ If the old instance runs with S3 (files in the bucket) and Litestream (a continu
 
 :::
 
-With `FLOWPLAN_LITESTREAM=off` there is no continuous copy: use the newest scheduled backup from `<prefix>/backups/` instead (see [Restore](/storage-and-backups#restore)). The pre-flight check of way A notices a Litestream copy in the bucket and points to this way.
+With `FLOWPLAN_LITESTREAM=off` there is no continuous copy: use the newest scheduled backup from `<prefix>/backups/` instead (see [Restore](/restore)). The pre-flight check of way A notices a Litestream copy in the bucket and points to this way.
 
 > [!NOTE]
 > Active [workflows](/workflows) arrive on the new instance **paused** – with their draft, versions and held runs. So nothing starts twice while the old instance is still running. Check them afterwards and activate them again.

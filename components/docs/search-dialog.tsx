@@ -22,8 +22,9 @@ const optionId = (i: number) => `docs-search-option-${i}`;
 // (CSS :target). The index of all pages is fetched once, when the dialog
 // first opens (version: a fingerprint of the content, so the response can
 // be cached). Nothing leaves the browser except the anonymous counters of
-// lib/track.ts.
-export default function SearchDialog({ version, popular, opens }: { version: string; popular: { slug: string; title: string }[]; opens: number }) {
+// lib/track.ts and, when the site counts them (misses), the normalised term
+// of a search without results (lib/search-misses.ts) – without cookies.
+export default function SearchDialog({ version, popular, opens, misses = false }: { version: string; popular: { slug: string; title: string }[]; opens: number; misses?: boolean }) {
   const t = useT();
   const locale = useLocale();
   const prefix = usePrefix();
@@ -85,7 +86,15 @@ export default function SearchDialog({ version, popular, opens }: { version: str
     if (!term || !index || reported.current.has(term)) return;
     reported.current.add(term);
     track("search", { term, results: resultBucket(results.length), lang: locale });
-  }, [query, index, results, locale]);
+    if (misses && !results.length && !looksSensitive(term))
+      fetch("/api/search-misses", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ term, lang: locale }),
+        credentials: "omit",
+        keepalive: true,
+      }).catch(() => {});
+  }, [query, index, results, locale, misses]);
   useEffect(() => {
     const timer = setTimeout(report, 1200);
     return () => clearTimeout(timer);

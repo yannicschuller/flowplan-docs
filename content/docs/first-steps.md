@@ -10,7 +10,7 @@ Vom ersten Anmelden bis zur ersten eigenen Seite: was du in den ersten zehn Minu
 
 Du meldest dich mit E-Mail und Passwort an, mit einem Passkey (Fingerabdruck, Gesicht oder Geräte-PIN) oder – wenn deine Organisation das eingerichtet hat – über **Mit SSO anmelden** beim Login deiner Organisation (OpenID Connect, etwa Keycloak, Authentik, Zitadel oder Entra ID). Den Weg, den du auf diesem Gerät zuletzt benutzt hast, bietet die Anmeldeseite als großen Knopf an; das Formular öffnet **Mit E-Mail und Passwort**. Ein Konto legst du mit **Konto erstellen** an, sofern die Instanz die Registrierung erlaubt oder du eingeladen wurdest. Passkeys richtest du danach unter **Einstellungen → Konto & Sicherheit** ein. Alles Weitere unter [Anmeldung](/sign-in).
 
-Auf einer ganz neuen Instanz legst du das erste Konto an – es verwaltet die Instanz. Ziehst du um oder installierst neu, wählst du dort stattdessen **Aus Sicherung wiederherstellen** ([Beim Einrichten wiederherstellen](/storage-and-backups#beim-einrichten-wiederherstellen)).
+Auf einer ganz neuen Instanz legst du das erste Konto an – es verwaltet die Instanz. Ziehst du um oder installierst neu, wählst du dort stattdessen **Aus Sicherung wiederherstellen** ([Beim Einrichten wiederherstellen](/restore#beim-einrichten-wiederherstellen)).
 
 Beim ersten Anmelden legt Flowplan einen privaten Arbeitsbereich mit Beispielseiten an. Bei Single Sign-on kommen Name, E-Mail-Adresse und – falls vorhanden – das Profilbild vom Login-Anbieter.
 
@@ -73,6 +73,8 @@ Im Bearbeitungsmodus:
 Aufgaben hakst du direkt im Widget ab, Gewohnheiten ebenso; im Journal-Widget schreibst du ein paar Zeilen in den heutigen Eintrag, im Notizzettel notierst du, was nirgends sonst hinpasst – er wird beim Tippen gespeichert und ist auf allen Geräten gleich.
 
 Widgets zeigen nur, was du ohnehin sehen darfst: Seiten anderer Arbeitsbereiche erscheinen nicht, Journale hinter einer PIN zeigen nur ihren Namen, und von Ende-zu-Ende-verschlüsselten Bereichen sieht die Startseite keinen Inhalt.
+
+Eine Seite mit Kennzahlen und Diagrammen, die mehrere Personen gemeinsam ansehen, ist ein [Dashboard](/dashboards#dashboard-oder-startseite).
 
 > [!TIP]
 > Eigentümerinnen und Eigentümer eines Arbeitsbereichs legen über **… → Als Standard für Mitglieder festlegen** die Startseite fest, die neue Mitglieder (und alle ohne eigene) sehen. Persönliche Notizen werden dabei nicht übernommen.

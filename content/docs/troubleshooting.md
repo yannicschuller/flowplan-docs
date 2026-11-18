@@ -64,7 +64,7 @@ Die Reparatur ist eine Markierungsdatei `/app/data/litestream-reset`, die der n�
 | leer (`touch`) | Setzt nur den lokalen Zustand zurück (`.flowplan.sqlite-litestream`); Litestream macht vom Bucket aus weiter. |
 | `remote` als erste Zeile {since=0.10.0} | Löscht zusätzlich `<Präfix>/db/` im Bucket; Litestream beginnt neu mit einem vollständigen Snapshot. Geschrieben von der Selbstheilung und von **Replik jetzt neu aufbauen**. |
 
-Datenbank, Dateien und Sicherungen bleiben unberührt. Die Schritte, was das Log zeigt und was ohne laufenden Container zu tun ist, stehen unter [Litestream-Zustand reparieren](/storage-and-backups#litestream-zustand-reparieren).
+Datenbank, Dateien und Sicherungen bleiben unberührt. Die Schritte, was das Log zeigt und was ohne laufenden Container zu tun ist, stehen unter [Litestream-Zustand reparieren](/restore#litestream-zustand-reparieren).
 
 ## Zwei Container auf einem Datenordner
 

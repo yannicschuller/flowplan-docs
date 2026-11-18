@@ -99,7 +99,7 @@ The image contains Node and Litestream for the S3 backup, on Debian 13. There is
 
 :::
 
-**Moving or reinstalling?** Instead of the first account, the setup screen offers **Restore from a backup**: upload a backup file or fetch the newest backup from S3 or via SFTP, encrypted ones with the old instance's key. Afterwards you sign in with the accounts of the backup ([Restore while setting up](/en/storage-and-backups#restore-while-setting-up)). To move from a running instance there is also [Moving an instance](/en/move-instance).
+**Moving or reinstalling?** Instead of the first account, the setup screen offers **Restore from a backup**: upload a backup file or fetch the newest backup from S3 or via SFTP, encrypted ones with the old instance's key. Afterwards you sign in with the accounts of the backup ([Restore while setting up](/restore#restore-while-setting-up)). To move from a running instance there is also [Moving an instance](/en/move-instance).
 
 > [!WARNING]
 > With SQLite, **exactly one instance** runs. Several replicas would write to the same SQLite file. Do not simply scale horizontally; when updating, stop the old container before the new one. Several instances only work in [cluster mode](/en/cluster) with PostgreSQL, Redis and S3.

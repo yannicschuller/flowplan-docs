@@ -10,6 +10,9 @@
 // :beta-Image" / "New in 0.9.6 · in the :beta image"; once that version is
 // released, as a muted "Seit 0.9.6" / "Since 0.9.6". The Markdown for tools
 // (/slug.md, llms-full.txt, the MCP server) gets the same words in brackets.
+// A marker more than three minor versions behind the latest release shows
+// nothing at all (isOldMarker) – everyone runs something newer by then –
+// but stays in the Markdown as the history.
 //
 // The latest release is content/release.json, which scripts/app-files.mjs
 // writes from GitHub before every build (the committed copy is the
@@ -35,6 +38,20 @@ export function compareVersions(a: string, b: string) {
 }
 export const isUnreleased = (version: string, latest = latestRelease()) => compareVersions(version, latest) > 0;
 
+// How many minor versions a marker may lag behind the latest release and
+// still show: with 0.10.1 out, "Seit 0.7.0" still shows, 0.6.x and older
+// are hidden. Within a major version the minor numbers count; a marker of
+// the previous major version counts as one step before X.0 (so 0.x
+// markers show until 1.3.0), older majors are always hidden.
+export const MARKER_MINORS = 3;
+export function isOldMarker(version: string, latest = latestRelease(), keep = MARKER_MINORS) {
+  if (compareVersions(version, latest) > 0) return false;
+  const [major, minor] = version.split(".").map(Number);
+  const [lastMajor, lastMinor] = latest.split(".").map(Number);
+  const behind = major === lastMajor ? lastMinor - minor : major === lastMajor - 1 ? lastMinor + 1 : Infinity;
+  return behind > keep;
+}
+
 // The marker in the Markdown; the whole of it, so "{since=0.9}" stays text
 // (and the tests notice it).
 export const SINCE_MARK = /\{since=(\d+\.\d+\.\d+)\}/g;
@@ -49,17 +66,23 @@ const words: Record<Locale, { beta: [string, string]; since: string }> = {
 // hear a comma.
 export function sinceHtml(version: string, locale: Locale, latest = latestRelease()) {
   const w = words[locale];
+  if (isOldMarker(version, latest)) return "";
   if (!isUnreleased(version, latest)) return `<span class="since" data-state="released">${w.since} ${version}</span>`;
   return `<span class="since" data-state="beta">${w.beta[0]} ${version}<span aria-hidden="true"> · </span><span class="sr-only">, </span>${w.beta[1]}</span>`;
 }
 // The badge's words in brackets, for the Markdown that tools read.
 export function sinceWords(version: string, locale: Locale, latest = latestRelease()) {
   const w = words[locale];
+  if (isOldMarker(version, latest)) return "";
   if (!isUnreleased(version, latest)) return `(${w.since.toLowerCase()} ${version})`;
   return `(${w.beta[0].toLowerCase()} ${version}, ${w.beta[1]})`;
 }
+// An old marker goes with the space before it, so no double space is left.
 export const sinceText = (markdown: string, locale: Locale, latest = latestRelease()) =>
-  markdown.replace(SINCE_MARK, (_, version: string) => sinceWords(version, locale, latest));
+  markdown.replace(/([ \t]*)\{since=(\d+\.\d+\.\d+)\}/g, (_, space: string, version: string) => {
+    const text = sinceWords(version, locale, latest);
+    return text ? `${space}${text}` : "";
+  });
 
 // Without markers: rendered badges (heading ids, the table of contents, the
 // search index) and markers in Markdown (headings read elsewhere).

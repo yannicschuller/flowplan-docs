@@ -99,7 +99,7 @@ Das Image enthält Node und Litestream für die S3-Sicherung, auf Debian 13. Ein
 
 :::
 
-**Umzug oder Neuinstallation?** Statt des ersten Kontos bietet der Einrichtungsbildschirm **Aus Sicherung wiederherstellen**: eine Sicherungsdatei hochladen oder die neueste Sicherung aus S3 oder per SFTP holen, verschlüsselte mit dem Schlüssel der alten Instanz. Danach meldest du dich mit den Konten der Sicherung an ([Beim Einrichten wiederherstellen](/storage-and-backups#beim-einrichten-wiederherstellen)). Für einen Umzug von einer laufenden Instanz gibt es außerdem [Instanz umziehen](/move-instance).
+**Umzug oder Neuinstallation?** Statt des ersten Kontos bietet der Einrichtungsbildschirm **Aus Sicherung wiederherstellen**: eine Sicherungsdatei hochladen oder die neueste Sicherung aus S3 oder per SFTP holen, verschlüsselte mit dem Schlüssel der alten Instanz. Danach meldest du dich mit den Konten der Sicherung an ([Beim Einrichten wiederherstellen](/restore#beim-einrichten-wiederherstellen)). Für einen Umzug von einer laufenden Instanz gibt es außerdem [Instanz umziehen](/move-instance).
 
 > [!WARNING]
 > Mit SQLite läuft **genau eine Instanz**. Mehrere Replikate würden dieselbe SQLite-Datei beschreiben. Nicht einfach horizontal skalieren; bei Updates den alten Container vor dem neuen stoppen. Mehrere Instanzen gehen nur im [Cluster-Modus](/cluster) mit PostgreSQL, Redis und S3.

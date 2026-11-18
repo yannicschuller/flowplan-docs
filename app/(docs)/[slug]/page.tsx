@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { docAnchors, docSlugs, editUrl, feedbackUrl, loadDoc } from "@/lib/docs";
+import { docAnchors, docSlugs, editUrl, feedbackUrl, loadDoc, loadTranslation, pageTranslations } from "@/lib/docs";
 import { AnchorRedirect } from "@/components/docs/anchor-redirect";
-import { localePrefix, requestLocale } from "@/lib/i18n-server";
+import { localePrefix, pageLocale, requestLocale } from "@/lib/i18n-server";
 import { docsUrl, websiteUrl } from "@/lib/links";
 import { trackAttrs } from "@/lib/track";
 import { absolute, jsonLd, pageAlternates, socialMetadata, softwareJson } from "@/lib/seo";
-import { translate } from "@/lib/i18n";
+import { PAGE_LOCALE_NOTES, PAGE_LOCALE_TAGS, translate, type Locale, type PageLocale } from "@/lib/i18n";
 import s from "@/components/docs/docs.module.css";
 import { CodeCopy } from "@/components/docs/code-copy";
 import { TableFilterSlot, TocSpy } from "@/components/docs/page-tools";
@@ -16,6 +16,23 @@ import { askLinks } from "@/lib/ask-ai";
 import { mcpUrl } from "@/lib/mcp-request";
 
 export const dynamicParams = false;
+
+// On /fr/… and /zh/… the translated page, or the English one (lib/i18n.ts).
+async function pageFor(slug: string, locale: Locale) {
+  const lang = await pageLocale();
+  const translation = lang ? loadTranslation(slug, lang) : null;
+  return { lang, translation: !!translation, doc: translation ?? loadDoc(slug, locale) };
+}
+// hreflang for the German and English page and every translation.
+function alternates(slug: string, locale: Locale, own?: PageLocale) {
+  const base = pageAlternates(`/${slug}`, locale)!;
+  const extra = Object.fromEntries(pageTranslations(slug).map((lang) => [PAGE_LOCALE_TAGS[lang], `/${lang}/${slug}`]));
+  return {
+    ...base,
+    ...(own ? { canonical: `/${own}/${slug}`, types: undefined } : {}),
+    languages: { ...(base.languages as Record<string, string>), ...extra },
+  };
+}
 export function generateStaticParams() {
   return docSlugs.map((slug) => ({ slug }));
 }
@@ -26,12 +43,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const slug = (await params).slug;
   const locale = await requestLocale();
-  const doc = loadDoc(slug, locale);
+  const { lang, translation, doc } = await pageFor(slug, locale);
   if (!doc) return {};
   return {
     title: doc.title,
     description: doc.summary,
-    alternates: pageAlternates(`/${slug}`, locale),
+    alternates: alternates(slug, locale, translation ? lang : undefined),
     ...socialMetadata({ title: doc.title, description: doc.summary, path: `/${slug}`, locale, type: "article" }),
   };
 }
@@ -40,8 +57,9 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
   const slug = (await params).slug;
   const locale = await requestLocale();
   const t = translate(locale);
-  const doc = loadDoc(slug, locale);
+  const { lang: partial, translation, doc } = await pageFor(slug, locale);
   if (!doc) notFound();
+  const others = translation ? [] : pageTranslations(slug);
   const prefix = await localePrefix();
   const anchors = docAnchors(slug);
   const dateText = (iso: string) => new Date(iso).toLocaleDateString(locale === "de" ? "de-DE" : "en-GB", { dateStyle: "long", timeZone: "UTC" });
@@ -64,7 +82,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
   // The page's Markdown in the page's language, for "Ask Claude" and others.
   const ask = askLinks(locale, {
     title: doc.title,
-    markdownUrl: absolute(`/${locale}/${slug}.md`),
+    markdownUrl: absolute(translation ? `/${partial}/${slug}.md` : `/${locale}/${slug}.md`),
     llmsUrl: absolute(locale === "de" ? "/de/llms.txt" : "/llms.txt"),
     mcpUrl: mcpUrl(),
   });
@@ -75,8 +93,8 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
         "@type": "TechArticle",
         headline: doc.title,
         description: doc.summary,
-        inLanguage: locale,
-        url: absolute(`/${locale}/${slug}`),
+        inLanguage: translation ? PAGE_LOCALE_TAGS[partial!] : locale,
+        url: absolute(translation ? `/${partial}/${slug}` : `/${locale}/${slug}`),
         articleSection: doc.group,
         isPartOf: { "@type": "WebSite", name: t("Flowplan-Dokumentation", "Flowplan documentation"), url: absolute(`/${locale}`) },
         about: softwareJson(),
@@ -92,7 +110,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
     ],
   };
   // The text's language, when an English address still shows the German page.
-  const lang = doc.translated ? undefined : "de";
+  const lang = translation ? PAGE_LOCALE_TAGS[partial!] : doc.translated ? undefined : "de";
   const modified = doc.modified ? dateText(doc.modified) : undefined;
   const tocList = (where: "side" | "inline") => (
     <ol data-toc={where}>
@@ -114,6 +132,17 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
         <h1 className={s.title} lang={lang}>
           {doc.title}
         </h1>
+        {partial && (
+          <aside className={s.untranslated} role="note" lang={PAGE_LOCALE_TAGS[partial]}>
+            {translation ? (
+              <>
+                {PAGE_LOCALE_NOTES[partial].only} <a href={`/en/${slug}`} lang="en" hrefLang="en">{PAGE_LOCALE_NOTES[partial].english}</a>
+              </>
+            ) : (
+              PAGE_LOCALE_NOTES[partial].missing
+            )}
+          </aside>
+        )}
         {!doc.translated && (
           <aside className={s.untranslated} role="note">
             This page is not translated yet – you are reading the German version.
@@ -142,7 +171,22 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
             )}
           </p>
         )}
-        <PageAi claude={ask.claude} chatgpt={ask.chatgpt} markdown={`/${locale}/${slug}.md`} />
+        {others.length > 0 && (
+          <p className={s.pageMeta}>
+            <span>
+              {t("Auch auf", "Also in")}{" "}
+              {others.map((other, i) => (
+                <span key={other}>
+                  {i > 0 && " · "}
+                  <a href={`/${other}/${slug}`} lang={PAGE_LOCALE_TAGS[other]} hrefLang={PAGE_LOCALE_TAGS[other]}>
+                    {other === "fr" ? "Français" : "简体中文"}
+                  </a>
+                </span>
+              ))}
+            </span>
+          </p>
+        )}
+        <PageAi claude={ask.claude} chatgpt={ask.chatgpt} markdown={translation ? `/${partial}/${slug}.md` : `/${locale}/${slug}.md`} />
         {doc.toc.length > 2 && (
           <details className={s.tocInline}>
             <summary>{t("Auf dieser Seite", "On this page")}</summary>

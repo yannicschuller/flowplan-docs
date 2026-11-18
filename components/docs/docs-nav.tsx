@@ -76,7 +76,8 @@ const loadDialog = () => import("./search-dialog");
 const SearchDialog = dynamic(loadDialog, { ssr: false });
 
 // The field in the header opens the search dialog; so do ⌘K / Ctrl+K and "/".
-export function DocsSearch({ version, popular }: { version: string; popular: { slug: string; title: string }[] }) {
+// misses: count searches without results (lib/search-misses.ts).
+export function DocsSearch({ version, popular, misses = false }: { version: string; popular: { slug: string; title: string }[]; misses?: boolean }) {
   const t = useT();
   const [opens, setOpens] = useState(0);
   const [mac, setMac] = useState(true);
@@ -107,7 +108,7 @@ export function DocsSearch({ version, popular }: { version: string; popular: { s
         <span>{t("Doku durchsuchen", "Search docs")}</span>
         <kbd aria-hidden="true">{mac ? "⌘K" : "Ctrl K"}</kbd>
       </button>
-      {opens > 0 && <SearchDialog version={version} popular={popular} opens={opens} />}
+      {opens > 0 && <SearchDialog version={version} popular={popular} opens={opens} misses={misses} />}
     </>
   );
 }
