@@ -205,7 +205,10 @@
 ["mehr-schutz","more-protection","storage-encryption","mehr-schutz","more-protection"],
 ["markdown-export-und-git","markdown-export-and-git","markdown-git-export","",""],
 ["in-ein-git-repository-uebertragen","push-into-a-git-repository","markdown-git-export","in-ein-git-repository-uebertragen","push-into-a-git-repository"],
-["git-export-eines-bereichs","git-export-of-a-space","markdown-git-export","git-export-eines-bereichs","git-export-of-a-space"]],"whiteboards":[
+["git-export-eines-bereichs","git-export-of-a-space","markdown-git-export","git-export-eines-bereichs","git-export-of-a-space"],
+["wiederherstellen","restore","restore","",""],
+["litestream-zustand-reparieren","repair-the-litestream-state","restore","litestream-zustand-reparieren","repair-the-litestream-state"],
+["beim-einrichten-wiederherstellen","restore-while-setting-up","restore","beim-einrichten-wiederherstellen","restore-while-setting-up"]],"whiteboards":[
 ["mindmaps","mind-maps","whiteboard-diagrams","mindmaps","mind-maps"],
 ["diagramme-formenbibliotheken","diagrams-shape-libraries","whiteboard-diagrams","diagramme-formenbibliotheken","diagrams-shape-libraries"],
 ["automatisch-anordnen","arrange-automatically","whiteboard-diagrams","automatisch-anordnen","arrange-automatically"],

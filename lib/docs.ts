@@ -153,8 +153,8 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       },
       {
         title: ["Speicher und Betrieb", "Storage and operations"],
-        intro: ["S3, Sicherungen, Verschlüsselung, Überwachung und Fehlersuche.", "S3, backups, encryption, monitoring and troubleshooting."],
-        pages: ["storage-and-backups", "storage-encryption", "markdown-git-export", "operations", "monitoring", "troubleshooting", "security-monitoring"],
+        intro: ["S3, Sicherungen, Wiederherstellen, Verschlüsselung, Überwachung und Fehlersuche.", "S3, backups, restoring, encryption, monitoring and troubleshooting."],
+        pages: ["storage-and-backups", "restore", "storage-encryption", "markdown-git-export", "operations", "monitoring", "troubleshooting", "security-monitoring"],
       },
       {
         title: ["Skalieren", "Scaling"],

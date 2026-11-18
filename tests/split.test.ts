@@ -122,6 +122,9 @@ test("old anchors resolve, also in the other language", () => {
   assert.equal(resolveAnchor(docAnchors("sign-in"), "user-provisioning-scim", "en")!.slug, "scim-and-ldap");
   assert.equal(resolveAnchor(docAnchors("operations"), "statistics", "en")!.slug, "monitoring");
   assert.equal(resolveAnchor(docAnchors("ai"), "where-your-data-goes", "en")!.slug, "ai-writing");
+  // Restoring moved to its own page (#349); the admin's Litestream warning links here.
+  assert.deepEqual(resolveAnchor(docAnchors("storage-and-backups"), "litestream-zustand-reparieren", "de"), { slug: "restore", id: "litestream-zustand-reparieren" });
+  assert.deepEqual(resolveAnchor(docAnchors("storage-and-backups"), "restore", "en"), { slug: "restore", id: "" });
 });
 
 test("pages are at most about 2,600 words, in both languages", () => {

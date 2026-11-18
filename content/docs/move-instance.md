@@ -79,7 +79,7 @@ Läuft die alte Instanz mit S3 (Dateien im Bucket) und Litestream (laufende Kopi
 
 :::
 
-Mit `FLOWPLAN_LITESTREAM=off` gibt es keine laufende Kopie: dann die neueste geplante Sicherung aus `<Präfix>/backups/` verwenden (siehe [Wiederherstellen](/storage-and-backups#wiederherstellen)). Die Vorabprüfung von Weg A erkennt eine Litestream-Kopie im Bucket und weist auf diesen Weg hin.
+Mit `FLOWPLAN_LITESTREAM=off` gibt es keine laufende Kopie: dann die neueste geplante Sicherung aus `<Präfix>/backups/` verwenden (siehe [Wiederherstellen](/restore)). Die Vorabprüfung von Weg A erkennt eine Litestream-Kopie im Bucket und weist auf diesen Weg hin.
 
 > [!NOTE]
 > Aktive [Workflows](/workflows) kommen auf der neuen Instanz **pausiert** an – mit Entwurf, Versionen und angehaltenen Läufen. So startet nichts doppelt, solange die alte Instanz noch läuft. Prüfe sie danach und aktiviere sie wieder.

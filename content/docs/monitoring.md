@@ -83,7 +83,7 @@ Unter **Administration → Überwachung → Warnungen per Webhook** trägst du e
 | Worker-Fehler | Ein eingerichteter Hintergrunddienst meldete in den letzten 24 Stunden einen Fehler. |
 | Viele fehlgeschlagene Anmeldungen | 50 oder mehr fehlgeschlagene Anmeldungen in einer Stunde. |
 | Sicherheitsvorfälle | Sofort bei jedem neuen Vorfall der [Erkennungsregeln](/security-monitoring#erkennungsregeln) (`ops.security`, mit `rule` und `severity`). |
-| Litestream-Replik hängt | Sofort, einmal je Vorfall: Die [Litestream-Replik im Bucket hängt](/storage-and-backups#litestream-zustand-reparieren) (`ops.litestream_stuck`). {since=0.10.0} |
+| Litestream-Replik hängt | Sofort, einmal je Vorfall: Die [Litestream-Replik im Bucket hängt](/restore#litestream-zustand-reparieren) (`ops.litestream_stuck`). {since=0.10.0} |
 | Unerwartete Neustarts | Sofort, einmal je Vorfall: ein Absturz oder zwei unerwartete [Neustarts](#neustarts) innerhalb einer Stunde (`ops.unexpected_restart`). {since=0.10.0} |
 
 Flowplan prüft alle zehn Minuten und sendet je Ereignis höchstens **eine Nachricht pro Tag** als `POST` mit JSON:
