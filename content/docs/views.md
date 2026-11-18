@@ -110,7 +110,7 @@ Gut zu wissen:
 
 Backlog, Sprints mit Ziel und Zeitraum, Burndown und Velocity – siehe [Projekte, Tickets und Sprints](/projects-and-tickets#sprints).
 
-## Lernen {since=0.9.9}
+## Lernen {since=0.10.0}
 
 Karteikarten mit Wiederholung in Abständen: Jeder Eintrag ist eine Karte, die Ansicht zeigt, was heute fällig ist, und fragt dich im Fokusmodus ab. Ihre Filter wählen einen Teilstapel – siehe [Lernkarten](/flashcards).
 

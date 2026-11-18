@@ -67,7 +67,7 @@ Die Übersicht zeigt die Tasten so, wie sie auf deinem Gerät heißen: auf dem M
 | <kbd>⌘</kbd> <kbd>E</kbd> | Code im Text |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>H</kbd> | Markieren |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>H</kbd> | Verdecken (Spoiler) |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>G</kbd> / <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>⇧</kbd> <kbd>G</kbd> | [Lücke für Lernkarten](/flashcards#lueckentext): neue Nummer / gleiche Nummer wie die vorige {since=0.9.9} |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>G</kbd> / <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>⇧</kbd> <kbd>G</kbd> | [Lücke für Lernkarten](/flashcards#lueckentext): neue Nummer / gleiche Nummer wie die vorige {since=0.10.0} |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>M</kbd> | Neuer Textkommentar zum markierten Text {since=0.9.8} |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>1</kbd>–<kbd>4</kbd> | Überschrift 1–4 |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>0</kbd> | Zurück zu normalem Text |
@@ -114,7 +114,7 @@ Markdown-Kürzel wie `##`, `-`, `[]` oder ` ``` ` stehen unter [Markdown im Edit
 | <kbd>Pos1</kbd> / <kbd>Ende</kbd> | Erste / letzte Folie |
 | <kbd>Esc</kbd> | Präsentation beenden |
 
-## Lernkarten {since=0.9.9}
+## Lernkarten {since=0.10.0}
 
 Im [Fokusmodus](/flashcards#lernen-im-fokusmodus) einer Lernsitzung. Eine eigene Tastenkombination für **Lernen: fällige Karten öffnen** legst du unter [Eigene Tastenkürzel](#eigene-tastenkuerzel) fest.
 

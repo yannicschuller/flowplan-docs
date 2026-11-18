@@ -91,7 +91,7 @@ Pull requests and Dependabot never deploy; without the secrets (in forks, for ex
 > [!WARNING]
 > Keep the number of instances at 1 in Coolify. Several containers would write to the same SQLite file.
 
-### Roll out SQLite without overlap {since=0.9.9}
+### Roll out SQLite without overlap {since=0.10.0}
 
 With SQLite (no `DATABASE_URL`), only **one** Flowplan container may run on a data volume at any time – not even for the seconds of an update. If a deployment starts the new container while the old one still runs (a rolling update that waits for the new one's health check), two Litestream processes work on the same database. That damages the replication state in `.flowplan.sqlite-litestream`: the log first shows `sync error … rename …ltx.tmp …: no such file or directory`, then every 30 seconds `compaction failed … file checksum mismatch`. How to repair it is under [Repair the Litestream state](/storage-and-backups#repair-the-litestream-state).
 

@@ -31,7 +31,7 @@ If you open the gallery from the **New page** dialog, the page goes where you we
 
 The same goes for your own templates: **Use** leads to the **New page** dialog, where you give the page its own name before it is created. The template's name is only the suggestion.
 
-### Flashcards as templates {since=0.9.9}
+### Flashcards as templates {since=0.10.0}
 
 Three built-in templates are [flashcard decks](/flashcards): **Flashcard database** (Knowledge) with one sample card per card type, multiple choice and image occlusion included; **Vocabulary** (Personal) – a word and its translation to type in both directions, accents count, the example sentence as the hint, a study view for lesson 1; **Flowplan keyboard shortcuts** (Knowledge) – “What does ⌘ K do?” and back, the keys for the Mac and for Windows and Linux in columns of their own. On Windows or Linux, choose the column **Windows and Linux** as the front under **Set up cards**.
 

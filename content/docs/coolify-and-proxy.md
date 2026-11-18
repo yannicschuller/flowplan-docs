@@ -91,7 +91,7 @@ Pull Requests und Dependabot lösen nie ein Deployment aus; ohne die Secrets (et
 > [!WARNING]
 > In Coolify die Anzahl der Instanzen bei 1 lassen. Mehrere Container würden dieselbe SQLite-Datei beschreiben.
 
-### SQLite ohne Überlappung ausrollen {since=0.9.9}
+### SQLite ohne Überlappung ausrollen {since=0.10.0}
 
 Mit SQLite (ohne `DATABASE_URL`) darf auf einem Datenvolume immer nur **ein** Flowplan-Container laufen – auch nicht für die Sekunden eines Updates. Startet ein Deployment den neuen Container, während der alte noch läuft (ein Rolling Update, das auf den Healthcheck des neuen wartet), arbeiten zwei Litestream-Prozesse auf derselben Datenbank. Das beschädigt den Replikationszustand in `.flowplan.sqlite-litestream`: im Log erst `sync error … rename …ltx.tmp …: no such file or directory`, danach alle 30 Sekunden `compaction failed … file checksum mismatch`. Wie du das reparierst, steht unter [Litestream-Zustand reparieren](/storage-and-backups#litestream-zustand-reparieren).
 

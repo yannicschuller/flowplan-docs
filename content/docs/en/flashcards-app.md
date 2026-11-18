@@ -6,7 +6,7 @@ keywords: flashcards, cards, study reminder, reminder, push, notification, study
 
 To keep you going: a daily reminder, [flashcards](/flashcards) in the apps for iPhone, iPad and Android and studying without a connection – plus the commands for your own programs.
 
-## Study reminder {since=0.9.9}
+## Study reminder {since=0.10.0}
 
 Under **Study**, **Study reminder** switches on a daily reminder: **Remind me daily at** and a time (default 18:00), in your device's time zone. It comes only on days with cards due – new cards within your limits count – that you have not studied yet, at most once a day. The text names the number and the deck with the most cards, such as “12 cards are waiting for you – “Spanish A1” and 2 more decks.”; a tap opens **Study**.
 
@@ -16,7 +16,7 @@ Under **Study**, **Study reminder** switches on a daily reminder: **Remind me da
 - The time applies to all workspaces; the reminder counts the decks of all your workspaces together.
 - If the instance cannot send notifications, the app for iPhone, iPad and Android reminds you itself at the time you set, as long as cards are due ([in the app](#in-the-app)).
 
-## Studying offline {since=0.9.9}
+## Studying offline {since=0.10.0}
 
 With [offline use](/offline-and-apps#turn-on-offline-use) switched on – in the browser and in the apps – the device keeps every deck you studied in the last 14 days whole: all cards with their content, your learning state, today's ratings and your limits (up to 5,000 cards per deck, the next ones first). After every session with a connection the device brings its copy up to date.
 
@@ -29,7 +29,7 @@ With [offline use](/offline-and-apps#turn-on-offline-use) switched on – in the
 
 See also [What works offline](/what-works-offline).
 
-## In the app {since=0.9.9}
+## In the app {since=0.10.0}
 
 The focus mode runs in the apps for iPhone, iPad and Android as in the browser. On top of that:
 
@@ -40,4 +40,4 @@ The focus mode runs in the apps for iPhone, iPad and Android as in the browser. 
 
 ## API and MCP
 
-With the [API](/api-and-webhooks) you can study from your own programs too: `study.queue` (or `GET /api/pages/{id}/study`) returns the next cards with the counts, `study.review` rates, `study.undo` undoes, `study.prefs` sets your own limits, `study.settings` sets up the cards. {since=0.9.9} `study.due` (or `GET /api/study/due`) counts the due cards of all decks of a workspace, `study.stats` (or `GET /api/study/stats`) returns the statistics, `GET /api/pages/{id}/study/export` the CSV (with `format=apkg` the Anki package); `study.queue` with `ahead` brings learning cards that would only be due later today. {since=0.9.9} `GET /api/pages/{id}/study?offline=1` returns the whole deck for studying without a connection, `study.reviews` takes up to 500 ratings sent later at once (idempotent by their id, ordered by their time), `study.reminder` sets the daily study reminder (`remindAt` as `HH:MM` or `null`). {since=0.9.9} `study.history` returns your ratings for [optimising the parameters](/flashcards-optimize), `study.params` stores or resets them. Read-only tokens can read cards and counts but not rate. The [MCP server](/mcp) has the tool `study_decks`: your decks of a workspace with what is due today. All shapes are in the [OpenAPI description](/openapi).
+With the [API](/api-and-webhooks) you can study from your own programs too: `study.queue` (or `GET /api/pages/{id}/study`) returns the next cards with the counts, `study.review` rates, `study.undo` undoes, `study.prefs` sets your own limits, `study.settings` sets up the cards. {since=0.10.0} `study.due` (or `GET /api/study/due`) counts the due cards of all decks of a workspace, `study.stats` (or `GET /api/study/stats`) returns the statistics, `GET /api/pages/{id}/study/export` the CSV (with `format=apkg` the Anki package); `study.queue` with `ahead` brings learning cards that would only be due later today. {since=0.10.0} `GET /api/pages/{id}/study?offline=1` returns the whole deck for studying without a connection, `study.reviews` takes up to 500 ratings sent later at once (idempotent by their id, ordered by their time), `study.reminder` sets the daily study reminder (`remindAt` as `HH:MM` or `null`). {since=0.10.0} `study.history` returns your ratings for [optimising the parameters](/flashcards-optimize), `study.params` stores or resets them. Read-only tokens can read cards and counts but not rate. The [MCP server](/mcp) has the tool `study_decks`: your decks of a workspace with what is due today. All shapes are in the [OpenAPI description](/openapi).

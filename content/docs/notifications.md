@@ -42,7 +42,7 @@ Ungelesenes ist markiert und lässt sich filtern. Ein Klick öffnet die Stelle, 
 
 [Workflows](/workflows) melden sich über zwei eigene Arten, die du unter **Einstellungen → Benachrichtigungen** je Kanal abschalten kannst: **Nachrichten von Workflows** (was ein Workflow verschickt) und **Fehler, Pausen und Freigaben von Workflows** – so verpasst du keine Freigabe, wenn du die Nachrichten stummschaltest. Eine Freigabe-Benachrichtigung öffnet die Workflow-Seite mit dem Reiter **Freigaben**.
 
-### Lernerinnerungen {since=0.9.9}
+### Lernerinnerungen {since=0.10.0}
 
 Die tägliche [Lernerinnerung](/flashcards-app#lernerinnerung) für Lernkarten ist eine eigene Art: **Lernerinnerungen**. Sie kommt standardmäßig nur als **Push** – nicht in den Posteingang, nicht per E-Mail und nicht in Chat-Apps; anders als bei den übrigen Arten hängt Push hier nicht am Posteingang. Schaltest du den Posteingang dafür ein, steht sie auch dort. Ein Tipp öffnet **Lernen**. Die Uhrzeit stellst du unter **Lernen** ein, nicht hier.
 

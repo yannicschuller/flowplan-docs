@@ -76,7 +76,7 @@ Suggestions add the usual rules in one click:
 
 Example: *When* Status changes to “Approved”, *only if* Company is not empty, *then* apply the template “Kickoff”. Every approved record gets its kickoff page with the company name and date. Applied templates are recorded in the [activity log](/administration#activity-log) (`row.template.applied`).
 
-You format the **message** of a notification like that of a workflow: bold, italic, underline, strikethrough, code, links, new lines, `@` mentions of members (shown only – mentioned people are not notified) and formulas like `$x^2$`. The record's title always stays text. What the inbox, e-mail and push show is described under [Notify person](/workflow-nodes#notify). {since=0.9.9}
+You format the **message** of a notification like that of a workflow: bold, italic, underline, strikethrough, code, links, new lines, `@` mentions of members (shown only – mentioned people are not notified) and formulas like `$x^2$`. The record's title always stays text. What the inbox, e-mail and push show is described under [Notify person](/workflow-nodes#notify). {since=0.10.0}
 
 Each rule can be switched off on its own.
 

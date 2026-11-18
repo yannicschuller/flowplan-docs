@@ -6,7 +6,7 @@ keywords: Lernkarten, FSRS, Parameter optimieren, Optimierung, Gewichte, Gedäch
 
 FSRS plant mit 21 Parametern, die zu den meisten Menschen passen. Hast du genug gelernt, passt Flowplan sie an dein eigenes Gedächtnis an – und schlägt dir eine Behaltensrate vor. Das ist freiwillig; die Standardparameter funktionieren gut.
 
-## Parameter optimieren {since=0.9.9}
+## Parameter optimieren {since=0.10.0}
 
 In einem Stapel öffnest du **Meine Einstellungen**; unter **Gedächtnismodell (FSRS)** steht, welche Parameter der Stapel für dich nutzt. **Parameter optimieren …** öffnet den Dialog.
 
@@ -28,7 +28,7 @@ Was danach gilt:
 
 Später erinnert **Meine Einstellungen** leise daran, neu zu optimieren: nach 1.000 neuen Wertungen oder nach einem Monat mit mindestens 200 neuen. Eine Benachrichtigung gibt es dafür nicht.
 
-## Behaltensrate empfehlen {since=0.9.9}
+## Behaltensrate empfehlen {since=0.10.0}
 
 Nach dem Optimieren nennt der Dialog eine **empfohlene Behaltensrate** zwischen 70 % und 95 %. Dafür spielt Flowplan mit deinen neuen Parametern ein Lernjahr durch und sucht die Rate, bei der du am wenigsten Zeit je behaltener Karte brauchst. Die Zeiten kommen aus deinen eigenen Antwortzeiten; vergessene Karten zählen 2,5-fach, weil Vergessen mehr ärgert als Wiederholen.
 

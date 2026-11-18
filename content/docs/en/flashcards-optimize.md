@@ -6,7 +6,7 @@ keywords: flashcards, FSRS, optimise parameters, optimize, optimisation, weights
 
 FSRS schedules with 21 parameters that suit most people. Once you have studied enough, Flowplan fits them to your own memory – and suggests a retention. This is optional; the default parameters work well.
 
-## Optimise parameters {since=0.9.9}
+## Optimise parameters {since=0.10.0}
 
 In a deck, open **My settings**; under **Memory model (FSRS)** it says which parameters the deck uses for you. **Optimise parameters …** opens the dialog.
 
@@ -28,7 +28,7 @@ What applies afterwards:
 
 Later, **My settings** gently suggests optimising again: after 1,000 new ratings, or after a month with at least 200 new ones. There is no notification for it.
 
-## Recommend retention {since=0.9.9}
+## Recommend retention {since=0.10.0}
 
 After optimising, the dialog names a **recommended retention** between 70 % and 95 %. To find it, Flowplan plays through a year of studying with your new parameters and looks for the retention at which you spend the least time per card remembered. The times come from your own answer times; forgotten cards count 2.5 times, because forgetting is more annoying than reviewing.
 

@@ -14,7 +14,7 @@ Optionale KI für Texte, Zusammenfassungen, Fragen an den Arbeitsbereich und Dat
 ## Grundsätze
 
 - **Aus, bis jemand sie einschaltet** – auf der Instanz und für jede Person. Einzige Ausnahme ist die [KI auf dem Gerät (Apple)](#ki-auf-dem-geraet-apple): Sie ist erlaubt, weil nichts das Gerät verlässt, und lässt sich ebenso abschalten.
-- **Jede Funktion einzeln:** Schreibassistent, Zusammenfassungen, Fragen an den Arbeitsbereich, KI in Datenbanken, KI-Aktionen, KI auf Whiteboards und {since=0.9.9} Lernkarten erstellen lassen sich von der Administration und von jeder Person getrennt erlauben oder ausschalten.
+- **Jede Funktion einzeln:** Schreibassistent, Zusammenfassungen, Fragen an den Arbeitsbereich, KI in Datenbanken, KI-Aktionen, KI auf Whiteboards und {since=0.10.0} Lernkarten erstellen lassen sich von der Administration und von jeder Person getrennt erlauben oder ausschalten.
 - **Nur mit deinen Rechten:** Die KI liest nie mehr, als du selbst sehen darfst – und nur, was du ihr erlaubst ([Worauf die KI zugreifen darf](#worauf-die-ki-zugreifen-darf)).
 - **Du siehst, wohin deine Texte gehen:** Jede KI-Funktion nennt den Anbieter und ob die Daten den Server verlassen.
 - **Schlüssel bleiben geheim:** API-Schlüssel werden verschlüsselt gespeichert und nie wieder angezeigt ([Sicherheit der Schlüssel](#sicherheit-der-schluessel)).
@@ -164,7 +164,7 @@ Fragst du die KI zu einem Journaltag (**Diese Seite**, Schreibassistent, Zusamme
 - **Grenzen:** höchstens 30 Anfragen pro Minute, 300 pro Stunde (`FLOWPLAN_AI_REQUESTS_PER_HOUR`) und 3 gleichzeitig pro Person.
 - **Sicherungen:** `secrets.key` ist nicht Teil der Instanzsicherung. Nach einer Wiederherstellung auf einem anderen Server ohne diese Datei zeigt Flowplan „gespeichert, aber nicht lesbar – bitte ersetzen“, und die Schlüssel werden neu eingegeben.
 
-## Schutz vor Prompt-Injection {since=0.9.9}
+## Schutz vor Prompt-Injection {since=0.10.0}
 
 Texte, die die KI liest – Seiten, Einträge, E-Mails, Formularantworten, Transkripte –, können Anweisungen enthalten, die jemand dort versteckt hat. Flowplan behandelt solches Material als Daten und lässt es nicht über Empfänger, Ziele oder Benachrichtigungen entscheiden:
 

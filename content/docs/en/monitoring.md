@@ -26,7 +26,7 @@ In detail:
 - **Storage**: usage by kind and the largest workspaces with bars against the quota (yellow from 80 %, red from 95 %). Quotas are set under **Administration → Workspaces** and **Administration → Limits & retention**.
 - **Deliveries**: delivered webhooks, push messages and e-mails per day; what is waiting, given up and the latest errors are under **Queues**. Only the host of a webhook address is shown, never its path or token.
 
-### Errors in detail {since=0.9.9}
+### Errors in detail {since=0.10.0}
 
 Below the error chart, **Errors in detail** shows where the errors (5xx) come from – one row per kind of error with route or command (such as `POST /api/command · row.update`), error name and short message, count and trend in the chosen range, and when it last happened; sorted by last seen or count. A click into the error chart shows only that time slot. The **Errors 24 h** tile jumps here.
 
@@ -36,7 +36,7 @@ Every answer carries an **error ID** in the `X-Request-Id` header, and for an er
 
 Captured are answers from 500 up, failures of background workers and jobs and failed MCP tools, also with statistics switched off. Stored are only the route as a pattern (without IDs and query), command, status, error name, the message (at most 500 characters; keys, tokens, passwords, e-mail and IP addresses and IDs masked), stack frames, database error code, error ID, instance, version and role (administrator, member, guest, not signed in, API token, MCP). Never stored: IP addresses, request contents, headers or who it was. Kept 14 days, at most 500 kinds of errors.
 
-### Restarts {since=0.9.9}
+### Restarts {since=0.10.0}
 
 When the container restarts without any visible error, **Restarts** under **Administration → Monitoring** helps after the fact: every restart of the last 30 days is listed with its time, how long Flowplan ran before, the reason and the memory at the last heartbeat (process and container against its limit).
 
@@ -83,8 +83,8 @@ Under **Administration → Monitoring → Alerts by webhook**, enter an `https:/
 | Worker error | A worker that is set up reported an error in the last 24 hours. |
 | Many failed sign-ins | 50 or more failed sign-ins within an hour. |
 | Security incidents | Right away for every new incident of the [detection rules](/security-monitoring#detection-rules) (`ops.security`, with `rule` and `severity`). |
-| Litestream replica stuck | Right away, once per incident: the [Litestream replica in the bucket is stuck](/storage-and-backups#repair-the-litestream-state) (`ops.litestream_stuck`). {since=0.9.9} |
-| Unexpected restarts | Right away, once per incident: a crash or two unexpected [restarts](#restarts) within an hour (`ops.unexpected_restart`). {since=0.9.9} |
+| Litestream replica stuck | Right away, once per incident: the [Litestream replica in the bucket is stuck](/storage-and-backups#repair-the-litestream-state) (`ops.litestream_stuck`). {since=0.10.0} |
+| Unexpected restarts | Right away, once per incident: a crash or two unexpected [restarts](#restarts) within an hour (`ops.unexpected_restart`). {since=0.10.0} |
 
 Flowplan checks every ten minutes and sends at most **one message per event and day** as a `POST` with JSON:
 

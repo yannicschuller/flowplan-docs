@@ -126,7 +126,7 @@ Bei vielen verschachtelten Seiten wird der Baum lang. Rechtsklick auf eine Seite
 - Öffnest du eine Seite außerhalb des Zweigs – über die Suche, einen Link oder Zurück/Vor –, zeigt der Seitenbaum wieder alles, mit einem kurzen Hinweis und **Wieder fokussieren**. So steht die geöffnete Seite immer in der Seitenleiste.
 - Flowplan merkt sich den Fokus je Arbeitsbereich auf diesem Gerät, auch nach dem Neuladen. Ziehen und Ablegen funktioniert innerhalb des Zweigs.
 
-## Bereich als Bibliothek {since=0.9.9}
+## Bereich als Bibliothek {since=0.10.0}
 
 Für Dokumentation mit Hunderten Seiten zeigst du einen Bereich als **Bibliothek**: `…` neben dem Bereich → **Bereich bearbeiten …** → **Als Bibliothek anzeigen**. Eine zweite Ordnung gibt es nicht: Die Seiten oben im Bereich sind die **Bücher**, ihre Unterseiten die **Kapitel**, deren Unterseiten die **Seiten**.
 

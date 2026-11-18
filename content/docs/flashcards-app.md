@@ -6,7 +6,7 @@ keywords: Lernkarten, Karteikarten, Lernerinnerung, Erinnerung, Push, Mitteilung
 
 Damit du dranbleibst: eine tägliche Erinnerung, [Lernkarten](/flashcards) in den Apps für iPhone, iPad und Android und Lernen ohne Verbindung – dazu die Befehle für eigene Programme.
 
-## Lernerinnerung {since=0.9.9}
+## Lernerinnerung {since=0.10.0}
 
 Unter **Lernen** schaltet **Lernerinnerung** eine tägliche Erinnerung ein: **Täglich erinnern um** und eine Uhrzeit (Vorgabe 18:00), in der Zeitzone deines Geräts. Sie kommt nur an Tagen, an denen Karten fällig sind – neue Karten innerhalb deiner Grenzen zählen mit – und du noch nicht gelernt hast, höchstens einmal am Tag. Der Text nennt die Zahl und den Stapel mit den meisten Karten, etwa „12 Karten warten auf dich – „Spanisch A1“ und 2 weitere Stapel.“; ein Tipp öffnet **Lernen**.
 
@@ -16,7 +16,7 @@ Unter **Lernen** schaltet **Lernerinnerung** eine tägliche Erinnerung ein: **T�
 - Die Uhrzeit gilt für alle Arbeitsbereiche; die Erinnerung zählt die Stapel aller deiner Arbeitsbereiche zusammen.
 - Kann die Instanz keine Mitteilungen schicken, erinnert die App für iPhone, iPad und Android selbst zur eingestellten Uhrzeit, solange Karten fällig sind ([In der App](#in-der-app)).
 
-## Offline lernen {since=0.9.9}
+## Offline lernen {since=0.10.0}
 
 Mit eingeschalteter [Offline-Nutzung](/offline-and-apps#offline-nutzung-einschalten) – im Browser und in den Apps – speichert das Gerät jeden Stapel, in dem du in den letzten 14 Tagen gelernt hast, ganz: alle Karten mit Inhalt, deinen Lernstand, die heutigen Wertungen und deine Grenzen (bis zu 5.000 Karten je Stapel, die nächsten zuerst). Nach jeder Sitzung mit Verbindung bringt das Gerät seine Kopie auf den Stand.
 
@@ -29,7 +29,7 @@ Mit eingeschalteter [Offline-Nutzung](/offline-and-apps#offline-nutzung-einschal
 
 Siehe auch [Was offline geht](/what-works-offline).
 
-## In der App {since=0.9.9}
+## In der App {since=0.10.0}
 
 Der Fokusmodus läuft in den Apps für iPhone, iPad und Android wie im Browser. Dazu kommen:
 
@@ -40,4 +40,4 @@ Der Fokusmodus läuft in den Apps für iPhone, iPad und Android wie im Browser. 
 
 ## API und MCP
 
-Über die [API](/api-and-webhooks) lernst du auch aus eigenen Programmen: `study.queue` (oder `GET /api/pages/{id}/study`) liefert die nächsten Karten mit Zählern, `study.review` bewertet, `study.undo` macht rückgängig, `study.prefs` setzt eigene Grenzen, `study.settings` richtet die Karten ein. {since=0.9.9} `study.due` (oder `GET /api/study/due`) zählt die fälligen Karten aller Stapel eines Arbeitsbereichs, `study.stats` (oder `GET /api/study/stats`) liefert die Statistik, `GET /api/pages/{id}/study/export` die CSV (mit `format=apkg` das Anki-Paket); `study.queue` mit `ahead` holt Lernkarten, die erst später heute dran wären. {since=0.9.9} `GET /api/pages/{id}/study?offline=1` liefert den ganzen Stapel für das Lernen ohne Verbindung, `study.reviews` nimmt bis zu 500 später gesendete Wertungen auf einmal (idempotent über ihre ID, nach ihrer Zeit eingeordnet), `study.reminder` stellt die tägliche Lernerinnerung (`remindAt` als `HH:MM` oder `null`). {since=0.9.9} `study.history` liefert deine Wertungen zum [Optimieren der Parameter](/flashcards-optimize), `study.params` speichert sie oder setzt sie zurück. Tokens mit Nur-Lesen-Recht können Karten und Zähler lesen, aber nicht bewerten. Der [MCP-Server](/mcp) hat das Werkzeug `study_decks`: deine Stapel eines Arbeitsbereichs mit dem, was heute fällig ist. Alle Formen stehen in der [OpenAPI-Beschreibung](/openapi).
+Über die [API](/api-and-webhooks) lernst du auch aus eigenen Programmen: `study.queue` (oder `GET /api/pages/{id}/study`) liefert die nächsten Karten mit Zählern, `study.review` bewertet, `study.undo` macht rückgängig, `study.prefs` setzt eigene Grenzen, `study.settings` richtet die Karten ein. {since=0.10.0} `study.due` (oder `GET /api/study/due`) zählt die fälligen Karten aller Stapel eines Arbeitsbereichs, `study.stats` (oder `GET /api/study/stats`) liefert die Statistik, `GET /api/pages/{id}/study/export` die CSV (mit `format=apkg` das Anki-Paket); `study.queue` mit `ahead` holt Lernkarten, die erst später heute dran wären. {since=0.10.0} `GET /api/pages/{id}/study?offline=1` liefert den ganzen Stapel für das Lernen ohne Verbindung, `study.reviews` nimmt bis zu 500 später gesendete Wertungen auf einmal (idempotent über ihre ID, nach ihrer Zeit eingeordnet), `study.reminder` stellt die tägliche Lernerinnerung (`remindAt` als `HH:MM` oder `null`). {since=0.10.0} `study.history` liefert deine Wertungen zum [Optimieren der Parameter](/flashcards-optimize), `study.params` speichert sie oder setzt sie zurück. Tokens mit Nur-Lesen-Recht können Karten und Zähler lesen, aber nicht bewerten. Der [MCP-Server](/mcp) hat das Werkzeug `study_decks`: deine Stapel eines Arbeitsbereichs mit dem, was heute fällig ist. Alle Formen stehen in der [OpenAPI-Beschreibung](/openapi).

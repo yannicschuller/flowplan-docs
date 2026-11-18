@@ -23,7 +23,7 @@ Was daraus wird:
 - Im XML-Export zählt nur die aktuelle Fassung jeder Seite; ältere Versionen und Blogbeiträge werden übersprungen. Erstellungs- und Änderungsdatum werden übernommen.
 - Makros ohne Entsprechung (etwa Inhaltsverzeichnis, Jira-Abfragen) fallen weg; die Vorschau nennt sie.
 
-## Von BookStack {since=0.9.9}
+## Von BookStack {since=0.10.0}
 
 Seiten aus BookStack holt Flowplan einmalig über die REST-API von BookStack – ohne Export-Datei, mit Regalen, Büchern, Kapiteln, Bildern, Anhängen und Tags. Ein laufender Abgleich findet nicht statt: Was du danach in BookStack änderst, kommt nicht mehr herüber.
 
@@ -40,7 +40,7 @@ Seiten aus BookStack holt Flowplan einmalig über die REST-API von BookStack –
 > [!WARNING]
 > Das Token darf alles, was dein Konto in BookStack darf. Gib es nur in Flowplan in die Felder **Token-ID** und **Token-Secret** ein – nirgendwo sonst. Flowplan schickt es nur an die angegebene Adresse, verwendet es nur für diesen Import und speichert oder protokolliert es nicht. Brauchst du es danach nicht mehr, lösche es in BookStack.
 
-### Was daraus wird {since=0.9.9}
+### Was daraus wird {since=0.10.0}
 
 - Jedes **Regal** wird eine Seite auf oberster Ebene mit seinen **Büchern** darunter, in der Reihenfolge des Regals. Steht ein Buch in mehreren Regalen, kommt es nur einmal unter das erste (die Regale nach Namen); die Vorschau nennt diese Bücher. Bücher ohne Regal werden Seiten auf oberster Ebene.
 - **Kapitel** werden Unterseiten ihres Buchs, **Seiten** Unterseiten ihres Kapitels oder Buchs – in der Reihenfolge aus BookStack. Die **Beschreibung** eines Regals, Buchs oder Kapitels wird der Text seiner Seite.
@@ -50,11 +50,11 @@ Seiten aus BookStack holt Flowplan einmalig über die REST-API von BookStack –
 - **Tags** werden zu [Tags der Seite](/page-tags#tags-und-eigenschaften): `Name` bleibt `Name`, ein Tag mit Wert wird `Name: Wert`.
 - Nicht übernommen werden Entwürfe, frühere Fassungen (Revisions), Kommentare, Rechte und der Papierkorb; Vorlagen kommen als normale Seiten.
 
-### Dauer und Grenzen {since=0.9.9}
+### Dauer und Grenzen {since=0.10.0}
 
 Vorschau und Import laufen im Hintergrund, pro Person einer gleichzeitig; die Vorschau lädt noch keine Bilder und Anhänge. BookStack begrenzt die API-Anfragen je Minute (standardmäßig 180) – meldet es „zu viele Anfragen“, wartet Flowplan so lange wie verlangt (höchstens eine Minute je Anfrage). Einige hundert Seiten brauchen daher ein paar Minuten. Es gelten die Grenzen jedes Imports (`FLOWPLAN_IMPORT_MAX_DOCS`, `FLOWPLAN_IMPORT_MAX_FILES`); Regale, Bücher und Kapitel zählen als Seiten.
 
-### BookStack im eigenen Netz {since=0.9.9}
+### BookStack im eigenen Netz {since=0.10.0}
 
 Flowplan ruft für den Import nur öffentliche HTTPS-Adressen auf. Läuft BookStack im lokalen Netz oder einem VPN (etwa `http://192.168.1.20`), muss die Administration `FLOWPLAN_IMPORT_ALLOW_PRIVATE=true` setzen ([Konfiguration](/configuration#betrieb)) – dann sind auch interne Adressen und `http://` erlaubt. Ohne die Variable lehnt Flowplan solche Adressen mit einem Hinweis darauf ab.
 

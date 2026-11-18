@@ -107,7 +107,7 @@ Defaults for [workflows](/workflows); the [administration](/administration#workf
 | `FLOWPLAN_WORKFLOW_HTTP_HOSTS` | empty | Only these hosts (comma-separated) |
 | `FLOWPLAN_WORKFLOW_HTTP_ALLOW_PRIVATE` | `false` | Allow internal addresses (home network, n8n) |
 | `FLOWPLAN_WORKFLOW_EXTERNAL_MAIL` | `on` | E-mails to addresses outside the members |
-| `FLOWPLAN_WORKFLOW_EXTERNAL_MAIL_DYNAMIC` | `off` | {since=0.9.9} such e-mail also to addresses from placeholders (form answer, inbound e-mail, AI answer); instances whose workflows already use it keep it on the update |
+| `FLOWPLAN_WORKFLOW_EXTERNAL_MAIL_DYNAMIC` | `off` | {since=0.10.0} such e-mail also to addresses from placeholders (form answer, inbound e-mail, AI answer); instances whose workflows already use it keep it on the update |
 | `FLOWPLAN_WORKFLOW_TEST_RUNS_PER_MINUTE` | 10 | Test and dry runs per person and minute |
 | `FLOWPLAN_WORKFLOW_PARALLEL_RUNS` | 10 | Runs of one workflow running at the same time (1–100); further ones wait in the queue |
 | `FLOWPLAN_WORKFLOW_RUNS_KEPT` | 10000 | Keep at most this many runs per workflow (100–1,000,000); older finished ones are deleted daily, open ones never |

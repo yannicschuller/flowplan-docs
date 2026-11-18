@@ -6,7 +6,7 @@ keywords: Kubernetes, Helm, Chart, Pods, Replikas, Hochverfügbarkeit, Ingress, 
 
 Flowplan auf Kubernetes mit dem Helm-Chart: von einem Pod mit SQLite auf einem Volume bis zu mehreren Pods mit Hochverfügbarkeit gegen PostgreSQL, Redis und S3.
 
-## Zwei Betriebsarten {since=0.9.9}
+## Zwei Betriebsarten {since=0.10.0}
 
 | | Ein Pod | Mehrere Pods (Cluster-Modus) |
 | --- | --- | --- |
@@ -17,7 +17,7 @@ Flowplan auf Kubernetes mit dem Helm-Chart: von einem Pod mit SQLite auf einem V
 
 Wie viele Pods und wie viel CPU und Speicher: siehe [Dimensionierung](/sizing). Was die Pods teilen und wie sie zusammenarbeiten: siehe [Cluster-Modus](/cluster).
 
-## Voraussetzungen {since=0.9.9}
+## Voraussetzungen {since=0.10.0}
 
 - **Kubernetes 1.23** oder neuer, **Helm 3**, ein Ingress-Controller (ingress-nginx ist vorbereitet) und ein Zertifikat für deine Adresse (etwa cert-manager).
 - **Ein Pod:** ein Block- oder lokales Volume (`ReadWriteOnce`) – kein NFS, SQLite kann darauf kaputtgehen.
@@ -26,7 +26,7 @@ Wie viele Pods und wie viel CPU und Speicher: siehe [Dimensionierung](/sizing). 
 > [!IMPORTANT]
 > Das Chart nimmt kein Geheimnis als Wert. Passwörter, Schlüssel und Verbindungsadressen kommen in Secrets, die du anlegst; das Chart nennt nur ihre Namen. Nur den Einrichtungs-Token kann das Chart selbst erzeugen.
 
-## Installation mit Helm {since=0.9.9}
+## Installation mit Helm {since=0.10.0}
 
 Das Chart liegt im Repository unter [`deploy/helm/flowplan`](https://github.com/yannicschuller/flowplan/tree/main/deploy/helm/flowplan); sein README beschreibt jeden Wert.
 
@@ -94,7 +94,7 @@ echo "https://flowplan.example.org/register?setup=$(kubectl -n flowplan get secr
 
 Nicht Teil des Charts: PostgreSQL, Redis oder MinIO als Subcharts, ein HorizontalPodAutoscaler und eigene Worker-Pods – jeder Pod beantwortet Anfragen und nimmt Aufträge aus den Warteschlangen, der Leader die zeitgesteuerten.
 
-## Umzug von einem SQLite-Container {since=0.9.9}
+## Umzug von einem SQLite-Container {since=0.10.0}
 
 Die Daten bringst du mit dem Migrationswerkzeug in PostgreSQL, die Dateien mit dem S3-Spiegel des einzelnen Containers in den Bucket – beides ohne Verlust; nur das Kopieren selbst braucht eine kurze Unterbrechung.
 
@@ -124,7 +124,7 @@ Die Daten bringst du mit dem Migrationswerkzeug in PostgreSQL, die Dateien mit d
      securityContext: { runAsUser: 1000, runAsGroup: 1000, fsGroup: 1000 }
      containers:
        - name: migrate
-         image: ghcr.io/yannicschuller/flowplan:0.9.9
+         image: ghcr.io/yannicschuller/flowplan:0.10.0
          command: ["node", "/app/scripts/db-migrate.mjs"]
          args: ["--from", "sqlite:/app/data/flowplan.sqlite", "--to", "$(DATABASE_URL)"]
          env:
@@ -142,7 +142,7 @@ Die Daten bringst du mit dem Migrationswerkzeug in PostgreSQL, die Dateien mit d
 
 :::
 
-## Updates {since=0.9.9}
+## Updates {since=0.10.0}
 
 ```bash
 git pull
@@ -153,20 +153,20 @@ Mit mehreren Pods läuft zuerst der Schema-Job (er ergänzt nur, er entfernt nie
 
 Ein Pod, der anhält, bekommt `terminationGracePeriodSeconds` (30): offene Anfragen und laufende Aufgaben werden fertig, Uploads, die noch unterwegs sind, erreichen den Bucket, die Leitung geht an einen anderen Pod. Für lange Importe oder Exporte erhöhst du den Wert.
 
-## Sicherungen {since=0.9.9}
+## Sicherungen {since=0.10.0}
 
 - **Ein Pod:** wie mit Docker – geplante Sicherungen in der Administration, mit S3 zusätzlich Litestream ([Speicher, S3 und Sicherung](/storage-and-backups)). Sichere auch das Volume, wenn deine Plattform das kann.
 - **Mehrere Pods:** PostgreSQL hält alle Daten: die geplanten Sicherungen der Administration sind `pg_dump`-Archive im Bucket ([Sicherungen mit pg_dump](/postgresql#sicherungen-mit-pg-dump)); dazu die Sicherungen oder die Wiederherstellung auf einen Zeitpunkt deines Anbieters. Die Dateien liegen im Bucket – schalte dort die Versionierung ein oder repliziere ihn. Redis braucht keine Sicherung.
 - **Immer:** die Secrets (vor allem `FLOWPLAN_ENCRYPTION_KEY` und die Push-Schlüssel) getrennt von den Sicherungen aufbewahren.
 - **Wiederherstellen** ersetzt alle Tabellen: zuerst auf **einen Pod** verkleinern (`cluster.replicas: 1`), wiederherstellen, dann wieder vergrößern.
 
-## Skalieren {since=0.9.9}
+## Skalieren {since=0.10.0}
 
 `cluster.replicas` setzen und `helm upgrade` – ein Pod pro etwa 25 gleichzeitig aktive Personen, dazu eine Reserve. Mehr Pods brauchen mehr Datenbankverbindungen: jeder öffnet bis zu `cluster.poolSize` und drei eigene. Das PodDisruptionBudget (`cluster.podDisruptionBudget.minAvailable`) hält Pods am Laufen, während Knoten geleert werden; halte es unter `replicas`.
 
 Worauf du achtest: Antwortzeiten und CPU pro Pod unter **Administration → Überwachung**, „wartende“ Verbindungen unter **System** (`cluster.poolSize` erhöhen oder Pods ergänzen), und mit Prometheus die Metriken jedes Pods (Label `instance_id`; die Zahlen der Installation nur vom Leader).
 
-## Grenzen {since=0.9.9}
+## Grenzen {since=0.10.0}
 
 - **Wiederherstellungen und Instanzumzüge mit einem Pod** – siehe Sicherungen.
 - **Importe** liegen im Zwischenspeicher des Pods (`cluster.cacheSizeLimit`, 5 GiB) und im Bucket bereit; für Importe von mehreren Gigabyte erhöhst du die Grenze und `ingress.bodySize`.
@@ -174,7 +174,7 @@ Worauf du achtest: Antwortzeiten und CPU pro Pod unter **Administration → Übe
 - **Besprechungsnotizen:** eine Aufnahme transkribiert der Pod, der ihr Ende bekommen hat; hält er währenddessen an, startest du die Verarbeitung im Block erneut.
 - **Nicht auf jeder Plattform getestet:** das Chart wird gegen die Kubernetes-API geprüft; melde, was dein Controller braucht.
 
-## Fehlersuche {since=0.9.9}
+## Fehlersuche {since=0.10.0}
 
 | Anzeichen | Ursache und Abhilfe |
 | --- | --- |

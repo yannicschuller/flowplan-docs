@@ -76,7 +76,7 @@ Vorschläge legen die üblichen Regeln mit einem Klick an:
 
 Beispiel: *Wenn* Status sich auf „Genehmigt“ ändert, *nur wenn* Firma nicht leer ist, *dann* Vorlage „Kickoff“ anwenden. Jeder genehmigte Eintrag bekommt so seine Kickoff-Seite mit Firmenname und Termin. Angewendete Vorlagen stehen im [Aktivitätsprotokoll](/administration#aktivitaetsprotokoll) (`row.template.applied`).
 
-Die **Nachricht** einer Benachrichtigung formatierst du wie die eines Workflows: fett, kursiv, unterstrichen, durchgestrichen, Code, Links, neue Zeilen, `@`-Erwähnungen von Mitgliedern (nur angezeigt – erwähnte Personen werden nicht benachrichtigt) und Formeln wie `$x^2$`. Der Titel des Eintrags bleibt dabei immer Text. Was Posteingang, E-Mail und Push zeigen, steht bei [Person benachrichtigen](/workflow-nodes#benachrichtigen). {since=0.9.9}
+Die **Nachricht** einer Benachrichtigung formatierst du wie die eines Workflows: fett, kursiv, unterstrichen, durchgestrichen, Code, Links, neue Zeilen, `@`-Erwähnungen von Mitgliedern (nur angezeigt – erwähnte Personen werden nicht benachrichtigt) und Formeln wie `$x^2$`. Der Titel des Eintrags bleibt dabei immer Text. Was Posteingang, E-Mail und Push zeigen, steht bei [Person benachrichtigen](/workflow-nodes#benachrichtigen). {since=0.10.0}
 
 Regeln lassen sich einzeln ausschalten.
 

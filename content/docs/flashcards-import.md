@@ -6,7 +6,7 @@ keywords: Lernkarten, Karteikarten, Import, Export, CSV, TSV, Quizlet, Anki, apk
 
 Karten für einen [Lernkarten-Stapel](/flashcards) kommen nicht nur einzeln: Der Assistent **Karten importieren** liest Text aus CSV, TSV, Quizlet und anderen Lernprogrammen, **Aus Anki importieren** übernimmt ganze Anki-Stapel mit Bildern, Tönen und auf Wunsch deinem Lernstand. **Exportieren** gibt die Karten eines Stapels als CSV zurück – auf Wunsch mit deinem Lernstand – oder als Anki-Paket. Karten aus einer Seite oder einem PDF schlägt die [KI](/flashcards-ai) vor.
 
-## Karten importieren: CSV und Quizlet {since=0.9.9}
+## Karten importieren: CSV und Quizlet {since=0.10.0}
 
 **Karten importieren** in der Lernen-Ansicht (mit Schreibrecht) legt Einträge aus Text an:
 
@@ -24,7 +24,7 @@ Der Import schreibt in Eigenschaften; eine Kartenseite aus dem Dokument des Eint
 
 **Exportieren → Karten als CSV** lädt eine Zeile je Karte, die du lernen darfst (auch ausgesetzte): Vorderseite, Rückseite, Hinweis, Zusatz, Tags, Kartentyp und Karte (leer für die Karte, `r` für die umgekehrte, `c1`, `c2` … für Lücken). Dokumente stehen als Markdown darin, Lücken als `{{c1::…}}`. **Karten mit meinem Lernstand als CSV** hängt deinen eigenen Stand an: Zustand, fällig, Stabilität, Schwierigkeit, Wiederholungen, Vergessen, ausgesetzt – nie den Stand anderer. Die Datei lässt sich mit **Karten importieren** wieder einlesen; die Zeilen der Geschwister einer Karte werden dabei zu einem Eintrag.
 
-## Aus Anki importieren {since=0.9.9}
+## Aus Anki importieren {since=0.10.0}
 
 **Aus Anki importieren** oben auf der Seite [Lernen](/flashcards#alle-stapel-lernen) – oder unter **Einstellungen → Import & Export → Import** mit der Quelle **Anki (Lernkarten)** – macht aus Anki-Stapeln Lernkarten-Datenbanken:
 
@@ -41,7 +41,7 @@ Der Import schreibt in Eigenschaften; eine Kartenseite aus dem Dokument des Eint
 | Basic, Basic (and reversed card) | Vorder-/Rückseite, mit umgekehrter Karte |
 | Basic (type in the answer) | Antwort eintippen |
 | Cloze | Lückentext, `{{c1::…}}` bleibt |
-| Image Occlusion {since=0.9.9} | [Bildverdeckung](/flashcards-occlusion#anki) mit den Masken; auf Wunsch Vorder-/Rückseite mit dem Bild, ohne Masken |
+| Image Occlusion {since=0.10.0} | [Bildverdeckung](/flashcards-occlusion#anki) mit den Masken; auf Wunsch Vorder-/Rückseite mit dem Bild, ohne Masken |
 | eigener Notiztyp | nach seinen Vorlagen: Felder der Frage vorne, Felder nur der Antwort hinten, `{{hint:…}}` als Hinweis |
 | Tags | die Mehrfachauswahl **Tags** |
 | Bilder, Töne (`[sound:…]`) | Dateien des Stapels, Töne als Audio-Block |
@@ -52,6 +52,6 @@ Der Import schreibt in Eigenschaften; eine Kartenseite aus dem Dokument des Eint
 - **Lernstand:** Flowplan spielt Ankis Wiederholungsprotokoll mit FSRS nach und kennt so für jede Karte Stabilität, Schwierigkeit und Fälligkeit – nur für dich; niemand sonst bekommt einen Lernstand. Hat Anki schon FSRS-Werte gespeichert, gelten diese. Ausgesetzte Karten bleiben ausgesetzt, neue Karten bleiben neu.
 - **Grenzen:** Pakete bis 100 MB und 50 000 Notizen. Jede Mediendatei darf so groß sein wie ein Upload und zählt zum Speicherplatz; nicht verwendete kommen nicht mit. Fehlende Dateien und was nur angenähert übernommen wurde, listet der Importbericht.
 
-### Als Anki-Paket exportieren {since=0.9.9}
+### Als Anki-Paket exportieren {since=0.10.0}
 
 **Exportieren → Als Anki-Paket (.apkg)** lädt die Karten der Ansicht als Paket, das jede Anki-Version (Desktop, AnkiDroid, AnkiMobile) importiert: eine Notiz je Eintrag mit den Notiztypen Basic, Basic mit umgekehrter Karte, Antwort eintippen und Cloze, Multiple Choice als Basic mit den Optionen auf der Vorderseite, Bildverdeckung als Image Occlusion (eine Notiz je Bild, ab Anki 23.10). Hinweis und Zusatz werden eigene Felder, Tags bleiben Tags, die Auswahl **Deck** wird zu Unterstapeln, Bilder und Töne des Stapels kommen als Medien mit. Der Lernstand bleibt in Flowplan – in Anki sind die Karten neu.

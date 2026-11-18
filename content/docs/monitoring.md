@@ -26,7 +26,7 @@ Im Einzelnen:
 - **Speicher**: Belegung nach Art und die größten Arbeitsbereiche mit Balken gegen das Kontingent (ab 80 % gelb, ab 95 % rot). Kontingente stellst du unter **Administration → Arbeitsbereiche** und **Administration → Grenzen & Aufbewahrung** ein.
 - **Zustellungen**: zugestellte Webhooks, Push-Nachrichten und E-Mails je Tag; Wartendes, Aufgegebenes und die letzten Fehler stehen unter **Warteschlangen**. Von Webhook-Adressen erscheint nur der Host, nie Pfad oder Token.
 
-### Fehler im Detail {since=0.9.9}
+### Fehler im Detail {since=0.10.0}
 
 Unter dem Fehlerdiagramm zeigt **Fehler im Detail**, woher die Fehler (5xx) kommen – je Art eines Fehlers eine Zeile mit Route oder Befehl (etwa `POST /api/command · row.update`), Fehlername und kurzer Meldung, Anzahl und Verlauf im gewählten Zeitraum und wann er zuletzt auftrat; sortiert nach zuletzt aufgetreten oder Anzahl. Ein Klick ins Fehlerdiagramm zeigt nur die Fehler dieses Zeitabschnitts. Die Kachel **Fehler 24 Std.** springt hierher.
 
@@ -36,7 +36,7 @@ Jede Antwort trägt eine **Fehler-ID** in der Kopfzeile `X-Request-Id`, bei eine
 
 Erfasst werden Antworten ab 500, Fehler von Hintergrunddiensten und -aufträgen und fehlgeschlagene MCP-Werkzeuge, auch bei ausgeschalteter Statistik. Gespeichert sind nur Route als Muster (ohne IDs und Query), Befehl, Status, Fehlername, die Meldung (höchstens 500 Zeichen; Schlüssel, Token, Passwörter, E-Mail- und IP-Adressen sowie IDs ausgeblendet), Stack-Frames, Datenbank-Fehlercode, Fehler-ID, Instanz, Version und Rolle (Administration, Mitglied, Gast, nicht angemeldet, API-Token, MCP). Nie gespeichert: IP-Adressen, Inhalte von Anfragen, Kopfzeilen oder wer es war. Aufbewahrt werden 14 Tage und höchstens 500 Fehlerarten.
 
-### Neustarts {since=0.9.9}
+### Neustarts {since=0.10.0}
 
 Startet der Container neu, ohne dass ein Fehler zu sehen war, hilft **Neustarts** unter **Administration → Überwachung** hinterher: Jeder Neustart der letzten 30 Tage steht da mit Zeitpunkt, wie lange Flowplan davor lief, dem Grund und dem Speicher beim letzten Lebenszeichen (Prozess bzw. Container gegen seine Grenze).
 
@@ -83,8 +83,8 @@ Unter **Administration → Überwachung → Warnungen per Webhook** trägst du e
 | Worker-Fehler | Ein eingerichteter Hintergrunddienst meldete in den letzten 24 Stunden einen Fehler. |
 | Viele fehlgeschlagene Anmeldungen | 50 oder mehr fehlgeschlagene Anmeldungen in einer Stunde. |
 | Sicherheitsvorfälle | Sofort bei jedem neuen Vorfall der [Erkennungsregeln](/security-monitoring#erkennungsregeln) (`ops.security`, mit `rule` und `severity`). |
-| Litestream-Replik hängt | Sofort, einmal je Vorfall: Die [Litestream-Replik im Bucket hängt](/storage-and-backups#litestream-zustand-reparieren) (`ops.litestream_stuck`). {since=0.9.9} |
-| Unerwartete Neustarts | Sofort, einmal je Vorfall: ein Absturz oder zwei unerwartete [Neustarts](#neustarts) innerhalb einer Stunde (`ops.unexpected_restart`). {since=0.9.9} |
+| Litestream-Replik hängt | Sofort, einmal je Vorfall: Die [Litestream-Replik im Bucket hängt](/storage-and-backups#litestream-zustand-reparieren) (`ops.litestream_stuck`). {since=0.10.0} |
+| Unerwartete Neustarts | Sofort, einmal je Vorfall: ein Absturz oder zwei unerwartete [Neustarts](#neustarts) innerhalb einer Stunde (`ops.unexpected_restart`). {since=0.10.0} |
 
 Flowplan prüft alle zehn Minuten und sendet je Ereignis höchstens **eine Nachricht pro Tag** als `POST` mit JSON:
 

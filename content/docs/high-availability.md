@@ -35,7 +35,7 @@ Zwei Server mit derselben `compose.yaml` und derselben `.env`. Auf dem aktiven l
 
 ### Mit PostgreSQL
 
-Beide Server zeigen mit `DATABASE_URL` auf dieselbe Datenbank und mit `S3_*` auf denselben Bucket. Startet versehentlich eine zweite Instanz, merkt Flowplan das über eine Sperre in der Datenbank: Sie startet trotzdem, schreibt alle zehn Minuten eine deutliche Warnung ins Log, und **Administration → Überwachung** zeigt auf jeder Instanz, bis nur noch eine läuft: {since=0.9.9}
+Beide Server zeigen mit `DATABASE_URL` auf dieselbe Datenbank und mit `S3_*` auf denselben Bucket. Startet versehentlich eine zweite Instanz, merkt Flowplan das über eine Sperre in der Datenbank: Sie startet trotzdem, schreibt alle zehn Minuten eine deutliche Warnung ins Log, und **Administration → Überwachung** zeigt auf jeder Instanz, bis nur noch eine läuft: {since=0.10.0}
 
 > „Eine zweite Flowplan-Instanz läuft ohne Cluster-Modus gegen dieselbe Datenbank (*Instanz*, seit *Zeit*). Geplante Aufgaben wie Erinnerungen, Zusammenfassungen, Sicherungen und Workflows laufen dann doppelt, und Live-Änderungen erreichen die andere Instanz nicht. Schalte auf allen Instanzen den Cluster-Modus ein (FLOWPLAN_CLUSTER=1 mit Redis und S3) oder beende eine der Instanzen. Während eines Neustarts im laufenden Betrieb ist das kurz normal.“
 
@@ -79,7 +79,7 @@ Bleiben zwei einzelne Punkte: **PostgreSQL** (siehe [Failover und Replica](/post
 
 Eine Instanz nach der anderen: stoppen, neues Image starten, warten, bis sie bereit ist, dann die nächste. Auf `SIGTERM` meldet eine Instanz sofort `503` auf `/api/health/ready`, beantwortet offene Anfragen und gibt Live-Verbindungen und Leitung ab (`stop_grace_period: 30s`). Die neue Version ergänzt das Schema nur, alte Instanzen arbeiten damit weiter.
 
-Damit Browser die Versionen nicht mischen, trägt jedes Image eine **Deployment-ID** (`v<Version>-<Commit>`, beim Bauen fest). Die App fragt ihre Dateien mit `?dpl=<ID>` an, sodass Caches unterwegs nichts Altes liefern, und erreicht eine Seite der alten Version eine neue Instanz, lädt der Browser beim nächsten Seitenwechsel die ganze Seite neu. Fehlt einer Instanz trotzdem eine Datei der anderen Version, repariert Flowplans eigene Prüfung des Builds die Seite. Baust du das Image selbst, setzt du die ID mit `FLOWPLAN_DEPLOYMENT_ID` (`--build-arg FLOWPLAN_DEPLOYMENT_ID=…`) – gleich für alle Instanzen desselben Images – oder schaltest sie mit `off` ab. {since=0.9.9}
+Damit Browser die Versionen nicht mischen, trägt jedes Image eine **Deployment-ID** (`v<Version>-<Commit>`, beim Bauen fest). Die App fragt ihre Dateien mit `?dpl=<ID>` an, sodass Caches unterwegs nichts Altes liefern, und erreicht eine Seite der alten Version eine neue Instanz, lädt der Browser beim nächsten Seitenwechsel die ganze Seite neu. Fehlt einer Instanz trotzdem eine Datei der anderen Version, repariert Flowplans eigene Prüfung des Builds die Seite. Baust du das Image selbst, setzt du die ID mit `FLOWPLAN_DEPLOYMENT_ID` (`--build-arg FLOWPLAN_DEPLOYMENT_ID=…`) – gleich für alle Instanzen desselben Images – oder schaltest sie mit `off` ab. {since=0.10.0}
 
 ## Beispiel: Hetzner Cloud
 

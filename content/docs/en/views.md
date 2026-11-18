@@ -110,7 +110,7 @@ Good to know:
 
 Backlog, sprints with goal and period, burndown and velocity – see [Projects, tickets and sprints](/projects-and-tickets#sprints).
 
-## Study {since=0.9.9}
+## Study {since=0.10.0}
 
 Flashcards with spaced repetition: every record is a card, the view shows what is due today and quizzes you in focus mode. Its filters pick a sub-deck – see [Flashcards](/flashcards).
 

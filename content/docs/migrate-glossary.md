@@ -134,7 +134,7 @@ So ziehst du um: [Google Docs / Word](/migrate-office#von-google-docs).
 | Google Sheets / Excel | Datenbank | ähnlich | Eine Datenbank hat Eigenschaften je Spalte und Formeln je Eintrag, aber keine freien Zellformeln. |
 | Google Forms | Formular | gleich |  |
 
-## BookStack {since=0.9.9}
+## BookStack {since=0.10.0}
 
 So ziehst du um: [BookStack](/migrate-office#von-bookstack).
 

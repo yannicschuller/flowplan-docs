@@ -85,9 +85,9 @@ docker run -d --name flowplan \
   flowplan:latest
 ```
 
-Build arguments: `PG_CLIENT_MAJOR` (default `18`) chooses the version of `pg_dump`, `pg_restore` and `psql` in the image – at least your PostgreSQL server's major version ([PostgreSQL](/postgresql)). `FLOWPLAN_SKIP_TYPECHECK=1` is meant for development only: it skips the TypeScript check during the build when it already ran, as in our CI. `FLOWPLAN_DEPLOYMENT_ID` sets the deployment id (default `v<version>-<commit>`, `off`: none) that keeps browsers from mixing versions during a rolling update ([High availability](/en/high-availability#updates-without-downtime)). {since=0.9.9}
+Build arguments: `PG_CLIENT_MAJOR` (default `18`) chooses the version of `pg_dump`, `pg_restore` and `psql` in the image – at least your PostgreSQL server's major version ([PostgreSQL](/postgresql)). `FLOWPLAN_SKIP_TYPECHECK=1` is meant for development only: it skips the TypeScript check during the build when it already ran, as in our CI. `FLOWPLAN_DEPLOYMENT_ID` sets the deployment id (default `v<version>-<commit>`, `off`: none) that keeps browsers from mixing versions during a rolling update ([High availability](/en/high-availability#updates-without-downtime)). {since=0.10.0}
 
-The image contains Node and Litestream for the S3 backup, on Debian 13. There is no real `curl`; for health checks that call `curl` inside the container (such as Coolify's HTTP check) a small stand-in is there that does exactly that. {since=0.9.7} Flowplan runs in it as UID 1000 (the user `node`), or as the user from `PUID`/`PGID` when started as root {since=0.9.9} – never as root ([Volume permissions](/coolify-and-proxy#volume-permissions)).
+The image contains Node and Litestream for the S3 backup, on Debian 13. There is no real `curl`; for health checks that call `curl` inside the container (such as Coolify's HTTP check) a small stand-in is there that does exactly that. {since=0.9.7} Flowplan runs in it as UID 1000 (the user `node`), or as the user from `PUID`/`PGID` when started as root {since=0.10.0} – never as root ([Volume permissions](/coolify-and-proxy#volume-permissions)).
 
 ## First start
 
@@ -148,7 +148,7 @@ Nothing to do by hand; Flowplan creates the new tables (for idempotency keys and
 
 ## Kubernetes (Helm)
 
-The chart lives in the repository at [`deploy/helm/flowplan`](https://github.com/yannicschuller/flowplan/tree/main/deploy/helm/flowplan). By default Flowplan runs as **exactly one pod** (SQLite) with a volume for `/app/data`; updates replace the pod with a short downtime (strategy `Recreate`). The chart installs the Flowplan version of its `appVersion`; choose another with `--set image.tag=…`. Everything about it – several pods, moving from SQLite, updates, backups, troubleshooting – is on the page [Kubernetes](/en/kubernetes). {since=0.9.9}
+The chart lives in the repository at [`deploy/helm/flowplan`](https://github.com/yannicschuller/flowplan/tree/main/deploy/helm/flowplan). By default Flowplan runs as **exactly one pod** (SQLite) with a volume for `/app/data`; updates replace the pod with a short downtime (strategy `Recreate`). The chart installs the Flowplan version of its `appVersion`; choose another with `--set image.tag=…`. Everything about it – several pods, moving from SQLite, updates, backups, troubleshooting – is on the page [Kubernetes](/en/kubernetes). {since=0.10.0}
 
 ```bash
 kubectl create namespace flowplan
@@ -161,11 +161,11 @@ helm install flowplan deploy/helm/flowplan -n flowplan \
   --set ingress.hosts[0].host=flowplan.example.org
 ```
 
-- Set OIDC, SMTP and S3 via `oidc.*`, `smtp.*` and `s3.*`; secrets only in `existingSecret` (keys are the names of the [environment variables](/configuration)) – the chart takes none as a value. {since=0.9.9} Further variables via `env`.
+- Set OIDC, SMTP and S3 via `oidc.*`, `smtp.*` and `s3.*`; secrets only in `existingSecret` (keys are the names of the [environment variables](/configuration)) – the chart takes none as a value. {since=0.10.0} Further variables via `env`.
 - `appUrl` is required (or taken from the first ingress host).
-- The chart generates a random `FLOWPLAN_SETUP_TOKEN` in the Secret `flowplan-setup` (kept across upgrades; your own Secret via `setupToken.existingSecret`). {since=0.9.9} Create the first account with the setup link `helm install` prints at the end: `https://flowplan.example.org/register?setup=<token>`; read the token with `kubectl -n flowplan get secret flowplan-setup -o jsonpath='{.data.FLOWPLAN_SETUP_TOKEN}' | base64 -d`.
+- The chart generates a random `FLOWPLAN_SETUP_TOKEN` in the Secret `flowplan-setup` (kept across upgrades; your own Secret via `setupToken.existingSecret`). {since=0.10.0} Create the first account with the setup link `helm install` prints at the end: `https://flowplan.example.org/register?setup=<token>`; read the token with `kubectl -n flowplan get secret flowplan-setup -o jsonpath='{.data.FLOWPLAN_SETUP_TOKEN}' | base64 -d`.
 - Use a block or local volume, not NFS (SQLite).
-- Health checks use `/api/health`; the pod runs as user 1000 without extra privileges on a read-only root file system. {since=0.9.9} `helm test flowplan` checks that it answers.
+- Health checks use `/api/health`; the pod runs as user 1000 without extra privileges on a read-only root file system. {since=0.10.0} `helm test flowplan` checks that it answers.
 - The volume is kept on uninstall.
 - To update: `git pull` in the repository, then `helm upgrade flowplan deploy/helm/flowplan -n flowplan -f my-values.yaml`.
 

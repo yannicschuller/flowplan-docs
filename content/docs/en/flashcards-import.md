@@ -6,7 +6,7 @@ keywords: flashcards, cards, import, export, CSV, TSV, Quizlet, Anki, apkg, colp
 
 Cards for a [flashcard deck](/flashcards) need not come one by one: the wizard **Import cards** reads text from CSV, TSV, Quizlet and other study apps, **Import from Anki** takes over whole Anki decks with images, sounds and, if you like, your learning state. **Export** gives a deck's cards back as CSV – with your learning state if you like – or as an Anki package. Cards from a page or a PDF are proposed by the [AI](/flashcards-ai).
 
-## Import cards: CSV and Quizlet {since=0.9.9}
+## Import cards: CSV and Quizlet {since=0.10.0}
 
 **Import cards** in the study view (with write access) creates records from text:
 
@@ -24,7 +24,7 @@ The import writes into properties; it does not fill a side that comes from the r
 
 **Export → Cards as CSV** downloads one line per card you may study (suspended ones too): front, back, hint, extra, tags, card type and card (empty for the card, `r` for the reverse one, `c1`, `c2` … for clozes). Documents are written as Markdown, clozes as `{{c1::…}}`. **Cards with my learning state as CSV** adds your own state: state, due, stability, difficulty, reviews, lapses, suspended – never anyone else's. **Import cards** reads the file back; the lines of a card's siblings become one record.
 
-## Import from Anki {since=0.9.9}
+## Import from Anki {since=0.10.0}
 
 **Import from Anki** at the top of the [Study](/flashcards#all-decks-study) page – or under **Settings → Import & Export → Import** with the source **Anki (flashcards)** – turns Anki decks into flashcard databases:
 
@@ -41,7 +41,7 @@ The import writes into properties; it does not fill a side that comes from the r
 | Basic, Basic (and reversed card) | front/back, with the reverse card |
 | Basic (type in the answer) | type the answer |
 | Cloze | cloze, `{{c1::…}}` is kept |
-| Image Occlusion {since=0.9.9} | [image occlusion](/flashcards-occlusion#anki) with the masks; on request front/back with the image, without masks |
+| Image Occlusion {since=0.10.0} | [image occlusion](/flashcards-occlusion#anki) with the masks; on request front/back with the image, without masks |
 | own note type | by its templates: fields of the question on the front, fields only of the answer on the back, `{{hint:…}}` as the hint |
 | tags | the multi-select **Tags** |
 | images, sounds (`[sound:…]`) | files of the deck, sounds as an audio block |
@@ -52,6 +52,6 @@ The import writes into properties; it does not fill a side that comes from the r
 - **Learning state:** Flowplan replays Anki's review log with FSRS and so knows every card's stability, difficulty and due date – for you only; nobody else gets a learning state. If Anki has stored FSRS values already, those apply. Suspended cards stay suspended, new cards stay new.
 - **Limits:** packages up to 100 MB and 50,000 notes. Each media file may be as large as an upload and counts towards the storage; unused ones are left out. Missing files and what was only approximated are listed in the import report.
 
-### Export as an Anki package {since=0.9.9}
+### Export as an Anki package {since=0.10.0}
 
 **Export → As an Anki package (.apkg)** downloads the view's cards as a package every Anki version (desktop, AnkiDroid, AnkiMobile) imports: one note per record with the note types Basic, Basic with reverse card, Type the answer and Cloze, multiple choice as Basic with the options on the front, image occlusion as Image Occlusion (one note per picture, Anki 23.10 and later). Hint and extra become fields of their own, tags stay tags, the select **Deck** becomes sub-decks, images and sounds of the deck come along as media. The learning state stays in Flowplan – in Anki the cards are new.

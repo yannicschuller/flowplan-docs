@@ -68,7 +68,7 @@ While customizing:
 
 **My activity** shows how many pages you created and edited – per week, month or year (switchable in the widget), with a chart and the comparison with the same stretch of the previous period. An edited page counts at most once per day, and autosaves don't add to it. Only you see these numbers; Flowplan records nothing new for them and no times – it counts from what is stored anyway (creator, versions, activity log).
 
-{since=0.9.9} **Due cards** shows what is due today in your [flashcards](/flashcards#all-decks-study): the number of cards, new and due ones per deck, your streak and **Study**, which opens all decks. In its settings you choose all decks or certain ones; the numbers are your own.
+{since=0.10.0} **Due cards** shows what is due today in your [flashcards](/flashcards#all-decks-study): the number of cards, new and due ones per deck, your streak and **Study**, which opens all decks. In its settings you choose all decks or certain ones; the numbers are your own.
 
 You tick off tasks right in the widget, habits too; the journal widget adds a few lines to today's entry, and the scratchpad holds whatever fits nowhere else – it saves as you type and is the same on all devices.
 

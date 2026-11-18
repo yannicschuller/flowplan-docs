@@ -77,7 +77,7 @@ In the **Web** tab, the **Publish on the web** switch makes the page readable fo
 - Switching it off, deleting or moving a page out of the published tree revokes access immediately, including to files.
 - If a page has headings, visitors show its **outline** with the list icon to the right of the text (on a phone, the round button at the bottom right). It marks where you are reading and jumps to a heading on click. The browser remembers whether it is open – as in the editor.
 
-### Flashcards through a link {since=0.9.9}
+### Flashcards through a link {since=0.10.0}
 
 A [flashcard deck](/flashcards) shows its **Study** view through a link with its own permissions or as a publication:
 

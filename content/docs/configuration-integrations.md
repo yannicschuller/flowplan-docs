@@ -107,7 +107,7 @@ Standards für [Workflows](/workflows); die [Administration](/administration#wor
 | `FLOWPLAN_WORKFLOW_HTTP_HOSTS` | leer | nur diese Hosts (kommagetrennt) |
 | `FLOWPLAN_WORKFLOW_HTTP_ALLOW_PRIVATE` | `false` | interne Adressen erlauben (Heimnetz, n8n) |
 | `FLOWPLAN_WORKFLOW_EXTERNAL_MAIL` | `on` | E-Mails an Adressen außerhalb der Mitglieder |
-| `FLOWPLAN_WORKFLOW_EXTERNAL_MAIL_DYNAMIC` | `off` | {since=0.9.9} solche E-Mails auch an Adressen aus Platzhaltern (Formularantwort, eingehende E-Mail, KI-Antwort); Instanzen, deren Workflows das schon nutzen, behalten es beim Update |
+| `FLOWPLAN_WORKFLOW_EXTERNAL_MAIL_DYNAMIC` | `off` | {since=0.10.0} solche E-Mails auch an Adressen aus Platzhaltern (Formularantwort, eingehende E-Mail, KI-Antwort); Instanzen, deren Workflows das schon nutzen, behalten es beim Update |
 | `FLOWPLAN_WORKFLOW_TEST_RUNS_PER_MINUTE` | 10 | Test- und Probeläufe je Person und Minute |
 | `FLOWPLAN_WORKFLOW_PARALLEL_RUNS` | 10 | gleichzeitig laufende Läufe je Workflow (1–100); weitere warten in der Warteschlange |
 | `FLOWPLAN_WORKFLOW_RUNS_KEPT` | 10000 | höchstens so viele Läufe je Workflow aufbewahren (100–1.000.000); ältere abgeschlossene werden täglich gelöscht, offene nie |

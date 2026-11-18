@@ -72,7 +72,7 @@ Eingebaute Werte: `$heute`, `$jetzt`, `$lauf`, `$workflow`, `$ausführende`, in 
 ## Testen
 
 - **Probelauf**: Schreibende Knoten berichten nur, was sie täten („würde Eintrag anlegen …“); E-Mail, Chat und Push gehen nicht raus, Warten wird übersprungen, Freigaben gelten als genehmigt oder abgelehnt (wählbar). KI-Knoten laufen und kosten Tokens.
-- **Testlauf**: führt echt aus – als **du**, nicht als die ausführende Person. Bestimmen KI- oder Auslöser-Daten Empfänger oder Ziele, braucht auch ein Testlauf die [Einstellung dafür](#einstellungen-des-workflows); ein Probelauf geht immer. {since=0.9.9}
+- **Testlauf**: führt echt aus – als **du**, nicht als die ausführende Person. Bestimmen KI- oder Auslöser-Daten Empfänger oder Ziele, braucht auch ein Testlauf die [Einstellung dafür](#einstellungen-des-workflows); ein Probelauf geht immer. {since=0.10.0}
 - Daten des Auslösers: **Beispiel**, **letztes echtes Ereignis**, ein **Eintrag** oder eine **Seite** zum Auswählen oder **eigene Werte**.
 
 Tests nutzen immer den Entwurf. Das Ergebnis steht als Statusring an jedem Knoten; ein Klick zeigt Ein- und Ausgabe.
@@ -83,7 +83,7 @@ Tests nutzen immer den Entwurf. Das Ergebnis steht als Statusring an jedem Knote
 
 **Pausieren** hält offene Läufe an (wahlweise brechen sie ab); nach dem Aktivieren laufen sie auf ihrer Version weiter. Nach zehn Fehlschlägen in Folge oder wenn die Hälfte der letzten Läufe scheitert, pausiert ein Workflow von selbst.
 
-## Einstellungen des Workflows {since=0.9.9}
+## Einstellungen des Workflows {since=0.10.0}
 
 Das Zahnrad oben im Editor öffnet **Einstellungen des Workflows**. Sie gehören zum Entwurf und gelten ab dem nächsten Aktivieren.
 
@@ -175,7 +175,7 @@ Inhaltsarchive und der [Instanzumzug](/move-instance) nehmen Workflows mit Entwu
 
 ## API, MCP und SDKs
 
-Workflows lassen sich per [REST-API](/api-and-webhooks#workflows) anlegen, prüfen, testen, **aktivieren** (mit Schreib-Token) und starten; die SDKs bringen fertige Methoden mit. Über [MCP](/mcp#workflows) liest ein KI-Assistent Workflows und Läufe, speichert Entwürfe, testet und startet – aktivieren und Freigaben entscheiden kann er nicht. Tests über MCP sind immer Probeläufe, die nichts außerhalb von Flowplan erreichen. {since=0.9.9}
+Workflows lassen sich per [REST-API](/api-and-webhooks#workflows) anlegen, prüfen, testen, **aktivieren** (mit Schreib-Token) und starten; die SDKs bringen fertige Methoden mit. Über [MCP](/mcp#workflows) liest ein KI-Assistent Workflows und Läufe, speichert Entwürfe, testet und startet – aktivieren und Freigaben entscheiden kann er nicht. Tests über MCP sind immer Probeläufe, die nichts außerhalb von Flowplan erreichen. {since=0.10.0}
 
 ## Häufige Fragen
 

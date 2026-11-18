@@ -72,7 +72,7 @@ Built-in values: `$today`, `$now`, `$run`, `$workflow`, `$runner`, and inside �
 ## Testing
 
 - **Dry run**: writing nodes only report what they would do (“would create record …”); e-mail, chat and push are not sent, waits are skipped, approvals count as approved or rejected (your choice). AI nodes run and cost tokens.
-- **Test run**: acts for real – as **you**, not as the person the workflow runs as. When AI or trigger data choose recipients or targets, a test run needs the [setting for that](#workflow-settings) too; a dry run always works. {since=0.9.9}
+- **Test run**: acts for real – as **you**, not as the person the workflow runs as. When AI or trigger data choose recipients or targets, a test run needs the [setting for that](#workflow-settings) too; a dry run always works. {since=0.10.0}
 - Trigger data: **example**, the **last real event**, a **record** or **page** to pick, or **your own values**.
 
 Tests always use the draft. The result shows as a status ring at every node; a click shows input and output.
@@ -83,7 +83,7 @@ Tests always use the draft. The result shows as a status ring at every node; a c
 
 **Pause** holds open runs (or cancels them, if you choose); after activating they continue on their version. After ten failures in a row, or when half of the recent runs fail, a workflow pauses itself.
 
-## Workflow settings {since=0.9.9}
+## Workflow settings {since=0.10.0}
 
 The gear at the top of the editor opens **Workflow settings**. They belong to the draft and apply from the next activation.
 
@@ -175,7 +175,7 @@ Content archives and the [instance move](/move-instance) take workflows along wi
 
 ## API, MCP and SDKs
 
-Workflows can be created, checked, tested, **activated** (with a write token) and started through the [REST API](/api-and-webhooks#workflows); the SDKs come with ready methods. Through [MCP](/mcp#workflows), an AI assistant reads workflows and runs, saves drafts, tests and starts them – it cannot activate them or decide approvals. Tests over MCP are always dry runs that reach nothing outside Flowplan. {since=0.9.9}
+Workflows can be created, checked, tested, **activated** (with a write token) and started through the [REST API](/api-and-webhooks#workflows); the SDKs come with ready methods. Through [MCP](/mcp#workflows), an AI assistant reads workflows and runs, saves drafts, tests and starts them – it cannot activate them or decide approvals. Tests over MCP are always dry runs that reach nothing outside Flowplan. {since=0.10.0}
 
 ## Frequently asked questions
 

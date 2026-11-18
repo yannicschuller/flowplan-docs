@@ -126,9 +126,9 @@ volumes:
 | `FLOWPLAN_PG_LOCK_TIMEOUT` | `10000` | So lange wartet eine Abfrage höchstens auf eine Sperre (ms). |
 | `FLOWPLAN_PG_IDLE_TX_TIMEOUT` | `60000` | Eine Transaktion, die so lange nichts tut, wird beendet (ms). |
 | `FLOWPLAN_PG_CONNECT_TIMEOUT` | `30000` | So lange wartet eine Anfrage auf eine freie Verbindung aus dem Pool (ms). |
-| `FLOWPLAN_PG_KEEPALIVE` | `10000` | TCP-Keepalive: so lange (ms) ist eine Verbindung still, bevor die erste Probe geht; `0` oder `off` schaltet es ab ([Failover](#failover-und-replica)). {since=0.9.9} |
-| `FLOWPLAN_PG_QUERY_TIMEOUT` | Höchstdauer + `5000` | Zeitlimit je Abfrage auf Flowplans Seite (ms), für Verbindungen, die gar nicht mehr antworten; `0` = keins, ebenso wenn `FLOWPLAN_PG_STATEMENT_TIMEOUT` `0` ist. {since=0.9.9} |
-| `FLOWPLAN_PG_IDLE_TIMEOUT` | `30000` | Unbenutzte Verbindungen im Pool schließt Flowplan danach (ms); `0` = behalten. {since=0.9.9} |
+| `FLOWPLAN_PG_KEEPALIVE` | `10000` | TCP-Keepalive: so lange (ms) ist eine Verbindung still, bevor die erste Probe geht; `0` oder `off` schaltet es ab ([Failover](#failover-und-replica)). {since=0.10.0} |
+| `FLOWPLAN_PG_QUERY_TIMEOUT` | Höchstdauer + `5000` | Zeitlimit je Abfrage auf Flowplans Seite (ms), für Verbindungen, die gar nicht mehr antworten; `0` = keins, ebenso wenn `FLOWPLAN_PG_STATEMENT_TIMEOUT` `0` ist. {since=0.10.0} |
+| `FLOWPLAN_PG_IDLE_TIMEOUT` | `30000` | Unbenutzte Verbindungen im Pool schließt Flowplan danach (ms); `0` = behalten. {since=0.10.0} |
 | `FLOWPLAN_PG_PREPARE` | an | `off` schickt jede Abfrage ohne Namen statt als benanntes Prepared Statement – für PgBouncer im Modus `transaction` vor 1.21 oder ohne `max_prepared_statements`. |
 | `FLOWPLAN_PG_SCHEMA_AUTO` | an | `off`: Die Instanz legt das Schema nicht selbst an oder aktualisiert es – das übernimmt ein eigener Schritt (`node /app/scripts/db-schema.mjs`, siehe [Cluster-Modus](/cluster#schema-vor-dem-start)). |
 | `FLOWPLAN_PGVECTOR` | an | `off` nutzt `pgvector` nicht, auch wenn es installiert ist. |
@@ -196,7 +196,7 @@ DATABASE_SESSION_URL=postgres://flowplan:<Passwort>@postgres:5432/flowplan
 # FLOWPLAN_PG_PREPARE=off
 ```
 
-## Failover und Replica {since=0.9.9}
+## Failover und Replica {since=0.10.0}
 
 Flowplan spricht mit genau **einer** Adresse in `DATABASE_URL` (und `DATABASE_SESSION_URL`) – keine Liste von Hosts, keine Aufteilung in Lesen und Schreiben. Eine Replica ist nur das Ziel eines Failovers; lesende Anfragen gehen nicht an sie. Was Flowplan tut, wenn die Verbindung abreißt oder der Server wechselt:
 

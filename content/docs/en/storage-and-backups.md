@@ -160,11 +160,11 @@ litestream restore -config /etc/litestream.yml \
 
 Move the existing `flowplan.sqlite` with `-wal` and `-shm` aside first.
 
-### Repair the Litestream state {since=0.9.9}
+### Repair the Litestream state {since=0.10.0}
 
 If two containers replicated on the same volume at the same time (see [Roll out SQLite without overlap](/coolify-and-proxy#roll-out-sqlite-without-overlap)), the log shows `compaction failed … level=1 … close reader 0: file checksum mismatch` every 30 seconds. The database itself is fine – what is broken is one of Litestream's change files (LTX). Litestream does not repair it by itself: compacting the changes stays stuck on that file, old change files are no longer cleaned up, and a restore from the bucket that runs through that file fails.
 
-**Flowplan detects and repairs this by itself.** {since=0.9.9} Every 15 minutes, the container that replicates lists `<prefix>/db/0000/` in the bucket once. Change files older than an hour there, while Litestream has run in this container for more than 30 minutes, mean the replica is stuck (right after a downtime, old files rightly wait for their first compaction). Then **Administration → Monitoring** shows a warning, administrators get one message per incident ([alerts by webhook](/monitoring#alerts-by-webhook), event `ops.litestream_stuck`, and their chat apps), and the activity log gets an entry. Flowplan makes a scheduled backup if they are on and schedules the repair for the **next restart**; if the backup fails, nothing is scheduled and it tries again after six hours.
+**Flowplan detects and repairs this by itself.** {since=0.10.0} Every 15 minutes, the container that replicates lists `<prefix>/db/0000/` in the bucket once. Change files older than an hour there, while Litestream has run in this container for more than 30 minutes, mean the replica is stuck (right after a downtime, old files rightly wait for their first compaction). Then **Administration → Monitoring** shows a warning, administrators get one message per incident ([alerts by webhook](/monitoring#alerts-by-webhook), event `ops.litestream_stuck`, and their chat apps), and the activity log gets an entry. Flowplan makes a scheduled backup if they are on and schedules the repair for the **next restart**; if the backup fails, nothing is scheduled and it tries again after six hours.
 
 On that start, Flowplan deletes only `<prefix>/db/` in the bucket, resets the local state, and Litestream begins afresh with a full snapshot. Uploads, backups and the database in the volume stay; without a database in the volume the replica is kept. If deleting fails, Flowplan starts normally, logs it and tries again on the next start.
 
@@ -187,7 +187,7 @@ Without a running container, do the same by hand: stop the container, delete onl
 ::: steps
 
 1. To be safe, create and download a backup under **Administration → Storage & backup**.
-2. In the running instance, `echo remote > /app/data/litestream-reset` (the same as **Rebuild the replica now**), then **stop** the container and **start** it again. {since=0.9.9}
+2. In the running instance, `echo remote > /app/data/litestream-reset` (the same as **Rebuild the replica now**), then **stop** the container and **start** it again. {since=0.10.0}
 3. On start, Flowplan deletes only `<prefix>/db/` in the bucket, resets the local state and starts Litestream. Litestream finds no state in the bucket, starts from scratch and uploads a full snapshot of the database right away (`<prefix>/db/0009/`).
 
 :::

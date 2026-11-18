@@ -9,7 +9,7 @@ The AI proposes [flashcards](/flashcards) from your study material – from a pa
 > [!NOTE]
 > This needs the [AI](/ai) switched on and the feature **Create flashcards** allowed – by the administration and in your own AI settings.
 
-## How it works {since=0.9.9}
+## How it works {since=0.10.0}
 
 Three ways open the dialog **Create flashcards with AI**:
 

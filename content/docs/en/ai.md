@@ -14,7 +14,7 @@ Optional AI for writing, summaries, questions to your workspace and databases �
 ## Principles
 
 - **Off until someone switches it on** – on the instance and for every person. The one exception is [on-device AI (Apple)](#on-device-ai-apple): it is allowed because nothing leaves the device, and it can be switched off just the same.
-- **Every feature separately:** writing assistant, summaries, questions to the workspace, AI in databases, AI actions, AI on whiteboards and {since=0.9.9} creating flashcards can each be allowed or switched off by administrators and by every person.
+- **Every feature separately:** writing assistant, summaries, questions to the workspace, AI in databases, AI actions, AI on whiteboards and {since=0.10.0} creating flashcards can each be allowed or switched off by administrators and by every person.
 - **Only with your permissions:** the AI never reads more than you may see yourself – and only what you allow it ([What the AI may access](#what-the-ai-may-access)).
 - **You see where your text goes:** every AI feature names the provider and whether data leaves the server.
 - **Keys stay secret:** API keys are stored encrypted and never shown again ([Security of keys](#security-of-keys)).
@@ -164,7 +164,7 @@ When you ask the AI about a journal day (**This page**, the writing assistant, s
 - **Limits:** at most 30 requests per minute, 300 per hour (`FLOWPLAN_AI_REQUESTS_PER_HOUR`) and 3 at once per person.
 - **Backups:** `secrets.key` is not part of the instance backup. After restoring on another server without this file, Flowplan shows "stored but unreadable – please replace", and the keys are entered again.
 
-## Protection against prompt injection {since=0.9.9}
+## Protection against prompt injection {since=0.10.0}
 
 Texts the AI reads – pages, records, e-mails, form answers, transcripts – can contain instructions someone hid there. Flowplan treats such material as data and does not let it decide recipients, targets or notifications:
 

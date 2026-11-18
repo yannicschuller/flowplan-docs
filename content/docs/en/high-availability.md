@@ -35,7 +35,7 @@ Two servers with the same `compose.yaml` and the same `.env`. Flowplan runs on t
 
 ### With PostgreSQL
 
-Both servers point `DATABASE_URL` at the same database and `S3_*` at the same bucket. If a second instance starts by mistake, Flowplan notices through a lock in the database: it still starts, logs a loud warning every ten minutes, and **Administration → Monitoring** shows on every instance, until only one runs: {since=0.9.9}
+Both servers point `DATABASE_URL` at the same database and `S3_*` at the same bucket. If a second instance starts by mistake, Flowplan notices through a lock in the database: it still starts, logs a loud warning every ten minutes, and **Administration → Monitoring** shows on every instance, until only one runs: {since=0.10.0}
 
 > "A second Flowplan instance is running against the same database without cluster mode (*instance*, since *time*). Timed jobs such as reminders, digests, backups and workflows then run twice, and live changes do not reach the other instance. Switch cluster mode on for every instance (FLOWPLAN_CLUSTER=1 with Redis and S3) or stop one of the instances. During a rolling restart this is normal for a moment."
 
@@ -79,7 +79,7 @@ Two single points remain: **PostgreSQL** (see [Failover and replicas](/en/postgr
 
 One instance after the other: stop it, start the new image, wait until it is ready, then the next one. On `SIGTERM` an instance answers `503` on `/api/health/ready` at once, finishes open requests and hands on live connections and the lead (`stop_grace_period: 30s`). The new version only extends the schema, so old instances keep working with it.
 
-So that browsers do not mix versions, every image carries a **deployment id** (`v<version>-<commit>`, fixed at build time). The app requests its files with `?dpl=<id>`, so caches on the way serve nothing stale, and when a page of the old version reaches a new instance, the browser reloads the whole page at the next navigation. Should an instance still lack a file of the other version, Flowplan's own build check heals the page. Building the image yourself, set the id with `FLOWPLAN_DEPLOYMENT_ID` (`--build-arg FLOWPLAN_DEPLOYMENT_ID=…`) – the same for every instance of one image – or switch it off with `off`. {since=0.9.9}
+So that browsers do not mix versions, every image carries a **deployment id** (`v<version>-<commit>`, fixed at build time). The app requests its files with `?dpl=<id>`, so caches on the way serve nothing stale, and when a page of the old version reaches a new instance, the browser reloads the whole page at the next navigation. Should an instance still lack a file of the other version, Flowplan's own build check heals the page. Building the image yourself, set the id with `FLOWPLAN_DEPLOYMENT_ID` (`--build-arg FLOWPLAN_DEPLOYMENT_ID=…`) – the same for every instance of one image – or switch it off with `off`. {since=0.10.0}
 
 ## Example: Hetzner Cloud
 

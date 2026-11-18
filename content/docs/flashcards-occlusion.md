@@ -6,7 +6,7 @@ keywords: Lernkarten, Bildverdeckung, Image Occlusion, Masken, Bild verdecken, A
 
 Mit der **Bildverdeckung** lernst du Bilder: Masken verdecken Teile eines Diagramms, einer Landkarte oder eines Anatomie-Atlas, und jede Karte fragt einen davon ab. Die Masken liegen über dem Bild – das Bild selbst bleibt unverändert. Grundlagen der Stapel stehen unter [Lernkarten](/flashcards).
 
-## Masken zeichnen {since=0.9.9}
+## Masken zeichnen {since=0.10.0}
 
 1. Richte im Stapel unter **Karten einrichten** den **Kartentyp** **Bildverdeckung** ein – für alle Einträge oder als Option der Auswahl **Kartentyp** („Bildverdeckung“ oder „Image occlusion“ erkennt Flowplan von selbst).
 2. Öffne einen Eintrag und füge in sein Dokument ein Bild ein.
@@ -29,7 +29,7 @@ Neben dem Bild steht die Liste der Masken mit ihrer Kartennummer. Dort gibst du 
 
 Mit der Tastatur: Die Pfeiltasten verschieben die Auswahl (mit <kbd>Umschalt</kbd> weiter, mit <kbd>Alt</kbd> ändern sie die Größe), <kbd>Entf</kbd> löscht, <kbd>G</kbd> gruppiert oder löst die Gruppe, ++⌘/Strg Z++ macht rückgängig, <kbd>Esc</kbd> bricht ein Polygon oder die Auswahl ab.
 
-## Karten und Lernstand {since=0.9.9}
+## Karten und Lernstand {since=0.10.0}
 
 Jede Maske ist eine eigene Karte, jede Gruppe zusammen eine. Ein Eintrag kann mehrere Bilder mit Masken haben. Die Karten zählen wie Lücken eines Lückentexts – in den Zählern, in **Neue Karten pro Tag** und **Wiederholungen pro Tag** und in der Statistik.
 
@@ -37,12 +37,12 @@ Masken behalten ihre Kennung: Verschiebst du eine Maske, änderst ihre Größe o
 
 Vorder- und Rückseite des Eintrags gibt es weiter: Die Vorderseite – etwa der Titel „Welche Region ist markiert?“ – steht über dem Bild, die Rückseite kommt nach dem Aufdecken unter der Beschriftung. Nimmt eine Seite das Dokument, zählt das Bild mit Masken nicht zu ihrem Text.
 
-## Lernen {since=0.9.9}
+## Lernen {since=0.10.0}
 
 Im [Fokusmodus](/flashcards#lernen-im-fokusmodus) zeigt die Karte das Bild mit den verdeckten Masken, die abgefragte farbig hervorgehoben. **Antwort zeigen** öffnet sie – sie bleibt umrandet – und zeigt die Beschriftung. Gewertet wird wie bei jeder Karte. Das geht auch [offline](/flashcards-app#offline-lernen): Die Bilder der Karten kommen mit dem gespeicherten Stapel aufs Gerät.
 
 Für Screenreader: Das Bild wird mit seinem Alternativtext angesagt, dazu „Bereich 3 von 7 verdeckt“, nach dem Aufdecken die Beschriftung. Gib dem Bild im Editor der Bildverdeckung einen **Alternativtext**; fehlt er, weist der Editor darauf hin.
 
-## Anki {since=0.9.9}
+## Anki {since=0.10.0}
 
 Notizen vom Typ **Image Occlusion** (Anki 23.10 und neuer) kommen beim [Anki-Import](/flashcards-import#aus-anki-importieren) mit ihren Masken: Rechtecke, Ellipsen und Polygone, Masken mit derselben Nummer als Gruppe, Ankis „Alle verdecken“ als **Alle verdecken, eine abfragen**. Der Lernstand gilt je Maske. Textfelder auf dem Bild übernimmt Flowplan nicht; der Bericht nennt ihre Zahl. Der [Export als Anki-Paket](/flashcards-import#als-anki-paket-exportieren) schreibt die Karten als Image-Occlusion-Notizen zurück, eine je Bild.

@@ -77,7 +77,7 @@ Im Reiter **Web** macht der Schalter **Im Web veröffentlichen** die Seite für 
 - Ausschalten, Löschen oder Verschieben aus dem veröffentlichten Baum entzieht den Zugriff sofort, auch auf Dateien.
 - Hat eine Seite Überschriften, blenden Besucher über das Listen-Symbol rechts neben dem Text die **Gliederung** ein (auf dem Smartphone der runde Knopf unten rechts). Sie zeigt, wo man gerade liest, und springt per Klick zur Überschrift. Ob sie offen ist, merkt sich der Browser – wie im Editor.
 
-### Lernkarten über einen Link {since=0.9.9}
+### Lernkarten über einen Link {since=0.10.0}
 
 Ein [Lernkarten-Stapel](/flashcards) zeigt über einen Link mit eigenen Berechtigungen oder als Veröffentlichung seine Ansicht **Lernen**:
 

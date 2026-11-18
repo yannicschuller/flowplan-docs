@@ -126,7 +126,7 @@ With many nested pages the tree gets long. Right-click a page with sub-pages (a 
 - Opening a page outside the branch – via search, a link or back/forward – shows the whole tree again, with a short note and **Focus again**. That way the open page is always in the sidebar.
 - Flowplan remembers the focus per workspace on this device, also after reloading. Drag and drop works within the branch.
 
-## A space as a library {since=0.9.9}
+## A space as a library {since=0.10.0}
 
 For documentation with hundreds of pages, show a space as a **library**: `…` next to the space → **Edit space …** → **Show as library**. There is no second structure: the pages at the top of the space are the **books**, their sub-pages the **chapters**, and theirs the **pages**.
 

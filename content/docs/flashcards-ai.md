@@ -9,7 +9,7 @@ Die KI schlägt [Lernkarten](/flashcards) aus deinem Lernstoff vor – aus einer
 > [!NOTE]
 > Dafür muss die [KI](/ai) eingeschaltet sein und die Funktion **Lernkarten erstellen** erlaubt – von der Administration und in deinen eigenen KI-Einstellungen.
 
-## So geht es {since=0.9.9}
+## So geht es {since=0.10.0}
 
 Drei Wege öffnen den Dialog **Lernkarten mit KI erstellen**:
 

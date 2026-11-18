@@ -160,11 +160,11 @@ litestream restore -config /etc/litestream.yml \
 
 Vorher die bestehende `flowplan.sqlite` samt `-wal` und `-shm` beiseitelegen.
 
-### Litestream-Zustand reparieren {since=0.9.9}
+### Litestream-Zustand reparieren {since=0.10.0}
 
 Haben zwei Container gleichzeitig auf demselben Volume repliziert (siehe [SQLite ohne Überlappung ausrollen](/coolify-and-proxy#sqlite-ohne-ueberlappung-ausrollen)), meldet das Log alle 30 Sekunden `compaction failed … level=1 … close reader 0: file checksum mismatch`. Die Datenbank selbst ist in Ordnung – kaputt ist eine Änderungsdatei (LTX) von Litestream. Litestream repariert sie nicht von selbst: Die Zusammenfassung der Änderungen bleibt an dieser Datei hängen, alte Änderungsdateien werden nicht mehr aufgeräumt und eine Wiederherstellung aus dem Bucket, die über diese Datei läuft, bricht ab.
 
-**Flowplan erkennt und repariert das selbst.** {since=0.9.9} Alle 15 Minuten listet der Container, der repliziert, einmal `<Präfix>/db/0000/` im Bucket. Liegen dort Änderungsdateien, die älter als eine Stunde sind, während Litestream in diesem Container schon länger als 30 Minuten läuft, hängt die Replik (kurz nach einer Pause warten alte Dateien zu Recht auf ihre erste Zusammenfassung). Dann zeigt **Administration → Überwachung** eine Warnung, Administratoren bekommen eine Nachricht je Vorfall ([Warnungen per Webhook](/monitoring#warnungen-per-webhook), Ereignis `ops.litestream_stuck`, und ihre Chat-Apps), und das Aktivitätsprotokoll einen Eintrag. Flowplan legt eine geplante Sicherung an, wenn sie eingeschaltet sind, und merkt die Reparatur für den **nächsten Neustart** vor; scheitert die Sicherung, merkt es nichts vor und versucht es nach sechs Stunden wieder.
+**Flowplan erkennt und repariert das selbst.** {since=0.10.0} Alle 15 Minuten listet der Container, der repliziert, einmal `<Präfix>/db/0000/` im Bucket. Liegen dort Änderungsdateien, die älter als eine Stunde sind, während Litestream in diesem Container schon länger als 30 Minuten läuft, hängt die Replik (kurz nach einer Pause warten alte Dateien zu Recht auf ihre erste Zusammenfassung). Dann zeigt **Administration → Überwachung** eine Warnung, Administratoren bekommen eine Nachricht je Vorfall ([Warnungen per Webhook](/monitoring#warnungen-per-webhook), Ereignis `ops.litestream_stuck`, und ihre Chat-Apps), und das Aktivitätsprotokoll einen Eintrag. Flowplan legt eine geplante Sicherung an, wenn sie eingeschaltet sind, und merkt die Reparatur für den **nächsten Neustart** vor; scheitert die Sicherung, merkt es nichts vor und versucht es nach sechs Stunden wieder.
 
 Bei diesem Start löscht Flowplan im Bucket nur `<Präfix>/db/`, setzt den lokalen Zustand zurück, und Litestream beginnt mit einem vollständigen Snapshot. Dateien, Sicherungen und die Datenbank im Volume bleiben; ohne Datenbank im Volume bleibt auch die Replik. Scheitert das Löschen, startet Flowplan normal, meldet es im Log und versucht es beim nächsten Start wieder.
 
@@ -187,7 +187,7 @@ Ohne laufenden Container geht dasselbe von Hand: Container stoppen, im Volume nu
 ::: steps
 
 1. Zur Vorsicht unter **Administration → Speicher & Sicherung** eine Sicherung erstellen und herunterladen.
-2. In der laufenden Instanz `echo remote > /app/data/litestream-reset` (dasselbe wie **Replik jetzt neu aufbauen**), dann den Container **stoppen** und wieder **starten**. {since=0.9.9}
+2. In der laufenden Instanz `echo remote > /app/data/litestream-reset` (dasselbe wie **Replik jetzt neu aufbauen**), dann den Container **stoppen** und wieder **starten**. {since=0.10.0}
 3. Beim Start löscht Flowplan im Bucket nur `<Präfix>/db/`, setzt den lokalen Zustand zurück und startet Litestream. Litestream findet keinen Stand im Bucket, beginnt von vorn und lädt sofort einen vollständigen Snapshot der Datenbank hoch (`<Präfix>/db/0009/`).
 
 :::

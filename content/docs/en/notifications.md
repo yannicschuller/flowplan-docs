@@ -42,7 +42,7 @@ Unread items are marked and can be filtered. A click opens the spot, for text co
 
 [Workflows](/workflows) use two kinds of their own that you can switch off per channel under **Settings → Notifications**: **Messages from workflows** (what a workflow sends) and **Errors, pauses and approvals of workflows** – so you never miss an approval when you mute the messages. An approval notification opens the workflow page on the **Approvals** tab.
 
-### Study reminders {since=0.9.9}
+### Study reminders {since=0.10.0}
 
 The daily [study reminder](/flashcards-app#study-reminder) of flashcards is a kind of its own: **Study reminders**. By default it comes as **push** only – not into the inbox, not by e-mail and not in chat apps; unlike the other kinds, push does not hang on the inbox here. Switch the inbox on for it and it is listed there too. A tap opens **Study**. You set the time under **Study**, not here.
 

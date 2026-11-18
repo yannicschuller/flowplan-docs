@@ -134,7 +134,7 @@ How to move: [Google Docs / Word](/migrate-office#from-google-docs).
 | Google Sheets / Excel | Database | similar | A database has properties per column and formulas per record, but no free cell formulas. |
 | Google Forms | Form | the same |  |
 
-## BookStack {since=0.9.9}
+## BookStack {since=0.10.0}
 
 How to move: [BookStack](/migrate-office#from-bookstack).
 
