@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@77b02381",
+  "source": "github.com/yannicschuller/flowplan@0ff018f0",
   "slash": {
     "groups": {
       "recent": [
@@ -2021,6 +2021,7 @@
     "FLOWPLAN_LITESTREAM_RESTART_SECONDS",
     "FLOWPLAN_LITESTREAM_SSE_C",
     "FLOWPLAN_LOCAL_LOGIN",
+    "FLOWPLAN_LOG_FILE",
     "FLOWPLAN_MARKETPLACE_URL",
     "FLOWPLAN_MAX_DOCUMENT_MB",
     "FLOWPLAN_MESSENGERS",

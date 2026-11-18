@@ -1,6 +1,6 @@
 ---
-keywords: Überwachung, Monitoring, Statistik, Warnung, Webhook, Prometheus, Grafana, Wartung, Fehler-ID
-new: fehler-im-detail 2026-11-17
+keywords: Überwachung, Monitoring, Statistik, Warnung, Webhook, Prometheus, Grafana, Wartung, Fehler-ID, Neustart, Absturz, OOM
+new: fehler-im-detail 2026-11-17, neustarts 2026-11-18
 ---
 
 # Überwachung und Wartung
@@ -36,6 +36,30 @@ Jede Antwort trägt eine **Fehler-ID** in der Kopfzeile `X-Request-Id`, bei eine
 
 Erfasst werden Antworten ab 500, Fehler von Hintergrunddiensten und -aufträgen und fehlgeschlagene MCP-Werkzeuge, auch bei ausgeschalteter Statistik. Gespeichert sind nur Route als Muster (ohne IDs und Query), Befehl, Status, Fehlername, die Meldung (höchstens 500 Zeichen; Schlüssel, Token, Passwörter, E-Mail- und IP-Adressen sowie IDs ausgeblendet), Stack-Frames, Datenbank-Fehlercode, Fehler-ID, Instanz, Version und Rolle (Administration, Mitglied, Gast, nicht angemeldet, API-Token, MCP). Nie gespeichert: IP-Adressen, Inhalte von Anfragen, Kopfzeilen oder wer es war. Aufbewahrt werden 14 Tage und höchstens 500 Fehlerarten.
 
+### Neustarts {since=0.9.9}
+
+Startet der Container neu, ohne dass ein Fehler zu sehen war, hilft **Neustarts** unter **Administration → Überwachung** hinterher: Jeder Neustart der letzten 30 Tage steht da mit Zeitpunkt, wie lange Flowplan davor lief, dem Grund und dem Speicher beim letzten Lebenszeichen (Prozess bzw. Container gegen seine Grenze).
+
+| Grund | Bedeutet |
+| --- | --- |
+| Sauber beendet | Flowplan bekam SIGTERM oder SIGINT und fuhr geordnet herunter – ein Update, `docker stop`, ein Neustart. |
+| Absturz | Ein Fehler hat den Prozess beendet; der Fehler mit Stack steht dabei. |
+| Vermutlich Speicher voll | Beim letzten Lebenszeichen war der Speicher bei mindestens 90 % der Grenze des Containers (oder des JavaScript-Heaps), oder der Container meldet einen OOM-Kill, oder auf dem ganzen Server waren höchstens 5 % des Speichers frei. |
+| Ohne Spur beendet | Weder Signal noch Fehler: etwa `SIGKILL` nach einem fehlgeschlagenen Healthcheck, durch den Host oder `kill -9`, ein Stromausfall – oder ein OOM-Kill, der keine Spur hinterließ. |
+
+Aufgeklappt zeigt ein unerwarteter Neustart die letzten 200 Zeilen des Server-Logs vor dem Ende – Flowplans eigene Ausgabe und die von Litestream – als Text zum Durchscrollen; **Als .txt herunterladen** speichert sie mit Grund und Speicher. Ein sauberer Neustart ist nur ein kurzer Eintrag ohne Zeilen.
+
+So funktioniert es: Flowplan schreibt alle 30 Sekunden ein Lebenszeichen (Zeit, Laufzeit, Speicher des Prozesses und die Grenze des Containers aus cgroup v2 oder v1) nach `/app/data/logs/` und beim Herunterfahren, ob es sauber war. Der nächste Start liest das und trägt den Neustart ein. Daneben liegt das Server-Log: je Container zwei Dateien mit zusammen etwa 2.000 Zeilen (je höchstens 1 MB), für Litestream ebenso (`litestream.log`). Die Ausgabe im Container-Log (`docker logs`) bleibt, wie sie war.
+
+**Geschwärzt** wird, bevor eine Zeile auf die Platte kommt: die Werte von Umgebungsvariablen, deren Name `TOKEN`, `SECRET`, `PASSWORD` oder `KEY` enthält (S3-Schlüssel, Verschlüsselungsschlüssel, Passwörter …), Bearer-Token, Zugangsdaten in Adressen (`https://name:passwort@…`), `password=…` und Ähnliches, E-Mail- und IP-Adressen. Inhalte von Seiten schreibt Flowplan nicht ins Log.
+
+Aufbewahrt werden die Einträge 30 Tage. Im Cluster trägt jede Instanz ihre eigenen Neustarts ein; teilen sich mehrere Container einen Datenordner, tragen die Dateien den Namen ihres Containers (`FLOWPLAN_INSTANCE_ID` oder Hostname). `FLOWPLAN_LOG_FILE=off` schaltet das Log auf der Platte ab – die Neustarts stehen dann ohne Zeilen da.
+
+Ein **Absturz** oder **zwei unerwartete Neustarts innerhalb einer Stunde** sind ein Vorfall: einmal je Vorfall gehen eine Warnung per Webhook (`ops.unexpected_restart`) und eine Nachricht an die Chat-Apps der Administratoren, die Kachel **Überwachung** auf der Startseite der Administration zeigt ihn einen Tag lang, und das Aktivitätsprotokoll hält ihn fest.
+
+> [!NOTE]
+> **Grenzen der OOM-Erkennung:** Beendet der Kernel den Prozess wegen Speichermangels, kann Flowplan nichts mehr schreiben. „Vermutlich Speicher voll“ ist deshalb eine Vermutung aus dem letzten Lebenszeichen – bis zu 30 Sekunden alt, ein schneller Anstieg danach bleibt unsichtbar – oder aus dem OOM-Zähler des Containers, den Docker und Kubernetes bei einem Neustart meist zurücksetzen. Sicher sagen es `docker inspect --format '{{.State.OOMKilled}}' <container>` bzw. `kubectl describe pod` („OOMKilled“). Ohne Speichergrenze am Container zählen der JavaScript-Heap und der freie Speicher des ganzen Servers – ist er voll, beendet der Kernel irgendeinen Prozess, etwa Litestream; dann steht `Killed process … (litestream)` in `dmesg`. Und weil Litestream im Container der erste Prozess ist, kann seine allerletzte Zeile beim Beenden in der Datei fehlen.
+
 ### Statistik
 
 Für die Diagramme zählt Flowplan Anfragen, Fehler und Antwortzeiten je Minute, aktive Personen je Stunde, Speicher je Tag und KI-Tokens je Funktion – nur Zahlen, ohne IP-Adressen, Pfade, Browserkennungen oder Namen. Wer aktiv war, steht nur für die laufende Stunde im Arbeitsspeicher, damit jede Person einmal zählt. Erfolgreiche Anmeldungen werden mit Zeitpunkt (ohne Person) gezählt. KI-Tokens stammen vom Anbieter, wo er sie meldet, sonst sind sie geschätzt (vier Zeichen je Token).
@@ -60,6 +84,7 @@ Unter **Administration → Überwachung → Warnungen per Webhook** trägst du e
 | Viele fehlgeschlagene Anmeldungen | 50 oder mehr fehlgeschlagene Anmeldungen in einer Stunde. |
 | Sicherheitsvorfälle | Sofort bei jedem neuen Vorfall der [Erkennungsregeln](/security-monitoring#erkennungsregeln) (`ops.security`, mit `rule` und `severity`). |
 | Litestream-Replik hängt | Sofort, einmal je Vorfall: Die [Litestream-Replik im Bucket hängt](/storage-and-backups#litestream-zustand-reparieren) (`ops.litestream_stuck`). {since=0.9.9} |
+| Unerwartete Neustarts | Sofort, einmal je Vorfall: ein Absturz oder zwei unerwartete [Neustarts](#neustarts) innerhalb einer Stunde (`ops.unexpected_restart`). {since=0.9.9} |
 
 Flowplan prüft alle zehn Minuten und sendet je Ereignis höchstens **eine Nachricht pro Tag** als `POST` mit JSON:
 
