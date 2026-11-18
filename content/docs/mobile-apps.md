@@ -31,7 +31,9 @@ Die Apps für iPhone, iPad und Android: installieren und aktualisieren, mit der 
 
 :::
 
-**Updates:** Einmal am Tag schaut die App nach, ob es eine neue Version gibt, und fragt dann: **Herunterladen** lädt sie im Browser, die Datei öffnen und **Aktualisieren** installiert sie über die alte – Anmeldung, Profile und Einstellungen bleiben. **Später** fragt für diese Version erst nach einer Woche wieder. Neue Funktionen von Flowplan selbst kommen ohnehin über den Server, dafür braucht es kein App-Update.
+**Updates:** Einmal am Tag schaut die App nach, ob es eine neue Version gibt, und fragt dann. **Aktualisieren** lädt sie in der App (mit Fortschritt, abbrechbar), prüft die Datei und öffnet den Installer von Android – Anmeldung, Profile und Einstellungen bleiben, die Datei wird danach gelöscht und landet nicht in *Downloads*. Beim ersten Mal fragt Android, ob Flowplan Apps installieren darf: **Aus dieser Quelle zulassen**, dann zurück – das Update läuft weiter. **Später** fragt für diese Version erst nach einer Woche wieder. Klappt etwas nicht, zeigt die App den Grund und bietet **Im Browser laden** an. Neue Funktionen von Flowplan selbst kommen ohnehin über den Server, dafür braucht es kein App-Update.
+
+**Obtainium:** Wer Apps lieber mit [Obtainium](https://github.com/ImranR98/Obtainium) aktuell hält, trägt dort die [GitHub-Releases von flowplan-app](https://github.com/yannicschuller/flowplan-app/releases) ein; jedes Release enthält die signierte `Flowplan-<version>-android.apk`.
 
 Die Android-App lässt sich auch weiterhin weglassen: Flowplan lässt sich auf Android wie oben beschrieben als Web-App installieren.
 
@@ -62,44 +64,13 @@ Außerdem:
 - Beim ersten Start fragen sie nach der Adresse und schlagen `https://app.flowplan.org` vor. Sie akzeptieren nur echte Flowplan-Instanzen, die nicht auf eine andere Seite weiterleiten. Weitere Instanzen speicherst du als [Profile](#profile-in-den-mobilen-apps). **Abmelden und Profil entfernen** in den **App-Einstellungen** (über **Einstellungen → Benachrichtigungen → App-Einstellungen öffnen**) meldet die App bei der Instanz des aktiven Profils ab und entfernt sie dort.
 - **Verwaltete Geräte (MDM/EMM):** Über die verwaltete App-Konfiguration (iOS Managed App Configuration bzw. Android App Restrictions) gibt der Schlüssel `server` die Adresse der eigenen Instanz vor; die App schlägt sie beim ersten Start vor.
 - **Mit Passkey anmelden** und **Mit SSO anmelden** öffnen das Anmeldefenster des Systems (iOS) bzw. einen Browser-Tab (Android); nach **In der App anmelden** übernimmt die App die Anmeldung. E-Mail und Passwort gehen direkt in der App: **Mit E-Mail und Passwort** öffnet das Formular.
-- **Passkey hinzufügen** {since=0.10.2} geht im Browser, nicht in der App selbst: Unter **Einstellungen → Konto → Passkeys** öffnet **Im Browser hinzufügen** die Seite in Safari oder Chrome, wo der Passkey gespeichert wird (iCloud-Schlüsselbund, Google-Passwortmanager oder dein Passwort-Manager). In der App selbst bieten iOS und Android Passkeys nur für Adressen an, die fest in der App eingetragen sind – nicht für selbst gehostete Instanzen. Anmelden damit geht danach in der App über **Mit Passkey anmelden**.
+- **Passkey hinzufügen** {since=0.10.2}: **Einstellungen → Konto → Passkeys → Passkey hinzufügen** öffnet über einen Einmal-Link (fünf Minuten gültig) das Anmeldefenster des Systems (iOS) bzw. einen Browser-Tab (Android). Dort wird der Passkey gespeichert (iCloud-Schlüsselbund, Google-Passwortmanager oder dein Passwort-Manager), danach geht es zurück in die App. Das braucht eine App-Version nach 1.0.17; ältere Apps bieten **Im Browser hinzufügen** (Safari oder Chrome) an – in der App selbst bieten iOS und Android Passkeys nur für fest eingetragene Adressen an. Anmelden geht danach über **Mit Passkey anmelden**.
 - **Passwort-Manager füllt nichts aus?** Dann tippe zuerst auf **Mit E-Mail und Passwort** und unter dem Formular (oder beim Zwei-Faktor-Code) auf **Im Browser anmelden**. Die Anmeldung öffnet sich im selben Fenster wie bei Passkey und SSO; dort erkennt dein Passwort-Manager die Adresse deiner Instanz und füllt Passwort und Code aus. In der App selbst ordnet iOS gespeicherte Passwörter nur Adressen zu, die fest in der App eingetragen sind – bei selbst gehosteten Instanzen geht das nicht. Das braucht Flowplan 0.8.8 oder neuer; die App muss dafür nicht aktualisiert werden.
 - Die Anmeldung über den Browser sowie Mitteilungen und Widgets (die App-Schnittstelle) brauchen Flowplan 0.4.0 oder neuer.
 - Links zu anderen Seiten öffnen im Browser; ohne Verbindung zeigt die App eine eigene Seite und verbindet sich von selbst wieder.
 - Flowplan erscheint im **Teilen**-Menü anderer Apps – auf iPhone und iPad als **Flowplan**, auf Android als **In Flowplan speichern**, siehe [Teilen aus anderen Apps](/mobile-capture#teilen-aus-anderen-apps).
 
-## Instanz im eigenen Netz ohne HTTPS
-
-Beim ersten Start (oder unter **Profil hinzufügen**) gibst du die Adresse deiner Instanz ein. Ohne `http://` davor nimmt die App immer HTTPS an. Eine reine `http://`-Adresse nimmt sie nur an, wenn die Instanz **im lokalen Netz** läuft – öffentliche Domains und Adressen brauchen immer HTTPS.
-
-| Funktioniert mit `http://` | iPhone und iPad | Android |
-| --- | --- | --- |
-| Private IP-Adressen: `192.168.x.x`, `10.x.x.x`, `172.16.x.x`–`172.31.x.x` | ja | ja |
-| Tailscale- und CGNAT-Adressen `100.64.x.x`–`100.127.x.x`, Link-local `169.254.x.x` | ja | ja |
-| IPv6 im lokalen Netz (`fd…`, `fe80…`), `localhost` | ja | ja |
-| Namen ohne Punkt, z. B. `http://nas:3000` | ja | ja |
-| `.local`-Namen, z. B. `http://flowplan.local:3000` | ja | ja |
-| `.lan`, `.home.arpa`, `.internal`, z. B. `http://flowplan.lan` | **nein** | ja |
-| Öffentliche Domains und IPs, auch Tailscale-Namen `*.ts.net` | nein (nur HTTPS) | nein (nur HTTPS) |
-
-Auf iPhone und iPad erlaubt iOS unverschlüsselte Verbindungen nur zu IP-Adressen, Namen ohne Punkt und `.local`-Namen. Für eine Instanz unter `flowplan.lan` gibst du dort die IP-Adresse ein (`http://192.168.1.20:3000`) – oder richtest HTTPS ein. Die App sagt das beim Verbinden, statt eine leere Seite zu zeigen. Beim ersten Verbinden fragt iOS außerdem, ob Flowplan auf Geräte im lokalen Netz zugreifen darf: **Erlauben** tippen.
-
-Sobald eine `http://`-Adresse im Feld steht, warnt die App vor dem Verbinden:
-
-- **Passwörter und alle Inhalte gehen unverschlüsselt durchs Netz.** Das ist nur in einem Netz in Ordnung, dem du vertraust.
-- **Ohne HTTPS fehlen** Passkeys, verschlüsselte Bereiche, Sprachnotizen in Seiten und auf Android die Offline-Kopie (auf iPhone und iPad hält die App die Offline-Kopie selbst, sie funktioniert auch so).
-- **Mitteilungen** kommen von einer Instanz, die nur im lokalen Netz erreichbar ist, meist nicht an: Das [Push-Relay](/configuration-ai-push#push-relay-und-ende-zu-ende-verschluesselung) muss die Instanz aus dem Internet erreichen.
-
-Für den echten Betrieb richte HTTPS ein, siehe [Ohne HTTPS](/installation#ohne-https). Mit einem Tailscale-Namen (`*.ts.net`) bekommst du HTTPS auch ohne öffentliche Domain.
-
-## Eigene Zertifikate
-
-Nutzt deine Instanz ein selbstsigniertes Zertifikat oder eine eigene Zertifizierungsstelle (CA), installierst du das CA-Zertifikat am besten auf dem Gerät:
-
-- **iPhone/iPad:** Lade es (z. B. in Safari oder per AirDrop), installiere es unter **Einstellungen → Allgemein → VPN und Geräteverwaltung** und schalte unter **Einstellungen → Allgemein → Info → Zertifikatsvertrauenseinstellungen** das volle Vertrauen ein. iOS verlangt den Servernamen im Feld „Alternativer Name“ (subjectAltName) und höchstens 825 Tage Gültigkeit.
-- **Android:** **Einstellungen → Sicherheit → Verschlüsselung und Anmeldedaten → Zertifikat installieren → CA-Zertifikat**. Die App vertraut Zertifizierungsstellen, die du selbst installiert hast.
-
-Ohne installiertes Zertifikat zeigt die App beim Verbinden Aussteller, Gültigkeit und SHA-256-Fingerabdruck. Auf **Android** kannst du dann **Diesem Zertifikat vertrauen** wählen: Die App vertraut genau diesem Zertifikat, nur für diese Instanz. Ändert es sich, lädt die App nichts und fragt erneut; entfernen kannst du es in den App-Einstellungen. Die Offline-Kopie funktioniert auf Android nur mit installierter Zertifizierungsstelle, nicht mit einem so bestätigten Zertifikat. Auf **iPhone und iPad** erklärt die App, wie du das Zertifikat installierst. Ab App-Version 1.0.12.
+Instanzen im eigenen Netz ohne HTTPS und eigene Zertifikate stehen unter [Apps: eigenes Netz und Zertifikate](/app-network).
 
 ## Profile in den mobilen Apps
 

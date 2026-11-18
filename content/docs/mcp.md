@@ -85,6 +85,7 @@ Clients, die Streamable HTTP sprechen und eigene Kopfzeilen erlauben, nutzen die
 | `query_database` | Datensätze mit Eigenschaften nach Namen, Eigenschaftsdefinitionen, Ansichten; Textfilter, eine gespeicherte Ansicht, Blättern | Lesen |
 | `get_record` | Ein Datensatz mit allen Eigenschaften und seinem Datensatzdokument | Lesen |
 | `my_tasks` | Deine Aufgaben aus Dokumenten und Datensätzen, mit Fälligkeit | Lesen |
+| `optimize_flashcard_parameters` | Passt die FSRS-Parameter eines [Lernkarten-Stapels](/flashcards-optimize) (oder eines Teils davon) an deine Wertungen an und empfiehlt eine Behaltensrate mit der Arbeit je Rate; speichert nichts {since=0.10.2} | Lesen |
 | `create_page` | Neues Dokument, neue Datenbank oder neues Whiteboard; Dokumente können mit Markdown-Inhalt beginnen | Schreiben |
 | `append_to_page` | Hängt Markdown ans Ende eines Dokuments an | Schreiben |
 | `update_page` | Ändert Titel und Emoji eines Dokuments, ersetzt seinen Text oder einen Abschnitt oder hängt an {since=0.9.8} | Schreiben |
@@ -96,6 +97,7 @@ Clients, die Streamable HTTP sprechen und eigene Kopfzeilen erlauben, nutzen die
 | `trash_record` | Legt einen Datensatz in den Papierkorb {since=0.9.8} | Schreiben |
 | `save_collection` | Neue Sammlung anlegen oder Name, Abfrage, Emoji und Teilen ändern | Schreiben |
 | `delete_collection` | Sammlung in den Papierkorb legen | Schreiben |
+| `set_flashcard_parameters` | Speichert deine FSRS-Parameter für einen Stapel, einen Teil davon oder alle Stapel, oder setzt sie zurück {since=0.10.2} | Schreiben |
 
 Eigenschaften werden mit ihrem Namen (oder ihrer ID) angegeben. Datumswerte schreibst du als `JJJJ-MM-TT`, Auswahlen mit ihrem Namen, Personen mit E-Mail-Adresse oder Namen und Relationen als Liste von Datensatz-IDs. Text-Eigenschaften (außer dem Titel) sind formatierter Text: `get_database` kennzeichnet sie mit `markdown: true`, gelesen und geschrieben werden sie als Inline-Markdown (`**fett**`, `_kursiv_`, `~~durchgestrichen~~`, `` `Code` ``, `[Text](https://…)`, `\n`; siehe [Formatierter Text](/database-properties#formatierter-text)). `update_record` nimmt die `version` aus `get_record` entgegen: Hat jemand den Datensatz inzwischen geändert, wird die Änderung abgelehnt und nicht überschrieben.
 

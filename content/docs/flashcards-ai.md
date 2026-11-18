@@ -11,15 +11,16 @@ Die KI schlägt [Lernkarten](/flashcards) aus deinem Lernstoff vor – aus einer
 
 ## So geht es {since=0.10.0}
 
-Drei Wege öffnen den Dialog **Lernkarten mit KI erstellen**:
+Diese Wege öffnen den Dialog **Lernkarten mit KI erstellen**:
 
 - **Mit KI erstellen** in der Lernen-Ansicht eines Stapels – die Karten kommen in diesen Stapel.
 - **Lernkarten erstellen** im Textmenü, wenn du in einem Dokument Text markierst.
 - **Lernkarten mit KI erstellen** in der Schnellsuche (++⌘ K++, dann `>`) – für die offene Seite.
+- **Lernkarten erstellen** im [PDF-Betrachter](/media-and-files#pdfs-anmerken) – mit dem PDF als Quelle und der Seite, die du gerade liest. {since=0.10.2}
 
 Im Dialog wählst du:
 
-1. **Quelle:** **Diese Seite** (oder den Eintrag), **Markierter Text**, **PDF oder Datei** (PDFs, Word- und andere Dokumente der Seite – ihr Text, den Flowplan für die Suche ausliest, auch gescannte über die Texterkennung) oder **Text einfügen**.
+1. **Quelle:** **Diese Seite** (oder den Eintrag), **Markierter Text**, **PDF oder Datei** (PDFs, Word- und andere Dokumente der Seite – ihr Text, den Flowplan für die Suche ausliest, auch gescannte über die Texterkennung) oder **Text einfügen**. Bei einem PDF nimmst du **Alle Seiten** oder nur **Seiten von … bis …** (höchstens 300) – etwa ein Kapitel; den Text dieser Seiten liest dein Browser aus dem PDF. Gescannte Seiten ohne Textebene gehen nur mit **Alle Seiten**. {since=0.10.2}
 2. **Stapel:** einen vorhandenen Lernkarten-Stapel oder **Neuer Stapel …** mit Name und Bereich – er wird eine Datenbank der Art **Lernkarten**.
 3. **Höchstens** wie viele Karten (bis 200), welche **Kartentypen** (Vorder-/Rückseite, Lückentext, Antwort eintippen, Multiple Choice) und auf Wunsch einen **Schwerpunkt**, etwa „nur Begriffe und Definitionen“.
 
@@ -35,7 +36,9 @@ Die Vorschläge stehen in einer Liste mit Häkchen:
 - **Neu erzeugen** fragt die KI noch einmal, ohne die schon vorgeschlagenen Karten zu wiederholen.
 - **Tags für alle** gibt jeder Karte dieselben Tags, etwa „Kapitel 3“.
 
-Erst **… Karten hinzufügen** legt die angehakten Karten als Einträge des Stapels an – mit deinen Rechten, wie ein Import. Lücken stehen als `{{c1::…}}` in der Vorderseite, der Kartentyp in der Eigenschaft **Kartentyp**, falsche Antworten in den Antwortoptionen, wenn der Stapel eine solche Eigenschaft hat. Stapel, deren Vorder- oder Rückseite aus dem Dokument des Eintrags kommt, nehmen keine KI-Karten an.
+Erst **… Karten hinzufügen** legt die angehakten Karten als Einträge des Stapels an – mit deinen Rechten, wie ein Import. Lücken stehen als `{{c1::…}}` in der Vorderseite, der Kartentyp in der Eigenschaft **Kartentyp**, falsche Antworten in den Antwortoptionen, wenn der Stapel eine solche Eigenschaft hat.
+
+Kommt die Vorder- oder Rückseite des Stapels aus dem [Dokument des Eintrags](/flashcards#inhalte-aus-dem-dokument), schreibt Flowplan die Karte ins Dokument: die Vorderseite über die Trennlinie (`---`), die Rückseite darunter – Formatierung und Formeln bleiben, Lücken werden die Markierung **Lücke**. Der Titel des Eintrags bekommt die Vorderseite als Text, wenn er keine Kartenseite ist. {since=0.10.2}
 
 ## Worauf die KI achtet
 

@@ -31,7 +31,9 @@ The apps for iPhone, iPad and Android: install and update them, connect them to 
 
 :::
 
-**Updates:** once a day the app checks whether there is a new version and then asks: **Download** fetches it in the browser, opening the file and tapping **Update** installs it over the old one – sign-in, profiles and settings stay. **Later** asks again for that version only after a week. New Flowplan features arrive through the server anyway, no app update needed.
+**Updates:** once a day the app checks for a new version and asks. **Update** downloads it in the app (cancellable), checks it and opens Android's installer – sign-in, profiles and settings stay; the file is deleted afterwards. The first time, Android asks whether Flowplan may install apps: **Allow from this source**, then go back. **Later** asks again after a week. If something fails, the app says why and offers **Download in browser**. New Flowplan features arrive through the server anyway.
+
+**Obtainium:** add the [GitHub releases of flowplan-app](https://github.com/yannicschuller/flowplan-app/releases); each carries the signed `Flowplan-<version>-android.apk`.
 
 You can also do without the Android app: Flowplan can be installed on Android as a web app as described above.
 
@@ -62,44 +64,13 @@ Also:
 - On first start they ask for the address and suggest `https://app.flowplan.org`. They only accept real Flowplan instances that do not redirect to another site. More instances are saved as [profiles](#profiles-in-the-mobile-apps). **Sign out and remove the profile** in the **app settings** (via **Settings → Notifications → Open app settings**) signs the app out of the active profile's instance and removes it there.
 - **Managed devices (MDM/EMM):** through managed app configuration (iOS Managed App Configuration or Android app restrictions), the key `server` presets the address of your own instance; the app suggests it on first start.
 - **Sign in with a passkey** and **Sign in with SSO** open the system's sign-in sheet (iOS) or a browser tab (Android); after **Sign in to the app** the app takes over the sign-in. E-mail and password work directly in the app: **With e-mail and password** opens the form.
-- **Adding a passkey** {since=0.10.2} works in the browser, not inside the app: under **Settings → Account → Passkeys**, **Add in the browser** opens the page in Safari or Chrome, where the passkey is stored (iCloud Keychain, Google Password Manager or your password manager). Inside the app, iOS and Android offer passkeys only for addresses built into the app – not for self-hosted instances. Signing in with it then works in the app through **Sign in with a passkey**.
+- **Adding a passkey** {since=0.10.2}: **Settings → Account → Passkeys → Add a passkey** opens the system's sign-in sheet (iOS) or a browser tab (Android) with a one-time link (valid five minutes). It stores the passkey (iCloud Keychain, Google Password Manager or your password manager) and returns to the app. Needs an app version after 1.0.17; older apps offer **Add in the browser** – inside the app, iOS and Android offer passkeys only for built-in addresses. Then sign in with **Sign in with a passkey**.
 - **Password manager not filling in?** Tap **With e-mail and password** first, then **Sign in in the browser** below the form (or at the two-factor code). The sign-in opens in the same sheet as for passkeys and SSO; there your password manager recognises your instance's address and fills in the password and code. Inside the app itself, iOS only matches saved passwords to addresses built into the app – which isn't possible for self-hosted instances. This needs Flowplan 0.8.8 or newer; the app doesn't need an update.
 - Signing in through the browser as well as notifications and widgets (the app interface) need Flowplan 0.4.0 or newer.
 - Links to other sites open in the browser; without a connection the app shows a page of its own and reconnects by itself.
 - Flowplan appears in other apps' **Share** menu – as **Flowplan** on iPhone and iPad, as **Save to Flowplan** on Android, see [Share from other apps](/mobile-capture#share-from-other-apps).
 
-## An instance on your own network without HTTPS
-
-On first start (or under **Add profile**) you enter your instance's address. Without `http://` in front, the app always assumes HTTPS. It accepts a plain `http://` address only when the instance runs **on your local network** – public domains and addresses always need HTTPS.
-
-| Works with `http://` | iPhone and iPad | Android |
-| --- | --- | --- |
-| Private IP addresses: `192.168.x.x`, `10.x.x.x`, `172.16.x.x`–`172.31.x.x` | yes | yes |
-| Tailscale and CGNAT addresses `100.64.x.x`–`100.127.x.x`, link-local `169.254.x.x` | yes | yes |
-| Local IPv6 (`fd…`, `fe80…`), `localhost` | yes | yes |
-| Names without a dot, e.g. `http://nas:3000` | yes | yes |
-| `.local` names, e.g. `http://flowplan.local:3000` | yes | yes |
-| `.lan`, `.home.arpa`, `.internal`, e.g. `http://flowplan.lan` | **no** | yes |
-| Public domains and IPs, also Tailscale names `*.ts.net` | no (HTTPS only) | no (HTTPS only) |
-
-On iPhone and iPad, iOS allows unencrypted connections only to IP addresses, names without a dot and `.local` names. For an instance at `flowplan.lan`, enter its IP address there (`http://192.168.1.20:3000`) – or set up HTTPS. The app tells you so when connecting instead of showing an empty page. On the first connection iOS also asks whether Flowplan may access devices on your local network: tap **Allow**.
-
-As soon as an `http://` address is in the field, the app warns before connecting:
-
-- **Passwords and all content cross the network unencrypted.** That is fine only on a network you trust.
-- **Without HTTPS there are no** passkeys, encrypted spaces, voice notes on pages and, on Android, no offline copy (on iPhone and iPad the app keeps the offline copy itself, so it works there).
-- **Notifications** from an instance that is only reachable on your local network usually don't arrive: the [push relay](/configuration-ai-push#push-relay-and-end-to-end-encryption) has to reach the instance from the internet.
-
-For real use, set up HTTPS, see [Without HTTPS](/installation#without-https). With a Tailscale name (`*.ts.net`) you get HTTPS even without a public domain.
-
-## Own certificates
-
-If your instance uses a self-signed certificate or a private certificate authority (CA), ideally install the CA certificate on the device:
-
-- **iPhone/iPad:** download it (for example in Safari or via AirDrop), install it in **Settings → General → VPN & Device Management** and turn on full trust in **Settings → General → About → Certificate Trust Settings**. iOS requires the server name in the Subject Alternative Name and at most 825 days of validity.
-- **Android:** **Settings → Security → Encryption & credentials → Install a certificate → CA certificate**. The app trusts CAs you installed yourself.
-
-Without an installed certificate, the app shows issuer, validity and SHA-256 fingerprint when connecting. On **Android** you can then choose **Trust this certificate**: the app trusts exactly that certificate, only for that instance. If it changes, the app loads nothing and asks again; you can remove it in the app settings. On Android, the offline copy works only with an installed CA, not with a certificate confirmed this way. On **iPhone and iPad** the app explains how to install the certificate. From app version 1.0.12.
+Instances on your own network without HTTPS and certificates of your own are under [Apps: own network and certificates](/app-network).
 
 ## Profiles in the mobile apps
 

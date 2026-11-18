@@ -29,6 +29,7 @@ There are several ways to a deck:
 | Card type {since=0.10.0} | the same for all records or from a select property ([card types](#card-types)) |
 | Answer options {since=0.10.0} | for multiple choice: a property with the wrong answers; without one, Flowplan takes the backs of other cards |
 | Tags {since=0.10.0} | a select or multi-select property; generated answer options prefer cards with the same tags |
+| Sub-decks {since=0.10.2} | a select property whose values are sub-decks; each can get [parameters of its own](/flashcards-optimize#parts-of-a-deck) |
 | Typed answers: ignore {since=0.10.0} | what the comparison passes over: upper and lower case (on), accents (off), punctuation (on) |
 | Also study in reverse | a second card per record: back → front |
 | New cards per day | default 20 |

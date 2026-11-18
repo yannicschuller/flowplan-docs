@@ -29,6 +29,7 @@ Mehrere Wege führen zu einem Stapel:
 | Kartentyp {since=0.10.0} | für alle Einträge gleich oder aus einer Auswahl-Eigenschaft ([Kartentypen](#kartentypen)) |
 | Antwortoptionen {since=0.10.0} | für Multiple Choice: eine Eigenschaft mit den falschen Antworten; ohne sie nimmt Flowplan die Rückseiten anderer Karten |
 | Tags {since=0.10.0} | eine Auswahl- oder Mehrfachauswahl-Eigenschaft; erzeugte Antwortoptionen kommen bevorzugt aus Karten mit denselben Tags |
+| Unterstapel {since=0.10.2} | eine Auswahl-Eigenschaft, deren Werte Unterstapel sind; jeder kann [eigene Parameter](/flashcards-optimize#teile-eines-stapels) bekommen |
 | Antwort eintippen: ignorieren {since=0.10.0} | was der Vergleich übergeht: Groß- und Kleinschreibung (an), Akzente (aus), Satzzeichen (an) |
 | Auch umgekehrt lernen | eine zweite Karte je Eintrag: Rückseite → Vorderseite |
 | Neue Karten pro Tag | Vorgabe 20 |

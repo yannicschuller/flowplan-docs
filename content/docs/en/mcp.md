@@ -85,6 +85,7 @@ Clients that speak Streamable HTTP and accept their own headers use this configu
 | `query_database` | Records with properties by name, property definitions, views; text filter, a saved view, paging | Read |
 | `get_record` | One record with all properties and its record document | Read |
 | `my_tasks` | Your tasks from documents and records, with due dates | Read |
+| `optimize_flashcard_parameters` | Fits the FSRS parameters of a [flashcard deck](/flashcards-optimize) (or a part of it) to your ratings and recommends a retention with the workload per retention; stores nothing {since=0.10.2} | Read |
 | `create_page` | New document, database or whiteboard; documents can start with Markdown content | Write |
 | `append_to_page` | Appends Markdown to the end of a document | Write |
 | `update_page` | Changes a document's title and emoji, replaces its text or one section, or appends to it {since=0.9.8} | Write |
@@ -96,6 +97,7 @@ Clients that speak Streamable HTTP and accept their own headers use this configu
 | `trash_record` | Moves a record to the trash {since=0.9.8} | Write |
 | `save_collection` | Creates a collection or changes its name, query, emoji and sharing | Write |
 | `delete_collection` | Moves a collection to the trash | Write |
+| `set_flashcard_parameters` | Stores your FSRS parameters for a deck, a part of it or all decks, or resets them {since=0.10.2} | Write |
 
 Properties are named by their name (or ID). Dates are written as `YYYY-MM-DD`, options by their name, people by e-mail address or name, and relations as a list of record IDs. Text properties (except the title) are formatted text: `get_database` marks them with `markdown: true`, and they are read and written as inline Markdown (`**bold**`, `_italic_`, `~~strikethrough~~`, `` `code` ``, `[label](https://…)`, `\n`; see [Formatted text](/database-properties#formatted-text)). `update_record` accepts the `version` from `get_record`: if someone changed the record in the meantime, the change is refused instead of being overwritten.
 

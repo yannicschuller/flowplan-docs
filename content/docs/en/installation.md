@@ -112,7 +112,7 @@ The sign-in page and **Administration → Instance** then show the note "This in
 
 - **Passwords cross the network unencrypted** – anyone on the same network can read them.
 - **Passkeys, the offline copy, push, and the camera, microphone and clipboard** are only available in the browser over HTTPS. Flowplan hides them or says why they are missing.
-- **The apps for iPhone, iPad and Android** connect without HTTPS only to an instance on your local network (e.g. `http://192.168.1.20:3000`, `http://nas` or `http://nas.local`) and warn first. On iPhone and iPad, `.lan` or `.home.arpa` names don't work – enter the IP address there. See [An instance on your own network without HTTPS](/mobile-apps#an-instance-on-your-own-network-without-https).
+- **The apps for iPhone, iPad and Android** connect without HTTPS only to an instance on your local network (e.g. `http://192.168.1.20:3000`, `http://nas` or `http://nas.local`) and warn first. On iPhone and iPad, `.lan` or `.home.arpa` names don't work – enter the IP address there. See [An instance on your own network without HTTPS](/app-network#an-instance-on-your-own-network-without-https).
 - Cookies carry no `Secure` flag, and the browser does not upgrade requests to HTTPS.
 
 At `http://localhost` or `http://127.0.0.1` on your own computer there is no note: browsers treat these addresses like a secure connection.

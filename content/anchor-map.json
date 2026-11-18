@@ -142,7 +142,7 @@
 ["ki-auf-dem-geraet-und-schreibtools-iphone-und-ipad","on-device-ai-and-writing-tools-iphone-and-ipad","mobile-capture","ki-auf-dem-geraet-und-schreibtools-iphone-und-ipad","on-device-ai-and-writing-tools-iphone-and-ipad"],
 ["kalender-in-apple-kalender","calendars-in-apple-calendar","mobile-capture","kalender-in-apple-kalender","calendars-in-apple-calendar"],
 ["ipad-fenster-tastatur-und-handoff","ipad-windows-keyboard-and-handoff","mobile-capture","ipad-fenster-tastatur-und-handoff","ipad-windows-keyboard-and-handoff"],
-["instanz-im-eigenen-netz-ohne-https","an-instance-on-your-own-network-without-https","mobile-apps","instanz-im-eigenen-netz-ohne-https","an-instance-on-your-own-network-without-https"],
+["instanz-im-eigenen-netz-ohne-https","an-instance-on-your-own-network-without-https","app-network","instanz-im-eigenen-netz-ohne-https","an-instance-on-your-own-network-without-https"],
 ["profile-in-den-mobilen-apps","profiles-in-the-mobile-apps","mobile-apps","profile-in-den-mobilen-apps","profiles-in-the-mobile-apps"],
 ["was-die-app-auf-der-instanz-hinterlegt","what-the-app-keeps-on-the-instance","mobile-apps","was-die-app-auf-der-instanz-hinterlegt","what-the-app-keeps-on-the-instance"]],"operations":[
 ["administration-ueberwachung","administration-monitoring","monitoring","administration-ueberwachung","administration-monitoring"],
@@ -236,4 +236,6 @@
 ["api-und-mcp","api-and-mcp","flashcards-app","api-und-mcp","api-and-mcp"],
 ["lueckentext","cloze","flashcards-card-types","lueckentext","cloze"],
 ["antwort-eintippen","type-the-answer","flashcards-card-types","antwort-eintippen","type-the-answer"],
-["multiple-choice","multiple-choice","flashcards-card-types","multiple-choice","multiple-choice"]]}
+["multiple-choice","multiple-choice","flashcards-card-types","multiple-choice","multiple-choice"]],"mobile-apps":[
+["instanz-im-eigenen-netz-ohne-https","an-instance-on-your-own-network-without-https","app-network","instanz-im-eigenen-netz-ohne-https","an-instance-on-your-own-network-without-https"],
+["eigene-zertifikate","own-certificates","app-network","eigene-zertifikate","own-certificates"]]}
