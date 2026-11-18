@@ -67,7 +67,7 @@ The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kb
 | <kbd>⌘</kbd> <kbd>E</kbd> | Inline code |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>H</kbd> | Highlight |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>H</kbd> | Hide (spoiler) |
-| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>G</kbd> / with <kbd>⇧</kbd> | [Flashcard cloze](/flashcards#cloze): new number / same number as the one before {since=0.9.9} |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>G</kbd> / <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>⇧</kbd> <kbd>G</kbd> | [Flashcard cloze](/flashcards#cloze): new number / same number as the one before {since=0.9.9} |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>M</kbd> | New text comment on the selection {since=0.9.8} |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>1</kbd>–<kbd>4</kbd> | Heading 1–4 |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>0</kbd> | Back to normal text |
