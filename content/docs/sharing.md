@@ -81,10 +81,11 @@ Im Reiter **Web** macht der Schalter **Im Web veröffentlichen** die Seite für 
 
 Ein [Lernkarten-Stapel](/flashcards) zeigt über einen Link mit eigenen Berechtigungen oder als Veröffentlichung seine Ansicht **Lernen**:
 
-- **Durchblättern**: alle Karten als Raster, je 100 auf einer Seite; ein Klick oder **Umdrehen** zeigt die Rückseite.
+- **Durchblättern**: alle Karten als Raster, je 100 auf einer Seite; ein Klick oder **Umdrehen** zeigt die Rückseite. Ohne JavaScript klappt **Umdrehen** die Rückseite unter der Karte auf. {since=0.10.2}
 - **Üben**: der Fokusmodus mit Wertungen, ohne Konto. Der Lernstand liegt nur im Browser des Besuchers (im lokalen Speicher unter `flowplan-study:` und dem Link) – kein Cookie, nichts geht an den Server. Ein Hinweis sagt das einmal; **Fortschritt löschen** entfernt ihn. Erlaubt der Browser keinen Speicher, gilt die Übung nur für diese Sitzung.
 - Öffentlich ist eine Lernen-Ansicht nur, wenn alle Eigenschaften der Kartenzuordnung öffentlich sind; private Einträge werden nie zu Karten. Bilder kommen über den Link, Passwort und Ablaufdatum gelten wie für alles andere.
-- Wer im Arbeitsbereich angemeldet ist, bekommt **In Flowplan lernen** mit dem eigenen Lernstand. Eine Kopie der Veröffentlichung übernimmt die Kartenzuordnung.
+- Wer im Arbeitsbereich angemeldet ist und den Stapel lesen darf, bekommt **In Flowplan lernen** mit dem eigenen Lernstand. Eine Kopie der Veröffentlichung übernimmt die Kartenzuordnung.
+- **In Flowplan lernen** öffnet den Stapel in der App auf derselben Lernen-Ansicht und startet gleich den Fokusmodus – auch in der App fürs Smartphone. Gibt es die Ansicht nicht mehr, öffnet sich die erste Lernen-Ansicht des Stapels mit einem Hinweis. Auf einer eigenen Domain gibt es den Knopf nicht. {since=0.10.2}
 
 ### Aussehen
 

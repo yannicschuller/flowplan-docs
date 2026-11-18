@@ -81,10 +81,11 @@ In the **Web** tab, the **Publish on the web** switch makes the page readable fo
 
 A [flashcard deck](/flashcards) shows its **Study** view through a link with its own permissions or as a publication:
 
-- **Browse**: every card as a grid, 100 per page; a click or **Turn over** shows the back.
+- **Browse**: every card as a grid, 100 per page; a click or **Turn over** shows the back. Without JavaScript, **Turn over** folds the back open below the card. {since=0.10.2}
 - **Practise**: the focus mode with ratings, without an account. The learning state lives in the visitor's browser only (in local storage under `flowplan-study:` and the link) – no cookie, nothing goes to the server. A note says so once; **Delete progress** removes it. If the browser allows no storage, the practice lasts for that session only.
 - A study view is public only when every property of the card mapping is public; private records never become cards. Pictures come through the link, password and end date apply as to everything else.
-- Someone signed in to the workspace gets **Study in Flowplan** with their own learning state. A copy of the publication keeps the card mapping.
+- Someone signed in to the workspace who may read the deck gets **Study in Flowplan** with their own learning state. A copy of the publication keeps the card mapping.
+- **Study in Flowplan** opens the deck in the app on the same study view and starts the focus mode right away – in the phone app too. If the view no longer exists, the deck's first study view opens with a note. On a custom domain there is no such button. {since=0.10.2}
 
 ### Appearance
 
