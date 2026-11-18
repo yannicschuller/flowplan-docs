@@ -82,8 +82,8 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       },
       {
         title: ["Datenbanken", "Databases"],
-        intro: ["Tabellen, Eigenschaften, Ansichten, Formeln, Formulare und Kontakte.", "Tables, properties, views, formulas, forms and contacts."],
-        pages: ["databases", "database-properties", "views", "properties-and-formulas", "forms", "contacts"],
+        intro: ["Tabellen, Eigenschaften, Ansichten, Formeln, Formulare, Kontakte und Lernkarten.", "Tables, properties, views, formulas, forms, contacts and flashcards."],
+        pages: ["databases", "database-properties", "views", "properties-and-formulas", "forms", "contacts", "flashcards"],
       },
       {
         title: ["Projekte und Automatisierung", "Projects and automation"],
@@ -658,8 +658,8 @@ export function llmsIndex(base: string, locale: Locale) {
     de ? "# Flowplan-Dokumentation" : "# Flowplan documentation",
     "",
     de
-      ? `> Flowplan ist ein Open-Source-Arbeitsbereich (AGPL-3.0) für Dokumente, Datenbanken (Tabelle, Board, Kalender, Zeitleiste, Galerie, Liste, Feed, Diagramm, Formular), Whiteboards und ein tägliches Journal. Gehostet in Deutschland auf app.flowplan.org oder selbst gehostet als ein Docker-Container (Next.js, SQLite; optional PostgreSQL und mehrere Instanzen). Oberfläche auf ${languageList("de")}. KI ist optional und standardmäßig aus – auch komplett lokal mit Ollama.`
-      : `> Flowplan is an open-source workspace (AGPL-3.0) for documents, databases (table, board, calendar, timeline, gallery, list, feed, chart, form), whiteboards and a daily journal. Hosted in Germany at app.flowplan.org or self-hosted as one Docker container (Next.js, SQLite; optionally PostgreSQL and several instances). Interface in ${languageList("en")}. AI is optional and off by default – also completely local with Ollama.`,
+      ? `> Flowplan ist ein Open-Source-Arbeitsbereich (AGPL-3.0) für Dokumente, Datenbanken (Tabelle, Board, Kalender, Zeitleiste, Galerie, Liste, Feed, Diagramm, Formular, Lernen mit Karteikarten), Whiteboards und ein tägliches Journal. Gehostet in Deutschland auf app.flowplan.org oder selbst gehostet als ein Docker-Container (Next.js, SQLite; optional PostgreSQL und mehrere Instanzen). Oberfläche auf ${languageList("de")}. KI ist optional und standardmäßig aus – auch komplett lokal mit Ollama.`
+      : `> Flowplan is an open-source workspace (AGPL-3.0) for documents, databases (table, board, calendar, timeline, gallery, list, feed, chart, form, studying flashcards), whiteboards and a daily journal. Hosted in Germany at app.flowplan.org or self-hosted as one Docker container (Next.js, SQLite; optionally PostgreSQL and several instances). Interface in ${languageList("en")}. AI is optional and off by default – also completely local with Ollama.`,
     "",
     de
       ? "Jede Seite gibt es als Markdown unter der verlinkten Adresse; die englische Fassung unter /en/…md."
