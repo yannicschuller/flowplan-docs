@@ -160,6 +160,35 @@ litestream restore -config /etc/litestream.yml \
 
 Vorher die bestehende `flowplan.sqlite` samt `-wal` und `-shm` beiseitelegen.
 
+### Litestream-Zustand reparieren {since=0.9.9}
+
+Haben zwei Container gleichzeitig auf demselben Volume repliziert (siehe [SQLite ohne Überlappung ausrollen](/coolify-and-proxy#sqlite-ohne-ueberlappung-ausrollen)), meldet das Log alle 30 Sekunden `compaction failed … level=1 … close reader 0: file checksum mismatch`. Die Datenbank selbst ist in Ordnung – kaputt ist eine Änderungsdatei (LTX) von Litestream. Litestream repariert sie nicht von selbst: Die Zusammenfassung der Änderungen bleibt an dieser Datei hängen, alte Änderungsdateien werden nicht mehr aufgeräumt und eine Wiederherstellung aus dem Bucket, die über diese Datei läuft, bricht ab.
+
+**Schritt 1 – den lokalen Zustand zurücksetzen.** Das entfernt nur die lokalen Änderungsdateien in `.flowplan.sqlite-litestream/ltx`, nie die Datenbank (`litestream reset`):
+
+::: steps
+
+1. Im laufenden Container (in Coolify unter **Terminal**): `touch /app/data/litestream-reset`.
+2. Den Container **stoppen** und danach wieder **starten** – nicht als Rolling Update.
+3. Beim Start meldet das Log `Litestream: resetting the local replication state` und danach `detected database behind replica` und `fetched latest L0 file from replica`: Litestream übernimmt die letzte Position aus dem Bucket und schreibt dann weiter. Die Datei `litestream-reset` löscht Flowplan danach selbst.
+
+:::
+
+Ohne laufenden Container geht dasselbe von Hand: Container stoppen, im Volume nur den Ordner `.flowplan.sqlite-litestream` löschen (nie `flowplan.sqlite`, `-wal` oder `-shm`), Container starten.
+
+**Schritt 2 – nur wenn die Meldung danach weiter kommt:** Dann liegt die kaputte Datei auch im Bucket, und Litestream liest sie beim Zusammenfassen von dort. Starte die Replikation neu:
+
+::: steps
+
+1. Zur Vorsicht unter **Administration → Speicher & Sicherung** eine Sicherung erstellen und herunterladen.
+2. In der laufenden Instanz `touch /app/data/litestream-reset`, dann den Container **stoppen**.
+3. Im Bucket nur den Ordner `<Präfix>/db/` löschen (oder in einen anderen Ordner kopieren und dann löschen). **Nicht** `<Präfix>/uploads/` oder `<Präfix>/backups/` – das sind die Dateien und Sicherungen.
+4. Den Container starten. Litestream findet keinen Stand im Bucket, beginnt von vorn und lädt sofort einen vollständigen Snapshot der Datenbank hoch (`<Präfix>/db/0009/`).
+
+:::
+
+Bis dieser Snapshot im Bucket liegt, gibt es dort keinen früheren Zeitpunkt zum Wiederherstellen; die Datenbank im Volume und deine Sicherungen bleiben unberührt. Ein neues `S3_PREFIX` statt des Löschens ist keine Alternative: Unter demselben Präfix liegen auch die Dateien.
+
 ### Beim Einrichten wiederherstellen
 
 Eine neue, noch leere Instanz übernimmt eine Sicherung direkt auf dem Einrichtungsbildschirm: unter **Konto erstellen** auf **Aus Sicherung wiederherstellen** klicken ([Installation, Erster Start](/installation#erster-start)). Möglich sind

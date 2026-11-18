@@ -91,6 +91,27 @@ Pull requests and Dependabot never deploy; without the secrets (in forks, for ex
 > [!WARNING]
 > Keep the number of instances at 1 in Coolify. Several containers would write to the same SQLite file.
 
+### Roll out SQLite without overlap {since=0.9.9}
+
+With SQLite (no `DATABASE_URL`), only **one** Flowplan container may run on a data volume at any time – not even for the seconds of an update. If a deployment starts the new container while the old one still runs (a rolling update that waits for the new one's health check), two Litestream processes work on the same database. That damages the replication state in `.flowplan.sqlite-litestream`: the log first shows `sync error … rename …ltx.tmp …: no such file or directory`, then every 30 seconds `compaction failed … file checksum mismatch`. How to repair it is under [Repair the Litestream state](/storage-and-backups#repair-the-litestream-state).
+
+So avoid:
+
+- a rollout that starts the new container before the old one has stopped – roll out with **stop first, then start**;
+- more than one instance, replica or copy of the resource on the same volume (a second resource, for `:beta` for example, needs its **own** volume and its own `S3_PREFIX`);
+- `docker compose up` under a second project name on the same volume, or an extra `docker run … -v flowplan-data:/app/data`, while the instance runs.
+
+If you need updates without interruption, use [PostgreSQL](/postgresql) – an update may overlap briefly there – or [cluster mode](/cluster).
+
+**The safety net:** every container takes an exclusive lock on `/app/data/.flowplan.lock` (`flock`) when it starts and holds it while it runs. If a second container finds the lock taken, it
+
+- starts the app anyway, so that a rolling update's health check passes and the old container gets stopped;
+- starts **no** second Litestream and no restore from the bucket; a pending instance restore (and a database that does not exist yet, which the other container may be restoring right now) waits completely before the app starts;
+- logs `ANOTHER CONTAINER IS USING THE DATA FOLDER …`;
+- starts replication by itself as soon as the other container has stopped and the lock is free. If that Litestream crashes, the app keeps running and Flowplan restarts it after `FLOWPLAN_LITESTREAM_RESTART_SECONDS` seconds (default 5) – twice as late with each further crash, after 300 seconds at most.
+
+While it waits, **Administration → Monitoring** shows the warning “A second Flowplan container (*host*) has been using the same data folder since *time* …” on both containers (on the waiting one: “This container … has been waiting …”). It ends once only one container runs. The net prevents the damaged state, but it does not replace a rollout without overlap: for the time of the overlap, two apps write to the same file. The lock needs a file system with `flock` – a local Docker volume or a local folder, not SMB.
+
 ## Pangolin, Traefik and other proxies
 
 - `APP_URL` must exactly match the address under which Flowplan appears in the browser.

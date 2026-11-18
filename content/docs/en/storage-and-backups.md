@@ -160,6 +160,35 @@ litestream restore -config /etc/litestream.yml \
 
 Move the existing `flowplan.sqlite` with `-wal` and `-shm` aside first.
 
+### Repair the Litestream state {since=0.9.9}
+
+If two containers replicated on the same volume at the same time (see [Roll out SQLite without overlap](/coolify-and-proxy#roll-out-sqlite-without-overlap)), the log shows `compaction failed … level=1 … close reader 0: file checksum mismatch` every 30 seconds. The database itself is fine – what is broken is one of Litestream's change files (LTX). Litestream does not repair it by itself: compacting the changes stays stuck on that file, old change files are no longer cleaned up, and a restore from the bucket that runs through that file fails.
+
+**Step 1 – reset the local state.** This removes only the local change files in `.flowplan.sqlite-litestream/ltx`, never the database (`litestream reset`):
+
+::: steps
+
+1. In the running container (in Coolify under **Terminal**): `touch /app/data/litestream-reset`.
+2. **Stop** the container and **start** it again – not as a rolling update.
+3. On start, the log shows `Litestream: resetting the local replication state`, then `detected database behind replica` and `fetched latest L0 file from replica`: Litestream takes over the last position from the bucket and carries on from there. Flowplan deletes the `litestream-reset` file by itself afterwards.
+
+:::
+
+Without a running container, do the same by hand: stop the container, delete only the folder `.flowplan.sqlite-litestream` in the volume (never `flowplan.sqlite`, `-wal` or `-shm`), start the container.
+
+**Step 2 – only if the message keeps coming afterwards:** then the broken file is in the bucket too, and Litestream reads it from there when compacting. Start replication afresh:
+
+::: steps
+
+1. To be safe, create and download a backup under **Administration → Storage & backup**.
+2. In the running instance, `touch /app/data/litestream-reset`, then **stop** the container.
+3. In the bucket, delete only the folder `<prefix>/db/` (or copy it to another folder first, then delete it). **Not** `<prefix>/uploads/` or `<prefix>/backups/` – those are the files and backups.
+4. Start the container. Litestream finds no state in the bucket, starts from scratch and uploads a full snapshot of the database right away (`<prefix>/db/0009/`).
+
+:::
+
+Until that snapshot is in the bucket, there is no earlier point in time to restore from there; the database in the volume and your backups stay untouched. A new `S3_PREFIX` instead of deleting is no alternative: the files live under the same prefix.
+
 ### Restore while setting up
 
 A new, still empty instance takes over a backup right on the setup screen: under **Create account**, click **Restore from a backup** ([Installation, first start](/en/installation#first-start)). You can use

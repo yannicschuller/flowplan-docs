@@ -91,6 +91,27 @@ Pull Requests und Dependabot lösen nie ein Deployment aus; ohne die Secrets (et
 > [!WARNING]
 > In Coolify die Anzahl der Instanzen bei 1 lassen. Mehrere Container würden dieselbe SQLite-Datei beschreiben.
 
+### SQLite ohne Überlappung ausrollen {since=0.9.9}
+
+Mit SQLite (ohne `DATABASE_URL`) darf auf einem Datenvolume immer nur **ein** Flowplan-Container laufen – auch nicht für die Sekunden eines Updates. Startet ein Deployment den neuen Container, während der alte noch läuft (ein Rolling Update, das auf den Healthcheck des neuen wartet), arbeiten zwei Litestream-Prozesse auf derselben Datenbank. Das beschädigt den Replikationszustand in `.flowplan.sqlite-litestream`: im Log erst `sync error … rename …ltx.tmp …: no such file or directory`, danach alle 30 Sekunden `compaction failed … file checksum mismatch`. Wie du das reparierst, steht unter [Litestream-Zustand reparieren](/storage-and-backups#litestream-zustand-reparieren).
+
+Vermeide deshalb:
+
+- ein Ausrollen, bei dem der neue Container startet, bevor der alte gestoppt ist – rolle mit **erst stoppen, dann starten** aus;
+- mehr als eine Instanz, Replica oder Kopie der Ressource mit demselben Volume (auch eine zweite Ressource, etwa für `:beta`, braucht ihr **eigenes** Volume und ihr eigenes `S3_PREFIX`);
+- `docker compose up` mit einem zweiten Projektnamen auf demselben Volume oder einen zusätzlichen `docker run … -v flowplan-data:/app/data`, während die Instanz läuft.
+
+Brauchst du Updates ohne Unterbrechung, nimm [PostgreSQL](/postgresql) – dort darf ein Update kurz überlappen – oder den [Cluster-Modus](/cluster).
+
+**Das Sicherheitsnetz:** Jeder Container hält beim Start eine exklusive Sperre auf `/app/data/.flowplan.lock` (`flock`), solange er läuft. Findet ein zweiter Container die Sperre belegt,
+
+- startet er die App trotzdem, damit der Healthcheck eines Rolling Updates durchgeht und der alte Container gestoppt wird;
+- startet er **kein** zweites Litestream und keine Wiederherstellung aus dem Bucket; eine anstehende Instanz-Wiederherstellung (und eine noch fehlende Datenbank, die der andere Container vielleicht gerade herstellt) wartet ganz, bevor die App startet;
+- meldet er im Log `ANOTHER CONTAINER IS USING THE DATA FOLDER …`;
+- startet er die Replikation von selbst, sobald der andere Container beendet ist und die Sperre frei wird. Stürzt dieses Litestream ab, läuft die App weiter, und Flowplan startet es nach `FLOWPLAN_LITESTREAM_RESTART_SECONDS` Sekunden (Standard 5) neu – bei jedem weiteren Absturz doppelt so spät, höchstens nach 300 Sekunden.
+
+Solange er wartet, zeigt **Administration → Überwachung** auf beiden Containern die Warnung „Ein zweiter Flowplan-Container (*Host*) nutzt seit *Zeit* dasselbe Datenverzeichnis …“ (auf dem wartenden: „Dieser Container … wartet …“). Sie endet, sobald nur noch ein Container läuft. Das Netz verhindert den beschädigten Zustand, ersetzt aber kein Ausrollen ohne Überlappung: Für die Zeit der Überlappung schreiben zwei Apps in dieselbe Datei. Die Sperre braucht ein Dateisystem mit `flock` – ein lokales Docker-Volume oder einen lokalen Ordner, nicht SMB.
+
 ## Pangolin, Traefik und andere Proxys
 
 - `APP_URL` muss exakt der Adresse entsprechen, unter der Flowplan im Browser erscheint.
