@@ -88,7 +88,7 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       {
         title: ["Lernkarten", "Flashcards"],
         intro: ["Stapel aus Datenbanken lernen, importieren, erinnert werden – auch unterwegs und offline.", "Study decks from databases, import them, get reminded – also on the go and offline."],
-        pages: ["flashcards", "flashcards-import", "flashcards-app"],
+        pages: ["flashcards", "flashcards-occlusion", "flashcards-import", "flashcards-app"],
       },
       {
         title: ["Projekte und Automatisierung", "Projects and automation"],

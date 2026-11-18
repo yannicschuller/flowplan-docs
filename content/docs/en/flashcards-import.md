@@ -41,7 +41,7 @@ The import writes into properties; it does not fill a side that comes from the r
 | Basic, Basic (and reversed card) | front/back, with the reverse card |
 | Basic (type in the answer) | type the answer |
 | Cloze | cloze, `{{c1::…}}` is kept |
-| Image Occlusion | for now front/back with the image, without masks |
+| Image Occlusion {since=0.9.9} | [image occlusion](/flashcards-occlusion#anki) with the masks; on request front/back with the image, without masks |
 | own note type | by its templates: fields of the question on the front, fields only of the answer on the back, `{{hint:…}}` as the hint |
 | tags | the multi-select **Tags** |
 | images, sounds (`[sound:…]`) | files of the deck, sounds as an audio block |
@@ -54,4 +54,4 @@ The import writes into properties; it does not fill a side that comes from the r
 
 ### Export as an Anki package {since=0.9.9}
 
-**Export → As an Anki package (.apkg)** downloads the view's cards as a package every Anki version (desktop, AnkiDroid, AnkiMobile) imports: one note per record with the note types Basic, Basic with reverse card, Type the answer and Cloze, multiple choice as Basic with the options on the front. Hint and extra become fields of their own, tags stay tags, the select **Deck** becomes sub-decks, images and sounds of the deck come along as media. The learning state stays in Flowplan – in Anki the cards are new.
+**Export → As an Anki package (.apkg)** downloads the view's cards as a package every Anki version (desktop, AnkiDroid, AnkiMobile) imports: one note per record with the note types Basic, Basic with reverse card, Type the answer and Cloze, multiple choice as Basic with the options on the front, image occlusion as Image Occlusion (one note per picture, Anki 23.10 and later). Hint and extra become fields of their own, tags stay tags, the select **Deck** becomes sub-decks, images and sounds of the deck come along as media. The learning state stays in Flowplan – in Anki the cards are new.

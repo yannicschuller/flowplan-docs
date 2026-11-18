@@ -51,8 +51,9 @@ Für Bilder, Formeln, Code oder längere Antworten nimmst du das Dokument des Ei
 | Lückentext | den Text mit einer verdeckten Lücke zeigen | eine je Lückennummer |
 | Antwort eintippen | die Antwort in ein Feld tippen, Flowplan vergleicht | 1, umgekehrt 2 |
 | Multiple Choice | drei bis fünf Antworten zur Wahl | 1 |
+| Bildverdeckung | ein Bild mit verdeckten Bereichen ([Bildverdeckung](/flashcards-occlusion)) | eine je Maske oder Gruppe |
 
-Unter **Kartentyp** in **Karten einrichten** gilt ein Typ für alle Einträge, oder er kommt aus einer Auswahl-Eigenschaft: Optionen mit den Namen „Lückentext“, „Antwort eintippen“ oder „Multiple Choice“ (auch englisch) erkennt Flowplan von selbst, andere ordnest du im Dialog einem Typ zu; leer heißt Vorder-/Rückseite. Wechselst du zwischen Vorder-/Rückseite und Antwort eintippen, bleibt der Lernstand.
+Unter **Kartentyp** in **Karten einrichten** gilt ein Typ für alle Einträge, oder er kommt aus einer Auswahl-Eigenschaft: Optionen mit den Namen „Lückentext“, „Antwort eintippen“, „Multiple Choice“ oder „Bildverdeckung“ (auch englisch) erkennt Flowplan von selbst, andere ordnest du im Dialog einem Typ zu; leer heißt Vorder-/Rückseite. Wechselst du zwischen Vorder-/Rückseite und Antwort eintippen, bleibt der Lernstand.
 
 ### Lückentext
 

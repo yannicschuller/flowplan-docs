@@ -41,7 +41,7 @@ Der Import schreibt in Eigenschaften; eine Kartenseite aus dem Dokument des Eint
 | Basic, Basic (and reversed card) | Vorder-/Rückseite, mit umgekehrter Karte |
 | Basic (type in the answer) | Antwort eintippen |
 | Cloze | Lückentext, `{{c1::…}}` bleibt |
-| Image Occlusion | vorerst Vorder-/Rückseite mit dem Bild, ohne Masken |
+| Image Occlusion {since=0.9.9} | [Bildverdeckung](/flashcards-occlusion#anki) mit den Masken; auf Wunsch Vorder-/Rückseite mit dem Bild, ohne Masken |
 | eigener Notiztyp | nach seinen Vorlagen: Felder der Frage vorne, Felder nur der Antwort hinten, `{{hint:…}}` als Hinweis |
 | Tags | die Mehrfachauswahl **Tags** |
 | Bilder, Töne (`[sound:…]`) | Dateien des Stapels, Töne als Audio-Block |
@@ -54,4 +54,4 @@ Der Import schreibt in Eigenschaften; eine Kartenseite aus dem Dokument des Eint
 
 ### Als Anki-Paket exportieren {since=0.9.9}
 
-**Exportieren → Als Anki-Paket (.apkg)** lädt die Karten der Ansicht als Paket, das jede Anki-Version (Desktop, AnkiDroid, AnkiMobile) importiert: eine Notiz je Eintrag mit den Notiztypen Basic, Basic mit umgekehrter Karte, Antwort eintippen und Cloze, Multiple Choice als Basic mit den Optionen auf der Vorderseite. Hinweis und Zusatz werden eigene Felder, Tags bleiben Tags, die Auswahl **Deck** wird zu Unterstapeln, Bilder und Töne des Stapels kommen als Medien mit. Der Lernstand bleibt in Flowplan – in Anki sind die Karten neu.
+**Exportieren → Als Anki-Paket (.apkg)** lädt die Karten der Ansicht als Paket, das jede Anki-Version (Desktop, AnkiDroid, AnkiMobile) importiert: eine Notiz je Eintrag mit den Notiztypen Basic, Basic mit umgekehrter Karte, Antwort eintippen und Cloze, Multiple Choice als Basic mit den Optionen auf der Vorderseite, Bildverdeckung als Image Occlusion (eine Notiz je Bild, ab Anki 23.10). Hinweis und Zusatz werden eigene Felder, Tags bleiben Tags, die Auswahl **Deck** wird zu Unterstapeln, Bilder und Töne des Stapels kommen als Medien mit. Der Lernstand bleibt in Flowplan – in Anki sind die Karten neu.

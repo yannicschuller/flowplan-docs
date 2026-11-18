@@ -51,8 +51,9 @@ For images, formulas, code or longer answers, use the record's document. The sim
 | Cloze | show the text with a gap | one per cloze number |
 | Type the answer | type the answer into a field, Flowplan compares | 1, with reverse 2 |
 | Multiple choice | three to five answers to pick from | 1 |
+| Image occlusion | a picture with covered areas ([image occlusion](/flashcards-occlusion)) | one per mask or group |
 
-Under **Card type** in **Set up cards**, one type applies to all records, or it comes from a select property: options named “Cloze”, “Type the answer” or “Multiple choice” (German names too) are recognised by themselves, others you map to a type in the dialog; empty means front/back. Switching between front/back and type the answer keeps the learning state.
+Under **Card type** in **Set up cards**, one type applies to all records, or it comes from a select property: options named “Cloze”, “Type the answer”, “Multiple choice” or “Image occlusion” (German names too) are recognised by themselves, others you map to a type in the dialog; empty means front/back. Switching between front/back and type the answer keeps the learning state.
 
 ### Cloze
 
