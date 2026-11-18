@@ -55,34 +55,7 @@ For images, formulas, code or longer answers, use the record's document. The sim
 
 Under **Card type** in **Set up cards**, one type applies to all records, or it comes from a select property: options named “Cloze”, “Type the answer”, “Multiple choice” or “Image occlusion” (German names too) are recognised by themselves, others you map to a type in the dialog; empty means front/back. Switching between front/back and type the answer keeps the learning state.
 
-### Cloze
-
-In a text property you write a cloze as in Anki: `{{c1::Paris}} lies on the {{c2::Seine::river}}`. The number is the cloze's number; after a second `::` comes a hint shown in the gap. Every number becomes a card of its own; the same number twice asks both places on one card. The card for `c1` shows “[…] lies on the Seine” – the other clozes as plain text –, after revealing the answer is highlighted.
-
-In a record's document you select the text and choose **As cloze (new number)** or **As cloze (same number as before)** under **…** in the text menu – or type <kbd>/</kbd> **Cloze**. With the keyboard: ++⌘⌥G++ / ++Ctrl+Alt+G++ for a new number, with ++Shift++ for the number of the cloze before it; on a cloze the same shortcut removes it. In the editor clozes are tinted and carry their number (c1, c2 …); when reading the page they are covered like a spoiler, a click shows them. In the Markdown export they are written as `{{c1::…}}`, and the Markdown import turns them back into clozes.
-
-- A front/back record with clozes on a side becomes cloze cards by itself – so imported cards need no type of their own.
-- With the clozes in the document (the back), the card shows the title above it; with the clozes on the front, the back comes as a note after revealing.
-- Learning states belong to the number: renumber clozes and the learning state goes with the new number.
-- Nested clozes (`{{c1::… {{c2::…}} …}}`) are read flat: the inner one counts as text of the outer one.
-- {since=0.10.0} **Cloze (flashcard)** in the formatting toolbar does the same; it starts hidden ([customize the toolbar](/formatting#format-text)).
-- {since=0.10.0} [Search](/search-and-notifications#quick-search) reads `{{c2::Seine::river}}` as “Seine”.
-
-### Type the answer
-
-A field sits under the front; <kbd>Enter</kbd> checks. Flowplan compares with the back (for a document its first paragraph) and shows the differences character by character – what you typed too much struck through, what is missing underlined. Separate several right answers in the back with `|`, such as `colour | color`.
-
-- **Correct** suggests **Good**, **Almost** (one character different, for answers of six characters or more) **Hard**, otherwise **Again**. The suggestion is highlighted, <kbd>Enter</kbd> or <kbd>Space</kbd> take it – but you may choose any rating.
-- What the comparison passes over is set per deck: upper and lower case, accents (é = e, off by default because they matter in languages) and punctuation. Spaces at the ends and double spaces never count.
-- <kbd>Esc</kbd> in a field with text first leaves the field; a second <kbd>Esc</kbd> ends the session.
-
-### Multiple choice
-
-The card shows the right answer (the back) among wrong ones. The wrong ones come from the property under **Answer options** (one option per line, on one line separated by `;`, or the values of a multi-select) – if some are missing, Flowplan adds backs of other cards of the same deck, preferably with the same tags and a similar length. Only cards you may study yourself come into question: no private records of others, no hidden properties, in a sub-deck only its cards.
-
-- The order of the answers is shuffled anew for every review and stays while the card is shown.
-- Pick with a tap or the keys <kbd>A</kbd> to <kbd>E</kbd> (before revealing also <kbd>1</kbd> to <kbd>5</kbd>). Right suggests **Good**, wrong **Again**; you may rate otherwise.
-- Multiple choice is easier than free recall – good to start with; for remembering, front/back and type the answer work better.
+How you write gaps and how Flowplan compares typed answers or offers choices is under [Card types](/flashcards-card-types).
 
 ## Sub-decks through filters
 
@@ -90,7 +63,9 @@ A study view studies the cards that match its [filters](/views). With the filter
 
 ## The overview
 
-The study view shows what is left today: **new**, **in learning steps** and **due**, each already within your daily limits. Below are the number of cards, your limits and the retention.
+The study view shows what is left today: **new**, **learning** and **due**, each already within your daily limits. Below are the number of cards, your limits and the retention.
+
+{since=0.10.2} A study view has no sorting and no search – FSRS plans the order. The filter stays; on a phone it is an icon on one line with the other buttons, with **Start studying** right below.
 
 - **Start studying** opens the focus mode.
 - **Study more today** gives you **+10 new cards** or **+50 reviews** for today – on the next study day the normal limit applies again.
@@ -99,11 +74,11 @@ The study view shows what is left today: **new**, **in learning steps** and **du
 
 ## Studying in focus mode
 
-The focus mode fills the screen with one card. At the top are the counts (new · learning · due), on the right **Undo**.
+The focus mode fills the screen with one card. {since=0.10.2} At the top are the counts as three coloured numbers – **New** · **Learning** · **Due** –, the kind of the card you see underlined. On a phone a tap on the numbers shows their names. Below them the progress shows as a bar with “1 / 20”, at the top right **Undo**.
 
 1. Read the front and recall the answer.
 2. Reveal it: <kbd>Space</kbd>, <kbd>Enter</kbd>, a tap on the card or **Show answer**.
-3. Rate yourself honestly. Each button shows when the card comes back.
+3. Rate yourself honestly. Each button shows when the card comes back, such as “10 min” or “10 days”.
 
 | Rating | Key | Swipe | Meaning |
 | --- | --- | --- | --- |
@@ -115,10 +90,11 @@ The focus mode fills the screen with one card. At the top are the counts (new ·
 - <kbd>Z</kbd> (or ++⌘/Ctrl Z++) undoes the last rating; the card comes back unrated. This works for the last ratings of the session, at most 24 hours back.
 - <kbd>H</kbd> shows the hint, <kbd>Esc</kbd> ends the session.
 - **Swiping** on phones and tablets works after revealing. A gesture that starts at the edge of the screen (24 pixels) belongs to the system or the app – such as “back” – and does not move the card. The buttons are always there.
-- At the end a summary shows how many cards you studied in how many minutes, how often “Again” and how many are due tomorrow.
-- {since=0.10.0} When only cards in learning steps are left that come back later, the session shows **Next card in 25 min** and loads it by itself when it is time. **Show sooner** (or <kbd>Space</kbd>) brings it at once.
+- {since=0.10.2} While you swipe, the card takes the rating's colour and shows the rating large in its middle. On touch devices a line above the buttons recalls the directions: “← Again · ↑ Easy · ↓ Hard · Good →”.
+- {since=0.10.2} At the end a summary shows how many cards you studied (each card counted once, with how many of them were new), the study time, the share known (Good or Easy) and your streak. Below, your ratings spread over Again, Hard, Good and Easy, and how many cards are due tomorrow.
+- {since=0.10.0} When only cards in the learning phase are left that come back later, the session shows **Next card in 25 min** and loads it by itself when it is time. **Show sooner** (or <kbd>Space</kbd>) brings it at once.
 
-The focus mode works fully with the keyboard and a screen reader: the answer is read out after revealing, every button says its rating and the next date. If you choose less motion in the settings or reduce it in your system, there are no animations.
+The focus mode works fully with the keyboard and a screen reader: the answer is read out after revealing, every button says its rating and the next date. {since=0.10.2} On revealing, the answer briefly folds down below the question; the question stays in its place. If you choose less motion in the settings or reduce it in your system, there are no animations.
 
 ## How Flowplan schedules
 
@@ -132,7 +108,7 @@ Flowplan uses **FSRS-6**, the method Anki offers as well. For every card it esti
 
 ## All decks: Study {since=0.10.0}
 
-**Study** at the bottom of the sidebar (or “Study: due cards” in quick search, a shortcut of your own in the [keyboard shortcuts](/keyboard-shortcuts)) shows all decks of the workspace with what is left today: new, in learning steps, due – within your daily limits. **Study** next to a deck starts it, **Study all due** goes through the decks one after the other, each with its limits; at the end of a deck **Continue with …** moves on to the next. Below are the statistics of all decks, at the top your streak.
+**Study** at the bottom of the sidebar (or “Study: due cards” in quick search, a shortcut of your own in the [keyboard shortcuts](/keyboard-shortcuts)) shows all decks of the workspace with what is left today: new, learning, due – within your daily limits. {since=0.10.2} At the top, **Today: … cards** counts all three together; **due** means the reviews only. **Study** next to a deck starts it, **Study all decks** goes through the decks one after the other, each with its limits; at the end of a deck **Continue with …** moves on to the next. Below are the statistics of all decks, at the top your streak.
 
 The numbers are for the whole deck. A study view with filters studies only part of it, and siblings of a card studied today wait until tomorrow – so a session may show a few cards less.
 
@@ -154,8 +130,8 @@ The statistics show your own numbers only – for one deck (**Statistics** in th
 | Streak | study days in a row up to today; if you have not studied yet today, the streak counts on up to yesterday |
 | Ratings per day | a year as squares, the darker the more; as a table per month |
 | Due in the next 30 days | cards per study day; overdue ones count today |
-| True retention | the share of reviews you did not rate “Again”, over 7, 30 and 365 days – next to your target |
-| Cards by state | new, in learning steps, young (stability under 21 days), mature (21 days or more), suspended |
+| True retention | the share of reviews you did not rate “Again”, over 7, 30 and 365 days – next to your target. {since=0.10.2} With fewer than 20 reviews in 30 days the tile shows **Too few reviews yet** instead of a number |
+| Cards by state | new, learning, young (remembered under 21 days, that is stability under 21 days), mature (21 days or more), suspended |
 
 Days are study days (starting at 04:00). Every chart has a table for screen readers.
 

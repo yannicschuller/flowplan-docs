@@ -230,4 +230,7 @@
 ["erscheinungsbild","appearance","workspace-appearance","erscheinungsbild","appearance"],
 ["automatische-links","automatic-links","workspace-appearance","automatische-links","automatic-links"],
 ["druckvorlagen","print-presets","workspace-appearance","druckvorlagen","print-presets"]],"flashcards":[
-["api-und-mcp","api-and-mcp","flashcards-app","api-und-mcp","api-and-mcp"]]}
+["api-und-mcp","api-and-mcp","flashcards-app","api-und-mcp","api-and-mcp"],
+["lueckentext","cloze","flashcards-card-types","lueckentext","cloze"],
+["antwort-eintippen","type-the-answer","flashcards-card-types","antwort-eintippen","type-the-answer"],
+["multiple-choice","multiple-choice","flashcards-card-types","multiple-choice","multiple-choice"]]}

@@ -12,10 +12,10 @@ In a deck, open **My settings**; under **Memory model (FSRS)** it says which par
 
 1. Choose which ratings to learn from: **This deck** or **All my decks**. Only your own ratings count – imported ones and those made offline too, undone ones not.
 2. **Optimise** starts the calculation. It runs in your browser and the page stays usable; with many thousand ratings it takes a few seconds. Only the 21 numbers go to the server.
-3. The table shows how well the model predicts your ratings – with the default parameters, the current ones (if you optimised before) and the new ones. Lower is better:
+3. The result is one sentence: {since=0.10.2} **The new parameters fit you better** – with them Flowplan predicts more accurately when you forget a card – or **No improvement**. **Calculation details** opens the table: how well the model predicts your ratings, with the default parameters, the current ones (if you optimised before) and the new ones. Lower is better:
    - **Log loss**: how surprised the model is by your ratings on average.
    - **RMSE (bins)**: how far the predicted chance of remembering is from your actual share of correct answers, in percentage points.
-4. **Apply** stores the new parameters; **Keep defaults** or **Keep current** closes without a change. Apply is only offered when the new parameters are better.
+4. **Use parameters** stores the new parameters; **Keep defaults** or **Keep current** closes without a change. This is only offered when the new parameters are better; otherwise **Close** closes the dialog.
 
 Optimising needs **at least 1,000 ratings** in the chosen scope. Below that the dialog says how many there are and offers nothing – with few ratings the parameters would be mostly chance.
 
@@ -32,7 +32,7 @@ Later, **My settings** gently suggests optimising again: after 1,000 new ratings
 
 After optimising, the dialog names a **recommended retention** between 70 % and 95 %. To find it, Flowplan plays through a year of studying with your new parameters and looks for the retention at which you spend the least time per card remembered. The times come from your own answer times; forgotten cards count 2.5 times, because forgetting is more annoying than reviewing.
 
-**Use 84 % for this deck** (with the recommended number) sets it as your retention in **My settings**. A higher retention stays allowed: it costs more reviews, and you forget less often.
+{since=0.10.2} **Set retention to 84 %** (with the recommended number) sets it as your retention in **My settings**. A higher retention stays allowed: it costs more reviews, and you forget less often.
 
 The recommendation is a simplified form of Anki's “optimal retention”: it does not simulate the deck's daily limits or a time budget.
 

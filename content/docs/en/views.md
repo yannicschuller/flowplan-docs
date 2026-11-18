@@ -55,9 +55,10 @@ Month, week and day view by a date field.
 - Move appointments in 15-minute steps, extend or shorten them at their edges.
 - Drag whole-day entries (month view and the all-day row) to another day with the mouse, on touch devices by their ⋮⋮ handle; the target day gets a dashed outline, <kbd>Esc</kbd> cancels. With the keyboard, ++Alt ←/→++ moves a focused entry by one day, ++Alt ↑/↓++ in the month view by one week.
 - A click on an hour creates an appointment, **All day +** an all-day record.
-- Every view has its own time zone; without a setting the browser's applies.
+- Every view has its own time zone; without a setting the browser's applies. When it differs from your device's, it shows below the header; otherwise **Time zone** in the options opens the field. {since=0.10.2}
 - The **week start** (Monday or Sunday) can be set per view; without a setting it follows the reader's language – Sunday in [English (US)](/languages), Monday otherwise.
 - Keyboard: ++Alt ↑/↓++ moves by 15 minutes, ++Alt ←/→++ by one day.
+- **On a phone** {since=0.10.2}: the top shows just **‹ Today ›** and the month; the icon beside it (**Calendar options**) opens view, week start, weekends, date, time zone and **Subscribe**. The month shows all seven days with the titles as short bars. Tap a day to see its records below – with the ⋮⋮ handle to move one to another day, the calendar icon for its date and **+ New** for a record on that day. The week shows three days at a time and swipes sideways.
 
 ### Subscribe to a calendar
 
@@ -120,6 +121,7 @@ Bars from a start to an end date field, on a scale of week, month, quarter or ye
 
 - Move bars or drag their edges. On touch devices, hold a bar briefly, then drag it; a quick swipe scrolls the timeline. The handles at the edges drag at once. <kbd>Esc</kbd> cancels a drag in progress. The calendar icon opens a date dialog, also for unscheduled records.
 - **Today** jumps to the current date; weekends can be highlighted.
+- When a bar is too short for its title (say one day on the month scale), the title stands beside the bar. {since=0.10.2}
 - Keyboard: ++Alt ←/→++ moves by one day, with <kbd>⇧</kbd> it changes the end, with <kbd>Ctrl</kbd> the start.
 
 ### Dependencies (Gantt)

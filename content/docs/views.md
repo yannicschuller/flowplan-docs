@@ -55,9 +55,10 @@ Monats-, Wochen- und Tagesansicht nach einem Datumsfeld.
 - Termine in 15-Minuten-Schritten verschieben, an den Rändern verlängern oder verkürzen.
 - Ganztägige Einträge (Monatsansicht und Ganztagszeile) mit der Maus auf einen anderen Tag ziehen, auf Touchgeräten am Griff ⋮⋮; der Zieltag ist gestrichelt umrandet, <kbd>Esc</kbd> bricht ab. Mit der Tastatur verschiebt ++Alt ←/→++ einen fokussierten Eintrag um einen Tag, ++Alt ↑/↓++ in der Monatsansicht um eine Woche.
 - Klick auf eine Stunde legt einen Termin an, **Ganztägig +** einen Ganztagseintrag.
-- Jede Ansicht hat eine eigene Zeitzone; ohne Einstellung gilt die des Browsers.
+- Jede Ansicht hat eine eigene Zeitzone; ohne Einstellung gilt die des Browsers. Weicht sie von der deines Geräts ab, steht sie unter der Kopfzeile; sonst öffnet **Zeitzone** bei den Optionen das Feld. {since=0.10.2}
 - **Wochenbeginn** (Montag oder Sonntag) lässt sich pro Ansicht festlegen; ohne Einstellung folgt er der Sprache der Person, die den Kalender ansieht – Sonntag in [English (US)](/languages), sonst Montag.
 - Tastatur: ++Alt ↑/↓++ verschiebt um 15 Minuten, ++Alt ←/→++ um einen Tag.
+- **Auf dem Smartphone** {since=0.10.2}: Oben stehen nur **‹ Heute ›** und der Monat; das Symbol rechts daneben (**Kalenderoptionen**) öffnet Ansicht, Wochenbeginn, Wochenenden, Datum, Zeitzone und **Abonnieren**. Der Monat zeigt alle sieben Tage mit den Titeln als kurze Balken. Tippe auf einen Tag, um seine Einträge darunter zu sehen – mit Griff ⋮⋮ zum Verschieben auf einen anderen Tag, dem Kalendersymbol für den Termin und **+ Neu** für einen Eintrag an diesem Tag. Die Woche zeigt drei Tage auf einmal und lässt sich seitlich wischen.
 
 ### Kalender abonnieren
 
@@ -120,6 +121,7 @@ Balken von einem Beginn- bis zu einem End-Datumsfeld, im Maßstab Woche, Monat, 
 
 - Balken verschieben oder an den Rändern ziehen. Auf Touchgeräten einen Balken erst kurz halten, dann ziehen; ein schnelles Wischen scrollt die Timeline. Die Griffe an den Rändern ziehen sofort. <kbd>Esc</kbd> bricht ein laufendes Ziehen ab. Das Kalendersymbol öffnet einen Datumsdialog, auch für ungeplante Einträge.
 - **Heute** springt zum aktuellen Datum; Wochenenden lassen sich markieren.
+- Ist ein Balken zu kurz für seinen Titel (etwa ein Tag im Maßstab Monat), steht der Titel neben dem Balken. {since=0.10.2}
 - Tastatur: ++Alt ←/→++ verschiebt um einen Tag, mit <kbd>⇧</kbd> ändert es das Ende, mit <kbd>Strg</kbd> den Beginn.
 
 ### Abhängigkeiten (Gantt)

@@ -30,9 +30,9 @@ Der Import schreibt in Eigenschaften; eine Kartenseite aus dem Dokument des Eint
 
 1. Exportiere in Anki über **Datei → Exportieren …** ein **Anki-Stapelpaket (.apkg)** oder die ganze Sammlung (**.colpkg**). Flowplan liest das alte und das neue Format (Anki 2.1.50 und neuer), mit oder ohne „Ältere Anki-Versionen unterstützen“.
 2. Wähle die Datei und den Zielbereich. Die Vorschau zeigt die Stapel mit ihren Unterstapeln, die Zahl der Notizen, Karten und Mediendateien und Hinweise.
-3. Prüfe je Notiztyp, was seine Felder werden – **Vorderseite**, **Rückseite**, **Hinweis**, **Zusatz** oder **nicht übernehmen** –, dazu den Kartentyp und **Auch umgekehrt abfragen**. Vorgeschlagen wird, was Anki selbst vorne und hinten zeigt; darunter steht eine Beispielkarte.
+3. Prüfe je Notiztyp, was seine Felder werden – **Vorderseite**, **Rückseite**, **Hinweis**, **Zusatz** oder **nicht übernehmen** –, dazu den Kartentyp und **Auch umgekehrt abfragen** (nicht bei Lückentext und Bildverdeckung). Vorgeschlagen wird, was Anki selbst vorne und hinten zeigt; darunter steht eine Beispielkarte. {since=0.10.2} Lücken zeigt sie als **[…]** und aufgedeckt markiert, Masken einer Bildverdeckung als **Maske 1** usw. – nicht als `{{c1::…}}`.
 4. Auf Wunsch **Meinen Lernstand übernehmen**.
-5. **… Notizen importieren**. Danach öffnet **Stapel öffnen** den ersten Stapel.
+5. **… Notizen importieren**. Danach öffnet **Stapel öffnen** den ersten Stapel. {since=0.10.2} Enthält das Paket keine Notizen, sagt der Assistent das, statt einen Knopf anzubieten.
 
 | Anki | Flowplan |
 | --- | --- |

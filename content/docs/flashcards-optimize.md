@@ -12,10 +12,10 @@ In einem Stapel öffnest du **Meine Einstellungen**; unter **Gedächtnismodell (
 
 1. Wähle, aus welchen Wertungen gelernt wird: **Dieser Stapel** oder **Alle meine Stapel**. Es zählen nur deine eigenen Wertungen – auch importierte und offline gemachte, nicht rückgängig gemachte.
 2. **Optimieren** startet die Rechnung. Sie läuft in deinem Browser, die Seite bleibt bedienbar; bei vielen tausend Wertungen dauert sie ein paar Sekunden. Zum Server gehen nur die 21 Zahlen.
-3. Die Tabelle zeigt, wie gut das Modell deine Wertungen voraussagt – mit den Standardparametern, den bisherigen (falls du schon optimiert hast) und den neuen. Kleiner ist besser:
+3. Das Ergebnis steht in einem Satz: {since=0.10.2} **Die neuen Parameter passen besser zu dir** – Flowplan sagt damit genauer voraus, wann du eine Karte vergisst – oder **Keine Verbesserung**. **Details zur Berechnung** klappt die Tabelle auf: wie gut das Modell deine Wertungen voraussagt, mit den Standardparametern, den bisherigen (falls du schon optimiert hast) und den neuen. Kleiner ist besser:
    - **Log-Loss**: wie überrascht das Modell im Mittel von deinen Wertungen ist.
    - **RMSE (Klassen)**: wie weit die vorhergesagte Erinnerungswahrscheinlichkeit von deiner tatsächlichen Trefferquote abweicht, in Prozentpunkten.
-4. **Übernehmen** speichert die neuen Parameter; **Vorgabe behalten** bzw. **Bisherige behalten** schließt ohne Änderung. Übernehmen geht nur, wenn die neuen Parameter besser sind.
+4. **Parameter übernehmen** speichert die neuen Parameter; **Vorgabe behalten** bzw. **Bisherige behalten** schließt ohne Änderung. Angeboten wird das nur, wenn die neuen Parameter besser sind; sonst schließt **Schließen** den Dialog.
 
 Optimieren braucht **mindestens 1.000 Wertungen** im gewählten Bereich. Darunter sagt der Dialog, wie viele es sind, und bietet nichts an – mit wenigen Wertungen wären die Parameter eher Zufall.
 
@@ -32,7 +32,7 @@ Später erinnert **Meine Einstellungen** leise daran, neu zu optimieren: nach 1.
 
 Nach dem Optimieren nennt der Dialog eine **empfohlene Behaltensrate** zwischen 70 % und 95 %. Dafür spielt Flowplan mit deinen neuen Parametern ein Lernjahr durch und sucht die Rate, bei der du am wenigsten Zeit je behaltener Karte brauchst. Die Zeiten kommen aus deinen eigenen Antwortzeiten; vergessene Karten zählen 2,5-fach, weil Vergessen mehr ärgert als Wiederholen.
 
-**84 % für diesen Stapel übernehmen** (mit der empfohlenen Zahl) setzt sie als deine Behaltensrate in **Meine Einstellungen**. Eine höhere Rate bleibt erlaubt: Sie kostet mehr Wiederholungen, dafür vergisst du seltener.
+{since=0.10.2} **Behaltensrate auf 84 % setzen** (mit der empfohlenen Zahl) setzt sie als deine Behaltensrate in **Meine Einstellungen**. Eine höhere Rate bleibt erlaubt: Sie kostet mehr Wiederholungen, dafür vergisst du seltener.
 
 Die Empfehlung ist eine vereinfachte Form von Ankis „optimaler Behaltensrate“: Sie rechnet ohne die Tagesgrenzen des Stapels und ohne Zeitbudget.
 

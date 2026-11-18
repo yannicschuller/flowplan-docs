@@ -30,9 +30,9 @@ The import writes into properties; it does not fill a side that comes from the r
 
 1. In Anki, export an **Anki Deck Package (.apkg)** via **File → Export …**, or the whole collection (**.colpkg**). Flowplan reads the old and the new format (Anki 2.1.50 and later), with or without “Support older Anki versions”.
 2. Choose the file and the target space. The preview shows the decks with their sub-decks, the number of notes, cards and media files, and notes on what changes.
-3. Check per note type what its fields become – **Front**, **Back**, **Hint**, **Extra** or **skip** – plus the card type and **Also ask in reverse**. The suggestion is what Anki itself shows on front and back; a sample card is shown below.
+3. Check per note type what its fields become – **Front**, **Back**, **Hint**, **Extra** or **skip** – plus the card type and **Also ask in reverse** (not for cloze and image occlusion). The suggestion is what Anki itself shows on front and back; a sample card is shown below. {since=0.10.2} It shows gaps as **[…]** and, revealed, marked; the masks of an image occlusion as **Mask 1** and so on – not as `{{c1::…}}`.
 4. If you like, **Take over my learning state**.
-5. **Import … notes**. Then **Open the deck** opens the first deck.
+5. **Import … notes**. Then **Open the deck** opens the first deck. {since=0.10.2} If the package has no notes, the wizard says so instead of offering a button.
 
 | Anki | Flowplan |
 | --- | --- |
