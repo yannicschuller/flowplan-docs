@@ -7,7 +7,7 @@ import { join, relative } from "node:path";
 import { Marked, type Tokens } from "marked";
 import { releases } from "./changelog";
 import { FACTS, fillFacts } from "./facts";
-import type { Locale } from "./i18n";
+import { PAGE_LOCALES, type Locale, type PageLocale } from "./i18n";
 import { docsIssueUrl } from "./issue-url";
 import { synonymKeywords } from "./search";
 import type { AnchorMap } from "./anchors";
@@ -570,6 +570,38 @@ export function loadDoc(slug: string, locale: Locale = "de"): Doc | null {
     fresh: freshSections(front.fresh.filter((m) => toc.some((e) => e.id === m.id))),
     filter: front.filter || hasReference(front.body),
   };
+}
+
+// ---- Single pages in a further language (#367, PAGE_LOCALES) ----
+// content/docs/fr/first-steps.md is /fr/first-steps. Its place in the
+// navigation, its neighbours and related pages are those of the English
+// page; callouts and the like would be labelled in English, so these pages
+// are plain Markdown (tests/page-locales.test.ts).
+const translationFile = (slug: string, lang: PageLocale) => join(directory(), lang, `${slug}.md`);
+export const hasTranslation = (slug: string, lang: PageLocale) => docSlugs.includes(slug) && existsSync(translationFile(slug, lang));
+// The languages a page is translated into beyond German and English.
+export const pageTranslations = (slug: string) => PAGE_LOCALES.filter((lang) => hasTranslation(slug, lang));
+export function translationSource(slug: string, lang: PageLocale) {
+  return relative(process.cwd(), translationFile(slug, lang)).split("\\").join("/");
+}
+// The page's Markdown in that language, version markers in English words.
+export const translationMarkdown = (slug: string, lang: PageLocale) =>
+  hasTranslation(slug, lang) ? sinceText(frontMatter(readFileSync(translationFile(slug, lang), "utf8")).body, "en") : null;
+export function loadTranslation(slug: string, lang: PageLocale): Doc | null {
+  if (!hasTranslation(slug, lang)) return null;
+  const english = loadDoc(slug, "en")!;
+  const text = frontMatter(readFileSync(translationFile(slug, lang), "utf8")).body;
+  const title = text.match(/^# (.+)$/m)?.[1]?.trim() || english.title;
+  const rest = text.replace(/^[\s\S]*?^# .+\n+/m, "");
+  const cut = rest.search(/\n\s*\n/);
+  const lead = (cut < 0 ? rest : rest.slice(0, cut)).replace(/\s+/g, " ").trim();
+  const { html, toc } = render(cut < 0 ? "" : rest.slice(cut), "en");
+  const leadHtml = new Marked({ gfm: true }).parseInline(lead, { async: false }) as string;
+  const source = translationSource(slug, lang);
+  const all = `<p>${leadHtml}</p>${html}`;
+  // Chinese has no spaces between words: about 300 characters a minute.
+  const minutes = lang === "zh" ? Math.max(1, Math.round((blockText(all).match(/[\p{Script=Han}]/gu)?.length ?? 0) / 300)) : readingMinutes(all);
+  return { ...english, title, summary: plain(leadHtml), leadHtml, html, toc, translated: true, source, modified: lastModified(source), minutes, fresh: [], filter: false };
 }
 
 // Plain text of a rendered part; block ends become spaces so table cells

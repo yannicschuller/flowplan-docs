@@ -29,8 +29,9 @@ export function useT() {
 export function setLocale(locale: Locale) {
   const domain = /(^|\.)flowplan\.org$/.test(location.hostname) ? "; domain=flowplan.org" : "";
   document.cookie = `${LOCALE_COOKIE}=${locale}; path=/; max-age=31536000; samesite=lax${domain}`;
-  // On an address with a fixed language, go to the same page in the other one.
-  const fixed = location.pathname.match(/^\/(de|en)(\/.*)?$/);
+  // On an address with a fixed language, go to the same page in the other
+  // one – also from a translated page under /fr or /zh (lib/i18n.ts).
+  const fixed = location.pathname.match(/^\/(de|en|fr|zh)(\/.*)?$/);
   if (fixed) location.assign(`/${locale}${fixed[2] || ""}${location.hash}`);
   else location.reload();
 }

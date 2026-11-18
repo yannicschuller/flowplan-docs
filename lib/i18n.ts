@@ -30,3 +30,28 @@ export function pickLocale(cookie?: string | null, acceptLanguage?: string | nul
 }
 
 export const translate = (locale: Locale) => (de: string, en: string) => (locale === "de" ? de : en);
+
+// Partial languages (#367): single pages translated into a further language
+// of the app (content/docs/fr, content/docs/zh), at /fr/… and /zh/…. The
+// site around them – navigation, search, labels – stays English; a page
+// without a translation shows the English one with a note in the reader's
+// language. `tag` is the language of the text (lang, hreflang).
+export type PageLocale = "fr" | "zh";
+export const PAGE_LOCALES: PageLocale[] = ["fr", "zh"];
+export const PAGE_LOCALE_TAGS: Record<PageLocale, string> = { fr: "fr", zh: "zh-Hans" };
+export function isPageLocale(value: unknown): value is PageLocale {
+  return value === "fr" || value === "zh";
+}
+// The notes above such a page, in its language.
+export const PAGE_LOCALE_NOTES: Record<PageLocale, { only: string; missing: string; english: string }> = {
+  fr: {
+    only: "Cette page est traduite en français ; le reste de la documentation est en anglais pour l’instant.",
+    missing: "Cette page n’est pas encore traduite en français – vous lisez la version anglaise.",
+    english: "Version anglaise",
+  },
+  zh: {
+    only: "本页已翻译成简体中文；文档的其余部分目前为英文。",
+    missing: "本页尚未翻译成简体中文——你正在阅读英文版本。",
+    english: "英文版本",
+  },
+};
