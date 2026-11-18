@@ -9,10 +9,19 @@
 # (COOLIFY_WEBHOOK, COOLIFY_TOKEN; see README).
 name: Docker image
 
+# Only after CI: an image of main is built when CI (typecheck, tests,
+# build, the browser checks) has passed on exactly that commit, and before
+# it is tagged :latest and rolled out it must start and serve its pages
+# without Next.js's error page (the smoke test below). A red CI or a broken
+# image never reaches the registry's :latest or Coolify, so the running site
+# stays as it is.
 on:
-  push:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
     branches: [main]
   pull_request:
+  # By hand: only for a commit whose CI on main passed (checked in "gate").
   workflow_dispatch:
 
 permissions:
@@ -24,9 +33,44 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Which commit, and whether it may become an image at all.
+  gate:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      sha: ${{ steps.sha.outputs.sha }}
+      short: ${{ steps.sha.outputs.short }}
+    steps:
+      - id: sha
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT: ${{ github.event_name }}
+          RUN_SHA: ${{ github.event.workflow_run.head_sha }}
+          PR_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          case "$EVENT" in
+            workflow_run) sha="$RUN_SHA" ;;
+            pull_request) sha="$PR_SHA" ;;
+            *)
+              sha="$GITHUB_SHA"
+              passed=$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/ci.yml/runs?head_sha=$sha&event=push&status=success" --jq '.total_count')
+              if [ "${passed:-0}" -lt 1 ]; then
+                echo "::error::CI has not passed on $sha (a push to main) – no image. Wait for CI or fix it first."
+                exit 1
+              fi
+              ;;
+          esac
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          echo "short=${sha::7}" >> "$GITHUB_OUTPUT"
+
   # One native build per platform – no QEMU emulation. Each pushes its image
   # by digest only; "image" below tags them together.
   build:
+    needs: gate
     # No image for Dependabot: its pull requests are tested by CI, and the
     # image is built after merging.
     if: github.actor != 'dependabot[bot]' && github.event.pull_request.user.login != 'dependabot[bot]'
@@ -47,6 +91,8 @@ jobs:
           echo "pair=${platform//\//-}" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          # The commit CI checked (workflow_run runs on main's newest commit).
+          ref: ${{ needs.gate.outputs.sha }}
           # The whole history: the build writes each page's last commit date
           # (scripts/last-modified.mjs) for the sitemap and the pages. No
           # token left in .git, which the image build copies.
@@ -71,6 +117,29 @@ jobs:
           # GitHub's Actions cache, one scope per platform, kept between runs.
           cache-from: type=gha,scope=image-${{ steps.platform.outputs.pair }}
           cache-to: type=gha,scope=image-${{ steps.platform.outputs.pair }},mode=max
+      # The new image must start and serve its pages before it can become
+      # :latest: a page that renders Next.js's error page fails the run.
+      - name: Smoke test the image
+        if: github.event_name != 'pull_request' && matrix.platform == 'linux/amd64'
+        env:
+          IMAGE: ghcr.io/${{ github.repository }}@${{ steps.build.outputs.digest }}
+          PAGES: "/ /en /en/installation /installation"
+        run: |
+          docker run -d --name smoke -p 3000:3000 "$IMAGE"
+          for i in $(seq 1 45); do curl -fsS -o /dev/null http://127.0.0.1:3000/api/health && break; sleep 2; done
+          fail=0
+          for path in $PAGES; do
+            status=$(curl -sSL --max-time 30 -o "$RUNNER_TEMP/page.html" -w '%{http_code}' "http://127.0.0.1:3000$path" || echo 000)
+            if [ "$status" != 200 ] || grep -q '__next_error__' "$RUNNER_TEMP/page.html"; then
+              echo "::error::$path answered $status or rendered Next.js's error page"
+              fail=1
+            else
+              echo "$path: $status"
+            fi
+          done
+          [ "$fail" = 0 ] || docker logs smoke 2>&1 | tail -60
+          docker rm -f smoke > /dev/null
+          exit $fail
       - name: Remember the digest
         if: github.event_name != 'pull_request'
         run: |
@@ -87,7 +156,7 @@ jobs:
 
   # Joins both platform images under the tags.
   image:
-    needs: build
+    needs: [gate, build]
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -109,15 +178,15 @@ jobs:
           images: ghcr.io/${{ github.repository }}
           flavor: latest=false
           tags: |
-            type=raw,value=latest,enable={{is_default_branch}}
-            type=sha
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+            type=raw,value=sha-${{ needs.gate.outputs.short }}
       - name: Tag the multi-platform image
         working-directory: ${{ runner.temp }}/digests
         run: |
           docker buildx imagetools create \
             $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
             $(printf 'ghcr.io/${{ github.repository }}@sha256:%s ' *)
-          docker buildx imagetools inspect "ghcr.io/${{ github.repository }}:sha-${GITHUB_SHA::7}"
+          docker buildx imagetools inspect "ghcr.io/${{ github.repository }}:sha-${{ needs.gate.outputs.short }}"
 
   # Rolls out the new :latest image on Coolify, never for pull requests.
   # Coolify's API must accept GitHub's runners (Settings → Advanced → API
