@@ -19,7 +19,9 @@ Ein Journal ist eine Seite mit einer Unterseite pro Tag. Morgens liegt die heuti
 - Erledigte Aufgaben und der übrige Text bleiben auf ihrem Tag.
 - **Leere Tage verschwinden**: Hat ein Tag außer übernommenen Aufgaben nichts Eigenes bekommen, wird er beim nächsten Tag wieder entfernt. Das Journal enthält so nur Tage, an denen etwas passiert ist.
 
-{since=0.9.9} Aufgaben, die du an einem Tag in anderen Seiten abhakst (die Liste „An diesem Tag erledigt“), zählen dabei nicht als eigener Inhalt. Schreibt ein Workflow in einen Tag (**An Journaltag anhängen**), entfernt er den Tag davor nie – auch keinen leeren.
+{since=0.9.9} Ein Tag, unter dem [An diesem Tag erledigt](#an-diesem-tag-erledigt) etwas zeigt – so, wie die Person, die das Journal öffnet, die Liste sieht (**Nur meine** oder **Alle**, in ihrer Zeitzone) –, ist nicht leer und bleibt. Schreibt ein Workflow in einen Tag (**An Journaltag anhängen**), entfernt er den Tag davor nie.
+
+{since=0.9.9} Ein leerer Tag kommt in den [Papierkorb](/pages-and-spaces#papierkorb), ohne die weitergezogenen Aufgaben, und lässt sich dort wiederherstellen. Öffnest du sein Datum wieder oder schreibt ein Workflow hinein, kommt genau dieser Tag zurück; einen Tag, den du selbst gelöscht hast, lässt Flowplan im Papierkorb.
 
 ### Seite des Tages anlegen: automatisch oder beim ersten Schreiben
 

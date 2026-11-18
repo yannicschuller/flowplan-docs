@@ -19,7 +19,9 @@ A journal is a page with one sub-page per day. In the morning today's page is re
 - Completed tasks and the rest of the text stay on their day.
 - **Empty days disappear**: if a day got nothing of its own besides carried-over tasks, it is removed again on the next day. This way the journal only contains days on which something happened.
 
-{since=0.9.9} Tasks you tick on a day in other pages (the list “Completed this day”) don't count as the day's own content. When a workflow writes into a day (**Append to journal day**), it never removes the day before – not even an empty one.
+{since=0.9.9} A day listing something under [Completed this day](#completed-this-day) (as the person opening the journal sees it: **Only mine** or **All**, their time zone) stays. A workflow writing into a day (**Append to journal day**) never removes the day before.
+
+{since=0.9.9} An empty day goes to the [trash](/pages-and-spaces#trash), restorable, without the tasks that moved on. Opening its date again, or a workflow writing into it, brings that day back; a day you deleted yourself stays in the trash.
 
 ### Create the day's page: automatically or on the first write
 
