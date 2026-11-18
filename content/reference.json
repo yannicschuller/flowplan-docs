@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@dcaa82bf",
+  "source": "github.com/yannicschuller/flowplan@ad0cdf20",
   "slash": {
     "groups": {
       "recent": [
@@ -861,6 +861,26 @@
         ]
       },
       {
+        "id": "cloze",
+        "group": "text",
+        "name": [
+          "Lücke (Lernkarte)",
+          "Cloze (flashcard)"
+        ],
+        "keywords": [
+          "lücke",
+          "lückentext",
+          "cloze",
+          "lernkarte",
+          "flashcard",
+          "karteikarte"
+        ],
+        "description": [
+          "Markierten Text auf einer Lernkarte abfragen",
+          "Ask for the selected text on a flashcard"
+        ]
+      },
+      {
         "id": "spoiler",
         "group": "text",
         "name": [
@@ -1129,6 +1149,14 @@
           "Mod+]",
           "Alt+ArrowRight"
         ]
+      },
+      {
+        "id": "study",
+        "name": [
+          "Lernen: fällige Karten öffnen",
+          "Study: open the due cards"
+        ],
+        "combos": []
       }
     ],
     "editor": [
@@ -1194,6 +1222,22 @@
         "name": [
           "Verdecken",
           "Spoiler"
+        ]
+      },
+      {
+        "combo": "Mod+Alt+G",
+        "id": "cloze",
+        "name": [
+          "Lücke (Lernkarte)",
+          "Cloze (flashcard)"
+        ]
+      },
+      {
+        "combo": "Mod+Alt+Shift+G",
+        "id": "cloze",
+        "name": [
+          "Lücke (Lernkarte)",
+          "Cloze (flashcard)"
         ]
       },
       {
