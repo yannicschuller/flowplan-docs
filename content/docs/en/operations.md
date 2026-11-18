@@ -6,7 +6,7 @@ keywords: operations, healthcheck, troubleshooting, logs, desktop apps, promethe
 
 Health check, metrics, the storage overview and the most common causes when something does not run.
 
-**More on this topic:** [Monitoring and maintenance](/monitoring) · [Security and attack detection](/security-monitoring) · [High availability](/en/high-availability)
+**More on this topic:** [Monitoring and maintenance](/monitoring) · [Troubleshooting in operation](/troubleshooting) · [Security and attack detection](/security-monitoring) · [High availability](/en/high-availability)
 
 ## Health check
 

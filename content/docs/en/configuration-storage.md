@@ -16,6 +16,7 @@ The environment variables for S3 and database backups, PostgreSQL and cluster, e
 | `S3_REGION` | `us-east-1` | Region. Garage requires its own value (often `garage`). |
 | `S3_PREFIX` | `flowplan` | Folder in the bucket; files under `<prefix>/uploads/`, the database under `<prefix>/db/`. |
 | `FLOWPLAN_LITESTREAM` | on | `off`: only mirror files, do not back up the database. |
+| `FLOWPLAN_LITESTREAM_LOG_LEVEL` | `info` | How much Litestream logs: `debug`, `info`, `warn` or `error`. `warn` leaves out the routine lines of every compaction and keeps warnings and errors. {since=0.10.2} |
 | `FLOWPLAN_LITESTREAM_AUTOHEAL` | on | `off`: only report a [stuck Litestream replica](/storage-and-backups#repair-the-litestream-state), do not rebuild it by itself on the next restart. {since=0.10.0} |
 | `LITESTREAM_SSE_C_KEY` | *empty* | Optional: the storage provider encrypts the Litestream replica (SSE-C, 32 bytes base64, only over https and with providers that support SSE-C). |
 

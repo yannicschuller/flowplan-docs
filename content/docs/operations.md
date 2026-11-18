@@ -6,7 +6,7 @@ keywords: Betrieb, Healthcheck, Fehlersuche, Logs, Desktop-Apps, Prometheus
 
 Healthcheck, Kennzahlen, Speicherübersicht und die häufigsten Ursachen, wenn etwas nicht läuft.
 
-**Mehr zum Thema:** [Überwachung und Wartung](/monitoring) · [Sicherheit und Angriffserkennung](/security-monitoring) · [Hochverfügbarkeit](/high-availability)
+**Mehr zum Thema:** [Überwachung und Wartung](/monitoring) · [Fehlersuche im Betrieb](/troubleshooting) · [Sicherheit und Angriffserkennung](/security-monitoring) · [Hochverfügbarkeit](/high-availability)
 
 ## Healthcheck
 

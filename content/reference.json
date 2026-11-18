@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@65e4d82a",
+  "source": "github.com/yannicschuller/flowplan@520dad3f",
   "slash": {
     "groups": {
       "recent": [
@@ -2018,6 +2018,7 @@
     "FLOWPLAN_LEADER_INTERVAL",
     "FLOWPLAN_LITESTREAM",
     "FLOWPLAN_LITESTREAM_AUTOHEAL",
+    "FLOWPLAN_LITESTREAM_LOG_LEVEL",
     "FLOWPLAN_LITESTREAM_RESTART_SECONDS",
     "FLOWPLAN_LITESTREAM_SSE_C",
     "FLOWPLAN_LOCAL_LOGIN",

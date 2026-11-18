@@ -1,5 +1,6 @@
 ---
 keywords: Coolify, Reverse Proxy, nginx, Traefik, Caddy, HTTPS, Volume
+new: checkliste 2026-11-18
 ---
 
 # Coolify und Reverse Proxy
@@ -18,6 +19,18 @@ Flowplan braucht vor sich nur einen HTTPS-Proxy. WebSockets sind nicht nötig: Z
 6. Bereitstellen. Nach etwa 20 Sekunden meldet der Healthcheck den Container als gesund.
 
 :::
+
+### Checkliste
+
+Bevor eine Instanz in den regulären Betrieb geht, prüf die Einstellungen der Ressource:
+
+- **Healthcheck** an, Port `3000`, Pfad `/api/health` ([Healthcheck](#healthcheck)).
+- **Restart policy** auf dem Standard von Coolify (`unless-stopped`) lassen: Der Container kommt nach einem Absturz und nach **Jetzt neu starten** in der Administration wieder. Was `0` bei **Max restart count** bedeutet, sagt der Tooltip des Felds in Coolify.
+- Mit SQLite: **Container naming** auf **Consistent name (no rolling updates)** und ein **Custom container name** ([SQLite ohne Überlappung ausrollen](#sqlite-ohne-ueberlappung-ausrollen)).
+- **Stop grace period** 30 Sekunden oder mehr, damit Flowplan und Litestream sauber enden.
+- Eine **Speichergrenze** mit Platz für Litestream neben der App – oder, ohne Grenze, genug freier Speicher auf dem Host ([Dimensionierung](/sizing), [wenn der Server keinen Speicher mehr hat](/troubleshooting#neustarts-ohne-fehler)).
+- Beta und Produktion als **getrennte Ressourcen**, ausgerollt über `COOLIFY_BETA_WEBHOOK` und `COOLIFY_WEBHOOK` ([Automatisch ausrollen](#automatisch-ausrollen)).
+- Die Beta-Instanz mit **eigenem Volume** und eigenem Bucket oder `S3_PREFIX` – nie dem Volume der Produktion.
 
 ### Healthcheck
 
