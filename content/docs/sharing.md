@@ -77,6 +77,15 @@ Im Reiter **Web** macht der Schalter **Im Web veröffentlichen** die Seite für 
 - Ausschalten, Löschen oder Verschieben aus dem veröffentlichten Baum entzieht den Zugriff sofort, auch auf Dateien.
 - Hat eine Seite Überschriften, blenden Besucher über das Listen-Symbol rechts neben dem Text die **Gliederung** ein (auf dem Smartphone der runde Knopf unten rechts). Sie zeigt, wo man gerade liest, und springt per Klick zur Überschrift. Ob sie offen ist, merkt sich der Browser – wie im Editor.
 
+### Lernkarten über einen Link {since=0.9.9}
+
+Ein [Lernkarten-Stapel](/flashcards) zeigt über einen Link mit eigenen Berechtigungen oder als Veröffentlichung seine Ansicht **Lernen**:
+
+- **Durchblättern**: alle Karten als Raster, je 100 auf einer Seite; ein Klick oder **Umdrehen** zeigt die Rückseite.
+- **Üben**: der Fokusmodus mit Wertungen, ohne Konto. Der Lernstand liegt nur im Browser des Besuchers (im lokalen Speicher unter `flowplan-study:` und dem Link) – kein Cookie, nichts geht an den Server. Ein Hinweis sagt das einmal; **Fortschritt löschen** entfernt ihn. Erlaubt der Browser keinen Speicher, gilt die Übung nur für diese Sitzung.
+- Öffentlich ist eine Lernen-Ansicht nur, wenn alle Eigenschaften der Kartenzuordnung öffentlich sind; private Einträge werden nie zu Karten. Bilder kommen über den Link, Passwort und Ablaufdatum gelten wie für alles andere.
+- Wer im Arbeitsbereich angemeldet ist, bekommt **In Flowplan lernen** mit dem eigenen Lernstand. Eine Kopie der Veröffentlichung übernimmt die Kartenzuordnung.
+
 ### Aussehen
 
 Im Reiter **Web** klappt unter den Optionen **Aussehen** auf. Dort legst du das Aussehen der Veröffentlichung fest: **Logo** und **Favicon** (HTTPS-Adresse oder eine hochgeladene Datei, die die Veröffentlichung zeigt), **Akzentfarbe**, **Text in der Fußzeile** und **„Mit Flowplan veröffentlicht“ ausblenden** – übernommen mit **Aussehen speichern**.

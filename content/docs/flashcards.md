@@ -11,7 +11,7 @@ Jede Datenbank kann ein Kartenstapel werden: Ein Eintrag ist eine Karte, die Ans
 Mehrere Wege führen zu einem Stapel:
 
 - **Neue Seite → Datenbank → Lernkarten**: Die Datenbank bringt die Eigenschaften **Vorderseite** (der Titel), **Rückseite**, **Tags** und {since=0.9.9} **Kartentyp** mit, dazu die Ansichten **Lernen** und **Alle Karten**. Die Karten sind schon eingerichtet.
-- **Vorlage „Lernkarten-Datenbank“** (Kategorie Wissen): wie oben, mit einer Eigenschaft **Beispiel** und sechs Beispielkarten zum Ausprobieren – darunter eine Lücke und eine Karte zum Eintippen.
+- **Vorlage „Lernkarten-Datenbank“** (Kategorie Wissen): wie oben, mit den Eigenschaften **Beispiel** und **Falsche Antworten** und {since=0.9.9} einer Beispielkarte je Kartentyp. Mehr Stapel: [Vorlagen](/templates#lernkarten-als-vorlage).
 - {since=0.9.9} **Karten importieren** in der Lernen-Ansicht holt Karten aus CSV, Quizlet und anderem Text ([Lernkarten importieren](/flashcards-import)), **Aus Anki importieren** auf der Seite [Lernen](#alle-stapel-lernen) ganze Anki-Stapel ([Aus Anki importieren](/flashcards-import#aus-anki-importieren)).
 - {since=0.9.9} **Mit KI erstellen** schlägt Karten aus einer Seite, einer Auswahl oder einem PDF vor ([Lernkarten mit KI](/flashcards-ai)).
 - **Eine vorhandene Datenbank**: Über **Ansicht hinzufügen → Lernen** bekommt sie eine Lernen-Ansicht. Ist noch nichts eingerichtet, öffnet sich gleich **Karten einrichten**.
@@ -166,6 +166,10 @@ Unter jedem Journaltag steht bei [An diesem Tag erledigt](/journal#an-diesem-tag
 ## Importieren und exportieren {since=0.9.9}
 
 CSV, TSV, Quizlet und Anki hinein, CSV und Anki-Pakete hinaus: [Lernkarten importieren und exportieren](/flashcards-import).
+
+## Teilen und veröffentlichen {since=0.9.9}
+
+Geteilt oder veröffentlicht lässt sich ein Stapel ohne Konto durchblättern und üben: [Lernkarten über einen Link](/sharing#lernkarten-ueber-einen-link).
 
 ## Wer was sieht
 

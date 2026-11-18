@@ -11,7 +11,7 @@ Any database can become a deck of flashcards: a record is a card, and the view *
 There are several ways to a deck:
 
 - **New page → Database → Flashcards**: the database comes with the properties **Front** (the title), **Back**, **Tags** and {since=0.9.9} **Card type**, and the views **Study** and **All cards**. The cards are set up already.
-- **Template “Flashcard database”** (category Knowledge): as above, with a property **Example** and six sample cards to try – among them a cloze and a card to type the answer.
+- **Template “Flashcard database”** (category Knowledge): as above, with the properties **Example** and **Wrong answers** and {since=0.9.9} one sample card per card type. More decks: [templates](/templates#flashcards-as-templates).
 - {since=0.9.9} **Import cards** in the study view brings cards from CSV, Quizlet and other text ([Import and export flashcards](/flashcards-import)), **Import from Anki** on the [Study](#all-decks-study) page whole Anki decks ([Import from Anki](/flashcards-import#import-from-anki)).
 - {since=0.9.9} **Create with AI** proposes cards from a page, a selection or a PDF ([Flashcards with AI](/flashcards-ai)).
 - **An existing database**: **Add view → Study** gives it a study view. If nothing is set up yet, **Set up cards** opens right away.
@@ -166,6 +166,10 @@ Below every journal day, [Completed this day](/journal#completed-this-day) has o
 ## Import and export {since=0.9.9}
 
 CSV, TSV, Quizlet and Anki in, CSV and Anki packages out: [Import and export flashcards](/flashcards-import).
+
+## Sharing and publishing {since=0.9.9}
+
+Shared or published, a deck can be browsed and practised without an account: [Flashcards through a link](/sharing#flashcards-through-a-link).
 
 ## Who sees what
 

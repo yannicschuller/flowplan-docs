@@ -77,6 +77,15 @@ In the **Web** tab, the **Publish on the web** switch makes the page readable fo
 - Switching it off, deleting or moving a page out of the published tree revokes access immediately, including to files.
 - If a page has headings, visitors show its **outline** with the list icon to the right of the text (on a phone, the round button at the bottom right). It marks where you are reading and jumps to a heading on click. The browser remembers whether it is open – as in the editor.
 
+### Flashcards through a link {since=0.9.9}
+
+A [flashcard deck](/flashcards) shows its **Study** view through a link with its own permissions or as a publication:
+
+- **Browse**: every card as a grid, 100 per page; a click or **Turn over** shows the back.
+- **Practise**: the focus mode with ratings, without an account. The learning state lives in the visitor's browser only (in local storage under `flowplan-study:` and the link) – no cookie, nothing goes to the server. A note says so once; **Delete progress** removes it. If the browser allows no storage, the practice lasts for that session only.
+- A study view is public only when every property of the card mapping is public; private records never become cards. Pictures come through the link, password and end date apply as to everything else.
+- Someone signed in to the workspace gets **Study in Flowplan** with their own learning state. A copy of the publication keeps the card mapping.
+
 ### Appearance
 
 In the **Web** tab, **Appearance** folds open below the options. There you set the look of the publication: **logo** and **favicon** (an HTTPS address or an uploaded file the publication shows), **accent colour**, **footer text** and **hide “Published with Flowplan”** – applied with **Save appearance**.

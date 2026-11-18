@@ -31,6 +31,12 @@ Sobald es [eigene Vorlagen](#eigene-vorlagen) gibt, steht gleich nach **Alle** d
 
 Das gilt genauso für eigene Vorlagen: **Verwenden** führt in den Dialog **Neue Seite**, wo du der Seite einen eigenen Namen gibst, bevor sie entsteht. Der Name der Vorlage ist nur der Vorschlag.
 
+### Lernkarten als Vorlage {since=0.9.9}
+
+Drei eingebaute Vorlagen sind [Lernkarten-Stapel](/flashcards): **Lernkarten-Datenbank** (Wissen) mit einer Beispielkarte je Kartentyp, auch Multiple Choice und Bildverdeckung; **Vokabeln** (Persönlich) – Wort und Übersetzung zum Eintippen in beide Richtungen, Akzente zählen, der Beispielsatz als Hinweis, eine Lernen-Ansicht für Lektion 1; **Flowplan-Tastenkürzel** (Wissen) – „Was macht ⌘ K?“ und umgekehrt, die Tasten für Mac und für Windows und Linux in eigenen Spalten. Wer Windows oder Linux nutzt, wählt unter **Karten einrichten** die Spalte **Windows und Linux** als Vorderseite.
+
+Ein Stapel als Vorlage – eingebaut, gespeichert, exportiert oder aus dem Marketplace, dort in seiner Kategorie mit dem Schlagwort **Lernkarten** – bringt Kartenzuordnung, Lernen-Ansichten, Lücken und Bildverdeckungen mit, nie den Lernstand einer Person.
+
 ## Eigene Vorlagen
 
 ::: steps
