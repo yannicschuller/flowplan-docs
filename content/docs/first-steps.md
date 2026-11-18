@@ -68,6 +68,8 @@ Im Bearbeitungsmodus:
 
 **Meine Aktivität** zeigt, wie viele Seiten du erstellt und bearbeitet hast – pro Woche, Monat oder Jahr (im Widget umschaltbar), mit einem Verlauf und dem Vergleich zum gleichen Abschnitt des vorigen Zeitraums. Eine bearbeitete Seite zählt höchstens einmal pro Tag, automatisches Speichern zählt nicht extra. Die Zahlen sieht nur du; Flowplan erfasst dafür nichts Neues und keine Zeiten, es zählt aus dem, was ohnehin gespeichert ist (Ersteller, Versionen, Aktivitätsprotokoll).
 
+{since=0.9.9} **Fällige Karten** zeigt, was heute in deinen [Lernkarten](/flashcards#alle-stapel-lernen) fällig ist: die Zahl der Karten, je Stapel neue und fällige, deine Serie und **Lernen**, das alle Stapel öffnet. In seinen Einstellungen wählst du alle Stapel oder bestimmte; die Zahlen sind deine eigenen.
+
 Aufgaben hakst du direkt im Widget ab, Gewohnheiten ebenso; im Journal-Widget schreibst du ein paar Zeilen in den heutigen Eintrag, im Notizzettel notierst du, was nirgends sonst hinpasst – er wird beim Tippen gespeichert und ist auf allen Geräten gleich.
 
 Widgets zeigen nur, was du ohnehin sehen darfst: Seiten anderer Arbeitsbereiche erscheinen nicht, Journale hinter einer PIN zeigen nur ihren Namen, und von Ende-zu-Ende-verschlüsselten Bereichen sieht die Startseite keinen Inhalt.

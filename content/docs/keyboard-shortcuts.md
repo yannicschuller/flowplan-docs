@@ -67,6 +67,7 @@ Die Übersicht zeigt die Tasten so, wie sie auf deinem Gerät heißen: auf dem M
 | <kbd>⌘</kbd> <kbd>E</kbd> | Code im Text |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>H</kbd> | Markieren |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>H</kbd> | Verdecken (Spoiler) |
+| <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>G</kbd> / mit <kbd>⇧</kbd> | [Lücke für Lernkarten](/flashcards#lueckentext): neue Nummer / gleiche Nummer wie die vorige {since=0.9.9} |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>M</kbd> | Neuer Textkommentar zum markierten Text {since=0.9.8} |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>1</kbd>–<kbd>4</kbd> | Überschrift 1–4 |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>0</kbd> | Zurück zu normalem Text |
@@ -112,6 +113,19 @@ Markdown-Kürzel wie `##`, `-`, `[]` oder ` ``` ` stehen unter [Markdown im Edit
 | <kbd>←</kbd> <kbd>↑</kbd> <kbd>Bild ↑</kbd> | Vorherige Folie |
 | <kbd>Pos1</kbd> / <kbd>Ende</kbd> | Erste / letzte Folie |
 | <kbd>Esc</kbd> | Präsentation beenden |
+
+## Lernkarten {since=0.9.9}
+
+Im [Fokusmodus](/flashcards#lernen-im-fokusmodus) einer Lernsitzung. Eine eigene Tastenkombination für **Lernen: fällige Karten öffnen** legst du unter [Eigene Tastenkürzel](#eigene-tastenkuerzel) fest.
+
+| Kürzel | Wirkung |
+| --- | --- |
+| <kbd>Leertaste</kbd> / <kbd>Enter</kbd> | Antwort zeigen; aufgedeckt: Gut oder der Vorschlag (Eintippen, Multiple Choice) |
+| <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> | Nochmal / Schwer / Gut / Leicht |
+| <kbd>A</kbd> … <kbd>E</kbd> | Multiple Choice: Antwort wählen |
+| <kbd>H</kbd> | Hinweis zeigen |
+| <kbd>Z</kbd> / <kbd>⌘</kbd> <kbd>Z</kbd> | Letzte Wertung rückgängig |
+| <kbd>Esc</kbd> | Sitzung beenden |
 
 ## Tabs {since=0.9.6}
 

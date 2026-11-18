@@ -1,5 +1,5 @@
 ---
-keywords: flashcards, cards, vocabulary, study, learning, spaced repetition, FSRS, Anki, deck
+keywords: flashcards, cards, vocabulary, study, learning, spaced repetition, FSRS, Anki, deck, cloze, multiple choice, Quizlet, CSV, statistics
 ---
 
 # Flashcards
@@ -10,8 +10,9 @@ Any database can become a deck of flashcards: a record is a card, and the view *
 
 There are three ways to a deck:
 
-- **New page → Database → Flashcards**: the database comes with the properties **Front** (the title), **Back** and **Tags**, and the views **Study** and **All cards**. The cards are set up already.
-- **Template “Flashcard database”** (category Knowledge): as above, with a property **Example** and six sample cards to try.
+- **New page → Database → Flashcards**: the database comes with the properties **Front** (the title), **Back**, **Tags** and {since=0.9.9} **Card type**, and the views **Study** and **All cards**. The cards are set up already.
+- **Template “Flashcard database”** (category Knowledge): as above, with a property **Example** and six sample cards to try – among them a cloze and a card to type the answer.
+- {since=0.9.9} **Import cards** in the study view brings cards from CSV, Quizlet and other text ([Import and export flashcards](/flashcards-import)).
 - **An existing database**: **Add view → Study** gives it a study view. If nothing is set up yet, **Set up cards** opens right away.
 
 ## Setting up cards
@@ -24,6 +25,10 @@ There are three ways to a deck:
 | Back | a property, the record's whole document or the document below a line |
 | Hint | a property you can show before revealing |
 | Extra | a property shown under the answer after revealing |
+| Card type {since=0.9.9} | the same for all records or from a select property ([card types](#card-types)) |
+| Answer options {since=0.9.9} | for multiple choice: a property with the wrong answers; without one, Flowplan takes the backs of other cards |
+| Tags {since=0.9.9} | a select or multi-select property; generated answer options prefer cards with the same tags |
+| Typed answers: ignore {since=0.9.9} | what the comparison passes over: upper and lower case (on), accents (off), punctuation (on) |
 | Also study in reverse | a second card per record: back → front |
 | New cards per day | default 20 |
 | Reviews per day | default 200 |
@@ -37,6 +42,44 @@ Anyone who may edit the database may set up its cards. If you change the mapping
 
 For images, formulas, code or longer answers, use the record's document. The simplest form: **title as the front, document as the back**. If the front needs more than a sentence too, split the document with a horizontal line – type `---`, as for [presenting](/reading-and-presenting). Everything above the first line is the question, everything below it the answer. Without a line, the whole document is the answer.
 
+## Card types {since=0.9.9}
+
+| Card type | How Flowplan asks | Cards per record |
+| --- | --- | --- |
+| Front/back | show the front, reveal the answer, rate yourself | 1, with reverse 2 |
+| Cloze | show the text with a gap | one per cloze number |
+| Type the answer | type the answer into a field, Flowplan compares | 1, with reverse 2 |
+| Multiple choice | three to five answers to pick from | 1 |
+
+Under **Card type** in **Set up cards**, one type applies to all records, or it comes from a select property: options named “Cloze”, “Type the answer” or “Multiple choice” (German names too) are recognised by themselves, others you map to a type in the dialog; empty means front/back. Switching between front/back and type the answer keeps the learning state.
+
+### Cloze
+
+In a text property you write a cloze as in Anki: `{{c1::Paris}} lies on the {{c2::Seine::river}}`. The number is the cloze's number; after a second `::` comes a hint shown in the gap. Every number becomes a card of its own; the same number twice asks both places on one card. The card for `c1` shows “[…] lies on the Seine” – the other clozes as plain text –, after revealing the answer is highlighted.
+
+In a record's document you select the text and choose **As cloze (new number)** or **As cloze (same number as before)** under **…** in the text menu – or type <kbd>/</kbd> **Cloze**. With the keyboard: ++⌘⌥G++ / ++Ctrl+Alt+G++ for a new number, with ++Shift++ for the number of the cloze before it; on a cloze the same shortcut removes it. In the editor clozes are tinted and carry their number (c1, c2 …); when reading the page they are covered like a spoiler, a click shows them. In the Markdown export they are written as `{{c1::…}}`, and the Markdown import turns them back into clozes.
+
+- A front/back record with clozes on a side becomes cloze cards by itself – so imported cards need no type of their own.
+- With the clozes in the document (the back), the card shows the title above it; with the clozes on the front, the back comes as a note after revealing.
+- Learning states belong to the number: renumber clozes and the learning state goes with the new number.
+- Nested clozes (`{{c1::… {{c2::…}} …}}`) are read flat: the inner one counts as text of the outer one.
+
+### Type the answer
+
+A field sits under the front; <kbd>Enter</kbd> checks. Flowplan compares with the back (for a document its first paragraph) and shows the differences character by character – what you typed too much struck through, what is missing underlined. Separate several right answers in the back with `|`, such as `colour | color`.
+
+- **Correct** suggests **Good**, **Almost** (one character different, for answers of six characters or more) **Hard**, otherwise **Again**. The suggestion is highlighted, <kbd>Enter</kbd> or <kbd>Space</kbd> take it – but you may choose any rating.
+- What the comparison passes over is set per deck: upper and lower case, accents (é = e, off by default because they matter in languages) and punctuation. Spaces at the ends and double spaces never count.
+- <kbd>Esc</kbd> in a field with text first leaves the field; a second <kbd>Esc</kbd> ends the session.
+
+### Multiple choice
+
+The card shows the right answer (the back) among wrong ones. The wrong ones come from the property under **Answer options** (one option per line, on one line separated by `;`, or the values of a multi-select) – if some are missing, Flowplan adds backs of other cards of the same deck, preferably with the same tags and a similar length. Only cards you may study yourself come into question: no private records of others, no hidden properties, in a sub-deck only its cards.
+
+- The order of the answers is shuffled anew for every review and stays while the card is shown.
+- Pick with a tap or the keys <kbd>A</kbd> to <kbd>E</kbd> (before revealing also <kbd>1</kbd> to <kbd>5</kbd>). Right suggests **Good**, wrong **Again**; you may rate otherwise.
+- Multiple choice is easier than free recall – good to start with; for remembering, front/back and type the answer work better.
+
 ## Sub-decks through filters
 
 A study view studies the cards that match its [filters](/views). With the filter **Tags contains “Chapter 3”** it becomes a sub-deck. Sub-decks share the deck's daily limits. In the view's settings you also choose whether new cards come between, before or after the reviews, and whether in the order they were added or at random.
@@ -48,6 +91,7 @@ The study view shows what is left today: **new**, **in learning steps** and **du
 - **Start studying** opens the focus mode.
 - **Study more today** gives you **+10 new cards** or **+50 reviews** for today – on the next study day the normal limit applies again.
 - **My settings**: your own limits and your own retention for this deck. An empty field takes the deck's default. Nothing changes for others.
+- {since=0.9.9} **Statistics** opens the deck's [statistics](#statistics), **Import cards** the [import](/flashcards-import), **Export** downloads the cards as CSV.
 
 ## Studying in focus mode
 
@@ -68,6 +112,7 @@ The focus mode fills the screen with one card. At the top are the counts (new ·
 - <kbd>H</kbd> shows the hint, <kbd>Esc</kbd> ends the session.
 - **Swiping** on phones and tablets works after revealing. A gesture that starts at the edge of the screen (24 pixels) belongs to the system or the app – such as “back” – and does not move the card. The buttons are always there.
 - At the end a summary shows how many cards you studied in how many minutes, how often “Again” and how many are due tomorrow.
+- {since=0.9.9} When only cards in learning steps are left that come back later, the session shows **Next card in 25 min** and loads it by itself when it is time. **Show sooner** (or <kbd>Space</kbd>) brings it at once.
 
 The focus mode works fully with the keyboard and a screen reader: the answer is read out after revealing, every button says its rating and the next date. If you choose less motion in the settings or reduce it in your system, there are no animations.
 
@@ -81,6 +126,37 @@ Flowplan uses **FSRS-6**, the method Anki offers as well. For every card it esti
 - **Siblings**: once you study one card of a record, its reverse card waits for the next study day.
 - **The study day starts at 04:00** in your time zone – studying after midnight still counts for the day before. Flowplan takes the time zone from your device.
 
+## All decks: Study {since=0.9.9}
+
+**Study** at the bottom of the sidebar (or “Study: due cards” in quick search, a shortcut of your own in the [keyboard shortcuts](/keyboard-shortcuts)) shows all decks of the workspace with what is left today: new, in learning steps, due – within your daily limits. **Study** next to a deck starts it, **Study all due** goes through the decks one after the other, each with its limits; at the end of a deck **Continue with …** moves on to the next. Below are the statistics of all decks, at the top your streak.
+
+The numbers are for the whole deck. A study view with filters studies only part of it, and siblings of a card studied today wait until tomorrow – so a session may show a few cards less.
+
+On the [home page](/first-steps#customize-your-home-page) the widget **Due cards** shows the same: how many cards are due today, the decks with new and due cards, your streak and **Study**. In the widget's settings you choose all decks or certain ones.
+
+## Statistics {since=0.9.9}
+
+The statistics show your own numbers only – for one deck (**Statistics** in the study view) or for all (under **Study**):
+
+| Figure | Meaning |
+| --- | --- |
+| Today | ratings, new cards, minutes and share correct |
+| Streak | study days in a row up to today; if you have not studied yet today, the streak counts on up to yesterday |
+| Ratings per day | a year as squares, the darker the more; as a table per month |
+| Due in the next 30 days | cards per study day; overdue ones count today |
+| True retention | the share of reviews you did not rate “Again”, over 7, 30 and 365 days – next to your target |
+| Cards by state | new, in learning steps, young (stability under 21 days), mature (21 days or more), suspended |
+
+Days are study days (starting at 04:00). Every chart has a table for screen readers.
+
+## In the journal {since=0.9.9}
+
+Below every journal day, [Completed this day](/journal#completed-this-day) has one line per deck you studied that day, such as **Studied 32 cards** in Spanish A1 – with the time of the last rating and a link to the deck. The journal counts by the **calendar day** in your time zone like all its entries, not by the study day: study at 01:30 and the line is on the new day, while the statistics still count the cards for the day before. The line is always yours – under **All** too, nobody sees what others studied. A day on which you only studied is not empty and stays.
+
+## Import and export {since=0.9.9}
+
+**Import cards** in the study view brings cards from CSV, TSV, Quizlet and the text export of other study apps, **Export** gives them back as CSV – more under [Import and export flashcards](/flashcards-import).
+
 ## Who sees what
 
 - **Studying** is open to everyone who may read the database – members, guests of a [shared page](/sharing) and readers. The learning state is yours alone: nobody else sees it, not the workspace's owners and not the administration.
@@ -91,4 +167,4 @@ Flowplan uses **FSRS-6**, the method Anki offers as well. For every card it esti
 
 ## API and MCP
 
-With the [API](/api-and-webhooks) you can study from your own programs too: `study.queue` (or `GET /api/pages/{id}/study`) returns the next cards with the counts, `study.review` rates, `study.undo` undoes, `study.prefs` sets your own limits, `study.settings` sets up the cards. Read-only tokens can read cards and counts but not rate. The [MCP server](/mcp) has the tool `study_decks`: your decks of a workspace with what is due today. All shapes are in the [OpenAPI description](/openapi).
+With the [API](/api-and-webhooks) you can study from your own programs too: `study.queue` (or `GET /api/pages/{id}/study`) returns the next cards with the counts, `study.review` rates, `study.undo` undoes, `study.prefs` sets your own limits, `study.settings` sets up the cards. {since=0.9.9} `study.due` (or `GET /api/study/due`) counts the due cards of all decks of a workspace, `study.stats` (or `GET /api/study/stats`) returns the statistics, `GET /api/pages/{id}/study/export` the CSV; `study.queue` with `ahead` brings learning cards that would only be due later today. Read-only tokens can read cards and counts but not rate. The [MCP server](/mcp) has the tool `study_decks`: your decks of a workspace with what is due today. All shapes are in the [OpenAPI description](/openapi).
