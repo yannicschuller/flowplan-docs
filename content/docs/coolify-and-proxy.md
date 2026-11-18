@@ -75,15 +75,16 @@ Coolify beobachtet die Registry nicht selbst. Die Image-Workflows der Repositori
 1. In Coolify unter **Settings** den API-Zugriff einschalten (und ggf. die Adresse des CI-Runners erlauben).
 2. Unter **Keys & Tokens → API tokens** ein Token mit dem Recht *deploy* anlegen.
 3. In der Ressource unter **Webhooks** die *Deploy Webhook*-Adresse kopieren, z. B. `https://coolify.example.com/api/v1/deploy?uuid=…&force=false`.
-4. Im GitHub-Repository unter **Settings → Secrets and variables → Actions** zwei Secrets anlegen: `COOLIFY_WEBHOOK` (die Adresse) und `COOLIFY_TOKEN` (das Token).
+4. Im GitHub-Repository unter **Settings → Secrets and variables → Actions** die Secrets `COOLIFY_WEBHOOK` (die Adresse) und `COOLIFY_TOKEN` (das Token) anlegen. Für eine zweite Instanz des flowplan-Repositorys, die `:beta` folgt, deren Adresse als `COOLIFY_BETA_WEBHOOK` hinzufügen; `COOLIFY_WEBHOOK` ist dann die Instanz mit `:latest`.
 
 :::
 
 | Repository | Image in Coolify | Ausgerollt bei |
 | --- | --- | --- |
-| flowplan | `ghcr.io/yannicschuller/flowplan:beta` (oder `:latest` ohne Automatik) | jedem manuellen Build (**Actions → Docker image → Run workflow**) und jedem Release, das neuer ist als die aktuelle Beta |
-| flowplan-website | `ghcr.io/yannicschuller/flowplan-website:latest` | jedem Push auf `main` |
-| flowplan-docs | `ghcr.io/yannicschuller/flowplan-docs:latest` | jedem Push auf `main` |
+| flowplan, Beta-Instanz (`COOLIFY_BETA_WEBHOOK`) | `ghcr.io/yannicschuller/flowplan:beta` | jedem manuellen Build (**Actions → Docker image → Run workflow**) und jedem Release, das neuer ist als die aktuelle Beta |
+| flowplan, Produktiv-Instanz (`COOLIFY_WEBHOOK`) | `ghcr.io/yannicschuller/flowplan:latest` | jedem Release |
+| flowplan-website | `ghcr.io/yannicschuller/flowplan-website:latest` | jedem Push auf `main`, sobald CI grün ist und das neue Image seine Seiten ausliefert |
+| flowplan-docs | `ghcr.io/yannicschuller/flowplan-docs:latest` | jedem Push auf `main`, sobald CI grün ist und das neue Image seine Seiten ausliefert |
 
 Pull Requests und Dependabot lösen nie ein Deployment aus; ohne die Secrets (etwa in Forks) wird der Schritt übersprungen. Holt Coolify beim Deployment nicht das neue Image, in der Compose-Datei `pull_policy: always` setzen.
 
