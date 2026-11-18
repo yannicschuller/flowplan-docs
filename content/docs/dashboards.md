@@ -1,5 +1,5 @@
 ---
-keywords: Dashboard, Kennzahlen, Widgets, Übersicht, KPI
+keywords: Dashboard, Kennzahlen, Widgets, Übersicht, KPI, Kacheln, Diagramm, Startseite
 ---
 
 # Dashboards
@@ -8,7 +8,15 @@ Eine Seite aus Kacheln: Kennzahlen, Diagramme und Ansichten deiner Datenbanken, 
 
 ## Dashboard anlegen
 
-**Neue Seite → Dashboard** (oder `> Neues Dashboard` in der Schnellsuche). Ein neues Dashboard ist leer; **Erste Kachel hinzufügen** öffnet die Einstellungen der ersten Kachel.
+::: steps
+
+1. **Neue Seite → Dashboard** oder `> Neues Dashboard` in der Schnellsuche. Wie jede Seite liegt das Dashboard in einem Bereich des Seitenbaums und kann Unterseiten haben.
+2. Ein neues Dashboard ist leer: **Erste Kachel hinzufügen** schaltet in den Bearbeitungsmodus und öffnet die Einstellungen der ersten Kachel.
+3. **Art**, einen optionalen **Titel** und die **Größe** wählen, dann die Quelle und was die Kachel zeigt (unten). **Hinzufügen** setzt die Kachel ein; weitere kommen mit **Kachel hinzufügen**.
+
+:::
+
+Ein Dashboard fasst bis zu 48 Kacheln. Ohne eigenen Titel heißt eine Kachel nach ihrer Quelle – „Projekte · Board“ bei einer Ansicht, der Name der Datenbank oder des Journals bei Diagramm und Serie, sonst nach ihrer Art.
 
 ## Kacheln
 
@@ -21,6 +29,21 @@ Eine Seite aus Kacheln: Kennzahlen, Diagramme und Ansichten deiner Datenbanken, 
 | **Meine fälligen Aufgaben** | Deine Aufgaben aus **Meine Aufgaben**, die heute fällig oder überfällig sind. |
 | **Zuletzt geändert** | Die zuletzt geänderten Seiten und die Zahl ungelesener Benachrichtigungen im [Posteingang](/notifications#posteingang). |
 | **Text** | Freier Text in Markdown – für Überschriften, Hinweise oder Links. |
+
+## Quellen und Einstellungen
+
+Die Einstellungen einer Kachel bieten nur an, was du selbst lesen darfst: die Datenbanken und Journale im Arbeitsbereich des Dashboards, ohne die hinter einer Journal-PIN, die du nicht eingegeben hast. Gibt es keine Datenbank, die du lesen kannst, sagt das der Dialog.
+
+| Kachel | Was du wählst |
+| --- | --- |
+| **Datenbankansicht** | Die **Datenbank** und eine ihrer **Ansichten** (ohne Formulare; leer heißt die erste Ansicht) und ob **Einträge hier bearbeitbar** sind. Die Ansicht behält ihre eigenen Filter, Sortierung und Darstellung. |
+| **Kennzahl** | Die Datenbank, die Ansicht, deren **Filter** zählen (oder **Alle Einträge**), den **Wert** – Anzahl Einträge, Summe, Mittelwert, Minimum oder Maximum – mit der **Zahl-Eigenschaft**, aus der er berechnet wird, und ein optionales **Ziel**. |
+| **Diagramm** | Die Datenbank und die Ansicht, deren Einträge es zeichnet (oder alle Einträge), die **Diagrammart** (Säulen, Balken, Linie, Donut), **Gruppieren nach** (eine Eigenschaft oder automatisch) und den Wert je Gruppe – Anzahl Einträge oder Summe, Mittelwert, Minimum bzw. Maximum einer Zahl-Eigenschaft. Donuts bekommen eine Legende. |
+| **Journal-Serie** | Das **Journal**. Ein Tag zählt, sobald darin etwas geschrieben oder erfasst ist. |
+| **Zuletzt geändert** | Die **Anzahl Seiten** (1 bis 20, sechs von sich aus). Das Dashboard selbst und Seiten, die du nicht lesen darfst, fehlen. |
+| **Text** | Den **Text (Markdown)**. |
+
+**Meine fälligen Aufgaben** braucht keine Quelle: Die Kachel zeigt bis zu zwölf deiner eigenen Aufgaben, die heute fällig oder überfällig sind, mit einem Link zu **Alle Aufgaben**.
 
 ## Anordnen und Größe
 
@@ -40,6 +63,20 @@ Kacheln unterschiedlicher Höhe lassen keine Lücken: Die erste Reihe folgt der 
 - Kacheln anlegen und ändern dürfen Personen mit Bearbeitungsrechten an der Seite; Leserinnen und Leser sehen das Dashboard nur an.
 - Jede Kachel rechnet mit den Rechten der Person, die das Dashboard ansieht: Private Einträge zählen nur für die, die sie sehen dürfen. Eine Kachel über eine Datenbank oder ein Journal, das jemand nicht lesen darf (oder das per PIN gesperrt ist), zeigt dieser Person nur **Nicht verfügbar** – ohne Titel oder Werte.
 - Quellen müssen im selben Arbeitsbereich liegen.
+
+## Dashboard oder Startseite?
+
+Auch die [Startseite](/first-steps#startseite-anpassen) besteht aus Widgets, und manche sehen ähnlich aus – Aufgaben, Journal, eine Datenbankansicht. Der Unterschied ist, wem die Seite gehört:
+
+| | Dashboard | Startseite |
+| --- | --- | --- |
+| **Was es ist** | Eine Seite in einem Bereich, mit Titel, Platz im Seitenbaum, Link und Papierkorb | Dein persönlicher Einstieg unter **Start** in der Seitenleiste |
+| **Wer es sieht** | Alle, die die Seite lesen dürfen – jede Person mit den Werten, die sie sehen darf | Nur du; Eigentümer können eine Vorgabe für Mitglieder setzen |
+| **Wer es anordnet** | Alle mit Bearbeitungsrechten an der Seite | Du, je Arbeitsbereich oder für alle deine Arbeitsbereiche |
+| **Inhalt** | Datenbankansichten, Kennzahlen mit Ziel, Diagramme, Journal-Serie, fällige Aufgaben, zuletzt geändert, Text | Begrüßung, Aufgaben, Termine, Journal, Datenbankansicht, angeheftete Seite, Gewohnheiten, Fokus & Zeit, Notizzettel, meine Aktivität, fällige Lernkarten und mehr |
+| **Export, Duplizieren, API** | Ja (siehe unten) | Nein – die Anordnung ist eine Einstellung |
+
+Nimm ein Dashboard für Zahlen, auf die ein Team gemeinsam schaut – den Fortschritt eines Projekts, eine Vertriebspipeline, offene Tickets nach Status –, und die Startseite für deinen eigenen Tag. Ein Dashboard, das du oft öffnest, kannst du als **Angeheftete Seite** auf die Startseite holen oder zu den [Favoriten](/pages-and-spaces) legen.
 
 ## Kopieren, Export und Papierkorb
 

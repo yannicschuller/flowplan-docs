@@ -74,6 +74,8 @@ Aufgaben hakst du direkt im Widget ab, Gewohnheiten ebenso; im Journal-Widget sc
 
 Widgets zeigen nur, was du ohnehin sehen darfst: Seiten anderer Arbeitsbereiche erscheinen nicht, Journale hinter einer PIN zeigen nur ihren Namen, und von Ende-zu-Ende-verschlüsselten Bereichen sieht die Startseite keinen Inhalt.
 
+Eine Seite mit Kennzahlen und Diagrammen, die mehrere Personen gemeinsam ansehen, ist ein [Dashboard](/dashboards#dashboard-oder-startseite).
+
 > [!TIP]
 > Eigentümerinnen und Eigentümer eines Arbeitsbereichs legen über **… → Als Standard für Mitglieder festlegen** die Startseite fest, die neue Mitglieder (und alle ohne eigene) sehen. Persönliche Notizen werden dabei nicht übernommen.
 

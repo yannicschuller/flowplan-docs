@@ -74,6 +74,8 @@ You tick off tasks right in the widget, habits too; the journal widget adds a fe
 
 Widgets only show what you may see anyway: pages of other workspaces do not appear, journals behind a PIN only show their name, and the home page sees no content of end-to-end encrypted spaces.
 
+A page of figures and charts that several people look at together is a [dashboard](/dashboards#dashboard-or-home-page).
+
 > [!TIP]
 > Workspace owners can use **… → Set as default for members** to choose the home page new members (and everyone without their own) see. Personal notes are not passed on.
 
