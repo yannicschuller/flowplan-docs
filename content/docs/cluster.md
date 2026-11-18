@@ -10,6 +10,8 @@ Im Cluster-Modus bedienen mehrere Flowplan-Instanzen eine Installation: eine Pos
 
 Für die meisten Teams nicht: Ein einzelner Container trägt mit SQLite etwa 20, mit PostgreSQL etwa 30 gleichzeitig aktive Personen (siehe [Dimensionierung](/sizing)). Der Cluster-Modus lohnt sich, wenn regelmäßig mehr Personen gleichzeitig arbeiten oder wenn Flowplan bei Updates und beim Ausfall eines Servers weiterlaufen soll. Er bringt dafür drei Dienste mit, die du betreiben (oder mieten) und sichern musst.
 
+Soll Flowplan nur einen Serverausfall überstehen, reicht oft **Aktiv/Passiv** ohne Cluster-Modus – siehe [Hochverfügbarkeit](/high-availability), mit einem Beispiel bei Hetzner. {since=0.9.9}
+
 ## Voraussetzungen
 
 Eingeschaltet wird er mit `FLOWPLAN_CLUSTER=1`. Dann sind Pflicht:
@@ -32,7 +34,8 @@ Kommst du von einem einzelnen Container ohne diese Variablen, übernimm die Wert
 ## Was die Instanzen teilen
 
 - **Live-Bearbeitung und Präsenz:** Änderungen an Dokumenten, Datensätzen und Whiteboards, Cursor und „wer ist gerade hier“ gehen über Redis an alle Instanzen. Zwei Personen auf verschiedenen Instanzen arbeiten also gemeinsam wie auf einer. Die Daten selbst stehen in PostgreSQL; geht eine Nachricht verloren, holt der Browser den Stand beim nächsten Abgleich nach. **Sticky Sessions braucht es nicht.**
-- **Rate-Limits:** Grenzen etwa für KI-Anfragen zählen über alle Instanzen (über Redis). Grenzen, die schon in der Datenbank stehen (fehlgeschlagene Anmeldungen, Demos, MCP), galten ohnehin für alle.
+- **Rate-Limits:** Grenzen etwa für KI-Anfragen zählen über alle Instanzen (über Redis). Grenzen, die schon in der Datenbank stehen (fehlgeschlagene Anmeldungen, Demos, MCP), galten ohnehin für alle. Ebenso die höchstens drei gleichzeitigen KI-Antworten je Person. {since=0.9.9}
+- **Importe und Druckansichten:** Ihr Stand liegt in der Datenbank, jede Instanz beantwortet also den Fortschritt eines Imports im Hintergrund und liefert eine Druckansicht aus. {since=0.9.9}
 - **Aufgaben der leitenden Instanz:** Genau eine Instanz ist jeweils die leitende (bestimmt über eine Sperre in PostgreSQL). Nur sie erledigt die zeitgesteuerten Aufgaben: Erinnerungen, Automationen, Seitenprüfungen, Suchindex, Texterkennung von Dateien, Aufräumen und Aufbewahrung, Zusammenfassungen, geplante Sicherungen und Markdown-Exporte, LDAP-, Kalender- und Issue-Abgleich, E-Mail-Eingang, Telegram, KI-Hintergrundarbeit und die Warnungen der Überwachung. Fällt sie aus, übernimmt innerhalb weniger Sekunden eine andere. Jede Runde ist abgesichert: Wer die Leitung übernimmt, erhöht einen Zähler in der Datenbank, eine Runde startet nur, solange er noch ihr eigener ist, und jede Aufgabe hält während ihrer Runde eine eigene Sperre – eine Runde einer Instanz, die ihre Verbindung verloren hat, läuft also nie doppelt mit der der neuen. {since=0.9.9}
 - **Warteschlangen:** E-Mails, Push, Webhooks und Chat-Apps verschickt jede Instanz; jede Nachricht wird genau einmal von einer Instanz übernommen.
 - **Dateien:** Der Bucket ist maßgeblich. Eine Anfrage, die eine Datei speichert, antwortet erst, wenn die Datei im Bucket liegt; jede Instanz liest über ihren Zwischenspeicher und holt aus dem Bucket, was ihr fehlt. Uploads in mehreren Anfragen (lange Transkriptionen, Aufnahmen von Besprechungen und Notizbüchern, ein Import zwischen Vorschau und Import) legen ihre Teile im Bucket unter `<prefix>/tmp/` ab, sodass jede Anfrage eine andere Instanz erreichen darf. {since=0.9.9}
@@ -60,6 +63,8 @@ DATABASE_URL=postgres://… node /app/scripts/db-schema.mjs
 ```
 
 Das Docker-Compose-Beispiel und das Helm-Chart machen es so. Die Instanzen prüfen das Schema beim Start trotzdem noch einmal unter derselben Sperre (dann ist nichts zu tun) und sind erst bereit, wenn es aktuell ist; `FLOWPLAN_PG_SCHEMA_AUTO=off` überlässt es allein dem eigenen Schritt. {since=0.9.9} Das Schema wird nur ergänzt, nie verkleinert: Während eines Rolling Updates laufen alte und neue Instanzen nebeneinander.
+
+Damit Browser dabei keine Versionen mischen, trägt jedes Image eine [Deployment-ID](/high-availability#updates-ohne-unterbrechung). {since=0.9.9}
 
 ## Docker Compose
 
@@ -140,6 +145,8 @@ Der Abschnitt **System** unter **Administration → Überwachung** zeigt, wie di
 - im Cluster eine Tabelle aller **Instanzen** mit Status (leitend, bereit, fährt herunter), belegten und wartenden Verbindungen, Arbeitsspeicher und letzter Meldung. Eine Instanz, die sich 30 Sekunden nicht meldet, verschwindet aus der Liste.
 
 „Wartend“ bei den Verbindungen heißt: Anfragen warten auf eine freie Datenbankverbindung – mehr `FLOWPLAN_PG_POOL` oder mehr Instanzen.
+
+**Zweite Instanz ohne Cluster-Modus:** Laufen zwei Instanzen ohne `FLOWPLAN_CLUSTER=1` gegen dieselbe PostgreSQL-Datenbank, warnen Log und Überwachung: „Eine zweite Flowplan-Instanz läuft ohne Cluster-Modus gegen dieselbe Datenbank …“ – geplante Aufgaben laufen dann doppelt. {since=0.9.9}
 
 ## Weitere Variablen
 

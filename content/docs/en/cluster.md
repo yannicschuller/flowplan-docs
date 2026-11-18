@@ -10,6 +10,8 @@ In cluster mode, several Flowplan instances serve one installation: one PostgreS
 
 Most teams do not: a single container carries about 20 simultaneously active people with SQLite and about 30 with PostgreSQL (see [Sizing](/en/sizing)). Cluster mode pays off when more people regularly work at the same time, or when Flowplan should keep running through updates and the loss of a server. In return it brings three services you have to run (or rent) and back up.
 
+If Flowplan only has to survive the loss of a server, **active/passive** without cluster mode is often enough – see [High availability](/en/high-availability), with an example at Hetzner. {since=0.9.9}
+
 ## Requirements
 
 Switch it on with `FLOWPLAN_CLUSTER=1`. Then these are required:
@@ -32,7 +34,8 @@ Coming from a single container without these variables, take the values from its
 ## What the instances share
 
 - **Live editing and presence:** changes to documents, records and whiteboards, cursors and "who is here" reach every instance through Redis. Two people on different instances work together as on one. The data itself is in PostgreSQL; if a message is lost, the browser catches up on its next sync. **No sticky sessions are needed.**
-- **Rate limits:** limits such as those for AI requests count across all instances (through Redis). Limits already kept in the database (failed sign-ins, demos, MCP) applied to all of them anyway.
+- **Rate limits:** limits such as those for AI requests count across all instances (through Redis). Limits already kept in the database (failed sign-ins, demos, MCP) applied to all of them anyway. So do the at most three parallel AI answers per person. {since=0.9.9}
+- **Imports and print views:** their state is in the database, so any instance answers the progress of a background import and serves a print view. {since=0.9.9}
 - **Leader-only jobs:** exactly one instance leads at any time (elected through a lock in PostgreSQL). Only it runs the timed jobs: reminders, automations, page reviews, the search indexer, text extraction from files, cleanup and retention, digests, scheduled backups and Markdown exports, LDAP, calendar and issue sync, inbound e-mail, Telegram, AI background work and the monitoring alerts. If it fails, another one takes over within seconds. Every round is guarded: taking the lead raises a counter in the database, a round starts only while it is still its own, and each job holds a lock of its own while its round runs – so a round of an instance that lost its connection never runs twice beside the new leader's. {since=0.9.9}
 - **Queues:** every instance sends e-mails, push messages, webhooks and chat-app messages; each message is taken by exactly one instance.
 - **Files:** the bucket is the truth. A request that stores a file answers only once the file is in the bucket; every instance reads through its cache and fetches from the bucket what it lacks. Uploads in several requests (long transcriptions, recordings of meetings and notebooks, an import between its preview and the import) keep their parts in the bucket under `<prefix>/tmp/`, so each request may reach another instance. {since=0.9.9}
@@ -60,6 +63,8 @@ DATABASE_URL=postgres://… node /app/scripts/db-schema.mjs
 ```
 
 The Docker Compose example and the Helm chart work this way. The instances still check the schema at their start under the same lock (nothing to do then) and are ready only once it is current; `FLOWPLAN_PG_SCHEMA_AUTO=off` leaves it to the separate step alone. {since=0.9.9} The schema is only extended, never shrunk: during a rolling update, old and new instances run side by side.
+
+So that browsers do not mix versions meanwhile, every image carries a [deployment id](/en/high-availability#updates-without-downtime). {since=0.9.9}
 
 ## Docker Compose
 
@@ -140,6 +145,8 @@ The **System** section under **Administration → Monitoring** shows how the ins
 - in a cluster, a table of all **Instances** with their state (leader, ready, stopping), busy and waiting connections, memory and last heartbeat. An instance silent for 30 seconds drops off the list.
 
 "Waiting" connections mean requests are waiting for a free database connection – raise `FLOWPLAN_PG_POOL` or add instances.
+
+**A second instance without cluster mode:** when two instances run against the same PostgreSQL database without `FLOWPLAN_CLUSTER=1`, the log and Monitoring warn: "A second Flowplan instance is running against the same database without cluster mode …" – timed jobs then run twice. {since=0.9.9}
 
 ## More variables
 

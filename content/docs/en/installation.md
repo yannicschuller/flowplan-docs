@@ -85,7 +85,7 @@ docker run -d --name flowplan \
   flowplan:latest
 ```
 
-Build arguments: `PG_CLIENT_MAJOR` (default `18`) chooses the version of `pg_dump`, `pg_restore` and `psql` in the image – at least your PostgreSQL server's major version ([PostgreSQL](/postgresql)). `FLOWPLAN_SKIP_TYPECHECK=1` is meant for development only: it skips the TypeScript check during the build when it already ran, as in our CI.
+Build arguments: `PG_CLIENT_MAJOR` (default `18`) chooses the version of `pg_dump`, `pg_restore` and `psql` in the image – at least your PostgreSQL server's major version ([PostgreSQL](/postgresql)). `FLOWPLAN_SKIP_TYPECHECK=1` is meant for development only: it skips the TypeScript check during the build when it already ran, as in our CI. `FLOWPLAN_DEPLOYMENT_ID` sets the deployment id (default `v<version>-<commit>`, `off`: none) that keeps browsers from mixing versions during a rolling update ([High availability](/en/high-availability#updates-without-downtime)). {since=0.9.9}
 
 The image contains Node and Litestream for the S3 backup, on Debian 13. There is no real `curl`; for health checks that call `curl` inside the container (such as Coolify's HTTP check) a small stand-in is there that does exactly that. {since=0.9.7} Flowplan runs in it as UID 1000 (the user `node`), or as the user from `PUID`/`PGID` when started as root {since=0.9.9} – never as root ([Volume permissions](/coolify-and-proxy#volume-permissions)).
 

@@ -126,6 +126,9 @@ volumes:
 | `FLOWPLAN_PG_LOCK_TIMEOUT` | `10000` | Longest a query waits for a lock (ms). |
 | `FLOWPLAN_PG_IDLE_TX_TIMEOUT` | `60000` | A transaction idle this long is ended (ms). |
 | `FLOWPLAN_PG_CONNECT_TIMEOUT` | `30000` | Longest a request waits for a free connection from the pool (ms). |
+| `FLOWPLAN_PG_KEEPALIVE` | `10000` | TCP keepalive: how long (ms) a connection is silent before the first probe; `0` or `off` switches it off ([failover](#failover-and-replicas)). {since=0.9.9} |
+| `FLOWPLAN_PG_QUERY_TIMEOUT` | statement timeout + `5000` | Flowplan's own limit per query (ms), for connections that no longer answer at all; `0` = none, as when `FLOWPLAN_PG_STATEMENT_TIMEOUT` is `0`. {since=0.9.9} |
+| `FLOWPLAN_PG_IDLE_TIMEOUT` | `30000` | Flowplan closes unused pooled connections after this (ms); `0` = keep them. {since=0.9.9} |
 | `FLOWPLAN_PG_PREPARE` | on | `off` sends every query unnamed instead of as a named prepared statement – for PgBouncer in `transaction` mode before 1.21 or without `max_prepared_statements`. |
 | `FLOWPLAN_PG_SCHEMA_AUTO` | on | `off`: the instance does not create or update the schema itself – a separate step does (`node /app/scripts/db-schema.mjs`, see [cluster mode](/en/cluster#schema-before-the-start)). |
 | `FLOWPLAN_PGVECTOR` | on | `off` ignores `pgvector` even when it is installed. |
@@ -192,6 +195,19 @@ DATABASE_SESSION_URL=postgres://flowplan:<password>@postgres:5432/flowplan
 # only without max_prepared_statements or before PgBouncer 1.21:
 # FLOWPLAN_PG_PREPARE=off
 ```
+
+## Failover and replicas {since=0.9.9}
+
+Flowplan talks to exactly **one** address in `DATABASE_URL` (and `DATABASE_SESSION_URL`) – no list of hosts, no split into reads and writes. A replica is only the target of a failover; reads do not go to it. What Flowplan does when a connection breaks or the server changes:
+
+- **Dead connections are noticed:** TCP keepalive (`FLOWPLAN_PG_KEEPALIVE`) and Flowplan's own limit per query (`FLOWPLAN_PG_QUERY_TIMEOUT`) make a connection to a vanished server – a virtual IP that moved, a frozen host – fail instead of hang.
+- **Broken connections leave the pool**; the next request gets a new one.
+- **Only reads are repeated:** a read-only statement outside a transaction once, on a new connection. Writes and transactions never – the request fails, nothing stays half-saved. The editor keeps the change in the browser and sends it again; a script on the API tries again itself, with [`Idempotency-Key`](/en/api-and-webhooks#idempotency-key-retries-without-doubles) without a double effect.
+- **The old primary as a replica:** when the address answers read-only after a failover (error `25006`), Flowplan drops every existing connection; new ones reach the new primary.
+
+While the switch happens, requests fail and `/api/health/ready` reports the database as unreachable. With asynchronous replication the last confirmed changes may be missing (Patroni: `synchronous_mode` helps).
+
+Proven are a **managed service** (its endpoint), **Patroni** with HAProxy routing only to the primary through Patroni's REST API, or with a virtual IP, and **PgBouncer** in front of one of these ([above](#pgbouncer)). A DNS name works too, with a short TTL. The options compared, and a whole example: [High availability](/en/high-availability#postgresql).
 
 ## Next
 

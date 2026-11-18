@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@b1491d34",
+  "source": "github.com/yannicschuller/flowplan@dcaa82bf",
   "slash": {
     "groups": {
       "recent": [
@@ -1954,6 +1954,7 @@
     "FLOWPLAN_COUNTRY_HEADER",
     "FLOWPLAN_DATA_DIR",
     "FLOWPLAN_DEAD_MAN_SWITCH",
+    "FLOWPLAN_DEPLOYMENT_ID",
     "FLOWPLAN_DIST_DIR",
     "FLOWPLAN_DROP_ROOT",
     "FLOWPLAN_E2E_BUILD",
@@ -1989,6 +1990,7 @@
     "FLOWPLAN_PG_BIN",
     "FLOWPLAN_PG_CONNECT_TIMEOUT",
     "FLOWPLAN_PG_IDLE_TX_TIMEOUT",
+    "FLOWPLAN_PG_KEEPALIVE",
     "FLOWPLAN_PG_LOCK_TIMEOUT",
     "FLOWPLAN_PG_POOL",
     "FLOWPLAN_PG_PREPARE",

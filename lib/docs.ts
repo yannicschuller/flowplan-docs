@@ -157,7 +157,7 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
           "PostgreSQL statt SQLite, der Wechsel zwischen beiden, mehrere Instanzen und die passende Größe.",
           "PostgreSQL instead of SQLite, switching between them, several instances and the right size.",
         ],
-        pages: ["postgresql", "database-migration", "cluster", "sizing"],
+        pages: ["postgresql", "database-migration", "cluster", "high-availability", "sizing"],
       },
     ],
   },
