@@ -9,12 +9,12 @@ Optional AI for writing, summaries, questions to your workspace and databases �
 > [!NOTE]
 > **AI in Flowplan is always optional.** After installation it is off. Administrators decide whether it is available, which provider is used, who may use it and which features are allowed. Everyone can switch it off again for themselves and decide which pages the AI may read. With [Ollama](#ollama-completely-local) your text never leaves the server. The one exception to “off by default”: [on-device AI (Apple)](#on-device-ai-apple) is allowed because nothing leaves the device – administrators and everyone can switch it off too.
 
-**More on this topic:** [Writing assistant and summaries](/ai-writing) · [Ask your workspace](/ask-ai) · [AI actions, databases and workflows](/ai-actions) · [Meetings](/meetings)
+**More on this topic:** [Writing assistant and summaries](/ai-writing) · [Ask your workspace](/ask-ai) · [AI actions, databases and workflows](/ai-actions) · [Flashcards with AI](/flashcards-ai) · [Meetings](/meetings)
 
 ## Principles
 
 - **Off until someone switches it on** – on the instance and for every person. The one exception is [on-device AI (Apple)](#on-device-ai-apple): it is allowed because nothing leaves the device, and it can be switched off just the same.
-- **Every feature separately:** writing assistant, summaries, questions to the workspace, AI in databases, AI actions and AI on whiteboards can each be allowed or switched off by administrators and by every person.
+- **Every feature separately:** writing assistant, summaries, questions to the workspace, AI in databases, AI actions, AI on whiteboards and {since=0.9.9} creating flashcards can each be allowed or switched off by administrators and by every person.
 - **Only with your permissions:** the AI never reads more than you may see yourself – and only what you allow it ([What the AI may access](#what-the-ai-may-access)).
 - **You see where your text goes:** every AI feature names the provider and whether data leaves the server.
 - **Keys stay secret:** API keys are stored encrypted and never shown again ([Security of keys](#security-of-keys)).

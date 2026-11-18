@@ -8,11 +8,12 @@ Any database can become a deck of flashcards: a record is a card, and the view *
 
 ## Creating a deck {since=0.9.9}
 
-There are three ways to a deck:
+There are several ways to a deck:
 
 - **New page → Database → Flashcards**: the database comes with the properties **Front** (the title), **Back**, **Tags** and {since=0.9.9} **Card type**, and the views **Study** and **All cards**. The cards are set up already.
 - **Template “Flashcard database”** (category Knowledge): as above, with a property **Example** and six sample cards to try – among them a cloze and a card to type the answer.
-- {since=0.9.9} **Import cards** in the study view brings cards from CSV, Quizlet and other text ([Import and export flashcards](/flashcards-import)).
+- {since=0.9.9} **Import cards** in the study view brings cards from CSV, Quizlet and other text ([Import and export flashcards](/flashcards-import)), **Import from Anki** on the [Study](#all-decks-study) page whole Anki decks ([Import from Anki](/flashcards-import#import-from-anki)).
+- {since=0.9.9} **Create with AI** proposes cards from a page, a selection or a PDF ([Flashcards with AI](/flashcards-ai)).
 - **An existing database**: **Add view → Study** gives it a study view. If nothing is set up yet, **Set up cards** opens right away.
 
 ## Setting up cards
@@ -91,7 +92,7 @@ The study view shows what is left today: **new**, **in learning steps** and **du
 - **Start studying** opens the focus mode.
 - **Study more today** gives you **+10 new cards** or **+50 reviews** for today – on the next study day the normal limit applies again.
 - **My settings**: your own limits and your own retention for this deck. An empty field takes the deck's default. Nothing changes for others.
-- {since=0.9.9} **Statistics** opens the deck's [statistics](#statistics), **Import cards** the [import](/flashcards-import), **Export** downloads the cards as CSV.
+- {since=0.9.9} **Statistics** opens the deck's [statistics](#statistics), **Import cards** the [import](/flashcards-import), **Create with AI** the [AI suggestions](/flashcards-ai), **Export** downloads the cards as CSV or an Anki package.
 
 ## Studying in focus mode
 
@@ -155,7 +156,7 @@ Below every journal day, [Completed this day](/journal#completed-this-day) has o
 
 ## Import and export {since=0.9.9}
 
-**Import cards** in the study view brings cards from CSV, TSV, Quizlet and the text export of other study apps, **Export** gives them back as CSV – more under [Import and export flashcards](/flashcards-import).
+CSV, TSV, Quizlet and Anki in, CSV and Anki packages out: [Import and export flashcards](/flashcards-import).
 
 ## Who sees what
 
@@ -167,4 +168,4 @@ Below every journal day, [Completed this day](/journal#completed-this-day) has o
 
 ## API and MCP
 
-With the [API](/api-and-webhooks) you can study from your own programs too: `study.queue` (or `GET /api/pages/{id}/study`) returns the next cards with the counts, `study.review` rates, `study.undo` undoes, `study.prefs` sets your own limits, `study.settings` sets up the cards. {since=0.9.9} `study.due` (or `GET /api/study/due`) counts the due cards of all decks of a workspace, `study.stats` (or `GET /api/study/stats`) returns the statistics, `GET /api/pages/{id}/study/export` the CSV; `study.queue` with `ahead` brings learning cards that would only be due later today. Read-only tokens can read cards and counts but not rate. The [MCP server](/mcp) has the tool `study_decks`: your decks of a workspace with what is due today. All shapes are in the [OpenAPI description](/openapi).
+With the [API](/api-and-webhooks) you can study from your own programs too: `study.queue` (or `GET /api/pages/{id}/study`) returns the next cards with the counts, `study.review` rates, `study.undo` undoes, `study.prefs` sets your own limits, `study.settings` sets up the cards. {since=0.9.9} `study.due` (or `GET /api/study/due`) counts the due cards of all decks of a workspace, `study.stats` (or `GET /api/study/stats`) returns the statistics, `GET /api/pages/{id}/study/export` the CSV (with `format=apkg` the Anki package); `study.queue` with `ahead` brings learning cards that would only be due later today. Read-only tokens can read cards and counts but not rate. The [MCP server](/mcp) has the tool `study_decks`: your decks of a workspace with what is due today. All shapes are in the [OpenAPI description](/openapi).

@@ -9,12 +9,12 @@ Optionale KI für Texte, Zusammenfassungen, Fragen an den Arbeitsbereich und Dat
 > [!NOTE]
 > **KI ist in Flowplan immer optional.** Nach der Installation ist sie aus. Die Administration entscheidet, ob es sie gibt, welcher Anbieter verwendet wird, wer sie nutzen darf und welche Funktionen erlaubt sind. Jede Person kann sie für sich wieder ausschalten und festlegen, welche Seiten die KI lesen darf. Mit [Ollama](#ollama-komplett-lokal) verlassen deine Texte den Server nicht. Einzige Ausnahme vom „standardmäßig aus“: [KI auf dem Gerät (Apple)](#ki-auf-dem-geraet-apple) ist erlaubt, weil dabei nichts das Gerät verlässt – Administration und jede Person können auch sie ausschalten.
 
-**Mehr zum Thema:** [Schreibassistent und Zusammenfassungen](/ai-writing) · [Fragen an den Arbeitsbereich](/ask-ai) · [KI-Aktionen, Datenbanken und Workflows](/ai-actions) · [Besprechungen](/meetings)
+**Mehr zum Thema:** [Schreibassistent und Zusammenfassungen](/ai-writing) · [Fragen an den Arbeitsbereich](/ask-ai) · [KI-Aktionen, Datenbanken und Workflows](/ai-actions) · [Lernkarten mit KI](/flashcards-ai) · [Besprechungen](/meetings)
 
 ## Grundsätze
 
 - **Aus, bis jemand sie einschaltet** – auf der Instanz und für jede Person. Einzige Ausnahme ist die [KI auf dem Gerät (Apple)](#ki-auf-dem-geraet-apple): Sie ist erlaubt, weil nichts das Gerät verlässt, und lässt sich ebenso abschalten.
-- **Jede Funktion einzeln:** Schreibassistent, Zusammenfassungen, Fragen an den Arbeitsbereich, KI in Datenbanken, KI-Aktionen und KI auf Whiteboards lassen sich von der Administration und von jeder Person getrennt erlauben oder ausschalten.
+- **Jede Funktion einzeln:** Schreibassistent, Zusammenfassungen, Fragen an den Arbeitsbereich, KI in Datenbanken, KI-Aktionen, KI auf Whiteboards und {since=0.9.9} Lernkarten erstellen lassen sich von der Administration und von jeder Person getrennt erlauben oder ausschalten.
 - **Nur mit deinen Rechten:** Die KI liest nie mehr, als du selbst sehen darfst – und nur, was du ihr erlaubst ([Worauf die KI zugreifen darf](#worauf-die-ki-zugreifen-darf)).
 - **Du siehst, wohin deine Texte gehen:** Jede KI-Funktion nennt den Anbieter und ob die Daten den Server verlassen.
 - **Schlüssel bleiben geheim:** API-Schlüssel werden verschlüsselt gespeichert und nie wieder angezeigt ([Sicherheit der Schlüssel](#sicherheit-der-schluessel)).

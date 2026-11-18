@@ -1,10 +1,10 @@
 ---
-keywords: flashcards, cards, import, export, CSV, TSV, Quizlet, Anki, Brainscape, import vocabulary, export learning state
+keywords: flashcards, cards, import, export, CSV, TSV, Quizlet, Anki, apkg, colpkg, Anki deck, Brainscape, import vocabulary, export learning state, take over learning state
 ---
 
 # Import and export flashcards
 
-Cards for a [flashcard deck](/flashcards) need not come one by one: the wizard **Import cards** reads text from CSV, TSV, Quizlet and other study apps, **Export** gives a deck's cards back as CSV – with your learning state if you like.
+Cards for a [flashcard deck](/flashcards) need not come one by one: the wizard **Import cards** reads text from CSV, TSV, Quizlet and other study apps, **Import from Anki** takes over whole Anki decks with images, sounds and, if you like, your learning state. **Export** gives a deck's cards back as CSV – with your learning state if you like – or as an Anki package. Cards from a page or a PDF are proposed by the [AI](/flashcards-ai).
 
 ## Import cards: CSV and Quizlet {since=0.9.9}
 
@@ -23,3 +23,35 @@ The import writes into properties; it does not fill a side that comes from the r
 ### Export as CSV
 
 **Export → Cards as CSV** downloads one line per card you may study (suspended ones too): front, back, hint, extra, tags, card type and card (empty for the card, `r` for the reverse one, `c1`, `c2` … for clozes). Documents are written as Markdown, clozes as `{{c1::…}}`. **Cards with my learning state as CSV** adds your own state: state, due, stability, difficulty, reviews, lapses, suspended – never anyone else's. **Import cards** reads the file back; the lines of a card's siblings become one record.
+
+## Import from Anki {since=0.9.9}
+
+**Import from Anki** at the top of the [Study](/flashcards#all-decks-study) page – or under **Settings → Import & Export → Import** with the source **Anki (flashcards)** – turns Anki decks into flashcard databases:
+
+1. In Anki, export an **Anki Deck Package (.apkg)** via **File → Export …**, or the whole collection (**.colpkg**). Flowplan reads the old and the new format (Anki 2.1.50 and later), with or without “Support older Anki versions”.
+2. Choose the file and the target space. The preview shows the decks with their sub-decks, the number of notes, cards and media files, and notes on what changes.
+3. Check per note type what its fields become – **Front**, **Back**, **Hint**, **Extra** or **skip** – plus the card type and **Also ask in reverse**. The suggestion is what Anki itself shows on front and back; a sample card is shown below.
+4. If you like, **Take over my learning state**.
+5. **Import … notes**. Then **Open the deck** opens the first deck.
+
+| Anki | Flowplan |
+| --- | --- |
+| top-level deck | a flashcard database with the views **Study** and **All cards** |
+| sub-deck (`Spanish::Lesson 1`) | a value of the select **Deck** (`Lesson 1`) – to filter a [study view](/flashcards#sub-decks-through-filters) |
+| Basic, Basic (and reversed card) | front/back, with the reverse card |
+| Basic (type in the answer) | type the answer |
+| Cloze | cloze, `{{c1::…}}` is kept |
+| Image Occlusion | for now front/back with the image, without masks |
+| own note type | by its templates: fields of the question on the front, fields only of the answer on the back, `{{hint:…}}` as the hint |
+| tags | the multi-select **Tags** |
+| images, sounds (`[sound:…]`) | files of the deck, sounds as an audio block |
+
+- **Property or document:** a side with simple formatting (bold, italic, links) becomes a property. If it has images, sounds, formulas (`\(…\)`), lists, tables or super- and subscript anywhere in the deck, it goes into the record's document – the front above a rule, the back below.
+- **Cleaned:** scripts, styles, fonts and colours from Anki are dropped, images from the web stay a link.
+- **Reverse cards** apply to the whole deck in Flowplan. If a deck mixes notes with and without a reverse card, the majority decides – the preview says so.
+- **Learning state:** Flowplan replays Anki's review log with FSRS and so knows every card's stability, difficulty and due date – for you only; nobody else gets a learning state. If Anki has stored FSRS values already, those apply. Suspended cards stay suspended, new cards stay new.
+- **Limits:** packages up to 100 MB and 50,000 notes. Each media file may be as large as an upload and counts towards the storage; unused ones are left out. Missing files and what was only approximated are listed in the import report.
+
+### Export as an Anki package {since=0.9.9}
+
+**Export → As an Anki package (.apkg)** downloads the view's cards as a package every Anki version (desktop, AnkiDroid, AnkiMobile) imports: one note per record with the note types Basic, Basic with reverse card, Type the answer and Cloze, multiple choice as Basic with the options on the front. Hint and extra become fields of their own, tags stay tags, the select **Deck** becomes sub-decks, images and sounds of the deck come along as media. The learning state stays in Flowplan – in Anki the cards are new.

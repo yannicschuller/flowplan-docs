@@ -8,11 +8,12 @@ Jede Datenbank kann ein Kartenstapel werden: Ein Eintrag ist eine Karte, die Ans
 
 ## Einen Stapel anlegen {since=0.9.9}
 
-Drei Wege führen zu einem Stapel:
+Mehrere Wege führen zu einem Stapel:
 
 - **Neue Seite → Datenbank → Lernkarten**: Die Datenbank bringt die Eigenschaften **Vorderseite** (der Titel), **Rückseite**, **Tags** und {since=0.9.9} **Kartentyp** mit, dazu die Ansichten **Lernen** und **Alle Karten**. Die Karten sind schon eingerichtet.
 - **Vorlage „Lernkarten-Datenbank“** (Kategorie Wissen): wie oben, mit einer Eigenschaft **Beispiel** und sechs Beispielkarten zum Ausprobieren – darunter eine Lücke und eine Karte zum Eintippen.
-- {since=0.9.9} **Karten importieren** in der Lernen-Ansicht holt Karten aus CSV, Quizlet und anderem Text ([Lernkarten importieren](/flashcards-import)).
+- {since=0.9.9} **Karten importieren** in der Lernen-Ansicht holt Karten aus CSV, Quizlet und anderem Text ([Lernkarten importieren](/flashcards-import)), **Aus Anki importieren** auf der Seite [Lernen](#alle-stapel-lernen) ganze Anki-Stapel ([Aus Anki importieren](/flashcards-import#aus-anki-importieren)).
+- {since=0.9.9} **Mit KI erstellen** schlägt Karten aus einer Seite, einer Auswahl oder einem PDF vor ([Lernkarten mit KI](/flashcards-ai)).
 - **Eine vorhandene Datenbank**: Über **Ansicht hinzufügen → Lernen** bekommt sie eine Lernen-Ansicht. Ist noch nichts eingerichtet, öffnet sich gleich **Karten einrichten**.
 
 ## Karten einrichten
@@ -91,7 +92,7 @@ Die Lernen-Ansicht zeigt, was heute noch zu tun ist: **neu**, **in Lernschritten
 - **Lernen starten** öffnet den Fokusmodus.
 - **Heute mehr lernen** gibt dir für heute **+10 neue Karten** oder **+50 Wiederholungen** – am nächsten Lerntag gilt wieder die normale Grenze.
 - **Meine Einstellungen**: eigene Grenzen und eine eigene Behaltensrate für diesen Stapel. Ein leeres Feld übernimmt die Vorgabe des Stapels. Das ändert nichts für andere.
-- {since=0.9.9} **Statistik** klappt die [Statistik](#statistik) des Stapels auf, **Karten importieren** öffnet den [Import](/flashcards-import), **Exportieren** lädt die Karten als CSV.
+- {since=0.9.9} **Statistik** klappt die [Statistik](#statistik) des Stapels auf, **Karten importieren** öffnet den [Import](/flashcards-import), **Mit KI erstellen** die [KI-Vorschläge](/flashcards-ai), **Exportieren** lädt die Karten als CSV oder Anki-Paket.
 
 ## Lernen im Fokusmodus
 
@@ -155,7 +156,7 @@ Unter jedem Journaltag steht bei [An diesem Tag erledigt](/journal#an-diesem-tag
 
 ## Importieren und exportieren {since=0.9.9}
 
-Karten aus CSV, TSV, Quizlet und dem Textexport anderer Lernprogramme holt **Karten importieren** in der Lernen-Ansicht, **Exportieren** gibt sie als CSV zurück – mehr unter [Lernkarten importieren und exportieren](/flashcards-import).
+CSV, TSV, Quizlet und Anki hinein, CSV und Anki-Pakete hinaus: [Lernkarten importieren und exportieren](/flashcards-import).
 
 ## Wer was sieht
 
@@ -167,4 +168,4 @@ Karten aus CSV, TSV, Quizlet und dem Textexport anderer Lernprogramme holt **Kar
 
 ## API und MCP
 
-Über die [API](/api-and-webhooks) lernst du auch aus eigenen Programmen: `study.queue` (oder `GET /api/pages/{id}/study`) liefert die nächsten Karten mit Zählern, `study.review` bewertet, `study.undo` macht rückgängig, `study.prefs` setzt eigene Grenzen, `study.settings` richtet die Karten ein. {since=0.9.9} `study.due` (oder `GET /api/study/due`) zählt die fälligen Karten aller Stapel eines Arbeitsbereichs, `study.stats` (oder `GET /api/study/stats`) liefert die Statistik, `GET /api/pages/{id}/study/export` die CSV; `study.queue` mit `ahead` holt Lernkarten, die erst später heute dran wären. Tokens mit Nur-Lesen-Recht können Karten und Zähler lesen, aber nicht bewerten. Der [MCP-Server](/mcp) hat das Werkzeug `study_decks`: deine Stapel eines Arbeitsbereichs mit dem, was heute fällig ist. Alle Formen stehen in der [OpenAPI-Beschreibung](/openapi).
+Über die [API](/api-and-webhooks) lernst du auch aus eigenen Programmen: `study.queue` (oder `GET /api/pages/{id}/study`) liefert die nächsten Karten mit Zählern, `study.review` bewertet, `study.undo` macht rückgängig, `study.prefs` setzt eigene Grenzen, `study.settings` richtet die Karten ein. {since=0.9.9} `study.due` (oder `GET /api/study/due`) zählt die fälligen Karten aller Stapel eines Arbeitsbereichs, `study.stats` (oder `GET /api/study/stats`) liefert die Statistik, `GET /api/pages/{id}/study/export` die CSV (mit `format=apkg` das Anki-Paket); `study.queue` mit `ahead` holt Lernkarten, die erst später heute dran wären. Tokens mit Nur-Lesen-Recht können Karten und Zähler lesen, aber nicht bewerten. Der [MCP-Server](/mcp) hat das Werkzeug `study_decks`: deine Stapel eines Arbeitsbereichs mit dem, was heute fällig ist. Alle Formen stehen in der [OpenAPI-Beschreibung](/openapi).
