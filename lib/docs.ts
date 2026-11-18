@@ -82,8 +82,13 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       },
       {
         title: ["Datenbanken", "Databases"],
-        intro: ["Tabellen, Eigenschaften, Ansichten, Formeln, Formulare, Kontakte und Lernkarten.", "Tables, properties, views, formulas, forms, contacts and flashcards."],
-        pages: ["databases", "database-properties", "views", "properties-and-formulas", "forms", "contacts", "flashcards", "flashcards-import"],
+        intro: ["Tabellen, Eigenschaften, Ansichten, Formeln, Formulare und Kontakte.", "Tables, properties, views, formulas, forms and contacts."],
+        pages: ["databases", "database-properties", "views", "properties-and-formulas", "forms", "contacts"],
+      },
+      {
+        title: ["Lernkarten", "Flashcards"],
+        intro: ["Stapel aus Datenbanken lernen, importieren, erinnert werden – auch unterwegs und offline.", "Study decks from databases, import them, get reminded – also on the go and offline."],
+        pages: ["flashcards", "flashcards-import", "flashcards-app"],
       },
       {
         title: ["Projekte und Automatisierung", "Projects and automation"],

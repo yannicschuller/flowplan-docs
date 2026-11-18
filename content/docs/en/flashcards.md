@@ -64,6 +64,8 @@ In a record's document you select the text and choose **As cloze (new number)** 
 - With the clozes in the document (the back), the card shows the title above it; with the clozes on the front, the back comes as a note after revealing.
 - Learning states belong to the number: renumber clozes and the learning state goes with the new number.
 - Nested clozes (`{{c1::… {{c2::…}} …}}`) are read flat: the inner one counts as text of the outer one.
+- {since=0.9.9} **Cloze (flashcard)** in the formatting toolbar does the same; it starts hidden ([customize the toolbar](/formatting#format-text)).
+- {since=0.9.9} [Search](/search-and-notifications#quick-search) reads `{{c2::Seine::river}}` as “Seine”.
 
 ### Type the answer
 
@@ -135,6 +137,12 @@ The numbers are for the whole deck. A study view with filters studies only part 
 
 On the [home page](/first-steps#customize-your-home-page) the widget **Due cards** shows the same: how many cards are due today, the decks with new and due cards, your streak and **Study**. In the widget's settings you choose all decks or certain ones.
 
+{since=0.9.9} [Quick search](/search-and-notifications#commands) offers every deck with cards for today as a command, such as **Study: Spanish A1**.
+
+## Reminder, app and offline {since=0.9.9}
+
+Study reminder, widget **Cards due**, studying without a connection, and API and MCP: [Flashcards: reminder, app, offline and API](/flashcards-app).
+
 ## Statistics {since=0.9.9}
 
 The statistics show your own numbers only – for one deck (**Statistics** in the study view) or for all (under **Study**):
@@ -165,7 +173,3 @@ CSV, TSV, Quizlet and Anki in, CSV and Anki packages out: [Import and export fla
 - Other people's private records and [hidden properties](/database-properties) never become cards. If a side of the cards is hidden from you, there are no cards for you.
 - A record in the trash leaves the deck; restore it and its learning state is back. If you leave the workspace, your learning state there is deleted. Deleting the account removes everything.
 - [Encrypted spaces](/encrypted-spaces) have no flashcards.
-
-## API and MCP
-
-With the [API](/api-and-webhooks) you can study from your own programs too: `study.queue` (or `GET /api/pages/{id}/study`) returns the next cards with the counts, `study.review` rates, `study.undo` undoes, `study.prefs` sets your own limits, `study.settings` sets up the cards. {since=0.9.9} `study.due` (or `GET /api/study/due`) counts the due cards of all decks of a workspace, `study.stats` (or `GET /api/study/stats`) returns the statistics, `GET /api/pages/{id}/study/export` the CSV (with `format=apkg` the Anki package); `study.queue` with `ahead` brings learning cards that would only be due later today. Read-only tokens can read cards and counts but not rate. The [MCP server](/mcp) has the tool `study_decks`: your decks of a workspace with what is due today. All shapes are in the [OpenAPI description](/openapi).

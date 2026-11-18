@@ -13,6 +13,7 @@ Offline you keep working with what the device has – in the browser with [offli
 - **Pages and records** in the offline copy open; you edit text in documents and the properties of records.
 - **New records** in a database – **New row** in the table, a new card on the board – appear at once and are created once the connection is back (see [Database records offline](/offline-and-apps#database-records-offline)). [Quick capture](/offline-and-apps#capture-into-a-database) waits on the device as well.
 - **Today's journal entry:** **Today** in the sidebar, the **+** next to a journal, **Today** on the journal page and the day picker open the day – its stored page when the offline copy has it, otherwise an entry on this device. The top bar then says "Offline draft – created once the connection is back". What you write there stays on the device, also when you close the app. As soon as the connection is back, Flowplan creates the day as usual – with its template and carried-over tasks – and adds your text to it; the day's page opens in its place. See also [Journal](/journal).
+- {since=0.9.9} **Flashcards:** decks you studied in the last 14 days you keep studying offline; the ratings wait on the device ("2 ratings are waiting for the connection") and go to the server with the connection ([Studying offline](/flashcards-app#studying-offline)).
 
 ## Only with a connection {since=0.9.9}
 
@@ -24,3 +25,4 @@ Some things need the server. Offline Flowplan then says **Needs a connection –
 - imports (export ZIP, Notion, BookStack, Jira, Trello and others)
 - answers through a database's form
 - changes to a database's schema (properties and views)
+- {since=0.9.9} creating flashcards with AI, the Anki import and exporting cards (CSV, Anki package)

@@ -64,6 +64,8 @@ Im Dokument eines Eintrags markierst du den Text und wählst im Textmenü unter 
 - Stehen die Lücken im Dokument (der Rückseite), zeigt die Karte den Titel darüber; stehen sie auf der Vorderseite, kommt die Rückseite nach dem Aufdecken als Ergänzung.
 - Lernstände hängen an der Nummer: Nummerierst du Lücken um, gehört der Lernstand zur neuen Nummer.
 - Verschachtelte Lücken (`{{c1::… {{c2::…}} …}}`) werden flach gelesen: Die innere zählt als Text der äußeren.
+- {since=0.9.9} **Lücke (Lernkarte)** in der Formatierungsleiste tut dasselbe; anfangs ausgeblendet ([Leiste anpassen](/formatting#text-formatieren)).
+- {since=0.9.9} Die [Suche](/search-and-notifications#schnellsuche) liest `{{c2::Seine::Fluss}}` als „Seine“.
 
 ### Antwort eintippen
 
@@ -135,6 +137,12 @@ Die Zahlen gelten für den ganzen Stapel. Eine Lernen-Ansicht mit Filtern lernt 
 
 Auf der [Startseite](/first-steps#startseite-anpassen) zeigt das Widget **Fällige Karten** dasselbe: wie viele Karten heute fällig sind, die Stapel mit neuen und fälligen Karten, deine Serie und **Lernen**. In den Einstellungen des Widgets wählst du alle Stapel oder bestimmte.
 
+{since=0.9.9} Die [Schnellsuche](/search-and-notifications#befehle) bietet jeden Stapel mit Karten für heute als Befehl an, etwa **Lernen: Spanisch A1**.
+
+## Erinnerung, App und offline {since=0.9.9}
+
+Lernerinnerung, Widget **Karten fällig**, Lernen ohne Verbindung sowie API und MCP: [Lernkarten: Erinnerung, App, offline und API](/flashcards-app).
+
 ## Statistik {since=0.9.9}
 
 Die Statistik zeigt nur deine eigenen Zahlen – für einen Stapel (**Statistik** in der Lernen-Ansicht) oder für alle (unter **Lernen**):
@@ -165,7 +173,3 @@ CSV, TSV, Quizlet und Anki hinein, CSV und Anki-Pakete hinaus: [Lernkarten impor
 - Private Einträge anderer und [verborgene Eigenschaften](/database-properties) werden nie zu Karten. Ist eine Kartenseite für dich verborgen, gibt es für dich keine Karten.
 - Ein Eintrag im Papierkorb verschwindet aus dem Stapel; stellst du ihn wieder her, ist der Lernstand wieder da. Verlässt du den Arbeitsbereich, wird dein Lernstand dort gelöscht. Beim Löschen des Kontos geht alles.
 - In [verschlüsselten Bereichen](/encrypted-spaces) gibt es keine Lernkarten.
-
-## API und MCP
-
-Über die [API](/api-and-webhooks) lernst du auch aus eigenen Programmen: `study.queue` (oder `GET /api/pages/{id}/study`) liefert die nächsten Karten mit Zählern, `study.review` bewertet, `study.undo` macht rückgängig, `study.prefs` setzt eigene Grenzen, `study.settings` richtet die Karten ein. {since=0.9.9} `study.due` (oder `GET /api/study/due`) zählt die fälligen Karten aller Stapel eines Arbeitsbereichs, `study.stats` (oder `GET /api/study/stats`) liefert die Statistik, `GET /api/pages/{id}/study/export` die CSV (mit `format=apkg` das Anki-Paket); `study.queue` mit `ahead` holt Lernkarten, die erst später heute dran wären. Tokens mit Nur-Lesen-Recht können Karten und Zähler lesen, aber nicht bewerten. Der [MCP-Server](/mcp) hat das Werkzeug `study_decks`: deine Stapel eines Arbeitsbereichs mit dem, was heute fällig ist. Alle Formen stehen in der [OpenAPI-Beschreibung](/openapi).
