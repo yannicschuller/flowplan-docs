@@ -104,6 +104,20 @@ Pull Requests und Dependabot lösen nie ein Deployment aus; ohne die Secrets (et
 > [!WARNING]
 > In Coolify die Anzahl der Instanzen bei 1 lassen. Mehrere Container würden dieselbe SQLite-Datei beschreiben.
 
+### Eine Beta-Instanz, die die Replikation testet {since=0.10.2}
+
+Eine Beta-Instanz ohne S3 startet nie Litestream – Replikation, [Selbstheilung](/restore#litestream-zustand-reparieren) und das Zurücksetzen im Bucket laufen dann erst auf der Produktion. Damit jedes `:beta` sie mittestet, bekommt die Beta-Instanz eine eigene Replikation:
+
+::: steps
+
+1. Lege bei deinem S3-Anbieter einen **eigenen Bucket** für die Beta-Instanz an (z. B. `flowplan-beta`) und einen Zugangsschlüssel, der nur diesen Bucket nutzen darf. Ein eigener Bucket ist am sichersten: Ein Zurücksetzen der Beta-Replik kann die Produktion nie treffen. Geht nur ein Bucket, gib der Beta-Instanz wenigstens ein eigenes `S3_PREFIX` (z. B. `flowplan-beta`) – nie das der Produktion.
+2. Setze in Coolify bei den Umgebungsvariablen der Beta-Ressource `S3_BUCKET`, `S3_ENDPOINT`, `S3_REGION`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY` und `S3_PREFIX` für diesen Bucket. Ihr Daten-Volume bleibt ebenfalls ihr eigenes.
+3. Ausrollen. Das Log zeigt, wie Litestream wiederherstellt (ein leerer Bucket: nichts wiederherzustellen) und dann repliziert; **Administration → Überwachung** zeigt den Zustand der Replik.
+
+:::
+
+Dateien, die auf der Beta-Instanz hochgeladen werden, liegen dann ebenfalls im Beta-Bucket. Lösche den Bucket, wenn du die Beta-Instanz nicht mehr brauchst.
+
 ### SQLite ohne Überlappung ausrollen {since=0.10.0}
 
 Mit SQLite (ohne `DATABASE_URL`) darf auf einem Datenvolume immer nur **ein** Flowplan-Container laufen – auch nicht für die Sekunden eines Updates. Startet ein Deployment den neuen Container, während der alte noch läuft (ein Rolling Update, das auf den Healthcheck des neuen wartet), arbeiten zwei Litestream-Prozesse auf derselben Datenbank. Das beschädigt den Replikationszustand in `.flowplan.sqlite-litestream`: im Log erst `sync error … rename …ltx.tmp …: no such file or directory`, danach alle 30 Sekunden `compaction failed … file checksum mismatch`. Wie du das reparierst, steht unter [Litestream-Zustand reparieren](/restore#litestream-zustand-reparieren).

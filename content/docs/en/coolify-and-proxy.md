@@ -104,6 +104,20 @@ Pull requests and Dependabot never deploy; without the secrets (in forks, for ex
 > [!WARNING]
 > Keep the number of instances at 1 in Coolify. Several containers would write to the same SQLite file.
 
+### A beta instance that tests replication {since=0.10.2}
+
+A beta instance without S3 never runs Litestream – its replication, the [self-healing](/restore#repair-the-litestream-state) and the bucket reset are then first exercised on production. To test them with every `:beta`, give the beta instance replication of its own:
+
+::: steps
+
+1. At your S3 provider, create a **separate bucket** for the beta instance (e.g. `flowplan-beta`) and an access key that may only use that bucket. A separate bucket is safest: a reset of the beta replica can never touch production. If you can only use one bucket, give the beta instance at least its own `S3_PREFIX` (e.g. `flowplan-beta`) – never the prefix of production.
+2. In Coolify, in the beta resource's environment variables, set `S3_BUCKET`, `S3_ENDPOINT`, `S3_REGION`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY` and `S3_PREFIX` for that bucket. Its data volume stays its own, too.
+3. Deploy. The log shows Litestream restoring (an empty bucket: nothing to restore) and then replicating; **Administration → Monitoring** shows the replica's state.
+
+:::
+
+Files uploaded on the beta instance then go to the beta bucket as well. Delete the bucket when you no longer need the beta instance.
+
 ### Roll out SQLite without overlap {since=0.10.0}
 
 With SQLite (no `DATABASE_URL`), only **one** Flowplan container may run on a data volume at any time – not even for the seconds of an update. If a deployment starts the new container while the old one still runs (a rolling update that waits for the new one's health check), two Litestream processes work on the same database. That damages the replication state in `.flowplan.sqlite-litestream`: the log first shows `sync error … rename …ltx.tmp …: no such file or directory`, then every 30 seconds `compaction failed … file checksum mismatch`. How to repair it is under [Repair the Litestream state](/restore#repair-the-litestream-state).
