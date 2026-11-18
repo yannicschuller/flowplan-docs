@@ -122,7 +122,7 @@ Der Fokusmodus ist vollständig mit Tastatur und Screenreader bedienbar: Die Ant
 
 ## Wie Flowplan plant
 
-Flowplan nutzt **FSRS-6**, das Verfahren, das auch Anki anbietet. Es schätzt für jede Karte, wie stabil sie in deinem Gedächtnis ist, und legt die nächste Wiederholung so, dass du sie mit der gewählten Behaltensrate (90 %) noch weißt. Eine höhere Rate heißt öfter wiederholen und seltener vergessen.
+Flowplan nutzt **FSRS-6**, das Verfahren, das auch Anki anbietet. Es schätzt für jede Karte, wie stabil sie in deinem Gedächtnis ist, und legt die nächste Wiederholung so, dass du sie mit der gewählten Behaltensrate (90 %) noch weißt. Eine höhere Rate heißt öfter wiederholen und seltener vergessen. [Optimieren](/flashcards-optimize) passt FSRS an dich an.
 
 - **Neu**: noch nie gelernt. Neue Karten zählen erst gegen die Tagesgrenze, wenn du sie zum ersten Mal bewertest.
 - **Lernschritte**: Eine neue Karte kommt nach 1 und 10 Minuten wieder, eine vergessene nach 10 Minuten. Lernschritte zählen nicht gegen die Grenzen.

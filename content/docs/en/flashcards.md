@@ -122,7 +122,7 @@ The focus mode works fully with the keyboard and a screen reader: the answer is 
 
 ## How Flowplan schedules
 
-Flowplan uses **FSRS-6**, the method Anki offers as well. For every card it estimates how stable it is in your memory and puts the next review where you still know it with the chosen retention (90 %). A higher retention means reviewing more often and forgetting less.
+Flowplan uses **FSRS-6**, the method Anki offers as well. For every card it estimates how stable it is in your memory and puts the next review where you still know it with the chosen retention (90 %). A higher retention means reviewing more often and forgetting less. [Optimising](/flashcards-optimize) fits FSRS to you.
 
 - **New**: never studied. New cards only count against the daily limit when you rate them for the first time.
 - **Learning steps**: a new card comes back after 1 and 10 minutes, a forgotten one after 10 minutes. Learning steps do not count against the limits.
