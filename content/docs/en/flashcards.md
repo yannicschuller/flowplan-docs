@@ -148,6 +148,8 @@ CSV, TSV, Quizlet and Anki in, CSV and Anki packages out: [Import and export fla
 
 Shared or published, a deck can be browsed and practised without an account: [Flashcards through a link](/sharing#flashcards-through-a-link).
 
+{since=0.10.2} In the [marketplace](/marketplace#flashcard-decks) you share a deck as a template – with its cards, pictures and masks, without learning states and without details about people. The template's page shows a few sample cards; whoever takes the deck over starts with new cards.
+
 ## Who sees what
 
 - **Studying** is open to everyone who may read the database – members, guests of a [shared page](/sharing) and readers. The learning state is yours alone: nobody else sees it, not the workspace's owners and not the administration.

@@ -1,6 +1,6 @@
 ---
 keywords: marketplace, share templates, community, publish
-new: checking-an-import 2026-11-12
+new: checking-an-import 2026-11-12, flashcard-decks 2026-11-19
 ---
 
 # Marketplace
@@ -35,6 +35,18 @@ Guests never publish anything.
 The marketplace shows visitors the title in their language – switch between **DE** and **EN** at the top right. That is why every template needs an English title; Flowplan fills the field of your interface language with the page title, and you add the other one. With the next Flowplan version the English title becomes required; until then the marketplace still accepts packages from older versions without one and shows the German title. {since=0.9.6}
 
 What is never included: a workflow's credentials, runs and webhook addresses, the address of your instance, names of people, pictures uploaded to a whiteboard (only pictures with an https address go along) and record cards. A workflow's references to pages, databases and people are matched by name on import or stay empty. For appearances with own typefaces: only publish typefaces whose licence allows passing them on.
+
+Database templates also leave what concerns people here: who created or changed a record, values of person properties, mentions in the records' documents and page properties of the type person. The dialog says how many details that is. {since=0.10.2}
+
+## Flashcard decks {since=0.10.2}
+
+In the marketplace a [flashcard deck](/flashcards) is a database template – saved with **Save as template** and then published like any other. It takes along: properties, views (the study views too), the card mapping with the card types and the records with their pictures, clozes and [image occlusion masks](/flashcards-occlusion). **Never the learning state:** reviews and FSRS values belong to the people who studied. The dialog says so under **Learning progress and reviews are never included**.
+
+For the template's page Flowplan adds a few **sample cards** – one per card type, at most five, as plain text, for image occlusion with the picture and its masks. The marketplace shows them under **Sample cards** with front and back side by side, along with the number of cards and records and the card types. A picture appears there only if it is uploaded to the template as PNG, JPEG or WebP; the built-in decks show their masks without the picture.
+
+When you take a deck over, the preview names it with its cards. A template is created; a deck made from it starts with **new cards** – for you and everybody else in the workspace.
+
+Older Flowplan versions from 0.10.0 take such decks over too, just without the card preview; even older ones refuse the template with “Template content is invalid.” because they don't know the study view.
 
 ## Taking over
 

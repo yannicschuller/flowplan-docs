@@ -1,6 +1,6 @@
 ---
 keywords: Marketplace, Vorlagen teilen, Community, veröffentlichen
-new: import-pruefen 2026-11-12
+new: import-pruefen 2026-11-12, lernkarten-stapel 2026-11-19
 ---
 
 # Marketplace
@@ -35,6 +35,18 @@ Gäste veröffentlichen nie etwas.
 Der Marketplace zeigt Besucher:innen den Titel in ihrer Sprache – oben rechts wechselst du zwischen **DE** und **EN**. Deshalb braucht jede Vorlage einen englischen Titel; Flowplan füllt das Feld deiner Oberflächensprache mit dem Seitentitel vor, den anderen ergänzt du. Mit der nächsten Flowplan-Version wird der englische Titel Pflicht; Pakete älterer Versionen ohne ihn nimmt der Marketplace bis dahin noch an und zeigt den deutschen Titel. {since=0.9.6}
 
 Was nie mitkommt: Zugangsdaten, Läufe und Webhook-Adressen eines Workflows, die Adresse deiner Instanz, Namen von Personen, hochgeladene Bilder eines Whiteboards (nur Bilder mit https-Adresse) und Datensatzkarten. Verweise eines Workflows auf Seiten, Datenbanken und Personen werden beim Übernehmen über den Namen neu zugeordnet oder bleiben leer. Bei Erscheinungsbildern mit eigenen Schriften: Veröffentliche nur Schriften, deren Lizenz das Weitergeben erlaubt.
+
+Bei Datenbankvorlagen bleibt außerdem hier, was Personen betrifft: wer einen Eintrag angelegt oder geändert hat, Werte von Personen-Eigenschaften, Erwähnungen in den Eintragsdokumenten und Seiteneigenschaften vom Typ Person. Der Dialog nennt, wie viele Angaben das sind. {since=0.10.2}
+
+## Lernkarten-Stapel {since=0.10.2}
+
+Ein [Lernkarten-Stapel](/flashcards) ist im Marketplace eine Datenbankvorlage – gespeichert über **Als Vorlage speichern** und dann veröffentlicht wie jede andere. Er nimmt mit: Eigenschaften, Ansichten (auch die Lernen-Ansichten), die Kartenzuordnung mit den Kartentypen und die Einträge samt Bildern, Lücken und [Masken der Bildverdeckung](/flashcards-occlusion). **Lernstände nie:** Wiederholungen und FSRS-Werte gehören den Personen, die gelernt haben. Der Dialog sagt das unter **Lernstände und Wiederholungen kommen nie mit**.
+
+Für die Seite der Vorlage legt Flowplan ein paar **Beispielkarten** dazu – je Kartentyp eine, höchstens fünf, als reinen Text, bei Bildverdeckung mit dem Bild und seinen Masken. Der Marketplace zeigt sie unter **Beispielkarten** mit Vorder- und Rückseite nebeneinander, dazu die Zahl der Karten und Einträge und die Kartentypen. Ein Bild erscheint dort nur, wenn es in der Vorlage als PNG, JPEG oder WebP hochgeladen ist; die eingebauten Stapel zeigen ihre Masken ohne Bild.
+
+Beim Übernehmen nennt die Vorschau den Stapel mit seinen Karten. Es entsteht eine Vorlage; ein Stapel daraus beginnt mit **neuen Karten** – für dich und alle anderen im Arbeitsbereich.
+
+Ältere Flowplan-Versionen ab 0.10.0 übernehmen solche Stapel ebenso, nur ohne Kartenvorschau; noch ältere lehnen die Vorlage mit „Vorlageninhalt ist ungültig.“ ab, weil sie keine Lernen-Ansicht kennen.
 
 ## Übernehmen
 
