@@ -20,6 +20,21 @@ Für Dokumentation mit Hunderten Seiten zeigst du einen Bereich als **Bibliothek
 
 Du siehst nur Seiten, die du sehen darfst; Journaltage stehen nicht in der Bibliothek. Über die API schaltet `space.update` mit `library` die Ansicht um, `GET /api/spaces/{spaceId}/library` liefert Bücher und Kapitel.
 
+## Bücher und Kapitel als Übersicht {since=0.10.2}
+
+Bücher und Kapitel sind wie Regalfächer: Sie öffnen sich als **Übersicht**, der Editor erscheint erst mit einer Seite.
+
+- **Neues Buch** fragt in einem kleinen Fenster nur nach dem Namen – Regal und Art stehen schon fest. Danach siehst du die Übersicht des neuen Buchs.
+- Die **Übersicht eines Buchs** zeigt Titel, Cover, Zahl der Seiten und Kapitel, **Lesen beginnen** oder **Weiterlesen** und das Inhaltsverzeichnis mit zuklappbaren Kapiteln. **Neues Kapitel** legt ein Kapitel an, **Neue Seite** eine Seite in einem Kapitel, das du auswählst; **+** an einem Kapitel legt die Seite direkt dort an.
+- Ein **Kapitel** öffnet sich ebenso als Übersicht seiner Seiten, mit **Lesen beginnen** und **Neue Seite**.
+- Eine **Seite** öffnet sich im Editor, wie gewohnt.
+
+Hat ein Buch oder Kapitel eigenen Text – früher geschrieben oder beim Import aus BookStack als Beschreibung übernommen –, steht er schreibgeschützt über dem Inhaltsverzeichnis. **Beschreibung bearbeiten** öffnet ihn im Editor, ohne Text heißt die Aktion **Beschreibung hinzufügen**. Es geht nichts verloren.
+
+Links auf ein Buch oder Kapitel (`#page=…`), Treffer der Suche und der Pfad über einer Seite führen zur Übersicht; ein Link mit `&edit=1` öffnet den Text des Buchs im Editor. **Lesen beginnen**, die Pfeile und **Weiter** gehen von Seite zu Seite und lassen die Übersichten aus; „Seite 3 von 12“ zählt nur die Seiten. Bücher und Kapitel, die keine Dokumente sind – etwa eine Datenbank –, öffnen sich weiter selbst. Bereiche, die nicht als Bibliothek angezeigt werden, bleiben unverändert.
+
+Das Fenster für neue Seiten behält beim Tippen seinen Platz: Es hängt am oberen Rand, statt mittig mitzuwandern, wenn ein Hinweis wie „Ähnliche Einträge gibt es schon“ erscheint oder verschwindet.
+
 ## Alle Regale auf einen Blick {since=0.10.2}
 
 Sobald du mindestens einen Bereich als Bibliothek siehst, steht **Bibliothek** in der Navigation unter **Startseite** – am Handy unter **Navigation**. Sie zeigt alle Regale nebeneinander in zwei Gruppen:

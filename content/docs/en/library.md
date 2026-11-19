@@ -20,6 +20,21 @@ For documentation with hundreds of pages, show a space as a **library**: `…` n
 
 You see only pages you may see; journal days are not part of the library. Through the API, `space.update` with `library` switches the view, and `GET /api/spaces/{spaceId}/library` returns the books and chapters.
 
+## Books and chapters as overviews {since=0.10.2}
+
+Books and chapters work like the compartments of a shelf: they open as an **overview**, and the editor appears only with a page.
+
+- **New book** asks for the name only, in a small window – the shelf and the kind are given. Afterwards you see the new book's overview.
+- A **book's overview** shows its title, cover, the number of pages and chapters, **Start reading** or **Continue reading** and the table of contents with collapsible chapters. **New chapter** creates a chapter, **New page** a page in a chapter you choose; **+** on a chapter creates the page right there.
+- A **chapter** likewise opens as an overview of its pages, with **Start reading** and **New page**.
+- A **page** opens in the editor, as usual.
+
+If a book or chapter has text of its own – written before, or taken over as the description when importing from BookStack – it shows read-only above the table of contents. **Edit description** opens it in the editor; without text the action is **Add a description**. Nothing is lost.
+
+Links to a book or chapter (`#page=…`), search hits and the path above a page lead to the overview; a link with `&edit=1` opens the book's text in the editor. **Start reading**, the arrows and **Next** go from page to page and skip the overviews; "Page 3 of 12" counts only the pages. Books and chapters that are not documents – a database, for example – still open as themselves. Spaces not shown as a library stay unchanged.
+
+The window for new pages keeps its place while you type: it stays anchored at the top instead of moving with the centre when a hint such as "Similar entries already exist" appears or goes.
+
 ## All shelves at a glance {since=0.10.2}
 
 As soon as you see at least one space shown as a library, **Library** appears in the navigation below **Home** – on a phone under **Navigation**. It shows all shelves side by side in two groups:
