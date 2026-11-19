@@ -77,6 +77,13 @@ Im Reiter **Web** macht der Schalter **Im Web veröffentlichen** die Seite für 
 - Ausschalten, Löschen oder Verschieben aus dem veröffentlichten Baum entzieht den Zugriff sofort, auch auf Dateien.
 - Hat eine Seite Überschriften, blenden Besucher über das Listen-Symbol rechts neben dem Text die **Gliederung** ein (auf dem Smartphone der runde Knopf unten rechts). Sie zeigt, wo man gerade liest, und springt per Klick zur Überschrift. Ob sie offen ist, merkt sich der Browser – wie im Editor.
 
+### Hell, dunkel und zurück zur Ansicht {since=0.10.2}
+
+Geteilte und veröffentlichte Seiten – auch [einzeln geteilte Einträge](#einzelne-eintraege-teilen) – haben oben rechts einen kleinen Knopf mit Sonne oder Mond. Er wechselt der Reihe nach zwischen **automatisch** (wie das Gerät des Besuchers), **hell** und **dunkel**. Die Wahl merkt sich der Browser auf diesem Gerät, wie [Hell und dunkel](/offline-and-apps#hell-und-dunkel) in der App (im lokalen Speicher unter `flowplan-theme`, kein Cookie). Eine Vorgabe der veröffentlichenden Person gibt es nicht: Ohne eigene Wahl folgt die Seite dem Gerät.
+
+- **Zurück zur Ansicht:** Öffnet ein Besucher einen Eintrag aus einer Ansicht einer Datenbank, steht über dem Pfad **← Zurück zu <Ansicht>**. Der Link führt in dieselbe Ansicht zurück, mit demselben Monat (Kalender, Timeline) und an die Stelle, an die gescrollt war. Die Ansicht und ihr Monat stehen dafür in der Adresse des Eintrags (`?row=…&view=…&month=…`), die Scrollposition nur in diesem Tab (Sitzungsspeicher). Das gilt für Links mit eigenen Berechtigungen wie für Veröffentlichungen. Über einen Link im Dokument, eine Relation oder eine Adresse ohne Ansicht geöffnet, zeigt der Eintrag nur den Pfad.
+- **Titel im Pfad:** Der Pfad endet mit dem Titel des Eintrags statt mit „Eintrag“; lange Titel werden mit „…“ gekürzt, der ganze steht im Tooltip. Ist die Titel-Eigenschaft für Besucher nicht lesbar (etwa mit eingeschränkter [Sichtbarkeit](/properties-and-formulas#sichtbarkeit-von-eigenschaften)), bleibt es bei „Eintrag“.
+
 ### Lernkarten über einen Link {since=0.10.0}
 
 Ein [Lernkarten-Stapel](/flashcards) zeigt über einen Link mit eigenen Berechtigungen oder als Veröffentlichung seine Ansicht **Lernen**:

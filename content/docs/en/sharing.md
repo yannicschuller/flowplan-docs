@@ -77,6 +77,13 @@ In the **Web** tab, the **Publish on the web** switch makes the page readable fo
 - Switching it off, deleting or moving a page out of the published tree revokes access immediately, including to files.
 - If a page has headings, visitors show its **outline** with the list icon to the right of the text (on a phone, the round button at the bottom right). It marks where you are reading and jumps to a heading on click. The browser remembers whether it is open – as in the editor.
 
+### Light, dark and back to the view {since=0.10.2}
+
+Shared and published pages – [single shared records](#share-a-single-record) too – have a small sun or moon button at the top right. It cycles through **automatic** (like the visitor's device), **light** and **dark**. The browser remembers the choice on this device, like [Light and dark](/offline-and-apps#light-and-dark) in the app (in local storage under `flowplan-theme`, no cookie). The publisher cannot preset it: without a choice of their own, the page follows the device.
+
+- **Back to the view:** when a visitor opens a record from a view of a database, **← Back to <view>** appears above the path. It returns to the same view, with the same month (calendar, timeline) and at the place they had scrolled to. For this the view and its month are part of the record's address (`?row=…&view=…&month=…`); the scroll position stays in this tab only (session storage). This works for links with their own permissions and for publications alike. Opened from a link in a document, a relation or an address without a view, the record shows just the path.
+- **Title in the path:** the path ends with the record's title instead of "Record"; long titles are shortened with "…", the full one is in the tooltip. If visitors may not read the title property (for example because of a restricted [visibility](/properties-and-formulas#property-visibility)), it stays "Record".
+
 ### Flashcards through a link {since=0.10.0}
 
 A [flashcard deck](/flashcards) shows its **Study** view through a link with its own permissions or as a publication:
