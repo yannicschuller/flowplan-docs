@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@137756a3",
+  "source": "github.com/yannicschuller/flowplan@772c9986",
   "slash": {
     "groups": {
       "recent": [
@@ -2120,6 +2120,7 @@
     "LDAP_URL",
     "LDAP_USER_FILTER",
     "LITESTREAM_SSE_C_KEY",
+    "MEETING_HOSTS",
     "MEETING_LIVE_TRANSCRIPTION",
     "MOBILE_PUSH",
     "MOBILE_PUSH_CONTENT",
