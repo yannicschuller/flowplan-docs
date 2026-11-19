@@ -85,7 +85,7 @@ In it:
 - Caddy distributes round robin over ready instances (health check on `/api/health/ready`) and passes live connections through unbuffered (`flush_interval -1`). For HTTPS, replace `:8080` in the `Caddyfile` with your host name.
 - PostgreSQL runs with `max_connections=200`. Flowplan connects as the role `flowplan`, which owns the database but is no superuser: `POSTGRES_PASSWORD` is its password, `POSTGRES_ADMIN_PASSWORD` that of the image's superuser `postgres`, for administration only. On the database's first start `postgres-init.sh` creates the role and installs `pg_trgm` (and `pgvector` when the image has it) into `flowplan_ext`. A volume made with an older version of the example keeps its roles – there `flowplan` is still a superuser until you [demote it](/en/postgresql#role-without-superuser-rights).
 
-Another load balancer (nginx, Traefik, HAProxy) needs the same: health check on `/api/health/ready`, no buffering for server-sent events (`/api/documents/live` and the cursor channels), long read timeouts, uploads up to 110 MB and `FLOWPLAN_TRUSTED_PROXIES` matching the number of proxies.
+Another load balancer (nginx, Traefik, HAProxy) needs the same: health check on `/api/health/ready`, no buffering for server-sent events (`/api/documents/live`, `/api/live` and the cursor channels), long read timeouts, uploads up to 110 MB and `FLOWPLAN_TRUSTED_PROXIES` matching the number of proxies.
 
 ## Kubernetes (Helm)
 
