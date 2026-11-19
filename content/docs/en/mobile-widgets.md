@@ -43,11 +43,42 @@ Good to know:
 - **Counter history:** Flowplan keeps the value of every day. Days before the widget was set up are estimated and drawn lighter and dashed.
 - **Privacy:** widgets only show what you may see in Flowplan. Pages behind a journal PIN or end-to-end encrypted only show their state in a widget, never content.
 - **Signed out?** When your session ends (e.g. a short SSO session), every widget shows *Open Flowplan to sign in*. Its settings stay; after signing in, the widgets fill again at once.
-- **Profiles:** widgets belong to the active profile. Switching removes what the previous profile showed; on Android every widget keeps its settings per profile.
-- **Colours on Android:** from Android 12 all widgets take the system colours (Material You, from the wallpaper or the chosen theme), light and dark. Red, amber and green keep their meaning. After a new wallpaper the widgets follow with their next update.
+- **Profiles:** every widget shows the profile set in its settings (see [Colour and profile per widget](#colour-and-profile-per-widget)).
+- **Colours:** every widget has a colour of its own (see [Colour and profile per widget](#colour-and-profile-per-widget)). Red, amber and green always keep their meaning.
 - **Check off today's tasks:** add the **Tasks** widget and choose *Due today* in its settings.
-- **Updates:** when you change something in Flowplan, when the app comes to the foreground, and in the background about every 30 minutes (iOS decides how often).
+- **Updates:** when you change something in Flowplan, when the app comes to the foreground, and in the background about every 30 minutes (iOS decides how often). On iPhone with iOS 26 also [right away by push](#instant-updates-on-iphone).
 - **Requirements:** the configurable widgets, the Live Activities other than the timer, and Siri and Shortcuts need a Flowplan server 0.7.0 or newer. *Flowplan*, *Flowplan Inbox* and the running timer work from 0.4.0.
+
+### Next appointment, Continue reading, Key figure and Deadline {since=0.10.2}
+
+| Widget | What it shows | Settings |
+| --- | --- | --- |
+| **Next appointment** | The next one to three appointments with a countdown and the location; a **Join** button for a video link | Calendars (as in **Today**), range (today, 48 hours, week), *Join* on/off |
+| **Continue reading** | Pages you opened last, or the books of the [library](/library) with your reading progress | Source (recently opened or library), number (1–6) |
+| **Key figure** | One number tile of a [dashboard](/dashboards) with its history as a line and the change since the day before | Dashboard, tile |
+| **Deadline** | A countdown to the due date of a record or task; red when overdue | Database and record, or one of your tasks |
+
+- **Join** appears only for links of known video services – Zoom, Microsoft Teams, Google Meet, Webex, Jitsi Meet and Whereby – in the location, a link or text property or the appointment's description (where synced Google and Microsoft calendars put them). Administrators add their own services (such as BigBlueButton or their own Jitsi) as host names in `MEETING_HOSTS`, comma-separated: `MEETING_HOSTS=bbb.example.org,meet.example.org`. Other links never get a Join button.
+- **Reading progress:** for library books, the page you read last, measured against all pages of the book.
+- **Key figure:** Flowplan keeps the value of every day; the line shows up to 30 days, from the day the widget was set up.
+- As everywhere: pages behind a journal PIN and end-to-end encrypted spaces only show their state, and properties hidden from you (such as a hidden due date) stay empty.
+
+### Colour and profile per widget
+
+In the settings of every widget:
+
+- **Profile:** which profile the widget shows – by default the active one. So a widget can show your work tasks while the personal profile is open in the app. A profile that is not active stays signed in for this; only the active profile gets notifications. Its widgets go only when you remove the profile or sign out.
+- **Colour:** *Accent* (default: the accent colour of the workspace the content comes from), *Profile colour* (the profile's colour dot), *System* (Material You from the wallpaper or theme on Android 12 and later, the system tint on iPhone) or *Flowplan*. You choose the profile colour in the app under *Manage profiles*; it also shows in the profile list and when switching.
+- On iPhone the widgets also look right tinted, accented and in the clear Liquid Glass look of iOS 26.
+
+### Accent colour, "Widgets only" and instant updates {since=0.10.2}
+
+- **Accent colour:** the instance sends every widget the accent colour of its workspace (*Settings → Workspace → Appearance*), checked for legibility in light and dark mode like the web app. Workspaces without their own colour, and people who chose Flowplan's own look, get Flowplan's colours. Older servers send no accent colour; the widgets then use Flowplan's colours.
+- **"Widgets only":** under *Settings → Account → Signed-in devices*, a profile that is not active in the app right now shows as *Widgets only*; the test notification sends it nothing.
+
+#### Instant updates on iPhone
+
+From iOS 26 the instance tells your iPhones as soon as something changes that your widgets could show – new notifications, tasks, records and pages in your workspaces, time tracking, focus, flashcards, dashboards. The widgets then reload. To stay within what iOS allows, the instance collects changes for about 30 seconds and sends **at most one push per device every 5 minutes**; when nothing changes, none is sent. The push goes through the [push relay](/configuration-ai-push) like notifications and carries **no content** – only the signal to reload; the widget fetches its data from your instance itself. Without the push relay (`PUSH_RELAY=off`, `MOBILE_PUSH=off`) the background updates remain.
 
 ## Widgets for administrators
 

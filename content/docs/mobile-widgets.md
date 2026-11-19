@@ -43,11 +43,42 @@ Gut zu wissen:
 - **Verlauf des Zählers:** Flowplan merkt sich den Wert jeden Tag. Tage, bevor das Widget eingerichtet war, werden geschätzt und heller/gestrichelt gezeichnet.
 - **Datenschutz:** Widgets zeigen nur, was du auch in Flowplan sehen darfst. Seiten hinter einer Journal-PIN oder mit Ende-zu-Ende-Verschlüsselung zeigen im Widget nur ihren Zustand, nie Inhalte.
 - **Abgemeldet?** Endet deine Sitzung (z. B. bei kurzer SSO-Sitzung), zeigen alle Widgets *Flowplan öffnen und anmelden*. Ihre Einstellungen bleiben; nach dem Anmelden füllen sie sich sofort wieder.
-- **Profile:** Widgets gehören zum aktiven Profil. Beim Wechsel verschwinden die Inhalte des vorigen Profils; auf Android behält jedes Widget seine Einstellungen pro Profil.
-- **Farben auf Android:** Ab Android 12 übernehmen alle Widgets die Systemfarben (Material You, aus dem Hintergrundbild oder dem gewählten Design), hell und dunkel. Rot, Gelb und Grün behalten ihre Bedeutung. Nach einem neuen Hintergrundbild passen sich die Widgets mit der nächsten Aktualisierung an.
+- **Profile:** Jedes Widget zeigt das Profil, das in seinen Einstellungen steht (siehe [Farbe und Profil pro Widget](#farbe-und-profil-pro-widget)).
+- **Farben:** Jedes Widget hat eine eigene Farbe (siehe [Farbe und Profil pro Widget](#farbe-und-profil-pro-widget)). Rot, Gelb und Grün behalten immer ihre Bedeutung.
 - **Heutige Aufgaben abhaken:** Widget **Aufgaben** hinzufügen und in seinen Einstellungen *Heute fällig* wählen.
-- **Aktualisierung:** wenn du in Flowplan etwas änderst, wenn die App in den Vordergrund kommt, im Hintergrund etwa alle 30 Minuten (iOS entscheidet selbst, wie oft).
+- **Aktualisierung:** wenn du in Flowplan etwas änderst, wenn die App in den Vordergrund kommt, im Hintergrund etwa alle 30 Minuten (iOS entscheidet selbst, wie oft). Auf dem iPhone ab iOS 26 zusätzlich [sofort per Push](#sofort-aktuell-auf-dem-iphone).
 - **Voraussetzung:** Die einstellbaren Widgets, Live-Aktivitäten außer der Zeiterfassung sowie Siri und Kurzbefehle brauchen einen Flowplan-Server ab 0.7.0. *Flowplan*, *Flowplan Posteingang* und die laufende Zeiterfassung gehen ab 0.4.0.
+
+### Nächster Termin, Weiterlesen, Kennzahl und Frist {since=0.10.2}
+
+| Widget | Was es zeigt | Einstellungen |
+| --- | --- | --- |
+| **Nächster Termin** | Die nächsten ein bis drei Termine mit Countdown und Ort; bei einem Video-Link der Knopf **Beitreten** | Kalender (wie bei **Heute**), Zeitraum (heute, 48 Stunden, Woche), *Beitreten* ein/aus |
+| **Weiterlesen** | Zuletzt geöffnete Seiten oder die Bücher der [Bibliothek](/library) mit Lesefortschritt | Quelle (zuletzt geöffnet oder Bibliothek), Anzahl (1–6) |
+| **Kennzahl** | Eine Zahl-Kachel eines [Dashboards](/dashboards) mit Verlauf als Linie und Veränderung zum Vortag | Dashboard, Kachel |
+| **Frist** | Countdown bis zum Fälligkeitsdatum eines Eintrags oder einer Aufgabe; überfällig in Rot | Datenbank und Eintrag oder eine deiner Aufgaben |
+
+- **Beitreten** gibt es nur für Links bekannter Videodienste – Zoom, Microsoft Teams, Google Meet, Webex, Jitsi Meet und Whereby – im Ort, in einer Link- oder Text-Eigenschaft oder in der Beschreibung des Termins (dort landen sie bei synchronisierten Google- und Microsoft-Kalendern). Eigene Dienste (etwa BigBlueButton oder ein eigenes Jitsi) trägt die Administration als Hostnamen in `MEETING_HOSTS` ein, mehrere durch Kommas getrennt: `MEETING_HOSTS=bbb.example.org,meet.example.org`. Andere Links bekommen nie einen Beitreten-Knopf.
+- **Lesefortschritt:** Bei Büchern der Bibliothek zählt die Seite, die du zuletzt gelesen hast, gemessen an allen Seiten des Buchs.
+- **Kennzahl:** Flowplan merkt sich den Wert jeden Tag; der Verlauf zeigt bis zu 30 Tage, ab dem Tag, an dem das Widget eingerichtet wurde.
+- Auch hier gilt: Seiten hinter einer Journal-PIN und Ende-zu-Ende-verschlüsselte Bereiche zeigen nur ihren Zustand, für dich ausgeblendete Eigenschaften (etwa ein verborgenes Fälligkeitsdatum) bleiben leer.
+
+### Farbe und Profil pro Widget
+
+In den Einstellungen jedes Widgets:
+
+- **Profil:** welches Profil das Widget zeigt – Standard ist das aktive. So kann ein Widget die Aufgaben der Arbeit zeigen, während in der App das private Profil offen ist. Ein Profil, das gerade nicht aktiv ist, bleibt dafür angemeldet; Mitteilungen bekommt aber nur das aktive Profil. Erst wenn du ein Profil entfernst oder dich abmeldest, verschwinden seine Widgets.
+- **Farbe:** *Akzentfarbe* (Standard: die Akzentfarbe des Arbeitsbereichs, aus dem der Inhalt kommt), *Profilfarbe* (der Farbpunkt des Profils), *System* (auf Android ab 12 Material You aus dem Hintergrundbild oder dem gewählten Design, auf dem iPhone die Systemfarbe) oder *Flowplan*. Die Profilfarbe wählst du in der App unter *Profile verwalten*; sie erscheint auch in der Profilliste und beim Wechseln.
+- Auf dem iPhone sehen die Widgets auch getönt, eingefärbt und im klaren Liquid-Glass-Look von iOS 26 richtig aus.
+
+### Akzentfarbe, „Nur Widgets“ und sofortige Aktualisierung {since=0.10.2}
+
+- **Akzentfarbe:** Die Instanz liefert zu jedem Widget die Akzentfarbe seines Arbeitsbereichs (*Einstellungen → Arbeitsbereich → Aussehen*), für hell und dunkel auf Lesbarkeit geprüft wie in der Web-App. Arbeitsbereiche ohne eigene Farbe und Personen, die Flowplans eigenes Aussehen gewählt haben, bekommen Flowplans Farben. Ältere Server liefern keine Akzentfarbe; die Widgets zeigen dann Flowplans Farben.
+- **„Nur Widgets“:** Unter *Einstellungen → Konto → Angemeldete Geräte* steht ein Profil, das in der App gerade nicht aktiv ist, als *Nur Widgets*; die Testbenachrichtigung schickt ihm nichts.
+
+#### Sofort aktuell auf dem iPhone
+
+Ab iOS 26 sagt die Instanz deinen iPhones Bescheid, sobald sich etwas ändert, das deine Widgets zeigen könnten – neue Mitteilungen, Aufgaben, Einträge und Seiten in deinen Arbeitsbereichen, Zeiterfassung, Fokus, Lernkarten, Dashboards. Die Widgets laden sich dann neu. Damit iOS mitspielt, sammelt die Instanz Änderungen etwa 30 Sekunden und schickt **höchstens alle 5 Minuten einen Push pro Gerät**; ändert sich nichts, kommt auch keiner. Der Push geht wie die Mitteilungen über das [Push-Relay](/configuration-ai-push) und enthält **keine Inhalte** – nur das Signal zum Neuladen; die Daten holt das Widget selbst von deiner Instanz. Ohne Push-Relay (`PUSH_RELAY=off`, `MOBILE_PUSH=off`) bleibt es bei der Aktualisierung im Hintergrund.
 
 ## Widgets für Administratoren
 
