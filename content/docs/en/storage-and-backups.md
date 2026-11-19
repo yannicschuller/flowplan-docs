@@ -19,6 +19,12 @@ All data lives in one directory. With S3 storage, files are mirrored and the dat
 | `pre-restore-…`, `pre-move-…` | Previous state after a restore or a [move](/move-instance); delete after a few days |
 | `ocr/` | Language data for text recognition, recreated when needed |
 
+### How Flowplan uses the SQLite file {since=0.10.2}
+
+The database runs in WAL mode with `synchronous=NORMAL` – the setting SQLite and Litestream recommend for WAL: saving no longer waits for the disk, the file is synchronised when the log is written back (checkpoint). If Flowplan crashes or the container restarts, nothing is lost. If the power fails or the whole machine crashes, the last changes before the failure can be missing; the file itself always stays consistent. With Litestream, only the changes of the last second are not in the bucket yet anyway.
+
+Flowplan also uses up to 64 MiB of memory as the database's cache, reads it through a memory map (up to 256 MiB; this takes address space, not additional memory) and keeps temporary results in memory instead of files. For query planning, `PRAGMA optimize` gathers statistics at startup and every six hours. There is nothing to configure.
+
 ## Turn on S3 storage
 
 With `S3_BUCKET` and credentials (see [Configuration](/configuration-storage#s3-and-database-backup)):
