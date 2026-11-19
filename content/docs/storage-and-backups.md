@@ -29,12 +29,26 @@ Dazu nutzt Flowplan bis zu 64 MiB Arbeitsspeicher als Cache der Datenbank, liest
 
 Mit `S3_BUCKET` und Zugangsdaten (siehe [Konfiguration](/configuration-storage#s3-und-datenbanksicherung)):
 
-- **Dateien**: Jede hochgeladene Datei geht direkt nach dem Speichern in den Bucket, gelöschte Dateien wandern dort nach `<Präfix>/.deleted/uploads/` und werden erst entfernt, wenn keine aufbewahrte geplante Sicherung im Bucket sie mehr braucht, frühestens nach einem Tag ([verzögertes Löschen](#verzoegertes-loeschen)). `uploads/` bleibt Arbeitskopie. Fehlt dort eine Datei – neuer Host, verlorenes Volume –, holt Flowplan sie aus dem Bucket: beim Abruf sofort, alle übrigen im Hintergrund.
+- **Dateien**: Jede hochgeladene Datei geht direkt nach dem Speichern in den Bucket, gelöschte Dateien wandern dort nach `<Präfix>/.deleted/uploads/` und werden erst entfernt, wenn keine aufbewahrte geplante Sicherung im Bucket sie mehr braucht, frühestens nach einem Tag ([verzögertes Löschen](#verzoegertes-loeschen)). `uploads/` bleibt Arbeitskopie – außer du [hältst nur einen Teil der Dateien lokal](#nur-einen-teil-der-dateien-lokal-halten). Fehlt dort eine Datei – neuer Host, verlorenes Volume –, holt Flowplan sie aus dem Bucket: beim Abruf sofort, alle übrigen im Hintergrund.
 - **Datenbank**: [Litestream](https://litestream.io) überträgt Änderungen der SQLite-Datei etwa im Sekundentakt nach `<Präfix>/db`. Startet der Container ohne Datenbank, stellt Litestream sie zuerst aus dem Bucket wieder her.
 
 Beim ersten Start mit S3 lädt Flowplan alle vorhandenen Dateien hoch. Den Fortschritt zeigen **Administration → Speicher & Sicherung** (Karten **Sicherungen** und **Belegung**, dazu die Verbindung und die Verteilung lokal/S3) und – mit `FLOWPLAN_METRICS_TOKEN` oder als Admin angemeldet – `/api/health` unter `objectStorage.pending`.
 
 Geeignet sind MinIO, Garage, SeaweedFS, AWS S3 und andere S3-kompatible Dienste.
+
+### Nur einen Teil der Dateien lokal halten {since=0.10.2}
+
+Auf einem kleinen Server kann der Bucket die Dateien allein halten: Mit `S3_LOCAL_CACHE=2GB` (oder `500MB`, `1.5GB`; 1 GB = 1024 MB) wird `uploads/` zu einem Zwischenspeicher dieser Größe.
+
+- Wächst er über die Grenze, entfernt Flowplan die **am längsten nicht benutzten** Dateien lokal – beim Start, nach Uploads und alle fünf Minuten, bis er unter 80 % der Grenze liegt. Es gehen nur Dateien, die **im Bucket bestätigt** sind: hochgeladen, nichts mehr für sie zu tun, und das Objekt dort hat die richtige Größe. Dateien, die noch nicht (oder nicht mehr) im Bucket liegen, Dateien, die in den letzten zehn Minuten benutzt oder geschrieben wurden, und Dateien, die gerade gelesen werden, bleiben.
+- Wird eine entfernte Datei gebraucht – ein Download, eine Vorschau, die Offline-Kopie, ein Export, die Texterkennung –, holt Flowplan sie aus dem Bucket. Absichtlich entfernte Dateien holt Flowplan nicht im Hintergrund zurück.
+- Sicherungen funktionieren weiter: Die Instanzsicherung, das [SFTP-Spiegeln](#sicherung-per-sftp) und der [Umzug](/move-instance) lesen die Dateien, die nur im Bucket liegen, von dort, ohne den Zwischenspeicher wieder zu füllen.
+- Die Grenze ist ein Ziel, keine harte Obergrenze: Viele Uploads in wenigen Minuten können sie kurz überschreiten. Lass dafür Platz auf der Platte.
+- **Administration → Speicher & Sicherung → Belegung** zeigt Größe und Grenze des Zwischenspeichers und wie viele Dateien nur im Bucket liegen; `/api/health` nennt dasselbe unter `objectStorage.localCache`.
+
+Leer (Standard) bleibt alles wie bisher lokal. Ohne `S3_BUCKET` wird die Variable ignoriert (das Log sagt es). Die Datenbank ist nie betroffen. Im [Cluster-Modus](/cluster) gilt derselbe Zwischenspeicher; `S3_LOCAL_CACHE` ersetzt dort `FLOWPLAN_CACHE_MAX_MB`. Bevor du mit Zwischenspeicher `S3_BUCKET`, `S3_ENDPOINT` oder `S3_PREFIX` änderst, kopiere die Objekte an den neuen Ort (z. B. mit `rclone copy`): Dateien, die nur im alten Bucket liegen, kann der Server nicht hochladen.
+
+**Leg die Datenbank nicht auf einen eingehängten Bucket.** Ein per FUSE eingehängter Bucket (s3fs, rclone mount, goofys …) kennt keine echten Dateisperren – SQLite braucht sie, die Datenbank kann sonst beschädigt werden. Ein FUSE-Mount taugt höchstens für Dateien; `S3_LOCAL_CACHE` ist der unterstützte Weg, sie im Bucket zu halten. Der Datenbankordner bleibt auf einer lokalen Platte (oder nimm [PostgreSQL](/postgresql)); Litestream sichert ihn in den Bucket.
 
 ### Garage
 
@@ -84,7 +98,7 @@ Die geplante Sicherung kann zusätzlich auf einen eigenen Server gehen – ein N
 - **Server**, **Port** (22) und **Benutzer**, Anmeldung mit **Passwort** oder **privatem Schlüssel** (OpenSSH oder PEM, optional mit Passphrase). Passwort, Schlüssel und Passphrase speichert Flowplan nur verschlüsselt ([gespeicherte Geheimnisse](/configuration-storage#gespeicherte-geheimnisse)); die Oberfläche zeigt danach nur noch, dass eines gespeichert ist.
 - **Ordner auf dem Server**: relativ zum Anmeldeordner oder absolut (`/srv/backups/flowplan`); `..` ist nicht erlaubt. Fehlt er, legt Flowplan ihn an.
 - **Aufbewahren**: so viele Sicherungen bleiben im Ordner, ältere werden entfernt.
-- **Dateien mitsichern**: spiegelt die hochgeladenen Dateien nach `uploads/` im Ordner. Neue Dateien kommen bei jeder Sicherung dazu; Dateien, die in Flowplan endgültig gelöscht sind, wandern nach `.deleted/uploads/` ([verzögertes Löschen](#verzoegertes-loeschen)). Dateien, die die Datenbank noch verzeichnet, werden dort nie weggeräumt. Fehlt der Ordner `uploads/` oder ist er leer, obwohl die Datenbank Dateien verzeichnet (etwa ein nicht eingehängtes Volume), lässt die Sicherung das Spiegeln mit einem Fehler aus; die Datenbank wird trotzdem übertragen.
+- **Dateien mitsichern**: spiegelt die hochgeladenen Dateien nach `uploads/` im Ordner. Neue Dateien kommen bei jeder Sicherung dazu; Dateien, die in Flowplan endgültig gelöscht sind, wandern nach `.deleted/uploads/` ([verzögertes Löschen](#verzoegertes-loeschen)). Dateien, die die Datenbank noch verzeichnet, werden dort nie weggeräumt. Fehlt der Ordner `uploads/` oder ist er leer, obwohl die Datenbank Dateien verzeichnet (etwa ein nicht eingehängtes Volume), lässt die Sicherung das Spiegeln mit einem Fehler aus; die Datenbank wird trotzdem übertragen. Dateien, die wegen [`S3_LOCAL_CACHE`](#nur-einen-teil-der-dateien-lokal-halten) nur im Bucket liegen, zählen als vorhanden: Sie werden aus dem Bucket gelesen.
 - Mit `FLOWPLAN_ENCRYPTION_KEY` ist alles auf dem Server verschlüsselt – die Datenbank wie in S3 und im Datenordner (`flowplan-….sqlite.enc`), jede Datei einzeln ([Verschlüsselung](/storage-encryption#verschluesselung)).
 
 **Hostschlüssel:** Beim ersten **Verbindung testen** zeigt Flowplan den Fingerabdruck des Servers (`SHA256:…`), noch bevor es Zugangsdaten sendet. Vergleiche ihn auf dem Server mit `ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub` und bestätige ihn mit **Schlüssel vertrauen**. Meldet sich der Server später mit einem anderen Schlüssel (Neuinstallation – oder jemand schaltet sich dazwischen), stoppt jede Übertragung, und die Administration zeigt alten und neuen Fingerabdruck; erst nach **Neuen Schlüssel annehmen** geht es weiter. Ein anderer Server oder Port braucht immer eine neue Bestätigung.
