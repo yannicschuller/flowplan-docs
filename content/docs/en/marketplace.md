@@ -34,9 +34,9 @@ Guests never publish anything.
 
 The marketplace shows visitors the title in their language – switch between **DE** and **EN** at the top right. That is why every template needs an English title; Flowplan fills the field of your interface language with the page title, and you add the other one. With the next Flowplan version the English title becomes required; until then the marketplace still accepts packages from older versions without one and shows the German title. {since=0.9.6}
 
-What is never included: a workflow's credentials, runs and webhook addresses, the address of your instance, names of people, pictures uploaded to a whiteboard (only pictures with an https address go along) and record cards. A workflow's references to pages, databases and people are matched by name on import or stay empty. For appearances with own typefaces: only publish typefaces whose licence allows passing them on.
+What is never included: a workflow's credentials, runs and webhook addresses, the address of your instance, names of people, pictures uploaded to a whiteboard (only pictures with an https address go along) and record cards. A workflow's references to pages and databases are matched by name on import or stay empty. For appearances with own typefaces: only publish typefaces whose licence allows passing them on.
 
-Database templates also leave what concerns people here: who created or changed a record, values of person properties, mentions in the records' documents and page properties of the type person. The dialog says how many details that is. {since=0.10.2}
+All templates also leave what concerns people here: mentions of people become the plain text “@Person”, so tasks in documents lose who they are assigned to (the due date stays), comments and their highlights are not included, and neither are the ids and e-mail addresses of members – not even in the text. Database templates also leave out who created or changed a record, values of person properties and page properties of the type person. People a workflow names (recipients, approvers) go along without their names and are chosen again on import or stay empty. Links to pages are kept. The dialog says how many details that is. {since=0.10.2}
 
 ## Flashcard decks {since=0.10.2}
 
