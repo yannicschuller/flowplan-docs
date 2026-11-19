@@ -47,3 +47,11 @@ So that not everything is there at once at the start, every personal setting bel
 - **The search finds everything:** settings above your level also appear in the search, with their sign and, for example, "Expert level". When you open one, Flowplan says "This setting belongs to the Expert level." and offers **Switch level: Expert** and **Show anyway**.
 
 New accounts start with the instance's default – **Normal**, unless the administration sets another one ([Settings level for new accounts](/administration#instance)); the answer in the [introduction](#the-introduction) can adjust it. Accounts that existed before the levels are on **Expert** and so see everything as before. Admins can set a person's level under [Users](/user-management#users). The **Administration** itself has no levels: admins always see everything there.
+
+## Show and hide features {since=0.10.2}
+
+If you don't need something, hide it under **Settings → Appearance & language → Features** (Normal level). There is a switch per feature: **Flashcards**, **Whiteboards**, **Notebooks**, **Journal**, **Dashboards**, **Workflows**, **draw.io**, **AI**, **More view types** (board, calendar, timeline, gallery, chart, feed and sprints – table and list always stay), **Forms** and **Meetings**.
+
+Hidden means: the feature is left out of **New page**, the "/" menu and the formatting toolbar, the quick search, the sidebar (such as **Study**), the home page widgets and **Add view**. With **AI**, every way into the AI goes. **What exists stays:** pages, records and views of that kind – also other people's – still show and open from links, the sidebar and the search, and permissions do not change. The choice applies to your account on all devices.
+
+New accounts start with the choice the administration sets ([Features for new accounts](/administration#instance)); as long as you switch nothing, it says **Instance default** there. Once you have chosen yourself, **Default** goes back to it. Accounts that existed before see everything.

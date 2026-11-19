@@ -47,3 +47,11 @@ Damit am Anfang nicht alles auf einmal da ist, gehört jede persönliche Einstel
 - **Die Suche findet alles:** Auch Einstellungen über deiner Stufe erscheinen in der Suche, mit ihrem Zeichen und etwa „Stufe Experte“. Öffnest du eine, sagt Flowplan „Diese Einstellung gehört zur Stufe Experte.“ und bietet **Stufe wechseln: Experte** und **Trotzdem zeigen** an.
 
 Neue Konten beginnen mit dem Standard der Instanz – **Normal**, solange die Administration nichts anderes einstellt ([Einstellungsstufe für neue Konten](/administration#instanz)); die Antwort in der [Einführung](#die-einfuehrung) kann ihn anpassen. Konten, die es schon vor den Stufen gab, stehen auf **Experte** und sehen damit alles wie bisher. Admins können die Stufe einer Person unter [Benutzer](/user-management#benutzer) setzen. Die **Administration** selbst hat keine Stufen: Admins sehen dort immer alles.
+
+## Funktionen ein- und ausblenden {since=0.10.2}
+
+Brauchst du etwas nicht, blendest du es unter **Einstellungen → Darstellung & Sprache → Funktionen** aus (Stufe Normal). Je Funktion gibt es einen Schalter: **Lernkarten**, **Whiteboards**, **Notizbücher**, **Journal**, **Dashboards**, **Workflows**, **draw.io**, **KI**, **Weitere Ansichten** (Board, Kalender, Zeitleiste, Galerie, Diagramm, Feed und Sprints – Tabelle und Liste bleiben immer), **Formulare** und **Besprechungen**.
+
+Ausgeblendet heißt: Die Funktion fehlt in **Neue Seite**, im „/“-Menü und in der Formatierungsleiste, in der Schnellsuche, in der Seitenleiste (etwa **Lernen**), bei den Widgets der Startseite und bei **Ansicht hinzufügen**. Bei **KI** verschwinden alle Einstiege in die KI. **Vorhandenes bleibt:** Seiten, Einträge und Ansichten dieser Art – auch die von anderen – siehst und öffnest du weiter über Links, die Seitenleiste und die Suche, und an den Rechten ändert sich nichts. Die Wahl gilt für dein Konto auf allen Geräten.
+
+Neue Konten beginnen mit der Auswahl, die die Administration vorgibt ([Funktionen für neue Konten](/administration#instanz)); solange du nichts umschaltest, steht dort **Standard der Instanz**. Hast du selbst gewählt, führt **Standard** zur Vorgabe zurück. Konten, die es schon vorher gab, sehen alles.

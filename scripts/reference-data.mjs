@@ -49,7 +49,9 @@ const strings = (text) => [...text.matchAll(new RegExp(STRING, "g"))].map((m) =>
 // ------------------------------------------------------------ "/" menu
 function slashCommands() {
   const editor = read("components/editor.tsx");
-  const start = editor.indexOf("const commands: SlashItem[] = [");
+  let start = editor.indexOf("const commands: SlashItem[] = [");
+  // Since #378 the full list is `allCommands`, filtered by the hidden features.
+  if (start < 0) start = editor.indexOf("const allCommands: SlashItem[] = [");
   if (start < 0) fail("components/editor.tsx has no `const commands: SlashItem[]`");
   const end = editor.indexOf("\n  ];\n", start);
   const lines = editor.slice(start, end).split("\n");
