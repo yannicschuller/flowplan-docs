@@ -202,6 +202,10 @@ In a text property (table cell, record; see [Formatted text](/database-propertie
 | <kbd>⌥</kbd> <kbd>←</kbd> / <kbd>→</kbd> | Move by one day |
 | <kbd>⌥</kbd> <kbd>⇧</kbd> <kbd>←</kbd> / <kbd>→</kbd> | Timeline: change the end |
 | <kbd>⌥</kbd> <kbd>Ctrl</kbd> <kbd>←</kbd> / <kbd>→</kbd> | Timeline: change the start |
+| <kbd>T</kbd> | Timeline (focused): jump to today {since=0.10.2} |
+| <kbd>F</kbd> | Timeline (focused): fit everything {since=0.10.2} |
+| <kbd>+</kbd> / <kbd>−</kbd> | Timeline (focused): zoom in / out {since=0.10.2} |
+| <kbd>⌘</kbd> + mouse wheel | Timeline: zoom around the pointer (on a touch screen with two fingers) {since=0.10.2} |
 | <kbd>⌥</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Month view: move a whole-day entry by one week |
 | <kbd>Esc</kbd> | Cancel a drag in progress |
 

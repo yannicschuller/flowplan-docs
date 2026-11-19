@@ -117,25 +117,7 @@ Karteikarten mit Wiederholung in Abständen: Jeder Eintrag ist eine Karte, die A
 
 ## Timeline
 
-Balken von einem Beginn- bis zu einem End-Datumsfeld, im Maßstab Woche, Monat, Quartal oder Jahr.
-
-- Balken verschieben oder an den Rändern ziehen. Auf Touchgeräten einen Balken erst kurz halten, dann ziehen; ein schnelles Wischen scrollt die Timeline. Die Griffe an den Rändern ziehen sofort. <kbd>Esc</kbd> bricht ein laufendes Ziehen ab. Das Kalendersymbol öffnet einen Datumsdialog, auch für ungeplante Einträge.
-- **Heute** springt zum aktuellen Datum; Wochenenden lassen sich markieren.
-- Ist ein Balken zu kurz für seinen Titel (etwa ein Tag im Maßstab Monat), steht der Titel neben dem Balken. {since=0.10.2}
-- Tastatur: ++Alt ←/→++ verschiebt um einen Tag, mit <kbd>⇧</kbd> ändert es das Ende, mit <kbd>Strg</kbd> den Beginn.
-
-### Abhängigkeiten (Gantt)
-
-Einträge können aufeinander warten – etwa „Druck“ erst nach „Korrektur“:
-
-- In der Leiste der Timeline unter **Abhängigkeiten** eine Relation der Datenbank auf sich selbst wählen – oder **Abhängigkeiten einrichten** legt die Eigenschaft „Abhängigkeiten“ an.
-- **Verknüpfen per Ziehen:** Vom runden Griff am Ende eines Balkens auf einen anderen Balken ziehen – dieser wartet dann auf den ersten. Verknüpfungen, die einen Kreis ergäben, lehnt Flowplan ab.
-- **Pfeile** verbinden die Balken; beginnt ein Eintrag, bevor sein Vorgänger endet, ist der Pfeil rot. Schon beim Ziehen warnt die Timeline, welcher Eintrag zu früh läge.
-- **Nachfolger mitverschieben:** Verschiebst du einen Eintrag, rücken alle Einträge, die direkt oder indirekt auf ihn warten, um dieselben Tage mit – in einem Schritt. Maßgeblich ist die Seite, an der die Verknüpfung hängt: bei „Ende → Anfang“ und „Ende → Ende“ das Ende des Eintrags, bei „Anfang → Anfang“ und „Anfang → Ende“ sein Anfang.
-- **Alle Konflikte nachziehen** schiebt jeden zu frühen Eintrag hinter seinen Vorgänger.
-- **Kritischen Pfad hervorheben** markiert die Einträge und Pfeile ohne Puffer: Verzögert sich einer davon, verschiebt sich das Ende des ganzen Plans.
-
-In eingebetteten Ansichten (verknüpfte Datenbanken) sind Verknüpfen per Ziehen und **Alle Konflikte nachziehen** nicht verfügbar – dafür die Datenbank selbst öffnen.
+Die [Timeline](/timeline) zeigt Einträge mit Zeitraum als Balken auf einer Zeitachse, mit Zoom, Meilensteinen und Abhängigkeiten.
 
 ## Galerie
 

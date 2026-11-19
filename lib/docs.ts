@@ -83,7 +83,7 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       {
         title: ["Datenbanken", "Databases"],
         intro: ["Tabellen, Eigenschaften, Ansichten, Formeln, Formulare und Kontakte.", "Tables, properties, views, formulas, forms and contacts."],
-        pages: ["databases", "database-properties", "views", "properties-and-formulas", "forms", "contacts"],
+        pages: ["databases", "database-properties", "views", "timeline", "properties-and-formulas", "forms", "contacts"],
       },
       {
         title: ["Lernkarten", "Flashcards"],

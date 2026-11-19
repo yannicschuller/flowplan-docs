@@ -202,6 +202,10 @@ In einer Text-Eigenschaft (Tabellenzelle, Eintrag; siehe [Formatierter Text](/da
 | <kbd>⌥</kbd> <kbd>←</kbd> / <kbd>→</kbd> | Um einen Tag verschieben |
 | <kbd>⌥</kbd> <kbd>⇧</kbd> <kbd>←</kbd> / <kbd>→</kbd> | Timeline: Ende ändern |
 | <kbd>⌥</kbd> <kbd>Strg</kbd> <kbd>←</kbd> / <kbd>→</kbd> | Timeline: Beginn ändern |
+| <kbd>T</kbd> | Timeline (mit Fokus): zu heute springen {since=0.10.2} |
+| <kbd>F</kbd> | Timeline (mit Fokus): alles einpassen {since=0.10.2} |
+| <kbd>+</kbd> / <kbd>−</kbd> | Timeline (mit Fokus): vergrößern / verkleinern {since=0.10.2} |
+| <kbd>⌘</kbd> + Mausrad | Timeline: um den Mauszeiger zoomen (auf dem Touchscreen mit zwei Fingern) {since=0.10.2} |
 | <kbd>⌥</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Monatsansicht: ganztägigen Eintrag um eine Woche verschieben |
 | <kbd>Esc</kbd> | Laufendes Ziehen abbrechen |
 
