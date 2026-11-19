@@ -1,5 +1,5 @@
 ---
-keywords: image, file, attachment, upload, pdf, embed, youtube, media, voice note, transcription
+keywords: image, file, attachment, upload, pdf, embed, youtube, media, voice note, transcription, 3d, cad, stl, step, obj, gltf, 3mf, iges, measure
 ---
 
 # Images, files and voice notes
@@ -45,6 +45,21 @@ The annotations belong to the page of the PDF, not to the screen: they stay in p
 To turn a PDF into a notebook you write in page by page and add sheets to, open it as a [notebook](/notebooks#creating-a-notebook): every PDF page becomes a sheet.
 
 **Download** still downloads the original. **Download with annotations** (next to it once there are annotations) creates a new PDF with the same pages and the annotations on top as vector graphics – they stay sharp when zooming in. Protected (encrypted) PDFs can only be downloaded without annotations; text appears in Helvetica, characters outside the Western European character set as “?”.
+
+### 3D and CAD files {since=0.10.2}
+
+Flowplan shows **STL**, **OBJ**, **glTF/GLB**, **3MF**, **STEP/STP** and **IGES/IGS** files in the 3D viewer instead of only offering them as downloads. Upload such a file to a document and a card with a cube icon and **Open in 3D viewer** appears; a click opens the viewer. The same goes for 3D files in **Media** (filter **3D**), in files properties of databases, in links to such files and on published pages. In editable text, a link opens the viewer with <kbd>⌘</kbd>-click.
+
+- **Turn, pan, zoom**: dragging with the mouse turns the model, the right mouse button (or <kbd>Ctrl</kbd>/<kbd>⌘</kbd> while dragging) pans it, the wheel zooms at the pointer. On touch devices one finger turns, two fingers zoom and pan. With the keyboard focus on the 3D view, the arrow keys pan; <kbd>+</kbd>/<kbd>−</kbd> zoom, <kbd>0</kbd> goes to the home view, <kbd>Esc</kbd> closes the viewer.
+- **Views**: **Front**, **Top**, **Side** and **Iso** show the whole model from the front, from above, from the right and at an angle from above (isometric). STL, 3MF, STEP and IGES have Z pointing up (as in CAD programs), glTF and OBJ Y. The house icon (**Home view**) returns to the isometric view, **Fit to view** shows the whole model from the current direction.
+- **Dimensions**: the bottom bar shows the edges of the bounding box (width × depth × height) and the number of triangles.
+- **Measure**: after **Measure**, click (or tap) two points on the surface; a line connects them, a label gives the distance, and the list at the bottom collects all measurements. Dragging still turns the model. The trash icon clears all measurements, the **×** next to one removes only that one.
+- **Wireframe** shows the model's triangles instead of its surfaces.
+- **Units**: the CAD reader converts STEP and IGES to millimetres, glTF/GLB is in metres, 3MF names its own unit. STL and OBJ store no unit – Flowplan assumes millimetres and says so.
+- **Size**: the viewer opens meshes (STL, OBJ, glTF/GLB, 3MF) up to 200 MB and STEP/IGES up to 100 MB; larger files can still be downloaded. What you may upload depends on the maximum file size set by the administration. glTF files must be self-contained (best as GLB); models compressed with Draco or KTX2 are not shown.
+- **Offline**: for STEP and IGES, Flowplan loads the CAD reader (OpenCascade, about 7 MB) from its own server the first time – never from a third party. It is not part of the [offline copy](/offline-and-apps), so without a connection STEP and IGES files open only once the reader has been loaded. STL, OBJ, glTF and 3MF also work offline once the file is on the device.
+
+The file is read in the browser, large ones in a separate thread so the page stays responsive; the original stays unchanged, and **Download** gets it.
 
 ## Voice notes and meetings
 

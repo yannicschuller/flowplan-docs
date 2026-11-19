@@ -1,5 +1,5 @@
 ---
-keywords: Bild, Datei, Anhang, Upload, PDF, Einbettung, YouTube, Medien, Sprachnotiz, Transkription
+keywords: Bild, Datei, Anhang, Upload, PDF, Einbettung, YouTube, Medien, Sprachnotiz, Transkription, 3D, CAD, STL, STEP, OBJ, glTF, 3MF, IGES, Messen
 ---
 
 # Bilder, Dateien und Sprachnotizen
@@ -45,6 +45,21 @@ Die Anmerkungen gehören zur Seite des PDFs, nicht zum Bildschirm: Sie bleiben b
 Soll ein PDF zum Heft werden, in dem du Seite für Seite schreibst und Blätter ergänzt, öffne es als [Notizbuch](/notebooks#notizbuch-anlegen): Jede PDF-Seite wird ein Blatt.
 
 **Herunterladen** lädt weiterhin das Original. **Mit Anmerkungen herunterladen** (daneben, sobald es Anmerkungen gibt) erzeugt ein neues PDF mit denselben Seiten, auf denen die Anmerkungen als Vektorgrafik liegen – sie bleiben beim Vergrößern scharf. Geschützte (verschlüsselte) PDFs lassen sich nur ohne Anmerkungen herunterladen; Text erscheint in Helvetica, Zeichen außerhalb des westeuropäischen Zeichensatzes als „?“.
+
+### 3D- und CAD-Dateien {since=0.10.2}
+
+**STL**, **OBJ**, **glTF/GLB**, **3MF**, **STEP/STP** und **IGES/IGS** zeigt Flowplan im 3D-Viewer, statt sie nur zum Herunterladen anzubieten. Lädst du eine solche Datei in ein Dokument, erscheint eine Karte mit Würfel-Symbol und **Im 3D-Viewer öffnen**; ein Klick öffnet den Viewer. Dasselbe gilt für 3D-Dateien in den **Medien** (Filter **3D**), in Dateien-Eigenschaften von Datenbanken, in Links auf solche Dateien und auf veröffentlichten Seiten. In bearbeitbarem Text öffnet ein Link den Viewer mit <kbd>⌘</kbd>-Klick.
+
+- **Drehen, verschieben, zoomen**: Ziehen mit der Maus dreht das Modell, die rechte Maustaste (oder <kbd>Strg</kbd>/<kbd>⌘</kbd> beim Ziehen) verschiebt es, das Mausrad zoomt an der Stelle des Mauszeigers. Auf Touch-Geräten dreht ein Finger, zwei Finger zoomen und verschieben. Hat die 3D-Ansicht den Tastaturfokus, verschieben die Pfeiltasten; <kbd>+</kbd>/<kbd>−</kbd> zoomen, <kbd>0</kbd> geht zur Startansicht, <kbd>Esc</kbd> schließt den Viewer.
+- **Ansichten**: **Vorne**, **Oben**, **Seite** und **Iso** zeigen das ganze Modell von vorn, von oben, von rechts und schräg von oben (isometrisch). Bei STL, 3MF, STEP und IGES zeigt Z nach oben (wie in CAD-Programmen), bei glTF und OBJ Y. Das Haus-Symbol (**Startansicht**) kehrt zur isometrischen Ansicht zurück, **Einpassen** zeigt das ganze Modell aus der aktuellen Richtung.
+- **Abmessungen**: Unten stehen die Kanten des umgebenden Quaders (Breite × Tiefe × Höhe) und die Zahl der Dreiecke.
+- **Messen**: Nach **Messen** klickst (oder tippst) du zwei Punkte auf der Oberfläche an; eine Linie verbindet sie, ein Etikett nennt den Abstand, und die Liste unten sammelt alle Messungen. Ziehen dreht weiterhin. Das Papierkorb-Symbol löscht alle Messungen, das **×** an einer Messung nur diese.
+- **Drahtgitter** zeigt die Dreiecke des Modells statt der Flächen.
+- **Einheiten**: STEP und IGES rechnet der CAD-Leser in Millimeter um, glTF/GLB ist in Metern, 3MF nennt seine Einheit selbst. STL und OBJ speichern keine Einheit – Flowplan nimmt Millimeter an und sagt es dazu.
+- **Größe**: Der Viewer öffnet Netze (STL, OBJ, glTF/GLB, 3MF) bis 200 MB und STEP/IGES bis 100 MB; größere Dateien lassen sich weiterhin herunterladen. Was du hochladen darfst, bestimmt die maximale Dateigröße der Administration. glTF-Dateien müssen alles enthalten (am besten als GLB); mit Draco oder KTX2 komprimierte Modelle zeigt der Viewer nicht.
+- **Offline**: Für STEP und IGES lädt Flowplan beim ersten Öffnen den CAD-Leser (OpenCascade, etwa 7 MB) vom eigenen Server – nie von einem fremden. Er ist nicht Teil der [Offline-Kopie](/offline-and-apps); ohne Verbindung öffnen sich STEP- und IGES-Dateien also erst, wenn der Leser einmal geladen wurde. STL, OBJ, glTF und 3MF gehen auch offline, sobald die Datei auf dem Gerät ist.
+
+Gelesen wird die Datei im Browser, die großen in einem eigenen Thread, damit die Seite bedienbar bleibt; das Original bleibt unverändert, **Herunterladen** lädt es.
 
 ## Sprachnotizen und Besprechungen
 
