@@ -86,6 +86,8 @@ Das Ändern des Bots wird als Sicherheitsereignis „Telegram-Bot der Instanz ge
 
 Optional und standardmäßig aus: Anbieter (Ollama, OpenAI-kompatibel, Anthropic, Gemini), wer KI nutzen darf, einzelne Funktionen und eigene Schlüssel der Nutzer. Eigener Schalter: **KI auf dem Gerät (Apple)** – standardmäßig erlaubt, weil nichts das Gerät verlässt. Alles dazu unter [KI](/ai#fuer-admins).
 
+**Kontingente** begrenzen die KI über den Anbieter der Instanz je Tag, Woche, Monat und Jahr – für die ganze Instanz, Gruppen und Personen ([KI-Kontingente](/ai-quotas)). {since=0.10.2}
+
 ## Erweiterungen & Domains
 
 **Block-Erweiterungen von jeder HTTPS-Adresse** (aus: nur aus `PLUGIN_ALLOWED_ORIGINS`) und **Eigene Domains für Veröffentlichungen** – siehe [Block-Erweiterungen](/plugins) und [Coolify und Reverse Proxy](/coolify-and-proxy#eigene-domains-fuer-veroeffentlichungen).

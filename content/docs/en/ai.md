@@ -9,7 +9,7 @@ Optional AI for writing, summaries, questions to your workspace and databases �
 > [!NOTE]
 > **AI in Flowplan is always optional.** After installation it is off. Administrators decide whether it is available, which provider is used, who may use it and which features are allowed. Everyone can switch it off again for themselves and decide which pages the AI may read. With [Ollama](#ollama-completely-local) your text never leaves the server. The one exception to “off by default”: [on-device AI (Apple)](#on-device-ai-apple) is allowed because nothing leaves the device – administrators and everyone can switch it off too.
 
-**More on this topic:** [Writing assistant and summaries](/ai-writing) · [Ask your workspace](/ask-ai) · [AI actions, databases and workflows](/ai-actions) · [Flashcards with AI](/flashcards-ai) · [Meetings](/meetings)
+**More on this topic:** [Writing assistant and summaries](/ai-writing) · [Ask your workspace](/ask-ai) · [AI actions, databases and workflows](/ai-actions) · [Flashcards with AI](/flashcards-ai) · [Meetings](/meetings) · [AI quotas](/ai-quotas)
 
 ## Principles
 
@@ -116,6 +116,8 @@ This covers three typical setups:
 
 All settings can also be preset with [environment variables](/configuration-ai-push#ai), for instance for automated installations. They apply until someone saves in the administration.
 
+How much AI may be used through the instance's provider – for everyone together, per role, per group and per person, per day, week, month and year – you set under [AI quotas](/ai-quotas). {since=0.10.2}
+
 ### Close pages and spaces to AI
 
 Owners of a workspace or a space can mark a **page** (under **Share → People**) or a **space** (in the space settings) **Closed to AI**. This applies to everyone and to everything below – sub-pages and database records. No AI feature reads this content, even if a person allowed it in their own rules.
@@ -130,6 +132,8 @@ Under **Settings → AI**:
 - **Use AI features:** switch AI off for yourself entirely – or single features.
 - **On this device (Apple):** whether Apple Intelligence is available here and whether Flowplan should use it – **When possible (default)**, **Only without AI on the server** or **Off** ([on-device AI](#on-device-ai-apple)).
 - **Set up own provider** (if administrators allow it): provider, address, model and your key. Your own providers need public `https` addresses. If there is an instance provider too, choose under **Which provider to use** between **The instance's** and **My own**.
+
+**AI quota:** when the administrators set [quotas](/ai-quotas), **Settings → AI** shows at the top how much AI through the instance's provider you have left and when it starts again. {since=0.10.2}
 
 ### What the AI may access
 

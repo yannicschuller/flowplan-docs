@@ -86,6 +86,8 @@ Changing the bot is recorded as the security event “Instance Telegram bot chan
 
 Optional and off by default: provider (Ollama, OpenAI-compatible, Anthropic, Gemini), who may use AI, individual features and users' own keys. A switch of its own: **On-device AI (Apple)** – allowed by default because nothing leaves the device. Everything in [AI](/ai#for-admins).
 
+**Quotas** limit AI through the instance's provider per day, week, month and year – for the whole instance, groups and people ([AI quotas](/ai-quotas)). {since=0.10.2}
+
 ## Extensions & domains
 
 **Block extensions from any HTTPS address** (off: only from `PLUGIN_ALLOWED_ORIGINS`) and **Custom domains for publications** – see [Block extensions](/plugins) and [Coolify and reverse proxies](/coolify-and-proxy#custom-domains-for-publications).

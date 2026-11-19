@@ -113,7 +113,7 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       {
         title: ["KI", "AI"],
         intro: ["Optionale KI – lokal oder mit eigenem Schlüssel: schreiben, fragen, Besprechungen.", "Optional AI – local or with your own key: writing, asking, meetings."],
-        pages: ["ai", "ai-writing", "ask-ai", "ai-actions", "flashcards-ai", "meetings"],
+        pages: ["ai", "ai-quotas", "ai-writing", "ask-ai", "ai-actions", "flashcards-ai", "meetings"],
       },
     ],
   },

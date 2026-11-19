@@ -9,7 +9,7 @@ Optionale KI für Texte, Zusammenfassungen, Fragen an den Arbeitsbereich und Dat
 > [!NOTE]
 > **KI ist in Flowplan immer optional.** Nach der Installation ist sie aus. Die Administration entscheidet, ob es sie gibt, welcher Anbieter verwendet wird, wer sie nutzen darf und welche Funktionen erlaubt sind. Jede Person kann sie für sich wieder ausschalten und festlegen, welche Seiten die KI lesen darf. Mit [Ollama](#ollama-komplett-lokal) verlassen deine Texte den Server nicht. Einzige Ausnahme vom „standardmäßig aus“: [KI auf dem Gerät (Apple)](#ki-auf-dem-geraet-apple) ist erlaubt, weil dabei nichts das Gerät verlässt – Administration und jede Person können auch sie ausschalten.
 
-**Mehr zum Thema:** [Schreibassistent und Zusammenfassungen](/ai-writing) · [Fragen an den Arbeitsbereich](/ask-ai) · [KI-Aktionen, Datenbanken und Workflows](/ai-actions) · [Lernkarten mit KI](/flashcards-ai) · [Besprechungen](/meetings)
+**Mehr zum Thema:** [Schreibassistent und Zusammenfassungen](/ai-writing) · [Fragen an den Arbeitsbereich](/ask-ai) · [KI-Aktionen, Datenbanken und Workflows](/ai-actions) · [Lernkarten mit KI](/flashcards-ai) · [Besprechungen](/meetings) · [KI-Kontingente](/ai-quotas)
 
 ## Grundsätze
 
@@ -116,6 +116,8 @@ So lassen sich drei typische Varianten einrichten:
 
 Alle Einstellungen lassen sich auch über [Umgebungsvariablen](/configuration-ai-push#ki) vorbelegen, etwa für automatisierte Installationen. Sie gelten, bis jemand in der Administration speichert.
 
+Wie viel KI über den Anbieter der Instanz genutzt werden darf – für alle zusammen, je Rolle, je Gruppe und je Person, pro Tag, Woche, Monat und Jahr –, legst du unter [KI-Kontingente](/ai-quotas) fest. {since=0.10.2}
+
 ### Seiten und Bereiche für die KI sperren
 
 Eigentümer eines Arbeitsbereichs oder eines Bereichs können eine **Seite** (unter **Teilen → Personen**) oder einen **Bereich** (in den Bereichseinstellungen) **für KI sperren**. Das gilt für alle Personen und für alles darunter – Unterseiten und Datenbankeinträge. Keine KI-Funktion liest dann diese Inhalte, auch wenn eine Person sie in ihren eigenen Regeln erlaubt hat.
@@ -130,6 +132,8 @@ Unter **Einstellungen → KI**:
 - **KI-Funktionen verwenden:** KI für dich ganz ausschalten – oder einzelne Funktionen.
 - **Auf diesem Gerät (Apple):** ob Apple Intelligence hier verfügbar ist und ob Flowplan es nutzen soll – **Wenn möglich (Standard)**, **Nur ohne KI auf dem Server** oder **Aus** ([KI auf dem Gerät](#ki-auf-dem-geraet-apple)).
 - **Eigenen Anbieter einrichten** (wenn die Administration es erlaubt): Anbieter, Adresse, Modell und dein Schlüssel. Eigene Anbieter müssen öffentliche `https`-Adressen haben. Gibt es auch einen Anbieter der Instanz, wählst du unter **Welchen Anbieter verwenden** zwischen **Den der Instanz** und **Meinen eigenen**.
+
+**KI-Kontingent:** Hat die Administration [Kontingente](/ai-quotas) gesetzt, zeigt **Einstellungen → KI** oben, wie viel KI über den Anbieter der Instanz dir noch bleibt und wann es neu beginnt. {since=0.10.2}
 
 ### Worauf die KI zugreifen darf
 
