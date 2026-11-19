@@ -63,7 +63,7 @@ Die Regeln gelten überall: in Tabelle und Board, bei Sammeländerungen, für G�
 
 - **Wenn**: ein Eintrag erstellt wird, ein Eintrag über ein Formular kommt, sich eine Eigenschaft ändert (wahlweise auf einen bestimmten Wert), ein Datum überschritten ist oder es nach Zeitplan so weit ist (siehe [Geplante Automationen](#geplante-automationen)).
 - **Nur wenn** (optional): Bedingungen wie „Priorität ist Hoch“ oder „Zuständig ist leer“.
-- **Dann**: Eigenschaften setzen, benachrichtigen oder eine **Vorlage anwenden**.
+- **Dann**: Eigenschaften setzen, benachrichtigen, eine **Vorlage anwenden** oder eine **Aufgabe erstellen** (siehe [Aufgaben erstellen](#aufgaben-erstellen)).
   - Werte für Eigenschaften können fest sein oder *heute*, *jetzt*, *die auslösende Person* oder *der Ersteller* lauten.
   - Benachrichtigt werden können die Person in einer Personen-Eigenschaft, der Ersteller, die auslösende Person oder ein bestimmtes Mitglied.
   - **Vorlage anwenden** setzt eine [Datensatzvorlage](/templates#datensatzvorlagen) auf den auslösenden Eintrag – mit ausgefüllten [Platzhaltern](/templates#platzhalter). Wahlweise **nur wenn der Inhalt leer ist** (vorhandener Text bleibt dann unberührt) oder **unten anhängen**. Leere Eigenschaften erhalten die Werte der Vorlage. Jede Regel wendet eine Vorlage pro Eintrag nur einmal an – auch wenn der Status später hin- und herwechselt.
@@ -80,6 +80,20 @@ Die **Nachricht** einer Benachrichtigung formatierst du wie die eines Workflows:
 
 Regeln lassen sich einzeln ausschalten.
 
+### Aufgaben erstellen {since=0.10.2}
+
+**Aufgabe erstellen** macht aus einem Ereignis eine Aufgabe, die jemand abhaken kann – wahlweise an einem von zwei Orten:
+
+- **ins Dokument des Eintrags**: eine Aufgabe mit Person und Fälligkeit am Ende des Eintragstexts oder unter einer Überschrift, die du angibst (fehlt sie, entsteht sie am Ende). Sie erscheint in [Meine Aufgaben](/tasks-in-documents#aufgaben-mit-person-und-datum) wie jede Aufgabe.
+- **als Eintrag in einer Datenbank**: ein neuer Eintrag in einer Aufgaben-Datenbank deines Arbeitsbereichs. Du wählst, in welche Personen- und Datumseigenschaft Person und Fälligkeit kommen, kannst Auswahl-Eigenschaften wie Priorität oder Status vorbelegen und – wenn die Aufgaben-Datenbank eine Relation zu dieser Datenbank hat – den neuen Eintrag mit dem auslösenden verknüpfen. Hat die Aufgaben-Datenbank einen Status oder ein Erledigt-Häkchen, steht der Eintrag auch in Meine Aufgaben.
+
+Der **Text** nimmt [Platzhalter](/templates#platzhalter) wie bei Datensatzvorlagen: „Nachfassen: {{Titel}} ({{Status}})“ wird mit den Werten des Eintrags ausgefüllt. **Person** ist niemand, die Person in einer Personen-Eigenschaft des Eintrags, die auslösende Person, der Ersteller des Eintrags oder ein bestimmtes Mitglied. **Fällig** zählt Tage ab dem Auslösen („+3“); leer heißt ohne Fälligkeit.
+
+Beispiel: *Wenn* Status sich auf „Erledigt“ ändert, *dann* Aufgabe „Rechnung zu {{Titel}} schreiben“ in der Datenbank „Buchhaltung“, Person „Anna“, fällig +2 Tage, verknüpft über „Projekt“.
+
+> [!NOTE]
+> Eine Regel erstellt ihre Aufgabe einmal je Eintrag – auch wenn der Status später hin- und herwechselt. Sie handelt mit den Rechten der Person, die sie gespeichert hat: Wer die Regel speichert, muss in der Aufgaben-Datenbank Einträge anlegen dürfen; Formulare und Gäste lösen sie trotzdem aus. Fehlt dieses Recht später, wird die auslösende Änderung mit einer Meldung abgelehnt, die die Regel nennt. Einträge, die eine Regel so anlegt, durchlaufen die Regeln ihrer Datenbank einmal; deren Aufgaben erzeugen aber keine weiteren – so entsteht keine Kette. Regeln mit „Aufgabe erstellen“ lassen sich noch nicht im Canvas öffnen.
+
 ### Im Canvas öffnen: aus einer Regel wird ein Workflow
 
 Reicht eine Regel nicht mehr – mehrere Schritte, Warten, Freigaben, KI, E-Mails oder andere Dienste –, öffnet das Symbol **Im Canvas öffnen** neben der Regel sie als [Workflow](/workflows): eine Workflow-Seite neben der Datenbank mit der Regel als Entwurf. Die Regel läuft weiter, bis du den Workflow aktivierst; dann wird sie in derselben Änderung durch einen Verweis ersetzt („Erweitert als Workflow“). So läuft nie beides und nie keins von beiden.
@@ -94,7 +108,7 @@ Der Unterschied: Eine Regel handelt für die Datenbank, ein Workflow läuft als 
 Mit dem Auslöser **es so weit ist (Zeitplan)** legt eine Regel regelmäßig einen neuen Eintrag an, etwa für Wochenberichte, Monatsabschlüsse oder Wartungen:
 
 - **Wann**: täglich bzw. alle N Tage, wöchentlich bzw. alle N Wochen an einem Wochentag oder monatlich bzw. alle N Monate an einem Tag (der 31. wird in kürzeren Monaten zum letzten Tag), jeweils zu einer Uhrzeit in deiner Zeitzone. Beispiele: „Jeden Montag 09:00“, „Monatlich am 1.“, „Alle 3 Tage“.
-- **Dann**: **Datensatz anlegen** aus einer Datensatzvorlage (Eigenschaften und Text) oder leer. Datumsfelder lassen sich relativ zum Termin setzen, z. B. „Fällig: +3 Tage“; 0 heißt am Tag selbst.
+- **Dann**: **Datensatz anlegen** aus einer Datensatzvorlage (Eigenschaften und Text) oder leer. Datumsfelder lassen sich relativ zum Termin setzen, z. B. „Fällig: +3 Tage“; 0 heißt am Tag selbst. Oder **Aufgabe erstellen** als Eintrag in einer Aufgaben-Datenbank, etwa „Standup {{Heute}}“ für die Person, die die Regel speichert {since=0.10.2}. Klappt das einmal nicht, gilt der Termin als erledigt, und die Meldung steht in deinem Posteingang.
 
 Der Vorschlag „Jeden Montag 09:00 einen Datensatz anlegen“ richtet das mit der Standardvorlage ein.
 

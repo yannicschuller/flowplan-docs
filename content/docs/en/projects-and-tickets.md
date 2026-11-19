@@ -63,7 +63,7 @@ The rules apply everywhere: table and board, bulk edits, guests and the Git conn
 
 - **When**: a record is created, a record arrives through a form, a property changes (optionally to a certain value), a date has passed or it is time according to a schedule (see [Scheduled automations](#scheduled-automations)).
 - **Only if** (optional): conditions such as “Priority is High” or “Assignee is empty”.
-- **Then**: set properties, notify or **apply a template**.
+- **Then**: set properties, notify, **apply a template** or **create a task** (see [Creating tasks](#creating-tasks)).
   - Values for properties can be fixed, or *today*, *now*, *the person who triggered it* or *the creator*.
   - You can notify the person in a person property, the creator, the person who triggered it or a specific member.
   - **Apply template** puts a [record template](/templates#record-templates) on the triggering record – with its [placeholders](/templates#placeholders) filled in. Either **only if the content is empty** (existing text then stays untouched) or **append below**. Empty properties get the template's values. Each rule applies a template to a record only once – even if the status later goes back and forth.
@@ -80,6 +80,20 @@ You format the **message** of a notification like that of a workflow: bold, ital
 
 Each rule can be switched off on its own.
 
+### Creating tasks {since=0.10.2}
+
+**Create task** turns an event into a task someone can tick off – in one of two places:
+
+- **into the record’s document**: a task with a person and a due date at the end of the record’s text or below a heading you name (made at the end if it is missing). It shows in [My tasks](/tasks-in-documents#tasks-with-assignee-and-date) like any task.
+- **as a record in a database**: a new record in a task database of your workspace. You choose which person and date properties get the person and the due date, can preset select properties such as priority or status and – if the task database has a relation to this database – link the new record to the triggering one. If the task database has a status or a done checkbox, the record shows in My tasks too.
+
+The **text** takes [placeholders](/templates#placeholders) as record templates do: “Follow up: {{Title}} ({{Status}})” is filled in with the record’s values. The **person** is nobody, the person in a person property of the record, the person who triggered it, the record’s creator or a specific member. **Due** counts days from the trigger (“+3”); empty means no due date.
+
+Example: *When* Status changes to “Done”, *then* create the task “Write the invoice for {{Title}}” in the database “Accounting”, person “Anna”, due +2 days, linked through “Project”.
+
+> [!NOTE]
+> A rule creates its task once per record – even if the status later goes back and forth. It acts with the rights of the person who saved it: whoever saves the rule must be allowed to create records in the task database; forms and guests still trigger it. If that right goes away later, the triggering change is refused with a message naming the rule. Records a rule creates this way run through their database’s rules once, but the tasks of those rules create nothing further – so no chain arises. Rules with “Create task” cannot be opened in the canvas yet.
+
 ### Open in canvas: a rule becomes a workflow
 
 When a rule is not enough any more – several steps, waits, approvals, AI, e-mails or other services –, the **Open in canvas** icon next to the rule opens it as a [workflow](/workflows): a workflow page next to the database with the rule as its draft. The rule keeps running until you activate the workflow; then it is replaced by a reference in the same change (“Extended as a workflow”). So both never run at once, and never neither.
@@ -94,7 +108,7 @@ The difference: a rule acts for the database, a workflow runs as the person who 
 With the trigger **it is time (schedule)** a rule creates a new record regularly, for weekly reports, monthly closings or maintenance:
 
 - **When**: daily or every N days, weekly or every N weeks on a weekday, or monthly or every N months on a day (the 31st becomes the last day in shorter months), each at a time in your time zone. Examples: “Every Monday at 09:00”, “Monthly on day 1”, “Every 3 days”.
-- **Then**: **Create a record** from a record template (properties and text) or empty. Date fields can be set relative to the run, e.g. “Due: +3 days”; 0 means the same day.
+- **Then**: **Create a record** from a record template (properties and text) or empty. Date fields can be set relative to the run, e.g. “Due: +3 days”; 0 means the same day. Or **create a task** as a record in a task database, such as “Standup {{Today}}” for the person who saves the rule {since=0.10.2}. If that fails once, the date counts as done and the message is in your inbox.
 
 The suggestion “Create a record every Monday at 09:00” sets this up with the default template.
 
