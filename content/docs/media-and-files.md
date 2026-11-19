@@ -46,6 +46,14 @@ Soll ein PDF zum Heft werden, in dem du Seite für Seite schreibst und Blätter 
 
 **Herunterladen** lädt weiterhin das Original. **Mit Anmerkungen herunterladen** (daneben, sobald es Anmerkungen gibt) erzeugt ein neues PDF mit denselben Seiten, auf denen die Anmerkungen als Vektorgrafik liegen – sie bleiben beim Vergrößern scharf. Geschützte (verschlüsselte) PDFs lassen sich nur ohne Anmerkungen herunterladen; Text erscheint in Helvetica, Zeichen außerhalb des westeuropäischen Zeichensatzes als „?“.
 
+### PDF im Seitenfenster {since=0.10.2}
+
+Ein PDF kann neben der Seite offen bleiben, während du schreibst: Rechtsklick (auf dem Touchscreen lange drücken) auf eine PDF-Karte im Dokument, auf ein PDF in den **Medien** oder auf einen PDF-Link, dann **Im Seitenfenster öffnen**. In den **Medien** und bei Dateien in den Suchergebnissen gibt es dafür auch ein eigenes Symbol. Das PDF legt sich rechts neben die Seite, das Dokument oder Notizbuch links wird schmaler und bleibt voll bedienbar. Seite und Zoom bleiben, wo sie sind, während du links weiterschreibst; die Breite ziehst du am linken Rand, das Gerät merkt sie sich. Auf dem Smartphone erscheint das PDF als Blatt von unten, das du nach unten wegwischst. <kbd>Esc</kbd> oder **×** schließt es, ein anderes PDF ersetzt es.
+
+Wer die Seite des PDFs bearbeiten darf, schreibt sofort darauf: Es sind dieselben Anmerkungen wie im PDF-Viewer – sie gehören zum PDF, alle mit Zugriff sehen sie, und sie werden beim Schreiben gespeichert (jede Speicherung ist eine Version). Leser sehen sie, ohne sie zu ändern; in verschlüsselten Bereichen und auf gesperrten Seiten gibt es kein Anmerken. Mit **Anmerken** schaltest du den Stift aus und ein.
+
+**Bereich übernehmen:** Mit **Bereich** umfährst du einen Teil einer Seite (oder ziehst schräg darüber für ein Rechteck). **Einfügen** setzt ihn als Bild in das Dokument oder Notizbuch, in dem du zuletzt gearbeitet hast; du kannst den Bereich auch dorthin ziehen. Das Bild wird scharf aus der PDF-Seite erzeugt und wie jedes Bild hochgeladen. Darunter steht „Name.pdf, S. 3“ – ein Klick darauf öffnet das PDF im Seitenfenster an genau dieser Seite.
+
 ### 3D- und CAD-Dateien {since=0.10.2}
 
 **STL**, **OBJ**, **glTF/GLB**, **3MF**, **STEP/STP** und **IGES/IGS** zeigt Flowplan im 3D-Viewer, statt sie nur zum Herunterladen anzubieten. Lädst du eine solche Datei in ein Dokument, erscheint eine Karte mit Würfel-Symbol und **Im 3D-Viewer öffnen**; ein Klick öffnet den Viewer. Dasselbe gilt für 3D-Dateien in den **Medien** (Filter **3D/CAD**), in Dateien-Eigenschaften von Datenbanken, in Links auf solche Dateien und auf veröffentlichten Seiten. In bearbeitbarem Text öffnet ein Link den Viewer mit <kbd>⌘</kbd>-Klick.

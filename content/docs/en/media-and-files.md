@@ -46,6 +46,14 @@ To turn a PDF into a notebook you write in page by page and add sheets to, open 
 
 **Download** still downloads the original. **Download with annotations** (next to it once there are annotations) creates a new PDF with the same pages and the annotations on top as vector graphics – they stay sharp when zooming in. Protected (encrypted) PDFs can only be downloaded without annotations; text appears in Helvetica, characters outside the Western European character set as “?”.
 
+### PDF in the side panel {since=0.10.2}
+
+A PDF can stay open beside the page while you write: right-click (long-press on a touch screen) a PDF card in a document, a PDF in **Media** or a link to a PDF, then **Open in side panel**. **Media** and files among the search results also have their own icon for it. The PDF docks to the right of the page; the document or notebook on the left narrows and stays fully usable. Page and zoom stay where they are while you keep writing on the left; drag the panel's left edge to change its width, the device remembers it. On a phone the PDF comes up as a sheet from the bottom that you swipe down to close. <kbd>Esc</kbd> or **×** closes it, another PDF replaces it.
+
+If you may edit the PDF's page, you write on it right away: these are the same annotations as in the PDF viewer – they belong to the PDF, everyone with access sees them, and they are saved as you write (every save is a version). Readers see them without changing them; encrypted spaces and locked pages have no annotating. **Annotate** switches the pen off and on.
+
+**Taking a region:** with **Region** you draw around part of a page (or drag across it for a rectangle). **Insert** puts it as a picture into the document or notebook you worked in last; you can also drag the region there. The picture is drawn sharply from the PDF page and uploaded like any image. Below it, “Name.pdf, p. 3” opens the PDF in the side panel at exactly that page.
+
 ### 3D and CAD files {since=0.10.2}
 
 Flowplan shows **STL**, **OBJ**, **glTF/GLB**, **3MF**, **STEP/STP** and **IGES/IGS** files in the 3D viewer instead of only offering them as downloads. Upload such a file to a document and a card with a cube icon and **Open in 3D viewer** appears; a click opens the viewer. The same goes for 3D files in **Media** (filter **3D/CAD**), in files properties of databases, in links to such files and on published pages. In editable text, a link opens the viewer with <kbd>⌘</kbd>-click.

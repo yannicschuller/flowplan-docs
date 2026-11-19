@@ -50,6 +50,8 @@ Neben den festen Breiten stellt der Regler-Knopf die Strichstärke frei ein, mit
 
 Über ‚PDF einfügen …' (im Plus-Menü oder unter ‚Weitere Aktionen') fügst du ein PDF in ein bestehendes Notizbuch ein – vor dem ersten Blatt, nach einem beliebigen Blatt oder am Ende; in der Seitenübersicht geht das auch direkt über ‚PDF davor/danach einfügen …' im Menü eines Blatts. Jede PDF-Seite wird ein eigenes Blatt mit der Seite als Hintergrund, auf dem du wie gewohnt schreibst (höchstens 500 Seiten pro PDF, 1000 Blätter pro Notizbuch). Mit zwei Fingern zoomst du stufenlos an der Stelle zwischen den Fingern und verschiebst die Blätter; auf dem Trackpad zoomst du mit der Pinch-Geste oder Strg + Scrollen, mit dem Apple Pencil schreibst du dabei ungestört weiter.
 
+**PDF als Anhang** {since=0.10.2}: Im Dialog **PDF einfügen** wählst du **Als Blätter** (wie bisher) oder **Als Anhang**. Ein Anhang bleibt ein ganzes PDF und wird kein Blatt: Er steht in der Leiste **Anhänge** über den Blättern und öffnet sich mit einem Tipp im [Seitenfenster](/media-and-files#pdf-im-seitenfenster) neben deinen Blättern – zum Lesen, Anmerken und Übernehmen von Bereichen, die als Bild mit Link zur PDF-Seite auf dem Blatt landen. Das **×** am Anhang nimmt ihn aus der Leiste; die Datei bleibt an der Seite.
+
 Alle Werkzeuge im Einzelnen – Tastenkürzel, Lieblingsstifte, Formen und Lineal, Lasso, Handschrift in Text, Bilder und Sticker, Audio – stehen unter [Werkzeuge im Notizbuch](/notebook-tools).
 
 ## Seitenübersicht

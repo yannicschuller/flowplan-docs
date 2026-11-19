@@ -50,6 +50,8 @@ Besides the preset widths, the slider button sets any line width, with a preview
 
 With 'Insert PDF …' (in the plus menu or under 'More actions') you add a PDF to an existing notebook – before the first sheet, after any sheet or at the end; in the page overview, a sheet's menu offers 'Insert PDF before/after …' directly. Each PDF page becomes a sheet of its own with the page as background that you write on as usual (at most 500 pages per PDF, 1000 sheets per notebook). Two fingers zoom smoothly at the spot between them and move the sheets; on a trackpad, pinch or use Ctrl + scroll, and the Apple Pencil keeps writing undisturbed.
 
+**PDF as an attachment** {since=0.10.2}: in the **Insert PDF** dialog you choose **As sheets** (as before) or **As an attachment**. An attachment stays a whole PDF and does not become a sheet: it sits in the **Attachments** strip above the sheets and opens with a tap in the [side panel](/media-and-files#pdf-in-the-side-panel) beside your sheets – to read, annotate and take regions from, which land on the sheet as a picture with a link to the PDF page. The **×** on an attachment takes it off the strip; the file stays on the page.
+
 Every tool in detail – keyboard shortcuts, favourite pens, shapes and ruler, lasso, handwriting to text, pictures and stickers, audio – is under [Notebook tools](/notebook-tools).
 
 ## Page overview
