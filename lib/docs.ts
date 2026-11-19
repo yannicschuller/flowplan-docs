@@ -149,7 +149,7 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       {
         title: ["Konfiguration", "Configuration"],
         intro: ["Alle Umgebungsvariablen, nach Thema.", "Every environment variable, by topic."],
-        pages: ["configuration", "configuration-storage", "configuration-integrations", "configuration-ai-push", "environment-variables"],
+        pages: ["configuration", "instance-features", "configuration-storage", "configuration-integrations", "configuration-ai-push", "environment-variables"],
       },
       {
         title: ["Speicher und Betrieb", "Storage and operations"],
