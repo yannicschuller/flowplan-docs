@@ -48,7 +48,7 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       {
         title: ["Einstieg", "Getting started"],
         intro: ["Konto, Einführung und Einstellungen, Seitenbaum, Tabs, Mitglieder und Rechte.", "Account, introduction and settings, page tree, tabs, members and permissions."],
-        pages: ["first-steps", "settings", "pages-and-spaces", "tabs-and-split-view", "workspaces-and-permissions", "encrypted-spaces"],
+        pages: ["first-steps", "settings", "pages-and-spaces", "library", "tabs-and-split-view", "workspaces-and-permissions", "encrypted-spaces"],
       },
       {
         title: ["Umzug, Import und Export", "Moving, import and export"],

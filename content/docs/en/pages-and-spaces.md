@@ -6,7 +6,7 @@ keywords: page tree, sidebar, space, trash, favorites, move, library, book, chap
 
 Everything in Flowplan is a page in a tree. Spaces structure the tree, workspaces keep teams apart.
 
-**More on this topic:** [Tags, properties and aliases](/page-tags) · [Links, mentions and the graph](/links-and-mentions)
+**More on this topic:** [Library: spaces as shelves of books](/library) · [Tags, properties and aliases](/page-tags) · [Links, mentions and the graph](/links-and-mentions)
 
 ## Structure
 
@@ -125,18 +125,6 @@ With many nested pages the tree gets long. Right-click a page with sub-pages (a 
 - Above the tree, **←** goes up one level, and the path shows where you are: a click on a page above focuses it, a click on the space shows the whole tree. **×** (or <kbd>Esc</kbd> in the tree) ends the focus.
 - Opening a page outside the branch – via search, a link or back/forward – shows the whole tree again, with a short note and **Focus again**. That way the open page is always in the sidebar.
 - Flowplan remembers the focus per workspace on this device, also after reloading. Drag and drop works within the branch.
-
-## A space as a library {since=0.10.0}
-
-For documentation with hundreds of pages, show a space as a **library**: `…` next to the space → **Edit space …** → **Show as library**. There is no second structure: the pages at the top of the space are the **books**, their sub-pages the **chapters**, and theirs the **pages**.
-
-- **Sidebar:** the space stays collapsed with just **Open library** below it. A click on the space's name still expands the page tree, to reorder pages.
-- **Overview:** every book is a tile with icon, cover, number of pages and last edit, in the order of the page tree. A click shows the table of contents with collapsible chapters, **Start reading** and **Continue reading** (the page of the book you opened last).
-- **Reading:** above every page you see its book and chapter and arrows to the previous and next page in reading order; at the bottom **Next** leads on.
-- **Search:** the library's search field searches only this space.
-- **Create:** **New book** on the overview, **New chapter** in a book, **+** on a chapter for a page.
-
-You see only pages you may see; journal days are not part of the library. Through the API, `space.update` with `library` switches the view, and `GET /api/spaces/{spaceId}/library` returns the books and chapters.
 
 ## Trash
 

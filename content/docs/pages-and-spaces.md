@@ -6,7 +6,7 @@ keywords: Seitenbaum, Seitenleiste, Bereich, Papierkorb, Favoriten, verschieben,
 
 Alles in Flowplan ist eine Seite in einem Baum. Bereiche gliedern den Baum, Arbeitsbereiche trennen Teams voneinander.
 
-**Mehr zum Thema:** [Tags, Eigenschaften und Aliasse](/page-tags) · [Links, Erwähnungen und Graph](/links-and-mentions)
+**Mehr zum Thema:** [Bibliothek: Bereiche als Regale mit Büchern](/library) · [Tags, Eigenschaften und Aliasse](/page-tags) · [Links, Erwähnungen und Graph](/links-and-mentions)
 
 ## Aufbau
 
@@ -125,18 +125,6 @@ Bei vielen verschachtelten Seiten wird der Baum lang. Rechtsklick auf eine Seite
 - Über dem Baum führt **←** eine Ebene höher, und der Pfad zeigt, wo du bist: Ein Klick auf eine Seite darüber fokussiert sie, ein Klick auf den Bereich zeigt den ganzen Baum. **×** (oder <kbd>Esc</kbd> im Baum) beendet den Fokus.
 - Öffnest du eine Seite außerhalb des Zweigs – über die Suche, einen Link oder Zurück/Vor –, zeigt der Seitenbaum wieder alles, mit einem kurzen Hinweis und **Wieder fokussieren**. So steht die geöffnete Seite immer in der Seitenleiste.
 - Flowplan merkt sich den Fokus je Arbeitsbereich auf diesem Gerät, auch nach dem Neuladen. Ziehen und Ablegen funktioniert innerhalb des Zweigs.
-
-## Bereich als Bibliothek {since=0.10.0}
-
-Für Dokumentation mit Hunderten Seiten zeigst du einen Bereich als **Bibliothek**: `…` neben dem Bereich → **Bereich bearbeiten …** → **Als Bibliothek anzeigen**. Eine zweite Ordnung gibt es nicht: Die Seiten oben im Bereich sind die **Bücher**, ihre Unterseiten die **Kapitel**, deren Unterseiten die **Seiten**.
-
-- **Seitenleiste:** Der Bereich bleibt zugeklappt, darunter steht nur **Bibliothek öffnen**. Ein Klick auf den Bereichsnamen klappt den Seitenbaum trotzdem auf, zum Umsortieren.
-- **Übersicht:** Jedes Buch ist eine Kachel mit Symbol, Cover, Zahl der Seiten und letzter Bearbeitung, in der Reihenfolge des Seitenbaums. Ein Klick zeigt das Inhaltsverzeichnis mit zuklappbaren Kapiteln, **Lesen beginnen** und **Weiterlesen** (die Seite des Buchs, die du zuletzt geöffnet hast).
-- **Lesen:** Über jeder Seite stehen Buch und Kapitel und Pfeile zur vorherigen und nächsten Seite in Lesereihenfolge, unten führt **Weiter** zur nächsten.
-- **Suchen:** Das Suchfeld der Bibliothek sucht nur in diesem Bereich.
-- **Anlegen:** **Neues Buch** in der Übersicht, **Neues Kapitel** im Buch, **+** an einem Kapitel für eine Seite.
-
-Du siehst nur Seiten, die du sehen darfst; Journaltage stehen nicht in der Bibliothek. Über die API schaltet `space.update` mit `library` die Ansicht um, `GET /api/spaces/{spaceId}/library` liefert Bücher und Kapitel.
 
 ## Papierkorb
 

@@ -15,6 +15,7 @@ A form view collects answers directly as records in the database – from member
    - title, description and the label of the submit button,
    - questions: order, hide, **required**, help text per question,
    - question type: short or **long text**, **radio buttons** instead of a list, a **linear scale 1–10** for numbers,
+   - **Suggest earlier answers** for short text questions (see [Earlier answers as suggestions](#earlier-answers-as-suggestions)),
    - **Only show if …** per question (see [Conditions and pages](#conditions-and-pages)),
    - **Text block before**, **Text block at the end** and **New page from here** for explanations and several pages,
    - **title after submitting** and **confirmation text**,
@@ -43,6 +44,23 @@ Under **After sending**, **Confirmation by e-mail** and **Notify the team** – 
 - **Placeholders**: `{Name of the question}` inserts the answer to that question – in the title and text after submitting, in the redirect (there only after the domain name, e.g. `https://example.com/thanks?name={Name}`) and in the e-mail. Unknown names stay as they are; people, relations and files are not inserted.
 - **Confirmation by e-mail to the people answering**: subject and text are up to you. The e-mail contains the text and the answered questions as a list – without hidden and internal properties – and, with the [customer portal](#customer-portal), the link to the request (then only this one e-mail is sent). It goes to the first answered e-mail question; in forms that are not anonymous, otherwise to the signed-in account's address. Anonymous forms only write when the person types their address. E-mail must be set up ([Configuration](/en/configuration)); at most 5 e-mails per hour go to an address, 10 per sender and 300 per form.
 - **Notify the team**: the chosen members get a notification of the kind “Guest comments and guest records” for each new answer – if they may see the record.
+
+### Earlier answers as suggestions {since=0.10.2}
+
+For questions that get the same answers again and again – a shopping or order list, a room, a project – Flowplan can suggest earlier answers while typing. Switch on **Suggest earlier answers** for a short text question in **Design form** and choose where they come from:
+
+- **Own answers**: only values from records the person answering created.
+- **All answers**: values from all records the person answering may see.
+
+From two letters on, up to eight distinct values appear under the field – those starting with the typed letters first, then those containing them, the frequent and recent ones first. <kbd>↑</kbd> and <kbd>↓</kbd> choose, <kbd>Enter</kbd> or a tap takes one, <kbd>Esc</kbd> closes the list.
+
+Privacy comes first:
+
+- Suggestions from the server exist only in forms that are **Members only** and not **Anonymous** – otherwise anyone with the link could read other people's answers. In other forms the switch is off.
+- They only come from records the person answering may read, with all permissions: the database's sharing, private records and properties with a read rule. A member who may send the form but not read the database gets no suggestions.
+- Only the asked question's values are sent, nothing else of the records; very long values are not suggested.
+
+In anonymous and public forms the browser can still offer what was typed **on this device** before (its own form history, if switched on in the browser). Flowplan stores nothing for that.
 
 ### Continue later
 

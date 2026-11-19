@@ -55,6 +55,8 @@ Guests are people outside the team, such as customers or freelancers. They only 
 
 With single sign-on, groups from the identity provider can maintain members and groups automatically – see [Map SSO groups](/sso-oidc#map-sso-groups-to-workspaces).
 
+Shelves and books of the [library](/library#permissions-for-shelves-and-books) follow the same permissions: a shelf is a space, a book a page. {since=0.10.2}
+
 ## How permissions work together
 
 1. The **space** sets the basis: open to all members or private for the people it is shared with.

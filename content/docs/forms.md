@@ -15,6 +15,7 @@ Eine Formularansicht sammelt Antworten direkt als Einträge in der Datenbank –
    - Titel, Beschreibung und Beschriftung des Absenden-Knopfs,
    - Fragen: Reihenfolge, ausblenden, **Pflichtfeld**, Hilfetext je Frage,
    - Frageart: kurzer oder **langer Text**, **Auswahlknöpfe** statt Liste, **Lineare Skala 1–10** für Zahlen,
+   - **Frühere Antworten vorschlagen** bei kurzen Textfragen (siehe [Frühere Antworten als Vorschläge](#fruehere-antworten-als-vorschlaege)),
    - **Nur zeigen, wenn …** je Frage (siehe [Bedingungen und Seiten](#bedingungen-und-seiten)),
    - **Textblock davor**, **Textblock am Ende** und **Neue Seite ab hier** für Erklärungen und mehrere Seiten,
    - **Titel nach dem Absenden** und **Bestätigungstext**,
@@ -43,6 +44,23 @@ Unter **Nach dem Absenden**, **Bestätigung per E-Mail** und **Team benachrichti
 - **Platzhalter**: `{Name der Frage}` setzt die Antwort auf diese Frage ein – im Titel und Text nach dem Absenden, in der Weiterleitung (dort nur nach dem Domainnamen, z. B. `https://example.com/danke?name={Name}`) und in der E-Mail. Unbekannte Namen bleiben stehen; Personen, Relationen und Dateien werden nicht eingesetzt.
 - **Bestätigung per E-Mail an die Antwortenden**: Betreff und Text sind frei wählbar. Die E-Mail enthält den Text und die beantworteten Fragen als Liste – ohne ausgeblendete und interne Eigenschaften – und, mit [Kundenportal](#kundenportal), den Link zur Anfrage (dann kommt nur diese eine E-Mail). Sie geht an die erste beantwortete E-Mail-Frage; in Formularen, die nicht anonym sind, sonst an die Adresse des angemeldeten Kontos. Anonyme Formulare schreiben nur, wenn die Person ihre Adresse selbst eingibt. Voraussetzung ist eingerichtetes E-Mail ([Konfiguration](/configuration)); je Adresse gehen höchstens 5 E-Mails pro Stunde, je Absender 10 und je Formular 300.
 - **Team benachrichtigen**: Die gewählten Mitglieder bekommen bei jeder neuen Antwort eine Benachrichtigung der Art „Gastkommentare und Gasteinträge“ – sofern sie den Eintrag sehen dürfen.
+
+### Frühere Antworten als Vorschläge {since=0.10.2}
+
+Bei Fragen, auf die immer wieder dieselben Antworten kommen – eine Einkaufs- oder Bestellliste, ein Raum, ein Projekt –, schlägt Flowplan beim Tippen frühere Antworten vor. Schalte dafür bei einer kurzen Textfrage unter **Formular gestalten** **Frühere Antworten vorschlagen** ein und wähle, woher sie kommen:
+
+- **Nur eigene Antworten**: nur Werte aus Einträgen, die die antwortende Person selbst angelegt hat.
+- **Alle Antworten**: Werte aus allen Einträgen, die die antwortende Person sehen darf.
+
+Ab zwei Buchstaben erscheinen unter dem Feld bis zu acht verschiedene Werte – zuerst die, die mit dem Getippten beginnen, dann die, die es enthalten, häufige und neue zuerst. <kbd>↑</kbd> und <kbd>↓</kbd> wählen, <kbd>Enter</kbd> oder Antippen übernimmt, <kbd>Esc</kbd> schließt die Liste.
+
+Datenschutz geht vor:
+
+- Vorschläge vom Server gibt es nur in Formularen **Nur für Mitglieder** ohne **Anonyme Antworten** – sonst könnte jede Person mit dem Link fremde Antworten lesen. In anderen Formularen ist der Schalter aus.
+- Sie kommen nur aus Einträgen, die die antwortende Person lesen darf, mit allen Berechtigungen: der Freigabe der Datenbank, privaten Einträgen und Eigenschaften mit Leseregel. Wer das Formular senden, die Datenbank aber nicht lesen darf, bekommt keine Vorschläge.
+- Übertragen werden nur die Werte der gefragten Frage, nichts sonst aus den Einträgen; sehr lange Werte werden nicht vorgeschlagen.
+
+In anonymen und öffentlichen Formularen kann der Browser trotzdem anbieten, was **auf diesem Gerät** schon eingegeben wurde (sein eigener Formularverlauf, wenn er im Browser eingeschaltet ist). Flowplan speichert dafür nichts.
 
 ### Später weitermachen
 
