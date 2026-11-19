@@ -15,7 +15,7 @@ Eine Formularansicht sammelt Antworten direkt als Einträge in der Datenbank –
    - Titel, Beschreibung und Beschriftung des Absenden-Knopfs,
    - Fragen: Reihenfolge, ausblenden, **Pflichtfeld**, Hilfetext je Frage,
    - Frageart: kurzer oder **langer Text**, **Auswahlknöpfe** statt Liste, **Lineare Skala 1–10** für Zahlen,
-   - **Frühere Antworten vorschlagen** bei kurzen Textfragen (siehe [Frühere Antworten als Vorschläge](#fruehere-antworten-als-vorschlaege)),
+   - **Feste Vorschläge eingeben** und **Frühere Antworten vorschlagen** bei kurzen Textfragen (siehe [Feste Vorschlagslisten](#feste-vorschlagslisten) und [Frühere Antworten als Vorschläge](#fruehere-antworten-als-vorschlaege)),
    - **Nur zeigen, wenn …** je Frage (siehe [Bedingungen und Seiten](#bedingungen-und-seiten)),
    - **Textblock davor**, **Textblock am Ende** und **Neue Seite ab hier** für Erklärungen und mehrere Seiten,
    - **Titel nach dem Absenden** und **Bestätigungstext**,
@@ -45,6 +45,17 @@ Unter **Nach dem Absenden**, **Bestätigung per E-Mail** und **Team benachrichti
 - **Bestätigung per E-Mail an die Antwortenden**: Betreff und Text sind frei wählbar. Die E-Mail enthält den Text und die beantworteten Fragen als Liste – ohne ausgeblendete und interne Eigenschaften – und, mit [Kundenportal](#kundenportal), den Link zur Anfrage (dann kommt nur diese eine E-Mail). Sie geht an die erste beantwortete E-Mail-Frage; in Formularen, die nicht anonym sind, sonst an die Adresse des angemeldeten Kontos. Anonyme Formulare schreiben nur, wenn die Person ihre Adresse selbst eingibt. Voraussetzung ist eingerichtetes E-Mail ([Konfiguration](/configuration)); je Adresse gehen höchstens 5 E-Mails pro Stunde, je Absender 10 und je Formular 300.
 - **Team benachrichtigen**: Die gewählten Mitglieder bekommen bei jeder neuen Antwort eine Benachrichtigung der Art „Gastkommentare und Gasteinträge“ – sofern sie den Eintrag sehen dürfen.
 
+### Feste Vorschlagslisten {since=0.10.2}
+
+Soll eine kurze Textfrage feste Antworten anbieten – Orte, Abteilungen, Artikel –, gib sie unter **Formular gestalten** bei der Frage mit **Feste Vorschläge eingeben** ein, **einer pro Zeile**. Beim Tippen erscheinen ab dem ersten Buchstaben die passenden Einträge unter dem Feld: zuerst die, die mit dem Getippten beginnen, dann die, die es enthalten, jeweils in deiner Reihenfolge. In einem leeren Feld zeigt <kbd>↓</kbd> die Liste von vorn. Die Antwort bleibt frei – wer etwas anderes braucht, tippt es einfach ein.
+
+- Die Liste funktioniert in **jedem** Formular, auch in öffentlichen und anonymen: Sie enthält nur, was du selbst eingegeben hast, keine Antworten anderer.
+- Leerzeichen am Anfang und Ende und leere Zeilen fallen weg, doppelte Einträge (auch in anderer Groß- und Kleinschreibung) zählen einmal.
+- Höchstens 200 Vorschläge pro Frage, jeder höchstens 200 Zeichen lang. Unter dem Feld steht, wie viele es sind; bei zu vielen oder zu langen lässt sich das Formular nicht speichern.
+- Das veröffentlichte Formular bekommt nur die Listen der Fragen, die es stellt – nicht die von ausgeblendeten Fragen.
+
+Sind bei derselben Frage auch [frühere Antworten](#fruehere-antworten-als-vorschlaege) eingeschaltet, kommen die festen Vorschläge zuerst, frühere Antworten danach, ohne doppelte Einträge.
+
 ### Frühere Antworten als Vorschläge {since=0.10.2}
 
 Bei Fragen, auf die immer wieder dieselben Antworten kommen – eine Einkaufs- oder Bestellliste, ein Raum, ein Projekt –, schlägt Flowplan beim Tippen frühere Antworten vor. Schalte dafür bei einer kurzen Textfrage unter **Formular gestalten** **Frühere Antworten vorschlagen** ein und wähle, woher sie kommen:
@@ -56,7 +67,7 @@ Ab zwei Buchstaben erscheinen unter dem Feld bis zu acht verschiedene Werte – 
 
 Datenschutz geht vor:
 
-- Vorschläge vom Server gibt es nur in Formularen **Nur für Mitglieder** ohne **Anonyme Antworten** – sonst könnte jede Person mit dem Link fremde Antworten lesen. In anderen Formularen ist der Schalter aus.
+- Vorschläge vom Server gibt es nur in Formularen **Nur für Mitglieder** ohne **Anonyme Antworten** – sonst könnte jede Person mit dem Link fremde Antworten lesen. In anderen Formularen lässt sich der Schalter nicht einschalten; der Grund steht gleich daneben, zusammen mit **Auf „Nur für Mitglieder“ umstellen**. Der Knopf macht das Formular zu einem für Mitglieder und schaltet anonyme Antworten aus (wie die beiden Schalter unter **Formular teilen**), danach lässt sich der Schalter einschalten. Soll das Formular öffentlich bleiben, nimm eine [feste Vorschlagsliste](#feste-vorschlagslisten).
 - Sie kommen nur aus Einträgen, die die antwortende Person lesen darf, mit allen Berechtigungen: der Freigabe der Datenbank, privaten Einträgen und Eigenschaften mit Leseregel. Wer das Formular senden, die Datenbank aber nicht lesen darf, bekommt keine Vorschläge.
 - Übertragen werden nur die Werte der gefragten Frage, nichts sonst aus den Einträgen; sehr lange Werte werden nicht vorgeschlagen.
 

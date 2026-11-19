@@ -15,7 +15,7 @@ A form view collects answers directly as records in the database – from member
    - title, description and the label of the submit button,
    - questions: order, hide, **required**, help text per question,
    - question type: short or **long text**, **radio buttons** instead of a list, a **linear scale 1–10** for numbers,
-   - **Suggest earlier answers** for short text questions (see [Earlier answers as suggestions](#earlier-answers-as-suggestions)),
+   - **Enter fixed suggestions** and **Suggest earlier answers** for short text questions (see [Fixed suggestion lists](#fixed-suggestion-lists) and [Earlier answers as suggestions](#earlier-answers-as-suggestions)),
    - **Only show if …** per question (see [Conditions and pages](#conditions-and-pages)),
    - **Text block before**, **Text block at the end** and **New page from here** for explanations and several pages,
    - **title after submitting** and **confirmation text**,
@@ -45,6 +45,17 @@ Under **After sending**, **Confirmation by e-mail** and **Notify the team** – 
 - **Confirmation by e-mail to the people answering**: subject and text are up to you. The e-mail contains the text and the answered questions as a list – without hidden and internal properties – and, with the [customer portal](#customer-portal), the link to the request (then only this one e-mail is sent). It goes to the first answered e-mail question; in forms that are not anonymous, otherwise to the signed-in account's address. Anonymous forms only write when the person types their address. E-mail must be set up ([Configuration](/en/configuration)); at most 5 e-mails per hour go to an address, 10 per sender and 300 per form.
 - **Notify the team**: the chosen members get a notification of the kind “Guest comments and guest records” for each new answer – if they may see the record.
 
+### Fixed suggestion lists {since=0.10.2}
+
+For a short text question that should offer set answers – places, departments, items –, enter them in **Design form** at the question with **Enter fixed suggestions**, **one per line**. While typing, the matching entries appear under the field from the first letter on: those starting with the typed letters first, then those containing them, each in your order. In an empty field, <kbd>↓</kbd> shows the list from the top. The answer stays free – anyone who needs something else just types it.
+
+- The list works in **every** form, public and anonymous ones too: it only holds what you entered yourself, no answers of other people.
+- Spaces at the start and end and empty lines are dropped, duplicate entries (also in other upper and lower case) count once.
+- At most 200 suggestions per question, each at most 200 characters long. Below the field it says how many there are; with too many or too long ones the form cannot be saved.
+- The published form only gets the lists of the questions it asks – not those of hidden questions.
+
+If [earlier answers](#earlier-answers-as-suggestions) are switched on for the same question too, the fixed suggestions come first, earlier answers after them, without duplicates.
+
 ### Earlier answers as suggestions {since=0.10.2}
 
 For questions that get the same answers again and again – a shopping or order list, a room, a project – Flowplan can suggest earlier answers while typing. Switch on **Suggest earlier answers** for a short text question in **Design form** and choose where they come from:
@@ -56,7 +67,7 @@ From two letters on, up to eight distinct values appear under the field – thos
 
 Privacy comes first:
 
-- Suggestions from the server exist only in forms that are **Members only** and not **Anonymous** – otherwise anyone with the link could read other people's answers. In other forms the switch is off.
+- Suggestions from the server exist only in forms that are **Members only** and not **Anonymous** – otherwise anyone with the link could read other people's answers. In other forms the switch cannot be turned on; the reason stands right next to it, together with **Switch to “Members only”**. The button makes the form one for members and turns anonymous answers off (like the two switches under **Share form**); then the switch can be turned on. If the form should stay public, use a [fixed suggestion list](#fixed-suggestion-lists).
 - They only come from records the person answering may read, with all permissions: the database's sharing, private records and properties with a read rule. A member who may send the form but not read the database gets no suggestions.
 - Only the asked question's values are sent, nothing else of the records; very long values are not suggested.
 
