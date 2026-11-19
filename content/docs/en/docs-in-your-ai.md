@@ -93,6 +93,8 @@ Below the title of every page there are four buttons:
 
 The buttons are ordinary links. The docs load no script from Anthropic or OpenAI for them and do not count who uses them.
 
+Without an assistant of your own, ask [Flo](/flo): the **Ask Flo** button at the bottom right of every page answers questions from these docs, with sources.
+
 ## llms.txt and Markdown
 
 For language models and your own tools, the docs are also available as text:

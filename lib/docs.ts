@@ -125,8 +125,8 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
     groups: [
       {
         title: ["API und Integrationen", "API and integrations"],
-        intro: ["API, Webhooks, SDKs, E-Mail-Eingang, Chat, MCP, die Doku in deiner KI und Block-Erweiterungen.", "API, webhooks, SDKs, inbound e-mail, chat, MCP, these docs in your AI and block extensions."],
-        pages: ["api-and-webhooks", "openapi", "inbound-email", "chat-notifications", "mcp", "docs-in-your-ai", "plugins"],
+        intro: ["API, Webhooks, SDKs, E-Mail-Eingang, Chat, MCP, die Doku in deiner KI, Frag Flo und Block-Erweiterungen.", "API, webhooks, SDKs, inbound e-mail, chat, MCP, these docs in your AI, Ask Flo and block extensions."],
+        pages: ["api-and-webhooks", "openapi", "inbound-email", "chat-notifications", "mcp", "docs-in-your-ai", "flo", "plugins"],
       },
     ],
   },

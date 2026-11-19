@@ -6,6 +6,8 @@ import { docsIssueUrl } from "@/lib/issue-url";
 import { highlight, searchDocs, suggest, type SearchHit } from "@/lib/search";
 import { looksSensitive, resultBucket, searchTerm, track } from "@/lib/track";
 import { useLocale, usePrefix, useT } from "../i18n";
+import { askFlo, useFlo } from "./flo-store";
+import { FloOtter } from "./flo-otter";
 import s from "./docs.module.css";
 
 // Marks the matched terms of a title or snippet.
@@ -39,6 +41,8 @@ export default function SearchDialog({ version, popular, opens, misses = false }
   const loading = useRef(false);
   // Search terms already counted on this page view (lib/track.ts).
   const reported = useRef(new Set<string>());
+  // „Flo fragen: …“ as the last option while Flo answers (flo.tsx).
+  const { available: floOn } = useFlo();
 
   const load = useCallback(() => {
     if (loading.current) return;
@@ -118,7 +122,16 @@ export default function SearchDialog({ version, popular, opens, misses = false }
   };
 
   const typed = query.trim().length > 0;
-  const listed = typed && results.length > 0;
+  const flo = floOn && typed;
+  const count = results.length + (flo ? 1 : 0);
+  const listed = typed && count > 0;
+  const floIndex = results.length;
+  // Opens Flo with the query in its box – sent only when the reader sends it.
+  // It counts as a search like any other (lib/track.ts), not as a question.
+  const toFlo = () => {
+    close();
+    askFlo(query);
+  };
   // A prefilled issue on GitHub for a search that found nothing – the term
   // only if it does not look personal.
   const term = query.trim().slice(0, 80);
@@ -152,7 +165,7 @@ export default function SearchDialog({ version, popular, opens, misses = false }
               aria-label={t("Suchbegriff", "Search term")}
               aria-expanded={listed}
               aria-controls={listed ? LISTBOX_ID : undefined}
-              aria-activedescendant={listed && results[active] ? optionId(active) : undefined}
+              aria-activedescendant={listed && active < count ? optionId(active) : undefined}
               aria-autocomplete="list"
               value={query}
               onChange={(e) => {
@@ -161,19 +174,22 @@ export default function SearchDialog({ version, popular, opens, misses = false }
               }}
               onKeyDown={(e) => {
                 if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-                  if (!results.length) return;
+                  if (!count) return;
                   e.preventDefault();
                   const step = e.key === "ArrowDown" ? 1 : -1;
-                  setActive((i) => (i + step + results.length) % results.length);
-                } else if (e.key === "Home" && results.length && e.ctrlKey) {
+                  setActive((i) => (i + step + count) % count);
+                } else if (e.key === "Home" && count && e.ctrlKey) {
                   e.preventDefault();
                   setActive(0);
-                } else if (e.key === "End" && results.length && e.ctrlKey) {
+                } else if (e.key === "End" && count && e.ctrlKey) {
                   e.preventDefault();
-                  setActive(results.length - 1);
+                  setActive(count - 1);
                 } else if (e.key === "Enter" && results[active]) {
                   e.preventDefault();
                   go(results[active]);
+                } else if (e.key === "Enter" && flo && active === floIndex) {
+                  e.preventDefault();
+                  toFlo();
                 } else if (e.key === "Enter") report();
               }}
             />
@@ -224,9 +240,33 @@ export default function SearchDialog({ version, popular, opens, misses = false }
                   </a>
                 </li>
               ))}
+              {flo && (
+                <li role="presentation">
+                  <a
+                    role="option"
+                    id={optionId(floIndex)}
+                    aria-selected={active === floIndex}
+                    href="#"
+                    tabIndex={-1}
+                    className={s.floHit}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      toFlo();
+                    }}
+                    onMouseMove={() => setActive(floIndex)}
+                  >
+                    <FloOtter size={22} small className={s.floHitIcon} />
+                    <span className={s.crumb}>
+                      <strong>
+                        {t("Flo fragen:", "Ask Flo:")} {query.trim()}
+                      </strong>
+                    </span>
+                  </a>
+                </li>
+              )}
             </ul>
           )}
-          {typed && !listed && (
+          {typed && !results.length && (
             <div className={s.noResults} role="status">
               {failed !== null ? (
                 <p title={failed}>{t("Die Suche ist gerade nicht erreichbar.", "Search is not available right now.")}</p>

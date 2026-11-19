@@ -281,6 +281,17 @@
 .hits a[aria-selected="true"] .crumb > * + *::before {
   color: var(--secondary);
 }
+/* „Flo fragen: …“ – the question to Flo as the last option (flo.tsx). */
+.hits a.floHit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.floHit .crumb strong {
+  font-weight: 550;
+  color: var(--accent-strong);
+  overflow-wrap: anywhere;
+}
 .crumb {
   display: flex;
   flex-wrap: wrap;

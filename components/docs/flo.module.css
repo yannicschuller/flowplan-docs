@@ -1,0 +1,532 @@
+/* „Frag Flo“: the button bottom right, the panel (docked on wide screens, a
+   bottom sheet on phones) and Flo the otter. Colours follow the docs'
+   paper and ink tokens (docs.module.css .root); movement only without
+   prefers-reduced-motion. */
+
+.otter {
+  --flo-fur: #8b5e3c;
+  --flo-fur-dark: #6e4a2f;
+  --flo-cream: #f1dcc0;
+  --flo-ink: #2a1d17;
+  --flo-paper: #ffffff;
+  --flo-line: #c9c4d6;
+  --flo-accent: #3b3fd8;
+  --flo-cheek: #f2a48e;
+  flex-shrink: 0;
+}
+@media (prefers-color-scheme: dark) {
+  .otter {
+    --flo-fur: #b07b52;
+    --flo-fur-dark: #8a5d3c;
+    --flo-cream: #efd9bc;
+    --flo-ink: #1b1310;
+    --flo-paper: #f3f1ea;
+    --flo-line: #b4afc2;
+    --flo-accent: #959bff;
+    --flo-cheek: #e48c78;
+  }
+}
+
+/* ---------- The button ---------- */
+.launcher {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 40;
+  gap: 8px;
+  padding: 6px 16px 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--accent-strong);
+  font-size: 15px;
+  font-weight: 650;
+  box-shadow: 0 10px 30px #1d1a1426, 0 1px 3px #1d1a1414;
+}
+.launcher:hover {
+  background: var(--surface);
+  border-color: var(--blue);
+}
+.launcher:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+.launcher[aria-expanded="true"] {
+  visibility: hidden;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .launcher {
+    animation: floIn 0.35s var(--ease-out) both;
+    transition: transform 0.15s var(--ease-out), background-color 0.15s, border-color 0.15s;
+  }
+  .launcher:hover {
+    transform: translateY(-2px);
+  }
+  .launcher:hover .otter {
+    animation: floWiggle 0.6s ease-in-out;
+  }
+}
+@keyframes floIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+}
+@keyframes floWiggle {
+  30% {
+    transform: rotate(-8deg);
+  }
+  65% {
+    transform: rotate(6deg);
+  }
+}
+@media print {
+  .launcher,
+  .stopNote {
+    display: none !important;
+  }
+}
+
+/* ---------- Note when Flo stops (off, budget) ---------- */
+.stopNote:not([data-shown]) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.stopNote[data-shown] {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  left: auto;
+  z-index: 40;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: min(380px, calc(100vw - 40px));
+  padding: 12px 10px 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  box-shadow: var(--shadow);
+}
+.stopNote p {
+  margin: 2px 0 0;
+  flex: 1;
+}
+.stopNote button {
+  color: var(--muted);
+}
+
+/* ---------- The panel ---------- */
+.panel {
+  position: fixed;
+  inset: auto max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) auto;
+  width: min(420px, calc(100vw - 40px));
+  height: min(640px, calc(100dvh - 100px));
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  overflow: visible;
+}
+.panel::backdrop {
+  background: color-mix(in srgb, #0d0c10 14%, transparent);
+}
+.sheet {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--bg);
+  box-shadow: 0 24px 70px #0d0c1038;
+  font-size: 15px;
+  line-height: 1.55;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .panel[open] .sheet {
+    animation: floOpen 0.24s var(--ease-out) both;
+    transform-origin: bottom right;
+  }
+}
+@keyframes floOpen {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 10px 12px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+.headText {
+  flex: 1;
+  min-width: 0;
+}
+.headText h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+.headText p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--secondary);
+}
+.restart,
+.close {
+  flex-shrink: 0;
+  min-height: 36px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: var(--secondary);
+  font-size: 13px;
+  font-weight: 550;
+}
+.close {
+  min-width: 36px;
+  padding: 6px;
+}
+.restart:hover,
+.close:hover {
+  background: var(--hover);
+  color: var(--text);
+}
+.restart:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.log {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 16px 14px 8px;
+}
+.log:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: -2px;
+}
+.hello p {
+  margin: 0 0 12px;
+}
+.examples {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.examples button {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--accent-strong);
+  font-size: 14px;
+  text-align: left;
+}
+.examples button:hover {
+  border-color: var(--blue);
+  background: var(--blue-light);
+}
+
+.exchange {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.question {
+  align-self: flex-end;
+  max-width: 85%;
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 14px 14px 4px 14px;
+  background: var(--blue-light);
+  color: var(--text);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.answer {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.answer > .otter {
+  margin-top: 2px;
+}
+.answerText {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.answerText > p,
+.answerText ul,
+.answerText ol,
+.answerText blockquote,
+.answerText pre {
+  margin: 0 0 10px;
+}
+.answerText ul,
+.answerText ol {
+  padding-left: 22px;
+}
+.answerText li + li {
+  margin-top: 3px;
+}
+.answerText a,
+.sources a,
+.privacy a {
+  color: var(--blue);
+  text-underline-offset: 2px;
+}
+.answerText code {
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+}
+.answerText pre {
+  padding: 10px 12px;
+  overflow-x: auto;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.answerText pre:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: -2px;
+}
+.answerText pre code {
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.answerText blockquote {
+  padding-left: 12px;
+  border-left: 3px solid var(--border);
+  color: var(--secondary);
+}
+.sources {
+  margin-top: 4px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--surface);
+  font-size: 14px;
+}
+.sources > p {
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+.sources ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.thinking {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: var(--secondary);
+  font-size: 14px;
+}
+.dots {
+  display: inline-flex;
+  gap: 4px;
+}
+.dots i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0.6;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .dots i {
+    animation: floDot 1.1s ease-in-out infinite;
+  }
+  .dots i:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  .dots i:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+}
+@keyframes floDot {
+  40% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+.problem {
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--signal) 45%, var(--border));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--signal) 8%, var(--bg));
+  font-size: 14px;
+}
+.problem p {
+  margin: 0;
+}
+.problem button {
+  margin-top: 8px;
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  font-size: 13px;
+  font-weight: 550;
+}
+
+.ask {
+  padding: 10px 12px 12px;
+  border-top: 1px solid var(--border);
+}
+.field {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 6px 6px 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg);
+}
+.field:focus-within {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 18%, transparent);
+}
+.field textarea {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  max-height: 140px;
+  padding: 6px 0;
+  border: 0;
+  background: none;
+  resize: none;
+  outline: none;
+  font-size: 15px;
+  line-height: 1.45;
+  field-sizing: content;
+}
+.field textarea::placeholder {
+  color: var(--muted);
+}
+.send {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--blue);
+  color: var(--on-accent);
+}
+.send:disabled {
+  background: var(--hover);
+  color: var(--muted);
+  cursor: default;
+}
+.send:focus-visible,
+.examples button:focus-visible,
+.restart:focus-visible,
+.close:focus-visible,
+.problem button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+.meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+.privacy {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--secondary);
+}
+.counter {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+.counter[data-low] {
+  color: var(--text);
+  font-weight: 650;
+}
+
+/* ---------- Phones: a bottom sheet ---------- */
+@media (max-width: 600px) {
+  .panel {
+    inset: auto 0 0 0;
+    width: 100%;
+    height: min(86dvh, 720px);
+  }
+  .panel::backdrop {
+    background: color-mix(in srgb, #0d0c10 38%, transparent);
+  }
+  .sheet {
+    border-width: 1px 0 0;
+    border-radius: 18px 18px 0 0;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .head {
+    position: relative;
+    padding-top: 18px;
+  }
+  /* The grabber: a sheet, not a page. */
+  .head::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    width: 36px;
+    height: 4px;
+    margin-left: -18px;
+    border-radius: 2px;
+    background: var(--border);
+  }
+  .launcher {
+    padding: 5px 14px 5px 6px;
+    font-size: 14px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .panel[open] .sheet {
+      animation: floSheet 0.28s var(--ease-out) both;
+    }
+  }
+}
+@keyframes floSheet {
+  from {
+    transform: translateY(100%);
+  }
+}

@@ -9,6 +9,8 @@ import { LanguageSwitch } from "@/components/i18n";
 import s from "@/components/docs/docs.module.css";
 import { trackAttrs } from "@/lib/track";
 import { fetchStatusSummary, type StatusState } from "@/lib/status";
+import { askUrl } from "@/lib/flo";
+import { FloEntry } from "@/components/docs/flo-entry";
 import { DISCORD_URL, GITHUB_URL, imprintUrl, marketplaceUrl, privacyUrl, SPONSOR_URL, statusUrl, TRANSLATE_URL, websiteUrl } from "@/lib/links";
 
 // The documentation: same paper and ink as the website, calmer.
@@ -19,7 +21,8 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
   const imprint = imprintUrl(),
     privacy = privacyUrl(),
     marketplace = marketplaceUrl(),
-    status = statusUrl();
+    status = statusUrl(),
+    ask = askUrl();
   // The services' state next to the link; null shows the plain link.
   const summary = status ? await fetchStatusSummary() : null;
   const stateText: Record<StatusState, string> = {
@@ -108,6 +111,8 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
           )}
         </div>
       </footer>
+      {/* „Frag Flo“: the button shows only when the service answers (lib/flo.ts). */}
+      {ask && <FloEntry askUrl={ask} />}
     </div>
   );
 }

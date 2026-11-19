@@ -93,6 +93,8 @@ Unter dem Titel jeder Seite stehen vier Knöpfe:
 
 Die Knöpfe sind gewöhnliche Links. Die Doku lädt dafür kein Skript von Anthropic oder OpenAI und zählt nicht, wer sie benutzt.
 
+Ohne eigenen Assistenten fragst du [Flo](/flo): Der Knopf **Frag Flo** unten rechts auf jeder Seite beantwortet Fragen aus dieser Doku, mit Quellen.
+
 ## llms.txt und Markdown
 
 Für Sprachmodelle und eigene Werkzeuge liegt die Doku auch als Text bereit:
