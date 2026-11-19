@@ -64,6 +64,18 @@ Below a document and in a database record's content, **Text comments (n)** opens
 - Line breaks in the passage stay line breaks in the quote, and embedded media show as “media block”. When you move a block up or down (or drag it), its comments move with it. {since=0.9.8}
 - Drafts stay saved until you send or discard them.
 
+### In the margin beside the text {since=0.10.2}
+
+On wide screens – with the sidebar open from a window about 1280 pixels wide – open text comments appear as cards in the right margin, each at the height of its passage, on pages and on [records opened as a page](/databases#records). A card shows the start of the first post, who wrote it and how many replies there are. When passages are close together, the cards stack below each other in the order of the text.
+
+- A click on the highlight or the card opens the thread right in the card, with replies, reactions, mentions and **Resolve thread**; the passage is highlighted more strongly and the page does not jump away. ++Esc++ or a click in the text collapses the card again.
+- A new comment (++⌘/Ctrl ⌥/Alt M++ or **Comment** in the text menu) opens its field right in the margin beside the passage.
+- Resolved threads leave the margin. **Text comments (n)** below the document stays the overview of all threads, with the **Show** filter.
+- While cards are in the margin, the [table of contents](/reading-and-presenting#table-of-contents) folds into its small button at the edge of the text; a click on it opens it as a list.
+- When there is too little room beside the text – a narrow window, the page comments are open – and on phones, the threads are in the comment panel below the document. A click on a highlight opens the thread there and scrolls to it.
+
+Under **Settings → Appearance & language → Editor**, set **Text comments** to **In the margin** (the default) or **Below the document**. The setting applies to your account on all devices.
+
 Text comments exist in documents and in the contents of database records, also in exports and content archives.
 
 ## Mentions

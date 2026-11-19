@@ -64,6 +64,18 @@ Unter einem Dokument und im Inhalt eines Datenbankeintrags öffnet **Textkomment
 - Zeilenumbrüche der Textstelle bleiben im Zitat erhalten, eingebettete Medien erscheinen als „Medienblock“. Verschiebst du einen Block nach oben oder unten (oder ziehst ihn), wandern seine Kommentare mit. {since=0.9.8}
 - Entwürfe bleiben gespeichert, bis du sie sendest oder verwirfst.
 
+### Am Rand neben dem Text {since=0.10.2}
+
+Auf breiten Bildschirmen – mit offener Seitenleiste etwa ab 1280 Pixel Fensterbreite – stehen offene Textkommentare als Karten am rechten Rand, jeweils auf der Höhe ihrer Textstelle, auf Seiten wie auf [als Seite geöffneten Einträgen](/databases#eintraege). Eine Karte zeigt den Anfang des ersten Beitrags, wer ihn geschrieben hat, und wie viele Antworten es gibt. Liegen Textstellen dicht beieinander, rücken die Karten untereinander, in der Reihenfolge im Text.
+
+- Ein Klick auf die Markierung oder die Karte öffnet den Thread direkt in der Karte, mit Antworten, Reaktionen, Erwähnungen und **Thread erledigen**; die Textstelle wird kräftiger markiert, die Seite springt nicht weg. ++Esc++ oder ein Klick in den Text klappt die Karte wieder zu.
+- Ein neuer Kommentar (++⌘/Strg ⌥/Alt M++ oder **Kommentieren** im Textmenü) öffnet sein Eingabefeld gleich am Rand neben der Textstelle.
+- Erledigte Threads verlassen den Rand. **Textkommentare (n)** unter dem Dokument bleibt die Übersicht über alle Threads mit dem Filter **Anzeigen**.
+- Solange Karten am Rand stehen, klappt das [Inhaltsverzeichnis](/reading-and-presenting#inhaltsverzeichnis) zu seiner kleinen Schaltfläche am Textrand zusammen; ein Klick darauf öffnet es als Liste.
+- Ist neben dem Text zu wenig Platz – ein schmales Fenster, die Seitenkommentare sind offen – und auf dem Telefon stehen die Threads im Kommentarfeld unter dem Dokument. Ein Klick auf eine Markierung öffnet den Thread dort und scrollt zu ihm.
+
+Unter **Einstellungen → Darstellung & Sprache → Editor** stellst du **Textkommentare** auf **Am Rand** (Standard) oder **Unter dem Dokument**. Die Einstellung gilt für dein Konto auf allen Geräten.
+
 Textkommentare gibt es in Dokumenten und in den Inhalten von Datenbankeinträgen, auch in Exporten und Inhaltsarchiven.
 
 ## Erwähnungen
