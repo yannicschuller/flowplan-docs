@@ -56,6 +56,12 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 
 **Hiding the keyboard (phone):** while you write, the formatting bar sits above the on-screen keyboard. Its last button on the right, **Hide keyboard**, closes the keyboard so you see more of the document; the text and the cursor position stay. A tap into the text brings it back. In the content of a database record the bar sits above the keyboard in the same way while you write. For every other text field – titles of pages, databases and records, tags, properties, the name in the **New page** dialog, search fields, comments – the same button appears as a round button on the right, just above the keyboard. This works in the browser and in the apps.
 
+## Emojis with : {since=0.10.2}
+
+Type `:` and at least two letters, and a row of matching emojis appears at the cursor: `:smi`, `:thu`, `:rock` or `:rocket`. The search covers English names (and German ones in the German interface), shortcodes like `:+1:` and keywords – exact names and shortcodes come first, then names that start that way, then keywords. Emojis you inserted recently move up front. The first one is selected and its name shows below. <kbd>←</kbd> and <kbd>→</kbd> choose, <kbd>Enter</kbd> or <kbd>Tab</kbd> replaces `:rock` with 🚀, and so does a click or tap on an emoji. Typing on narrows the row; a closing colon after a known shortcode (`:smile:`, `:tada:`) inserts the emoji right away.
+
+With <kbd>Esc</kbd>, a space right after the colon or no match, the text stays as it is. The row only opens at the start of a line, after a space or after an opening bracket – not in code blocks, inline code, links or times like 12:30. If you last picked a skin tone in the emoji picker (for a page icon, say), the row suggests emojis in that tone. The same works in text comments and in comments on pages and records. On a phone, swipe the row sideways.
+
 ## Toggles
 
 A **toggle** has a title and content below it that folds in and out. Insert one with `/toggle`, or type `>` and a space at the start of an empty line. The cursor lands in the empty title (grey "Toggle"); text already after the `>` becomes the title.

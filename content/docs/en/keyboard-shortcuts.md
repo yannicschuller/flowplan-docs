@@ -62,6 +62,7 @@ The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kb
 | --- | --- |
 | <kbd>/</kbd> | Block menu |
 | <kbd>@</kbd> | Mention a page or person (arrow keys pick, <kbd>Enter</kbd> inserts, <kbd>Esc</kbd> closes) |
+| <kbd>:</kbd> and two letters | [Suggest an emoji](/documents#emojis-with) (<kbd>←</kbd> <kbd>→</kbd> choose, <kbd>Enter</kbd> or <kbd>Tab</kbd> inserts, <kbd>Esc</kbd> closes; `:smile:` inserts right away) {since=0.10.2} |
 | <kbd>⌘</kbd> <kbd>B</kbd> / <kbd>I</kbd> / <kbd>U</kbd> | Bold, italic, underline |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> | Strikethrough |
 | <kbd>⌘</kbd> <kbd>E</kbd> | Inline code |
