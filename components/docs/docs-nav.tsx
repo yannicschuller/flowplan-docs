@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { List, MagnifyingGlass, X } from "@phosphor-icons/react";
 import type { AreaId, DocArea } from "@/lib/docs";
+import { pathWithoutLocale } from "@/lib/locale-path";
 import { usePrefix, useT } from "../i18n";
 import s from "./docs.module.css";
 
@@ -13,8 +14,10 @@ import s from "./docs.module.css";
 export function DocsNav({ areas }: { areas: DocArea[] }) {
   const t = useT();
   const prefix = usePrefix();
-  // The address without /de or /en.
-  const path = usePathname().replace(/^\/(de|en)(?=\/|$)/, "") || "/";
+  // The address without its language (/de, /en, /fr, /zh): the server sees
+  // the rewritten address (proxy.ts), the browser the one in the address
+  // bar – both must give the same path, or hydration fails (#418).
+  const path = pathWithoutLocale(usePathname());
   const [open, setOpen] = useState(false);
   const pageArea = areas.find((a) => a.groups.some((g) => g.pages.some((p) => path === `/${p.slug}`)))?.id;
   const [chosen, setChosen] = useState<AreaId | undefined>(undefined);
