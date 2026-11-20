@@ -741,6 +741,16 @@
   vertical-align: top;
   border-bottom: 1px solid var(--border);
 }
+/* Column alignment from the Markdown (lib/docs.ts: data-align, since the
+   CSP allows no style attributes). */
+.prose th[data-align="center"],
+.prose td[data-align="center"] {
+  text-align: center;
+}
+.prose th[data-align="right"],
+.prose td[data-align="right"] {
+  text-align: right;
+}
 .prose th {
   background: var(--surface);
   font-weight: 650;

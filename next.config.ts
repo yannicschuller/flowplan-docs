@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { SECURITY_HEADERS } from "./lib/csp";
 
 // The first docs addresses were German; old links keep working.
 const renamed = [
@@ -34,6 +35,12 @@ const config: NextConfig = {
   // The pages are read from Markdown files at runtime, their commit dates
   // from content/last-modified.json (written before the build).
   outputFileTracingIncludes: { "/**": ["./content/docs/**/*.md", "./content/*.json"] },
+  // Referrer-Policy, nosniff, Permissions-Policy and X-Frame-Options on
+  // every response; the Content Security Policy needs a nonce per response
+  // and the addresses read at runtime, so proxy.ts sets it (lib/csp.ts).
+  async headers() {
+    return [{ source: "/:path*", headers: SECURITY_HEADERS }];
+  },
   async redirects() {
     return [
       // docs.flowplan.org/docs/… (the old path under flowplan.org) → /…

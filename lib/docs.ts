@@ -384,14 +384,17 @@ function render(markdown: string, locale: Locale) {
         return calloutHtml(this.parser.parse(tokens), locale);
       },
       table(token: Tokens.Table) {
+        // Alignment as an attribute the stylesheet reads: the CSP allows no
+        // style attributes (lib/csp.ts).
+        const align = (a: string | null) => (a ? ` data-align="${a}"` : "");
         const head = token.header
-          .map((cell) => `<th${cell.align ? ` style="text-align:${cell.align}"` : ""}>${this.parser.parseInline(cell.tokens)}</th>`)
+          .map((cell) => `<th${align(cell.align)}>${this.parser.parseInline(cell.tokens)}</th>`)
           .join("");
         const rows = token.rows
           .map(
             (row) =>
               `<tr>${row
-                .map((cell) => `<td${cell.align ? ` style="text-align:${cell.align}"` : ""}>${this.parser.parseInline(cell.tokens)}</td>`)
+                .map((cell) => `<td${align(cell.align)}>${this.parser.parseInline(cell.tokens)}</td>`)
                 .join("")}</tr>`,
           )
           .join("");

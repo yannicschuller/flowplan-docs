@@ -48,6 +48,10 @@ npm run dev
 
 Checks: `npm run typecheck`, `npm test`, `npm run build`, then `npm run quality` – it starts the production build and opens `/de`, `/en/configuration`, `/de/journal`, `/en/whats-new`, `/de/formatting`, `/en/mobile-apps` (tabs), `/de/installation` and the reference pages `/de/environment-variables` and `/en/slash-commands` at 1280 and 390 px in Chromium: no serious or critical [axe](https://github.com/dequelabs/axe-core) findings (contrast included), nothing focusable inside `aria-hidden`, no horizontal scrolling, at most 150 KB of JavaScript (gzip) per page and a largest contentful paint under 2.5 s. `QUALITY_CHROMIUM` names a Chromium binary when Playwright's own is not installed (`npx playwright install chromium`).
 
+### Security headers
+
+Every response carries a Content Security Policy (`lib/csp.ts`, set in `proxy.ts`) plus `Referrer-Policy: strict-origin-when-cross-origin`, `X-Content-Type-Options: nosniff`, `Permissions-Policy` (camera, microphone, geolocation off) and `X-Frame-Options: DENY` (`next.config.ts`). The pages are rendered per request anyway (language from cookie and browser, live status, settings read at runtime), so the policy uses a fresh nonce per response, which Next.js puts on its own scripts: `script-src 'self' 'nonce-…'` plus Umami's origin, `style-src 'self'`, `connect-src 'self'` plus the origins of `ASK_URL` and `UMAMI_URL` (read at runtime like the rest), `worker-src 'self'`, `object-src`, `frame-src` and `frame-ancestors 'none'`, `base-uri 'none'`, `form-action 'self'`, `upgrade-insecure-requests` (not for plain http on localhost). So no inline scripts, `on…=` attributes, `<style>` elements or `style` attributes in the pages – write table alignment and the like as classes or data attributes (`tests/csp.test.ts` checks the rendered docs). An Umami instance with `COLLECT_API_HOST` set sends to that host instead of its own origin; it would have to be added to `connect-src`.
+
 ## Configuration
 
 | Variable | Default | Meaning |
