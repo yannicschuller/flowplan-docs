@@ -37,7 +37,7 @@ Eine unendliche Fläche für Brainstorming, Abläufe und Workshops: Notizzettel,
   - **Vorlagen & Bibliothek:** [Vorlagen](/whiteboard-collaboration#vorlagen), Formenbibliothek und Racks (siehe [Racks und Verkabelung](/whiteboard-racks))
   - **KI**, wenn sie für dich eingeschaltet ist
 - **Moderation** oben rechts: Abstimmung, Timer, Privater Modus, Schätzen, Alle zu mir holen und Folge mir (siehe [Gemeinsam arbeiten](/whiteboard-collaboration#gemeinsam-arbeiten)). Ein Punkt am Knopf zeigt, dass gerade etwas läuft.
-- **Unten links** eine Leiste mit Rückgängig und Wiederholen, Zoom, den Pfeilen zum vorigen und nächsten Rahmen, **Präsentieren** (beides, sobald es Rahmen gibt) und **…** (**Ansicht und Aktionen**: Raster, Einpassen, Vollbild, Kommentare, Rahmen-Übersicht, Minikarte, Suche, Prototyp und Export).
+- **Unten links** eine Leiste mit Rückgängig und Wiederholen, Zoom, den Pfeilen zum vorigen und nächsten Rahmen, **Präsentieren** (beides, sobald es Rahmen gibt) und **…** (**Ansicht und Aktionen**: Raster, Einpassen, Vollbild, Kommentare, Rahmen-Übersicht, Minikarte, Suche, Prototyp, dunkle Fläche und Export).
 - **Auf dem Handy** steht die Leiste unten: Auswählen, Verschieben, Notizzettel, Text, Form, Zeichnen und **Weitere Werkzeuge** – darin dasselbe wie unter **+**, ebenfalls mit Suche. **Moderation** ist das Symbol oben rechts.
 
 Wer nur lesen darf, sieht Auswählen, Verschieben, den Laserpointer und die Leiste unten.
@@ -113,6 +113,7 @@ Exporte zeigen statt des Players eine Karte mit Anbieter und Link.
 - Zoomen mit <kbd>⌘</kbd> + Mausrad, Trackpad-Geste oder den Knöpfen in der Leiste unten links.
 - **Alles anzeigen** (++⇧ 1++) passt die Ansicht an alle Elemente an, ++⇧ 2++ an die Auswahl – mit einer weichen Kamerafahrt, die jede Eingabe sofort beendet.
 - Rückgängig ++⌘ Z++, Wiederholen ++⇧ ⌘ Z++.
+- **Dunkle Fläche** (im Menü **…** der Leiste unten, **Ansicht und Aktionen**, nur im Dunkelmodus): Im Dunkelmodus liegt das Board auf einer dunklen Fläche. Schwarze Striche, Texte und Umrisse erscheinen hell, helle Notizen und Formen gedämpft, Text darauf bleibt gut lesbar; Bilder, Einbettungen und PDFs bleiben unverändert. Nur die Anzeige ändert sich: die Farben werden unverändert gespeichert, andere sehen das Board nach ihrer Einstellung, Exporte sind immer hell. Ausgeschaltet bleiben deine Boards hell (dieselbe Einstellung wie **Einstellungen → Darstellung & Sprache → Whiteboard-Fläche**). {since=0.10.2}
 - **Minikarte** (im Menü **…** der Leiste unten, **Ansicht und Aktionen**): eine kleine Übersicht aller Elemente mit dem sichtbaren Ausschnitt. Klicken oder Ziehen springt dorthin; mit dem Fokus auf der Minikarte verschieben die Pfeiltasten die Ansicht. Ob sie offen ist, merkt sich der Browser.
 - **Auf dem Board suchen** (++⌘ F++ auf dem Board, oder im Menü **…** unten): durchsucht Zettel, Formen, Texte, Tabellen, Rahmen, Kommentare, Einbettungen sowie Seiten- und Eintragskarten. <kbd>Enter</kbd> und ++⇧ Enter++ (oder die Pfeile) springen zum nächsten bzw. vorigen Treffer, der hervorgehoben wird; <kbd>Esc</kbd> schließt die Suche.
 

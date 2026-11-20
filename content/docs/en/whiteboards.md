@@ -37,7 +37,7 @@ An infinite canvas for brainstorming, processes and workshops: sticky notes, sha
   - **Templates & library:** [templates](/whiteboard-collaboration#templates), shape library and racks (see [Racks and cabling](/whiteboard-racks))
   - **AI**, when it is on for you
 - **Facilitation** at the top right: voting, timer, private mode, estimation, bring everyone here and follow me (see [Work together](/whiteboard-collaboration#work-together)). A dot on the button shows that something is running.
-- **At the bottom left** a bar with undo and redo, zoom, the arrows to the previous and next frame, **Present** (both once there are frames) and **…** (**View and actions**: grid, fit, full screen, comments, frames panel, minimap, search, prototype and export).
+- **At the bottom left** a bar with undo and redo, zoom, the arrows to the previous and next frame, **Present** (both once there are frames) and **…** (**View and actions**: grid, fit, full screen, comments, frames panel, minimap, search, prototype, dark canvas and export).
 - **On phones** the bar sits at the bottom: Select, Move, Sticky note, Text, Shape, Draw and **More tools** – the same as under **+**, with a search too. **Facilitation** is the icon at the top right.
 
 Readers who may only view see Select, Move, the laser pointer and the bottom bar.
@@ -113,6 +113,7 @@ Exports show a card with the provider and link instead of the player.
 - Zoom with <kbd>⌘</kbd> + scroll wheel, trackpad gestures or the buttons in the bar at the bottom left.
 - **Show everything** (++⇧ 1++) fits the view to all elements, ++⇧ 2++ to the selection – with a smooth camera move that any input stops at once.
 - Undo ++⌘ Z++, redo ++⇧ ⌘ Z++.
+- **Dark canvas** (in the **…** menu of the bottom bar, **View and actions**, only in dark mode): in dark mode the board sits on a dark canvas. Black strokes, text and outlines appear light, light notes and shapes toned down, and text on them stays readable; images, embeds and PDFs stay as they are. Only the display changes: colours are stored unchanged, others see the board by their own setting, and exports are always light. Turned off, your boards stay light (the same setting as **Settings → Appearance & language → Whiteboard canvas**). {since=0.10.2}
 - **Minimap** (in the **…** menu of the bottom bar, **View and actions**): a small overview of all elements with the visible part. Click or drag to go there; with the focus on the minimap the arrow keys move the view. The browser remembers whether it is open.
 - **Search the board** (++⌘ F++ on the board, or in the **…** menu at the bottom): searches sticky notes, shapes, texts, tables, frames, comments, embeds and page and record cards. <kbd>Enter</kbd> and ++⇧ Enter++ (or the arrows) jump to the next or previous match, which is highlighted; <kbd>Esc</kbd> closes the search.
 
