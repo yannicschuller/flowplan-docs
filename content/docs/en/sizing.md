@@ -24,7 +24,7 @@ Measured up to the first load step where things slow down: 95 % of reading reque
 | PostgreSQL, 1 instance with one dedicated core | 30 active people | Beyond that, read times rise steeply |
 | PostgreSQL, 2 instances with one core each (cluster) | 40–50 active people | Still error-free at 60, but slow |
 
-The **rule of thumb** for planning: **25–30 active people per instance with one dedicated CPU core.** For more people, add instances in [cluster mode](/en/cluster) – this grows roughly linearly as long as PostgreSQL has headroom. An instance does its main work essentially on one core (Node.js); more cores per instance mostly help side work such as text recognition, more instances help with more people.
+The **rule of thumb** for planning: **25–30 active people per instance with one dedicated CPU core.** For more people, add instances in [cluster mode](/en/cluster) – this grows roughly linearly as long as PostgreSQL has headroom. An instance does its main work essentially on one core (Node.js); more cores per instance mostly help side work such as text recognition, and exports and imports, which run in [worker threads](/en/configuration#operations) of their own (`FLOWPLAN_WORKERS`) and no longer hold up other requests; more instances help with more people.
 
 Measured on 4 vCPU (Intel Xeon, 2.1 GHz) with 16 GB RAM, PostgreSQL 16 and Redis 7 on the same machine. On a server running nothing else, and with faster cores, the figures are higher.
 

@@ -140,7 +140,7 @@ Every variable is also listed, with comments, in the repository's [`.env.example
 
 Long-running work such as backups, restores and schema changes lifts the time limits for itself.
 
-**Connections:** each instance opens up to `FLOWPLAN_PG_POOL` connections plus up to two of its own (notifications, and in a cluster the election of the leading instance). The server's `max_connections` must therefore be at least `instances × (FLOWPLAN_PG_POOL + 2)` plus a reserve for backups and administration. PostgreSQL's default of 100 is plenty for one instance with the default pool.
+**Connections:** each instance opens up to `FLOWPLAN_PG_POOL` connections plus up to two of its own (notifications, and in a cluster the election of the leading instance). The server's `max_connections` must therefore be at least `instances × (FLOWPLAN_PG_POOL + 2)` plus a reserve for backups and administration. While exports or imports run, each [worker thread](/en/configuration#operations) adds up to two connections (`FLOWPLAN_WORKERS`, default: cores − 1); with them, `instances × (FLOWPLAN_PG_POOL + 2 + 2 × FLOWPLAN_WORKERS)`. {since=0.10.2} PostgreSQL's default of 100 is plenty for one instance with the default pool.
 
 ## Search on PostgreSQL
 

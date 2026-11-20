@@ -24,7 +24,7 @@ Gemessen wurde bis zur ersten Laststufe, ab der es langsamer wird: 95 % der lese
 | PostgreSQL, 1 Instanz mit einem eigenen Kern | 30 aktive Personen | Darüber steigen die Lesezeiten steil an |
 | PostgreSQL, 2 Instanzen mit je einem Kern (Cluster) | 40–50 aktive Personen | Bei 60 noch ohne Fehler, aber langsam |
 
-Die **Faustregel** für die Planung: **25–30 aktive Personen je Instanz mit einem eigenen CPU-Kern.** Für mehr Personen weitere Instanzen im [Cluster-Modus](/cluster) – das wächst etwa linear, solange PostgreSQL Luft hat. Eine Instanz nutzt für die eigentliche Arbeit im Wesentlichen einen Kern (Node.js); mehr Kerne pro Instanz helfen vor allem bei Nebenarbeiten wie der Texterkennung, mehr Instanzen bei mehr Personen.
+Die **Faustregel** für die Planung: **25–30 aktive Personen je Instanz mit einem eigenen CPU-Kern.** Für mehr Personen weitere Instanzen im [Cluster-Modus](/cluster) – das wächst etwa linear, solange PostgreSQL Luft hat. Eine Instanz nutzt für die eigentliche Arbeit im Wesentlichen einen Kern (Node.js); mehr Kerne pro Instanz helfen vor allem bei Nebenarbeiten wie der Texterkennung und bei Exporten und Importen, die in eigenen [Worker-Threads](/configuration#betrieb) laufen (`FLOWPLAN_WORKERS`) und die übrigen Anfragen nicht mehr aufhalten; mehr Instanzen helfen bei mehr Personen.
 
 Gemessen auf 4 vCPU (Intel Xeon, 2,1 GHz) mit 16 GB RAM, PostgreSQL 16 und Redis 7 auf demselben Rechner. Auf einem Server, auf dem nichts anderes läuft, und mit schnelleren Kernen sind die Zahlen höher.
 

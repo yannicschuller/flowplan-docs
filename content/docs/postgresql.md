@@ -140,7 +140,7 @@ Alle Variablen stehen auch kommentiert in der [`.env.example`](https://github.co
 
 Lange Arbeiten wie Sicherungen, Wiederherstellungen und Schema-Änderungen heben die Zeitlimits für sich selbst auf.
 
-**Verbindungen:** Jede Instanz öffnet bis zu `FLOWPLAN_PG_POOL` Verbindungen und bis zu zwei eigene (Benachrichtigungen, im Cluster die Wahl der leitenden Instanz). `max_connections` des Servers muss also mindestens `Instanzen × (FLOWPLAN_PG_POOL + 2)` plus Reserve für Sicherungen und Administration betragen. Der PostgreSQL-Standard von 100 reicht für eine Instanz mit dem Standardpool bequem.
+**Verbindungen:** Jede Instanz öffnet bis zu `FLOWPLAN_PG_POOL` Verbindungen und bis zu zwei eigene (Benachrichtigungen, im Cluster die Wahl der leitenden Instanz). `max_connections` des Servers muss also mindestens `Instanzen × (FLOWPLAN_PG_POOL + 2)` plus Reserve für Sicherungen und Administration betragen. Während Exporte oder Importe laufen, kommen je [Worker-Thread](/configuration#betrieb) bis zu zwei Verbindungen dazu (`FLOWPLAN_WORKERS`, Standard: Kerne − 1); mit ihnen `Instanzen × (FLOWPLAN_PG_POOL + 2 + 2 × FLOWPLAN_WORKERS)`. {since=0.10.2} Der PostgreSQL-Standard von 100 reicht für eine Instanz mit dem Standardpool bequem.
 
 ## Suche auf PostgreSQL
 

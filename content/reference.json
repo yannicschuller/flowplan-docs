@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@c703284f",
+  "source": "github.com/yannicschuller/flowplan@66ddc35d",
   "slash": {
     "groups": {
       "recent": [
@@ -2064,6 +2064,7 @@
     "FLOWPLAN_UPDATE_URL",
     "FLOWPLAN_VERSION",
     "FLOWPLAN_WEBHOOK_ALLOW_PRIVATE",
+    "FLOWPLAN_WORKERS",
     "FLOWPLAN_WORKFLOWS",
     "FLOWPLAN_WORKFLOW_ACTIVE_PER_WORKSPACE",
     "FLOWPLAN_WORKFLOW_AI_TOKENS_PER_DAY",
