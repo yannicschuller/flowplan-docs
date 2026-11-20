@@ -45,9 +45,26 @@ The levels:
 
 Which limit applies to a person: their own, else the **highest** of their groups and roles (per period; if one of their groups leaves a period open, there is no limit for it), else the default. **Exempt** – a person or a group – lifts the personal limits; the whole instance's limit stays.
 
+**Right at the person or group:** under **Administration → Users** every person has, in the section **AI**, their **Quota** – **Inherited** (with what applies now), **Own limits** per day, week, month and year, or **Exempt** – and below it their usage per period with what is left. Groups have the same in the workspace's **Groups & permissions → Manage** dialog (administrators only). These are the same limits as in the table here, no second store. There you also set the [model](#model-per-person-and-group); the **Limits** table shows it in the **Model** column, the **By person** table the model that applies to each person. {since=0.10.2}
+
 Under **Usage and limits** you see, for the chosen period, the usage of the whole instance, per person (sortable by usage, what is left or name, with the limit and where it comes from), per group and per model. The [AI statistics](/administration#monitoring) show the instance's limit as a line.
 
 **Notifications:** when the whole instance reaches the note share and later 100 %, every administrator gets one message per period (kind **AI quota of the instance** under **Settings → Notifications**).
+
+## Model per person and group {since=0.10.2}
+
+The model under **Instance provider** is the **instance default**. You can give single people, groups or roles another model of the same provider – for example, the whole instance uses a small, inexpensive model such as Claude Haiku, but certain people use Claude Opus.
+
+- **For a person:** **Administration → Users**, click the person, section **AI** → **Model**. You can choose **Instance default**, the models of the price list and – with the arrow next to it – every model the provider reports. If the person belongs to a group with its own model, the first entry is **As group …**; **Instance default** then still applies to them.
+- **For a group:** in the workspace settings under **Groups & permissions → Manage** (visible to administrators only) or in the **Limits** table under **Administration → AI → Quotas**, column **Model**. The roles **Administrators** and **Guests** are there as well.
+
+Which model applies to a person:
+
+1. their **own** model (or the **instance default**, fixed),
+2. else the **most capable** of their groups and roles – the one with the highest price per million tokens (input and output) by the [price list](/ai-quotas#what-counts); models without a price rank below priced ones, and among equals the name decides,
+3. else the **instance default**.
+
+This holds for every AI feature and is decided on the server. [Workflows](/workflows) use the model of the person they run as (the role **Administrators** does not count there, since workflows never run with administrator rights). An [own provider](/ai#for-users) and [on-device AI](/ai#on-device-ai-apple) choose their own model. If the instance switches to another kind of provider (say from Anthropic to OpenAI), the models set so far no longer apply until you choose them again – the table marks them **other provider – does not apply**. Every change is in the log under **Monitoring**.
 
 ## For users {since=0.10.2}
 
