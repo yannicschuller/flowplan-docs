@@ -83,6 +83,10 @@ Technische Zeichnungen im **DXF**- und **DWG**-Format (AutoCAD und viele andere 
 - **Dateigröße**: DXF bis 100 MB, DWG bis 50 MB. Sehr große Zeichnungen zeigt der Viewer nur zum Teil und sagt es dazu. Binäre DXF-Dateien liest er nicht – speichere sie als DXF im Textformat.
 - **DWG**: Für DWG lädt Flowplan beim ersten Öffnen einen DWG-Leser (LibreDWG, etwa 11 MB) vom eigenen Server; er ist nicht Teil der [Offline-Kopie](/offline-and-apps), DWG-Dateien brauchen beim ersten Mal also eine Verbindung. DXF geht auch offline. Gelesen werden DWG-Dateien von AutoCAD R14 bis zum aktuellen Format (seit AutoCAD 2018 unverändert), ältere aus R11/R12 meist ebenfalls. Lässt sich eine Datei nicht lesen, sagt der Viewer es – **exportiere die Zeichnung dann in deinem CAD-Programm als DXF** und lade diese Datei hoch; DXF liest der Viewer aus jeder Version.
 
+### HTML-Dateien {since=0.10.2}
+
+Eine hochgeladene **HTML-Datei** (`.html`, `.htm`) öffnest du mit **Vorschau öffnen** – in Dokumenten, den **Medien**, Dateien-Eigenschaften und veröffentlichten Seiten. Die Vorschau ist abgeschottet: **Skripte und externe Inhalte sind abgeschaltet**, und die Seite kommt nicht an deine Daten; eingebettete Bilder und eigene Stile werden gezeigt. Bis 5 MB, sonst lädst du sie herunter – im Browser geöffnet gilt dieser Schutz nicht mehr.
+
 ## Sprachnotizen und Besprechungen
 
 `/sprachnotiz` öffnet die Aufnahme: Mikrofon antippen, sprechen, **Aufnahme beenden** – bis zu **zwei Stunden**, genug für eine Besprechung. Die Aufnahme lässt sich anhören oder verwerfen; **Einfügen** legt sie als Audio in die Seite (im Rahmen der Upload-Grenze der Instanz). Ist die Spracherkennung eingerichtet, folgt darunter das Gesprochene als Text; sonst bietet der Dialog nur das Audio an.

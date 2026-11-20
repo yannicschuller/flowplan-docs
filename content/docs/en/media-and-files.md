@@ -83,6 +83,10 @@ Flowplan opens technical drawings in **DXF** and **DWG** format (AutoCAD and man
 - **File size**: DXF up to 100 MB, DWG up to 50 MB. Very large drawings are shown only in part, and the viewer says so. Binary DXF files are not read – save them as DXF in text format.
 - **DWG**: for DWG, Flowplan loads a DWG reader (LibreDWG, about 11 MB) from its own server the first time; it is not part of the [offline copy](/offline-and-apps), so DWG files need a connection the first time. DXF also works offline. DWG files from AutoCAD R14 up to the current format (unchanged since AutoCAD 2018) are read, older ones from R11/R12 mostly too. If a file cannot be read, the viewer says so – **then export the drawing as DXF from your CAD program** and upload that file; the viewer reads DXF from any version.
 
+### HTML files {since=0.10.2}
+
+Open an uploaded **HTML file** (`.html`, `.htm`) with **Open preview** – in documents, **Media**, files properties and published pages. The preview is isolated: **scripts and external content are switched off**, and the page cannot reach your data; embedded pictures and its own styles are shown. Up to 5 MB; otherwise download it – opened in a browser, this protection no longer applies.
+
 ## Voice notes and meetings
 
 `/voice` opens the recorder: tap the microphone, speak, **Stop recording** – up to **two hours**, enough for a meeting. You can listen to the recording or discard it; **Insert** puts it into the page as audio (within the instance's upload limit). If speech recognition is set up, the spoken words follow below as text; otherwise the dialog only offers the audio.
