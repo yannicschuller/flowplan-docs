@@ -55,7 +55,7 @@ Gäste sind Personen außerhalb des Teams, etwa Kunden oder Freelancer. Sie sehe
 
 Mit Single Sign-on können Gruppen des Identitätsanbieters Mitglieder und Gruppen automatisch pflegen – siehe [SSO-Gruppen zuordnen](/sso-oidc#sso-gruppen-arbeitsbereichen-zuordnen).
 
-Regale und Bücher der [Bibliothek](/library#rechte-fuer-regale-und-buecher) folgen denselben Rechten: Ein Regal ist ein Bereich, ein Buch eine Seite. {since=0.10.2}
+Regale und Bücher der [Bibliothek](/library#rechte-fuer-regale-und-buecher) folgen denselben Rechten: Ein Regal ist ein Bereich, ein Buch eine Seite. {since=0.11.0}
 
 ## Wie Rechte zusammenwirken
 

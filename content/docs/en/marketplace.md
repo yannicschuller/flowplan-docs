@@ -36,9 +36,9 @@ The marketplace shows visitors the title in their language – switch between **
 
 What is never included: a workflow's credentials, runs and webhook addresses, the address of your instance, names of people, pictures uploaded to a whiteboard (only pictures with an https address go along) and record cards. A workflow's references to pages and databases are matched by name on import or stay empty. For appearances with own typefaces: only publish typefaces whose licence allows passing them on.
 
-All templates also leave what concerns people here: mentions of people become the plain text “@Person”, so tasks in documents lose who they are assigned to (the due date stays), comments and their highlights are not included, and neither are the ids and e-mail addresses of members – not even in the text. Database templates also leave out who created or changed a record, values of person properties and page properties of the type person. People a workflow names (recipients, approvers) go along without their names and are chosen again on import or stay empty. Links to pages are kept. The dialog says how many details that is. {since=0.10.2}
+All templates also leave what concerns people here: mentions of people become the plain text “@Person”, so tasks in documents lose who they are assigned to (the due date stays), comments and their highlights are not included, and neither are the ids and e-mail addresses of members – not even in the text. Database templates also leave out who created or changed a record, values of person properties and page properties of the type person. People a workflow names (recipients, approvers) go along without their names and are chosen again on import or stay empty. Links to pages are kept. The dialog says how many details that is. {since=0.11.0}
 
-## Flashcard decks {since=0.10.2}
+## Flashcard decks {since=0.11.0}
 
 In the marketplace a [flashcard deck](/flashcards) is a database template – saved with **Save as template** and then published like any other. It takes along: properties, views (the study views too), the card mapping with the card types and the records with their pictures, clozes and [image occlusion masks](/flashcards-occlusion). **Never the learning state:** reviews and FSRS values belong to the people who studied. The dialog says so under **Learning progress and reviews are never included**.
 

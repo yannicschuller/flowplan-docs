@@ -6,7 +6,7 @@ keywords: preview, 3d, cad, stl, step, obj, gltf, 3mf, iges, dxf, dwg, drawing, 
 
 Open 3D models, CAD and 2D drawings, HTML files and spreadsheets right in Flowplan – no download, no extra program.
 
-## 3D and CAD files {since=0.10.2}
+## 3D and CAD files {since=0.11.0}
 
 Flowplan shows **STL**, **OBJ**, **glTF/GLB**, **3MF**, **STEP/STP** and **IGES/IGS** files in the 3D viewer instead of only offering them as downloads. Upload such a file to a document and a card with a cube icon and **Open in 3D viewer** appears; a click opens the viewer. The same goes for 3D files in **Media** (filter **3D/CAD**), in files properties of databases, in links to such files and on published pages. In editable text, a link opens the viewer with <kbd>⌘</kbd>-click.
 
@@ -21,7 +21,7 @@ Flowplan shows **STL**, **OBJ**, **glTF/GLB**, **3MF**, **STEP/STP** and **IGES/
 
 The file is read in the browser, large ones in a separate thread so the page stays responsive; the original stays unchanged, and **Download** gets it.
 
-### 2D drawings: DXF and DWG {since=0.10.2}
+### 2D drawings: DXF and DWG {since=0.11.0}
 
 Flowplan opens technical drawings in **DXF** and **DWG** format (AutoCAD and many other CAD programs) in the drawing viewer. The card in the document has a blueprint icon and **Open in drawing viewer**; otherwise everything works as for 3D files – also in **Media** (filter **3D/CAD**), in files properties and on published pages.
 
@@ -34,10 +34,10 @@ Flowplan opens technical drawings in **DXF** and **DWG** format (AutoCAD and man
 - **File size**: DXF up to 100 MB, DWG up to 50 MB. Very large drawings are shown only in part, and the viewer says so. Binary DXF files are not read – save them as DXF in text format.
 - **DWG**: for DWG, Flowplan loads a DWG reader (LibreDWG, about 11 MB) from its own server the first time; it is not part of the [offline copy](/offline-and-apps), so DWG files need a connection the first time. DXF also works offline. DWG files from AutoCAD R14 up to the current format (unchanged since AutoCAD 2018) are read, older ones from R11/R12 mostly too. If a file cannot be read, the viewer says so – **then export the drawing as DXF from your CAD program** and upload that file; the viewer reads DXF from any version.
 
-## HTML files {since=0.10.2}
+## HTML files {since=0.11.0}
 
 Open an **HTML file** with **Open preview** – in documents, **Media**, files properties and published pages. The preview is isolated: **scripts and external content are switched off**, and the page cannot reach your data; embedded pictures and its own styles are shown. **Run scripts** runs them isolated, without network; `FLOWPLAN_HTML_PREVIEW_SCRIPTS=0` hides it. Up to 5 MB (`FLOWPLAN_HTML_PREVIEW_MB`); a download opened in a browser is not protected.
 
-## Spreadsheets {since=0.10.2}
+## Spreadsheets {since=0.11.0}
 
 Open a **CSV** or **Excel file** (`.xlsx`) with **Open preview** – in documents, **Media**, files properties and published pages. The view is read-only: sheets as tabs, a filter for rows, sorting by a click on a column letter. Up to 5,000 rows and 200 columns of files up to 20 MB (`FLOWPLAN_SHEET_PREVIEW_MB`); formulas show their saved result. Old `.xls` files are downloaded.

@@ -49,7 +49,7 @@ Good to know:
 - **Updates:** when you change something in Flowplan, when the app comes to the foreground, and in the background about every 30 minutes (iOS decides how often). On iPhone with iOS 26 also [right away by push](#instant-updates-on-iphone).
 - **Requirements:** the configurable widgets, the Live Activities other than the timer, and Siri and Shortcuts need a Flowplan server 0.7.0 or newer. *Flowplan*, *Flowplan Inbox* and the running timer work from 0.4.0.
 
-### Next appointment, Continue reading, Key figure and Deadline {since=0.10.2}
+### Next appointment, Continue reading, Key figure and Deadline {since=0.11.0}
 
 | Widget | What it shows | Settings |
 | --- | --- | --- |
@@ -71,7 +71,7 @@ In the settings of every widget:
 - **Colour:** *Accent* (default: the accent colour of the workspace the content comes from), *Profile colour* (the profile's colour dot), *System* (Material You from the wallpaper or theme on Android 12 and later, the system tint on iPhone) or *Flowplan*. You choose the profile colour in the app under *Manage profiles*; it also shows in the profile list and when switching.
 - On iPhone the widgets also look right tinted, accented and in the clear Liquid Glass look of iOS 26.
 
-### Accent colour, "Widgets only" and instant updates {since=0.10.2}
+### Accent colour, "Widgets only" and instant updates {since=0.11.0}
 
 - **Accent colour:** the instance sends every widget the accent colour of its workspace (*Settings → Workspace → Appearance*), checked for legibility in light and dark mode like the web app. Workspaces without their own colour, and people who chose Flowplan's own look, get Flowplan's colours. Older servers send no accent colour; the widgets then use Flowplan's colours.
 - **"Widgets only":** under *Settings → Account → Signed-in devices*, a profile that is not active in the app right now shows as *Widgets only*; the test notification sends it nothing.

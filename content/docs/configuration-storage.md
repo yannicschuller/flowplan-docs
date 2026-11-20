@@ -15,9 +15,9 @@ Die Umgebungsvariablen für S3 und Datenbanksicherung, PostgreSQL und Cluster, V
 | `S3_ACCESS_KEY_ID` / `S3_SECRET_ACCESS_KEY` | – | Zugangsschlüssel mit Lese- und Schreibrecht auf den Bucket. |
 | `S3_REGION` | `us-east-1` | Region. Garage verlangt seinen eigenen Wert (oft `garage`). |
 | `S3_PREFIX` | `flowplan` | Ordner im Bucket; Dateien unter `<Präfix>/uploads/`, Datenbank unter `<Präfix>/db/`. |
-| `S3_LOCAL_CACHE` | *leer* | Nur einen Teil der Dateien auf diesem Server halten, z. B. `2GB` oder `500MB`: darüber werden die am längsten nicht benutzten, im Bucket bestätigten Dateien lokal entfernt und bei Bedarf wieder geholt ([Details](/storage-and-backups#nur-einen-teil-der-dateien-lokal-halten)). Leer: alle Dateien bleiben lokal. Ohne `S3_BUCKET` ignoriert; betrifft nie die Datenbank. {since=0.10.2} |
+| `S3_LOCAL_CACHE` | *leer* | Nur einen Teil der Dateien auf diesem Server halten, z. B. `2GB` oder `500MB`: darüber werden die am längsten nicht benutzten, im Bucket bestätigten Dateien lokal entfernt und bei Bedarf wieder geholt ([Details](/storage-and-backups#nur-einen-teil-der-dateien-lokal-halten)). Leer: alle Dateien bleiben lokal. Ohne `S3_BUCKET` ignoriert; betrifft nie die Datenbank. {since=0.11.0} |
 | `FLOWPLAN_LITESTREAM` | an | `off`: nur Dateien spiegeln, Datenbank nicht sichern. |
-| `FLOWPLAN_LITESTREAM_LOG_LEVEL` | `info` | Wie viel Litestream ins Log schreibt: `debug`, `info`, `warn` oder `error`. `warn` lässt die Routinezeilen jeder Verdichtung weg und behält Warnungen und Fehler. {since=0.10.2} |
+| `FLOWPLAN_LITESTREAM_LOG_LEVEL` | `info` | Wie viel Litestream ins Log schreibt: `debug`, `info`, `warn` oder `error`. `warn` lässt die Routinezeilen jeder Verdichtung weg und behält Warnungen und Fehler. {since=0.11.0} |
 | `FLOWPLAN_LITESTREAM_AUTOHEAL` | an | `off`: eine [hängende Litestream-Replik](/restore#litestream-zustand-reparieren) nur melden, nicht beim nächsten Neustart von selbst neu aufbauen. {since=0.10.0} |
 | `LITESTREAM_SSE_C_KEY` | *leer* | Optional: der Speicheranbieter verschlüsselt die Litestream-Kopie (SSE-C, 32 Bytes base64, nur über https und bei Anbietern, die SSE-C können). |
 

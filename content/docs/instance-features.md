@@ -6,7 +6,7 @@ keywords: Funktionen, Module, ausschalten, abschalten, Instanz, Workflows, KI, L
 
 Unter **Administration → Instanz → Funktionen dieser Instanz** schaltest du Funktionen für die ganze Instanz aus – dieselbe Liste wie bei [Funktionen ein- und ausblenden](/settings#funktionen-ein-und-ausblenden). Anders als dort ist die Funktion dann nicht nur ausgeblendet, sondern aus: Vor dem Ausschalten fragt Flowplan nach.
 
-## Ausschalten und wieder einschalten {since=0.10.2}
+## Ausschalten und wieder einschalten {since=0.11.0}
 
 - **Für alle ausgeblendet**, egal was jemand selbst gewählt hat. In den eigenen Einstellungen steht der Schalter auf aus, ist gesperrt und trägt den Hinweis **Von der Administration für diese Instanz ausgeschaltet**; bei **Funktionen für neue Konten** ebenso.
 - **Der Server lehnt sie ab:** Neue Seiten dieser Art, ihre Befehle, die zugehörigen API-Routen und MCP-Werkzeuge antworten mit 403 und „… auf dieser Instanz ausgeschaltet“. MCP-Clients bekommen die Werkzeuge der Funktion gar nicht erst angezeigt.

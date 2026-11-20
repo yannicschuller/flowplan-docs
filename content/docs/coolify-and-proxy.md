@@ -104,7 +104,7 @@ Pull Requests und Dependabot lösen nie ein Deployment aus; ohne die Secrets (et
 > [!WARNING]
 > In Coolify die Anzahl der Instanzen bei 1 lassen. Mehrere Container würden dieselbe SQLite-Datei beschreiben.
 
-### Eine Beta-Instanz, die die Replikation testet {since=0.10.2}
+### Eine Beta-Instanz, die die Replikation testet {since=0.11.0}
 
 Eine Beta-Instanz ohne S3 startet nie Litestream – Replikation, [Selbstheilung](/restore#litestream-zustand-reparieren) und das Zurücksetzen im Bucket laufen dann erst auf der Produktion. Damit jedes `:beta` sie mittestet, bekommt die Beta-Instanz eine eigene Replikation:
 

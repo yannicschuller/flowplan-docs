@@ -62,7 +62,7 @@ Die Übersicht zeigt die Tasten so, wie sie auf deinem Gerät heißen: auf dem M
 | --- | --- |
 | <kbd>/</kbd> | Blockmenü |
 | <kbd>@</kbd> | Seite oder Person erwähnen (Pfeiltasten wählen, <kbd>Enter</kbd> fügt ein, <kbd>Esc</kbd> schließt) |
-| <kbd>:</kbd> und zwei Buchstaben | [Emoji vorschlagen](/documents#emojis-mit) (<kbd>←</kbd> <kbd>→</kbd> wählen, <kbd>Enter</kbd> oder <kbd>Tab</kbd> fügt ein, <kbd>Esc</kbd> schließt; `:smile:` fügt gleich ein) {since=0.10.2} |
+| <kbd>:</kbd> und zwei Buchstaben | [Emoji vorschlagen](/documents#emojis-mit) (<kbd>←</kbd> <kbd>→</kbd> wählen, <kbd>Enter</kbd> oder <kbd>Tab</kbd> fügt ein, <kbd>Esc</kbd> schließt; `:smile:` fügt gleich ein) {since=0.11.0} |
 | <kbd>⌘</kbd> <kbd>B</kbd> / <kbd>I</kbd> / <kbd>U</kbd> | Fett, kursiv, unterstrichen |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> | Durchgestrichen |
 | <kbd>⌘</kbd> <kbd>E</kbd> | Code im Text |
@@ -202,10 +202,10 @@ In einer Text-Eigenschaft (Tabellenzelle, Eintrag; siehe [Formatierter Text](/da
 | <kbd>⌥</kbd> <kbd>←</kbd> / <kbd>→</kbd> | Um einen Tag verschieben |
 | <kbd>⌥</kbd> <kbd>⇧</kbd> <kbd>←</kbd> / <kbd>→</kbd> | Timeline: Ende ändern |
 | <kbd>⌥</kbd> <kbd>Strg</kbd> <kbd>←</kbd> / <kbd>→</kbd> | Timeline: Beginn ändern |
-| <kbd>T</kbd> | Timeline (mit Fokus): zu heute springen {since=0.10.2} |
-| <kbd>F</kbd> | Timeline (mit Fokus): alles einpassen {since=0.10.2} |
-| <kbd>+</kbd> / <kbd>−</kbd> | Timeline (mit Fokus): vergrößern / verkleinern {since=0.10.2} |
-| <kbd>⌘</kbd> + Mausrad | Timeline: um den Mauszeiger zoomen (auf dem Touchscreen mit zwei Fingern) {since=0.10.2} |
+| <kbd>T</kbd> | Timeline (mit Fokus): zu heute springen {since=0.11.0} |
+| <kbd>F</kbd> | Timeline (mit Fokus): alles einpassen {since=0.11.0} |
+| <kbd>+</kbd> / <kbd>−</kbd> | Timeline (mit Fokus): vergrößern / verkleinern {since=0.11.0} |
+| <kbd>⌘</kbd> + Mausrad | Timeline: um den Mauszeiger zoomen (auf dem Touchscreen mit zwei Fingern) {since=0.11.0} |
 | <kbd>⌥</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Monatsansicht: ganztägigen Eintrag um eine Woche verschieben |
 | <kbd>Esc</kbd> | Laufendes Ziehen abbrechen |
 

@@ -77,8 +77,8 @@ Clients, die Streamable HTTP sprechen und eigene Kopfzeilen erlauben, nutzen die
 | --- | --- | --- |
 | `list_workspaces` | Deine Arbeitsbereiche mit deiner Rolle und den Bereichen, die du siehst | Lesen |
 | `list_pages` | Seiten eines Arbeitsbereichs, optional in einem Bereich oder unter einer Seite | Lesen |
-| `get_library` | Ein Bereich als [Bibliothek](/library#bereich-als-bibliothek): Bücher, Kapitel und Seiten, die du lesen darfst, mit ihren Zahlen {since=0.10.0}; mit `workspaceId` statt `spaceId` alle Regale des Arbeitsbereichs, deine eigenen und die geteilten, und „Weiterlesen“ {since=0.10.2} | Lesen |
-| `search_library` | Sucht in allen Regalen der [Bibliothek](/library#in-allen-regalen-suchen) und ordnet die Treffer nach Ebene: Regale, Bücher, Kapitel, Seiten und Inhalte mit Ausschnitt {since=0.10.2} | Lesen |
+| `get_library` | Ein Bereich als [Bibliothek](/library#bereich-als-bibliothek): Bücher, Kapitel und Seiten, die du lesen darfst, mit ihren Zahlen {since=0.10.0}; mit `workspaceId` statt `spaceId` alle Regale des Arbeitsbereichs, deine eigenen und die geteilten, und „Weiterlesen“ {since=0.11.0} | Lesen |
+| `search_library` | Sucht in allen Regalen der [Bibliothek](/library#in-allen-regalen-suchen) und ordnet die Treffer nach Ebene: Regale, Bücher, Kapitel, Seiten und Inhalte mit Ausschnitt {since=0.11.0} | Lesen |
 | `search` | Volltextsuche über Seiten, Datensätze, Kommentare und Dateiinhalte; versteht auch #Tag, OR, NOT, created_by:, created:, type:, in:, title: | Lesen |
 | `list_collections` | Sammlungen eines Arbeitsbereichs (eigene und geteilte) mit ihrer Abfrage | Lesen |
 | `run_collection` | Die Seiten und Datensätze, die jetzt zu einer Sammlung passen, mit deinen Rechten | Lesen |
@@ -86,7 +86,7 @@ Clients, die Streamable HTTP sprechen und eigene Kopfzeilen erlauben, nutzen die
 | `query_database` | Datensätze mit Eigenschaften nach Namen, Eigenschaftsdefinitionen, Ansichten; Textfilter, eine gespeicherte Ansicht, Blättern | Lesen |
 | `get_record` | Ein Datensatz mit allen Eigenschaften und seinem Datensatzdokument | Lesen |
 | `my_tasks` | Deine Aufgaben aus Dokumenten und Datensätzen, mit Fälligkeit | Lesen |
-| `optimize_flashcard_parameters` | Passt die FSRS-Parameter eines [Lernkarten-Stapels](/flashcards-optimize) (oder eines Teils davon) an deine Wertungen an und empfiehlt eine Behaltensrate mit der Arbeit je Rate; speichert nichts {since=0.10.2} | Lesen |
+| `optimize_flashcard_parameters` | Passt die FSRS-Parameter eines [Lernkarten-Stapels](/flashcards-optimize) (oder eines Teils davon) an deine Wertungen an und empfiehlt eine Behaltensrate mit der Arbeit je Rate; speichert nichts {since=0.11.0} | Lesen |
 | `create_page` | Neues Dokument, neue Datenbank oder neues Whiteboard; Dokumente können mit Markdown-Inhalt beginnen | Schreiben |
 | `append_to_page` | Hängt Markdown ans Ende eines Dokuments an | Schreiben |
 | `update_page` | Ändert Titel und Emoji eines Dokuments, ersetzt seinen Text oder einen Abschnitt oder hängt an {since=0.9.8} | Schreiben |
@@ -98,7 +98,7 @@ Clients, die Streamable HTTP sprechen und eigene Kopfzeilen erlauben, nutzen die
 | `trash_record` | Legt einen Datensatz in den Papierkorb {since=0.9.8} | Schreiben |
 | `save_collection` | Neue Sammlung anlegen oder Name, Abfrage, Emoji und Teilen ändern | Schreiben |
 | `delete_collection` | Sammlung in den Papierkorb legen | Schreiben |
-| `set_flashcard_parameters` | Speichert deine FSRS-Parameter für einen Stapel, einen Teil davon oder alle Stapel, oder setzt sie zurück {since=0.10.2} | Schreiben |
+| `set_flashcard_parameters` | Speichert deine FSRS-Parameter für einen Stapel, einen Teil davon oder alle Stapel, oder setzt sie zurück {since=0.11.0} | Schreiben |
 
 Eigenschaften werden mit ihrem Namen (oder ihrer ID) angegeben. Datumswerte schreibst du als `JJJJ-MM-TT`, Auswahlen mit ihrem Namen, Personen mit E-Mail-Adresse oder Namen und Relationen als Liste von Datensatz-IDs. Text-Eigenschaften (außer dem Titel) sind formatierter Text: `get_database` kennzeichnet sie mit `markdown: true`, gelesen und geschrieben werden sie als Inline-Markdown (`**fett**`, `_kursiv_`, `~~durchgestrichen~~`, `` `Code` ``, `[Text](https://…)`, `\n`; siehe [Formatierter Text](/database-properties#formatierter-text)). `update_record` nimmt die `version` aus `get_record` entgegen: Hat jemand den Datensatz inzwischen geändert, wird die Änderung abgelehnt und nicht überschrieben.
 

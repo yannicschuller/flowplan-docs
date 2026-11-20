@@ -48,7 +48,7 @@ So that not everything is there at once at the start, every personal setting bel
 
 New accounts start with the instance's default – **Normal**, unless the administration sets another one ([Settings level for new accounts](/administration#instance)); the answer in the [introduction](#the-introduction) can adjust it. Accounts that existed before the levels are on **Expert** and so see everything as before. Admins can set a person's level under [Users](/user-management#users). The **Administration** itself has no levels: admins always see everything there.
 
-## Show and hide features {since=0.10.2}
+## Show and hide features {since=0.11.0}
 
 If you don't need something, hide it under **Settings → Appearance & language → Features** (Normal level). There is a switch per feature: **Flashcards**, **Whiteboards**, **Notebooks**, **Journal**, **Dashboards**, **Workflows**, **draw.io**, **AI**, **More view types** (board, calendar, timeline, gallery, chart, feed and sprints – table and list always stay), **Forms** and **Meetings**.
 

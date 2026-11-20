@@ -19,7 +19,7 @@ Alle Daten liegen in einem Verzeichnis. Mit einem S3-Speicher werden Dateien ges
 | `pre-restore-…`, `pre-move-…` | Vorheriger Stand nach einer Wiederherstellung bzw. einem [Umzug](/move-instance); nach ein paar Tagen löschen |
 | `ocr/` | Sprachdaten der Texterkennung, werden bei Bedarf neu angelegt |
 
-### Wie Flowplan die SQLite-Datei nutzt {since=0.10.2}
+### Wie Flowplan die SQLite-Datei nutzt {since=0.11.0}
 
 Die Datenbank läuft im WAL-Modus mit `synchronous=NORMAL` – der Einstellung, die SQLite und Litestream für WAL empfehlen: Ein Speichern wartet nicht mehr auf die Platte, die Datei wird erst beim Zurückschreiben des Logs (Checkpoint) synchronisiert. Stürzt Flowplan ab oder wird der Container neu gestartet, geht nichts verloren. Fällt dagegen der Strom aus oder stürzt der ganze Rechner ab, können die letzten Änderungen vor dem Ausfall fehlen; die Datei selbst bleibt immer konsistent. Mit Litestream liegen ohnehin nur die Änderungen der letzten Sekunde noch nicht im Bucket.
 
@@ -36,7 +36,7 @@ Beim ersten Start mit S3 lädt Flowplan alle vorhandenen Dateien hoch. Den Forts
 
 Geeignet sind MinIO, Garage, SeaweedFS, AWS S3 und andere S3-kompatible Dienste.
 
-### Nur einen Teil der Dateien lokal halten {since=0.10.2}
+### Nur einen Teil der Dateien lokal halten {since=0.11.0}
 
 Auf einem kleinen Server kann der Bucket die Dateien allein halten: Mit `S3_LOCAL_CACHE=2GB` (oder `500MB`, `1.5GB`; 1 GB = 1024 MB) wird `uploads/` zu einem Zwischenspeicher dieser Größe.
 

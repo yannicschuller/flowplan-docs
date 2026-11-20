@@ -56,7 +56,7 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 
 **Tastatur ausblenden (Handy):** Beim Schreiben sitzt die Formatierungsleiste über der Bildschirmtastatur. Der letzte Knopf rechts, **Tastatur ausblenden**, schließt die Tastatur, damit du mehr vom Dokument siehst; Text und Cursorposition bleiben. Ein Tipp in den Text holt sie zurück. Im Inhalt eines Datenbank-Eintrags sitzt die Leiste beim Schreiben genauso über der Tastatur. Bei allen anderen Textfeldern – Titel von Seiten, Datenbanken und Einträgen, Tags, Eigenschaften, der Name im Dialog **Neue Seite**, Suchfelder, Kommentare – erscheint derselbe Knopf als runder Knopf rechts direkt über der Tastatur. Das gilt im Browser und in den Apps.
 
-## Emojis mit : {since=0.10.2}
+## Emojis mit : {since=0.11.0}
 
 Tippst du `:` und mindestens zwei Buchstaben, erscheint an der Schreibmarke eine Zeile mit passenden Emojis: `:smi`, `:daum`, `:rak` oder `:rocket`. Gesucht wird nach deutschen und englischen Namen, Kürzeln wie `:+1:` und Schlagwörtern – genau passende Namen und Kürzel stehen vorn, dann Namen, die so anfangen, dann Schlagwörter. Zuletzt eingefügte Emojis rücken nach vorn. Das erste ist ausgewählt, sein Name steht darunter. <kbd>←</kbd> und <kbd>→</kbd> wählen, <kbd>Enter</kbd> oder <kbd>Tab</kbd> ersetzt `:rak` durch 🚀, ein Klick oder Tipp auf ein Emoji ebenso. Weitertippen grenzt die Auswahl ein; ein schließender Doppelpunkt nach einem bekannten Kürzel (`:smile:`, `:tada:`) fügt das Emoji gleich ein.
 

@@ -45,7 +45,7 @@ Unter **Nach dem Absenden**, **Bestätigung per E-Mail** und **Team benachrichti
 - **Bestätigung per E-Mail an die Antwortenden**: Betreff und Text sind frei wählbar. Die E-Mail enthält den Text und die beantworteten Fragen als Liste – ohne ausgeblendete und interne Eigenschaften – und, mit [Kundenportal](#kundenportal), den Link zur Anfrage (dann kommt nur diese eine E-Mail). Sie geht an die erste beantwortete E-Mail-Frage; in Formularen, die nicht anonym sind, sonst an die Adresse des angemeldeten Kontos. Anonyme Formulare schreiben nur, wenn die Person ihre Adresse selbst eingibt. Voraussetzung ist eingerichtetes E-Mail ([Konfiguration](/configuration)); je Adresse gehen höchstens 5 E-Mails pro Stunde, je Absender 10 und je Formular 300.
 - **Team benachrichtigen**: Die gewählten Mitglieder bekommen bei jeder neuen Antwort eine Benachrichtigung der Art „Gastkommentare und Gasteinträge“ – sofern sie den Eintrag sehen dürfen.
 
-### Feste Vorschlagslisten {since=0.10.2}
+### Feste Vorschlagslisten {since=0.11.0}
 
 Soll eine kurze Textfrage feste Antworten anbieten – Orte, Abteilungen, Artikel –, gib sie unter **Formular gestalten** bei der Frage mit **Feste Vorschläge eingeben** ein, **einer pro Zeile**. Beim Tippen erscheinen ab dem ersten Buchstaben die passenden Einträge unter dem Feld: zuerst die, die mit dem Getippten beginnen, dann die, die es enthalten, jeweils in deiner Reihenfolge. In einem leeren Feld zeigt <kbd>↓</kbd> die Liste von vorn. Die Antwort bleibt frei – wer etwas anderes braucht, tippt es einfach ein.
 
@@ -56,7 +56,7 @@ Soll eine kurze Textfrage feste Antworten anbieten – Orte, Abteilungen, Artike
 
 Sind bei derselben Frage auch [frühere Antworten](#fruehere-antworten-als-vorschlaege) eingeschaltet, kommen die festen Vorschläge zuerst, frühere Antworten danach, ohne doppelte Einträge.
 
-### Frühere Antworten als Vorschläge {since=0.10.2}
+### Frühere Antworten als Vorschläge {since=0.11.0}
 
 Bei Fragen, auf die immer wieder dieselben Antworten kommen – eine Einkaufs- oder Bestellliste, ein Raum, ein Projekt –, schlägt Flowplan beim Tippen frühere Antworten vor. Schalte dafür bei einer kurzen Textfrage unter **Formular gestalten** **Frühere Antworten vorschlagen** ein und wähle, woher sie kommen:
 

@@ -86,7 +86,7 @@ Changing the bot is recorded as the security event “Instance Telegram bot chan
 
 Optional and off by default: provider (Ollama, OpenAI-compatible, Anthropic, Gemini), who may use AI, individual features and users' own keys. A switch of its own: **On-device AI (Apple)** – allowed by default because nothing leaves the device. Everything in [AI](/ai#for-admins).
 
-**Quotas** limit AI through the instance's provider per day, week, month and year – for the whole instance, groups and people ([AI quotas](/ai-quotas)). {since=0.10.2}
+**Quotas** limit AI through the instance's provider per day, week, month and year – for the whole instance, groups and people ([AI quotas](/ai-quotas)). {since=0.11.0}
 
 ## Extensions & domains
 
@@ -121,9 +121,9 @@ Health, usage and events of the instance – live: five key figures at the top (
 | What's new after updates for new accounts | What new accounts start with for **What's new after updates**: **Show all** (default), **Only breaking changes** or **Never**. Only for accounts created afterwards; existing accounts keep their setting, and everyone can change it under **Appearance & language**. You set it per person under [Users](/user-management#users); accounts on **Instance default** follow this setting. {since=0.9.7} |
 | Settings level for new accounts | Which settings new accounts see: **Beginner** the essentials, **Normal** (default) most of them, **Expert** all ([Settings levels](/settings#settings-levels)). The search in Settings always finds all of them, and everyone can change their level at the top of Settings; you set it per person under [Users](/user-management#users). Accounts that existed before this setting keep seeing everything (Expert). {since=0.9.7} |
 | Default formatting toolbar | The [formatting toolbar](/formatting#format-text) everyone gets who hasn't customized theirs – with the same editor as in your own settings. Their **Reset** goes back to it; here it restores the built-in bar. {since=0.9.7} |
-| Starter content for new accounts | A space whose pages every new account gets in its personal workspace, instead of the built-in examples; see [Starter content for new accounts](/starter-content). {since=0.10.2} |
-| Features of this instance | A switch **On for this instance** per feature. Switched off, the feature is off for everyone – on the server as well; see [Features of this instance](/instance-features). {since=0.10.2} |
-| Features for new accounts | Which [features](/settings#show-and-hide-features) new accounts see, a switch per feature. Hidden only removes the way in; existing pages and permissions stay. Everyone can change it; existing accounts see everything. **Apply to all** puts every existing account on this default after a confirmation; their own choices are lost. {since=0.10.2} |
+| Starter content for new accounts | A space whose pages every new account gets in its personal workspace, instead of the built-in examples; see [Starter content for new accounts](/starter-content). {since=0.11.0} |
+| Features of this instance | A switch **On for this instance** per feature. Switched off, the feature is off for everyone – on the server as well; see [Features of this instance](/instance-features). {since=0.11.0} |
+| Features for new accounts | Which [features](/settings#show-and-hide-features) new accounts see, a switch per feature. Hidden only removes the way in; existing pages and permissions stay. Everyone can change it; existing accounts see everything. **Apply to all** puts every existing account on this default after a confirmation; their own choices are lost. {since=0.11.0} |
 
 Everyone sees version, licence and source code under **Settings → About Flowplan**; for our images it also says whether it is a beta or a release (own builds: `--build-arg FLOWPLAN_CHANNEL=beta` or `release`). If you run modified code, name its source with `FLOWPLAN_SOURCE_URL`; `FLOWPLAN_HIDE_SPONSOR=true` hides the link to GitHub Sponsors ([Configuration](/configuration-storage#legal-and-interface)).
 

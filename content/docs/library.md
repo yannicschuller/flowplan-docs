@@ -20,7 +20,7 @@ Für Dokumentation mit Hunderten Seiten zeigst du einen Bereich als **Bibliothek
 
 Du siehst nur Seiten, die du sehen darfst; Journaltage stehen nicht in der Bibliothek. Über die API schaltet `space.update` mit `library` die Ansicht um, `GET /api/spaces/{spaceId}/library` liefert Bücher und Kapitel.
 
-## Bücher und Kapitel als Übersicht {since=0.10.2}
+## Bücher und Kapitel als Übersicht {since=0.11.0}
 
 Bücher und Kapitel sind wie Regalfächer: Sie öffnen sich als **Übersicht**, der Editor erscheint erst mit einer Seite.
 
@@ -35,7 +35,7 @@ Links auf ein Buch oder Kapitel (`#page=…`), Treffer der Suche und der Pfad ü
 
 Das Fenster für neue Seiten behält beim Tippen seinen Platz: Es hängt am oberen Rand, statt mittig mitzuwandern, wenn ein Hinweis wie „Ähnliche Einträge gibt es schon“ erscheint oder verschwindet.
 
-## Alle Regale auf einen Blick {since=0.10.2}
+## Alle Regale auf einen Blick {since=0.11.0}
 
 Sobald du mindestens einen Bereich als Bibliothek siehst, steht **Bibliothek** in der Navigation unter **Startseite** – am Handy unter **Navigation**. Sie zeigt alle Regale nebeneinander in zwei Gruppen:
 
@@ -48,7 +48,7 @@ Oben steht **Weiterlesen**: die Bücher, in denen du zuletzt gelesen hast, mit d
 
 In der Seitenleiste bleibt alles, wie es war: Bibliotheken sind zugeklappt, mit **Bibliothek öffnen** darunter. Auch die Befehlspalette kennt **Bibliothek öffnen**.
 
-## In allen Regalen suchen {since=0.10.2}
+## In allen Regalen suchen {since=0.11.0}
 
 Das Suchfeld der Bibliothek sucht in allen Regalen zugleich und ordnet die Treffer nach Ebene:
 
@@ -67,7 +67,7 @@ Unter jedem Treffer steht sein Weg: Regal › Buch › Kapitel. Bei Titeln komme
 
 Du findest nur, was du auch sonst finden würdest: Die Bibliothek nutzt den Suchindex und dieselben Rechteprüfungen wie die normale Suche.
 
-## Rechte für Regale und Bücher {since=0.10.2}
+## Rechte für Regale und Bücher {since=0.11.0}
 
 Die Bibliothek hat keine eigenen Rechte. Ein Regal ist ein Bereich, ein Buch eine Seite – es gelten die [Rechte des Arbeitsbereichs](/workspaces-and-permissions#wie-rechte-zusammenwirken):
 
@@ -88,7 +88,7 @@ Gruppen des Identitätsanbieters füllen die Gruppen des Arbeitsbereichs – dam
 
 Wer beim Anbieter in die Gruppe kommt, sieht das Regal mit der nächsten Anmeldung (über SCIM sofort, über LDAP mit dem stündlichen Abgleich); wer herausfällt, sieht es nicht mehr. Einzelne Bücher teilst du auf dieselbe Art mit einer Gruppe über **Teilen**.
 
-## API und MCP {since=0.10.2}
+## API und MCP {since=0.11.0}
 
 - `GET /api/library?workspace=…` liefert die Regale (`personal`, `shared`) mit ihren Büchern, `continueReading` und je Regal `canManage` – ob du seine Rechte ändern darfst.
 - `GET /api/library/search?workspace=…&q=…` liefert die Treffer nach Ebene (`shelves`, `books`, `chapters`, `pages`) mit Weg (`path`), Ausschnitt und `total` je Gruppe.

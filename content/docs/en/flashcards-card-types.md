@@ -26,7 +26,7 @@ A field sits under the front; <kbd>Enter</kbd> checks. Flowplan compares with th
 - **Correct** suggests **Good**, **Almost** (one character different, for answers of six characters or more) **Hard**, otherwise **Again**. The suggestion is highlighted, <kbd>Enter</kbd> or <kbd>Space</kbd> take it – but you may choose any rating.
 - What the comparison passes over is set per deck: upper and lower case, accents (é = e, off by default because they matter in languages) and punctuation. Spaces at the ends and double spaces never count.
 - <kbd>Esc</kbd> in a field with text first leaves the field; a second <kbd>Esc</kbd> ends the session.
-- {since=0.10.2} If the back holds only the expected answer, Flowplan does not show it a second time after checking; extra and note stay.
+- {since=0.11.0} If the back holds only the expected answer, Flowplan does not show it a second time after checking; extra and note stay.
 
 ## Multiple choice
 
@@ -34,5 +34,5 @@ The card shows the right answer (the back) among wrong ones. The wrong ones come
 
 - The order of the answers is shuffled anew for every review and stays while the card is shown.
 - Pick with a tap or the keys <kbd>A</kbd> to <kbd>E</kbd> (before revealing also <kbd>1</kbd> to <kbd>5</kbd>). Right suggests **Good**, wrong **Again**; you may rate otherwise.
-- {since=0.10.2} After your pick the right answer carries ✓ “correct” and a wrong pick ✗ “your choice, wrong” – not just a colour. If the back is only the right answer, it is not repeated below.
+- {since=0.11.0} After your pick the right answer carries ✓ “correct” and a wrong pick ✗ “your choice, wrong” – not just a colour. If the back is only the right answer, it is not repeated below.
 - Multiple choice is easier than free recall – good to start with; for remembering, front/back and type the answer work better.

@@ -116,7 +116,7 @@ So lassen sich drei typische Varianten einrichten:
 
 Alle Einstellungen lassen sich auch über [Umgebungsvariablen](/configuration-ai-push#ki) vorbelegen, etwa für automatisierte Installationen. Sie gelten, bis jemand in der Administration speichert.
 
-Wie viel KI über den Anbieter der Instanz genutzt werden darf – für alle zusammen, je Rolle, je Gruppe und je Person, pro Tag, Woche, Monat und Jahr –, legst du unter [KI-Kontingente](/ai-quotas) fest. {since=0.10.2}
+Wie viel KI über den Anbieter der Instanz genutzt werden darf – für alle zusammen, je Rolle, je Gruppe und je Person, pro Tag, Woche, Monat und Jahr –, legst du unter [KI-Kontingente](/ai-quotas) fest. {since=0.11.0}
 
 Welches Modell eine Person oder Gruppe nutzt, legst du unter [KI-Kontingente](/ai-quotas#modell-je-person-und-gruppe) fest.
 
@@ -135,9 +135,9 @@ Unter **Einstellungen → KI**:
 - **Auf diesem Gerät (Apple):** ob Apple Intelligence hier verfügbar ist und ob Flowplan es nutzen soll – **Wenn möglich (Standard)**, **Nur ohne KI auf dem Server** oder **Aus** ([KI auf dem Gerät](#ki-auf-dem-geraet-apple)).
 - **Eigenen Anbieter einrichten** (wenn die Administration es erlaubt): Anbieter, Adresse, Modell und dein Schlüssel. Eigene Anbieter müssen öffentliche `https`-Adressen haben. Gibt es auch einen Anbieter der Instanz, wählst du unter **Welchen Anbieter verwenden** zwischen **Den der Instanz** und **Meinen eigenen**.
 
-**Modell:** Unter **Verwendeter Anbieter** steht das Modell, das für dich arbeitet. Hat die Administration es für dich oder deine Gruppe festgelegt, steht dort **Von der Administration festgelegt** ([Modell je Person und Gruppe](/ai-quotas#modell-je-person-und-gruppe)). {since=0.10.2}
+**Modell:** Unter **Verwendeter Anbieter** steht das Modell, das für dich arbeitet. Hat die Administration es für dich oder deine Gruppe festgelegt, steht dort **Von der Administration festgelegt** ([Modell je Person und Gruppe](/ai-quotas#modell-je-person-und-gruppe)). {since=0.11.0}
 
-**KI-Kontingent:** Hat die Administration [Kontingente](/ai-quotas) gesetzt, zeigt **Einstellungen → KI** oben, wie viel KI über den Anbieter der Instanz dir noch bleibt und wann es neu beginnt. {since=0.10.2}
+**KI-Kontingent:** Hat die Administration [Kontingente](/ai-quotas) gesetzt, zeigt **Einstellungen → KI** oben, wie viel KI über den Anbieter der Instanz dir noch bleibt und wann es neu beginnt. {since=0.11.0}
 
 ### Worauf die KI zugreifen darf
 

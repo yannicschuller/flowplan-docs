@@ -9,7 +9,7 @@ Die Administration kann begrenzen, wie viel KI über den [Anbieter der Instanz](
 > [!NOTE]
 > **Nur der Anbieter der Instanz zählt.** Ein [eigener Anbieter](/ai#fuer-nutzer) mit eigenem Schlüssel und die [KI auf dem Gerät](/ai#ki-auf-dem-geraet-apple) zählen nie und funktionieren weiter, wenn ein Kontingent aufgebraucht ist.
 
-## Was gezählt wird {since=0.10.2}
+## Was gezählt wird {since=0.11.0}
 
 - **Tokens:** Eingabe und Ausgabe zusammen, wie der Anbieter sie meldet – sonst schätzt Flowplan sie aus der Textlänge.
 - **Oder Kosten:** Sind unter **Administration → KI → Preise** Preise je Modell eingetragen (je Million Tokens, Eingabe und Ausgabe getrennt), lassen sich die Grenzen auch als geschätzte Kosten in der Währung der Instanz setzen. Ein Modell ohne Preis zählt dann nicht mit – die Administration sieht dazu einen Hinweis.
@@ -19,7 +19,7 @@ Die Administration kann begrenzen, wie viel KI über den [Anbieter der Instanz](
 
 Die Zeiträume sind Kalenderzeiträume in der Zeitzone, die die Administration festlegt: Ein Tag beginnt um Mitternacht, eine Woche am Montag (oder Sonntag), ein Monat am Ersten, ein Jahr am 1. Januar.
 
-## Für Admins {since=0.10.2}
+## Für Admins {since=0.11.0}
 
 Unter **Administration → KI → Kontingente**:
 
@@ -45,13 +45,13 @@ Die Ebenen:
 
 Welche Grenze für eine Person gilt: ihre eigene, sonst die **höchste** ihrer Gruppen und Rollen (je Zeitraum; lässt eine ihrer Gruppen einen Zeitraum offen, gibt es dort keine Grenze), sonst der Standard. **Ausgenommen** – eine Person oder eine Gruppe – hebt die persönlichen Grenzen auf; die Grenze der ganzen Instanz bleibt.
 
-**Direkt bei der Person oder Gruppe:** Unter **Administration → Benutzer** hat jede Person im Abschnitt **KI** ihr **Kontingent** – **Geerbt** (mit dem, was gerade gilt), **Eigene Grenzen** je Tag, Woche, Monat und Jahr oder **Ausgenommen** – und darunter ihren Verbrauch je Zeitraum mit dem, was übrig ist. Dasselbe gibt es für Gruppen im Dialog **Gruppen & Rechte → Verwalten** des Arbeitsbereichs (nur für Administratoren). Es sind dieselben Grenzen wie in der Tabelle hier, kein zweiter Speicher. Dort legst du auch das [Modell](#modell-je-person-und-gruppe) fest; die Tabelle **Grenzen** zeigt es in der Spalte **Modell**, die Tabelle **Nach Person** das Modell, das für jede Person gilt. {since=0.10.2}
+**Direkt bei der Person oder Gruppe:** Unter **Administration → Benutzer** hat jede Person im Abschnitt **KI** ihr **Kontingent** – **Geerbt** (mit dem, was gerade gilt), **Eigene Grenzen** je Tag, Woche, Monat und Jahr oder **Ausgenommen** – und darunter ihren Verbrauch je Zeitraum mit dem, was übrig ist. Dasselbe gibt es für Gruppen im Dialog **Gruppen & Rechte → Verwalten** des Arbeitsbereichs (nur für Administratoren). Es sind dieselben Grenzen wie in der Tabelle hier, kein zweiter Speicher. Dort legst du auch das [Modell](#modell-je-person-und-gruppe) fest; die Tabelle **Grenzen** zeigt es in der Spalte **Modell**, die Tabelle **Nach Person** das Modell, das für jede Person gilt. {since=0.11.0}
 
 Unter **Nutzung und Grenzen** siehst du für den gewählten Zeitraum den Verbrauch der ganzen Instanz, je Person (sortierbar nach Verbrauch, Rest oder Name, mit der Grenze und woher sie kommt), je Gruppe und je Modell. Die [KI-Statistik](/administration#ueberwachung) zeigt die Grenzen der Instanz als Linie.
 
 **Benachrichtigungen:** Erreicht die ganze Instanz den Hinweis-Anteil und später 100 %, bekommen alle Administratoren je Zeitraum einmal eine Nachricht (Art **KI-Kontingent der Instanz** unter **Einstellungen → Benachrichtigungen**).
 
-## Modell je Person und Gruppe {since=0.10.2}
+## Modell je Person und Gruppe {since=0.11.0}
 
 Das Modell unter **Anbieter der Instanz** ist der **Standard der Instanz**. Einzelnen Personen, Gruppen oder Rollen kannst du ein anderes Modell desselben Anbieters geben – zum Beispiel nutzt die ganze Instanz ein kleines, günstiges Modell wie Claude Haiku, bestimmte Personen aber Claude Opus.
 
@@ -66,7 +66,7 @@ Welches Modell für eine Person gilt:
 
 Das gilt für jede KI-Funktion und wird auf dem Server festgelegt. [Workflows](/workflows) nutzen das Modell der Person, als die sie laufen (die Rolle **Administratoren** zählt dort nicht, weil Workflows nie mit Administratorrechten laufen). Ein [eigener Anbieter](/ai#fuer-nutzer) und die [KI auf dem Gerät](/ai#ki-auf-dem-geraet-apple) wählen ihr Modell selbst. Wechselt die Instanz die Art des Anbieters (etwa von Anthropic zu OpenAI), gelten die bisherigen Modelle nicht mehr, bis du sie neu wählst – die Tabelle zeigt sie als **anderer Anbieter – gilt nicht**. Jede Änderung steht im Protokoll unter **Überwachung**.
 
-## Für Nutzer {since=0.10.2}
+## Für Nutzer {since=0.11.0}
 
 - **Einstellungen → KI → KI-Kontingent** zeigt je Zeitraum einen Balken: „1.500 von 10.000 übrig“ und wann er neu beginnt – in Tokens oder, wenn die Administration Kosten eingestellt hat, in Geld.
 - **In den KI-Fenstern** (KI fragen, Schreibassistent, Zusammenfassung) erscheint ein kleiner Hinweis, sobald weniger als 20 % übrig sind (oder was die Administration festgelegt hat).

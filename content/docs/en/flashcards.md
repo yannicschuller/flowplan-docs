@@ -29,7 +29,7 @@ There are several ways to a deck:
 | Card type {since=0.10.0} | the same for all records or from a select property ([card types](#card-types)) |
 | Answer options {since=0.10.0} | for multiple choice: a property with the wrong answers; without one, Flowplan takes the backs of other cards |
 | Tags {since=0.10.0} | a select or multi-select property; generated answer options prefer cards with the same tags |
-| Sub-decks {since=0.10.2} | a select property whose values are sub-decks; each can get [parameters of its own](/flashcards-optimize#parts-of-a-deck) |
+| Sub-decks {since=0.11.0} | a select property whose values are sub-decks; each can get [parameters of its own](/flashcards-optimize#parts-of-a-deck) |
 | Typed answers: ignore {since=0.10.0} | what the comparison passes over: upper and lower case (on), accents (off), punctuation (on) |
 | Also study in reverse | a second card per record: back → front |
 | New cards per day | default 20 |
@@ -66,7 +66,7 @@ A study view studies the cards that match its [filters](/views). With the filter
 
 The study view shows what is left today: **new**, **learning** and **due**, each already within your daily limits. Below are the number of cards, your limits and the retention.
 
-{since=0.10.2} A study view has no sorting and no search – FSRS plans the order. The filter stays; on a phone it is an icon on one line with the other buttons, with **Start studying** right below.
+{since=0.11.0} A study view has no sorting and no search – FSRS plans the order. The filter stays; on a phone it is an icon on one line with the other buttons, with **Start studying** right below.
 
 - **Start studying** opens the focus mode.
 - **Study more today** gives you **+10 new cards** or **+50 reviews** for today – on the next study day the normal limit applies again.
@@ -75,7 +75,7 @@ The study view shows what is left today: **new**, **learning** and **due**, each
 
 ## Studying in focus mode
 
-The focus mode fills the screen with one card. {since=0.10.2} At the top are the counts as three coloured numbers – **New** · **Learning** · **Due** –, the kind of the card you see underlined. On a phone a tap on the numbers shows their names. Below them the progress shows as a bar with “1 / 20”, at the top right **Undo**.
+The focus mode fills the screen with one card. {since=0.11.0} At the top are the counts as three coloured numbers – **New** · **Learning** · **Due** –, the kind of the card you see underlined. On a phone a tap on the numbers shows their names. Below them the progress shows as a bar with “1 / 20”, at the top right **Undo**.
 
 1. Read the front and recall the answer.
 2. Reveal it: <kbd>Space</kbd>, <kbd>Enter</kbd>, a tap on the card or **Show answer**.
@@ -91,11 +91,11 @@ The focus mode fills the screen with one card. {since=0.10.2} At the top are the
 - <kbd>Z</kbd> (or ++⌘/Ctrl Z++) undoes the last rating; the card comes back unrated. This works for the last ratings of the session, at most 24 hours back.
 - <kbd>H</kbd> shows the hint, <kbd>Esc</kbd> ends the session.
 - **Swiping** on phones and tablets works after revealing. A gesture that starts at the edge of the screen (24 pixels) belongs to the system or the app – such as “back” – and does not move the card. The buttons are always there.
-- {since=0.10.2} While you swipe, the card takes the rating's colour and shows the rating large in its middle. On touch devices a line above the buttons recalls the directions: “← Again · ↑ Easy · ↓ Hard · Good →”.
-- {since=0.10.2} At the end a summary shows how many cards you studied (each card counted once, with how many of them were new), the study time, the share known (Good or Easy) and your streak. Below, your ratings spread over Again, Hard, Good and Easy, and how many cards are due tomorrow.
+- {since=0.11.0} While you swipe, the card takes the rating's colour and shows the rating large in its middle. On touch devices a line above the buttons recalls the directions: “← Again · ↑ Easy · ↓ Hard · Good →”.
+- {since=0.11.0} At the end a summary shows how many cards you studied (each card counted once, with how many of them were new), the study time, the share known (Good or Easy) and your streak. Below, your ratings spread over Again, Hard, Good and Easy, and how many cards are due tomorrow.
 - {since=0.10.0} When only cards in the learning phase are left that come back later, the session shows **Next card in 25 min** and loads it by itself when it is time. **Show sooner** (or <kbd>Space</kbd>) brings it at once.
 
-The focus mode works fully with the keyboard and a screen reader: the answer is read out after revealing, every button says its rating and the next date. {since=0.10.2} On revealing, the answer briefly folds down below the question; the question stays in its place. If you choose less motion in the settings or reduce it in your system, there are no animations.
+The focus mode works fully with the keyboard and a screen reader: the answer is read out after revealing, every button says its rating and the next date. {since=0.11.0} On revealing, the answer briefly folds down below the question; the question stays in its place. If you choose less motion in the settings or reduce it in your system, there are no animations.
 
 ## How Flowplan schedules
 
@@ -109,7 +109,7 @@ Flowplan uses **FSRS-6**, the method Anki offers as well. For every card it esti
 
 ## All decks: Study {since=0.10.0}
 
-**Study** at the bottom of the sidebar (or “Study: due cards” in quick search, a shortcut of your own in the [keyboard shortcuts](/keyboard-shortcuts)) shows all decks of the workspace with what is left today: new, learning, due – within your daily limits. {since=0.10.2} At the top, **Today: … cards** counts all three together; **due** means the reviews only. **Study** next to a deck starts it, **Study all decks** goes through the decks one after the other, each with its limits; at the end of a deck **Continue with …** moves on to the next. Below are the statistics of all decks, at the top your streak.
+**Study** at the bottom of the sidebar (or “Study: due cards” in quick search, a shortcut of your own in the [keyboard shortcuts](/keyboard-shortcuts)) shows all decks of the workspace with what is left today: new, learning, due – within your daily limits. {since=0.11.0} At the top, **Today: … cards** counts all three together; **due** means the reviews only. **Study** next to a deck starts it, **Study all decks** goes through the decks one after the other, each with its limits; at the end of a deck **Continue with …** moves on to the next. Below are the statistics of all decks, at the top your streak.
 
 The numbers are for the whole deck. A study view with filters studies only part of it, and siblings of a card studied today wait until tomorrow – so a session may show a few cards less.
 
@@ -131,7 +131,7 @@ The statistics show your own numbers only – for one deck (**Statistics** in th
 | Streak | study days in a row up to today; if you have not studied yet today, the streak counts on up to yesterday |
 | Ratings per day | a year as squares, the darker the more; as a table per month |
 | Due in the next 30 days | cards per study day; overdue ones count today |
-| True retention | the share of reviews you did not rate “Again”, over 7, 30 and 365 days – next to your target. {since=0.10.2} With fewer than 20 reviews in 30 days the tile shows **Too few reviews yet** instead of a number |
+| True retention | the share of reviews you did not rate “Again”, over 7, 30 and 365 days – next to your target. {since=0.11.0} With fewer than 20 reviews in 30 days the tile shows **Too few reviews yet** instead of a number |
 | Cards by state | new, learning, young (remembered under 21 days, that is stability under 21 days), mature (21 days or more), suspended |
 
 Days are study days (starting at 04:00). Every chart has a table for screen readers.
@@ -148,7 +148,7 @@ CSV, TSV, Quizlet and Anki in, CSV and Anki packages out: [Import and export fla
 
 Shared or published, a deck can be browsed and practised without an account: [Flashcards through a link](/sharing#flashcards-through-a-link).
 
-{since=0.10.2} In the [marketplace](/marketplace#flashcard-decks) you share a deck as a template – with its cards, pictures and masks, without learning states and without details about people. The template's page shows a few sample cards; whoever takes the deck over starts with new cards.
+{since=0.11.0} In the [marketplace](/marketplace#flashcard-decks) you share a deck as a template – with its cards, pictures and masks, without learning states and without details about people. The template's page shows a few sample cards; whoever takes the deck over starts with new cards.
 
 ## Who sees what
 

@@ -80,7 +80,7 @@ You format the **message** of a notification like that of a workflow: bold, ital
 
 Each rule can be switched off on its own.
 
-### Creating tasks {since=0.10.2}
+### Creating tasks {since=0.11.0}
 
 **Create task** turns an event into a task someone can tick off – in one of two places:
 
@@ -108,7 +108,7 @@ The difference: a rule acts for the database, a workflow runs as the person who 
 With the trigger **it is time (schedule)** a rule creates a new record regularly, for weekly reports, monthly closings or maintenance:
 
 - **When**: daily or every N days, weekly or every N weeks on a weekday, or monthly or every N months on a day (the 31st becomes the last day in shorter months), each at a time in your time zone. Examples: “Every Monday at 09:00”, “Monthly on day 1”, “Every 3 days”.
-- **Then**: **Create a record** from a record template (properties and text) or empty. Date fields can be set relative to the run, e.g. “Due: +3 days”; 0 means the same day. Or **create a task** as a record in a task database, such as “Standup {{Today}}” for the person who saves the rule {since=0.10.2}. If that fails once, the date counts as done and the message is in your inbox.
+- **Then**: **Create a record** from a record template (properties and text) or empty. Date fields can be set relative to the run, e.g. “Due: +3 days”; 0 means the same day. Or **create a task** as a record in a task database, such as “Standup {{Today}}” for the person who saves the rule {since=0.11.0}. If that fails once, the date counts as done and the message is in your inbox.
 
 The suggestion “Create a record every Monday at 09:00” sets this up with the default template.
 

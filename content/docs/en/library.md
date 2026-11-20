@@ -20,7 +20,7 @@ For documentation with hundreds of pages, show a space as a **library**: `…` n
 
 You see only pages you may see; journal days are not part of the library. Through the API, `space.update` with `library` switches the view, and `GET /api/spaces/{spaceId}/library` returns the books and chapters.
 
-## Books and chapters as overviews {since=0.10.2}
+## Books and chapters as overviews {since=0.11.0}
 
 Books and chapters work like the compartments of a shelf: they open as an **overview**, and the editor appears only with a page.
 
@@ -35,7 +35,7 @@ Links to a book or chapter (`#page=…`), search hits and the path above a page 
 
 The window for new pages keeps its place while you type: it stays anchored at the top instead of moving with the centre when a hint such as "Similar entries already exist" appears or goes.
 
-## All shelves at a glance {since=0.10.2}
+## All shelves at a glance {since=0.11.0}
 
 As soon as you see at least one space shown as a library, **Library** appears in the navigation below **Home** – on a phone under **Navigation**. It shows all shelves side by side in two groups:
 
@@ -48,7 +48,7 @@ At the top, **Continue reading** lists the books you read last, with the page yo
 
 The sidebar stays as it was: libraries are collapsed with **Open library** below them. The command palette knows **Open library** too.
 
-## Search all shelves {since=0.10.2}
+## Search all shelves {since=0.11.0}
 
 The library's search field searches all shelves at once and sorts the hits by level:
 
@@ -67,7 +67,7 @@ Below each hit you see its way: shelf › book › chapter. For titles, whole an
 
 You find only what you would find anyway: the library uses the search index and the same permission checks as the normal search.
 
-## Permissions for shelves and books {since=0.10.2}
+## Permissions for shelves and books {since=0.11.0}
 
 The library has no permissions of its own. A shelf is a space, a book is a page – the [workspace's permissions](/workspaces-and-permissions#how-permissions-work-together) apply:
 
@@ -88,7 +88,7 @@ Groups from the identity provider fill the workspace's groups – so who sees wh
 
 Whoever joins the group at the provider sees the shelf at their next sign-in (with SCIM right away, with LDAP after the hourly sync); whoever leaves no longer sees it. Single books are shared with a group the same way through **Share**.
 
-## API and MCP {since=0.10.2}
+## API and MCP {since=0.11.0}
 
 - `GET /api/library?workspace=…` returns the shelves (`personal`, `shared`) with their books, `continueReading` and per shelf `canManage` – whether you may change its permissions.
 - `GET /api/library/search?workspace=…&q=…` returns the hits by level (`shelves`, `books`, `chapters`, `pages`) with their way (`path`), snippet and `total` per group.

@@ -6,13 +6,13 @@ keywords: Startinhalt, Onboarding, neue Konten, Vorlagen, Willkommensseite, Star
 
 Neue Konten bekommen in ihrem persönlichen Arbeitsbereich die Seite **Willkommen bei Flowplan** und zwei Beispiele (eine Produkt-Roadmap und ein Team-Handbuch). Statt der Beispiele kannst du eigene Startseiten vorgeben – etwa eine Einführung, Richtlinien oder eine Aufgabenliste fürs Onboarding:
 
-## Startinhalt festlegen {since=0.10.2}
+## Startinhalt festlegen {since=0.11.0}
 
 1. Lege in einem deiner Arbeitsbereiche einen Bereich an, z. B. „Onboarding“, und fülle ihn mit den Seiten, die alle bekommen sollen.
 2. Wähle ihn unter **Administration → Instanz → Startinhalt für neue Konten → Bereich**. Zur Auswahl stehen die Bereiche, die du lesen kannst; Ende-zu-Ende-verschlüsselte Bereiche nicht.
 3. **Eingebaute Willkommensseite behalten** (Standard: an) stellt „Willkommen bei Flowplan“ vor die Seiten des Bereichs; aus bekommen neue Konten nur die Seiten des Bereichs.
 
-## Was kopiert wird {since=0.10.2}
+## Was kopiert wird {since=0.11.0}
 
 Jedes Konto, dessen persönlicher Arbeitsbereich danach angelegt wird, bekommt eine Kopie der Seiten des Bereichs – bei der ersten Anmeldung mit E-Mail und Passwort ebenso wie über [SSO](/sso-oidc), [LDAP oder SCIM](/scim-and-ldap). Kopiert wird wie beim Duplizieren einer Seite: Unterseiten, Datenbanken mit Einträgen und Ansichten, Whiteboards, Notizbücher, Workflows (als Entwurf) und hochgeladene Dateien, die dann dem neuen Konto gehören; Links zeigen auf die Kopien. Nicht mitkopiert werden Kommentare, Versionen, Freigaben, öffentliche Links, Berechtigungen und Seiten im Papierkorb.
 

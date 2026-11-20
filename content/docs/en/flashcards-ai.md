@@ -16,11 +16,11 @@ These ways open the dialog **Create flashcards with AI**:
 - **Create with AI** in a deck's study view – the cards go into this deck.
 - **Create flashcards** in the text menu when you select text in a document.
 - **Create flashcards with AI** in the quick search (++⌘ K++, then `>`) – for the open page.
-- **Create flashcards** in the [PDF viewer](/media-and-files#annotate-pdfs) – with the PDF as the source and the page you are reading. {since=0.10.2}
+- **Create flashcards** in the [PDF viewer](/media-and-files#annotate-pdfs) – with the PDF as the source and the page you are reading. {since=0.11.0}
 
 In the dialog you choose:
 
-1. **Source:** **This page** (or the record), **Selected text**, **PDF or file** (PDFs, Word and other documents of the page – their text, which Flowplan reads for the search, scanned ones through text recognition too) or **Paste text**. For a PDF you take **All pages** or only **Pages from … to …** (at most 300) – a chapter, say; your browser reads the text of those pages from the PDF. Scanned pages without a text layer only work with **All pages**. {since=0.10.2}
+1. **Source:** **This page** (or the record), **Selected text**, **PDF or file** (PDFs, Word and other documents of the page – their text, which Flowplan reads for the search, scanned ones through text recognition too) or **Paste text**. For a PDF you take **All pages** or only **Pages from … to …** (at most 300) – a chapter, say; your browser reads the text of those pages from the PDF. Scanned pages without a text layer only work with **All pages**. {since=0.11.0}
 2. **Deck:** an existing flashcard deck or **New deck …** with a name and a space – it becomes a database of the kind **Flashcards**.
 3. **At most** how many cards (up to 200), which **card types** (front/back, cloze, type the answer, multiple choice) and, if you like, a **focus** such as “only terms and definitions”.
 
@@ -38,7 +38,7 @@ The suggestions are listed with checkboxes:
 
 Only **Add … cards** creates the ticked cards as records of the deck – with your permissions, like an import. Clozes are written as `{{c1::…}}` on the front, the card type into the property **Card type**, wrong answers into the answer options when the deck has such a property.
 
-If the deck's front or back comes from the [record's document](/flashcards#content-from-the-document), Flowplan writes the card into the document: the front above the divider (`---`), the back below it – formatting and formulas stay, clozes become the **Cloze** mark. The record's title gets the front as text when it is not a side of the card. {since=0.10.2}
+If the deck's front or back comes from the [record's document](/flashcards#content-from-the-document), Flowplan writes the card into the document: the front above the divider (`---`), the back below it – formatting and formulas stay, clozes become the **Cloze** mark. The record's title gets the front as text when it is not a side of the card. {since=0.11.0}
 
 ## What the AI keeps to
 

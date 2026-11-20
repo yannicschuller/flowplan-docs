@@ -26,7 +26,7 @@ Unter der Vorderseite steht ein Eingabefeld; <kbd>Enter</kbd> prüft. Flowplan v
 - **Richtig** schlägt **Gut** vor, **Fast richtig** (ein Zeichen anders, bei Antworten ab sechs Zeichen) **Schwer**, sonst **Nochmal**. Der Vorschlag ist hervorgehoben, <kbd>Enter</kbd> oder <kbd>Leertaste</kbd> übernehmen ihn – du kannst aber jede Wertung wählen.
 - Was der Vergleich übergeht, stellst du je Stapel ein: Groß- und Kleinschreibung, Akzente (é = e, voreingestellt aus, weil sie in Sprachen zählen) und Satzzeichen. Leerzeichen am Rand und doppelte Leerzeichen zählen nie.
 - <kbd>Esc</kbd> im Feld mit Text verlässt erst das Feld, ein zweites <kbd>Esc</kbd> beendet die Sitzung.
-- {since=0.10.2} Steht auf der Rückseite nur die erwartete Antwort, zeigt Flowplan sie nach dem Prüfen nicht ein zweites Mal; Zusatz und Notiz bleiben.
+- {since=0.11.0} Steht auf der Rückseite nur die erwartete Antwort, zeigt Flowplan sie nach dem Prüfen nicht ein zweites Mal; Zusatz und Notiz bleiben.
 
 ## Multiple Choice
 
@@ -34,5 +34,5 @@ Die Karte zeigt die richtige Antwort (die Rückseite) zwischen falschen. Die fal
 
 - Die Reihenfolge der Antworten ist bei jeder Abfrage neu gemischt und bleibt, solange die Karte zu sehen ist.
 - Wähle mit einem Tipp oder den Tasten <kbd>A</kbd> bis <kbd>E</kbd> (vor dem Aufdecken auch <kbd>1</kbd> bis <kbd>5</kbd>). Richtig schlägt **Gut** vor, falsch **Nochmal**; du kannst anders bewerten.
-- {since=0.10.2} Nach der Wahl trägt die richtige Antwort ✓ „richtig“, eine falsche Wahl ✗ „deine Wahl, falsch“ – nicht nur eine Farbe. Ist die Rückseite nur die richtige Antwort, steht sie nicht noch einmal darunter.
+- {since=0.11.0} Nach der Wahl trägt die richtige Antwort ✓ „richtig“, eine falsche Wahl ✗ „deine Wahl, falsch“ – nicht nur eine Farbe. Ist die Rückseite nur die richtige Antwort, steht sie nicht noch einmal darunter.
 - Multiple Choice ist leichter als freies Erinnern – gut für den Einstieg; zum Behalten taugen Vorder-/Rückseite und Antwort eintippen mehr.

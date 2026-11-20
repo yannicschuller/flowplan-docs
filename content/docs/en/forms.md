@@ -45,7 +45,7 @@ Under **After sending**, **Confirmation by e-mail** and **Notify the team** – 
 - **Confirmation by e-mail to the people answering**: subject and text are up to you. The e-mail contains the text and the answered questions as a list – without hidden and internal properties – and, with the [customer portal](#customer-portal), the link to the request (then only this one e-mail is sent). It goes to the first answered e-mail question; in forms that are not anonymous, otherwise to the signed-in account's address. Anonymous forms only write when the person types their address. E-mail must be set up ([Configuration](/en/configuration)); at most 5 e-mails per hour go to an address, 10 per sender and 300 per form.
 - **Notify the team**: the chosen members get a notification of the kind “Guest comments and guest records” for each new answer – if they may see the record.
 
-### Fixed suggestion lists {since=0.10.2}
+### Fixed suggestion lists {since=0.11.0}
 
 For a short text question that should offer set answers – places, departments, items –, enter them in **Design form** at the question with **Enter fixed suggestions**, **one per line**. While typing, the matching entries appear under the field from the first letter on: those starting with the typed letters first, then those containing them, each in your order. In an empty field, <kbd>↓</kbd> shows the list from the top. The answer stays free – anyone who needs something else just types it.
 
@@ -56,7 +56,7 @@ For a short text question that should offer set answers – places, departments,
 
 If [earlier answers](#earlier-answers-as-suggestions) are switched on for the same question too, the fixed suggestions come first, earlier answers after them, without duplicates.
 
-### Earlier answers as suggestions {since=0.10.2}
+### Earlier answers as suggestions {since=0.11.0}
 
 For questions that get the same answers again and again – a shopping or order list, a room, a project – Flowplan can suggest earlier answers while typing. Switch on **Suggest earlier answers** for a short text question in **Design form** and choose where they come from:
 

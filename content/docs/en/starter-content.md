@@ -6,13 +6,13 @@ keywords: starter content, onboarding, new accounts, templates, welcome page, de
 
 New accounts get the page **Welcome to Flowplan** and two examples (a product roadmap and a team handbook) in their personal workspace. Instead of the examples you can hand out your own starter pages – an introduction, guidelines or an onboarding checklist, say:
 
-## Setting the starter content {since=0.10.2}
+## Setting the starter content {since=0.11.0}
 
 1. Create a space in one of your workspaces, e.g. "Onboarding", and fill it with the pages everyone should get.
 2. Choose it under **Administration → Instance → Starter content for new accounts → Space**. You can choose the spaces you can read; end-to-end encrypted spaces are not offered.
 3. **Keep the built-in welcome page** (default: on) puts "Welcome to Flowplan" before the space's pages; off, new accounts get only the space's pages.
 
-## What is copied {since=0.10.2}
+## What is copied {since=0.11.0}
 
 Every account whose personal workspace is created afterwards gets a copy of the space's pages – on the first sign-in with e-mail and password as well as through [SSO](/sso-oidc), [LDAP or SCIM](/scim-and-ldap). The copy works like duplicating a page: sub-pages in their order, databases with their records, fields, views and templates, whiteboards, dashboards, notebooks, workflows (as drafts) and uploaded files and images, which belong to the new account. Links between the pages point to the copies. Comments, versions, shares and public links, permissions and who is on a page right now are not copied, and neither are pages in the trash.
 

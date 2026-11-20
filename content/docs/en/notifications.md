@@ -46,7 +46,7 @@ Unread items are marked and can be filtered. A click opens the spot, for text co
 
 The daily [study reminder](/flashcards-app#study-reminder) of flashcards is a kind of its own: **Study reminders**. By default it comes as **push** only – not into the inbox, not by e-mail and not in chat apps; unlike the other kinds, push does not hang on the inbox here. Switch the inbox on for it and it is listed there too. A tap opens **Study**. You set the time under **Study**, not here.
 
-### Sound in the open app {since=0.10.2}
+### Sound in the open app {since=0.11.0}
 
 While Flowplan is open in the browser or the desktop app's window, a new notification plays a short, quiet sound – in one tab only, not for your own automations or workflows right after your change. Under **Settings → Notifications → Sound** choose **Off**, **Soft** (default), **Clear** or **Bell**; **Listen** plays it. The browser allows sound only after you clicked or typed in Flowplan once. In the desktop app with notifications on, the system notifications ring while the window is not in front; on the phone the push rings.
 

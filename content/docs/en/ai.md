@@ -116,7 +116,7 @@ This covers three typical setups:
 
 All settings can also be preset with [environment variables](/configuration-ai-push#ai), for instance for automated installations. They apply until someone saves in the administration.
 
-How much AI may be used through the instance's provider – for everyone together, per role, per group and per person, per day, week, month and year – you set under [AI quotas](/ai-quotas). {since=0.10.2}
+How much AI may be used through the instance's provider – for everyone together, per role, per group and per person, per day, week, month and year – you set under [AI quotas](/ai-quotas). {since=0.11.0}
 
 Which model a person or group uses is set under [AI quotas](/ai-quotas#model-per-person-and-group).
 
@@ -135,9 +135,9 @@ Under **Settings → AI**:
 - **On this device (Apple):** whether Apple Intelligence is available here and whether Flowplan should use it – **When possible (default)**, **Only without AI on the server** or **Off** ([on-device AI](#on-device-ai-apple)).
 - **Set up own provider** (if administrators allow it): provider, address, model and your key. Your own providers need public `https` addresses. If there is an instance provider too, choose under **Which provider to use** between **The instance's** and **My own**.
 
-**Model:** below **Provider in use** you see the model that works for you. If the administrators set it for you or your group, it says **Set by the administration** ([model per person and group](/ai-quotas#model-per-person-and-group)). {since=0.10.2}
+**Model:** below **Provider in use** you see the model that works for you. If the administrators set it for you or your group, it says **Set by the administration** ([model per person and group](/ai-quotas#model-per-person-and-group)). {since=0.11.0}
 
-**AI quota:** when the administrators set [quotas](/ai-quotas), **Settings → AI** shows at the top how much AI through the instance's provider you have left and when it starts again. {since=0.10.2}
+**AI quota:** when the administrators set [quotas](/ai-quotas), **Settings → AI** shows at the top how much AI through the instance's provider you have left and when it starts again. {since=0.11.0}
 
 ### What the AI may access
 

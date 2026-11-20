@@ -11,7 +11,7 @@ Mehrere Personen schreiben gleichzeitig in derselben Seite, ohne sich zu übersc
 - Dokumente und Eintragsinhalte werden über Yjs (CRDT) zusammengeführt: Jede Änderung bleibt erhalten, auch wenn zwei Personen im selben Absatz tippen.
 - Änderungen erscheinen bei den anderen nach Sekundenbruchteilen: Der Server schiebt jede gespeicherte Änderung sofort an alle, die dasselbe Dokument offen haben (Server-Sent Events). Übertragen wird nur das Geänderte, nicht das ganze Dokument.
 - **Farbige Cursor und Auswahlen** mit Namen zeigen, wo andere gerade schreiben; Bewegungen kommen ebenfalls sofort an.
-- Auch **Seitenleiste, offene Datenbanken und Posteingang** bleiben aktuell, ohne neu zu laden: Legt jemand eine Seite an, benennt sie um, ändert einen Eintrag in der Datenbank, die du offen hast, oder erwähnt dich, siehst du das nach wenigen Sekunden. Der Server meldet nur, *dass* sich etwas geändert hat – nie Titel oder Seiten, die du nicht sehen darfst; dein Browser holt dann das Geänderte mit deinen Rechten. Mehrere Tabs teilen sich dafür eine Verbindung. Ohne diese Verbindung (etwa hinter einem Proxy, der Server-Sent Events puffert) gleicht Flowplan wie bisher alle 10 Sekunden ab. {since=0.10.2}
+- Auch **Seitenleiste, offene Datenbanken und Posteingang** bleiben aktuell, ohne neu zu laden: Legt jemand eine Seite an, benennt sie um, ändert einen Eintrag in der Datenbank, die du offen hast, oder erwähnt dich, siehst du das nach wenigen Sekunden. Der Server meldet nur, *dass* sich etwas geändert hat – nie Titel oder Seiten, die du nicht sehen darfst; dein Browser holt dann das Geänderte mit deinen Rechten. Mehrere Tabs teilen sich dafür eine Verbindung. Ohne diese Verbindung (etwa hinter einem Proxy, der Server-Sent Events puffert) gleicht Flowplan wie bisher alle 10 Sekunden ab. {since=0.11.0}
 - Ohne Verbindung arbeitest du weiter; die Änderungen werden abgeglichen, sobald das Netz zurück ist.
 - Datenbank-Änderungen werden auf Versionskonflikte geprüft: Hat jemand denselben Eintrag inzwischen geändert, wird deine Änderung nicht stillschweigend darübergeschrieben, sondern abgelehnt, und du siehst den neuen Stand.
 - Gäste mit Bearbeitungslink arbeiten ebenfalls live mit und sehen die Cursor der Mitglieder; Mitglieder sehen die Gäste als „Gast · <Linkname>“.
@@ -65,7 +65,7 @@ Unter einem Dokument und im Inhalt eines Datenbankeintrags öffnet **Textkomment
 - Zeilenumbrüche der Textstelle bleiben im Zitat erhalten, eingebettete Medien erscheinen als „Medienblock“. Verschiebst du einen Block nach oben oder unten (oder ziehst ihn), wandern seine Kommentare mit. {since=0.9.8}
 - Entwürfe bleiben gespeichert, bis du sie sendest oder verwirfst.
 
-### Am Rand neben dem Text {since=0.10.2}
+### Am Rand neben dem Text {since=0.11.0}
 
 Auf breiten Bildschirmen – mit offener Seitenleiste etwa ab 1280 Pixel Fensterbreite – stehen offene Textkommentare als Karten am rechten Rand, jeweils auf der Höhe ihrer Textstelle, auf Seiten wie auf [als Seite geöffneten Einträgen](/databases#eintraege). Eine Karte zeigt den Anfang des ersten Beitrags, wer ihn geschrieben hat, und wie viele Antworten es gibt. Liegen Textstellen dicht beieinander, rücken die Karten untereinander, in der Reihenfolge im Text.
 

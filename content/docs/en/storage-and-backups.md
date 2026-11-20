@@ -19,7 +19,7 @@ All data lives in one directory. With S3 storage, files are mirrored and the dat
 | `pre-restore-…`, `pre-move-…` | Previous state after a restore or a [move](/move-instance); delete after a few days |
 | `ocr/` | Language data for text recognition, recreated when needed |
 
-### How Flowplan uses the SQLite file {since=0.10.2}
+### How Flowplan uses the SQLite file {since=0.11.0}
 
 The database runs in WAL mode with `synchronous=NORMAL` – the setting SQLite and Litestream recommend for WAL: saving no longer waits for the disk, the file is synchronised when the log is written back (checkpoint). If Flowplan crashes or the container restarts, nothing is lost. If the power fails or the whole machine crashes, the last changes before the failure can be missing; the file itself always stays consistent. With Litestream, only the changes of the last second are not in the bucket yet anyway.
 
@@ -36,7 +36,7 @@ On the first start with S3, Flowplan uploads all existing files. **Administratio
 
 MinIO, Garage, SeaweedFS, AWS S3 and other S3-compatible services are suitable.
 
-### Keep only part of the files locally {since=0.10.2}
+### Keep only part of the files locally {since=0.11.0}
 
 On a small server the bucket can hold the files on its own: with `S3_LOCAL_CACHE=2GB` (or `500MB`, `1.5GB`; 1 GB = 1024 MB), `uploads/` becomes a cache of that size.
 

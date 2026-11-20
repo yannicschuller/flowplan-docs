@@ -49,7 +49,7 @@ Gut zu wissen:
 - **Aktualisierung:** wenn du in Flowplan etwas änderst, wenn die App in den Vordergrund kommt, im Hintergrund etwa alle 30 Minuten (iOS entscheidet selbst, wie oft). Auf dem iPhone ab iOS 26 zusätzlich [sofort per Push](#sofort-aktuell-auf-dem-iphone).
 - **Voraussetzung:** Die einstellbaren Widgets, Live-Aktivitäten außer der Zeiterfassung sowie Siri und Kurzbefehle brauchen einen Flowplan-Server ab 0.7.0. *Flowplan*, *Flowplan Posteingang* und die laufende Zeiterfassung gehen ab 0.4.0.
 
-### Nächster Termin, Weiterlesen, Kennzahl und Frist {since=0.10.2}
+### Nächster Termin, Weiterlesen, Kennzahl und Frist {since=0.11.0}
 
 | Widget | Was es zeigt | Einstellungen |
 | --- | --- | --- |
@@ -71,7 +71,7 @@ In den Einstellungen jedes Widgets:
 - **Farbe:** *Akzentfarbe* (Standard: die Akzentfarbe des Arbeitsbereichs, aus dem der Inhalt kommt), *Profilfarbe* (der Farbpunkt des Profils), *System* (auf Android ab 12 Material You aus dem Hintergrundbild oder dem gewählten Design, auf dem iPhone die Systemfarbe) oder *Flowplan*. Die Profilfarbe wählst du in der App unter *Profile verwalten*; sie erscheint auch in der Profilliste und beim Wechseln.
 - Auf dem iPhone sehen die Widgets auch getönt, eingefärbt und im klaren Liquid-Glass-Look von iOS 26 richtig aus.
 
-### Akzentfarbe, „Nur Widgets“ und sofortige Aktualisierung {since=0.10.2}
+### Akzentfarbe, „Nur Widgets“ und sofortige Aktualisierung {since=0.11.0}
 
 - **Akzentfarbe:** Die Instanz liefert zu jedem Widget die Akzentfarbe seines Arbeitsbereichs (*Einstellungen → Arbeitsbereich → Aussehen*), für hell und dunkel auf Lesbarkeit geprüft wie in der Web-App. Arbeitsbereiche ohne eigene Farbe und Personen, die Flowplans eigenes Aussehen gewählt haben, bekommen Flowplans Farben. Ältere Server liefern keine Akzentfarbe; die Widgets zeigen dann Flowplans Farben.
 - **„Nur Widgets“:** Unter *Einstellungen → Konto → Angemeldete Geräte* steht ein Profil, das in der App gerade nicht aktiv ist, als *Nur Widgets*; die Testbenachrichtigung schickt ihm nichts.

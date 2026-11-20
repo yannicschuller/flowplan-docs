@@ -104,7 +104,7 @@ Pull requests and Dependabot never deploy; without the secrets (in forks, for ex
 > [!WARNING]
 > Keep the number of instances at 1 in Coolify. Several containers would write to the same SQLite file.
 
-### A beta instance that tests replication {since=0.10.2}
+### A beta instance that tests replication {since=0.11.0}
 
 A beta instance without S3 never runs Litestream – its replication, the [self-healing](/restore#repair-the-litestream-state) and the bucket reset are then first exercised on production. To test them with every `:beta`, give the beta instance replication of its own:
 

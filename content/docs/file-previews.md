@@ -6,7 +6,7 @@ keywords: Vorschau, 3D, CAD, STL, STEP, OBJ, glTF, 3MF, IGES, DXF, DWG, Zeichnun
 
 3D-Modelle, CAD- und 2D-Zeichnungen, HTML-Dateien und Tabellen öffnest du direkt in Flowplan – ohne Herunterladen und ohne zusätzliches Programm.
 
-## 3D- und CAD-Dateien {since=0.10.2}
+## 3D- und CAD-Dateien {since=0.11.0}
 
 **STL**, **OBJ**, **glTF/GLB**, **3MF**, **STEP/STP** und **IGES/IGS** zeigt Flowplan im 3D-Viewer, statt sie nur zum Herunterladen anzubieten. Lädst du eine solche Datei in ein Dokument, erscheint eine Karte mit Würfel-Symbol und **Im 3D-Viewer öffnen**; ein Klick öffnet den Viewer. Dasselbe gilt für 3D-Dateien in den **Medien** (Filter **3D/CAD**), in Dateien-Eigenschaften von Datenbanken, in Links auf solche Dateien und auf veröffentlichten Seiten. In bearbeitbarem Text öffnet ein Link den Viewer mit <kbd>⌘</kbd>-Klick.
 
@@ -21,7 +21,7 @@ keywords: Vorschau, 3D, CAD, STL, STEP, OBJ, glTF, 3MF, IGES, DXF, DWG, Zeichnun
 
 Gelesen wird die Datei im Browser, die großen in einem eigenen Thread, damit die Seite bedienbar bleibt; das Original bleibt unverändert, **Herunterladen** lädt es.
 
-### 2D-Zeichnungen: DXF und DWG {since=0.10.2}
+### 2D-Zeichnungen: DXF und DWG {since=0.11.0}
 
 Technische Zeichnungen im **DXF**- und **DWG**-Format (AutoCAD und viele andere CAD-Programme) öffnet Flowplan im Zeichnungs-Viewer. Die Karte im Dokument trägt ein Blaupausen-Symbol und **Im Zeichnungs-Viewer öffnen**; sonst gilt dasselbe wie für 3D-Dateien – auch in den **Medien** (Filter **3D/CAD**), in Dateien-Eigenschaften und auf veröffentlichten Seiten.
 
@@ -34,10 +34,10 @@ Technische Zeichnungen im **DXF**- und **DWG**-Format (AutoCAD und viele andere 
 - **Dateigröße**: DXF bis 100 MB, DWG bis 50 MB. Sehr große Zeichnungen zeigt der Viewer nur zum Teil und sagt es dazu. Binäre DXF-Dateien liest er nicht – speichere sie als DXF im Textformat.
 - **DWG**: Für DWG lädt Flowplan beim ersten Öffnen einen DWG-Leser (LibreDWG, etwa 11 MB) vom eigenen Server; er ist nicht Teil der [Offline-Kopie](/offline-and-apps), DWG-Dateien brauchen beim ersten Mal also eine Verbindung. DXF geht auch offline. Gelesen werden DWG-Dateien von AutoCAD R14 bis zum aktuellen Format (seit AutoCAD 2018 unverändert), ältere aus R11/R12 meist ebenfalls. Lässt sich eine Datei nicht lesen, sagt der Viewer es – **exportiere die Zeichnung dann in deinem CAD-Programm als DXF** und lade diese Datei hoch; DXF liest der Viewer aus jeder Version.
 
-## HTML-Dateien {since=0.10.2}
+## HTML-Dateien {since=0.11.0}
 
 Eine hochgeladene **HTML-Datei** (`.html`, `.htm`) öffnest du mit **Vorschau öffnen** – in Dokumenten, den **Medien**, Dateien-Eigenschaften und veröffentlichten Seiten. Die Vorschau ist abgeschottet: **Skripte und externe Inhalte sind abgeschaltet**, und die Seite kommt nicht an deine Daten; eingebettete Bilder und eigene Stile werden gezeigt. **Skripte ausführen** lässt sie abgeschottet laufen, ohne Netzwerk; `FLOWPLAN_HTML_PREVIEW_SCRIPTS=0` blendet das aus. Bis 5 MB (`FLOWPLAN_HTML_PREVIEW_MB`), sonst lädst du sie herunter – im Browser geöffnet gilt dieser Schutz nicht mehr.
 
-## Tabellen {since=0.10.2}
+## Tabellen {since=0.11.0}
 
 Eine **CSV**- oder **Excel-Datei** (`.xlsx`) öffnest du mit **Vorschau öffnen** – in Dokumenten, den **Medien**, Dateien-Eigenschaften und veröffentlichten Seiten. Die Ansicht ist schreibgeschützt: Blätter als Reiter, ein Filter für Zeilen, Sortieren per Klick auf den Spaltenbuchstaben. Bis 5.000 Zeilen und 200 Spalten aus Dateien bis 20 MB (`FLOWPLAN_SHEET_PREVIEW_MB`); Formeln zeigen ihr gespeichertes Ergebnis. Alte `.xls`-Dateien lädst du herunter.

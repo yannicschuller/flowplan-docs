@@ -9,7 +9,7 @@ Administrators can limit how much AI is used through the [instance's provider](/
 > [!NOTE]
 > **Only the instance's provider counts.** An [own provider](/ai#for-users) with your own key and [on-device AI](/ai#on-device-ai-apple) never count and keep working when a quota is used up.
 
-## What counts {since=0.10.2}
+## What counts {since=0.11.0}
 
 - **Tokens:** input and output together, as the provider reports them – otherwise Flowplan estimates them from the length of the text.
 - **Or cost:** with prices per model entered under **Administration → AI → Prices** (per million tokens, input and output separately), limits can also be set as estimated cost in the instance's currency. A model without a price then does not count – administrators see a note about it.
@@ -19,7 +19,7 @@ Administrators can limit how much AI is used through the [instance's provider](/
 
 The periods are calendar periods in the time zone the administrators choose: a day starts at midnight, a week on Monday (or Sunday), a month on the 1st, a year on 1 January.
 
-## For admins {since=0.10.2}
+## For admins {since=0.11.0}
 
 Under **Administration → AI → Quotas**:
 
@@ -45,13 +45,13 @@ The levels:
 
 Which limit applies to a person: their own, else the **highest** of their groups and roles (per period; if one of their groups leaves a period open, there is no limit for it), else the default. **Exempt** – a person or a group – lifts the personal limits; the whole instance's limit stays.
 
-**Right at the person or group:** under **Administration → Users** every person has, in the section **AI**, their **Quota** – **Inherited** (with what applies now), **Own limits** per day, week, month and year, or **Exempt** – and below it their usage per period with what is left. Groups have the same in the workspace's **Groups & permissions → Manage** dialog (administrators only). These are the same limits as in the table here, no second store. There you also set the [model](#model-per-person-and-group); the **Limits** table shows it in the **Model** column, the **By person** table the model that applies to each person. {since=0.10.2}
+**Right at the person or group:** under **Administration → Users** every person has, in the section **AI**, their **Quota** – **Inherited** (with what applies now), **Own limits** per day, week, month and year, or **Exempt** – and below it their usage per period with what is left. Groups have the same in the workspace's **Groups & permissions → Manage** dialog (administrators only). These are the same limits as in the table here, no second store. There you also set the [model](#model-per-person-and-group); the **Limits** table shows it in the **Model** column, the **By person** table the model that applies to each person. {since=0.11.0}
 
 Under **Usage and limits** you see, for the chosen period, the usage of the whole instance, per person (sortable by usage, what is left or name, with the limit and where it comes from), per group and per model. The [AI statistics](/administration#monitoring) show the instance's limit as a line.
 
 **Notifications:** when the whole instance reaches the note share and later 100 %, every administrator gets one message per period (kind **AI quota of the instance** under **Settings → Notifications**).
 
-## Model per person and group {since=0.10.2}
+## Model per person and group {since=0.11.0}
 
 The model under **Instance provider** is the **instance default**. You can give single people, groups or roles another model of the same provider – for example, the whole instance uses a small, inexpensive model such as Claude Haiku, but certain people use Claude Opus.
 
@@ -66,7 +66,7 @@ Which model applies to a person:
 
 This holds for every AI feature and is decided on the server. [Workflows](/workflows) use the model of the person they run as (the role **Administrators** does not count there, since workflows never run with administrator rights). An [own provider](/ai#for-users) and [on-device AI](/ai#on-device-ai-apple) choose their own model. If the instance switches to another kind of provider (say from Anthropic to OpenAI), the models set so far no longer apply until you choose them again – the table marks them **other provider – does not apply**. Every change is in the log under **Monitoring**.
 
-## For users {since=0.10.2}
+## For users {since=0.11.0}
 
 - **Settings → AI → AI quota** shows a bar per period: “1,500 of 10,000 left” and when it starts again – in tokens or, if the administrators chose cost, in money.
 - **In the AI panels** (Ask AI, writing assistant, summary) a small note appears once less than 20 % is left (or what the administrators set).

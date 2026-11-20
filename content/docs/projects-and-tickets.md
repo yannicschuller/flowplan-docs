@@ -80,7 +80,7 @@ Die **Nachricht** einer Benachrichtigung formatierst du wie die eines Workflows:
 
 Regeln lassen sich einzeln ausschalten.
 
-### Aufgaben erstellen {since=0.10.2}
+### Aufgaben erstellen {since=0.11.0}
 
 **Aufgabe erstellen** macht aus einem Ereignis eine Aufgabe, die jemand abhaken kann – wahlweise an einem von zwei Orten:
 
@@ -108,7 +108,7 @@ Der Unterschied: Eine Regel handelt für die Datenbank, ein Workflow läuft als 
 Mit dem Auslöser **es so weit ist (Zeitplan)** legt eine Regel regelmäßig einen neuen Eintrag an, etwa für Wochenberichte, Monatsabschlüsse oder Wartungen:
 
 - **Wann**: täglich bzw. alle N Tage, wöchentlich bzw. alle N Wochen an einem Wochentag oder monatlich bzw. alle N Monate an einem Tag (der 31. wird in kürzeren Monaten zum letzten Tag), jeweils zu einer Uhrzeit in deiner Zeitzone. Beispiele: „Jeden Montag 09:00“, „Monatlich am 1.“, „Alle 3 Tage“.
-- **Dann**: **Datensatz anlegen** aus einer Datensatzvorlage (Eigenschaften und Text) oder leer. Datumsfelder lassen sich relativ zum Termin setzen, z. B. „Fällig: +3 Tage“; 0 heißt am Tag selbst. Oder **Aufgabe erstellen** als Eintrag in einer Aufgaben-Datenbank, etwa „Standup {{Heute}}“ für die Person, die die Regel speichert {since=0.10.2}. Klappt das einmal nicht, gilt der Termin als erledigt, und die Meldung steht in deinem Posteingang.
+- **Dann**: **Datensatz anlegen** aus einer Datensatzvorlage (Eigenschaften und Text) oder leer. Datumsfelder lassen sich relativ zum Termin setzen, z. B. „Fällig: +3 Tage“; 0 heißt am Tag selbst. Oder **Aufgabe erstellen** als Eintrag in einer Aufgaben-Datenbank, etwa „Standup {{Heute}}“ für die Person, die die Regel speichert {since=0.11.0}. Klappt das einmal nicht, gilt der Termin als erledigt, und die Meldung steht in deinem Posteingang.
 
 Der Vorschlag „Jeden Montag 09:00 einen Datensatz anlegen“ richtet das mit der Standardvorlage ein.
 

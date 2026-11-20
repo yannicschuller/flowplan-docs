@@ -29,7 +29,7 @@ Mehrere Wege führen zu einem Stapel:
 | Kartentyp {since=0.10.0} | für alle Einträge gleich oder aus einer Auswahl-Eigenschaft ([Kartentypen](#kartentypen)) |
 | Antwortoptionen {since=0.10.0} | für Multiple Choice: eine Eigenschaft mit den falschen Antworten; ohne sie nimmt Flowplan die Rückseiten anderer Karten |
 | Tags {since=0.10.0} | eine Auswahl- oder Mehrfachauswahl-Eigenschaft; erzeugte Antwortoptionen kommen bevorzugt aus Karten mit denselben Tags |
-| Unterstapel {since=0.10.2} | eine Auswahl-Eigenschaft, deren Werte Unterstapel sind; jeder kann [eigene Parameter](/flashcards-optimize#teile-eines-stapels) bekommen |
+| Unterstapel {since=0.11.0} | eine Auswahl-Eigenschaft, deren Werte Unterstapel sind; jeder kann [eigene Parameter](/flashcards-optimize#teile-eines-stapels) bekommen |
 | Antwort eintippen: ignorieren {since=0.10.0} | was der Vergleich übergeht: Groß- und Kleinschreibung (an), Akzente (aus), Satzzeichen (an) |
 | Auch umgekehrt lernen | eine zweite Karte je Eintrag: Rückseite → Vorderseite |
 | Neue Karten pro Tag | Vorgabe 20 |
@@ -66,7 +66,7 @@ Eine Lernen-Ansicht lernt die Karten, die zu ihren [Filtern](/views) passen. Mit
 
 Die Lernen-Ansicht zeigt, was heute noch zu tun ist: **neu**, **in der Lernphase** und **fällig**, jeweils schon innerhalb deiner Tagesgrenzen. Darunter stehen die Zahl der Karten, deine Grenzen und die Behaltensrate.
 
-{since=0.10.2} Sortieren und Suchen gibt es in einer Lernen-Ansicht nicht – die Reihenfolge plant FSRS. Der Filter bleibt; auf dem Telefon steht er als Symbol in einer Zeile mit den übrigen Knöpfen, darunter gleich **Lernen starten**.
+{since=0.11.0} Sortieren und Suchen gibt es in einer Lernen-Ansicht nicht – die Reihenfolge plant FSRS. Der Filter bleibt; auf dem Telefon steht er als Symbol in einer Zeile mit den übrigen Knöpfen, darunter gleich **Lernen starten**.
 
 - **Lernen starten** öffnet den Fokusmodus.
 - **Heute mehr lernen** gibt dir für heute **+10 neue Karten** oder **+50 Wiederholungen** – am nächsten Lerntag gilt wieder die normale Grenze.
@@ -75,7 +75,7 @@ Die Lernen-Ansicht zeigt, was heute noch zu tun ist: **neu**, **in der Lernphase
 
 ## Lernen im Fokusmodus
 
-Der Fokusmodus füllt den Bildschirm mit einer Karte. {since=0.10.2} Oben stehen die Zähler als drei farbige Zahlen – **Neu** · **In der Lernphase** · **Fällig** –, die Art der Karte, die du gerade siehst, ist unterstrichen. Auf dem Telefon zeigt ein Tipp auf die Zahlen ihre Namen. Darunter steht der Fortschritt als Leiste mit „1 / 20“, rechts oben **Rückgängig**.
+Der Fokusmodus füllt den Bildschirm mit einer Karte. {since=0.11.0} Oben stehen die Zähler als drei farbige Zahlen – **Neu** · **In der Lernphase** · **Fällig** –, die Art der Karte, die du gerade siehst, ist unterstrichen. Auf dem Telefon zeigt ein Tipp auf die Zahlen ihre Namen. Darunter steht der Fortschritt als Leiste mit „1 / 20“, rechts oben **Rückgängig**.
 
 1. Lies die Vorderseite und erinnere dich an die Antwort.
 2. Decke auf: <kbd>Leertaste</kbd>, <kbd>Enter</kbd>, ein Tipp auf die Karte oder **Antwort zeigen**.
@@ -91,11 +91,11 @@ Der Fokusmodus füllt den Bildschirm mit einer Karte. {since=0.10.2} Oben stehen
 - <kbd>Z</kbd> (oder ++⌘/Strg Z++) macht die letzte Wertung rückgängig; die Karte kommt unbewertet zurück. Das geht für die letzten Wertungen der Sitzung, höchstens 24 Stunden zurück.
 - <kbd>H</kbd> zeigt den Hinweis, <kbd>Esc</kbd> beendet die Sitzung.
 - **Wischen** auf Telefon und Tablet geht erst nach dem Aufdecken. Eine Geste, die am Bildschirmrand (24 Pixel) beginnt, gehört dem System oder der App – etwa „Zurück“ – und bewegt die Karte nicht. Die Knöpfe sind immer da.
-- {since=0.10.2} Beim Wischen färbt sich die Karte in der Farbe der Wertung und zeigt sie groß in der Mitte. Auf Touch-Geräten erinnert eine Zeile über den Knöpfen an die Richtungen: „← Nochmal · ↑ Leicht · ↓ Schwer · Gut →“.
-- {since=0.10.2} Am Ende zeigt eine Zusammenfassung, wie viele Karten du gelernt hast (jede Karte einmal gezählt, dazu wie viele davon neu waren), die Lernzeit, den Anteil „gewusst“ (Gut oder Leicht) und deine Serie. Darunter verteilen sich deine Wertungen auf Nochmal, Schwer, Gut und Leicht, und es steht da, wie viele Karten morgen fällig sind.
+- {since=0.11.0} Beim Wischen färbt sich die Karte in der Farbe der Wertung und zeigt sie groß in der Mitte. Auf Touch-Geräten erinnert eine Zeile über den Knöpfen an die Richtungen: „← Nochmal · ↑ Leicht · ↓ Schwer · Gut →“.
+- {since=0.11.0} Am Ende zeigt eine Zusammenfassung, wie viele Karten du gelernt hast (jede Karte einmal gezählt, dazu wie viele davon neu waren), die Lernzeit, den Anteil „gewusst“ (Gut oder Leicht) und deine Serie. Darunter verteilen sich deine Wertungen auf Nochmal, Schwer, Gut und Leicht, und es steht da, wie viele Karten morgen fällig sind.
 - {since=0.10.0} Sind nur noch Karten in der Lernphase übrig, die erst später wiederkommen, zeigt die Sitzung **Nächste Karte in 25 Min** und lädt sie zur Zeit von selbst. **Früher zeigen** (oder <kbd>Leertaste</kbd>) holt sie sofort.
 
-Der Fokusmodus ist vollständig mit Tastatur und Screenreader bedienbar: Die Antwort wird nach dem Aufdecken vorgelesen, jeder Knopf nennt Wertung und nächsten Termin. {since=0.10.2} Beim Aufdecken klappt die Antwort kurz unter der Frage auf; die Frage bleibt an ihrem Platz. Wer in den Einstellungen weniger Bewegung wählt oder sie im System reduziert, sieht keine Animationen.
+Der Fokusmodus ist vollständig mit Tastatur und Screenreader bedienbar: Die Antwort wird nach dem Aufdecken vorgelesen, jeder Knopf nennt Wertung und nächsten Termin. {since=0.11.0} Beim Aufdecken klappt die Antwort kurz unter der Frage auf; die Frage bleibt an ihrem Platz. Wer in den Einstellungen weniger Bewegung wählt oder sie im System reduziert, sieht keine Animationen.
 
 ## Wie Flowplan plant
 
@@ -109,7 +109,7 @@ Flowplan nutzt **FSRS-6**, das Verfahren, das auch Anki anbietet. Es schätzt f�
 
 ## Alle Stapel: Lernen {since=0.10.0}
 
-**Lernen** unten in der Seitenleiste (oder „Lernen: fällige Karten“ in der Schnellsuche, eine eigene Tastenkombination in den [Tastenkürzeln](/keyboard-shortcuts)) zeigt alle Stapel des Arbeitsbereichs mit dem, was heute noch übrig ist: neu, in der Lernphase, fällig – innerhalb deiner Tagesgrenzen. {since=0.10.2} Oben steht **Heute dran: … Karten** – alle drei zusammen; **fällig** meint nur die Wiederholungen. **Lernen** neben einem Stapel startet ihn, **Alle Stapel lernen** lernt die Stapel nacheinander, jeden mit seinen Grenzen; am Ende eines Stapels geht es mit **Weiter mit …** zum nächsten. Darunter steht die Statistik aller Stapel und oben deine Serie.
+**Lernen** unten in der Seitenleiste (oder „Lernen: fällige Karten“ in der Schnellsuche, eine eigene Tastenkombination in den [Tastenkürzeln](/keyboard-shortcuts)) zeigt alle Stapel des Arbeitsbereichs mit dem, was heute noch übrig ist: neu, in der Lernphase, fällig – innerhalb deiner Tagesgrenzen. {since=0.11.0} Oben steht **Heute dran: … Karten** – alle drei zusammen; **fällig** meint nur die Wiederholungen. **Lernen** neben einem Stapel startet ihn, **Alle Stapel lernen** lernt die Stapel nacheinander, jeden mit seinen Grenzen; am Ende eines Stapels geht es mit **Weiter mit …** zum nächsten. Darunter steht die Statistik aller Stapel und oben deine Serie.
 
 Die Zahlen gelten für den ganzen Stapel. Eine Lernen-Ansicht mit Filtern lernt davon nur einen Teil, und Geschwister einer schon gelernten Karte warten bis morgen – eine Sitzung kann deshalb etwas weniger Karten zeigen.
 
@@ -131,7 +131,7 @@ Die Statistik zeigt nur deine eigenen Zahlen – für einen Stapel (**Statistik*
 | Serie | Lerntage in Folge bis heute; lernst du heute noch nicht, zählt die Serie bis gestern weiter |
 | Wertungen pro Tag | ein Jahr als Kästchen, je dunkler, desto mehr; als Tabelle pro Monat |
 | Fällig in den nächsten 30 Tagen | Karten je Lerntag; überfällige zählen heute |
-| Wahre Behaltensrate | Anteil der Wiederholungen, die du nicht mit „Nochmal“ bewertet hast, über 7, 30 und 365 Tage – neben deiner Zielrate. {since=0.10.2} Mit weniger als 20 Wiederholungen in 30 Tagen zeigt die Kachel statt einer Zahl **Noch zu wenige Wiederholungen** |
+| Wahre Behaltensrate | Anteil der Wiederholungen, die du nicht mit „Nochmal“ bewertet hast, über 7, 30 und 365 Tage – neben deiner Zielrate. {since=0.11.0} Mit weniger als 20 Wiederholungen in 30 Tagen zeigt die Kachel statt einer Zahl **Noch zu wenige Wiederholungen** |
 | Karten nach Zustand | neu, in der Lernphase, jung (unter 21 Tagen im Gedächtnis, also Stabilität unter 21 Tagen), reif (ab 21 Tagen), ausgesetzt |
 
 Tage sind Lerntage (Beginn 04:00). Zu jedem Diagramm gibt es eine Tabelle für Screenreader.
@@ -148,7 +148,7 @@ CSV, TSV, Quizlet und Anki hinein, CSV und Anki-Pakete hinaus: [Lernkarten impor
 
 Geteilt oder veröffentlicht lässt sich ein Stapel ohne Konto durchblättern und üben: [Lernkarten über einen Link](/sharing#lernkarten-ueber-einen-link).
 
-{since=0.10.2} Im [Marketplace](/marketplace#lernkarten-stapel) teilst du einen Stapel als Vorlage – mit Karten, Bildern und Masken, ohne Lernstände und ohne Angaben zu Personen. Die Seite der Vorlage zeigt ein paar Beispielkarten; wer den Stapel übernimmt, beginnt mit neuen Karten.
+{since=0.11.0} Im [Marketplace](/marketplace#lernkarten-stapel) teilst du einen Stapel als Vorlage – mit Karten, Bildern und Masken, ohne Lernstände und ohne Angaben zu Personen. Die Seite der Vorlage zeigt ein paar Beispielkarten; wer den Stapel übernimmt, beginnt mit neuen Karten.
 
 ## Wer was sieht
 

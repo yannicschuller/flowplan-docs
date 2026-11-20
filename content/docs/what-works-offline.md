@@ -12,12 +12,12 @@ Offline arbeitest du mit dem weiter, was das Gerät hat – im Browser mit einge
 
 - **Seiten und Einträge** der Offline-Kopie öffnen sich; du bearbeitest Text in Dokumenten und die Eigenschaften von Einträgen.
 - **Neue Einträge** in einer Datenbank – **Neue Zeile** in der Tabelle, eine neue Karte im Board – erscheinen sofort und werden angelegt, sobald die Verbindung zurück ist (siehe [Datenbank-Einträge offline](/offline-and-apps#datenbank-eintraege-offline)). Auch das [Erfassen](/offline-and-apps#erfassen-in-eine-datenbank) wartet auf dem Gerät.
-- {since=0.10.2} **Neue Seiten:** Dokumente (auch Unterseiten), Datenbanken, Whiteboards und Notizbücher legst du offline wie gewohnt über **Neue Seite** an – siehe [Offline neu anlegen](#offline-neu-anlegen).
-- {since=0.10.2} **Bilder und Dateien** in Dokumenten – neue und bestehende Seiten – bis 25 MB je Datei warten auf dem Gerät und werden hochgeladen, sobald die Verbindung zurück ist.
+- {since=0.11.0} **Neue Seiten:** Dokumente (auch Unterseiten), Datenbanken, Whiteboards und Notizbücher legst du offline wie gewohnt über **Neue Seite** an – siehe [Offline neu anlegen](#offline-neu-anlegen).
+- {since=0.11.0} **Bilder und Dateien** in Dokumenten – neue und bestehende Seiten – bis 25 MB je Datei warten auf dem Gerät und werden hochgeladen, sobald die Verbindung zurück ist.
 - **Der heutige Journal-Eintrag:** **Heute** in der Seitenleiste, das **+** neben einem Journal, **Heute** auf der Journalseite und die Tagesauswahl öffnen den Tag – seine gespeicherte Seite, wenn die Offline-Kopie sie hat, sonst einen Eintrag auf diesem Gerät. Oben steht dann „Offline-Entwurf – wird angelegt, sobald die Verbindung zurück ist“. Was du dort schreibst, bleibt auf dem Gerät, auch wenn du die App schließt. Sobald die Verbindung zurück ist, legt Flowplan den Tag wie gewohnt an – mit Vorlage und übernommenen Aufgaben – und fügt deinen Text darin ein; die Seite des Tages öffnet sich an seiner Stelle. Siehe auch [Journal](/journal).
 - {since=0.10.0} **Lernkarten:** Stapel, in denen du in den letzten 14 Tagen gelernt hast, lernst du offline weiter; die Wertungen warten auf dem Gerät („2 Wertungen warten auf Verbindung“) und gehen mit der Verbindung an den Server ([Offline lernen](/flashcards-app#offline-lernen)).
 
-## Offline neu anlegen {since=0.10.2}
+## Offline neu anlegen {since=0.11.0}
 
 **Neue Seite** öffnet sich auch ohne Verbindung. Ein **Dokument**, eine **Datenbank**, ein **Whiteboard** oder ein **Notizbuch** entsteht dann auf diesem Gerät:
 
@@ -35,9 +35,9 @@ Die Rechte prüft der Server beim Anlegen. Lehnt er eine Seite ab – der Bereic
 
 Manches braucht den Server. Offline sagt Flowplan dann **Geht nur mit Verbindung – du bist gerade offline.**, statt nichts zu tun:
 
-- {since=0.10.2} neue Journale, Dashboards und Workflows, Seiten in verschlüsselten Bereichen, neue Bereiche und Sammlungen
+- {since=0.11.0} neue Journale, Dashboards und Workflows, Seiten in verschlüsselten Bereichen, neue Bereiche und Sammlungen
 - gespeicherte Vorlagen und das Duplizieren einer Seite
-- {since=0.10.2} Dateien über 25 MB, Titelbilder und Seiten-Icons hochladen, Bilder auf Whiteboards und in Notizbüchern, PDFs in Notizbücher
+- {since=0.11.0} Dateien über 25 MB, Titelbilder und Seiten-Icons hochladen, Bilder auf Whiteboards und in Notizbüchern, PDFs in Notizbücher
 - Importe (Export-ZIP, Notion, BookStack, Jira, Trello und andere)
 - Antworten über das Formular einer Datenbank
 - Änderungen am Schema einer Datenbank (Eigenschaften und Ansichten)

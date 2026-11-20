@@ -6,7 +6,7 @@ keywords: features, modules, switch off, disable, instance, workflows, AI, flash
 
 Under **Administration → Instance → Features of this instance** you switch features off for the whole instance – the same list as in [Show and hide features](/settings#show-and-hide-features). Unlike there, the feature is then not only hidden but off. Flowplan asks before switching one off.
 
-## Switching off and on again {since=0.10.2}
+## Switching off and on again {since=0.11.0}
 
 - **Hidden for everyone**, whatever they chose themselves. In their own settings the switch is off, locked and says **Switched off for this instance by the administration**; the same goes for **Features for new accounts**.
 - **The server refuses it:** new pages of that kind, its commands, the matching API routes and MCP tools answer 403 with "… switched off on this instance". MCP clients are not even offered the feature's tools.
