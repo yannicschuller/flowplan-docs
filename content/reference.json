@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@66ddc35d",
+  "source": "github.com/yannicschuller/flowplan@cbeb5630",
   "slash": {
     "groups": {
       "recent": [
@@ -2009,6 +2009,7 @@
     "FLOWPLAN_ENCRYPTION_KEY_PREVIOUS",
     "FLOWPLAN_GIT_ALLOW_HTTP",
     "FLOWPLAN_HIDE_SPONSOR",
+    "FLOWPLAN_HTML_PREVIEW_MB",
     "FLOWPLAN_IMPORT_ALLOW_PRIVATE",
     "FLOWPLAN_IMPORT_MAX_DOCS",
     "FLOWPLAN_IMPORT_MAX_FILES",
