@@ -46,6 +46,10 @@ Ungelesenes ist markiert und lässt sich filtern. Ein Klick öffnet die Stelle, 
 
 Die tägliche [Lernerinnerung](/flashcards-app#lernerinnerung) für Lernkarten ist eine eigene Art: **Lernerinnerungen**. Sie kommt standardmäßig nur als **Push** – nicht in den Posteingang, nicht per E-Mail und nicht in Chat-Apps; anders als bei den übrigen Arten hängt Push hier nicht am Posteingang. Schaltest du den Posteingang dafür ein, steht sie auch dort. Ein Tipp öffnet **Lernen**. Die Uhrzeit stellst du unter **Lernen** ein, nicht hier.
 
+### Ton in der offenen App {since=0.10.2}
+
+Solange Flowplan im Browser oder im Fenster der Desktop-App offen ist, spielt eine neue Benachrichtigung einen kurzen, leisen Ton – in nur einem Tab, nicht für eigene Automationen oder Workflows direkt nach deiner Änderung. Unter **Einstellungen → Benachrichtigungen → Ton** wählst du **Aus**, **Sanft** (Standard), **Klar** oder **Glocke**; **Anhören** spielt ihn vor. Der Browser erlaubt Töne erst, nachdem du einmal in Flowplan geklickt oder getippt hast. In der Desktop-App klingen bei eingeschalteten Mitteilungen die Systemmitteilungen, solange das Fenster nicht vorne ist; auf dem Telefon klingt der Push.
+
 ## E-Mail
 
 Ist auf der Instanz ein Mailserver eingerichtet, kommen ungelesene Benachrichtigungen nach zehn Minuten als Zusammenfassung per E-Mail – eine Mail für alles, was sich angesammelt hat, jede Benachrichtigung höchstens einmal. Unter **Einstellungen → Benachrichtigungen** lässt sich die Spalte **E-Mail** je Art ein- und ausschalten. Einladungen in einen Arbeitsbereich und mit dir geteilte Seiten kommen sofort per E-Mail.

@@ -85,7 +85,7 @@ Flowplan opens technical drawings in **DXF** and **DWG** format (AutoCAD and man
 
 ### HTML files {since=0.10.2}
 
-Open an uploaded **HTML file** (`.html`, `.htm`) with **Open preview** – in documents, **Media**, files properties and published pages. The preview is isolated: **scripts and external content are switched off**, and the page cannot reach your data; embedded pictures and its own styles are shown. Up to 5 MB (`FLOWPLAN_HTML_PREVIEW_MB`); otherwise download it – opened in a browser, this protection no longer applies.
+Open an **HTML file** with **Open preview** – in documents, **Media**, files properties and published pages. The preview is isolated: **scripts and external content are switched off**, and the page cannot reach your data; embedded pictures and its own styles are shown. **Run scripts** runs them isolated, without network; `FLOWPLAN_HTML_PREVIEW_SCRIPTS=0` hides it. Up to 5 MB (`FLOWPLAN_HTML_PREVIEW_MB`); a download opened in a browser is not protected.
 
 ## Voice notes and meetings
 
