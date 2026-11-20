@@ -29,6 +29,13 @@ export async function localePrefix(): Promise<string> {
   const fixed = store.get(LOCALE_HEADER);
   return isLocale(fixed) ? `/${fixed}` : "";
 }
+// The address the reader opened, without its language (/de/journal and
+// /journal are both "/journal"); set by proxy.ts on every request, so the
+// sidebar can mark the current page on the server.
+export const PATH_HEADER = "x-flowplan-path";
+export async function requestPath(): Promise<string> {
+  return (await headers()).get(PATH_HEADER) || "/";
+}
 export async function serverT() {
   return translate(await requestLocale());
 }

@@ -18,10 +18,17 @@ import { chromium } from "@playwright/test";
 // ---------------------------------------------------------------- settings
 const PAGES = ["/de", "/en/configuration", "/de/journal", "/en/whats-new", "/de/formatting", "/de/environment-variables", "/en/slash-commands", "/en/mobile-apps", "/de/installation"];
 const HEALTH = "/api/health";
-// Measured 2026-10-22 (gzip): 137.0 KB on every page – React, Next's
-// runtime and the search box (the search index itself loads on focus);
-// LCP on localhost 110–260 ms. The JS budget is about 10 % above that.
-const BUDGET = { jsKb: 150, lcpMs: 2500 };
+// Measured 2026-11-20 (gzip): 136.3 KB on the overview and "What's new",
+// 138.2 KB on a docs page, 139.7–139.8 KB at most (the reference pages with
+// the table filter, /en/mobile-apps with tabs.js); before 145.7–149.4 KB.
+// About 132.8 KB of it is React and Next.js's runtime; the docs' own code
+// is the header and sidebar (~2.3 KB), the page tools (~1.9 KB), the
+// language context (~1.2 KB) and the table filter (~1.6 KB); the search
+// dialog and Flo's panel load on use, Flo's button only where ASK_URL is
+// set and the service answers (not here). LCP on localhost 130–360 ms,
+// 1.1–1.4 s on /de (as before). The JS budget is about 3 % above the
+// largest page.
+const BUDGET = { jsKb: 144, lcpMs: 2500 };
 const LOCALE = "de-DE";
 // --------------------------------------------------------------------------
 

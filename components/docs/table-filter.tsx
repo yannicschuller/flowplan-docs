@@ -1,17 +1,19 @@
 "use client";
 import { useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
-import { MagnifyingGlass } from "@phosphor-icons/react";
+import { Icon, MAGNIFYING_GLASS } from "../icons";
 import { useT } from "../i18n";
 import { filterWords, rowMatches } from "@/lib/table-filter";
-import s from "./docs.module.css";
 
 // The filter field above the tables of a reference page: every word typed
 // must appear in a row (umlauts, case and ⌘/Cmd/Strg/Ctrl alike); rows that
 // do not match are hidden, and so is every section without a matching
 // row (text-only sections too). ?filter=… in the address fills the
 // field, so a link can lead to a row. Escape clears it.
-export default function TableFilter({ slug }: { slug: string }) {
+export type FilterClasses = { filter: string; field: string; count: string };
+// classes: from the page on the server (docs.module.css), so the
+// stylesheet's class names stay out of this chunk.
+export default function TableFilter({ slug, classes }: { slug: string; classes: FilterClasses }) {
   const t = useT();
   const id = useId();
   const [query, setQuery] = useState("");
@@ -71,10 +73,10 @@ export default function TableFilter({ slug }: { slug: string }) {
   const active = filterWords(query).length > 0;
   if (!slot) return null;
   return createPortal(
-    <div className={s.filter} role="search">
+    <div className={classes.filter} role="search">
       <label htmlFor={id}>{t("Tabelle filtern", "Filter the table")}</label>
-      <div className={s.filterField}>
-        <MagnifyingGlass size={16} aria-hidden="true" />
+      <div className={classes.field}>
+        <Icon path={MAGNIFYING_GLASS} size={16} aria-hidden="true" />
         <input
           id={id}
           type="search"
@@ -91,7 +93,7 @@ export default function TableFilter({ slug }: { slug: string }) {
           }}
         />
       </div>
-      <p aria-live="polite" className={s.filterCount}>
+      <p aria-live="polite" className={classes.count}>
         {active
           ? count.shown
             ? t(`${count.shown} von ${count.total} Zeilen`, `${count.shown} of ${count.total} rows`)

@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { LOCALE_HEADER, PAGE_LOCALE_HEADER } from "@/lib/i18n-server";
+import { LOCALE_HEADER, PAGE_LOCALE_HEADER, PATH_HEADER } from "@/lib/i18n-server";
+import { pathWithoutLocale } from "@/lib/locale-path";
 import { isMcpRequest } from "@/lib/mcp-request";
 import { contentSecurityPolicy, createNonce, isLocalHttp } from "@/lib/csp";
 
@@ -33,6 +34,9 @@ function route(request: NextRequest, policy: string) {
   const { pathname } = request.nextUrl;
   const headers = new Headers(request.headers);
   headers.set("Content-Security-Policy", policy);
+  // The address as the reader sees it, without its language, for the
+  // sidebar (docs-nav.tsx).
+  headers.set(PATH_HEADER, pathWithoutLocale(pathname));
   if (pathname === "/mcp") {
     if (!isMcpRequest(request.method, request.headers.get("accept"))) return NextResponse.next({ request: { headers } });
     const url = request.nextUrl.clone();

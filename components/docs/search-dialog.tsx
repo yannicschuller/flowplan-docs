@@ -1,6 +1,6 @@
 "use client";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, MagnifyingGlass } from "@phosphor-icons/react";
+import { Icon, MAGNIFYING_GLASS } from "../icons";
 import type { DocSearchEntry } from "@/lib/docs";
 import { docsIssueUrl } from "@/lib/issue-url";
 import { highlight, searchDocs, suggest, type SearchHit } from "@/lib/search";
@@ -14,6 +14,9 @@ import s from "./docs.module.css";
 function Marked({ text, terms }: { text: string; terms: string[] }) {
   return <>{highlight(text, terms).map((piece, i) => (piece.hit ? <mark key={i}>{piece.text}</mark> : piece.text))}</>;
 }
+
+// Phosphor "ArrowRight" (regular), see ../icons.tsx.
+const ARROW_RIGHT = "M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z";
 
 const LISTBOX_ID = "docs-search-results";
 const optionId = (i: number) => `docs-search-option-${i}`;
@@ -154,7 +157,7 @@ export default function SearchDialog({ version, popular, opens, misses = false }
       >
         <div className={s.searchPanel}>
           <div className={s.searchField}>
-            <MagnifyingGlass size={18} aria-hidden="true" />
+            <Icon path={MAGNIFYING_GLASS} size={18} aria-hidden="true" />
             <input
               ref={input}
               type="search"
@@ -293,7 +296,7 @@ export default function SearchDialog({ version, popular, opens, misses = false }
                   )}
                   <p className={s.noResultsLinks}>
                     <a href={`${prefix || ""}/#alle-seiten`} onClick={close}>
-                      {t("Alle Seiten ansehen", "Browse all pages")} <ArrowRight size={14} aria-hidden="true" />
+                      {t("Alle Seiten ansehen", "Browse all pages")} <Icon path={ARROW_RIGHT} size={14} aria-hidden="true" />
                     </a>
                     <a href={issue} target="_blank" rel="noreferrer" data-umami-event="outbound" data-umami-event-target="github">
                       {t("Fehlt etwas? Issue auf GitHub öffnen", "Something missing? Open an issue on GitHub")}

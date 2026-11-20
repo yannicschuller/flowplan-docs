@@ -1,6 +1,6 @@
 "use client";
-import { useEffect } from "react";
-import dynamic from "next/dynamic";
+import { lazy, Suspense, useEffect, useState } from "react";
+import type { FilterClasses } from "./table-filter";
 
 // "On this page" follows the reading position: the link of the section at
 // the top of the window gets aria-current="location" (both lists – the
@@ -66,7 +66,14 @@ export function TocSpy({ slug }: { slug: string }) {
 // The filter field of the reference pages (table-filter.tsx) loads only on
 // those pages, in its own small chunk; without JavaScript the tables stand
 // as they are.
-const TableFilter = dynamic(() => import("./table-filter"), { ssr: false });
-export function TableFilterSlot({ slug }: { slug: string }) {
-  return <TableFilter slug={slug} />;
+// Mounted only after hydration, so the server renders nothing for it.
+const TableFilter = lazy(() => import("./table-filter"));
+export function TableFilterSlot({ slug, classes }: { slug: string; classes: FilterClasses }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  return mounted ? (
+    <Suspense fallback={null}>
+      <TableFilter slug={slug} classes={classes} />
+    </Suspense>
+  ) : null;
 }

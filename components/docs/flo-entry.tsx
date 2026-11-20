@@ -5,12 +5,11 @@
 // for a minute. Only then is the button (flo.tsx) loaded; off, budget or
 // global limit reached, an error or no answer: nothing more is loaded and
 // no button shows.
-import { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { STATUS_MS, statusAllowsDocs } from "@/lib/flo-status";
 import { FLO_KEYS, readSession, setFloAvailable, useFlo, writeSession } from "./flo-store";
 
-const Flo = dynamic(() => import("./flo").then((m) => m.Flo), { ssr: false });
+const Flo = lazy(() => import("./flo").then((m) => ({ default: m.Flo })));
 
 export function FloEntry({ askUrl }: { askUrl: string }) {
   const { available } = useFlo();
@@ -52,5 +51,9 @@ export function FloEntry({ askUrl }: { askUrl: string }) {
     };
   }, [askUrl]);
 
-  return loaded ? <Flo askUrl={askUrl} /> : null;
+  return loaded ? (
+    <Suspense fallback={null}>
+      <Flo askUrl={askUrl} />
+    </Suspense>
+  ) : null;
 }

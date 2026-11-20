@@ -193,7 +193,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
             {tocList("inline")}
           </details>
         )}
-        {doc.filter && <TableFilterSlot slug={slug} />}
+        {doc.filter && <TableFilterSlot slug={slug} classes={{ filter: s.filter, field: s.filterField, count: s.filterCount }} />}
         <div className={`${s.prose} ${c.content}`} lang={lang} data-prose="" dangerouslySetInnerHTML={{ __html: html }} />
         {/* Tabs ("::: tabs") become tabs only on pages that have them. */}
         {html.includes("data-tabs") && <script src="/tabs.js" async />}

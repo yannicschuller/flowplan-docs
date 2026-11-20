@@ -1,5 +1,7 @@
 import { BrandMark } from "@/components/brand-mark";
-import { DocsNav, DocsSearch } from "@/components/docs/docs-nav";
+import { DocsNav } from "@/components/docs/docs-nav";
+import { DocsSearch } from "@/components/docs/docs-search";
+import { NotFoundEvent } from "@/components/docs/not-found-event";
 import { docAreas, docTitle, searchIndexVersion } from "@/lib/docs";
 import { POPULAR } from "@/lib/home";
 import { missesEnabled } from "@/lib/search-misses";
@@ -45,7 +47,7 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
         <a href={prefix || "/"} className={s.section}>
           {t("Dokumentation", "Documentation")}
         </a>
-        <DocsSearch version={searchIndexVersion()} popular={POPULAR.map((slug) => ({ slug, title: docTitle(slug, locale) }))} misses={missesEnabled()} />
+        <DocsSearch version={searchIndexVersion()} popular={POPULAR.map((slug) => ({ slug, title: docTitle(slug, locale) }))} misses={missesEnabled()} className={s.search} />
         <LanguageSwitch className={s.lang} />
         <a href={DISCORD_URL} className={s.community} rel="noopener" {...trackAttrs("outbound", { target: "discord" })}>
           {t("Community", "Community")}
@@ -113,6 +115,10 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
       </footer>
       {/* „Frag Flo“: the button shows only when the service answers (lib/flo.ts). */}
       {ask && <FloEntry askUrl={ask} />}
+      {/* Counts a 404 (app/not-found.tsx marks it): here rather than in
+          not-found.tsx, whose own client components would be a second copy
+          of this layout's chunk in every page. */}
+      <NotFoundEvent />
     </div>
   );
 }

@@ -15,7 +15,7 @@
 // Answers render as React elements (lib/flo-markdown.tsx), never as HTML.
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { ArrowClockwise, ArrowUp, X } from "@phosphor-icons/react";
+import { Icon, X } from "../icons";
 import {
   allowedLink,
   DEFAULT_MAX_QUESTION,
@@ -36,6 +36,10 @@ import { useLocale, usePrefix, useT } from "../i18n";
 import { FloOtter } from "./flo-otter";
 import { FLO_KEYS, readSession, writeSession } from "./flo-store";
 import s from "./flo.module.css";
+
+// Phosphor "ArrowClockwise" (regular) and "ArrowUp" (bold), see ../icons.tsx.
+const ARROW_CLOCKWISE = "M240,56v48a8,8,0,0,1-8,8H184a8,8,0,0,1,0-16H211.4L184.81,71.64l-.25-.24a80,80,0,1,0-1.67,114.78,8,8,0,0,1,11,11.63A95.44,95.44,0,0,1,128,224h-1.32A96,96,0,1,1,195.75,60L224,85.8V56a8,8,0,1,1,16,0Z";
+const ARROW_UP_BOLD = "M208.49,120.49a12,12,0,0,1-17,0L140,69V216a12,12,0,0,1-24,0V69L64.49,120.49a12,12,0,0,1-17-17l72-72a12,12,0,0,1,17,0l72,72A12,12,0,0,1,208.49,120.49Z";
 
 type Phase = "idle" | "preparing" | "asking";
 // Why Flo stopped answering on the docs (off, budget, global limit).
@@ -310,12 +314,12 @@ export default function FloPanel({
             </div>
             {turns.length > 0 && (
               <button type="button" className={s.restart} onClick={restart} disabled={busy}>
-                <ArrowClockwise size={15} aria-hidden="true" />
+                <Icon path={ARROW_CLOCKWISE} size={15} aria-hidden="true" />
                 {t("Neu anfangen", "Start over")}
               </button>
             )}
             <button type="button" className={s.close} onClick={onClose} aria-label={t("Flo schließen", "Close Flo")}>
-              <X size={18} aria-hidden="true" />
+              <Icon path={X} size={18} aria-hidden="true" />
             </button>
           </header>
 
@@ -398,7 +402,7 @@ export default function FloPanel({
                 }}
               />
               <button type="submit" className={s.send} disabled={busy || !question.trim()} aria-label={t("Frage senden", "Send question")}>
-                <ArrowUp size={18} weight="bold" aria-hidden="true" />
+                <Icon path={ARROW_UP_BOLD} size={18} aria-hidden="true" />
               </button>
             </div>
             <div className={s.meta}>
@@ -447,7 +451,7 @@ function StopNote({ stop, locale, t, onDismiss }: { stop: FloStop | null; locale
           <FloOtter size={28} small />
           <p>{text}</p>
           <button type="button" onClick={onDismiss} aria-label={t("Hinweis schließen", "Close notice")}>
-            <X size={16} aria-hidden="true" />
+            <Icon path={X} size={16} aria-hidden="true" />
           </button>
         </>
       )}
@@ -522,7 +526,7 @@ function ProblemNote({ problem, locale, t, onRetry }: { problem: FloProblem; loc
       <p>{text}</p>
       {onRetry && (
         <button type="button" onClick={onRetry}>
-          <ArrowClockwise size={14} aria-hidden="true" />
+          <Icon path={ARROW_CLOCKWISE} size={14} aria-hidden="true" />
           {t("Nochmal versuchen", "Try again")}
         </button>
       )}

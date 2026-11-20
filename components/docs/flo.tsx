@@ -4,14 +4,13 @@
 // conversation, the note when Flo stops – is in flo-panel.tsx, loaded with
 // the first click (or when the pointer comes near); the search's "Flo
 // fragen: …" opens it too (flo-store.ts).
-import { useCallback, useEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useT } from "../i18n";
 import { FLO_KEYS, setFloAvailable, useFlo, writeSession } from "./flo-store";
 import s from "./flo.module.css";
 
 const loadPanel = () => import("./flo-panel");
-const FloPanel = dynamic(loadPanel, { ssr: false });
+const FloPanel = lazy(loadPanel);
 
 export function Flo({ askUrl }: { askUrl: string }) {
   const t = useT();
@@ -70,7 +69,11 @@ export function Flo({ askUrl }: { askUrl: string }) {
           <span>{t("Frag Flo", "Ask Flo")}</span>
         </button>
       )}
-      {request && <FloPanel askUrl={askUrl} open={open && available} request={request} onClose={close} onStop={stopped} />}
+      {request && (
+        <Suspense fallback={null}>
+          <FloPanel askUrl={askUrl} open={open && available} request={request} onClose={close} onStop={stopped} />
+        </Suspense>
+      )}
     </>
   );
 }
