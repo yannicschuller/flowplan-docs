@@ -21,6 +21,7 @@ In den **Medien** wählst du Dateien über ihr Kästchen aus und legst sie mit *
 
 - **Nicht verwendet**: Dateien, die in keiner Seite, keinem Eintrag, Whiteboard oder Kommentar des Arbeitsbereichs mehr vorkommen, tragen dieses Kennzeichen. Der Filter **Nicht verwendet** zeigt nur sie, **Alle unbenutzten löschen** legt sie nach einer Rückfrage gesammelt in den Papierkorb. Ältere Versionen im Versionsverlauf zählen nicht als Verwendung und können solche Dateien noch zeigen.
 - Ein Bild aus einem Dokument zu entfernen, löscht die Datei nicht – sie gilt danach nur als nicht verwendet.
+- Alte, nicht mehr verwendete Coverbilder einer Seite entfernst du auch direkt unter **Cover ändern**, siehe [Seitenaktionen](/pages-and-spaces#seitenaktionen). {since=0.10.2}
 - Solange eine Datei im Papierkorb liegt, ist sie nirgends mehr abrufbar, auch nicht über Freigaben und Veröffentlichungen. Seiten, die sie noch zeigen, haben an ihrer Stelle einen Platzhalter **Datei fehlt**. Beim Wiederherstellen kommt sie unverändert zurück.
 - Endgültig gelöscht wird sie – auch im Ordner `uploads` und in [Objektspeicher](/storage-and-backups) wie S3 – erst beim Leeren des Papierkorbs, mit **Endgültig löschen** oder nach Ablauf der Frist, siehe [Papierkorb](/pages-and-spaces#papierkorb). Bis dahin zählt sie zum Speicherplatz.
 - **Einbetten** (`/embed`) nimmt eine Adresse entgegen: YouTube, Vimeo, Loom, Spotify, Figma und CodePen erscheinen als Player mit wählbarer Breite, andere Seiten als Linkkarte mit Titel und Vorschaubild.

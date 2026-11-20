@@ -21,6 +21,7 @@ In **Media**, select files with their checkbox and put them in the trash with **
 
 - **Not used**: files that no page, record, whiteboard or comment of the workspace contains any more carry this badge. The **Not used** filter shows only them, and **Delete all unused** moves them to the trash together after a confirmation. Older versions in the version history don't count as a use and may still show such files.
 - Removing an image from a document doesn't delete the file – it then just counts as not used.
+- Old cover images of a page that are no longer used can also be removed right in **Change cover**, see [Page actions](/pages-and-spaces#page-actions). {since=0.10.2}
 - While a file is in the trash it can't be opened anywhere, including through shares and publications. Pages that still show it have a **File missing** placeholder in its place. Restoring brings it back unchanged.
 - It is deleted for good – including in the `uploads` folder and in [object storage](/storage-and-backups) such as S3 – only when the trash is emptied, with **Delete permanently**, or when the retention period ends, see [Trash](/pages-and-spaces#trash). Until then it counts towards storage.
 - **Embed** (`/embed`) takes an address: YouTube, Vimeo, Loom, Spotify, Figma and CodePen appear as players with an adjustable width, other sites as a link card with title and preview image.
