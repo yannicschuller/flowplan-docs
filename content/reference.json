@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@f02a2137",
+  "source": "github.com/yannicschuller/flowplan@d5756f11",
   "slash": {
     "groups": {
       "recent": [
@@ -2055,6 +2055,7 @@
     "FLOWPLAN_SECURITY_LOG",
     "FLOWPLAN_SECURITY_RETENTION_DAYS",
     "FLOWPLAN_SETUP_TOKEN",
+    "FLOWPLAN_SHEET_PREVIEW_MB",
     "FLOWPLAN_SHUTDOWN_SECONDS",
     "FLOWPLAN_SKIP_TYPECHECK",
     "FLOWPLAN_SNAPSHOT_RETENTION_DAYS",

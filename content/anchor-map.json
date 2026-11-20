@@ -240,4 +240,7 @@
 ["multiple-choice","multiple-choice","flashcards-card-types","multiple-choice","multiple-choice"]],"mobile-apps":[
 ["instanz-im-eigenen-netz-ohne-https","an-instance-on-your-own-network-without-https","app-network","instanz-im-eigenen-netz-ohne-https","an-instance-on-your-own-network-without-https"],
 ["eigene-zertifikate","own-certificates","app-network","eigene-zertifikate","own-certificates"]],"views":[
-["abhaengigkeiten-gantt","dependencies-gantt","timeline","abhaengigkeiten-gantt","dependencies-gantt"]]}
+["abhaengigkeiten-gantt","dependencies-gantt","timeline","abhaengigkeiten-gantt","dependencies-gantt"]],"media-and-files":[
+["3d-und-cad-dateien","3d-and-cad-files","file-previews","3d-und-cad-dateien","3d-and-cad-files"],
+["2d-zeichnungen-dxf-und-dwg","2d-drawings-dxf-and-dwg","file-previews","2d-zeichnungen-dxf-und-dwg","2d-drawings-dxf-and-dwg"],
+["html-dateien","html-files","file-previews","html-dateien","html-files"]]}
