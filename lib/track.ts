@@ -17,20 +17,51 @@ type Umami = { track: (name: string, data?: TrackProps) => unknown };
 const umami = (): Umami | undefined =>
   typeof window === "undefined" ? undefined : (window as unknown as { umami?: Umami }).umami;
 
-// Sends an event. The promise settles once Umami has sent it, or after
-// `wait` ms at the latest – for a navigation that should not cut it off.
-export function track(name: string, props?: TrackProps, wait = 300): Promise<void> {
+// Umami's script loads after the page (deferred, by /analytics.js): an
+// event from the first moments – the 404 shown at once, a quick search –
+// waits for it here, at most PENDING_MS and PENDING_MAX events; without
+// Umami (not configured, blocked, Do Not Track) they are dropped then.
+export const PENDING_MS = 10_000;
+export const PENDING_MAX = 20;
+const pending: { name: string; props?: TrackProps; done: () => void }[] = [];
+let waiting: ReturnType<typeof setInterval> | null = null;
+function send(u: Umami, name: string, props?: TrackProps): Promise<void> {
   try {
-    const u = umami();
-    if (!u || typeof u.track !== "function") return Promise.resolve();
-    const sent = Promise.resolve(u.track(name, props)).then(
+    return Promise.resolve(u.track(name, props)).then(
       () => undefined,
       () => undefined,
     );
-    return Promise.race([sent, new Promise<void>((done) => setTimeout(done, wait))]);
   } catch {
     return Promise.resolve();
   }
+}
+function waitForUmami() {
+  if (waiting) return;
+  const since = Date.now();
+  waiting = setInterval(() => {
+    const u = umami();
+    const ready = !!u && typeof u.track === "function";
+    if (!ready && Date.now() - since < PENDING_MS) return;
+    clearInterval(waiting!);
+    waiting = null;
+    for (const event of pending.splice(0)) {
+      if (ready) void send(u!, event.name, event.props).then(event.done);
+      else event.done();
+    }
+  }, 200);
+}
+
+// Sends an event. The promise settles once Umami has sent it, or after
+// `wait` ms at the latest – for a navigation that should not cut it off.
+export function track(name: string, props?: TrackProps, wait = 300): Promise<void> {
+  if (typeof window === "undefined") return Promise.resolve();
+  const timeout = new Promise<void>((done) => setTimeout(done, wait));
+  const u = umami();
+  if (u && typeof u.track === "function") return Promise.race([send(u, name, props), timeout]);
+  if (pending.length >= PENDING_MAX) return Promise.resolve();
+  const queued = new Promise<void>((done) => pending.push({ name, props, done }));
+  waitForUmami();
+  return Promise.race([queued, timeout]);
 }
 
 // The same as attributes for a link or button; Umami's script tracks the

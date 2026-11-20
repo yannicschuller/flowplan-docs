@@ -120,8 +120,6 @@ test("track is safe without Umami and passes events on when it is there", async 
   const g = globalThis as unknown as { window?: unknown };
   const events: unknown[][] = [];
   try {
-    g.window = {};
-    await track("search", { term: "x" }); // Umami not loaded (blocked, not configured)
     g.window = { umami: { track: () => { throw new Error("boom"); } } };
     await track("search", { term: "x" });
     g.window = { umami: { track: (...a: unknown[]) => events.push(a) } };
@@ -135,6 +133,24 @@ test("track is safe without Umami and passes events on when it is there", async 
     delete g.window;
   }
   assert.deepEqual(events, [["copy", { page: "mcp", lang: "bash" }]]);
+});
+
+test("an event before Umami's script loaded waits for it", async () => {
+  const g = globalThis as unknown as { window?: unknown };
+  const events: unknown[][] = [];
+  try {
+    g.window = {};
+    // Does not hold up the caller …
+    const start = Date.now();
+    await track("not-found", { path: "/nope" }, 50);
+    assert.ok(Date.now() - start < 1000);
+    // … and goes out once the script is there.
+    g.window = { umami: { track: (...a: unknown[]) => events.push(a) } };
+    for (let i = 0; i < 50 && !events.length; i++) await new Promise((r) => setTimeout(r, 50));
+  } finally {
+    delete g.window;
+  }
+  assert.deepEqual(events, [["not-found", { path: "/nope" }]]);
 });
 
 test("the marketplace link: default, own address, or switched off", async () => {
