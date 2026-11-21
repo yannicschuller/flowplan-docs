@@ -81,6 +81,8 @@ In forms and surveys that are not anonymous, **Save and continue later** keeps y
 
 Under **Share form**, switch the form on and copy the link.
 
+**QR code** next to it shows the link as a QR code – to download as SVG or PNG, or with **Print** on a sheet with the title and the link, e.g. to put up on a wall. {since=0.11.1}
+
 - **Members only**: answering requires signing in; the answer carries the person's name.
 - **Anonymous**: anyone with the link can answer, without an account and without a name. Files from anonymous answers count against a daily budget: 200 MB per form and `FLOWPLAN_ANONYMOUS_UPLOAD_MB` for the whole instance ([Configuration](/en/configuration)); each form also accepts at most 1000 answers per hour.
 

@@ -81,6 +81,8 @@ In Formularen und Umfragen, die nicht anonym sind, speichert **Speichern und sp�
 
 Unter **Formular teilen** das Formular einschalten und den Link kopieren.
 
+**QR-Code** daneben zeigt den Link als QR-Code – als SVG oder PNG zum Herunterladen oder mit **Drucken** auf einem Blatt mit Titel und Link, etwa zum Aushängen. {since=0.11.1}
+
 - **Nur Mitglieder**: Antworten erfordern eine Anmeldung; die Antwort trägt den Namen der Person.
 - **Anonym**: Jede Person mit dem Link kann antworten, ohne Konto und ohne Namen. Dateien aus anonymen Antworten zählen gegen ein Tagesbudget: 200 MB je Formular und `FLOWPLAN_ANONYMOUS_UPLOAD_MB` für die ganze Instanz ([Konfiguration](/configuration)); je Formular werden außerdem höchstens 1000 Antworten pro Stunde angenommen.
 
