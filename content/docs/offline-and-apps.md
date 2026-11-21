@@ -46,7 +46,7 @@ Solange Flowplan geöffnet ist, gleicht es die Kopie selbst ab: beim Start, wenn
 
 Unter **Einstellungen → Offline & Geräte** steht der Stand, etwa „Offline-Kopie aktualisiert vor 2 Std. · 312 Seiten · 85 MB“. **Jetzt aktualisieren** lädt alle Seiten neu.
 
-**Auch Eintragsinhalte und Dateien speichern** legt zusätzlich die Dokumente aller Datenbank-Einträge und die Dateien der Seiten ab, auch wenn du sie noch nie geöffnet hast – höchstens 200 MB und nur, solange das Gerät genug Platz hat. Ohne Haken bleiben nur Einträge und Dateien, die du schon einmal geöffnet hast. Ausschalten entfernt die zusätzlich gespeicherten Einträge und Dateien.
+**Auch Eintragsinhalte und Dateien speichern** legt zusätzlich die Dokumente aller Datenbank-Einträge und die Dateien der Seiten ab, auch wenn du sie noch nie geöffnet hast – bis zum [Speicherbudget](/what-works-offline#speicherbudget) und nur, solange das Gerät genug Platz hat. Ohne Haken bleiben nur Einträge und Dateien, die du schon einmal geöffnet hast oder [offline behältst](/what-works-offline#offline-behalten). Ausschalten entfernt die zusätzlich gespeicherten Einträge und Dateien – außer denen, die du offline behältst. {since=0.11.1}
 
 Ohne Verbindung zeigt Flowplan außerdem das Datum der Kopie, wenn sie älter als 7 Tage ist („Offline-Kopie vom 12. Okt.“).
 

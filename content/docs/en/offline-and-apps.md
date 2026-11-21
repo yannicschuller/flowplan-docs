@@ -46,7 +46,7 @@ While Flowplan is open, it keeps the copy up to date on its own: at start, when 
 
 **Settings → Offline & devices** shows the state, for example “Offline copy updated 2 h ago · 312 pages · 85 MB”. **Update now** loads every page again.
 
-**Also store record contents and files** also stores the documents of all database records and the files of the pages, even ones you have never opened – at most 200 MB and only while the device has enough space. Without it, only records and files you opened once are kept. Turning it off removes the records and files stored in addition.
+**Also store record contents and files** also stores the documents of all records and the files of the pages, even ones never opened – up to the [storage budget](/what-works-offline#storage-budget) and the device's free space. Without it, only what you opened or [keep offline](/what-works-offline#keep-offline) is kept. Turning it off removes these extras, except what you keep offline. {since=0.11.1}
 
 Without a connection, Flowplan also shows the date of the copy when it is older than 7 days (“Offline copy from Oct 12”).
 

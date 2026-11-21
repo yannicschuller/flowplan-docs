@@ -1,5 +1,5 @@
 ---
-keywords: offline, no connection, no internet, airplane mode, journal offline, new page offline, upload offline, not yet synced, picture offline, template offline
+keywords: offline, no connection, storage budget, keep offline, persistent storage, no internet, airplane mode, journal offline, new page offline, upload offline, not yet synced, picture offline, template offline
 ---
 
 # What works offline
@@ -42,3 +42,37 @@ Some things need the server. Offline Flowplan then says **Needs a connection –
 - answers through a database's form
 - changes to a database's schema (properties and views)
 - {since=0.10.0} creating flashcards with AI, the Anki import and exporting cards (CSV, Anki package)
+
+## Offline storage {since=0.11.1}
+
+How much room the [offline copy](/offline-and-apps#turn-on-offline-use) takes on a device, what is stored first and how it stays for good.
+
+### Storage budget {since=0.11.1}
+
+The **storage budget** under **Settings → Offline & devices** sets how much room record contents and files may take on this device at most: **200 MB**, **1 GB**, **2 GB**, **5 GB** or **10 GB**. Pages and the app itself do not count; they are always stored. Without **Also store record contents and files**, only what you [keep offline](#keep-offline) counts; what you opened then stays outside the budget, as before.
+
+- **Default:** 2 GB in the desktop app, 200 MB in the browser and the installed web app. The app for iPhone and iPad offers 200 MB and 1 GB, as it takes at most 2 GB for a profile's whole copy.
+- The choice applies to this device and this profile only (in the browser: this browser). A bar shows how much of it is used.
+- The device's free space limits the budget as well: Flowplan always leaves some room free.
+- A smaller budget frees what is over it with the next update – first what you do not keep offline.
+
+### Storage per space {since=0.11.1}
+
+Below the budget, a table shows for every space how much room its **pages**, **records** and **files** take on the device, and how much is left in the storage budget. The numbers come from the last update.
+
+### Stored permanently {since=0.11.1}
+
+When you turn offline use on and at every start, Flowplan asks the browser to keep the copy for good. **Storage on this device** shows the answer: **Stored permanently**, or **May be cleared by the browser when space runs low** – then the browser may remove the copy when storage gets tight. The browser decides; Firefox asks once, Chrome and Edge decide by themselves, usually yes for an installed app. The app for iPhone and iPad keeps its copy for good anyway.
+
+### Keep offline {since=0.11.1}
+
+**Keep offline** also stores the record contents and files you have never opened for a space, a page with all its sub-pages or a database – for example the knowledge base and a study project with its PDFs on the laptop, but not the family archives.
+
+- **Turn it on:** in the `…` menu of a space in the sidebar, or in the `…` menu of a page or database, **Keep offline**. Spaces can also be switched in the table [Storage per space](#storage-per-space) under **Settings → Offline & devices**; the pages and databases you keep are listed there too, with **Stop keeping offline**. The entry is there while offline use is on on the device.
+- **First in the budget:** what you keep offline goes into the storage budget before everything else. When the budget is full and **Also store record contents and files** is on, it makes room by dropping other record contents and files (they come back the next time you open them with a connection). The rest stays as before: what you opened, and with **Also store record contents and files** everything else while there is room.
+- **Only what you may read:** Flowplan loads the records and files with your permissions; other people's private records and properties you may not see stay out.
+- **Turning it off:** with the next update, the records and files that were on the device only because of it go – opened ones too; they come back the next time you open them. Changes you made offline and have not sent yet always stay.
+- The selection applies to this device and this profile only – it is about its storage. Signing out or **Remove offline copies** deletes it with the copy.
+- **Encrypted spaces** stay online-only: there **Keep offline** is greyed out with the note “Encrypted spaces stay online-only.”
+
+New records and files of a kept space are loaded by the open app when it updates; the update in the background ([in the background](/offline-and-apps#the-copy-stays-current)) only refreshes what is already on the device.
