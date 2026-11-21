@@ -29,6 +29,8 @@ Bücher und Kapitel sind wie Regalfächer: Sie öffnen sich als **Übersicht**, 
 - Ein **Kapitel** öffnet sich ebenso als Übersicht seiner Seiten, mit **Lesen beginnen** und **Neue Seite**.
 - Eine **Seite** öffnet sich im Editor, wie gewohnt.
 
+{since=0.11.1} Ein Buch oder Kapitel **benennst du um** mit dem Stift neben dem Titel auf seiner Übersicht: Enter oder ein Klick daneben speichert, Esc behält den alten Titel.
+
 Hat ein Buch oder Kapitel eigenen Text – früher geschrieben oder beim Import aus BookStack als Beschreibung übernommen –, steht er schreibgeschützt über dem Inhaltsverzeichnis. **Beschreibung bearbeiten** öffnet ihn im Editor, ohne Text heißt die Aktion **Beschreibung hinzufügen**. Es geht nichts verloren.
 
 Links auf ein Buch oder Kapitel (`#page=…`), Treffer der Suche und der Pfad über einer Seite führen zur Übersicht; ein Link mit `&edit=1` öffnet den Text des Buchs im Editor. **Lesen beginnen**, die Pfeile und **Weiter** gehen von Seite zu Seite und lassen die Übersichten aus; „Seite 3 von 12“ zählt nur die Seiten. Bücher und Kapitel, die keine Dokumente sind – etwa eine Datenbank –, öffnen sich weiter selbst. Bereiche, die nicht als Bibliothek angezeigt werden, bleiben unverändert.
