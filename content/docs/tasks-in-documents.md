@@ -36,3 +36,14 @@ Eine Aufgabe hat einen von fünf Status, wie in Obsidian: **Offen** `[ ]`, **In 
 - **In Arbeit** und **Verschoben** zählen als offen: Sie stehen unter **Meine Aufgaben** (mit ihrem Status), in den Widgets der App, bekommen die Erinnerung am Fälligkeitstag und ziehen im Journal auf den nächsten Tag um. **Abgebrochen** zählt als abgeschlossen, aber nicht als erledigt: Die Aufgabe verschwindet aus „Meine Aufgaben“, zieht nicht um und erscheint im Rückblick des Journals nicht bei den erledigten Aufgaben.
 - Abhaken unter **Meine Aufgaben** oder in einem Widget macht eine Aufgabe in Arbeit zu einer erledigten.
 - Ältere Apps und Desktop-Versionen zeigen die Status als abgehakt (erledigt, abgebrochen) oder offen (alle anderen).
+
+## Aufgaben in eine Datenbank verschieben {since=0.11.1}
+
+Wird ein Dokument mit vielen Aufgaben zu voll, verschiebst du sie in eine Aufgaben-Datenbank: **⋯** → **Aufgaben in Datenbank verschieben …** (nur bei Dokumenten mit Aufgaben, die du bearbeiten darfst). Wähle eine Datenbank, in der du Einträge anlegen darfst, und ordne die Felder zu:
+
+- Der Text der Aufgabe wird zum Titel, weitere Absätze darunter zum Inhalt des Eintrags.
+- **Erledigt** kommt in einen Status (du wählst die Option für erledigte und für offene Aufgaben) oder in ein Häkchen. Abgebrochene Aufgaben zählen als erledigt, „In Arbeit“ und „Verschoben“ als offen.
+- Das Fälligkeitsdatum kommt in eine Datums-, die erwähnte Person in eine Personen-Eigenschaft. Standardwerte der Datenbank gelten für alles Übrige.
+- Unteraufgaben werden eigene Einträge – mit ihrer übergeordneten Aufgabe verknüpft, wenn die Datenbank eine Eigenschaft für übergeordnete Einträge hat.
+
+Im Dokument ersetzt Flowplan jede Aufgabe durch einen Link auf ihren Eintrag; du kannst sie stattdessen entfernen oder unverändert lassen. **Rückgängig** in der Meldung holt die Aufgaben zurück und legt die neuen Einträge in den Papierkorb. In verschlüsselten Bereichen geht das nicht, weil der Server ihren Inhalt nicht lesen kann.

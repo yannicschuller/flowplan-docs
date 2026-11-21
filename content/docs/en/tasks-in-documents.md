@@ -36,3 +36,14 @@ A task has one of five statuses, as in Obsidian: **Open** `[ ]`, **In progress**
 - **In progress** and **Deferred** count as open: they are listed under **My tasks** (with their status) and in the app's widgets, get the reminder on their due date and move on to the next day in a journal. **Cancelled** counts as closed but not as done: the task leaves "My tasks", does not move to the next day and is not listed among the completed tasks in the journal review.
 - Ticking off a task in progress under **My tasks** or in a widget makes it done.
 - Older app and desktop versions show the statuses as ticked (done, cancelled) or open (all others).
+
+## Moving tasks to a database {since=0.11.1}
+
+When a document gets crowded with tasks, move them into a task database: **⋯** → **Move tasks to a database …** (only for documents with tasks that you may edit). Choose a database you may add records to and map the fields:
+
+- The task's text becomes the title, further paragraphs below it the record's content.
+- **Done** goes into a status (you pick the option for done and for open tasks) or a checkbox. Cancelled tasks count as done, "In progress" and "Deferred" as open.
+- The due date goes into a date property, the mentioned person into a person property. The database's default values apply to everything else.
+- Sub-tasks become records of their own – linked to their parent task if the database has a property for parent records.
+
+In the document, Flowplan replaces each task with a link to its record; you can remove them instead or keep them unchanged. **Undo** in the message brings the tasks back and moves the new records to the trash. This is not available in encrypted spaces, because the server cannot read their content.
