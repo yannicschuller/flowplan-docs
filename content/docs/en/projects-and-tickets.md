@@ -89,6 +89,8 @@ Each rule can be switched off on its own.
 
 The **text** takes [placeholders](/templates#placeholders) as record templates do: “Follow up: {{Title}} ({{Status}})” is filled in with the record’s values. The **person** is nobody, the person in a person property of the record, the person who triggered it, the record’s creator or a specific member. **Due** counts days from the trigger (“+3”); empty means no due date.
 
+The **{}** button beside **Task** and **Below the heading** – or typing `{{` – lists the properties and built-in placeholders to insert; the heading takes placeholders too. {since=0.11.1}
+
 Example: *When* Status changes to “Done”, *then* create the task “Write the invoice for {{Title}}” in the database “Accounting”, person “Anna”, due +2 days, linked through “Project”.
 
 > [!NOTE]

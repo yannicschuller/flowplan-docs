@@ -34,6 +34,18 @@ Unter dem Titel eines Eintrags klappt der Pfeil **Eigenschaften** die Eigenschaf
 - Einklappen ändert keine Werte und keine Rechte und gilt nur für dich. Drucken und Exporte zeigen immer alle Eigenschaften – außer du schaltest sie in den [Druckoptionen](/print-and-pdf#drucken-und-pdf) ab.
 - Für normale Seiten gibt es dasselbe in der [Leiste mit Tags und Eigenschaften](/page-tags#leiste-einklappen).
 
+### Standardwerte {since=0.11.1}
+
+In den Einstellungen einer Eigenschaft (Klick auf die Spaltenüberschrift) legt **Standardwert** fest, was ein neuer Eintrag bekommt, wenn er für die Eigenschaft keinen Wert hat.
+
+- **Feste Werte** für Text, Zahl, Auswahl (auch Status), Mehrfachauswahl, Kontrollkästchen und Datum – etwa „Offen“ als Status oder angehakt.
+- **Dynamisch:** **Heute** für ein Datum ohne Uhrzeit, **Jetzt** für eines mit Uhrzeit; **Ersteller** für eine Person – wer den Eintrag anlegt.
+- **Wann:** nur beim **Anlegen** eines Eintrags, wenn der Wert fehlt oder leer ist – in Tabelle, Board und jeder anderen Ansicht, über [Formulare](/forms) (auch für ausgeblendete und leer gelassene Fragen; eine anonyme Antwort hat keinen Ersteller), Automationen und [Workflows](/workflows), Schnellerfassung, [E-Mail-Eingänge](/inbound-email), Freigabelinks, MCP und die API. Werte einer [Datensatzvorlage](/templates#datensatzvorlagen) gehen vor. **Vorhandene Einträge ändern sich nie** – auch nicht, wenn du einen Standardwert neu setzt.
+- **Import:** CSV-, Markdown- und vCard-Importe füllen nur Eigenschaften, für die die Datei keine Spalte hat. Ist eine Spalte in einer Zeile leer, bleibt der Wert leer – die Datei sagt es so. Kopien, Wiederherstellungen, Duplikate, wiederkehrende Einträge und Abgleiche mit Kalendern, Issue-Trackern oder LDAP behalten, was sie mitbringen.
+- **Offline** angelegte Einträge zeigen ihre Standardwerte sofort; **Heute** und **Jetzt** zählen ab dem Moment, in dem du den Eintrag angelegt hast, nicht ab dem Senden.
+- Wird eine Option umbenannt, zieht der Standardwert mit; wird sie gelöscht oder der Typ geändert, entfällt er.
+- **API und MCP:** `database.update` nimmt und liefert `defaultValue` je Eigenschaft: `{"kind": "value", "value": "Offen"}`, `{"kind": "now"}` oder `{"kind": "creator"}`.
+
 ### Farben der Optionen
 
 Jede Option einer Auswahl oder Mehrfachauswahl kann ihre eigene Farbe haben – Grau, Blau, Grün, Rot, Gelb, Orange, Lila, Rosa oder Türkis, dieselben Farben wie bei den [Tags](/page-tags). Die Farbe zeigt sich überall, wo der Wert steht: Tabelle, Board-Spalten, Liste, Galerie, Feed, Gruppen, Filter, im Eintrag, bei Mehrfachauswahlen in Formularen und auf veröffentlichten Seiten.

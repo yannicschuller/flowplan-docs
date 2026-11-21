@@ -34,6 +34,18 @@ Below a record's title, the **Properties** arrow folds the properties into one l
 - Collapsing changes no values and no permissions and only applies to you. Printing and exports always show all properties – unless you turn them off in the [print options](/print-and-pdf#print-and-pdf).
 - Ordinary pages have the same in the [bar with tags and properties](/page-tags#collapsing-the-bar).
 
+### Default values {since=0.11.1}
+
+In a property's settings (click the column header), **Default value** sets what a new record gets when it has no value for the property.
+
+- **Fixed values** for text, number, select (also status), multi-select, checkbox and date – such as “Open” as the status, or checked.
+- **Dynamic:** **Today** for a date without time, **Now** for one with time; **Creator** for a person – whoever creates the record.
+- **When:** only when a record is **created** and the value is missing or empty – in a table, board or any other view, through [forms](/forms) (also for hidden questions and those left empty; an anonymous answer has no creator), automations and [workflows](/workflows), quick capture, [inbound e-mail](/inbound-email), share links, MCP and the API. Values of a [record template](/templates#record-templates) come first. **Existing records never change** – not even when you set a new default.
+- **Import:** CSV, Markdown and vCard imports fill only properties the file has no column for. If a column is empty in a row, the value stays empty – that is what the file says. Copies, restores, duplicates, repeating records and syncs with calendars, issue trackers or LDAP keep what they bring.
+- Records created **offline** show their defaults right away; **Today** and **Now** count from the moment you created the record, not from when it was sent.
+- When an option is renamed, the default follows; when it is deleted or the type changes, the default goes.
+- **API and MCP:** `database.update` accepts and returns `defaultValue` per property: `{"kind": "value", "value": "Open"}`, `{"kind": "now"}` or `{"kind": "creator"}`.
+
 ### Option colours
 
 Every option of a select or multi-select can have its own colour – grey, blue, green, red, yellow, orange, purple, pink or teal, the same colours as [tags](/page-tags). The colour shows wherever the value appears: table, board columns, list, gallery, feed, groups, filters, in the record, in forms (multi-selects) and on published pages.

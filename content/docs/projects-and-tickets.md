@@ -89,6 +89,8 @@ Regeln lassen sich einzeln ausschalten.
 
 Der **Text** nimmt [Platzhalter](/templates#platzhalter) wie bei Datensatzvorlagen: „Nachfassen: {{Titel}} ({{Status}})“ wird mit den Werten des Eintrags ausgefüllt. **Person** ist niemand, die Person in einer Personen-Eigenschaft des Eintrags, die auslösende Person, der Ersteller des Eintrags oder ein bestimmtes Mitglied. **Fällig** zählt Tage ab dem Auslösen („+3“); leer heißt ohne Fälligkeit.
 
+Der Knopf **{}** neben **Aufgabe** und **Unter der Überschrift** – oder `{{` getippt – listet die Eigenschaften und eingebauten Platzhalter zum Einfügen; auch die Überschrift nimmt Platzhalter. {since=0.11.1}
+
 Beispiel: *Wenn* Status sich auf „Erledigt“ ändert, *dann* Aufgabe „Rechnung zu {{Titel}} schreiben“ in der Datenbank „Buchhaltung“, Person „Anna“, fällig +2 Tage, verknüpft über „Projekt“.
 
 > [!NOTE]

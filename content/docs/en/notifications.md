@@ -94,6 +94,7 @@ After at most ten seconds, each device is listed with the channel it went throug
 - **Registration expired** – open the app once, it registers again. For a browser whose subscription expired, enable push there again.
 - **Notifications turned off** – allow them in the app or in the device's system settings.
 - **Push relay not set up, unreachable or instance not verified** – this concerns the instance, not your device; the message gives the reason (e.g. `PUSH_RELAY=off`, `APP_URL` without HTTPS, `/.well-known/flowplan-push` not reachable). See [Configuration](/configuration-ai-push#push-relay-and-end-to-end-encryption).
+- {since=0.11.1} **The relay could not fetch the instance's keys** – the relay reads `/.well-known/flowplan-push` at `APP_URL` from the internet. It fails if the instance is only reachable on your own network, or if a login, IP allow-list or bot check of the reverse proxy sits in front of that path. Check it from outside, e.g. a phone on mobile data: the address must answer `200` with a small JSON document of public keys.
 - **No devices registered** – enable push above or open the app and allow notifications.
 
 The test only goes to your own devices, regardless of **Notification kinds** and Focus filters – the device's own permission and Focus still apply. At most five tests in ten minutes. The result never shows tokens or keys; administrators also see a diagnostics line with the relay address, whether `/.well-known/flowplan-push` is enabled and the instance's address (`APP_URL`).
