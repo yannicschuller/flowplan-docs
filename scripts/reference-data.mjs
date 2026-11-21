@@ -213,6 +213,8 @@ function environment() {
   const internal = new Set([
     "NODE_ENV", "NODE_OPTIONS", "NODE_TEST_CONTEXT", "NEXT_PHASE", "NEXT_RUNTIME", "NEXT_MANUAL_SIG_HANDLE", "PATH", "HOME", "PWD", "TZ",
     "FLOWPLAN_BUILT_AT", "FLOWPLAN_COMMIT", "FLOWPLAN_CHANNEL", "FLOWPLAN_LITESTREAM_ACTIVE", "CI", "GITHUB_ACTIONS", "TMPDIR", "USER", "HOSTNAME_OVERRIDE",
+    // Set by the process supervisor for each server process (FLOWPLAN_PROCESSES).
+    "FLOWPLAN_PROCESSES_TOTAL", "FLOWPLAN_PROCESS_INDEX", "FLOWPLAN_PROCESS_RESPAWN", "FLOWPLAN_PROCESS_ROLE",
   ]);
   const found = new Map();
   const add = (name, file) => {

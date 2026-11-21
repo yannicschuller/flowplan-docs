@@ -1,5 +1,5 @@
 {
-  "source": "github.com/yannicschuller/flowplan@d5756f11",
+  "source": "github.com/yannicschuller/flowplan@642bbbb3",
   "slash": {
     "groups": {
       "recent": [
@@ -2047,6 +2047,8 @@
     "FLOWPLAN_PG_SCHEMA",
     "FLOWPLAN_PG_SCHEMA_AUTO",
     "FLOWPLAN_PG_STATEMENT_TIMEOUT",
+    "FLOWPLAN_PROCESSES",
+    "FLOWPLAN_PROCESS_BALANCE",
     "FLOWPLAN_PUBLIC_API_DOCS",
     "FLOWPLAN_READY_REQUIRE",
     "FLOWPLAN_REDIS_PREFIX",

@@ -52,6 +52,17 @@ Richtwerte für gleichzeitig aktive Personen in der Spitze. Plane Arbeitsspeiche
 
 **Reserve einplanen:** Im Cluster mindestens eine Instanz mehr, als die Last braucht – bei einem Update oder dem Ausfall eines Knotens tragen die übrigen weiter.
 
+## Mehrere Prozesse auf einem Server {since=0.11.1}
+
+Ein Prozess nutzt für Anfragen im Wesentlichen einen Kern. Mit `FLOWPLAN_PROCESSES=auto` (oder einer Zahl) laufen im Container mehrere Prozesse hinter demselben Port; die Hintergrundaufgaben laufen einmal, in Prozess 1. Gemessen auf 4 vCPU mit 200 dauerhaft aktiven Testnutzern sanken die langsamsten 5 % der Lesezugriffe von 1,6 s auf 0,5 s, der Durchsatz stieg von 174 auf 245 Anfragen pro Sekunde; bis etwa 100 Nutzer ist ein Prozess genauso schnell.
+
+- **Wann:** ein Server mit freien Kernen und mehr als etwa 100 Personen, die gleichzeitig arbeiten. Darunter bleibt es beim Standard `1`.
+- **Arbeitsspeicher:** etwa 300–450 MB mehr je Prozess.
+- **SQLite und Litestream** bleiben sicher: Die Prozesse teilen sich die Datenbankdatei, Sicherungen laufen wie bisher.
+- **Im Cluster** zählt jeder Prozess als eigene Instanz, mit eigenem PostgreSQL-Pool und eigener Redis-Verbindung.
+- **Instanz umziehen** auf einen anderen Server: dafür auf einen Prozess zurückstellen.
+- **Überwachung** zeigt eine Tabelle mit Speicher, CPU und Neustarts je Prozess. Ein abgestürzter Prozess startet nach 1 s neu, bei wiederholtem Fehler mit bis zu 30 s Wartezeit.
+
 ## Selbst messen
 
 Die Lasttests liegen im Quellcode unter [`scripts/loadtest`](https://github.com/yannicschuller/flowplan/blob/main/scripts/loadtest/README.md): für einen einzelnen Container und für den Cluster-Modus (`scripts/load-test-cluster.mjs`, 1, 2 … Instanzen gegen PostgreSQL und Redis). Am aussagekräftigsten ist eine Messung auf der Hardware, auf der Flowplan laufen soll.

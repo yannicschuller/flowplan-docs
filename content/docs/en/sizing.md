@@ -52,6 +52,17 @@ Guide values for people active at the same time at peak. Plan memory generously 
 
 **Plan a spare:** in a cluster, run at least one instance more than the load needs – during an update or when a node fails, the others carry on.
 
+## Several processes on one host {since=0.11.1}
+
+One process uses essentially one core for requests. With `FLOWPLAN_PROCESSES=auto` (or a number), the container runs several processes behind the same port; the background jobs run once, in process 1. Measured on 4 vCPU with 200 busy load-test users, the slowest 5 % of reads went from 1.6 s to 0.5 s and throughput from 174 to 245 requests per second; with up to about 100 users, one process is just as fast.
+
+- **When:** a host with spare cores and more than about 100 people working at the same moment. Below that, keep the default `1`.
+- **Memory:** about 300–450 MB more per process.
+- **SQLite and Litestream** stay safe: the processes share the database file; backups work as before.
+- **In a cluster**, each process counts as an instance of its own, with its own PostgreSQL pool and Redis connection.
+- **Moving an instance** to another server: switch back to one process for it.
+- **Monitoring** shows a table with each process's memory, CPU and restarts. A crashed process is restarted after 1 s, waiting up to 30 s if it keeps failing.
+
 ## Measure it yourself
 
 The load tests are in the source code under [`scripts/loadtest`](https://github.com/yannicschuller/flowplan/blob/main/scripts/loadtest/README.md): for a single container and for cluster mode (`scripts/load-test-cluster.mjs`, 1, 2 … instances against PostgreSQL and Redis). A measurement on the hardware Flowplan will run on tells you the most.
