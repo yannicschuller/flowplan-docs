@@ -20,7 +20,7 @@ What you create yourself – pages, databases, properties – stays in the langu
 
 ## Help translate
 
-At **[translate.flowplan.org](https://translate.flowplan.org)** the community translates Flowplan right in the browser – no Git, no tools of your own, no need to touch the catalogues. It covers the texts of the web app, the app for iPhone, iPad and Android (with widgets, Siri commands and the app store texts) and the desktop app. Today that means **French** and **Simplified Chinese**; German and English are the originals and are only shown there. The tool is free, without tracking and open source ([flowplan-translate on GitHub](https://github.com/yannicschuller/flowplan-translate)).
+At **[translate.flowplan.org](https://translate.flowplan.org)** the community translates Flowplan right in the browser – no Git, no tools of your own, no need to touch the catalogues. It covers the texts of the web app, the app for iPhone, iPad and Android (with widgets, Siri commands and the app store texts) and the desktop app. Today that means **French** and **Simplified Chinese**, and **Russian** for the web app – Russian joins the language menu once most of it is translated; German and English are the originals and are only shown there. The tool is free, without tracking and open source ([flowplan-translate on GitHub](https://github.com/yannicschuller/flowplan-translate)).
 
 ::: steps
 

@@ -20,7 +20,7 @@ Was du selbst anlegst – Seiten, Datenbanken, Eigenschaften –, bleibt in der 
 
 ## Beim Übersetzen helfen
 
-Auf **[translate.flowplan.org](https://translate.flowplan.org)** übersetzt die Community Flowplan direkt im Browser – ohne Git, ohne eigene Werkzeuge und ohne die Kataloge selbst anzufassen. Übersetzt werden die Texte der Web-App, der App für iPhone, iPad und Android (mit Widgets, Siri-Befehlen und den Texten in den App-Stores) und der Desktop-App. Heute sind das **Französisch** und **vereinfachtes Chinesisch**; Deutsch und Englisch sind die Originale und werden dort nur angezeigt. Das Werkzeug ist kostenlos, ohne Tracking und Open Source ([flowplan-translate auf GitHub](https://github.com/yannicschuller/flowplan-translate)).
+Auf **[translate.flowplan.org](https://translate.flowplan.org)** übersetzt die Community Flowplan direkt im Browser – ohne Git, ohne eigene Werkzeuge und ohne die Kataloge selbst anzufassen. Übersetzt werden die Texte der Web-App, der App für iPhone, iPad und Android (mit Widgets, Siri-Befehlen und den Texten in den App-Stores) und der Desktop-App. Heute sind das **Französisch** und **vereinfachtes Chinesisch** sowie **Russisch** für die Web-App – Russisch kommt ins Sprachmenü, sobald der Großteil übersetzt ist; Deutsch und Englisch sind die Originale und werden dort nur angezeigt. Das Werkzeug ist kostenlos, ohne Tracking und Open Source ([flowplan-translate auf GitHub](https://github.com/yannicschuller/flowplan-translate)).
 
 ::: steps
 
