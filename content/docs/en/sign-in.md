@@ -1,5 +1,5 @@
 ---
-keywords: sign-in, login, password, passkey, 2fa, session, forgot password
+keywords: sign-in, login, password, passkey, 2fa, session, forgot password, change e-mail, change email, email address, e-mail ändern
 ---
 
 # Sign-in: password, passkeys and two-factor

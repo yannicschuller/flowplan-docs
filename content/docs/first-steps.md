@@ -74,6 +74,8 @@ Aufgaben hakst du direkt im Widget ab, Gewohnheiten ebenso; im Journal-Widget sc
 
 Widgets zeigen nur, was du ohnehin sehen darfst: Seiten anderer Arbeitsbereiche erscheinen nicht, Journale hinter einer PIN zeigen nur ihren Namen, und von Ende-zu-Ende-verschlüsselten Bereichen sieht die Startseite keinen Inhalt.
 
+Was jedes Widget zeigt und wie **Fokus & Zeit** mit Fokuszeit und Stunden arbeitet, steht unter [Widgets der Startseite](/home-widgets).
+
 Eine Seite mit Kennzahlen und Diagrammen, die mehrere Personen gemeinsam ansehen, ist ein [Dashboard](/dashboards#dashboard-oder-startseite).
 
 > [!TIP]

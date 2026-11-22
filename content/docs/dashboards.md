@@ -78,6 +78,8 @@ Auch die [Startseite](/first-steps#startseite-anpassen) besteht aus Widgets, und
 
 Nimm ein Dashboard für Zahlen, auf die ein Team gemeinsam schaut – den Fortschritt eines Projekts, eine Vertriebspipeline, offene Tickets nach Status –, und die Startseite für deinen eigenen Tag. Ein Dashboard, das du oft öffnest, kannst du als **Angeheftete Seite** auf die Startseite holen oder zu den [Favoriten](/pages-and-spaces) legen.
 
+Was jedes Widget der Startseite zeigt: [Widgets der Startseite](/home-widgets).
+
 ## Kopieren, Export und Papierkorb
 
 - **Duplizieren** kopiert das Dashboard mit allen Kacheln; wird eine Datenbank mitkopiert, zeigt die Kachel in der Kopie auf die Kopie.

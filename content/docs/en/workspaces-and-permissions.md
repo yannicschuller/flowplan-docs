@@ -67,6 +67,8 @@ Shelves and books of the [library](/library#permissions-for-shelves-and-books) f
 
 Owners of a workspace also manage other members' spaces, but do not get read access to their private pages that way.
 
+The instance's admin rights give no access to content either: admins see only what membership and permissions allow them – what the Administration shows about accounts and workspaces is under [What administrators can see](/user-management#what-administrators-can-see).
+
 **Encrypted spaces** go one step further: there, not only the permission on the server decides but the key. Whoever has not been given the space key reads nothing – not even workspace owners or the administrators. See [Encrypted spaces](/encrypted-spaces).
 
 ## Workflows: permissions and “runs as”

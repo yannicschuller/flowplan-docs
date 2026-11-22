@@ -1,5 +1,5 @@
 ---
-keywords: view, kanban, board, calendar, timeline, gantt, gallery, list
+keywords: view, kanban, board, calendar, timeline, gantt, gallery, list, caldav, apple calendar, thunderbird, nextcloud, davx5, ical, icalendar
 ---
 
 # Views

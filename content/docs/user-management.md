@@ -1,5 +1,6 @@
 ---
-keywords: Benutzer, Konto, sperren, löschen, Admin, Registrierung, Einladung
+keywords: Benutzer, Konto, sperren, löschen, Admin, Registrierung, Einladung, Benutzer anlegen, Konto anlegen, Benutzer hinzufügen, neues Konto, create user, add user
+new: personen-hinzufuegen 2026-11-22, was-admins-sehen 2026-11-22
 ---
 
 # Benutzer verwalten
@@ -33,7 +34,7 @@ Ein Klick auf die Zeile oder den Namen öffnet das Konto in einem Seitenfenster 
   - **Konten zusammenführen**: **Zusammenführen …** legt das Konto mit einem zweiten derselben Person zusammen (siehe [Konten zusammenführen](#konten-zusammenfuehren)).
 - Am Ende: **Sperren** sperrt das Konto sofort und beendet alle Sitzungen; **Entsperren** gibt es wieder frei. **Konto löschen** (**Löschen …**) geht erst, sobald ein Konto gesperrt ist. Der Dialog nennt vorher, was passiert: Name, E-Mail, Passwort, Passkeys, Sitzungen und persönliche Einstellungen werden gelöscht, ebenso Arbeitsbereiche, in denen nur diese Person Mitglied war, und ihre privaten Bereiche. Gemeinsame Arbeitsbereiche bekommen bei Bedarf ein anderes Mitglied als Eigentümer; Beiträge darin bleiben und erscheinen als „Gelöschtes Konto“. Auch wenn das Konto dafür als leerer Platzhalter bleibt, verschwinden die persönlichen Daten: Kalender-Verbindungen und ihre Abgleiche, CalDAV- und CardDAV-Verknüpfungen, Gast-Zugänge, eigene Schlüssel für verschlüsselte Bereiche, Rechte an einzelnen Einträgen, Geräte, Entwürfe, Einstellungen von Widgets und Seitenleiste, der Besuchsverlauf der Schnellsuche, Sticker und Reaktionen. Es bleiben Inhalte, Versionsverlauf und Urheberschaft sowie erfasste Zeiten (ein laufender Timer stoppt); Freigabelinks, die die Person erstellt hat, funktionieren weiter. Das eigene Konto und das letzte Admin-Konto lassen sich nicht löschen.
 
-Konten mit E-Mail und Passwort entstehen über **Konto erstellen** (siehe [Anmeldung](/sign-in)); SSO-Konten beim ersten Anmelden über OIDC, ihr Admin-Recht kommt aus der Gruppe beim Anbieter. Ob sich Personen selbst registrieren dürfen, stellst du unter [Anmeldung & SSO](#anmeldung-sso) ein.
+Wie neue Konten entstehen, steht unter [Personen hinzufügen](#personen-hinzufuegen); ob sich Personen selbst registrieren dürfen, stellst du unter [Anmeldung & SSO](#anmeldung-sso) ein.
 
 ### Konten zusammenführen
 
@@ -48,6 +49,51 @@ Alles des übernommenen Kontos geht auf das bleibende über: eigene Seiten und B
 - Ältere Versionen von Dokumenten behalten ihre Erwähnungen, wie sie waren.
 
 Das Zusammenführen läuft in einem Schritt – ganz oder gar nicht –, steht im Aktivitätsprotokoll und als „Konten zusammengeführt“ im Sicherheitsprotokoll. Das übernommene Konto wird danach gelöscht. Das eigene Konto kann nur das bleibende sein.
+
+## Personen hinzufügen
+
+Ein Konto entsteht auf einem dieser Wege:
+
+- **Selbst registrieren**: Ist unter **Anmeldung & SSO** die **Registrierung mit E-Mail und Passwort** an, legt jede Person auf der Anmeldeseite mit **Konto erstellen** ein Konto an. Ohne diese Einstellung geht das nur für das erste Konto der Instanz und für eingeladene Adressen ([E-Mail und Passwort](/sign-in#e-mail-und-passwort)).
+- **Einladung in einen Arbeitsbereich**: Unter **Einstellungen → Mitglieder → Mitglied einladen** lädt ein Eigentümer eine E-Mail-Adresse ein. Mit der Einladung entsteht ein Konto für genau diese Adresse, auch wenn die Registrierung sonst zu ist ([Mitglieder einladen](/workspaces-and-permissions#mitglieder-einladen)). Mit einem [Einladungslink für mehrere Personen](/workspaces-and-permissions#einladungslinks-fuer-mehrere-personen) legt jede Person, die ihn hat, ein Konto an, solange er gilt.
+- **Single Sign-on**: Mit einem OIDC-Anbieter entsteht das Konto bei der ersten Anmeldung über **Mit SSO anmelden**; das Admin-Recht kommt aus der Gruppe beim Anbieter. `OIDC_NEW_ACCOUNTS=false` lässt nur bestehende Konten herein ([SSO mit OIDC](/sso-oidc)).
+- **LDAP und SCIM**: Mit einem LDAP-Verzeichnis entsteht das Konto bei der ersten Anmeldung mit den Zugangsdaten aus dem Verzeichnis ([Anmeldung mit LDAP](/scim-and-ldap#anmeldung-mit-ldap)); mit SCIM legt dein Identitätsanbieter Konten an, bevor sich jemand anmeldet, und deaktiviert sie wieder ([SCIM](/scim-and-ldap#benutzer-bereitstellen-mit-scim)).
+
+Wer bei der ersten Anmeldung noch in keinem Arbeitsbereich ist, bekommt einen eigenen – „Mein Arbeitsbereich“, mit der Willkommensseite oder dem [Startinhalt](/starter-content), den du festgelegt hast. Neue Konten mit E-Mail und Passwort bekommen kein Admin-Recht – außer dem ersten Konto der Instanz; du vergibst es unter **Benutzer** in der **Rolle**.
+
+### Ein Konto für jemanden einrichten
+
+Etwa für ein Familienmitglied, das seinen eigenen Platz bekommen soll:
+
+::: steps
+
+1. Lege einen Arbeitsbereich für die Person an: oben in der Seitenleiste auf den Namen des Arbeitsbereichs → **Arbeitsbereich erstellen**.
+2. Lade sie dort unter **Einstellungen → Mitglieder → Mitglied einladen** mit ihrer E-Mail-Adresse ein. Verschickt deine Instanz keine E-Mails, kopierst du unter **Ausstehende Einladungen** mit **Link kopieren** den Einladungslink und schickst ihn ihr selbst.
+3. Sie öffnet die Einladung, legt ein Passwort fest und landet in dem Arbeitsbereich.
+4. Unter **Einstellungen → Mitglieder** gibst du ihr die Rolle **Eigentümer**. Willst du ihre Seiten nicht mitlesen können, verlässt du den Arbeitsbereich danach unter **Einstellungen → Allgemein** (**Gefahrenzone**).
+
+:::
+
+Oder sie registriert sich selbst: Schalte dafür die Registrierung mit E-Mail und Passwort ein (und danach wieder aus, wenn du magst). Dann bekommt sie „Mein Arbeitsbereich“, in dem nur sie Mitglied ist.
+
+Danach findest du das Konto unter **Benutzer**; im Seitenfenster passt du bei Bedarf **Speicherlimit** und **Einstellungsstufe** an.
+
+## Was Admins sehen
+
+Admin-Rechte verwalten die Instanz, nicht ihre Inhalte. Was jemand lesen darf, entscheiden allein die Mitgliedschaft in einem Arbeitsbereich und die Freigaben darin ([Wie Rechte zusammenwirken](/workspaces-and-permissions#wie-rechte-zusammenwirken)) – für Admins genauso wie für alle anderen:
+
+- In Arbeitsbereichen, in denen du nicht Mitglied bist, siehst du keine Seiten, Datenbanken oder Dateien.
+- Private Bereiche anderer siehst du nur, wenn sie ausdrücklich mit dir geteilt sind – auch als Eigentümer des Arbeitsbereichs nicht.
+- Ende-zu-Ende-verschlüsselte Bereiche liest nur, wer den Schlüssel bekommen hat – weder Eigentümer noch Admins ([Verschlüsselte Bereiche](/encrypted-spaces)).
+
+In der Administration siehst du über die Konten und Arbeitsbereiche nur Verwaltungsdaten:
+
+- **Benutzer**: Name, E-Mail-Adresse, Zustand, Anmeldemethoden, Sitzungen, belegten Speicher, wann jemand zuletzt da war und die Namen seiner Arbeitsbereiche.
+- **Arbeitsbereiche**: Name, Besitzer, Zahl der Mitglieder und Seiten, Belegung und Kontingent.
+- **Aktivitätsprotokoll**: Aktion, Person, Zeitpunkt und die ID der betroffenen Ressource – keine Inhalte.
+
+> [!IMPORTANT]
+> Wer den Server betreibt oder unter **Speicher & Sicherung** die gesamte Instanz herunterlädt, hält die Datenbank mit allen Inhalten in der Hand – lesbar bleiben dann nur verschlüsselte Bereiche nicht. Gib Admin-Rechte und Zugang zum Server deshalb nur Personen, denen alle auf der Instanz vertrauen.
 
 ## Anmeldung & SSO
 

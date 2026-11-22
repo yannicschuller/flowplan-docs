@@ -1,5 +1,6 @@
 ---
-keywords: users, account, lock, delete, admin, registration, invitation
+keywords: users, account, lock, delete, admin, registration, invitation, create user, add user, new user, new account
+new: adding-people 2026-11-22, what-administrators-can-see 2026-11-22
 ---
 
 # Managing users
@@ -33,7 +34,7 @@ Clicking the row or the name opens the account in a side panel (from the bottom 
   - **Merge accounts**: **Merge …** combines the account with a second account of the same person (see [Merge accounts](#merge-accounts)).
 - At the end: **Block** blocks the account at once and ends all sessions; **Unblock** releases it again. **Delete account** (**Delete …**) is possible only once an account is blocked. The dialog says beforehand what happens: name, e-mail, password, passkeys, sessions and personal settings are deleted, as are workspaces where only this person was a member and their private spaces. Shared workspaces get another member as owner if needed; contributions there stay and appear as "Deleted account". Even when the account stays as an empty placeholder for that, the personal data goes: calendar connections and their syncing, CalDAV and CardDAV links, guest access, own keys for encrypted spaces, grants on single records, devices, drafts, widget and sidebar settings, the quick search's visit history, stickers and reactions. What stays is content, version history and authorship as well as tracked time (a running timer stops); share links the person created keep working. Your own account and the last admin account cannot be deleted.
 
-Accounts with e-mail and password are created with **Create account** (see [Sign-in](/sign-in)); SSO accounts on their first sign-in via OIDC, and their admin right comes from the group at the provider. Whether people may sign up themselves is set under [Sign-in & SSO](#sign-in-sso).
+How new accounts come about is described under [Adding people](#adding-people); whether people may sign up themselves is set under [Sign-in & SSO](#sign-in-sso).
 
 ### Merge accounts
 
@@ -48,6 +49,51 @@ Everything of the account taken over moves to the one that stays: own pages and 
 - Older versions of documents keep their mentions as they were.
 
 The merge runs as one step – all or nothing –, is recorded in the activity log and as "Accounts merged" in the security log. The account taken over is deleted afterwards. Your own account can only be the one that stays.
+
+## Adding people
+
+An account comes about in one of these ways:
+
+- **Signing up**: with **Sign-up with email and password** on under **Sign-in & SSO**, anyone can create an account with **Create account** on the sign-in page. Without this setting, only the instance's first account and invited addresses can ([E-mail and password](/sign-in#e-mail-and-password)).
+- **Invitation to a workspace**: an owner invites an e-mail address under **Settings → Members → Invite member**. The invitation creates an account for exactly this address, even if sign-ups are otherwise closed ([Invite members](/workspaces-and-permissions#invite-members)). With an [invite link for several people](/workspaces-and-permissions#invite-links-for-several-people), anyone who has it can create an account while it is valid.
+- **Single sign-on**: with an OIDC provider, the account comes about at the first sign-in via **Sign in with SSO**; the admin right comes from the group at the provider. `OIDC_NEW_ACCOUNTS=false` lets in existing accounts only ([SSO with OIDC](/sso-oidc)).
+- **LDAP and SCIM**: with an LDAP directory, the account comes about at the first sign-in with the directory's credentials ([Sign-in with LDAP](/scim-and-ldap#sign-in-with-ldap)); with SCIM, your identity provider creates accounts before anyone signs in, and deactivates them again ([SCIM](/scim-and-ldap#user-provisioning-scim)).
+
+Whoever is in no workspace yet at their first sign-in gets one of their own – "My workspace", with the welcome page or the [starter content](/starter-content) you chose. New accounts with e-mail and password get no admin right – except the instance's first account; you grant it under **Users** with **Role**.
+
+### Set up an account for someone
+
+For a family member, say, who should get a place of their own:
+
+::: steps
+
+1. Create a workspace for them: the workspace's name at the top of the sidebar → **Create workspace**.
+2. Invite them there under **Settings → Members → Invite member** with their e-mail address. If your instance doesn't send e-mail, copy the invitation link under **Pending invitations** with **Copy link** and send it to them yourself.
+3. They open the invitation, choose a password and land in the workspace.
+4. Under **Settings → Members**, give them the role **Owner**. If you don't want to be able to read their pages, leave the workspace afterwards under **Settings → General** (**Danger zone**).
+
+:::
+
+Or they sign up themselves: switch on sign-up with email and password for that (and off again afterwards if you like). They then get "My workspace", where they are the only member.
+
+Afterwards you find the account under **Users**; in its side panel you can adjust **Storage limit** and **Settings level** if needed.
+
+## What administrators can see
+
+Admin rights manage the instance, not its content. What someone may read is decided only by membership in a workspace and the permissions in it ([How permissions work together](/workspaces-and-permissions#how-permissions-work-together)) – for admins just as for everyone else:
+
+- In workspaces you are not a member of, you see no pages, databases or files.
+- Other people's private spaces you see only when they are explicitly shared with you – not even as the workspace's owner.
+- End-to-end encrypted spaces can be read only by those who were given the key – neither owners nor admins ([Encrypted spaces](/encrypted-spaces)).
+
+About accounts and workspaces, the Administration shows only management data:
+
+- **Users**: name, e-mail address, status, sign-in methods, sessions, storage used, when someone was last around and the names of their workspaces.
+- **Workspaces**: name, owner, number of members and pages, usage and quota.
+- **Activity log**: action, person, time and the ID of the resource concerned – no content.
+
+> [!IMPORTANT]
+> Whoever runs the server or downloads the whole instance under **Storage & backup** holds the database with all content – only encrypted spaces stay unreadable then. So give admin rights and access to the server only to people everyone on the instance trusts.
 
 ## Sign-in & SSO
 

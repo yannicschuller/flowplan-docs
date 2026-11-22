@@ -67,6 +67,8 @@ Regale und Bücher der [Bibliothek](/library#rechte-fuer-regale-und-buecher) fol
 
 Eigentümer eines Arbeitsbereichs verwalten auch Bereiche anderer Mitglieder, erhalten dadurch aber keinen Lesezugriff auf deren private Seiten.
 
+Auch Admin-Rechte der Instanz geben keinen Zugriff auf Inhalte: Admins sehen nur, was ihnen Mitgliedschaft und Freigaben erlauben – was die Administration über Konten und Arbeitsbereiche zeigt, steht unter [Was Admins sehen](/user-management#was-admins-sehen).
+
 **Verschlüsselte Bereiche** gehen einen Schritt weiter: Dort entscheidet nicht nur das Recht auf dem Server, sondern der Schlüssel. Wer keinen Bereichsschlüssel bekommen hat, liest nichts – auch nicht Eigentümer des Arbeitsbereichs oder die Administration. Siehe [Verschlüsselte Bereiche](/encrypted-spaces).
 
 ## Workflows: Rechte und „läuft als“

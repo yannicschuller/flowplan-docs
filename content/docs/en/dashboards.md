@@ -78,6 +78,8 @@ The [home page](/first-steps#customize-your-home-page) is built from widgets too
 
 Use a dashboard for figures a team looks at together – a project's progress, a sales pipeline, open tickets by status – and the home page for your own day. A dashboard you open often can be added to the home page as a **Pinned page** or to the [favourites](/pages-and-spaces).
 
+What each widget of the home page shows: [Home page widgets](/home-widgets).
+
 ## Copying, export and trash
 
 - **Duplicate** copies the dashboard with all tiles; when a database is copied along, the tile in the copy points to the copy.
