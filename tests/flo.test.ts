@@ -258,3 +258,15 @@ test("the proof of work finds a nonce the service can check", () => {
   assert.equal((posted[0] as { nonce: number }).nonce, nonce);
   assert.equal((posted[1] as { error: string }).error, "invalid challenge");
 });
+
+test("the answer's own Sources list goes when the panel shows the sources box (#432)", async () => {
+  const { parseAnswer, withoutSourcesTail } = await import("../lib/flo");
+  const answer = "Admins can't read private spaces.\n\nSources:\n- [Members](https://docs.flowplan.org/en/workspaces-and-permissions)\n- [Sharing](https://docs.flowplan.org/en/sharing)\n";
+  const parsed = parseAnswer({ answer, sources: [{ title: "Members", url: "https://docs.flowplan.org/en/workspaces-and-permissions" }] });
+  assert.equal(parsed?.answer, "Admins can't read private spaces.");
+  assert.equal(withoutSourcesTail("Text\n\n**Quellen:**\n- [A](https://docs.flowplan.org/a)"), "Text");
+  // Without sources from the service the text keeps its list.
+  assert.match(parseAnswer({ answer, sources: [] })?.answer ?? "", /Sources:/);
+  // A "Sources" word inside the text is not touched.
+  assert.equal(withoutSourcesTail("Sources: see below.\nMore text"), "Sources: see below.\nMore text");
+});

@@ -65,7 +65,17 @@ export function parseAnswer(data: unknown): FloAnswer | null {
     list.push({ title: typeof title === "string" && title.trim() ? title.trim().slice(0, 140) : href, url: href });
     if (list.length >= 8) break;
   }
-  return { answer: answer.slice(0, 20000), sources: list };
+  const text = answer.slice(0, 20000);
+  // Flo ends an answer with its own "Sources:"/"Quellen:" list (flowplan-ask's
+  // prompt, for Discord and other plain-text clients); the panel shows the
+  // sources as a box of its own, so the list in the text goes (#432).
+  return { answer: list.length ? withoutSourcesTail(text) : text, sources: list };
+}
+
+// The trailing "Sources:" / "Quellen:" line and the "-" list right after it.
+export function withoutSourcesTail(answer: string) {
+  const match = answer.match(/\n[ \t]*(?:\*\*)?(?:Sources|Quellen|Sources\s?:|来源|Источники)(?:\*\*)?[ \t]*[:：]?(?:\*\*)?[ \t]*\n(?:[ \t]*[-*][^\n]*(?:\n|$))+\s*$/);
+  return match ? answer.slice(0, match.index).trimEnd() : answer;
 }
 
 // What a failed request means for the reader. 429 { error: "limit", scope,
