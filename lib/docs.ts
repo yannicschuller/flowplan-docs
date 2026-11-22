@@ -741,6 +741,13 @@ export function llmsFull(base: string, locale: Locale) {
     .join("\n\n---\n\n");
 }
 
+// keywords.json: every page's front-matter keywords, {slug: [keywords]} in
+// the sidebar order – for tools that search the docs themselves (Flo,
+// flowplan-ask). The Markdown and llms.txt stay without them.
+export function keywordsIndex(locale: Locale): Record<string, string[]> {
+  return Object.fromEntries(docSlugs.map((slug) => [slug, docKeywords(slug, locale)]));
+}
+
 // Old anchors of a page that lead elsewhere now (lib/anchors.ts).
 let anchorMap: AnchorMap | undefined;
 export function docAnchors(slug: string) {
