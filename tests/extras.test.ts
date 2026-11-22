@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { docMarkdown, docSearchIndex, docSlugs, INTERFACE_LANGUAGES, llmsFull, loadDoc } from "../lib/docs";
+import { docMarkdown, docSearchIndex, docSlugs, INTERFACE_LANGUAGES, keywordsIndex, llmsFull, llmsIndex, loadDoc } from "../lib/docs";
 import { FACTS, fillFacts } from "../lib/facts";
 import { parseChangelog, releases } from "../lib/changelog";
 import { excerpt, expandWord, highlight, synonymKeywords } from "../lib/search";
@@ -57,6 +57,26 @@ test("the search index lists synonyms, so other words find the same section", ()
   assert.ok(config.keywords.includes("env"), "Konfiguration ↔ env");
   const storage = index.find((p) => p.slug === "storage-and-backups")!;
   assert.ok(storage.sections.some((s) => s.keywords.includes("speicher")));
+});
+
+// ---- keywords.json for Flo (flowplan-ask) ----
+
+test("keywords.json lists every page's front-matter keywords, which stay out of the Markdown and llms.txt", () => {
+  for (const locale of ["de", "en"] as const) {
+    const index = keywordsIndex(locale);
+    assert.deepEqual(Object.keys(index), docSlugs, locale);
+    for (const [slug, keywords] of Object.entries(index)) {
+      assert.ok(Array.isArray(keywords) && keywords.every((k) => typeof k === "string" && k.trim() === k && k.length > 0), `${locale}/${slug}`);
+    }
+    assert.doesNotMatch(llmsIndex("https://docs.example", locale), /keywords?:|Stichw/i, locale);
+  }
+  const en = keywordsIndex("en");
+  assert.ok(en["user-management"].includes("create user"));
+  assert.ok(en["views"].includes("caldav"));
+  assert.ok(keywordsIndex("de")["sign-in"].includes("E-Mail-Adresse ändern"));
+  assert.doesNotMatch(docMarkdown("user-management", "en"), /create user/);
+  // A JSON round trip keeps it as it is (the route sends it with Response.json).
+  assert.deepEqual(JSON.parse(JSON.stringify(en)), en);
 });
 
 test("query words expand to their synonyms, and matches are marked in place", () => {
