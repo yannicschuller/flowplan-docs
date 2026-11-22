@@ -1,11 +1,13 @@
 ---
-keywords: users, account, lock, delete, admin, registration, invitation, create user, add user, new user, new account
-new: adding-people 2026-11-22, what-administrators-can-see 2026-11-22
+keywords: users, account, lock, delete, admin, role, admin right, merge accounts, side panel, end sessions, unconfirmed addresses, registration
+new: what-administrators-can-see 2026-11-22
 ---
 
 # Managing users
 
 Create, lock, merge and delete accounts, grant admin rights and decide who may sign in and how.
+
+**More on this topic:** [New accounts](/new-accounts) · [Account limits](/account-limits)
 
 ## Users
 
@@ -36,18 +38,7 @@ Clicking the row or the name opens the account in a side panel (from the bottom 
   - **Merge accounts**: **Merge …** combines the account with a second account of the same person (see [Merge accounts](#merge-accounts)).
 - At the end: **Block** blocks the account at once and ends all sessions; **Unblock** releases it again. **Delete account** (**Delete …**) is possible only once an account is blocked. The dialog says beforehand what happens: name, e-mail, password, passkeys, sessions and personal settings are deleted, as are workspaces where only this person was a member and their private spaces. Shared workspaces get another member as owner if needed; contributions there stay and appear as "Deleted account". Even when the account stays as an empty placeholder for that, the personal data goes: calendar connections and their syncing, CalDAV and CardDAV links, guest access, own keys for encrypted spaces, grants on single records, devices, drafts, widget and sidebar settings, the quick search's visit history, stickers and reactions. What stays is content, version history and authorship as well as tracked time (a running timer stops); share links the person created keep working. Your own account and the last admin account cannot be deleted.
 
-How new accounts come about is described under [Adding people](#adding-people); whether people may sign up themselves is set under [Sign-in & SSO](#sign-in-sso).
-
-### Create account
-
-**Create account** above the table sets up an account with e-mail and password for someone else – even with sign-up closed. You enter **Name**, **E-mail address** and **Role** (**Member** or **Admin**); **Also create a workspace for this person** (on) creates a workspace of their own right away, with the [starter content](/starter-content) of new accounts, prefilled with “Ada's workspace” – you can change the name. Without it the person gets “My workspace” at the first sign-in like every new account, unless they are a member of one by then. The rules of sign-up apply: an address that already has an account (in any spelling, however it signs in) is refused, and the instance's limits apply here too. {since=0.11.1}
-
-The account has no password yet. The person sets it with a link that is valid for **7 days** and only once, and is signed in right afterwards:
-
-- **If the instance sends e-mail**, the person gets the link by e-mail (“Your Flowplan account was created”). Opening it proves they own the mailbox: the address then counts as confirmed, and invitations to it are taken over.
-- **Without e-mail**, the dialog shows the link to copy (**Copy link**) – hand it to the person yourself. A link handed over proves nothing about the address: it stays **unconfirmed**, as with any sign-up without e-mail, until you confirm it in the account with **Mark as confirmed** (see [Only confirmed addresses](/workspaces-and-permissions#invite-members)).
-
-Until the first sign-in the account shows as **Invited** in the table; in its side panel, **Resend link** makes a new link (by e-mail or to hand over), and the previous one stops working. Creating the account is recorded in the activity log (“Account created” with the address) and in the security events. With password sign-in turned off (`FLOWPLAN_LOCAL_LOGIN=false`, SSO only) there is no **Create account** – new people then come through SSO. API tokens cannot create accounts, like every Administration action.
+How new accounts come about is described under [Adding people](/new-accounts#adding-people); whether people may sign up themselves is set under [Sign-in & SSO](#sign-in-sso).
 
 ### Merge accounts
 
@@ -62,53 +53,6 @@ Everything of the account taken over moves to the one that stays: own pages and 
 - Older versions of documents keep their mentions as they were.
 
 The merge runs as one step – all or nothing –, is recorded in the activity log and as "Accounts merged" in the security log. The account taken over is deleted afterwards. Your own account can only be the one that stays.
-
-## Limits per group {since=0.11.1}
-
-Under **Limits & retention → Limits per group** you give the members of a group more (or less) than the [default](/administration#limits-retention): **Storage**, **Own workspaces** and **Largest file**. You choose the group under **Add a group** – the same choice as for the [AI quotas](/ai#for-admins):
-
-- **Workspace groups**: count for their members whichever workspace the group is in. Groups filled through the [SSO mappings](/sso-oidc) too.
-- **Directory groups (SCIM, LDAP, SSO)**: a group of your identity provider directly by its name – a group provisioned over [SCIM](/scim-and-ldap#user-provisioning-scim), an LDAP group or a group of the SSO sign-in. It needs neither a workspace nor a mapping and also applies to accounts with e-mail and password that the directory lists as members. Under **Directory group by name** you can also enter a group the directory has not sent yet.
-
-Empty means: the group does not set this limit. For a person, per limit:
-
-1. their own value (in the side panel under **Users**),
-2. else the most generous value of their groups – 0 (unlimited) beats any number,
-3. else the instance default.
-
-Admins are not limited. Under **Settings → Account & security → Your limits** the person sees where a value comes from ("from group Plus"). Changes apply at once, also to the next upload; when the storage is full or a file is too large, the message names the limit ("The file is too large: you can upload files up to 10 MB.").
-
-**Link for more storage or AI** (under **Storage and uploads**): an address people see under **Your limits** ("More storage or AI? →") – for example the page where they get more. A plain link without credentials; empty = no link.
-
-Over SCIM: a service with a SCIM token can link an existing account with a confirmed address without creating one – `POST /Users` with `"urn:ietf:params:scim:schemas:extension:flowplan:2.0:User": {"linkExisting": true}` (no matching account: 404) – and then add it to or remove it from a group with `PATCH /Groups/…`. The account's name, address, password and state stay as they are as long as the request does not name them; an account is only deactivated with `"active": false` or `DELETE /Users/…`.
-
-## Adding people
-
-An account comes about in one of these ways:
-
-- **Signing up**: with **Sign-up with email and password** on under **Sign-in & SSO**, anyone can create an account with **Create account** on the sign-in page. Without this setting, only the instance's first account and invited addresses can ([E-mail and password](/sign-in#e-mail-and-password)).
-- **Invitation to a workspace**: an owner invites an e-mail address under **Settings → Members → Invite member**. The invitation creates an account for exactly this address, even if sign-ups are otherwise closed ([Invite members](/workspaces-and-permissions#invite-members)). With an [invite link for several people](/workspaces-and-permissions#invite-links-for-several-people), anyone who has it can create an account while it is valid.
-- **Single sign-on**: with an OIDC provider, the account comes about at the first sign-in via **Sign in with SSO**; the admin right comes from the group at the provider. `OIDC_NEW_ACCOUNTS=false` lets in existing accounts only ([SSO with OIDC](/sso-oidc)).
-- **LDAP and SCIM**: with an LDAP directory, the account comes about at the first sign-in with the directory's credentials ([Sign-in with LDAP](/scim-and-ldap#sign-in-with-ldap)); with SCIM, your identity provider creates accounts before anyone signs in, and deactivates them again ([SCIM](/scim-and-ldap#user-provisioning-scim)).
-
-Whoever is in no workspace yet at their first sign-in gets one of their own – "My workspace", with the welcome page or the [starter content](/starter-content) you chose. New accounts with e-mail and password get no admin right – except the instance's first account; you grant it under **Users** with **Role**.
-
-### Set up an account for someone
-
-For a family member, say, who should get a place of their own:
-
-::: steps
-
-1. Create a workspace for them: the workspace's name at the top of the sidebar → **Create workspace**.
-2. Invite them there under **Settings → Members → Invite member** with their e-mail address. If your instance doesn't send e-mail, copy the invitation link under **Pending invitations** with **Copy link** and send it to them yourself.
-3. They open the invitation, choose a password and land in the workspace.
-4. Under **Settings → Members**, give them the role **Owner**. If you don't want to be able to read their pages, leave the workspace afterwards under **Settings → General** (**Danger zone**).
-
-:::
-
-Or they sign up themselves: switch on sign-up with email and password for that (and off again afterwards if you like). They then get "My workspace", where they are the only member.
-
-Afterwards you find the account under **Users**; in its side panel you can adjust **Storage limit** and **Settings level** if needed.
 
 ## What administrators can see
 

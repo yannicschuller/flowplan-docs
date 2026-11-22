@@ -1,11 +1,13 @@
 ---
-keywords: Benutzer, Konto, sperren, löschen, Admin, Registrierung, Einladung, Benutzer anlegen, Konto anlegen, Benutzer hinzufügen, neues Konto, create user, add user
-new: personen-hinzufuegen 2026-11-22, was-admins-sehen 2026-11-22
+keywords: Benutzer, Konto, sperren, löschen, Admin, Rolle, Admin-Recht, Konten zusammenführen, Seitenfenster, Sitzungen beenden, unbestätigte Adressen, Registrierung
+new: was-admins-sehen 2026-11-22
 ---
 
 # Benutzer verwalten
 
 Konten anlegen, sperren, zusammenführen und löschen, Admin-Rechte vergeben und festlegen, wer sich wie anmelden darf.
+
+**Mehr zum Thema:** [Neue Konten](/new-accounts) · [Grenzen für Konten](/account-limits)
 
 ## Benutzer
 
@@ -36,18 +38,7 @@ Ein Klick auf die Zeile oder den Namen öffnet das Konto in einem Seitenfenster 
   - **Konten zusammenführen**: **Zusammenführen …** legt das Konto mit einem zweiten derselben Person zusammen (siehe [Konten zusammenführen](#konten-zusammenfuehren)).
 - Am Ende: **Sperren** sperrt das Konto sofort und beendet alle Sitzungen; **Entsperren** gibt es wieder frei. **Konto löschen** (**Löschen …**) geht erst, sobald ein Konto gesperrt ist. Der Dialog nennt vorher, was passiert: Name, E-Mail, Passwort, Passkeys, Sitzungen und persönliche Einstellungen werden gelöscht, ebenso Arbeitsbereiche, in denen nur diese Person Mitglied war, und ihre privaten Bereiche. Gemeinsame Arbeitsbereiche bekommen bei Bedarf ein anderes Mitglied als Eigentümer; Beiträge darin bleiben und erscheinen als „Gelöschtes Konto“. Auch wenn das Konto dafür als leerer Platzhalter bleibt, verschwinden die persönlichen Daten: Kalender-Verbindungen und ihre Abgleiche, CalDAV- und CardDAV-Verknüpfungen, Gast-Zugänge, eigene Schlüssel für verschlüsselte Bereiche, Rechte an einzelnen Einträgen, Geräte, Entwürfe, Einstellungen von Widgets und Seitenleiste, der Besuchsverlauf der Schnellsuche, Sticker und Reaktionen. Es bleiben Inhalte, Versionsverlauf und Urheberschaft sowie erfasste Zeiten (ein laufender Timer stoppt); Freigabelinks, die die Person erstellt hat, funktionieren weiter. Das eigene Konto und das letzte Admin-Konto lassen sich nicht löschen.
 
-Wie neue Konten entstehen, steht unter [Personen hinzufügen](#personen-hinzufuegen); ob sich Personen selbst registrieren dürfen, stellst du unter [Anmeldung & SSO](#anmeldung-sso) ein.
-
-### Konto anlegen
-
-Mit **Konto anlegen** über der Tabelle richtest du ein Konto mit E-Mail und Passwort für jemand anderen ein – auch wenn die Registrierung geschlossen ist. Du gibst **Name**, **E-Mail-Adresse** und **Rolle** (**Mitglied** oder **Admin**) an; **Auch einen Arbeitsbereich für die Person anlegen** (an) legt gleich einen eigenen Arbeitsbereich mit dem [Startinhalt](/starter-content) neuer Konten an, vorbelegt mit „Adas Arbeitsbereich“ – den Namen kannst du ändern. Ohne ihn bekommt die Person bei der ersten Anmeldung wie jedes neue Konto „Mein Arbeitsbereich“, wenn sie bis dahin in keinem Mitglied ist. Es gelten dieselben Regeln wie bei der Registrierung: Eine Adresse, zu der es schon ein Konto gibt (egal in welcher Schreibweise und wie es sich anmeldet), wird abgelehnt, und die Grenzen der Instanz gelten auch hier. {since=0.11.1}
-
-Das Konto hat noch kein Passwort. Die Person legt es mit einem Link fest, der **7 Tage** und nur einmal gilt, und ist danach direkt angemeldet:
-
-- **Verschickt die Instanz E-Mails**, bekommt die Person den Link per E-Mail („Dein Flowplan-Konto wurde angelegt“). Wer ihn öffnet, beweist, dass ihm das Postfach gehört: Die Adresse gilt danach als bestätigt, und Einladungen an sie werden übernommen.
-- **Ohne E-Mail-Versand** zeigt der Dialog den Link zum Kopieren (**Link kopieren**) – gib ihn der Person selbst. Ein weitergegebener Link beweist nichts über die Adresse: Sie bleibt **unbestätigt**, wie bei jeder Registrierung ohne E-Mail, bis du sie im Konto mit **Als bestätigt markieren** bestätigst (siehe [Nur bestätigte Adressen](/workspaces-and-permissions#mitglieder-einladen)).
-
-Bis zur ersten Anmeldung steht das Konto in der Tabelle mit **Eingeladen**; im Seitenfenster erzeugt **Link erneut senden** einen neuen Link (per E-Mail oder zum Weitergeben), der bisherige gilt dann nicht mehr. Das Anlegen steht im Aktivitätsprotokoll („Konto angelegt“ mit der Adresse) und in den Sicherheitsereignissen. Ist die Anmeldung mit Passwort ausgeschaltet (`FLOWPLAN_LOCAL_LOGIN=false`, nur SSO), gibt es **Konto anlegen** nicht – neue Personen kommen dann über SSO. Über API-Tokens geht das Anlegen nicht, wie alle Aktionen der Administration.
+Wie neue Konten entstehen, steht unter [Personen hinzufügen](/new-accounts#personen-hinzufuegen); ob sich Personen selbst registrieren dürfen, stellst du unter [Anmeldung & SSO](#anmeldung-sso) ein.
 
 ### Konten zusammenführen
 
@@ -62,53 +53,6 @@ Alles des übernommenen Kontos geht auf das bleibende über: eigene Seiten und B
 - Ältere Versionen von Dokumenten behalten ihre Erwähnungen, wie sie waren.
 
 Das Zusammenführen läuft in einem Schritt – ganz oder gar nicht –, steht im Aktivitätsprotokoll und als „Konten zusammengeführt“ im Sicherheitsprotokoll. Das übernommene Konto wird danach gelöscht. Das eigene Konto kann nur das bleibende sein.
-
-## Grenzen pro Gruppe {since=0.11.1}
-
-Unter **Grenzen & Aufbewahrung → Grenzen pro Gruppe** gibst du den Mitgliedern einer Gruppe mehr (oder weniger) als den [Standard](/administration#grenzen-aufbewahrung): **Speicher**, **Eigene Arbeitsbereiche** und **Größte Datei**. Die Gruppe wählst du unter **Gruppe hinzufügen** – dieselbe Auswahl wie bei den [KI-Kontingenten](/ai#fuer-admins):
-
-- **Gruppen der Arbeitsbereiche**: zählen für ihre Mitglieder, egal in welchem Arbeitsbereich die Gruppe liegt. Auch über die [SSO-Zuordnungen](/sso-oidc) gefüllte Gruppen.
-- **Verzeichnisgruppen (SCIM, LDAP, SSO)**: eine Gruppe deines Identitätsanbieters direkt nach ihrem Namen – eine über [SCIM](/scim-and-ldap#benutzer-bereitstellen-mit-scim) bereitgestellte Gruppe, eine LDAP-Gruppe oder eine Gruppe aus der SSO-Anmeldung. Sie braucht weder Arbeitsbereich noch Zuordnung und gilt auch für Konten mit E-Mail und Passwort, die das Verzeichnis als Mitglied führt. Unter **Verzeichnisgruppe nach Name** trägst du auch eine Gruppe ein, die das Verzeichnis noch nicht geschickt hat.
-
-Leer heißt: Die Gruppe legt diese Grenze nicht fest. Für eine Person gilt je Grenze:
-
-1. ihr eigener Wert (im Seitenfenster unter **Benutzer**),
-2. sonst der großzügigste Wert ihrer Gruppen – 0 (unbegrenzt) schlägt jede Zahl,
-3. sonst der Standard der Instanz.
-
-Für Admins gelten keine Grenzen. Die Person sieht unter **Einstellungen → Konto & Sicherheit → Deine Grenzen**, woher ein Wert kommt („aus Gruppe Plus“). Änderungen gelten sofort, auch beim nächsten Hochladen; ist der Speicher voll oder eine Datei zu groß, nennt die Meldung die Grenze („Die Datei ist zu groß: Du kannst Dateien bis 10 MB hochladen.“).
-
-**Link für mehr Speicher oder KI** (unter **Speicher und Uploads**): eine Adresse, die Personen unter **Deine Grenzen** sehen („Mehr Speicher oder KI? →“) – etwa die Seite, auf der sie mehr bekommen. Ein einfacher Link ohne Anmeldedaten; leer = kein Link.
-
-Über SCIM: Ein Dienst mit SCIM-Token kann ein bestehendes Konto mit bestätigter Adresse verknüpfen, ohne es anzulegen – `POST /Users` mit `"urn:ietf:params:scim:schemas:extension:flowplan:2.0:User": {"linkExisting": true}` (ohne passendes Konto: 404) – und es dann per `PATCH /Groups/…` in eine Gruppe aufnehmen oder herausnehmen. Name, Adresse, Passwort und Zustand des Kontos bleiben dabei, wie sie sind, solange die Anfrage sie nicht nennt; deaktiviert wird ein Konto nur mit `"active": false` oder `DELETE /Users/…`.
-
-## Personen hinzufügen
-
-Ein Konto entsteht auf einem dieser Wege:
-
-- **Selbst registrieren**: Ist unter **Anmeldung & SSO** die **Registrierung mit E-Mail und Passwort** an, legt jede Person auf der Anmeldeseite mit **Konto erstellen** ein Konto an. Ohne diese Einstellung geht das nur für das erste Konto der Instanz und für eingeladene Adressen ([E-Mail und Passwort](/sign-in#e-mail-und-passwort)).
-- **Einladung in einen Arbeitsbereich**: Unter **Einstellungen → Mitglieder → Mitglied einladen** lädt ein Eigentümer eine E-Mail-Adresse ein. Mit der Einladung entsteht ein Konto für genau diese Adresse, auch wenn die Registrierung sonst zu ist ([Mitglieder einladen](/workspaces-and-permissions#mitglieder-einladen)). Mit einem [Einladungslink für mehrere Personen](/workspaces-and-permissions#einladungslinks-fuer-mehrere-personen) legt jede Person, die ihn hat, ein Konto an, solange er gilt.
-- **Single Sign-on**: Mit einem OIDC-Anbieter entsteht das Konto bei der ersten Anmeldung über **Mit SSO anmelden**; das Admin-Recht kommt aus der Gruppe beim Anbieter. `OIDC_NEW_ACCOUNTS=false` lässt nur bestehende Konten herein ([SSO mit OIDC](/sso-oidc)).
-- **LDAP und SCIM**: Mit einem LDAP-Verzeichnis entsteht das Konto bei der ersten Anmeldung mit den Zugangsdaten aus dem Verzeichnis ([Anmeldung mit LDAP](/scim-and-ldap#anmeldung-mit-ldap)); mit SCIM legt dein Identitätsanbieter Konten an, bevor sich jemand anmeldet, und deaktiviert sie wieder ([SCIM](/scim-and-ldap#benutzer-bereitstellen-mit-scim)).
-
-Wer bei der ersten Anmeldung noch in keinem Arbeitsbereich ist, bekommt einen eigenen – „Mein Arbeitsbereich“, mit der Willkommensseite oder dem [Startinhalt](/starter-content), den du festgelegt hast. Neue Konten mit E-Mail und Passwort bekommen kein Admin-Recht – außer dem ersten Konto der Instanz; du vergibst es unter **Benutzer** in der **Rolle**.
-
-### Ein Konto für jemanden einrichten
-
-Etwa für ein Familienmitglied, das seinen eigenen Platz bekommen soll:
-
-::: steps
-
-1. Lege einen Arbeitsbereich für die Person an: oben in der Seitenleiste auf den Namen des Arbeitsbereichs → **Arbeitsbereich erstellen**.
-2. Lade sie dort unter **Einstellungen → Mitglieder → Mitglied einladen** mit ihrer E-Mail-Adresse ein. Verschickt deine Instanz keine E-Mails, kopierst du unter **Ausstehende Einladungen** mit **Link kopieren** den Einladungslink und schickst ihn ihr selbst.
-3. Sie öffnet die Einladung, legt ein Passwort fest und landet in dem Arbeitsbereich.
-4. Unter **Einstellungen → Mitglieder** gibst du ihr die Rolle **Eigentümer**. Willst du ihre Seiten nicht mitlesen können, verlässt du den Arbeitsbereich danach unter **Einstellungen → Allgemein** (**Gefahrenzone**).
-
-:::
-
-Oder sie registriert sich selbst: Schalte dafür die Registrierung mit E-Mail und Passwort ein (und danach wieder aus, wenn du magst). Dann bekommt sie „Mein Arbeitsbereich“, in dem nur sie Mitglied ist.
-
-Danach findest du das Konto unter **Benutzer**; im Seitenfenster passt du bei Bedarf **Speicherlimit** und **Einstellungsstufe** an.
 
 ## Was Admins sehen
 

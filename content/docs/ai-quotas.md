@@ -40,7 +40,7 @@ Die Ebenen:
 | **Ganze Instanz** | Alle zusammen – eine Obergrenze, damit die Rechnung nicht davonläuft. Sie gilt immer zusätzlich. |
 | **Standard je Person** | Alle ohne eigene Grenze und ohne Gruppe mit Grenze. |
 | **Rollen** | **Administratoren** und **Gäste** (Personen, die nur Gastzugänge haben). |
-| **Gruppen** | Gruppen der Arbeitsbereiche – auch die, die über die [SSO-Zuordnungen](/sso-oidc#sso-gruppen-arbeitsbereichen-zuordnen) aus SSO-, SCIM- und LDAP-Gruppen gefüllt werden. Dazu **Verzeichnisgruppen** direkt nach ihrem Namen – eine SCIM-, LDAP- oder SSO-Gruppe ohne Arbeitsbereich und Zuordnung, auch für Konten mit E-Mail und Passwort, die das Verzeichnis als Mitglied führt ([Grenzen pro Gruppe](/user-management#grenzen-pro-gruppe)). {since=0.11.1} |
+| **Gruppen** | Gruppen der Arbeitsbereiche – auch die, die über die [SSO-Zuordnungen](/sso-oidc#sso-gruppen-arbeitsbereichen-zuordnen) aus SSO-, SCIM- und LDAP-Gruppen gefüllt werden. Dazu **Verzeichnisgruppen** direkt nach ihrem Namen – eine SCIM-, LDAP- oder SSO-Gruppe ohne Arbeitsbereich und Zuordnung, auch für Konten mit E-Mail und Passwort, die das Verzeichnis als Mitglied führt ([Grenzen pro Gruppe](/account-limits#grenzen-pro-gruppe)). {since=0.11.1} |
 | **Einzelne Personen** | Mehr, weniger oder **ausgenommen**. |
 
 Welche Grenze für eine Person gilt: ihre eigene, sonst die **höchste** ihrer Gruppen und Rollen (je Zeitraum; lässt eine ihrer Gruppen einen Zeitraum offen, gibt es dort keine Grenze), sonst der Standard. **Ausgenommen** – eine Person oder eine Gruppe – hebt die persönlichen Grenzen auf; die Grenze der ganzen Instanz bleibt.

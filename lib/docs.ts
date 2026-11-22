@@ -142,9 +142,14 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
         pages: ["installation", "kubernetes", "one-click-deploy", "coolify-and-proxy", "app-network", "move-instance", "move-instance-tool"],
       },
       {
-        title: ["Anmeldung und Administration", "Sign-in and administration"],
-        intro: ["Die Administration der Instanz, Benutzer, Passwort, Passkeys, SSO, SCIM und LDAP.", "Administering the instance, users, password, passkeys, SSO, SCIM and LDAP."],
-        pages: ["administration", "starter-content", "user-management", "sign-in", "emergency-access", "sessions", "sso-oidc", "scim-and-ldap"],
+        title: ["Administration und Benutzer", "Administration and users"],
+        intro: ["Die Administration der Instanz, der Startinhalt neuer Konten, Benutzer, neue Konten und ihre Grenzen.", "Administering the instance, the starter content of new accounts, users, new accounts and their limits."],
+        pages: ["administration", "starter-content", "user-management", "new-accounts", "account-limits"],
+      },
+      {
+        title: ["Anmeldung", "Sign-in"],
+        intro: ["Passwort, Passkeys, Notfallzugriff, angemeldet bleiben, SSO, SCIM und LDAP.", "Password, passkeys, emergency access, staying signed in, SSO, SCIM and LDAP."],
+        pages: ["sign-in", "emergency-access", "sessions", "sso-oidc", "scim-and-ldap"],
       },
       {
         title: ["Konfiguration", "Configuration"],

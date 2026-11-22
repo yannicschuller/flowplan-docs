@@ -6,7 +6,7 @@ keywords: administration, admin, instance, settings, demo, maintenance
 
 Whoever administers the instance sees **Administration** in the sidebar: the instance's first account and everyone it gives the admin right to – with single sign-on also the members of the group in `OIDC_ADMIN_GROUP`.
 
-**More on this topic:** [Managing users](/user-management)
+**More on this topic:** [Managing users](/user-management) · [Account limits](/account-limits)
 
 ## Overview
 

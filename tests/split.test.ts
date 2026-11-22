@@ -125,6 +125,9 @@ test("old anchors resolve, also in the other language", () => {
   // Restoring moved to its own page (#349); the admin's Litestream warning links here.
   assert.deepEqual(resolveAnchor(docAnchors("storage-and-backups"), "litestream-zustand-reparieren", "de"), { slug: "restore", id: "litestream-zustand-reparieren" });
   assert.deepEqual(resolveAnchor(docAnchors("storage-and-backups"), "restore", "en"), { slug: "restore", id: "" });
+  // New accounts and the limits per group left the users page (0.11.1).
+  assert.deepEqual(resolveAnchor(docAnchors("user-management"), "grenzen-pro-gruppe", "de"), { slug: "account-limits", id: "grenzen-pro-gruppe" });
+  assert.deepEqual(resolveAnchor(docAnchors("user-management"), "adding-people", "en"), { slug: "new-accounts", id: "adding-people" });
 });
 
 test("pages are at most about 2,600 words, in both languages", () => {

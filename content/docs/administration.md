@@ -6,7 +6,7 @@ keywords: Administration, Admin, Instanz, Einstellungen, Demo, Wartung
 
 Wer die Instanz verwaltet, sieht **Administration** in der Seitenleiste: das erste Konto der Instanz und alle, denen es das Admin-Recht gibt – bei Single Sign-on zusätzlich die Mitglieder der Gruppe aus `OIDC_ADMIN_GROUP`.
 
-**Mehr zum Thema:** [Benutzer verwalten](/user-management)
+**Mehr zum Thema:** [Benutzer verwalten](/user-management) · [Grenzen für Konten](/account-limits)
 
 ## Übersicht
 

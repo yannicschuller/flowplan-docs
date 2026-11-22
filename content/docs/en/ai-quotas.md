@@ -40,7 +40,7 @@ The levels:
 | **Whole instance** | Everyone together – a ceiling so the bill cannot run away. It always applies on top. |
 | **Default per person** | Everyone without their own limit and without a group with a limit. |
 | **Roles** | **Administrators** and **Guests** (people who only have guest access). |
-| **Groups** | Workspace groups – also those filled from SSO, SCIM and LDAP groups through the [SSO group mappings](/sso-oidc#map-sso-groups-to-workspaces). Also **directory groups** directly by their name – a SCIM, LDAP or SSO group without a workspace or mapping, also for accounts with e-mail and password that the directory lists as members ([Limits per group](/user-management#limits-per-group)). {since=0.11.1} |
+| **Groups** | Workspace groups – also those filled from SSO, SCIM and LDAP groups through the [SSO group mappings](/sso-oidc#map-sso-groups-to-workspaces). Also **directory groups** directly by their name – a SCIM, LDAP or SSO group without a workspace or mapping, also for accounts with e-mail and password that the directory lists as members ([Limits per group](/account-limits#limits-per-group)). {since=0.11.1} |
 | **Single people** | More, less or **exempt**. |
 
 Which limit applies to a person: their own, else the **highest** of their groups and roles (per period; if one of their groups leaves a period open, there is no limit for it), else the default. **Exempt** – a person or a group – lifts the personal limits; the whole instance's limit stays.

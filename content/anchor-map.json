@@ -243,4 +243,8 @@
 ["abhaengigkeiten-gantt","dependencies-gantt","timeline","abhaengigkeiten-gantt","dependencies-gantt"]],"media-and-files":[
 ["3d-und-cad-dateien","3d-and-cad-files","file-previews","3d-und-cad-dateien","3d-and-cad-files"],
 ["2d-zeichnungen-dxf-und-dwg","2d-drawings-dxf-and-dwg","file-previews","2d-zeichnungen-dxf-und-dwg","2d-drawings-dxf-and-dwg"],
-["html-dateien","html-files","file-previews","html-dateien","html-files"]]}
+["html-dateien","html-files","file-previews","html-dateien","html-files"]],"user-management":[
+["personen-hinzufuegen","adding-people","new-accounts","personen-hinzufuegen","adding-people"],
+["ein-konto-fuer-jemanden-einrichten","set-up-an-account-for-someone","new-accounts","ein-konto-fuer-jemanden-einrichten","set-up-an-account-for-someone"],
+["konto-anlegen","create-account","new-accounts","konto-anlegen","create-account"],
+["grenzen-pro-gruppe","limits-per-group","account-limits","grenzen-pro-gruppe","limits-per-group"]]}

@@ -71,10 +71,10 @@ test("keywords.json lists every page's front-matter keywords, which stay out of 
     assert.doesNotMatch(llmsIndex("https://docs.example", locale), /keywords?:|Stichw/i, locale);
   }
   const en = keywordsIndex("en");
-  assert.ok(en["user-management"].includes("create user"));
+  assert.ok(en["new-accounts"].includes("create user"));
   assert.ok(en["views"].includes("caldav"));
   assert.ok(keywordsIndex("de")["sign-in"].includes("E-Mail-Adresse ändern"));
-  assert.doesNotMatch(docMarkdown("user-management", "en"), /create user/);
+  assert.doesNotMatch(docMarkdown("new-accounts", "en"), /create user/);
   // A JSON round trip keeps it as it is (the route sends it with Response.json).
   assert.deepEqual(JSON.parse(JSON.stringify(en)), en);
 });
