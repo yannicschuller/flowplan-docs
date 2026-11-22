@@ -1,6 +1,6 @@
 ---
 keywords: Drucken, PDF, Seitenumbruch, Druckvorlage, Querformat
-new: seitenumbruch 2026-11-12
+new: seitenumbruch 2026-11-12, drucken-in-der-app 2026-11-22
 ---
 
 # Drucken und PDF
@@ -27,6 +27,12 @@ Seiten drucken oder als PDF sichern – mit Druckoptionen, Vorlagen und Seitenum
 Ohne Änderung druckt Flowplan wie bisher, nur mit Seitenzahlen. Deine letzte Auswahl merkt sich Flowplan für dich auf allen Geräten.
 
 > Seitenzahlen in der Fußzeile setzen Chrome und Edge (ab Version 131). Firefox und Safari kennen diese Angabe nicht: Schalte dort im Druckdialog des Browsers **Kopf- und Fußzeilen** ein, dann druckt der Browser seine eigene Seitenzahl (zusammen mit Datum, Titel und Adresse).
+
+### Drucken in der App
+
+In der Flowplan-App für Android, iPhone und iPad öffnet **Drucken** den Druckdialog des Systems – mit Flowplan 0.11.1 und der App-Version 1.1.3. Dort wählst du einen Drucker oder sicherst die Seite als PDF: auf Android mit **Als PDF speichern** als Drucker, auf dem iPhone und iPad über das Teilen-Symbol im Druckdialog. Gedruckt wird dieselbe schlanke Ansicht wie im Browser, mit deinen Druckoptionen; das **Papierformat** „Standard“ ist in der App A4 (in den USA, Kanada und weiteren Ländern mit US Letter: Letter).
+
+> Eine Seite darf zum Drucken in der App mit allen Bildern höchstens 25 MB groß sein. Ist sie größer, sagt Flowplan Bescheid – lass dann Titelbild oder große Bilder in den Druckoptionen weg oder drucke im Browser. Ältere Versionen der App können nicht drucken.
 
 ### Druckvorlagen
 

@@ -46,12 +46,23 @@ In a property's settings (click the column header), **Default value** sets what 
 - When an option is renamed, the default follows; when it is deleted or the type changes, the default goes.
 - **API and MCP:** `database.update` accepts and returns `defaultValue` per property: `{"kind": "value", "value": "Open"}`, `{"kind": "now"}` or `{"kind": "creator"}`.
 
+### Finding and creating options {since=0.11.1}
+
+With many options there is no more scrolling: click a select or multi-select cell in the table – or the value in a record or the feed – and the list of options opens with a search field.
+
+- **Typing filters:** case and accents do not matter (“cafe” finds “Café”); options starting with what you typed come first. Arrow keys move, <kbd>Enter</kbd> picks, <kbd>Esc</kbd> closes without a change. On a phone, tap the option.
+- **New option:** if what you typed does not exist yet, the list shows **Create “…”** – <kbd>Enter</kbd> or a tap adds the option to the property (with the next colour in turn, as in the settings) and sets it on the record right away. No detour through the column header needed.
+- **Multi-select:** the list stays open after each pick so you can look for the next option. <kbd>Esc</kbd> closes.
+- **Deselecting:** what is chosen shows as chips above the search field when it opens – even with long lists, without scrolling. ✕ on a chip removes the value. With the keyboard: <kbd>Backspace</kbd> in the empty search field removes the last chosen value (for a select it clears the field); <kbd>←</kbd> goes from the empty search field to the chips, <kbd>←</kbd> and <kbd>→</kbd> move between them, <kbd>Delete</kbd> or <kbd>Backspace</kbd> removes the chip you are on. Like any change to a record, it can be undone.
+- **Who can create:** only people who may change the database's properties. Everyone else who edits records (for example in a [linked database](/views#linked-databases)) only finds existing options; readers change nothing.
+- An option that exists in another spelling (“done” next to “Done”) is not created twice – the existing one is picked. Options are at most 100 characters long.
+
 ### Option colours
 
 Every option of a select or multi-select can have its own colour – grey, blue, green, red, yellow, orange, purple, pink or teal, the same colours as [tags](/page-tags). The colour shows wherever the value appears: table, board columns, list, gallery, feed, groups, filters, in the record, in forms (multi-selects) and on published pages.
 
 - **Changing it:** in the property's settings (click the column header), every option is listed as a chip below the options – click one to pick its colour. Faster, on the value itself: right-click a chip in the table or the header of a board column and choose a colour. It is saved at once; **Undo** in the notice brings the old colour back.
-- **New options** get the next colour in turn by themselves – whether you type them in the settings, add a board column or they come in through an import, the API or AI. A renamed option keeps its colour.
+- **New options** get the next colour in turn by themselves – whether you type them in the settings, add a board column, [create them while picking](#finding-and-creating-options) or they come in through an import, the API or AI. A renamed option keeps its colour.
 - **Assign colours automatically** colours all options of the property in turn at once (replacing the colours set so far). **Undo** next to it or closing without saving discards it, **Save** keeps it.
 - **Existing databases** look as before until you set colours: options without a colour are grey, only a few fixed words such as “Done” or “High” are coloured.
 - **Import:** Notion's HTML export brings the options' colours along (Notion's brown becomes orange, “default” grey), as does AFFiNE; CSV, Markdown, Jira and Trello get colours in turn. When records are moved or copied to another database, new options take their colour along. The CSV export has no colours.

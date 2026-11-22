@@ -138,6 +138,8 @@ Einträge samt Dokumentinhalt untereinander, wie ein Blog oder ein Protokoll. Ti
 - **Datenreihen** teilen jede Gruppe nach einer weiteren Eigenschaft auf, nebeneinander oder gestapelt.
 - **Weitere Werte** stellen bis zu vier zusätzliche Berechnungen neben den Hauptwert, etwa „Summe von Kosten“ neben „Summe von Umsatz“ je Monat. Jeder Wert wird eine eigene Reihe mit Legende; beides zusammen – Datenreihen und weitere Werte – geht nicht.
 
+**Flussdiagramm** (Sankey) ist eine weitere Diagrammart: Jeder Eintrag fließt vom Wert seiner **Quelle** zum Wert seines **Ziels** – zwei Eigenschaften, etwa *Von* und *Nach* – mit einem Eintrag je Fluss (Anzahl) oder der Summe einer Zahl-Eigenschaft als Betrag; optional mit **Einheit** wie `€`. Gleiche Werte in Quelle und Ziel sind ein Knoten, so lassen sich Flüsse über mehrere Stufen verketten. Die Wertetabelle listet jeden Fluss („Lohn → Budget“), ein Klick zeigt seine Einträge. Flüsse, die einen Kreis schließen, oder negative Beträge fehlen im Bild (ein Hinweis sagt, wie viele), stehen aber in Tabelle und CSV. Als Block im Dokument gibt es Flussdiagramme auch, siehe [Flussdiagramme](/math-and-code#formeln-diagramme-und-code).
+
 ## Formular
 
 Sammelt Einträge über ein Formular, auch von Personen ohne Konto. Siehe [Formulare](/forms).

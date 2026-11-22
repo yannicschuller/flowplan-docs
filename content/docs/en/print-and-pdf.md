@@ -1,6 +1,6 @@
 ---
 keywords: print, pdf, page break, print preset, landscape
-new: page-break 2026-11-12
+new: page-break 2026-11-12, printing-in-the-app 2026-11-22
 ---
 
 # Printing and PDF
@@ -27,6 +27,12 @@ Print pages or save them as PDF – with print options, presets and page breaks 
 Without changes Flowplan prints as before, only with page numbers. Flowplan remembers your last choice for you on all devices.
 
 > Chrome and Edge (version 131 and later) put the page numbers in the footer. Firefox and Safari do not know this setting: turn on **Headers and footers** in the browser's print dialog there, and the browser prints its own page number (together with date, title and address).
+
+### Printing in the app
+
+In the Flowplan app for Android, iPhone and iPad, **Print** opens the system's print dialog – with Flowplan 0.11.1 and app version 1.1.3. There you choose a printer or save the page as PDF: on Android with **Save as PDF** as the printer, on iPhone and iPad with the share icon in the print dialog. It prints the same lean view as in the browser, with your print options; the **Paper size** "Default" is A4 in the app (Letter in the US, Canada and other countries that use US Letter).
+
+> To print in the app, a page may be 25 MB at most, pictures included. If it is larger, Flowplan tells you – leave out the cover or large pictures in the print options, or print in the browser. Older versions of the app cannot print.
 
 ### Print presets
 

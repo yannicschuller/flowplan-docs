@@ -26,7 +26,8 @@ So öffnest du ihn:
 | **Ton ändern** | Sachlich, freundlich oder locker. |
 | **Übersetzen** | In eine wählbare Sprache – voreingestellt deutscher Text nach Englisch, anderer Text nach Deutsch. |
 | **Als Liste** / **Als Tabelle** | Gliedert den Text um. |
-| **Was soll die KI tun?** | Eine eigene Anweisung, z. B. „Mach daraus eine E-Mail“. |
+| **Was soll die KI tun?** | Eine eigene Anweisung, z. B. „Mach daraus eine E-Mail“ oder „Mach daraus Aufgaben zum Abhaken“ – auch eine andere Blockart (Aufgaben, nummerierte Liste, Überschrift, Zitat, Tabelle) ist möglich. |
+| **Umwandeln in** | **Aufgaben**, **Nummerierte Liste** oder **Aufzählung** – sofort und ohne KI: Listen und Absätze der Markierung werden zu dieser Liste, Text, Formatierung und Unterpunkte bleiben. |
 
 **Freies Schreiben** (`/ki`, ++⌘ J++ in einer leeren Zeile): Beschreibe, was entstehen soll – etwa „Schreib eine Einleitung über …“. Mit **Seite als Kontext** (voreingestellt an) geht der Inhalt der Seite mit an die KI.
 

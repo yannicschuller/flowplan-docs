@@ -46,12 +46,23 @@ In den Einstellungen einer Eigenschaft (Klick auf die Spaltenüberschrift) legt 
 - Wird eine Option umbenannt, zieht der Standardwert mit; wird sie gelöscht oder der Typ geändert, entfällt er.
 - **API und MCP:** `database.update` nimmt und liefert `defaultValue` je Eigenschaft: `{"kind": "value", "value": "Offen"}`, `{"kind": "now"}` oder `{"kind": "creator"}`.
 
+### Optionen suchen und anlegen {since=0.11.1}
+
+Bei vielen Optionen musst du nicht mehr scrollen: Klickst du in der Tabelle auf eine Zelle einer Auswahl oder Mehrfachauswahl – oder im Eintrag und im Feed auf den Wert –, öffnet sich die Liste der Optionen mit einem Suchfeld.
+
+- **Tippen filtert:** Groß- und Kleinschreibung und Akzente zählen nicht („cafe“ findet „Café“); Optionen, die mit dem Getippten beginnen, stehen oben. Mit den Pfeiltasten wählst du aus, <kbd>Enter</kbd> übernimmt, <kbd>Esc</kbd> schließt ohne Änderung. Auf dem Telefon tippst du auf die Option.
+- **Neue Option:** Gibt es das Getippte noch nicht, steht in der Liste **„…“ anlegen** – <kbd>Enter</kbd> oder ein Tipp darauf legt die Option in der Eigenschaft an (mit der nächsten Farbe der Reihe, wie in den Einstellungen) und setzt sie gleich im Eintrag. Den Umweg über die Spaltenüberschrift brauchst du dafür nicht mehr.
+- **Mehrfachauswahl:** Die Liste bleibt nach jeder Wahl offen, damit du gleich die nächste Option suchen kannst. <kbd>Esc</kbd> schließt.
+- **Abwählen:** Was gewählt ist, steht beim Öffnen als Chips über dem Suchfeld – auch bei langen Listen, ohne zu scrollen. ✕ am Chip entfernt den Wert. Mit der Tastatur: <kbd>Rückschritt</kbd> im leeren Suchfeld entfernt den zuletzt gewählten Wert (bei einer Auswahl leert er das Feld); <kbd>←</kbd> springt vom leeren Suchfeld zu den Chips, <kbd>←</kbd> und <kbd>→</kbd> wechseln zwischen ihnen, <kbd>Entf</kbd> oder <kbd>Rückschritt</kbd> entfernt den Chip, auf dem du stehst. Wie jede Änderung an einem Eintrag lässt sich das rückgängig machen.
+- **Wer darf anlegen:** Nur wer die Eigenschaften der Datenbank ändern darf. Alle anderen, die Einträge bearbeiten (etwa in einer [verknüpften Datenbank](/views#verknuepfte-datenbanken)), finden nur vorhandene Optionen; Leser ändern nichts.
+- Eine Option, die es in anderer Schreibweise schon gibt („erledigt“ neben „Erledigt“), wird nicht doppelt angelegt – die vorhandene wird gewählt. Optionen sind höchstens 100 Zeichen lang.
+
 ### Farben der Optionen
 
 Jede Option einer Auswahl oder Mehrfachauswahl kann ihre eigene Farbe haben – Grau, Blau, Grün, Rot, Gelb, Orange, Lila, Rosa oder Türkis, dieselben Farben wie bei den [Tags](/page-tags). Die Farbe zeigt sich überall, wo der Wert steht: Tabelle, Board-Spalten, Liste, Galerie, Feed, Gruppen, Filter, im Eintrag, bei Mehrfachauswahlen in Formularen und auf veröffentlichten Seiten.
 
 - **Ändern:** In den Einstellungen der Eigenschaft (Klick auf die Spaltenüberschrift) steht unter den Optionen jede Option als Chip – ein Klick darauf öffnet die Farben. Schneller geht es am Wert selbst: Rechtsklick auf einen Chip in der Tabelle oder auf die Überschrift einer Board-Spalte, Farbe wählen. Das wird sofort gespeichert; **Rückgängig** im Hinweis stellt die alte Farbe wieder her.
-- **Neue Optionen** bekommen von selbst die nächste Farbe der Reihe – ob du sie in den Einstellungen tippst, auf dem Board eine Spalte anlegst oder sie per Import, API oder KI dazukommen. Eine umbenannte Option behält ihre Farbe.
+- **Neue Optionen** bekommen von selbst die nächste Farbe der Reihe – ob du sie in den Einstellungen tippst, auf dem Board eine Spalte anlegst, [beim Auswählen anlegst](#optionen-suchen-und-anlegen) oder sie per Import, API oder KI dazukommen. Eine umbenannte Option behält ihre Farbe.
 - **Farben automatisch vergeben** färbt alle Optionen der Eigenschaft auf einmal der Reihe nach (vorhandene Farben werden ersetzt). **Rückgängig** daneben oder Schließen ohne Speichern verwirft das, **Speichern** übernimmt es.
 - **Bestehende Datenbanken** sehen aus wie vorher, bis du Farben setzt: Optionen ohne Farbe sind grau, nur einige feste Wörter wie „Erledigt“ oder „Hoch“ sind farbig.
 - **Import:** Der HTML-Export von Notion bringt die Farben der Optionen mit (Notions Braun wird Orange, „Standard“ Grau), ebenso AFFiNE; CSV, Markdown, Jira und Trello bekommen Farben der Reihe nach. Beim Verschieben oder Kopieren von Einträgen in eine andere Datenbank nehmen neue Optionen ihre Farbe mit. Der CSV-Export enthält keine Farben.

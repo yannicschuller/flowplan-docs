@@ -40,10 +40,12 @@ The levels:
 | **Whole instance** | Everyone together – a ceiling so the bill cannot run away. It always applies on top. |
 | **Default per person** | Everyone without their own limit and without a group with a limit. |
 | **Roles** | **Administrators** and **Guests** (people who only have guest access). |
-| **Groups** | Workspace groups – also those filled from SSO, SCIM and LDAP groups through the [SSO group mappings](/sso-oidc#map-sso-groups-to-workspaces). |
+| **Groups** | Workspace groups – also those filled from SSO, SCIM and LDAP groups through the [SSO group mappings](/sso-oidc#map-sso-groups-to-workspaces). Also **directory groups** directly by their name – a SCIM, LDAP or SSO group without a workspace or mapping, also for accounts with e-mail and password that the directory lists as members ([Limits per group](/user-management#limits-per-group)). {since=0.11.1} |
 | **Single people** | More, less or **exempt**. |
 
 Which limit applies to a person: their own, else the **highest** of their groups and roles (per period; if one of their groups leaves a period open, there is no limit for it), else the default. **Exempt** – a person or a group – lifts the personal limits; the whole instance's limit stays.
+
+**Afterwards – once the quota is reached:** {since=0.11.1} In the **Afterwards** column (and in a person's **AI** section under **Once the quota is reached**) you choose per row what happens when the personal limit is used up: **AI off** (the default – requests are refused as before) or **go on with …** a model of the instance's provider (the default model, the models of the price list and of the model rules). Requests then go on with that model – counted, but no longer limited; the whole instance's limit still applies and refuses once it is reached. So a group can, for example, keep working with a small, inexpensive model after its monthly quota, while AI is off for everyone else until the next month. If a person belongs to several groups with a model for afterwards, the most capable one applies (as for the [model](#model-per-person-and-group)); their own limit without a model means: AI off. If the instance switches to another provider, a model chosen for the old one no longer applies (the choice shows “other provider – does not apply”).
 
 **Right at the person or group:** under **Administration → Users** every person has, in the section **AI**, their **Quota** – **Inherited** (with what applies now), **Own limits** per day, week, month and year, or **Exempt** – and below it their usage per period with what is left. Groups have the same in the workspace's **Groups & permissions → Manage** dialog (administrators only). These are the same limits as in the table here, no second store. There you also set the [model](#model-per-person-and-group); the **Limits** table shows it in the **Model** column, the **By person** table the model that applies to each person. {since=0.11.0}
 
@@ -70,6 +72,7 @@ This holds for every AI feature and is decided on the server. [Workflows](/workf
 
 - **Settings → AI → AI quota** shows a bar per period: “1,500 of 10,000 left” and when it starts again – in tokens or, if the administrators chose cost, in money.
 - **In the AI panels** (Ask AI, writing assistant, summary) a small note appears once less than 20 % is left (or what the administrators set).
+- **Going on afterwards:** if the administrators set a model for afterwards for you, **AI quota** says “Once your quota is used up, AI goes on with ….” – and AI keeps working with that model until the whole instance's limit is reached. {since=0.11.1}
 - **Used up:** a request that would cross a limit is refused before it reaches the provider – with the time it works again and the alternatives: your own provider (if allowed) or on-device AI. Every AI feature shows the same message.
 
 Scripts and AI assistants read the same with `GET /api/ai/quota` (API token with the permission **AI and transcription**, see [OpenAPI](/openapi)).

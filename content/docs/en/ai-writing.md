@@ -26,7 +26,8 @@ How to open it:
 | **Change tone** | Factual, friendly or casual. |
 | **Translate** | Into a language you choose – by default German text to English, other text to German. |
 | **As a list** / **As a table** | Restructures the text. |
-| **What should the AI do?** | Your own instruction, e.g. "Turn this into an email". |
+| **What should the AI do?** | Your own instruction, e.g. "Turn this into an email" – or "Turn this into tasks to tick off"; it may also change the kind of block (tasks, numbered list, heading, quote, table). |
+| **Turn into** | **Tasks**, **Numbered list** or **Bulleted list** – right away and without AI: the lists and paragraphs of the selection become that list, keeping text, formatting and sub-items. |
 
 **Free writing** (`/ai`, ++⌘ J++ on an empty line): describe what you want – e.g. "Write an introduction about …". With **Page as context** (on by default), the page's content is sent along.
 
