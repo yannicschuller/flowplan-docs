@@ -83,7 +83,7 @@ Under **Share form**, switch the form on and copy the link.
 
 **QR code** next to it shows the link as a QR code – to download as SVG or PNG, or with **Print** on a sheet with the title and the link, e.g. to put up on a wall. {since=0.11.1}
 
-- **Members only**: answering requires signing in; the answer carries the person's name.
+- **Members only**: answering requires signing in; the answer carries the person's name. Anyone who opens the link without being signed in gets **Sign in**: it leads to the sign-in page with every way the instance offers – password, passkey, directory (LDAP) or single sign-on – and back to the form afterwards. {since=0.11.1}
 - **Anonymous**: anyone with the link can answer, without an account and without a name. Files from anonymous answers count against a daily budget: 200 MB per form and `FLOWPLAN_ANONYMOUS_UPLOAD_MB` for the whole instance ([Configuration](/en/configuration)); each form also accepts at most 1000 answers per hour.
 
 Person and relation questions only exist in forms for members, because they would reveal members and records.

@@ -21,6 +21,7 @@ Aus einer Antwort von **KI fragen**, aus dem Schreibassistenten (**Aktionen vors
 
 - Ausgeführt wird **in deinem Namen und mit deinen Rechten**; der Server prüft jede Aktion beim Ausführen noch einmal. Versionsverlauf, Benachrichtigungen, Automationen und Webhooks laufen wie bei einer eigenen Änderung, das Protokoll vermerkt `ai.action`.
 - **Rückgängig:** Angelegte Seiten und Einträge lassen sich direkt im Ergebnis zurücknehmen (sie landen im Papierkorb); angefügter Text und geänderte Einträge stehen im Versionsverlauf.
+- **Aus dem Schreibassistenten:** Solange die Vorschläge offen sind, tritt der Schreibassistent zur Seite, damit er sie nicht verdeckt. Nach **Ausführen** und **Fertig** – oder wenn du eine angelegte Seite öffnest – schließt er sich mit; **Abbrechen** holt ihn mit seiner Antwort zurück. {since=0.11.0}
 - Die KI sieht nur einen Katalog der Bereiche, Datenbanken, Eigenschaften und Mitglieder, in die du schreiben darfst und die die KI lesen darf – keine Inhalte darüber hinaus. Die Antwort der KI ist reines JSON und wird nie direkt ausgeführt.
 - Die Funktion **KI-Aktionen** lässt sich wie alle anderen von der Administration und unter **Einstellungen → KI** ausschalten.
 

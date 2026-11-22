@@ -21,6 +21,7 @@ From an answer of **Ask AI**, from the writing assistant (**Propose actions** be
 
 - Actions run **in your name and with your permissions**; the server checks each action again when running it. Version history, notifications, automations and webhooks work as for your own change; the audit log records `ai.action`.
 - **Undo:** created pages and records can be taken back right in the result (they go to the trash); appended text and changed records are in the version history.
+- **From the writing assistant:** while the proposals are open, the writing assistant steps aside so it doesn't cover them. After **Run** and **Done** – or opening a created page – it closes as well; **Cancel** brings it back with its answer. {since=0.11.0}
 - The AI only sees a catalogue of the spaces, databases, properties and members you may write to and the AI may read – no content beyond that. The AI's answer is plain JSON and is never executed directly.
 - Like every other feature, **AI actions** can be switched off by the administration and under **Settings → AI**.
 
