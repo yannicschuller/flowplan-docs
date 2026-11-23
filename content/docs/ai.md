@@ -137,7 +137,7 @@ Unter **Einstellungen → KI**:
 
 **Modell:** Unter **Verwendeter Anbieter** steht das Modell, das für dich arbeitet. Hat die Administration es für dich oder deine Gruppe festgelegt, steht dort **Von der Administration festgelegt** ([Modell je Person und Gruppe](/ai-quotas#modell-je-person-und-gruppe)). {since=0.11.0}
 
-**KI-Kontingent:** Hat die Administration [Kontingente](/ai-quotas) gesetzt, zeigt **Einstellungen → KI** oben, wie viel KI über den Anbieter der Instanz dir noch bleibt und wann es neu beginnt. {since=0.11.0}
+**KI-Kontingent:** Hat die Administration [Kontingente](/ai-quotas) gesetzt, zeigt **Einstellungen → Speicher & KI**, wie viel KI über den Anbieter der Instanz dir noch bleibt und wann es neu beginnt; **Einstellungen → KI** nennt es oben in einer Zeile mit Link. {since=0.11.3}
 
 ### Worauf die KI zugreifen darf
 

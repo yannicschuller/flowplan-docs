@@ -137,7 +137,7 @@ Under **Settings → AI**:
 
 **Model:** below **Provider in use** you see the model that works for you. If the administrators set it for you or your group, it says **Set by the administration** ([model per person and group](/ai-quotas#model-per-person-and-group)). {since=0.11.0}
 
-**AI quota:** when the administrators set [quotas](/ai-quotas), **Settings → AI** shows at the top how much AI through the instance's provider you have left and when it starts again. {since=0.11.0}
+**AI quota:** when the administrators set [quotas](/ai-quotas), **Settings → Storage & AI** shows how much AI through the instance's provider you have left and when it starts again; **Settings → AI** names it at the top in one line with a link. {since=0.11.3}
 
 ### What the AI may access
 

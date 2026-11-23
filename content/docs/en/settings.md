@@ -35,7 +35,7 @@ After the introduction, the **Getting started** list waits in the sidebar with i
 
 ## Settings: overview and search
 
-You open **Settings** in the sidebar. The overview has one tile per section in the groups **Personal**, **Connections**, **Workspace** and **Help & info**; the search at the top (“Search settings …”) finds single settings, also those above your level (see below). Every section has its own link, e.g. `/#settings/notifications`. For admins, the instance's settings are under [Administration](/administration).
+You open **Settings** in the sidebar. The overview has one tile per section in the groups **Personal**, **Connections**, **Workspace** and **Help & info**; the search at the top (“Search settings …”) finds single settings, also those above your level (see below). Every section has its own link, e.g. `/#settings/notifications`. The first tile, **Storage & AI**, shows right away how much storage and AI you have ([Storage & AI](/account-limits#storage-ai-in-the-settings)). {since=0.11.3} For admins, the instance's settings are under [Administration](/administration).
 
 ## Settings levels {since=0.9.7}
 

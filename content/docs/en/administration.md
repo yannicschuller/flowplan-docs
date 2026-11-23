@@ -46,7 +46,7 @@ Details: [Storage and backups](/storage-and-backups).
 | Keep versions | Days after which automatic versions are deleted. |
 | Empty the trash after | Days after which deleted pages, spaces, database records and templates are deleted permanently with their files (1–3650, default 30, 0 = never automatically). See [Trash](/pages-and-spaces#trash). |
 
-Empty fields fall back to the [environment variables](/configuration). Everyone sees their limits and the storage they use under **Settings → Account & security → Your limits**.
+Empty fields fall back to the [environment variables](/configuration). Everyone sees their limits and the storage they use under [Settings → Storage & AI](/account-limits#storage-ai-in-the-settings).
 
 ### Workflows
 

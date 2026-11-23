@@ -70,9 +70,10 @@ This holds for every AI feature and is decided on the server. [Workflows](/workf
 
 ## For users {since=0.11.0}
 
-- **Settings → AI → AI quota** shows a bar per period: “1,500 of 10,000 left” and when it starts again – in tokens or, if the administrators chose cost, in money.
+- **Settings → Storage & AI** shows a bar per period: “1,500 of 10,000 left” and when it starts again – in tokens or, if the administrators chose cost, in money –, plus your models ([Storage & AI](/account-limits#storage-ai-in-the-settings)). Up to 0.11.2 this was under **Settings → AI → AI quota**; there is only a line with a link there now. {since=0.11.3}
+- **Notice at 80 %:** when your personal quota reaches the note share and then 100 %, a notice with **View storage & AI** appears at the top once per period. {since=0.11.3}
 - **In the AI panels** (Ask AI, writing assistant, summary) a small note appears once less than 20 % is left (or what the administrators set).
-- **Going on afterwards:** if the administrators set a model for afterwards for you, **AI quota** says “Once your quota is used up, AI goes on with ….” – and AI keeps working with that model until the whole instance's limit is reached. {since=0.11.1}
+- **Going on afterwards:** if the administrators set a model for afterwards for you, **Storage & AI** says “After that, AI goes on with ….” – and AI keeps working with that model until the whole instance's limit is reached. {since=0.11.1}
 - **Used up:** a request that would cross a limit is refused before it reaches the provider – with the time it works again and the alternatives: your own provider (if allowed) or on-device AI. Every AI feature shows the same message.
 
 Scripts and AI assistants read the same with `GET /api/ai/quota` (API token with the permission **AI and transcription**, see [OpenAPI](/openapi)).

@@ -70,9 +70,10 @@ Das gilt für jede KI-Funktion und wird auf dem Server festgelegt. [Workflows](/
 
 ## Für Nutzer {since=0.11.0}
 
-- **Einstellungen → KI → KI-Kontingent** zeigt je Zeitraum einen Balken: „1.500 von 10.000 übrig“ und wann er neu beginnt – in Tokens oder, wenn die Administration Kosten eingestellt hat, in Geld.
+- **Einstellungen → Speicher & KI** zeigt je Zeitraum einen Balken: „1.500 von 10.000 übrig“ und wann er neu beginnt – in Tokens oder, wenn die Administration Kosten eingestellt hat, in Geld –, dazu deine Modelle ([Speicher & KI](/account-limits#speicher-ki-in-den-einstellungen)). Bis 0.11.2 stand das unter **Einstellungen → KI → KI-Kontingent**; dort steht jetzt nur noch eine Zeile mit Link. {since=0.11.3}
+- **Hinweis bei 80 %:** Erreicht dein persönliches Kontingent den Hinweis-Anteil und dann 100 %, erscheint oben einmal je Zeitraum ein Hinweis mit **Speicher & KI ansehen**. {since=0.11.3}
 - **In den KI-Fenstern** (KI fragen, Schreibassistent, Zusammenfassung) erscheint ein kleiner Hinweis, sobald weniger als 20 % übrig sind (oder was die Administration festgelegt hat).
-- **Danach weiter:** Hat die Administration für dich ein Modell für danach festgelegt, steht unter **KI-Kontingent** „Ist dein Kontingent aufgebraucht, geht es mit … weiter.“ – und die KI arbeitet mit diesem Modell weiter, bis die Grenze der ganzen Instanz erreicht ist. {since=0.11.1}
+- **Danach weiter:** Hat die Administration für dich ein Modell für danach festgelegt, steht unter **Speicher & KI** „Danach geht es mit … weiter.“ – und die KI arbeitet mit diesem Modell weiter, bis die Grenze der ganzen Instanz erreicht ist. {since=0.11.1}
 - **Aufgebraucht:** Eine Anfrage, die eine Grenze überschreiten würde, wird abgelehnt, bevor sie an den Anbieter geht – mit dem Zeitpunkt, ab dem es wieder geht, und den Alternativen: ein eigener Anbieter (wenn erlaubt) oder die KI auf dem Gerät. Jede KI-Funktion zeigt dieselbe Meldung.
 
 Skripte und KI-Assistenten lesen dasselbe mit `GET /api/ai/quota` (API-Token mit der Berechtigung **KI und Transkription**, siehe [OpenAPI](/openapi)).

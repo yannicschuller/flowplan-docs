@@ -35,7 +35,7 @@ Nach der Einführung wartet in der Seitenleiste die Liste **Erste Schritte** mit
 
 ## Einstellungen: Übersicht und Suche
 
-**Einstellungen** öffnest du in der Seitenleiste. Die Übersicht hat je Abschnitt eine Kachel in den Gruppen **Persönlich**, **Verbindungen**, **Arbeitsbereich** und **Hilfe & Info**; die Suche oben („Einstellung suchen …“) findet einzelne Einstellungen, auch solche über deiner Stufe (siehe unten). Jeder Abschnitt hat einen eigenen Link, z. B. `/#settings/notifications`. Die Einstellungen der Instanz stehen für Admins unter [Administration](/administration).
+**Einstellungen** öffnest du in der Seitenleiste. Die Übersicht hat je Abschnitt eine Kachel in den Gruppen **Persönlich**, **Verbindungen**, **Arbeitsbereich** und **Hilfe & Info**; die Suche oben („Einstellung suchen …“) findet einzelne Einstellungen, auch solche über deiner Stufe (siehe unten). Jeder Abschnitt hat einen eigenen Link, z. B. `/#settings/notifications`. Die erste Kachel, **Speicher & KI**, zeigt gleich, wie viel Speicher und KI du hast ([Speicher & KI](/account-limits#speicher-ki-in-den-einstellungen)). {since=0.11.3} Die Einstellungen der Instanz stehen für Admins unter [Administration](/administration).
 
 ## Einstellungsstufen {since=0.9.7}
 

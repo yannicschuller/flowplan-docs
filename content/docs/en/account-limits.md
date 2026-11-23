@@ -1,5 +1,5 @@
 ---
-keywords: limits, storage, storage limit, quota, group, directory group, SCIM, largest file, upload limit, own workspaces, more storage
+keywords: limits, storage, storage limit, quota, group, directory group, SCIM, largest file, upload limit, own workspaces, more storage, storage & AI
 ---
 
 # Account limits
@@ -23,7 +23,7 @@ Empty means: the group does not set this limit. For a person, per limit:
 2. else the most generous value of their groups – 0 (unlimited) beats any number,
 3. else the instance default.
 
-Admins are not limited. Under **Settings → Account & security → Your limits** the person sees where a value comes from ("from group Plus"). Changes apply at once, also to the next upload; when the storage is full or a file is too large, the message names the limit ("The file is too large: you can upload files up to 10 MB.").
+Admins are not limited. Under [Settings → Storage & AI](#storage-ai-in-the-settings) the person sees where a value comes from ("from group Plus"). Changes apply at once, also to the next upload; when the storage is full or a file is too large, the message names the limit ("The file is too large: you can upload files up to 10 MB.").
 
 ### Storage as an add-on {since=0.11.2}
 
@@ -32,8 +32,88 @@ Next to a group's storage you choose **Limit** (as above) or **Additional (add-o
 1. Base: the most generous storage of their groups set to **Limit**, else the instance default,
 2. plus the sum of all add-on groups the person is in.
 
-Example: "Flowplan Plus" with 25 GB (25600 MB) and "Flowplan +50 GB" as an add-on with 50 GB (51200 MB) give 75 GB; the add-on alone gives the default plus 50 GB, two add-ons are added up. If the base is unlimited (0), it stays unlimited. If the person has an **own value**, exactly that applies – add-ons are not added (the side panel under **Users** then says "group add-ons are not added"). An add-on needs at least 1 MB. **Own workspaces** and **Largest file** have no add-on: the most generous value still applies there. Under **Your limits** the person then sees, for example, "25 GB from group Flowplan Plus + 50 GB from group Flowplan +50 GB".
+Example: "Flowplan Plus" with 25 GB (25600 MB) and "Flowplan +50 GB" as an add-on with 50 GB (51200 MB) give 75 GB; the add-on alone gives the default plus 50 GB, two add-ons are added up. If the base is unlimited (0), it stays unlimited. If the person has an **own value**, exactly that applies – add-ons are not added (the side panel under **Users** then says "group add-ons are not added"). An add-on needs at least 1 MB. **Own workspaces** and **Largest file** have no add-on: the most generous value still applies there. Under **Storage & AI** the person then sees, for example, "25 GB from group Flowplan Plus + 50 GB from group Flowplan +50 GB".
 
-**Link for more storage or AI** (under **Storage and uploads**): an address people see under **Your limits** ("More storage or AI? →") – for example the page where they get more. A plain link without credentials; empty = no link.
+**Link for more storage or AI** (under **Storage and uploads**): an address people see under **Storage & AI** and in the notice at 80 % as the button **More storage or AI?** – for example the page where they get more. A plain link without credentials; empty = no link.
+
+## Storage & AI in the settings {since=0.11.3}
+
+Everyone sees everything in one place under **Settings → Storage & AI** (the first tile under **Personal**, at every [settings level](/settings#settings-levels)). The tile already shows two bars – say "4.2 of 25 GB" storage and "340 of 1,000 tokens this month" AI – and where the storage comes from ("Flowplan Plus", "Default"). "unlimited" means no limit; "AI off": AI is switched off for you; without AI on the instance there is no AI bar.
+
+The page shows:
+
+- **Storage**: used and limit with a bar and where it comes from ("from group Flowplan Plus", with add-ons "25 GB from group Flowplan Plus + 50 GB from group Flowplan +50 GB"), **By workspace** (when your files lie in several), **Largest upload** and **Own workspaces** ("1 of 3").
+- **AI quota**: per period what is left and when it starts again, and what happens afterwards – "After that, AI goes on with …." or "After that, AI is off – until …". The whole instance's limit only appears when it is nearly reached. Plus **Your AI models** (the instance's model, one set for you or your own provider's). See [AI quotas](/ai-quotas#for-users).
+- **More storage or AI?** as a button when the administrators entered a [link](#storage-as-an-add-on).
+
+**Notice at 80 %:** when your storage or your personal AI quota reaches 80 % (for AI the administrators' note share) and once more at 100 %, a calm notice appears at the top with **View storage & AI** and, if set, **More storage or AI?**. Once closed it stays closed on this device – for storage until the usage drops below the threshold and rises again, for AI until the next period.
+
+Old links to **Account & security → Your limits** and **AI → AI quota** lead to the new page.
 
 Over SCIM: a service with a SCIM token can link an existing account with a confirmed address without creating one – `POST /Users` with `"urn:ietf:params:scim:schemas:extension:flowplan:2.0:User": {"linkExisting": true}` (no matching account: 404) – and then add it to or remove it from a group with `PATCH /Groups/…`. The account's name, address, password and state stay as they are as long as the request does not name them; an account is only deactivated with `"active": false` or `DELETE /Users/…`.
+
+## Export / import {since=0.11.3}
+
+Under **Limits & retention → Export / import** you set everything for the plans in one go – limits per group, AI quotas, AI models and the defaults – with one JSON file. It is the same format as the billing service's plan import: each side reads its fields and skips the other's (prices, names, descriptions, order, `_ids` …). **AI → Quotas** links here.
+
+- **Export** downloads the current settings as a file and shows them in the text field. What cannot be represented (rules for roles or single people, exempt groups, limits for other periods) is listed under `_skipped`.
+- **Open file** or paste, then **Check**: the whole file is checked without saving anything. Errors show with their place in the file ("plans[1].aiAfter: the instance does not know the model “gpt-9” – allowed: …"), otherwise every change in words ("Group Flowplan Plus: storage 2,000 MB → 25,600 MB", "AI rule for Flowplan Pro: new, 5,000 actions (100.00 USD) a month, then claude-haiku-4-5").
+- **Apply** saves all changes at once after a confirmation – all or none. Each one is in the activity log. The same file again gives "No changes".
+
+What is not in the file stays as it is; a missing field changes nothing, `null` removes the value. With `"removeMissing": true` (under `flowplan`) directory groups that are not in the file lose their limits, AI rules and AI models.
+
+Each entry under `plans` is a [directory group](#limits-per-group) named by `group`:
+
+- `storageMb` – storage; with `"kind": "addon"` as an [add-on](#storage-as-an-add-on), otherwise as a limit (0 = unlimited). `uploadMb` – largest file (add-ons: none; 0 = not set by the group; above 1024 MB it is capped at 1024 MB with a note). `workspaces` – own workspaces.
+- `aiActions` – the group's [AI limit](/ai-quotas) in actions per period, converted into the quotas' unit: `tokensPerAction` (default 5,000 tokens) or `costPerAction` (default 0.02 in the prices' currency). `aiAfter` – "Afterwards": `"off"` (AI off), `"haiku"`, `"sonnet"`, `"opus"` (the instance's model of that family) or a model ID of the instance. Add-ons only get an AI rule with `aiActions` above 0.
+- `aiModels` – the group's [AI model](/ai-quotas): `"haiku"` or `"sonnet"` (the model of that family), `"all"` (the most capable: Opus, else Sonnet, else Haiku); or exactly one model with `aiModel`. If the instance knows none, that is an error listing the allowed models.
+
+Under `flowplan`: `defaults` (storage per person, largest file, own workspaces), `moreLimitsUrl` (the [link for more storage or AI](#storage-as-an-add-on)), `aiQuota` with `period` (`day`, `week`, `month` – the default –, `year`), `unit` (`tokens` or `cost`; another unit clears the numbers of the other rules), `defaultActions` and `defaultAfter` (the default per person) and the whole instance's ceiling: `instanceCapUsd` (cost in USD), `instanceCap` (cost in the prices' currency) or `instanceCapTokens`. `groups` lists further groups with the same fields – also a workspace group as `"workspaceGroup": { "workspace": "…", "group": "…" }`.
+
+```json
+{
+  "version": 1,
+  "plans": [
+    {
+      "group": "Flowplan Plus",
+      "kind": "plan",
+      "storageMb": 25600,
+      "uploadMb": 1024,
+      "aiActions": 1000,
+      "aiModels": "sonnet",
+      "aiAfter": "haiku"
+    },
+    {
+      "group": "Flowplan Pro",
+      "kind": "plan",
+      "storageMb": 102400,
+      "uploadMb": 1024,
+      "workspaces": 50,
+      "aiActions": 5000,
+      "aiModels": "all",
+      "aiAfter": "haiku"
+    },
+    {
+      "group": "Flowplan +50 GB",
+      "kind": "addon",
+      "storageMb": 51200
+    }
+  ],
+  "flowplan": {
+    "defaults": { "storageMb": 500, "uploadMb": 10 },
+    "aiQuota": {
+      "period": "month",
+      "unit": "cost",
+      "costPerAction": 0.02,
+      "defaultActions": 30,
+      "defaultAfter": "off",
+      "instanceCapUsd": 50
+    },
+    "moreLimitsUrl": "https://billing.example.org/preise",
+    "removeMissing": false,
+    "groups": [
+      { "workspaceGroup": { "workspace": "Agentur", "group": "Design" }, "storageMb": 3000 }
+    ]
+  }
+}
+```
