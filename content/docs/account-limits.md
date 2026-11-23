@@ -36,6 +36,15 @@ Beispiel: „Flowplan Plus“ mit 25 GB (25600 MB) und „Flowplan +50 GB“ als
 
 **Link für mehr Speicher oder KI** (unter **Speicher und Uploads**): eine Adresse, die Personen unter **Speicher & KI** und im Hinweis bei 80 % als Schaltfläche **Mehr Speicher oder KI?** sehen – etwa die Seite, auf der sie mehr bekommen. Ein einfacher Link ohne Anmeldedaten; leer = kein Link.
 
+### Mitglieder von Hand {since=0.11.4}
+
+Wer in einer Verzeichnisgruppe ist, änderst du auch in Flowplan – etwa um jemandem einen Tarif von Hand zu geben:
+
+- **Pro Person:** im Seitenfenster unter [Benutzer](/user-management#benutzer) im Abschnitt **Verzeichnisgruppen**. Dort stehen alle Gruppen der Person; **Zu Gruppe hinzufügen** nimmt sie in eine vorhandene oder neue Gruppe auf, **Entfernen** nimmt sie heraus.
+- **Pro Gruppe:** bei einer Verzeichnisgruppe unter **Grenzen pro Gruppe** oder bei den [KI-Kontingenten](/ai-quotas) über **Mitglieder** – mit **Person hinzufügen**.
+
+Von Hand hinzugefügte Mitglieder sind mit „von Hand“ markiert und gelten zusätzlich zu denen aus dem Verzeichnis: Ein LDAP-Abgleich, die nächste SSO-Anmeldung oder ein SCIM-Client, der die Mitglieder neu schickt, entfernt sie nicht. Mitglieder aus LDAP oder der SSO-Anmeldung änderst du weiter dort. Bei einer SCIM-Gruppe sehen SCIM-Clients nur die von Hand hinzugefügten Mitglieder, die sie selbst angelegt haben.
+
 ## Speicher & KI in den Einstellungen {since=0.11.3}
 
 Jede Person sieht unter **Einstellungen → Speicher & KI** (die erste Kachel unter **Persönlich**, auf jeder [Einstellungsstufe](/settings#einstellungsstufen)) alles an einem Ort. Schon die Kachel zeigt zwei Balken – etwa „4,2 von 25 GB“ Speicher und „340 von 1.000 Tokens diesen Monat“ KI – und woher der Speicher kommt („Flowplan Plus“, „Standard“). „unbegrenzt“ heißt: keine Grenze; „KI aus“: KI ist für dich ausgeschaltet; ohne KI auf der Instanz fehlt der KI-Balken.

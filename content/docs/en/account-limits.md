@@ -36,6 +36,15 @@ Example: "Flowplan Plus" with 25 GB (25600 MB) and "Flowplan +50 GB" as an add-o
 
 **Link for more storage or AI** (under **Storage and uploads**): an address people see under **Storage & AI** and in the notice at 80 % as the button **More storage or AI?** – for example the page where they get more. A plain link without credentials; empty = no link.
 
+### Members by hand {since=0.11.4}
+
+You can also change who is in a directory group in Flowplan – for example to give someone a plan by hand:
+
+- **Per person:** in their side panel under [Users](/user-management#users), section **Directory groups**. It lists all of the person's groups; **Add to group** puts them into an existing or new group, **Remove** takes them out.
+- **Per group:** for a directory group under **Limits per group** or in the [AI quotas](/ai-quotas), via **Members** – with **Add a person**.
+
+Members added by hand are marked "by hand" and apply in addition to those from the directory: an LDAP sync, the next SSO sign-in or a SCIM client sending the members again does not remove them. Members from LDAP or the SSO sign-in you keep changing there. For a SCIM group, SCIM clients only see the members added by hand that they provisioned themselves.
+
 ## Storage & AI in the settings {since=0.11.3}
 
 Everyone sees everything in one place under **Settings → Storage & AI** (the first tile under **Personal**, at every [settings level](/settings#settings-levels)). The tile already shows two bars – say "4.2 of 25 GB" storage and "340 of 1,000 tokens this month" AI – and where the storage comes from ("Flowplan Plus", "Default"). "unlimited" means no limit; "AI off": AI is switched off for you; without AI on the instance there is no AI bar.
