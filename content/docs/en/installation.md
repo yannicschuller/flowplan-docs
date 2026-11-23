@@ -1,5 +1,5 @@
 ---
-keywords: docker, compose, install, self-hosting, server, update, helm, kubernetes
+keywords: docker, compose, install, self-hosting, server, update, helm, kubernetes, node.js, github, run locally, own computer, vps, self-host options
 ---
 
 # Installation with Docker
@@ -9,6 +9,18 @@ Flowplan runs as a single container with SQLite and a data directory. Postgres, 
 [![How an instance is built: browsers, the desktop apps and the apps for iOS and Android connect through a reverse proxy with HTTPS to the Flowplan container. Inside, the Next.js server writes to SQLite and an uploads volume; Litestream backs up the database continuously to S3, and uploads are mirrored there. Optionally connected are OIDC or LDAP, SMTP, an AI provider and the push relay, which brings end-to-end encrypted notifications to the apps.](/screenshots/architecture-en-light.webp "One instance: one container behind the reverse proxy, everything else optional.")](/screenshots/architecture-en-light.webp)
 
 **More on this topic:** [Deploy in one click](/one-click-deploy)
+
+## Ways to run Flowplan {since=0.11.5}
+
+Flowplan is a server: you install it once, and everyone uses it in the browser or in the apps for desktop, iPhone, iPad and Android.
+
+- **Hosted:** [flowplan.org](https://flowplan.org) – nothing to install.
+- **Docker Compose** (recommended): on a small server or VPS, see below.
+- **Platforms:** Coolify, CasaOS, YunoHost and others – see [Deploy in one click](/one-click-deploy).
+- **Kubernetes** with the [Helm chart](#kubernetes-helm), for clusters.
+- **[Without Docker](#without-docker)** with Node.js, e.g. on your own computer – then Flowplan is only reachable while that computer runs; for phones and other people a server is the better place.
+
+GitHub hosts Flowplan's source code and releases, not running instances.
 
 ## Requirements
 

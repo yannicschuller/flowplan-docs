@@ -29,7 +29,7 @@ Etwa für ein Familienmitglied, das seinen eigenen Platz bekommen soll:
 1. Lege einen Arbeitsbereich für die Person an: oben in der Seitenleiste auf den Namen des Arbeitsbereichs → **Arbeitsbereich erstellen**.
 2. Lade sie dort unter **Einstellungen → Mitglieder → Mitglied einladen** mit ihrer E-Mail-Adresse ein. Verschickt deine Instanz keine E-Mails, kopierst du unter **Ausstehende Einladungen** mit **Link kopieren** den Einladungslink und schickst ihn ihr selbst.
 3. Sie öffnet die Einladung, legt ein Passwort fest und landet in dem Arbeitsbereich.
-4. Unter **Einstellungen → Mitglieder** gibst du ihr die Rolle **Eigentümer**. Willst du ihre Seiten nicht mitlesen können, verlässt du den Arbeitsbereich danach unter **Einstellungen → Allgemein** (**Gefahrenzone**).
+4. Unter **Einstellungen → Mitglieder** gibst du ihr die Rolle **Eigentümer**. Willst du ihre Seiten nicht mitlesen können, verlässt du den Arbeitsbereich danach unter **Einstellungen → Allgemein** (**Gefahrenzone**). Ihre privaten Bereiche gehören ohnehin nur ihr: Admins und Eigentümer sehen sie nur, wenn sie geteilt werden ([Was Admins sehen](/user-management#was-admins-sehen)). {since=0.11.5}
 
 :::
 

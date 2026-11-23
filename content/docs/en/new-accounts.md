@@ -29,7 +29,7 @@ For a family member, say, who should get a place of their own:
 1. Create a workspace for them: the workspace's name at the top of the sidebar → **Create workspace**.
 2. Invite them there under **Settings → Members → Invite member** with their e-mail address. If your instance doesn't send e-mail, copy the invitation link under **Pending invitations** with **Copy link** and send it to them yourself.
 3. They open the invitation, choose a password and land in the workspace.
-4. Under **Settings → Members**, give them the role **Owner**. If you don't want to be able to read their pages, leave the workspace afterwards under **Settings → General** (**Danger zone**).
+4. Under **Settings → Members**, give them the role **Owner**. If you don't want to be able to read their pages, leave the workspace afterwards under **Settings → General** (**Danger zone**). Their private spaces are theirs anyway: administrators and owners see them only when they are shared ([What administrators can see](/user-management#what-administrators-can-see)). {since=0.11.5}
 
 :::
 
