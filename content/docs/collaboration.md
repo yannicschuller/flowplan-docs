@@ -51,7 +51,7 @@ Die Startseite listet unter **Zuletzt angesehen** die Seiten, die du zuletzt ge�
 
 ## Seitenkommentare
 
-Das Sprechblasen-Symbol in der Kopfzeile öffnet die Kommentare der Seite (auf dem Telefon steht es dort nur bei offenen Kommentaren, mit ihrer Anzahl, sonst **Kommentare** im Menü `⋯`); Kommentare an Datenbankeinträgen stehen unter dem Eintrag. ++⌘ Enter++ sendet. Seiten- und Eintragskommentare sind reiner Text. `@` mit dem vollen Namen oder der E-Mail-Adresse eines Mitglieds – etwa `@Anna Berg` – erwähnt die Person: Sie bekommt eine Benachrichtigung, sofern sie die Seite und den Eintrag sehen darf.
+Das Sprechblasen-Symbol in der Kopfzeile öffnet die Kommentare der Seite (auf dem Telefon steht es dort nur bei offenen Kommentaren, mit ihrer Anzahl, sonst **Kommentare** im Menü `⋯`); Kommentare an Datenbankeinträgen stehen unter dem Eintrag. ++⌘ Enter++ sendet. Seiten- und Eintragskommentare schreibst du wie Textkommentare: formatiert (Listen, Links, Zitate, Code), mit `@` für Personen und Seiten, mit [Anhängen und Linkvorschauen](#anhaenge-seiten-und-links-in-kommentaren). Ein Klick ins Feld öffnet die Werkzeugleiste. Über die API geht weiterhin reiner Text; dort erwähnt `@` mit dem vollen Namen oder der E-Mail-Adresse eines Mitglieds – etwa `@Anna Berg` – die Person. Eine erwähnte Person bekommt eine Benachrichtigung, sofern sie die Seite und den Eintrag sehen darf.
 
 ## Textkommentare
 
@@ -59,7 +59,7 @@ Unter einem Dokument und im Inhalt eines Datenbankeintrags öffnet **Textkomment
 
 - Der kommentierte Text wird markiert; Klick darauf öffnet den Thread.
 - Antworten, Emoji-Reaktionen, **Erledigen** und **Wieder öffnen**.
-- Beiträge können formatiert sein (Listen, Links, Zitate, Code); `@` öffnet die Personensuche.
+- Beiträge können formatiert sein (Listen, Links, Zitate, Code); `@` sucht Personen und Seiten.
 - Eigene Beiträge lassen sich bearbeiten und löschen. Wer beim Bearbeiten neu erwähnt wird, bekommt eine Benachrichtigung; bereits Erwähnte nicht noch einmal.
 - Wird der Text später gelöscht, bleibt das Zitat im Thread erhalten.
 - Zeilenumbrüche der Textstelle bleiben im Zitat erhalten, eingebettete Medien erscheinen als „Medienblock“. Verschiebst du einen Block nach oben oder unten (oder ziehst ihn), wandern seine Kommentare mit. {since=0.9.8}
@@ -78,6 +78,15 @@ Auf breiten Bildschirmen – mit offener Seitenleiste etwa ab 1280 Pixel Fenster
 Unter **Einstellungen → Darstellung & Sprache → Editor** stellst du **Textkommentare** auf **Am Rand** (Standard) oder **Unter dem Dokument**. Die Einstellung gilt für dein Konto auf allen Geräten.
 
 Textkommentare gibt es in Dokumenten und in den Inhalten von Datenbankeinträgen, auch in Exporten und Inhaltsarchiven.
+
+## Anhänge, Seiten und Links in Kommentaren {since=0.11.4}
+
+In Seiten-, Eintrags- und Textkommentaren und in Antworten:
+
+- **Anhänge:** Die Büroklammer, Ziehen oder Einfügen hängt Dateien und Bilder an, bis zu 10 pro Kommentar. Bilder erscheinen als Vorschau und öffnen sich groß, PDFs im PDF-Viewer, Videos spielen direkt; andere Dateien stehen mit Name und Größe da. Ein Kommentar darf auch nur aus Anhängen bestehen. Es gelten die üblichen Grenzen für Dateien, und die Anhänge zählen zu deinem Speicher. Sehen kann sie nur, wer die Seite – beim Eintrag auch den Eintrag – lesen darf. Entfernst du einen Anhang beim Bearbeiten oder löschst du den Kommentar, wandert die Datei in den Papierkorb, sofern sie sonst nirgends verwendet wird. In verschlüsselten Bereichen gibt es keine Kommentare und damit keine Anhänge.
+- **Seiten erwähnen:** `@` schlägt neben Personen auch Seiten und Einträge vor, die du lesen darfst. Die Erwähnung zeigt Symbol und aktuellen Titel; ein Klick öffnet die Seite, ++⌘/Strg++-Klick einen neuen Tab. Wer die Seite nicht lesen darf, sieht nur „Kein Zugriff“. Eine erwähnte Seite benachrichtigt niemanden.
+- **Links:** Adressen werden zu Links. Die ersten beiden bekommen eine kleine Vorschau mit Titel, Website und Bild; im Entwurf entfernst du sie mit ×.
+- Benachrichtigungen nennen nur die Zahl der Anhänge („📎 2 Anhänge“), nie ihren Inhalt.
 
 ## Erwähnungen
 

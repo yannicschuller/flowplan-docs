@@ -51,7 +51,7 @@ On the home screen, **Recently viewed** lists the pages you opened last; the [qu
 
 ## Page comments
 
-The speech bubble icon in the header opens the page's comments (on a phone it shows there only when there are open comments, with their count, otherwise **Comments** is in the `⋯` menu); comments on database records sit below the record. ++⌘ Enter++ sends. Page and record comments are plain text. `@` followed by a member's full name or e-mail address – say `@Anna Berg` – mentions the person: they get a notification, provided they may see the page and the record.
+The speech bubble icon in the header opens the page's comments (on a phone it shows there only when there are open comments, with their count, otherwise **Comments** is in the `⋯` menu); comments on database records sit below the record. ++⌘ Enter++ sends. You write page and record comments like text comments: formatted (lists, links, quotes, code), with `@` for people and pages, with [attachments and link previews](#attachments-pages-and-links-in-comments). Clicking into the field opens the toolbar. The API still accepts plain text; there, `@` followed by a member's full name or e-mail address – say `@Anna Berg` – mentions the person. A mentioned person gets a notification, provided they may see the page and the record.
 
 ## Text comments
 
@@ -59,7 +59,7 @@ Below a document and in a database record's content, **Text comments (n)** opens
 
 - The commented text is highlighted; a click on it opens the thread.
 - Replies, emoji reactions, **Resolve** and **Reopen**.
-- Posts can be formatted (lists, links, quotes, code); `@` opens the person search.
+- Posts can be formatted (lists, links, quotes, code); `@` searches people and pages.
 - Your own posts can be edited and deleted. People newly mentioned in an edit get a notification; those mentioned before are not notified again.
 - If the text is deleted later, the quote stays in the thread.
 - Line breaks in the passage stay line breaks in the quote, and embedded media show as “media block”. When you move a block up or down (or drag it), its comments move with it. {since=0.9.8}
@@ -78,6 +78,15 @@ On wide screens – with the sidebar open from a window about 1280 pixels wide �
 Under **Settings → Appearance & language → Editor**, set **Text comments** to **In the margin** (the default) or **Below the document**. The setting applies to your account on all devices.
 
 Text comments exist in documents and in the contents of database records, also in exports and content archives.
+
+## Attachments, pages and links in comments {since=0.11.4}
+
+In page, record and text comments and in replies:
+
+- **Attachments:** The paperclip, dragging or pasting attaches files and images, up to 10 per comment. Images show a preview and open large, PDFs open in the PDF viewer, videos play in place; other files show their name and size. A comment may consist of attachments only. The usual file limits apply, and attachments count towards your storage. Only people who may read the page – and, for a record, the record – can see them. If you remove an attachment while editing or delete the comment, the file moves to the trash unless it is used elsewhere. Encrypted spaces have no comments and so no attachments.
+- **Mentioning pages:** `@` suggests pages and records you may read as well as people. The mention shows the page's icon and current title; a click opens the page, ++⌘/Ctrl++-click a new tab. People who may not read the page see only "No access". Mentioning a page notifies nobody.
+- **Links:** Addresses become links. The first two get a small preview with title, site and image; in a draft you remove it with ×.
+- Notifications only state the number of attachments ("📎 2 attachments"), never their content.
 
 ## Mentions
 
