@@ -56,11 +56,12 @@ Every action shows its progress and can be **cancelled**; an error shows in the 
 - **Dragging** the grip (or <kbd>⌥</kbd> + arrow keys) changes the order – it is the order of the presentation and is saved with the board. Until someone sorts, reading order applies (top to bottom, left to right).
 - **Hide from the presentation** (eye icon) skips a frame when presenting without deleting it.
 - **Speaker notes** per frame, shown only in the presentation.
+- **Collapse/expand frame** (arrow) folds the frame on the board; its preview still shows the content. {since=0.11.4}
 - Also: **Copy link to this element**, **Export frame** and **Present from here**.
 
 ## Present
 
-As soon as there are frames, **Present** appears in the bar at the bottom left; the arrows next to it also go to the previous or next frame without presenting. The frames are shown one after another in the order of the frames panel, filling the screen; hidden frames are left out, and everything outside the current frame fades away. Arrow keys or the buttons page through, **End presentation** or <kbd>Esc</kbd> closes.
+As soon as there are frames, **Present** appears in the bar at the bottom left; the arrows next to it also go to the previous or next frame without presenting. The frames are shown one after another in the order of the frames panel, filling the screen; hidden frames are left out, and everything outside the current frame fades away. Arrow keys or the buttons page through, **End presentation** or <kbd>Esc</kbd> closes. Collapsed frames expand when presented. {since=0.11.4}
 
 - **Speaker notes** shows the notes of the frame.
 - **Presenter view** opens the same second window as for [documents](/reading-and-presenting#speaker-notes-and-presenter-view): the current and the next slide, the notes and the elapsed time. Both windows stay in step – you can move on in either of them.

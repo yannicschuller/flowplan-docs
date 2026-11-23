@@ -71,6 +71,8 @@ Links may only point to `https://`, `http://` and `mailto:` or to an element of 
 
 **Tags** on sticky notes show as coloured chips along the bottom edge – a tag always has the same colour. In the board search, **Only notes tagged** highlights all notes with that tag and dims the rest.
 
+Next to every colour palette, **+** opens the colour wheel – the same as for annotating PDFs –: area, hue, hex value, eyedropper and the custom colours used lately on this device. It works for notes, the fill and line of shapes and frames, connectors, strokes, text colour and the colour of new notes and of the pen. Custom colours stay exactly as chosen on the dark canvas too. {since=0.11.4}
+
 ## Links to frames and elements
 
 **Copy link to this element** (in the bar of a selected element or in the frames panel) copies an address like `…/#page=…&item=…`. Whoever opens it sees the board zoomed to the element and selected – provided they may read the board.
@@ -84,11 +86,18 @@ Inside the board, links to elements fly there: in an element's link field or in 
 - Select several elements → **Arrange**: align left, centre, right, top, middle or bottom, distribute evenly or stack as a row or column.
 - For workshops: **Group by colour**, **Group by person** (with headings), **Sort by votes** or **Arrange as a grid**.
 
+## Collapse frames {since=0.11.4}
+
+The small arrow before a frame's title – or **Collapse frame** in the style bar of a selected frame and in the frames panel – folds a frame to its title bar, frames inside frames too. What lies in it is hidden and can't be clicked; connectors to it end at the bar. The frame stays in place; moving or copying it takes its content along. Everyone sees it collapsed; people who may only read the board fold frames for themselves. A search hit or link to an element inside, and presenting, expand the frame again. Exports show collapsed frames as their bar.
+
 ## Pen and shape recognition
 
 With a tablet pen (such as an Apple Pencil) the stroke width follows the pressure. Choose the colour in the pen menu; with **Recognise shapes**, drawn lines, rectangles, circles, triangles and diamonds turn into clean shapes (<kbd>⌥</kbd> on release keeps the stroke).
 
 Once you have drawn with a pen on a device, only the pen draws: fingers move and zoom the board, a resting hand leaves no strokes. A hand resting on the screen while the pen draws neither cuts nor moves the stroke. **Draw with the pen only** in the pen menu switches this off – fingers then draw too, except the hand holding the pen: a touch while the pen draws or hovers, or within a moment after lifting it, moves the board instead. A pen touching down lightly does not start the stroke thick, and the width follows the pressure smoothly. Writing with Scribble in an open text on the board may run past its edges; the text stays open. A hovering Apple Pencil (iPad Pro, iPad Air M2 and later) shows where the stroke starts; the eraser end of a pen erases like the **Eraser**. In the [iPad app](/mobile-apps), double-tapping or squeezing the Apple Pencil switches to the eraser and back, to the previous tool or to the pen, as set on the iPad. The same applies when marking up images in documents.
+
+
+In the pen menu you choose between **Pen** and **Highlighter**; each remembers its colour, width and **opacity** (10–100 %) on this device. The highlighter draws wide, translucent strokes that lie over pictures like on paper – handy for marking up screenshots. Selected strokes can be made more transparent or turned into highlighter strokes in the style bar; exports show them the same. **Recognise shapes** applies to the pen only. {since=0.11.4}
 
 ## Images, icons and records
 

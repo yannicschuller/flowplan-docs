@@ -56,11 +56,12 @@ Jede Aktion zeigt ihren Fortschritt und lässt sich **abbrechen**; ein Fehler st
 - **Ziehen** am Griff (oder <kbd>⌥</kbd> + Pfeiltasten) ändert die Reihenfolge – sie ist die Reihenfolge der Präsentation und wird mit dem Board gespeichert. Solange niemand sortiert, gilt die Leserichtung (von oben nach unten, links nach rechts).
 - **In der Präsentation ausblenden** (Augensymbol) lässt einen Rahmen beim Präsentieren aus, ohne ihn zu löschen.
 - **Sprechernotizen** je Rahmen, sichtbar nur in der Präsentation.
+- **Rahmen einklappen/aufklappen** (Pfeil) klappt den Rahmen auf dem Board zusammen; die Vorschau zeigt weiter seinen Inhalt. {since=0.11.4}
 - Außerdem: **Link zu diesem Element kopieren**, **Rahmen exportieren** und **Ab hier präsentieren**.
 
 ## Präsentieren
 
-Sobald es Rahmen gibt, erscheint **Präsentieren** in der Leiste unten links; die Pfeile daneben fahren auch ohne Präsentation zum vorigen bzw. nächsten Rahmen. Die Rahmen werden in der Reihenfolge der Rahmen-Übersicht nacheinander bildschirmfüllend gezeigt, ausgeblendete Rahmen fehlen; alles außerhalb des aktuellen Rahmens tritt zurück. Pfeiltasten oder die Knöpfe blättern, **Präsentation beenden** oder <kbd>Esc</kbd> schließt.
+Sobald es Rahmen gibt, erscheint **Präsentieren** in der Leiste unten links; die Pfeile daneben fahren auch ohne Präsentation zum vorigen bzw. nächsten Rahmen. Die Rahmen werden in der Reihenfolge der Rahmen-Übersicht nacheinander bildschirmfüllend gezeigt, ausgeblendete Rahmen fehlen; alles außerhalb des aktuellen Rahmens tritt zurück. Pfeiltasten oder die Knöpfe blättern, **Präsentation beenden** oder <kbd>Esc</kbd> schließt. Eingeklappte Rahmen klappen beim Präsentieren auf. {since=0.11.4}
 
 - **Sprechernotizen** blendet die Notizen des Rahmens ein.
 - **Referentenansicht** öffnet dieselbe zweite Ansicht wie bei [Dokumenten](/reading-and-presenting#sprechernotizen-und-referentenansicht): aktuelle und nächste Folie, die Notizen und die verstrichene Zeit. Beide Fenster bleiben im Gleichschritt – Blättern geht in jedem von beiden.

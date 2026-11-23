@@ -71,6 +71,8 @@ Links dürfen nur auf `https://`, `http://` und `mailto:` zeigen oder auf ein El
 
 **Schlagwörter** an Zetteln erscheinen als farbige Chips an der Unterkante – jedes Schlagwort hat immer dieselbe Farbe. In der Board-Suche hebt **Nur Zettel mit Schlagwort** alle Zettel mit diesem Schlagwort hervor und blendet den Rest ab.
 
+Neben jeder Farbpalette öffnet **+** das Farbrad – wie beim Markieren von PDFs –: Fläche, Farbton, Hex-Wert, Pipette und die zuletzt benutzten eigenen Farben dieses Geräts. Das gilt für Zettel, Füllung und Linie von Formen und Rahmen, Verbindungslinien, Striche, Textfarbe sowie die Farbe neuer Zettel und des Stifts. Eigene Farben bleiben auch auf der dunklen Fläche genau so, wie du sie gewählt hast. {since=0.11.4}
+
 ## Links zu Rahmen und Elementen
 
 **Link zu diesem Element kopieren** (in der Leiste eines ausgewählten Elements oder in der Rahmen-Übersicht) kopiert eine Adresse wie `…/#page=…&item=…`. Wer sie öffnet, sieht das Board, auf das Element gezoomt und ausgewählt – sofern sie das Board lesen darf.
@@ -84,11 +86,18 @@ Innerhalb des Boards führen Links auf Elemente per Kamerafahrt dorthin: im Link
 - Mehrere Elemente auswählen → **Anordnen**: links, mittig, rechts, oben, mittig oder unten ausrichten, gleichmäßig verteilen oder als Zeile bzw. Spalte stapeln.
 - Für Workshops: **Nach Farbe gruppieren**, **Nach Person gruppieren** (mit Überschriften), **Nach Stimmen sortieren** oder **Als Raster anordnen**.
 
+## Rahmen einklappen {since=0.11.4}
+
+Der kleine Pfeil vor dem Rahmentitel – oder **Rahmen einklappen** in der Leiste des ausgewählten Rahmens und in der Rahmen-Übersicht – klappt einen Rahmen auf seine Titelleiste zusammen, auch Rahmen in Rahmen. Was darin liegt, ist verborgen und lässt sich nicht anklicken; Verbindungslinien dorthin enden an der Leiste. Der Rahmen bleibt an seinem Platz; verschiebst oder kopierst du ihn, kommt der Inhalt mit. Alle sehen ihn eingeklappt; wer das Board nur lesen darf, klappt Rahmen nur für sich auf und zu. Ein Suchtreffer oder Link auf ein Element darin und das Präsentieren klappen den Rahmen wieder auf. Exporte zeigen eingeklappte Rahmen als Leiste.
+
 ## Stift und Formerkennung
 
 Mit einem Tablet-Stift (etwa Apple Pencil) folgt die Strichstärke dem Druck. Im Stiftmenü wählst du die Farbe; mit **Formen erkennen** werden gezeichnete Linien, Rechtecke, Kreise, Dreiecke und Rauten zu sauberen Formen (<kbd>⌥</kbd> beim Loslassen behält den Strich).
 
 Sobald du auf einem Gerät mit dem Stift gezeichnet hast, zeichnet nur noch der Stift: Finger verschieben und zoomen die Fläche, eine aufliegende Hand hinterlässt keine Striche. Liegt die Hand auf, während der Stift zeichnet, unterbricht oder verschiebt sie den Strich nicht. **Nur mit dem Stift zeichnen** im Stiftmenü schaltet das ab – dann zeichnen auch Finger, nur nicht die Hand, die den Stift hält: Eine Berührung, während der Stift zeichnet oder schwebt oder kurz nachdem er abgesetzt wurde, verschiebt stattdessen die Fläche. Setzt der Stift leicht auf, beginnt der Strich nicht dick, und die Breite folgt dem Druck gleichmäßig. Mit Scribble darfst du über den Rand eines offenen Textes auf der Fläche hinausschreiben; der Text bleibt offen. Ein schwebender Apple Pencil (iPad Pro, iPad Air ab M2) zeigt, wo der Strich beginnt; das Radierer-Ende eines Stifts löscht wie der **Radierer**. In der [iPad-App](/mobile-apps) wechselt Doppeltippen oder Drücken des Apple Pencil je nach iPad-Einstellung zum Radierer und zurück, zum vorigen Werkzeug oder zum Stift. Dasselbe gilt beim Markieren von Bildern in Dokumenten.
+
+
+Im Stiftmenü wählst du zwischen **Stift** und **Textmarker**; jeder merkt sich auf diesem Gerät Farbe, Breite und **Deckkraft** (10–100 %). Der Textmarker zieht breite, halbtransparente Striche, die wie auf Papier über Bildern liegen – gut zum Markieren in Screenshots. Ausgewählte Striche machst du in der Leiste nachträglich durchsichtiger oder zum Textmarker; Exporte zeigen sie genauso. **Formen erkennen** gilt nur für den Stift. {since=0.11.4}
 
 ## Bilder, Symbole und Einträge
 
