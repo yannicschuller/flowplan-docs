@@ -108,7 +108,7 @@ Other members see the new order within a few seconds, without reloading. Whereve
 
 ### Collapse and expand the sidebar
 
-A click on a space's name collapses its pages or expands them again, and the same works for **Favourites** and **Collections**; the arrow in front of a page shows or hides its sub-pages. Pages with sub-pages start collapsed.
+A click on a space's name collapses its pages or expands them again, and the same works for **Favourites** and **Collections**; the arrow in front of a page shows or hides its sub-pages. Pages with sub-pages start collapsed. The small arrow to the right of the navigation at the top (Search, Home, Inbox, My tasks …) folds it into one row of icons; their names show as tooltips. {since=0.11.4}
 
 Flowplan remembers what you expanded and collapsed – in your account, per workspace, so it is the same on all your devices (browser, phone, desktop app) and after reloading. This covers pages, spaces, favourites, collections and the year and month folders of journals. Others do not see your choice.
 

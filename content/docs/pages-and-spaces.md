@@ -108,7 +108,7 @@ Andere Mitglieder sehen die neue Reihenfolge nach wenigen Sekunden, ohne neu zu 
 
 ### Seitenleiste ein- und ausklappen
 
-Ein Klick auf den Namen eines Bereichs klappt seine Seiten zu oder wieder auf, ebenso bei **Favoriten** und **Sammlungen**; der Pfeil vor einer Seite zeigt oder verbirgt ihre Unterseiten. Seiten mit Unterseiten sind anfangs zugeklappt.
+Ein Klick auf den Namen eines Bereichs klappt seine Seiten zu oder wieder auf, ebenso bei **Favoriten** und **Sammlungen**; der Pfeil vor einer Seite zeigt oder verbirgt ihre Unterseiten. Seiten mit Unterseiten sind anfangs zugeklappt. Die Navigation oben (Suchen, Startseite, Posteingang, Meine Aufgaben …) klappt der kleine Pfeil rechts daneben zu einer Zeile aus Symbolen zusammen; die Namen stehen dann im Tooltip. {since=0.11.4}
 
 Flowplan merkt sich, was du auf- und zugeklappt hast – in deinem Konto, je Arbeitsbereich, und damit gleich auf allen Geräten (Browser, Smartphone, Desktop-App), auch nach dem Neuladen. Das gilt für Seiten, Bereiche, Favoriten, Sammlungen und die Jahres- und Monatsordner von Journalen. Andere sehen deine Auswahl nicht.
 
