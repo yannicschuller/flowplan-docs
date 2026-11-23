@@ -108,16 +108,20 @@ Im Stiftmenü wählst du zwischen **Stift** und **Textmarker**; jeder merkt sich
 
 Karten verknüpfter Dokumente zeigen, wenn sie hoch genug sind, die ersten Zeilen der Seite als kleine Vorschau.
 
+- **Tabellen färben:** Wähle die Tabelle, klicke eine Zelle und dann in der Leiste auf den Farbeimer (**Farbe von Zeile oder Spalte**). Unter **Färben** wählst du die Zeile oder Spalte (auch **Kopfzeile** bzw. **Kopfspalte**) und eine Farbe aus der Palette oder mit **+** am Farbrad. Die Farbe einer Zeile geht vor der einer Spalte; **Keine Farbe** entfernt sie. **Kopfspalte** hebt die erste Spalte wie die Kopfzeile hervor. Farben erscheinen in allen Exporten. {since=0.11.4}
+- **Links in Tabellen:** Webadressen in Zellen werden zu Links, die in einem neuen Tab öffnen. Steht in einer Zelle nur eine Adresse, zeigt sie eine kleine Vorschau mit Titel und Seite; Videos (YouTube, Vimeo …) zeigen ein Vorschaubild, ein Klick auf ▶ spielt sie in einem abgeschotteten Fenster ab. {since=0.11.4}
+
 ## Videos, Webseiten und PDFs einbetten
 
 **Einbetten** unter **+** (am Handy unter **Weitere Werkzeuge**) nimmt einen Link auf:
 
-- **Videos und Webseiten** von YouTube, Vimeo, Loom, Spotify, Figma und CodePen – dieselbe Liste wie für Einbettungen in Dokumenten. Andere Adressen werden abgelehnt. Das Board zeigt zuerst nur eine Vorschau mit dem Anbieter; der Inhalt lädt erst nach einem Klick auf **Laden**, in einem abgeschotteten Rahmen (Sandbox), und **Einbettung schließen** entlädt ihn wieder. YouTube läuft über `youtube-nocookie.com`.
+- **Videos und Webseiten** von YouTube, Vimeo, Loom, Spotify, Figma und CodePen – dieselbe Liste wie für Einbettungen in Dokumenten. Das Board zeigt zuerst nur eine Vorschau mit dem Anbieter; der Inhalt lädt erst nach einem Klick auf **Laden**, in einem abgeschotteten Rahmen (Sandbox), und **Einbettung schließen** entlädt ihn wieder. YouTube läuft über `youtube-nocookie.com`.
+- **Jede andere Webseite** wird eine **Linkkarte** mit Titel, Seite, Beschreibung, Bild und Symbol der Seite – auch wenn du einfach eine Adresse aufs Board einfügst (++⌘ V++). Ein Klick auf den Titel oder ein Doppelklick auf die Karte öffnet die Seite im Browser. Die Vorschau liest der Server einmal; Bild und Symbol lädt dein Browser direkt von der Seite, ohne Referrer. {since=0.11.4}
 - **PDFs**: **PDF hochladen …**, eine PDF-Datei aufs Board ziehen oder einfügen (++⌘ V++). Zuerst fragt **Seiten auswählen**, welche Seiten aufs Board kommen {since=0.11.4}: alle, Bereiche wie `1-3, 7` oder per Häkchen an den Vorschaubildern. Dazu wählst du **Ein Element mit Seitenwechsel** – die Pfeile blättern nur durch die gewählten Seiten – oder **Jede Seite als eigenes Element** (bis zu 50, nebeneinander). Hochgeladen wird erst beim Hinzufügen. Die Datei wird in der Seite gespeichert und zählt zum Speicherkontingent. Ein Doppelklick öffnet den PDF-Betrachter an der gezeigten Seite.
 - **Scharf in jeder Zoomstufe** {since=0.11.4}: Die Seite wird für die Größe gezeichnet, die sie gerade auf dem Bildschirm hat – nach dem Zoomen kurz neu, nur für Seiten im sichtbaren Bereich.
 - **Anmerkungen** {since=0.11.4}: Was im PDF-Betrachter angemerkt wurde (Stift, Textmarker, Text), erscheint auch auf der Seite im Board und in Exporten. Der Textmarker-Knopf in der Leiste des Elements blendet die Anmerkungen für dieses Element aus und wieder ein – für alle; ändern kann das, wer das Board bearbeiten darf.
 
-Exporte zeigen statt des Players eine Karte mit Anbieter und Link.
+Exporte zeigen statt des Players eine Karte mit Anbieter und Link. Videos von YouTube zeigen in PNG und PDF ihr Vorschaubild; Bilder anderer Seiten, die das Auslesen nicht erlauben, erscheinen dort als graue Platzhalter. {since=0.11.4}
 
 ## Navigieren
 
@@ -131,7 +135,7 @@ Exporte zeigen statt des Players eine Karte mit Anbieter und Link.
 ## Einbetten und exportieren
 
 - Mit `/board` im Dokument wird ein Whiteboard Teil einer Seite; der Knopf oben rechts öffnet es groß.
-- **Als PNG exportieren** oder **Als SVG exportieren** speichert das Whiteboard als Bild.
+- **Als PNG exportieren** oder **Als SVG exportieren** speichert das ganze Whiteboard als Bild – mit denselben Bildern und Stilen wie der Export-Dialog. {since=0.11.4}
 - **Exportieren … (PNG, SVG, PDF)** öffnet den Export-Dialog: Was (**Ganzes Board**, **Auswahl** oder ein einzelner Rahmen), Format und bei PNG die **Auflösung** 1×, 2× oder 4×. Als **PDF** kommt das Board **Alles auf einer Seite** oder mit **Eine Seite pro Rahmen** in der Reihenfolge der Präsentation (ausgeblendete Rahmen fehlen). Der Export entsteht im Browser; der Server sieht davon nichts.
 - Im [Markdown-Export](/export) kommt jedes Whiteboard automatisch als SVG mit.
 - Die Texte auf dem Board sind durchsuchbar und erscheinen in Exporten.

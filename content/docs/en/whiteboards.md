@@ -108,16 +108,20 @@ In the pen menu you choose between **Pen** and **Highlighter**; each remembers i
 
 Cards of linked documents that are tall enough show the first lines of the page as a small preview.
 
+- **Colour tables:** Select the table, click a cell, then the paint bucket in the bar (**Colour of row or column**). Under **Colour** pick the row or column (also **Header row** or **Header column**) and a colour from the palette or with **+** on the colour wheel. A row's colour goes before a column's; **No colour** removes it. **Header column** highlights the first column like the header row. Colours appear in all exports. {since=0.11.4}
+- **Links in tables:** Web addresses in cells become links that open in a new tab. A cell holding just one address shows a small preview with title and site; videos (YouTube, Vimeo …) show a still picture, and a click on ▶ plays them in an isolated window. {since=0.11.4}
+
 ## Embed videos, web pages and PDFs
 
 **Embed** under **+** (on phones under **More tools**) takes a link:
 
-- **Videos and web pages** from YouTube, Vimeo, Loom, Spotify, Figma and CodePen – the same list as for embeds in documents. Other addresses are refused. The board first shows only a preview with the provider; the content loads only after a click on **Load**, in an isolated frame (sandbox), and **Close embed** unloads it again. YouTube runs through `youtube-nocookie.com`.
+- **Videos and web pages** from YouTube, Vimeo, Loom, Spotify, Figma and CodePen – the same list as for embeds in documents. The board first shows only a preview with the provider; the content loads only after a click on **Load**, in an isolated frame (sandbox), and **Close embed** unloads it again. YouTube runs through `youtube-nocookie.com`.
+- **Any other web page** becomes a **link card** with the page's title, site, description, picture and icon – also when you simply paste an address onto the board (++⌘ V++). A click on the title or a double click on the card opens the page in the browser. The server reads the preview once; your browser loads picture and icon straight from the site, without a referrer. {since=0.11.4}
 - **PDFs**: **Upload PDF …**, drag a PDF file onto the board or paste it (++⌘ V++). **Choose pages** first asks which pages go onto the board {since=0.11.4}: all, ranges like `1-3, 7`, or ticked in the thumbnails. Then pick **One element with page buttons** – the arrows page only through the chosen pages – or **Each page as its own element** (up to 50, side by side). Nothing is uploaded until you add them. The file is stored in the page and counts towards the storage quota. A double click opens the PDF viewer at the page shown.
 - **Sharp at any zoom** {since=0.11.4}: the page is drawn for the size it has on the screen – redrawn briefly after zooming, only for pages in view.
 - **Annotations** {since=0.11.4}: what was marked up in the PDF viewer (pen, highlighter, text) also shows on the board's page and in exports. The highlighter button in the element's bar hides and shows them for that element – for everyone; whoever may edit the board can change it.
 
-Exports show a card with the provider and link instead of the player.
+Exports show a card with the provider and link instead of the player. YouTube videos show their still picture in PNG and PDF; pictures of other sites that do not allow reading appear there as grey placeholders. {since=0.11.4}
 
 ## Navigate
 
@@ -131,7 +135,7 @@ Exports show a card with the provider and link instead of the player.
 ## Embed and export
 
 - With `/board` in a document, a whiteboard becomes part of a page; the button at the top right opens it large.
-- **Export as PNG** or **Export as SVG** saves the whiteboard as an image.
+- **Export as PNG** or **Export as SVG** saves the whole whiteboard as a picture – with the same pictures and styles as the export dialog. {since=0.11.4}
 - **Export … (PNG, SVG, PDF)** opens the export dialog: what (**Whole board**, **Selection** or a single frame), the format and, for PNG, the **Resolution** 1×, 2× or 4×. As a **PDF** the board comes **Everything on one page** or with **One page per frame** in presentation order (hidden frames left out). The export is made in the browser; the server sees nothing of it.
 - In the [Markdown export](/export), every whiteboard comes along as an SVG automatically.
 - The text on the board is searchable and appears in exports.
