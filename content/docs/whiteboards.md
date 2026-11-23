@@ -71,7 +71,7 @@ Links dürfen nur auf `https://`, `http://` und `mailto:` zeigen oder auf ein El
 
 **Schlagwörter** an Zetteln erscheinen als farbige Chips an der Unterkante – jedes Schlagwort hat immer dieselbe Farbe. In der Board-Suche hebt **Nur Zettel mit Schlagwort** alle Zettel mit diesem Schlagwort hervor und blendet den Rest ab.
 
-Neben jeder Farbpalette öffnet **+** das Farbrad – wie beim Markieren von PDFs –: Fläche, Farbton, Hex-Wert, Pipette und die zuletzt benutzten eigenen Farben dieses Geräts. Das gilt für Zettel, Füllung und Linie von Formen und Rahmen, Verbindungslinien, Striche, Textfarbe sowie die Farbe neuer Zettel und des Stifts. Eigene Farben bleiben auch auf der dunklen Fläche genau so, wie du sie gewählt hast. {since=0.11.4}
+Neben jeder Farbpalette öffnet **+** das Farbrad aus den PDF-Anmerkungen (Hex-Wert, Pipette, zuletzt benutzte eigene Farben dieses Geräts) – für Zettel, Formen, Rahmen, Verbindungslinien, Striche, Text und den Stift. Eigene Farben bleiben auf der dunklen Fläche, wie gewählt. {since=0.11.4}
 
 ## Links zu Rahmen und Elementen
 
@@ -88,7 +88,7 @@ Innerhalb des Boards führen Links auf Elemente per Kamerafahrt dorthin: im Link
 
 ## Rahmen einklappen {since=0.11.4}
 
-Der kleine Pfeil vor dem Rahmentitel – oder **Rahmen einklappen** in der Leiste des ausgewählten Rahmens und in der Rahmen-Übersicht – klappt einen Rahmen auf seine Titelleiste zusammen, auch Rahmen in Rahmen. Was darin liegt, ist verborgen und lässt sich nicht anklicken; Verbindungslinien dorthin enden an der Leiste. Der Rahmen bleibt an seinem Platz; verschiebst oder kopierst du ihn, kommt der Inhalt mit. Alle sehen ihn eingeklappt; wer das Board nur lesen darf, klappt Rahmen nur für sich auf und zu. Ein Suchtreffer oder Link auf ein Element darin und das Präsentieren klappen den Rahmen wieder auf. Exporte zeigen eingeklappte Rahmen als Leiste.
+Der Pfeil vor dem Rahmentitel – oder **Rahmen einklappen** in der Leiste und in der Rahmen-Übersicht – klappt einen Rahmen (auch einen in einem anderen) auf seine Titelleiste zusammen. Sein Inhalt ist verborgen und nicht anklickbar; Verbindungslinien enden an der Leiste; verschiebst oder kopierst du den Rahmen, kommt der Inhalt mit. Alle sehen ihn eingeklappt; wer nur lesen darf, klappt nur für sich. Suchtreffer, Links auf Elemente darin und das Präsentieren klappen ihn auf. Exporte zeigen die Leiste.
 
 ## Stift und Formerkennung
 
@@ -97,7 +97,7 @@ Mit einem Tablet-Stift (etwa Apple Pencil) folgt die Strichstärke dem Druck. Im
 Sobald du auf einem Gerät mit dem Stift gezeichnet hast, zeichnet nur noch der Stift: Finger verschieben und zoomen die Fläche, eine aufliegende Hand hinterlässt keine Striche. Liegt die Hand auf, während der Stift zeichnet, unterbricht oder verschiebt sie den Strich nicht. **Nur mit dem Stift zeichnen** im Stiftmenü schaltet das ab – dann zeichnen auch Finger, nur nicht die Hand, die den Stift hält: Eine Berührung, während der Stift zeichnet oder schwebt oder kurz nachdem er abgesetzt wurde, verschiebt stattdessen die Fläche. Setzt der Stift leicht auf, beginnt der Strich nicht dick, und die Breite folgt dem Druck gleichmäßig. Mit Scribble darfst du über den Rand eines offenen Textes auf der Fläche hinausschreiben; der Text bleibt offen. Ein schwebender Apple Pencil (iPad Pro, iPad Air ab M2) zeigt, wo der Strich beginnt; das Radierer-Ende eines Stifts löscht wie der **Radierer**. In der [iPad-App](/mobile-apps) wechselt Doppeltippen oder Drücken des Apple Pencil je nach iPad-Einstellung zum Radierer und zurück, zum vorigen Werkzeug oder zum Stift. Dasselbe gilt beim Markieren von Bildern in Dokumenten.
 
 
-Im Stiftmenü wählst du zwischen **Stift** und **Textmarker**; jeder merkt sich auf diesem Gerät Farbe, Breite und **Deckkraft** (10–100 %). Der Textmarker zieht breite, halbtransparente Striche, die wie auf Papier über Bildern liegen – gut zum Markieren in Screenshots. Ausgewählte Striche machst du in der Leiste nachträglich durchsichtiger oder zum Textmarker; Exporte zeigen sie genauso. **Formen erkennen** gilt nur für den Stift. {since=0.11.4}
+Im Stiftmenü wählst du **Stift** oder **Textmarker**, jeweils mit eigener Farbe, Breite und **Deckkraft** (10–100 %), gemerkt auf diesem Gerät. Der Textmarker zieht breite, halbtransparente Striche über Bilder – gut für Screenshots. Die Leiste ändert die Deckkraft ausgewählter Striche oder macht sie zum Textmarker. **Formen erkennen** gilt nur für den Stift. {since=0.11.4}
 
 ## Bilder, Symbole und Einträge
 
@@ -108,8 +108,8 @@ Im Stiftmenü wählst du zwischen **Stift** und **Textmarker**; jeder merkt sich
 
 Karten verknüpfter Dokumente zeigen, wenn sie hoch genug sind, die ersten Zeilen der Seite als kleine Vorschau.
 
-- **Tabellen färben:** Wähle die Tabelle, klicke eine Zelle und dann in der Leiste auf den Farbeimer (**Farbe von Zeile oder Spalte**). Unter **Färben** wählst du die Zeile oder Spalte (auch **Kopfzeile** bzw. **Kopfspalte**) und eine Farbe aus der Palette oder mit **+** am Farbrad. Die Farbe einer Zeile geht vor der einer Spalte; **Keine Farbe** entfernt sie. **Kopfspalte** hebt die erste Spalte wie die Kopfzeile hervor. Farben erscheinen in allen Exporten. {since=0.11.4}
-- **Links in Tabellen:** Webadressen in Zellen werden zu Links, die in einem neuen Tab öffnen. Steht in einer Zelle nur eine Adresse, zeigt sie eine kleine Vorschau mit Titel und Seite; Videos (YouTube, Vimeo …) zeigen ein Vorschaubild, ein Klick auf ▶ spielt sie in einem abgeschotteten Fenster ab. {since=0.11.4}
+- **Tabellen färben:** Tabelle wählen, eine Zelle anklicken, dann der Farbeimer in der Leiste: Zeile, Spalte, **Kopfzeile** oder **Kopfspalte** und eine Farbe (Palette oder **+**). Die Farbe einer Zeile geht vor der einer Spalte; **Keine Farbe** entfernt sie. Exporte zeigen die Farben. {since=0.11.4}
+- **Links in Tabellen:** Webadressen in Zellen werden zu Links (neuer Tab). Steht in einer Zelle nur eine Adresse, zeigt sie eine kleine Vorschau; Videos zeigen ein Vorschaubild, ▶ spielt sie in einem abgeschotteten Fenster ab. {since=0.11.4}
 
 ## Videos, Webseiten und PDFs einbetten
 

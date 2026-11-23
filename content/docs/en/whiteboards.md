@@ -71,7 +71,7 @@ Links may only point to `https://`, `http://` and `mailto:` or to an element of 
 
 **Tags** on sticky notes show as coloured chips along the bottom edge – a tag always has the same colour. In the board search, **Only notes tagged** highlights all notes with that tag and dims the rest.
 
-Next to every colour palette, **+** opens the colour wheel – the same as for annotating PDFs –: area, hue, hex value, eyedropper and the custom colours used lately on this device. It works for notes, the fill and line of shapes and frames, connectors, strokes, text colour and the colour of new notes and of the pen. Custom colours stay exactly as chosen on the dark canvas too. {since=0.11.4}
+Next to every colour palette, **+** opens the colour wheel known from PDF annotations (hex value, eyedropper, recent custom colours of this device) – for notes, shapes, frames, connectors, strokes, text and the pen. Custom colours stay as chosen on the dark canvas. {since=0.11.4}
 
 ## Links to frames and elements
 
@@ -88,7 +88,7 @@ Inside the board, links to elements fly there: in an element's link field or in 
 
 ## Collapse frames {since=0.11.4}
 
-The small arrow before a frame's title – or **Collapse frame** in the style bar of a selected frame and in the frames panel – folds a frame to its title bar, frames inside frames too. What lies in it is hidden and can't be clicked; connectors to it end at the bar. The frame stays in place; moving or copying it takes its content along. Everyone sees it collapsed; people who may only read the board fold frames for themselves. A search hit or link to an element inside, and presenting, expand the frame again. Exports show collapsed frames as their bar.
+The arrow before a frame's title – or **Collapse frame** in the style bar and the frames panel – folds a frame (also one inside another) to its title bar. Its content is hidden and can't be clicked; connectors to it end at the bar; moving or copying the frame takes the content along. Everyone sees it collapsed; people who may only read fold frames just for themselves. Search hits, links to elements inside and presenting expand it. Exports show the bar.
 
 ## Pen and shape recognition
 
@@ -97,7 +97,7 @@ With a tablet pen (such as an Apple Pencil) the stroke width follows the pressur
 Once you have drawn with a pen on a device, only the pen draws: fingers move and zoom the board, a resting hand leaves no strokes. A hand resting on the screen while the pen draws neither cuts nor moves the stroke. **Draw with the pen only** in the pen menu switches this off – fingers then draw too, except the hand holding the pen: a touch while the pen draws or hovers, or within a moment after lifting it, moves the board instead. A pen touching down lightly does not start the stroke thick, and the width follows the pressure smoothly. Writing with Scribble in an open text on the board may run past its edges; the text stays open. A hovering Apple Pencil (iPad Pro, iPad Air M2 and later) shows where the stroke starts; the eraser end of a pen erases like the **Eraser**. In the [iPad app](/mobile-apps), double-tapping or squeezing the Apple Pencil switches to the eraser and back, to the previous tool or to the pen, as set on the iPad. The same applies when marking up images in documents.
 
 
-In the pen menu you choose between **Pen** and **Highlighter**; each remembers its colour, width and **opacity** (10–100 %) on this device. The highlighter draws wide, translucent strokes that lie over pictures like on paper – handy for marking up screenshots. Selected strokes can be made more transparent or turned into highlighter strokes in the style bar; exports show them the same. **Recognise shapes** applies to the pen only. {since=0.11.4}
+In the pen menu you choose **Pen** or **Highlighter**, each with its own colour, width and **opacity** (10–100 %), remembered on this device. The highlighter draws wide, translucent strokes over pictures – handy for marking up screenshots. The style bar changes the opacity of selected strokes or turns them into highlighter strokes. **Recognise shapes** applies to the pen only. {since=0.11.4}
 
 ## Images, icons and records
 
@@ -108,8 +108,8 @@ In the pen menu you choose between **Pen** and **Highlighter**; each remembers i
 
 Cards of linked documents that are tall enough show the first lines of the page as a small preview.
 
-- **Colour tables:** Select the table, click a cell, then the paint bucket in the bar (**Colour of row or column**). Under **Colour** pick the row or column (also **Header row** or **Header column**) and a colour from the palette or with **+** on the colour wheel. A row's colour goes before a column's; **No colour** removes it. **Header column** highlights the first column like the header row. Colours appear in all exports. {since=0.11.4}
-- **Links in tables:** Web addresses in cells become links that open in a new tab. A cell holding just one address shows a small preview with title and site; videos (YouTube, Vimeo …) show a still picture, and a click on ▶ plays them in an isolated window. {since=0.11.4}
+- **Colour tables:** select the table, click a cell, then the paint bucket in the bar: pick a row, column, **Header row** or **Header column** and a colour (palette or **+**). A row's colour goes before a column's; **No colour** removes it. Exports show the colours. {since=0.11.4}
+- **Links in tables:** web addresses in cells become links (new tab). A cell holding just one address shows a small preview; videos show a still, and ▶ plays them in an isolated window. {since=0.11.4}
 
 ## Embed videos, web pages and PDFs
 
