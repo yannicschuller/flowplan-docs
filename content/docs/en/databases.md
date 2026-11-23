@@ -44,11 +44,12 @@ Below are **Your templates**: saved database templates, such as your own "Notes 
 A record can hold pages of its own – call notes, a specification and flowcharts below a requirement, for example:
 
 - **Add sub-page** below the record's document (in the dialog and as a full page) creates a page below the record and opens it. Its **Sub-pages** are listed above.
-- Existing pages go there with **Page actions → Move** (the database as parent page, then choose **Below record**) or by drag and drop onto the record's sub-pages or onto the record in the sidebar. Several selected pages can be moved onto a record that already has sub-pages.
-- In the **sidebar**, an expanded database shows the records that have sub-pages, with their sub-pages; the other records stay in the database. The path in the top bar shows database → record → sub-page.
+- **Adjust layout → Position of sub-pages** {since=0.11.4}: **Above the content** shows them right below the properties, before the document – everywhere, shared records too.
+- Move existing pages there with **Page actions → Move** (database as parent, then **Below record**) or by dragging them onto the record's sub-pages or onto the record in the sidebar – several at once too.
+- In the **sidebar**, an expanded database lists the records with sub-pages and their sub-pages. The top bar shows database → record → sub-page.
 - Sub-pages follow the **record's permissions**: whoever does not see a private record does not see its sub-pages either; a read-only record makes them read-only for editors. Adding or moving pages there needs edit rights on the record.
 - **Deleting** the record moves its sub-pages to the trash with it; **restoring** brings them back, deleting for good removes them. **Move to …** another database takes them along; **Convert to page** makes them sub-pages of the new page. **Duplicate** and **Copy to …** copy the record alone; a copy of the whole database includes the sub-pages.
-- Stand-in pages from an earlier Notion migration (a same-named page holding the sub-pages) are dissolved by moving their sub-pages below the record and deleting the empty page.
+- Stand-in pages from an earlier Notion migration (a same-named page with the sub-pages): move the sub-pages below the record, then delete it.
 
 ### Move a page into a database
 

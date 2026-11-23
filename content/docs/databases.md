@@ -44,6 +44,7 @@ Darunter stehen **Deine Vorlagen**: gespeicherte Datenbank-Vorlagen, etwa eine e
 Ein Eintrag kann eigene Seiten enthalten – etwa Gesprächsnotizen, eine Spezifikation und Flussdiagramme unter einer Anforderung:
 
 - **Unterseite hinzufügen** unter dem Dokument des Eintrags (im Dialog und als ganze Seite) legt eine Seite unter dem Eintrag an und öffnet sie. Darüber stehen seine **Unterseiten**.
+- **Layout anpassen → Position der Unterseiten** {since=0.11.4}: **Über dem Inhalt** zeigt sie direkt unter den Eigenschaften, vor dem Dokument – überall, auch geteilt; ohne Unterseiten steht dort nur **Unterseite hinzufügen**.
 - Vorhandene Seiten kommen per **Seitenaktionen → Verschieben** dorthin (Datenbank als übergeordnete Seite, dann **Unter Eintrag** wählen) oder per Drag and Drop auf die Unterseiten des Eintrags oder auf den Eintrag in der Seitenleiste. Mehrere ausgewählte Seiten lassen sich auf einen Eintrag verschieben, der schon Unterseiten hat.
 - In der **Seitenleiste** erscheinen unter der aufgeklappten Datenbank die Einträge, die Unterseiten haben, mit ihren Unterseiten; die übrigen Einträge bleiben in der Datenbank. Der Pfad in der Kopfzeile zeigt Datenbank → Eintrag → Unterseite.
 - Unterseiten folgen den **Rechten des Eintrags**: Wer einen privaten Eintrag nicht sieht, sieht auch seine Unterseiten nicht; ein schreibgeschützter Eintrag macht sie für Bearbeitende schreibgeschützt. Anlegen und Hineinverschieben braucht Bearbeitungsrechte am Eintrag.
