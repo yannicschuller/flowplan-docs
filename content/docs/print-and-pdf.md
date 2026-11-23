@@ -51,3 +51,14 @@ Ein **Seitenumbruch** (`/seitenumbruch`, auch `/umbruch` oder `/pagebreak`) legt
 - **Word (DOCX)** bekommt einen echten Seitenumbruch, **E-Books** einen Umbruch, wo das Lesegerät ihn beachtet.
 - **Markdown-Export** schreibt `<div style="page-break-after: always"></div>` – das verstehen Pandoc, Typora und die meisten Markdown-zu-PDF-Werkzeuge. Der **Markdown-Import** macht daraus wieder einen Seitenumbruch, ebenso aus `\pagebreak` oder `\newpage` auf einer eigenen Zeile. Eingefügtes HTML aus Word oder Google Docs mit einem Seitenumbruch wird ebenfalls zum Block.
 - In [verschlüsselten Bereichen](/encrypted-spaces) gibt es den Block nicht.
+
+## QR-Codes und Etiketten {since=0.11.4}
+
+**Seitenaktionen → QR-Code** zeigt den Link der Seite als QR-Code, bei einem Eintrag **⋯ → QR-Code** oben im Eintrag (oder Rechtsklick auf den Eintrag). Gescannt öffnet der Code die Seite oder den Eintrag für alle, die angemeldet sind und ihn sehen dürfen – etwa als Etikett auf einer Kiste mit Inventar. Wie beim [Formular](/forms) gibt es den Code als SVG oder PNG zum Herunterladen oder mit **Drucken** auf einem Blatt mit Titel und Link.
+
+**QR-Etiketten drucken**: In einer Datenbank unter **Exportieren → QR-Etiketten drucken …**, in der Auswahlleiste oder per Rechtsklick auf mehrere ausgewählte Einträge. Gedruckt werden die ausgewählten Einträge, sonst die der aktuellen Ansicht – mit ihren Filtern, in ihrer Reihenfolge.
+
+- **Bogen:** A4 3 × 8 (70 × 37 mm), A4 3 × 7 (70 × 42,3 mm), A4 2 × 7 (99,1 × 38,1 mm, wie Avery L7163), US Letter 3 × 10 (2,625 × 1 Zoll, wie Avery 5160) oder **Eigene Größe …** mit Papier, Spalten, Zeilen, Etikettengröße, Rändern und Abständen in Millimetern.
+- **Text:** neben oder unter dem Code der Titel und bis zu zwei Eigenschaften, etwa eine Kistennummer oder ein Lagerort.
+- **Angefangener Bogen:** **Erste Plätze frei lassen** lässt die schon benutzten Etiketten aus.
+- **Drucken:** Die Vorschau zeigt den ersten Bogen; **Drucken** öffnet den Druckdialog des Browsers. Wähle dort „Tatsächliche Größe“ (100 %) und schalte Kopf- und Fußzeilen aus, damit die Etiketten genau sitzen. Höchstens 1000 Etiketten auf einmal; Flowplan merkt sich die Auswahl je Datenbank in diesem Browser.

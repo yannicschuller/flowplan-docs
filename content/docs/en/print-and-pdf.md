@@ -51,3 +51,14 @@ A **page break** (`/page break`, also `/pagebreak`) sets where a new page starts
 - **Word (DOCX)** gets a real page break, **e-books** a break where the reader honours it.
 - **Markdown export** writes `<div style="page-break-after: always"></div>`, which Pandoc, Typora and most Markdown-to-PDF tools understand. The **Markdown import** turns it back into a page break, as well as `\pagebreak` or `\newpage` on a line of their own. Pasted HTML from Word or Google Docs with a page break also becomes the block.
 - There is no page break block in [encrypted spaces](/encrypted-spaces).
+
+## QR codes and labels {since=0.11.4}
+
+**Page actions → QR code** shows the page's link as a QR code; for a record, **⋯ → QR code** at the top of the record (or right-click the record). Scanned, the code opens the page or record for everyone who is signed in and may see it – for example as a label on a box of inventory. As with [forms](/forms), you can download the code as SVG or PNG, or **Print** it on a sheet with the title and link.
+
+**Print QR labels**: in a database under **Export → Print QR labels …**, in the selection bar, or by right-clicking several selected records. It prints the selected records, otherwise those of the current view – with its filters, in its order.
+
+- **Sheet:** A4 3 × 8 (70 × 37 mm), A4 3 × 7 (70 × 42.3 mm), A4 2 × 7 (99.1 × 38.1 mm, like Avery L7163), US Letter 3 × 10 (2.625 × 1 in, like Avery 5160) or **Custom size …** with paper, columns, rows, label size, margins and gaps in millimetres.
+- **Text:** beside or below the code, the title and up to two properties, such as a box number or a location.
+- **Partly used sheet:** **Leave the first places empty** skips the labels already used.
+- **Print:** the preview shows the first sheet; **Print** opens the browser's print dialog. Choose "Actual size" (100 %) there and turn headers and footers off so the labels line up exactly. At most 1000 labels at once; Flowplan remembers your choice per database in this browser.
