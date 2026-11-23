@@ -62,6 +62,8 @@ The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kb
 | --- | --- |
 | <kbd>/</kbd> | Block menu |
 | <kbd>@</kbd> | Mention a page or person (arrow keys pick, <kbd>Enter</kbd> inserts, <kbd>Esc</kbd> closes) |
+| `$x^2$` / `$$` + Space | Inline [formula](/math-and-code#formulas-diagrams-and-code) / formula block {since=0.11.3} |
+| ++⌘ Enter++ (in the formula dialog) | Insert or save the formula; for inline formulas <kbd>Enter</kbd> too {since=0.11.3} |
 | <kbd>:</kbd> and two letters | [Suggest an emoji](/documents#emojis-with) (<kbd>←</kbd> <kbd>→</kbd> choose, <kbd>Enter</kbd> or <kbd>Tab</kbd> inserts, <kbd>Esc</kbd> closes; `:smile:` inserts right away) {since=0.11.0} |
 | <kbd>⌘</kbd> <kbd>B</kbd> / <kbd>I</kbd> / <kbd>U</kbd> | Bold, italic, underline |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> | Strikethrough |
