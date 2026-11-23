@@ -12,7 +12,7 @@ For papers and theses: footnotes, citing sources in the text and a bibliography 
 
 - The notes appear numbered under **Footnotes** at the end of the page. Numbers follow the order in the text and update by themselves when you move, copy or delete markers.
 - Clicking a number jumps to its note, ↩ jumps back. Double-click the number (or press ++⌘ ⌥ F++ with a footnote selected) to edit or remove it.
-- Notes are plain text; web addresses in them become links.
+- Notes are text with a little formatting: `**bold**`, `*italic*`, `` `code` `` and links as `[text](https://…)`; web addresses become links by themselves. A hint under the field shows the syntax. The list at the end of the page, shared pages, print/PDF and the exports (Markdown, Word, EPUB, Confluence, Jira) show the formatting; the tooltip over the number shows the text without the marks. HTML never runs. {since=0.11.3}
 - Footnotes also show on shared and published pages, in print and in the HTML export, and search finds their text.
 - In the Markdown export they become `[^1]` with `[^1]: text` at the end; the import reads them back – including Obsidian's short form `^[text]`.
 

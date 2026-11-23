@@ -27,11 +27,11 @@ Alles in Flowplan ist eine Seite in einem Baum. Bereiche gliedern den Baum, Arbe
 
 ## Seitenaktionen
 
-Das Menü `…` oben rechts auf jeder Seite bietet:
+Das Menü `…` oben rechts auf jeder Seite ist in Abschnitte gegliedert – **Darstellung** (ein Untermenü, auf dem Handy ein eigener Abschnitt), **Bearbeiten**, **Teilen & Export**, **Ansicht** und **Verwaltung** – und bietet: {since=0.11.3}
 
 | Aktion | Wirkung |
 | --- | --- |
-| Icon ändern, Cover ändern | Emoji, Symbol oder eigenes Bild; Titelbild hochladen oder ein vorhandenes Bild wählen und die Position einstellen. |
+| Icon ändern, Cover ändern | Emoji, Symbol oder eigenes Bild; Titelbild hochladen, ein vorhandenes Bild wählen oder mit **Zeichnen** selbst eines zeichnen (Stifte, Farben, Radierer; ein gezeichnetes Cover öffnet **Zeichnung bearbeiten** wieder {since=0.11.3}) und die Position einstellen. |
 | Volle Breite | Inhalt nutzt die ganze Fensterbreite – für alle, die die Seite öffnen. Wer unter **Einstellungen → Darstellung & Sprache → Editor** [Seiten in voller Breite anzeigen](/offline-and-apps#hell-und-dunkel) eingeschaltet hat, sieht jede Seite so; dann steht hier „Deine Einstellung“. {since=0.9.6} |
 | Schrift wechseln | Standard, Serif oder Mono für diese Seite. |
 | Seite sperren | Schützt vor versehentlichen Änderungen, bis jemand entsperrt. |

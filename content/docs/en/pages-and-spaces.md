@@ -27,11 +27,11 @@ Everything in Flowplan is a page in a tree. Spaces structure the tree, workspace
 
 ## Page actions
 
-The `…` menu at the top right of every page offers:
+The `…` menu at the top right of every page is grouped in sections – **Appearance** (a submenu; on a phone a section of its own), **Edit**, **Share & export**, **View** and **Manage** – and offers: {since=0.11.3}
 
 | Action | Effect |
 | --- | --- |
-| Change icon, change cover | Emoji, symbol or your own image; upload a cover image or choose an existing one and set its position. |
+| Change icon, change cover | Emoji, symbol or your own image; upload a cover image, choose an existing one or **Draw** your own (pens, colours, eraser; **Edit drawing** opens a drawn cover again {since=0.11.3}) and set its position. |
 | Full width | The content uses the whole window width – for everyone who opens the page. If you turned on [Show pages at full width](/offline-and-apps#light-and-dark) under **Settings → Appearance & language → Editor**, you see every page this way; the entry then says "Your setting". {since=0.9.6} |
 | Change font | Default, serif or mono for this page. |
 | Lock page | Protects against accidental changes until someone unlocks it. |

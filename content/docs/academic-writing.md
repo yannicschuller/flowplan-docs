@@ -12,7 +12,7 @@ Für Haus-, Abschluss- und Forschungsarbeiten: Fußnoten, Quellen im Text zitier
 
 - Die Anmerkungen stehen nummeriert unter **Fußnoten** am Ende der Seite. Die Nummern folgen der Reihenfolge im Text und passen sich beim Verschieben, Kopieren und Löschen von selbst an.
 - Ein Klick auf die Nummer springt zur Anmerkung, ↩ wieder zurück. Doppelklick auf die Nummer (oder ++⌘ ⌥ F++ bei ausgewählter Fußnote) bearbeitet oder entfernt sie.
-- Anmerkungen sind reiner Text; Webadressen darin werden zu Links.
+- Anmerkungen sind Text mit wenig Formatierung: `**fett**`, `*kursiv*`, `` `Code` `` und Links als `[Text](https://…)`; Webadressen werden von selbst zu Links. Ein Hinweis unter dem Feld nennt die Schreibweise. Die Liste am Seitenende, geteilte Seiten, Druck/PDF und die Exporte (Markdown, Word, EPUB, Confluence, Jira) zeigen die Formatierung; der Tooltip über der Nummer zeigt den Text ohne Zeichen. HTML wird nie ausgeführt. {since=0.11.3}
 - Fußnoten erscheinen auch auf geteilten und veröffentlichten Seiten, beim Drucken und im HTML-Export, und die Suche findet ihren Text.
 - Im Markdown-Export werden sie zu `[^1]` mit `[^1]: Text` am Ende; der Import liest das wieder ein – auch Obsidians Kurzform `^[Text]`.
 
