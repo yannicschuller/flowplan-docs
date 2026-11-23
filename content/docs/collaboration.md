@@ -67,15 +67,25 @@ Unter einem Dokument und im Inhalt eines Datenbankeintrags öffnet **Textkomment
 
 ### Am Rand neben dem Text {since=0.11.0}
 
-Auf breiten Bildschirmen – mit offener Seitenleiste etwa ab 1280 Pixel Fensterbreite – stehen offene Textkommentare als Karten am rechten Rand, jeweils auf der Höhe ihrer Textstelle, auf Seiten wie auf [als Seite geöffneten Einträgen](/databases#eintraege). Eine Karte zeigt den Anfang des ersten Beitrags, wer ihn geschrieben hat, und wie viele Antworten es gibt. Liegen Textstellen dicht beieinander, rücken die Karten untereinander, in der Reihenfolge im Text.
+Ist neben dem Text genug Platz – mit offener Seitenleiste etwa ab 1180 Pixel Fensterbreite –, stehen offene Textkommentare als Karten am rechten Rand, jeweils auf der Höhe ihrer Textstelle, auf Seiten wie auf [als Seite geöffneten Einträgen](/databases#eintraege). Eine Karte zeigt den Anfang des ersten Beitrags, wer ihn geschrieben hat, und wie viele Antworten es gibt. Liegen Textstellen dicht beieinander, rücken die Karten untereinander, in der Reihenfolge im Text. Kommentare zu Bildern und anderen Blöcken stehen neben ihrem Block.
 
 - Ein Klick auf die Markierung oder die Karte öffnet den Thread direkt in der Karte, mit Antworten, Reaktionen, Erwähnungen und **Thread erledigen**; die Textstelle wird kräftiger markiert, die Seite springt nicht weg. ++Esc++ oder ein Klick in den Text klappt die Karte wieder zu.
 - Ein neuer Kommentar (++⌘/Strg ⌥/Alt M++ oder **Kommentieren** im Textmenü) öffnet sein Eingabefeld gleich am Rand neben der Textstelle.
 - Erledigte Threads verlassen den Rand. **Textkommentare (n)** unter dem Dokument bleibt die Übersicht über alle Threads mit dem Filter **Anzeigen**.
 - Solange Karten am Rand stehen, klappt das [Inhaltsverzeichnis](/reading-and-presenting#inhaltsverzeichnis) zu seiner kleinen Schaltfläche am Textrand zusammen; ein Klick darauf öffnet es als Liste.
-- Ist neben dem Text zu wenig Platz – ein schmales Fenster, die Seitenkommentare sind offen – und auf dem Telefon stehen die Threads im Kommentarfeld unter dem Dokument. Ein Klick auf eine Markierung öffnet den Thread dort und scrollt zu ihm.
 
-Unter **Einstellungen → Darstellung & Sprache → Editor** stellst du **Textkommentare** auf **Am Rand** (Standard) oder **Unter dem Dokument**. Die Einstellung gilt für dein Konto auf allen Geräten.
+Unter **Einstellungen → Darstellung & Sprache → Editor** stellst du **Textkommentare** auf **Am Rand** (Standard) oder **Unter dem Dokument**. Mit **Unter dem Dokument** öffnet ein Klick auf eine Markierung den Thread im Kommentarfeld unter dem Dokument. Die Einstellung gilt für dein Konto auf allen Geräten.
+
+### Neben der Textstelle, wenn der Rand fehlt {since=0.11.4}
+
+Ist neben dem Text zu wenig Platz – ein schmales Fenster, ein Eintrag im Dialog, die Seitenkommentare sind offen –, öffnen ein Klick auf die Markierung und ein neuer Kommentar den Thread als Fenster direkt neben oder unter der Textstelle, mit allen Antworten, dem Antwortfeld, Reaktionen und **Thread erledigen**. Auf dem Telefon kommt der Thread als Blatt von unten: Die Textstelle bleibt darüber sichtbar, das Blatt sitzt beim Schreiben auf der Tastatur, und Wischen nach unten schließt es.
+
+### Farbe, Anzahl und Vorschau {since=0.11.4}
+
+- **Farbe:** Wer einen Textkommentar beginnt, wählt mit dem Farbpunkt neben **Abbrechen** die Farbe der Markierung – Gelb (Standard) oder eine der anderen Hintergrundfarben des Textmenüs. Ändern können sie später die Verfasserin oder der Verfasser und alle, die die Seite bearbeiten dürfen (Farbpunkt im Thread); alle sehen dieselbe Farbe.
+- **Anzahl:** Eine kleine hochgestellte Zahl hinter der markierten Textstelle zeigt, wie viele Beiträge der Thread hat (bei Bildern und Blöcken an deren Ecke). Sie gehört nicht zum Text – beim Kopieren und in Exporten fehlt sie.
+- **Vorschau:** Bleibt der Mauszeiger kurz auf einer Markierung, zeigt eine kleine Karte, wer kommentiert hat, den Anfang des Kommentars, die Zahl der Antworten und ob der Thread erledigt ist. Ein Klick darauf öffnet den Thread; ++Esc++ schließt die Vorschau.
+- **Antworten im Kommentarfeld rechts:** Unter jedem offenen Textkommentar in den Seitenkommentaren steht ein Antwortfeld; **n Antworten zeigen** blendet die bisherigen Antworten ein.
 
 Textkommentare gibt es in Dokumenten und in den Inhalten von Datenbankeinträgen, auch in Exporten und Inhaltsarchiven.
 

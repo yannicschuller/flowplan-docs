@@ -67,15 +67,25 @@ Below a document and in a database record's content, **Text comments (n)** opens
 
 ### In the margin beside the text {since=0.11.0}
 
-On wide screens – with the sidebar open from a window about 1280 pixels wide – open text comments appear as cards in the right margin, each at the height of its passage, on pages and on [records opened as a page](/databases#records). A card shows the start of the first post, who wrote it and how many replies there are. When passages are close together, the cards stack below each other in the order of the text.
+When there is enough room beside the text – with the sidebar open from a window about 1180 pixels wide – open text comments appear as cards in the right margin, each at the height of its passage, on pages and on [records opened as a page](/databases#records). A card shows the start of the first post, who wrote it and how many replies there are. When passages are close together, the cards stack below each other in the order of the text. Comments on images and other blocks sit beside their block.
 
 - A click on the highlight or the card opens the thread right in the card, with replies, reactions, mentions and **Resolve thread**; the passage is highlighted more strongly and the page does not jump away. ++Esc++ or a click in the text collapses the card again.
 - A new comment (++⌘/Ctrl ⌥/Alt M++ or **Comment** in the text menu) opens its field right in the margin beside the passage.
 - Resolved threads leave the margin. **Text comments (n)** below the document stays the overview of all threads, with the **Show** filter.
 - While cards are in the margin, the [table of contents](/reading-and-presenting#table-of-contents) folds into its small button at the edge of the text; a click on it opens it as a list.
-- When there is too little room beside the text – a narrow window, the page comments are open – and on phones, the threads are in the comment panel below the document. A click on a highlight opens the thread there and scrolls to it.
 
-Under **Settings → Appearance & language → Editor**, set **Text comments** to **In the margin** (the default) or **Below the document**. The setting applies to your account on all devices.
+Under **Settings → Appearance & language → Editor**, set **Text comments** to **In the margin** (the default) or **Below the document**. With **Below the document**, a click on a highlight opens the thread in the comment panel below the document. The setting applies to your account on all devices.
+
+### Beside the passage when there is no margin {since=0.11.4}
+
+When there is too little room beside the text – a narrow window, a record in a dialog, the page comments are open – a click on a highlight or a new comment opens the thread as a window right beside or below the passage, with all replies, the reply field, reactions and **Resolve thread**. On phones the thread comes up as a sheet from the bottom: the passage stays visible above it, the sheet sits on the keyboard while you type, and swiping down closes it.
+
+### Colour, count and preview {since=0.11.4}
+
+- **Colour:** Whoever starts a text comment picks the highlight colour with the colour dot next to **Cancel** – yellow (the default) or one of the other background colours of the text menu. The author and everyone who may edit the page can change it later (the colour dot in the thread); everyone sees the same colour.
+- **Count:** A small raised number after the highlighted passage shows how many posts the thread has (at the corner of images and blocks). It is not part of the text – copying and exports leave it out.
+- **Preview:** When the mouse pointer rests on a highlight for a moment, a small card shows who commented, the start of the comment, the number of replies and whether the thread is resolved. A click on it opens the thread; ++Esc++ closes the preview.
+- **Replies in the comment panel on the right:** Under every open text comment in the page comments there is a reply field; **Show n replies** shows the replies so far.
 
 Text comments exist in documents and in the contents of database records, also in exports and content archives.
 
