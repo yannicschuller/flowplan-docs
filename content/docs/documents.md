@@ -44,6 +44,7 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 | Synchronisierter Block | `/sync` | Inhalt, der auf mehreren Seiten gleich bleibt |
 | Synchronisierten Block einfügen | `/sync` | Einen bestehenden synchronisierten Block zeigen |
 | Trennlinie | `/hr` | Horizontale Linie |
+| Unterseite {since=0.11.3} | `/seite`, `/unterseite`, `/page` | Legt eine leere Unterseite „Ohne Titel“ an, fügt an der Cursorposition einen Link darauf ein und öffnet sie mit markiertem Titel – du tippst einfach los. In einem Datenbankeintrag landet sie unter dem Eintrag. Der Link-Text folgt späteren Umbenennungen; Rückgängig entfernt nur den Link, die Seite bleibt. Offline wird sie auf dem Gerät angelegt (nicht unter Einträgen und nicht in verschlüsselten Bereichen) |
 | Seitenumbruch | `/seitenumbruch`, `/pagebreak` | Beim Drucken, im PDF und in Word geht es auf einer neuen Seite weiter ([Seitenumbruch](/print-and-pdf#seitenumbruch)) |
 | KI | `/ki`, `/ai` | Text mit der [KI](/ai-writing#schreibassistent) schreiben lassen (wenn eingeschaltet) |
 | Fußnote | `/fußnote`, `/footnote` | Nummerierte Anmerkung am Seitenende ([Fußnoten](/academic-writing#fussnoten)) |

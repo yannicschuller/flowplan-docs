@@ -132,7 +132,10 @@ In the [focus mode](/flashcards#studying-in-focus-mode) of a study session. A sh
 
 | Shortcut | Effect |
 | --- | --- |
-| ++⌥ W++ (desktop app also ++⌘ W++), middle mouse button | Close the tab |
+| ++⌥ W++ (desktop app also ++⌘ W++), middle mouse button | Close the tab (unless pinned) |
+| ++⌥ T++ (desktop app also ++⌘ T++) | New tab: find a page {since=0.11.3} |
+| <kbd>Enter</kbd> / <kbd>F2</kbd> / ++⌥ ⇧ ←++ ++⌥ ⇧ →++ (group focused) | Collapse/expand / rename / move a tab group {since=0.11.3} |
+| ++⇧ F10++ | Menu of the focused tab or group {since=0.11.3} |
 | ++⌘ ⌥ PageDown++ / ++⌘ ⌥ PageUp++ (desktop app also ++⌃ Tab++ / ++⌃ ⇧ Tab++) | Next / previous tab |
 | ++⌘ ⌥ ⇧ PageDown++ / ++⌘ ⌥ ⇧ PageUp++ (desktop app also ++⌃ ⇧ PageDown++ / ++⌃ ⇧ PageUp++) | Move the tab right / left |
 | ++⌘ 1++ … ++⌘ 9++ (desktop app only) | Tab 1–8 / last tab |

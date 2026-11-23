@@ -132,7 +132,10 @@ Im [Fokusmodus](/flashcards#lernen-im-fokusmodus) einer Lernsitzung. Eine eigene
 
 | Kürzel | Wirkung |
 | --- | --- |
-| ++⌥ W++ (Desktop-App auch ++⌘ W++), mittlere Maustaste | Tab schließen |
+| ++⌥ W++ (Desktop-App auch ++⌘ W++), mittlere Maustaste | Tab schließen (außer angeheftete) |
+| ++⌥ T++ (Desktop-App auch ++⌘ T++) | Neuer Tab: Seite suchen {since=0.11.3} |
+| <kbd>Enter</kbd> / <kbd>F2</kbd> / ++⌥ ⇧ ←++ ++⌥ ⇧ →++ (Gruppe fokussiert) | Tab-Gruppe ein-/ausklappen / umbenennen / verschieben {since=0.11.3} |
+| ++⇧ F10++ | Menü des fokussierten Tabs oder der Gruppe {since=0.11.3} |
 | ++⌘ ⌥ Bild↓++ / ++⌘ ⌥ Bild↑++ (Desktop-App auch ++⌃ Tab++ / ++⌃ ⇧ Tab++) | Nächster / vorheriger Tab |
 | ++⌘ ⌥ ⇧ Bild↓++ / ++⌘ ⌥ ⇧ Bild↑++ (Desktop-App auch ++⌃ ⇧ Bild↓++ / ++⌃ ⇧ Bild↑++) | Tab nach rechts / links verschieben |
 | ++⌘ 1++ … ++⌘ 9++ (nur Desktop-App) | Tab 1–8 / letzter Tab |

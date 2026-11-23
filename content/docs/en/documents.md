@@ -44,6 +44,7 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 | Synced block | `/sync` | Content that stays the same on several pages |
 | Insert synced block | `/sync` | Show an existing synced block |
 | Divider | `/hr` | A horizontal line |
+| Sub-page {since=0.11.3} | `/page`, `/newpage`, `/subpage` | Creates an empty sub-page "Untitled", inserts a link to it at the cursor and opens it with the title selected – just start typing. In a database record it goes below the record. The link text follows later renames; undo removes only the link, the page stays. Offline it is created on the device (not below records and not in encrypted spaces) |
 | Page break | `/page break`, `/pagebreak` | Continue on a new page in print, PDF and Word ([Page break](/print-and-pdf#page-break)) |
 | AI | `/ai`, `/ki` | Let the [AI](/ai-writing#writing-assistant) write (when switched on) |
 | Footnote | `/footnote`, `/fußnote` | Numbered note at the end of the page ([Footnotes](/academic-writing#footnotes)) |
