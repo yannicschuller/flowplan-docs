@@ -145,23 +145,36 @@ Solange er wartet, zeigt **Administration → Überwachung** auf beiden Containe
 
 - `APP_URL` muss exakt der Adresse entsprechen, unter der Flowplan im Browser erscheint.
 - Endet TLS am vorderen Proxy (etwa Pangolin) und reicht er an Traefik weiter, dort **TLS zum Ziel ausschalten** und einen **eigenen Host-Header** mit der Flowplan-Domain setzen – sonst findet Traefik keine Route und antwortet mit 404.
-- Großes Hochladen: Inhaltsarchive können bis zu 2 GB groß sein, [AFFiNE-Arbeitsbereichsdateien](/migrate-affine) so groß wie die Import-Grenze (größte Datei beim Hochladen, mindestens 100 MB, oder `FLOWPLAN_IMPORT_MAX_MB`). Traefik begrenzt die Anfragegröße von sich aus nicht – nur eine eigene `buffering`-Middleware mit `maxRequestBodyBytes`; die muss dann mindestens so groß sein. nginx braucht `client_max_body_size` (das Beispiel unten erlaubt 2 GB, Standard ist nur 1 MB), Caddy begrenzt nur mit `request_body { max_size … }`. Cloudflare (Proxy an) lässt im Free- und Pro-Tarif höchstens 100 MB je Anfrage durch – größere AFFiNE-Dateien dann über einen Weg ohne Cloudflare-Proxy importieren. Flowplan nimmt große Importe als Datenstrom an und schreibt sie auf die Platte; die Anfrage muss ihre Größe (`Content-Length`) nennen, was Browser immer tun.
+- Großes Hochladen: Dateien bis 10 GB (siehe [Große Dateien hochladen](#grosse-dateien-hochladen)), Inhaltsarchive bis zu 2 GB, [AFFiNE-Arbeitsbereichsdateien](/migrate-affine) so groß wie die Import-Grenze (größte Datei beim Hochladen, mindestens 100 MB, höchstens 1024 MB, oder `FLOWPLAN_IMPORT_MAX_MB`). Traefik begrenzt die Anfragegröße von sich aus nicht – nur eine eigene `buffering`-Middleware mit `maxRequestBodyBytes`; die muss dann mindestens so groß sein. nginx braucht `client_max_body_size` (das Beispiel unten erlaubt 10 GB, Standard ist nur 1 MB), Caddy begrenzt nur mit `request_body { max_size … }`. Cloudflare (Proxy an) lässt im Free- und Pro-Tarif höchstens 100 MB je Anfrage durch – größere AFFiNE-Dateien dann über einen Weg ohne Cloudflare-Proxy importieren. Flowplan nimmt große Importe als Datenstrom an und schreibt sie auf die Platte; die Anfrage muss ihre Größe (`Content-Length`) nennen, was Browser immer tun.
 - Zeitlimits: Export und Import großer Archive können Minuten dauern; Proxy-Timeouts ggf. erhöhen.
 - Server-Sent Events (Live-Bearbeitung in Dokumenten, Live-Cursor auf Whiteboards, Aktualisierung von Seitenleiste und Posteingang über `/api/live`) dürfen nicht gepuffert werden; nginx: `proxy_buffering off` (siehe Beispiel unten). Flowplan sendet dafür zusätzlich `X-Accel-Buffering: no`.
 - Client-Adresse: Der Proxy muss `X-Forwarded-For` setzen (Traefik und Caddy tun das von selbst, nginx braucht die Zeile aus dem Beispiel). Nur dann begrenzt Flowplan Anmeldeversuche, Demo-Starts und anonyme Formularantworten je Adresse. Fehlt der Header, gelten nur die Limits je Konto und je Link, und das Protokoll zeigt beim ersten Aufruf einen Hinweis. `FLOWPLAN_TRUSTED_PROXIES` nennt die Zahl der Proxys ([Konfiguration](/configuration)).
+
+### Große Dateien hochladen {since=0.11.3}
+
+Die **größte Datei beim Hochladen** ([Grenzen & Aufbewahrung](/administration#grenzen-aufbewahrung)) darf bis 10240 MB (10 GB) groß sein. Flowplan schreibt eine hochgeladene Datei beim Empfang direkt auf die Platte und lädt sie in Teilen in den [S3-Bucket](/storage-and-backups); der Arbeitsspeicher wächst dabei nicht mit. Damit eine so große Datei ankommt, muss jede Station davor mitspielen:
+
+- **Größe:** Der Proxy muss Anfragen dieser Größe durchlassen – nginx `client_max_body_size 10g;`, Caddy ohne `request_body`-Grenze, Traefik ohne `buffering`-Middleware (oder mit `maxRequestBodyBytes` mindestens so groß). Im [Helm-Chart](/kubernetes) `ingress.bodySize` erhöhen (Standard 110 MB), z. B. auf `10g`.
+- **Zeit:** Ein Upload von 10 GB dauert bei 50 Mbit/s fast eine halbe Stunde. Je nach Version bricht Traefik Anfragen ab, die nicht in 60 Sekunden vollständig ankommen (`readTimeout`) – auch in **Coolify**. Bricht ein großer Upload nach etwa einer Minute ab, liegt es daran. Dort unter **Servers → Proxy** in der Konfiguration die Zeilen `--entrypoints.http.transport.respondingTimeouts.readTimeout=0` und `--entrypoints.https.transport.respondingTimeouts.readTimeout=0` (oder z. B. `=6h`) ergänzen und den Proxy neu starten. nginx braucht `proxy_request_buffering off;` (sonst schreibt nginx die ganze Datei erst selbst auf die Platte) und ein großzügiges `client_body_timeout`; Caddy begrenzt die Dauer nicht. Im Container selbst gilt `FLOWPLAN_REQUEST_TIMEOUT` (Standard 6 Stunden, [Konfiguration](/configuration)).
+- **Cloudflare** (Proxy an) lässt im Free- und Pro-Tarif höchstens 100 MB je Anfrage durch, Business 200 MB, Enterprise 500 MB. Größere Dateien gehen dort nur über einen Weg ohne Cloudflare-Proxy.
+- **Platz:** Während des Hochladens liegt die Datei in `uploads/.incoming` im Datenverzeichnis; Reste eines abgebrochenen Uploads löscht Flowplan nach einem Tag.
+
+Was eine Datei als Ganzes im Speicher liest, behält eine eigene Grenze von 1 GB je Datei: Dateien in einem Flowplan-Archiv, Anki-Pakete, Anhänge aus den Notion- und BookStack-Importen, Bilder in Whiteboard-Importen und die [AFFiNE-Arbeitsbereichsdatei](/migrate-affine). Fotos, Sprachnotizen und PDFs aus den Apps (Teilen, Widgets, Schnellerfassung) gehen höchstens 100 MB je Anfrage.
 
 ### nginx
 
 ```nginx
 server {
   server_name flowplan.example.com;
-  client_max_body_size 2g;
+  client_max_body_size 10g;
+  client_body_timeout 300s;
   location / {
     proxy_pass http://127.0.0.1:3000;
     proxy_set_header Host $host;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header X-Forwarded-Proto $scheme;
     proxy_buffering off;
+    proxy_request_buffering off;
     proxy_read_timeout 600s;
   }
 }

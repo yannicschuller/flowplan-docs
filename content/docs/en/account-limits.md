@@ -56,7 +56,7 @@ Over SCIM: a service with a SCIM token can link an existing account with a confi
 
 Under **Limits & retention → Export / import** you set everything for the plans in one go – limits per group, AI quotas, AI models and the defaults – with one JSON file. It is the same format as the billing service's plan import: each side reads its fields and skips the other's (prices, names, descriptions, order, `_ids` …). **AI → Quotas** links here.
 
-- **Export** downloads the current settings as a file and shows them in the text field. What cannot be represented (rules for roles or single people, exempt groups, limits for other periods) is listed under `_skipped`.
+- **Export** downloads the current settings as a file and shows them in the text field. What cannot be represented (rules for roles or single people, exempt groups, limits for other periods) is listed under `_skipped`. When the quotas count in tokens, the export writes the limits as `aiTokens` and `defaultTokens`, otherwise as `aiActions` and `defaultActions`.
 - **Open file** or paste, then **Check**: the whole file is checked without saving anything. Errors show with their place in the file ("plans[1].aiAfter: the instance does not know the model “gpt-9” – allowed: …"), otherwise every change in words ("Group Flowplan Plus: storage 2,000 MB → 25,600 MB", "AI rule for Flowplan Pro: new, 5,000 actions (100.00 USD) a month, then claude-haiku-4-5").
 - **Apply** saves all changes at once after a confirmation – all or none. Each one is in the activity log. The same file again gives "No changes".
 
@@ -64,11 +64,12 @@ What is not in the file stays as it is; a missing field changes nothing, `null` 
 
 Each entry under `plans` is a [directory group](#limits-per-group) named by `group`:
 
-- `storageMb` – storage; with `"kind": "addon"` as an [add-on](#storage-as-an-add-on), otherwise as a limit (0 = unlimited). `uploadMb` – largest file (add-ons: none; 0 = not set by the group; above 1024 MB it is capped at 1024 MB with a note). `workspaces` – own workspaces.
-- `aiActions` – the group's [AI limit](/ai-quotas) in actions per period, converted into the quotas' unit: `tokensPerAction` (default 5,000 tokens) or `costPerAction` (default 0.02 in the prices' currency). `aiAfter` – "Afterwards": `"off"` (AI off), `"haiku"`, `"sonnet"`, `"opus"` (the instance's model of that family) or a model ID of the instance. Add-ons only get an AI rule with `aiActions` above 0.
+- `storageMb` – storage; with `"kind": "addon"` as an [add-on](#storage-as-an-add-on), otherwise as a limit (0 = unlimited). `uploadMb` – largest file (add-ons: none; 0 = not set by the group; above 10240 MB (10 GB) it is capped at 10240 MB with a note {since=0.11.3}). `workspaces` – own workspaces.
+- `aiTokens` – the group's [AI limit](/ai-quotas) in tokens per period, without a conversion; this is how the billing service writes it. Only when the quotas count in tokens (`"unit": "tokens"`); when they count in cost, `aiTokens` alone is an error that tells you to set the unit to `tokens` or to give the limit as cost. {since=0.11.3}
+- `aiActions` – the same limit in actions per period, as in older files, converted into the quotas' unit: `tokensPerAction` (default 5,000 tokens) or `costPerAction` (default 0.02 in the prices' currency). With both, `aiTokens` applies for tokens and `aiActions` for cost – **Check** says so. `aiAfter` – "Afterwards": `"off"` (AI off), `"haiku"`, `"sonnet"`, `"opus"` (the instance's model of that family) or a model ID of the instance. `aiAfterTokens` – how many tokens per period may go with that model afterwards ([at most … for afterwards](/ai-quotas)); `null` = unlimited, only with `"unit": "tokens"`. {since=0.11.3} Add-ons only get an AI rule with `aiTokens` or `aiActions` above 0.
 - `aiModels` – the group's [AI model](/ai-quotas): `"haiku"` or `"sonnet"` (the model of that family), `"all"` (the most capable: Opus, else Sonnet, else Haiku); or exactly one model with `aiModel`. If the instance knows none, that is an error listing the allowed models.
 
-Under `flowplan`: `defaults` (storage per person, largest file, own workspaces), `moreLimitsUrl` (the [link for more storage or AI](#storage-as-an-add-on)), `aiQuota` with `period` (`day`, `week`, `month` – the default –, `year`), `unit` (`tokens` or `cost`; another unit clears the numbers of the other rules), `defaultActions` and `defaultAfter` (the default per person) and the whole instance's ceiling: `instanceCapUsd` (cost in USD), `instanceCap` (cost in the prices' currency) or `instanceCapTokens`. `groups` lists further groups with the same fields – also a workspace group as `"workspaceGroup": { "workspace": "…", "group": "…" }`.
+Under `flowplan`: `defaults` (storage per person, largest file, own workspaces), `moreLimitsUrl` (the [link for more storage or AI](#storage-as-an-add-on)), `aiQuota` with `period` (`day`, `week`, `month` – the default –, `year`), `unit` (`tokens` or `cost`; another unit clears the numbers of the other rules), `defaultTokens` or `defaultActions` (like `aiTokens` and `aiActions`) and `defaultAfter` with `defaultAfterTokens` (the default per person) and the whole instance's ceiling: `instanceCapUsd` (cost in USD), `instanceCap` (cost in the prices' currency) or `instanceCapTokens`. `groups` lists further groups with the same fields – also a workspace group as `"workspaceGroup": { "workspace": "…", "group": "…" }`.
 
 ```json
 {
@@ -79,7 +80,7 @@ Under `flowplan`: `defaults` (storage per person, largest file, own workspaces),
       "kind": "plan",
       "storageMb": 25600,
       "uploadMb": 1024,
-      "aiActions": 1000,
+      "aiTokens": 5000000,
       "aiModels": "sonnet",
       "aiAfter": "haiku"
     },
@@ -89,9 +90,10 @@ Under `flowplan`: `defaults` (storage per person, largest file, own workspaces),
       "storageMb": 102400,
       "uploadMb": 1024,
       "workspaces": 50,
-      "aiActions": 5000,
+      "aiTokens": 25000000,
       "aiModels": "all",
-      "aiAfter": "haiku"
+      "aiAfter": "haiku",
+      "aiAfterTokens": 20000000
     },
     {
       "group": "Flowplan +50 GB",
@@ -103,11 +105,10 @@ Under `flowplan`: `defaults` (storage per person, largest file, own workspaces),
     "defaults": { "storageMb": 500, "uploadMb": 10 },
     "aiQuota": {
       "period": "month",
-      "unit": "cost",
-      "costPerAction": 0.02,
-      "defaultActions": 30,
+      "unit": "tokens",
+      "defaultTokens": 150000,
       "defaultAfter": "off",
-      "instanceCapUsd": 50
+      "instanceCapTokens": 1000000000
     },
     "moreLimitsUrl": "https://billing.example.org/preise",
     "removeMissing": false,

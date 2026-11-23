@@ -86,7 +86,7 @@ echo "https://flowplan.example.org/register?setup=$(kubectl -n flowplan get secr
 ### Was das Chart einrichtet
 
 - **Prüfungen:** ein Pod auf `/api/health`; mehrere Pods mit Start- und Lebendprüfung auf `/api/health/live` und Bereitschaft auf `/api/health/ready` – bereit erst, wenn Schema und Datenschritte durch sind und Datenbank und Bucket antworten. Redis zählt standardmäßig nicht mit (`cluster.readyRequire: database,objectStorage`): fällt Redis aus, bleiben alle Pods in der Verteilung und das Bearbeiten geht weiter.
-- **Ingress:** für ingress-nginx keine Pufferung, Lese- und Sendezeitlimits von einer Stunde für die Live-Verbindungen und Uploads bis `ingress.bodySize` (110 MB). Andere Controller: siehe README des Charts.
+- **Ingress:** für ingress-nginx keine Pufferung, Lese- und Sendezeitlimits von einer Stunde für die Live-Verbindungen und Uploads bis `ingress.bodySize` (110 MB; für [große Dateien](/coolify-and-proxy#grosse-dateien-hochladen) bis 10 GB z. B. `10g`). Andere Controller: siehe README des Charts.
 - **Sicherheit:** der Pod läuft als Nutzer 1000 ohne Rechte auf einem schreibgeschützten Root-Dateisystem; `/tmp`, `/app/.next/cache` und `/home/node` sind `emptyDir`s.
 - **Ressourcen:** pro Pod 1 CPU und 2 GiB angefordert, höchstens 4 GiB (aus der [Dimensionierung](/sizing)); kein CPU-Limit, weil Drosselung das gemeinsame Bearbeiten bremst.
 - **Mehrere Pods:** rollierende Updates ohne fehlenden Pod, ein PodDisruptionBudget, Verteilung über die Knoten, ein Zwischenspeicher pro Pod (`cluster.cacheSizeLimit`), der sich unter 70 % seiner Grenze hält.

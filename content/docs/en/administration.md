@@ -42,7 +42,7 @@ Details: [Storage and backups](/storage-and-backups).
 | Storage per workspace | For workspaces without a quota of their own. |
 | Storage per person | For people without a limit of their own; everything they upload or copy. |
 | Own workspaces per person | How many workspaces a person may own. |
-| Largest upload | The limit per file in MB. Also applies to [importing an AFFiNE workspace file](/migrate-affine) (at least 100 MB; `FLOWPLAN_IMPORT_MAX_MB` takes precedence). |
+| Largest upload | Per file, in MB, at most 10 GB ([large files](/en/coolify-and-proxy#uploading-large-files)) {since=0.11.3}. Also for [importing an AFFiNE workspace file](/migrate-affine) (100–1024 MB; `FLOWPLAN_IMPORT_MAX_MB` wins). |
 | Keep versions | Days after which automatic versions are deleted. |
 | Empty the trash after | Days after which deleted pages, spaces, database records and templates are deleted permanently with their files (1–3650, default 30, 0 = never automatically). See [Trash](/pages-and-spaces#trash). |
 

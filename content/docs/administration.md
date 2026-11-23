@@ -42,7 +42,7 @@ Details: [Speicher und Sicherungen](/storage-and-backups).
 | Speicher je Arbeitsbereich | Für Arbeitsbereiche ohne eigenes Kontingent. |
 | Speicher je Person | Für Personen ohne eigene Grenze; alles, was sie hochladen oder kopieren. |
 | Eigene Arbeitsbereiche je Person | Wie viele Arbeitsbereiche eine Person besitzen darf. |
-| Größte Datei beim Hochladen | Grenze je Datei in MB. Gilt auch für den [Import einer AFFiNE-Arbeitsbereichsdatei](/migrate-affine) (mindestens 100 MB; `FLOWPLAN_IMPORT_MAX_MB` hat Vorrang). |
+| Größte Datei beim Hochladen | Grenze je Datei in MB, höchstens 10 GB ([große Dateien](/coolify-and-proxy#grosse-dateien-hochladen)) {since=0.11.3}. Gilt auch für den [Import einer AFFiNE-Arbeitsbereichsdatei](/migrate-affine) (100–1024 MB; `FLOWPLAN_IMPORT_MAX_MB` hat Vorrang). |
 | Versionen aufbewahren | Tage, nach denen automatische Versionen gelöscht werden. |
 | Papierkorb leeren nach | Tage, nach denen gelöschte Seiten, Bereiche, Datenbankeinträge und Vorlagen samt Dateien endgültig gelöscht werden (1–3650, Standard 30, 0 = nie automatisch). Siehe [Papierkorb](/pages-and-spaces#papierkorb). |
 

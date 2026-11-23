@@ -86,7 +86,7 @@ Open the link and create the first account – it administers the instance. Keep
 ### What the chart sets up
 
 - **Probes:** one pod on `/api/health`; several pods with startup and liveness on `/api/health/live` and readiness on `/api/health/ready` – ready only once the schema and the data steps are done and the database and the bucket answer. Redis does not count by default (`cluster.readyRequire: database,objectStorage`): if Redis fails, every pod stays in the rotation and editing goes on.
-- **Ingress:** for ingress-nginx, no buffering, read and send timeouts of an hour for the live connections, and uploads up to `ingress.bodySize` (110 MB). Other controllers: see the chart's README.
+- **Ingress:** for ingress-nginx, no buffering, read and send timeouts of an hour for the live connections, and uploads up to `ingress.bodySize` (110 MB; for [large files](/en/coolify-and-proxy#uploading-large-files) of up to 10 GB e.g. `10g`). Other controllers: see the chart's README.
 - **Security:** the pod runs as user 1000 without privileges on a read-only root file system; `/tmp`, `/app/.next/cache` and `/home/node` are `emptyDir`s.
 - **Resources:** per pod 1 CPU and 2 GiB requested, 4 GiB at most (from [Sizing](/en/sizing)); no CPU limit, as throttling slows live editing.
 - **Several pods:** rolling updates without an unavailable pod, a PodDisruptionBudget, pods spread over nodes, a cache per pod (`cluster.cacheSizeLimit`) that keeps itself below 70 % of its limit.

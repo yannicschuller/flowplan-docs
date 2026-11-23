@@ -56,7 +56,7 @@ Alte Links auf **Konto & Sicherheit → Deine Grenzen** und **KI → KI-Kontinge
 
 Unter **Grenzen & Aufbewahrung → Export / Import** stellst du alles für die Tarife auf einmal ein – Grenzen pro Gruppe, KI-Kontingente, KI-Modelle und die Standards – mit einer JSON-Datei. Es ist dasselbe Format wie der Tarif-Import des Abrechnungsdienstes: Jede Seite liest ihre Felder und übergeht die der anderen (Preise, Namen, Beschreibungen, Reihenfolge, `_ids` …). Unter **KI → Kontingente** führt ein Link hierher.
 
-- **Exportieren** lädt die aktuellen Einstellungen als Datei herunter und zeigt sie im Textfeld. Was sich nicht darstellen lässt (Regeln für Rollen oder einzelne Personen, ausgenommene Gruppen, Grenzen für weitere Zeiträume), steht unter `_skipped`.
+- **Exportieren** lädt die aktuellen Einstellungen als Datei herunter und zeigt sie im Textfeld. Was sich nicht darstellen lässt (Regeln für Rollen oder einzelne Personen, ausgenommene Gruppen, Grenzen für weitere Zeiträume), steht unter `_skipped`. Zählen die Kontingente in Tokens, schreibt der Export die Grenzen als `aiTokens` und `defaultTokens`, sonst als `aiActions` und `defaultActions`.
 - **Datei öffnen** oder einfügen, dann **Prüfen**: Die Datei wird ganz geprüft, ohne etwas zu speichern. Fehler stehen mit ihrer Stelle in der Datei da („plans[1].aiAfter: das Modell „gpt-9“ kennt die Instanz nicht – erlaubt: …“), sonst jede Änderung in Worten („Gruppe Flowplan Plus: Speicher 2.000 MB → 25.600 MB“, „KI-Regel für Flowplan Pro: neu, 5.000 Aktionen (100,00 USD) im Monat, danach claude-haiku-4-5“).
 - **Übernehmen** speichert nach einer Rückfrage alle Änderungen auf einmal – alle oder keine. Jede steht im Aktivitätsprotokoll. Dieselbe Datei noch einmal ergibt „Keine Änderungen“.
 
@@ -64,11 +64,12 @@ Was nicht in der Datei steht, bleibt, wie es ist; ein fehlendes Feld ändert nic
 
 Jeder Eintrag unter `plans` ist eine [Verzeichnisgruppe](#grenzen-pro-gruppe) mit dem Namen aus `group`:
 
-- `storageMb` – Speicher; bei `"kind": "addon"` als [Add-on](#speicher-als-add-on), sonst als Grenze (0 = unbegrenzt). `uploadMb` – größte Datei (Add-ons: keine; 0 = von der Gruppe nicht festgelegt; über 1024 MB wird mit Hinweis auf 1024 MB begrenzt). `workspaces` – eigene Arbeitsbereiche.
-- `aiActions` – die [KI-Grenze](/ai-quotas) der Gruppe in Aktionen je Zeitraum, umgerechnet in die Einheit der Kontingente: `tokensPerAction` (Standard 5.000 Tokens) oder `costPerAction` (Standard 0,02 in der Währung der Preise). `aiAfter` – „Danach“: `"off"` (KI aus), `"haiku"`, `"sonnet"`, `"opus"` (das Modell dieser Familie, das die Instanz kennt) oder eine Modell-ID der Instanz. Add-ons bekommen nur mit `aiActions` über 0 eine KI-Regel.
+- `storageMb` – Speicher; bei `"kind": "addon"` als [Add-on](#speicher-als-add-on), sonst als Grenze (0 = unbegrenzt). `uploadMb` – größte Datei (Add-ons: keine; 0 = von der Gruppe nicht festgelegt; über 10240 MB (10 GB) wird mit Hinweis auf 10240 MB begrenzt {since=0.11.3}). `workspaces` – eigene Arbeitsbereiche.
+- `aiTokens` – die [KI-Grenze](/ai-quotas) der Gruppe in Tokens je Zeitraum, ohne Umrechnung; so schreibt sie der Abrechnungsdienst. Nur, wenn die Kontingente in Tokens zählen (`"unit": "tokens"`); zählen sie in Kosten, ist `aiTokens` allein ein Fehler mit dem Hinweis, die Einheit auf `tokens` zu setzen oder die Grenze als Kosten anzugeben. {since=0.11.3}
+- `aiActions` – dieselbe Grenze in Aktionen je Zeitraum, wie in älteren Dateien, umgerechnet in die Einheit der Kontingente: `tokensPerAction` (Standard 5.000 Tokens) oder `costPerAction` (Standard 0,02 in der Währung der Preise). Stehen beide da, gilt bei Tokens `aiTokens` und bei Kosten `aiActions` – **Prüfen** nennt das. `aiAfter` – „Danach“: `"off"` (KI aus), `"haiku"`, `"sonnet"`, `"opus"` (das Modell dieser Familie, das die Instanz kennt) oder eine Modell-ID der Instanz. `aiAfterTokens` – wie viele Tokens je Zeitraum danach mit diesem Modell gehen ([höchstens … für danach](/ai-quotas)); `null` = unbegrenzt, nur mit `"unit": "tokens"`. {since=0.11.3} Add-ons bekommen nur mit `aiTokens` oder `aiActions` über 0 eine KI-Regel.
 - `aiModels` – das [KI-Modell](/ai-quotas) der Gruppe: `"haiku"` oder `"sonnet"` (das Modell dieser Familie), `"all"` (das leistungsfähigste: Opus, sonst Sonnet, sonst Haiku); oder genau ein Modell mit `aiModel`. Kennt die Instanz keins, ist das ein Fehler mit der Liste der erlaubten Modelle.
 
-Unter `flowplan`: `defaults` (Speicher je Person, größte Datei, eigene Arbeitsbereiche), `moreLimitsUrl` (der [Link für mehr Speicher oder KI](#speicher-als-add-on)), `aiQuota` mit `period` (`day`, `week`, `month` – Standard –, `year`), `unit` (`tokens` oder `cost`; eine andere Einheit leert die Zahlen der übrigen Regeln), `defaultActions` und `defaultAfter` (der Standard je Person) und der Grenze der ganzen Instanz: `instanceCapUsd` (Kosten in USD), `instanceCap` (Kosten in der Währung der Preise) oder `instanceCapTokens`. Unter `groups` stehen weitere Gruppen mit denselben Feldern – auch eine Gruppe eines Arbeitsbereichs als `"workspaceGroup": { "workspace": "…", "group": "…" }`.
+Unter `flowplan`: `defaults` (Speicher je Person, größte Datei, eigene Arbeitsbereiche), `moreLimitsUrl` (der [Link für mehr Speicher oder KI](#speicher-als-add-on)), `aiQuota` mit `period` (`day`, `week`, `month` – Standard –, `year`), `unit` (`tokens` oder `cost`; eine andere Einheit leert die Zahlen der übrigen Regeln), `defaultTokens` oder `defaultActions` (wie `aiTokens` und `aiActions`) und `defaultAfter` mit `defaultAfterTokens` (der Standard je Person) und der Grenze der ganzen Instanz: `instanceCapUsd` (Kosten in USD), `instanceCap` (Kosten in der Währung der Preise) oder `instanceCapTokens`. Unter `groups` stehen weitere Gruppen mit denselben Feldern – auch eine Gruppe eines Arbeitsbereichs als `"workspaceGroup": { "workspace": "…", "group": "…" }`.
 
 ```json
 {
@@ -79,7 +80,7 @@ Unter `flowplan`: `defaults` (Speicher je Person, größte Datei, eigene Arbeits
       "kind": "plan",
       "storageMb": 25600,
       "uploadMb": 1024,
-      "aiActions": 1000,
+      "aiTokens": 5000000,
       "aiModels": "sonnet",
       "aiAfter": "haiku"
     },
@@ -89,9 +90,10 @@ Unter `flowplan`: `defaults` (Speicher je Person, größte Datei, eigene Arbeits
       "storageMb": 102400,
       "uploadMb": 1024,
       "workspaces": 50,
-      "aiActions": 5000,
+      "aiTokens": 25000000,
       "aiModels": "all",
-      "aiAfter": "haiku"
+      "aiAfter": "haiku",
+      "aiAfterTokens": 20000000
     },
     {
       "group": "Flowplan +50 GB",
@@ -103,11 +105,10 @@ Unter `flowplan`: `defaults` (Speicher je Person, größte Datei, eigene Arbeits
     "defaults": { "storageMb": 500, "uploadMb": 10 },
     "aiQuota": {
       "period": "month",
-      "unit": "cost",
-      "costPerAction": 0.02,
-      "defaultActions": 30,
+      "unit": "tokens",
+      "defaultTokens": 150000,
       "defaultAfter": "off",
-      "instanceCapUsd": 50
+      "instanceCapTokens": 1000000000
     },
     "moreLimitsUrl": "https://billing.example.org/preise",
     "removeMissing": false,
