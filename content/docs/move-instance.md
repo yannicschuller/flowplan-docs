@@ -256,3 +256,10 @@ Lieber Kubernetes? Das [Helm-Chart](/installation#kubernetes-helm) aus dem Repos
 
 :::
 
+## Einstellungen exportieren / importieren {since=0.11.4}
+
+Unter **Instanz → Einstellungen exportieren / importieren** speicherst du die Einstellungen der Instanz als eine JSON-Datei – um sie auf eine andere Instanz zu übertragen, in einer Versionsverwaltung aufzubewahren oder nach einem Fehler wiederherzustellen. Die Datei hat drei Teile: `instance` (alles unter Instanz, Anmeldung, Grenzen, Wartung, Workflow-Grenzen und die Optionen des SFTP-Sicherungsziels), `ai` (Anbieter, Standardmodell, Preise, Funktionen, Kontingente sowie Modell- und Kontingentregeln für Rollen und Verzeichnisgruppen) und `limits` (die Datei aus [Grenzen & Aufbewahrung](/administration#grenzen-aufbewahrung), unverändert).
+
+- **Keine Geheimnisse:** Passwörter und Schlüssel stehen nie darin – die Datei sagt nur, ob einer gesetzt ist (`{"set": true}`). Ein echter Wert an dieser Stelle wird abgelehnt. Fehlt der Ziel-Instanz ein Geheimnis, das die Datei als gesetzt nennt, zeigt die Prüfung es unter **Noch einzutragen**.
+- **Nicht enthalten:** Anmeldung über SSO/LDAP/SCIM, Gruppenzuordnungen, Arbeitsbereiche, Inhalte und Konten.
+- **Prüfen** zeigt jede Änderung (alt → neu) und jeden Fehler mit seiner Stelle in der Datei, ohne etwas zu speichern. **Übernehmen** speichert alles auf einmal oder gar nichts und schreibt einen Eintrag ins Aktivitätsprotokoll. Was nicht in der Datei steht, bleibt, wie es ist; eine Liste (Preise, Regeln) ersetzt die bisherige. Die KI-Einstellungen werden vor den Grenzen übernommen – Tarife dürfen also Modelle nennen, die erst dieselbe Datei in die Preisliste bringt.

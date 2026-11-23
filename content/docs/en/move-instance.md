@@ -256,3 +256,10 @@ Prefer Kubernetes? The repository's [Helm chart](/installation#kubernetes-helm) 
 
 :::
 
+## Export / import settings {since=0.11.4}
+
+Under **Instance → Export / import settings** you save the instance's settings as one JSON file – to move them to another instance, keep them in version control or restore them after a mistake. The file has three parts: `instance` (everything under Instance, sign-up, limits, maintenance, workflow limits and the options of the SFTP backup target), `ai` (provider, default model, prices, features, quotas and the model and quota rules of roles and directory groups) and `limits` (the file from [Limits & retention](/administration#limits-retention), unchanged).
+
+- **No secrets:** passwords and keys are never in it – the file only says whether one is set (`{"set": true}`). A real value in that place is refused. If the target instance lacks a secret the file marks as set, the check lists it under **Still to enter**.
+- **Not included:** sign-in via SSO/LDAP/SCIM, group mappings, workspaces, content and accounts.
+- **Check** shows every change (old → new) and every error with its place in the file, without saving anything. **Apply** saves everything at once or nothing, and writes one entry to the activity log. What is not in the file stays as it is; a list (prices, rules) replaces the current one. The AI settings are applied before the limits – so plans may name models that only the same file adds to the price list.
