@@ -25,6 +25,15 @@ Leer heißt: Die Gruppe legt diese Grenze nicht fest. Für eine Person gilt je G
 
 Für Admins gelten keine Grenzen. Die Person sieht unter **Einstellungen → Konto & Sicherheit → Deine Grenzen**, woher ein Wert kommt („aus Gruppe Plus“). Änderungen gelten sofort, auch beim nächsten Hochladen; ist der Speicher voll oder eine Datei zu groß, nennt die Meldung die Grenze („Die Datei ist zu groß: Du kannst Dateien bis 10 MB hochladen.“).
 
+### Speicher als Add-on {since=0.11.2}
+
+Neben dem Speicher einer Gruppe wählst du **Grenze** (wie oben) oder **Zusätzlich (Add-on)**. Der Speicher einer Add-on-Gruppe wird nicht mit den anderen Gruppen verglichen, sondern dazugezählt – etwa für ein gekauftes „+50 GB“:
+
+1. Grundwert: der großzügigste Speicher ihrer Gruppen mit **Grenze**, sonst der Standard der Instanz,
+2. dazu die Summe aller Add-on-Gruppen, in denen die Person ist.
+
+Beispiel: „Flowplan Plus“ mit 25 GB (25600 MB) und „Flowplan +50 GB“ als Add-on mit 50 GB (51200 MB) ergeben 75 GB; das Add-on allein ergibt den Standard plus 50 GB, zwei Add-ons werden zusammengezählt. Ist der Grundwert unbegrenzt (0), bleibt es dabei. Hat die Person einen **eigenen Wert**, gilt genau dieser – Add-ons kommen nicht dazu (im Seitenfenster unter **Benutzer** steht dann „Add-ons der Gruppen werden nicht dazugezählt“). Ein Add-on braucht mindestens 1 MB. **Eigene Arbeitsbereiche** und **Größte Datei** kennen kein Add-on: Dort gilt weiter der großzügigste Wert. Unter **Deine Grenzen** steht dann zum Beispiel „25 GB aus Gruppe Flowplan Plus + 50 GB aus Gruppe Flowplan +50 GB“.
+
 **Link für mehr Speicher oder KI** (unter **Speicher und Uploads**): eine Adresse, die Personen unter **Deine Grenzen** sehen („Mehr Speicher oder KI? →“) – etwa die Seite, auf der sie mehr bekommen. Ein einfacher Link ohne Anmeldedaten; leer = kein Link.
 
 Über SCIM: Ein Dienst mit SCIM-Token kann ein bestehendes Konto mit bestätigter Adresse verknüpfen, ohne es anzulegen – `POST /Users` mit `"urn:ietf:params:scim:schemas:extension:flowplan:2.0:User": {"linkExisting": true}` (ohne passendes Konto: 404) – und es dann per `PATCH /Groups/…` in eine Gruppe aufnehmen oder herausnehmen. Name, Adresse, Passwort und Zustand des Kontos bleiben dabei, wie sie sind, solange die Anfrage sie nicht nennt; deaktiviert wird ein Konto nur mit `"active": false` oder `DELETE /Users/…`.
