@@ -86,10 +86,6 @@ Innerhalb des Boards führen Links auf Elemente per Kamerafahrt dorthin: im Link
 - Mehrere Elemente auswählen → **Anordnen**: links, mittig, rechts, oben, mittig oder unten ausrichten, gleichmäßig verteilen oder als Zeile bzw. Spalte stapeln.
 - Für Workshops: **Nach Farbe gruppieren**, **Nach Person gruppieren** (mit Überschriften), **Nach Stimmen sortieren** oder **Als Raster anordnen**.
 
-## Rahmen einklappen {since=0.11.4}
-
-Der Pfeil vor dem Rahmentitel – oder **Rahmen einklappen** in der Leiste und in der Rahmen-Übersicht – klappt einen Rahmen (auch einen in einem anderen) auf seine Titelleiste zusammen. Sein Inhalt ist verborgen und nicht anklickbar; Verbindungslinien enden an der Leiste; verschiebst oder kopierst du den Rahmen, kommt der Inhalt mit. Alle sehen ihn eingeklappt; wer nur lesen darf, klappt nur für sich. Suchtreffer, Links auf Elemente darin und das Präsentieren klappen ihn auf. Exporte zeigen die Leiste.
-
 ## Stift und Formerkennung
 
 Mit einem Tablet-Stift (etwa Apple Pencil) folgt die Strichstärke dem Druck. Im Stiftmenü wählst du die Farbe; mit **Formen erkennen** werden gezeichnete Linien, Rechtecke, Kreise, Dreiecke und Rauten zu sauberen Formen (<kbd>⌥</kbd> beim Loslassen behält den Strich).
@@ -109,19 +105,19 @@ Im Stiftmenü wählst du **Stift** oder **Textmarker**, jeweils mit eigener Farb
 Karten verknüpfter Dokumente zeigen, wenn sie hoch genug sind, die ersten Zeilen der Seite als kleine Vorschau.
 
 - **Tabellen färben:** Tabelle wählen, eine Zelle anklicken, dann der Farbeimer in der Leiste: Zeile, Spalte, **Kopfzeile** oder **Kopfspalte** und eine Farbe (Palette oder **+**). Die Farbe einer Zeile geht vor der einer Spalte; **Keine Farbe** entfernt sie. Exporte zeigen die Farben. {since=0.11.4}
-- **Links in Tabellen:** Webadressen in Zellen werden zu Links (neuer Tab). Steht in einer Zelle nur eine Adresse, zeigt sie eine kleine Vorschau; Videos zeigen ein Vorschaubild, ▶ spielt sie in einem abgeschotteten Fenster ab. {since=0.11.4}
+- **Links in Tabellen:** Webadressen in Zellen werden zu Links (neuer Tab). Steht in einer Zelle nur eine Adresse, zeigt sie eine kleine Vorschau; Videos (YouTube, Vimeo) zeigen ein Vorschaubild als Datei des Boards, ▶ spielt sie in einem abgeschotteten Fenster ab. {since=0.11.4}
 
 ## Videos, Webseiten und PDFs einbetten
 
 **Einbetten** unter **+** (am Handy unter **Weitere Werkzeuge**) nimmt einen Link auf:
 
 - **Videos und Webseiten** von YouTube, Vimeo, Loom, Spotify, Figma und CodePen – dieselbe Liste wie für Einbettungen in Dokumenten. Das Board zeigt zuerst nur eine Vorschau mit dem Anbieter; der Inhalt lädt erst nach einem Klick auf **Laden**, in einem abgeschotteten Rahmen (Sandbox), und **Einbettung schließen** entlädt ihn wieder. YouTube läuft über `youtube-nocookie.com`.
-- **Jede andere Webseite** wird eine **Linkkarte** mit Titel, Seite, Beschreibung, Bild und Symbol der Seite – auch wenn du einfach eine Adresse aufs Board einfügst (++⌘ V++). Ein Klick auf den Titel oder ein Doppelklick auf die Karte öffnet die Seite im Browser. Die Vorschau liest der Server einmal; Bild und Symbol lädt dein Browser direkt von der Seite, ohne Referrer. {since=0.11.4}
+- **Jede andere Webseite** wird eine **Linkkarte** mit Titel, Seite, Beschreibung, Bild und Symbol der Seite – auch wenn du einfach eine Adresse aufs Board einfügst (++⌘ V++). Ein Klick auf den Titel oder ein Doppelklick auf die Karte öffnet die Seite im Browser. Die Vorschau holt der Server einmal, wenn jemand mit Bearbeitungsrecht die Adresse einfügt, und speichert Bild und Symbol neu gezeichnet als Dateien des Boards (sie zählen zum Speicher dieser Person). Beim Ansehen lädt niemand etwas von der fremden Seite. {since=0.11.4}
 - **PDFs**: **PDF hochladen …**, eine PDF-Datei aufs Board ziehen oder einfügen (++⌘ V++). Zuerst fragt **Seiten auswählen**, welche Seiten aufs Board kommen {since=0.11.4}: alle, Bereiche wie `1-3, 7` oder per Häkchen an den Vorschaubildern. Dazu wählst du **Ein Element mit Seitenwechsel** – die Pfeile blättern nur durch die gewählten Seiten – oder **Jede Seite als eigenes Element** (bis zu 50, nebeneinander). Hochgeladen wird erst beim Hinzufügen. Die Datei wird in der Seite gespeichert und zählt zum Speicherkontingent. Ein Doppelklick öffnet den PDF-Betrachter an der gezeigten Seite.
 - **Scharf in jeder Zoomstufe** {since=0.11.4}: Die Seite wird für die Größe gezeichnet, die sie gerade auf dem Bildschirm hat – nach dem Zoomen kurz neu, nur für Seiten im sichtbaren Bereich.
 - **Anmerkungen** {since=0.11.4}: Was im PDF-Betrachter angemerkt wurde (Stift, Textmarker, Text), erscheint auch auf der Seite im Board und in Exporten. Der Textmarker-Knopf in der Leiste des Elements blendet die Anmerkungen für dieses Element aus und wieder ein – für alle; ändern kann das, wer das Board bearbeiten darf.
 
-Exporte zeigen statt des Players eine Karte mit Anbieter und Link. Videos von YouTube zeigen in PNG und PDF ihr Vorschaubild; Bilder anderer Seiten, die das Auslesen nicht erlauben, erscheinen dort als graue Platzhalter. {since=0.11.4}
+Exporte zeigen statt des Players eine Karte mit Anbieter und Link; Videos von YouTube und Vimeo zeigen in PNG und PDF ihr Vorschaubild, Linkkarten ihr Bild. {since=0.11.4}
 
 ## Navigieren
 

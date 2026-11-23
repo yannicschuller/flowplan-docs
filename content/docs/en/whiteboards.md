@@ -86,10 +86,6 @@ Inside the board, links to elements fly there: in an element's link field or in 
 - Select several elements → **Arrange**: align left, centre, right, top, middle or bottom, distribute evenly or stack as a row or column.
 - For workshops: **Group by colour**, **Group by person** (with headings), **Sort by votes** or **Arrange as a grid**.
 
-## Collapse frames {since=0.11.4}
-
-The arrow before a frame's title – or **Collapse frame** in the style bar and the frames panel – folds a frame (also one inside another) to its title bar. Its content is hidden and can't be clicked; connectors to it end at the bar; moving or copying the frame takes the content along. Everyone sees it collapsed; people who may only read fold frames just for themselves. Search hits, links to elements inside and presenting expand it. Exports show the bar.
-
 ## Pen and shape recognition
 
 With a tablet pen (such as an Apple Pencil) the stroke width follows the pressure. Choose the colour in the pen menu; with **Recognise shapes**, drawn lines, rectangles, circles, triangles and diamonds turn into clean shapes (<kbd>⌥</kbd> on release keeps the stroke).
@@ -109,19 +105,19 @@ In the pen menu you choose **Pen** or **Highlighter**, each with its own colour,
 Cards of linked documents that are tall enough show the first lines of the page as a small preview.
 
 - **Colour tables:** select the table, click a cell, then the paint bucket in the bar: pick a row, column, **Header row** or **Header column** and a colour (palette or **+**). A row's colour goes before a column's; **No colour** removes it. Exports show the colours. {since=0.11.4}
-- **Links in tables:** web addresses in cells become links (new tab). A cell holding just one address shows a small preview; videos show a still, and ▶ plays them in an isolated window. {since=0.11.4}
+- **Links in tables:** web addresses in cells become links (new tab). A cell holding just one address shows a small preview; videos (YouTube, Vimeo) show a still stored as a file of the board, and ▶ plays them in an isolated window. {since=0.11.4}
 
 ## Embed videos, web pages and PDFs
 
 **Embed** under **+** (on phones under **More tools**) takes a link:
 
 - **Videos and web pages** from YouTube, Vimeo, Loom, Spotify, Figma and CodePen – the same list as for embeds in documents. The board first shows only a preview with the provider; the content loads only after a click on **Load**, in an isolated frame (sandbox), and **Close embed** unloads it again. YouTube runs through `youtube-nocookie.com`.
-- **Any other web page** becomes a **link card** with the page's title, site, description, picture and icon – also when you simply paste an address onto the board (++⌘ V++). A click on the title or a double click on the card opens the page in the browser. The server reads the preview once; your browser loads picture and icon straight from the site, without a referrer. {since=0.11.4}
+- **Any other web page** becomes a **link card** with the page's title, site, description, picture and icon – also when you simply paste an address onto the board (++⌘ V++). A click on the title or a double click on the card opens the page in the browser. The server fetches the preview once, when someone who may edit adds the address, and stores picture and icon, redrawn, as files of the board (they count towards that person's storage). Nobody viewing the board loads anything from the other site. {since=0.11.4}
 - **PDFs**: **Upload PDF …**, drag a PDF file onto the board or paste it (++⌘ V++). **Choose pages** first asks which pages go onto the board {since=0.11.4}: all, ranges like `1-3, 7`, or ticked in the thumbnails. Then pick **One element with page buttons** – the arrows page only through the chosen pages – or **Each page as its own element** (up to 50, side by side). Nothing is uploaded until you add them. The file is stored in the page and counts towards the storage quota. A double click opens the PDF viewer at the page shown.
 - **Sharp at any zoom** {since=0.11.4}: the page is drawn for the size it has on the screen – redrawn briefly after zooming, only for pages in view.
 - **Annotations** {since=0.11.4}: what was marked up in the PDF viewer (pen, highlighter, text) also shows on the board's page and in exports. The highlighter button in the element's bar hides and shows them for that element – for everyone; whoever may edit the board can change it.
 
-Exports show a card with the provider and link instead of the player. YouTube videos show their still picture in PNG and PDF; pictures of other sites that do not allow reading appear there as grey placeholders. {since=0.11.4}
+Exports show a card with the provider and link instead of the player; YouTube and Vimeo videos show their still picture in PNG and PDF, link cards their picture. {since=0.11.4}
 
 ## Navigate
 
