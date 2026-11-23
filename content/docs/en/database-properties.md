@@ -46,6 +46,16 @@ In a property's settings (click the column header), **Default value** sets what 
 - When an option is renamed, the default follows; when it is deleted or the type changes, the default goes.
 - **API and MCP:** `database.update` accepts and returns `defaultValue` per property: `{"kind": "value", "value": "Open"}`, `{"kind": "now"}` or `{"kind": "creator"}`.
 
+### Required properties {since=0.11.3}
+
+In a property's settings, switch on **Required – Cannot be empty**. It's available for text, number, date, select (status too), multi-select, URL, e-mail, phone, person, relation and files.
+
+- **New records** get the property's [default value](#default-values); without one, a select gets its first option. This applies wherever records are created: in views, [forms](/forms), templates, automations, [workflows](/workflows), imports, through the API and offline. Other properties without a default stay empty and are marked **Value missing**.
+- **Clearing is no longer possible** – not through the API, a bulk edit or by moving a card to a board's empty column either. A workflow step that would clear the value fails with this message.
+- **Grouping:** grouped by a required property, the group without a value is gone. It shows up as **Value missing (required)** only while older records are still empty.
+- **When you switch it on**, the settings show how many records have no value yet. They stay as they are until you fill them in.
+- **In forms**, a required property is automatically a required question.
+
 ### Finding and creating options {since=0.11.1}
 
 With many options there is no more scrolling: click a select or multi-select cell in the table – or the value in a record or the feed – and the list of options opens with a search field.

@@ -46,6 +46,16 @@ In den Einstellungen einer Eigenschaft (Klick auf die Spaltenüberschrift) legt 
 - Wird eine Option umbenannt, zieht der Standardwert mit; wird sie gelöscht oder der Typ geändert, entfällt er.
 - **API und MCP:** `database.update` nimmt und liefert `defaultValue` je Eigenschaft: `{"kind": "value", "value": "Offen"}`, `{"kind": "now"}` oder `{"kind": "creator"}`.
 
+### Pflichtfelder {since=0.11.3}
+
+In den Einstellungen einer Eigenschaft schaltest du **Pflichtfeld – Darf nicht leer sein** ein – möglich bei Text, Zahl, Datum, Auswahl (auch Status), Mehrfachauswahl, Link, E-Mail, Telefon, Person, Relation und Dateien.
+
+- **Neue Einträge** bekommen den [Standardwert](#standardwerte) der Eigenschaft; ohne Standardwert bekommt eine Auswahl ihre erste Option. Das gilt überall, wo Einträge entstehen: in Ansichten, [Formularen](/forms), Vorlagen, Automationen, [Workflows](/workflows), Importen, über die API und offline. Andere Eigenschaften ohne Standardwert bleiben leer und werden als **Wert fehlt** markiert.
+- **Leeren geht nicht mehr** – auch nicht über die API, per Massenbearbeitung oder durch Verschieben einer Karte in die leere Spalte eines Boards. Ein Workflow-Schritt, der den Wert leeren würde, schlägt mit dieser Meldung fehl.
+- **Gruppieren:** Gruppierst du nach einem Pflichtfeld, entfällt die Gruppe ohne Wert. Nur solange ältere Einträge noch leer sind, erscheint sie als **Wert fehlt (Pflichtfeld)**.
+- **Beim Einschalten** zeigen die Einstellungen, wie viele Einträge noch keinen Wert haben. Sie bleiben unverändert, bis du sie ausfüllst.
+- **In Formularen** ist ein Pflichtfeld automatisch eine Pflichtfrage.
+
 ### Optionen suchen und anlegen {since=0.11.1}
 
 Bei vielen Optionen musst du nicht mehr scrollen: Klickst du in der Tabelle auf eine Zelle einer Auswahl oder Mehrfachauswahl – oder im Eintrag und im Feed auf den Wert –, öffnet sich die Liste der Optionen mit einem Suchfeld.
