@@ -93,7 +93,7 @@ Text comments exist in documents and in the contents of database records, also i
 
 ## Attachments, pages and links in comments {since=0.11.4}
 
-In page, record and text comments and in replies:
+In page, record and text comments, in replies and in comments on whiteboards:
 
 - **Attachments:** The paperclip, dragging or pasting attaches files and images, up to 10 per comment. Images show a preview and open large, PDFs open in the PDF viewer, videos play in place; other files show their name and size. A comment may consist of attachments only. The usual file limits apply, and attachments count towards your storage. Only people who may read the page – and, for a record, the record – can see them. If you remove an attachment while editing or delete the comment, the file moves to the trash unless it is used elsewhere. Encrypted spaces have no comments and so no attachments.
 - **Mentioning pages:** `@` suggests pages and records you may read as well as people. The mention shows the page's icon and current title; a click opens the page, ++⌘/Ctrl++-click a new tab. People who may not read the page see only "No access". Mentioning a page notifies nobody.

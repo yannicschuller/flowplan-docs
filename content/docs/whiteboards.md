@@ -113,7 +113,9 @@ Karten verknüpfter Dokumente zeigen, wenn sie hoch genug sind, die ersten Zeile
 **Einbetten** unter **+** (am Handy unter **Weitere Werkzeuge**) nimmt einen Link auf:
 
 - **Videos und Webseiten** von YouTube, Vimeo, Loom, Spotify, Figma und CodePen – dieselbe Liste wie für Einbettungen in Dokumenten. Andere Adressen werden abgelehnt. Das Board zeigt zuerst nur eine Vorschau mit dem Anbieter; der Inhalt lädt erst nach einem Klick auf **Laden**, in einem abgeschotteten Rahmen (Sandbox), und **Einbettung schließen** entlädt ihn wieder. YouTube läuft über `youtube-nocookie.com`.
-- **PDFs**: **PDF hochladen …** oder eine PDF-Datei aufs Board ziehen. Die Datei wird in der Seite gespeichert und zählt zum Speicherkontingent; das Board zeigt eine Seite als Vorschau, mit Pfeilen zum Blättern. Ein Doppelklick öffnet den PDF-Betrachter.
+- **PDFs**: **PDF hochladen …**, eine PDF-Datei aufs Board ziehen oder einfügen (++⌘ V++). Zuerst fragt **Seiten auswählen**, welche Seiten aufs Board kommen {since=0.11.4}: alle, Bereiche wie `1-3, 7` oder per Häkchen an den Vorschaubildern. Dazu wählst du **Ein Element mit Seitenwechsel** – die Pfeile blättern nur durch die gewählten Seiten – oder **Jede Seite als eigenes Element** (bis zu 50, nebeneinander). Hochgeladen wird erst beim Hinzufügen. Die Datei wird in der Seite gespeichert und zählt zum Speicherkontingent. Ein Doppelklick öffnet den PDF-Betrachter an der gezeigten Seite.
+- **Scharf in jeder Zoomstufe** {since=0.11.4}: Die Seite wird für die Größe gezeichnet, die sie gerade auf dem Bildschirm hat – nach dem Zoomen kurz neu, nur für Seiten im sichtbaren Bereich.
+- **Anmerkungen** {since=0.11.4}: Was im PDF-Betrachter angemerkt wurde (Stift, Textmarker, Text), erscheint auch auf der Seite im Board und in Exporten. Der Textmarker-Knopf in der Leiste des Elements blendet die Anmerkungen für dieses Element aus und wieder ein – für alle; ändern kann das, wer das Board bearbeiten darf.
 
 Exporte zeigen statt des Players eine Karte mit Anbieter und Link.
 

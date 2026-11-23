@@ -93,7 +93,7 @@ Textkommentare gibt es in Dokumenten und in den Inhalten von Datenbankeinträgen
 
 ## Anhänge, Seiten und Links in Kommentaren {since=0.11.4}
 
-In Seiten-, Eintrags- und Textkommentaren und in Antworten:
+In Seiten-, Eintrags- und Textkommentaren, in Antworten und in Kommentaren auf Whiteboards:
 
 - **Anhänge:** Die Büroklammer, Ziehen oder Einfügen hängt Dateien und Bilder an, bis zu 10 pro Kommentar. Bilder erscheinen als Vorschau und öffnen sich groß, PDFs im PDF-Viewer, Videos spielen direkt; andere Dateien stehen mit Name und Größe da. Ein Kommentar darf auch nur aus Anhängen bestehen. Es gelten die üblichen Grenzen für Dateien, und die Anhänge zählen zu deinem Speicher. Sehen kann sie nur, wer die Seite – beim Eintrag auch den Eintrag – lesen darf. Entfernst du einen Anhang beim Bearbeiten oder löschst du den Kommentar, wandert die Datei in den Papierkorb, sofern sie sonst nirgends verwendet wird. In verschlüsselten Bereichen gibt es keine Kommentare und damit keine Anhänge.
 - **Seiten erwähnen:** `@` schlägt neben Personen auch Seiten und Einträge vor, die du lesen darfst. Die Erwähnung zeigt Symbol und aktuellen Titel; ein Klick öffnet die Seite, ++⌘/Strg++-Klick einen neuen Tab. Wer die Seite nicht lesen darf, sieht nur „Kein Zugriff“. Eine erwähnte Seite benachrichtigt niemanden.

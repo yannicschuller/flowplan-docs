@@ -113,7 +113,9 @@ Cards of linked documents that are tall enough show the first lines of the page 
 **Embed** under **+** (on phones under **More tools**) takes a link:
 
 - **Videos and web pages** from YouTube, Vimeo, Loom, Spotify, Figma and CodePen – the same list as for embeds in documents. Other addresses are refused. The board first shows only a preview with the provider; the content loads only after a click on **Load**, in an isolated frame (sandbox), and **Close embed** unloads it again. YouTube runs through `youtube-nocookie.com`.
-- **PDFs**: **Upload PDF …** or drag a PDF file onto the board. The file is stored in the page and counts towards the storage quota; the board shows one page as a preview, with arrows to page through. A double click opens the PDF viewer.
+- **PDFs**: **Upload PDF …**, drag a PDF file onto the board or paste it (++⌘ V++). **Choose pages** first asks which pages go onto the board {since=0.11.4}: all, ranges like `1-3, 7`, or ticked in the thumbnails. Then pick **One element with page buttons** – the arrows page only through the chosen pages – or **Each page as its own element** (up to 50, side by side). Nothing is uploaded until you add them. The file is stored in the page and counts towards the storage quota. A double click opens the PDF viewer at the page shown.
+- **Sharp at any zoom** {since=0.11.4}: the page is drawn for the size it has on the screen – redrawn briefly after zooming, only for pages in view.
+- **Annotations** {since=0.11.4}: what was marked up in the PDF viewer (pen, highlighter, text) also shows on the board's page and in exports. The highlighter button in the element's bar hides and shows them for that element – for everyone; whoever may edit the board can change it.
 
 Exports show a card with the provider and link instead of the player.
 
