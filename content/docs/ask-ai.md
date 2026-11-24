@@ -36,7 +36,7 @@ In **KI fragen** kannst du auch sagen, was zu tun ist – etwa „Lege für jede
 - **Der Plan** erscheint als Karte: jeder Schritt mit Vorschau und Kästchen, darüber die verbrauchten Tokens. Was du abwählst, passiert nicht; **Ausführen** führt den Rest der Reihe nach aus, **Alles rückgängig** nimmt ihn danach zurück. Die Schritte stehen unter [Pläne aus KI fragen](/ai-actions#plaene-aus-ki-fragen).
 - **Nur antworten:** Der Schalter im Eingabefeld schaltet Pläne aus. Klare Fragen gehen ohnehin direkt an die Antwort. Bei **Alle meine Arbeitsbereiche** und **Nur Flowplan-Hilfe** gibt es keine Pläne.
 - **Tastatur:** ++↑++ / ++↓++ wechseln zwischen den Schritten, ++Leertaste++ wählt an oder ab, ++⌘ Enter++ bzw. ++Strg Enter++ führt aus.
-- Pläne gehören zur Funktion **KI-Aktionen** und zählen mit allen Leserunden gegen dein [KI-Kontingent](/ai-quotas); ist es fast aufgebraucht, plant die KI mit dem, was sie schon gelesen hat.
+- Pläne gehören zur Funktion **KI-Aktionen** und zählen mit allen Leserunden gegen dein [KI-Kontingent](/ai-quotas). Ist es fast aufgebraucht, liest die KI weiter und der Plan weist darauf hin; erst wenn es aufgebraucht ist, hört sie auf zu lesen.
 
 ## Suche nach Bedeutung (optional)
 

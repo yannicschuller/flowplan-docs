@@ -36,7 +36,7 @@ In **Ask AI** you can also say what to do – for example "Create a page for eac
 - **The plan** appears as a card: every step with a preview and a checkbox, above them the tokens used. What you untick does not happen; **Run** carries out the rest in order, and **Undo all** takes it back afterwards. The steps are described under [Plans from Ask AI](/ai-actions#plans-from-ask-ai).
 - **Only answer:** The switch in the input box turns plans off. Plain questions go straight to the answer anyway. **All my workspaces** and **Only the Flowplan help** never plan.
 - **Keyboard:** ++↑++ / ++↓++ move between the steps, ++Space++ ticks or unticks, ++⌘ Enter++ or ++Ctrl Enter++ runs.
-- Plans belong to the **AI actions** feature and count against your [AI quota](/ai-quotas) with all their reading rounds; when it is nearly used up, the AI plans with what it has read so far.
+- Plans belong to the **AI actions** feature and count against your [AI quota](/ai-quotas) with all their reading rounds. When it is almost used up, the AI keeps reading and the plan says so; only when it is used up does the AI stop reading.
 
 ## Semantic search (optional)
 
