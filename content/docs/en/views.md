@@ -74,7 +74,7 @@ In the same dialog, **Set up access** sets up sync with Apple Calendar, Thunderb
 - **Several devices**: each profile gets its own access, so a calendar set up on the Mac keeps working when you install the profile on the iPhone. **End access** or **Create new password** ends all accesses to this calendar, those of profiles included.
 - **Permissions**: your own rights apply – whoever can only read the database cannot change anything from the calendar. Workflow and automations apply as for any change.
 
-Google Calendar does not support CalDAV accounts; use the calendar sync below for it.
+Google Calendar does not support CalDAV accounts; use the calendar sync with Google below for it.
 
 ### Contacts as an address book (CardDAV)
 
@@ -82,11 +82,12 @@ Contacts databases can be subscribed to like calendars – as an address book in
 
 ### Sync with Google Calendar or Outlook
 
-**Calendar sync** keeps a view with a date and a calendar in Google Calendar or Microsoft Outlook / 365 in step both ways – personally, with your own account.
+**Calendar sync** keeps a view with a date and a calendar in Google Calendar, Microsoft Outlook / 365 or on a CalDAV server (Nextcloud, iCloud, Fastmail, mailbox.org, Radicale … {since=0.11.5}) the same both ways – personally, with your own account.
 
 ::: steps
 
 1. **Settings → Calendars & issues → Connect calendar** → **Connect Google Calendar** or **Connect Microsoft Outlook / 365**. You sign in with the provider and allow access to your calendars.
+   Or **Connect CalDAV** {since=0.11.5}: server address (usually the server is enough, e.g. `caldav.icloud.com`, `caldav.fastmail.com`, `dav.mailbox.org` or your Nextcloud), username and an **app password** (required for iCloud: appleid.apple.com → Sign-In and Security → App-Specific Passwords). Flowplan looks up your calendars, offers only those it may write to and stores the password encrypted. Repeating events of a CalDAV calendar are not imported; reminders, attendees and location of an event stay when Flowplan changes it.
 2. In the database, open the calendar icon next to **…** (**Calendar sync**), pick the view, the account and the calendar, and **Connect**.
 
 :::

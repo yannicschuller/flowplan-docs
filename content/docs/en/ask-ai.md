@@ -28,6 +28,16 @@ keywords: ask ai, questions, chat, answers, sources, semantic search, related pa
 
 Questions about the last or latest thing ("What did I last do with …?") always consider the newest journal days that match the question. The AI also reads handwriting in drawing blocks and notebooks (typed text and text recognised on iPhone/iPad) and the text of a page's PDFs, Office files and images – with the same rights as the page; journals with a PIN stay closed to the AI.
 
+## Giving instructions {since=0.11.5}
+
+In **Ask AI** you can also say what to do – for example "Create a page for each project in the Projects table and link them from the overview" or "Rewrite the intro of this page shorter". The AI tells by itself whether you ask or want something changed: for an instruction it answers with a **plan**. Nothing changes until you confirm it.
+
+- **Read first, then plan:** Before planning, the AI may search and read pages, page trees and databases – for at most eight rounds, read-only, with your permissions and the rules in [What the AI may access](/ai#what-the-ai-may-access). The panel shows what it is reading.
+- **The plan** appears as a card: every step with a preview and a checkbox, above them the tokens used. What you untick does not happen; **Run** carries out the rest in order, and **Undo all** takes it back afterwards. The steps are described under [Plans from Ask AI](/ai-actions#plans-from-ask-ai).
+- **Only answer:** The switch in the input box turns plans off. Plain questions go straight to the answer anyway. **All my workspaces** and **Only the Flowplan help** never plan.
+- **Keyboard:** ++↑++ / ++↓++ move between the steps, ++Space++ ticks or unticks, ++⌘ Enter++ or ++Ctrl Enter++ runs.
+- Plans belong to the **AI actions** feature and count against your [AI quota](/ai-quotas) with all their reading rounds; when it is nearly used up, the AI plans with what it has read so far.
+
 ## Semantic search (optional)
 
 Questions in Chinese, Japanese, Korean or Thai are split into words even though these languages don't use spaces. "浦东新区的发票在哪里" searches for 浦东新区 and 发票; small particles like 的 are left out.

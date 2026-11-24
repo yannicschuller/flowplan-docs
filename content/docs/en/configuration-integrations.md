@@ -64,6 +64,8 @@ Two-way sync of database views with [Google Calendar and Microsoft Outlook / 365
 | --- | --- | --- |
 | `GOOGLE_CALENDAR_CLIENT_ID` / `GOOGLE_CALENDAR_CLIENT_SECRET` | *empty* | OAuth client (type “Web application”) from the Google Cloud Console, with the Google Calendar API enabled and the scope `…/auth/calendar`. Redirect URI: `<APP_URL>/api/calendar-sync/callback/google`. |
 | `MS_CALENDAR_CLIENT_ID` / `MS_CALENDAR_CLIENT_SECRET` | *empty* | App registration in Microsoft Entra ID (web platform) with the delegated permissions `Calendars.ReadWrite` and `offline_access`. Redirect URI: `<APP_URL>/api/calendar-sync/callback/microsoft`. |
+| `FLOWPLAN_CALDAV_SYNC` | *on* | `off` hides calendar sync with CalDAV servers (it needs no app registration). {since=0.11.5} |
+| `FLOWPLAN_CALDAV_ALLOW_PRIVATE` | *empty* | `true` allows CalDAV servers in your own network, and `http://` to them; empty follows `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE`. {since=0.11.5} |
 | `MS_CALENDAR_TENANT` | `common` | `common` (work and personal accounts), `organizations` or a tenant ID. |
 
 People's refresh tokens are stored sealed in the database (like all [stored secrets](/configuration-storage#stored-secrets)).

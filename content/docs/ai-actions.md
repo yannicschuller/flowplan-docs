@@ -44,6 +44,28 @@ Was die KI sieht:
 
 Grenzen: höchstens 3 Datenbanken und 200 Einträge pro Anfrage und etwa 40 000 Zeichen (mit einem Modell auf dem eigenen Server im Schreibassistenten etwa 8 000). Passt nicht alles hinein, steht das in den Daten („… und 57 weitere Einträge“), und die KI weist darauf hin. Die Apple-KI auf dem Gerät liest keine Datenbanken.
 
+## Pläne aus KI fragen {since=0.11.5}
+
+Gibst du in [KI fragen](/ask-ai#anweisungen-geben) eine Anweisung, schlägt die KI einen Plan aus mehreren, aufeinander aufbauenden Schritten vor. Zusätzlich zu den Aktionen oben gibt es:
+
+| Schritt | Was passiert |
+| --- | --- |
+| **Unterseite anlegen** | Neue Seite unter einem Dokument – auch unter einer Seite, die der Plan gerade anlegt. |
+| **Datenbank anlegen** | Wie bei [Datenbank mit KI erstellen](#datenbank-mit-ki-erstellen). |
+| **Link einfügen** | Link auf eine Seite oder einen Eintrag – am Ende eines Abschnitts oder der Seite. |
+| **Einträge verknüpfen** | Fügt Einträge zu einer Relation hinzu; vorhandene bleiben. |
+| **Umbenennen** / **Verschieben** | Neuer Titel; anderer Bereich oder andere übergeordnete Seite. |
+| **Tags und Eigenschaften** | Tags hinzufügen oder entfernen, Werte von [Seiteneigenschaften](/page-tags#tags-und-eigenschaften) setzen. |
+| **Text ändern (als Vorschlag)** | Nie direkt: als [Änderungsvorschläge](/collaboration#aenderungen-vorschlagen) in der Seite. |
+
+Gelöscht wird nichts.
+
+- **Aufeinander aufbauen:** Wählst du einen Schritt ab, werden die davon abhängigen mit abgewählt. Was nicht geht, ist ausgegraut und nennt den Grund.
+- **Seiten, die du nicht genannt hast:** Schritte, die eine nicht genannte Seite ändern, sind markiert.
+- **Ausführen** läuft in deinem Namen; der Server prüft jeden Schritt erneut, das Protokoll vermerkt `ai.plan` je Schritt ohne Inhalte. **Alles rückgängig** setzt alles zurück, Angelegtes geht in den Papierkorb.
+- **Eingeschleuste Anweisungen:** Gelesener Text geht als Daten an die KI und kann keine Schritte hinzufügen; du siehst jeden Schritt, bevor er läuft.
+- **Grenzen:** höchstens 30 Schritte und 8 Leserunden je Plan. Das funktioniert mit jedem Anbieter, auch lokal.
+
 ## KI auf Whiteboards
 
 Auf [Whiteboards](/whiteboard-collaboration#ki-auf-dem-whiteboard) öffnet **KI** in der Werkzeugleiste drei Funktionen:

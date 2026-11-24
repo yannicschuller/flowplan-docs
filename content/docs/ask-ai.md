@@ -28,6 +28,16 @@ keywords: KI fragen, Fragen, Chat, Antworten, Quellen, semantische Suche, verwan
 
 Fragen nach dem Letzten oder Neuesten („Was war zuletzt mit …?“) berücksichtigen immer die jüngsten Journaltage, die zur Frage passen. Die KI liest auch Handschrift in Zeichenblöcken und Notizbüchern (getippter Text und auf dem iPhone/iPad erkannter Text) sowie den Text von PDFs, Office-Dateien und Bildern einer Seite – mit denselben Rechten wie die Seite; Journale mit PIN bleiben für die KI gesperrt.
 
+## Anweisungen geben {since=0.11.5}
+
+In **KI fragen** kannst du auch sagen, was zu tun ist – etwa „Lege für jedes Projekt in der Tabelle Projekte eine Seite an und verlinke sie in der Übersicht“ oder „Schreib die Einleitung dieser Seite kürzer“. Die KI erkennt selbst, ob du fragst oder etwas ändern willst: Auf eine Anweisung antwortet sie mit einem **Plan**. Bis du ihn bestätigst, ändert sich nichts.
+
+- **Erst lesen, dann planen:** Vorher darf die KI suchen, Seiten, Seitenbäume und Datenbanken lesen – in höchstens acht Runden, nur lesend, mit deinen Rechten und nach den Regeln unter [Worauf die KI zugreifen darf](/ai#worauf-die-ki-zugreifen-darf). Die Leiste zeigt, was sie gerade liest.
+- **Der Plan** erscheint als Karte: jeder Schritt mit Vorschau und Kästchen, darüber die verbrauchten Tokens. Was du abwählst, passiert nicht; **Ausführen** führt den Rest der Reihe nach aus, **Alles rückgängig** nimmt ihn danach zurück. Die Schritte stehen unter [Pläne aus KI fragen](/ai-actions#plaene-aus-ki-fragen).
+- **Nur antworten:** Der Schalter im Eingabefeld schaltet Pläne aus. Klare Fragen gehen ohnehin direkt an die Antwort. Bei **Alle meine Arbeitsbereiche** und **Nur Flowplan-Hilfe** gibt es keine Pläne.
+- **Tastatur:** ++↑++ / ++↓++ wechseln zwischen den Schritten, ++Leertaste++ wählt an oder ab, ++⌘ Enter++ bzw. ++Strg Enter++ führt aus.
+- Pläne gehören zur Funktion **KI-Aktionen** und zählen mit allen Leserunden gegen dein [KI-Kontingent](/ai-quotas); ist es fast aufgebraucht, plant die KI mit dem, was sie schon gelesen hat.
+
 ## Suche nach Bedeutung (optional)
 
 Fragen auf Chinesisch, Japanisch, Koreanisch oder Thai zerlegt Flowplan in Wörter, obwohl diese Sprachen keine Leerzeichen nutzen. „浦东新区的发票在哪里“ sucht also nach 浦东新区 und 发票, kleine Füllwörter wie 的 bleiben außen vor.

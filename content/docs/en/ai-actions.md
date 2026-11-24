@@ -44,6 +44,28 @@ What the AI sees:
 
 Limits: at most 3 databases and 200 records per request and about 40,000 characters (about 8,000 in the writing assistant with a model on your own server). If not everything fits, the data says so ("… and 57 more records") and the AI points it out. Apple's on-device AI does not read databases.
 
+## Plans from Ask AI {since=0.11.5}
+
+When you give an instruction in [Ask AI](/ask-ai#giving-instructions), the AI proposes a plan of several steps that build on each other. In addition to the actions above there are:
+
+| Step | What happens |
+| --- | --- |
+| **Create sub-page** | A new page below a document – also below a page the plan is creating. |
+| **Create database** | As in [Create a database with AI](#create-a-database-with-ai). |
+| **Insert link** | A link to a page or record – at the end of a section or of the page. |
+| **Link records** | Adds records to a relation; existing links stay. |
+| **Rename** / **Move** | A new title; another space or parent page. |
+| **Tags and properties** | Adds or removes tags, sets values of [page properties](/page-tags#tags-and-properties). |
+| **Change text (as suggestions)** | Never directly: as [suggested changes](/collaboration#suggest-changes) in the page. |
+
+Nothing is deleted.
+
+- **Building on each other:** Untick a step and the steps depending on it are unticked too. What is not possible is greyed out with the reason.
+- **Pages you did not name:** steps that change a page your instruction does not mention are highlighted.
+- **Run** goes in your name; the server checks every step again, and the audit log records `ai.plan` per step without contents. **Undo all** reverts everything; what was created goes to the trash.
+- **Injected instructions:** text the AI reads reaches it as data and cannot add steps; you see each step before it runs.
+- **Limits:** at most 30 steps and 8 reading rounds per plan. It works with every provider, also locally.
+
 ## AI on whiteboards
 
 On [whiteboards](/whiteboard-collaboration#ai-on-the-whiteboard), **AI** in the toolbar opens three features:

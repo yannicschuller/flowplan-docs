@@ -74,7 +74,7 @@ Im selben Dialog richtet **Zugang einrichten** eine Synchronisation für Apple K
 - **Mehrere Geräte**: Jedes Profil bekommt einen eigenen Zugang, ein auf dem Mac eingerichteter Kalender läuft also weiter, wenn du das Profil auf dem iPhone installierst. **Zugang beenden** oder **Neues Passwort erzeugen** beendet alle Zugänge zu diesem Kalender, auch die der Profile.
 - **Rechte**: Es gelten deine Rechte – wer die Datenbank nur lesen darf, kann im Kalender nichts ändern. Workflow und Automationen gelten wie bei jeder Änderung.
 
-Google Kalender unterstützt keine CalDAV-Konten; dafür gibt es den Kalender-Sync unten.
+Google Kalender unterstützt keine CalDAV-Konten; dafür gibt es den Kalender-Sync mit Google unten.
 
 ### Kontakte als Adressbuch (CardDAV)
 
@@ -82,11 +82,12 @@ Kontakte-Datenbanken lassen sich wie Kalender abonnieren – als Adressbuch in A
 
 ### Mit Google Kalender oder Outlook synchronisieren
 
-Mit dem **Kalender-Sync** hältst du eine Ansicht mit Datum und einen Kalender in Google Kalender oder Microsoft Outlook / 365 in beide Richtungen gleich – persönlich, mit deinem eigenen Konto.
+Mit dem **Kalender-Sync** hältst du eine Ansicht mit Datum und einen Kalender in Google Kalender, Microsoft Outlook / 365 oder auf einem CalDAV-Server (Nextcloud, iCloud, Fastmail, mailbox.org, Radicale … {since=0.11.5}) in beide Richtungen gleich – persönlich, mit deinem eigenen Konto.
 
 ::: steps
 
 1. **Einstellungen → Kalender & Issues → Kalender verbinden** → **Mit Google Calendar verbinden** bzw. **Mit Microsoft Outlook / 365 verbinden**. Du meldest dich beim Anbieter an und erlaubst den Zugriff auf deine Kalender.
+   Oder **Mit CalDAV verbinden** {since=0.11.5}: Server-Adresse (meist genügt der Server, z. B. `caldav.icloud.com`, `caldav.fastmail.com`, `dav.mailbox.org` oder deine Nextcloud), Benutzername und ein **App-Passwort** (bei iCloud Pflicht: appleid.apple.com → Anmeldung und Sicherheit → App-spezifische Passwörter). Flowplan sucht deine Kalender selbst, bietet nur die an, in die es schreiben darf, und speichert das Passwort verschlüsselt. Wiederholte Termine eines CalDAV-Kalenders werden nicht übernommen; Erinnerungen, Teilnehmende und Ort eines Termins bleiben stehen, wenn Flowplan ihn ändert.
 2. In der Datenbank das Kalendersymbol neben **…** (**Kalender-Sync**) öffnen, die Ansicht, das Konto und den Kalender wählen und **Verbinden**.
 
 :::
