@@ -25,6 +25,12 @@ Die Eigenschaftstypen einer Datenbank im Überblick, Farben für Auswahl-Optione
 
 Relationen, Rollups und Formeln sind unter [Eigenschaften, Formeln und Rollups](/properties-and-formulas) beschrieben.
 
+### Eigenschaften im Eintrag {since=0.11.6}
+
+Im geöffneten Eintrag (Seitenansicht, ganze Seite, Telefon) steht jede Eigenschaft als kompakte Zeile: Symbol des Typs, Name und der Wert als Text oder Chips; leere Werte heißen „Leer“. Ein Klick oder Tipp auf den Wert öffnet seinen Editor als kleines Feld, auf dem Telefon als Blatt von unten (Tastatur: mit Tab zum Wert, Enter oder Leertaste). Escape oder ein Klick daneben schließt ihn, Änderungen werden wie gewohnt gespeichert. Auswahl und Mehrfachauswahl öffnen direkt die Suche der Optionen, Relationen Suche und Liste der Einträge, ein Datum bietet dort **Datum entfernen** und **+ Uhrzeit**. Häkchen, Sterne und Checklisten ändern sich weiter mit einem Tipp; Links (Web, E-Mail, Telefon, Dateien) öffnen sich beim Klick, der Rest der Zeile bearbeitet. Berechnete Werte und Eigenschaften, die du nicht ändern darfst, stehen ohne Editor da.
+
+**Wiederholung** steht unter dem ersten Datum, **Wiederkehrende Aufgabe** nur in Datenbanken mit Erledigt-Status oder -Häkchen. Ohne Regel zählen beide als leere Eigenschaften und verschwinden mit **Leere Eigenschaften ausblenden**, bis du die leeren Eigenschaften einblendest.
+
 ### Eigenschaften im Eintrag einklappen
 
 Unter dem Titel eines Eintrags klappt der Pfeil **Eigenschaften** die Eigenschaften zu einer Zeile zusammen: die zwei bis drei wichtigsten Werte als kleine Chips (zuerst der Status, dann Auswahl, Datum und Person) und „+4 Eigenschaften“. Ein Tipp auf die Zeile klappt sie wieder auf. Der Inhalt des Eintrags rückt so nach oben – gerade auf dem Telefon.

@@ -25,6 +25,12 @@ A database's property types at a glance, colours for select options, formatted t
 
 Relations, rollups and formulas are described under [Properties, formulas and rollups](/properties-and-formulas).
 
+### Properties in a record {since=0.11.6}
+
+An opened record (side peek, full page, phone) shows each property as a compact row: the type's icon, the name and the value as text or chips; empty values say "Empty". Click or tap a value to open its editor – a small panel, or a sheet from the bottom on phones (keyboard: Tab to the value, Enter or Space). Escape or a click elsewhere closes it, and changes save as before. Select and multi-select open the option search directly, relations open search and the list of records, a date offers **Remove date** and **+ Time** there. Checkboxes, stars and checklists still change with one tap; links (web, email, phone, files) open on click, the rest of the row edits. Computed values and properties you may not change are shown without an editor.
+
+**Recurrence** appears below the first date, **Repeating task** only in databases with a done status or checkbox. Without a rule, both count as empty properties and hide with **Hide empty properties** until you show the empty properties.
+
 ### Collapsing properties in a record
 
 Below a record's title, the **Properties** arrow folds the properties into one line: the two or three most relevant values as small chips (status first, then selects, dates and people) and “+4 properties”. A tap on the line opens it again. The record's content moves up – especially useful on a phone.
