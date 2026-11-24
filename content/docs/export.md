@@ -23,7 +23,7 @@ Seiten, Datenbanken und ganze Bereiche als Markdown, HTML, Word, PDF oder E-Book
 
 **Drucken / PDF** öffnet die Druckansicht des Browsers; dort als PDF sichern. Vorher fragt ein kleines Fenster nach den [Druckoptionen](/print-and-pdf#drucken-und-pdf). Apps auf dem Home-Bildschirm von iPhone und iPad können nicht selbst drucken: Sie öffnen die Seite 15 Minuten lang unter einer geheimen Adresse in Safari. Diese Druckansicht zeigt nur Inhalt – keine Formularfelder, Knöpfe oder Skripte – und oben, wer sie erstellt hat.
 
-Der Export berücksichtigt Leserechte und enthält alle Einträge unabhängig von Ansichtsfiltern. Formeln und Mermaid bleiben als Quelltext erhalten.
+Der Export berücksichtigt Leserechte und enthält alle Einträge unabhängig von Ansichtsfiltern. Formeln und Mermaid bleiben als Quelltext erhalten. Je Konto laufen höchstens zwei Exporte oder Importe zugleich, siehe [Importieren](/import-export-versions#importieren). {since=0.11.5}
 
 **Beschriftungen in Markdown**: Die [Beschriftung](/formatting#beschriftungen) eines Bildes wird zu seinem Titel, die einer Tabelle zu einer Zeile `Table: …` darunter (wie in Pandoc), die eines Codeblocks zu `Listing: …`:
 

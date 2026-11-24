@@ -51,7 +51,7 @@ Guests are people outside the team, such as customers or freelancers. They only 
 
 ## Groups
 
-**Settings → Groups & permissions**: under **Groups** create a group such as "Design" or "Sales" and tick members with **Manage** (with a search when there are many). Under **Access to spaces** set each space's visibility and below it **View** or **Edit** per group; single pages get a group through **Share**. New members of a group get its permissions right away.
+**Settings → Groups & permissions**: under **Groups** create a group such as "Design" or "Sales" and tick members with **Manage** (with a search when there are many). Under **Access to spaces** set each space's visibility and below it **View** or **Edit** per group; single pages get a group through **Share**. New members of a group get its permissions right away. Only someone who can see a private space can make it visible or give groups rights on it – owners included (see [How permissions work together](#how-permissions-work-together)). {since=0.11.5}
 
 With single sign-on, groups from the identity provider can maintain members and groups automatically – see [Map SSO groups](/sso-oidc#map-sso-groups-to-workspaces).
 
@@ -61,11 +61,11 @@ Shelves and books of the [library](/library#permissions-for-shelves-and-books) f
 
 1. The **space** sets the basis: open to all members or private for the people it is shared with.
 2. **Pages** inherit the permissions of their space and parent pages; under **Share**, people or groups are added.
-3. **Records** of a database can be made read-only or private (see [Databases](/databases#permissions-per-record)).
+3. **Records** of a database can be made read-only or private (see [Databases](/databases#permissions-per-record)). A detached occurrence and the next record of a [repeating task](/databases#repeating-tasks) keep the original's creator, record permissions and grants. {since=0.11.5}
 4. **Properties** of a database can be made visible or editable only for editors, owners or selected groups (see [Property visibility](/properties-and-formulas#property-visibility)).
 5. Linked databases, mentions and links never grant additional permissions: whoever may not read the source does not see it embedded either.
 
-Owners of a workspace also manage other members' spaces, but do not get read access to their private pages that way.
+Owners of a workspace also manage other members' spaces, but do not get read access to their private pages that way. They can rename, reorder, trash and restore other members' private spaces and manage the groups. Making such a space visible to the team, giving rights on it or adding themselves to a group with rights on it only works if they can see the space themselves. {since=0.11.5}
 
 The instance's admin rights give no access to content either: admins see only what membership and permissions allow them – what the Administration shows about accounts and workspaces is under [What administrators can see](/user-management#what-administrators-can-see).
 

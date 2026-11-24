@@ -19,7 +19,7 @@ Wie du Widgets hinzufügst, verschiebst und einstellst, steht unter [Startseite 
 | **Posteingang** | Erwähnungen, Kommentare und Zuweisungen. |
 | **Aktivität** | Wer zuletzt was im Arbeitsbereich geändert hat. |
 | **Meine Aktivität** | Seiten, die du erstellt und bearbeitet hast – pro Woche, Monat oder Jahr, nur für dich sichtbar. |
-| **Diese Woche** | Bearbeitete Seiten, erledigte Einträge, offene Aufgaben und erfasste Zeit seit Montag. |
+| **Diese Woche** | Bearbeitete Seiten, erledigte Einträge, offene Aufgaben und erfasste Zeit seit Montag. Erledigte Einträge zählen nur, wenn du sie und ihren Status sehen darfst. {since=0.11.5} |
 | **Meine Aufgaben** | Fällige Aufgaben zum Abhaken – deine oder die einer Datenbankansicht. |
 | **Termine** | Die nächsten Tage aus Kalenderansichten und verbundenen Kalendern. |
 | **Datenbankansicht** | Eine Ansicht als kompakte Liste, Tabelle oder Board. |

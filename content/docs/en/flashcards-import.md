@@ -22,7 +22,7 @@ The import writes into properties; it does not fill a side that comes from the r
 
 ### Export as CSV
 
-**Export → Cards as CSV** downloads one line per card you may study (suspended ones too): front, back, hint, extra, tags, card type and card (empty for the card, `r` for the reverse one, `c1`, `c2` … for clozes). Documents are written as Markdown, clozes as `{{c1::…}}`. **Cards with my learning state as CSV** adds your own state: state, due, stability, difficulty, reviews, lapses, suspended – never anyone else's. **Import cards** reads the file back; the lines of a card's siblings become one record.
+**Export → Cards as CSV** downloads one line per card you may study (suspended ones too): front, back, hint, extra, tags, card type and card (empty for the card, `r` for the reverse one, `c1`, `c2` … for clozes). Documents are written as Markdown, clozes as `{{c1::…}}`. Tags only come along if you may read their property. {since=0.11.5} **Cards with my learning state as CSV** adds your own state: state, due, stability, difficulty, reviews, lapses, suspended – never anyone else's. **Import cards** reads the file back; the lines of a card's siblings become one record.
 
 ## Import from Anki {since=0.10.0}
 
@@ -60,4 +60,4 @@ With the property **Deck** (the default), a deck stays one database and you stud
 
 ### Export as an Anki package {since=0.10.0}
 
-**Export → As an Anki package (.apkg)** downloads the view's cards as a package every Anki version (desktop, AnkiDroid, AnkiMobile) imports: one note per record with the note types Basic, Basic with reverse card, Type the answer and Cloze, multiple choice as Basic with the options on the front, image occlusion as Image Occlusion (one note per picture, Anki 23.10 and later). Hint and extra become fields of their own, tags stay tags, the select **Deck** becomes sub-decks, images and sounds of the deck come along as media. The learning state stays in Flowplan – in Anki the cards are new.
+**Export → As an Anki package (.apkg)** downloads the view's cards as a package every Anki version (desktop, AnkiDroid, AnkiMobile) imports: one note per record with the note types Basic, Basic with reverse card, Type the answer and Cloze, multiple choice as Basic with the options on the front, image occlusion as Image Occlusion (one note per picture, Anki 23.10 and later). Hint and extra become fields of their own, tags stay tags, the select **Deck** becomes sub-decks, images and sounds of the deck come along as media. The learning state stays in Flowplan – in Anki the cards are new. Tags and **Deck** only come from properties you may read. {since=0.11.5}

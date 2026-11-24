@@ -10,6 +10,8 @@ A readable copy outside Flowplan – for emergencies when the instance is down, 
 - the export reads with the permissions of the person who saved the selection – private records and journals with a PIN stay out;
 - file names and paths in the ZIP contain ids, so they stay the same between runs (clean Git diff). Records start with YAML frontmatter, comments are in `<file>.comments.md`, earlier versions under `<file>.versions/`.
 
+When the server is busy, the scheduled Markdown export tries again for a few minutes instead of failing until the next run. {since=0.11.5}
+
 ## Push into a Git repository
 
 > [!IMPORTANT]

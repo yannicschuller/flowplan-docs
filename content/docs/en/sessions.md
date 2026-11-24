@@ -23,3 +23,5 @@ How long a session lasts is set under **Administration → Sign-in & SSO → Ses
 - Shorter times apply from the next sign-in; longer ones extend sessions that stay signed in the next time they are used. Turning “Stay signed in” or the apps' staying signed in off stops the extending; running sessions then end at their next expiry.
 
 **Settings → Account & security → Signed-in devices** lists all your own sessions with device, last use and end; **Sign out** ends a single one, **Sign out all other devices** all but the current one.
+
+**Signing out on this device** – from the account menu, for this device under **Signed-in devices**, on the two-factor screen or by deleting your account – cleans the device up: it removes the [offline copy](/offline-and-apps#turn-on-offline-use), the tab's [Ask AI](/ask-ai) conversation and the titles of its history. Whatever has not reached the server yet – offline changes, uploads, flashcard ratings, recordings, journal text – stays on the device for that account until it signs in there again. {since=0.11.5}

@@ -94,7 +94,7 @@ The **{}** button beside **Task** and **Below the heading** – or typing `{{` �
 Example: *When* Status changes to “Done”, *then* create the task “Write the invoice for {{Title}}” in the database “Accounting”, person “Anna”, due +2 days, linked through “Project”.
 
 > [!NOTE]
-> A rule creates its task once per record – even if the status later goes back and forth. It acts with the rights of the person who saved it: whoever saves the rule must be allowed to create records in the task database; forms and guests still trigger it. If that right goes away later, the triggering change is refused with a message naming the rule. Records a rule creates this way run through their database’s rules once, but the tasks of those rules create nothing further – so no chain arises. Rules with “Create task” cannot be opened in the canvas yet.
+> A rule creates its task once per record, even if the status goes back and forth. It acts with the rights of whoever saved it: they must be able to create records in the task database (forms and guests still trigger it); if that right lapses, the triggering change is refused with a message naming the rule. Records they may not see get no task, and linked titles in the task text follow their rights. {since=0.11.5} Its records run through their database’s rules once, but those rules' tasks create nothing further. “Create task” rules can't be opened in the canvas yet.
 
 ### Open in canvas: a rule becomes a workflow
 

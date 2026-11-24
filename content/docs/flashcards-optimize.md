@@ -33,7 +33,7 @@ Lernst du in einem Stapel sehr Verschiedenes – Vokabeln und Grammatik, leichte
 - **Unterstapel:** die Werte der Auswahl, die unter **Karten einrichten → Unterstapel** steht (beim [Anki-Import](/flashcards-import#unterstapel-als-eigene-datenbanken) die Eigenschaft **Deck**).
 - **Kartentyp:** jeder Kartentyp, wenn der Stapel mehr als einen hat.
 
-Gelernt wird nur aus den Wertungen der Karten dieses Teils – auch hier mindestens 1.000. Übernommene Parameter gelten für diese Karten: ein Unterstapel vor einem Kartentyp, beide vor dem ganzen Stapel. **Parameter des Stapels nutzen** nimmt sie wieder weg. **Meine Einstellungen** nennt, wie viele Teile eigene Parameter haben. Die Knöpfe der Lernsitzung zeigen die Abstände mit den Parametern der Karte, auch offline.
+Gelernt wird nur aus den Wertungen der Karten dieses Teils – auch hier mindestens 1.000. Übernommene Parameter gelten für diese Karten: ein Unterstapel vor einem Kartentyp, beide vor dem ganzen Stapel. **Parameter des Stapels nutzen** nimmt sie wieder weg. **Meine Einstellungen** nennt, wie viele Teile eigene Parameter haben. Die Knöpfe der Lernsitzung zeigen die Abstände mit den Parametern der Karte, auch offline. Teile, Zähler und die Empfehlung der Behaltensrate rechnen nur mit Karten von Einträgen, die du sehen darfst. {since=0.11.5}
 
 Später erinnert **Meine Einstellungen** leise daran, neu zu optimieren: nach 1.000 neuen Wertungen oder nach einem Monat mit mindestens 200 neuen. Eine Benachrichtigung gibt es dafür nicht.
 

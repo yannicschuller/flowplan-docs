@@ -19,7 +19,7 @@ How to add, move and set up widgets is described under [Customize your home page
 | **Inbox** | Mentions, comments and assignments. |
 | **Activity** | Who changed what in the workspace lately. |
 | **My activity** | Pages you created and edited – per week, month or year, visible only to you. |
-| **This week** | Pages edited, records completed, open tasks and time tracked since Monday. |
+| **This week** | Pages edited, records completed, open tasks and time tracked since Monday. Completed records only count if you may see them and their status. {since=0.11.5} |
 | **My tasks** | Due tasks to tick off – yours or those of a database view. |
 | **Agenda** | The next days from calendar views and connected calendars. |
 | **Database view** | A view as a compact list, table or board. |

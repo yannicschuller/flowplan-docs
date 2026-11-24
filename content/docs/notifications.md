@@ -12,7 +12,7 @@ Der **Posteingang** sammelt:
 
 - Erwähnungen,
 - Kommentare, die dich betreffen (siehe [unten](#wer-von-kommentaren-erfaehrt)), und Antworten in Textkommentaren, an denen du beteiligt bist,
-- Datums-Erinnerungen,
+- [Datums-Erinnerungen](/databases#datums-erinnerungen) – nur für Datumsfelder, die du sehen darfst: Verbirgt eine Leseregel das Feld, lässt sich keine Erinnerung setzen, und eine vorhandene bleibt stumm; bei wiederkehrenden Einträgen holt Flowplan verpasste Termine höchstens ein Jahr zurück nach, {since=0.11.5}
 - Kommentare und Einträge von Gästen über Freigabelinks,
 - mit dir geteilte Seiten und Arbeitsbereiche,
 - Änderungen an Seiten, denen du folgst (eigene Seiten folgst du beim Anlegen automatisch; die Glocke oben rechts schaltet das Folgen um, auf dem Telefon **Folgen** im Menü `⋯`),

@@ -59,7 +59,7 @@ Das Adressbuch-Symbol in der Werkzeugleiste der Datenbank öffnet das Menü **Ko
 
 Ist ein LDAP-Verzeichnis eingerichtet (siehe [Kontakte aus LDAP](/scim-and-ldap#kontakte-aus-ldap)), übernehmen Bearbeiter einer Kontakte-Datenbank Personen daraus.
 
-Das Verzeichnis ist nur für Leute aus der Organisation da: Administratoren der Instanz, Konten, die sich mit LDAP anmelden, und Vollmitglieder (keine Gäste) mindestens eines Arbeitsbereichs, den jemand anderes angelegt hat. Gäste des Arbeitsbereichs der Kontakte-Datenbank können es nie durchsuchen oder importieren, und mit einem API-Token geht es auch nicht. Wer keinen Zugriff hat, sieht **Aus LDAP importieren** ausgegraut mit dem Grund.
+Das Verzeichnis ist nur für Leute aus der Organisation da: Administratoren der Instanz, Konten, die sich mit LDAP anmelden, und Personen, die die Organisation eingeladen hat. Dafür zählt, wer die Arbeitsbereiche angelegt hat, in denen du Vollmitglied (kein Gast) bist: Die Kette muss bei einem Administrator, einem LDAP-Konto oder einem Arbeitsbereich enden, den die Instanz selbst angelegt hat. Wer nur von Leuten außerhalb der Organisation eingeladen wurde, kommt nicht ans Verzeichnis. {since=0.11.5} Gäste des Arbeitsbereichs der Kontakte-Datenbank können es nie durchsuchen oder importieren, und mit einem API-Token geht es auch nicht. Wer keinen Zugriff hat, sieht **Aus LDAP importieren** ausgegraut mit dem Grund.
 
 ::: steps
 
@@ -92,4 +92,5 @@ Zuordnen lassen sich nur freigegebene Attribute: die der Standardzuordnung und d
 - Verschwindet ein Eintrag aus dem Verzeichnis, bleibt der Kontakt und bekommt den Tag **Nicht mehr im Verzeichnis**; taucht er wieder auf, verschwindet der Tag. Würde ein Lauf mehr als die Hälfte der Kontakte (mindestens fünf) als verschwunden markieren, bricht er ab – das ist eher eine falsche Konfiguration.
 - Kontakte werden über `entryUUID` (OpenLDAP), `objectGUID` (Active Directory) oder `nsUniqueId` (389 DS) wiedergefunden, sonst über den DN – umbenannte oder verschobene Einträge behalten ihren Kontakt.
 - Einer OU nicht mehr folgen: im Import-Dialog **Nicht mehr folgen**; die Kontakte bleiben.
+- Im Hintergrund gleicht Flowplan im Namen der Person ab, die der OU folgt. Verliert sie den Zugriff aufs Verzeichnis oder das Recht, die Datenbank zu bearbeiten, hält der Abgleich an, und die Datenbank zeigt einen Fehler beim Abgleich. Gleicht jemand mit Bearbeitungsrecht und Zugriff aufs Verzeichnis von Hand ab, läuft er wieder – ab dann im Namen dieser Person. {since=0.11.5}
 - Importe stehen im Sicherheitsprotokoll der Administration.

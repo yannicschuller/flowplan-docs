@@ -12,6 +12,7 @@ Under **Settings → Account & security → Emergency access** you name up to fi
 
 - **Request:** In an emergency they request access under "I am a trusted contact for …". You are told right away – in Flowplan, by push, chat app and an e-mail whose link denies the request without signing in – and reminded before the waiting period ends. After a denial they can ask again after 24 hours at the earliest.
 - **Grant:** Unless you deny, after the waiting period the person can read your private spaces and export them as Markdown or ZIP. They cannot change, delete or share anything or touch your settings, and they don't take over your account; only admins reset credentials.
+- **Linked and computed values:** relations, rollups and formulas show "Not available" to the trusted contact – in the page view, the ZIP and the CSV. {since=0.11.5}
 - **Not included:** team spaces, content you only see through a workspace (the person needs their own membership for that), other people's private spaces shared with you, and journals with a PIN.
 - **Encrypted spaces** are included once the person has set up encryption: your browser seals the keys for them the next time you unlock, and the server never sees them in plaintext. When the access ends, those spaces get a new key at your next visit.
 - You can end an access or remove a trusted contact at any time; every step is in the activity log and the security events, and an export also notifies you.

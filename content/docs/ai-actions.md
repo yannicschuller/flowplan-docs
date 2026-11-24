@@ -42,6 +42,8 @@ Was die KI sieht:
 - nur Eigenschaften, die für dich sichtbar sind (Lese-Rechte pro Eigenschaft gelten); Verknüpfungen, Formeln, Rollups, Dateien, Fortschritt, Zeit und Sprints werden nicht mitgeschickt, ebenso wenig der Text in den Eintragsdokumenten,
 - die Einträge in der Reihenfolge der Datenbank.
 
+Liest die KI eine Seite mit Datenbanktabellen als Kontext, stehen in Spalten mit Relationen, Rollups und Formeln „Nicht verfügbar“. {since=0.11.5}
+
 Grenzen: höchstens 3 Datenbanken und 200 Einträge pro Anfrage und etwa 40 000 Zeichen (mit einem Modell auf dem eigenen Server im Schreibassistenten etwa 8 000). Passt nicht alles hinein, steht das in den Daten („… und 57 weitere Einträge“), und die KI weist darauf hin. Die Apple-KI auf dem Gerät liest keine Datenbanken.
 
 ## Pläne aus KI fragen {since=0.11.5}
@@ -97,6 +99,7 @@ Die **Ausgabe** ist Text, Auswahl, Mehrfachauswahl (nur vorhandene Optionen – 
 - **Automatisch neu berechnen, wenn sich verwendete Eigenschaften ändern:** Werte folgen Änderungen mit kurzer Verzögerung und im Rahmen der KI-Grenzen. Das läuft im Namen der Person, die es eingeschaltet oder den Auftrag zuletzt geändert hat. Verliert sie den Zugriff, stoppt es; ist KI auf der Instanz aus, pausiert es.
 - Werte entstehen wie Bearbeitungen: mit Versionsverlauf, Automationen und Webhooks. Frisch berechnete Zellen leuchten kurz auf.
 - Leser, Gäste und API-Tokens können keine KI-Werte schreiben. Private Einträge und für die KI gesperrte Datenbanken werden übersprungen.
+- Von verknüpften Einträgen sieht die KI nur Titel, die alle Leser der Datenbank sehen dürfen – wie bei **Mit KI ausfüllen**. {since=0.11.5}
 
 ### Felder mit KI ausfüllen
 

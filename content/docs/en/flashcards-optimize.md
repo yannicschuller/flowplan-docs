@@ -33,7 +33,7 @@ If a deck mixes very different things – vocabulary and grammar, easy and hard 
 - **Sub-deck:** the values of the select chosen under **Set up cards → Sub-decks** (with the [Anki import](/flashcards-import#sub-decks-as-databases-of-their-own), the property **Deck**).
 - **Card type:** each card type, when the deck has more than one.
 
-Only the ratings of that part's cards count – here too at least 1,000. Applied parameters hold for those cards: a sub-deck before a card type, both before the whole deck. **Use the deck's parameters** takes them away again. **My settings** says how many parts have parameters of their own. The buttons of a session show the intervals with the card's parameters, offline as well.
+Only the ratings of that part's cards count – here too at least 1,000. Applied parameters hold for those cards: a sub-deck before a card type, both before the whole deck. **Use the deck's parameters** takes them away again. **My settings** says how many parts have parameters of their own. The buttons of a session show the intervals with the card's parameters, offline as well. Parts, counts and the recommended retention only use cards of records you may see. {since=0.11.5}
 
 Later, **My settings** gently suggests optimising again: after 1,000 new ratings, or after a month with at least 200 new ones. There is no notification for it.
 

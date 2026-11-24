@@ -23,7 +23,7 @@ Export pages, databases and whole spaces as Markdown, HTML, Word, PDF or e-book 
 
 **Print / PDF** opens the browser's print view; save as PDF there. First a small window asks for the [print options](/print-and-pdf#print-and-pdf). Home screen apps on iPhone and iPad cannot print themselves: they open the page in Safari under a secret address for 15 minutes. This print view shows content only – no form fields, buttons or scripts – and at the top who created it.
 
-The export respects read permissions and contains all records regardless of view filters. Formulas and Mermaid are kept as source.
+The export respects read permissions and contains all records regardless of view filters. Formulas and Mermaid are kept as source. An account can run at most two exports or imports at a time, see [Import](/import-export-versions#import). {since=0.11.5}
 
 **Captions in Markdown**: an image's [caption](/en/formatting#captions) becomes its title, a table's a line `Table: …` below it (as in Pandoc), a code block's `Listing: …`:
 

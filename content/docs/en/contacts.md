@@ -59,7 +59,7 @@ The address book icon in the database toolbar opens the **Contacts** menu:
 
 When an LDAP directory is set up (see [Contacts from LDAP](/scim-and-ldap#contacts-from-ldap)), editors of a contacts database import people from it.
 
-The directory is only for people of the organisation: instance administrators, accounts that sign in with LDAP, and full members (not guests) of at least one workspace someone else created. Guests of the contacts database's workspace can never browse or import it, and neither can an API token. Anyone without access sees **Import from LDAP** greyed out with the reason.
+The directory is only for people of the organisation: instance administrators, accounts that sign in with LDAP, and people the organisation invited. What counts is who created the workspaces you are a full member (not a guest) of: that chain has to lead back to an administrator, an LDAP account or a workspace the instance set up itself. Someone invited only by people outside the organisation can't reach the directory. {since=0.11.5} Guests of the contacts database's workspace can never browse or import it, and neither can an API token. Anyone without access sees **Import from LDAP** greyed out with the reason.
 
 ::: steps
 
@@ -92,4 +92,5 @@ Only allowed attributes can be mapped: those of the default mapping and the ones
 - When an entry disappears from the directory, the contact stays and gets the tag **No longer in directory**; when it comes back, the tag goes. A run that would mark more than half of the contacts (at least five) as gone stops instead – that is more likely a wrong configuration.
 - Contacts are found again by `entryUUID` (OpenLDAP), `objectGUID` (Active Directory) or `nsUniqueId` (389 DS), otherwise by DN – renamed or moved entries keep their contact.
 - To stop following an OU: **Stop following** in the import dialog; the contacts stay.
+- The background sync runs in the name of the person who follows the OU. If they lose access to the directory or the right to edit the database, it stops and the database shows a sync error. Once an editor with directory access syncs by hand, it runs again – from then on in that person's name. {since=0.11.5}
 - Imports appear in the administration's security log.

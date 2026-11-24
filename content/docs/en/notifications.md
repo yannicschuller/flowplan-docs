@@ -12,7 +12,7 @@ The **Inbox** collects:
 
 - mentions,
 - comments that concern you (see [below](#who-hears-about-comments)) and replies in text comments you took part in,
-- date reminders,
+- [date reminders](/databases#date-reminders) – only for date fields you may see: when a read rule hides the field, no reminder can be set and an existing one stays silent; for repeating records, Flowplan catches up on missed occurrences for at most a year, {since=0.11.5}
 - comments and records from guests via share links,
 - pages and workspaces shared with you,
 - changes on pages you follow (you follow your own pages when creating them; the bell at the top right toggles following, on a phone **Follow** in the `⋯` menu),

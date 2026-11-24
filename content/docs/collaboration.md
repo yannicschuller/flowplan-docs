@@ -14,7 +14,7 @@ Mehrere Personen schreiben gleichzeitig in derselben Seite, ohne sich zu übersc
 - Auch **Seitenleiste, offene Datenbanken und Posteingang** bleiben aktuell, ohne neu zu laden: Legt jemand eine Seite an, benennt sie um, ändert einen Eintrag in der Datenbank, die du offen hast, oder erwähnt dich, siehst du das nach wenigen Sekunden. Der Server meldet nur, *dass* sich etwas geändert hat – nie Titel oder Seiten, die du nicht sehen darfst; dein Browser holt dann das Geänderte mit deinen Rechten. Mehrere Tabs teilen sich dafür eine Verbindung. Ohne diese Verbindung (etwa hinter einem Proxy, der Server-Sent Events puffert) gleicht Flowplan wie bisher alle 10 Sekunden ab. {since=0.11.0}
 - Ohne Verbindung arbeitest du weiter; die Änderungen werden abgeglichen, sobald das Netz zurück ist.
 - Datenbank-Änderungen werden auf Versionskonflikte geprüft: Hat jemand denselben Eintrag inzwischen geändert, wird deine Änderung nicht stillschweigend darübergeschrieben, sondern abgelehnt, und du siehst den neuen Stand.
-- Gäste mit Bearbeitungslink arbeiten ebenfalls live mit und sehen die Cursor der Mitglieder; Mitglieder sehen die Gäste als „Gast · <Linkname>“.
+- Gäste mit Bearbeitungslink arbeiten ebenfalls live mit und sehen die Cursor der Mitglieder; Mitglieder sehen die Gäste als „Gast · <Linkname>“. Kommentare von Gästen sind nur über [Freigabelinks](/sharing#links-mit-eigenen-berechtigungen) zu sehen, nicht auf einer im Web veröffentlichten Seite. {since=0.11.5}
 - Auf Whiteboards gibt es zusätzlich [Live-Cursor](/whiteboard-collaboration#gemeinsam-arbeiten) wie in Miro.
 
 ## Änderungen vorschlagen

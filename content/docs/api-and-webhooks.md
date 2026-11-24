@@ -143,7 +143,7 @@ Mit einem **Schreib-Token** eines Eigentümers lassen sich Webhooks auch per API
 | `POST /api/workflow-runs/{runId}/retry` / `cancel` | wiederholen ab dem fehlgeschlagenen Knoten / abbrechen |
 | `GET /api/workflows/{id}/export`, `POST /api/workflows/import` | JSON-Export (ohne Geheimnisse) und Import als Entwurf |
 
-Lese-Tokens lesen nur. Freigaben entscheidet nur eine angemeldete Person, nie ein Token. `activate`, `run` und `import` nehmen einen `Idempotency-Key`. Die SDKs haben dafür eigene Methoden (`saveWorkflowDraft`, `testWorkflow`, `activateWorkflow`, `runWorkflow` …).
+Lese-Tokens lesen nur. Freigaben entscheidet nur eine angemeldete Person, nie ein Token. Workflows mit KI-Knoten aktiviert oder startet nur ein Token mit der Berechtigung **„KI und Transkription“**. {since=0.11.5} `activate`, `run` und `import` nehmen einen `Idempotency-Key`. Die SDKs haben dafür eigene Methoden (`saveWorkflowDraft`, `testWorkflow`, `activateWorkflow`, `runWorkflow` …).
 
 ### Eingehender Workflow-Webhook
 

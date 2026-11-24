@@ -77,6 +77,8 @@ Filters and sorting of a view that use a hidden property work on empty values fo
 
 Relations appear as links in the record. The database search also finds records by the names of linked records, and relation filters offer these names directly.
 
+In both directions, every link and unlink also changes the record on the other side. So it only works if you may edit the linked record there and its counterpart property – otherwise Flowplan refuses the change. {since=0.11.5}
+
 Linked records show their icon, in the cell and in the picker. Clicking a linked record opens it in a window over the current table – you stay in your database and return to it with **Close**. **Open in database** switches to the record's own database.
 
 ## Rollups

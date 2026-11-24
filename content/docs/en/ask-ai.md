@@ -22,7 +22,7 @@ keywords: ask ai, questions, chat, answers, sources, semantic search, related pa
 - **Formatting:** answers are formatted – bold, italic, lists (also nested), code and links; the source numbers stay clickable.
 - **Copy:** **Copy** below the sources takes the whole answer. Each code block also has its own **Copy code** button in its top right corner – handy when the AI puts a command, a snippet or a ready text (such as an issue to file) into a code block. This applies wherever AI answers appear formatted.
 - **Propose actions:** below an answer, the AI can propose what to create from it – see [AI actions](/ai-actions#ai-actions).
-- **Conversation:** follow-up questions take the last questions and answers into account; **New conversation** starts over. The conversation stays in this browser tab only and is not stored on the server.
+- **Conversation:** follow-up questions take the last questions and answers into account; **New conversation** starts over. The conversation stays in this browser tab only and is not stored on the server. Signing out on the device deletes it. {since=0.11.5}
 - The search uses the full-text index; the best-matching passages go with your question to the provider whose model is shown in the input box; a click on the model shows the provider, the exact model, its address and whether text stays on this server. The AI only reads what you may read and what is open to the AI ([What the AI may access](/ai#what-the-ai-may-access)). A page's [tags and property values](/page-tags#tags-and-properties) count as part of its text.
 - While the answer is written, a shimmer and a typing cursor show progress; the sources appear one after another.
 

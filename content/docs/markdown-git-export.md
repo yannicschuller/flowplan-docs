@@ -10,6 +10,8 @@ Eine lesbare Kopie außerhalb von Flowplan – für den Notfall, wenn die Instan
 - exportiert wird mit den Leserechten der Person, die die Auswahl gespeichert hat – private Einträge und Journale mit PIN bleiben draußen;
 - Dateinamen und Pfade im ZIP enthalten Kennungen, damit sie zwischen zwei Läufen gleich bleiben (sauberer Git-Diff). Einträge beginnen mit YAML-Frontmatter, Kommentare stehen in `<Datei>.comments.md`, frühere Versionen unter `<Datei>.versions/`.
 
+Ist der Server gerade ausgelastet, versucht es der geplante Markdown-Export einige Minuten lang erneut, statt bis zum nächsten Termin auszufallen. {since=0.11.5}
+
 ## In ein Git-Repository übertragen
 
 > [!IMPORTANT]

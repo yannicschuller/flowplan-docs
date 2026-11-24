@@ -14,7 +14,7 @@ Several people write on the same page at the same time without overwriting each 
 - The **sidebar, open databases and the inbox** stay current too, without reloading: when someone creates or renames a page, changes a record in the database you have open, or mentions you, you see it within a few seconds. The server only says *that* something changed – never titles or pages you may not see; your browser then fetches what changed with your permissions. Several tabs share one connection for this. Without that connection (for example behind a proxy that buffers server-sent events), Flowplan syncs every 10 seconds as before. {since=0.11.0}
 - Without a connection you keep working; changes are merged as soon as the network is back.
 - Database changes are checked for version conflicts: if someone changed the same record in the meantime, your change is not silently written over it but refused, and you see the new state.
-- Guests with an edit link also work live and see the members' cursors; members see the guests as "Guest · <link name>".
+- Guests with an edit link also work live and see the members' cursors; members see the guests as "Guest · <link name>". Guest comments are only visible through [share links](/sharing#links-with-their-own-permissions), not on a page published on the web. {since=0.11.5}
 - Whiteboards also have [live cursors](/whiteboard-collaboration#work-together) as in Miro.
 
 ## Suggest changes

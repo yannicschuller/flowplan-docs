@@ -23,3 +23,5 @@ Wie lange eine Sitzung dauert, legt die Administration unter **Administration �
 - Kürzere Zeiten gelten ab der nächsten Anmeldung; längere verlängern Sitzungen, die angemeldet bleiben, bei ihrer nächsten Nutzung. Wer „Angemeldet bleiben“ oder das Angemeldet-Bleiben der Apps ausschaltet, beendet das Verlängern; laufende Sitzungen enden dann zu ihrem nächsten Ablauf.
 
 **Einstellungen → Konto & Sicherheit → Angemeldete Geräte** listet alle eigenen Sitzungen mit Gerät, letzter Nutzung und Ende; **Abmelden** beendet eine einzelne, **Alle anderen Geräte abmelden** alle bis auf die aktuelle.
+
+**Abmelden auf diesem Gerät** – über das Kontomenü, für dieses Gerät unter **Angemeldete Geräte**, auf der Seite der Zwei-Faktor-Anmeldung oder beim Löschen des Kontos – räumt das Gerät auf: Es entfernt die [Offline-Kopie](/offline-and-apps#offline-nutzung-einschalten), das Gespräch mit [KI fragen](/ask-ai) in diesem Tab und die Titel seines Verlaufs. Was noch nicht beim Server angekommen ist – Änderungen ohne Verbindung, Uploads, Wertungen von Lernkarten, Aufnahmen, Journaltext –, bleibt für dieses Konto auf dem Gerät, bis es sich dort wieder anmeldet. {since=0.11.5}

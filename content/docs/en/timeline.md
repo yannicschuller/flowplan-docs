@@ -41,6 +41,8 @@ Records can wait for each other – for example "Print" only after "Proofreading
 
 In embedded views (linked databases), linking by dragging and **Resolve all conflicts** are not available – open the database itself for that.
 
+Dragging (in the calendar too), **Undo**, resolving conflicts and adding or removing dependencies only work on date and dependency properties you may edit; otherwise Flowplan refuses the change. {since=0.11.5}
+
 # Arrows {since=0.11.0}
 
 Many dependencies quickly tangle a plan. In the **timeline settings** you choose for each view how the arrows appear:

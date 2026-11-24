@@ -77,6 +77,8 @@ Filter und Sortierungen einer Ansicht, die eine verborgene Eigenschaft nutzen, w
 
 Relationen erscheinen im Eintrag als Links. Die Datenbanksuche findet Einträge auch über die Namen verknüpfter Einträge, Relationsfilter bieten diese Namen direkt an.
 
+In beide Richtungen ändert jedes Verknüpfen und Lösen auch den Eintrag auf der anderen Seite. Das geht deshalb nur, wenn du dort den verknüpften Eintrag und seine Gegen-Eigenschaft bearbeiten darfst – sonst lehnt Flowplan die Änderung ab. {since=0.11.5}
+
 Verknüpfte Einträge zeigen ihr Symbol, in der Zelle wie in der Auswahl. Ein Klick auf einen verknüpften Eintrag öffnet ihn als Fenster über der aktuellen Tabelle – du bleibst in deiner Datenbank und kehrst mit **Schließen** dorthin zurück. **In Datenbank öffnen** wechselt in die Datenbank des Eintrags.
 
 ## Rollups

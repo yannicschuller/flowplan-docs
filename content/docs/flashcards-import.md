@@ -22,7 +22,7 @@ Der Import schreibt in Eigenschaften; eine Kartenseite aus dem Dokument des Eint
 
 ### Als CSV exportieren
 
-**Exportieren → Karten als CSV** lädt eine Zeile je Karte, die du lernen darfst (auch ausgesetzte): Vorderseite, Rückseite, Hinweis, Zusatz, Tags, Kartentyp und Karte (leer für die Karte, `r` für die umgekehrte, `c1`, `c2` … für Lücken). Dokumente stehen als Markdown darin, Lücken als `{{c1::…}}`. **Karten mit meinem Lernstand als CSV** hängt deinen eigenen Stand an: Zustand, fällig, Stabilität, Schwierigkeit, Wiederholungen, Vergessen, ausgesetzt – nie den Stand anderer. Die Datei lässt sich mit **Karten importieren** wieder einlesen; die Zeilen der Geschwister einer Karte werden dabei zu einem Eintrag.
+**Exportieren → Karten als CSV** lädt eine Zeile je Karte, die du lernen darfst (auch ausgesetzte): Vorderseite, Rückseite, Hinweis, Zusatz, Tags, Kartentyp und Karte (leer für die Karte, `r` für die umgekehrte, `c1`, `c2` … für Lücken). Dokumente stehen als Markdown darin, Lücken als `{{c1::…}}`. Tags kommen nur mit, wenn du ihre Eigenschaft lesen darfst. {since=0.11.5} **Karten mit meinem Lernstand als CSV** hängt deinen eigenen Stand an: Zustand, fällig, Stabilität, Schwierigkeit, Wiederholungen, Vergessen, ausgesetzt – nie den Stand anderer. Die Datei lässt sich mit **Karten importieren** wieder einlesen; die Zeilen der Geschwister einer Karte werden dabei zu einem Eintrag.
 
 ## Aus Anki importieren {since=0.10.0}
 
@@ -60,4 +60,4 @@ Mit der Eigenschaft **Deck** (Vorgabe) bleibt ein Stapel eine Datenbank, und die
 
 ### Als Anki-Paket exportieren {since=0.10.0}
 
-**Exportieren → Als Anki-Paket (.apkg)** lädt die Karten der Ansicht als Paket, das jede Anki-Version (Desktop, AnkiDroid, AnkiMobile) importiert: eine Notiz je Eintrag mit den Notiztypen Basic, Basic mit umgekehrter Karte, Antwort eintippen und Cloze, Multiple Choice als Basic mit den Optionen auf der Vorderseite, Bildverdeckung als Image Occlusion (eine Notiz je Bild, ab Anki 23.10). Hinweis und Zusatz werden eigene Felder, Tags bleiben Tags, die Auswahl **Deck** wird zu Unterstapeln, Bilder und Töne des Stapels kommen als Medien mit. Der Lernstand bleibt in Flowplan – in Anki sind die Karten neu.
+**Exportieren → Als Anki-Paket (.apkg)** lädt die Karten der Ansicht als Paket, das jede Anki-Version (Desktop, AnkiDroid, AnkiMobile) importiert: eine Notiz je Eintrag mit den Notiztypen Basic, Basic mit umgekehrter Karte, Antwort eintippen und Cloze, Multiple Choice als Basic mit den Optionen auf der Vorderseite, Bildverdeckung als Image Occlusion (eine Notiz je Bild, ab Anki 23.10). Hinweis und Zusatz werden eigene Felder, Tags bleiben Tags, die Auswahl **Deck** wird zu Unterstapeln, Bilder und Töne des Stapels kommen als Medien mit. Der Lernstand bleibt in Flowplan – in Anki sind die Karten neu. Tags und **Deck** kommen nur aus Eigenschaften, die du lesen darfst. {since=0.11.5}

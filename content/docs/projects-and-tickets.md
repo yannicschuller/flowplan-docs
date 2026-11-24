@@ -94,7 +94,7 @@ Der Knopf **{}** neben **Aufgabe** und **Unter der Überschrift** – oder `{{` 
 Beispiel: *Wenn* Status sich auf „Erledigt“ ändert, *dann* Aufgabe „Rechnung zu {{Titel}} schreiben“ in der Datenbank „Buchhaltung“, Person „Anna“, fällig +2 Tage, verknüpft über „Projekt“.
 
 > [!NOTE]
-> Eine Regel erstellt ihre Aufgabe einmal je Eintrag – auch wenn der Status später hin- und herwechselt. Sie handelt mit den Rechten der Person, die sie gespeichert hat: Wer die Regel speichert, muss in der Aufgaben-Datenbank Einträge anlegen dürfen; Formulare und Gäste lösen sie trotzdem aus. Fehlt dieses Recht später, wird die auslösende Änderung mit einer Meldung abgelehnt, die die Regel nennt. Einträge, die eine Regel so anlegt, durchlaufen die Regeln ihrer Datenbank einmal; deren Aufgaben erzeugen aber keine weiteren – so entsteht keine Kette. Regeln mit „Aufgabe erstellen“ lassen sich noch nicht im Canvas öffnen.
+> Eine Regel erstellt ihre Aufgabe einmal je Eintrag – auch wenn der Status später hin- und herwechselt. Sie handelt mit den Rechten der Person, die sie gespeichert hat: Wer die Regel speichert, muss in der Aufgaben-Datenbank Einträge anlegen dürfen; Formulare und Gäste lösen sie trotzdem aus. Fehlt dieses Recht später, wird die auslösende Änderung mit einer Meldung abgelehnt, die die Regel nennt. Für einen Eintrag, den diese Person nicht sehen darf, entsteht keine Aufgabe, und Titel verknüpfter Einträge kommen nur so in den Aufgabentext, wie sie sie sehen darf. {since=0.11.5} Einträge, die eine Regel so anlegt, durchlaufen die Regeln ihrer Datenbank einmal; deren Aufgaben erzeugen aber keine weiteren – so entsteht keine Kette. Regeln mit „Aufgabe erstellen“ lassen sich noch nicht im Canvas öffnen.
 
 ### Im Canvas öffnen: aus einer Regel wird ein Workflow
 

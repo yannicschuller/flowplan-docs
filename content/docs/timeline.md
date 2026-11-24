@@ -41,6 +41,8 @@ Einträge können aufeinander warten – etwa „Druck“ erst nach „Korrektur
 
 In eingebetteten Ansichten (verknüpfte Datenbanken) sind Verknüpfen per Ziehen und **Alle Konflikte nachziehen** nicht verfügbar – dafür die Datenbank selbst öffnen.
 
+Verschieben (auch im Kalender), **Rückgängig**, das Nachziehen von Konflikten und das Verknüpfen oder Entfernen von Abhängigkeiten gehen nur bei Datums- und Abhängigkeits-Eigenschaften, die du bearbeiten darfst; sonst lehnt Flowplan die Änderung ab. {since=0.11.5}
+
 # Pfeile {since=0.11.0}
 
 Viele Abhängigkeiten machen einen Plan schnell unübersichtlich. In den **Timeline-Einstellungen** legst du für jede Ansicht fest, wie die Pfeile erscheinen:

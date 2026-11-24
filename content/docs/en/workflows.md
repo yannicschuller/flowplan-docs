@@ -71,7 +71,7 @@ Built-in values: `$today`, `$now`, `$run`, `$workflow`, `$runner`, and inside �
 
 ## Testing
 
-- **Dry run**: writing nodes only report what they would do (“would create record …”); e-mail, chat and push are not sent, waits are skipped, approvals count as approved or rejected (your choice). AI nodes run and cost tokens.
+- **Dry run**: writing nodes only report what they would do (“would create record …”); e-mail, chat and push are not sent, waits are skipped, approvals count as approved or rejected (your choice). AI nodes run and cost tokens. A dry run checks the same rights as test and live runs: it fails on private records, protected properties, journals behind a PIN and encrypted spaces just the same. {since=0.11.5}
 - **Test run**: acts for real – as **you**, not as the person the workflow runs as. When AI or trigger data choose recipients or targets, a test run needs the [setting for that](#workflow-settings) too; a dry run always works. {since=0.10.0}
 - Trigger data: **example**, the **last real event**, a **record** or **page** to pick, or **your own values**.
 
@@ -79,7 +79,7 @@ Tests always use the draft. The result shows as a status ring at every node; a c
 
 ## Activate, pause, “runs as”
 
-**Activate** checks the draft (missing settings, deleted databases, pages without access …) and shows what the workflow will do and **who it runs as**: the person who activates it. It only sees and changes what this person may. If they lose their rights, the workflow pauses and says so.
+**Activate** checks the draft (missing settings, deleted databases, pages without access …) and shows what the workflow will do and **who it runs as**: the person who activates it. It only sees and changes what this person may. If they lose their rights, the workflow pauses and says so. A run stays with the person it started for, even if someone else activates the workflow afterwards. Failed runs of the earlier person can then no longer be retried – start them again. {since=0.11.5}
 
 **Pause** holds open runs (or cancels them, if you choose); after activating they continue on their version. After ten failures in a row, or when half of the recent runs fail, a workflow pauses itself.
 

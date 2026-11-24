@@ -24,7 +24,7 @@ Click the extension's icon or press **Alt+Shift+F**. Choose the target – the e
 
 - **Whole page:** the extension finds the actual article and leaves out navigation, ads, cookie notices, comments and sidebars. Links and images keep pointing to the original page. The link to the source sits at the top of the new page.
 - **Selection:** only the selected part of the page, with formatting and links.
-- **Bookmark only:** title, address, description and favicon go into the space's **Lesezeichen** (bookmarks) database (see [Web clipper](/import-export-versions)). Duplicate links are refused.
+- **Bookmark only:** title, address, description and favicon go into the space's **Lesezeichen** (bookmarks) database (see [Web clipper](/import-export-versions)). Duplicate links are refused. If the bookmarks database is locked or lies below a journal whose PIN you haven't entered, the extension refuses bookmarks into that space. {since=0.11.5} [Sharing as a bookmark and the bookmarks import](/offline-and-apps#bookmarks) don't save into a locked bookmarks database either. {since=0.11.5}
 
 Depending on the target you get:
 
@@ -34,7 +34,7 @@ Depending on the target you get:
 | A page | a new sub-page | a record in the bookmarks database of its space |
 | A database | a new record with the text as its document; the link goes into the first URL property | as for a page |
 
-**Tags** go into a property named *Tags* (or *Schlagwörter*, *Labels*) when the database has one; new tags are added as options. In the bookmarks database the extension creates the *Tags* property the first time. On pages the tags appear as `#tag` below the source link.
+**Tags** go into a property named *Tags* (or *Schlagwörter*, *Labels*) when the database has one; new tags are added as options. In the bookmarks database the extension creates the *Tags* property the first time. On pages the tags appear as `#tag` below the source link. Tags and favicons only go into properties you may change. {since=0.11.5}
 
 The server cleans the content once more: scripts, forms, embedded foreign pages and event attributes are dropped, just like when pasting into the editor.
 

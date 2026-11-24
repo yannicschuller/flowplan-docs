@@ -51,7 +51,7 @@ Gäste sind Personen außerhalb des Teams, etwa Kunden oder Freelancer. Sie sehe
 
 ## Gruppen
 
-**Einstellungen → Gruppen & Rechte**: Unter **Gruppen** eine Gruppe anlegen, etwa „Design“ oder „Vertrieb“, und mit **Verwalten** Mitglieder an- oder abhaken (mit Suche bei vielen Mitgliedern). Unter **Zugriff auf Bereiche** stellst du je Bereich die Sichtbarkeit ein und darunter je Gruppe **Ansehen** oder **Bearbeiten**; einzelnen Seiten gibst du eine Gruppe über **Teilen**. Neue Mitglieder einer Gruppe erhalten sofort ihre Rechte.
+**Einstellungen → Gruppen & Rechte**: Unter **Gruppen** eine Gruppe anlegen, etwa „Design“ oder „Vertrieb“, und mit **Verwalten** Mitglieder an- oder abhaken (mit Suche bei vielen Mitgliedern). Unter **Zugriff auf Bereiche** stellst du je Bereich die Sichtbarkeit ein und darunter je Gruppe **Ansehen** oder **Bearbeiten**; einzelnen Seiten gibst du eine Gruppe über **Teilen**. Neue Mitglieder einer Gruppe erhalten sofort ihre Rechte. Einen privaten Bereich sichtbar machen oder Gruppen Rechte darauf geben kann nur, wer ihn selbst sieht – auch als Eigentümer (siehe [Wie Rechte zusammenwirken](#wie-rechte-zusammenwirken)). {since=0.11.5}
 
 Mit Single Sign-on können Gruppen des Identitätsanbieters Mitglieder und Gruppen automatisch pflegen – siehe [SSO-Gruppen zuordnen](/sso-oidc#sso-gruppen-arbeitsbereichen-zuordnen).
 
@@ -61,11 +61,11 @@ Regale und Bücher der [Bibliothek](/library#rechte-fuer-regale-und-buecher) fol
 
 1. Der **Bereich** gibt die Grundlage: öffentlich für alle Mitglieder oder privat für Freigegebene.
 2. **Seiten** erben die Rechte ihres Bereichs und ihrer übergeordneten Seiten; unter **Teilen** kommen Personen oder Gruppen dazu.
-3. **Einträge** einer Datenbank lassen sich schreibgeschützt oder privat stellen (siehe [Datenbanken](/databases#rechte-pro-eintrag)).
+3. **Einträge** einer Datenbank lassen sich schreibgeschützt oder privat stellen (siehe [Datenbanken](/databases#rechte-pro-eintrag)). Eine als eigener Eintrag gelöste Wiederholung und der nächste Eintrag einer [wiederkehrenden Aufgabe](/databases#wiederkehrende-aufgaben) behalten Ersteller, Eintragsrechte und Freigaben des ursprünglichen Eintrags. {since=0.11.5}
 4. **Eigenschaften** einer Datenbank lassen sich nur für Bearbeiter, Eigentümer oder ausgewählte Gruppen sichtbar oder bearbeitbar machen (siehe [Sichtbarkeit von Eigenschaften](/properties-and-formulas#sichtbarkeit-von-eigenschaften)).
 5. Verknüpfte Datenbanken, Erwähnungen und Links geben nie zusätzliche Rechte: Wer die Quelle nicht lesen darf, sieht sie auch eingebettet nicht.
 
-Eigentümer eines Arbeitsbereichs verwalten auch Bereiche anderer Mitglieder, erhalten dadurch aber keinen Lesezugriff auf deren private Seiten.
+Eigentümer eines Arbeitsbereichs verwalten auch Bereiche anderer Mitglieder, erhalten dadurch aber keinen Lesezugriff auf deren private Seiten. Private Bereiche anderer können sie umbenennen, umsortieren, in den Papierkorb legen und wiederherstellen, und sie pflegen die Gruppen. Fürs Team sichtbar machen, Rechte darauf vergeben oder sich selbst in eine Gruppe mit Rechten darauf aufnehmen können sie aber nur, wenn sie den Bereich selbst sehen. {since=0.11.5}
 
 Auch Admin-Rechte der Instanz geben keinen Zugriff auf Inhalte: Admins sehen nur, was ihnen Mitgliedschaft und Freigaben erlauben – was die Administration über Konten und Arbeitsbereiche zeigt, steht unter [Was Admins sehen](/user-management#was-admins-sehen).
 

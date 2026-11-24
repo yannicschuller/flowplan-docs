@@ -71,7 +71,7 @@ Eingebaute Werte: `$heute`, `$jetzt`, `$lauf`, `$workflow`, `$ausführende`, in 
 
 ## Testen
 
-- **Probelauf**: Schreibende Knoten berichten nur, was sie täten („würde Eintrag anlegen …“); E-Mail, Chat und Push gehen nicht raus, Warten wird übersprungen, Freigaben gelten als genehmigt oder abgelehnt (wählbar). KI-Knoten laufen und kosten Tokens.
+- **Probelauf**: Schreibende Knoten berichten nur, was sie täten („würde Eintrag anlegen …“); E-Mail, Chat und Push gehen nicht raus, Warten wird übersprungen, Freigaben gelten als genehmigt oder abgelehnt (wählbar). KI-Knoten laufen und kosten Tokens. Ein Probelauf prüft dieselben Rechte wie Test- und Live-Läufe: An privaten Einträgen, geschützten Eigenschaften, Journalen mit PIN und verschlüsselten Bereichen scheitert er genauso. {since=0.11.5}
 - **Testlauf**: führt echt aus – als **du**, nicht als die ausführende Person. Bestimmen KI- oder Auslöser-Daten Empfänger oder Ziele, braucht auch ein Testlauf die [Einstellung dafür](#einstellungen-des-workflows); ein Probelauf geht immer. {since=0.10.0}
 - Daten des Auslösers: **Beispiel**, **letztes echtes Ereignis**, ein **Eintrag** oder eine **Seite** zum Auswählen oder **eigene Werte**.
 
@@ -79,7 +79,7 @@ Tests nutzen immer den Entwurf. Das Ergebnis steht als Statusring an jedem Knote
 
 ## Aktivieren, pausieren, „läuft als“
 
-**Aktivieren** prüft den Entwurf (fehlende Angaben, gelöschte Datenbanken, Seiten ohne Zugriff …) und zeigt, was der Workflow tun wird und **als wer** er läuft: als die Person, die aktiviert. Er sieht und ändert nur, was diese Person darf. Verliert sie ihre Rechte, pausiert der Workflow und meldet sich.
+**Aktivieren** prüft den Entwurf (fehlende Angaben, gelöschte Datenbanken, Seiten ohne Zugriff …) und zeigt, was der Workflow tun wird und **als wer** er läuft: als die Person, die aktiviert. Er sieht und ändert nur, was diese Person darf. Verliert sie ihre Rechte, pausiert der Workflow und meldet sich. Ein Lauf bleibt bei der Person, für die er gestartet ist, auch wenn danach jemand anderes den Workflow aktiviert. Fehlgeschlagene Läufe der bisherigen Person lassen sich dann nicht wiederholen („Dieser Lauf lief als eine andere Person. Bitte starte ihn neu.“) – starte sie neu. {since=0.11.5}
 
 **Pausieren** hält offene Läufe an (wahlweise brechen sie ab); nach dem Aktivieren laufen sie auf ihrer Version weiter. Nach zehn Fehlschlägen in Folge oder wenn die Hälfte der letzten Läufe scheitert, pausiert ein Workflow von selbst.
 

@@ -42,6 +42,8 @@ What the AI sees:
 - only properties visible to you (per-property read permissions apply); relations, formulas, rollups, files, progress, time and sprints are not sent, nor the text of the records' documents,
 - the records in the database's order.
 
+When the AI reads a page with database tables as context, relation, rollup and formula columns say "Not available". {since=0.11.5}
+
 Limits: at most 3 databases and 200 records per request and about 40,000 characters (about 8,000 in the writing assistant with a model on your own server). If not everything fits, the data says so ("… and 57 more records") and the AI points it out. Apple's on-device AI does not read databases.
 
 ## Plans from Ask AI {since=0.11.5}
@@ -97,6 +99,7 @@ The **output** is text, select, multi-select (existing options only – invented
 - **Recompute automatically when the properties used change:** values follow changes with a short delay and within the AI limits. This runs in the name of the person who switched it on or last changed the instruction. If they lose access, it stops; if AI is off on the instance, it pauses.
 - Values are written like edits: with version history, automations and webhooks. Freshly computed cells light up briefly.
 - Viewers, guests and API tokens cannot write AI values. Private records and databases closed to AI are skipped.
+- Of linked records, the AI only sees titles that every reader of the database may see – as with **Fill in with AI**. {since=0.11.5}
 
 ### Fill in fields with AI
 

@@ -143,7 +143,7 @@ With a **write token** of an owner, webhooks can also be created, changed and re
 | `POST /api/workflow-runs/{runId}/retry` / `cancel` | Retry from the failed node / cancel |
 | `GET /api/workflows/{id}/export`, `POST /api/workflows/import` | JSON export (without secrets) and import as a draft |
 
-Read tokens only read. Approvals are decided only by a signed-in person, never by a token. `activate`, `run` and `import` take an `Idempotency-Key`. The SDKs have methods for all of it (`saveWorkflowDraft`, `testWorkflow`, `activateWorkflow`, `runWorkflow` …).
+Read tokens only read. Approvals are decided only by a signed-in person, never by a token. Only a token with the **"AI and transcription"** permission can activate or start workflows with AI nodes. {since=0.11.5} `activate`, `run` and `import` take an `Idempotency-Key`. The SDKs have methods for all of it (`saveWorkflowDraft`, `testWorkflow`, `activateWorkflow`, `runWorkflow` …).
 
 ### Inbound workflow webhook
 

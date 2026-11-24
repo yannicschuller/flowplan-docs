@@ -23,6 +23,8 @@ All imports are under **Settings → Import & export → Import**; at the top yo
 - **Markdown with frontmatter into a database** (such as notes from Obsidian): in the database, choose **Import CSV or Markdown** and pick one or more `.md` files or a ZIP – see below.
 - **Content archive** (see below).
 
+Each account can have at most two exports and imports running or waiting at a time – through API tokens too. Another one is refused with HTTP 429; start it again once one has finished. {since=0.11.5}
+
 ### Frontmatter: records as Markdown files
 
 Notes from Obsidian, Logseq, Jekyll or Hugo carry their properties as YAML frontmatter at the top of the file:

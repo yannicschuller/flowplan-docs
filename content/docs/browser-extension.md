@@ -24,7 +24,7 @@ Klicke auf das Symbol der Erweiterung oder drücke **Alt+Umschalt+F**. Wähle da
 
 - **Ganze Seite:** Die Erweiterung sucht den eigentlichen Artikel und lässt Navigation, Werbung, Cookie-Hinweise, Kommentare und Seitenleisten weg. Links und Bilder zeigen weiter auf die Originalseite. Oben auf der neuen Seite steht der Link zur Quelle.
 - **Auswahl:** Nur der markierte Teil der Seite, mit Formatierung und Links.
-- **Nur Lesezeichen:** Titel, Adresse, Beschreibung und Favicon landen in der Datenbank **Lesezeichen** des Bereichs (siehe [Web-Clipper](/import-export-versions)). Doppelte Links werden abgelehnt.
+- **Nur Lesezeichen:** Titel, Adresse, Beschreibung und Favicon landen in der Datenbank **Lesezeichen** des Bereichs (siehe [Web-Clipper](/import-export-versions)). Doppelte Links werden abgelehnt. Ist die Lesezeichen-Datenbank gesperrt oder liegt sie unter einem Journal, dessen PIN du nicht eingegeben hast, lehnt die Erweiterung Lesezeichen in diesen Bereich ab. {since=0.11.5} In eine gesperrte Lesezeichen-Datenbank speichern auch das [Teilen als Lesezeichen und der Lesezeichen-Import](/offline-and-apps#lesezeichen) nicht. {since=0.11.5}
 
 Je nach Ziel entsteht:
 
@@ -34,7 +34,7 @@ Je nach Ziel entsteht:
 | Eine Seite | eine neue Unterseite | ein Eintrag in der Lesezeichen-Datenbank ihres Bereichs |
 | Eine Datenbank | ein neuer Eintrag mit dem Text als Dokument; der Link kommt in die erste Link-Eigenschaft | wie bei der Seite |
 
-**Tags** landen in einer Eigenschaft namens *Tags* (oder *Schlagwörter*, *Labels*), wenn die Datenbank eine hat; neue Tags werden als Optionen ergänzt. In der Lesezeichen-Datenbank legt die Erweiterung die Eigenschaft *Tags* beim ersten Mal an. Auf Seiten stehen die Tags als `#tag` unter dem Quell-Link.
+**Tags** landen in einer Eigenschaft namens *Tags* (oder *Schlagwörter*, *Labels*), wenn die Datenbank eine hat; neue Tags werden als Optionen ergänzt. In der Lesezeichen-Datenbank legt die Erweiterung die Eigenschaft *Tags* beim ersten Mal an. Auf Seiten stehen die Tags als `#tag` unter dem Quell-Link. Tags und Favicon landen nur in Eigenschaften, die du ändern darfst. {since=0.11.5}
 
 Der Inhalt wird auf dem Server noch einmal bereinigt: Skripte, Formulare, eingebettete Fremdseiten und Ereignis-Attribute fallen weg, so wie beim Einfügen in den Editor.
 
