@@ -1,11 +1,11 @@
 ---
-keywords: language, translation, German, English, French, Chinese, help translate, translate.flowplan.org, community
+keywords: language, translation, German, English, French, Chinese, Russian, help translate, translate.flowplan.org, community
 new: help-translate 2026-11-17
 ---
 
 # Languages and translations
 
-Flowplan is available in {{facts.languages|word}} languages: **German, English, French and Simplified Chinese** (简体中文). English also comes as **English (US)**: the same texts, but dates with the month first and weeks starting on Sunday. Further languages can be added without changing the app's code – with any translation tool that understands JSON files.
+Flowplan is available in {{facts.languages|word}} languages: **German, English, French, Simplified Chinese** (简体中文) **and Russian** (Русский). English also comes as **English (US)**: the same texts, but dates with the month first and weeks starting on Sunday. Further languages can be added without changing the app's code – with any translation tool that understands JSON files.
 
 > [!TIP]
 > Help bring Flowplan to your language: at [translate.flowplan.org](https://translate.flowplan.org) you translate right in the browser, signed in with GitHub – [here’s how](#help-translate).
@@ -14,13 +14,13 @@ Flowplan is available in {{facts.languages|word}} languages: **German, English, 
 
 Flowplan follows your browser's language; languages Flowplan does not know show English. Under **Settings → Appearance & language → Language** you pick a language (with its flag) from the list – it then applies on all devices, also to e-mails and push notifications; **Automatic (follows the browser)** undoes the choice and picks English (US) for browsers set to US English (`en-US`), English for other English browsers. On the sign-in page the small button in the footer (e.g. **🇬🇧 EN**) opens a menu with all languages.
 
-Dates, times and numbers follow the language (French: `fr-FR`, e.g. “15 oct. 2026” and “2 400,5”; Chinese: `zh-CN`, e.g. “2026年10月15日”). Calculations in notes use the decimal comma in French as well. Calendars start the week on Sunday in English (US) and on Monday in every other language – unless the view sets its own week start.
+Dates, times and numbers follow the language (French: `fr-FR`, e.g. “15 oct. 2026” and “2 400,5”; Chinese: `zh-CN`, e.g. “2026年10月15日”; Russian: `ru-RU`, e.g. “15 окт. 2026 г.” and “2 400,5”). Calculations in notes use the decimal comma in French and Russian as well. Calendars start the week on Sunday in English (US) and on Monday in every other language – unless the view sets its own week start.
 
-What you create yourself – pages, databases, properties – stays in the language it was made in. Templates and example content exist in German and English; French and Chinese accounts get the English ones.
+What you create yourself – pages, databases, properties – stays in the language it was made in. Templates and example content exist in German and English; French, Chinese and Russian accounts get the English ones.
 
 ## Help translate
 
-At **[translate.flowplan.org](https://translate.flowplan.org)** the community translates Flowplan right in the browser – no Git, no tools of your own, no need to touch the catalogues. It covers the texts of the web app, the app for iPhone, iPad and Android (with widgets, Siri commands and the app store texts) and the desktop app. Today that means **French** and **Simplified Chinese**, and **Russian** for the web app – Russian joins the language menu once most of it is translated; German and English are the originals and are only shown there. The tool is free, without tracking and open source ([flowplan-translate on GitHub](https://github.com/yannicschuller/flowplan-translate)).
+At **[translate.flowplan.org](https://translate.flowplan.org)** the community translates Flowplan right in the browser – no Git, no tools of your own, no need to touch the catalogues. It covers the texts of the web app, the app for iPhone, iPad and Android (with widgets, Siri commands and the app store texts) and the desktop app. Today that means **French** and **Simplified Chinese**, and **Russian** for the web app (where it is in the language menu, too); German and English are the originals and are only shown there. The tool is free, without tracking and open source ([flowplan-translate on GitHub](https://github.com/yannicschuller/flowplan-translate)).
 
 ::: steps
 

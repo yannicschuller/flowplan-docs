@@ -14,7 +14,7 @@ Sur une instance toute neuve, vous créez le premier compte – il administre l�
 
 Lors de votre première connexion, Flowplan crée un espace de travail privé avec des pages d’exemple. Avec l’authentification unique (SSO), votre nom, votre adresse e-mail et – si elle existe – votre photo de profil viennent du fournisseur de connexion.
 
-**Langue :** Flowplan suit la langue de votre navigateur. Sous **Paramètres → Apparence et langue → Langue**, vous choisissez l’allemand, l’anglais, l’anglais (US), le français ou le chinois – le choix vaut alors sur tous vos appareils, y compris pour les e-mails et les notifications push. L’interface de Flowplan est entièrement traduite en français ; la documentation, elle, est pour l’instant en anglais, à part cette page.
+**Langue :** Flowplan suit la langue de votre navigateur. Sous **Paramètres → Apparence et langue → Langue**, vous choisissez l’allemand, l’anglais, l’anglais (US), le français, le chinois ou le russe – le choix vaut alors sur tous vos appareils, y compris pour les e-mails et les notifications push. L’interface de Flowplan est entièrement traduite en français ; la documentation, elle, est pour l’instant en anglais, à part cette page.
 
 ## L’introduction
 
@@ -33,7 +33,17 @@ Les paramètres s’ouvrent sur une vue d’ensemble, regroupée en **Personnel*
 
 Sur un ordinateur, faites glisser le bord droit de la barre latérale pour l’élargir ou la réduire ; un double-clic sur le bord rétablit la largeur d’origine. Sur un téléphone, la barre latérale se replie : l’icône en haut à gauche l’ouvre, de même qu’un balayage vers la droite depuis le bord gauche. La barre en bas de l’écran contient aussi **Accueil**, **Rechercher**, **Boîte de réception** et, au milieu, le **+** rond pour une nouvelle page. Pour l’iPhone et l’iPad, il existe une application sur l’App Store, pour Android une application à télécharger ([Apps for iPhone, iPad and Android](/mobile-apps)).
 
-En haut à gauche, les flèches **←** et **→** ramènent à la page ouverte précédemment et à nouveau en avant, comme les boutons du navigateur. Raccourcis : ++⌘ [++ et ++⌘ ]++ (Windows et Linux : ++Alt ←++ et ++Alt →++). Tous les raccourcis sont sous [Keyboard shortcuts](/keyboard-shortcuts).
+### Précédent et suivant
+
+En haut à gauche, à côté de l’icône de la barre latérale, les flèches **←** et **→** vous ramènent à la page ouverte précédemment, puis à nouveau en avant. Chaque endroit qui a sa propre adresse compte comme une étape : pages, bases de données, jours du journal, tableaux blancs, un enregistrement ouvert depuis une base de données (en fenêtre et en pleine page, une étape chacun), l’accueil, la boîte de réception, **Mes tâches**, les étiquettes, les collections, les médias, la corbeille et les sections des paramètres. Les fenêtres de dialogue, les menus et la recherche ne comptent pas, et fermer un enregistrement ouvert dans sa base de données vous y ramène sans étape supplémentaire. Quand il n’y a rien dans une direction, la flèche correspondante est grisée. Chaque page et chaque vue s’ouvre en haut ; **←** et **→** vous ramènent là où vous l’aviez quittée.
+
+- **Liste :** un clic droit ou un appui long sur une flèche affiche les dernières pages (dix au maximum) dans cette direction, avec leur icône et leur titre – un clic y mène directement.
+- **Raccourcis clavier :** ++⌘ [++ et ++⌘ ]++ ou ++⌥ ←++ et ++⌥ →++ (Windows et Linux : ++Alt ←++ / ++Alt →++ ou ++Ctrl [++ / ++Ctrl ]++). Pendant la saisie, ++⌥++/++Alt++ avec une flèche déplace le curseur comme d’habitude ; les raccourcis se modifient comme tous les autres ([Keyboard shortcuts](/keyboard-shortcuts)).
+- **Navigateur :** les flèches font les mêmes pas que les boutons Précédent et Suivant du navigateur et que les boutons latéraux de la souris – vous pouvez les combiner.
+- **Application de bureau :** également le menu *Navigation* → **Précédent** / **Suivant**, les boutons latéraux de la souris et, sur un Mac, le balayage sur le trackpad ([More from the desktop app](/desktop-app#more-from-the-desktop-app)).
+- **Téléphone :** il n’y a pas de flèches – le geste de retour (iPhone) ou le bouton Retour (Android) revient en arrière.
+
+De courtes animations montrent ce qui vient de bouger : les cartes et les lignes glissent vers leur nouvelle place, et la cible d’un saut – depuis la table des matières, la recherche ou une notification – s’illumine brièvement. Le passage à une autre page ne fait qu’un bref fondu de la zone de contenu ; une carte d’un tableau kanban ou d’une galerie s’agrandit jusqu’à son enregistrement. Un appui ou une touche termine la transition aussitôt. L’intensité des animations se règle sous **Paramètres → Apparence et langue → Animations** ([Light and dark](/offline-and-apps#light-and-dark)). Si **Réduire les animations** est activé dans les réglages de votre appareil, tout arrive à sa place sans mouvement.
 
 ## Personnaliser la page d’accueil
 
@@ -72,4 +82,14 @@ Dans un document, `/` ouvre le menu des blocs : tapez `/h2`, `/todo` ou `/table`
 
 Une question, une idée ou simplement envie de dire bonjour : sur le **[Discord de Flowplan](https://discord.gg/bCEdB6MPrR)**, utilisateurs et administrateurs s’entraident. Signalez de préférence les bugs et les demandes de fonctionnalités sous forme d’[issues GitHub](https://github.com/yannicschuller/flowplan/issues), pour que rien ne se perde – en anglais si possible, en français si c’est plus simple pour vous.
 
-**Paramètres → Aide et infos → À propos de Flowplan** indique la version en cours d’exécution ; mentionnez-la si vous signalez un bug. **Nouveautés** y ouvre les notes des dernières versions.
+### À propos de Flowplan
+
+**Paramètres → Aide et infos → À propos de Flowplan** (`/#settings/about`, également dans le menu du compte ⋯ en bas de la barre latérale – sur un téléphone sous **Plus** – et avec ++⌘/Ctrl K++ → « À propos de Flowplan ») affiche :
+
+- **Version :** la version en cours d’exécution, le commit et la date de compilation ; pour nos images Docker, aussi s’il s’agit d’une **bêta** (`:beta`) ou d’une **version stable**. Les administrateurs y voient aussi quand une version plus récente est connue. Mentionnez de préférence la version si vous signalez un bug.
+- **Nouveautés :** ouvre les notes des dernières versions ([Light and dark](/offline-and-apps#light-and-dark)).
+- **Licence et code source :** Flowplan est un logiciel libre sous licence GNU AGPL-3.0 – avec des liens vers le texte de la licence et vers le code source qui tourne sur cette instance.
+- **Liens :** site web, documentation, Discord et « Signaler un bug » (issues GitHub).
+- **Soutenir Flowplan ♥ :** un lien vers GitHub Sponsors. Il n’apparaît jamais dans les applications pour iPhone, iPad et Android (règles des boutiques d’applications) ; les administrateurs peuvent le masquer avec `FLOWPLAN_HIDE_SPONSOR=true` ([Configuration](/configuration-storage#legal-and-interface)).
+
+La recherche trouve la page avec « À propos », « Version », « Licence », « Source », « Soutenir » ou « Sponsor ». La page de connexion mentionne aussi en bas la licence (AGPL-3.0) et le code source.

@@ -1,11 +1,11 @@
 ---
-keywords: Sprache, Übersetzung, Deutsch, Englisch, Französisch, Chinesisch, übersetzen helfen, translate.flowplan.org, Community
+keywords: Sprache, Übersetzung, Deutsch, Englisch, Französisch, Chinesisch, Russisch, übersetzen helfen, translate.flowplan.org, Community
 new: beim-uebersetzen-helfen 2026-11-17
 ---
 
 # Sprachen und Übersetzungen
 
-Flowplan gibt es in {{facts.languages|word}} Sprachen: **Deutsch, Englisch, Französisch und vereinfachtes Chinesisch** (简体中文). Englisch gibt es zusätzlich als **English (US)**: dieselben Texte, aber Datumsangaben mit dem Monat zuerst und Wochen ab Sonntag. Weitere Sprachen lassen sich ohne Änderungen am Code der App hinzufügen – mit jedem Übersetzungswerkzeug, das JSON-Dateien versteht.
+Flowplan gibt es in {{facts.languages|word}} Sprachen: **Deutsch, Englisch, Französisch, vereinfachtes Chinesisch** (简体中文) **und Russisch** (Русский). Englisch gibt es zusätzlich als **English (US)**: dieselben Texte, aber Datumsangaben mit dem Monat zuerst und Wochen ab Sonntag. Weitere Sprachen lassen sich ohne Änderungen am Code der App hinzufügen – mit jedem Übersetzungswerkzeug, das JSON-Dateien versteht.
 
 > [!TIP]
 > Hilf mit, Flowplan in deine Sprache zu bringen: Auf [translate.flowplan.org](https://translate.flowplan.org) übersetzt du direkt im Browser, angemeldet mit GitHub – [so geht’s](#beim-uebersetzen-helfen).
@@ -14,13 +14,13 @@ Flowplan gibt es in {{facts.languages|word}} Sprachen: **Deutsch, Englisch, Fran
 
 Flowplan folgt der Sprache deines Browsers; Sprachen, die Flowplan nicht kennt, zeigen Englisch. Unter **Einstellungen → Darstellung & Sprache → Sprache** wählst du aus der Liste eine Sprache (mit Flagge) – sie gilt dann auf allen Geräten, auch für E-Mails und Push-Hinweise; **Automatisch (folgt dem Browser)** nimmt die Festlegung zurück und wählt für Browser auf amerikanischem Englisch (`en-US`) English (US), für andere englische Browser Englisch. Auf der Anmeldeseite öffnet der kleine Knopf in der Fußzeile (z. B. **🇩🇪 DE**) ein Menü mit allen Sprachen.
 
-Datum, Uhrzeit und Zahlen folgen der Sprache (Französisch: `fr-FR`, z. B. „15 oct. 2026“ und „2 400,5“; Chinesisch: `zh-CN`, z. B. „2026年10月15日“). Beim Rechnen in Notizen gilt das Dezimalkomma auch für Französisch. Kalender beginnen die Woche in English (US) am Sonntag, in allen anderen Sprachen am Montag – sofern die Ansicht keinen eigenen Wochenbeginn hat.
+Datum, Uhrzeit und Zahlen folgen der Sprache (Französisch: `fr-FR`, z. B. „15 oct. 2026“ und „2 400,5“; Chinesisch: `zh-CN`, z. B. „2026年10月15日“; Russisch: `ru-RU`, z. B. „15 окт. 2026 г.“ und „2 400,5“). Beim Rechnen in Notizen gilt das Dezimalkomma auch für Französisch und Russisch. Kalender beginnen die Woche in English (US) am Sonntag, in allen anderen Sprachen am Montag – sofern die Ansicht keinen eigenen Wochenbeginn hat.
 
-Was du selbst anlegst – Seiten, Datenbanken, Eigenschaften –, bleibt in der Sprache, in der es entstanden ist. Vorlagen und Beispielinhalte gibt es auf Deutsch und Englisch; französische und chinesische Konten bekommen die englischen.
+Was du selbst anlegst – Seiten, Datenbanken, Eigenschaften –, bleibt in der Sprache, in der es entstanden ist. Vorlagen und Beispielinhalte gibt es auf Deutsch und Englisch; französische, chinesische und russische Konten bekommen die englischen.
 
 ## Beim Übersetzen helfen
 
-Auf **[translate.flowplan.org](https://translate.flowplan.org)** übersetzt die Community Flowplan direkt im Browser – ohne Git, ohne eigene Werkzeuge und ohne die Kataloge selbst anzufassen. Übersetzt werden die Texte der Web-App, der App für iPhone, iPad und Android (mit Widgets, Siri-Befehlen und den Texten in den App-Stores) und der Desktop-App. Heute sind das **Französisch** und **vereinfachtes Chinesisch** sowie **Russisch** für die Web-App – Russisch kommt ins Sprachmenü, sobald der Großteil übersetzt ist; Deutsch und Englisch sind die Originale und werden dort nur angezeigt. Das Werkzeug ist kostenlos, ohne Tracking und Open Source ([flowplan-translate auf GitHub](https://github.com/yannicschuller/flowplan-translate)).
+Auf **[translate.flowplan.org](https://translate.flowplan.org)** übersetzt die Community Flowplan direkt im Browser – ohne Git, ohne eigene Werkzeuge und ohne die Kataloge selbst anzufassen. Übersetzt werden die Texte der Web-App, der App für iPhone, iPad und Android (mit Widgets, Siri-Befehlen und den Texten in den App-Stores) und der Desktop-App. Heute sind das **Französisch** und **vereinfachtes Chinesisch** sowie **Russisch** für die Web-App (dort steht es auch im Sprachmenü); Deutsch und Englisch sind die Originale und werden dort nur angezeigt. Das Werkzeug ist kostenlos, ohne Tracking und Open Source ([flowplan-translate auf GitHub](https://github.com/yannicschuller/flowplan-translate)).
 
 ::: steps
 
