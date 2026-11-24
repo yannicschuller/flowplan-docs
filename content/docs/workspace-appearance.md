@@ -18,6 +18,8 @@ Eigentümer geben dem Arbeitsbereich unter **Einstellungen → Erscheinungsbild*
 
 Hell oder dunkel wählt weiterhin jede Person selbst. Wer lieber Flowplans eigenes Aussehen behält, schaltet **Einstellungen → Darstellung & Sprache → Darstellung des Arbeitsbereichs verwenden** aus; das gilt für das eigene Konto in allen Arbeitsbereichen und auf allen Geräten.
 
+**Eigene Schrift:** Unter **Einstellungen → Darstellung & Sprache → Schriftart** wählst du für dich eine andere Schrift für Menüs, Texte und Seiten – die Systemschrift oder eine der mitgelieferten Schriften, serifenlos oder mit Serifen. Große Überschriften, Code und Seiten in Serif oder Mono behalten ihre Schrift. **Standard** ist die Schrift des Arbeitsbereichs oder Flowplans eigene. Die Wahl gilt nur für dich, auf allen Geräten und in den Apps; andere, veröffentlichte Seiten und Formulare sehen weiter die Schrift des Arbeitsbereichs. {since=0.11.5}
+
 Eigenes CSS ist bewusst nicht möglich: Mit CSS ließen sich Inhalte unbemerkt nach außen schicken, und es würde bei Updates der App brechen.
 
 Das Aussehen und die hochgeladenen Schriften stecken im [Inhaltsarchiv](/import-export-versions#inhaltsarchiv) des Arbeitsbereichs. Beim Import übernimmt es ein Eigentümer in einen Arbeitsbereich, der noch Flowplans eigenes Aussehen hat; ein schon gewähltes Aussehen bleibt.

@@ -18,6 +18,8 @@ Owners give the workspace a look of its own under **Settings → Appearance**, f
 
 Light or dark stays each person's own choice. Anyone who prefers to keep Flowplan's own look turns off **Settings → Appearance & language → Use the workspace's appearance**; this applies to your account in every workspace and on all devices.
 
+**Your own font:** Under **Settings → Appearance & language → Font** you choose a different typeface for menus, text and pages, just for you – the system font or one of the bundled typefaces, sans serif or serif. Large headings, code and pages set in serif or mono keep theirs. **Default** is the workspace's typeface or Flowplan's own. The choice applies only to you, on all devices and in the apps; others, published pages and forms still see the workspace's typeface. {since=0.11.5}
+
 Custom CSS is deliberately not possible: CSS could quietly send content elsewhere, and it would break with updates of the app.
 
 The look and the uploaded fonts are part of the workspace's [content archive](/import-export-versions#content-archive). On import, an owner takes it over into a workspace that still has Flowplan's own look; a look that was already chosen stays.
