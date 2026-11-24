@@ -201,3 +201,5 @@ For local development, `npm run dev` is enough. Development mode also offers **O
 - [Coolify and reverse proxies](/coolify-and-proxy): running behind Traefik, Coolify or Pangolin.
 - [Moving an instance](/move-instance): to another server, with an example for Hetzner Cloud.
 - [PostgreSQL](/en/postgresql) and [cluster mode](/en/cluster): for larger teams.
+
+If you'd like help with setup, SSO or migration, or would rather have us run Flowplan for you: [services for organisations](https://billing.flowplan.org/enterprise).
