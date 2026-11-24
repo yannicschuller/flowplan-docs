@@ -97,8 +97,8 @@ const areas: { id: AreaId; title: Pair; short: Pair; intro: Pair; groups: { titl
       },
       {
         title: ["Zusammenarbeit und Suche", "Collaboration and search"],
-        intro: ["Gemeinsam arbeiten, teilen, finden und benachrichtigt werden.", "Work together, share, find things and get notified."],
-        pages: ["collaboration", "sharing", "search-and-notifications", "notifications"],
+        intro: ["Gemeinsam arbeiten, teilen, im Web veröffentlichen, finden und benachrichtigt werden.", "Work together, share, publish on the web, find things and get notified."],
+        pages: ["collaboration", "sharing", "publishing", "search-and-notifications", "notifications"],
       },
       {
         title: ["Apps und Geräte", "Apps and devices"],

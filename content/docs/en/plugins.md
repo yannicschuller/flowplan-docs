@@ -19,7 +19,7 @@ Block extensions bring custom block types into the editor: a poll, a counter, a 
 Per extension there is:
 
 - **Active** – when off, its blocks only show their text.
-- **Also show on published pages** – without this switch its blocks appear on [published pages](/sharing#publish-on-the-web) as text only.
+- **Also show on published pages** – without this switch its blocks appear on [published pages](/publishing) as text only.
 - **Databases it may read** – only when it requests database access.
 - **Settings** – as the manifest describes them. Everyone who sees the block also sees the settings: do not enter passwords.
 

@@ -6,7 +6,7 @@ keywords: library, knowledge library, shelf, shelves, book, books, chapter, hand
 
 For knowledge with hundreds of pages – handbooks, policies, documentation – show spaces as a **library**: each such space is a **shelf**, the pages at the top of the space are its **books**, their sub-pages the **chapters**. The library in the navigation shows all shelves at a glance and searches them all at once.
 
-**More on this topic:** [Pages and spaces](/pages-and-spaces) · [Sharing and publishing](/sharing) · [Members, roles and permissions](/workspaces-and-permissions)
+**More on this topic:** [Pages and spaces](/pages-and-spaces) · [Sharing](/sharing) · [Publish on the web](/publishing) · [Members, roles and permissions](/workspaces-and-permissions)
 
 ## A space as a library {since=0.10.0}
 

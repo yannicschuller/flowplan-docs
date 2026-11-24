@@ -146,7 +146,7 @@ CSV, TSV, Quizlet und Anki hinein, CSV und Anki-Pakete hinaus: [Lernkarten impor
 
 ## Teilen und veröffentlichen {since=0.10.0}
 
-Geteilt oder veröffentlicht lässt sich ein Stapel ohne Konto durchblättern und üben: [Lernkarten über einen Link](/sharing#lernkarten-ueber-einen-link).
+Geteilt oder veröffentlicht lässt sich ein Stapel ohne Konto durchblättern und üben: [Lernkarten über einen Link](/publishing#lernkarten-ueber-einen-link).
 
 {since=0.11.0} Im [Marketplace](/marketplace#lernkarten-stapel) teilst du einen Stapel als Vorlage – mit Karten, Bildern und Masken, ohne Lernstände und ohne Angaben zu Personen. Die Seite der Vorlage zeigt ein paar Beispielkarten; wer den Stapel übernimmt, beginnt mit neuen Karten.
 

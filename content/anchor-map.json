@@ -247,4 +247,9 @@
 ["personen-hinzufuegen","adding-people","new-accounts","personen-hinzufuegen","adding-people"],
 ["ein-konto-fuer-jemanden-einrichten","set-up-an-account-for-someone","new-accounts","ein-konto-fuer-jemanden-einrichten","set-up-an-account-for-someone"],
 ["konto-anlegen","create-account","new-accounts","konto-anlegen","create-account"],
-["grenzen-pro-gruppe","limits-per-group","account-limits","grenzen-pro-gruppe","limits-per-group"]]}
+["grenzen-pro-gruppe","limits-per-group","account-limits","grenzen-pro-gruppe","limits-per-group"]],"sharing":[
+["im-web-veroeffentlichen","publish-on-the-web","publishing","",""],
+["hell-dunkel-und-zurueck-zur-ansicht","light-dark-and-back-to-the-view","publishing","hell-dunkel-und-zurueck-zur-ansicht","light-dark-and-back-to-the-view"],
+["lernkarten-ueber-einen-link","flashcards-through-a-link","publishing","lernkarten-ueber-einen-link","flashcards-through-a-link"],
+["aussehen","appearance","publishing","aussehen","appearance"],
+["eigene-domain","custom-domain","publishing","eigene-domain","custom-domain"]]}

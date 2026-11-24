@@ -146,7 +146,7 @@ CSV, TSV, Quizlet and Anki in, CSV and Anki packages out: [Import and export fla
 
 ## Sharing and publishing {since=0.10.0}
 
-Shared or published, a deck can be browsed and practised without an account: [Flashcards through a link](/sharing#flashcards-through-a-link).
+Shared or published, a deck can be browsed and practised without an account: [Flashcards through a link](/publishing#flashcards-through-a-link).
 
 {since=0.11.0} In the [marketplace](/marketplace#flashcard-decks) you share a deck as a template – with its cards, pictures and masks, without learning states and without details about people. The template's page shows a few sample cards; whoever takes the deck over starts with new cards.
 

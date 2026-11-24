@@ -6,7 +6,7 @@ keywords: Bibliothek, Wissensbibliothek, Regal, Regale, Buch, Bücher, Kapitel, 
 
 Für Wissen mit Hunderten Seiten – Handbücher, Richtlinien, Dokumentation – zeigst du Bereiche als **Bibliothek**: Jeder solche Bereich ist ein **Regal**, seine Seiten oben im Bereich sind die **Bücher**, deren Unterseiten die **Kapitel**. Die Bibliothek in der Navigation zeigt alle Regale auf einen Blick und sucht in allen zugleich.
 
-**Mehr zum Thema:** [Seiten und Bereiche](/pages-and-spaces) · [Teilen und Veröffentlichen](/sharing) · [Mitglieder, Rollen und Rechte](/workspaces-and-permissions)
+**Mehr zum Thema:** [Seiten und Bereiche](/pages-and-spaces) · [Teilen](/sharing) · [Im Web veröffentlichen](/publishing) · [Mitglieder, Rollen und Rechte](/workspaces-and-permissions)
 
 ## Bereich als Bibliothek {since=0.10.0}
 

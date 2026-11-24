@@ -116,7 +116,7 @@ Den Bericht schreiben der Notion-Import (Export und API), der Markdown-ZIP-Impor
 - **Links prüfen:** Verweise zwischen importierten Seiten zeigen auf die neuen Seiten; Links auf Seiten außerhalb des Exports bleiben Links auf das alte Werkzeug.
 - **Links auf Blöcke und Überschriften bleiben erhalten.** Zeigt ein Link in der Quelle auf eine bestimmte Stelle einer anderen (oder derselben) Seite, zeigt er nach dem Import auf denselben Block in Flowplan: Ein Klick öffnet die Seite und springt dorthin (siehe [Links auf Blöcke](/links-and-mentions#links-auf-bloecke)). Findet sich die Stelle nicht (etwa weil der Export sie nicht enthält), führt der Link zur Seite.
 - **Ansichten einrichten:** Ein Import legt je Datenbank eine Tabelle an. Board, Kalender, Galerie oder Zeitleiste fügst du danach hinzu – siehe [Ansichten](/views).
-- **Teilen:** Rechte werden nicht übernommen. Lade Mitglieder ein oder teile einzelne Seiten – siehe [Teilen und Veröffentlichen](/sharing).
+- **Teilen:** Rechte werden nicht übernommen. Lade Mitglieder ein oder teile einzelne Seiten – siehe [Teilen](/sharing).
 - **Daten bleiben mitnehmbar:** Flowplan exportiert jederzeit wieder als Markdown mit Frontmatter, CSV und ZIP, auf Wunsch geplant und per Git – siehe [Import, Export und Versionen](/import-export-versions).
 
 ## Warum umziehen?

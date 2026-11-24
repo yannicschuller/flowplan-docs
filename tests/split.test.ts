@@ -128,6 +128,9 @@ test("old anchors resolve, also in the other language", () => {
   // New accounts and the limits per group left the users page (0.11.1).
   assert.deepEqual(resolveAnchor(docAnchors("user-management"), "grenzen-pro-gruppe", "de"), { slug: "account-limits", id: "grenzen-pro-gruppe" });
   assert.deepEqual(resolveAnchor(docAnchors("user-management"), "adding-people", "en"), { slug: "new-accounts", id: "adding-people" });
+  // Publishing on the web left the sharing page (flowplan#524).
+  assert.deepEqual(resolveAnchor(docAnchors("sharing"), "im-web-veroeffentlichen", "de"), { slug: "publishing", id: "" });
+  assert.deepEqual(resolveAnchor(docAnchors("sharing"), "custom-domain", "en"), { slug: "publishing", id: "custom-domain" });
 });
 
 test("pages are at most about 2,600 words, in both languages", () => {

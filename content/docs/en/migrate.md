@@ -116,7 +116,7 @@ The report is written by the Notion import (export and API), the Markdown ZIP im
 - **Check links:** links between imported pages point to the new pages; links to pages outside the export still point to the old tool.
 - **Links to blocks and headings are kept.** If a link in the source points to a particular place of another (or the same) page, it points to the same block in Flowplan after the import: a click opens the page and jumps there (see [Links to blocks](/links-and-mentions#links-to-blocks)). If the place cannot be found (for example because the export does not contain it), the link leads to the page.
 - **Set up views:** an import creates one table per database. Add board, calendar, gallery or timeline afterwards – see [Views](/views).
-- **Sharing:** permissions are not carried over. Invite members or share single pages – see [Sharing and publishing](/sharing).
+- **Sharing:** permissions are not carried over. Invite members or share single pages – see [Sharing](/sharing).
 - **Your data stays portable:** Flowplan exports again at any time as Markdown with frontmatter, CSV and ZIP, scheduled and pushed to Git if you like – see [Import, export and versions](/import-export-versions).
 
 ## Why move?

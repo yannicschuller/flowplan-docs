@@ -19,7 +19,7 @@ Block-Erweiterungen bringen eigene Blocktypen in den Editor: eine Umfrage, ein Z
 Je Erweiterung gibt es:
 
 - **Aktiv** – ausgeschaltet zeigen ihre Blöcke nur noch ihren Text.
-- **Auch auf veröffentlichten Seiten zeigen** – ohne diesen Schalter erscheinen ihre Blöcke auf [veröffentlichten Seiten](/sharing#im-web-veroeffentlichen) nur als Text.
+- **Auch auf veröffentlichten Seiten zeigen** – ohne diesen Schalter erscheinen ihre Blöcke auf [veröffentlichten Seiten](/publishing) nur als Text.
 - **Datenbanken, die sie lesen darf** – nur wenn sie Datenbankzugriff anfragt.
 - **Einstellungen** – so, wie das Manifest sie beschreibt. Alle, die den Block sehen, sehen auch die Einstellungen: keine Passwörter eintragen.
 
