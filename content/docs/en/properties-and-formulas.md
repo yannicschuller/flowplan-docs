@@ -75,6 +75,8 @@ Filters and sorting of a view that use a hidden property work on empty values fo
 
 :::
 
+The list of target databases is grouped by space. When a space has the same title twice, the parent page follows the title (**Notes · Areas**). A chosen database whose title also exists in another space is named with its space afterwards, e.g. **Notes · Family**. **Move/Copy to …**, **Move tasks to a database** and the database pickers of automations, workflows and linked views are sorted and labelled the same way. {since=0.11.6}
+
 Relations appear as links in the record. The database search also finds records by the names of linked records, and relation filters offer these names directly.
 
 In both directions, every link and unlink also changes the record on the other side. So it only works if you may edit the linked record there and its counterpart property – otherwise Flowplan refuses the change. {since=0.11.5}

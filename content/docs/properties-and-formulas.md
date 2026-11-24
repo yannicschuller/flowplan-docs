@@ -75,6 +75,8 @@ Filter und Sortierungen einer Ansicht, die eine verborgene Eigenschaft nutzen, w
 
 :::
 
+Die Liste der Zieldatenbanken ist nach Bereichen gruppiert. Gibt es denselben Titel in einem Bereich zweimal, steht die übergeordnete Seite dahinter (**Notizen · Bereiche**). Eine gewählte Datenbank, deren Titel es auch in einem anderen Bereich gibt, heißt danach mit ihrem Bereich, etwa **Notizen · Familie**. Genauso sortiert und beschriftet sind **Verschieben/Kopieren nach …**, **Aufgaben in Datenbank verschieben** und die Datenbankauswahl in Automationen, Workflows und verknüpften Ansichten. {since=0.11.6}
+
 Relationen erscheinen im Eintrag als Links. Die Datenbanksuche findet Einträge auch über die Namen verknüpfter Einträge, Relationsfilter bieten diese Namen direkt an.
 
 In beide Richtungen ändert jedes Verknüpfen und Lösen auch den Eintrag auf der anderen Seite. Das geht deshalb nur, wenn du dort den verknüpften Eintrag und seine Gegen-Eigenschaft bearbeiten darfst – sonst lehnt Flowplan die Änderung ab. {since=0.11.5}
