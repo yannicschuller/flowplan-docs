@@ -82,7 +82,7 @@ The overview names the keys as your device does: <kbd>⌘</kbd> and <kbd>⌥</kb
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>B</kbd> | Quote |
 | <kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>C</kbd> | Code block |
 | <kbd>Tab</kbd> / <kbd>⇧</kbd> <kbd>Tab</kbd> | [Indent](/blocks#indent) / outdent; right below a [toggle](/documents#toggles): move into it / back out (in its title too) |
-| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Move block up / down (a collapsed heading with its section); with a table row selected: move the row up / down |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>↑</kbd> / <kbd>↓</kbd> | Move block up / down (a collapsed heading with its section; {since=0.11.5} a list item with its sub-items also out of its list, and a sub-item to the previous / next parent); with a table row selected: move the row up / down |
 | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>←</kbd> / <kbd>→</kbd> | With a table column selected: move the column left / right |
 | <kbd>⌘</kbd> <kbd>D</kbd> | Duplicate the block, also selected blocks or a selected table row or column |
 | <kbd>Esc</kbd> | Select the block with the cursor ([selecting several blocks](/blocks#selecting-several-blocks)); with the block menu open: close the menu, the block stays selected; with blocks selected: end the selection {since=0.9.6} |
