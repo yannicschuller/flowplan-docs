@@ -1,5 +1,5 @@
 ---
-keywords: Vorlage, Template, Tagesvorlage, Platzhalter
+keywords: Dokumentvorlage, Seitenvorlage, Datensatzvorlage, Vorlage bearbeiten, Vorlage, Template, Tagesvorlage, Platzhalter
 ---
 
 # Vorlagen
@@ -62,6 +62,17 @@ Wie [Tags und Eigenschaften](/page-tags#geltungsbereich-arbeitsbereich-oder-bere
 Vorlagen speichern eigene Kopien der Dateien und bleiben verwendbar, auch wenn die Quellseite gelöscht wird. Auch die [Tags und Eigenschaftswerte](/page-tags#tags-und-eigenschaften) der Seite kommen mit; neue Seiten aus der Vorlage bekommen sie (fehlende Tags werden angelegt). Datenbank-Vorlagen enthalten Ansichten, Einträge samt Inhalten, Datensatzvorlagen und die Formulargestaltung. Vorlagen lassen sich umbenennen, privat oder geteilt schalten und in den Papierkorb legen. Im **Vorlagen-Papierkorb** holt **Wiederherstellen** eine Vorlage zurück, **Endgültig löschen** löscht sie samt ihren Dateien, und **Vorlagen-Papierkorb leeren** löscht alle, die du verwalten darfst (deine eigenen; als Eigentümer alle des Arbeitsbereichs; Vorlagen für alle Arbeitsbereiche nur Admins). Bereits erstellte Seiten bleiben erhalten. Nach der [Papierkorb-Frist](/pages-and-spaces#papierkorb) (Standard 30 Tage) werden Vorlagen im Papierkorb automatisch gelöscht.
 
 Eigene Dokument- und Datenbankvorlagen kannst du im [Marketplace](/marketplace) veröffentlichen (**Im Marketplace veröffentlichen …** in der Zeile der Vorlage). Vorlagen aus dem Marketplace übernimmst du mit **In Flowplan öffnen** dort oder als `.flowplan-template`-Datei über **Vorlage importieren**.
+
+### Inhalt einer Vorlage bearbeiten {since=0.11.5}
+
+Unter **Vorlagen** wählst du bei deiner Vorlage **Bearbeiten** und dann unter **Inhalt**:
+
+- **Inhalt bearbeiten** öffnet einen Entwurf – eine Seite aus der Vorlage, die nur du siehst (nicht in der Seitenleiste, nicht in der Suche). Bearbeite ihn wie jede Seite, bei Datenbanken auch Ansichten und Einträge. **Vorlage speichern** schreibt alles in die Vorlage, **Verwerfen** wirft den Entwurf weg. Öffnest du es erneut, machst du im selben Entwurf weiter; unberührte Entwürfe werden nach 7 Tagen gelöscht.
+- **Aus Seite ersetzen …** nimmt nach einer Rückfrage den Inhalt einer bestehenden Seite derselben Art als neuen Inhalt der Vorlage. Die Seite selbst bleibt unverändert.
+
+Bereits aus der Vorlage erstellte Seiten ändern sich nicht. Den Inhalt ändern darf, wer die Vorlage auch umbenennen darf: ihr Ersteller oder ein Eigentümer des Arbeitsbereichs.
+
+**Seitenvorlagen und Datensatzvorlagen:** Seitenvorlagen (Dokumente, Datenbanken) erstellen ganze Seiten – gespeichert über **Seitenaktionen → Als Vorlage speichern**, verwendet bei **Neue Seite**. Datensatzvorlagen gehören zu einer Datenbank und füllen neue Einträge (siehe unten); geändert werden sie mit **Bearbeiten** in der Datenbank.
 
 ## Datensatzvorlagen
 

@@ -1,5 +1,5 @@
 ---
-keywords: template, daily template, placeholder
+keywords: document template, page template, record template, edit template, template, daily template, placeholder
 ---
 
 # Templates
@@ -62,6 +62,17 @@ Like [tags and properties](/page-tags#scope-workspace-or-space), your own templa
 Templates store their own copies of the files and stay usable even if the source page is deleted. The page's [tags and property values](/page-tags#tags-and-properties) come along too; new pages from the template get them (missing tags are created). Database templates contain views, records with their content, record templates and the form design. Templates can be renamed, made private or shared and moved to the trash. In the **Template trash**, **Restore** brings a template back, **Delete permanently** deletes it with its files, and **Empty template trash** deletes all you may manage (your own; as an owner all of the workspace; templates for all workspaces only admins). Pages already created are kept. After the [trash period](/pages-and-spaces#trash) (30 days by default) templates in the trash are deleted automatically.
 
 You can publish your own document and database templates to the [marketplace](/marketplace) (**Publish to the marketplace …** in the template's row). Take over templates from the marketplace with **Open in Flowplan** there, or as a `.flowplan-template` file with **Import template**.
+
+### Editing a template's content {since=0.11.5}
+
+Under **Templates**, choose **Edit** on your template, then under **Content**:
+
+- **Edit content** opens a draft – a page made from the template that only you see (not in the sidebar, not in search). Edit it like any page, for databases also views and records. **Save template** writes it all into the template, **Discard** throws the draft away. Opening it again continues the same draft; drafts left untouched are deleted after 7 days.
+- **Replace from page …** takes, after a confirmation, the content of an existing page of the same kind as the template's new content. The page itself stays as it is.
+
+Pages already created from the template don't change. Whoever may rename the template may change its content: its creator or a workspace owner.
+
+**Page templates and record templates:** page templates (documents, databases) create whole pages – saved with **Page actions → Save as template**, used from **New page**. Record templates belong to a database and fill new records (see below); you change them with **Edit** in the database.
 
 ## Record templates
 
