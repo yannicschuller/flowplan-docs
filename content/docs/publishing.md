@@ -52,6 +52,10 @@ Ein [Lernkarten-Stapel](/flashcards) zeigt über einen Link mit eigenen Berechti
 
 Veröffentlichte und per Link geteilte Seiten sehen so aus, wie du sie siehst: Seitensymbol über oder neben dem Titel, deine Schriftart und ob erledigte Aufgaben durchgestrichen sind, kommen beim Veröffentlichen bzw. Erstellen des Links aus deinen Einstellungen unter **Darstellung & Sprache**. Im Reiter **Web** des Teilen-Dialogs änderst du sie für diese Veröffentlichung (**Seitensymbol**, **Schriftart**, **Erledigte Aufgaben durchstreichen**), ohne deine eigenen Einstellungen zu ändern. Hell/Dunkel und Sprache wählen Besucher selbst.
 
+## Vorschau in Messengern und sozialen Netzwerken {since=0.11.6}
+
+Teilst du die Adresse einer Veröffentlichung in einem Messenger oder sozialen Netzwerk, zeigt die Vorschau den Titel der Seite, den Anfang ihres Textes (etwa 200 Zeichen) und ihr Cover-Bild. Eine Seite ohne Text oder mit einer Cover-Farbe statt eines Bildes zeigt nur den Titel. Steht die Veröffentlichung hinter einem Passwort oder ist sie abgelaufen, zeigt die Vorschau nichts von der Seite, nur die allgemeine von Flowplan. Das gilt auch für benannte Links aus dem Reiter **Links**.
+
 ## Aussehen
 
 Im Reiter **Web** klappt unter den Optionen **Aussehen** auf. Dort legst du das Aussehen der Veröffentlichung fest: **Logo** und **Favicon** (HTTPS-Adresse oder eine hochgeladene Datei, die die Veröffentlichung zeigt), **Akzentfarbe**, **Text in der Fußzeile** und **„Mit Flowplan veröffentlicht“ ausblenden** – übernommen mit **Aussehen speichern**.

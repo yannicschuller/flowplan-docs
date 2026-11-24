@@ -52,6 +52,10 @@ A [flashcard deck](/flashcards) shows its **Study** view through a link with its
 
 Published and link-shared pages look the way you see them: where the page icon sits (above or next to the title), your font and whether done tasks are struck through come from your settings under **Appearance & language** when you publish or create the link. In the share dialog's **Web** tab you can change them for one publication (**Page icon**, **Font**, **Strike through done tasks**) without changing your own settings. Light or dark mode and language are the visitor's own.
 
+## Previews in messengers and social networks {since=0.11.6}
+
+When you share the address of a publication in a messenger or social network, the preview shows the page's title, the start of its text (about 200 characters) and its cover image. A page without text, or with a cover colour instead of an image, shows only the title. If the publication is behind a password or has expired, the preview shows nothing of the page, only Flowplan's general one. The same goes for named links from the **Links** tab.
+
 ## Appearance
 
 In the **Web** tab, **Appearance** folds open below the options. There you set the look of the publication: **logo** and **favicon** (an HTTPS address or an uploaded file the publication shows), **accent colour**, **footer text** and **hide “Published with Flowplan”** – applied with **Save appearance**.
