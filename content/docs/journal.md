@@ -48,6 +48,8 @@ Jeder Tag merkt sich, aus welcher Fassung der Vorlage er entstanden ist. Ein Tag
 
 **Übernommene Aufgaben** (ebenfalls unter **Vorlage**) legt fest, wo die offenen Aufgaben des Vortags in einem neuen Tag stehen: **Oben** (Voreinstellung, vor der Vorlage), **Nach der Vorlage** oder **Unter der Überschrift …** – zur Wahl stehen die Überschriften der Vorlage. Mit einer Überschrift kommt die Aufgabenliste direkt darunter, vor das, was die Vorlage dort vorsieht. Fehlt die Überschrift später in der Vorlage, stehen die Aufgaben nach der Vorlage. Das gilt für Tage, die automatisch entstehen, genauso wie für den Entwurf bei **Beim ersten Schreiben**.
 
+**Offene Aufgaben** (direkt darunter): **Verschieben** (Voreinstellung) nimmt sie vom Vortag weg; **Kopieren** lässt sie dort zusätzlich stehen, als übernommen markiert – sie zählen dort nicht mehr als offen, abhaken lässt sich nur die Kopie im neuesten Tag. {since=0.11.5}
+
 ## Tracker, Ort und Termine
 
 Über jedem Tag steht eine Leiste:

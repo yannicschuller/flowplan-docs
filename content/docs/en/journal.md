@@ -15,7 +15,7 @@ A journal is a page with one sub-page per day. In the morning today's page is re
 ## How a day comes about
 
 - When a new day is opened for the first time, Flowplan creates its page. The day starts at midnight in your time zone.
-- **Open tasks** from the last day move over – including nested sub-tasks. This includes tasks **in progress** `[/]`, **deferred** ones `[>]` and those with another Obsidian symbol such as `[?]`; done and **cancelled** `[-]` tasks stay on their day, as do empty tasks without text. A small ↻ at the corner of the checkbox shows that a task was carried over from an earlier day.
+- **Open tasks** from the last day move over – including nested sub-tasks. Tasks **in progress** `[/]`, **deferred** `[>]` or with another Obsidian symbol such as `[?]` count as open; done, **cancelled** `[-]` and empty tasks stay on their day. A small ↻ at the corner of the checkbox shows that a task was carried over from an earlier day.
 - Completed tasks and the rest of the text stay on their day.
 - **Empty days disappear**: if a day got nothing of its own besides carried-over tasks, it is removed again on the next day. This way the journal only contains days on which something happened.
 
@@ -46,7 +46,9 @@ Every day remembers which version of the template it was created from. A day tha
 
 **Choose from templates …** {since=0.9.8} lists your saved [document templates](/templates#your-own-templates) that apply in the journal's space: those of this space, those of the whole workspace and your private ones. Choosing one copies its content into the daily template. Later changes to the saved template don't change the journal – only when you choose it again. Database templates and templates of other spaces are not offered. **Remove** clears the daily template; new days then start empty.
 
-**Carried-over tasks** (also under **Template**) decides where the open tasks of the day before go in a new day: **At the top** (the default, before the template), **After the template** or **Below the heading …** – the template's headings are offered. With a heading, the task list goes directly below it, before whatever the template puts there. If the template no longer has the heading, the tasks go after the template. This applies to days created automatically as well as to the draft with **On the first write**.
+**Carried-over tasks** (also under **Template**) decides where the open tasks of the day before go in a new day: **At the top** (the default, before the template), **After the template** or **Below the heading …** – the template's headings are offered. With a heading, the list goes directly below it, before the template's content there. Without that heading in the template, they go after it. This also applies to the draft with **On the first write**.
+
+**Open tasks** (right below): **Move** (the default) or **Copy** – copied tasks also stay on the day before, marked as carried over, and no longer count as open there. {since=0.11.5}
 
 ## Trackers, place and appointments
 
@@ -60,7 +62,7 @@ In the settings under **Day bar**, place and appointments can be switched off fo
 
 ### Completed this day
 
-Below every day, **Completed this day** lists the database records that were completed that day and the tasks ticked off in a document that day – including those of your page "Tasks" from **My tasks** – each with the time, a link and the name of the database or page. Tasks carry a small task symbol. The list is worked out each time the day opens and is not copied into the day; tick a record off elsewhere (in another tab, too) and it is there when you come back.
+Below every day, **Completed this day** lists the database records that were completed that day and the tasks ticked off in a document that day – including those of your page "Tasks" from **My tasks** – each with the time, a link and the name of the database or page. Tasks carry a small task symbol. The list is worked out each time the day opens; a record ticked off elsewhere is there when you come back.
 
 - A record counts on the day it was last completed, and only while it is still done by its database's done rule – reopen it and it leaves the list. The day follows your time zone.
 - **All / Only mine** at the top of the list: **Only mine** (the default) shows the records you completed yourself and those a person property assigns to you, whoever ticked them off. When an automation completes a record, it counts for the person who set up the automation. The choice is yours for this journal, on all devices.
