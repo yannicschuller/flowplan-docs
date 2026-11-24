@@ -36,6 +36,8 @@ Jede Antwort trägt eine **Fehler-ID** in der Kopfzeile `X-Request-Id`, bei eine
 
 Erfasst werden Antworten ab 500, Fehler von Hintergrunddiensten und -aufträgen und fehlgeschlagene MCP-Werkzeuge, auch bei ausgeschalteter Statistik. Gespeichert sind nur Route als Muster (ohne IDs und Query), Befehl, Status, Fehlername, die Meldung (höchstens 500 Zeichen; Schlüssel, Token, Passwörter, E-Mail- und IP-Adressen sowie IDs ausgeblendet), Stack-Frames, Datenbank-Fehlercode, Fehler-ID, Instanz, Version und Rolle (Administration, Mitglied, Gast, nicht angemeldet, API-Token, MCP). Nie gespeichert: IP-Adressen, Inhalte von Anfragen, Kopfzeilen oder wer es war. Aufbewahrt werden 14 Tage und höchstens 500 Fehlerarten.
 
+**Fehler bei Fremddiensten:** Antworten mit 502–504, weil ein anderer Dienst versagt hat – etwa der KI-Anbieter, eine verlinkte Seite bei der Linkvorschau, die Bildsuche, ein Kalender- oder Git-Anbieter –, zählen nicht als Serverfehler. Sie stehen in einem eigenen Abschnitt unter **Fehler im Detail** mit Dienst, Host (ohne Pfad), Route, Status, Anzahl und wann zuletzt, und gehen weder in die Fehlerquote, das Fehlerdiagramm noch in die Empfehlungen ein. So fallen echte Fehler von Flowplan sofort auf. {since=0.11.5}
+
 ### Neustarts {since=0.10.0}
 
 Startet der Container neu, ohne dass ein Fehler zu sehen war, hilft **Neustarts** unter **Administration → Überwachung** hinterher: Jeder Neustart der letzten 30 Tage steht da mit Zeitpunkt, wie lange Flowplan davor lief, dem Grund und dem Speicher beim letzten Lebenszeichen (Prozess bzw. Container gegen seine Grenze).

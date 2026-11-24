@@ -36,6 +36,8 @@ Every answer carries an **error ID** in the `X-Request-Id` header, and for an er
 
 Captured are answers from 500 up, failures of background workers and jobs and failed MCP tools, also with statistics switched off. Stored are only the route as a pattern (without IDs and query), command, status, error name, the message (at most 500 characters; keys, tokens, passwords, e-mail and IP addresses and IDs masked), stack frames, database error code, error ID, instance, version and role (administrator, member, guest, not signed in, API token, MCP). Never stored: IP addresses, request contents, headers or who it was. Kept 14 days, at most 500 kinds of errors.
 
+**Errors from external services:** answers with 502–504 because another service failed – such as the AI provider, a linked site in a link preview, the image search or a calendar or Git provider – don't count as server errors. They are listed in their own section below **Errors in detail** with service, host (without path), route, status, count and when last seen, and they don't go into the error rate, the error chart or the recommendations, so Flowplan's own errors stand out right away. {since=0.11.5}
+
 ### Restarts {since=0.10.0}
 
 When the container restarts without any visible error, **Restarts** under **Administration → Monitoring** helps after the fact: every restart of the last 30 days is listed with its time, how long Flowplan ran before, the reason and the memory at the last heartbeat (process and container against its limit).
