@@ -12,7 +12,7 @@ A database's property types at a glance, colours for select options, formatted t
 | Type | Content |
 | --- | --- |
 | Text | Formatted text: bold, italic, strikethrough, code, links, line breaks (see below) |
-| Number | Numbers with a format: currency, percent, decimal places, thousands separators |
+| Number | Numbers with a format: currency, percent, decimal places, thousands separators, own unit (kg, m …) |
 | Date | With or without time and end date, time zone, personal reminders, recurrence |
 | Select, multi-select | Options with a colour each ([see below](#option-colours)), e.g. for status or tags |
 | Checkbox, checklist | Tick off; checklists with several items and progress |

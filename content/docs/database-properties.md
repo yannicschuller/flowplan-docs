@@ -12,7 +12,7 @@ Die Eigenschaftstypen einer Datenbank im Überblick, Farben für Auswahl-Optione
 | Typ | Inhalt |
 | --- | --- |
 | Text | Formatierter Text: fett, kursiv, durchgestrichen, Code, Links, Zeilenumbrüche (siehe unten) |
-| Zahl | Zahlen mit Format: Währung, Prozent, Dezimalstellen, Tausendertrennzeichen |
+| Zahl | Zahlen mit Format: Währung, Prozent, Dezimalstellen, Tausendertrennzeichen, eigene Einheit (kg, m …) |
 | Datum | Mit oder ohne Uhrzeit und Enddatum, Zeitzone, persönliche Erinnerungen, Wiederholung |
 | Auswahl, Mehrfachauswahl | Optionen mit eigener Farbe ([siehe unten](#farben-der-optionen)), z. B. für Status oder Schlagworte |
 | Checkbox, Checkliste | Abhaken; Checklisten mit mehreren Punkten und Fortschritt |
