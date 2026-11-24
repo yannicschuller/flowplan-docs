@@ -18,6 +18,10 @@ Ein Link auf eine Seite oder einen Eintrag zeigt vor dem Text das Icon des Ziels
 
 Links ins Web sind unterstrichen und tragen hinter dem Text einen kleinen Pfeil nach außen. Wer den Pfeil nicht sehen möchte, schaltet unter **Einstellungen → Darstellung & Sprache → Symbol bei externen Links** aus – die Links bleiben dann farbig und unterstrichen, nur der Pfeil fehlt, in Dokumenten, Einträgen, Kommentaren und im Lesemodus. Die Einstellung gilt für dein Konto auf allen Geräten. Veröffentlichst du eine Seite, übernimmt die Veröffentlichung deine Einstellung; im Dialog **Teilen** lässt sie sich im Reiter **Web** mit **Pfeil ↗ hinter Links zeigen** für jede Veröffentlichung ändern ([Im Web veröffentlichen](/publishing)). {since=0.9.7} Gedruckt wird der Pfeil nie; beim Drucken steht hinter einem Link seine Adresse.
 
+### Links ins Web setzen {since=0.11.6}
+
+**Link** in der Formatierungsleiste öffnet ein Fenster mit **Text** und **Adresse**. Mit markiertem Text steht die Markierung im Feld Text; steht die Schreibmarke in einem Link, zeigt es dessen ganzen Text und seine Adresse, sodass du beides ändern kannst. Ohne Markierung fügt ein leerer Text die Adresse selbst ein. Nur die Adresse zu ändern lässt den Text stehen, ein geänderter Text behält Formatierungen wie Fett. Speichern ist ein Schritt zum Rückgängigmachen, <kbd>Esc</kbd> bricht ab.
+
 ### Automatische Links
 
 Hat ein Eigentümer [automatische Links](/workspace-appearance#automatische-links) eingerichtet, wird passender Text zum Link, sobald du danach ein Leerzeichen, ein Satzzeichen oder <kbd>Enter</kbd> tippst, und ebenso beim Einfügen – in Seiten, in Dokumenten von Datenbankeinträgen und in Kommentaren. Es ist ein gewöhnlicher Link: Er bleibt beim Zusammenarbeiten, offline und in den Apps erhalten und lässt sich wie jeder andere bearbeiten oder entfernen. ++⌘ Z++ (++Strg Z++) direkt danach nimmt nur den Link zurück, der Text bleibt. Text, der schon dasteht, ändert sich nicht; in Code, vorhandenen Links, Formeln, Titeln und Tabellenzellen von Datenbanken wird nichts verlinkt.

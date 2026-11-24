@@ -18,6 +18,10 @@ A link to a page or record shows the target's icon in front of its text: its emo
 
 Links to the web are underlined and carry a small outward arrow after their text. If you'd rather not see the arrow, switch off **Settings → Appearance & language → Icon on external links** – links then stay coloured and underlined, only the arrow is gone, in documents, records, comments and reading mode. The setting applies to your account on all devices. When you publish a page, the publication takes your setting; in the **Share** dialog's **Web** tab, **Show ↗ arrow after links** changes it per publication ([Publish on the web](/publishing)). {since=0.9.7} The arrow is never printed; a printout shows the link's address after it instead.
 
+### Adding links to the web {since=0.11.6}
+
+**Link** in the formatting toolbar opens a dialog with **Text** and **Address**. With text selected, the selection is in the Text field; with the cursor in a link, it shows that link's whole text and address, so you can change either or both. Without a selection, an empty text inserts the address itself. Changing only the address keeps the text, and a changed text keeps formatting such as bold. Saving is one undo step, <kbd>Esc</kbd> cancels.
+
 ### Automatic links
 
 When an owner has set up [automatic links](/workspace-appearance#automatic-links), matching text becomes a link as soon as you type a space, a punctuation mark or <kbd>Enter</kbd> after it, and also when you paste it – in pages, in documents of database records and in comments. It is an ordinary link: it stays when you collaborate, work offline or use the apps, and you edit or remove it like any other. ++⌘ Z++ (++Ctrl Z++) right after takes back only the link; the text stays. Text that is already there does not change; nothing is linked in code, existing links, formulas, titles or database table cells.
