@@ -48,6 +48,10 @@ A [flashcard deck](/flashcards) shows its **Study** view through a link with its
 - Someone signed in to the workspace who may read the deck gets **Study in Flowplan** with their own learning state. A copy of the publication keeps the card mapping.
 - **Study in Flowplan** opens the deck in the app on the same study view and starts the focus mode right away – in the phone app too. If the view no longer exists, the deck's first study view opens with a note. On a custom domain there is no such button. {since=0.11.0}
 
+## How the page looks to others {since=0.11.6}
+
+Published and link-shared pages look the way you see them: where the page icon sits (above or next to the title), your font and whether done tasks are struck through come from your settings under **Appearance & language** when you publish or create the link. In the share dialog's **Web** tab you can change them for one publication (**Page icon**, **Font**, **Strike through done tasks**) without changing your own settings. Light or dark mode and language are the visitor's own.
+
 ## Appearance
 
 In the **Web** tab, **Appearance** folds open below the options. There you set the look of the publication: **logo** and **favicon** (an HTTPS address or an uploaded file the publication shows), **accent colour**, **footer text** and **hide “Published with Flowplan”** – applied with **Save appearance**.

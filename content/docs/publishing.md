@@ -48,6 +48,10 @@ Ein [Lernkarten-Stapel](/flashcards) zeigt über einen Link mit eigenen Berechti
 - Wer im Arbeitsbereich angemeldet ist und den Stapel lesen darf, bekommt **In Flowplan lernen** mit dem eigenen Lernstand. Eine Kopie der Veröffentlichung übernimmt die Kartenzuordnung.
 - **In Flowplan lernen** öffnet den Stapel in der App auf derselben Lernen-Ansicht und startet gleich den Fokusmodus – auch in der App fürs Smartphone. Gibt es die Ansicht nicht mehr, öffnet sich die erste Lernen-Ansicht des Stapels mit einem Hinweis. Auf einer eigenen Domain gibt es den Knopf nicht. {since=0.11.0}
 
+## Wie die Seite für andere aussieht {since=0.11.6}
+
+Veröffentlichte und per Link geteilte Seiten sehen so aus, wie du sie siehst: Seitensymbol über oder neben dem Titel, deine Schriftart und ob erledigte Aufgaben durchgestrichen sind, kommen beim Veröffentlichen bzw. Erstellen des Links aus deinen Einstellungen unter **Darstellung & Sprache**. Im Reiter **Web** des Teilen-Dialogs änderst du sie für diese Veröffentlichung (**Seitensymbol**, **Schriftart**, **Erledigte Aufgaben durchstreichen**), ohne deine eigenen Einstellungen zu ändern. Hell/Dunkel und Sprache wählen Besucher selbst.
+
 ## Aussehen
 
 Im Reiter **Web** klappt unter den Optionen **Aussehen** auf. Dort legst du das Aussehen der Veröffentlichung fest: **Logo** und **Favicon** (HTTPS-Adresse oder eine hochgeladene Datei, die die Veröffentlichung zeigt), **Akzentfarbe**, **Text in der Fußzeile** und **„Mit Flowplan veröffentlicht“ ausblenden** – übernommen mit **Aussehen speichern**.
