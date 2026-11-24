@@ -87,7 +87,7 @@ Contacts databases can be subscribed to like calendars – as an address book in
 ::: steps
 
 1. **Settings → Calendars & issues → Connect calendar** → **Connect Google Calendar** or **Connect Microsoft Outlook / 365**. You sign in with the provider and allow access to your calendars.
-   Or **Connect CalDAV** {since=0.11.5}: server address (usually the server is enough, e.g. `caldav.icloud.com`, `caldav.fastmail.com`, `dav.mailbox.org` or your Nextcloud), username and an **app password** (required for iCloud: appleid.apple.com → Sign-In and Security → App-Specific Passwords). Flowplan looks up your calendars, offers only those it may write to and stores the password encrypted. Repeating events of a CalDAV calendar are not imported; reminders, attendees and location of an event stay when Flowplan changes it.
+   Or **Connect CalDAV** {since=0.11.5}: server address (usually the server is enough, e.g. `caldav.icloud.com`, `caldav.fastmail.com`, `dav.mailbox.org` or your Nextcloud), username and an **app password** (required for iCloud: appleid.apple.com → Sign-In and Security → App-Specific Passwords). Flowplan looks up your calendars, offers only those it may write to and stores the password encrypted. Series arrive – as with Google and Microsoft – as single records, one per occurrence in the period; changing or deleting one affects only that occurrence, and the rule itself is changed in the calendar. Reminders, attendees and location of an event stay when Flowplan changes it.
 2. In the database, open the calendar icon next to **…** (**Calendar sync**), pick the view, the account and the calendar, and **Connect**.
 
 :::

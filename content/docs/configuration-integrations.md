@@ -66,6 +66,7 @@ Zwei-Wege-Synchronisierung von Datenbankansichten mit [Google Kalender und Micro
 | `MS_CALENDAR_CLIENT_ID` / `MS_CALENDAR_CLIENT_SECRET` | *leer* | App-Registrierung in Microsoft Entra ID (Web-Plattform) mit den delegierten Berechtigungen `Calendars.ReadWrite` und `offline_access`. Weiterleitungs-URI: `<APP_URL>/api/calendar-sync/callback/microsoft`. |
 | `FLOWPLAN_CALDAV_SYNC` | *an* | `off` blendet den Kalender-Sync mit CalDAV-Servern aus (er braucht keine App-Registrierung). {since=0.11.5} |
 | `FLOWPLAN_CALDAV_ALLOW_PRIVATE` | *leer* | `true` erlaubt CalDAV-Server im eigenen Netz und dorthin auch `http://`; leer folgt `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE`. {since=0.11.5} |
+| `FLOWPLAN_CALDAV_ALLOWED_HOSTS` | *leer* | Nur diese CalDAV-Server dürfen verbunden werden, mit Komma getrennt; `*.example.org` erlaubt alle Unteradressen (für iCloud `*.icloud.com`). Leer: jeder öffentliche Server. Gilt auch für bestehende Verbindungen. {since=0.11.5} |
 | `MS_CALENDAR_TENANT` | `common` | `common` (Geschäfts- und private Konten), `organizations` oder die ID eines Mandanten. |
 
 Die Aktualisierungs-Tokens der Personen liegen versiegelt in der Datenbank (wie alle [gespeicherten Geheimnisse](/configuration-storage#gespeicherte-geheimnisse)).
