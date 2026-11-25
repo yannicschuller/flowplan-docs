@@ -7,6 +7,8 @@ new: errors-in-detail 2026-11-17, restarts 2026-11-18
 
 Watch the instance live: figures, statistics, alerts via webhook, maintenance notices and Prometheus.
 
+At the top of **Instance at a glance** on the settings start page, the wide chart **Active people and server load** shows the last 24 hours: active people on the left (only with statistics on), CPU and memory in percent of the limit on the right – so you see whether the load follows the people. {since=0.11.6}
+
 ## Settings → Instance → Monitoring
 
 **Settings → Instance → Monitoring** shows the instance live – refreshed every 15 seconds, paused while the tab is in the background:
@@ -41,6 +43,8 @@ Captured are answers from 500 up, failures of background workers and jobs and fa
 ### Restarts {since=0.10.0}
 
 When the container restarts without any visible error, **Restarts** under **Settings → Instance → Monitoring** helps after the fact: every restart of the last 30 days is listed with its time, how long Flowplan ran before, the reason and the memory at the last heartbeat (process and container against its limit).
+
+The list shows the newest first, 20 at a time (**Load more**); **Unexpected only** hides clean restarts. {since=0.11.6}
 
 | Reason | Means |
 | --- | --- |

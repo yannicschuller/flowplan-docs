@@ -7,6 +7,8 @@ new: fehler-im-detail 2026-11-17, neustarts 2026-11-18
 
 Die Instanz live beobachten: Kennzahlen, Statistik, Warnungen per Webhook, Wartungshinweise und Prometheus.
 
+Auf der Startseite der Einstellungen zeigt ganz oben in **Instanz auf einen Blick** das breite Diagramm **Aktive Personen und Serverlast** die letzten 24 Stunden: links die aktiven Personen (nur mit eingeschalteter Statistik), rechts CPU und Arbeitsspeicher in Prozent des Limits – so siehst du, ob die Last den Personen folgt. {since=0.11.6}
+
 ## Einstellungen → Instanz → Überwachung
 
 **Einstellungen → Instanz → Überwachung** zeigt die Instanz live – alle 15 Sekunden aktualisiert, pausiert, solange der Tab im Hintergrund liegt:
@@ -41,6 +43,8 @@ Erfasst werden Antworten ab 500, Fehler von Hintergrunddiensten und -aufträgen 
 ### Neustarts {since=0.10.0}
 
 Startet der Container neu, ohne dass ein Fehler zu sehen war, hilft **Neustarts** unter **Einstellungen → Instanz → Überwachung** hinterher: Jeder Neustart der letzten 30 Tage steht da mit Zeitpunkt, wie lange Flowplan davor lief, dem Grund und dem Speicher beim letzten Lebenszeichen (Prozess bzw. Container gegen seine Grenze).
+
+Die Liste zeigt neueste zuerst, 20 auf einmal (**Weitere laden**); **Nur unerwartete** blendet sauber beendete Neustarts aus. {since=0.11.6}
 
 | Grund | Bedeutet |
 | --- | --- |
