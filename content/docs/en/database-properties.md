@@ -33,7 +33,7 @@ Turn on **Several people** in a person property's settings when a record should 
 
 An opened record (side peek, full page, phone) shows each property as a compact row: the type's icon, the name and the value as text or chips; empty values say "Empty". Click or tap a value to open its editor – a small panel, or a sheet from the bottom on phones (keyboard: Tab to the value, Enter or Space). Escape or a click elsewhere closes it, and changes save as before. Select and multi-select open the option search directly, relations open search and the list of records, a date offers **Remove date** and **+ Time** there. Checkboxes, stars and checklists still change with one tap; links (web, email, phone, files) open on click, the rest of the row edits. Computed values and properties you may not change are shown without an editor.
 
-**Recurrence** appears below the first date, **Repeating task** only in databases with a done status or checkbox. Without a rule, both count as empty properties and hide with **Hide empty properties** until you show the empty properties.
+**Recurrence** appears below the first date, **Repeating task** only in databases with a done status or checkbox. Without a rule, both count as empty properties and hide with **Hide empty properties** until you show the empty properties. {since=0.11.6} Without a rule they get no row of their own: tap the record's first date and choose **+ Recurrence** or **+ Repeating task** in its menu. When several dates have a reminder, each names its date, e.g. “Reminder (Due)”.
 
 ### Collapsing properties in a record
 
@@ -43,6 +43,7 @@ Below a record's title, the **Properties** arrow folds the properties into one l
 - Without a choice of your own, properties are expanded on a computer; on a phone they are collapsed as soon as the record shows more than four properties. A record you have just created always opens expanded so you can fill it in.
 - Collapsing changes no values and no permissions and only applies to you. Printing and exports always show all properties – unless you turn them off in the [print options](/print-and-pdf#print-and-pdf).
 - Ordinary pages have the same in the [bar with tags and properties](/page-tags#collapsing-the-bar).
+- **Related pages** below the properties folds the same way; folded (the default), the line shows only the count, e.g. “Related pages · 3”. Flowplan remembers this choice per database in your account too. {since=0.11.6}
 
 ### Default values {since=0.11.1}
 

@@ -33,7 +33,7 @@ Schalte in den Einstellungen einer Personen-Eigenschaft **Mehrere Personen** ein
 
 Im geöffneten Eintrag (Seitenansicht, ganze Seite, Telefon) steht jede Eigenschaft als kompakte Zeile: Symbol des Typs, Name und der Wert als Text oder Chips; leere Werte heißen „Leer“. Ein Klick oder Tipp auf den Wert öffnet seinen Editor als kleines Feld, auf dem Telefon als Blatt von unten (Tastatur: mit Tab zum Wert, Enter oder Leertaste). Escape oder ein Klick daneben schließt ihn, Änderungen werden wie gewohnt gespeichert. Auswahl und Mehrfachauswahl öffnen direkt die Suche der Optionen, Relationen Suche und Liste der Einträge, ein Datum bietet dort **Datum entfernen** und **+ Uhrzeit**. Häkchen, Sterne und Checklisten ändern sich weiter mit einem Tipp; Links (Web, E-Mail, Telefon, Dateien) öffnen sich beim Klick, der Rest der Zeile bearbeitet. Berechnete Werte und Eigenschaften, die du nicht ändern darfst, stehen ohne Editor da.
 
-**Wiederholung** steht unter dem ersten Datum, **Wiederkehrende Aufgabe** nur in Datenbanken mit Erledigt-Status oder -Häkchen. Ohne Regel zählen beide als leere Eigenschaften und verschwinden mit **Leere Eigenschaften ausblenden**, bis du die leeren Eigenschaften einblendest.
+**Wiederholung** steht unter dem ersten Datum, **Wiederkehrende Aufgabe** nur in Datenbanken mit Erledigt-Status oder -Häkchen. Ohne Regel zählen beide als leere Eigenschaften und verschwinden mit **Leere Eigenschaften ausblenden**, bis du die leeren Eigenschaften einblendest. {since=0.11.6} Ohne Regel bekommen sie keine eigene Zeile: Tippe auf das erste Datum des Eintrags und wähle im Menü **+ Wiederholung** oder **+ Wiederkehrende Aufgabe**. Haben mehrere Datumsfelder eine Erinnerung, nennt jede ihr Datum, z. B. „Erinnerung (Fällig)“.
 
 ### Eigenschaften im Eintrag einklappen
 
@@ -43,6 +43,7 @@ Unter dem Titel eines Eintrags klappt der Pfeil **Eigenschaften** die Eigenschaf
 - Ohne eigene Wahl sind die Eigenschaften am Computer aufgeklappt, auf dem Telefon eingeklappt, sobald der Eintrag mehr als vier Eigenschaften zeigt. Ein gerade angelegter Eintrag öffnet immer aufgeklappt, damit du ihn ausfüllen kannst.
 - Einklappen ändert keine Werte und keine Rechte und gilt nur für dich. Drucken und Exporte zeigen immer alle Eigenschaften – außer du schaltest sie in den [Druckoptionen](/print-and-pdf#drucken-und-pdf) ab.
 - Für normale Seiten gibt es dasselbe in der [Leiste mit Tags und Eigenschaften](/page-tags#leiste-einklappen).
+- **Verwandte Seiten** unter den Eigenschaften klappt genauso; eingeklappt (der Standard) zeigt die Zeile nur die Anzahl, etwa „Verwandte Seiten · 3“. Auch diese Wahl merkt sich Flowplan pro Datenbank in deinem Konto. {since=0.11.6}
 
 ### Standardwerte {since=0.11.1}
 
