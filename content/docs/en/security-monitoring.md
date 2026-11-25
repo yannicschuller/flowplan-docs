@@ -27,6 +27,7 @@ The page `/#settings/instance/threats` (group **Security**) sums it up and refre
 
 - **State:** open incidents (critical ones in red), hints on missing connections, numbers of the last 24 hours and sign-ins per hour
 - **Incidents** of the detection rules, with actions right next to them: resolved, block the address or network for 24 hours, end all sessions of the person, disable the account. **Details & next steps** opens an incident's own page (`/#settings/instance/threats/incident/<id>`): on the left what happened – why the rule fired (with its thresholds), the period, the origin and whether it is already blocked, the accounts tried, successful sign-ins in the same period (red when an account may have been taken over afterwards), networks, countries, devices and the timeline of all its events; for probing also the requested paths with answer and count (IDs and tokens replaced by `:id`, `:n` and `:token`). On the right what the incident means, when it is harmless and what to do step by step – with the matching action (block the address, end sessions, disable the account, resolve) or the link to it right at the step.
+- **Search and pages** {since=0.11.6}: incidents come in pages of 20 (**Load more**) and can be searched – by rule, details such as a path or an event (e.g. `scim.token.create`), network, address and person – and filtered by open, resolved and severity; open ones always come first. Resolved incidents stay in the list for a year.
 - **Addresses with failures**, **events** with filters (severity, kind) and export as CSV or JSON
 - **Signed-in people** (admins first), **open ways in** (API tokens, share links, public pages of the whole instance) to revoke
 - **Blocks** of addresses and networks, for a time or indefinitely. Blocked addresses only get `403` – signed-in people in them too, and every API request, with or without a body. {since=0.11.5} Your own address and network cannot be blocked.
@@ -52,7 +53,7 @@ Whoever signs in with a device not seen for 90 days gets a security notice thems
 | Encryption key reset | an account resets its key for [encrypted spaces](/en/encrypted-spaces) (passphrase and recovery key lost) – only affects its own access to those spaces | warning {since=0.9.6} |
 | Several keys reset | 3 accounts reset their encryption key within an hour | critical {since=0.9.6} |
 | Many exports | more than 20 exports by one person in an hour (and far above their usual) | warning |
-| Probing | 60 refused API requests (401/403/404) from one address in 10 minutes | warning |
+| Probing | 60 different refused API requests (401/403/404) from one address in 10 minutes – the same request counts once, a signed-out tab refreshing itself or a record deleted meanwhile no longer triggers it {since=0.11.6} | warning |
 | Attacks through content | 5 refused scripts or internal addresses in an hour | warning |
 
 The same thing within a day counts on the open incident instead of opening a new one. For **Access to the instance opened** that is the same setting or, for SSO group mappings, the same admin – ten mappings in a row are one incident. {since=0.9.8}
