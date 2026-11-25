@@ -20,9 +20,11 @@ Flo answers in German or English, depending on the language you read the docs in
 
 Flo answers **only from these docs**. For each question, the Flo service searches the public pages of docs.flowplan.org, picks the sections that fit best and hands them to the language model Claude by Anthropic together with your question. Claude is told to answer only from those sections and to name the pages it used. Flo has no web access, cannot use tools and cannot see your Flowplan instance, your pages or your account.
 
+Flo also knows the current state of the services Flowplan runs itself – Flowplan Cloud at app.flowplan.org, the website, these docs and the other hosted services – from the [status page](https://status.flowplan.org). When you ask whether something is down, slow or unreachable, or while a hosted service has a problem, the Flo service reads the status page's public data (checked every five minutes) and hands it to Claude along with the docs; Claude itself still fetches nothing. The status page knows nothing about a Flowplan server you run yourself – for that, Flo points you to the troubleshooting in these docs.
+
 If the docs do not cover something, Flo says so and points you to the docs, the community on Discord or GitHub. Questions that are not about Flowplan get a short refusal.
 
-Answers are plain text with a little formatting – lists, bold, code – and only links to the docs, flowplan.org, Flowplan's GitHub repositories and the Discord invite. Everything else in an answer is shown as text, never as a working link or as code that runs.
+Answers are plain text with a little formatting – lists, bold, code – and only links to the docs, flowplan.org, the status page, Flowplan's GitHub repositories and the Discord invite. Everything else in an answer is shown as text, never as a working link or as code that runs.
 
 > [!WARNING]
 > Answers can be wrong. A language model can misread a section, mix up two features or leave out a condition. For anything important – an update, a backup, a setting on your server – read the linked section before you act on it.
@@ -35,7 +37,8 @@ What goes to Anthropic:
 
 - your question,
 - the last few questions and answers of this conversation (at most the last six messages – each question and each answer counts as one – and at most about 4,000 characters together), so follow-ups work,
-- the excerpts from these docs that Flo picked for the answer.
+- the excerpts from these docs that Flo picked for the answer,
+- when it matters for the question, the current state of Flowplan's hosted services from the public status page.
 
 What does not go to Anthropic: your name, your IP address, cookies, the session key described below or anything else about you. Flo cannot tell who you are, and it does not need to. Do not put personal or confidential information into a question – it would be sent along as part of the text.
 

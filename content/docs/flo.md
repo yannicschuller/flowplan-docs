@@ -20,9 +20,11 @@ Flo antwortet auf Deutsch oder Englisch – je nachdem, in welcher Sprache du di
 
 Flo antwortet **nur aus dieser Dokumentation**. Für jede Frage durchsucht der Flo-Dienst die öffentlichen Seiten von docs.flowplan.org, wählt die passendsten Abschnitte aus und gibt sie zusammen mit deiner Frage an das Sprachmodell Claude von Anthropic. Claude soll nur aus diesen Abschnitten antworten und die verwendeten Seiten nennen. Flo hat keinen Zugang zum Internet, kann keine Werkzeuge benutzen und sieht weder deine Flowplan-Instanz noch deine Seiten oder dein Konto.
 
+Flo kennt außerdem den aktuellen Zustand der Dienste, die Flowplan selbst betreibt – Flowplan Cloud unter app.flowplan.org, die Website, diese Doku und die anderen gehosteten Dienste – von der [Statusseite](https://status.flowplan.org). Fragst du, ob etwas ausgefallen, langsam oder nicht erreichbar ist, oder hat ein gehosteter Dienst gerade ein Problem, liest der Flo-Dienst die öffentlichen Daten der Statusseite (alle fünf Minuten geprüft) und gibt sie zusammen mit der Doku an Claude; Claude selbst ruft weiterhin nichts ab. Über einen Flowplan-Server, den du selbst betreibst, weiß die Statusseite nichts – dafür verweist Flo dich auf die Fehlersuche in dieser Doku.
+
 Steht etwas nicht in der Doku, sagt Flo das und verweist dich auf die Doku, die Community auf Discord oder GitHub. Fragen, die nichts mit Flowplan zu tun haben, lehnt Flo kurz ab.
 
-Antworten sind Text mit wenig Formatierung – Listen, Fett, Code – und enthalten nur Links in diese Doku, auf flowplan.org, zu Flowplans GitHub-Repositorys und zur Discord-Einladung. Alles andere in einer Antwort erscheint als Text, nie als klickbarer Link oder als Code, der ausgeführt wird.
+Antworten sind Text mit wenig Formatierung – Listen, Fett, Code – und enthalten nur Links in diese Doku, auf flowplan.org, zur Statusseite, zu Flowplans GitHub-Repositorys und zur Discord-Einladung. Alles andere in einer Antwort erscheint als Text, nie als klickbarer Link oder als Code, der ausgeführt wird.
 
 > [!WARNING]
 > Antworten können falsch sein. Ein Sprachmodell kann einen Abschnitt falsch verstehen, zwei Funktionen verwechseln oder eine Bedingung weglassen. Bei allem, was wichtig ist – einem Update, einer Sicherung, einer Einstellung auf deinem Server –, lies den verlinkten Abschnitt, bevor du danach handelst.
@@ -35,7 +37,8 @@ Was an Anthropic geht:
 
 - deine Frage,
 - die letzten Fragen und Antworten dieses Gesprächs (höchstens die letzten sechs Nachrichten – jede Frage und jede Antwort zählt einzeln – und zusammen höchstens etwa 4.000 Zeichen), damit Nachfragen funktionieren,
-- die Ausschnitte aus dieser Doku, die Flo für die Antwort ausgewählt hat.
+- die Ausschnitte aus dieser Doku, die Flo für die Antwort ausgewählt hat,
+- wenn es für die Frage wichtig ist, der aktuelle Zustand der gehosteten Dienste von Flowplan von der öffentlichen Statusseite.
 
 Was nicht an Anthropic geht: dein Name, deine IP-Adresse, Cookies, der unten beschriebene Sitzungsschlüssel oder sonst etwas über dich. Flo weiß nicht, wer du bist, und muss es auch nicht wissen. Schreib keine persönlichen oder vertraulichen Angaben in eine Frage – sie würden als Teil des Textes mitgeschickt.
 

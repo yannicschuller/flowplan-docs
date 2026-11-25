@@ -143,6 +143,8 @@ test("answers link only to Flowplan's places", () => {
     "https://github.com/yannicschuller/flowplan/issues/1",
     "https://github.com/yannicschuller/flowplan-docs",
     "https://discord.gg/bCEdB6MPrR",
+    "https://status.flowplan.org",
+    "https://status.flowplan.org/",
   ])
     assert.ok(allowedLink(ok), ok);
   assert.equal(allowedLink("/installation"), "https://docs.flowplan.org/installation");
@@ -159,6 +161,9 @@ test("answers link only to Flowplan's places", () => {
     "https://github.com/someone/flowplan",
     "https://github.com/yannicschuller/other",
     "https://discord.gg/other",
+    "http://status.flowplan.org",
+    "https://status.flowplan.org.evil.example/",
+    "https://status.flowplan.org:444/",
     "//evil.example/x",
     "mailto:a@b.c",
   ])

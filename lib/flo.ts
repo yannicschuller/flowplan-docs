@@ -66,9 +66,10 @@ export function parseAnswer(data: unknown): FloAnswer | null {
     if (list.length >= 8) break;
   }
   const text = answer.slice(0, 20000);
-  // Flo ends an answer with its own "Sources:"/"Quellen:" list (flowplan-ask's
-  // prompt, for Discord and other plain-text clients); the panel shows the
-  // sources as a box of its own, so the list in the text goes (#432).
+  // flowplan-ask sends answers without a sources heading (`sources` carries
+  // them); an older service ended them with its own "Sources:"/"Quellen:"
+  // list. The panel shows the sources as a box of its own, so such a list
+  // in the text goes (#432).
   return { answer: list.length ? withoutSourcesTail(text) : text, sources: list };
 }
 
@@ -169,8 +170,9 @@ export function parseTurns(raw: string | null): FloTurn[] {
 }
 
 // ------------------------------------------------------------ links
-// An answer may link only to these docs, the website, Flowplan's GitHub
-// repositories and the Discord invite; everything else stays plain text.
+// An answer may link only to these docs, the website, the status page of
+// the hosted services, Flowplan's GitHub repositories and the Discord
+// invite (flowplan-ask's allow-list); everything else stays plain text.
 // Relative links (/installation) mean these docs.
 const DOCS_HOST = "docs.flowplan.org";
 export function allowedLink(href: string): string | null {
@@ -191,6 +193,7 @@ export function allowedLink(href: string): string | null {
     host === DOCS_HOST ||
     host === "flowplan.org" ||
     host === "www.flowplan.org" ||
+    host === "status.flowplan.org" ||
     (host === "github.com" && /^\/yannicschuller\/flowplan[a-z0-9-]*(\/|$)/i.test(url.pathname)) ||
     url.href.replace(/\/$/, "") === DISCORD_URL;
   return ok ? url.href : null;
