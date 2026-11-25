@@ -18,6 +18,16 @@ The **Inbox** collects:
 - changes on pages you follow (you follow your own pages when creating them; the bell at the top right toggles following, on a phone **Follow** in the `⋯` menu),
 - messages from automations.
 
+### How the inbox is laid out {since=0.11.6}
+
+Notifications are listed by day – **Today**, **Yesterday**, **This week**, **Older** – and within a day by type: first **Shares and approvals** (pages shared with you and approvals in workflows) and **Tasks**, then **Mentions**, **Comments**, **Security** and **System**. Each row shows who did what and where – e.g. “**Jonas Weber** mentioned you in a comment · Q1 roadmap” – and below it the first words of the comment, the task or the date. Unread ones have a blue dot. The texts appear in your language; notifications from before the update keep their previous text.
+
+Where there is something to do, a button sits beside the row: **Reply** for comments, **Open task**, **Open record** for reminders, **Review** for a workflow approval and **View incident** for security incidents, which are marked **Warning** or **Critical**. Clicking the row also opens where it leads and marks it as read.
+
+Similar notifications from the same day are collapsed into one row – several incidents of the same rule (“2 security incidents: Probing of addresses and IDs”) or several comments by one person on the same page. Click to expand; **Mark all of these as read** and **Remove all of these** act on all of them.
+
+With a mouse, **Mark as read** / **Mark as unread** and **Remove** appear on hover; on phones and tablets they are in each row's `⋯` menu together with opening it. **Unread** shows only unread ones, **Mark all as read** reads everything. The number on the bell counts all unread notifications.
+
 ### Who hears about comments
 
 A new comment – on a page, on a database record or as a new text comment – does not notify the whole workspace, only:
@@ -32,7 +42,7 @@ Replies in a text comment reach everyone who has written in that thread and the 
 
 **By default** what concerns you directly – mentions, shared pages, comments, reminders – arrives in the inbox, as push, by e-mail and in connected [chat apps](#chat-apps). Guest comments come without e-mail and chat app. **Changes on pages you follow and automations only land in the inbox**, so that not every small edit triggers a notification or mail. Under **Settings → Notifications** this can be changed per kind and channel; **Reset to defaults** restores the initial state.
 
-**Retention:** read notifications are deleted after 90 days, unread ones after a year; at most the newest 1,000 per person are kept. The inbox shows the newest 100.
+**Retention:** read notifications are deleted after 90 days, unread ones after a year; at most the newest 1,000 per person are kept. The inbox shows the newest 100 first; **Load older** fetches 50 more at a time.
 
 **For administrators: security incidents of the instance.** Admins see their own row **Security incidents of the instance** among the notification kinds: what the [detection rules](/security-monitoring#security) find on the whole instance (password guessing, new admin rights, probing …). Each admin chooses how incidents arrive – inbox, push, e-mail and chat apps are on by default – and which: **All incidents** (default) or **Critical only**. The choice applies to every channel of this kind; every incident still shows under **Settings → Instance → Threats & incidents**. Clicking or tapping the notification opens the incident's page. The row **Security notices** is only about your own account (a new sign-in, a wrong journal PIN, a chat app switched off); whoever had switched channels off there before the update has them off for security incidents too. Other people don't see the row.
 

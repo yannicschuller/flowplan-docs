@@ -18,6 +18,16 @@ Der **Posteingang** sammelt:
 - Änderungen an Seiten, denen du folgst (eigene Seiten folgst du beim Anlegen automatisch; die Glocke oben rechts schaltet das Folgen um, auf dem Telefon **Folgen** im Menü `⋯`),
 - Meldungen aus Automationen.
 
+### So ist der Posteingang aufgebaut {since=0.11.6}
+
+Benachrichtigungen stehen nach Tagen – **Heute**, **Gestern**, **Diese Woche**, **Älter** – und innerhalb eines Tages nach Art: zuerst **Freigaben** (mit dir geteilte Seiten und Freigaben in Workflows) und **Aufgaben**, dann **Erwähnungen**, **Kommentare**, **Sicherheit** und **System**. Jede Zeile zeigt, wer etwas getan hat, was und wo – etwa „**Jonas Weber** hat dich in einem Kommentar erwähnt · Q1-Roadmap“ – und darunter die ersten Worte des Kommentars, die Aufgabe oder das Datum. Ungelesene haben einen blauen Punkt. Die Texte erscheinen in deiner Sprache; Benachrichtigungen von vor dem Update zeigen ihren bisherigen Text.
+
+Wo etwas zu tun ist, steht ein Knopf daneben: **Antworten** bei Kommentaren, **Zur Aufgabe**, **Zum Eintrag** bei Erinnerungen, **Prüfen** bei einer Freigabe im Workflow und **Zum Vorfall** bei Sicherheitsvorfällen, die **Warnung** oder **Kritisch** tragen. Ein Klick auf die Zeile öffnet ebenfalls, wohin sie führt, und markiert sie als gelesen.
+
+Gleichartige Benachrichtigungen desselben Tages fasst der Posteingang zu einer Zeile zusammen – mehrere Vorfälle derselben Regel („2 Sicherheitsvorfälle: Abtasten von Adressen und IDs“) oder mehrere Kommentare einer Person auf derselben Seite. Ein Klick klappt sie auf; **Alle davon als gelesen markieren** und **Alle davon entfernen** wirken auf alle zusammen.
+
+Mit der Maus erscheinen beim Darüberfahren **Als gelesen markieren** bzw. **Als ungelesen markieren** und **Entfernen**; auf Telefon und Tablet stehen sie mit dem Öffnen im Menü `⋯` jeder Zeile. **Ungelesen** zeigt nur Ungelesenes, **Alle als gelesen markieren** liest alles. Die Zahl an der Glocke zählt alle ungelesenen Benachrichtigungen.
+
 ### Wer von Kommentaren erfährt
 
 Ein neuer Kommentar – auf einer Seite, an einem Datenbankeintrag oder als neuer Textkommentar – benachrichtigt nicht den ganzen Arbeitsbereich, sondern nur:
@@ -32,7 +42,7 @@ Antworten in einem Textkommentar erreichen alle, die in diesem Thread schon gesc
 
 **Standardmäßig** kommt, was dich direkt betrifft – Erwähnungen, geteilte Seiten, Kommentare, Erinnerungen –, im Posteingang, als Push, per E-Mail und in verbundenen [Chat-Apps](#chat-apps). Gastkommentare kommen ohne E-Mail und ohne Chat-App. **Änderungen an Seiten, denen du folgst, und Automationen landen nur im Posteingang**, damit nicht jede kleine Bearbeitung eine Mitteilung oder Mail auslöst. Unter **Einstellungen → Benachrichtigungen** lässt sich das je Art und Kanal ändern; **Auf Standard zurücksetzen** stellt den Ausgangszustand wieder her.
 
-**Aufbewahrung:** Gelesene Benachrichtigungen werden nach 90 Tagen gelöscht, ungelesene nach einem Jahr; je Person bleiben höchstens die neuesten 1.000. Der Posteingang zeigt die neuesten 100.
+**Aufbewahrung:** Gelesene Benachrichtigungen werden nach 90 Tagen gelöscht, ungelesene nach einem Jahr; je Person bleiben höchstens die neuesten 1.000. Der Posteingang zeigt zuerst die neuesten 100; **Ältere laden** holt jeweils 50 weitere.
 
 **Für Administratoren: Sicherheitsvorfälle der Instanz.** Admins sehen bei den Benachrichtigungsarten eine eigene Zeile **Sicherheitsvorfälle der Instanz**: was die [Erkennungsregeln](/security-monitoring#sicherheit) auf der ganzen Instanz finden (Passwort-Raten, neue Adminrechte, Abtasten …). Jeder Admin stellt selbst ein, wie die Vorfälle ankommen – Posteingang, Push, E-Mail und Chat-Apps sind standardmäßig an – und welche: **Alle Vorfälle** (Standard) oder **Nur kritische**. Die Auswahl gilt für alle Kanäle dieser Art; unter **Einstellungen → Instanz → Angriffe & Vorfälle** erscheint jeder Vorfall trotzdem. Ein Klick oder Tipp auf die Mitteilung öffnet die Seite des Vorfalls. Die Zeile **Sicherheitshinweise** betrifft nur das eigene Konto (neue Anmeldung, falsche Journal-PIN, abgeschaltete Chat-App); wer dort vor dem Update Kanäle ausgeschaltet hatte, hat sie für Sicherheitsvorfälle ebenfalls aus. Andere Personen sehen die Zeile nicht.
 
