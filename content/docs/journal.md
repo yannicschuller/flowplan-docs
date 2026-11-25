@@ -23,6 +23,8 @@ Ein Journal ist eine Seite mit einer Unterseite pro Tag. Morgens liegt die heuti
 
 {since=0.10.0} Ein leerer Tag kommt in den [Papierkorb](/pages-and-spaces#papierkorb), ohne die weitergezogenen Aufgaben, und lässt sich dort wiederherstellen. Öffnest du sein Datum wieder oder schreibt ein Workflow hinein, kommt genau dieser Tag zurück; einen Tag, den du selbst gelöscht hast, lässt Flowplan im Papierkorb.
 
+{since=0.11.7} Jeder neue Tag prüft auch die übrigen Tage der letzten Woche: Leere verschwinden ebenso, außer sie haben offene Aufgaben oder du hast sie selbst wiederhergestellt.
+
 ### Seite des Tages anlegen: automatisch oder beim ersten Schreiben
 
 Unter **Journal einrichten → Tage** legst du fest, wann die heutige Seite entsteht:
