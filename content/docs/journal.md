@@ -50,6 +50,8 @@ Jeder Tag merkt sich, aus welcher Fassung der Vorlage er entstanden ist. Ein Tag
 
 **Offene Aufgaben** (direkt darunter): **Verschieben** (Voreinstellung) nimmt sie vom Vortag weg; **Kopieren** lässt sie dort zusätzlich stehen, als übernommen markiert – sie zählen dort nicht mehr als offen, abhaken lässt sich nur die Kopie im neuesten Tag. {since=0.11.5}
 
+Das kopierte Original behält sein Kästchen (leer oder halb gefüllt) mit einem kleinen Pfeil ➔, beim Darüberfahren „Weitergeführt am …“; es bleibt dort geschlossen, auch wenn du seinen Status änderst. **Nicht mehr als weitergeführt markieren** im Status-Menü (Rechtsklick oder langes Drücken auf das Kästchen) macht es wieder zu einer gewöhnlichen Aufgabe. {since=0.11.6}
+
 ## Tracker, Ort und Termine
 
 Über jedem Tag steht eine Leiste:
