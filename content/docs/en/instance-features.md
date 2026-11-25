@@ -4,7 +4,7 @@ keywords: features, modules, switch off, disable, instance, workflows, AI, flash
 
 # Features of this instance
 
-Under **Settings → Instance → General → Features of this instance** you switch features off for the whole instance – the same list as in [Show and hide features](/settings#show-and-hide-features). Unlike there, the feature is then not only hidden but off. Flowplan asks before switching one off.
+Under **Settings → Instance → Name & version → Features of this instance** you switch features off for the whole instance – the same list as in [Show and hide features](/settings#show-and-hide-features). Unlike there, the feature is then not only hidden but off. Flowplan asks before switching one off.
 
 ## Switching off and on again {since=0.11.0}
 

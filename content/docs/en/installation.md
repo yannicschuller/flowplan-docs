@@ -120,7 +120,7 @@ The image contains Node and Litestream for the S3 backup, on Debian 13. There is
 
 For trying it out only: Flowplan also runs at a plain `http://` address, for example `APP_URL=http://192.168.1.20:3000` on your own network. `APP_URL` must then be exactly that address – with `http://` and the port.
 
-The sign-in page and **Settings → Instance → General** then show the note "This instance runs without HTTPS". That is fine for a test, not for real use:
+The sign-in page and **Settings → Instance → Name & version** then show the note "This instance runs without HTTPS". That is fine for a test, not for real use:
 
 - **Passwords cross the network unencrypted** – anyone on the same network can read them.
 - **Passkeys, the offline copy, push, and the camera, microphone and clipboard** are only available in the browser over HTTPS. Flowplan hides them or says why they are missing.
@@ -136,7 +136,7 @@ For real use, put a reverse proxy with a certificate in front (see [Coolify and 
 
 ## Update
 
-When a newer release exists, the **Version** tile on the settings start page and **Settings → Instance → General** show a notice with the new version number and a link to the changes (turn off with `FLOWPLAN_UPDATE_CHECK=false`, see [Configuration](/configuration)). With the image tag `:latest`, this is all it takes:
+When a newer release exists, the **Version** tile on the settings start page and **Settings → Instance → Name & version** show a notice with the new version number and a link to the changes (turn off with `FLOWPLAN_UPDATE_CHECK=false`, see [Configuration](/configuration)). With the image tag `:latest`, this is all it takes:
 
 ```bash
 docker compose pull
@@ -147,7 +147,7 @@ With a self-built image, use `git pull` and `docker compose up -d --build` inste
 
 On start, Flowplan migrates the database itself. Make a backup beforehand (see [Storage, S3 and backups](/storage-and-backups)); going back to an older version after a migration is not supported.
 
-After the update everyone sees **New in Flowplan** once the next time they open Flowplan: the release notes of every version since the one they last saw – the newest unfolded, older ones folded, grouped into **Breaking changes**, **Security**, **New**, **Improved** and **Bug fixes**; breaking changes are highlighted at the top. **Close** (or Esc) and **Settings** dismiss the dialog for this version. The notes are part of the image: Flowplan does not ask the internet for them. New accounts start at the running version and see no older notes; accounts from before 0.9.4 see only 0.9.4's notes after updating to it. Beta images (`:beta`) show the notes up to the version they report – the next release's notes only with that release. Everyone chooses what they get under **Settings → Appearance & language → What's new after updates** ([Light and dark](/en/offline-and-apps#light-and-dark)); administrators set the default for new accounts under **Settings → Instance → General** ([Instance](/en/administration#instance)). The complete list of changes is in the [changelog on GitHub](https://github.com/yannicschuller/flowplan/blob/main/CHANGELOG.md).
+After the update everyone sees **New in Flowplan** once the next time they open Flowplan: the release notes of every version since the one they last saw – the newest unfolded, older ones folded, grouped into **Breaking changes**, **Security**, **New**, **Improved** and **Bug fixes**; breaking changes are highlighted at the top. **Close** (or Esc) and **Settings** dismiss the dialog for this version. The notes are part of the image: Flowplan does not ask the internet for them. New accounts start at the running version and see no older notes; accounts from before 0.9.4 see only 0.9.4's notes after updating to it. Beta images (`:beta`) show the notes up to the version they report – the next release's notes only with that release. Everyone chooses what they get under **Settings → Appearance & language → What's new after updates** ([Light and dark](/en/offline-and-apps#light-and-dark)); administrators set the default for new accounts under **Settings → Instance → Name & version** ([Instance](/en/administration#instance)). The complete list of changes is in the [changelog on GitHub](https://github.com/yannicschuller/flowplan/blob/main/CHANGELOG.md).
 
 ### Upgrading to 0.7.0
 

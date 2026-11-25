@@ -144,7 +144,7 @@ Below, **More instance settings** leads to the sections that earlier instance se
 
 ## Demo
 
-The demo is off on every instance until an administrator switches it on under **Settings → Instance → General → Public demo**.
+The demo is off on every instance until an administrator switches it on under **Settings → Instance → Name & version → Public demo**.
 
 Then the address `/demo` of your instance starts a demo (on flowplan.org the button **Try the demo** links there). Without an account it creates a demo guest with an example workspace of its own. Every demo gets fresh example pages that show all features: a welcome page, an editor tour with all blocks, a project database with relation, rollup, formula, recurrence and all views (table, board, calendar, timeline, gallery, list, feed, chart, form), a whiteboard, a journal and a small wiki.
 

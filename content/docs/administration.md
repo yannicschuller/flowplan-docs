@@ -144,7 +144,7 @@ Darunter führt **Weitere Einstellungen der Instanz** zu den Bereichen, in die f
 
 ## Demo
 
-Die Demo ist auf jeder Instanz ausgeschaltet, bis ein Admin sie unter **Einstellungen → Instanz → Allgemein → Öffentliche Demo** einschaltet.
+Die Demo ist auf jeder Instanz ausgeschaltet, bis ein Admin sie unter **Einstellungen → Instanz → Name & Version → Öffentliche Demo** einschaltet.
 
 Dann startet die Adresse `/demo` deiner Instanz eine Demo (auf flowplan.org verlinkt der Knopf **Demo ausprobieren** dorthin). Sie legt ohne Konto einen Demo-Gast mit eigenem Beispiel-Arbeitsbereich an. Jede Demo bekommt frische Beispielseiten, die alle Funktionen zeigen: eine Willkommensseite, einen Editor-Rundgang mit allen Blöcken, eine Projektdatenbank mit Beziehung, Rollup, Formel, Wiederholung und allen Ansichten (Tabelle, Board, Kalender, Zeitleiste, Galerie, Liste, Feed, Diagramm, Formular), ein Whiteboard, ein Journal und ein kleines Wiki.
 

@@ -9,7 +9,7 @@ New accounts get the page **Welcome to Flowplan** and two examples (a product ro
 ## Setting the starter content {since=0.11.0}
 
 1. Create a space in one of your workspaces, e.g. "Onboarding", and fill it with the pages everyone should get.
-2. Choose it under **Settings → Instance → General → Starter content for new accounts → Space**. You can choose the spaces you can read; end-to-end encrypted spaces are not offered.
+2. Choose it under **Settings → Instance → Name & version → Starter content for new accounts → Space**. You can choose the spaces you can read; end-to-end encrypted spaces are not offered.
 3. **Keep the built-in welcome page** (default: on) puts "Welcome to Flowplan" before the space's pages; off, new accounts get only the space's pages.
 
 ## What is copied {since=0.11.0}

@@ -4,7 +4,7 @@ keywords: Funktionen, Module, ausschalten, abschalten, Instanz, Workflows, KI, L
 
 # Funktionen dieser Instanz
 
-Unter **Einstellungen → Instanz → Allgemein → Funktionen dieser Instanz** schaltest du Funktionen für die ganze Instanz aus – dieselbe Liste wie bei [Funktionen ein- und ausblenden](/settings#funktionen-ein-und-ausblenden). Anders als dort ist die Funktion dann nicht nur ausgeblendet, sondern aus: Vor dem Ausschalten fragt Flowplan nach.
+Unter **Einstellungen → Instanz → Name & Version → Funktionen dieser Instanz** schaltest du Funktionen für die ganze Instanz aus – dieselbe Liste wie bei [Funktionen ein- und ausblenden](/settings#funktionen-ein-und-ausblenden). Anders als dort ist die Funktion dann nicht nur ausgeblendet, sondern aus: Vor dem Ausschalten fragt Flowplan nach.
 
 ## Ausschalten und wieder einschalten {since=0.11.0}
 

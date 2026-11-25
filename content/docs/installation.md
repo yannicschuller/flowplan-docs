@@ -120,7 +120,7 @@ Das Image enthält Node und Litestream für die S3-Sicherung, auf Debian 13. Ein
 
 Nur zum Ausprobieren: Flowplan läuft auch unter einer reinen `http://`-Adresse, etwa `APP_URL=http://192.168.1.20:3000` im eigenen Netz. `APP_URL` muss dann genau diese Adresse sein – mit `http://` und Port.
 
-Die Anmeldeseite und **Einstellungen → Instanz → Allgemein** zeigen dann den Hinweis „Diese Instanz läuft ohne HTTPS“. Für einen Test ist das in Ordnung, für den echten Betrieb nicht:
+Die Anmeldeseite und **Einstellungen → Instanz → Name & Version** zeigen dann den Hinweis „Diese Instanz läuft ohne HTTPS“. Für einen Test ist das in Ordnung, für den echten Betrieb nicht:
 
 - **Passwörter gehen unverschlüsselt durchs Netz** – jeder im selben Netz kann sie mitlesen.
 - **Passkeys, die Offline-Kopie, Push sowie Kamera, Mikrofon und Zwischenablage** gibt es im Browser nur über HTTPS. Flowplan blendet sie dann aus oder sagt, warum sie fehlen.
@@ -136,7 +136,7 @@ Für den echten Betrieb einen Reverse Proxy mit Zertifikat davorsetzen (siehe [C
 
 ## Aktualisieren
 
-Gibt es ein neueres Release, zeigen die Kachel **Version** auf der Startseite der Einstellungen und **Einstellungen → Instanz → Allgemein** einen Hinweis mit der neuen Versionsnummer und einem Link zu den Änderungen (abschaltbar mit `FLOWPLAN_UPDATE_CHECK=false`, siehe [Konfiguration](/configuration)). Mit dem Image-Tag `:latest` genügt dann:
+Gibt es ein neueres Release, zeigen die Kachel **Version** auf der Startseite der Einstellungen und **Einstellungen → Instanz → Name & Version** einen Hinweis mit der neuen Versionsnummer und einem Link zu den Änderungen (abschaltbar mit `FLOWPLAN_UPDATE_CHECK=false`, siehe [Konfiguration](/configuration)). Mit dem Image-Tag `:latest` genügt dann:
 
 ```bash
 docker compose pull
@@ -147,7 +147,7 @@ Beim selbst gebauten Image stattdessen `git pull` und `docker compose up -d --bu
 
 Beim Start migriert Flowplan die Datenbank selbst. Vorher eine Sicherung anlegen (siehe [Speicher, S3 und Sicherung](/storage-and-backups)); ein Zurückgehen auf eine ältere Version nach einer Migration ist nicht vorgesehen.
 
-Nach dem Update sieht jede Person beim nächsten Öffnen von Flowplan einmal **Neu in Flowplan**: die Versionshinweise aller Versionen seit der, die sie zuletzt gesehen hat – die neueste aufgeklappt, ältere zugeklappt, gegliedert in **Breaking Changes**, **Sicherheit**, **Neu**, **Verbessert** und **Fehlerbehebungen**; Breaking Changes stehen hervorgehoben oben. **Schließen** (oder Esc) und **Einstellungen** blenden den Dialog für diese Version aus. Die Hinweise sind Teil des Images: Flowplan fragt dafür nicht im Internet nach. Neue Konten beginnen bei der laufenden Version und sehen keine älteren Hinweise; Konten aus der Zeit vor 0.9.4 sehen nach dem Update auf 0.9.4 nur dessen Hinweise. Beta-Images (`:beta`) zeigen die Hinweise bis zu der Version, die sie melden – die Hinweise des kommenden Release erst mit diesem. Was jemand zu sehen bekommt, stellt er unter **Einstellungen → Darstellung & Sprache → Neuigkeiten nach Updates** ein ([Hell und dunkel](/offline-and-apps#hell-und-dunkel)), den Standard für neue Konten legen Admins unter **Einstellungen → Instanz → Allgemein** fest ([Instanz](/administration#instanz)). Die vollständige Liste aller Änderungen steht im [Changelog auf GitHub](https://github.com/yannicschuller/flowplan/blob/main/CHANGELOG.md).
+Nach dem Update sieht jede Person beim nächsten Öffnen von Flowplan einmal **Neu in Flowplan**: die Versionshinweise aller Versionen seit der, die sie zuletzt gesehen hat – die neueste aufgeklappt, ältere zugeklappt, gegliedert in **Breaking Changes**, **Sicherheit**, **Neu**, **Verbessert** und **Fehlerbehebungen**; Breaking Changes stehen hervorgehoben oben. **Schließen** (oder Esc) und **Einstellungen** blenden den Dialog für diese Version aus. Die Hinweise sind Teil des Images: Flowplan fragt dafür nicht im Internet nach. Neue Konten beginnen bei der laufenden Version und sehen keine älteren Hinweise; Konten aus der Zeit vor 0.9.4 sehen nach dem Update auf 0.9.4 nur dessen Hinweise. Beta-Images (`:beta`) zeigen die Hinweise bis zu der Version, die sie melden – die Hinweise des kommenden Release erst mit diesem. Was jemand zu sehen bekommt, stellt er unter **Einstellungen → Darstellung & Sprache → Neuigkeiten nach Updates** ein ([Hell und dunkel](/offline-and-apps#hell-und-dunkel)), den Standard für neue Konten legen Admins unter **Einstellungen → Instanz → Name & Version** fest ([Instanz](/administration#instanz)). Die vollständige Liste aller Änderungen steht im [Changelog auf GitHub](https://github.com/yannicschuller/flowplan/blob/main/CHANGELOG.md).
 
 ### Auf 0.7.0 aktualisieren
 
