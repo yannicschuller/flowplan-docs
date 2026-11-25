@@ -40,7 +40,7 @@ The kanban view groups cards into columns, for example by status, select, person
 
 - Move cards between and within columns by drag and drop: the card lifts, the target column opens a gap, and on release the card settles in. This changes the grouping property.
 - **New** at the foot of a column creates a record right in that group.
-- Reorder, hide or collapse columns; "No group" collects records without a value.
+- Reorder, hide or collapse columns; "No group" collects records without a value and only appears when there are such records – or while you drag a card, so you can drop it there to clear its group. {since=0.11.6}
 - **Add group** to the right of the columns creates your own status, such as "Waiting for customer": it is saved as a new option of the grouping select property and appears right away as a column of its own.
 - Sub-groups also split the board into rows (swimlanes).
 - Cards show every property ticked under **View → Properties and columns** that has a value, in that order; empty properties are left out, and the date sits at the bottom of the card. With more properties the card grows taller.

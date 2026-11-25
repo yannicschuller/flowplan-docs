@@ -40,7 +40,7 @@ Die Kanban-Ansicht gruppiert Karten in Spalten, etwa nach Status, Auswahl, Perso
 
 - Karten per Drag and Drop zwischen und innerhalb von Spalten verschieben: Die Karte hebt sich ab, die Zielspalte öffnet eine Lücke, beim Loslassen setzt sich die Karte hinein. Das ändert die gruppierende Eigenschaft.
 - **Neu** am Fuß einer Spalte legt einen Eintrag direkt in dieser Gruppe an.
-- Spalten umsortieren, ausblenden oder einklappen; „Ohne Gruppe“ sammelt Einträge ohne Wert.
+- Spalten umsortieren, ausblenden oder einklappen; „Ohne Gruppe“ sammelt Einträge ohne Wert und erscheint nur, wenn es solche gibt – oder während du eine Karte ziehst, damit du sie dort ablegen und so die Gruppe entfernen kannst. {since=0.11.6}
 - **Gruppe hinzufügen** rechts neben den Spalten legt einen eigenen Status an, etwa „Warten auf Kunde“: Er wird als neue Option der gruppierenden Auswahl-Eigenschaft gespeichert und erscheint sofort als eigene Spalte.
 - Untergruppen teilen das Board zusätzlich in Zeilen (Swimlanes).
 - Karten zeigen jede unter **Ansicht → Eigenschaften und Spalten** angehakte Eigenschaft, die einen Wert hat, in dieser Reihenfolge; leere Eigenschaften fallen weg, das Datum steht unten auf der Karte. Mit mehr Eigenschaften wird die Karte höher.
