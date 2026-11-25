@@ -25,6 +25,10 @@ Die Eigenschaftstypen einer Datenbank im Überblick, Farben für Auswahl-Optione
 
 Relationen, Rollups und Formeln sind unter [Eigenschaften, Formeln und Rollups](/properties-and-formulas) beschrieben.
 
+### Mehrere Personen {since=0.11.6}
+
+Schalte in den Einstellungen einer Personen-Eigenschaft **Mehrere Personen** ein, wenn ein Eintrag mehr als eine Person haben soll – etwa ein Ticket, an dem zwei arbeiten. Du wählst die Mitglieder dann als Chips: Tippe einen Namen, Enter nimmt die Person, ✕ oder die Rücktaste entfernt sie wieder. Tabelle, Karten und Eintrag zeigen alle Personen; ein Board nach dieser Eigenschaft zeigt den Eintrag bei jeder seiner Personen. Filter wie „enthält“ und „ist leer“, CSV, API und MCP arbeiten mit der ganzen Liste. Benachrichtigt eine Regel oder ein Workflow „die Personen der Eigenschaft“, sobald sie sich ändert, hören nur die neu Eingetragenen davon. Schaltest du die Einstellung wieder aus, sagt Flowplan vorher, wie viele Einträge mehr als eine Person haben – sie behalten jeweils die erste.
+
 ### Eigenschaften im Eintrag {since=0.11.6}
 
 Im geöffneten Eintrag (Seitenansicht, ganze Seite, Telefon) steht jede Eigenschaft als kompakte Zeile: Symbol des Typs, Name und der Wert als Text oder Chips; leere Werte heißen „Leer“. Ein Klick oder Tipp auf den Wert öffnet seinen Editor als kleines Feld, auf dem Telefon als Blatt von unten (Tastatur: mit Tab zum Wert, Enter oder Leertaste). Escape oder ein Klick daneben schließt ihn, Änderungen werden wie gewohnt gespeichert. Auswahl und Mehrfachauswahl öffnen direkt die Suche der Optionen, Relationen Suche und Liste der Einträge, ein Datum bietet dort **Datum entfernen** und **+ Uhrzeit**. Häkchen, Sterne und Checklisten ändern sich weiter mit einem Tipp; Links (Web, E-Mail, Telefon, Dateien) öffnen sich beim Klick, der Rest der Zeile bearbeitet. Berechnete Werte und Eigenschaften, die du nicht ändern darfst, stehen ohne Editor da.

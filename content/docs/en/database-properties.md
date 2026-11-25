@@ -25,6 +25,10 @@ A database's property types at a glance, colours for select options, formatted t
 
 Relations, rollups and formulas are described under [Properties, formulas and rollups](/properties-and-formulas).
 
+### Several people {since=0.11.6}
+
+Turn on **Several people** in a person property's settings when a record should have more than one person – a ticket two people work on, say. You then pick members as chips: type a name, Enter adds the person, ✕ or Backspace removes them again. Tables, cards and the record show everyone; a board grouped by this property shows the record under each of its people. Filters such as "contains" and "is empty", CSV, the API and MCP work with the whole list. When a rule or workflow notifies "the people of the property" as it changes, only the people newly added hear about it. If you turn the setting off again, Flowplan first tells you how many records have more than one person – each keeps its first.
+
 ### Properties in a record {since=0.11.6}
 
 An opened record (side peek, full page, phone) shows each property as a compact row: the type's icon, the name and the value as text or chips; empty values say "Empty". Click or tap a value to open its editor – a small panel, or a sheet from the bottom on phones (keyboard: Tab to the value, Enter or Space). Escape or a click elsewhere closes it, and changes save as before. Select and multi-select open the option search directly, relations open search and the list of records, a date offers **Remove date** and **+ Time** there. Checkboxes, stars and checklists still change with one tap; links (web, email, phone, files) open on click, the rest of the row edits. Computed values and properties you may not change are shown without an editor.
