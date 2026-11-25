@@ -24,7 +24,7 @@ The commands assume the Docker Compose installation (service `flowplan`, volume 
 
 1. **Same version.** Update Flowplan to the version that will run afterwards and start it once. The tool refuses a database from another version.
 2. **Prepare the target:** an empty database on PostgreSQL 16 or newer and a role that owns it – see [Requirements](/en/postgresql#requirements), also for `pg_trgm` and `pgvector`.
-3. **Back up:** **Administration → Storage & backup → Whole instance → Download**. Keep the file until the new instance runs.
+3. **Back up:** **Settings → Instance → Storage & backup → Whole instance → Download**. Keep the file until the new instance runs.
 4. **Stop Flowplan** – the tool only reads a consistent state when nothing writes:
 
    ```bash
@@ -49,7 +49,7 @@ The commands assume the Docker Compose installation (service `flowplan`, volume 
    docker compose up -d
    ```
 
-   Sign in, open a page, search for something (the index fills within seconds to minutes) and check that **Administration → Monitoring → System** says **PostgreSQL**.
+   Sign in, open a page, search for something (the index fills within seconds to minutes) and check that **Settings → Instance → Monitoring → System** says **PostgreSQL**.
 8. **Clean up, but not right away:** the old `flowplan.sqlite` stays in the data folder and is ignored as long as `DATABASE_URL` is set. Delete it only once the new instance's first scheduled backup has run.
 
 :::
@@ -125,7 +125,7 @@ Each table shows its row count and the checksums of source and target side by si
 
 - **Before anyone works in the new instance:** stop Flowplan, undo the setting (remove or set `DATABASE_URL` again) and start. The source is unchanged.
 - **If people have already worked:** move in the opposite direction (section above), so nothing is lost.
-- **As a last resort:** restore the downloaded instance backup under **Administration → Storage & backup → Restore from backup** or on the setup screen – it fits both databases.
+- **As a last resort:** restore the downloaded instance backup under **Settings → Instance → Storage & backup → Restore from backup** or on the setup screen – it fits both databases.
 
 An aborted copy does not resume: empty the target database (or delete the half-written file) and start over.
 

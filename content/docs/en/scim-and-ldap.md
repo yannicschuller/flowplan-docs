@@ -14,7 +14,7 @@ With SCIM 2.0 your identity provider creates accounts in Flowplan, keeps name an
 
 ::: steps
 
-1. **Administration → Sign-in & SSO → SCIM tokens**: **Create token**. The token starts with `fpscim_` and is shown only once; only its hash is stored. You can revoke it at any time.
+1. **Settings → Instance → Sign-in & SSO → SCIM tokens**: **Create token**. The token starts with `fpscim_` and is shown only once; only its hash is stored. You can revoke it at any time.
 2. At the provider, enter the **SCIM base URL** `<APP_URL>/api/scim/v2` and the token as **bearer token**.
 3. Assign people and groups to the app at the provider, or turn on "Push Groups".
 
@@ -23,10 +23,10 @@ With SCIM 2.0 your identity provider creates accounts in Flowplan, keeps name an
 **What Flowplan does with it**
 
 - **Accounts**: a new SCIM account is an SSO account. If an account with the same e-mail address exists, it is linked instead of duplicated. At the first OIDC sign-in the person takes over the prepared account – by the `externalId` (= the provider's `sub`) or a verified e-mail address.
-- **Deactivating**: `active: false` disables the account like **Block** in the administration – all sessions end at once, API tokens stop working. `active: true` enables it again. **Deleting** (DELETE) deactivates and unlinks; the content and the account itself stay, final deletion is still done in the administration. The last admin account with a password cannot be deactivated over SCIM.
+- **Deactivating**: `active: false` disables the account like **Block** under **Settings → Instance → Users** – all sessions end at once, API tokens stop working. `active: true` enables it again. **Deleting** (DELETE) deactivates and unlinks; the content and the account itself stay, final deletion is still up to the admins. The last admin account with a password cannot be deactivated over SCIM.
 - **Groups**: SCIM groups do not create groups in Flowplan. Their **display name** counts like an SSO group from the token: the [SSO group mappings](/sso-oidc#map-sso-groups-to-workspaces) give the role and workspace groups, and all rules from there apply (the mapping always wins, the last owner stays). Membership changes take effect at once, not only at the next sign-in. A person's OIDC groups and SCIM groups are combined.
 - Accounts with e-mail and password can be linked and deactivated, but mappings do not change their memberships.
-- The **last SCIM requests** with their status are listed in the administration – useful when the provider reports errors.
+- The **last SCIM requests** with their status are listed under **Settings → Instance → Sign-in & SSO → SCIM tokens** – useful when the provider reports errors.
 
 Not supported: bulk, sorting, `/Me` and password changes (Flowplan stores no password for SCIM accounts).
 
@@ -46,7 +46,7 @@ With `LDAP_URL` set, the password field of the sign-in page checks names against
 - **Groups** come from `LDAP_GROUP_ATTRIBUTE` (default `memberOf`): Flowplan takes the group's name (the first RDN, usually the CN, e.g. `flowplan-admins`) **and** the full DN. Either can be used in the [SSO group mappings](/sso-oidc#map-sso-groups-to-workspaces) and as `OIDC_ADMIN_GROUP`.
 - **Hourly sync**: Flowplan reads all LDAP accounts again – groups, name, address. Whoever is missing from the directory or locked there (Active Directory `userAccountControl`, 389 DS `nsAccountLock`, OpenLDAP ppolicy `pwdAccountLockedTime`) is disabled; once they are back, they are enabled again. Accounts disabled by an admin stay disabled. A run that would disable more than half of the accounts (at least five) stops – that is more likely a wrong configuration.
 - **Two-factor sign-in** applies as for passwords: LDAP accounts can set up an authenticator app, and the instance's policy ("admins" or "everyone") applies to them too.
-- **Administration → Sign-in & SSO → LDAP directory** shows the status, **Test connection** and **Sync now** with the last result.
+- **Settings → Instance → Sign-in & SSO → LDAP directory** shows the status, **Test connection** and **Sync now** with the last result.
 
 | Variable | Default | Meaning |
 | --- | --- | --- |
@@ -95,7 +95,7 @@ With `LDAP_URL` set, the password field of the sign-in page checks names against
 
 For contacts alone, `LDAP_URL` with `LDAP_CONTACTS_BASE_DN` is enough; without `LDAP_BASE_DN`, sign-in with LDAP stays off.
 
-**Administration → Sign-in & SSO → Contacts from LDAP** shows where base and filter come from and overrides them: base DN, filter, sync every … minutes, **More attributes** (attributes allowed on top of `LDAP_CONTACTS_ATTRIBUTES`, separated by commas) and **Allowed** (off: nobody can import, the sync rests). Stored values take precedence over the environment; empty fields fall back to the environment. **Test connection** checks the bind and the base. The search account's password stays in the environment and is never stored. Changes and imports are recorded as the security event “Security-relevant setting changed”.
+**Settings → Instance → Sign-in & SSO → Contacts from LDAP** shows where base and filter come from and overrides them: base DN, filter, sync every … minutes, **More attributes** (attributes allowed on top of `LDAP_CONTACTS_ATTRIBUTES`, separated by commas) and **Allowed** (off: nobody can import, the sync rests). Stored values take precedence over the environment; empty fields fall back to the environment. **Test connection** checks the bind and the base. The search account's password stays in the environment and is never stored. Changes and imports are recorded as the security event “Security-relevant setting changed”.
 
 Who may use the directory: instance administrators, accounts that sign in with LDAP and full members (not guests) of a workspace created by an administrator, an LDAP account or the instance itself – or by someone invited that way in turn {since=0.11.5} –, never guests of the contacts database's workspace and never an API token. Someone with only workspaces of their own, or invited only by people outside the organisation, therefore cannot reach the directory, even though anyone may create workspaces. See [Contacts from the LDAP directory](/contacts#contacts-from-the-ldap-directory).
 

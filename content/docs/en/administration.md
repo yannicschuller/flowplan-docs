@@ -1,22 +1,39 @@
 ---
-keywords: administration, admin, instance, settings, demo, maintenance
+keywords: administration, admin, instance, settings, instance at a glance, live, demo, maintenance
 ---
 
 # Administering the instance
 
-Whoever administers the instance sees **Administration** in the sidebar: the instance's first account and everyone it gives the admin right to – with single sign-on also the members of the group in `OIDC_ADMIN_GROUP`.
+Whoever administers the instance finds its settings under **Settings → Instance**: the instance's first account and everyone it gives the admin right to – with single sign-on also the members of the group in `OIDC_ADMIN_GROUP`.
 
-**More on this topic:** [Managing users](/user-management) · [Account limits](/account-limits)
+**More on this topic:** [Managing users](/user-management) · [Account limits](/account-limits) · [Settings](/settings#settings-overview-and-search)
 
-## Overview
+## Overview {since=0.11.6}
 
-The administration opens with an overview. At the top is the state of the instance: problems and notices (linked to the area concerned), six live figures – people active now, people active today (different people since midnight), requests per minute, error rate of the last hour, sign-ins today and the response time (p95: how long the slowest 5 % of the last hour's requests took) – and the requests of the last 24 hours as a chart. The figures refresh every 15 seconds while the page is visible (“Live”). Below, one tile per area with its state and, where it fits, a figure with its trend: active people (Users), the fullest quota (Workspaces), storage of the last 30 days, AI tokens today, changes in the activity log, requests or errors (Monitoring). Errors are marked red, notices yellow. On phones the tiles are a list with a small trend on the right.
+There is no separate administration any more: the instance is part of [Settings](/settings#settings-overview-and-search). In its sidebar, admins see the heading **Instance – admins only** below the personal groups, with the instance's sections under it. The old entries – the icon at the foot of the sidebar, **Administration** behind **More** and the command palette entry – are gone; the palette (++⌘/Ctrl K++) now offers **Settings: Instance**.
 
-The sections are grouped into **People** (Users, Sign-in & SSO, Workspaces), **Data** (Storage & backup, Limits & retention, Markdown & Git export), **Services** (E-mail, Push notifications, AI, Extensions & domains), **Security** (Threats & incidents, Encryption, Activity log – see [Security](/en/security-monitoring#security)) and **Operations** (Monitoring, Maintenance & notices, Instance). Every section starts with a **status line** – e.g. “Scheduled backup off” with a link to the switch, or “S3 off” with a link to the guide. Every setting has exactly one home. Switches and choices save at once, with “Saving …” or “Saved” next to them; single text fields show **Save** once you have changed them. Every section has its own address, e.g. `/#admin/storage` or `/#admin/monitoring`.
+The sections are grouped into **People** (Users, Sign-in & SSO, Workspaces), **Data** (Storage & backup, Limits & retention, Markdown & Git export), **Services** (E-mail, Push notifications, Chat apps, AI, Extensions & domains), **Security** (Threats & incidents, Encryption, Activity log – see [Security](/en/security-monitoring#security)) and **Operations** (Monitoring, Maintenance & notices, Instance). A dot in the sidebar marks sections with warnings. Every section starts with a **status line** – e.g. “Scheduled backup off” with a link to the switch, or “S3 off” with a link to the guide. Every setting has exactly one home. Switches and choices save at once, with “Saving …” or “Saved” next to them; single text fields show **Save** once you have changed them.
+
+Every section has its own address, e.g. `/#settings/instance/storage` or `/#settings/instance/monitoring`, also with a place inside it such as `/#settings/instance/threats/incident/<id>` for a security incident. `/#settings/instance` opens the settings start page at **Instance at a glance**. Old addresses with `#admin` lead on to the new place, so bookmarks and links in e-mails keep working.
+
+### Instance at a glance {since=0.11.6}
+
+On the settings start page, admins get **Instance at a glance** below **For you**. Every tile is a link into its section:
+
+- **Accounts & sessions**, with a trend of the people active in the last 24 hours.
+- **Storage & backup**: storage used, the last backup and a bar that shows database and files.
+- **Monitoring**: errors and warnings.
+- **Failed sign-ins** of the last 24 hours.
+- **Features**: how many [features of this instance](/instance-features) are on ("9 of 11 on").
+- **Version**: the running version, whether an update is available, and how long the server has been up.
+
+Errors are marked red, notices yellow.
+
+Below it is the **live strip**: problems and notices of the sections (linked to the section concerned), the live figures – people active now, people active today (different people since midnight), requests per minute, error rate of the last hour, sign-ins today and the response time (p95: how long the slowest 5 % of the last hour's requests took) – and the requests of the last 24 hours as a chart. It refreshes every 15 seconds while the page is visible (“Live”). On phones the tiles sit two to a row, with the live strip below ([Settings on a phone](/settings#on-a-phone)).
 
 ### Set up the instance {since=0.9.7}
 
-Admins first see the step **Set up the instance** in the [introduction](/settings#the-introduction): a traffic light for the basics, in the order you set up a new instance – **Address and HTTPS (APP_URL)**, **E-mail delivery**, **Backup**, **Sign-in (SSO)** and **AI provider**. Red means tackle it first (for example no scheduled backup, no e-mail delivery, or Flowplan over unencrypted http); yellow is optional or worth a look (no `APP_URL` set, the first backup is still to come, only accounts with e-mail and password, no AI); green is set up. Each line leads with **Set up** (**View** when green) to the matching section of the administration. Later the command palette (++⌘/Ctrl K++) opens the overview again with "Set up the instance".
+Admins first see the step **Set up the instance** in the [introduction](/settings#the-introduction): a traffic light for the basics, in the order you set up a new instance – **Address and HTTPS (APP_URL)**, **E-mail delivery**, **Backup**, **Sign-in (SSO)** and **AI provider**. Red means tackle it first (for example no scheduled backup, no e-mail delivery, or Flowplan over unencrypted http); yellow is optional or worth a look (no `APP_URL` set, the first backup is still to come, only accounts with e-mail and password, no AI); green is set up. Each line leads with **Set up** (**View** when green) to the matching section under **Settings → Instance**. {since=0.11.6} Later the command palette (++⌘/Ctrl K++) opens the overview again with "Set up the instance".
 
 ## Workspaces
 
@@ -27,7 +44,7 @@ All workspaces with members, pages, usage (a bar when there is a quota) and **Ow
 The one place for backups:
 
 - **Backups**: **S3 mirror** and **Litestream** with their state, the scheduled **Daily database backup** – a consistent copy of the database per day, with S3 in the bucket under `backups/`, otherwise in the data folder –, **Hourly instead of daily** (meant for encrypted backups in place of Litestream, see [Encryption](/storage-encryption#encryption); keep more copies then, e.g. 72 for three days), **Backups kept**, the last backup and **Back up now**. The Markdown export still runs once a day.
-- **Usage**: what is local and what is in the bucket, by kind, and how the database is split.
+- **Usage**: what is local and what is in the bucket, by kind, and how the database is split. Above it, a live bar shows how much goes to the database and to files, next to the five accounts with the most files. {since=0.11.6}
 - **Whole instance → Download** creates a verified copy of the database and files while running. With `FLOWPLAN_ENCRYPTION_KEY` the file is encrypted (`.zip.enc`).
 - **Content**: how many workspaces, pages, databases, records, files, accounts and comments there are.
 - **Move instance**: on the old instance **Prepare the move** (a move token, visible once, valid for 24 hours, revocable; confirmed with your password or a fresh sign-in), then read-only, "moved to …" and **Redirect the web interface**. On the new instance, also in red, **Take over from another instance**: first copy with progress, **pre-flight check** of the settings (names and check values only), **Make the source read-only and fetch the last state** and **Apply** on the next restart (previous state as `pre-move-…`). Guide: [Moving an instance](/move-instance).
@@ -62,19 +79,13 @@ Choose pages and databases for the Markdown export, switch on the Git export of 
 
 ## Push notifications
 
-Whether notifications can reach the apps and through which service (`/#admin/push`). The overview's tile shows the relay with a green, yellow or red badge – e.g. “Reachable (85 ms)” – and the deliveries of the last 24 hours; the same tile is under **Monitoring → Health**.
+Whether notifications can reach the apps and through which service (`/#settings/instance/push`). The tile under **Monitoring → Health** shows the relay with a green, yellow or red badge – e.g. “Reachable (85 ms)” – and the deliveries of the last 24 hours.
 
-- **Push relay**: the address in use – the official `https://push.flowplan.org` or your own from `PUSH_RELAY_URL` (credentials in the address are never shown) –, whether it is on and otherwise exactly why not (`PUSH_RELAY=off`, `APP_URL` not an HTTPS address, `PUSH_RELAY_URL` invalid), the `APP_URL` the relay knows the instance by, and whether `/.well-known/flowplan-push` is published.
-- **Reachability**: the instance requests `GET <relay>/healthz` – at most 5 seconds, HTTPS only, following no redirects – and shows “Reachable” with the response time (and the relay's version if it names one) or the reason: timeout, connection refused, DNS, TLS, redirect, HTTP status. It also fetches its own `/.well-known/flowplan-push` at `APP_URL`, as the relay does, and checks that the current signing key is listed. If that fails from inside, it is only a warning: behind NAT or a proxy that does not resolve its own address internally this is normal – what counts is that the relay reaches it from outside ([test notification](/notifications#test-notification)). A result is kept for a minute; **Check now** checks again at once.
-- **Signing key**: key ids with their status (signing, waiting, retiring) and dates. **Rotate key …** asks first and rotates as described in [Push relay and end-to-end encryption](/configuration-ai-push#push-relay-and-end-to-end-encryption), optionally immediately.
-- **Deliveries of the last 24 hours** per channel (relay, Expo, Web Push) and result (delivered, gone, forbidden, invalid, rate limited, error), the last delivery through the relay, the last error as a code (e.g. `signature HTTP 401` or `unreachable`), the queue and the registered devices per channel. Counted only while the usage statistics are on (see [Monitoring](#monitoring)).
-- **Expo and Web Push**: `MOBILE_PUSH` on or off, what `MOBILE_PUSH_CONTENT` sends along, where the VAPID keys come from and whether `WEB_PUSH_SUBJECT` is set.
-
-The answers never contain tokens, keys or push addresses. `/api/admin/push` is for signed-in administrators only, never for API tokens.
+Relay, reachability, signing keys and deliveries in detail: [State in the instance settings](/configuration-ai-push#state-in-the-instance-settings).
 
 ## Chat apps
 
-**Administration → Chat apps** governs [notifications to chat apps](/notifications#chat-apps). At the top: allowed services, the instance's bot, active connections and those switched off after errors, and the deliveries of the last 24 hours.
+**Settings → Instance → Chat apps** governs [notifications to chat apps](/notifications#chat-apps). At the top: allowed services, the instance's bot, active connections and those switched off after errors, and the deliveries of the last 24 hours.
 
 - **Allowed services:** Telegram, Gotify, ntfy and Matrix can be switched off one by one (default: `FLOWPLAN_MESSENGERS`). Services switched off get no more messages; people's connections stay stored and resume when the service is switched on again.
 - **Instance Telegram bot:** bot token from @BotFather and optionally an own API address (Bot API server or relay/proxy, also in the own network). **Check and save** asks Telegram for the bot with `getMe` and stores the token only when it is accepted – encrypted, shown only as “…abcd”. **Remove bot** deletes it (a token from `FLOWPLAN_TELEGRAM_BOT_TOKEN` then applies again). A conflict with a webhook or another program polling the bot shows under **Last error**.
@@ -104,13 +115,15 @@ The latest changes with person, action and affected resource – such as shares,
 
 ## Monitoring
 
-Health, usage and events of the instance – live: five key figures at the top (**Active 24 h**, **Storage**, **Deliveries 7 days**, **AI tokens 14 days**, **Errors 24 h**) with their trend and, where it fits, a comparison with the period before, below them cards in two columns with charts, queues, background workers, refused requests, alerts by webhook and the usage statistics. Details under [Operations and troubleshooting](/monitoring#administration-monitoring).
+Health, usage and events of the instance – live: five key figures at the top (**Active 24 h**, **Storage**, **Deliveries 7 days**, **AI tokens 14 days**, **Errors 24 h**) with their trend and, where it fits, a comparison with the period before, below them cards in two columns with charts, queues, background workers, refused requests, alerts by webhook and the usage statistics. Details under [Operations and troubleshooting](/monitoring#settings-instance-monitoring).
 
 ## Maintenance & notices
 
 **Notice for everyone** – a banner for everyone until you clear it – the **maintenance notice** with start and end, which disappears by itself afterwards, and **banners to click away** that each person sees until they close them – e.g. for the apps or your Discord server ([Maintenance & notices](/monitoring#maintenance-notices)).
 
 ## Instance
+
+The **Instance** section sits in the **Operations** group (`/#settings/instance/general`).
 
 | Setting | Effect |
 | --- | --- |
@@ -122,7 +135,7 @@ Health, usage and events of the instance – live: five key figures at the top (
 | Settings level for new accounts | Which settings new accounts see: **Beginner** the essentials, **Normal** (default) most of them, **Expert** all ([Settings levels](/settings#settings-levels)). The search in Settings always finds all of them, and everyone can change their level at the top of Settings; you set it per person under [Users](/user-management#users). Accounts that existed before this setting keep seeing everything (Expert). {since=0.9.7} |
 | Default formatting toolbar | The [formatting toolbar](/formatting#format-text) everyone gets who hasn't customized theirs – with the same editor as in your own settings. Their **Reset** goes back to it; here it restores the built-in bar. {since=0.9.7} |
 | Starter content for new accounts | A space whose pages every new account gets in its personal workspace, instead of the built-in examples; see [Starter content for new accounts](/starter-content). {since=0.11.0} |
-| Features of this instance | A switch **On for this instance** per feature. Switched off, the feature is off for everyone – on the server as well; see [Features of this instance](/instance-features). {since=0.11.0} |
+| Features of this instance | One tile per feature, and the tile is its switch ("on" / "off"). {since=0.11.6} Switched off, the feature is off for everyone – on the server as well; see [Features of this instance](/instance-features). {since=0.11.0} Next to them, a preview shows what **New page** then looks like for everyone and names what disappears for everyone. {since=0.11.6} |
 | Features for new accounts | Which [features](/settings#show-and-hide-features) new accounts see, a switch per feature. Hidden only removes the way in; existing pages and permissions stay. Everyone can change it; existing accounts see everything. **Apply to all** puts every existing account on this default after a confirmation; their own choices are lost. {since=0.11.0} |
 
 Everyone sees version, licence and source code under **Settings → About Flowplan**; for our images it also says whether it is a beta or a release (own builds: `--build-arg FLOWPLAN_CHANNEL=beta` or `release`). If you run modified code, name its source with `FLOWPLAN_SOURCE_URL`; `FLOWPLAN_HIDE_SPONSOR=true` hides the link to GitHub Sponsors ([Configuration](/configuration-storage#legal-and-interface)).
@@ -131,11 +144,11 @@ Below, **More instance settings** leads to the sections that earlier instance se
 
 ## Demo
 
-The demo is off on every instance until an administrator switches it on under **Administration → Instance → Public demo**.
+The demo is off on every instance until an administrator switches it on under **Settings → Instance → Instance → Public demo**.
 
 Then the address `/demo` of your instance starts a demo (on flowplan.org the button **Try the demo** links there). Without an account it creates a demo guest with an example workspace of its own. Every demo gets fresh example pages that show all features: a welcome page, an editor tour with all blocks, a project database with relation, rollup, formula, recurrence and all views (table, board, calendar, timeline, gallery, list, feed, chart, form), a whiteboard, a journal and a small wiki.
 
 - The demo ends with **End demo**, on signing out, after 45 minutes without activity and after three hours at the latest. Then the account, workspace, pages and files are deleted completely.
-- Demo guests cannot take anything outside: no publishing, no share links, no invitations, no further workspaces, no public forms, no administration.
+- Demo guests cannot take anything outside: no publishing, no share links, no invitations, no further workspaces, no public forms, no instance settings.
 - Every demo workspace has 25 MB of storage. New demos are limited to five per hour and address and 40 at the same time.
-- Running and total started demos are shown under **Administration → Monitoring → Instance in numbers**.
+- Running and total started demos are shown under **Settings → Instance → Monitoring → Instance in numbers**.

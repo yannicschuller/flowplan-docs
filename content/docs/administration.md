@@ -1,22 +1,39 @@
 ---
-keywords: Administration, Admin, Instanz, Einstellungen, Demo, Wartung
+keywords: Administration, Admin, Instanz, Einstellungen, Instanz auf einen Blick, Live, Demo, Wartung
 ---
 
-# Administration der Instanz
+# Die Instanz verwalten
 
-Wer die Instanz verwaltet, sieht **Administration** in der Seitenleiste: das erste Konto der Instanz und alle, denen es das Admin-Recht gibt – bei Single Sign-on zusätzlich die Mitglieder der Gruppe aus `OIDC_ADMIN_GROUP`.
+Wer die Instanz verwaltet, findet ihre Einstellungen unter **Einstellungen → Instanz**: das erste Konto der Instanz und alle, denen es das Admin-Recht gibt – bei Single Sign-on zusätzlich die Mitglieder der Gruppe aus `OIDC_ADMIN_GROUP`.
 
-**Mehr zum Thema:** [Benutzer verwalten](/user-management) · [Grenzen für Konten](/account-limits)
+**Mehr zum Thema:** [Benutzer verwalten](/user-management) · [Grenzen für Konten](/account-limits) · [Einstellungen](/settings#einstellungen-uebersicht-und-suche)
 
-## Übersicht
+## Übersicht {since=0.11.6}
 
-Die Administration öffnet mit einer Übersicht. Oben steht der Zustand der Instanz: Störungen und Hinweise (mit Link zum betroffenen Bereich), sechs Live-Zahlen – gerade aktive Personen, heute aktive Personen (verschiedene Personen seit Mitternacht), Anfragen pro Minute, Fehlerquote der letzten Stunde, Anmeldungen heute und die Antwortzeit (p95: so lange brauchten die langsamsten 5 % der Anfragen der letzten Stunde) – und die Anfragen der letzten 24 Stunden als Diagramm. Die Zahlen aktualisieren sich alle 15 Sekunden, solange die Seite sichtbar ist („Live“). Darunter je Bereich eine Kachel mit seinem Zustand und, wo es passt, einer Zahl mit Verlauf: aktive Personen (Benutzer), das vollste Kontingent (Arbeitsbereiche), der Speicher der letzten 30 Tage, KI-Tokens heute, Änderungen im Aktivitätsprotokoll, Anfragen bzw. Fehler (Überwachung). Fehler sind rot markiert, Hinweise gelb. Auf dem Telefon sind die Kacheln eine Liste mit einem kleinen Verlauf rechts.
+Eine eigene Administration gibt es nicht mehr: Die Instanz ist ein Teil der [Einstellungen](/settings#einstellungen-uebersicht-und-suche). Admins sehen in deren Seitenleiste unter den persönlichen Gruppen die Überschrift **Instanz – nur für Admins** und darunter die Abschnitte der Instanz. Die alten Einstiege – das Symbol unten in der Seitenleiste, **Administration** hinter **Mehr** und der Eintrag in der Befehlspalette – sind weggefallen; die Befehlspalette (++⌘/Strg K++) bietet jetzt **Einstellungen: Instanz**.
 
-Die Bereiche sind gruppiert in **Personen** (Benutzer, Anmeldung & SSO, Arbeitsbereiche), **Daten** (Speicher & Sicherung, Grenzen & Aufbewahrung, Markdown- & Git-Export), **Dienste** (E-Mail, Push-Benachrichtigungen, KI, Erweiterungen & Domains), **Sicherheit** (Angriffe & Vorfälle, Verschlüsselung, Aktivitätsprotokoll – siehe [Sicherheit](/security-monitoring#sicherheit)) und **Betrieb** (Überwachung, Wartung & Hinweise, Instanz). Jeder Bereich beginnt oben mit einer **Zustandszeile** – etwa „Geplante Sicherung aus“ mit dem Link zum Schalter oder „S3 aus“ mit dem Link zur Anleitung. Jede Einstellung hat genau einen Ort. Schalter und Auswahlfelder speichern sofort, daneben steht „Speichert …“ bzw. „Gespeichert“; einzelne Textfelder zeigen **Speichern**, sobald du sie geändert hast. Jeder Bereich hat eine eigene Adresse, z. B. `/#admin/storage` oder `/#admin/monitoring`.
+Die Abschnitte sind gruppiert in **Personen** (Benutzer, Anmeldung & SSO, Arbeitsbereiche), **Daten** (Speicher & Sicherung, Grenzen & Aufbewahrung, Markdown- & Git-Export), **Dienste** (E-Mail, Push-Benachrichtigungen, Chat-Apps, KI, Erweiterungen & Domains), **Sicherheit** (Angriffe & Vorfälle, Verschlüsselung, Aktivitätsprotokoll – siehe [Sicherheit](/security-monitoring#sicherheit)) und **Betrieb** (Überwachung, Wartung & Hinweise, Instanz). Ein Punkt in der Seitenleiste markiert Abschnitte mit Warnungen. Jeder Abschnitt beginnt oben mit einer **Zustandszeile** – etwa „Geplante Sicherung aus“ mit dem Link zum Schalter oder „S3 aus“ mit dem Link zur Anleitung. Jede Einstellung hat genau einen Ort. Schalter und Auswahlfelder speichern sofort, daneben steht „Speichert …“ bzw. „Gespeichert“; einzelne Textfelder zeigen **Speichern**, sobald du sie geändert hast.
+
+Jeder Abschnitt hat eine eigene Adresse, z. B. `/#settings/instance/storage` oder `/#settings/instance/monitoring`, auch mit einer Stelle darin wie `/#settings/instance/threats/incident/<id>` für einen Sicherheitsvorfall. `/#settings/instance` öffnet die Startseite der Einstellungen bei **Instanz auf einen Blick**. Alte Adressen mit `#admin` führen weiter an die neue Stelle, Lesezeichen und Links in E-Mails funktionieren also weiter.
+
+### Instanz auf einen Blick {since=0.11.6}
+
+Auf der Startseite der Einstellungen folgt für Admins unter **Für dich** der Teil **Instanz auf einen Blick**. Jede Kachel ist ein Link in ihren Abschnitt:
+
+- **Konten & Sitzungen**, mit dem Verlauf der aktiven Personen der letzten 24 Stunden.
+- **Speicher & Sicherung**: belegter Speicher, die letzte Sicherung und ein Balken, der Datenbank und Dateien zeigt.
+- **Überwachung**: Fehler und Warnungen.
+- **Fehlgeschlagene Anmeldungen** der letzten 24 Stunden.
+- **Funktionen**: wie viele [Funktionen dieser Instanz](/instance-features) eingeschaltet sind („9 von 11 an“).
+- **Version**: die laufende Version, ob ein Update bereitsteht, und wie lange der Server schon läuft.
+
+Fehler sind rot markiert, Hinweise gelb.
+
+Darunter steht der **Live-Streifen**: Störungen und Hinweise der Abschnitte (mit Link zum betroffenen Abschnitt), die Live-Zahlen – gerade aktive Personen, heute aktive Personen (verschiedene Personen seit Mitternacht), Anfragen pro Minute, Fehlerquote der letzten Stunde, Anmeldungen heute und die Antwortzeit (p95: so lange brauchten die langsamsten 5 % der Anfragen der letzten Stunde) – und die Anfragen der letzten 24 Stunden als Diagramm. Er aktualisiert sich alle 15 Sekunden, solange die Seite sichtbar ist („Live“). Auf dem Telefon stehen die Kacheln zu zweit nebeneinander, darunter der Live-Streifen ([Einstellungen auf dem Telefon](/settings#auf-dem-telefon)).
 
 ### Instanz einrichten {since=0.9.7}
 
-Admins sehen in der [Einführung](/settings#die-einfuehrung) zuerst den Schritt **Instanz einrichten**: eine Ampel für die Grundlagen, in der Reihenfolge, in der man eine neue Instanz einrichtet – **Adresse und HTTPS (APP_URL)**, **E-Mail-Versand**, **Sicherung**, **Anmeldung (SSO)** und **KI-Anbieter**. Rot heißt: zuerst angehen (etwa keine geplante Sicherung, kein E-Mail-Versand oder Flowplan über unverschlüsseltes http); Gelb ist optional oder einen Blick wert (kein `APP_URL` gesetzt, die erste Sicherung steht noch aus, nur Konten mit E-Mail und Passwort, keine KI); Grün ist eingerichtet. Jede Zeile führt mit **Einrichten** (bei Grün **Ansehen**) in den passenden Bereich der Administration. Später öffnet die Befehlspalette (++⌘/Strg K++) die Übersicht mit „Instanz einrichten“ wieder.
+Admins sehen in der [Einführung](/settings#die-einfuehrung) zuerst den Schritt **Instanz einrichten**: eine Ampel für die Grundlagen, in der Reihenfolge, in der man eine neue Instanz einrichtet – **Adresse und HTTPS (APP_URL)**, **E-Mail-Versand**, **Sicherung**, **Anmeldung (SSO)** und **KI-Anbieter**. Rot heißt: zuerst angehen (etwa keine geplante Sicherung, kein E-Mail-Versand oder Flowplan über unverschlüsseltes http); Gelb ist optional oder einen Blick wert (kein `APP_URL` gesetzt, die erste Sicherung steht noch aus, nur Konten mit E-Mail und Passwort, keine KI); Grün ist eingerichtet. Jede Zeile führt mit **Einrichten** (bei Grün **Ansehen**) in den passenden Abschnitt unter **Einstellungen → Instanz**. {since=0.11.6} Später öffnet die Befehlspalette (++⌘/Strg K++) die Übersicht mit „Instanz einrichten“ wieder.
 
 ## Arbeitsbereiche
 
@@ -27,7 +44,7 @@ Alle Arbeitsbereiche mit Mitgliedern, Seiten, Belegung (Balken bei einem Konting
 Der eine Ort für Sicherungen:
 
 - **Sicherungen**: **S3-Spiegel** und **Litestream** mit ihrem Zustand, die geplante **Tägliche Datenbanksicherung** – eine konsistente Kopie der Datenbank pro Tag, mit S3 in den Bucket unter `backups/`, sonst in den Datenordner –, **Stündlich statt täglich** (gedacht für verschlüsselte Sicherungen anstelle von Litestream, siehe [Verschlüsselung](/storage-encryption#verschluesselung); dann mehr Kopien aufbewahren, etwa 72 für drei Tage), **Aufbewahrte Sicherungen**, die letzte Sicherung und **Jetzt sichern**. Der Markdown-Export läuft weiterhin einmal am Tag.
-- **Belegung**: was lokal und was im Bucket liegt, nach Art, und die Aufteilung der Datenbank.
+- **Belegung**: was lokal und was im Bucket liegt, nach Art, und die Aufteilung der Datenbank. Darüber zeigt ein Balken live, wie viel auf Datenbank und Dateien entfällt, daneben die fünf Konten mit den meisten Dateien. {since=0.11.6}
 - **Gesamte Instanz → Herunterladen** erzeugt im laufenden Betrieb eine geprüfte Kopie von Datenbank und Dateien. Mit `FLOWPLAN_ENCRYPTION_KEY` ist die Datei verschlüsselt (`.zip.enc`).
 - **Inhalte**: wie viele Arbeitsbereiche, Seiten, Datenbanken, Einträge, Dateien, Konten und Kommentare es gibt.
 - **Instanz umziehen**: auf der alten Instanz **Umzug vorbereiten** (ein Umzugstoken, einmal sichtbar, 24 Stunden gültig, widerrufbar; Bestätigung mit Passwort bzw. frischer Anmeldung), danach Schreibschutz, „umgezogen nach …“ und **Weboberfläche weiterleiten**. Auf der neuen Instanz, ebenfalls in Rot, **Von anderer Instanz übernehmen**: erste Kopie mit Fortschritt, **Vorabprüfung** der Einstellungen (nur Namen und Prüfwerte), **Quelle schreibschützen und letzten Stand holen** und **Übernehmen** beim nächsten Neustart (vorheriger Stand als `pre-move-…`). Anleitung: [Instanz umziehen](/move-instance).
@@ -62,19 +79,13 @@ Seiten und Datenbanken für den Markdown-Export wählen, den Git-Export der Bere
 
 ## Push-Benachrichtigungen
 
-Ob Mitteilungen an die Apps ankommen können und über welchen Dienst (`/#admin/push`). Die Kachel der Übersicht zeigt das Relay mit einem grünen, gelben oder roten Hinweis – etwa „Erreichbar (85 ms)“ – und die Zustellungen der letzten 24 Stunden; dieselbe Kachel steht unter **Überwachung → Zustand**.
+Ob Mitteilungen an die Apps ankommen können und über welchen Dienst (`/#settings/instance/push`). Die Kachel unter **Überwachung → Zustand** zeigt das Relay mit einem grünen, gelben oder roten Hinweis – etwa „Erreichbar (85 ms)“ – und die Zustellungen der letzten 24 Stunden.
 
-- **Push-Relay**: die verwendete Adresse – das offizielle `https://push.flowplan.org` oder ein eigenes aus `PUSH_RELAY_URL` (Zugangsdaten in der Adresse werden nie angezeigt) –, ob es an ist und sonst genau warum (`PUSH_RELAY=off`, `APP_URL` keine HTTPS-Adresse, `PUSH_RELAY_URL` ungültig), die `APP_URL`, unter der das Relay die Instanz kennt, und ob `/.well-known/flowplan-push` veröffentlicht ist.
-- **Erreichbarkeit**: Die Instanz ruft `GET <Relay>/healthz` ab – höchstens 5 Sekunden, nur HTTPS, ohne Weiterleitungen zu folgen – und zeigt „Erreichbar“ mit der Antwortzeit (und der Version des Relays, falls es eine nennt) oder den Grund: Zeitüberschreitung, Verbindung abgelehnt, DNS, TLS, Weiterleitung, HTTP-Status. Außerdem ruft sie ihr eigenes `/.well-known/flowplan-push` unter `APP_URL` ab, wie das Relay es tut, und prüft, dass der aktuelle Signaturschlüssel darin steht. Klappt das von innen nicht, ist das nur ein Hinweis: Hinter NAT oder einem Proxy, der die eigene Adresse intern nicht auflöst, ist das normal – entscheidend ist, dass das Relay sie von außen erreicht ([Testbenachrichtigung](/notifications#testbenachrichtigung)). Das Ergebnis gilt eine Minute; **Erreichbarkeit prüfen** prüft sofort neu.
-- **Signaturschlüssel**: Schlüssel-IDs mit Status (signiert, wartet, auslaufend) und Daten. **Schlüssel wechseln …** fragt nach und wechselt wie in [Push-Relay und Ende-zu-Ende-Verschlüsselung](/configuration-ai-push#push-relay-und-ende-zu-ende-verschluesselung) beschrieben, wahlweise sofort.
-- **Zustellungen der letzten 24 Stunden** je Kanal (Relay, Expo, Web Push) und Ergebnis (zugestellt, abgemeldet, abgewiesen, ungültig, gedrosselt, Fehler), die letzte Zustellung über das Relay, der letzte Fehler als Code (etwa `signature HTTP 401` oder `unreachable`), die Warteschlange und die registrierten Geräte je Kanal. Gezählt wird nur mit eingeschalteter Statistik (siehe [Überwachung](#ueberwachung)).
-- **Expo und Web Push**: `MOBILE_PUSH` an oder aus, was `MOBILE_PUSH_CONTENT` mitschickt, woher die VAPID-Schlüssel kommen und ob `WEB_PUSH_SUBJECT` gesetzt ist.
-
-Die Antworten enthalten nie Tokens, Schlüssel oder Push-Adressen. `/api/admin/push` ist nur für angemeldete Administratoren, nicht für API-Tokens.
+Relay, Erreichbarkeit, Signaturschlüssel und Zustellungen im Einzelnen: [Zustand in den Einstellungen der Instanz](/configuration-ai-push#zustand-in-den-einstellungen-der-instanz).
 
 ## Chat-Apps
 
-**Administration → Chat-Apps** regelt die [Benachrichtigungen an Chat-Apps](/notifications#chat-apps). Oben stehen erlaubte Dienste, der Bot der Instanz, aktive und nach Fehlern ausgeschaltete Verbindungen und die Zustellungen der letzten 24 Stunden.
+**Einstellungen → Instanz → Chat-Apps** regelt die [Benachrichtigungen an Chat-Apps](/notifications#chat-apps). Oben stehen erlaubte Dienste, der Bot der Instanz, aktive und nach Fehlern ausgeschaltete Verbindungen und die Zustellungen der letzten 24 Stunden.
 
 - **Erlaubte Dienste:** Telegram, Gotify, ntfy und Matrix lassen sich einzeln ausschalten (Vorgabe: `FLOWPLAN_MESSENGERS`). Ausgeschaltete Dienste bekommen keine Nachrichten mehr; die Verbindungen der Personen bleiben gespeichert und laufen wieder, wenn der Dienst eingeschaltet wird.
 - **Telegram-Bot der Instanz:** Bot-Token von @BotFather und optional eine eigene API-Adresse (Bot-API-Server oder Relay/Proxy, auch im eigenen Netz). **Prüfen und speichern** fragt Telegram mit `getMe` nach dem Bot und speichert den Token nur, wenn er angenommen wird – verschlüsselt, angezeigt wird nur „…abcd“. **Bot entfernen** löscht ihn (ein Token aus `FLOWPLAN_TELEGRAM_BOT_TOKEN` gilt dann wieder). Ein Konflikt mit einem Webhook oder einem anderen Programm, das den Bot abfragt, steht unter **Letzter Fehler**.
@@ -104,13 +115,15 @@ Die letzten Änderungen mit Person, Aktion und betroffener Ressource – etwa Fr
 
 ## Überwachung
 
-Zustand, Nutzung und Ereignisse der Instanz – live: oben fünf Kennzahlen (**Aktiv 24 Std.**, **Speicher**, **Zustellungen 7 Tage**, **KI-Tokens 14 Tage**, **Fehler 24 Std.**) mit Verlauf und, wo es passt, dem Vergleich zum Zeitraum davor, darunter Karten in zwei Spalten mit Diagrammen, Warteschlangen, Hintergrunddiensten, abgewiesenen Anfragen, Warnungen per Webhook und der Nutzungsstatistik. Details unter [Betrieb und Fehlersuche](/monitoring#administration-ueberwachung).
+Zustand, Nutzung und Ereignisse der Instanz – live: oben fünf Kennzahlen (**Aktiv 24 Std.**, **Speicher**, **Zustellungen 7 Tage**, **KI-Tokens 14 Tage**, **Fehler 24 Std.**) mit Verlauf und, wo es passt, dem Vergleich zum Zeitraum davor, darunter Karten in zwei Spalten mit Diagrammen, Warteschlangen, Hintergrunddiensten, abgewiesenen Anfragen, Warnungen per Webhook und der Nutzungsstatistik. Details unter [Betrieb und Fehlersuche](/monitoring#einstellungen-instanz-ueberwachung).
 
 ## Wartung & Hinweise
 
 **Hinweis für alle Personen** – ein Banner für alle, bis du ihn leerst – der **Wartungshinweis** mit Beginn und Ende, der nach dem Ende von selbst verschwindet, und **Banner zum Wegklicken**, die jede Person einmal sieht, bis sie sie schließt – etwa für die Apps oder euren Discord-Server ([Wartung & Hinweise](/monitoring#wartung-hinweise)).
 
 ## Instanz
+
+Der Abschnitt **Instanz** steht in der Gruppe **Betrieb** (`/#settings/instance/general`).
 
 | Einstellung | Wirkung |
 | --- | --- |
@@ -122,7 +135,7 @@ Zustand, Nutzung und Ereignisse der Instanz – live: oben fünf Kennzahlen (**A
 | Einstellungsstufe für neue Konten | Welche Einstellungen neue Konten sehen: **Einsteiger** das Wichtigste, **Normal** (Standard) die meisten, **Experte** alle ([Einstellungsstufen](/settings#einstellungsstufen)). Die Suche in den Einstellungen findet immer alle, und jede Person kann ihre Stufe oben in den Einstellungen ändern; pro Person legst du sie unter [Benutzer](/user-management#benutzer) fest. Konten, die es schon vor dieser Einstellung gab, sehen weiter alles (Experte). {since=0.9.7} |
 | Standard-Formatierungsleiste | Die [Formatierungsleiste](/formatting#text-formatieren), die alle bekommen, die ihre nicht selbst angepasst haben – mit demselben Editor wie in den eigenen Einstellungen. **Zurücksetzen** führt sie dorthin zurück; hier stellt es die eingebaute Leiste wieder her. {since=0.9.7} |
 | Startinhalt für neue Konten | Ein Bereich, dessen Seiten jedes neue Konto in seinem persönlichen Arbeitsbereich bekommt, statt der eingebauten Beispiele; siehe [Startinhalt für neue Konten](/starter-content). {since=0.11.0} |
-| Funktionen dieser Instanz | Je Funktion ein Schalter **Auf dieser Instanz eingeschaltet**. Ausgeschaltet ist die Funktion für alle aus – auch auf dem Server; siehe [Funktionen dieser Instanz](/instance-features). {since=0.11.0} |
+| Funktionen dieser Instanz | Je Funktion eine Kachel, die zugleich ihr Schalter ist („an“ / „aus“). {since=0.11.6} Ausgeschaltet ist die Funktion für alle aus – auch auf dem Server; siehe [Funktionen dieser Instanz](/instance-features). {since=0.11.0} Daneben zeigt eine Vorschau, wie **Neue Seite** dann für alle aussieht, und nennt, was für alle verschwindet. {since=0.11.6} |
 | Funktionen für neue Konten | Welche [Funktionen](/settings#funktionen-ein-und-ausblenden) neue Konten sehen, je Funktion ein Schalter. Ausgeblendet fehlt nur der Einstieg; vorhandene Seiten und Rechte bleiben. Jede Person kann es selbst ändern; bestehende Konten sehen alles. **Allen zuweisen** setzt nach einer Rückfrage alle bestehenden Konten auf diese Vorgabe, eigene Auswahlen gehen dabei verloren. {since=0.11.0} |
 
 Version, Lizenz und Quellcode sehen alle Personen unter **Einstellungen → Über Flowplan**; dort steht bei unseren Images auch, ob es eine Beta oder ein Release ist (eigene Builds: `--build-arg FLOWPLAN_CHANNEL=beta` oder `release`). Wer veränderten Code betreibt, nennt dessen Quellcode mit `FLOWPLAN_SOURCE_URL`; den Link zu GitHub Sponsors blendet `FLOWPLAN_HIDE_SPONSOR=true` aus ([Konfiguration](/configuration-storage#rechtliches-und-oberflaeche)).
@@ -131,11 +144,11 @@ Darunter führt **Weitere Einstellungen der Instanz** zu den Bereichen, in die f
 
 ## Demo
 
-Die Demo ist auf jeder Instanz ausgeschaltet, bis ein Admin sie unter **Administration → Instanz → Öffentliche Demo** einschaltet.
+Die Demo ist auf jeder Instanz ausgeschaltet, bis ein Admin sie unter **Einstellungen → Instanz → Instanz → Öffentliche Demo** einschaltet.
 
 Dann startet die Adresse `/demo` deiner Instanz eine Demo (auf flowplan.org verlinkt der Knopf **Demo ausprobieren** dorthin). Sie legt ohne Konto einen Demo-Gast mit eigenem Beispiel-Arbeitsbereich an. Jede Demo bekommt frische Beispielseiten, die alle Funktionen zeigen: eine Willkommensseite, einen Editor-Rundgang mit allen Blöcken, eine Projektdatenbank mit Beziehung, Rollup, Formel, Wiederholung und allen Ansichten (Tabelle, Board, Kalender, Zeitleiste, Galerie, Liste, Feed, Diagramm, Formular), ein Whiteboard, ein Journal und ein kleines Wiki.
 
 - Die Demo endet mit **Demo beenden**, beim Abmelden, nach 45 Minuten ohne Aktivität, spätestens nach drei Stunden. Dann werden Konto, Arbeitsbereich, Seiten und Dateien vollständig gelöscht.
-- Demo-Gäste können nichts nach außen tragen: nicht veröffentlichen, keine Freigabelinks, keine Einladungen, keine weiteren Arbeitsbereiche, keine öffentlichen Formulare, keine Administration.
+- Demo-Gäste können nichts nach außen tragen: nicht veröffentlichen, keine Freigabelinks, keine Einladungen, keine weiteren Arbeitsbereiche, keine öffentlichen Formulare, keine Einstellungen der Instanz.
 - Jeder Demo-Arbeitsbereich hat 25 MB Speicher. Neue Demos sind auf fünf pro Stunde und Adresse sowie 40 gleichzeitig begrenzt.
-- Laufende und insgesamt gestartete Demos zeigt **Administration → Überwachung → Instanz in Zahlen**.
+- Laufende und insgesamt gestartete Demos zeigt **Einstellungen → Instanz → Überwachung → Instanz in Zahlen**.

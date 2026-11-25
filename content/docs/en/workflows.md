@@ -171,7 +171,7 @@ Content archives and the [instance move](/move-instance) take workflows along wi
 | Active workflows per workspace | 100 |
 
 > [!ADMIN]
-> Admins change them in the [administration](/administration#workflows) or with an [environment variable](/configuration-integrations#workflows). Editors can set lower values per workflow.
+> Admins change them under [Settings → Instance → Limits & retention](/administration#workflows) or with an [environment variable](/configuration-integrations#workflows). Editors can set lower values per workflow.
 
 ## API, MCP and SDKs
 

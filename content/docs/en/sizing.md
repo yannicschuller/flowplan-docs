@@ -12,7 +12,7 @@ What matters is not how many accounts an instance has, but how many people work 
 
 The figures below count **active people** the way the load test simulates them: each sends a request every 1.5 seconds on average, or types continuously in a shared document. Real people read, think and switch to other apps – they create far less load. So the figures are a cautious limit: an instance that carries 20 such people copes with noticeably more real people signed in at the same time.
 
-The administration shows how many are active at once on your instance: **people active now** on the overview and the **Active people** per hour chart under **Administration → Monitoring** (see [Operations](/en/monitoring#administration-monitoring)). Take the peaks, not the average.
+The instance settings show how many are active at once on your instance: **people active now** in the live strip of **Instance at a glance** and the **Active people** per hour chart under **Settings → Instance → Monitoring** (see [Operations](/en/monitoring#settings-instance-monitoring)). Take the peaks, not the average.
 
 ## What one instance carries
 
@@ -34,7 +34,7 @@ Measured on 4 vCPU (Intel Xeon, 2.1 GHz) with 16 GB RAM, PostgreSQL 16 and Redis
 - **Writes and live editing stay fast for long.** At 60 active people on two instances, document changes (95 %) went through in 182 ms, and one person's change reached co-editors on the other instance through Redis in 195 ms.
 - **PostgreSQL** was not the bottleneck in the test: writing requests stayed below 500 ms everywhere.
 
-How you notice it in production: under **Administration → Monitoring** the response time (p95) rises, one core of the instance runs at full load all the time, and the **System** section shows connections "waiting".
+How you notice it in production: under **Settings → Instance → Monitoring** the response time (p95) rises, one core of the instance runs at full load all the time, and the **System** section shows connections "waiting".
 
 ## Recommendations
 

@@ -56,7 +56,7 @@ Long recordings: whisper.cpp with large-v3-turbo needed about 380 seconds for 8.
 
 ## AI
 
-All optional; the values apply until an admin saves under **Administration → AI**. Details: [AI](/ai).
+All optional; the values apply until an admin saves under **Settings → Instance → AI**. Details: [AI](/ai).
 
 | Variable | Default | Meaning |
 | --- | --- | --- |
@@ -98,12 +98,24 @@ Notifications to the apps go through the Flowplan push relay (`push.flowplan.org
 - **What is stored:** per app installation the relay token (only encrypted) and the public key. Both go with signing out, removing the device under *Signed-in devices*, or when the relay reports that the device can no longer be reached. Neither tokens nor keys nor content are logged.
 - **Live Activities** (iPhone) for the timer and focus are also updated by the instance through the relay when their state changes. iOS renders their content itself – it cannot be encrypted. By default it therefore holds only times and the phase, no titles (`MOBILE_PUSH_CONTENT=on` sends the title along).
 - **Older app versions** without the relay keep getting notifications through Expo's push service (`exp.host`), without text by default.
-- **Rotating the signing key:** `node --import tsx scripts/push-relay-key.mjs rotate` in the repository, or as an administrator `POST /api/admin/operations` with `{"action":"pushRelay.rotate"}`. The new key is published at once and signs after a little more than an hour; the old one stays listed for 7 days (`--grace-days` or `graceDays`). For a key that may have leaked, `--immediate` or `"immediate": true`: the new one signs at once, all old ones are removed. `{"action":"pushRelay.keys"}` lists the keys (ids and dates only). Or under **Administration → Push notifications → Rotate key …**.
+- **Rotating the signing key:** `node --import tsx scripts/push-relay-key.mjs rotate` in the repository, or as an administrator `POST /api/admin/operations` with `{"action":"pushRelay.rotate"}`. The new key is published at once and signs after a little more than an hour; the old one stays listed for 7 days (`--grace-days` or `graceDays`). For a key that may have leaked, `--immediate` or `"immediate": true`: the new one signs at once, all old ones are removed. `{"action":"pushRelay.keys"}` lists the keys (ids and dates only). Or under **Settings → Instance → Push notifications → Rotate key …**.
 - **Your own relay:** only together with your own app build – see [Running your own push relay](#running-your-own-push-relay).
 - **Checking it:** **Settings → Notifications → Send test notification** sends at once through the relay, Expo and Web Push to your own devices and shows the result per device – for example that the relay could not verify the instance (`/.well-known/flowplan-push` not reachable) or cannot be reached. Administrators also see the relay address, whether `/.well-known/flowplan-push` is enabled and the `APP_URL` in use. See [Test notification](/notifications#test-notification).
-- **State in the administration:** **Administration → Push notifications** shows the relay in use (official or your own), whether it is on and otherwise why not, whether it is reachable right now (`/healthz`, with response time), whether the instance can fetch its own `/.well-known/flowplan-push` at `APP_URL`, the signing keys with **Rotate key …**, the deliveries of the last 24 hours per channel and the last error. See [Administration → Push notifications](/administration#push-notifications).
+- **State in the settings:** see [below](#state-in-the-instance-settings).
 
 **For an instance's privacy policy**, for example: "Push notifications to the Flowplan apps are delivered end-to-end encrypted through Flowplan's push service (push.flowplan.org) and the services of Apple (APNs) or Google (Firebase Cloud Messaging). These services receive a device token, the address of this instance, the time and the kind of the notification, but not its content." – extend it accordingly with `MOBILE_PUSH_CONTENT=on` or notifications through Expo.
+
+### State in the instance settings
+
+**Settings → Instance → Push notifications** (`/#settings/instance/push`) shows:
+
+- **Push relay**: the address in use – the official `https://push.flowplan.org` or your own from `PUSH_RELAY_URL` (credentials in the address are never shown) –, whether it is on and otherwise exactly why not (`PUSH_RELAY=off`, `APP_URL` not an HTTPS address, `PUSH_RELAY_URL` invalid), the `APP_URL` the relay knows the instance by, and whether `/.well-known/flowplan-push` is published.
+- **Reachability**: the instance requests `GET <relay>/healthz` – at most 5 seconds, HTTPS only, following no redirects – and shows “Reachable” with the response time (and the relay's version if it names one) or the reason: timeout, connection refused, DNS, TLS, redirect, HTTP status. It also fetches its own `/.well-known/flowplan-push` at `APP_URL`, as the relay does, and checks that the current signing key is listed. If that fails from inside, it is only a warning: behind NAT or a proxy that does not resolve its own address internally this is normal – what counts is that the relay reaches it from outside ([test notification](/notifications#test-notification)). A result is kept for a minute; **Check now** checks again at once.
+- **Signing key**: key ids with their status (signing, waiting, retiring) and dates. **Rotate key …** asks first and rotates as described in [Push relay and end-to-end encryption](#push-relay-and-end-to-end-encryption), optionally immediately.
+- **Deliveries of the last 24 hours** per channel (relay, Expo, Web Push) and result (delivered, gone, forbidden, invalid, rate limited, error), the last delivery through the relay, the last error as a code (e.g. `signature HTTP 401` or `unreachable`), the queue and the registered devices per channel. Counted only while the usage statistics are on (see [Monitoring](/administration#monitoring)).
+- **Expo and Web Push**: `MOBILE_PUSH` on or off, what `MOBILE_PUSH_CONTENT` sends along, where the VAPID keys come from and whether `WEB_PUSH_SUBJECT` is set.
+
+The answers never contain tokens, keys or push addresses. `/api/admin/push` is for signed-in administrators only, never for API tokens.
 
 ### Running your own push relay
 

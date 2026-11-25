@@ -14,10 +14,10 @@ The sign-in page shows the fastest way first: one large button for the way you l
 
 Without further setup you sign in with e-mail and password – via **With e-mail and password** – or with a passkey once you have created one.
 
-- **The first account** of a new instance administers it: the sign-in page then offers **Create account** right away. This account sees the **Administration**.
+- **The first account** of a new instance administers it: the sign-in page then offers **Create account** right away. This account is an admin and sees the **Instance** part of Settings.
 - **Instances reachable from the internet:** until the first account exists, anyone who opens the address could create it and administer the instance. Set `FLOWPLAN_SETUP_TOKEN` to a random value (e.g. `openssl rand -hex 24`): the first account can then only be created with the setup link `https://flowplan.example.com/register?setup=<token>`; without it the page offers no sign-up. The token also protects **Restore from a backup** on the setup screen. Once the first account exists the token has no effect. Without a token and with an `APP_URL` that does not point to this machine, Flowplan warns at start in the log and with a note on the setup screen. The Helm chart generates the token itself. If two people sign up first at the same moment, only one of them becomes administrator; the other gets a note. With single sign-on you can also never use the link – the administrators then come through the group in `OIDC_ADMIN_GROUP`, and everyone else joins by invitation.
-- **Further accounts** are created when the administrators open sign-ups under **Administration → Sign-in & SSO → Sign-up with email and password** – or for addresses with an [invitation](/workspaces-and-permissions): the invitation link opens the form with the invited address and creates an account only for it; without e-mail it works only through the link. Workspaces someone was invited to appear as soon as the address is confirmed via the e-mail link.
-- **Confirming the e-mail address:** if the instance sends e-mail (`SMTP_*` set), a new account signs in only after the address has been confirmed with the link from the e-mail – the link signs in right away. Trying earlier shows a notice and sends the link again (at most every five minutes); **Send the link again** also works after signing up. Without e-mail every account counts as confirmed immediately, as does the instance's first account. Admins can confirm an address by hand under **Administration → Users**, with **Mark as confirmed** in the account's side panel; resetting the password via a link confirms it too. If the address already has an account, signing up shows the same as for a new address, and the account's owner gets a note by e-mail instead – so the page does not reveal which addresses have an account.
+- **Further accounts** are created when the administrators open sign-ups under **Settings → Instance → Sign-in & SSO → Sign-up with email and password** – or for addresses with an [invitation](/workspaces-and-permissions): the invitation link opens the form with the invited address and creates an account only for it; without e-mail it works only through the link. Workspaces someone was invited to appear as soon as the address is confirmed via the e-mail link.
+- **Confirming the e-mail address:** if the instance sends e-mail (`SMTP_*` set), a new account signs in only after the address has been confirmed with the link from the e-mail – the link signs in right away. Trying earlier shows a notice and sends the link again (at most every five minutes); **Send the link again** also works after signing up. Without e-mail every account counts as confirmed immediately, as does the instance's first account. Admins can confirm an address by hand under **Settings → Instance → Users**, with **Mark as confirmed** in the account's side panel; resetting the password via a link confirms it too. If the address already has an account, signing up shows the same as for a new address, and the account's owner gets a note by e-mail instead – so the page does not reveal which addresses have an account.
 
   If you open the confirmation link in a different browser from the one you registered in, you set a new password there – the one chosen at registration no longer works. This way nobody can create and keep an account for someone else's address in advance.
 - **Passwords** have at least 10 characters and are stored with scrypt. After 8 failed attempts for an account from the same IP address (or 30 failed attempts from one IP address in total) that address pauses for 15 minutes. Someone who knows your address cannot lock you out this way: from other IP addresses you still sign in. Against attempts from many IP addresses at once, every sign-in to an account with more than 10 failures in 15 minutes waits a little longer (up to 5 seconds), and after 100 the account is locked for the rest of the 15 minutes. Without a known client address (see `FLOWPLAN_TRUSTED_PROXIES`) the limit of 8 applies to the account itself. The same holds for signing in with LDAP. These limits – like those for codes, passkeys, confirming important steps and passwords of shared links – hold under many parallel requests too: every attempt counts before the password is checked.
@@ -63,10 +63,10 @@ When signing in, Flowplan asks for the code from the app (or a recovery code) af
 - **SSO accounts** get their second factor from the provider; **API tokens** are not affected.
 - **Turning it off** and **new recovery codes** need the password or a current code.
 - **Forgot password** does not skip the second step.
-- Lost your phone and your codes? An administrator can reset two-factor sign-in ([Administration → Users](/user-management#users)).
+- Lost your phone and your codes? An administrator can reset two-factor sign-in ([Settings → Instance → Users](/user-management#users)).
 
 > [!ADMIN]
-> Admins can require two-factor sign-in for all local accounts or only for admins ([Administration → Sign-in & SSO](/user-management#sign-in-sso)). Accounts without an app and without a passkey then set up a second factor right after signing in, before using Flowplan; accounts with a passkey but no app sign in with the passkey.
+> Admins can require two-factor sign-in for all local accounts or only for admins ([Settings → Instance → Sign-in & SSO](/user-management#sign-in-sso)). Accounts without an app and without a passkey then set up a second factor right after signing in, before using Flowplan; accounts with a passkey but no app sign in with the passkey.
 
 > [!IMPORTANT]
 > The apps' keys are stored encrypted – with `FLOWPLAN_ENCRYPTION_KEY`, otherwise `FLOWPLAN_SECRETS_KEY`, otherwise with the generated file `secrets.key` in the data folder ([Configuration](/configuration-storage#stored-secrets)). Be sure to back up this file or the key: the instance backup deliberately leaves it out. Without it, only the recovery codes work after a restore.
@@ -86,9 +86,9 @@ When someone signs in with a device not seen for 90 days, a security notice arri
 
 With OIDC, Flowplan checks the discovery, issuer, audience, signature, PKCE, state and nonce. Sessions are random tokens, stored hashed in SQLite; cookies are `HttpOnly`, `SameSite=Lax` and `Secure` with HTTPS. Groups or roles are never taken from browser data.
 
-- An account **deactivated** in the administration loses all sessions immediately; open live connections are closed within 15 seconds at the latest, as they are when read access is withdrawn.
+- An account deactivated under **Settings → Instance → Users** loses all sessions immediately; open live connections are closed within 15 seconds at the latest, as they are when read access is withdrawn.
 - Every page carries a **content security policy**: scripts only run with a nonce that is new for every request, frames only come from the supported players (YouTube, Vimeo, Loom, Spotify, Figma, CodePen). The reverse proxy sets HSTS (usually active with Traefik/Coolify).
-- Sessions can be revoked individually in the administration.
+- Sessions can be revoked individually under **Settings → Instance → Users**.
 - Invitations to an e-mail address are only assigned after a sign-in with a confirmed address (`email_verified=true` with OIDC, the confirmation link for e-mail accounts).
 
 ## Common errors
@@ -96,8 +96,8 @@ With OIDC, Flowplan checks the discovery, issuer, audience, signature, PKCE, sta
 | Symptom | Cause |
 | --- | --- |
 | An error about the redirect URI | The URI entered at the provider does not exactly match `APP_URL` + `/api/auth/callback`. |
-| No administration visible | The group is missing in the token: check the scope, `OIDC_GROUPS_CLAIM` and the exact group name, then sign in again. |
+| No **Instance** in Settings | The group is missing in the token: check the scope, `OIDC_GROUPS_CLAIM` and the exact group name, then sign in again. |
 | "Invalid request origin" | `APP_URL` differs from the address in use (e.g. `http` instead of `https`). |
 | Sign-in refused | `OIDC_ALLOWED_GROUP` is set and the person is not a member. |
-| "Create account" is missing | Sign-ups are closed: open them in the administration or invite the person. |
+| "Create account" is missing | Sign-ups are closed: open them under **Settings → Instance → Sign-in & SSO** or invite the person. |
 | A passkey cannot be created | `APP_URL` is not an HTTPS domain (an IP address or `http://` other than `localhost`). |

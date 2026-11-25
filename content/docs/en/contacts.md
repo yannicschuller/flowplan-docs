@@ -93,4 +93,4 @@ Only allowed attributes can be mapped: those of the default mapping and the ones
 - Contacts are found again by `entryUUID` (OpenLDAP), `objectGUID` (Active Directory) or `nsUniqueId` (389 DS), otherwise by DN – renamed or moved entries keep their contact.
 - To stop following an OU: **Stop following** in the import dialog; the contacts stay.
 - The background sync runs in the name of the person who follows the OU. If they lose access to the directory or the right to edit the database, it stops and the database shows a sync error. Once an editor with directory access syncs by hand, it runs again – from then on in that person's name. {since=0.11.5}
-- Imports appear in the administration's security log.
+- Imports appear in the instance's security log.

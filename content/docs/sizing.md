@@ -12,7 +12,7 @@ Entscheidend ist nicht, wie viele Konten eine Instanz hat, sondern wie viele Per
 
 Die Zahlen unten zählen **aktive Personen** so, wie der Lasttest sie nachstellt: Jede schickt im Schnitt alle 1,5 Sekunden eine Anfrage oder tippt ununterbrochen in einem gemeinsam bearbeiteten Dokument. Echte Menschen lesen, denken nach und wechseln die Anwendung – sie erzeugen deutlich weniger Last. Die Zahlen sind deshalb eine vorsichtige Grenze: Eine Instanz, die 20 solche Personen trägt, kommt mit spürbar mehr echten gleichzeitig angemeldeten Personen zurecht.
 
-Wie viele bei dir gleichzeitig aktiv sind, zeigt die Administration: **gerade aktiv** in der Übersicht und das Diagramm **Aktive Personen** je Stunde unter **Administration → Überwachung** (siehe [Betrieb](/monitoring#administration-ueberwachung)). Nimm die Spitzen, nicht den Durchschnitt.
+Wie viele bei dir gleichzeitig aktiv sind, zeigen die Einstellungen der Instanz: **gerade aktiv** im Live-Streifen unter **Instanz auf einen Blick** und das Diagramm **Aktive Personen** je Stunde unter **Einstellungen → Instanz → Überwachung** (siehe [Betrieb](/monitoring#einstellungen-instanz-ueberwachung)). Nimm die Spitzen, nicht den Durchschnitt.
 
 ## Was eine Instanz trägt
 
@@ -34,7 +34,7 @@ Gemessen auf 4 vCPU (Intel Xeon, 2,1 GHz) mit 16 GB RAM, PostgreSQL 16 und Redis
 - **Schreiben und Live-Bearbeitung bleiben lange schnell.** Bei 60 aktiven Personen auf zwei Instanzen kamen Änderungen am Dokument (95 %) in 182 ms durch, und die Änderung einer Person erreichte die Mitbearbeitenden auf der anderen Instanz über Redis in 195 ms.
 - **PostgreSQL** war im Test nicht der Engpass: Schreibende Anfragen blieben überall unter 500 ms.
 
-Woran du es im Betrieb merkst: Unter **Administration → Überwachung** steigt die Antwortzeit (p95), ein Kern der Instanz läuft dauerhaft voll, und im Abschnitt **System** stehen bei den Verbindungen Anfragen auf „wartend“.
+Woran du es im Betrieb merkst: Unter **Einstellungen → Instanz → Überwachung** steigt die Antwortzeit (p95), ein Kern der Instanz läuft dauerhaft voll, und im Abschnitt **System** stehen bei den Verbindungen Anfragen auf „wartend“.
 
 ## Empfehlungen
 

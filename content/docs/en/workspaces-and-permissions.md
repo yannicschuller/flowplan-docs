@@ -67,7 +67,7 @@ Shelves and books of the [library](/library#permissions-for-shelves-and-books) f
 
 Owners of a workspace also manage other members' spaces, but do not get read access to their private pages that way. They can rename, reorder, trash and restore other members' private spaces and manage the groups. Making such a space visible to the team, giving rights on it or adding themselves to a group with rights on it only works if they can see the space themselves. {since=0.11.5}
 
-The instance's admin rights give no access to content either: admins see only what membership and permissions allow them – what the Administration shows about accounts and workspaces is under [What administrators can see](/user-management#what-administrators-can-see).
+The instance's admin rights give no access to content either: admins see only what membership and permissions allow them – what **Settings → Instance** shows about accounts and workspaces is under [What administrators can see](/user-management#what-administrators-can-see).
 
 **Encrypted spaces** go one step further: there, not only the permission on the server decides but the key. Whoever has not been given the space key reads nothing – not even workspace owners or the administrators. See [Encrypted spaces](/encrypted-spaces).
 
@@ -77,4 +77,4 @@ The instance's admin rights give no access to content either: admins see only wh
 
 ## Storage quota
 
-Every workspace can have a quota. Uploads, copies, templates and imports beyond it are refused. Administrators see the usage under **Administration → Workspaces**.
+Every workspace can have a quota. Uploads, copies, templates and imports beyond it are refused. Administrators see the usage under **Settings → Instance → Workspaces**.

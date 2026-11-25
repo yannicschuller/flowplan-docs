@@ -16,7 +16,7 @@ Unter **Einstellungen → Konto & Sicherheit → Notfallzugriff** trägst du bis
 - **Nicht enthalten:** Teambereiche, Inhalte, die du nur über einen Arbeitsbereich siehst (dafür braucht die Person eine eigene Mitgliedschaft), mit dir geteilte private Bereiche anderer und Journale mit PIN.
 - **Verschlüsselte Bereiche** sind enthalten, wenn die Person die Verschlüsselung eingerichtet hat: Dein Browser gibt die Schlüssel beim nächsten Entsperren für sie frei, der Server sieht sie nie im Klartext. Endet der Zugriff, bekommen diese Bereiche beim nächsten Besuch einen neuen Schlüssel.
 - Du beendest einen Zugriff oder entfernst eine Vertrauensperson jederzeit; jeder Schritt steht im Aktivitätsprotokoll und bei den Sicherheitsereignissen, ein Export meldet sich zusätzlich bei dir.
-- Admins schalten die Funktion unter **Administration → Anmeldung & SSO → Notfallzugriff** aus (oder mit `FLOWPLAN_EMERGENCY_ACCESS=off`); freigegebene Zugriffe ruhen dann.
+- Admins schalten die Funktion unter **Einstellungen → Instanz → Anmeldung & SSO → Notfallzugriff** aus (oder mit `FLOWPLAN_EMERGENCY_ACCESS=off`); freigegebene Zugriffe ruhen dann.
 
 ## Nachricht bei Inaktivität {since=0.9.6}
 
@@ -30,4 +30,4 @@ Nutzt du Flowplan eine Zeit lang nicht, schickt Flowplan eine Notiz von dir an M
 - **Mit [Notfallzugriff](#notfallzugriff):** Mit **Notfallzugriff für meine Vertrauenspersonen sofort freigeben** bekommen deine Vertrauenspersonen beim Verschicken ohne Wartezeit Lesezugriff – nur wer die Rolle schon mindestens so lange angenommen hat wie die eigene Wartezeit.
 - **Schutz:** Jede Änderung der Empfänger oder der Notiz melden wir dir sofort per E-Mail. Einrichten geht nur angemeldet im Browser, nicht mit API-Tokens. **Vorschau der E-Mail** zeigt dir die E-Mail, ohne sie zu verschicken.
 
-Für die Administration: Die Funktion braucht den [E-Mail-Versand](/configuration-integrations#e-mail-smtp) (SMTP). Unter **Administration → Anmeldung & SSO → Nachricht bei Inaktivität erlauben** lässt sie sich ausschalten (Standard: an); `FLOWPLAN_DEAD_MAN_SWITCH=off` schaltet sie fest aus. Jedes Verschicken und jede Änderung der Empfänger steht bei den Sicherheitsereignissen. Gesperrte Konten verschicken ihre Nachricht weiterhin; ein wegen Inaktivität gelöschtes Konto verschickt sie direkt vor dem Löschen.
+Für Admins: Die Funktion braucht den [E-Mail-Versand](/configuration-integrations#e-mail-smtp) (SMTP). Unter **Einstellungen → Instanz → Anmeldung & SSO → Nachricht bei Inaktivität erlauben** lässt sie sich ausschalten (Standard: an); `FLOWPLAN_DEAD_MAN_SWITCH=off` schaltet sie fest aus. Jedes Verschicken und jede Änderung der Empfänger steht bei den Sicherheitsereignissen. Gesperrte Konten verschicken ihre Nachricht weiterhin; ein wegen Inaktivität gelöschtes Konto verschickt sie direkt vor dem Löschen.

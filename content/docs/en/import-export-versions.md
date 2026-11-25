@@ -82,7 +82,7 @@ When importing Markdown files, Markdown ZIPs and Obsidian vaults under **Setting
 
 Under **Settings → Import & export → Export → Workspace as ZIP** you download a ZIP of your workspace. To bring it back – also into another Flowplan instance – use **Backups → Restore a Flowplan archive**: the archive is created as a copy in new private spaces.
 
-Backing up the whole instance (with accounts and permissions) is up to the administration: **Administration → Storage & backup**. The card **Trash & retention** leads to the trash and says how long things are kept: deleted pages and spaces until someone deletes them permanently, deleted database records 30 days; how long earlier versions stay is set by the administration.
+Backing up the whole instance (with accounts and permissions) is up to the administration: **Settings → Instance → Storage & backup**. The card **Trash & retention** leads to the trash and says how long things are kept: deleted pages and spaces until someone deletes them permanently, deleted database records 30 days; how long earlier versions stay is set by the administration.
 
 It contains: accessible pages including the trash, databases with views and records, document content, relations, templates, comments, versions, favourites and form options, plus all files with checksums. Also the settings of databases (done rule, workflow, automations, sprints, story points – never the Git token), time entries and the status history behind burndown charts, the settings and trackers of journals with each day's values and place, handwriting on PDFs and your [home page](/first-steps#customize-your-home-page) (applied only when the person importing has none of their own yet).
 
@@ -113,4 +113,4 @@ Accounts, sessions and sign-in are not part of it – operations back them up ev
 - **Restore** sets the page back to that state. The [authors view](/reading-and-presenting#show-authors) then starts over; the restored text appears as "earlier".
 - **Databases** come back with properties, options and records – and with the settings that name options: done rule, workflow, automations and the issue sync's status mapping, as they were then. So restoring the version from before an [option rename](/properties-and-formulas#rename-and-merge-options) doesn't leave the done rule on the new name. An automation that comes back changed then acts for the person who restored it. Older and imported versions leave the settings as they are.
 
-Automatic versions are thinned out to one per day after seven days and deleted after 180 days (adjustable in the administration).
+Automatic versions are thinned out to one per day after seven days and deleted after 180 days (adjustable under **Settings → Instance → Limits & retention**).

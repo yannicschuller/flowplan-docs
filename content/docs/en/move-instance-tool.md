@@ -8,14 +8,14 @@ The move tool has the new instance fetch everything from the old one – databas
 
 ## Way A: The move tool
 
-Under **Administration → Storage & backup** (admins only), the new instance fetches everything straight from the old one: server to server, resumable and with checksums.
+Under **Settings → Instance → Storage & backup** (admins only), the new instance fetches everything straight from the old one: server to server, resumable and with checksums.
 
 **On the old instance – "Prepare the move"**
 
 ::: steps
 
 1. **Move instance → Prepare the move**. For safety Flowplan asks for your password; with SSO the sign-in must be at most 15 minutes old (otherwise sign out and in once).
-2. Flowplan shows the **transfer address** and the **move token** (`fpmove_…`) – **only this once**. The token is valid for 24 hours and only for the move: it may read the instance, make it read-only for the final sync and complete the move, nothing else. Only a hash is stored; **Revoke** invalidates it at once, and a new token replaces the old one. Creating, revoking and every step of the move are in the activity log and a security event under **Administration → Security**. Ten wrong token attempts from one address lock it out for 15 minutes.
+2. Flowplan shows the **transfer address** and the **move token** (`fpmove_…`) – **only this once**. The token is valid for 24 hours and only for the move: it may read the instance, make it read-only for the final sync and complete the move, nothing else. Only a hash is stored; **Revoke** invalidates it at once, and a new token replaces the old one. Creating, revoking and every step of the move are in the activity log and a security event under **Settings → Instance → Security**. Ten wrong token attempts from one address lock it out for 15 minutes.
 
 :::
 

@@ -59,7 +59,7 @@ Die Startseite gehört dir: Mit **Anpassen** oben rechts (oder „Startseite anp
 
 Im Bearbeitungsmodus:
 
-- **Widget** öffnet die Auswahl: Begrüßung, Zuletzt bearbeitet oder angesehen, Favoriten, Seiten des Arbeitsbereichs, Meine Aufgaben, Posteingang, Journal heute, Termine, Datenbankansicht, angeheftete Seite, Schnell erfassen, Fokus & Zeit, Gewohnheiten, Zähler, Notizzettel, Aktivität, Meine Aktivität, Diese Woche, Links und – für die Administration – der Instanz-Status.
+- **Widget** öffnet die Auswahl: Begrüßung, Zuletzt bearbeitet oder angesehen, Favoriten, Seiten des Arbeitsbereichs, Meine Aufgaben, Posteingang, Journal heute, Termine, Datenbankansicht, angeheftete Seite, Schnell erfassen, Fokus & Zeit, Gewohnheiten, Zähler, Notizzettel, Aktivität, Meine Aktivität, Diese Woche, Links und – für Admins – der Instanz-Status.
 - **Verschieben**: am Griff ziehen, mit den Pfeilen nach oben/unten oder mit der Tastatur – Griff fokussieren, dann Pfeiltasten, <kbd>Pos1</kbd> und <kbd>Ende</kbd>.
 - **Größe**: klein (eine Spalte), mittel (zwei), groß (drei) oder volle Breite. Ein Widget wird nie breiter als der Platz.
 - **Einstellungen** (Zahnrad): eine eigene Überschrift und was das Widget zeigt – etwa bei **Meine Aufgaben** „Heute fällig und überfällig“, „Heute fällig“, „Überfällig“ oder „Alle offenen“, aus deinen Aufgaben oder den offenen Einträgen einer Datenbankansicht; bei **Termine** den Zeitraum (heute, 3 oder 7 Tage) und welche Kalender- und Zeitleistenansichten (auch mit Google, Microsoft 365 oder CalDAV verbundene) zählen.

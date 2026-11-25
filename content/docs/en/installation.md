@@ -107,7 +107,7 @@ The image contains Node and Litestream for the S3 backup, on Debian 13. There is
 
 1. Open `https://flowplan.example.com/api/health` – the answer is `200` with `"status":"ok"`.
 2. Open the address in the browser: a new instance offers **Create account**. This first account administers the instance. If the address is reachable from the internet, set `FLOWPLAN_SETUP_TOKEN` first and create the account via `/register?setup=<token>` – otherwise someone could beat you to it ([Sign-in](/en/sign-in#e-mail-and-password)). (With single sign-on: **Sign in with SSO**; administrators are the members of the group in `OIDC_ADMIN_GROUP`.)
-3. In the sidebar under **Administration**, set the instance name, upload limit, sign-ups and the [other settings](/administration).
+3. Under **Settings → Instance**, set the instance name, upload limit, sign-ups and the [other settings](/administration).
 
 :::
 
@@ -120,7 +120,7 @@ The image contains Node and Litestream for the S3 backup, on Debian 13. There is
 
 For trying it out only: Flowplan also runs at a plain `http://` address, for example `APP_URL=http://192.168.1.20:3000` on your own network. `APP_URL` must then be exactly that address – with `http://` and the port.
 
-The sign-in page and **Administration → Instance** then show the note "This instance runs without HTTPS". That is fine for a test, not for real use:
+The sign-in page and **Settings → Instance → Instance** then show the note "This instance runs without HTTPS". That is fine for a test, not for real use:
 
 - **Passwords cross the network unencrypted** – anyone on the same network can read them.
 - **Passkeys, the offline copy, push, and the camera, microphone and clipboard** are only available in the browser over HTTPS. Flowplan hides them or says why they are missing.
@@ -136,7 +136,7 @@ For real use, put a reverse proxy with a certificate in front (see [Coolify and 
 
 ## Update
 
-When a newer release exists, the **administration** shows a notice with the new version number and a link to the changes (turn off with `FLOWPLAN_UPDATE_CHECK=false`, see [Configuration](/configuration)). With the image tag `:latest`, this is all it takes:
+When a newer release exists, the **Version** tile on the settings start page and **Settings → Instance → Instance** show a notice with the new version number and a link to the changes (turn off with `FLOWPLAN_UPDATE_CHECK=false`, see [Configuration](/configuration)). With the image tag `:latest`, this is all it takes:
 
 ```bash
 docker compose pull
@@ -147,7 +147,7 @@ With a self-built image, use `git pull` and `docker compose up -d --build` inste
 
 On start, Flowplan migrates the database itself. Make a backup beforehand (see [Storage, S3 and backups](/storage-and-backups)); going back to an older version after a migration is not supported.
 
-After the update everyone sees **New in Flowplan** once the next time they open Flowplan: the release notes of every version since the one they last saw – the newest unfolded, older ones folded, grouped into **Breaking changes**, **Security**, **New**, **Improved** and **Bug fixes**; breaking changes are highlighted at the top. **Close** (or Esc) and **Settings** dismiss the dialog for this version. The notes are part of the image: Flowplan does not ask the internet for them. New accounts start at the running version and see no older notes; accounts from before 0.9.4 see only 0.9.4's notes after updating to it. Beta images (`:beta`) show the notes up to the version they report – the next release's notes only with that release. Everyone chooses what they get under **Settings → Appearance & language → What's new after updates** ([Light and dark](/en/offline-and-apps#light-and-dark)); administrators set the default for new accounts under **Administration → Instance** ([Instance](/en/administration#instance)). The complete list of changes is in the [changelog on GitHub](https://github.com/yannicschuller/flowplan/blob/main/CHANGELOG.md).
+After the update everyone sees **New in Flowplan** once the next time they open Flowplan: the release notes of every version since the one they last saw – the newest unfolded, older ones folded, grouped into **Breaking changes**, **Security**, **New**, **Improved** and **Bug fixes**; breaking changes are highlighted at the top. **Close** (or Esc) and **Settings** dismiss the dialog for this version. The notes are part of the image: Flowplan does not ask the internet for them. New accounts start at the running version and see no older notes; accounts from before 0.9.4 see only 0.9.4's notes after updating to it. Beta images (`:beta`) show the notes up to the version they report – the next release's notes only with that release. Everyone chooses what they get under **Settings → Appearance & language → What's new after updates** ([Light and dark](/en/offline-and-apps#light-and-dark)); administrators set the default for new accounts under **Settings → Instance → Instance** ([Instance](/en/administration#instance)). The complete list of changes is in the [changelog on GitHub](https://github.com/yannicschuller/flowplan/blob/main/CHANGELOG.md).
 
 ### Upgrading to 0.7.0
 
@@ -156,7 +156,7 @@ Nothing to do by hand; Flowplan creates the new tables (for idempotency keys and
 - **API description only when signed in:** `/api/openapi.json` and `/api/docs` need a sign-in or an API token. Public as before with `FLOWPLAN_PUBLIC_API_DOCS=true` (see [OpenAPI and SDKs](/openapi)).
 - **A shorter health check:** without a token, `/api/health` only answers `{"service":"flowplan","status":"ok"}`; the details come with `FLOWPLAN_METRICS_TOKEN` (see [Health check](/operations#health-check)).
 - **Push to the apps through the push relay:** notifications to the apps go end-to-end encrypted through `push.flowplan.org`. `APP_URL` must be the public HTTPS address and outgoing HTTPS to the relay possible – see [Push relay](/configuration-ai-push#push-relay-and-end-to-end-encryption).
-- **Usage statistics:** monitoring counts requests, active people and storage – numbers only. Switch it off with `FLOWPLAN_METRICS=off` or in the administration (see [Statistics](/monitoring#statistics)).
+- **Usage statistics:** monitoring counts requests, active people and storage – numbers only. Switch it off with `FLOWPLAN_METRICS=off` or under **Settings → Instance → Monitoring** (see [Statistics](/monitoring#statistics)).
 
 ## Kubernetes (Helm)
 

@@ -44,7 +44,7 @@ In `.env`:
 OLLAMA_URL=http://ollama:11434
 ```
 
-Then choose the provider **Ollama** under **Administration → AI**. **Load installed models** shows what is there; **Download model** fetches more models with a progress bar, such as `llama3.1`, `qwen2.5` or `mistral`. For [search by meaning](/ask-ai), also download an embedding model such as `nomic-embed-text` and enter it under **Embedding model**.
+Then choose the provider **Ollama** under **Settings → Instance → AI**. **Load installed models** shows what is there; **Download model** fetches more models with a progress bar, such as `llama3.1`, `qwen2.5` or `mistral`. For [search by meaning](/ask-ai), also download an embedding model such as `nomic-embed-text` and enter it under **Embedding model**.
 
 > [!TIP]
 > How well and how fast local models answer depends on the server. Small models (3–8 billion parameters) run on current CPUs; a graphics card makes them much faster. If Ollama runs on another machine in your network, enter its address – addresses in your own network are allowed for the instance provider.
@@ -79,7 +79,7 @@ Results from the device carry the label **On this device**, and the bottom line 
 **Switching it on and off:**
 
 - **Everyone** under **Settings → AI → On this device (Apple)**: **When possible (default)** – on the device when it can, otherwise on the server; **Only without AI on the server** – the device only when the server offers no AI; **Off** – Flowplan never asks the device. It also shows whether Apple Intelligence on this device is **available**, **turned off in Settings** or **not supported**. Switching off **Use AI features** turns off on-device AI too.
-- **Administrators** under **Administration → AI → On-device AI (Apple)** for the whole instance (or with `FLOWPLAN_AI_DEVICE=off`, [configuration](/configuration-ai-push#ai)). The main switch **Turn on AI** applies to AI through the server; on-device AI has its own switch and is allowed by default – also without a provider.
+- **Administrators** under **Settings → Instance → AI → On-device AI (Apple)** for the whole instance (or with `FLOWPLAN_AI_DEVICE=off`, [configuration](/configuration-ai-push#ai)). The main switch **Turn on AI** applies to AI through the server; on-device AI has its own switch and is allowed by default – also without a provider.
 - **On the Mac** also in the desktop app under **Settings… → Apple Intelligence (optional) → Use Apple Intelligence on this Mac** – on by default where it is available. Off, the app never starts the model and the instance cannot reach it. This switch applies to this Mac only.
 - **Pages and spaces closed to the AI** stay closed, as do your own rules, the switches of the individual features, **Selected people** and **Guests too**.
 
@@ -90,14 +90,14 @@ Results from the device carry the label **On this device**, and the bottom line 
 
 ## For admins
 
-Under **Administration → AI**:
+Under **Settings → Instance → AI**:
 
 ::: steps
 
 1. **Turn on AI.**
 2. Choose the **instance provider** (or **No provider**, see below), enter address, model and – if needed – the **API key**. **Test connection.**
 3. **Who may use AI:**
-   - **All** or **Selected people** – enable the latter per person under **Administration → Users**: click the person, then **More → AI features**.
+   - **All** or **Selected people** – enable the latter per person under **Settings → Instance → Users**: click the person, then **More → AI features**.
    - **Guests too** – when off, guests have no AI features.
    - **People may add their own provider/key** – then everyone can set up their own provider with their own key in their settings. This also works with no instance provider at all: people use AI with their own account at a provider, without the instance paying for it.
 4. **Features:** allow or forbid each one separately. Optionally turn on [semantic search](/ask-ai#semantic-search-optional).
@@ -114,7 +114,7 @@ This covers three typical setups:
 | Only certain people | Instance provider, **Selected people**, enable them under Users |
 | Everyone with their own solution | **No provider** (or one as well), **People may add their own provider/key** |
 
-All settings can also be preset with [environment variables](/configuration-ai-push#ai), for instance for automated installations. They apply until someone saves in the administration.
+[Environment variables](/configuration-ai-push#ai) can preset all settings, e.g. for automated installations, until someone saves them here.
 
 How much AI may be used through the instance's provider – for everyone together, per role, per group and per person, per day, week, month and year – you set under [AI quotas](/ai-quotas). {since=0.11.0}
 

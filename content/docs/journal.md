@@ -127,7 +127,7 @@ Ein Journal hat schnell Hunderte Tage. Damit sie andere Seiten nicht verdrängen
 - **Suche und @-Erwähnung**: Tage stehen hinter allen anderen Treffern. Der Filter **Ohne Journaltage** in der Schnellsuche lässt sie ganz weg (er bleibt für die nächste Suche eingeschaltet).
 - **@heute**, **@gestern** und **@2026-10-27** (auch `@today`, `@yesterday`) setzen beim Schreiben einen Link auf diesen Tag des Journals – des Journals im Bereich der Seite, sonst des zuletzt beschriebenen. Für heute gilt dasselbe wie beim Öffnen: Die Seite wird angelegt oder, bei **Beim ersten Schreiben**, auf den Entwurf verlinkt. Tage ohne Eintrag lassen sich nicht verlinken.
 - **Graph**: Unter **Journaltage** zeigt der Graph die Tage gar nicht, **je Monat ein Punkt** (Standard) oder **einzeln**.
-- **Zählen**: Startseite, Bereichsverwaltung und Administration zählen Tage getrennt, etwa „120 Seiten · 340 Journaltage“.
+- **Zählen**: Startseite, Bereichsverwaltung und die Einstellungen der Instanz zählen Tage getrennt, etwa „120 Seiten · 340 Journaltage“.
 - **Export**: Im Markdown-ZIP, im geplanten Export und in Git liegen die Tage sortierbar im Ordner ihres Journals unter `2026/10/2026-10-27.md` – siehe [Import, Export und Versionen](/import-export-versions).
 
 Journale hinter einer PIN, die du nicht eingegeben hast, tauchen in keinem davon auf – auch nicht in den Zahlen.

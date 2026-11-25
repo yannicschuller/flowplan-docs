@@ -101,6 +101,6 @@ curl -X POST https://flowplan.example.com/api/marketplace/check \
 ## Switching it off
 
 > [!ADMIN]
-> Administrators switch the marketplace off for the whole instance under **Administration → Extensions & domains → Marketplace**. Flowplan then shows no marketplace buttons and accepts no templates.
+> Administrators switch the marketplace off for the whole instance under **Settings → Instance → Extensions & domains → Marketplace**. Flowplan then shows no marketplace buttons and accepts no templates.
 
 The environment works too: `FLOWPLAN_MARKETPLACE_URL=off` switches the marketplace off, another address (e.g. a marketplace of your own) replaces `https://marketplace.flowplan.org`.

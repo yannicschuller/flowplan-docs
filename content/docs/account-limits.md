@@ -8,7 +8,7 @@ Wie viel Speicher jemand bekommt, wie viele Arbeitsbereiche ihm gehören dürfen
 
 **Mehr zum Thema:** [Benutzer verwalten](/user-management) · [KI-Kontingente](/ai-quotas)
 
-Den Standard legst du unter **Administration → Grenzen & Aufbewahrung** fest ([Grenzen & Aufbewahrung](/administration#grenzen-aufbewahrung)), eigene Werte einer Person in ihrem Seitenfenster unter [Benutzer](/user-management#benutzer): **Speicherlimit** und unter **Weitere** **Eigene Arbeitsbereiche** und **Größte Datei**. Wie viel KI jemand nutzen darf, regeln die [KI-Kontingente](/ai-quotas) – mit derselben Auswahl an Gruppen.
+Den Standard legst du unter **Einstellungen → Instanz → Grenzen & Aufbewahrung** fest ([Grenzen & Aufbewahrung](/administration#grenzen-aufbewahrung)), eigene Werte einer Person in ihrem Seitenfenster unter [Benutzer](/user-management#benutzer): **Speicherlimit** und unter **Weitere** **Eigene Arbeitsbereiche** und **Größte Datei**. Wie viel KI jemand nutzen darf, regeln die [KI-Kontingente](/ai-quotas) – mit derselben Auswahl an Gruppen.
 
 ## Grenzen pro Gruppe {since=0.11.1}
 

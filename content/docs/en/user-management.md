@@ -32,7 +32,7 @@ Clicking the row or the name opens the account in a side panel (from the bottom 
   - **What's new after updates**: whether the person sees "New in Flowplan" once after an update – **Instance default**, **Show all**, **Only breaking changes** or **Never**; the choice shows the current value. It is the same setting the person has under **Appearance & language**: they see your choice and can change it again. With **Instance default** the account follows the setting [for new accounts](/administration#instance). {since=0.9.7}
   - **Settings level**: which settings the person sees – **Instance default**, **Beginner**, **Normal** or **Expert** ([Settings levels](/settings#settings-levels)). Here too the person can change their level at the top of Settings. {since=0.9.7}
   - **Features**: which [features](/settings#show-and-hide-features) the person has hidden – their own choice or the instance default. **Instance default** puts an own choice back on the default; only the person chooses themselves. {since=0.11.0}
-  - **AI features**: if [Administration → AI](/ai#for-admins) is set to "Selected people", you allow or deny AI per person here.
+  - **AI features**: if [Settings → Instance → AI](/ai#for-admins) is set to "Selected people", you allow or deny AI per person here.
   - **Two-factor sign-in** (for accounts with an authenticator app): **Reset** (e.g. for a lost phone) turns off the account's authenticator app; this is recorded in the activity log, and the person gets an e-mail if the instance sends e-mail.
   - **Sign-in methods**: whether the account has a password (or removed it), whether it signs in through LDAP and which SSO identities are connected – with issuer, address, when connected and last used. The person connects and disconnects them under **Settings → Account & security**.
   - **Merge accounts**: **Merge …** combines the account with a second account of the same person (see [Merge accounts](#merge-accounts)).
@@ -62,7 +62,7 @@ Admin rights manage the instance, not its content. What someone may read is deci
 - Other people's private spaces you see only when they are explicitly shared with you – not even as the workspace's owner.
 - End-to-end encrypted spaces can be read only by those who were given the key – neither owners nor admins ([Encrypted spaces](/encrypted-spaces)).
 
-About accounts and workspaces, the Administration shows only management data:
+About accounts and workspaces, **Settings → Instance** shows only management data:
 
 - **Users**: name, e-mail address, status, sign-in methods, sessions, storage used, when someone was last around and the names of their workspaces.
 - **Workspaces**: name, owner, number of members and pages, usage and quota.

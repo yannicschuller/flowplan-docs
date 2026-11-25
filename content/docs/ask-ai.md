@@ -47,7 +47,7 @@ Zusätzlich zum Volltext kann Flowplan Inhalte als Vektoren („Embeddings“) s
 ::: steps
 
 1. Beim Anbieter der Instanz ein **Modell für Embeddings** eintragen:
-   - **Ollama:** `nomic-embed-text` herunterladen (unter **Administration → KI → Modell herunterladen** oder `ollama pull nomic-embed-text`) und eintragen.
+   - **Ollama:** `nomic-embed-text` herunterladen (unter **Einstellungen → Instanz → KI → Modell herunterladen** oder `ollama pull nomic-embed-text`) und eintragen.
    - **OpenAI-kompatibel:** z. B. `text-embedding-3-small`; **Gemini:** `text-embedding-004`. Anthropic bietet keine Embeddings.
 2. **Suche nach Bedeutung einschalten** und speichern. Alternativ per Umgebung: `FLOWPLAN_AI_SEMANTIC_SEARCH=on` und `FLOWPLAN_AI_EMBEDDING_MODEL=nomic-embed-text`.
 
@@ -56,7 +56,7 @@ Zusätzlich zum Volltext kann Flowplan Inhalte als Vektoren („Embeddings“) s
 - Ein Hintergrundauftrag bettet geänderte Seiten und Einträge abschnittsweise ein; unveränderte Abschnitte werden nicht erneut eingebettet. Höchstens `FLOWPLAN_AI_EMBED_PER_HOUR` Abschnitte pro Stunde (Standard 5.000).
 - **Nie eingebettet** werden Journale mit PIN, für die KI gesperrte Seiten und Bereiche und der Papierkorb. Rechte und persönliche KI-Regeln gelten bei jeder Frage.
 - Die Suche nach Bedeutung nutzt immer den Anbieter der Instanz. Wer einen eigenen Anbieter verwendet, sucht nur im Volltext.
-- **Speicherbedarf:** 4 Byte je Dimension und Abschnitt (bis etwa 900 Zeichen) – mit `nomic-embed-text` (768 Dimensionen) rund 3 KB je Abschnitt, etwa das Drei- bis Vierfache des Textes; mit 1.536 Dimensionen rund 6 KB. Gespeichert wird nur ein Prüfwert jedes Abschnitts, nicht sein Text. Die Administration zeigt Anzahl und Größe.
+- **Speicherbedarf:** 4 Byte je Dimension und Abschnitt (bis etwa 900 Zeichen) – mit `nomic-embed-text` (768 Dimensionen) rund 3 KB je Abschnitt, etwa das Drei- bis Vierfache des Textes; mit 1.536 Dimensionen rund 6 KB. Gespeichert wird nur ein Prüfwert jedes Abschnitts, nicht sein Text. **Einstellungen → Instanz → KI** zeigt Anzahl und Größe.
 - **Ausschalten** löscht alle Vektoren; ein **Modellwechsel** baut sie neu auf.
 - Für sehr große Instanzen (Hunderttausende Abschnitte) gibt es noch keinen Vektorindex; die Suche bleibt dann korrekt, wird aber langsamer.
 

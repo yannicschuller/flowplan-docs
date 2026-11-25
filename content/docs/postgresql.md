@@ -159,7 +159,7 @@ Das Skript liest `DATABASE_URL` und `FLOWPLAN_PG_SCHEMA` aus der Umgebung des Co
 
 ## Sicherungen mit pg_dump
 
-Auf PostgreSQL schreiben die **geplante Sicherung** und **Jetzt sichern** (Administration → Speicher & Sicherung) ein Archiv von `pg_dump` im Custom-Format: `flowplan-2026-11-07-03-00.dump`, mit `FLOWPLAN_ENCRYPTION_KEY` verschlüsselt als `.dump.enc`. Sonst bleibt alles wie bei SQLite:
+Auf PostgreSQL schreiben die **geplante Sicherung** und **Jetzt sichern** (Einstellungen → Instanz → Speicher & Sicherung) ein Archiv von `pg_dump` im Custom-Format: `flowplan-2026-11-07-03-00.dump`, mit `FLOWPLAN_ENCRYPTION_KEY` verschlüsselt als `.dump.enc`. Sonst bleibt alles wie bei SQLite:
 
 - Ziele: S3 unter `<Präfix>/backups/`, [SFTP](/storage-and-backups#sicherung-per-sftp) oder der Datenordner – mit derselben Aufbewahrung und demselben [verzögerten Löschen](/storage-and-backups#verzoegertes-loeschen) der Dateien.
 - [Verschlüsselung](/storage-encryption#verschluesselung) wie gehabt; `decrypt.mjs` entschlüsselt auch `.dump.enc`.
@@ -168,11 +168,11 @@ Auf PostgreSQL schreiben die **geplante Sicherung** und **Jetzt sichern** (Admin
 
 **Ausweichen auf SQLite:** Fehlt ein passendes `pg_dump` (zu alt oder nicht installiert), schreibt die geplante Sicherung stattdessen eine portable SQLite-Datei (`flowplan-….sqlite`) und vermerkt das im Log. Mit `FLOWPLAN_BACKUP_FORMAT=sqlite` ist das immer so. Eine solche Datei lässt sich auf SQLite **und** PostgreSQL einspielen.
 
-Die **Instanzsicherung** (Administration → Speicher & Sicherung → Gesamte Instanz → Herunterladen) enthält die Datenbank immer im portablen SQLite-Format und lässt sich deshalb auf beiden Datenbanken wiederherstellen. Litestream läuft mit PostgreSQL nicht – für eine laufende Sicherung mit beliebigem Zeitpunkt nutze die Mittel deines Datenbankservers (WAL-Archivierung, Point-in-Time-Recovery des Anbieters).
+Die **Instanzsicherung** (Einstellungen → Instanz → Speicher & Sicherung → Gesamte Instanz → Herunterladen) enthält die Datenbank immer im portablen SQLite-Format und lässt sich deshalb auf beiden Datenbanken wiederherstellen. Litestream läuft mit PostgreSQL nicht – für eine laufende Sicherung mit beliebigem Zeitpunkt nutze die Mittel deines Datenbankservers (WAL-Archivierung, Point-in-Time-Recovery des Anbieters).
 
 ### Wiederherstellen
 
-- **Ein `pg_dump`-Archiv auf einer laufenden Instanz** (`flowplan-….dump`, `.dump.enc`): unter **Administration → Speicher & Sicherung → Aus Sicherung wiederherstellen** hochladen. Flowplan prüft es sofort und spielt es beim nächsten Neustart ein – im Cluster-Modus die leitende Instanz, siehe [Grenzen](/cluster#grenzen). Nur die Datenbank wird ersetzt; die Dateien bleiben, wie sie sind.
+- **Ein `pg_dump`-Archiv auf einer laufenden Instanz** (`flowplan-….dump`, `.dump.enc`): unter **Einstellungen → Instanz → Speicher & Sicherung → Aus Sicherung wiederherstellen** hochladen. Flowplan prüft es sofort und spielt es beim nächsten Neustart ein – im Cluster-Modus die leitende Instanz, siehe [Grenzen](/cluster#grenzen). Nur die Datenbank wird ersetzt; die Dateien bleiben, wie sie sind.
 - **Auf einer neuen Instanz** mit PostgreSQL geht dasselbe auf dem Einrichtungsbildschirm: hochladen oder aus S3 bzw. per SFTP holen, wie unter [Beim Einrichten wiederherstellen](/restore#beim-einrichten-wiederherstellen).
 - Eine Instanz mit SQLite lehnt solche Archive ab – dafür gibt es die Instanzsicherung oder den [Wechsel der Datenbank](/database-migration).
 - Flowplan prüft das Archiv vorher (eine Flowplan-Datenbank, nicht aus einer neueren Version), ersetzt dann das ganze Schema in einer Transaktion und baut den Suchindex neu. Aus dem Archiv kommen dabei nur die Daten der Tabellen von Flowplan; Tabellen, Funktionen und Trigger legt die laufende Version selbst an. Ältere Archive passen so in die aktuellen Tabellen.

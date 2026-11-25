@@ -35,7 +35,7 @@ Two servers with the same `compose.yaml` and the same `.env`. Flowplan runs on t
 
 ### With PostgreSQL
 
-Both servers point `DATABASE_URL` at the same database and `S3_*` at the same bucket. If a second instance starts by mistake, Flowplan notices through a lock in the database: it still starts, logs a loud warning every ten minutes, and **Administration → Monitoring** shows on every instance, until only one runs: {since=0.10.0}
+Both servers point `DATABASE_URL` at the same database and `S3_*` at the same bucket. If a second instance starts by mistake, Flowplan notices through a lock in the database: it still starts, logs a loud warning every ten minutes, and **Settings → Instance → Monitoring** shows on every instance, until only one runs: {since=0.10.0}
 
 > "A second Flowplan instance is running against the same database without cluster mode (*instance*, since *time*). Timed jobs such as reminders, digests, backups and workflows then run twice, and live changes do not reach the other instance. Switch cluster mode on for every instance (FLOWPLAN_CLUSTER=1 with Redis and S3) or stop one of the instances. During a rolling restart this is normal for a moment."
 
@@ -46,7 +46,7 @@ Switching over when the active server fails:
 1. **Make sure the old server is really down:** stop the container or power the server off in your provider's console. A server that is merely unreachable may otherwise keep running.
 2. On the passive server, `docker compose up -d`.
 3. Wait until `/api/health/ready` answers `200`; the load balancer then sends traffic there by itself (with a floating IP: move the IP now).
-4. Check under **Administration → Monitoring** that no warning about a second instance shows.
+4. Check under **Settings → Instance → Monitoring** that no warning about a second instance shows.
 
 :::
 
@@ -157,7 +157,7 @@ The load balancer sets `X-Forwarded-For`, which is why `.env` has `FLOWPLAN_TRUS
 
 ### Backups
 
-- Switch on the **scheduled backup** under **Administration → Storage & backup**: the leading instance writes a `pg_dump` archive into the bucket under `<prefix>/backups/` daily (or hourly), encrypted with `FLOWPLAN_ENCRYPTION_KEY` ([Backups with pg_dump](/en/postgresql#backups-with-pg-dump)).
+- Switch on the **scheduled backup** under **Settings → Instance → Storage & backup**: the leading instance writes a `pg_dump` archive into the bucket under `<prefix>/backups/` daily (or hourly), encrypted with `FLOWPLAN_ENCRYPTION_KEY` ([Backups with pg_dump](/en/postgresql#backups-with-pg-dump)).
 - **A second copy outside the bucket**, e.g. via [SFTP](/en/storage-and-backups#backup-via-sftp) to a Hetzner Storage Box – a fault in the bucket then does not hit both.
 - **The database server** additionally with Hetzner's backups (images of the disk); with Patroni, or to restore to any point in time, WAL archiving (e.g. pgBackRest) into a bucket of its own.
 - The app servers hold nothing that is not in the bucket or the database – a new server with the same `.env` replaces an old one.

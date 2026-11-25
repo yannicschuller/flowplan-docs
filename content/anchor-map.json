@@ -145,7 +145,7 @@
 ["instanz-im-eigenen-netz-ohne-https","an-instance-on-your-own-network-without-https","app-network","instanz-im-eigenen-netz-ohne-https","an-instance-on-your-own-network-without-https"],
 ["profile-in-den-mobilen-apps","profiles-in-the-mobile-apps","mobile-apps","profile-in-den-mobilen-apps","profiles-in-the-mobile-apps"],
 ["was-die-app-auf-der-instanz-hinterlegt","what-the-app-keeps-on-the-instance","mobile-apps","was-die-app-auf-der-instanz-hinterlegt","what-the-app-keeps-on-the-instance"]],"operations":[
-["administration-ueberwachung","administration-monitoring","monitoring","administration-ueberwachung","administration-monitoring"],
+["administration-ueberwachung","administration-monitoring","monitoring","einstellungen-instanz-ueberwachung","settings-instance-monitoring"],
 ["statistik","statistics","monitoring","statistik","statistics"],
 ["warnungen-per-webhook","alerts-by-webhook","monitoring","warnungen-per-webhook","alerts-by-webhook"],
 ["wartung-hinweise","maintenance-notices","monitoring","wartung-hinweise","maintenance-notices"],
@@ -154,7 +154,7 @@
 ["prometheus","prometheus","monitoring","prometheus","prometheus"],
 ["sicherheit","security","security-monitoring","sicherheit","security"],
 ["was-festgehalten-wird","what-is-recorded","security-monitoring","was-festgehalten-wird","what-is-recorded"],
-["administration-angriffe-vorfaelle","administration-threats-incidents","security-monitoring","administration-angriffe-vorfaelle","administration-threats-incidents"],
+["administration-angriffe-vorfaelle","administration-threats-incidents","security-monitoring","einstellungen-instanz-angriffe-vorfaelle","settings-instance-threats-incidents"],
 ["erkennungsregeln","detection-rules","security-monitoring","erkennungsregeln","detection-rules"],
 ["logs-stdout-json","logs-stdout-json","security-monitoring","logs-stdout-json","logs-stdout-json"],
 ["opentelemetry","opentelemetry","security-monitoring","opentelemetry","opentelemetry"],
@@ -252,4 +252,7 @@
 ["hell-dunkel-und-zurueck-zur-ansicht","light-dark-and-back-to-the-view","publishing","hell-dunkel-und-zurueck-zur-ansicht","light-dark-and-back-to-the-view"],
 ["lernkarten-ueber-einen-link","flashcards-through-a-link","publishing","lernkarten-ueber-einen-link","flashcards-through-a-link"],
 ["aussehen","appearance","publishing","aussehen","appearance"],
-["eigene-domain","custom-domain","publishing","eigene-domain","custom-domain"]]}
+["eigene-domain","custom-domain","publishing","eigene-domain","custom-domain"]],"monitoring":[
+["administration-ueberwachung","administration-monitoring","monitoring","einstellungen-instanz-ueberwachung","settings-instance-monitoring"]],"security-monitoring":[
+["administration-angriffe-vorfaelle","administration-threats-incidents","security-monitoring","einstellungen-instanz-angriffe-vorfaelle","settings-instance-threats-incidents"]],"cluster":[
+["administration-ueberwachung-system","administration-monitoring-system","cluster","einstellungen-instanz-ueberwachung-system","settings-instance-monitoring-system"]]}

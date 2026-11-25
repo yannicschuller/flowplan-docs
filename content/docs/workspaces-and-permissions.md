@@ -67,7 +67,7 @@ Regale und Bücher der [Bibliothek](/library#rechte-fuer-regale-und-buecher) fol
 
 Eigentümer eines Arbeitsbereichs verwalten auch Bereiche anderer Mitglieder, erhalten dadurch aber keinen Lesezugriff auf deren private Seiten. Private Bereiche anderer können sie umbenennen, umsortieren, in den Papierkorb legen und wiederherstellen, und sie pflegen die Gruppen. Fürs Team sichtbar machen, Rechte darauf vergeben oder sich selbst in eine Gruppe mit Rechten darauf aufnehmen können sie aber nur, wenn sie den Bereich selbst sehen. {since=0.11.5}
 
-Auch Admin-Rechte der Instanz geben keinen Zugriff auf Inhalte: Admins sehen nur, was ihnen Mitgliedschaft und Freigaben erlauben – was die Administration über Konten und Arbeitsbereiche zeigt, steht unter [Was Admins sehen](/user-management#was-admins-sehen).
+Auch Admin-Rechte der Instanz geben keinen Zugriff auf Inhalte: Admins sehen nur, was ihnen Mitgliedschaft und Freigaben erlauben – was **Einstellungen → Instanz** über Konten und Arbeitsbereiche zeigt, steht unter [Was Admins sehen](/user-management#was-admins-sehen).
 
 **Verschlüsselte Bereiche** gehen einen Schritt weiter: Dort entscheidet nicht nur das Recht auf dem Server, sondern der Schlüssel. Wer keinen Bereichsschlüssel bekommen hat, liest nichts – auch nicht Eigentümer des Arbeitsbereichs oder die Administration. Siehe [Verschlüsselte Bereiche](/encrypted-spaces).
 
@@ -77,4 +77,4 @@ Auch Admin-Rechte der Instanz geben keinen Zugriff auf Inhalte: Admins sehen nur
 
 ## Speicherkontingent
 
-Jeder Arbeitsbereich kann ein Kontingent haben. Uploads, Kopien, Vorlagen und Importe darüber werden abgelehnt. Die Belegung sehen Admins unter **Administration → Arbeitsbereiche**.
+Jeder Arbeitsbereich kann ein Kontingent haben. Uploads, Kopien, Vorlagen und Importe darüber werden abgelehnt. Die Belegung sehen Admins unter **Einstellungen → Instanz → Arbeitsbereiche**.

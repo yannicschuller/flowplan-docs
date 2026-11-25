@@ -56,7 +56,7 @@ Lange Aufnahmen: whisper.cpp mit large-v3-turbo brauchte auf einem M2 rund 380 S
 
 ## KI
 
-Alles optional; die Werte gelten, bis ein Admin unter **Administration → KI** speichert. Details: [KI](/ai).
+Alles optional; die Werte gelten, bis ein Admin unter **Einstellungen → Instanz → KI** speichert. Details: [KI](/ai).
 
 | Variable | Standard | Bedeutung |
 | --- | --- | --- |
@@ -98,12 +98,24 @@ Mitteilungen an die Apps gehen über das Flowplan-Push-Relay (`push.flowplan.org
 - **Was gespeichert wird:** Pro App-Installation das Relay-Token (nur verschlüsselt) und der öffentliche Schlüssel. Beides verschwindet mit dem Abmelden, dem Entfernen unter *Angemeldete Geräte* oder wenn das Relay meldet, dass das Gerät nicht mehr erreichbar ist. Protokolliert werden weder Tokens noch Schlüssel noch Inhalte.
 - **Live-Aktivitäten** (iPhone) für Zeiterfassung und Fokus aktualisiert die Instanz ebenfalls über das Relay, wenn sich der Zustand ändert. Ihren Inhalt zeichnet iOS selbst – er lässt sich nicht verschlüsseln. Deshalb enthält er standardmäßig nur Zeiten und die Phase, keine Titel (`MOBILE_PUSH_CONTENT=on` schickt den Titel mit).
 - **Ältere App-Versionen** ohne Relay bekommen Mitteilungen weiter über den Push-Dienst von Expo (`exp.host`), standardmäßig ohne Text.
-- **Signaturschlüssel wechseln:** `node --import tsx scripts/push-relay-key.mjs rotate` im Repository bzw. als Administrator `POST /api/admin/operations` mit `{"action":"pushRelay.rotate"}`. Der neue Schlüssel wird sofort veröffentlicht und signiert nach gut einer Stunde; der alte bleibt 7 Tage gelistet (`--grace-days` bzw. `graceDays`). Bei einem womöglich bekannt gewordenen Schlüssel `--immediate` bzw. `"immediate": true`: der neue signiert sofort, alle alten verschwinden. `{"action":"pushRelay.keys"}` listet die Schlüssel (nur IDs und Daten). Oder unter **Administration → Push-Benachrichtigungen → Schlüssel wechseln …**.
+- **Signaturschlüssel wechseln:** `node --import tsx scripts/push-relay-key.mjs rotate` im Repository bzw. als Administrator `POST /api/admin/operations` mit `{"action":"pushRelay.rotate"}`. Der neue Schlüssel wird sofort veröffentlicht und signiert nach gut einer Stunde; der alte bleibt 7 Tage gelistet (`--grace-days` bzw. `graceDays`). Bei einem womöglich bekannt gewordenen Schlüssel `--immediate` bzw. `"immediate": true`: der neue signiert sofort, alle alten verschwinden. `{"action":"pushRelay.keys"}` listet die Schlüssel (nur IDs und Daten). Oder unter **Einstellungen → Instanz → Push-Benachrichtigungen → Schlüssel wechseln …**.
 - **Eigenes Relay:** nur zusammen mit einer eigenen App-Version – siehe [Eigenes Push-Relay betreiben](#eigenes-push-relay-betreiben).
 - **Prüfen:** **Einstellungen → Benachrichtigungen → Testbenachrichtigung senden** schickt sofort über Relay, Expo und Web-Push an die eigenen Geräte und zeigt je Gerät das Ergebnis – etwa dass das Relay die Instanz nicht verifizieren konnte (`/.well-known/flowplan-push` nicht erreichbar) oder nicht erreichbar ist. Administratoren sehen dazu Relay-Adresse, ob `/.well-known/flowplan-push` aktiv ist, und die verwendete `APP_URL`. Siehe [Testbenachrichtigung](/notifications#testbenachrichtigung).
-- **Zustand in der Administration:** **Administration → Push-Benachrichtigungen** zeigt das verwendete Relay (offiziell oder eigenes), ob es an ist und sonst warum, ob es gerade erreichbar ist (`/healthz`, mit Antwortzeit), ob die Instanz ihr `/.well-known/flowplan-push` unter `APP_URL` selbst abrufen kann, die Signaturschlüssel mit **Schlüssel wechseln …**, die Zustellungen der letzten 24 Stunden je Kanal und den letzten Fehler. Siehe [Administration → Push-Benachrichtigungen](/administration#push-benachrichtigungen).
+- **Zustand in den Einstellungen:** siehe [unten](#zustand-in-den-einstellungen-der-instanz).
 
 **Für die Datenschutzerklärung** einer Instanz etwa: „Push-Mitteilungen an die Flowplan-Apps werden Ende-zu-Ende-verschlüsselt über den Push-Dienst von Flowplan (push.flowplan.org) und die Dienste von Apple (APNs) bzw. Google (Firebase Cloud Messaging) zugestellt. Diese Dienste erhalten ein Geräte-Token, die Adresse dieser Instanz, den Zeitpunkt und die Art der Mitteilung, nicht aber ihren Inhalt.“ – mit `MOBILE_PUSH_CONTENT=on` oder Mitteilungen über Expo entsprechend ergänzen.
+
+### Zustand in den Einstellungen der Instanz
+
+**Einstellungen → Instanz → Push-Benachrichtigungen** (`/#settings/instance/push`) zeigt:
+
+- **Push-Relay**: die verwendete Adresse – das offizielle `https://push.flowplan.org` oder ein eigenes aus `PUSH_RELAY_URL` (Zugangsdaten in der Adresse werden nie angezeigt) –, ob es an ist und sonst genau warum (`PUSH_RELAY=off`, `APP_URL` keine HTTPS-Adresse, `PUSH_RELAY_URL` ungültig), die `APP_URL`, unter der das Relay die Instanz kennt, und ob `/.well-known/flowplan-push` veröffentlicht ist.
+- **Erreichbarkeit**: Die Instanz ruft `GET <Relay>/healthz` ab – höchstens 5 Sekunden, nur HTTPS, ohne Weiterleitungen zu folgen – und zeigt „Erreichbar“ mit der Antwortzeit (und der Version des Relays, falls es eine nennt) oder den Grund: Zeitüberschreitung, Verbindung abgelehnt, DNS, TLS, Weiterleitung, HTTP-Status. Außerdem ruft sie ihr eigenes `/.well-known/flowplan-push` unter `APP_URL` ab, wie das Relay es tut, und prüft, dass der aktuelle Signaturschlüssel darin steht. Klappt das von innen nicht, ist das nur ein Hinweis: Hinter NAT oder einem Proxy, der die eigene Adresse intern nicht auflöst, ist das normal – entscheidend ist, dass das Relay sie von außen erreicht ([Testbenachrichtigung](/notifications#testbenachrichtigung)). Das Ergebnis gilt eine Minute; **Erreichbarkeit prüfen** prüft sofort neu.
+- **Signaturschlüssel**: Schlüssel-IDs mit Status (signiert, wartet, auslaufend) und Daten. **Schlüssel wechseln …** fragt nach und wechselt wie in [Push-Relay und Ende-zu-Ende-Verschlüsselung](#push-relay-und-ende-zu-ende-verschluesselung) beschrieben, wahlweise sofort.
+- **Zustellungen der letzten 24 Stunden** je Kanal (Relay, Expo, Web Push) und Ergebnis (zugestellt, abgemeldet, abgewiesen, ungültig, gedrosselt, Fehler), die letzte Zustellung über das Relay, der letzte Fehler als Code (etwa `signature HTTP 401` oder `unreachable`), die Warteschlange und die registrierten Geräte je Kanal. Gezählt wird nur mit eingeschalteter Statistik (siehe [Überwachung](/administration#ueberwachung)).
+- **Expo und Web Push**: `MOBILE_PUSH` an oder aus, was `MOBILE_PUSH_CONTENT` mitschickt, woher die VAPID-Schlüssel kommen und ob `WEB_PUSH_SUBJECT` gesetzt ist.
+
+Die Antworten enthalten nie Tokens, Schlüssel oder Push-Adressen. `/api/admin/push` ist nur für angemeldete Administratoren, nicht für API-Tokens.
 
 ### Eigenes Push-Relay betreiben
 

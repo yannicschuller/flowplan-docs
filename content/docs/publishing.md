@@ -25,7 +25,7 @@ Veröffentlichen braucht Bearbeitungsrechte auf der Seite, wie das Erstellen von
 Ist der Schalter **Im Web veröffentlichen** ausgegraut, steht darunter der Grund:
 
 - **Die Seite ist gesperrt:** Entsperre sie im Seitenmenü ([Seitenaktionen](/pages-and-spaces#seitenaktionen)). Eine gesperrte Seite lässt sich gar nicht ändern – auch nicht, wer sie sehen darf.
-- **Die Funktion ist für die Instanz ausgeschaltet** (**Administration → Instanz → [Funktionen dieser Instanz](/instance-features)**): Seiten einer abgeschalteten Funktion öffnen nur zum Lesen und lassen sich nicht veröffentlichen.
+- **Die Funktion ist für die Instanz ausgeschaltet** (**Einstellungen → Instanz → Instanz → [Funktionen dieser Instanz](/instance-features)**): Seiten einer abgeschalteten Funktion öffnen nur zum Lesen und lassen sich nicht veröffentlichen.
 - **Dir fehlen Bearbeitungsrechte** auf der Seite.
 
 Wer den Link hat, kann ihn weitergeben – eine veröffentlichte Seite ist öffentlich. Willst du steuern, wer sie sieht, nimm einen Link mit [Passwort und Ablaufdatum](/sharing#passwort-und-ablaufdatum) oder [lade Personen ein](/sharing#eine-seite-mit-einer-person-teilen).
@@ -62,7 +62,7 @@ Im Reiter **Web** klappt unter den Optionen **Aussehen** auf. Dort legst du das 
 
 ## Eigene Domain
 
-Ist es in der Administration eingeschaltet (**Eigene Domains für Veröffentlichungen**), zeigt eine Veröffentlichung sich auch unter deiner Domain, etwa `docs.example.org`:
+Ist es unter **Einstellungen → Instanz → Erweiterungen & Domains** eingeschaltet (**Eigene Domains für Veröffentlichungen**), zeigt eine Veröffentlichung sich auch unter deiner Domain, etwa `docs.example.org`:
 
 ::: steps
 

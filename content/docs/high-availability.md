@@ -35,7 +35,7 @@ Zwei Server mit derselben `compose.yaml` und derselben `.env`. Auf dem aktiven l
 
 ### Mit PostgreSQL
 
-Beide Server zeigen mit `DATABASE_URL` auf dieselbe Datenbank und mit `S3_*` auf denselben Bucket. Startet versehentlich eine zweite Instanz, merkt Flowplan das über eine Sperre in der Datenbank: Sie startet trotzdem, schreibt alle zehn Minuten eine deutliche Warnung ins Log, und **Administration → Überwachung** zeigt auf jeder Instanz, bis nur noch eine läuft: {since=0.10.0}
+Beide Server zeigen mit `DATABASE_URL` auf dieselbe Datenbank und mit `S3_*` auf denselben Bucket. Startet versehentlich eine zweite Instanz, merkt Flowplan das über eine Sperre in der Datenbank: Sie startet trotzdem, schreibt alle zehn Minuten eine deutliche Warnung ins Log, und **Einstellungen → Instanz → Überwachung** zeigt auf jeder Instanz, bis nur noch eine läuft: {since=0.10.0}
 
 > „Eine zweite Flowplan-Instanz läuft ohne Cluster-Modus gegen dieselbe Datenbank (*Instanz*, seit *Zeit*). Geplante Aufgaben wie Erinnerungen, Zusammenfassungen, Sicherungen und Workflows laufen dann doppelt, und Live-Änderungen erreichen die andere Instanz nicht. Schalte auf allen Instanzen den Cluster-Modus ein (FLOWPLAN_CLUSTER=1 mit Redis und S3) oder beende eine der Instanzen. Während eines Neustarts im laufenden Betrieb ist das kurz normal.“
 
@@ -46,7 +46,7 @@ Umschalten, wenn der aktive Server ausfällt:
 1. **Sicherstellen, dass der alte Server wirklich steht:** Container stoppen oder den Server in der Konsole des Anbieters ausschalten. Ein Server, der nur nicht erreichbar ist, läuft sonst womöglich weiter.
 2. Auf dem passiven Server `docker compose up -d`.
 3. Warten, bis `/api/health/ready` mit `200` antwortet; der Load Balancer leitet dann von selbst dorthin (mit Floating IP: die IP jetzt umziehen).
-4. Unter **Administration → Überwachung** prüfen, dass keine Warnung über eine zweite Instanz steht.
+4. Unter **Einstellungen → Instanz → Überwachung** prüfen, dass keine Warnung über eine zweite Instanz steht.
 
 :::
 
@@ -157,7 +157,7 @@ Der Load Balancer setzt `X-Forwarded-For`; deshalb steht in der `.env` `FLOWPLAN
 
 ### Sicherungen
 
-- **Geplante Sicherung** unter **Administration → Speicher & Sicherung** einschalten: Die leitende Instanz schreibt täglich (oder stündlich) ein `pg_dump`-Archiv in den Bucket unter `<Präfix>/backups/`, mit `FLOWPLAN_ENCRYPTION_KEY` verschlüsselt ([Sicherungen mit pg_dump](/postgresql#sicherungen-mit-pg-dump)).
+- **Geplante Sicherung** unter **Einstellungen → Instanz → Speicher & Sicherung** einschalten: Die leitende Instanz schreibt täglich (oder stündlich) ein `pg_dump`-Archiv in den Bucket unter `<Präfix>/backups/`, mit `FLOWPLAN_ENCRYPTION_KEY` verschlüsselt ([Sicherungen mit pg_dump](/postgresql#sicherungen-mit-pg-dump)).
 - **Eine zweite Kopie außerhalb des Buckets**, etwa per [SFTP](/storage-and-backups#sicherung-per-sftp) auf eine Hetzner Storage Box – ein Fehler im Bucket trifft dann nicht beides.
 - **Den Datenbankserver** zusätzlich mit den Backups von Hetzner (Abbilder der Platte); mit Patroni oder für Wiederherstellung auf jeden Zeitpunkt WAL-Archivierung (etwa pgBackRest) in einen eigenen Bucket.
 - Die App-Server halten nichts, was nicht im Bucket oder in der Datenbank steht – ein neuer Server mit derselben `.env` ersetzt einen alten.

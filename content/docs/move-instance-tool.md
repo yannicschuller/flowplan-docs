@@ -8,14 +8,14 @@ Das Umzugswerkzeug holt die neue Instanz alles von der alten – Datenbank, Date
 
 ## Weg A: Das Umzugswerkzeug
 
-Unter **Administration → Speicher & Sicherung** (nur für Admins) holt die neue Instanz alles direkt von der alten: von Server zu Server, fortsetzbar und mit Prüfsummen.
+Unter **Einstellungen → Instanz → Speicher & Sicherung** (nur für Admins) holt die neue Instanz alles direkt von der alten: von Server zu Server, fortsetzbar und mit Prüfsummen.
 
 **Auf der alten Instanz – „Umzug vorbereiten“**
 
 ::: steps
 
 1. **Instanz umziehen → Umzug vorbereiten**. Zur Sicherheit fragt Flowplan nach deinem Passwort; bei Anmeldung über SSO muss die Anmeldung höchstens 15 Minuten alt sein (sonst einmal ab- und wieder anmelden).
-2. Flowplan zeigt die **Übertragungsadresse** und das **Umzugstoken** (`fpmove_…`) – **nur dieses eine Mal**. Das Token gilt 24 Stunden und nur für den Umzug: Es darf die Instanz lesen, sie für den letzten Abgleich schreibschützen und den Umzug abschließen, sonst nichts. Gespeichert wird nur ein Hash; **Widerrufen** macht es sofort ungültig, ein neues Token ersetzt das alte. Das Erstellen, Widerrufen und jeder Schritt des Umzugs stehen im Aktivitätsprotokoll und als Sicherheitsereignis unter **Administration → Sicherheit**. Zehn falsche Token-Versuche von einer Adresse sperren sie für 15 Minuten.
+2. Flowplan zeigt die **Übertragungsadresse** und das **Umzugstoken** (`fpmove_…`) – **nur dieses eine Mal**. Das Token gilt 24 Stunden und nur für den Umzug: Es darf die Instanz lesen, sie für den letzten Abgleich schreibschützen und den Umzug abschließen, sonst nichts. Gespeichert wird nur ein Hash; **Widerrufen** macht es sofort ungültig, ein neues Token ersetzt das alte. Das Erstellen, Widerrufen und jeder Schritt des Umzugs stehen im Aktivitätsprotokoll und als Sicherheitsereignis unter **Einstellungen → Instanz → Sicherheit**. Zehn falsche Token-Versuche von einer Adresse sperren sie für 15 Minuten.
 
 :::
 

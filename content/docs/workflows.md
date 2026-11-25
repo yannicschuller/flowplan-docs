@@ -171,7 +171,7 @@ Inhaltsarchive und der [Instanzumzug](/move-instance) nehmen Workflows mit Entwu
 | Aktive Workflows je Arbeitsbereich | 100 |
 
 > [!ADMIN]
-> Admins ändern die Werte in der [Administration](/administration#workflows) oder per [Umgebungsvariable](/configuration-integrations#workflows). Bearbeitende können je Workflow niedrigere Werte setzen.
+> Admins ändern die Werte unter [Einstellungen → Instanz → Grenzen & Aufbewahrung](/administration#workflows) oder per [Umgebungsvariable](/configuration-integrations#workflows). Bearbeitende können je Workflow niedrigere Werte setzen.
 
 ## API, MCP und SDKs
 

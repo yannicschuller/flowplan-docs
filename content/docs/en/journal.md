@@ -129,7 +129,7 @@ A journal soon has hundreds of days. So that they do not crowd out other pages:
 - **Search and @ mentions**: days come after all other hits. The filter **Without journal days** in the quick search leaves them out completely (it stays on for the next search).
 - **@heute**, **@gestern** and **@2026-10-27** (also `@today`, `@yesterday`) insert a link to that day of the journal while writing – the journal in the page's space, otherwise the one written in last. Today works as when opening the journal: the page is created or, with **On the first write**, the link goes to the draft. Days without an entry cannot be linked.
 - **Graph**: under **Journal days** the graph hides the days, shows **one dot per month** (default) or **each day**.
-- **Counting**: the home page, space settings and administration count days separately, such as "120 pages · 340 journal days".
+- **Counting**: the home page, space settings and the instance settings count days separately, such as "120 pages · 340 journal days".
 - **Export**: in the Markdown ZIP, the scheduled export and Git, days sort by path in their journal's folder under `2026/10/2026-10-27.md` – see [Import, export and versions](/import-export-versions).
 
 Journals behind a PIN you have not entered appear in none of these – not even in the numbers.

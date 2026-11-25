@@ -133,9 +133,9 @@ Was das Chart im Cluster-Modus tut:
 
 Für ingress-nginx setzt das Chart die Annotationen für die Live-Verbindungen und Uploads selbst (keine Pufferung, Zeitlimits von einer Stunde, `ingress.bodySize`); andere Controller beschreibt das README des Charts, das auch alle Werte erklärt. {since=0.10.0}
 
-## Administration → Überwachung → System
+## Einstellungen → Instanz → Überwachung → System
 
-Der Abschnitt **System** unter **Administration → Überwachung** zeigt, wie die Installation läuft:
+Der Abschnitt **System** unter **Einstellungen → Instanz → Überwachung** zeigt, wie die Installation läuft:
 
 - **Betriebsart** (einzelner Container oder Cluster mit Zahl der Instanzen), **Datenbank** mit Version und Erreichbarkeit,
 - **Verbindungen dieser Instanz** (offen, frei, wartend) und die **Zeitlimits**,
@@ -176,4 +176,4 @@ Die Schritte von [Workflows](/workflows) stehen in einer Warteschlange in der Da
 ## Weiter
 
 - [Dimensionierung](/sizing): wie viele Instanzen und welche Hardware.
-- [Datenbank wechseln](/database-migration): eine bestehende Instanz nach PostgreSQL bringen. Für den Cluster vorher S3 im einzelnen Container einschalten und warten, bis alle Dateien im Bucket sind (**Administration → Speicher & Sicherung**, oder `objectStorage.pending` auf `0` unter [`/api/health`](/operations#healthcheck)).
+- [Datenbank wechseln](/database-migration): eine bestehende Instanz nach PostgreSQL bringen. Für den Cluster vorher S3 im einzelnen Container einschalten und warten, bis alle Dateien im Bucket sind (**Einstellungen → Instanz → Speicher & Sicherung**, oder `objectStorage.pending` auf `0` unter [`/api/health`](/operations#healthcheck)).

@@ -4,7 +4,7 @@ keywords: markdown, git, export, repository, github, emergency, readable copy
 
 # Markdown export and Git
 
-A readable copy outside Flowplan – for emergencies when the instance is down, or as an archive in a Git repository. **Administration → Markdown & Git export** chooses pages and databases; with every scheduled backup (and with **Back up now**) each becomes a Markdown ZIP with its sub-pages, comments and earlier versions:
+A readable copy outside Flowplan – for emergencies when the instance is down, or as an archive in a Git repository. **Settings → Instance → Markdown & Git export** chooses pages and databases; with every scheduled backup (and with **Back up now**) each becomes a Markdown ZIP with its sub-pages, comments and earlier versions:
 
 - with S3 in the bucket under `<S3_PREFIX>/exports/`, otherwise in the data folder under `exports/`; as many are kept as backups (**Backups kept**). With `FLOWPLAN_ENCRYPTION_KEY` the ZIPs are encrypted (`.zip.enc`), the push to Git is not;
 - the export reads with the permissions of the person who saved the selection – private records and journals with a PIN stay out;
@@ -15,7 +15,7 @@ When the server is busy, the scheduled Markdown export tries again for a few min
 ## Push into a Git repository
 
 > [!IMPORTANT]
-> The instance Git export (`EXPORT_GIT_*`) is deprecated. It keeps working but is replaced by the [Git export of a space](#git-export-of-a-space), which space owners set up themselves; the administration shows a notice about it. The scheduled Markdown export to S3 or the data folder stays as it is.
+> The instance Git export (`EXPORT_GIT_*`) is deprecated. It keeps working but is replaced by the [Git export of a space](#git-export-of-a-space), which space owners set up themselves; **Settings → Instance → Markdown & Git export** shows a notice about it. The scheduled Markdown export to S3 or the data folder stays as it is.
 
 With these variables Flowplan pushes every export into a repository itself (Forgejo, Gitea, GitHub, GitLab) – every page in a folder of its own, one commit per run with changes:
 
@@ -35,7 +35,7 @@ With `EXPORT_GIT_IMPORT=true`, changed files are handled like this:
 - **Journal days** (`<journal folder>/2026/10/2026-10-27.md`) are found by their journal (the folder) and the date; `flowplan.id` in the frontmatter only counts when it names a day of the same journal. Repositories from older versions, where days were still `pages/<title>-<id>.md`, keep working: changes to those files are still taken over before the export, then the export writes the days to the new paths and removes the old files. No day is created twice; a renamed journal keeps its days because the folder is matched by its id.
 - Database tables, comments and versions are copies and are not read back.
 
-Markdown does not know every Flowplan block (such as columns). Whiteboards are in the repository as SVG images; an embedded board carries an invisible marker (`<!-- flowplan:whiteboard … -->`) that makes it an embed again when changes are taken over from Git – please leave the image and link below it in place. If you edit pages with other such blocks in Git, the previous state is in the version history. The administration shows the state of the last push (commit, changes taken over, errors).
+Markdown does not know every Flowplan block (such as columns). Whiteboards are in the repository as SVG images; an embedded board carries an invisible marker (`<!-- flowplan:whiteboard … -->`) that makes it an embed again when changes are taken over from Git – please leave the image and link below it in place. If you edit pages with other such blocks in Git, the previous state is in the version history. **Settings → Instance → Markdown & Git export** shows the state of the last push (commit, changes taken over, errors).
 
 ## Git export of a space
 
@@ -68,4 +68,4 @@ Security:
 - Every address is resolved and checked: internal addresses (localhost, private networks) cannot be reached, redirects are not followed. The only exception: servers the administration lists in `SPACE_GIT_ALLOWED_HOSTS` when `SPACE_GIT_ALLOW_PRIVATE=true` is set as well – for example a Git server on the same host. Even then it stays HTTPS, with the pinned address and no redirects.
 - The export ends, and token and working copy (`git-export/spaces/<space>/` in the data folder) are deleted, when the owner turns it off, leaves the workspace, becomes a guest or deletes their account – or when the space gets a new owner or moves to the trash.
 
-**Administration → Markdown & Git export** shows how many spaces use the Git export and their last errors – without addresses or content.
+**Settings → Instance → Markdown & Git export** shows how many spaces use the Git export and their last errors – without addresses or content.

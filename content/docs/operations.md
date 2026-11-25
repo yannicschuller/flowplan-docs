@@ -40,13 +40,13 @@ Für Kubernetes und Load Balancer gibt es zusätzlich `/api/health/live` (der Pr
 
 - `/api/health` liefert `200`.
 - Die Anmeldung funktioniert und landet wieder in Flowplan.
-- Das erste Konto (bei SSO: ein Mitglied der Admin-Gruppe) sieht **Administration**.
+- Das erste Konto (bei SSO: ein Mitglied der Admin-Gruppe) sieht in den Einstellungen die **Instanz**.
 - Eine Datei hochladen, den Container neu starten, die Datei wieder öffnen – dann ist das Volume richtig eingebunden.
 - Mit S3: `objectStorage.pending` sinkt auf `0`; im Bucket liegen `flowplan/uploads/` und `flowplan/db/`; das Log zeigt beim Start Zeilen von `litestream`.
 
 ## Workflows
 
-[Workflows](/workflows) laufen im Server-Prozess. Ein Neustart verliert nichts: laufende Schritte ohne gültige Lease kommen nach spätestens zwei Minuten zurück in die Warteschlange, wartende Läufe (Warten, Freigabe) laufen zu ihrem Zeitpunkt weiter, Zeitpläne holen den letzten verpassten Termin einmal nach. Unter **Administration → Grenzen & Aufbewahrung → Workflows** zeigt die Überwachung wartende Schritte, die älteste fällige Aufgabe, nicht verteilte Ereignisse und die Fehlerquote. Läufe werden nach 30 Tagen gelöscht (`FLOWPLAN_WORKFLOW_RUN_DAYS`), wartende nie.
+[Workflows](/workflows) laufen im Server-Prozess. Ein Neustart verliert nichts: laufende Schritte ohne gültige Lease kommen nach spätestens zwei Minuten zurück in die Warteschlange, wartende Läufe (Warten, Freigabe) laufen zu ihrem Zeitpunkt weiter, Zeitpläne holen den letzten verpassten Termin einmal nach. Unter **Einstellungen → Instanz → Grenzen & Aufbewahrung → Workflows** zeigt die Überwachung wartende Schritte, die älteste fällige Aufgabe, nicht verteilte Ereignisse und die Fehlerquote. Läufe werden nach 30 Tagen gelöscht (`FLOWPLAN_WORKFLOW_RUN_DAYS`), wartende nie.
 
 ## Fehlersuche
 
@@ -54,7 +54,7 @@ Für Kubernetes und Load Balancer gibt es zusätzlich `/api/health/live` (der Pr
 | --- | --- |
 | Login endet mit Fehler zur Redirect-URI | URI beim Anbieter ≠ `APP_URL` + `/api/auth/callback`. |
 | „Ungültiger Anfrageursprung“ beim Speichern | `APP_URL` weicht von der aufgerufenen Adresse ab. |
-| Keine Administration sichtbar | Bei SSO fehlt die Gruppe im Token: `OIDC_SCOPES`, `OIDC_GROUPS_CLAIM`, `OIDC_ADMIN_GROUP` prüfen und neu anmelden. Bei E-Mail-Konten gibt ein Admin das Recht unter **Benutzer**. |
+| Keine **Instanz** in den Einstellungen | Bei SSO fehlt die Gruppe im Token: `OIDC_SCOPES`, `OIDC_GROUPS_CLAIM`, `OIDC_ADMIN_GROUP` prüfen und neu anmelden. Bei E-Mail-Konten gibt ein Admin das Recht unter **Benutzer**. |
 | Nach Neustart ist alles leer | Volume ist nicht auf `/app/data` eingehängt. |
 | `SQLITE_READONLY`, `EACCES` oder `unable to open database file` im Log, im Datenordner entsteht nichts | Der eingebundene Host-Ordner gehört nicht dem Benutzer, als der Flowplan läuft (meist mit `user:` gestartet): `PUID`/`PGID` statt `user:` setzen (Flowplan übernimmt den Ordner dann selbst), Flowplan mit `user: "UID:GID"` als Besitzer starten, `sudo chown -R 1000:1000 /pfad/zu/flowplan-data` oder ein benanntes Docker-Volume nehmen ([Volume-Rechte](/coolify-and-proxy#volume-rechte)). Neuere Images melden das beim Start und beenden sich. |
 | Container „degraded“ in Coolify | Healthcheck-Port leer (= 80); `3000` eintragen. |

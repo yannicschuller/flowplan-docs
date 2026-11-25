@@ -9,7 +9,7 @@ Neue Konten bekommen in ihrem persönlichen Arbeitsbereich die Seite **Willkomme
 ## Startinhalt festlegen {since=0.11.0}
 
 1. Lege in einem deiner Arbeitsbereiche einen Bereich an, z. B. „Onboarding“, und fülle ihn mit den Seiten, die alle bekommen sollen.
-2. Wähle ihn unter **Administration → Instanz → Startinhalt für neue Konten → Bereich**. Zur Auswahl stehen die Bereiche, die du lesen kannst; Ende-zu-Ende-verschlüsselte Bereiche nicht.
+2. Wähle ihn unter **Einstellungen → Instanz → Instanz → Startinhalt für neue Konten → Bereich**. Zur Auswahl stehen die Bereiche, die du lesen kannst; Ende-zu-Ende-verschlüsselte Bereiche nicht.
 3. **Eingebaute Willkommensseite behalten** (Standard: an) stellt „Willkommen bei Flowplan“ vor die Seiten des Bereichs; aus bekommen neue Konten nur die Seiten des Bereichs.
 
 ## Was kopiert wird {since=0.11.0}

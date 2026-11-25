@@ -31,8 +31,8 @@ Das gilt für jede Art des Betriebs: `docker run`, Docker Compose, Kubernetes mi
 3. **Die Domain behalten.** Gleiche `APP_URL` heißt: Passkeys, die OIDC-Weiterleitung, CalDAV- und CardDAV-Konten, die Apps, eingehende Webhooks (Git, Tickets, E-Mail-Eingang) und Freigabelinks funktionieren nach dem DNS-Wechsel einfach weiter. Mit einer neuen Domain muss all das neu eingerichtet werden (siehe [Andere Domain](#andere-domain)).
 4. **Die TTL des DNS-Eintrags senken**, mindestens so lange vorher, wie die bisherige TTL beträgt (oft 1 bis 24 Stunden), z. B. auf 300 Sekunden. Dann greift die Umstellung später in Minuten.
 5. **Den neuen Server einrichten** (Beispiel: [Hetzner Cloud](#beispiel-hetzner-cloud)) mit **derselben oder einer neueren** Flowplan-Version – eine ältere kann eine neuere Datenbank nicht öffnen – und mit denselben Umgebungsvariablen. Ein eigenes S3-Bucket für die neue Instanz ist am einfachsten; mit demselben Bucket siehe [Weg C](#weg-c-s3-und-litestream).
-6. **Eine Sicherung anlegen**: **Administration → Speicher & Sicherung → Gesamte Instanz → Herunterladen**. Sie schadet nie.
-7. **Die Nutzer vorwarnen**: **Administration → Wartung & Hinweise** zeigt allen ein Wartungsfenster an.
+6. **Eine Sicherung anlegen**: **Einstellungen → Instanz → Speicher & Sicherung → Gesamte Instanz → Herunterladen**. Sie schadet nie.
+7. **Die Nutzer vorwarnen**: **Einstellungen → Instanz → Wartung & Hinweise** zeigt allen ein Wartungsfenster an.
 
 :::
 
@@ -49,7 +49,7 @@ Das gilt für jede Art des Betriebs: `docker run`, Docker Compose, Kubernetes mi
 ::: steps
 
 1. Auf der alten Instanz [Wartung ankündigen](/administration#wartung-hinweise) – Änderungen nach dem Herunterladen gehen verloren.
-2. **Administration → Speicher & Sicherung → Gesamte Instanz → Herunterladen**. Mit `FLOWPLAN_ENCRYPTION_KEY` ist die Datei verschlüsselt (`.zip.enc`) – die neue Instanz braucht dann denselben Schlüssel.
+2. **Einstellungen → Instanz → Speicher & Sicherung → Gesamte Instanz → Herunterladen**. Mit `FLOWPLAN_ENCRYPTION_KEY` ist die Datei verschlüsselt (`.zip.enc`) – die neue Instanz braucht dann denselben Schlüssel.
 3. Die Instanzsicherung enthält Datenbank und Dateien, aber **nicht** `secrets.key` und `web-push-keys.json`. Beide von Hand kopieren (oder die Schlüssel als Variablen setzen):
    ```bash
    # alt
@@ -98,9 +98,9 @@ Mit `FLOWPLAN_LITESTREAM=off` gibt es keine laufende Kopie: dann die neueste gep
 ## Danach prüfen
 
 - **Anmelden**: mit Passwort, Passkey und SSO. Bestehende Sitzungen gelten weiter.
-- **Administration → Überwachung**: alles grün? **Administration → Verschlüsselung** zeigt dieselbe Schlüssel-ID wie vorher.
-- **Administration → Speicher & Sicherung**: S3 verbunden, Warteschlange läuft leer (mit S3 lädt Flowplan nach einer Übernahme alle Dateien einmal hoch), **Jetzt sichern** gelingt.
-- **Administration → E-Mail → Test-E-Mail senden** und **Administration → Push-Benachrichtigungen → Testbenachrichtigung senden**.
+- **Einstellungen → Instanz → Überwachung**: alles grün? **Einstellungen → Instanz → Verschlüsselung** zeigt dieselbe Schlüssel-ID wie vorher.
+- **Einstellungen → Instanz → Speicher & Sicherung**: S3 verbunden, Warteschlange läuft leer (mit S3 lädt Flowplan nach einer Übernahme alle Dateien einmal hoch), **Jetzt sichern** gelingt.
+- **Einstellungen → Instanz → E-Mail → Test-E-Mail senden** und **Einstellungen → Instanz → Push-Benachrichtigungen → Testbenachrichtigung senden**.
 - Ein paar Seiten, Bilder und Anhänge öffnen; eine Datei hochladen.
 - KI, Kalenderverbindungen, Chat-Apps: funktionieren sie ohne neue Anmeldung, sind die gespeicherten Geheimnisse lesbar.
 - CalDAV/CardDAV in einer App aktualisieren, die Desktop- und Mobil-Apps öffnen, eingehende Webhooks (Git, Tickets) einmal auslösen.
@@ -114,7 +114,7 @@ Mit `FLOWPLAN_LITESTREAM=off` gibt es keine laufende Kopie: dann die neueste gep
 
 ## Zurück, falls etwas schiefgeht
 
-Bis zum DNS-Wechsel ist nichts verloren: Auf der alten Instanz **Administration → Speicher & Sicherung → Instanz umziehen → Schreibschutz aufheben**, und alles läuft weiter wie vorher. Nach dem Wechsel: DNS zurückstellen und den Schreibschutz aufheben – was auf der neuen Instanz inzwischen geändert wurde, kommt nur mit einem Umzug in die Gegenrichtung zurück. Die neue Instanz selbst kehrt zu ihrem vorherigen Stand zurück, indem du bei gestopptem Container `flowplan.sqlite*` und `uploads/` durch den Inhalt von `pre-move-…` ersetzt.
+Bis zum DNS-Wechsel ist nichts verloren: Auf der alten Instanz **Einstellungen → Instanz → Speicher & Sicherung → Instanz umziehen → Schreibschutz aufheben**, und alles läuft weiter wie vorher. Nach dem Wechsel: DNS zurückstellen und den Schreibschutz aufheben – was auf der neuen Instanz inzwischen geändert wurde, kommt nur mit einem Umzug in die Gegenrichtung zurück. Die neue Instanz selbst kehrt zu ihrem vorherigen Stand zurück, indem du bei gestopptem Container `flowplan.sqlite*` und `uploads/` durch den Inhalt von `pre-move-…` ersetzt.
 
 ## Andere Domain
 

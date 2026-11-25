@@ -4,7 +4,7 @@ keywords: session, stay signed in, signed out, expiry, devices, remember me
 
 # Stay signed in
 
-How long a session lasts is set under **Administration → Sign-in & SSO → Sessions** ([Administration](/user-management#sign-in-sso)); without a setting there, the environment variables and their defaults apply.
+How long a session lasts is set under **Settings → Instance → Sign-in & SSO → Sessions** ([Sign-in & SSO](/user-management#sign-in-sso)); without a setting there, the environment variables and their defaults apply.
 
 | Where | How long (default) | Setting · variable |
 | --- | --- | --- |

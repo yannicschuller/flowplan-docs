@@ -17,11 +17,11 @@ Die Umgebungsvariablen für Mailversand und E-Mail-Eingang, Integrationen wie Gi
 | `SMTP_FROM` | `Flowplan <SMTP_USER>` | Absender, z. B. `Flowplan <flowplan@example.com>`. |
 | `SMTP_TLS_CA` | *leer* | CA-Zertifikat eines Mailservers mit eigenem oder selbst signiertem Zertifikat (Dateipfad oder PEM-Text, auch einzeilig mit `\n`). Gilt zusätzlich zu den öffentlichen Zertifizierungsstellen. {since=0.9.7} |
 | `SMTP_TLS_SERVERNAME` | *leer* | Name, auf den das Zertifikat geprüft wird, wenn `SMTP_HOST` eine IP-Adresse oder ein anderer Name ist (z. B. `mail.internal`). {since=0.9.7} |
-| `SMTP_TLS_REJECT_UNAUTHORIZED` | *leer* (prüfen) | `false` schaltet die Zertifikatsprüfung ab – nur dieser Wert (Groß-/Kleinschreibung und Leerzeichen egal); jeder andere prüft weiter. Flowplan warnt dann beim Start und in der Administration. {since=0.9.7} |
+| `SMTP_TLS_REJECT_UNAUTHORIZED` | *leer* (prüfen) | `false` schaltet die Zertifikatsprüfung ab – nur dieser Wert (Groß-/Kleinschreibung und Leerzeichen egal); jeder andere prüft weiter. Flowplan warnt dann beim Start und in den Einstellungen der Instanz. {since=0.9.7} |
 
-Den Versand prüfst du unter **Administration → E-Mail → Test-E-Mail senden**.
+Den Versand prüfst du unter **Einstellungen → Instanz → E-Mail → Test-E-Mail senden**.
 
-**Interne Server mit eigenen Zertifikaten:** Flowplan prüft Zertifikate standardmäßig. Für einen Mail- oder Verzeichnisserver mit eigenem oder selbst signiertem Zertifikat gibst du dessen CA an: `SMTP_TLS_CA` für E-Mail, [`LDAP_TLS_CA`](/scim-and-ldap) für LDAP. Mit Docker bindest du die CA-Datei in den Container ein (etwa `./ca.pem:/certs/ca.pem:ro`) und setzt `SMTP_TLS_CA=/certs/ca.pem`. Sprichst du den Server über seine IP-Adresse oder einen Namen an, der nicht im Zertifikat steht (etwa `192.168.1.10` oder `pve.local`), nennst du den Namen aus dem Zertifikat in `SMTP_TLS_SERVERNAME` bzw. `LDAP_TLS_SERVERNAME` – so bleibt die Prüfung an. Für alle Verbindungen von Flowplan – auch Webhooks oder KI-Anbieter in deinem Netz – ergänzt Nodes `NODE_EXTRA_CA_CERTS=/certs/ca.pem` die CA überall; es wird beim Start gelesen. Scheitert die Test-E-Mail mit „unable to verify the first certificate“, fehlt die CA; bei „Hostname/IP does not match certificate's altnames“ fehlt der Name. Nur wenn beides nicht geht (etwa ein Proxmox-Relay mit automatisch erzeugtem Zertifikat), schaltest du die Prüfung mit `SMTP_TLS_REJECT_UNAUTHORIZED=false` bzw. `LDAP_TLS_REJECT_UNAUTHORIZED=false` ab. Dann kann sich jeder im Netz als Server ausgeben und das SMTP- oder LDAP-Passwort mitlesen – Flowplan warnt deshalb im Server-Log beim Start, in **Administration → E-Mail** bzw. **→ Anmeldung & SSO** und in der Sicherheitsübersicht. {since=0.9.7}
+**Interne Server mit eigenen Zertifikaten:** Flowplan prüft Zertifikate standardmäßig. Für einen Mail- oder Verzeichnisserver mit eigenem oder selbst signiertem Zertifikat gibst du dessen CA an: `SMTP_TLS_CA` für E-Mail, [`LDAP_TLS_CA`](/scim-and-ldap) für LDAP. Mit Docker bindest du die CA-Datei in den Container ein (etwa `./ca.pem:/certs/ca.pem:ro`) und setzt `SMTP_TLS_CA=/certs/ca.pem`. Sprichst du den Server über seine IP-Adresse oder einen Namen an, der nicht im Zertifikat steht (etwa `192.168.1.10` oder `pve.local`), nennst du den Namen aus dem Zertifikat in `SMTP_TLS_SERVERNAME` bzw. `LDAP_TLS_SERVERNAME` – so bleibt die Prüfung an. Für alle Verbindungen von Flowplan – auch Webhooks oder KI-Anbieter in deinem Netz – ergänzt Nodes `NODE_EXTRA_CA_CERTS=/certs/ca.pem` die CA überall; es wird beim Start gelesen. Scheitert die Test-E-Mail mit „unable to verify the first certificate“, fehlt die CA; bei „Hostname/IP does not match certificate's altnames“ fehlt der Name. Nur wenn beides nicht geht (etwa ein Proxmox-Relay mit automatisch erzeugtem Zertifikat), schaltest du die Prüfung mit `SMTP_TLS_REJECT_UNAUTHORIZED=false` bzw. `LDAP_TLS_REJECT_UNAUTHORIZED=false` ab. Dann kann sich jeder im Netz als Server ausgeben und das SMTP- oder LDAP-Passwort mitlesen – Flowplan warnt deshalb im Server-Log beim Start, in **Einstellungen → Instanz → E-Mail** bzw. **→ Anmeldung & SSO** und in der Sicherheitsübersicht. {since=0.9.7}
 
 ## E-Mail-Eingang (IMAP)
 
@@ -73,7 +73,7 @@ Die Aktualisierungs-Tokens der Personen liegen versiegelt in der Datenbank (wie 
 
 ## Chat-Apps
 
-Benachrichtigungen an [Telegram, Gotify, ntfy und Matrix](/notifications#chat-apps). Alles lässt sich auch unter **Administration → Chat-Apps** einstellen; dort gespeicherte Werte haben Vorrang.
+Benachrichtigungen an [Telegram, Gotify, ntfy und Matrix](/notifications#chat-apps). Alles lässt sich auch unter **Einstellungen → Instanz → Chat-Apps** einstellen; dort gespeicherte Werte haben Vorrang.
 
 | Variable | Standard | Bedeutung |
 | --- | --- | --- |
@@ -82,7 +82,7 @@ Benachrichtigungen an [Telegram, Gotify, ntfy und Matrix](/notifications#chat-ap
 | `FLOWPLAN_TELEGRAM_API_URL` | `https://api.telegram.org` | Adresse der Bot-API für den Bot der Instanz – ein selbst betriebener [Telegram-Bot-API-Server](https://github.com/tdlib/telegram-bot-api) oder ein Relay/Proxy. Darf im eigenen Netz liegen und `http://` sein. |
 | `FLOWPLAN_MESSENGER_ALLOW_PRIVATE` | wie `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE` | `true`: Personen dürfen Server im eigenen Netz angeben (interne Adressen, `http://`) – etwa Gotify oder ntfy im Heimnetz. Sonst sind interne Adressen gesperrt, auch wenn ein Name später auf eine umgestellt wird. |
 
-**Bot der Instanz ohne öffentliche Adresse:** Flowplan nutzt keinen Webhook, sondern fragt die Nachrichten des Bots mit `getUpdates` ab – nur solange ein Verbindungscode wartet (höchstens 15 Minuten). Ausgehendes HTTPS zur Bot-API genügt. Der Bot darf deshalb nicht gleichzeitig einen Webhook haben oder von einem anderen Programm abgefragt werden (Telegram meldet dann einen Konflikt, die Administration zeigt ihn an) – nimm einen eigenen Bot nur für Flowplan.
+**Bot der Instanz ohne öffentliche Adresse:** Flowplan nutzt keinen Webhook, sondern fragt die Nachrichten des Bots mit `getUpdates` ab – nur solange ein Verbindungscode wartet (höchstens 15 Minuten). Ausgehendes HTTPS zur Bot-API genügt. Der Bot darf deshalb nicht gleichzeitig einen Webhook haben oder von einem anderen Programm abgefragt werden (Telegram meldet dann einen Konflikt, **Einstellungen → Instanz → Chat-Apps** zeigt ihn an) – nimm einen eigenen Bot nur für Flowplan.
 
 **Ausgehende Verbindungen:** zu `api.telegram.org` (oder der eigenen API-Adresse), `ntfy.sh` und den Servern, die Personen angeben. Sie laufen über dieselbe Prüfung wie Link-Vorschauen und Webhooks: Adresse auflösen, interne Adressen abweisen, genau die geprüfte Adresse verwenden, keine Weiterleitungen. Abgewiesene Versuche erscheinen als Sicherheitsereignis „Interne Adresse abgewiesen (SSRF)“.
 
@@ -90,7 +90,7 @@ Die Tokens der Personen und des Bots speichert Flowplan verschlüsselt wie ander
 
 ## Workflows
 
-Standards für [Workflows](/workflows); die [Administration](/administration#workflows) kann sie überschreiben.
+Standards für [Workflows](/workflows); Admins können sie unter [Einstellungen → Instanz → Grenzen & Aufbewahrung](/administration#workflows) überschreiben.
 
 | Variable | Standard | Bedeutung |
 | --- | --- | --- |

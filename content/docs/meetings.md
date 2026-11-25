@@ -65,7 +65,7 @@ Die Apps für iPhone, iPad und Android nehmen nur das Mikrofon auf.
 
 ## API und MCP
 
-Für API-Tokens gibt es die Berechtigung **„KI und Transkription“** (Einstellungen → API & KI-Assistenten, beim Erstellen eines Tokens; standardmäßig aus). Nur Tokens mit dieser Berechtigung erreichen KI-Funktionen (`/api/ai/run`, `ask`, `write`, `summarize`), die Transkription (`/api/transcribe`) und Besprechungen. Die Administration kann die Berechtigung für die ganze Instanz abschalten (Administration → KI → „API-Tokens mit ‚KI und Transkription‘“). Anfragen zählen gegen dieselben KI-Grenzen wie die Oberfläche.
+Für API-Tokens gibt es die Berechtigung **„KI und Transkription“** (Einstellungen → API & KI-Assistenten, beim Erstellen eines Tokens; standardmäßig aus). Nur Tokens mit dieser Berechtigung erreichen KI-Funktionen (`/api/ai/run`, `ask`, `write`, `summarize`), die Transkription (`/api/transcribe`) und Besprechungen. Die Administration kann die Berechtigung für die ganze Instanz abschalten (Einstellungen → Instanz → KI → „API-Tokens mit ‚KI und Transkription‘“). Anfragen zählen gegen dieselben KI-Grenzen wie die Oberfläche.
 
 ```bash
 curl -X POST https://flowplan.example/api/meetings \

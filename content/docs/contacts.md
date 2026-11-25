@@ -93,4 +93,4 @@ Zuordnen lassen sich nur freigegebene Attribute: die der Standardzuordnung und d
 - Kontakte werden über `entryUUID` (OpenLDAP), `objectGUID` (Active Directory) oder `nsUniqueId` (389 DS) wiedergefunden, sonst über den DN – umbenannte oder verschobene Einträge behalten ihren Kontakt.
 - Einer OU nicht mehr folgen: im Import-Dialog **Nicht mehr folgen**; die Kontakte bleiben.
 - Im Hintergrund gleicht Flowplan im Namen der Person ab, die der OU folgt. Verliert sie den Zugriff aufs Verzeichnis oder das Recht, die Datenbank zu bearbeiten, hält der Abgleich an, und die Datenbank zeigt einen Fehler beim Abgleich. Gleicht jemand mit Bearbeitungsrecht und Zugriff aufs Verzeichnis von Hand ab, läuft er wieder – ab dann im Namen dieser Person. {since=0.11.5}
-- Importe stehen im Sicherheitsprotokoll der Administration.
+- Importe stehen im Sicherheitsprotokoll der Instanz.

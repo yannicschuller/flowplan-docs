@@ -40,13 +40,13 @@ For Kubernetes and load balancers there are also `/api/health/live` (the process
 
 - `/api/health` returns `200`.
 - Signing in works and lands back in Flowplan.
-- The first account (with SSO: a member of the admin group) sees **Administration**.
+- The first account (with SSO: a member of the admin group) sees the **Instance** part of Settings.
 - Upload a file, restart the container, open the file again – then the volume is mounted correctly.
 - With S3: `objectStorage.pending` drops to `0`; the bucket contains `flowplan/uploads/` and `flowplan/db/`; the log shows lines from `litestream` on start.
 
 ## Workflows
 
-[Workflows](/workflows) run in the server process. A restart loses nothing: running steps without a valid lease return to the queue after two minutes at most, waiting runs (waits, approvals) continue at their time, schedules make up for the last missed slot once. Under **Administration → Limits & retention → Workflows**, monitoring shows waiting steps, the oldest step due, undistributed events and the failure rate. Runs are deleted after 30 days (`FLOWPLAN_WORKFLOW_RUN_DAYS`), waiting ones never.
+[Workflows](/workflows) run in the server process. A restart loses nothing: running steps without a valid lease return to the queue after two minutes at most, waiting runs (waits, approvals) continue at their time, schedules make up for the last missed slot once. Under **Settings → Instance → Limits & retention → Workflows**, monitoring shows waiting steps, the oldest step due, undistributed events and the failure rate. Runs are deleted after 30 days (`FLOWPLAN_WORKFLOW_RUN_DAYS`), waiting ones never.
 
 ## Troubleshooting
 
@@ -54,7 +54,7 @@ For Kubernetes and load balancers there are also `/api/health/live` (the process
 | --- | --- |
 | Sign-in ends with an error about the redirect URI | The URI at the provider ≠ `APP_URL` + `/api/auth/callback`. |
 | "Invalid request origin" when saving | `APP_URL` differs from the address in use. |
-| No administration visible | With SSO the group is missing in the token: check `OIDC_SCOPES`, `OIDC_GROUPS_CLAIM`, `OIDC_ADMIN_GROUP` and sign in again. For e-mail accounts an administrator grants the right under **Users**. |
+| No **Instance** in Settings | With SSO the group is missing in the token: check `OIDC_SCOPES`, `OIDC_GROUPS_CLAIM`, `OIDC_ADMIN_GROUP` and sign in again. For e-mail accounts an administrator grants the right under **Users**. |
 | Everything is empty after a restart | The volume is not mounted on `/app/data`. |
 | `SQLITE_READONLY`, `EACCES` or `unable to open database file` in the log, nothing appears in the data folder | The mounted host folder does not belong to the user Flowplan runs as (usually started with `user:`): set `PUID`/`PGID` instead of `user:` (Flowplan then takes over the folder itself), run Flowplan as the owner with `user: "UID:GID"`, `sudo chown -R 1000:1000 /path/to/flowplan-data`, or use a named Docker volume ([Volume permissions](/coolify-and-proxy#volume-permissions)). Newer images say so at start and stop. |
 | Container "degraded" in Coolify | The health check port is empty (= 80); enter `3000`. |

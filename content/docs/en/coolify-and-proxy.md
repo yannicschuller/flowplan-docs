@@ -25,7 +25,7 @@ Flowplan only needs an HTTPS proxy in front of it. WebSockets are not needed: co
 Before an instance goes into regular use, check the resource's settings:
 
 - **Health check** on, port `3000`, path `/api/health` ([Health check](#health-check)).
-- **Restart policy** left at Coolify's default (`unless-stopped`): the container comes back after a crash and after **Restart now** in the administration. For **Max restart count**, check the field's tooltip in Coolify for what `0` means there.
+- **Restart policy** left at Coolify's default (`unless-stopped`): the container comes back after a crash and after **Restart now** under **Settings → Instance → Monitoring**. For **Max restart count**, check the field's tooltip in Coolify for what `0` means there.
 - With SQLite: **Container naming** set to **Consistent name (no rolling updates)** plus a **Custom container name** ([Roll out SQLite without overlap](#roll-out-sqlite-without-overlap)).
 - **Stop grace period** 30 seconds or more, so Flowplan and Litestream end cleanly.
 - A **memory limit** with room for Litestream next to the app – or, without a limit, enough free memory on the host ([Sizing](/sizing), [when the host runs out](/troubleshooting#restarts-without-an-error)).
@@ -112,7 +112,7 @@ A beta instance without S3 never runs Litestream – its replication, the [self-
 
 1. At your S3 provider, create a **separate bucket** for the beta instance (e.g. `flowplan-beta`) and an access key that may only use that bucket. A separate bucket is safest: a reset of the beta replica can never touch production. If you can only use one bucket, give the beta instance at least its own `S3_PREFIX` (e.g. `flowplan-beta`) – never the prefix of production.
 2. In Coolify, in the beta resource's environment variables, set `S3_BUCKET`, `S3_ENDPOINT`, `S3_REGION`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY` and `S3_PREFIX` for that bucket. Its data volume stays its own, too.
-3. Deploy. The log shows Litestream restoring (an empty bucket: nothing to restore) and then replicating; **Administration → Monitoring** shows the replica's state.
+3. Deploy. The log shows Litestream restoring (an empty bucket: nothing to restore) and then replicating; **Settings → Instance → Monitoring** shows the replica's state.
 
 :::
 
@@ -139,7 +139,7 @@ If you need updates without interruption, use [PostgreSQL](/postgresql) – an u
 - logs `ANOTHER CONTAINER IS USING THE DATA FOLDER …`;
 - starts replication by itself as soon as the other container has stopped and the lock is free. If that Litestream crashes, the app keeps running and Flowplan restarts it after `FLOWPLAN_LITESTREAM_RESTART_SECONDS` seconds (default 5) – twice as late with each further crash, after 300 seconds at most.
 
-While it waits, **Administration → Monitoring** shows the warning “A second Flowplan container (*host*) has been using the same data folder since *time* …” on both containers (on the waiting one: “This container … has been waiting …”). It ends once only one container runs. The net prevents the damaged state, but it does not replace a rollout without overlap: for the time of the overlap, two apps write to the same file. The lock needs a file system with `flock` – a local Docker volume or a local folder, not SMB.
+While it waits, **Settings → Instance → Monitoring** shows the warning “A second Flowplan container (*host*) has been using the same data folder since *time* …” on both containers (on the waiting one: “This container … has been waiting …”). It ends once only one container runs. The net prevents the damaged state, but it does not replace a rollout without overlap: for the time of the overlap, two apps write to the same file. The lock needs a file system with `flock` – a local Docker volume or a local folder, not SMB.
 
 ## Pangolin, Traefik and other proxies
 
@@ -192,7 +192,7 @@ Never expose the internal port `3000` publicly as well.
 
 ## Custom domains for publications
 
-With **Custom domains for publications** under **Administration → Extensions & domains**, owners show published pages under their domain ([Publish on the web](/publishing#custom-domain)). Flowplan recognises the domain by the `Host` header and serves only the publication. The certificate stays the reverse proxy's job; it must pass requests for any host on to Flowplan and keep the `Host` unchanged.
+With **Custom domains for publications** under **Settings → Instance → Extensions & domains**, owners show published pages under their domain ([Publish on the web](/publishing#custom-domain)). Flowplan recognises the domain by the `Host` header and serves only the publication. The certificate stays the reverse proxy's job; it must pass requests for any host on to Flowplan and keep the `Host` unchanged.
 
 Flowplan answers `GET /api/domains/allowed?domain=<host>` with 200 for verified domains of active publications and with 404 otherwise – exactly the question Caddy asks before a new certificate.
 

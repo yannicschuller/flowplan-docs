@@ -38,7 +38,7 @@ SESSION_HOURS=8
 | --- | --- |
 | `OIDC_ISSUER` | The issuer URL; Flowplan reads the discovery from it (`/.well-known/openid-configuration`). |
 | `OIDC_GROUPS_CLAIM` | The claim with the groups, also as a path such as `realm_access.roles`. |
-| `OIDC_ADMIN_GROUP` | Members of this group see the **Administration**. The name is compared exactly. |
+| `OIDC_ADMIN_GROUP` | Members of this group are admins and see the **Instance** part of Settings. The name is compared exactly. |
 | `OIDC_ALLOWED_GROUP` | If set, only members of this group may sign in. |
 | `OIDC_LINKED_SSO_ONLY` | `true`: accounts connected to SSO sign in through SSO only (off by default). A password or passkey sign-in is refused with a note; passkeys and the authenticator app stay for confirming important steps. See [Connect an existing account to SSO](#connect-an-existing-account-to-sso). |
 | `OIDC_NEW_ACCOUNTS` | `false`: SSO sign-in creates no new accounts (on by default) – only existing, connected or SCIM-provisioned accounts sign in. At a first SSO sign-in with a known address, "Create a separate account instead" is then not offered. |
@@ -55,9 +55,9 @@ SESSION_HOURS=8
 
 ## Check the admin group {since=0.9.7}
 
-People who sign in with SSO get the **Administration** when the group from `OIDC_ADMIN_GROUP` is among the groups the provider sends in the claim from `OIDC_GROUPS_CLAIM` (default `groups`; a path such as `realm_access.roles` works too). Flowplan compares the names **exactly**, including case and slashes.
+People who sign in with SSO become admins (and see the **Instance** part of Settings) when the group from `OIDC_ADMIN_GROUP` is among the groups the provider sends in the claim from `OIDC_GROUPS_CLAIM` (default `groups`; a path such as `realm_access.roles` works too). Flowplan compares the names **exactly**, including case and slashes.
 
-Whether it works shows under **Administration → Users** in the person's side panel: **Groups from the provider (last sign-in)** shows which claim was read, which groups arrived and whether the admin group was among them ([Users](/user-management#users)). Typical causes when it is missing:
+Whether it works shows under **Settings → Instance → Users** in the person's side panel: **Groups from the provider (last sign-in)** shows which claim was read, which groups arrived and whether the admin group was among them ([Users](/user-management#users)). Typical causes when it is missing:
 
 - **"missing from token and userinfo":** the provider does not send the claim – usually the group mapper or the scope for groups (`OIDC_SCOPES`) is missing, or the claim has another name than `OIDC_GROUPS_CLAIM`.
 - **Keycloak with "Full group path":** the group then arrives as `/flowplan-admins`, with a leading slash – which does not match `OIDC_ADMIN_GROUP=flowplan-admins`. Turn **Full group path** off in the "Group Membership" mapper, or enter the name exactly as it arrives (`OIDC_ADMIN_GROUP=/flowplan-admins`; for sub-groups the whole path, such as `/company/flowplan-admins`).
@@ -91,7 +91,7 @@ Good to know:
 
 - A connected account with e-mail and password keeps its name, picture and admin right; SSO group mappings still do not change its memberships.
 - With `OIDC_LINKED_SSO_ONLY=true`, connected accounts sign in through SSO only – a password or passkey sign-in then gets a clear note to choose "Sign in with SSO". Passkeys and the app stay for confirming steps.
-- Connecting, disconnecting, refused connections, removing the password and merges are recorded in the security log (**Administration → Security**).
+- Connecting, disconnecting, refused connections, removing the password and merges are recorded in the security log (**Settings → Instance → Security**).
 - LDAP accounts stay linked by their DN; they can connect SSO the same way (proof with the directory password). The LDAP link itself cannot be disconnected.
 - When connecting, Flowplan asks the provider with `prompt=login`, so an account still signed in there is not connected by accident.
 - With `OIDC_ALLOWED_GROUP`, only SSO identities in that group can be connected – as for signing in.
@@ -100,7 +100,7 @@ Good to know:
 
 Groups from the identity provider (the claim in `OIDC_GROUPS_CLAIM`) can give membership and groups in workspaces – so you manage access centrally in the provider.
 
-- **Admins** map groups – for any workspace centrally under **Administration → Sign-in & SSO → Map SSO groups centrally**, or, where they are owners, under **Settings → Groups & permissions → SSO groups**.
+- **Admins** map groups – for any workspace centrally under **Settings → Instance → Sign-in & SSO → Map SSO groups centrally**, or, where they are owners, under **Settings → Groups & permissions → SSO groups**.
 - **Owners** who aren't admins see their workspace's mappings there but can't change them. A mapping brings people of the whole instance into a workspace and shows their addresses there – that is the administration's decision.
 - A mapping gives a **role** (View, Edit, Owner), a **workspace group** (for [page permissions](/workspaces-and-permissions#groups)) or both.
 
@@ -134,7 +134,7 @@ If a portal in front of Flowplan already signs people in – YunoHost's SSO (SSO
 - **Sign-in page:** `AUTH_PROXY_LOGIN_URL` adds a button such as **Sign in with YunoHost** (name from `AUTH_PROXY_NAME`). `AUTH_PROXY_ONLY=true` hides password, passkeys and sign-up; `FLOWPLAN_LOCAL_LOGIN=false` also turns password sign-in off on the server.
 - **Admins and groups:** with `AUTH_PROXY_GROUPS_HEADER`, `OIDC_ADMIN_GROUP` and the [SSO group mappings](#map-sso-groups-to-workspaces) work as with OIDC; without groups (YunoHost), `AUTH_PROXY_ADMIN_USERS` names the admins. The second factor is the portal's business, as with SSO.
 
-**Administration → Sign-in & SSO** shows the settings read-only; trusted proxies beyond this machine are warned about there and under **Administration → Security**.
+**Settings → Instance → Sign-in & SSO** shows the settings read-only; trusted proxies beyond this machine are warned about there and under **Settings → Instance → Security**.
 
 ### Variables
 

@@ -4,7 +4,7 @@ keywords: Sitzung, angemeldet bleiben, abgemeldet, Ablauf, Geräte, Session
 
 # Angemeldet bleiben
 
-Wie lange eine Sitzung dauert, legt die Administration unter **Administration → Anmeldung & SSO → Sitzungen** fest ([Administration](/user-management#anmeldung-sso)); ohne Einstellung dort gelten die Umgebungsvariablen und ihre Standards.
+Wie lange eine Sitzung dauert, legt die Administration unter **Einstellungen → Instanz → Anmeldung & SSO → Sitzungen** fest ([Anmeldung & SSO](/user-management#anmeldung-sso)); ohne Einstellung dort gelten die Umgebungsvariablen und ihre Standards.
 
 | Wo | Wie lange (Standard) | Einstellung · Variable |
 | --- | --- | --- |

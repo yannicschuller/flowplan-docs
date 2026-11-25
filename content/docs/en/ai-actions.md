@@ -111,7 +111,7 @@ New page → Database → **Create with AI** and describe it, e.g. "Reading list
 
 ## AI in workflows
 
-[Workflows](/workflows) have four AI nodes: **Summarize**, **Classify** (into categories or the options of a select, with an “unclear” port), **Extract fields** and **Custom prompt** (text or JSON). They use the AI feature **AI in workflows** – admins switch it off under Administration → AI, everyone for themselves in their own AI settings.
+[Workflows](/workflows) have four AI nodes: **Summarize**, **Classify** (into categories or the options of a select, with an “unclear” port), **Extract fields** and **Custom prompt** (text or JSON). They use the AI feature **AI in workflows** – admins switch it off under Settings → Instance → AI, everyone for themselves in their own AI settings.
 
 - **Budget**: at most 100,000 tokens per workflow and day (`FLOWPLAN_WORKFLOW_AI_TOKENS_PER_DAY`); when it is used up, the node fails with a message.
 - **What the AI reads**: only pages and records the person the workflow runs as may see and that are open to the AI; blocked pages and journals with a PIN stay out.

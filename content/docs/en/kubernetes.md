@@ -101,7 +101,7 @@ You bring the data into PostgreSQL with the migration tool and the files into th
 ::: steps
 
 1. **Same version.** Bring the single pod to the Flowplan version the cluster will run (`helm upgrade` with the new chart or `image.tag`) and let it start once.
-2. **Files into the bucket.** Turn on S3 in the single pod (`s3.bucket`, `s3.endpoint`, the keys in `s3.existingSecret` or `existingSecret`) and wait until every file is there: **Administration → Storage & backup**, or `objectStorage.pending` at `0` in [`/api/health`](/en/operations#health-check). Use the same bucket and prefix in the cluster later.
+2. **Files into the bucket.** Turn on S3 in the single pod (`s3.bucket`, `s3.endpoint`, the keys in `s3.existingSecret` or `existingSecret`) and wait until every file is there: **Settings → Instance → Storage & backup**, or `objectStorage.pending` at `0` in [`/api/health`](/en/operations#health-check). Use the same bucket and prefix in the cluster later.
 3. **Keep the keys.** Without `FLOWPLAN_ENCRYPTION_KEY` and push keys, the single container made them itself. Take them from its data folder into the Secret `flowplan-keys`: the content of `secrets.key` as `FLOWPLAN_SECRETS_KEY` (in addition to a `FLOWPLAN_ENCRYPTION_KEY`), `publicKey`/`privateKey` of `web-push-keys.json` as `WEB_PUSH_PUBLIC_KEY`/`WEB_PUSH_PRIVATE_KEY`:
 
    ```bash
@@ -110,7 +110,7 @@ You bring the data into PostgreSQL with the migration tool and the files into th
    ```
 
 4. **Prepare the target:** an empty PostgreSQL database and a role that owns it ([Requirements](/en/postgresql#requirements)), and the Secret `flowplan-cluster` as above.
-5. **Back up:** **Administration → Storage & backup → Whole instance → Download**.
+5. **Back up:** **Settings → Instance → Storage & backup → Whole instance → Download**.
 6. **Stop Flowplan:** `kubectl -n flowplan scale deploy/flowplan --replicas=0`. The volume stays.
 7. **Copy and verify** with a pod on the same volume (`flowplan-data` is the chart's PVC):
 
@@ -138,7 +138,7 @@ You bring the data into PostgreSQL with the migration tool and the files into th
 
    `kubectl -n flowplan apply -f migrate.yaml`, then `kubectl -n flowplan logs -f flowplan-migrate`. The last line must read `verified: every table has the same rows`. Delete the pod afterwards. Details and options of the tool: [Switching the database](/en/database-migration).
 8. **Switch to cluster mode:** `helm upgrade flowplan deploy/helm/flowplan -n flowplan -f my-values.yaml` with `cluster.enabled: true` and the same bucket. The PVC is kept – delete it only once the cluster runs and its first backup exists.
-9. **Check:** sign in, open a page with images, search, and under **Administration → Monitoring → System** see the pods, the leader and **PostgreSQL**.
+9. **Check:** sign in, open a page with images, search, and under **Settings → Instance → Monitoring → System** see the pods, the leader and **PostgreSQL**.
 
 :::
 
@@ -155,8 +155,8 @@ A pod that stops gets `terminationGracePeriodSeconds` (30): open requests and ru
 
 ## Backups {since=0.10.0}
 
-- **One pod:** as with Docker – scheduled backups in the administration, with S3 also Litestream ([Storage, S3 and backups](/en/storage-and-backups)). Back up the volume as well, if your platform can.
-- **Several pods:** PostgreSQL holds all data: the scheduled backups in the administration are `pg_dump` archives in the bucket ([Backups with pg_dump](/en/postgresql#backups-with-pg-dump)); add your provider's backups or point-in-time recovery. The files are in the bucket – turn on versioning there or replicate it. Redis needs no backup.
+- **One pod:** as with Docker – scheduled backups under **Settings → Instance → Storage & backup**, with S3 also Litestream ([Storage, S3 and backups](/en/storage-and-backups)). Back up the volume as well, if your platform can.
+- **Several pods:** PostgreSQL holds all data: the scheduled backups from **Settings → Instance → Storage & backup** are `pg_dump` archives in the bucket ([Backups with pg_dump](/en/postgresql#backups-with-pg-dump)); add your provider's backups or point-in-time recovery. The files are in the bucket – turn on versioning there or replicate it. Redis needs no backup.
 - **Always:** keep the Secrets (above all `FLOWPLAN_ENCRYPTION_KEY` and the push keys) apart from the backups.
 - **Restoring** a backup replaces every table: scale to **one pod** first (`cluster.replicas: 1`), restore, then scale up again.
 
@@ -164,7 +164,7 @@ A pod that stops gets `terminationGracePeriodSeconds` (30): open requests and ru
 
 Set `cluster.replicas` and run `helm upgrade` – one pod per about 25 people active at the same time, plus a spare. More pods need more database connections: each pod opens up to `cluster.poolSize` plus three of its own. The PodDisruptionBudget (`cluster.podDisruptionBudget.minAvailable`) keeps pods running while nodes are drained; keep it below `replicas`.
 
-What to watch: response times and CPU per pod under **Administration → Monitoring**, "waiting" connections under **System** (raise `cluster.poolSize` or add pods), and with Prometheus the metrics of each pod (`instance_id` label; the installation's figures only from the leader).
+What to watch: response times and CPU per pod under **Settings → Instance → Monitoring**, "waiting" connections under **System** (raise `cluster.poolSize` or add pods), and with Prometheus the metrics of each pod (`instance_id` label; the installation's figures only from the leader).
 
 ## Limits {since=0.10.0}
 

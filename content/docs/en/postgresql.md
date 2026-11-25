@@ -159,7 +159,7 @@ The script reads `DATABASE_URL` and `FLOWPLAN_PG_SCHEMA` from the container's en
 
 ## Backups with pg_dump
 
-On PostgreSQL, the **scheduled backup** and **Back up now** (Administration → Storage & backup) write a `pg_dump` archive in custom format: `flowplan-2026-11-07-03-00.dump`, encrypted as `.dump.enc` with `FLOWPLAN_ENCRYPTION_KEY`. Everything else stays as with SQLite:
+On PostgreSQL, the **scheduled backup** and **Back up now** (Settings → Instance → Storage & backup) write a `pg_dump` archive in custom format: `flowplan-2026-11-07-03-00.dump`, encrypted as `.dump.enc` with `FLOWPLAN_ENCRYPTION_KEY`. Everything else stays as with SQLite:
 
 - Targets: S3 under `<prefix>/backups/`, [SFTP](/en/storage-and-backups#backup-via-sftp) or the data folder – with the same retention and the same [delayed deletion](/en/storage-and-backups#delayed-deletion) of files.
 - [Encryption](/en/storage-encryption#encryption) as before; `decrypt.mjs` also decrypts `.dump.enc`.
@@ -168,11 +168,11 @@ On PostgreSQL, the **scheduled backup** and **Back up now** (Administration → 
 
 **Falling back to SQLite:** if no suitable `pg_dump` is available (too old or not installed), the scheduled backup writes a portable SQLite file (`flowplan-….sqlite`) instead and notes this in the log. With `FLOWPLAN_BACKUP_FORMAT=sqlite` it always does. Such a file restores on SQLite **and** PostgreSQL.
 
-The **instance backup** (Administration → Storage & backup → Whole instance → Download) always holds the database in the portable SQLite format, so it restores on both databases. Litestream does not run with PostgreSQL – for continuous backups to any point in time, use your database server's own means (WAL archiving, your provider's point-in-time recovery).
+The **instance backup** (Settings → Instance → Storage & backup → Whole instance → Download) always holds the database in the portable SQLite format, so it restores on both databases. Litestream does not run with PostgreSQL – for continuous backups to any point in time, use your database server's own means (WAL archiving, your provider's point-in-time recovery).
 
 ### Restoring
 
-- **A `pg_dump` archive on a running instance** (`flowplan-….dump`, `.dump.enc`): upload it under **Administration → Storage & backup → Restore from backup**. Flowplan checks it right away and applies it on the next restart – in cluster mode the leading instance does, see [Known limits](/en/cluster#known-limits). Only the database is replaced; the files stay as they are.
+- **A `pg_dump` archive on a running instance** (`flowplan-….dump`, `.dump.enc`): upload it under **Settings → Instance → Storage & backup → Restore from backup**. Flowplan checks it right away and applies it on the next restart – in cluster mode the leading instance does, see [Known limits](/en/cluster#known-limits). Only the database is replaced; the files stay as they are.
 - **On a new instance** with PostgreSQL, the same works on the setup screen: upload it or fetch it from S3 or via SFTP, as in [Restore while setting up](/restore#restore-while-setting-up).
 - An instance on SQLite refuses such archives – use the instance backup or [switch the database](/en/database-migration).
 - Flowplan checks the archive first (a Flowplan database, not from a newer version), then replaces the whole schema in one transaction and rebuilds the search index. Only the data of Flowplan's tables comes from the archive; tables, functions and triggers are created by the running version itself. Older archives therefore fit into the current tables.

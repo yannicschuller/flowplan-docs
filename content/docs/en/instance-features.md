@@ -4,7 +4,7 @@ keywords: features, modules, switch off, disable, instance, workflows, AI, flash
 
 # Features of this instance
 
-Under **Administration → Instance → Features of this instance** you switch features off for the whole instance – the same list as in [Show and hide features](/settings#show-and-hide-features). Unlike there, the feature is then not only hidden but off. Flowplan asks before switching one off.
+Under **Settings → Instance → Instance → Features of this instance** you switch features off for the whole instance – the same list as in [Show and hide features](/settings#show-and-hide-features). Unlike there, the feature is then not only hidden but off. Flowplan asks before switching one off.
 
 ## Switching off and on again {since=0.11.0}
 
@@ -23,7 +23,7 @@ Switch the feature on again and everything is as before: nothing was deleted or 
 | Journal | No new journals and no journal commands; the journal and its day pages read-only. |
 | Workflows | No new workflows and no runs. The queue and the schedules do not run, events are not recorded (nothing piles up for later) and webhooks answer 403. What was already queued carries on once switched on; of a missed schedule at most the latest slot runs then, as after a restart. |
 | draw.io | The draw.io editor no longer opens; existing diagrams stay in the pages as pictures. |
-| AI | Like the master switch under **Administration → AI**: no AI feature, on-device included. AI properties, the queue and the semantic index pause and are worked off once switched on. |
+| AI | Like the master switch under **Settings → Instance → AI**: no AI feature, on-device included. AI properties, the queue and the semantic index pause and are worked off once switched on. |
 | More view types | No new views of these types; existing ones stay as they are. |
 | Forms | Every form is closed – public ones too – with a notice that forms are switched off on this instance; the **Form** view shows a notice, answers stay. |
 | Meetings | Nothing is recorded, transcribed or summarised, meeting reminders pause. Kept audio can still be deleted and is still removed once its retention ends. |

@@ -16,7 +16,7 @@ Flowplan restarts, the log shows no error, and the users only notice a short int
 
 ### In Flowplan
 
-**Administration → Monitoring → Restarts** {since=0.10.0} lists every restart of the last 30 days with its reason (clean, crash, likely out of memory, killed without trace), the memory at the last heartbeat and, for an unexpected one, the last 200 lines of the server and Litestream log before the end, with **Download as .txt**. What the reasons mean and where their limits are is under [Restarts](/monitoring#restarts).
+**Settings → Instance → Monitoring → Restarts** {since=0.10.0} lists every restart of the last 30 days with its reason (clean, crash, likely out of memory, killed without trace), the memory at the last heartbeat and, for an unexpected one, the last 200 lines of the server and Litestream log before the end, with **Download as .txt**. What the reasons mean and where their limits are is under [Restarts](/monitoring#restarts).
 
 ### With Docker
 
@@ -55,7 +55,7 @@ Litestream replicates the SQLite database to the bucket (only with S3 and withou
 
 While compaction is stuck, Litestream no longer cleans up its change files: they pile up locally and in the bucket, and **Litestream's memory keeps growing** – up to the point where the kernel ends it (see the host running out of memory above). A restore from the bucket through the broken file fails too.
 
-**Flowplan repairs this by itself.** {since=0.10.0} Every 15 minutes it checks the bucket; a stuck replica gives a warning in **Administration → Monitoring**, a message to the administrators and, after a scheduled backup, a repair on the next restart (**Restart now** does it right away). `FLOWPLAN_LITESTREAM_AUTOHEAL=off` keeps only the warning.
+**Flowplan repairs this by itself.** {since=0.10.0} Every 15 minutes it checks the bucket; a stuck replica gives a warning in **Settings → Instance → Monitoring**, a message to the administrators and, after a scheduled backup, a repair on the next restart (**Restart now** does it right away). `FLOWPLAN_LITESTREAM_AUTOHEAL=off` keeps only the warning.
 
 The repair is a marker file `/app/data/litestream-reset`, read on the next start before Litestream replicates:
 
@@ -78,14 +78,14 @@ Flowplan: ANOTHER CONTAINER IS USING THE DATA FOLDER /app/data.
 ==========================================================================
 ```
 
-**Administration → Monitoring** shows the warning "A second Flowplan container (*host*) has been using the same data folder since *time* …" on both containers. A few seconds during an update point to a rollout with overlap; a warning that stays points to a second resource, replica or `docker run` on the same volume. Find the other container (`docker ps`, the host name in the warning) and stop it. How to roll out without overlap, also in Coolify, is under [Roll out SQLite without overlap](/coolify-and-proxy#roll-out-sqlite-without-overlap).
+**Settings → Instance → Monitoring** shows the warning "A second Flowplan container (*host*) has been using the same data folder since *time* …" on both containers. A few seconds during an update point to a rollout with overlap; a warning that stays points to a second resource, replica or `docker run` on the same volume. Find the other container (`docker ps`, the host name in the warning) and stop it. How to roll out without overlap, also in Coolify, is under [Roll out SQLite without overlap](/coolify-and-proxy#roll-out-sqlite-without-overlap).
 
 ## What to put in a bug report
 
 Open an [issue](https://github.com/yannicschuller/flowplan/issues/new/choose) with:
 
 - the **version line**, the first line Flowplan writes to the log, e.g. `Flowplan 0.10.0 (release, build abc1234, built …, Node.js …)` (or `version` from [`/api/health`](/operations#health-check) with the token);
-- for a restart, the entry's **.txt** from **Administration → Monitoring → Restarts**;
+- for a restart, the entry's **.txt** from **Settings → Instance → Monitoring → Restarts**;
 - the output of the `docker inspect` lines above, and the `dmesg` lines around the time if there are any;
 - for Litestream, the first error lines in the log and whether S3 and `S3_PREFIX` are set (not their values);
 - how the instance runs: Docker, Compose, Coolify, Kubernetes; SQLite or PostgreSQL; memory limit.

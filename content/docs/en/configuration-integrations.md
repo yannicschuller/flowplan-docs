@@ -17,11 +17,11 @@ The environment variables for sending mail and inbound e-mail, integrations such
 | `SMTP_FROM` | `Flowplan <SMTP_USER>` | Sender, e.g. `Flowplan <flowplan@example.com>`. |
 | `SMTP_TLS_CA` | *empty* | CA certificate of a mail server with a private or self-signed certificate (file path or PEM text, also on one line with `\n`). It is trusted in addition to the public CAs. {since=0.9.7} |
 | `SMTP_TLS_SERVERNAME` | *empty* | The name the certificate is checked against when `SMTP_HOST` is an IP address or another name (e.g. `mail.internal`). {since=0.9.7} |
-| `SMTP_TLS_REJECT_UNAUTHORIZED` | *empty* (verify) | `false` turns certificate verification off – only this value (case and surrounding spaces ignored); any other keeps verifying. Flowplan then warns at startup and in Administration. {since=0.9.7} |
+| `SMTP_TLS_REJECT_UNAUTHORIZED` | *empty* (verify) | `false` turns certificate verification off – only this value (case and surrounding spaces ignored); any other keeps verifying. Flowplan then warns at startup and in the instance settings. {since=0.9.7} |
 
-Check delivery under **Administration → E-mail → Send test email**.
+Check delivery under **Settings → Instance → E-mail → Send test email**.
 
-**Internal servers with their own certificates:** Flowplan verifies certificates by default. For a mail or directory server with a private or self-signed certificate, give its CA: `SMTP_TLS_CA` for e-mail, [`LDAP_TLS_CA`](/scim-and-ldap) for LDAP. In Docker, mount the CA file into the container (for example `./ca.pem:/certs/ca.pem:ro`) and set `SMTP_TLS_CA=/certs/ca.pem`. If you reach the server by its IP address or by a name that is not in its certificate (such as `192.168.1.10` or `pve.local`), set the name from the certificate in `SMTP_TLS_SERVERNAME` or `LDAP_TLS_SERVERNAME` – verification stays on. For every connection Flowplan makes – also webhooks or AI providers inside your network – Node's `NODE_EXTRA_CA_CERTS=/certs/ca.pem` adds the CA to all of them; it is read at startup. If the test e-mail fails with "unable to verify the first certificate", the CA is missing; with "Hostname/IP does not match certificate's altnames", the name is. Only if neither is possible (for example a Proxmox relay with an auto-generated certificate), turn verification off with `SMTP_TLS_REJECT_UNAUTHORIZED=false` or `LDAP_TLS_REJECT_UNAUTHORIZED=false`. Then anyone on the network can pose as the server and read the SMTP or LDAP password – so Flowplan warns in the server log at startup, in **Administration → E-mail** or **→ Sign-in & SSO**, and in the security overview. {since=0.9.7}
+**Internal servers with their own certificates:** Flowplan verifies certificates by default. For a mail or directory server with a private or self-signed certificate, give its CA: `SMTP_TLS_CA` for e-mail, [`LDAP_TLS_CA`](/scim-and-ldap) for LDAP. In Docker, mount the CA file into the container (for example `./ca.pem:/certs/ca.pem:ro`) and set `SMTP_TLS_CA=/certs/ca.pem`. If you reach the server by its IP address or by a name that is not in its certificate (such as `192.168.1.10` or `pve.local`), set the name from the certificate in `SMTP_TLS_SERVERNAME` or `LDAP_TLS_SERVERNAME` – verification stays on. For every connection Flowplan makes – also webhooks or AI providers inside your network – Node's `NODE_EXTRA_CA_CERTS=/certs/ca.pem` adds the CA to all of them; it is read at startup. If the test e-mail fails with "unable to verify the first certificate", the CA is missing; with "Hostname/IP does not match certificate's altnames", the name is. Only if neither is possible (for example a Proxmox relay with an auto-generated certificate), turn verification off with `SMTP_TLS_REJECT_UNAUTHORIZED=false` or `LDAP_TLS_REJECT_UNAUTHORIZED=false`. Then anyone on the network can pose as the server and read the SMTP or LDAP password – so Flowplan warns in the server log at startup, in **Settings → Instance → E-mail** or **→ Sign-in & SSO**, and in the security overview. {since=0.9.7}
 
 ## Inbound e-mail (IMAP)
 
@@ -73,7 +73,7 @@ People's refresh tokens are stored sealed in the database (like all [stored secr
 
 ## Chat apps
 
-Notifications to [Telegram, Gotify, ntfy and Matrix](/notifications#chat-apps). Everything can also be set under **Administration → Chat apps**; values saved there take precedence.
+Notifications to [Telegram, Gotify, ntfy and Matrix](/notifications#chat-apps). Everything can also be set under **Settings → Instance → Chat apps**; values saved there take precedence.
 
 | Variable | Default | Meaning |
 | --- | --- | --- |
@@ -82,7 +82,7 @@ Notifications to [Telegram, Gotify, ntfy and Matrix](/notifications#chat-apps). 
 | `FLOWPLAN_TELEGRAM_API_URL` | `https://api.telegram.org` | Address of the Bot API for the instance's bot – a self-hosted [Telegram Bot API server](https://github.com/tdlib/telegram-bot-api) or a relay/proxy. May be in the own network and `http://`. |
 | `FLOWPLAN_MESSENGER_ALLOW_PRIVATE` | as `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE` | `true`: people may name servers in the own network (internal addresses, `http://`) – e.g. Gotify or ntfy at home. Otherwise internal addresses are blocked, also when a name is later pointed at one. |
 
-**The instance's bot without a public address:** Flowplan uses no webhook but reads the bot's messages with `getUpdates` – only while a connection code waits (at most 15 minutes). Outgoing HTTPS to the Bot API is enough. The bot must therefore not have a webhook at the same time or be polled by another program (Telegram then reports a conflict, the administration shows it) – use a separate bot just for Flowplan.
+**The instance's bot without a public address:** Flowplan uses no webhook but reads the bot's messages with `getUpdates` – only while a connection code waits (at most 15 minutes). Outgoing HTTPS to the Bot API is enough. The bot must therefore not have a webhook at the same time or be polled by another program (Telegram then reports a conflict, **Settings → Instance → Chat apps** shows it) – use a separate bot just for Flowplan.
 
 **Outgoing connections:** to `api.telegram.org` (or the own API address), `ntfy.sh` and the servers people name. They go through the same check as link previews and webhooks: resolve the address, refuse internal addresses, use exactly the checked address, no redirects. Refused attempts appear as the security event “Internal address refused (SSRF)”.
 
@@ -90,7 +90,7 @@ The tokens of people and of the bot are stored encrypted like other [stored secr
 
 ## Workflows
 
-Defaults for [workflows](/workflows); the [administration](/administration#workflows) can override them.
+Defaults for [workflows](/workflows); admins can override them under [Settings → Instance → Limits & retention](/administration#workflows).
 
 | Variable | Default | Meaning |
 | --- | --- | --- |

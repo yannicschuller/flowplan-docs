@@ -25,7 +25,7 @@ Publishing needs edit rights on the page, just like creating links – someone w
 When the **Publish on the web** switch is greyed out, the reason is shown below it:
 
 - **The page is locked:** unlock it in the page menu ([Page actions](/pages-and-spaces#page-actions)). A locked page is protected against every change, including changes to who can see it.
-- **The feature is switched off for the instance** (**Administration → Instance → [Features of this instance](/instance-features)**): pages of a switched-off feature open read-only and can't be published.
+- **The feature is switched off for the instance** (**Settings → Instance → Instance → [Features of this instance](/instance-features)**): pages of a switched-off feature open read-only and can't be published.
 - **You don't have edit rights** on the page.
 
 Anyone who has the link can pass it on – a published page is public. To control who sees it, use a link with a [password and expiry date](/sharing#password-and-expiry-date) or [invite people](/sharing#share-a-page-with-a-person).

@@ -86,14 +86,14 @@ People who administer the instance (members of the admin group, `OIDC_ADMIN_GROU
 
 | Widget | Sizes (iOS) | Setting (default first) | Tapping opens |
 | --- | --- | --- | --- |
-| **Flowplan Instance** | small, medium, lock screen | *Show:* state (*All fine*, notices or problems with the most important one), last backup, or version with available update | Administration (Monitoring when there are notices or problems) |
-| **Flowplan Live** | small, medium, large, lock screen | *Metric:* active now, requests/min, error rate (1 h) or sign-ins today; from medium up the other numbers small and the requests of the last 24 hours as a chart | Administration → Monitoring |
-| **Flowplan Storage** | small, medium, lock screen (ring) | *Metric:* disk used, database and files, or fullest workspace (quota) | Administration → Storage |
+| **Flowplan Instance** | small, medium, lock screen | *Show:* state (*All fine*, notices or problems with the most important one), last backup, or version with available update | Settings start page at **Instance at a glance** (Monitoring when there are notices or problems) |
+| **Flowplan Live** | small, medium, large, lock screen | *Metric:* active now, requests/min, error rate (1 h) or sign-ins today; from medium up the other numbers small and the requests of the last 24 hours as a chart | Settings → Instance → Monitoring |
+| **Flowplan Storage** | small, medium, lock screen (ring) | *Metric:* disk used, database and files, or fullest workspace (quota) | Settings → Instance → Storage |
 
 - Everyone else sees *Administrators only* in these widgets; without a sign-in they say *Open Flowplan to sign in*.
 - Like the other widgets they read their data with the app's device token (`GET /api/mobile/admin-summary`). The instance checks on every call that the person of the session the device is bound to is an administrator right now – leaving the admin group, signing out or removing the device under *Signed-in devices* stops it. API tokens never get this data.
 - Only numbers and states are sent – no names, e-mail addresses or workspace names.
-- With the statistics switched off (`FLOWPLAN_METRICS=off` or in the administration under *Monitoring → Statistics*), *Flowplan Live* says "Statistics switched off"; state and storage stay.
+- With the statistics switched off (`FLOWPLAN_METRICS=off` or under *Settings → Instance → Monitoring → Statistics*), *Flowplan Live* says "Statistics switched off"; state and storage stay.
 - Older instances without this endpoint show *Administrators only*.
 
 ## Buttons on notifications

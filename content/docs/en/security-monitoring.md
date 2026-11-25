@@ -21,12 +21,12 @@ Flowplan records security-relevant events, detects typical attacks in them and h
 
 **Privacy:** for an address, the database keeps only its network (IPv4 `/24`, IPv6 `/48`) and a hash keyed with a secret of the instance – enough to group and block, not the address itself. Accounts of failed sign-ins are only stored masked (`ma***@example.com`). Events are deleted after 90 days (`FLOWPLAN_SECURITY_RETENTION_DAYS`).
 
-### Administration → Threats & incidents
+### Settings → Instance → Threats & incidents
 
-The page `/#admin/threats` (group **Security**) sums it up and refreshes every 30 seconds:
+The page `/#settings/instance/threats` (group **Security**) sums it up and refreshes every 30 seconds:
 
 - **State:** open incidents (critical ones in red), hints on missing connections, numbers of the last 24 hours and sign-ins per hour
-- **Incidents** of the detection rules, with actions right next to them: resolved, block the address or network for 24 hours, end all sessions of the person, disable the account. **Details & next steps** opens an incident's own page (`/#admin/threats/incident/<id>`): on the left what happened – why the rule fired (with its thresholds), the period, the origin and whether it is already blocked, the accounts tried, successful sign-ins in the same period (red when an account may have been taken over afterwards), networks, countries, devices and the timeline of all its events; for probing also the requested paths with answer and count (IDs and tokens replaced by `:id`, `:n` and `:token`). On the right what the incident means, when it is harmless and what to do step by step – with the matching action (block the address, end sessions, disable the account, resolve) or the link to it right at the step.
+- **Incidents** of the detection rules, with actions right next to them: resolved, block the address or network for 24 hours, end all sessions of the person, disable the account. **Details & next steps** opens an incident's own page (`/#settings/instance/threats/incident/<id>`): on the left what happened – why the rule fired (with its thresholds), the period, the origin and whether it is already blocked, the accounts tried, successful sign-ins in the same period (red when an account may have been taken over afterwards), networks, countries, devices and the timeline of all its events; for probing also the requested paths with answer and count (IDs and tokens replaced by `:id`, `:n` and `:token`). On the right what the incident means, when it is harmless and what to do step by step – with the matching action (block the address, end sessions, disable the account, resolve) or the link to it right at the step.
 - **Addresses with failures**, **events** with filters (severity, kind) and export as CSV or JSON
 - **Signed-in people** (admins first), **open ways in** (API tokens, share links, public pages of the whole instance) to revoke
 - **Blocks** of addresses and networks, for a time or indefinitely. Blocked addresses only get `403` – signed-in people in them too, and every API request, with or without a body. {since=0.11.5} Your own address and network cannot be blocked.

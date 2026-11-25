@@ -101,7 +101,7 @@ Die Daten bringst du mit dem Migrationswerkzeug in PostgreSQL, die Dateien mit d
 ::: steps
 
 1. **Gleiche Version.** Bring den einzelnen Pod auf die Flowplan-Version, die der Cluster fahren wird (`helm upgrade` mit dem neuen Chart oder `image.tag`), und lass ihn einmal starten.
-2. **Dateien in den Bucket.** Schalte im einzelnen Pod S3 ein (`s3.bucket`, `s3.endpoint`, die Schlüssel in `s3.existingSecret` oder `existingSecret`) und warte, bis alle Dateien dort sind: **Administration → Speicher & Sicherung**, oder `objectStorage.pending` auf `0` in [`/api/health`](/operations#healthcheck). Nimm im Cluster später denselben Bucket und dasselbe Präfix.
+2. **Dateien in den Bucket.** Schalte im einzelnen Pod S3 ein (`s3.bucket`, `s3.endpoint`, die Schlüssel in `s3.existingSecret` oder `existingSecret`) und warte, bis alle Dateien dort sind: **Einstellungen → Instanz → Speicher & Sicherung**, oder `objectStorage.pending` auf `0` in [`/api/health`](/operations#healthcheck). Nimm im Cluster später denselben Bucket und dasselbe Präfix.
 3. **Schlüssel behalten.** Ohne `FLOWPLAN_ENCRYPTION_KEY` und Push-Schlüssel hat der einzelne Container sie selbst erzeugt. Übernimm sie aus seinem Datenordner ins Secret `flowplan-keys`: den Inhalt von `secrets.key` als `FLOWPLAN_SECRETS_KEY` (zusätzlich zu einem `FLOWPLAN_ENCRYPTION_KEY`), `publicKey`/`privateKey` aus `web-push-keys.json` als `WEB_PUSH_PUBLIC_KEY`/`WEB_PUSH_PRIVATE_KEY`:
 
    ```bash
@@ -110,7 +110,7 @@ Die Daten bringst du mit dem Migrationswerkzeug in PostgreSQL, die Dateien mit d
    ```
 
 4. **Ziel vorbereiten:** eine leere PostgreSQL-Datenbank und eine Rolle, der sie gehört ([Voraussetzungen](/postgresql#voraussetzungen)), und das Secret `flowplan-cluster` wie oben.
-5. **Sichern:** **Administration → Speicher & Sicherung → Gesamte Instanz → Herunterladen**.
+5. **Sichern:** **Einstellungen → Instanz → Speicher & Sicherung → Gesamte Instanz → Herunterladen**.
 6. **Flowplan anhalten:** `kubectl -n flowplan scale deploy/flowplan --replicas=0`. Das Volume bleibt.
 7. **Kopieren und prüfen** mit einem Pod auf demselben Volume (`flowplan-data` ist das PVC des Charts):
 
@@ -138,7 +138,7 @@ Die Daten bringst du mit dem Migrationswerkzeug in PostgreSQL, die Dateien mit d
 
    `kubectl -n flowplan apply -f migrate.yaml`, dann `kubectl -n flowplan logs -f flowplan-migrate`. Die letzte Zeile muss `verified: every table has the same rows` lauten. Lösche den Pod danach. Einzelheiten und Optionen des Werkzeugs: [Datenbank wechseln](/database-migration).
 8. **In den Cluster-Modus wechseln:** `helm upgrade flowplan deploy/helm/flowplan -n flowplan -f my-values.yaml` mit `cluster.enabled: true` und demselben Bucket. Das PVC bleibt erhalten – lösch es erst, wenn der Cluster läuft und seine erste Sicherung da ist.
-9. **Prüfen:** anmelden, eine Seite mit Bildern öffnen, suchen, und unter **Administration → Überwachung → System** die Pods, den Leader und **PostgreSQL** sehen.
+9. **Prüfen:** anmelden, eine Seite mit Bildern öffnen, suchen, und unter **Einstellungen → Instanz → Überwachung → System** die Pods, den Leader und **PostgreSQL** sehen.
 
 :::
 
@@ -155,8 +155,8 @@ Ein Pod, der anhält, bekommt `terminationGracePeriodSeconds` (30): offene Anfra
 
 ## Sicherungen {since=0.10.0}
 
-- **Ein Pod:** wie mit Docker – geplante Sicherungen in der Administration, mit S3 zusätzlich Litestream ([Speicher, S3 und Sicherung](/storage-and-backups)). Sichere auch das Volume, wenn deine Plattform das kann.
-- **Mehrere Pods:** PostgreSQL hält alle Daten: die geplanten Sicherungen der Administration sind `pg_dump`-Archive im Bucket ([Sicherungen mit pg_dump](/postgresql#sicherungen-mit-pg-dump)); dazu die Sicherungen oder die Wiederherstellung auf einen Zeitpunkt deines Anbieters. Die Dateien liegen im Bucket – schalte dort die Versionierung ein oder repliziere ihn. Redis braucht keine Sicherung.
+- **Ein Pod:** wie mit Docker – geplante Sicherungen unter **Einstellungen → Instanz → Speicher & Sicherung**, mit S3 zusätzlich Litestream ([Speicher, S3 und Sicherung](/storage-and-backups)). Sichere auch das Volume, wenn deine Plattform das kann.
+- **Mehrere Pods:** PostgreSQL hält alle Daten: die geplanten Sicherungen aus **Einstellungen → Instanz → Speicher & Sicherung** sind `pg_dump`-Archive im Bucket ([Sicherungen mit pg_dump](/postgresql#sicherungen-mit-pg-dump)); dazu die Sicherungen oder die Wiederherstellung auf einen Zeitpunkt deines Anbieters. Die Dateien liegen im Bucket – schalte dort die Versionierung ein oder repliziere ihn. Redis braucht keine Sicherung.
 - **Immer:** die Secrets (vor allem `FLOWPLAN_ENCRYPTION_KEY` und die Push-Schlüssel) getrennt von den Sicherungen aufbewahren.
 - **Wiederherstellen** ersetzt alle Tabellen: zuerst auf **einen Pod** verkleinern (`cluster.replicas: 1`), wiederherstellen, dann wieder vergrößern.
 
@@ -164,7 +164,7 @@ Ein Pod, der anhält, bekommt `terminationGracePeriodSeconds` (30): offene Anfra
 
 `cluster.replicas` setzen und `helm upgrade` – ein Pod pro etwa 25 gleichzeitig aktive Personen, dazu eine Reserve. Mehr Pods brauchen mehr Datenbankverbindungen: jeder öffnet bis zu `cluster.poolSize` und drei eigene. Das PodDisruptionBudget (`cluster.podDisruptionBudget.minAvailable`) hält Pods am Laufen, während Knoten geleert werden; halte es unter `replicas`.
 
-Worauf du achtest: Antwortzeiten und CPU pro Pod unter **Administration → Überwachung**, „wartende“ Verbindungen unter **System** (`cluster.poolSize` erhöhen oder Pods ergänzen), und mit Prometheus die Metriken jedes Pods (Label `instance_id`; die Zahlen der Installation nur vom Leader).
+Worauf du achtest: Antwortzeiten und CPU pro Pod unter **Einstellungen → Instanz → Überwachung**, „wartende“ Verbindungen unter **System** (`cluster.poolSize` erhöhen oder Pods ergänzen), und mit Prometheus die Metriken jedes Pods (Label `instance_id`; die Zahlen der Installation nur vom Leader).
 
 ## Grenzen {since=0.10.0}
 

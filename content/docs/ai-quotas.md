@@ -12,7 +12,7 @@ Die Administration kann begrenzen, wie viel KI über den [Anbieter der Instanz](
 ## Was gezählt wird {since=0.11.0}
 
 - **Tokens:** Eingabe und Ausgabe zusammen, wie der Anbieter sie meldet – sonst schätzt Flowplan sie aus der Textlänge.
-- **Oder Kosten:** Sind unter **Administration → KI → Preise** Preise je Modell eingetragen (je Million Tokens, Eingabe und Ausgabe getrennt), lassen sich die Grenzen auch als geschätzte Kosten in der Währung der Instanz setzen. Ein Modell ohne Preis zählt dann nicht mit – die Administration sieht dazu einen Hinweis.
+- **Oder Kosten:** Sind unter **Einstellungen → Instanz → KI → Preise** Preise je Modell eingetragen (je Million Tokens, Eingabe und Ausgabe getrennt), lassen sich die Grenzen auch als geschätzte Kosten in der Währung der Instanz setzen. Ein Modell ohne Preis zählt dann nicht mit – die Administration sieht dazu einen Hinweis.
 - **Alle KI-Funktionen** mit dem Anbieter der Instanz: Schreibassistent, Zusammenfassungen, KI fragen, KI-Aktionen, KI in Datenbanken, Whiteboards, Handschrift, Lernkarten und Besprechungsnotizen. Die [Suche nach Bedeutung](/ask-ai#suche-nach-bedeutung-optional) zählt zur Grenze der ganzen Instanz, keiner Person.
 - **Workflows** behalten ihr eigenes Tagesbudget. Ob ihre KI-Knoten zur Grenze der ganzen Instanz zählen, ist eine Einstellung (Standard: ja); zur Person, als die ein Workflow läuft, zählen sie nie.
 - **Nicht gezählt** wird die Transkription von Sprachnotizen und Besprechungen: Sie läuft über den eigenen Whisper-Dienst, nicht über den KI-Anbieter.
@@ -21,7 +21,7 @@ Die Zeiträume sind Kalenderzeiträume in der Zeitzone, die die Administration f
 
 ## Für Admins {since=0.11.0}
 
-Unter **Administration → KI → Kontingente**:
+Unter **Einstellungen → Instanz → KI → Kontingente**:
 
 ::: steps
 
@@ -49,7 +49,7 @@ Welche Grenze für eine Person gilt: ihre eigene, sonst die **höchste** ihrer G
 
 **Höchstens … für danach:** {since=0.11.3} Neben **weiter mit …** begrenzt **höchstens** die Fortsetzung je Person – in der Einheit der Kontingente je Tag, Woche, Monat oder Jahr, etwa 20.000.000 Tokens im Monat; leer = unbegrenzt wie bisher. Gezählt wird nur, was mit dem Modell für danach lief. Ist auch das aufgebraucht, ist die KI aus, bis ein Zeitraum neu beginnt („KI aus bis …“); die Grenze der Instanz gilt weiter obendrauf. Welche Grenze gilt, folgt den übrigen Regeln: die eigene Regel der Person, sonst die großzügigste ihrer Gruppen und Rollen, die weitermachen (lässt eine davon den Zeitraum offen, ist er offen), sonst der Standard. Beim Wechsel der Einheit beginnt die Grenze leer. Im [Export / Import](/account-limits#export-import) heißt sie `aiAfterTokens` (und `defaultAfterTokens`).
 
-**Direkt bei der Person oder Gruppe:** Unter **Administration → Benutzer** hat jede Person im Abschnitt **KI** ihr **Kontingent** – **Geerbt** (mit dem, was gerade gilt), **Eigene Grenzen** je Tag, Woche, Monat und Jahr oder **Ausgenommen** – und darunter ihren Verbrauch je Zeitraum mit dem, was übrig ist. Dasselbe gibt es für Gruppen im Dialog **Gruppen & Rechte → Verwalten** des Arbeitsbereichs (nur für Administratoren). Es sind dieselben Grenzen wie in der Tabelle hier, kein zweiter Speicher. Dort legst du auch das [Modell](#modell-je-person-und-gruppe) fest; die Tabelle **Grenzen** zeigt es in der Spalte **Modell**, die Tabelle **Nach Person** das Modell, das für jede Person gilt. {since=0.11.0}
+**Direkt bei der Person oder Gruppe:** Unter **Einstellungen → Instanz → Benutzer** hat jede Person im Abschnitt **KI** ihr **Kontingent** – **Geerbt** (mit dem, was gerade gilt), **Eigene Grenzen** je Tag, Woche, Monat und Jahr oder **Ausgenommen** – und darunter ihren Verbrauch je Zeitraum mit dem, was übrig ist. Dasselbe gibt es für Gruppen im Dialog **Gruppen & Rechte → Verwalten** des Arbeitsbereichs (nur für Administratoren). Es sind dieselben Grenzen wie in der Tabelle hier, kein zweiter Speicher. Dort legst du auch das [Modell](#modell-je-person-und-gruppe) fest; die Tabelle **Grenzen** zeigt es in der Spalte **Modell**, die Tabelle **Nach Person** das Modell, das für jede Person gilt. {since=0.11.0}
 
 Unter **Nutzung und Grenzen** siehst du für den gewählten Zeitraum den Verbrauch der ganzen Instanz, je Person (sortierbar nach Verbrauch, Rest oder Name, mit der Grenze und woher sie kommt), je Gruppe und je Modell. Die [KI-Statistik](/administration#ueberwachung) zeigt die Grenzen der Instanz als Linie.
 
@@ -59,8 +59,8 @@ Unter **Nutzung und Grenzen** siehst du für den gewählten Zeitraum den Verbrau
 
 Das Modell unter **Anbieter der Instanz** ist der **Standard der Instanz**. Einzelnen Personen, Gruppen oder Rollen kannst du ein anderes Modell desselben Anbieters geben – zum Beispiel nutzt die ganze Instanz ein kleines, günstiges Modell wie Claude Haiku, bestimmte Personen aber Claude Opus.
 
-- **Für eine Person:** **Administration → Benutzer**, die Person anklicken, Abschnitt **KI** → **Modell**. Zur Wahl stehen **Standard der Instanz**, die Modelle aus der Preisliste und – mit dem Pfeil daneben – alle Modelle, die der Anbieter meldet. Gehört die Person zu einer Gruppe mit eigenem Modell, steht oben **Wie Gruppe …**; **Standard der Instanz** gilt dann trotzdem für sie.
-- **Für eine Gruppe:** in den Einstellungen des Arbeitsbereichs unter **Gruppen & Rechte → Verwalten** (nur für Administratoren sichtbar) oder in der Tabelle **Grenzen** unter **Administration → KI → Kontingente**, Spalte **Modell**. Dort gibt es auch die Rollen **Administratoren** und **Gäste**.
+- **Für eine Person:** **Einstellungen → Instanz → Benutzer**, die Person anklicken, Abschnitt **KI** → **Modell**. Zur Wahl stehen **Standard der Instanz**, die Modelle aus der Preisliste und – mit dem Pfeil daneben – alle Modelle, die der Anbieter meldet. Gehört die Person zu einer Gruppe mit eigenem Modell, steht oben **Wie Gruppe …**; **Standard der Instanz** gilt dann trotzdem für sie.
+- **Für eine Gruppe:** in den Einstellungen des Arbeitsbereichs unter **Gruppen & Rechte → Verwalten** (nur für Administratoren sichtbar) oder in der Tabelle **Grenzen** unter **Einstellungen → Instanz → KI → Kontingente**, Spalte **Modell**. Dort gibt es auch die Rollen **Administratoren** und **Gäste**.
 
 Welches Modell für eine Person gilt:
 

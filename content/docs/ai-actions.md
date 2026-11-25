@@ -111,7 +111,7 @@ Neue Seite → Datenbank → **Mit KI erstellen** und beschreiben, z. B. „Lese
 
 ## KI in Workflows
 
-[Workflows](/workflows) haben vier KI-Knoten: **Zusammenfassen**, **Einordnen** (in Kategorien oder die Optionen einer Auswahl, mit Ausgang „unklar“), **Felder auslesen** und **Eigene Anweisung** (Text oder JSON). Sie nutzen die KI-Funktion **KI in Workflows** – Admins schalten sie unter Administration → KI ab, jede Person für sich in den eigenen KI-Einstellungen.
+[Workflows](/workflows) haben vier KI-Knoten: **Zusammenfassen**, **Einordnen** (in Kategorien oder die Optionen einer Auswahl, mit Ausgang „unklar“), **Felder auslesen** und **Eigene Anweisung** (Text oder JSON). Sie nutzen die KI-Funktion **KI in Workflows** – Admins schalten sie unter Einstellungen → Instanz → KI ab, jede Person für sich in den eigenen KI-Einstellungen.
 
 - **Budget**: höchstens 100 000 Tokens je Workflow und Tag (`FLOWPLAN_WORKFLOW_AI_TOKENS_PER_DAY`); ist es aufgebraucht, scheitert der Knoten mit einer Meldung.
 - **Was die KI liest**: nur Seiten und Einträge, die die ausführende Person sehen darf und die für die KI freigegeben sind; gesperrte Seiten und Journale mit PIN bleiben draußen.

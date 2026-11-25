@@ -38,7 +38,7 @@ SESSION_HOURS=8
 | --- | --- |
 | `OIDC_ISSUER` | Issuer-URL; Flowplan liest daraus die Discovery (`/.well-known/openid-configuration`). |
 | `OIDC_GROUPS_CLAIM` | Claim mit den Gruppen, auch als Pfad wie `realm_access.roles`. |
-| `OIDC_ADMIN_GROUP` | Mitglieder dieser Gruppe sehen die **Administration**. Der Name wird exakt verglichen. |
+| `OIDC_ADMIN_GROUP` | Mitglieder dieser Gruppe sind Admins und sehen in den Einstellungen die **Instanz**. Der Name wird exakt verglichen. |
 | `OIDC_ALLOWED_GROUP` | Wenn gesetzt, dürfen sich nur Mitglieder dieser Gruppe anmelden. |
 | `OIDC_LINKED_SSO_ONLY` | `true`: Konten, die mit SSO verbunden sind, melden sich nur noch über SSO an (Standard aus). Anmelden mit Passwort oder Passkey wird mit einem Hinweis abgelehnt; Passkeys und die Authenticator-App bleiben zum Bestätigen wichtiger Schritte. Siehe [Bestehendes Konto mit SSO verbinden](#bestehendes-konto-mit-sso-verbinden). |
 | `OIDC_NEW_ACCOUNTS` | `false`: Die SSO-Anmeldung legt keine neuen Konten an (Standard an) – nur bestehende, verbundene oder per SCIM bereitgestellte Konten melden sich an. Bei der ersten SSO-Anmeldung mit bekannter Adresse fehlt dann „Stattdessen ein eigenes Konto anlegen“. |
@@ -55,9 +55,9 @@ SESSION_HOURS=8
 
 ## Admin-Gruppe prüfen {since=0.9.7}
 
-Wer mit SSO angemeldet ist, bekommt die **Administration**, wenn die Gruppe aus `OIDC_ADMIN_GROUP` unter den Gruppen steht, die der Anbieter im Claim aus `OIDC_GROUPS_CLAIM` schickt (Standard `groups`; auch ein Pfad wie `realm_access.roles`). Flowplan vergleicht die Namen **exakt**, auch Groß- und Kleinschreibung und Schrägstriche.
+Wer mit SSO angemeldet ist, wird Admin (und sieht in den Einstellungen die **Instanz**), wenn die Gruppe aus `OIDC_ADMIN_GROUP` unter den Gruppen steht, die der Anbieter im Claim aus `OIDC_GROUPS_CLAIM` schickt (Standard `groups`; auch ein Pfad wie `realm_access.roles`). Flowplan vergleicht die Namen **exakt**, auch Groß- und Kleinschreibung und Schrägstriche.
 
-Ob das klappt, siehst du unter **Administration → Benutzer** im Seitenfenster der Person: **Gruppen vom Anbieter (letzte Anmeldung)** zeigt, welcher Claim gelesen wurde, welche Gruppen ankamen und ob die Admin-Gruppe dabei war ([Benutzer](/user-management#benutzer)). Typische Ursachen, wenn sie fehlt:
+Ob das klappt, siehst du unter **Einstellungen → Instanz → Benutzer** im Seitenfenster der Person: **Gruppen vom Anbieter (letzte Anmeldung)** zeigt, welcher Claim gelesen wurde, welche Gruppen ankamen und ob die Admin-Gruppe dabei war ([Benutzer](/user-management#benutzer)). Typische Ursachen, wenn sie fehlt:
 
 - **„fehlte in Token und Userinfo“:** Der Anbieter schickt den Claim nicht – meist fehlt der Gruppen-Mapper oder der Scope für Gruppen (`OIDC_SCOPES`), oder der Claim heißt anders als `OIDC_GROUPS_CLAIM`.
 - **Keycloak mit „Full group path“:** Dann kommt die Gruppe als `/flowplan-admins` an, mit Schrägstrich vorn – das passt nicht zu `OIDC_ADMIN_GROUP=flowplan-admins`. Schalte im Mapper „Group Membership“ **Full group path** aus, oder trag den Namen genau so ein, wie er ankommt (`OIDC_ADMIN_GROUP=/flowplan-admins`; bei Untergruppen den ganzen Pfad, etwa `/firma/flowplan-admins`).
@@ -91,7 +91,7 @@ Gut zu wissen:
 
 - Ein verbundenes Konto mit E-Mail und Passwort behält seinen Namen, sein Bild und sein Admin-Recht; SSO-Gruppenzuordnungen ändern seine Mitgliedschaften wie bisher nicht.
 - Mit `OIDC_LINKED_SSO_ONLY=true` melden sich verbundene Konten nur noch über SSO an – mit Passwort oder Passkey kommt dann ein klarer Hinweis, „Mit SSO anmelden“ zu wählen. Passkeys und die App bleiben zum Bestätigen.
-- Verbinden, Trennen, abgelehnte Verbindungen, das Entfernen des Passworts und Zusammenführungen stehen im Sicherheitsprotokoll (**Administration → Sicherheit**).
+- Verbinden, Trennen, abgelehnte Verbindungen, das Entfernen des Passworts und Zusammenführungen stehen im Sicherheitsprotokoll (**Einstellungen → Instanz → Sicherheit**).
 - LDAP-Konten bleiben über ihren DN verknüpft; sie können SSO genauso verbinden (Nachweis mit dem Verzeichnispasswort). Das LDAP-Konto selbst lässt sich nicht trennen.
 - Beim Verbinden fragt Flowplan den Anbieter mit `prompt=login`, damit nicht versehentlich ein anderes, dort noch angemeldetes Konto verbunden wird.
 - Mit `OIDC_ALLOWED_GROUP` lassen sich nur SSO-Konten dieser Gruppe verbinden – wie bei der Anmeldung.
@@ -100,7 +100,7 @@ Gut zu wissen:
 
 Gruppen aus dem Identitätsanbieter (der Claim aus `OIDC_GROUPS_CLAIM`) können Mitgliedschaft und Gruppen in Arbeitsbereichen geben – so verwaltet ihr den Zugang zentral im Anbieter.
 
-- **Admins** ordnen Gruppen zu – für jeden Arbeitsbereich zentral unter **Administration → Anmeldung & SSO → SSO-Gruppen zentral zuordnen** oder, wenn sie dort Eigentümer sind, unter **Einstellungen → Gruppen & Rechte → SSO-Gruppen**.
+- **Admins** ordnen Gruppen zu – für jeden Arbeitsbereich zentral unter **Einstellungen → Instanz → Anmeldung & SSO → SSO-Gruppen zentral zuordnen** oder, wenn sie dort Eigentümer sind, unter **Einstellungen → Gruppen & Rechte → SSO-Gruppen**.
 - **Eigentümer**, die keine Admins sind, sehen dort die Zuordnungen ihres Arbeitsbereichs, ändern sie aber nicht. Eine Zuordnung holt Personen der ganzen Instanz in einen Arbeitsbereich und zeigt dort ihre Adressen – das entscheidet die Administration.
 - Eine Zuordnung gibt eine **Rolle** (Ansehen, Bearbeiten, Eigentümer), eine **Gruppe des Arbeitsbereichs** (für [Seitenrechte](/workspaces-and-permissions#gruppen)) oder beides.
 
@@ -134,7 +134,7 @@ Meldet schon ein Portal vor Flowplan die Personen an – das SSO von YunoHost (S
 - **Anmeldeseite:** `AUTH_PROXY_LOGIN_URL` ergänzt einen Knopf wie **Mit YunoHost anmelden** (Name aus `AUTH_PROXY_NAME`). `AUTH_PROXY_ONLY=true` blendet Passwort, Passkeys und Registrieren aus; `FLOWPLAN_LOCAL_LOGIN=false` schaltet die Anmeldung mit Passwort auch auf dem Server ab.
 - **Admins und Gruppen:** Mit `AUTH_PROXY_GROUPS_HEADER` wirken `OIDC_ADMIN_GROUP` und die [SSO-Gruppen-Zuordnungen](#sso-gruppen-arbeitsbereichen-zuordnen) wie bei OIDC; ohne Gruppen (YunoHost) nennt `AUTH_PROXY_ADMIN_USERS` die Admins. Den zweiten Faktor fragt das Portal ab, wie bei SSO.
 
-Unter **Administration → Anmeldung & SSO** siehst du die Einstellungen nur zum Lesen; vertraut Flowplan Proxys außerhalb dieses Rechners, warnen sie und **Administration → Sicherheit**.
+Unter **Einstellungen → Instanz → Anmeldung & SSO** siehst du die Einstellungen nur zum Lesen; vertraut Flowplan Proxys außerhalb dieses Rechners, warnen sie und **Einstellungen → Instanz → Sicherheit**.
 
 ### Variablen
 

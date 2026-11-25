@@ -44,7 +44,7 @@ In der `.env`:
 OLLAMA_URL=http://ollama:11434
 ```
 
-Danach unter **Administration → KI** den Anbieter **Ollama** wählen. **Installierte Modelle laden** zeigt, was schon da ist; unter **Modell herunterladen** lädt Flowplan weitere Modelle mit Fortschrittsanzeige, etwa `llama3.1`, `qwen2.5` oder `mistral`. Für die [Suche nach Bedeutung](/ask-ai) zusätzlich ein Embedding-Modell wie `nomic-embed-text` laden und unter **Modell für Embeddings** eintragen.
+Danach unter **Einstellungen → Instanz → KI** den Anbieter **Ollama** wählen. **Installierte Modelle laden** zeigt, was schon da ist; unter **Modell herunterladen** lädt Flowplan weitere Modelle mit Fortschrittsanzeige, etwa `llama3.1`, `qwen2.5` oder `mistral`. Für die [Suche nach Bedeutung](/ask-ai) zusätzlich ein Embedding-Modell wie `nomic-embed-text` laden und unter **Modell für Embeddings** eintragen.
 
 > [!TIP]
 > Wie gut und schnell lokale Modelle antworten, hängt vom Server ab. Kleine Modelle (3–8 Milliarden Parameter) laufen auf aktuellen CPUs; mit einer Grafikkarte werden sie deutlich schneller. Läuft Ollama auf einem anderen Rechner im Netz, trage dessen Adresse ein – Adressen im eigenen Netz sind für den Anbieter der Instanz erlaubt.
@@ -79,7 +79,7 @@ Ergebnisse vom Gerät tragen das Kennzeichen **Auf diesem Gerät**, unten steht 
 **Ein- und ausschalten:**
 
 - **Jede Person** unter **Einstellungen → KI → Auf diesem Gerät (Apple)**: **Wenn möglich (Standard)** – auf dem Gerät, wenn es kann, sonst auf dem Server; **Nur ohne KI auf dem Server** – das Gerät nur, wenn der Server keine KI anbietet; **Aus** – Flowplan fragt das Gerät nie. Dort steht auch, ob Apple Intelligence auf diesem Gerät **verfügbar**, **in den Einstellungen ausgeschaltet** oder **nicht unterstützt** ist. **KI-Funktionen verwenden** aus schaltet auch die KI auf dem Gerät ab.
-- **Die Administration** unter **Administration → KI → KI auf dem Gerät (Apple)** für die ganze Instanz (oder mit `FLOWPLAN_AI_DEVICE=off`, [Konfiguration](/configuration-ai-push#ki)). Der Hauptschalter **KI einschalten** gilt für die KI über den Server; die KI auf dem Gerät hat ihren eigenen Schalter und ist standardmäßig erlaubt – auch ohne Anbieter.
+- **Die Administration** unter **Einstellungen → Instanz → KI → KI auf dem Gerät (Apple)** für die ganze Instanz (oder mit `FLOWPLAN_AI_DEVICE=off`, [Konfiguration](/configuration-ai-push#ki)). Der Hauptschalter **KI einschalten** gilt für die KI über den Server; die KI auf dem Gerät hat ihren eigenen Schalter und ist standardmäßig erlaubt – auch ohne Anbieter.
 - **Auf dem Mac** zusätzlich in der Desktop-App unter **Einstellungen … → Apple Intelligence (optional) → Apple Intelligence auf diesem Mac nutzen** – standardmäßig an, wo es verfügbar ist. Aus startet die App das Modell nie, und die Instanz erreicht es nicht. Dieser Schalter gilt nur für diesen Mac.
 - **Für KI gesperrte Seiten und Bereiche** bleiben gesperrt, ebenso deine eigenen Regeln, die Schalter der einzelnen Funktionen, **Ausgewählte Personen** und **Auch Gäste**.
 
@@ -90,14 +90,14 @@ Ergebnisse vom Gerät tragen das Kennzeichen **Auf diesem Gerät**, unten steht 
 
 ## Für Admins
 
-Unter **Administration → KI**:
+Unter **Einstellungen → Instanz → KI**:
 
 ::: steps
 
 1. **KI einschalten.**
 2. **Anbieter der Instanz** wählen (oder **Kein Anbieter**, siehe unten), Adresse, Modell und – falls nötig – den **API-Schlüssel** eintragen. **Verbindung testen.**
 3. **Wer KI nutzen darf:**
-   - **Alle** oder **Ausgewählte Personen** – Letztere schaltest du unter **Administration → Benutzer** pro Person frei: die Person anklicken, dann **Weitere → KI-Funktionen**.
+   - **Alle** oder **Ausgewählte Personen** – Letztere schaltest du unter **Einstellungen → Instanz → Benutzer** pro Person frei: die Person anklicken, dann **Weitere → KI-Funktionen**.
    - **Auch Gäste** – ausgeschaltet haben Gäste keine KI-Funktionen.
    - **Nutzer dürfen eigene Anbieter/Schlüssel hinterlegen** – dann richtet jede Person in ihren Einstellungen einen eigenen Anbieter mit eigenem Schlüssel ein. Das geht auch ganz ohne Anbieter der Instanz: So nutzen Personen KI mit ihrem eigenen Konto bei einem Anbieter, ohne dass die Instanz dafür bezahlt.
 4. **Funktionen:** jede einzeln erlauben oder verbieten. Optional die [Suche nach Bedeutung](/ask-ai#suche-nach-bedeutung-optional) einschalten.
@@ -114,7 +114,7 @@ So lassen sich drei typische Varianten einrichten:
 | Nur bestimmte Personen | Anbieter der Instanz, **Ausgewählte Personen**, unter Benutzer freischalten |
 | Jede Person mit eigener Lösung | **Kein Anbieter** (oder zusätzlich einer), **Nutzer dürfen eigene Anbieter/Schlüssel hinterlegen** |
 
-Alle Einstellungen lassen sich auch über [Umgebungsvariablen](/configuration-ai-push#ki) vorbelegen, etwa für automatisierte Installationen. Sie gelten, bis jemand in der Administration speichert.
+Alle Einstellungen lassen sich auch über [Umgebungsvariablen](/configuration-ai-push#ki) vorbelegen, etwa für automatisierte Installationen. Sie gelten, bis jemand sie unter **Einstellungen → Instanz → KI** speichert.
 
 Wie viel KI über den Anbieter der Instanz genutzt werden darf – für alle zusammen, je Rolle, je Gruppe und je Person, pro Tag, Woche, Monat und Jahr –, legst du unter [KI-Kontingente](/ai-quotas) fest. {since=0.11.0}
 

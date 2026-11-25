@@ -65,7 +65,7 @@ The apps for iPhone, iPad and Android record the microphone only.
 
 ## API and MCP
 
-API tokens have a new permission **"AI and transcription"** (Settings → API & AI assistants, when creating a token; off by default). Only tokens with it reach the AI features (`/api/ai/run`, `ask`, `write`, `summarize`), transcription (`/api/transcribe`) and meetings. Administrators can switch the permission off for the whole instance (Administration → AI → "API tokens with 'AI and transcription'"). Requests count against the same AI limits as the interface.
+API tokens have a new permission **"AI and transcription"** (Settings → API & AI assistants, when creating a token; off by default). Only tokens with it reach the AI features (`/api/ai/run`, `ask`, `write`, `summarize`), transcription (`/api/transcribe`) and meetings. Administrators can switch the permission off for the whole instance (Settings → Instance → AI → "API tokens with 'AI and transcription'"). Requests count against the same AI limits as the interface.
 
 ```bash
 curl -X POST https://flowplan.example/api/meetings \

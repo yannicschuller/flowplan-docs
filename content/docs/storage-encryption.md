@@ -36,7 +36,7 @@ FLOWPLAN_ENCRYPTION_KEY=<32 Bytes, base64>
 FLOWPLAN_ENCRYPTION_KEY_FILE=/run/secrets/flowplan-key
 ```
 
-**Administration → Verschlüsselung** zeigt danach „Verschlüsselung an“ mit der Schlüssel-ID (die ersten Bytes eines Hashes, nicht der Schlüssel selbst). Ein falsch geformter Schlüssel erscheint dort als Fehler; Sicherungen schlagen dann fehl, statt unverschlüsselt zu landen.
+**Einstellungen → Instanz → Verschlüsselung** zeigt danach „Verschlüsselung an“ mit der Schlüssel-ID (die ersten Bytes eines Hashes, nicht der Schlüssel selbst). Ein falsch geformter Schlüssel erscheint dort als Fehler; Sicherungen schlagen dann fehl, statt unverschlüsselt zu landen.
 
 > [!CAUTION]
 > Ohne den Schlüssel sind verschlüsselte Sicherungen und Dateien verloren – auch für dich. Bewahre ihn getrennt von den Sicherungen auf (Passwortmanager, Tresor), nicht im selben Bucket und nicht nur auf demselben Server.
@@ -46,7 +46,7 @@ FLOWPLAN_ENCRYPTION_KEY_FILE=/run/secrets/flowplan-key
 Es gibt keinen Migrationsschritt, und beim Start wird nichts umgeschrieben. Flowplan erkennt verschlüsselte Daten an den ersten Bytes, unverschlüsselte und verschlüsselte liegen problemlos nebeneinander:
 
 - **Ab dem Einschalten** werden neue Dateien, jede neue Sicherung und jeder neue Export verschlüsselt.
-- **Dateien, die schon im Bucket liegen**, bleiben lesbar und zunächst unverschlüsselt. Die Administration zählt sie; **Bestehende verschlüsseln** lädt sie im Hintergrund noch einmal hoch, diesmal verschlüsselt, und ersetzt dabei das alte Objekt. Die App läuft währenddessen normal weiter.
+- **Dateien, die schon im Bucket liegen**, bleiben lesbar und zunächst unverschlüsselt. **Einstellungen → Instanz → Verschlüsselung** zählt sie; **Bestehende verschlüsseln** lädt sie im Hintergrund noch einmal hoch, diesmal verschlüsselt, und ersetzt dabei das alte Objekt. Die App läuft währenddessen normal weiter.
 - **Ältere Sicherungen und Exporte** werden nicht umgeschrieben. Sie fallen mit der Zeit aus der Aufbewahrung (**Aufbewahrte Sicherungen**) heraus oder lassen sich von Hand löschen.
 - **Wiederherstellen** geht mit beiden: Eine unverschlüsselte Instanzsicherung lässt sich weiter hochladen, eine verschlüsselte wird vorher entschlüsselt.
 - Hat der Bucket **Versionierung**, bleiben ältere, unverschlüsselte Versionen der Objekte erhalten. Diese per Lebenszyklus-Regel oder von Hand entfernen.
@@ -58,7 +58,7 @@ Es gibt keinen Migrationsschritt, und beim Start wird nichts umgeschrieben. Flow
 ::: steps
 
 1. Den neuen Schlüssel als `FLOWPLAN_ENCRYPTION_KEY` setzen und den alten nach `FLOWPLAN_ENCRYPTION_KEY_PREVIOUS` verschieben (mehrere durch Komma getrennt), dann neu starten.
-2. Unter **Administration → Verschlüsselung** **Bestehende verschlüsseln** wählen. Alle Dateien im Bucket werden mit dem neuen Schlüssel neu verschlüsselt.
+2. Unter **Einstellungen → Instanz → Verschlüsselung** **Bestehende verschlüsseln** wählen. Alle Dateien im Bucket werden mit dem neuen Schlüssel neu verschlüsselt.
 3. Den alten Schlüssel aufheben, bis die letzte damit verschlüsselte Sicherung aus der Aufbewahrung gefallen ist.
 
 :::
@@ -67,9 +67,9 @@ Jede verschlüsselte Datei nennt die ID ihres Schlüssels. Fehlt dieser Schlüss
 
 ### Litestream und Verschlüsselung
 
-Litestream (0.5) kann die Datenbank-Kopie selbst nicht verschlüsseln. Mit eingeschaltetem Schlüssel warnt die Administration deshalb, dass unter `<Präfix>/db/` eine unverschlüsselte Kopie liegt. Zwei Wege:
+Litestream (0.5) kann die Datenbank-Kopie selbst nicht verschlüsseln. Mit eingeschaltetem Schlüssel warnt Flowplan unter **Einstellungen → Instanz → Verschlüsselung** deshalb, dass unter `<Präfix>/db/` eine unverschlüsselte Kopie liegt. Zwei Wege:
 
-1. **Nur verschlüsselte Sicherungen** (empfohlen bei einem Bucket, dem du nicht traust): `FLOWPLAN_LITESTREAM=off` setzen und unter **Administration → Speicher & Sicherung → Sicherungen** die Option **Stündlich statt täglich** einschalten, dazu mehr Kopien aufbewahren (z. B. 72). Danach den Ordner `<Präfix>/db/` im Bucket löschen. Der Preis: Im schlimmsten Fall geht die letzte Stunde verloren statt der letzten Sekunden, und auf einem neuen Host stellst du die Datenbank aus der neuesten Sicherung her (unten).
+1. **Nur verschlüsselte Sicherungen** (empfohlen bei einem Bucket, dem du nicht traust): `FLOWPLAN_LITESTREAM=off` setzen und unter **Einstellungen → Instanz → Speicher & Sicherung → Sicherungen** die Option **Stündlich statt täglich** einschalten, dazu mehr Kopien aufbewahren (z. B. 72). Danach den Ordner `<Präfix>/db/` im Bucket löschen. Der Preis: Im schlimmsten Fall geht die letzte Stunde verloren statt der letzten Sekunden, und auf einem neuen Host stellst du die Datenbank aus der neuesten Sicherung her (unten).
 2. **Serverseitige Verschlüsselung beim Anbieter (SSE-C)**: `LITESTREAM_SSE_C_KEY` auf einen eigenen Schlüssel setzen (32 Bytes, base64). Der Anbieter verschlüsselt die Kopie und bekommt den Schlüssel dafür bei jeder Anfrage mit. Das schützt also vor geleakten Datenträgern oder Buckets, nicht vor dem Anbieter selbst. Das funktioniert nur über https und nur bei Anbietern, die SSE-C unterstützen (vorher prüfen). Vor dem Einschalten den Ordner `<Präfix>/db/` leeren, denn eine Kopie aus unverschlüsselten und SSE-C-Teilen lässt sich nicht wiederherstellen.
 
 ### Notfall: ohne laufende Instanz entschlüsseln

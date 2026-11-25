@@ -25,7 +25,7 @@ Flowplan braucht vor sich nur einen HTTPS-Proxy. WebSockets sind nicht nötig: Z
 Bevor eine Instanz in den regulären Betrieb geht, prüf die Einstellungen der Ressource:
 
 - **Healthcheck** an, Port `3000`, Pfad `/api/health` ([Healthcheck](#healthcheck)).
-- **Restart policy** auf dem Standard von Coolify (`unless-stopped`) lassen: Der Container kommt nach einem Absturz und nach **Jetzt neu starten** in der Administration wieder. Was `0` bei **Max restart count** bedeutet, sagt der Tooltip des Felds in Coolify.
+- **Restart policy** auf dem Standard von Coolify (`unless-stopped`) lassen: Der Container kommt nach einem Absturz und nach **Jetzt neu starten** unter **Einstellungen → Instanz → Überwachung** wieder. Was `0` bei **Max restart count** bedeutet, sagt der Tooltip des Felds in Coolify.
 - Mit SQLite: **Container naming** auf **Consistent name (no rolling updates)** und ein **Custom container name** ([SQLite ohne Überlappung ausrollen](#sqlite-ohne-ueberlappung-ausrollen)).
 - **Stop grace period** 30 Sekunden oder mehr, damit Flowplan und Litestream sauber enden.
 - Eine **Speichergrenze** mit Platz für Litestream neben der App – oder, ohne Grenze, genug freier Speicher auf dem Host ([Dimensionierung](/sizing), [wenn der Server keinen Speicher mehr hat](/troubleshooting#neustarts-ohne-fehler)).
@@ -112,7 +112,7 @@ Eine Beta-Instanz ohne S3 startet nie Litestream – Replikation, [Selbstheilung
 
 1. Lege bei deinem S3-Anbieter einen **eigenen Bucket** für die Beta-Instanz an (z. B. `flowplan-beta`) und einen Zugangsschlüssel, der nur diesen Bucket nutzen darf. Ein eigener Bucket ist am sichersten: Ein Zurücksetzen der Beta-Replik kann die Produktion nie treffen. Geht nur ein Bucket, gib der Beta-Instanz wenigstens ein eigenes `S3_PREFIX` (z. B. `flowplan-beta`) – nie das der Produktion.
 2. Setze in Coolify bei den Umgebungsvariablen der Beta-Ressource `S3_BUCKET`, `S3_ENDPOINT`, `S3_REGION`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY` und `S3_PREFIX` für diesen Bucket. Ihr Daten-Volume bleibt ebenfalls ihr eigenes.
-3. Ausrollen. Das Log zeigt, wie Litestream wiederherstellt (ein leerer Bucket: nichts wiederherzustellen) und dann repliziert; **Administration → Überwachung** zeigt den Zustand der Replik.
+3. Ausrollen. Das Log zeigt, wie Litestream wiederherstellt (ein leerer Bucket: nichts wiederherzustellen) und dann repliziert; **Einstellungen → Instanz → Überwachung** zeigt den Zustand der Replik.
 
 :::
 
@@ -139,7 +139,7 @@ Brauchst du Updates ohne Unterbrechung, nimm [PostgreSQL](/postgresql) – dort 
 - meldet er im Log `ANOTHER CONTAINER IS USING THE DATA FOLDER …`;
 - startet er die Replikation von selbst, sobald der andere Container beendet ist und die Sperre frei wird. Stürzt dieses Litestream ab, läuft die App weiter, und Flowplan startet es nach `FLOWPLAN_LITESTREAM_RESTART_SECONDS` Sekunden (Standard 5) neu – bei jedem weiteren Absturz doppelt so spät, höchstens nach 300 Sekunden.
 
-Solange er wartet, zeigt **Administration → Überwachung** auf beiden Containern die Warnung „Ein zweiter Flowplan-Container (*Host*) nutzt seit *Zeit* dasselbe Datenverzeichnis …“ (auf dem wartenden: „Dieser Container … wartet …“). Sie endet, sobald nur noch ein Container läuft. Das Netz verhindert den beschädigten Zustand, ersetzt aber kein Ausrollen ohne Überlappung: Für die Zeit der Überlappung schreiben zwei Apps in dieselbe Datei. Die Sperre braucht ein Dateisystem mit `flock` – ein lokales Docker-Volume oder einen lokalen Ordner, nicht SMB.
+Solange er wartet, zeigt **Einstellungen → Instanz → Überwachung** auf beiden Containern die Warnung „Ein zweiter Flowplan-Container (*Host*) nutzt seit *Zeit* dasselbe Datenverzeichnis …“ (auf dem wartenden: „Dieser Container … wartet …“). Sie endet, sobald nur noch ein Container läuft. Das Netz verhindert den beschädigten Zustand, ersetzt aber kein Ausrollen ohne Überlappung: Für die Zeit der Überlappung schreiben zwei Apps in dieselbe Datei. Die Sperre braucht ein Dateisystem mit `flock` – ein lokales Docker-Volume oder einen lokalen Ordner, nicht SMB.
 
 ## Pangolin, Traefik und andere Proxys
 
@@ -192,7 +192,7 @@ Den internen Port `3000` nie zusätzlich öffentlich freigeben.
 
 ## Eigene Domains für Veröffentlichungen
 
-Mit **Eigene Domains für Veröffentlichungen** unter **Administration → Erweiterungen & Domains** zeigen Eigentümer veröffentlichte Seiten unter ihrer Domain ([Im Web veröffentlichen](/publishing#eigene-domain)). Flowplan erkennt die Domain am `Host`-Header und liefert nur die Veröffentlichung aus. Das Zertifikat bleibt Sache des Reverse Proxy; er muss Anfragen für beliebige Hosts an Flowplan weiterreichen und den `Host` unverändert lassen.
+Mit **Eigene Domains für Veröffentlichungen** unter **Einstellungen → Instanz → Erweiterungen & Domains** zeigen Eigentümer veröffentlichte Seiten unter ihrer Domain ([Im Web veröffentlichen](/publishing#eigene-domain)). Flowplan erkennt die Domain am `Host`-Header und liefert nur die Veröffentlichung aus. Das Zertifikat bleibt Sache des Reverse Proxy; er muss Anfragen für beliebige Hosts an Flowplan weiterreichen und den `Host` unverändert lassen.
 
 Flowplan beantwortet `GET /api/domains/allowed?domain=<host>` mit 200 für bestätigte Domains aktiver Veröffentlichungen und sonst mit 404 – genau die Frage, die Caddy vor einem neuen Zertifikat stellt.
 

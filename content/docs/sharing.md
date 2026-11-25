@@ -79,7 +79,7 @@ Besucher sehen Titel, Symbol, Cover, die gewählten Eigenschaften und das Dokume
 
 - Mitglieder erreichen den Eintrag wie bisher über die Datenbank und die [Rechte des Eintrags](/databases#rechte-pro-eintrag); Gäste einzelner Einträge gibt es nicht – dafür ist der Link da.
 - **Private** Einträge lassen sich nicht teilen; wird ein geteilter Eintrag privat, gelöscht, in eine andere Datenbank verschoben oder die Datenbank gelöscht, enden seine Links und seine Veröffentlichung sofort.
-- Deine Links erscheinen unter **Einstellungen → Sicherheit**, alle unter **Administration → Sicherheit**.
+- Deine Links erscheinen unter **Einstellungen → Sicherheit**, alle unter **Einstellungen → Instanz → Sicherheit**.
 
 ## Formulare
 

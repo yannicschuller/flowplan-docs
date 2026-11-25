@@ -4,7 +4,7 @@ keywords: Funktionen, Module, ausschalten, abschalten, Instanz, Workflows, KI, L
 
 # Funktionen dieser Instanz
 
-Unter **Administration → Instanz → Funktionen dieser Instanz** schaltest du Funktionen für die ganze Instanz aus – dieselbe Liste wie bei [Funktionen ein- und ausblenden](/settings#funktionen-ein-und-ausblenden). Anders als dort ist die Funktion dann nicht nur ausgeblendet, sondern aus: Vor dem Ausschalten fragt Flowplan nach.
+Unter **Einstellungen → Instanz → Instanz → Funktionen dieser Instanz** schaltest du Funktionen für die ganze Instanz aus – dieselbe Liste wie bei [Funktionen ein- und ausblenden](/settings#funktionen-ein-und-ausblenden). Anders als dort ist die Funktion dann nicht nur ausgeblendet, sondern aus: Vor dem Ausschalten fragt Flowplan nach.
 
 ## Ausschalten und wieder einschalten {since=0.11.0}
 
@@ -23,7 +23,7 @@ Schaltest du die Funktion wieder ein, ist alles wie vorher: Es wurde nichts gel�
 | Journal | Keine neuen Journale und keine Journal-Befehle; Journal und Tagesseiten nur zum Lesen. |
 | Workflows | Keine neuen Workflows und keine Läufe. Die Warteschlange und die Zeitpläne laufen nicht, Ereignisse werden nicht aufgezeichnet (es staut sich nichts für später) und Webhooks antworten mit 403. Was schon in der Warteschlange stand, läuft nach dem Einschalten weiter; von einem verpassten Zeitplan läuft dann höchstens der letzte Termin, wie nach einem Neustart. |
 | draw.io | Der draw.io-Editor öffnet sich nicht mehr; vorhandene Diagramme bleiben als Bild in den Seiten. |
-| KI | Wie der Hauptschalter unter **Administration → KI**: keine KI-Funktion, auch nicht auf dem Gerät. KI-Eigenschaften, die Warteschlange und der semantische Index pausieren und werden nach dem Einschalten abgearbeitet. |
+| KI | Wie der Hauptschalter unter **Einstellungen → Instanz → KI**: keine KI-Funktion, auch nicht auf dem Gerät. KI-Eigenschaften, die Warteschlange und der semantische Index pausieren und werden nach dem Einschalten abgearbeitet. |
 | Weitere Ansichten | Keine neuen Ansichten dieser Arten; vorhandene bleiben, wie sie sind. |
 | Formulare | Alle Formulare sind geschlossen – auch öffentliche – mit dem Hinweis, dass Formulare auf dieser Instanz ausgeschaltet sind; die Ansicht **Formular** zeigt einen Hinweis, Antworten bleiben. |
 | Besprechungen | Nichts wird aufgenommen, transkribiert oder zusammengefasst, Erinnerungen an Besprechungen pausieren. Aufbewahrtes Audio lässt sich weiter löschen und wird nach Ablauf der Aufbewahrung weiter entfernt. |

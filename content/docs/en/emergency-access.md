@@ -16,7 +16,7 @@ Under **Settings → Account & security → Emergency access** you name up to fi
 - **Not included:** team spaces, content you only see through a workspace (the person needs their own membership for that), other people's private spaces shared with you, and journals with a PIN.
 - **Encrypted spaces** are included once the person has set up encryption: your browser seals the keys for them the next time you unlock, and the server never sees them in plaintext. When the access ends, those spaces get a new key at your next visit.
 - You can end an access or remove a trusted contact at any time; every step is in the activity log and the security events, and an export also notifies you.
-- Admins switch the feature off under **Administration → Sign-in & SSO → Emergency access** (or with `FLOWPLAN_EMERGENCY_ACCESS=off`); granted access is suspended then.
+- Admins switch the feature off under **Settings → Instance → Sign-in & SSO → Emergency access** (or with `FLOWPLAN_EMERGENCY_ACCESS=off`); granted access is suspended then.
 
 ## Inactivity message {since=0.9.6}
 
@@ -30,4 +30,4 @@ If you don't use Flowplan for a while, Flowplan sends a note of yours to people 
 - **With [emergency access](#emergency-access):** with **Grant emergency access to my trusted contacts at once**, your trusted contacts get read access without their waiting period when the message is sent – only those who accepted the role at least as long ago as their own waiting period.
 - **Protection:** we e-mail you at once about every change of recipients or note. Setting it up works only when signed in in the browser, not with API tokens. **Preview the e-mail** shows the e-mail without sending it.
 
-For administrators: the feature needs [e-mail delivery](/configuration-integrations#e-mail-smtp) (SMTP). It can be switched off under **Administration → Sign-in & SSO → Allow inactivity messages** (default: on); `FLOWPLAN_DEAD_MAN_SWITCH=off` switches it off for good. Every sending and every change of recipients shows in the security events. Disabled accounts still send their message; an account deleted for inactivity sends it right before the deletion.
+For administrators: the feature needs [e-mail delivery](/configuration-integrations#e-mail-smtp) (SMTP). It can be switched off under **Settings → Instance → Sign-in & SSO → Allow inactivity messages** (default: on); `FLOWPLAN_DEAD_MAN_SWITCH=off` switches it off for good. Every sending and every change of recipients shows in the security events. Disabled accounts still send their message; an account deleted for inactivity sends it right before the deletion.

@@ -133,9 +133,9 @@ What the chart does in cluster mode:
 
 For ingress-nginx, the chart sets the annotations for live connections and uploads itself (no buffering, timeouts of an hour, `ingress.bodySize`); the chart's README describes other controllers and explains every value. {since=0.10.0}
 
-## Administration → Monitoring → System
+## Settings → Instance → Monitoring → System
 
-The **System** section under **Administration → Monitoring** shows how the installation runs:
+The **System** section under **Settings → Instance → Monitoring** shows how the installation runs:
 
 - **Mode** (single container, or cluster with the number of instances), **Database** with version and reachability,
 - **Connections of this instance** (open, idle, waiting) and the **Timeouts**,
@@ -176,4 +176,4 @@ The steps of [workflows](/workflows) wait in a queue in the database. Every inst
 ## Next
 
 - [Sizing](/en/sizing): how many instances and what hardware.
-- [Switching the database](/en/database-migration): bring an existing instance to PostgreSQL. For a cluster, first turn on S3 in the single container and wait until every file is in the bucket (**Administration → Storage & backup**, or `objectStorage.pending` at `0` in [`/api/health`](/en/operations#health-check)).
+- [Switching the database](/en/database-migration): bring an existing instance to PostgreSQL. For a cluster, first turn on S3 in the single container and wait until every file is in the bucket (**Settings → Instance → Storage & backup**, or `objectStorage.pending` at `0` in [`/api/health`](/en/operations#health-check)).

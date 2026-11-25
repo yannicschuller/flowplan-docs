@@ -79,7 +79,7 @@ Visitors see the record's title, icon, cover, the chosen properties and its docu
 
 - Members reach the record as before through the database and the [record's permissions](/databases#permissions-per-record); there are no guests of single records – that is what the link is for.
 - **Private** records cannot be shared; if a shared record becomes private, is deleted, is moved to another database or its database is deleted, its links and its publication end at once.
-- Your links appear under **Settings → Security**, all of them under **Administration → Security**.
+- Your links appear under **Settings → Security**, all of them under **Settings → Instance → Security**.
 
 ## Forms
 

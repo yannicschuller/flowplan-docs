@@ -32,7 +32,7 @@ Ein Klick auf die Zeile oder den Namen öffnet das Konto in einem Seitenfenster 
   - **Neuigkeiten nach Updates**: ob die Person nach einem Update einmal „Neu in Flowplan“ sieht – **Instanz-Standard**, **Alle anzeigen**, **Nur Breaking Changes** oder **Nie**; die Auswahl zeigt den aktuellen Wert. Es ist dieselbe Einstellung, die die Person unter **Darstellung & Sprache** selbst hat: Sie sieht deine Wahl und kann sie wieder ändern. Mit **Instanz-Standard** folgt das Konto der Einstellung [für neue Konten](/administration#instanz). {since=0.9.7}
   - **Einstellungsstufe**: welche Einstellungen die Person sieht – **Instanz-Standard**, **Einsteiger**, **Normal** oder **Experte** ([Einstellungsstufen](/settings#einstellungsstufen)). Auch hier kann die Person ihre Stufe oben in den Einstellungen selbst ändern. {since=0.9.7}
   - **Funktionen**: welche [Funktionen](/settings#funktionen-ein-und-ausblenden) die Person ausgeblendet hat – ihre eigene Auswahl oder der Instanz-Standard. **Instanz-Standard** setzt eine eigene Auswahl auf die Vorgabe zurück; auswählen kann nur die Person selbst. {since=0.11.0}
-  - **KI-Funktionen**: Steht unter [Administration → KI](/ai#fuer-admins) „Ausgewählte Personen“, schaltest du hier die KI pro Person frei oder ab.
+  - **KI-Funktionen**: Steht unter [Einstellungen → Instanz → KI](/ai#fuer-admins) „Ausgewählte Personen“, schaltest du hier die KI pro Person frei oder ab.
   - **Zwei-Faktor-Anmeldung** (bei Konten mit Authenticator-App): **Zurücksetzen** (etwa bei verlorenem Telefon) schaltet die Authenticator-App des Kontos aus; das steht im Aktivitätsprotokoll, und die Person bekommt eine E-Mail, wenn die Instanz E-Mails versendet.
   - **Anmeldemethoden**: ob das Konto ein Passwort hat (oder es entfernt wurde), ob es sich über LDAP anmeldet und welche SSO-Konten verbunden sind – mit Issuer, Adresse, wann verbunden und wann zuletzt benutzt. Verbinden und trennen kann die Person selbst unter **Einstellungen → Konto & Sicherheit**.
   - **Konten zusammenführen**: **Zusammenführen …** legt das Konto mit einem zweiten derselben Person zusammen (siehe [Konten zusammenführen](#konten-zusammenfuehren)).
@@ -62,7 +62,7 @@ Admin-Rechte verwalten die Instanz, nicht ihre Inhalte. Was jemand lesen darf, e
 - Private Bereiche anderer siehst du nur, wenn sie ausdrücklich mit dir geteilt sind – auch als Eigentümer des Arbeitsbereichs nicht.
 - Ende-zu-Ende-verschlüsselte Bereiche liest nur, wer den Schlüssel bekommen hat – weder Eigentümer noch Admins ([Verschlüsselte Bereiche](/encrypted-spaces)).
 
-In der Administration siehst du über die Konten und Arbeitsbereiche nur Verwaltungsdaten:
+Unter **Einstellungen → Instanz** siehst du über die Konten und Arbeitsbereiche nur Verwaltungsdaten:
 
 - **Benutzer**: Name, E-Mail-Adresse, Zustand, Anmeldemethoden, Sitzungen, belegten Speicher, wann jemand zuletzt da war und die Namen seiner Arbeitsbereiche.
 - **Arbeitsbereiche**: Name, Besitzer, Zahl der Mitglieder und Seiten, Belegung und Kontingent.

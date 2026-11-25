@@ -24,7 +24,7 @@ Die Befehle gehen von der Installation mit Docker Compose aus (Dienst `flowplan`
 
 1. **Gleiche Version.** Aktualisiere Flowplan auf die Version, die danach laufen soll, und starte es einmal. Das Werkzeug lehnt eine Datenbank aus einer anderen Version ab.
 2. **Ziel vorbereiten:** eine leere Datenbank auf PostgreSQL 16 oder neuer und eine Rolle, der sie gehört – siehe [Voraussetzungen](/postgresql#voraussetzungen), dort auch zu `pg_trgm` und `pgvector`.
-3. **Sichern:** **Administration → Speicher & Sicherung → Gesamte Instanz → Herunterladen**. Bewahre die Datei auf, bis die neue Instanz läuft.
+3. **Sichern:** **Einstellungen → Instanz → Speicher & Sicherung → Gesamte Instanz → Herunterladen**. Bewahre die Datei auf, bis die neue Instanz läuft.
 4. **Flowplan stoppen** – das Werkzeug liest nur dann einen stimmigen Stand, wenn niemand schreibt:
 
    ```bash
@@ -49,7 +49,7 @@ Die Befehle gehen von der Installation mit Docker Compose aus (Dienst `flowplan`
    docker compose up -d
    ```
 
-   Anmelden, eine Seite öffnen, etwas suchen (der Index füllt sich in Sekunden bis Minuten) und unter **Administration → Überwachung → System** nachsehen, dass dort **PostgreSQL** steht.
+   Anmelden, eine Seite öffnen, etwas suchen (der Index füllt sich in Sekunden bis Minuten) und unter **Einstellungen → Instanz → Überwachung → System** nachsehen, dass dort **PostgreSQL** steht.
 8. **Aufräumen, aber nicht sofort:** Die alte `flowplan.sqlite` bleibt im Datenordner liegen und wird ignoriert, solange `DATABASE_URL` gesetzt ist. Lösche sie erst, wenn die erste geplante Sicherung der neuen Instanz gelaufen ist.
 
 :::
@@ -125,7 +125,7 @@ Je Tabelle stehen Zeilenzahl und die Prüfsummen von Quelle und Ziel nebeneinand
 
 - **Vor dem ersten Arbeiten in der neuen Instanz:** Flowplan stoppen, die Einstellung zurücknehmen (`DATABASE_URL` entfernen bzw. wieder setzen) und starten. Die Quelle ist unverändert.
 - **Wenn schon gearbeitet wurde:** in die Gegenrichtung umziehen (Abschnitt oben), damit nichts verloren geht.
-- **Notfalls:** die heruntergeladene Instanzsicherung unter **Administration → Speicher & Sicherung → Aus Sicherung wiederherstellen** oder auf dem Einrichtungsbildschirm einspielen – sie passt auf beide Datenbanken.
+- **Notfalls:** die heruntergeladene Instanzsicherung unter **Einstellungen → Instanz → Speicher & Sicherung → Aus Sicherung wiederherstellen** oder auf dem Einrichtungsbildschirm einspielen – sie passt auf beide Datenbanken.
 
 Ist ein Kopiervorgang abgebrochen, setzt das Werkzeug nicht fort: Zieldatenbank leeren (bzw. die angefangene Datei löschen) und neu beginnen.
 

@@ -32,7 +32,7 @@ With `S3_BUCKET` and credentials (see [Configuration](/configuration-storage#s3-
 - **Files**: every uploaded file goes into the bucket right after saving, and deleted files move to `<prefix>/.deleted/uploads/` there; they are removed only once no kept scheduled backup in the bucket needs them, after one day at the earliest ([delayed deletion](#delayed-deletion)). `uploads/` stays the working copy – unless you [keep only part of the files locally](#keep-only-part-of-the-files-locally). If a file is missing there – a new host, a lost volume –, Flowplan fetches it from the bucket: right away when requested, all others in the background.
 - **Database**: [Litestream](https://litestream.io) transfers changes to the SQLite file to `<prefix>/db` about every second. If the container starts without a database, Litestream first restores it from the bucket.
 
-On the first start with S3, Flowplan uploads all existing files. **Administration → Storage & backup** shows the progress, the connection and the split between local and S3 (cards **Backups** and **Usage**); with `FLOWPLAN_METRICS_TOKEN`, or signed in as an administrator, `/api/health` shows it under `objectStorage.pending`.
+On the first start with S3, Flowplan uploads all existing files. **Settings → Instance → Storage & backup** shows the progress, the connection and the split between local and S3 (cards **Backups** and **Usage**); with `FLOWPLAN_METRICS_TOKEN`, or signed in as an administrator, `/api/health` shows it under `objectStorage.pending`.
 
 MinIO, Garage, SeaweedFS, AWS S3 and other S3-compatible services are suitable.
 
@@ -44,7 +44,7 @@ On a small server the bucket can hold the files on its own: with `S3_LOCAL_CACHE
 - If a removed file is needed – a download, a preview, the offline copy, an export, text recognition –, Flowplan fetches it from the bucket. Files removed on purpose are not fetched back in the background.
 - Backups keep working: the instance backup, the [SFTP mirror](#backup-via-sftp) and the [instance move](/move-instance) read the files that are only in the bucket from there, without filling the cache again.
 - The limit is a target, not a hard cap: many uploads within a few minutes can exceed it for a short time. Leave room on the disk for that.
-- **Administration → Storage & backup → Usage** shows the cache's size and limit and how many files are only in the bucket; `/api/health` lists the same under `objectStorage.localCache`.
+- **Settings → Instance → Storage & backup → Usage** shows the cache's size and limit and how many files are only in the bucket; `/api/health` lists the same under `objectStorage.localCache`.
 
 Empty (the default), everything stays local as before. Without `S3_BUCKET` the variable is ignored (the log says so). The database is never part of it. In [cluster mode](/cluster) the same cache is used; `S3_LOCAL_CACHE` there takes the place of `FLOWPLAN_CACHE_MAX_MB`. Before you change `S3_BUCKET`, `S3_ENDPOINT` or `S3_PREFIX` with a cache, copy the objects to the new place (e.g. with `rclone copy`): files that are only in the old bucket cannot be uploaded from the server.
 
@@ -75,7 +75,7 @@ Start the S3 service so that it listens on all interfaces (`-ip.bind=0.0.0.0`), 
 
 ## Backups
 
-1. **Instance backup in Flowplan** (recommended): **Administration → Storage & backup → Whole instance → Download** downloads the database and files consistently while running.
+1. **Instance backup in Flowplan** (recommended): **Settings → Instance → Storage & backup → Whole instance → Download** downloads the database and files consistently while running.
 2. **S3 with Litestream**: a continuous backup; an earlier point in time can be restored (below).
 3. **Scheduled backup**: a consistent copy of the database every day or every hour, with S3 in the bucket under `backups/`, otherwise in the data folder – encrypted when a key is set ([Encryption](/storage-encryption#encryption)). Also to a server of your own via [SFTP](#backup-via-sftp), with all files if you like, or through an [SMB or NFS share](#smb-or-nfs-share). No scheduled backup is made before the first account exists (demo accounts and the development account do not count) – so a new instance does not put an empty copy next to the backups of an old one.
 4. A **volume backup** on the host or in Coolify. For a consistent copy, stop the container first.
@@ -93,7 +93,7 @@ The content archive under **Settings → Import & export → Export → Workspac
 
 ## Backup via SFTP
 
-The scheduled backup can also go to a server of your own – a NAS, a backup server or rented storage with SSH access. Set it up under **Administration → Storage & backup → SFTP target**:
+The scheduled backup can also go to a server of your own – a NAS, a backup server or rented storage with SSH access. Set it up under **Settings → Instance → Storage & backup → SFTP target**:
 
 - **Server**, **port** (22) and **user**, sign-in with a **password** or a **private key** (OpenSSH or PEM, optionally with a passphrase). Flowplan stores password, key and passphrase only encrypted ([stored secrets](/en/configuration-storage#stored-secrets)); afterwards the interface only shows that one is stored.
 - **Folder on the server**: relative to the login folder or absolute (`/srv/backups/flowplan`); `..` is not allowed. If it is missing, Flowplan creates it.
@@ -101,7 +101,7 @@ The scheduled backup can also go to a server of your own – a NAS, a backup ser
 - **Include files**: mirrors the uploaded files to `uploads/` in the folder. New files are added with every backup; files deleted for good in Flowplan move to `.deleted/uploads/` ([delayed deletion](#delayed-deletion)). Files the database still lists are never moved away there. If the `uploads/` folder is missing or empty although the database lists files (a volume that is not mounted, say), the backup skips the mirror with an error; the database copy is still transferred. Files that are only in the bucket because of [`S3_LOCAL_CACHE`](#keep-only-part-of-the-files-locally) count as present: they are read from the bucket.
 - With `FLOWPLAN_ENCRYPTION_KEY`, everything on the server is encrypted – the database as in S3 and the data folder (`flowplan-….sqlite.enc`), every file on its own ([Encryption](/storage-encryption#encryption)).
 
-**Host key:** on the first **Test connection**, Flowplan shows the server's fingerprint (`SHA256:…`) before it sends any credentials. Compare it on the server with `ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub` and confirm it with **Trust this key**. If the server later presents another key (a reinstall – or someone intercepting the connection), every transfer stops and the administration shows the old and the new fingerprint; it only continues after **Accept the new key**. Another server or port always needs a new confirmation.
+**Host key:** on the first **Test connection**, Flowplan shows the server's fingerprint (`SHA256:…`) before it sends any credentials. Compare it on the server with `ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub` and confirm it with **Trust this key**. If the server later presents another key (a reinstall – or someone intercepting the connection), every transfer stops and **Settings → Instance → Storage & backup** shows the old and the new fingerprint; it only continues after **Accept the new key**. Another server or port always needs a new confirmation.
 
 The SFTP backup runs with every scheduled backup (daily or hourly; **Scheduled database backup** must be on); **Back up now** in the SFTP target transfers right away. The last transfer and the last error are shown below it and in the status line at the top.
 
@@ -166,4 +166,4 @@ For NFS instead:
 
 ## Quotas
 
-`FLOWPLAN_WORKSPACE_QUOTA_MB` or **Administration → Limits & retention** sets a default quota per workspace; under **Administration → Workspaces** it can be overridden per workspace. Uploads, copies, templates and imports beyond the quota are refused.
+`FLOWPLAN_WORKSPACE_QUOTA_MB` or **Settings → Instance → Limits & retention** sets a default quota per workspace; under **Settings → Instance → Workspaces** it can be overridden per workspace. Uploads, copies, templates and imports beyond the quota are refused.

@@ -14,7 +14,7 @@ Mit SCIM 2.0 legt der Identitätsanbieter Konten in Flowplan an, hält Name und 
 
 ::: steps
 
-1. **Administration → Anmeldung & SSO → SCIM-Token**: **Token erstellen**. Der Token beginnt mit `fpscim_` und wird nur einmal angezeigt; gespeichert ist nur sein Hash. Widerrufen geht jederzeit.
+1. **Einstellungen → Instanz → Anmeldung & SSO → SCIM-Token**: **Token erstellen**. Der Token beginnt mit `fpscim_` und wird nur einmal angezeigt; gespeichert ist nur sein Hash. Widerrufen geht jederzeit.
 2. Beim Anbieter die **SCIM-Basis-URL** `<APP_URL>/api/scim/v2` und den Token als **Bearer-Token** eintragen.
 3. Im Anbieter Personen und Gruppen der App zuweisen bzw. „Push Groups“ einschalten.
 
@@ -23,10 +23,10 @@ Mit SCIM 2.0 legt der Identitätsanbieter Konten in Flowplan an, hält Name und 
 **Was Flowplan daraus macht**
 
 - **Konten**: Ein neues SCIM-Konto ist ein SSO-Konto. Gibt es schon ein Konto mit derselben E-Mail-Adresse, wird es verknüpft statt verdoppelt. Bei der ersten OIDC-Anmeldung übernimmt die Person das vorbereitete Konto – über die `externalId` (= `sub` des Anbieters) oder eine bestätigte E-Mail-Adresse.
-- **Deaktivieren**: `active: false` deaktiviert das Konto wie **Sperren** in der Administration – alle Sitzungen enden sofort, API-Tokens hören auf zu funktionieren. `active: true` aktiviert es wieder. **Löschen** (DELETE) deaktiviert und trennt die Verknüpfung; Inhalte und das Konto selbst bleiben, endgültig löscht weiterhin die Administration. Das letzte Admin-Konto mit Passwort lässt sich über SCIM nicht deaktivieren.
+- **Deaktivieren**: `active: false` deaktiviert das Konto wie **Sperren** unter **Einstellungen → Instanz → Benutzer** – alle Sitzungen enden sofort, API-Tokens hören auf zu funktionieren. `active: true` aktiviert es wieder. **Löschen** (DELETE) deaktiviert und trennt die Verknüpfung; Inhalte und das Konto selbst bleiben, endgültig löscht weiterhin die Administration. Das letzte Admin-Konto mit Passwort lässt sich über SCIM nicht deaktivieren.
 - **Gruppen**: SCIM-Gruppen legen keine Gruppen in Flowplan an. Ihr **Anzeigename** zählt wie eine SSO-Gruppe aus dem Token: Die [SSO-Zuordnungen](/sso-oidc#sso-gruppen-arbeitsbereichen-zuordnen) geben Rolle und Arbeitsbereichsgruppen, und alle Regeln von dort gelten (die Zuordnung hat Vorrang, der letzte Eigentümer bleibt). Änderungen an Mitgliedschaften wirken sofort, nicht erst bei der nächsten Anmeldung. OIDC-Gruppen und SCIM-Gruppen einer Person werden zusammengezählt.
 - Konten mit E-Mail und Passwort können verknüpft und deaktiviert werden; Zuordnungen ändern ihre Mitgliedschaften aber nicht.
-- Die **letzten SCIM-Anfragen** mit Status stehen in der Administration – hilfreich, wenn der Anbieter Fehler meldet.
+- Die **letzten SCIM-Anfragen** mit Status stehen unter **Einstellungen → Instanz → Anmeldung & SSO → SCIM-Token** – hilfreich, wenn der Anbieter Fehler meldet.
 
 Nicht unterstützt: Bulk, Sortierung, `/Me` und Passwortänderungen (Flowplan speichert für SCIM-Konten kein Passwort).
 
@@ -46,7 +46,7 @@ Ist `LDAP_URL` gesetzt, prüft das Passwortfeld der Anmeldeseite Namen gegen ein
 - **Gruppen** kommen aus `LDAP_GROUP_ATTRIBUTE` (Standard `memberOf`): Flowplan nimmt den Gruppennamen (das erste RDN, meist der CN, z. B. `flowplan-admins`) **und** den vollständigen DN. Beides kann in den [SSO-Zuordnungen](/sso-oidc#sso-gruppen-arbeitsbereichen-zuordnen) und als `OIDC_ADMIN_GROUP` stehen.
 - **Stündlicher Abgleich**: Flowplan liest alle LDAP-Konten neu – Gruppen, Name, Adresse. Wer im Verzeichnis fehlt oder dort gesperrt ist (Active Directory `userAccountControl`, 389 DS `nsAccountLock`, OpenLDAP-ppolicy `pwdAccountLockedTime`), wird deaktiviert; ist die Person wieder da, wird sie wieder aktiviert. Von Admins deaktivierte Konten bleiben deaktiviert. Würde ein Lauf mehr als die Hälfte (mindestens fünf) der Konten deaktivieren, bricht er ab – das ist eher eine falsche Konfiguration.
 - Die **Zwei-Faktor-Anmeldung** gilt wie bei Passwörtern: LDAP-Konten können eine Authenticator-App einrichten, und die Vorgabe der Instanz („Admins“ oder „alle“) gilt auch für sie.
-- **Administration → Anmeldung & SSO → LDAP-Verzeichnis** zeigt den Status, **Verbindung testen** und **Jetzt abgleichen** mit dem letzten Ergebnis.
+- **Einstellungen → Instanz → Anmeldung & SSO → LDAP-Verzeichnis** zeigt den Status, **Verbindung testen** und **Jetzt abgleichen** mit dem letzten Ergebnis.
 
 | Variable | Standard | Bedeutung |
 | --- | --- | --- |
@@ -95,7 +95,7 @@ Ist `LDAP_URL` gesetzt, prüft das Passwortfeld der Anmeldeseite Namen gegen ein
 
 Für Kontakte allein reicht `LDAP_URL` mit `LDAP_CONTACTS_BASE_DN`; ohne `LDAP_BASE_DN` bleibt die Anmeldung mit LDAP aus.
 
-**Administration → Anmeldung & SSO → Kontakte aus LDAP** zeigt, woher Basis und Filter kommen, und überschreibt sie: Basis-DN, Filter, Abgleich alle … Minuten, **Weitere Attribute** (zusätzlich zu `LDAP_CONTACTS_ATTRIBUTES` freigegebene Attribute, durch Kommas getrennt) und **Erlaubt** (aus: niemand kann importieren, der Abgleich ruht). Gespeicherte Werte gehen der Umgebung vor; leere Felder nehmen wieder den Wert aus der Umgebung. **Verbindung testen** prüft Bind und Basis. Das Passwort des Suchkontos bleibt in der Umgebung und wird nie gespeichert. Änderungen und Importe stehen als Sicherheitsereignis „Sicherheitsrelevante Einstellung geändert“ im Protokoll.
+**Einstellungen → Instanz → Anmeldung & SSO → Kontakte aus LDAP** zeigt, woher Basis und Filter kommen, und überschreibt sie: Basis-DN, Filter, Abgleich alle … Minuten, **Weitere Attribute** (zusätzlich zu `LDAP_CONTACTS_ATTRIBUTES` freigegebene Attribute, durch Kommas getrennt) und **Erlaubt** (aus: niemand kann importieren, der Abgleich ruht). Gespeicherte Werte gehen der Umgebung vor; leere Felder nehmen wieder den Wert aus der Umgebung. **Verbindung testen** prüft Bind und Basis. Das Passwort des Suchkontos bleibt in der Umgebung und wird nie gespeichert. Änderungen und Importe stehen als Sicherheitsereignis „Sicherheitsrelevante Einstellung geändert“ im Protokoll.
 
 Wer das Verzeichnis nutzen darf: Administratoren der Instanz, Konten mit LDAP-Anmeldung und Vollmitglieder (keine Gäste) eines Arbeitsbereichs, den ein Administrator, ein LDAP-Konto oder die Instanz selbst angelegt hat – oder jemand, der seinerseits so eingeladen wurde {since=0.11.5} –, nie Gäste des Arbeitsbereichs der Kontakte-Datenbank und nie ein API-Token. Wer nur eigene Arbeitsbereiche hat oder nur von Leuten außerhalb der Organisation eingeladen wurde, kommt also nicht ans Verzeichnis, auch wenn jeder Arbeitsbereiche anlegen darf. Siehe [Kontakte aus dem LDAP-Verzeichnis](/contacts#kontakte-aus-dem-ldap-verzeichnis).
 

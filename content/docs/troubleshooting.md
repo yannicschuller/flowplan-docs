@@ -16,7 +16,7 @@ Flowplan startet neu, im Log steht kein Fehler, und die Leute merken nur eine ku
 
 ### In Flowplan
 
-**Administration → Überwachung → Neustarts** {since=0.10.0} listet jeden Neustart der letzten 30 Tage mit Grund (sauber beendet, Absturz, vermutlich Speicher voll, ohne Spur beendet), dem Speicher beim letzten Lebenszeichen und, bei einem unerwarteten, den letzten 200 Zeilen des Server- und Litestream-Logs vor dem Ende, mit **Als .txt herunterladen**. Was die Gründe bedeuten und wo ihre Grenzen liegen, steht unter [Neustarts](/monitoring#neustarts).
+**Einstellungen → Instanz → Überwachung → Neustarts** {since=0.10.0} listet jeden Neustart der letzten 30 Tage mit Grund (sauber beendet, Absturz, vermutlich Speicher voll, ohne Spur beendet), dem Speicher beim letzten Lebenszeichen und, bei einem unerwarteten, den letzten 200 Zeilen des Server- und Litestream-Logs vor dem Ende, mit **Als .txt herunterladen**. Was die Gründe bedeuten und wo ihre Grenzen liegen, steht unter [Neustarts](/monitoring#neustarts).
 
 ### Mit Docker
 
@@ -55,7 +55,7 @@ Litestream repliziert die SQLite-Datenbank in den Bucket (nur mit S3 und ohne `D
 
 Solange die Zusammenfassung hängt, räumt Litestream seine Änderungsdateien nicht mehr auf: Sie stapeln sich lokal und im Bucket, und **der Speicher von Litestream wächst weiter** – bis der Kernel es beendet (siehe oben, der ganze Server ohne Speicher). Auch eine Wiederherstellung aus dem Bucket über die kaputte Datei bricht ab.
 
-**Flowplan repariert das selbst.** {since=0.10.0} Alle 15 Minuten prüft es den Bucket; eine hängende Replik bringt eine Warnung in **Administration → Überwachung**, eine Nachricht an die Administratoren und, nach einer geplanten Sicherung, eine Reparatur beim nächsten Neustart (**Jetzt neu starten** erledigt es sofort). `FLOWPLAN_LITESTREAM_AUTOHEAL=off` lässt nur die Warnung.
+**Flowplan repariert das selbst.** {since=0.10.0} Alle 15 Minuten prüft es den Bucket; eine hängende Replik bringt eine Warnung in **Einstellungen → Instanz → Überwachung**, eine Nachricht an die Administratoren und, nach einer geplanten Sicherung, eine Reparatur beim nächsten Neustart (**Jetzt neu starten** erledigt es sofort). `FLOWPLAN_LITESTREAM_AUTOHEAL=off` lässt nur die Warnung.
 
 Die Reparatur ist eine Markierungsdatei `/app/data/litestream-reset`, die der nächste Start liest, bevor Litestream repliziert:
 
@@ -78,14 +78,14 @@ Flowplan: ANOTHER CONTAINER IS USING THE DATA FOLDER /app/data.
 ==========================================================================
 ```
 
-**Administration → Überwachung** zeigt auf beiden Containern die Warnung „Ein zweiter Flowplan-Container (*Host*) nutzt seit *Zeit* dasselbe Datenverzeichnis …“. Ein paar Sekunden während eines Updates deuten auf ein Ausrollen mit Überlappung; bleibt die Warnung, läuft eine zweite Ressource, Replica oder ein `docker run` auf demselben Volume. Such den anderen Container (`docker ps`, der Hostname in der Warnung) und stopp ihn. Wie du ohne Überlappung ausrollst, auch in Coolify, steht unter [SQLite ohne Überlappung ausrollen](/coolify-and-proxy#sqlite-ohne-ueberlappung-ausrollen).
+**Einstellungen → Instanz → Überwachung** zeigt auf beiden Containern die Warnung „Ein zweiter Flowplan-Container (*Host*) nutzt seit *Zeit* dasselbe Datenverzeichnis …“. Ein paar Sekunden während eines Updates deuten auf ein Ausrollen mit Überlappung; bleibt die Warnung, läuft eine zweite Ressource, Replica oder ein `docker run` auf demselben Volume. Such den anderen Container (`docker ps`, der Hostname in der Warnung) und stopp ihn. Wie du ohne Überlappung ausrollst, auch in Coolify, steht unter [SQLite ohne Überlappung ausrollen](/coolify-and-proxy#sqlite-ohne-ueberlappung-ausrollen).
 
 ## Was in einen Fehlerbericht gehört
 
 Eröffne ein [Issue](https://github.com/yannicschuller/flowplan/issues/new/choose) mit:
 
 - der **Versionszeile**, der ersten Zeile, die Flowplan ins Log schreibt, z. B. `Flowplan 0.10.0 (release, build abc1234, built …, Node.js …)` (oder `version` aus [`/api/health`](/operations#healthcheck) mit dem Token);
-- bei einem Neustart der **.txt** des Eintrags aus **Administration → Überwachung → Neustarts**;
+- bei einem Neustart der **.txt** des Eintrags aus **Einstellungen → Instanz → Überwachung → Neustarts**;
 - der Ausgabe der `docker inspect`-Zeilen oben und, falls vorhanden, den `dmesg`-Zeilen um den Zeitpunkt;
 - bei Litestream den ersten Fehlerzeilen im Log und ob S3 und `S3_PREFIX` gesetzt sind (nicht ihre Werte);
 - wie die Instanz läuft: Docker, Compose, Coolify, Kubernetes; SQLite oder PostgreSQL; Speichergrenze.

@@ -7,9 +7,9 @@ new: errors-in-detail 2026-11-17, restarts 2026-11-18
 
 Watch the instance live: figures, statistics, alerts via webhook, maintenance notices and Prometheus.
 
-## Administration → Monitoring
+## Settings → Instance → Monitoring
 
-**Administration → Monitoring** shows the instance live – refreshed every 15 seconds, paused while the tab is in the background:
+**Settings → Instance → Monitoring** shows the instance live – refreshed every 15 seconds, paused while the tab is in the background:
 
 - **Health**: database, file storage (with disk usage), S3 mirror, backup, e-mail, AI provider (reachable and response time, checked at most every five minutes), push relay (reachable, checked at most every minute, see [Push notifications](/administration#push-notifications)), background workers and update. Each tile leads to the section in charge.
 - **Key figures**: five tiles in a row, each with a value and a small trend; storage, AI tokens and errors compare with the period before once it has been collected: **Active 24 h** (plus active now and since midnight), **Storage** (change over 7 days, with disk usage), **Deliveries 7 days** (plus those given up), **AI tokens 14 days** (vs. last week) and **Errors 24 h** (5xx, vs. the day before, with the error rate). Each tile jumps to its card.
@@ -23,7 +23,7 @@ In detail:
 
 - **Refused requests**: failed sign-ins, requests a limit refused with 429 (sign-in attempts, invitations, AI, MCP, forms …) and anonymous uploads over the daily budget (forms, share links) – per day over the last 14 days. A rise points to attacks or limits that are too tight. The counters are kept for 35 days and cleaned up daily.
 - **Background workers**: last run and last error of backup, Markdown export, AI background work, calendar and issue sync and LDAP sync; “off” means not set up.
-- **Storage**: usage by kind and the largest workspaces with bars against the quota (yellow from 80 %, red from 95 %). Quotas are set under **Administration → Workspaces** and **Administration → Limits & retention**.
+- **Storage**: usage by kind and the largest workspaces with bars against the quota (yellow from 80 %, red from 95 %). Quotas are set under **Settings → Instance → Workspaces** and **Settings → Instance → Limits & retention**.
 - **Deliveries**: delivered webhooks, push messages and e-mails per day; what is waiting, given up and the latest errors are under **Queues**. Only the host of a webhook address is shown, never its path or token.
 
 ### Errors in detail {since=0.10.0}
@@ -40,7 +40,7 @@ Captured are answers from 500 up, failures of background workers and jobs and fa
 
 ### Restarts {since=0.10.0}
 
-When the container restarts without any visible error, **Restarts** under **Administration → Monitoring** helps after the fact: every restart of the last 30 days is listed with its time, how long Flowplan ran before, the reason and the memory at the last heartbeat (process and container against its limit).
+When the container restarts without any visible error, **Restarts** under **Settings → Instance → Monitoring** helps after the fact: every restart of the last 30 days is listed with its time, how long Flowplan ran before, the reason and the memory at the last heartbeat (process and container against its limit).
 
 | Reason | Means |
 | --- | --- |
@@ -57,7 +57,7 @@ How it works: every 30 seconds Flowplan writes a heartbeat (time, uptime, memory
 
 Entries are kept 30 days. In a cluster every instance records its own restarts; when several containers share one data folder, the files carry their container's name (`FLOWPLAN_INSTANCE_ID` or the host name). `FLOWPLAN_LOG_FILE=off` switches the log on disk off – restarts are then listed without lines.
 
-A **crash** or **two unexpected restarts within an hour** make an incident: once per incident an alert goes out by webhook (`ops.unexpected_restart`) and to the administrators' chat apps, the **Monitoring** tile on the administration's start page shows it for a day, and the activity log records it.
+A **crash** or **two unexpected restarts within an hour** make an incident: once per incident an alert goes out by webhook (`ops.unexpected_restart`) and to the administrators' chat apps, the **Monitoring** tile in **Instance at a glance** on the settings start page shows it for a day, and the activity log records it.
 
 > [!NOTE]
 > **Limits of the OOM detection:** when the kernel ends the process for lack of memory, Flowplan cannot write anything any more. "Likely out of memory" is therefore a guess from the last heartbeat – up to 30 seconds old, a fast rise after it stays invisible – or from the container's OOM counter, which Docker and Kubernetes usually reset on a restart. `docker inspect --format '{{.State.OOMKilled}}' <container>` or `kubectl describe pod` ("OOMKilled") tell for sure. Without a memory limit on the container the JavaScript heap and the whole server's available memory count – when the server runs out, the kernel ends some process, such as Litestream; `dmesg` then shows `Killed process … (litestream)`. And because Litestream is the container's first process, its very last line when it stops can be missing from the file.
@@ -72,11 +72,11 @@ For the charts, Flowplan counts requests, errors and response times per minute, 
 | Hours | 35 days |
 | Days (storage, AI tokens) | 400 days |
 
-Switch the statistics off under **Administration → Monitoring → Statistics** (**Collect usage statistics**) or for the whole instance with `FLOWPLAN_METRICS=off` (see [Configuration](/configuration#operations)); the switch is then locked. **Delete statistics** removes all counted requests, active people, storage history, AI tokens and successful sign-ins; the counters of refused requests stay.
+Switch the statistics off under **Settings → Instance → Monitoring → Statistics** (**Collect usage statistics**) or for the whole instance with `FLOWPLAN_METRICS=off` (see [Configuration](/configuration#operations)); the switch is then locked. **Delete statistics** removes all counted requests, active people, storage history, AI tokens and successful sign-ins; the counters of refused requests stay.
 
 ### Alerts by webhook
 
-Under **Administration → Monitoring → Alerts by webhook**, enter an `https://` address (with `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true` also `http://` and internal addresses) and choose the events:
+Under **Settings → Instance → Monitoring → Alerts by webhook**, enter an `https://` address (with `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true` also `http://` and internal addresses) and choose the events:
 
 | Event | When |
 | --- | --- |
@@ -100,7 +100,7 @@ The header `X-Flowplan-Signature: sha256=<HMAC-SHA256 of the body>` is made with
 
 ### Maintenance & notices
 
-**Administration → Maintenance & notices** holds two banners and the banners to click away. The **notice for everyone** – e.g. “The new filing applies from Monday” – stays until you clear the field. A **maintenance notice** with text, start and end appears to everyone signed in as a banner at the top of the window from saving on – before the start as “Scheduled maintenance”, during it as “Maintenance in progress”, in each person's time zone and language. After the end it disappears by itself, also in windows already open (they check every five minutes). Everyone can hide the notice for themselves. **Remove notice** withdraws it at once. Saving and removing are in the activity log.
+**Settings → Instance → Maintenance & notices** holds two banners and the banners to click away. The **notice for everyone** – e.g. “The new filing applies from Monday” – stays until you clear the field. A **maintenance notice** with text, start and end appears to everyone signed in as a banner at the top of the window from saving on – before the start as “Scheduled maintenance”, during it as “Maintenance in progress”, in each person's time zone and language. After the end it disappears by itself, also in windows already open (they check every five minutes). Everyone can hide the notice for themselves. **Remove notice** withdraws it at once. Saving and removing are in the activity log.
 
 #### Banners to click away
 
@@ -116,7 +116,7 @@ The list shows each banner with its state (shown, planned, paused, ended) and ho
 
 ### Storage overview
 
-**Administration → Storage & backup** shows in the cards **Backups**, **Usage** and **Content**:
+**Settings → Instance → Storage & backup** shows in the cards **Backups**, **Usage** and **Content**:
 
 - whether the S3 storage is reachable, how long the check took and how many files are still waiting,
 - what is local and what is in the bucket: files by kind (images, videos, documents …) and how the database is split,

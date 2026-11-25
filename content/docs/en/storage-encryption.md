@@ -36,7 +36,7 @@ FLOWPLAN_ENCRYPTION_KEY=<32 bytes, base64>
 FLOWPLAN_ENCRYPTION_KEY_FILE=/run/secrets/flowplan-key
 ```
 
-**Administration → Encryption** then shows “Encryption on” with the key ID (the first bytes of a hash, not the key itself). A malformed key shows up there as an error; backups then fail instead of being stored unencrypted.
+**Settings → Instance → Encryption** then shows “Encryption on” with the key ID (the first bytes of a hash, not the key itself). A malformed key shows up there as an error; backups then fail instead of being stored unencrypted.
 
 > [!CAUTION]
 > Without the key, encrypted backups and files are lost – for you too. Keep it apart from the backups (password manager, vault), not in the same bucket and not only on the same server.
@@ -46,7 +46,7 @@ FLOWPLAN_ENCRYPTION_KEY_FILE=/run/secrets/flowplan-key
 There is no migration step, and nothing is rewritten at startup. Flowplan recognises encrypted data by its first bytes, so unencrypted and encrypted data sit side by side without problems:
 
 - **From the moment you turn it on**, new files and every new backup and export are encrypted.
-- **Files already in the bucket** stay readable and unencrypted for now. Administration counts them; **Encrypt existing objects** uploads them once more in the background, this time encrypted, replacing the old object. The app keeps running normally meanwhile.
+- **Files already in the bucket** stay readable and unencrypted for now. **Settings → Instance → Encryption** counts them; **Encrypt existing objects** uploads them once more in the background, this time encrypted, replacing the old object. The app keeps running normally meanwhile.
 - **Older backups and exports** are not rewritten. Over time they drop out of retention (**Backups kept**), or you can delete them by hand.
 - **Restore** works with both: an unencrypted instance backup can still be uploaded, and an encrypted one is decrypted first.
 - If the bucket has **versioning**, older unencrypted versions of the objects remain. Remove them with a lifecycle rule or by hand.
@@ -58,7 +58,7 @@ There is no migration step, and nothing is rewritten at startup. Flowplan recogn
 ::: steps
 
 1. Set the new key as `FLOWPLAN_ENCRYPTION_KEY` and move the old one to `FLOWPLAN_ENCRYPTION_KEY_PREVIOUS` (several separated by commas), then restart.
-2. Under **Administration → Encryption**, choose **Encrypt existing objects**. All files in the bucket are re-encrypted with the new key.
+2. Under **Settings → Instance → Encryption**, choose **Encrypt existing objects**. All files in the bucket are re-encrypted with the new key.
 3. Keep the old key until the last backup encrypted with it has dropped out of retention.
 
 :::
@@ -67,9 +67,9 @@ Every encrypted file names the ID of its key. If that key is missing, Flowplan s
 
 ### Litestream and encryption
 
-Litestream (0.5) cannot encrypt the database replica itself. With a key set, Administration therefore warns that an unencrypted copy is kept under `<prefix>/db/`. Two ways out:
+Litestream (0.5) cannot encrypt the database replica itself. With a key set, Flowplan therefore warns under **Settings → Instance → Encryption** that an unencrypted copy is kept under `<prefix>/db/`. Two ways out:
 
-1. **Encrypted backups only** (recommended for a bucket you do not trust): set `FLOWPLAN_LITESTREAM=off`, turn on **Hourly instead of daily** under **Administration → Storage & backup → Backups**, and keep more copies (e.g. 72). Then delete the folder `<prefix>/db/` in the bucket. The price: in the worst case you lose the last hour instead of the last seconds, and on a new host you restore the database from the newest backup (below).
+1. **Encrypted backups only** (recommended for a bucket you do not trust): set `FLOWPLAN_LITESTREAM=off`, turn on **Hourly instead of daily** under **Settings → Instance → Storage & backup → Backups**, and keep more copies (e.g. 72). Then delete the folder `<prefix>/db/` in the bucket. The price: in the worst case you lose the last hour instead of the last seconds, and on a new host you restore the database from the newest backup (below).
 2. **Server-side encryption at the provider (SSE-C)**: set `LITESTREAM_SSE_C_KEY` to a key of its own (32 bytes, base64). The provider encrypts the replica and receives the key with every request to do so. That protects against leaked disks or buckets, not against the provider itself. It only works over https and only with providers that support SSE-C (check first). Empty the folder `<prefix>/db/` before turning it on, because a replica made of unencrypted and SSE-C parts cannot be restored.
 
 ### Emergency: decrypt without a running instance

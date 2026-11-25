@@ -33,7 +33,7 @@ Wie du Widgets hinzufügst, verschiebst und einstellst, steht unter [Startseite 
 | **Notizzettel** | Ein kleiner Zettel nur für dich, auf allen Geräten. |
 | **Fokus & Zeit** | Fokuszeit starten, laufende Zeiterfassung und Stunden dieser Woche (siehe unten). |
 | **Links** | Deine Lesezeichen an einem Ort. |
-| **Instanz-Status** | Sicherungen, Fehlerquote, Hintergrunddienste und Speicher – nur für die Administration. |
+| **Instanz-Status** | Sicherungen, Fehlerquote, Hintergrunddienste und Speicher – nur für Admins. |
 
 In der Auswahl stehen sie in vier Gruppen: **Überblick**, **Planen**, **Schreiben & erfassen** und **Werkzeuge**.
 

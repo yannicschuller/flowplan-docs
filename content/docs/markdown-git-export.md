@@ -4,7 +4,7 @@ keywords: Markdown, Git, Export, Repository, GitHub, Notfall, lesbare Kopie
 
 # Markdown-Export und Git
 
-Eine lesbare Kopie außerhalb von Flowplan – für den Notfall, wenn die Instanz nicht läuft, oder als Archiv in einem Git-Repository. **Administration → Markdown- & Git-Export** wählt Seiten und Datenbanken; mit jeder geplanten Sicherung (und mit **Jetzt sichern**) wird jede davon samt Unterseiten, Kommentaren und früheren Versionen zu einem Markdown-ZIP:
+Eine lesbare Kopie außerhalb von Flowplan – für den Notfall, wenn die Instanz nicht läuft, oder als Archiv in einem Git-Repository. **Einstellungen → Instanz → Markdown- & Git-Export** wählt Seiten und Datenbanken; mit jeder geplanten Sicherung (und mit **Jetzt sichern**) wird jede davon samt Unterseiten, Kommentaren und früheren Versionen zu einem Markdown-ZIP:
 
 - mit S3 im Bucket unter `<S3_PREFIX>/exports/`, sonst im Datenordner unter `exports/`; es bleiben so viele wie Sicherungen (**Aufbewahrte Sicherungen**). Mit `FLOWPLAN_ENCRYPTION_KEY` sind die ZIPs verschlüsselt (`.zip.enc`), die Übertragung nach Git nicht;
 - exportiert wird mit den Leserechten der Person, die die Auswahl gespeichert hat – private Einträge und Journale mit PIN bleiben draußen;
@@ -15,7 +15,7 @@ Ist der Server gerade ausgelastet, versucht es der geplante Markdown-Export eini
 ## In ein Git-Repository übertragen
 
 > [!IMPORTANT]
-> Der Git-Export der Instanz (`EXPORT_GIT_*`) ist veraltet. Er läuft weiter, wird aber durch den [Git-Export eines Bereichs](#git-export-eines-bereichs) ersetzt, den Bereichseigentümer selbst einrichten; die Administration zeigt dazu einen Hinweis. Der geplante Markdown-Export nach S3 oder in den Datenordner bleibt unverändert.
+> Der Git-Export der Instanz (`EXPORT_GIT_*`) ist veraltet. Er läuft weiter, wird aber durch den [Git-Export eines Bereichs](#git-export-eines-bereichs) ersetzt, den Bereichseigentümer selbst einrichten; **Einstellungen → Instanz → Markdown- & Git-Export** zeigt dazu einen Hinweis. Der geplante Markdown-Export nach S3 oder in den Datenordner bleibt unverändert.
 
 Mit diesen Variablen überträgt Flowplan jeden Export selbst in ein Repository (Forgejo, Gitea, GitHub, GitLab) – jede Seite in einem eigenen Ordner, ein Commit pro Lauf mit Änderungen:
 
@@ -35,7 +35,7 @@ Mit `EXPORT_GIT_IMPORT=true` gilt für geänderte Dateien:
 - **Journaltage** (`<Journalordner>/2026/10/2026-10-27.md`) werden über ihr Journal (den Ordner) und das Datum gefunden; `flowplan.id` im Frontmatter zählt nur, wenn sie einen Tag desselben Journals nennt. Repositorys aus älteren Versionen, in denen Tage noch als `pages/<Titel>-<Kennung>.md` lagen, funktionieren weiter: Änderungen an diesen Dateien werden vor dem Export noch übernommen, danach schreibt der Export die Tage an die neuen Pfade und entfernt die alten Dateien. Dabei entsteht kein Tag doppelt; ein umbenanntes Journal behält seine Tage, weil der Ordner über die Kennung zugeordnet wird.
 - Datenbanktabellen, Kommentare und Versionen sind Kopien und werden nicht zurückgelesen.
 
-Markdown kennt nicht alle Blöcke von Flowplan (etwa Spalten). Whiteboards liegen als SVG-Bild im Repository; ein eingebettetes Board trägt eine unsichtbare Markierung (`<!-- flowplan:whiteboard … -->`), mit der es beim Übernehmen aus Git wieder eingebettet wird – Bild und Link darunter bitte stehen lassen. Wer in Git Seiten mit anderen solchen Blöcken bearbeitet, findet den vorigen Stand im Versionsverlauf. Den Stand der letzten Übertragung (Commit, übernommene Änderungen, Fehler) zeigt die Administration.
+Markdown kennt nicht alle Blöcke von Flowplan (etwa Spalten). Whiteboards liegen als SVG-Bild im Repository; ein eingebettetes Board trägt eine unsichtbare Markierung (`<!-- flowplan:whiteboard … -->`), mit der es beim Übernehmen aus Git wieder eingebettet wird – Bild und Link darunter bitte stehen lassen. Wer in Git Seiten mit anderen solchen Blöcken bearbeitet, findet den vorigen Stand im Versionsverlauf. Den Stand der letzten Übertragung (Commit, übernommene Änderungen, Fehler) zeigt **Einstellungen → Instanz → Markdown- & Git-Export**.
 
 ## Git-Export eines Bereichs
 
@@ -68,4 +68,4 @@ Sicherheit:
 - Jede Adresse wird aufgelöst und geprüft: Interne Adressen (localhost, private Netze) sind nicht erreichbar, Weiterleitungen werden nicht verfolgt. Einzige Ausnahme: Server, die die Administration in `SPACE_GIT_ALLOWED_HOSTS` nennt, wenn zusätzlich `SPACE_GIT_ALLOW_PRIVATE=true` gesetzt ist – etwa ein Git-Server auf demselben Host. Auch dann bleibt es bei HTTPS, festgelegter Adresse und ohne Weiterleitungen.
 - Der Export endet, und Token und Arbeitskopie (`git-export/spaces/<Bereich>/` im Datenordner) werden gelöscht, wenn die Eigentümerin oder der Eigentümer ihn ausschaltet, den Arbeitsbereich verlässt, Gast wird oder das Konto löscht – oder wenn der Bereich eine neue Eigentümerin oder einen neuen Eigentümer bekommt oder in den Papierkorb wandert.
 
-**Administration → Markdown- & Git-Export** zeigt, wie viele Bereiche den Git-Export nutzen, und ihre letzten Fehler – ohne Adressen und Inhalte.
+**Einstellungen → Instanz → Markdown- & Git-Export** zeigt, wie viele Bereiche den Git-Export nutzen, und ihre letzten Fehler – ohne Adressen und Inhalte.

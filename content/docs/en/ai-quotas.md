@@ -12,7 +12,7 @@ Administrators can limit how much AI is used through the [instance's provider](/
 ## What counts {since=0.11.0}
 
 - **Tokens:** input and output together, as the provider reports them – otherwise Flowplan estimates them from the length of the text.
-- **Or cost:** with prices per model entered under **Administration → AI → Prices** (per million tokens, input and output separately), limits can also be set as estimated cost in the instance's currency. A model without a price then does not count – administrators see a note about it.
+- **Or cost:** with prices per model entered under **Settings → Instance → AI → Prices** (per million tokens, input and output separately), limits can also be set as estimated cost in the instance's currency. A model without a price then does not count – administrators see a note about it.
 - **Every AI feature** with the instance's provider: writing assistant, summaries, Ask AI, AI actions, AI in databases, whiteboards, handwriting, flashcards and meeting notes. [Semantic search](/ask-ai#semantic-search-optional) counts towards the whole instance's limit, not towards a person.
 - **Workflows** keep their own daily budget. Whether their AI nodes count towards the whole instance's limit is a setting (default: yes); they never count towards the person a workflow runs as.
 - **Not counted** is the transcription of voice notes and meetings: it runs on its own Whisper service, not through the AI provider.
@@ -21,7 +21,7 @@ The periods are calendar periods in the time zone the administrators choose: a d
 
 ## For admins {since=0.11.0}
 
-Under **Administration → AI → Quotas**:
+Under **Settings → Instance → AI → Quotas**:
 
 ::: steps
 
@@ -49,7 +49,7 @@ Which limit applies to a person: their own, else the **highest** of their groups
 
 **At most … for afterwards:** {since=0.11.3} Next to **go on with …**, **at most** limits the continuation per person – in the quotas' unit per day, week, month or year, for example 20,000,000 tokens a month; empty = unlimited as before. Only what ran with the model for afterwards counts. Once that is used up as well, AI is off until a period starts again (“AI off until …”); the instance's limit still applies on top. Which limit applies follows the other rules: the person's own rule, else the most generous of their groups and roles that go on (if one of them leaves the period open, it is open), else the default. When the unit changes, the limit starts empty. In the [export / import](/en/account-limits#export-import) it is `aiAfterTokens` (and `defaultAfterTokens`).
 
-**Right at the person or group:** under **Administration → Users** every person has, in the section **AI**, their **Quota** – **Inherited** (with what applies now), **Own limits** per day, week, month and year, or **Exempt** – and below it their usage per period with what is left. Groups have the same in the workspace's **Groups & permissions → Manage** dialog (administrators only). These are the same limits as in the table here, no second store. There you also set the [model](#model-per-person-and-group); the **Limits** table shows it in the **Model** column, the **By person** table the model that applies to each person. {since=0.11.0}
+**Right at the person or group:** under **Settings → Instance → Users** every person has, in the section **AI**, their **Quota** – **Inherited** (with what applies now), **Own limits** per day, week, month and year, or **Exempt** – and below it their usage per period with what is left. Groups have the same in the workspace's **Groups & permissions → Manage** dialog (administrators only). These are the same limits as in the table here, no second store. There you also set the [model](#model-per-person-and-group); the **Limits** table shows it in the **Model** column, the **By person** table the model that applies to each person. {since=0.11.0}
 
 Under **Usage and limits** you see, for the chosen period, the usage of the whole instance, per person (sortable by usage, what is left or name, with the limit and where it comes from), per group and per model. The [AI statistics](/administration#monitoring) show the instance's limit as a line.
 
@@ -59,8 +59,8 @@ Under **Usage and limits** you see, for the chosen period, the usage of the whol
 
 The model under **Instance provider** is the **instance default**. You can give single people, groups or roles another model of the same provider – for example, the whole instance uses a small, inexpensive model such as Claude Haiku, but certain people use Claude Opus.
 
-- **For a person:** **Administration → Users**, click the person, section **AI** → **Model**. You can choose **Instance default**, the models of the price list and – with the arrow next to it – every model the provider reports. If the person belongs to a group with its own model, the first entry is **As group …**; **Instance default** then still applies to them.
-- **For a group:** in the workspace settings under **Groups & permissions → Manage** (visible to administrators only) or in the **Limits** table under **Administration → AI → Quotas**, column **Model**. The roles **Administrators** and **Guests** are there as well.
+- **For a person:** **Settings → Instance → Users**, click the person, section **AI** → **Model**. You can choose **Instance default**, the models of the price list and – with the arrow next to it – every model the provider reports. If the person belongs to a group with its own model, the first entry is **As group …**; **Instance default** then still applies to them.
+- **For a group:** in the workspace settings under **Groups & permissions → Manage** (visible to administrators only) or in the **Limits** table under **Settings → Instance → AI → Quotas**, column **Model**. The roles **Administrators** and **Guests** are there as well.
 
 Which model applies to a person:
 

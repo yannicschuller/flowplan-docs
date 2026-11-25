@@ -31,8 +31,8 @@ This holds for every way of running it: `docker run`, Docker Compose, Kubernetes
 3. **Keep the domain.** The same `APP_URL` means passkeys, the OIDC redirect, CalDAV and CardDAV accounts, the apps, incoming webhooks (Git, tickets, inbound e-mail) and share links simply keep working after the DNS switch. With a new domain all of that must be set up again (see [Another domain](#another-domain)).
 4. **Lower the TTL of the DNS record** at least as long beforehand as the current TTL (often 1 to 24 hours), e.g. to 300 seconds. The switch then takes effect within minutes.
 5. **Set up the new server** (example: [Hetzner Cloud](#example-hetzner-cloud)) with **the same or a newer** Flowplan version – an older one cannot open a newer database – and with the same environment variables. A bucket of its own for the new instance is simplest; with the same bucket see [way C](#way-c-s3-and-litestream).
-6. **Make a backup**: **Administration → Storage & backup → Whole instance → Download**. It never hurts.
-7. **Warn the users**: **Administration → Maintenance & notices** shows everyone a maintenance window.
+6. **Make a backup**: **Settings → Instance → Storage & backup → Whole instance → Download**. It never hurts.
+7. **Warn the users**: **Settings → Instance → Maintenance & notices** shows everyone a maintenance window.
 
 :::
 
@@ -49,7 +49,7 @@ This holds for every way of running it: `docker run`, Docker Compose, Kubernetes
 ::: steps
 
 1. On the old instance [announce maintenance](/administration#maintenance-notices) – changes after the download are lost.
-2. **Administration → Storage & backup → Whole instance → Download**. With `FLOWPLAN_ENCRYPTION_KEY` the file is encrypted (`.zip.enc`) – the new instance then needs the same key.
+2. **Settings → Instance → Storage & backup → Whole instance → Download**. With `FLOWPLAN_ENCRYPTION_KEY` the file is encrypted (`.zip.enc`) – the new instance then needs the same key.
 3. The instance backup holds the database and files but **not** `secrets.key` and `web-push-keys.json`. Copy both by hand (or set the keys as variables):
    ```bash
    # old
@@ -98,9 +98,9 @@ With `FLOWPLAN_LITESTREAM=off` there is no continuous copy: use the newest sched
 ## Check afterwards
 
 - **Sign in**: with password, passkey and SSO. Existing sessions stay valid.
-- **Administration → Monitoring**: all green? **Administration → Encryption** shows the same key ID as before.
-- **Administration → Storage & backup**: S3 connected, the queue drains (with S3, Flowplan uploads every file once after a takeover), **Back up now** succeeds.
-- **Administration → E-mail → Send test email** and **Administration → Push notifications → Send test notification**.
+- **Settings → Instance → Monitoring**: all green? **Settings → Instance → Encryption** shows the same key ID as before.
+- **Settings → Instance → Storage & backup**: S3 connected, the queue drains (with S3, Flowplan uploads every file once after a takeover), **Back up now** succeeds.
+- **Settings → Instance → E-mail → Send test email** and **Settings → Instance → Push notifications → Send test notification**.
 - Open a few pages, images and attachments; upload a file.
 - AI, calendar connections, chat apps: if they work without signing in again, the stored secrets are readable.
 - Refresh CalDAV/CardDAV in an app, open the desktop and mobile apps, trigger incoming webhooks (Git, tickets) once.
@@ -114,7 +114,7 @@ With `FLOWPLAN_LITESTREAM=off` there is no continuous copy: use the newest sched
 
 ## Going back if something goes wrong
 
-Until the DNS switch nothing is lost: on the old instance **Administration → Storage & backup → Move instance → Lift read-only**, and everything runs as before. After the switch: switch DNS back and lift the read-only state – what was changed on the new instance in the meantime only comes back with a move in the other direction. The new instance itself returns to its previous state when you replace `flowplan.sqlite*` and `uploads/` with the contents of `pre-move-…` while the container is stopped.
+Until the DNS switch nothing is lost: on the old instance **Settings → Instance → Storage & backup → Move instance → Lift read-only**, and everything runs as before. After the switch: switch DNS back and lift the read-only state – what was changed on the new instance in the meantime only comes back with a move in the other direction. The new instance itself returns to its previous state when you replace `flowplan.sqlite*` and `uploads/` with the contents of `pre-move-…` while the container is stopped.
 
 ## Another domain
 

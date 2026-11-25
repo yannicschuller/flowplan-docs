@@ -47,7 +47,7 @@ In addition to full text, Flowplan can store content as vectors ("embeddings"). 
 ::: steps
 
 1. Set an **embedding model** at the instance provider:
-   - **Ollama:** download `nomic-embed-text` (under **Administration → AI → Download model** or `ollama pull nomic-embed-text`) and enter it.
+   - **Ollama:** download `nomic-embed-text` (under **Settings → Instance → AI → Download model** or `ollama pull nomic-embed-text`) and enter it.
    - **OpenAI-compatible:** e.g. `text-embedding-3-small`; **Gemini:** `text-embedding-004`. Anthropic has no embeddings.
 2. **Turn on semantic search** and save. Or via the environment: `FLOWPLAN_AI_SEMANTIC_SEARCH=on` and `FLOWPLAN_AI_EMBEDDING_MODEL=nomic-embed-text`.
 
@@ -56,7 +56,7 @@ In addition to full text, Flowplan can store content as vectors ("embeddings"). 
 - A background job embeds changed pages and records chunk by chunk; unchanged chunks are not embedded again. At most `FLOWPLAN_AI_EMBED_PER_HOUR` chunks per hour (default 5,000).
 - **Never embedded:** journals with a PIN, pages and spaces closed to AI, and the trash. Permissions and personal AI rules apply to every question.
 - Semantic search always uses the instance provider. People using their own provider search full text only.
-- **Storage:** 4 bytes per dimension and chunk (up to about 900 characters) – with `nomic-embed-text` (768 dimensions) about 3 KB per chunk, roughly three to four times the text; with 1,536 dimensions about 6 KB. Only a checksum of each chunk is stored, not its text. The administration shows the number and size.
+- **Storage:** 4 bytes per dimension and chunk (up to about 900 characters) – with `nomic-embed-text` (768 dimensions) about 3 KB per chunk, roughly three to four times the text; with 1,536 dimensions about 6 KB. Only a checksum of each chunk is stored, not its text. **Settings → Instance → AI** shows the number and size.
 - **Switching off** deletes all vectors; **changing the model** rebuilds them.
 - For very large instances (hundreds of thousands of chunks) there is no vector index yet; the search stays correct but gets slower.
 

@@ -7,9 +7,9 @@ new: fehler-im-detail 2026-11-17, neustarts 2026-11-18
 
 Die Instanz live beobachten: Kennzahlen, Statistik, Warnungen per Webhook, Wartungshinweise und Prometheus.
 
-## Administration → Überwachung
+## Einstellungen → Instanz → Überwachung
 
-**Administration → Überwachung** zeigt die Instanz live – alle 15 Sekunden aktualisiert, pausiert, solange der Tab im Hintergrund liegt:
+**Einstellungen → Instanz → Überwachung** zeigt die Instanz live – alle 15 Sekunden aktualisiert, pausiert, solange der Tab im Hintergrund liegt:
 
 - **Zustand**: Datenbank, Dateispeicher (mit Belegung des Datenträgers), S3-Spiegel, Sicherung, E-Mail, KI-Anbieter (erreichbar und Antwortzeit, höchstens alle fünf Minuten geprüft), Push-Relay (erreichbar, höchstens jede Minute geprüft, siehe [Push-Benachrichtigungen](/administration#push-benachrichtigungen)), Hintergrunddienste und Aktualisierung. Jede Kachel führt zum zuständigen Bereich.
 - **Kennzahlen**: fünf Kacheln in einer Reihe, jede mit Wert und kleinem Verlauf; Speicher, KI-Tokens und Fehler vergleichen mit dem Zeitraum davor, sobald er erfasst ist: **Aktiv 24 Std.** (dazu gerade aktiv und seit Mitternacht), **Speicher** (Veränderung in 7 Tagen, mit Belegung des Datenträgers), **Zustellungen 7 Tage** (dazu aufgegebene), **KI-Tokens 14 Tage** (zur Vorwoche) und **Fehler 24 Std.** (5xx, zum Vortag, mit Fehlerquote). Jede Kachel springt zu ihrer Karte.
@@ -23,7 +23,7 @@ Im Einzelnen:
 
 - **Abgewiesene Anfragen**: fehlgeschlagene Anmeldungen, Anfragen, die ein Limit mit 429 abgewiesen hat (Anmeldeversuche, Einladungen, KI, MCP, Formulare …), und anonyme Uploads über dem Tagesbudget (Formulare, Freigabelinks) – je Tag der letzten 14 Tage. Ein Anstieg deutet auf Angriffe oder zu knappe Grenzen. Die Zähler werden 35 Tage aufbewahrt und täglich aufgeräumt.
 - **Hintergrunddienste**: letzter Lauf und letzter Fehler von Sicherung, Markdown-Export, KI-Hintergrundarbeit, Kalender- und Issue-Synchronisierung und LDAP-Abgleich; „aus“ heißt nicht eingerichtet.
-- **Speicher**: Belegung nach Art und die größten Arbeitsbereiche mit Balken gegen das Kontingent (ab 80 % gelb, ab 95 % rot). Kontingente stellst du unter **Administration → Arbeitsbereiche** und **Administration → Grenzen & Aufbewahrung** ein.
+- **Speicher**: Belegung nach Art und die größten Arbeitsbereiche mit Balken gegen das Kontingent (ab 80 % gelb, ab 95 % rot). Kontingente stellst du unter **Einstellungen → Instanz → Arbeitsbereiche** und **Einstellungen → Instanz → Grenzen & Aufbewahrung** ein.
 - **Zustellungen**: zugestellte Webhooks, Push-Nachrichten und E-Mails je Tag; Wartendes, Aufgegebenes und die letzten Fehler stehen unter **Warteschlangen**. Von Webhook-Adressen erscheint nur der Host, nie Pfad oder Token.
 
 ### Fehler im Detail {since=0.10.0}
@@ -40,7 +40,7 @@ Erfasst werden Antworten ab 500, Fehler von Hintergrunddiensten und -aufträgen 
 
 ### Neustarts {since=0.10.0}
 
-Startet der Container neu, ohne dass ein Fehler zu sehen war, hilft **Neustarts** unter **Administration → Überwachung** hinterher: Jeder Neustart der letzten 30 Tage steht da mit Zeitpunkt, wie lange Flowplan davor lief, dem Grund und dem Speicher beim letzten Lebenszeichen (Prozess bzw. Container gegen seine Grenze).
+Startet der Container neu, ohne dass ein Fehler zu sehen war, hilft **Neustarts** unter **Einstellungen → Instanz → Überwachung** hinterher: Jeder Neustart der letzten 30 Tage steht da mit Zeitpunkt, wie lange Flowplan davor lief, dem Grund und dem Speicher beim letzten Lebenszeichen (Prozess bzw. Container gegen seine Grenze).
 
 | Grund | Bedeutet |
 | --- | --- |
@@ -57,7 +57,7 @@ So funktioniert es: Flowplan schreibt alle 30 Sekunden ein Lebenszeichen (Zeit, 
 
 Aufbewahrt werden die Einträge 30 Tage. Im Cluster trägt jede Instanz ihre eigenen Neustarts ein; teilen sich mehrere Container einen Datenordner, tragen die Dateien den Namen ihres Containers (`FLOWPLAN_INSTANCE_ID` oder Hostname). `FLOWPLAN_LOG_FILE=off` schaltet das Log auf der Platte ab – die Neustarts stehen dann ohne Zeilen da.
 
-Ein **Absturz** oder **zwei unerwartete Neustarts innerhalb einer Stunde** sind ein Vorfall: einmal je Vorfall gehen eine Warnung per Webhook (`ops.unexpected_restart`) und eine Nachricht an die Chat-Apps der Administratoren, die Kachel **Überwachung** auf der Startseite der Administration zeigt ihn einen Tag lang, und das Aktivitätsprotokoll hält ihn fest.
+Ein **Absturz** oder **zwei unerwartete Neustarts innerhalb einer Stunde** sind ein Vorfall: einmal je Vorfall gehen eine Warnung per Webhook (`ops.unexpected_restart`) und eine Nachricht an die Chat-Apps der Administratoren, die Kachel **Überwachung** unter **Instanz auf einen Blick** auf der Startseite der Einstellungen zeigt ihn einen Tag lang, und das Aktivitätsprotokoll hält ihn fest.
 
 > [!NOTE]
 > **Grenzen der OOM-Erkennung:** Beendet der Kernel den Prozess wegen Speichermangels, kann Flowplan nichts mehr schreiben. „Vermutlich Speicher voll“ ist deshalb eine Vermutung aus dem letzten Lebenszeichen – bis zu 30 Sekunden alt, ein schneller Anstieg danach bleibt unsichtbar – oder aus dem OOM-Zähler des Containers, den Docker und Kubernetes bei einem Neustart meist zurücksetzen. Sicher sagen es `docker inspect --format '{{.State.OOMKilled}}' <container>` bzw. `kubectl describe pod` („OOMKilled“). Ohne Speichergrenze am Container zählen der JavaScript-Heap und der freie Speicher des ganzen Servers – ist er voll, beendet der Kernel irgendeinen Prozess, etwa Litestream; dann steht `Killed process … (litestream)` in `dmesg`. Und weil Litestream im Container der erste Prozess ist, kann seine allerletzte Zeile beim Beenden in der Datei fehlen.
@@ -72,11 +72,11 @@ Für die Diagramme zählt Flowplan Anfragen, Fehler und Antwortzeiten je Minute,
 | Stunden | 35 Tage |
 | Tage (Speicher, KI-Tokens) | 400 Tage |
 
-Ausschalten lässt sich die Statistik unter **Administration → Überwachung → Statistik** (**Nutzungsstatistik erfassen**) oder für die ganze Instanz mit `FLOWPLAN_METRICS=off` (siehe [Konfiguration](/configuration#betrieb)); dann ist der Schalter gesperrt. **Statistik löschen** entfernt alle gezählten Anfragen, aktiven Personen, Speicherstände, KI-Tokens und erfolgreichen Anmeldungen; die Zähler der abgewiesenen Anfragen bleiben.
+Ausschalten lässt sich die Statistik unter **Einstellungen → Instanz → Überwachung → Statistik** (**Nutzungsstatistik erfassen**) oder für die ganze Instanz mit `FLOWPLAN_METRICS=off` (siehe [Konfiguration](/configuration#betrieb)); dann ist der Schalter gesperrt. **Statistik löschen** entfernt alle gezählten Anfragen, aktiven Personen, Speicherstände, KI-Tokens und erfolgreichen Anmeldungen; die Zähler der abgewiesenen Anfragen bleiben.
 
 ### Warnungen per Webhook
 
-Unter **Administration → Überwachung → Warnungen per Webhook** trägst du eine `https://`-Adresse ein (mit `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true` auch `http://` und interne Adressen) und wählst die Ereignisse:
+Unter **Einstellungen → Instanz → Überwachung → Warnungen per Webhook** trägst du eine `https://`-Adresse ein (mit `FLOWPLAN_WEBHOOK_ALLOW_PRIVATE=true` auch `http://` und interne Adressen) und wählst die Ereignisse:
 
 | Ereignis | Wann |
 | --- | --- |
@@ -98,7 +98,7 @@ Die Kopfzeile `X-Flowplan-Signature: sha256=<HMAC-SHA256 des Inhalts>` ist mit d
 
 ### Wartung & Hinweise
 
-Unter **Administration → Wartung & Hinweise** stehen zwei Banner und die Banner zum Wegklicken. Der **Hinweis für alle Personen** – etwa „Ab Montag gilt die neue Ablage“ – bleibt, bis du das Feld leerst. Ein **Wartungshinweis** mit Text, Beginn und Ende erscheint ab dem Speichern allen angemeldeten Personen als Banner oben im Fenster – vor dem Beginn als „Geplante Wartung“, währenddessen als „Wartung läuft“, in Zeitzone und Sprache der jeweiligen Person. Nach dem Ende verschwindet er von selbst, auch in schon geöffneten Fenstern (sie fragen alle fünf Minuten nach). Jede Person kann den Hinweis für sich ausblenden. **Hinweis entfernen** nimmt ihn sofort zurück. Speichern und Entfernen stehen im Aktivitätsprotokoll.
+Unter **Einstellungen → Instanz → Wartung & Hinweise** stehen zwei Banner und die Banner zum Wegklicken. Der **Hinweis für alle Personen** – etwa „Ab Montag gilt die neue Ablage“ – bleibt, bis du das Feld leerst. Ein **Wartungshinweis** mit Text, Beginn und Ende erscheint ab dem Speichern allen angemeldeten Personen als Banner oben im Fenster – vor dem Beginn als „Geplante Wartung“, währenddessen als „Wartung läuft“, in Zeitzone und Sprache der jeweiligen Person. Nach dem Ende verschwindet er von selbst, auch in schon geöffneten Fenstern (sie fragen alle fünf Minuten nach). Jede Person kann den Hinweis für sich ausblenden. **Hinweis entfernen** nimmt ihn sofort zurück. Speichern und Entfernen stehen im Aktivitätsprotokoll.
 
 #### Banner zum Wegklicken
 
@@ -114,7 +114,7 @@ Die Liste zeigt jeden Banner mit Zustand (wird angezeigt, geplant, pausiert, bee
 
 ### Speicherübersicht
 
-**Administration → Speicher & Sicherung** zeigt in den Karten **Sicherungen**, **Belegung** und **Inhalte**:
+**Einstellungen → Instanz → Speicher & Sicherung** zeigt in den Karten **Sicherungen**, **Belegung** und **Inhalte**:
 
 - ob der S3-Speicher erreichbar ist, wie lange die Prüfung dauerte und wie viele Dateien noch warten,
 - was lokal und was im Bucket liegt: Dateien nach Art (Bilder, Videos, Dokumente …) und die Aufteilung der Datenbank,
