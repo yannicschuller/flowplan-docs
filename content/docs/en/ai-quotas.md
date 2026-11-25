@@ -70,12 +70,17 @@ Which model applies to a person:
 
 This holds for every AI feature and is decided on the server. [Workflows](/workflows) use the model of the person they run as (the role **Administrators** does not count there, since workflows never run with administrator rights). An [own provider](/ai#for-users) and [on-device AI](/ai#on-device-ai-apple) choose their own model. If the instance switches to another kind of provider (say from Anthropic to OpenAI), the models set so far no longer apply until you choose them again – the table marks them **other provider – does not apply**. Every change is in the log under **Monitoring**.
 
+### Up to … – your choice {since=0.11.6}
+
+For a group or role you can choose **Up to Opus – your choice** (or **Up to Sonnet …**) instead of a fixed model. Its members may then use that model or a smaller one of the instance: the Haiku, Sonnet and Opus models that cost no more by the price list (for providers without these families, all models of the price list that cost no more). Whoever may use more than one model through groups and roles picks it in the AI panel or under **Settings → AI → Default model**; the default is the most capable. A person's own model still applies as fixed. The server checks every choice; if the plan no longer allows the chosen model, the default applies again. [Workflows](/workflows) always use the default. The quota counts the chosen model. In the [limits file](/account-limits), `"aiModels": "all"` means “Up to Opus – your choice”.
+
 ## For users {since=0.11.0}
 
 - **Settings → Storage & AI** shows a bar per period: “1,500 of 10,000 left” and when it starts again – in tokens or, if the administrators chose cost, in money –, plus your models ([Storage & AI](/account-limits#storage-ai-in-the-settings)). Up to 0.11.2 this was under **Settings → AI → AI quota**; there is only a line with a link there now. {since=0.11.3}
 - **Notice at 80 %:** when your personal quota reaches the note share and then 100 %, a notice with **View storage & AI** appears at the top once per period. {since=0.11.3}
 - **In the AI panels** (Ask AI, writing assistant, summary) a small note appears once less than 20 % is left (or what the administrators set).
 - **Going on afterwards:** if the administrators set a model for afterwards for you, **Storage & AI** says “After that, AI goes on with ….” – and AI keeps working with that model until the whole instance's limit is reached. If the continuation has a limit of its own, what is left of it is shown too (“then goes on with Haiku – 12M tokens left this month”); once that is used up as well, AI is off until the time shown. {since=0.11.1}
+- **Choose the model:** if the administrators allow you several models, the model line in the AI panel becomes a picker: “most capable”, “balanced”, “fast & low-cost”. If your quota counts cost, smaller models make it last longer. The choice applies at once to every AI feature on all your devices. {since=0.11.6}
 - **Used up:** a request that would cross a limit is refused before it reaches the provider – with the time it works again and the alternatives: your own provider (if allowed) or on-device AI. Every AI feature shows the same message.
 
 Scripts and AI assistants read the same with `GET /api/ai/quota` (API token with the permission **AI and transcription**, see [OpenAPI](/openapi)).
