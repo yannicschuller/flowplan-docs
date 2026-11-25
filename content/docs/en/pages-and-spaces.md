@@ -76,7 +76,7 @@ The **Filter pages** field above the page tree hides everything that does not ma
 
 ## Favourites and "Linked from"
 
-The star in the header (on a phone **Favourite** in the `⋯` menu) puts a page under **Favourites** in the sidebar – personal, others do not see your favourites. At the bottom of every page, **Linked from** shows which pages and database records refer to it.
+The star in the header (on a phone **Favourite** in the `⋯` menu) puts a page under your personal **Favourites** in the sidebar; a journal's **Add today to favourites** adds "<journal> – Today", which always opens the current day {since=0.11.6}. **Linked from** below a page lists what links to it.
 
 ## Manage spaces
 

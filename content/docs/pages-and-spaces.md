@@ -78,6 +78,8 @@ Das Feld **Seiten filtern** über dem Seitenbaum blendet alles aus, was nicht pa
 
 Der Stern in der Kopfzeile (auf dem Telefon **Favorit** im Menü `⋯`) legt eine Seite unter **Favoriten** in der Seitenleiste ab – persönlich, andere sehen deine Favoriten nicht. Unten auf jeder Seite zeigt **Verlinkt von**, welche Seiten und Datenbank-Einträge auf diese verweisen.
 
+**Heute als Favorit:** Im Menü `⋯` eines Journals oder eines seiner Tage – oder per Rechtsklick auf das Journal in der Seitenleiste – legt **Heute zu Favoriten** einen eigenen Eintrag „<Journal> – Heute“ unter **Favoriten** ab. Er öffnet immer den aktuellen Tag, legt ihn bei Bedarf an wie **Heute** und steht neben dem Stern der Journalseite. {since=0.11.6}
+
 ## Bereiche verwalten
 
 Über `…` neben einem Bereich → **Bereich bearbeiten …** oder **Einstellungen → Bereiche**:
