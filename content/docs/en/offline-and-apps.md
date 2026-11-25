@@ -65,11 +65,11 @@ Changes to records without a connection appear in the views right away and are c
 The app for iPhone and iPad keeps the offline copy itself – for every instance, self-hosted ones included. (iOS gives apps no service worker for addresses of your choice; in Safari and in the Android app, Flowplan works offline as in the browser.)
 
 - **Turn it on** as everywhere under **Settings → Offline & devices** – per profile of the app. It also says “Stored in the Flowplan app”; state, size, version, **Update now**, **Also store record contents and files** and **Remove offline copies** work as in the browser.
-- **Without a connection** – at start or when the instance cannot be reached – the app opens the stored copy: the same page you were on, with the [offline icon](#work-without-a-connection) in the top bar. {since=0.9.7} Pages, databases, records, calendars, dashboards and the editor run from the copy. The app shows its “No connection” screen only when there is no copy for the profile.
+- **Without a connection** – at start or when the instance cannot be reached – the app opens the stored copy: the same page you were on, with the [offline icon](#work-without-a-connection) in the top bar. {since=0.9.7} Pages, databases, records, calendars, dashboards and the editor run from the copy. The app shows its “Can’t reach Flowplan” screen only when there is no copy for the profile.
 - **Changes offline:** text in documents and changes to records are collected on the device as in the browser and synced as soon as the instance answers again. Then the app switches to the current page by itself – once you are not typing.
 - **Kept current:** as in the browser while the app is open, and also every time it comes to the foreground; only what changed is loaded.
 - **Where it is stored:** in the app's container, encrypted until the first unlock after a restart and not in backups. The copy belongs to the profile: **Sign out** in Flowplan and **Sign out and remove the profile** in the app's settings delete it; another profile never sees it.
-- **Limits:** files over 25 MB, the PDF viewer and text recognition (OCR) need a connection in the app; at most 2 GB per profile, and the app always leaves 300 MB free. The copy needs a Flowplan server with this offline support (0.7.0 or newer); with older servers the app shows its “No connection” screen without a connection, as before.
+- **Limits:** files over 25 MB, the PDF viewer and text recognition (OCR) need a connection in the app; at most 2 GB per profile, and the app always leaves 300 MB free. The copy needs a Flowplan server with this offline support (0.7.0 or newer); with older servers the app shows its “Can’t reach Flowplan” screen, as before.
 
 ## Install as an app
 
