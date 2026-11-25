@@ -104,6 +104,10 @@ In the pen menu you choose **Pen** or **Highlighter**, each with its own colour,
 
 Cards of linked documents that are tall enough show the first lines of the page as a small preview.
 
+- **New page** (under **+**) creates a document as a sub-page of the board, puts its card in the middle and opens the page beside it. {since=0.11.7}
+- **Large page cards** show the whole document, read-only and always up to date; it scrolls when the card is selected. {since=0.11.7}
+- **Open beside** (double-click or in the card's bar) opens the page for editing to the right of the board; on phones as usual. {since=0.11.7}
+
 - **Colour tables:** select the table, click a cell, then the paint bucket in the bar: pick a row, column, **Header row** or **Header column** and a colour (palette or **+**). A row's colour goes before a column's; **No colour** removes it. Exports show the colours. {since=0.11.4}
 - **Links in tables:** web addresses in cells become links (new tab). A cell holding just one address shows a small preview; videos (YouTube, Vimeo) show a still stored as a file of the board, and ▶ plays them in an isolated window. {since=0.11.4}
 

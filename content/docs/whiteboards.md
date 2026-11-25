@@ -104,6 +104,10 @@ Im Stiftmenü wählst du **Stift** oder **Textmarker**, jeweils mit eigener Farb
 
 Karten verknüpfter Dokumente zeigen, wenn sie hoch genug sind, die ersten Zeilen der Seite als kleine Vorschau.
 
+- **Neue Seite** (unter **+**) legt ein Dokument als Unterseite des Boards an, setzt seine Karte in die Mitte und öffnet die Seite daneben. {since=0.11.7}
+- **Große Seitenkarten** zeigen das ganze Dokument, nur zum Lesen und immer aktuell; scrollen lässt es sich, wenn die Karte ausgewählt ist. {since=0.11.7}
+- **Daneben öffnen** (Doppelklick oder in der Leiste der Karte) öffnet die Seite zum Bearbeiten rechts neben dem Board; auf dem Handy wie gewohnt. {since=0.11.7}
+
 - **Tabellen färben:** Tabelle wählen, eine Zelle anklicken, dann der Farbeimer in der Leiste: Zeile, Spalte, **Kopfzeile** oder **Kopfspalte** und eine Farbe (Palette oder **+**). Die Farbe einer Zeile geht vor der einer Spalte; **Keine Farbe** entfernt sie. Exporte zeigen die Farben. {since=0.11.4}
 - **Links in Tabellen:** Webadressen in Zellen werden zu Links (neuer Tab). Steht in einer Zelle nur eine Adresse, zeigt sie eine kleine Vorschau; Videos (YouTube, Vimeo) zeigen ein Vorschaubild als Datei des Boards, ▶ spielt sie in einem abgeschotteten Fenster ab. {since=0.11.4}
 
