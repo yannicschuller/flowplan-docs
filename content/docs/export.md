@@ -83,7 +83,7 @@ Zwei Textformate für Teams, die mit Atlassian-Werkzeugen arbeiten. Beide export
 - Aufzählungen und nummerierte Listen mit `*` und `#`, auch verschachtelt (`*#`); Aufgaben als `* [ ]` und `* [x]` (abgesagte durchgestrichen).
 - Tabellen mit `||Kopf||` und `|Zelle|`; verbundene Zellen werden zu leeren Zellen.
 - Code-Blöcke als `{code:sprache}`, ohne Sprache als `{noformat}`; Formeln als `{noformat}`, Mermaid als `{code}`.
-- Zitate als `{quote}`, Hinweise als `{info}` (Notiz, Wichtig), `{tip}`, `{note}` (Warnung) und `{warning}` (Achtung), aufklappbare Abschnitte und Besprechungen als `{panel}`, Trennlinien als `----`.
+- Zitate als `{quote}`, Hinweise als farbige `{panel}` mit ihrem Namen als Titel (Hinweis blau, Tipp grün, Wichtig lila, Warnung gelb, Achtung rot) – die Makros `{info}`, `{note}` usw. kennt nur Confluence, Jira zeigt sie als Text –, aufklappbare Abschnitte und Besprechungen als `{panel}`, Trennlinien als `----`. {since=0.11.6}
 - Bilder als `!Adresse!`, Erwähnungen als Name, Fußnoten als hochgestellte Nummern mit einer Liste am Ende.
 - Zeichen, die in Jira Formatierung auslösen (`* _ { } [ ] | ! ^ ~ +`, Striche am Wortrand, `??`, `(y)` …), werden maskiert und erscheinen so, wie du sie geschrieben hast.
 

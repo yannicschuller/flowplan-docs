@@ -83,7 +83,7 @@ Two text formats for teams that work with Atlassian tools. Both export **only th
 - Bulleted and numbered lists with `*` and `#`, nested too (`*#`); tasks as `* [ ]` and `* [x]` (cancelled ones struck through).
 - Tables with `||head||` and `|cell|`; merged cells become empty cells.
 - Code blocks as `{code:language}`, without a language as `{noformat}`; formulas as `{noformat}`, Mermaid as `{code}`.
-- Quotes as `{quote}`, callouts as `{info}` (note, important), `{tip}`, `{note}` (warning) and `{warning}` (caution), toggles and meetings as `{panel}`, dividers as `----`.
+- Quotes as `{quote}`, callouts as coloured `{panel}`s titled with their name (note blue, tip green, important purple, warning yellow, caution red) – the `{info}`, `{note}` … macros exist only in Confluence, Jira shows them as text –, toggles and meetings as `{panel}`, dividers as `----`. {since=0.11.6}
 - Pictures as `!address!`, mentions as the name, footnotes as superscript numbers with a list at the end.
 - Characters that would start formatting in Jira (`* _ { } [ ] | ! ^ ~ +`, dashes at the edge of a word, `??`, `(y)` …) are escaped and show exactly as you typed them.
 
