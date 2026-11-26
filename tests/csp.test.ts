@@ -19,8 +19,8 @@ test("the policy allows only this site, the nonce and what is configured", () =>
   assert.deepEqual(csp.get("style-src"), ["'self'"]);
   assert.deepEqual(csp.get("img-src"), ["'self'", "data:"]);
   assert.deepEqual(csp.get("font-src"), ["'self'"]);
-  // ASK_URL's default.
-  assert.deepEqual(csp.get("connect-src"), ["'self'", "https://ask.flowplan.org"]);
+  // ASK_URL's default and the website that keeps the banners (BANNERS_URL's default).
+  assert.deepEqual(csp.get("connect-src"), ["'self'", "https://ask.flowplan.org", "https://flowplan.org"]);
   assert.deepEqual(csp.get("worker-src"), ["'self'"]);
   assert.deepEqual(csp.get("object-src"), ["'none'"]);
   assert.deepEqual(csp.get("base-uri"), ["'none'"]);
@@ -35,13 +35,13 @@ test("the policy allows only this site, the nonce and what is configured", () =>
 });
 
 test("connect-src follows ASK_URL, script-src and connect-src follow Umami", () => {
-  const env = { ASK_URL: "http://127.0.0.1:4100/ask/", UMAMI_URL: "https://stats.example.com/umami/script.js", UMAMI_WEBSITE_ID: "0b9f0d3c-5c4e-4d6a-9a8e-2f1e3d4c5b6a" };
+  const env = { BANNERS_URL: "off", ASK_URL: "http://127.0.0.1:4100/ask/", UMAMI_URL: "https://stats.example.com/umami/script.js", UMAMI_WEBSITE_ID: "0b9f0d3c-5c4e-4d6a-9a8e-2f1e3d4c5b6a" };
   const csp = directives(contentSecurityPolicy({ nonce: NONCE, env, local: true }));
   assert.deepEqual(csp.get("connect-src"), ["'self'", "http://127.0.0.1:4100", "https://stats.example.com"]);
   assert.deepEqual(csp.get("script-src"), ["'self'", `'nonce-${NONCE}'`, "https://stats.example.com"]);
   assert.ok(!csp.has("upgrade-insecure-requests"));
   // Flo off, Umami incomplete: nothing extra.
-  const off = directives(contentSecurityPolicy({ nonce: NONCE, env: { ASK_URL: "off", UMAMI_URL: "https://stats.example.com" } }));
+  const off = directives(contentSecurityPolicy({ nonce: NONCE, env: { ASK_URL: "off", BANNERS_URL: "off", UMAMI_URL: "https://stats.example.com" } }));
   assert.deepEqual(off.get("connect-src"), ["'self'"]);
   assert.deepEqual(off.get("script-src"), ["'self'", `'nonce-${NONCE}'`]);
 });

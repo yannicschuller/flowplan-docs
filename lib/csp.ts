@@ -15,10 +15,13 @@
 // from script (element.style) are not affected.
 //
 // connect-src follows the addresses read at runtime: the „Frag Flo“
-// service (ASK_URL, lib/flo.ts) and Umami (UMAMI_URL, lib/analytics.ts:
-// its script sends to /api/send next to itself).
+// service (ASK_URL, lib/flo.ts), Umami (UMAMI_URL, lib/analytics.ts:
+// its script sends to /api/send next to itself) and the website that keeps
+// the announcement banners (BANNERS_URL, lib/banners.ts: the bar counts
+// views, clicks and dismissals at its /api/banners/event).
 import { analytics } from "./analytics";
 import { askUrl } from "./flo";
+import { bannersUrl } from "./banners";
 
 type Env = Record<string, string | undefined>;
 
@@ -47,6 +50,7 @@ export function contentSecurityPolicy({ nonce, dev = false, local = false, env =
   if (!/^[A-Za-z0-9+/_-]{16,}={0,2}$/.test(nonce)) throw new Error("csp: the nonce must be at least 16 base64 characters");
   const ask = origin(askUrl(env));
   const stats = origin(analytics(env)?.origin);
+  const banners = bannersUrl(env);
   const list = (...sources: (string | null | false)[]) => sources.filter(Boolean).join(" ");
   const directives: [string, string][] = [
     ["default-src", "'self'"],
@@ -54,7 +58,7 @@ export function contentSecurityPolicy({ nonce, dev = false, local = false, env =
     ["style-src", list("'self'", dev && "'unsafe-inline'")],
     ["img-src", "'self' data:"],
     ["font-src", "'self'"],
-    ["connect-src", list("'self'", ask, stats)],
+    ["connect-src", list("'self'", ask, stats, banners)],
     ["worker-src", "'self'"],
     ["manifest-src", "'self'"],
     ["frame-src", "'none'"],

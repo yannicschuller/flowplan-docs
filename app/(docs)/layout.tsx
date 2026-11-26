@@ -5,7 +5,7 @@ import { NotFoundEvent } from "@/components/docs/not-found-event";
 import { docAreas, docTitle, searchIndexVersion } from "@/lib/docs";
 import { POPULAR } from "@/lib/home";
 import { missesEnabled } from "@/lib/search-misses";
-import { localePrefix, requestLocale } from "@/lib/i18n-server";
+import { localePrefix, pageLocale, requestLocale } from "@/lib/i18n-server";
 import { translate } from "@/lib/i18n";
 import { LanguageSwitch } from "@/components/i18n";
 import s from "@/components/docs/docs.module.css";
@@ -13,6 +13,8 @@ import { trackAttrs } from "@/lib/track";
 import { fetchStatusSummary, type StatusState } from "@/lib/status";
 import { askUrl } from "@/lib/flo";
 import { FloEntry } from "@/components/docs/flo-entry";
+import { SiteBanner } from "@/components/site-banner";
+import { bannersUrl, fetchBanners } from "@/lib/banners";
 import { DISCORD_URL, GITHUB_URL, imprintUrl, marketplaceUrl, privacyUrl, SPONSOR_URL, statusUrl, TRANSLATE_URL, websiteUrl } from "@/lib/links";
 
 // The documentation: same paper and ink as the website, calmer.
@@ -25,8 +27,11 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
     marketplace = marketplaceUrl(),
     status = statusUrl(),
     ask = askUrl();
-  // The services' state next to the link; null shows the plain link.
-  const summary = status ? await fetchStatusSummary() : null;
+  // The services' state next to the link; null shows the plain link. The
+  // announcement bar's banners come from the website (lib/banners.ts), in
+  // the page's own language on /fr and /zh.
+  const banners = bannersUrl();
+  const [summary, bannerList] = await Promise.all([status ? fetchStatusSummary() : null, banners ? fetchBanners((await pageLocale()) ?? locale, banners) : []]);
   const stateText: Record<StatusState, string> = {
     operational: t("Alle Systeme laufen", "All systems operational"),
     degraded: t("Verlangsamt", "Degraded performance"),
@@ -39,6 +44,7 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
       <a href="#inhalt" className={s.skip}>
         {t("Zum Inhalt", "Skip to content")}
       </a>
+      {banners && bannerList.length > 0 && <SiteBanner banners={bannerList} site="docs" eventUrl={`${banners}/api/banners/event`} />}
       <header className={s.header}>
         <a href={websiteUrl()} className={s.brand} {...trackAttrs("outbound", { target: "website" })} aria-label={t("Flowplan, zur Startseite", "Flowplan, to the start page")}>
           <BrandMark size={26} />

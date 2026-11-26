@@ -1,0 +1,177 @@
+/* The announcement bar (site-banner.tsx): slim, full width, above the
+   header. Its colours are its own (light and dark), so it looks the same on
+   the website and in the docs; flowplan-admin's preview copies them. */
+.banner {
+  --sb-bg: #ecebfc;
+  --sb-text: #1d1c22;
+  --sb-link: #2c2fb5;
+  --sb-link-bg: color-mix(in srgb, #3b3fd8 12%, transparent);
+  position: relative;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 7px 52px;
+  background: var(--sb-bg);
+  color: var(--sb-text);
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 1.4;
+  border-bottom: 1px solid color-mix(in srgb, var(--sb-text) 8%, transparent);
+}
+.banner[data-tone="accent"] {
+  --sb-bg: #3b3fd8;
+  --sb-text: #ffffff;
+  --sb-link: #ffffff;
+  --sb-link-bg: rgb(255 255 255 / 0.18);
+}
+.banner[data-tone="gradient"] {
+  --sb-bg: linear-gradient(90deg, #3b3fd8 0%, #7a3cc8 55%, #c2410c 100%);
+  --sb-text: #ffffff;
+  --sb-link: #ffffff;
+  --sb-link-bg: rgb(255 255 255 / 0.2);
+}
+.banner[data-tone="success"] {
+  --sb-bg: #e2f3e7;
+  --sb-text: #133a20;
+  --sb-link: #17682f;
+  --sb-link-bg: color-mix(in srgb, #17682f 12%, transparent);
+}
+.banner[data-tone="warning"] {
+  --sb-bg: #fcefd2;
+  --sb-text: #422c04;
+  --sb-link: #7a4d00;
+  --sb-link-bg: color-mix(in srgb, #7a4d00 12%, transparent);
+}
+@media (prefers-color-scheme: dark) {
+  .banner {
+    --sb-bg: #23234a;
+    --sb-text: #ecebf1;
+    --sb-link: #c3c6ff;
+    --sb-link-bg: rgb(149 155 255 / 0.16);
+  }
+  .banner[data-tone="accent"] {
+    --sb-bg: #3438c2;
+    --sb-text: #ffffff;
+    --sb-link: #ffffff;
+    --sb-link-bg: rgb(255 255 255 / 0.16);
+  }
+  .banner[data-tone="gradient"] {
+    --sb-bg: linear-gradient(90deg, #3438c2 0%, #6a32b0 55%, #a8380b 100%);
+  }
+  .banner[data-tone="success"] {
+    --sb-bg: #15301e;
+    --sb-text: #d6f1dd;
+    --sb-link: #86dea1;
+    --sb-link-bg: rgb(134 222 161 / 0.14);
+  }
+  .banner[data-tone="warning"] {
+    --sb-bg: #36290c;
+    --sb-text: #f7e6bd;
+    --sb-link: #f5c766;
+    --sb-link-bg: rgb(245 199 102 / 0.14);
+  }
+}
+.banner[data-dismissible="false"] {
+  padding-right: 16px;
+  padding-left: 16px;
+}
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 12px;
+  max-width: 1180px;
+  min-width: 0;
+}
+.emoji {
+  margin-right: 8px;
+  font-size: 16px;
+  line-height: 1;
+}
+.text {
+  margin: 0;
+  min-width: 0;
+  text-align: center;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+.title {
+  font-weight: 650;
+  margin-right: 6px;
+}
+.countdown {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--sb-link-bg);
+  font-size: 12.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.link {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--sb-link-bg);
+  color: var(--sb-link);
+  font-weight: 620;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+.link:hover {
+  background: color-mix(in srgb, var(--sb-link) 22%, transparent);
+}
+.link:focus-visible,
+.close:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+.close {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-top: -18px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: inherit;
+  opacity: 0.8;
+  cursor: pointer;
+}
+.close:hover {
+  opacity: 1;
+  background: var(--sb-link-bg);
+}
+@media (max-width: 640px) {
+  .banner {
+    justify-content: flex-start;
+    padding: 8px 48px 8px 16px;
+    font-size: 13.5px;
+  }
+  .inner {
+    justify-content: flex-start;
+  }
+  .text {
+    text-align: left;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: none;
+  }
+}
