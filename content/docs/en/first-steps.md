@@ -12,7 +12,7 @@ You sign in with your e-mail and password, with a passkey (fingerprint, face or 
 
 On a brand-new instance you create the first account – it administers the instance. If you are moving or reinstalling, choose **Restore from a backup** there instead ([Restore while setting up](/restore#restore-while-setting-up)).
 
-When you sign in for the first time, Flowplan creates a private workspace with example pages. With single sign-on, your name, e-mail address and – if available – your profile picture come from the login provider.
+When you sign in for the first time, Flowplan creates a private workspace with example pages. With single sign-on, your name, e-mail address and – if available – your profile picture come from the login provider. With e-mail and password you upload a picture of your own under **Settings → Account & security** (PNG, JPEG, WebP or GIF, at most 2 MB) or remove it again. {since=0.11.7}
 
 > [!TIP]
 > If the instance offers a **demo**, you can try Flowplan without an account. The demo gets its own example workspace and is deleted completely when you end it, sign out or after 45 minutes without activity.

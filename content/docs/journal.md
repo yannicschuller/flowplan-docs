@@ -101,6 +101,8 @@ Unter **Journal einrichten → Tage** legst du für jedes Journal fest, welche *
 
 Ist ein Tag geöffnet, zeigt die Seitenleiste ihn immer an – auch wenn er älter als 7 Tage ist; in der gruppierten Ansicht klappen sein Jahr und sein Monat auf. Tage lassen sich weiter ziehen, und die Pfeiltasten funktionieren auch in den Ordnern (→ öffnet, ← schließt oder springt zum Ordner darüber).
 
+Darunter wählst du den **Titel des Tages**: **Lang** (Voreinstellung, etwa „Donnerstag, 26. November 2026“) oder **Datum (ISO)**, nur „2026-11-26“ – kurz und gut sortierbar. Das gilt für neue Tage; vorhandene Tage behalten ihren Titel, umbenannte bleiben umbenannt. {since=0.11.7}
+
 ## Von Tag zu Tag
 
 Über jeder Tagesseite steht eine Leiste:

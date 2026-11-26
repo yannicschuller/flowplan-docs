@@ -40,7 +40,7 @@ Every day remembers which version of the template it was created from. A day tha
 
 ### Remove empty days
 
-**Set up journal → Days → Find empty days** lists old days on which nothing was written: only the template, no open tasks of its own, no tracker values or places, no files, comments, sub-pages, favourites, shares or links from other pages, title and icon unchanged (upper/lower case or spaces do not count as a change). Today always stays. You untick what should stay and move the rest with **Move … days to the trash** – days can be restored from there. Flowplan never removes or merges old days on its own.
+**Set up journal → Days → Find empty days** lists old days on which nothing was written: only the template, no open tasks of its own, no tracker values or places, no files, comments, sub-pages, favourites, shares or links from other pages, title and icon unchanged (upper/lower case or spaces do not count as a change). Today always stays. Untick what should stay and move the rest with **Move … days to the trash** (restorable). Flowplan never removes old days on its own.
 
 ## Daily template
 
@@ -66,7 +66,7 @@ In the settings under **Day bar**, place and appointments can be switched off fo
 
 ### Completed this day
 
-Below every day, **Completed this day** lists the database records that were completed that day and the tasks ticked off in a document that day – including those of your page "Tasks" from **My tasks** – each with the time, a link and the name of the database or page. Tasks carry a small task symbol. The list is worked out each time the day opens; a record ticked off elsewhere is there when you come back.
+Below every day, **Completed this day** lists the database records that were completed that day and the tasks ticked off in a document that day – including those of your page "Tasks" from **My tasks** – each with the time, a link and the name of the database or page. Tasks carry a small task symbol. The list is built each time the day opens.
 
 - A record counts on the day it was last completed, and only while it is still done by its database's done rule – reopen it and it leaves the list. The day follows your time zone.
 - **All / Only mine** at the top of the list: **Only mine** (the default) shows the records you completed yourself and those a person property assigns to you, whoever ticked them off. When an automation completes a record, it counts for the person who set up the automation. The choice is yours for this journal, on all devices.
@@ -98,10 +98,12 @@ Under **Set up journal → Days** you choose for each journal which **days appea
 
 - **None**
 - **Last 7 days** (the default)
-- **Grouped by year and month**: as above, older days in addition in folders by year and month, such as "October 2026 · 18". The folders only exist in the sidebar, they are not pages – you cannot drag anything into them.
+- **Grouped by year and month**: as above, older days in addition in folders by year and month, such as "October 2026 · 18". The folders are not pages – nothing can be dragged into them.
 - **All**: every single day, as before.
 
-When a day is open, the sidebar always shows it – also when it is older than 7 days; in the grouped view its year and month unfold. Days can still be dragged, and the arrow keys work in the folders too (→ opens, ← closes or jumps to the folder above).
+An open day always shows in the sidebar, even when older; in the grouped view its year and month unfold. Days can still be dragged, and the arrow keys work in the folders too (→ opens, ← closes or jumps to the folder above).
+
+**Day title** below sets how new days are named: **Long** (the default, "Thursday, 26 November 2026") or **Date (ISO)**, "2026-11-26". Existing and renamed days keep their title. {since=0.11.7}
 
 ## From day to day
 
