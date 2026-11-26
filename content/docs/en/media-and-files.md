@@ -16,6 +16,17 @@ Images, files, PDFs and embeds in documents – upload, annotate, delete again �
 - **Mark up images**: double-click an image (or the pen in the toolbar while the image is selected, or **… → Mark up image** in the image toolbar) to open it for editing – with **pen**, **highlighter**, **arrow**, **rectangle**, **circle** and **text**, seven colours and three line widths, undo with ++⌘ Z++. **Save** creates a new image with the markings; the original and the markings stay with the image, so you can change or remove them later. **Mark up** in the image bar opens it too; two fingers zoom and pan (up to 8×), on a computer ⌘/Ctrl + wheel; **Fit** shows the whole image again. {since=0.11.0}
 - **Media** in the sidebar collects all uploads of the workspace for reuse.
 
+### Upload files as pages of their own {since=0.12.1}
+
+When a file should not go into an existing page but into a space on its own, upload it straight there. Every file becomes a page of its own: a normal document titled with the file name (without its extension) that holds the file with its usual preview – picture, PDF, video, spreadsheet, presentation or text document. You can keep writing below it. The page shows up in the page tree, the search, links and shares like any other and has the same permissions.
+
+- **Drag and drop:** drag files from your computer onto a space in the sidebar – they land at its top level – or onto a page, and they become its sub-pages. A dashed outline shows where they will go. Moving pages in the page tree works as before.
+- **Upload file…** is in the **New page** window (through **+** on a space or a page) and in the **…** menu of a space. You can choose several files at once.
+- **In Media**, **Upload…** asks for the space and, if you like, the page the new pages should go below.
+- **Several files** upload one after the other. A small window at the bottom left shows every file with its progress and **×** to cancel; once a page exists, the arrow icon next to it opens it. If the server refuses a file (too large, storage full), the reason shows there and the others carry on.
+
+The same limits apply as for any upload: the maximum file size, the storage and your permissions – whoever may edit in the space can create pages there. Uploading as pages needs a connection to the server. It is not available in [encrypted spaces](/encrypted-spaces); drop files into a page there. From the apps for iPhone, iPad and Android it works through sharing, see [Share from other apps](/mobile-capture#share-from-other-apps).
+
 ### Deleting media
 
 In **Media**, select files with their checkbox and put them in the trash with **Move to trash** (or the trash icon on the file). There is no confirmation because it can be undone. Anyone who may edit the file's page may delete it; viewers and guests can't.

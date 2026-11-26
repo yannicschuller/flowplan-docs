@@ -16,6 +16,17 @@ Bilder, Dateien, PDFs und Einbettungen in Dokumenten – hochladen, anmerken, wi
 - **Bilder markieren**: Doppelklick auf ein Bild (oder den Stift in der Werkzeugleiste, solange das Bild ausgewählt ist, oder **… → Bild markieren** in der Bildleiste) öffnet es zum Bearbeiten – mit **Stift**, **Textmarker**, **Pfeil**, **Rechteck**, **Kreis** und **Text**, sieben Farben und drei Strichstärken, Rückgängig mit ++⌘ Z++. **Speichern** legt ein neues Bild mit den Markierungen an; das Original und die Markierungen bleiben am Bild, sodass sie sich später ändern oder ganz entfernen lassen. **Markieren** in der Bildleiste öffnet es ebenfalls; zwei Finger zoomen und verschieben (bis 8×), am Computer ⌘/Strg + Mausrad; **Einpassen** zeigt wieder das ganze Bild. {since=0.11.0}
 - Die **Medien** in der Seitenleiste sammeln alle Uploads des Arbeitsbereichs zum Wiederverwenden.
 
+### Dateien als eigene Seiten hochladen {since=0.12.1}
+
+Soll eine Datei nicht in eine bestehende Seite, sondern für sich in einen Bereich, lädst du sie direkt dorthin hoch. Jede Datei wird eine eigene Seite: ein ganz normales Dokument mit dem Dateinamen (ohne Endung) als Titel und der Datei mit ihrer üblichen Vorschau – Bild, PDF, Video, Tabelle, Präsentation oder Textdokument. Darunter kannst du weiterschreiben. Die Seite steht im Seitenbaum, in der Suche, in Links und Freigaben wie jede andere und hat dieselben Rechte.
+
+- **Hineinziehen:** Zieh Dateien vom Computer auf einen Bereich in der Seitenleiste – sie landen auf seiner obersten Ebene – oder auf eine Seite, dann werden sie ihre Unterseiten. Eine gestrichelte Umrandung zeigt, wohin sie gehen. Seiten im Seitenbaum verschiebst du weiter wie gewohnt.
+- **Datei hochladen …** findest du im Fenster **Neue Seite** (über **+** an einem Bereich oder einer Seite) und im Menü **…** eines Bereichs. Du kannst mehrere Dateien auf einmal wählen.
+- **In den Medien** fragt **Hochladen …** nach dem Bereich und, wenn du willst, nach der Seite, unter der die neuen Seiten liegen sollen.
+- **Mehrere Dateien** laden nacheinander hoch. Unten links zeigt ein kleines Fenster jede Datei mit Fortschritt und **×** zum Abbrechen; ist eine Seite angelegt, öffnet das Pfeil-Symbol daneben sie. Lehnt der Server eine Datei ab (zu groß, Speicherplatz voll), steht der Grund dort, und die übrigen laden weiter.
+
+Es gelten dieselben Grenzen wie bei jedem Hochladen: die maximale Dateigröße, der Speicherplatz und deine Rechte – Seiten anlegen kann, wer im Bereich bearbeiten darf. Das Hochladen als Seiten braucht eine Verbindung zum Server. In [verschlüsselten Bereichen](/encrypted-spaces) gibt es es nicht; dort ziehst du Dateien in eine Seite. Aus den Apps für iPhone, iPad und Android geht es über das Teilen, siehe [Teilen aus anderen Apps](/mobile-capture#teilen-aus-anderen-apps).
+
 ### Medien löschen
 
 In den **Medien** wählst du Dateien über ihr Kästchen aus und legst sie mit **In den Papierkorb** (oder dem Papierkorb-Symbol an der Datei) in den Papierkorb. Das geht ohne Rückfrage, weil es sich rückgängig machen lässt. Löschen darf, wer die Seite der Datei bearbeiten darf; Leser und Gäste können es nicht.
