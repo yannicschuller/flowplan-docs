@@ -41,3 +41,7 @@ Eine hochgeladene **HTML-Datei** (`.html`, `.htm`) öffnest du mit **Vorschau ö
 ## Tabellen {since=0.11.0}
 
 Eine **CSV**- oder **Excel-Datei** (`.xlsx`) öffnest du mit **Vorschau öffnen** – in Dokumenten, den **Medien**, Dateien-Eigenschaften und veröffentlichten Seiten. Die Ansicht ist schreibgeschützt: Blätter als Reiter, ein Filter für Zeilen, Sortieren per Klick auf den Spaltenbuchstaben. Bis 5.000 Zeilen und 200 Spalten aus Dateien bis 20 MB (`FLOWPLAN_SHEET_PREVIEW_MB`); Formeln zeigen ihr gespeichertes Ergebnis. Alte `.xls`-Dateien lädst du herunter.
+
+## Präsentationen und Textdokumente {since=0.11.7}
+
+**PowerPoint**- und **Impress**-Präsentationen (`.pptx`, `.odp`) sowie **Word**- und **OpenDocument**-Texte (`.docx`, `.odt`) werden beim Hochladen zu einer Karte, die eine schreibgeschützte Inhaltsvorschau öffnet – in Dokumenten, den **Medien**, Dateien-Eigenschaften und veröffentlichten Seiten. Präsentationen zeigst du Folie für Folie: Titel, Text mit Aufzählungsebenen, Tabellen, Bilder und die Notizen (aufklappbar); weiter mit den Pfeilen, den Pfeiltasten oder Wischen, am Computer zusätzlich eine Folienliste. Textdokumente erscheinen als eine Seite mit Überschriften, Listen, Tabellen und Bildern. Es ist eine Vorschau des Inhalts, nicht das genaue Layout – das Original bekommst du mit **Herunterladen**. Bis 20 MB je Datei (`FLOWPLAN_OFFICE_PREVIEW_MB`, höchstens 100); alte `.ppt`- und `.doc`-Dateien lädst du herunter.

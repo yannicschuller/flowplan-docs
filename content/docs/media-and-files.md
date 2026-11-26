@@ -11,6 +11,7 @@ Bilder, Dateien, PDFs und Einbettungen in Dokumenten – hochladen, anmerken, wi
 - **Einfügen aus der Zwischenablage** (++⌘ V++) oder Hineinziehen lädt Bilder und Dateien hoch. Bilder lassen sich an den Rändern in der Größe ändern.
 - **Bildleiste**: Zeigst du auf ein Bild (auf dem Handy: antippen), erscheint oben rechts eine kleine Leiste: **Kommentieren**, **Beschriftung**, **Bild ersetzen** (Platz, Breite, Beschriftung und Ausrichtung bleiben), **Herunterladen**, **Vollbild** und **…** mit Ausrichtung (links, Mitte, rechts), **Bild markieren**, **Bild kopieren**, **Link zum Block kopieren** und **Löschen**.
 - **Fotos werden vor dem Hochladen verkleinert**: höchstens 2560 px an der längeren Seite, gespeichert als WebP. Die Kameradrehung bleibt erhalten, Metadaten wie der Aufnahmeort werden entfernt. GIFs, SVGs und Dateien, die kaum kleiner würden, bleiben unverändert. Anhänge in Dateien-Eigenschaften und Formularen werden im Original gespeichert.
+- **Während des Hochladens** steht an der Stelle, an der die Datei landet, ein Platzhalter mit Name, Fortschritt (Prozent und MB) und **×** zum Abbrechen – eine Zeile je Datei. Du kannst währenddessen weiterschreiben; die Datei kommt trotzdem an ihre Stelle. {since=0.11.7}
 - **PDFs** erscheinen als Karte mit einer Vorschau der ersten Seite. Ein Klick öffnet den PDF-Viewer mit allen Seiten, Zoom und **Herunterladen**. Mit zwei Fingern zoomst du stufenlos an der Stelle zwischen den Fingern und verschiebst die Seiten – wie in [Notizbüchern](/notebooks), auch beim bloßen Lesen; auf dem Trackpad mit der Pinch-Geste oder Strg + Scrollen. Die Knöpfe und <kbd>⌘</kbd> <kbd>+</kbd>/<kbd>−</kbd> ändern den Zoom in Schritten von 25 %. <kbd>Esc</kbd> schließt den Viewer. Dasselbe gilt für PDFs in den Medien, in Dateien-Eigenschaften von Datenbanken und auf veröffentlichten Seiten. In bearbeitbarem Text öffnet ein Link auf ein PDF den Viewer mit <kbd>⌘</kbd>-Klick. Im Viewer lässt sich auf dem PDF schreiben – siehe [PDFs anmerken](#pdfs-anmerken).
 - **Bilder markieren**: Doppelklick auf ein Bild (oder den Stift in der Werkzeugleiste, solange das Bild ausgewählt ist, oder **… → Bild markieren** in der Bildleiste) öffnet es zum Bearbeiten – mit **Stift**, **Textmarker**, **Pfeil**, **Rechteck**, **Kreis** und **Text**, sieben Farben und drei Strichstärken, Rückgängig mit ++⌘ Z++. **Speichern** legt ein neues Bild mit den Markierungen an; das Original und die Markierungen bleiben am Bild, sodass sie sich später ändern oder ganz entfernen lassen. **Markieren** in der Bildleiste öffnet es ebenfalls; zwei Finger zoomen und verschieben (bis 8×), am Computer ⌘/Strg + Mausrad; **Einpassen** zeigt wieder das ganze Bild. {since=0.11.0}
 - Die **Medien** in der Seitenleiste sammeln alle Uploads des Arbeitsbereichs zum Wiederverwenden.
@@ -57,7 +58,7 @@ Wer die Seite des PDFs bearbeiten darf, schreibt sofort darauf: Es sind dieselbe
 
 ### Dateien ansehen
 
-3D- und CAD-Dateien, 2D-Zeichnungen, HTML-Dateien und Tabellen öffnen sich in einer eigenen Vorschau – siehe [Dateien ansehen](/file-previews).
+3D- und CAD-Dateien, 2D-Zeichnungen, HTML-Dateien, Tabellen, Präsentationen und Textdokumente öffnen sich in einer eigenen Vorschau – siehe [Dateien ansehen](/file-previews).
 
 ## Sprachnotizen und Besprechungen
 
