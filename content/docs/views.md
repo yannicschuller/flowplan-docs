@@ -90,7 +90,7 @@ Mit dem **Kalender-Sync** hältst du eine Ansicht mit Datum und einen Kalender i
 
 1. **Einstellungen → Kalender & Issues → Kalender verbinden** → **Mit Google Calendar verbinden** bzw. **Mit Microsoft Outlook / 365 verbinden**. Du meldest dich beim Anbieter an und erlaubst den Zugriff auf deine Kalender.
    Oder **Mit CalDAV verbinden** {since=0.11.5}: Server-Adresse (meist genügt der Server, z. B. `caldav.icloud.com`, `caldav.fastmail.com`, `dav.mailbox.org` oder deine Nextcloud), Benutzername und ein **App-Passwort** (bei iCloud Pflicht: appleid.apple.com → Anmeldung und Sicherheit → App-spezifische Passwörter). Flowplan sucht deine Kalender selbst, bietet nur die an, in die es schreiben darf, und speichert das Passwort verschlüsselt. Serien kommen – wie bei Google und Microsoft – als einzelne Einträge je Termin im Zeitraum an; änderst oder löschst du einen davon, betrifft das nur diesen Termin der Serie, die Regel selbst änderst du im Kalender. Erinnerungen, Teilnehmende und Ort eines Termins bleiben stehen, wenn Flowplan ihn ändert.
-2. In der Datenbank das Kalendersymbol neben **…** (**Kalender-Sync**) öffnen, die Ansicht, das Konto und den Kalender wählen und **Verbinden**.
+2. In der Datenbank unter **…** **Kalender-Sync** öffnen {since=0.12.1}, die Ansicht, das Konto und den Kalender wählen und **Verbinden**.
 
 :::
 
