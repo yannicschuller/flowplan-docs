@@ -32,11 +32,17 @@ In detail:
 
 Below the error chart, **Errors in detail** shows where the errors (5xx) come from – one row per kind of error with route or command (such as `POST /api/command · row.update`), error name and short message, count and trend in the chosen range, and when it last happened; sorted by last seen or count. A click into the error chart shows only that time slot. The **Errors 24 h** tile jumps here.
 
-Opened, a row shows the **place in the code** (the top stack frames in Flowplan's own code, to copy) and the last 20 **occurrences** with time, error ID, status, instance (in a cluster), version and role. **Copy for an issue** copies a plain-text report without personal data. In the Docker image you see compiled files and function names; source files with line only when the build's source maps are next to them. **Clear** deletes all error details; the count in the chart stays.
+Opened, a row shows the **place in the code** (the top stack frames in Flowplan's own code, to copy) and the last 20 **occurrences** with time, error ID, status, instance (in a cluster), version and role. **Copy internal report** copies a plain-text report with error IDs, without personal data. In the Docker image you see compiled files and function names; source files with line only when the build's source maps are next to them. **Clear** deletes all error details; the count in the chart stays.
 
 Every answer carries an **error ID** in the `X-Request-Id` header, and for an error also in the JSON (`requestId`). The app shows it in the message "Something went wrong on the server" as "Error ID: …" – with it you find the occurrence.
 
 Captured are answers from 500 up, failures of background workers and jobs and failed MCP tools, also with statistics switched off. Stored are only the route as a pattern (without IDs and query), command, status, error name, the message (at most 500 characters; keys, tokens, passwords, e-mail and IP addresses and IDs masked), stack frames, database error code, error ID, instance, version and role (administrator, member, guest, not signed in, API token, MCP). Never stored: IP addresses, request contents, headers or who it was. Kept 14 days, at most 500 kinds of errors.
+
+### Reporting errors {since=0.12.1}
+
+Each kind of error has a **signature** (`fp-err-v1-…`), the same in every build. **Open GitHub issue** previews the new issue – message as a pattern without values, paths or hosts, route, status, count, version, stack without compiled names; never error IDs, instance or host names or roles – and opens it on GitHub, where you send it. **Already reported?** searches for the signature. **Mark as reported** and **Mute** take it out of the summary.
+
+**Weekly error summary** (below the list): on Mondays one inbox notification to the administrators with kinds of errors new in the last 7 days or back after four quiet weeks – from 3 occurrences, on 2 days or from background workers, at most 10; only count, route and error name.
 
 **Errors from external services:** answers with 502–504 because another service failed – such as the AI provider, a linked site in a link preview, the image search or a calendar or Git provider – don't count as server errors. They are listed in their own section below **Errors in detail** with service, host (without path), route, status, count and when last seen, and they don't go into the error rate, the error chart or the recommendations, so Flowplan's own errors stand out right away. {since=0.11.5}
 
