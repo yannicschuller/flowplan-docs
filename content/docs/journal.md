@@ -44,11 +44,11 @@ Jeder Tag merkt sich, aus welcher Fassung der Vorlage er entstanden ist. Ein Tag
 
 ## Tagesvorlage
 
-**Journal einrichten** (Zahnrad auf der Journalseite) → **Vorlage**: Jeder neue Tag beginnt mit diesem Inhalt, etwa „Dankbar für“, „Fokus heute“ und „Rückblick am Abend“. Zur Wahl stehen fertige Vorlagen (Dankbarkeit & Fokus, 5-Minuten-Journal, Arbeitslog, Tagesrückblick); **Heutigen Tag als Vorlage speichern** {since=0.9.8} macht den Inhalt des aktuellen Tages zur Vorlage für jeden neuen Tag. Aufgaben aus der Vorlage kommen jeden Tag neu und werden nicht zusätzlich übernommen. Ein Tag, auf dem nur die Vorlage steht, gilt als leer und verschwindet wie jeder leere Tag.
+**Journal einrichten** (Zahnrad auf der Journalseite) → **Vorlage**: Jeder neue Tag beginnt mit diesem Inhalt, etwa „Dankbar für“, „Fokus heute“ und „Rückblick am Abend“. Zur Wahl stehen fertige Vorlagen (Dankbarkeit & Fokus, 5-Minuten-Journal, Arbeitslog, Tagesrückblick); **Heutigen Tag als Vorlage speichern** {since=0.9.8} macht den Inhalt des aktuellen Tages zur Vorlage für jeden neuen Tag. Aufgaben aus der Vorlage kommen jeden Tag neu und werden nicht zusätzlich übernommen.
 
 **Aus Vorlage wählen …** {since=0.9.8} listet deine gespeicherten [Dokumentvorlagen](/templates#eigene-vorlagen), die im Bereich des Journals gelten: die dieses Bereichs, die des ganzen Arbeitsbereichs und deine privaten. Wählst du eine, wird ihr Inhalt in die Tagesvorlage kopiert. Spätere Änderungen an der gespeicherten Vorlage ändern das Journal nicht – erst, wenn du sie erneut wählst. Datenbankvorlagen und Vorlagen anderer Bereiche stehen nicht zur Wahl. **Entfernen** leert die Tagesvorlage; neue Tage beginnen dann leer.
 
-**Übernommene Aufgaben** (ebenfalls unter **Vorlage**) legt fest, wo die offenen Aufgaben des Vortags in einem neuen Tag stehen: **Oben** (Voreinstellung, vor der Vorlage), **Nach der Vorlage** oder **Unter der Überschrift …** – zur Wahl stehen die Überschriften der Vorlage. Mit einer Überschrift kommt die Aufgabenliste direkt darunter, vor das, was die Vorlage dort vorsieht. Fehlt die Überschrift später in der Vorlage, stehen die Aufgaben nach der Vorlage. Das gilt für Tage, die automatisch entstehen, genauso wie für den Entwurf bei **Beim ersten Schreiben**.
+**Übernommene Aufgaben** (ebenfalls unter **Vorlage**) legt fest, wo die offenen Aufgaben des Vortags in einem neuen Tag stehen: **Oben** (Voreinstellung, vor der Vorlage), **Nach der Vorlage** oder **Unter der Überschrift …** – zur Wahl stehen die Überschriften der Vorlage. Mit einer Überschrift kommt die Aufgabenliste direkt darunter, vor das, was die Vorlage dort vorsieht. Fehlt die Überschrift später in der Vorlage, stehen die Aufgaben nach der Vorlage. Das gilt auch für den Entwurf bei **Beim ersten Schreiben**.
 
 **Offene Aufgaben** (direkt darunter): **Verschieben** (Voreinstellung) nimmt sie vom Vortag weg; **Kopieren** lässt sie dort zusätzlich stehen, als übernommen markiert – sie zählen dort nicht mehr als offen, abhaken lässt sich nur die Kopie im neuesten Tag. {since=0.11.5}
 
@@ -101,7 +101,7 @@ Unter **Journal einrichten → Tage** legst du für jedes Journal fest, welche *
 
 Ist ein Tag geöffnet, zeigt die Seitenleiste ihn immer an – auch wenn er älter als 7 Tage ist; in der gruppierten Ansicht klappen sein Jahr und sein Monat auf. Tage lassen sich weiter ziehen, und die Pfeiltasten funktionieren auch in den Ordnern (→ öffnet, ← schließt oder springt zum Ordner darüber).
 
-Darunter wählst du den **Titel des Tages**: **Lang** (Voreinstellung, etwa „Donnerstag, 26. November 2026“) oder **Datum (ISO)**, nur „2026-11-26“ – kurz und gut sortierbar. Das gilt für neue Tage; vorhandene Tage behalten ihren Titel, umbenannte bleiben umbenannt. {since=0.12.0}
+Darunter wählst du den **Titel des Tages** neuer Tage: **Lang** (Voreinstellung, „Donnerstag, 26. November 2026“), **Datum (ISO)**, „2026-11-26“, {since=0.12.0} **Kurz** („Do., 26. Nov. 2026“), ISO mit Wochentag („Do. 2026-11-26“) oder ein **eigenes Muster** wie `ddd DD.MM.YYYY` (YYYY, MMMM, MMM, MM, DD, dddd, ddd …). Vorhandene Tage behalten ihren Titel; die eines früheren Musters gelten als umbenannt. {since=0.12.1}
 
 ## Von Tag zu Tag
 

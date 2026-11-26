@@ -15,8 +15,7 @@ A journal is a page with one sub-page per day. In the morning today's page is re
 ## How a day comes about
 
 - When a new day is opened for the first time, Flowplan creates its page. The day starts at midnight in your time zone.
-- **Open tasks** from the last day move over – including nested sub-tasks. Tasks **in progress** `[/]`, **deferred** `[>]` or with another Obsidian symbol such as `[?]` count as open; done, **cancelled** `[-]` and empty tasks stay on their day. A small ↻ at the corner of the checkbox shows that a task was carried over from an earlier day.
-- Completed tasks and the rest of the text stay on their day.
+- **Open tasks** from the last day move over – including nested sub-tasks. Tasks **in progress** `[/]`, **deferred** `[>]` or with another Obsidian symbol such as `[?]` count as open; done, **cancelled** `[-]` and empty tasks stay on their day, as does the rest of the text. A small ↻ at the corner of the checkbox shows that a task was carried over from an earlier day.
 - **Empty days disappear**: if a day got nothing of its own besides carried-over tasks, it is removed again on the next day. This way the journal only contains days on which something happened.
 
 {since=0.10.0} A day listing something under [Completed this day](#completed-this-day) (as the person opening the journal sees it: **Only mine** or **All**, their time zone) stays. A workflow writing into a day (**Append to journal day**) never removes the day before.
@@ -44,7 +43,7 @@ Every day remembers which version of the template it was created from. A day tha
 
 ## Daily template
 
-**Set up journal** (gear on the journal page) → **Template**: every new day starts with this content, such as "Grateful for", "Focus today" and "Evening review". Ready-made templates are available (gratitude & focus, 5-minute journal, work log, daily review); **Save today as template** {since=0.9.8} makes the current day's content the template for every new day. Tasks from the template come back every day and are not carried over in addition. A day that only holds the template counts as empty and disappears like any empty day.
+**Set up journal** (gear on the journal page) → **Template**: every new day starts with this content, such as "Grateful for", "Focus today" and "Evening review". Ready-made templates are available (gratitude & focus, 5-minute journal, work log, daily review); **Save today as template** {since=0.9.8} makes the current day's content the template for every new day. Tasks from the template come back every day and are not carried over in addition.
 
 **Choose from templates …** {since=0.9.8} lists your saved [document templates](/templates#your-own-templates) that apply in the journal's space: those of this space, those of the whole workspace and your private ones. Choosing one copies its content into the daily template. Later changes to the saved template don't change the journal – only when you choose it again. Database templates and templates of other spaces are not offered. **Remove** clears the daily template; new days then start empty.
 
@@ -103,7 +102,7 @@ Under **Set up journal → Days** you choose for each journal which **days appea
 
 An open day always shows in the sidebar, even when older; in the grouped view its year and month unfold. Days can still be dragged, and the arrow keys work in the folders too (→ opens, ← closes or jumps to the folder above).
 
-**Day title** below sets how new days are named: **Long** (the default, "Thursday, 26 November 2026") or **Date (ISO)**, "2026-11-26". Existing and renamed days keep their title. {since=0.12.0}
+**Day title** below names new days: **Long** (the default, "Thursday, 26 November 2026"), **Date (ISO)**, "2026-11-26", {since=0.12.0} **Short** ("Thu, 26 Nov 2026"), ISO with weekday ("Thu 2026-11-26") or a **Custom pattern** like `ddd DD.MM.YYYY` (YYYY, MMMM, MMM, MM, DD, dddd, ddd …). Existing days keep their title; those of an earlier pattern count as renamed. {since=0.12.1}
 
 ## From day to day
 
@@ -144,7 +143,6 @@ Journals behind a PIN you have not entered appear in none of these – not even 
 
 - `/todo` or `[]` + space creates tasks that move along. They also appear under **My tasks**, without any @mention.
 - Journals can be shared like any page. Whoever may only read sees the days but does not create any.
-- The quick search finds entries across all days; **Without journal days** hides them.
 
 ## Workflows
 
