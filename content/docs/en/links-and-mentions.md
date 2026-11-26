@@ -26,6 +26,8 @@ Links to the web are underlined and carry a small outward arrow after their text
 
 When an owner has set up [automatic links](/workspace-appearance#automatic-links), matching text becomes a link as soon as you type a space, a punctuation mark or <kbd>Enter</kbd> after it, and also when you paste it – in pages, in documents of database records and in comments. It is an ordinary link: it stays when you collaborate, work offline or use the apps, and you edit or remove it like any other. ++⌘ Z++ (++Ctrl Z++) right after takes back only the link; the text stays. Text that is already there does not change; nothing is linked in code, existing links, formulas, titles or database table cells.
 
+**On whiteboards:** type **@** in a sticky note, text or shape to open the same list as in documents – journal day (`@today`, `@yesterday`), pages and whiteboards, records and people; ++Enter++ inserts, ++Esc++ types the @ with the search text. The choice goes into the text as a link; a click opens the page. The page lists the whiteboard under **Linked from** and in the graph, renaming the page updates the title, and people you mention are notified. {since=0.11.7}
+
 ## Links to blocks
 
 Every block can be linked: a paragraph, a heading, a list item, a table, an image, a diagram … The link is the page's address with the block, such as `https://flowplan.example.org/#page=…&block=k3x9a2b1` (records add `&row=…`), and works anywhere in the same workspace.
