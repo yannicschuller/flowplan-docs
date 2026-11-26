@@ -23,7 +23,7 @@ A journal is a page with one sub-page per day. In the morning today's page is re
 
 {since=0.10.0} An empty day goes to the [trash](/pages-and-spaces#trash), restorable, without the tasks that moved on. Opening its date again, or a workflow writing into it, brings that day back; a day you deleted yourself stays in the trash.
 
-{since=0.11.7} Each new day re-checks the last week: empty days go too, unless they hold open tasks or you restored them.
+{since=0.12.0} Each new day re-checks the last week: empty days go too, unless they hold open tasks or you restored them.
 
 ### Create the day's page: automatically or on the first write
 
@@ -103,7 +103,7 @@ Under **Set up journal → Days** you choose for each journal which **days appea
 
 An open day always shows in the sidebar, even when older; in the grouped view its year and month unfold. Days can still be dragged, and the arrow keys work in the folders too (→ opens, ← closes or jumps to the folder above).
 
-**Day title** below sets how new days are named: **Long** (the default, "Thursday, 26 November 2026") or **Date (ISO)**, "2026-11-26". Existing and renamed days keep their title. {since=0.11.7}
+**Day title** below sets how new days are named: **Long** (the default, "Thursday, 26 November 2026") or **Date (ISO)**, "2026-11-26". Existing and renamed days keep their title. {since=0.12.0}
 
 ## From day to day
 

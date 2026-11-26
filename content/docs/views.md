@@ -6,7 +6,7 @@ keywords: Ansicht, Kanban, Board, Kalender, Timeline, Gantt, Galerie, Liste, Cal
 
 Eine Datenbank kann beliebig viele Ansichten haben. Jede Ansicht zeigt dieselben Einträge mit eigener Darstellung, eigenen Filtern, Sortierungen und Gruppen.
 
-{since=0.11.7} Beim Sortieren stehen Einträge ohne Wert immer am Ende – auf- wie absteigend, etwa Einträge ohne Datum bei einer Sortierung nach Fälligkeit.
+{since=0.12.0} Beim Sortieren stehen Einträge ohne Wert immer am Ende – auf- wie absteigend, etwa Einträge ohne Datum bei einer Sortierung nach Fälligkeit.
 
 ![Die Datenbank „Projects“ in der Kalenderansicht: oben die Reiter Table, Board, Calendar, Timeline, Gallery, darunter Filter, Sortierung und Eigenschaften und ein Monat November 2026 mit Einträgen wie „Weekly planning“ und „Speed up search“](/screenshots/calendar.webp "Eine Datenbank in der Kalenderansicht, mit den Reitern der anderen Ansichten.")
 

@@ -20,7 +20,7 @@ Für Dokumentation mit Hunderten Seiten zeigst du einen Bereich als **Bibliothek
 
 Du siehst nur Seiten, die du sehen darfst; Journaltage stehen nicht in der Bibliothek. Über die API schaltet `space.update` mit `library` die Ansicht um, `GET /api/spaces/{spaceId}/library` liefert Bücher und Kapitel.
 
-## Arbeitsbereich als Bibliothek {since=0.11.7}
+## Arbeitsbereich als Bibliothek {since=0.12.0}
 
 Für ein Büro-Handbuch oder eine Wissensbasis zeigst du den ganzen Arbeitsbereich als Bibliothek: **Einstellungen → Arbeitsbereich → Allgemein → Bibliothek → Arbeitsbereich als Bibliothek** (nur Eigentümer). Dann erscheint jeder Bereich als Regal mit Büchern – auch Bereiche, die später dazukommen. Die Einstellung der einzelnen Bereiche bleibt unverändert; schaltest du zurück, ist jeder Bereich wie zuvor. Beim Einschalten wählst du, was für alle Mitglieder aus der Seitenleiste verschwindet: **Meine Aufgaben** und **Journal** sind vorausgewählt, **Lernen** und **Graph** kannst du dazunehmen. Diese Schalter stehen danach unter **In der Seitenleiste ausblenden** und gelten auch ohne Bibliothek. Ausgeblendet heißt: kein Eintrag in der Seitenleiste, in der Schnellsuche, kein Tastenkürzel und kein Widget – gelöscht wird nichts, und Links öffnen weiter.
 

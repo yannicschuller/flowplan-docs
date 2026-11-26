@@ -42,6 +42,6 @@ Open an **HTML file** with **Open preview** – in documents, **Media**, files p
 
 Open a **CSV** or **Excel file** (`.xlsx`) with **Open preview** – in documents, **Media**, files properties and published pages. The view is read-only: sheets as tabs, a filter for rows, sorting by a click on a column letter. Up to 5,000 rows and 200 columns of files up to 20 MB (`FLOWPLAN_SHEET_PREVIEW_MB`); formulas show their saved result. Old `.xls` files are downloaded.
 
-## Presentations and text documents {since=0.11.7}
+## Presentations and text documents {since=0.12.0}
 
 **PowerPoint** and **Impress** presentations (`.pptx`, `.odp`) as well as **Word** and **OpenDocument** texts (`.docx`, `.odt`) become a card when uploaded that opens a read-only content preview – in documents, **Media**, files properties and published pages. Presentations show slide by slide: title, text with bullet levels, tables, pictures and the speaker notes (folded); move on with the arrows, the arrow keys or a swipe, on a computer also with a slide list. Text documents appear as one page with headings, lists, tables and pictures. It is a preview of the content, not the exact layout – **Download** gives you the original. Up to 20 MB per file (`FLOWPLAN_OFFICE_PREVIEW_MB`, at most 100); old `.ppt` and `.doc` files are downloaded.

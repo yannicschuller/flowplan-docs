@@ -20,7 +20,7 @@ For documentation with hundreds of pages, show a space as a **library**: `…` n
 
 You see only pages you may see; journal days are not part of the library. Through the API, `space.update` with `library` switches the view, and `GET /api/spaces/{spaceId}/library` returns the books and chapters.
 
-## A workspace as a library {since=0.11.7}
+## A workspace as a library {since=0.12.0}
 
 For an office handbook or a knowledge base, show the whole workspace as a library: **Settings → Workspace → General → Library → Workspace as library** (owners only). Every space then appears as shelves of books – also spaces added later. The setting of each space stays as it was; switch back and every space is as before. When you switch it on, you choose what disappears from the sidebar for every member: **My tasks** and **Journal** are ticked, **Study** and **Graph** are optional. These switches then sit under **Hide in the sidebar** and also work without the library. Hidden means no sidebar entry, no quick-search commands, no shortcut and no widget – nothing is deleted, and links still open.
 

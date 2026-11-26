@@ -12,7 +12,7 @@ Du meldest dich mit E-Mail und Passwort an, mit einem Passkey (Fingerabdruck, Ge
 
 Auf einer ganz neuen Instanz legst du das erste Konto an – es verwaltet die Instanz. Ziehst du um oder installierst neu, wählst du dort stattdessen **Aus Sicherung wiederherstellen** ([Beim Einrichten wiederherstellen](/restore#beim-einrichten-wiederherstellen)).
 
-Beim ersten Anmelden legt Flowplan einen privaten Arbeitsbereich mit Beispielseiten an. Bei Single Sign-on kommen Name, E-Mail-Adresse und – falls vorhanden – das Profilbild vom Login-Anbieter. Mit E-Mail und Passwort lädst du ein eigenes Profilbild unter **Einstellungen → Konto & Sicherheit** hoch (PNG, JPEG, WebP oder GIF, höchstens 2 MB) oder entfernst es wieder. {since=0.11.7}
+Beim ersten Anmelden legt Flowplan einen privaten Arbeitsbereich mit Beispielseiten an. Bei Single Sign-on kommen Name, E-Mail-Adresse und – falls vorhanden – das Profilbild vom Login-Anbieter. Mit E-Mail und Passwort lädst du ein eigenes Profilbild unter **Einstellungen → Konto & Sicherheit** hoch (PNG, JPEG, WebP oder GIF, höchstens 2 MB) oder entfernst es wieder. {since=0.12.0}
 
 > [!TIP]
 > Bietet die Instanz eine **Demo** an, kannst du Flowplan ohne Konto ausprobieren. Die Demo bekommt einen eigenen Beispiel-Arbeitsbereich und wird beim Beenden, beim Abmelden oder nach 45 Minuten ohne Aktivität vollständig gelöscht.
@@ -111,7 +111,7 @@ Nutzt du flowplan.org und etwas geht gerade nicht? Ob eine Störung oder Wartung
 
 ### Über Flowplan
 
-**Konto im Menü des Arbeitsbereichs:** Ein Klick auf den Namen des Arbeitsbereichs oben zeigt, wer angemeldet ist (Name und E-Mail), die Arbeitsbereiche zum Wechseln oder Erstellen, in der App **Instanz wechseln …** und darunter Design (hell/dunkel), **Über Flowplan**, **Was ist neu** sowie Impressum und Datenschutz, falls eingerichtet; **Abmelden** steht ganz unten. {since=0.11.7}
+**Konto im Menü des Arbeitsbereichs:** Ein Klick auf den Namen des Arbeitsbereichs oben zeigt, wer angemeldet ist (Name und E-Mail), die Arbeitsbereiche zum Wechseln oder Erstellen, in der App **Instanz wechseln …** und darunter Design (hell/dunkel), **Über Flowplan**, **Was ist neu** sowie Impressum und Datenschutz, falls eingerichtet; **Abmelden** steht ganz unten. {since=0.12.0}
 
 **Einstellungen → Hilfe & Info → Über Flowplan** (`/#settings/about`, auch im Menü des Arbeitsbereichs oben in der Seitenleiste – auf dem Telefon auch unter **Mehr** – und mit ++⌘/Strg K++ → „Über Flowplan“) zeigt:
 

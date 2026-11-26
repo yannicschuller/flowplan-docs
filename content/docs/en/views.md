@@ -6,7 +6,7 @@ keywords: view, kanban, board, calendar, timeline, gantt, gallery, list, caldav,
 
 A database can have as many views as you like. Every view shows the same records with its own layout, filters, sorting and groups.
 
-{since=0.11.7} When sorting, records without a value always come last – ascending and descending, e.g. records without a date when sorted by due date.
+{since=0.12.0} When sorting, records without a value always come last – ascending and descending, e.g. records without a date when sorted by due date.
 
 ![The "Projects" database in the calendar view: the tabs Table, Board, Calendar, Timeline, Gallery at the top, below them filter, sort and properties and the month of November 2026 with entries such as "Weekly planning" and "Speed up search"](/screenshots/calendar.webp "A database in the calendar view, with the tabs of the other views.")
 

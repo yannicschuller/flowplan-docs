@@ -23,7 +23,7 @@ Ein Journal ist eine Seite mit einer Unterseite pro Tag. Morgens liegt die heuti
 
 {since=0.10.0} Ein leerer Tag kommt in den [Papierkorb](/pages-and-spaces#papierkorb), ohne die weitergezogenen Aufgaben, und lässt sich dort wiederherstellen. Öffnest du sein Datum wieder oder schreibt ein Workflow hinein, kommt genau dieser Tag zurück; einen Tag, den du selbst gelöscht hast, lässt Flowplan im Papierkorb.
 
-{since=0.11.7} Jeder neue Tag prüft auch die übrigen Tage der letzten Woche: Leere verschwinden ebenso, außer sie haben offene Aufgaben oder du hast sie selbst wiederhergestellt.
+{since=0.12.0} Jeder neue Tag prüft auch die übrigen Tage der letzten Woche: Leere verschwinden ebenso, außer sie haben offene Aufgaben oder du hast sie selbst wiederhergestellt.
 
 ### Seite des Tages anlegen: automatisch oder beim ersten Schreiben
 
@@ -101,7 +101,7 @@ Unter **Journal einrichten → Tage** legst du für jedes Journal fest, welche *
 
 Ist ein Tag geöffnet, zeigt die Seitenleiste ihn immer an – auch wenn er älter als 7 Tage ist; in der gruppierten Ansicht klappen sein Jahr und sein Monat auf. Tage lassen sich weiter ziehen, und die Pfeiltasten funktionieren auch in den Ordnern (→ öffnet, ← schließt oder springt zum Ordner darüber).
 
-Darunter wählst du den **Titel des Tages**: **Lang** (Voreinstellung, etwa „Donnerstag, 26. November 2026“) oder **Datum (ISO)**, nur „2026-11-26“ – kurz und gut sortierbar. Das gilt für neue Tage; vorhandene Tage behalten ihren Titel, umbenannte bleiben umbenannt. {since=0.11.7}
+Darunter wählst du den **Titel des Tages**: **Lang** (Voreinstellung, etwa „Donnerstag, 26. November 2026“) oder **Datum (ISO)**, nur „2026-11-26“ – kurz und gut sortierbar. Das gilt für neue Tage; vorhandene Tage behalten ihren Titel, umbenannte bleiben umbenannt. {since=0.12.0}
 
 ## Von Tag zu Tag
 

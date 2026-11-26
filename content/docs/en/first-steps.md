@@ -12,7 +12,7 @@ You sign in with your e-mail and password, with a passkey (fingerprint, face or 
 
 On a brand-new instance you create the first account – it administers the instance. If you are moving or reinstalling, choose **Restore from a backup** there instead ([Restore while setting up](/restore#restore-while-setting-up)).
 
-When you sign in for the first time, Flowplan creates a private workspace with example pages. With single sign-on, your name, e-mail address and – if available – your profile picture come from the login provider. With e-mail and password you upload a picture of your own under **Settings → Account & security** (PNG, JPEG, WebP or GIF, at most 2 MB) or remove it again. {since=0.11.7}
+When you sign in for the first time, Flowplan creates a private workspace with example pages. With single sign-on, your name, e-mail address and – if available – your profile picture come from the login provider. With e-mail and password you upload a picture of your own under **Settings → Account & security** (PNG, JPEG, WebP or GIF, at most 2 MB) or remove it again. {since=0.12.0}
 
 > [!TIP]
 > If the instance offers a **demo**, you can try Flowplan without an account. The demo gets its own example workspace and is deleted completely when you end it, sign out or after 45 minutes without activity.
@@ -111,7 +111,7 @@ Using flowplan.org and something isn't working right now? The [status page](http
 
 ### About Flowplan
 
-**Account in the workspace menu:** a click on the workspace name at the top shows who is signed in (name and e-mail), the workspaces to switch to or create, in the app **Switch instance …**, and below them the theme (light/dark), **About Flowplan**, **What's new** and the legal notice and privacy policy if set up; **Sign out** is last. {since=0.11.7}
+**Account in the workspace menu:** a click on the workspace name at the top shows who is signed in (name and e-mail), the workspaces to switch to or create, in the app **Switch instance …**, and below them the theme (light/dark), **About Flowplan**, **What's new** and the legal notice and privacy policy if set up; **Sign out** is last. {since=0.12.0}
 
 **Settings → Help & info → About Flowplan** (`/#settings/about`, also in the workspace menu at the top of the sidebar – on a phone also under **More** – and with ++⌘/Ctrl K++ → “About Flowplan”) shows:
 
