@@ -57,7 +57,7 @@ Right-clicking a page in the page tree or under favourites – a long press on a
 
 ### Filter pages
 
-The **Filter pages** field above the page tree hides everything that does not match; parent pages of the hits stay visible and expanded. <kbd>Esc</kbd> clears the filter. Templates, media, tags, graph, trash, settings and help sit as a toolbar at the bottom of the sidebar. On a phone they are gathered behind **More** next to your name – the only button in that row, so your name and the connection status stay fully readable: a tap opens a list of all of them with labels, and the page tree keeps its height. Below a line it also holds what the account menu **⋯** offers on a computer: light or dark theme, **About Flowplan**, **Legal notice** and **Privacy** (when the instance has set them up) and, last and set apart, **Sign out**.
+The **Filter pages** field above the page tree hides everything that does not match; parent pages of the hits stay visible and expanded. <kbd>Esc</kbd> clears the filter. Templates, media, tags, graph, trash, settings and help sit as a toolbar at the bottom of the sidebar. On a phone they are gathered behind **More** next to your name – the only button in that row, so your name and the connection status stay fully readable: a tap opens a list of all of them with labels, and the page tree keeps its height. Below a line it also holds the account entries of the workspace menu at the top: light or dark theme, **About Flowplan**, **Legal notice** and **Privacy** (when the instance has set them up) and, last and set apart, **Sign out**.
 
 ## Arrange and move
 

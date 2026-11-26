@@ -111,7 +111,9 @@ Nutzt du flowplan.org und etwas geht gerade nicht? Ob eine Störung oder Wartung
 
 ### Über Flowplan
 
-**Einstellungen → Hilfe & Info → Über Flowplan** (`/#settings/about`, auch im Kontomenü ⋯ unten in der Seitenleiste – auf dem Telefon unter **Mehr** – und mit ++⌘/Strg K++ → „Über Flowplan“) zeigt:
+**Konto im Menü des Arbeitsbereichs:** Ein Klick auf den Namen des Arbeitsbereichs oben zeigt, wer angemeldet ist (Name und E-Mail), die Arbeitsbereiche zum Wechseln oder Erstellen, in der App **Instanz wechseln …** und darunter Design (hell/dunkel), **Über Flowplan**, **Was ist neu** sowie Impressum und Datenschutz, falls eingerichtet; **Abmelden** steht ganz unten. {since=0.11.7}
+
+**Einstellungen → Hilfe & Info → Über Flowplan** (`/#settings/about`, auch im Menü des Arbeitsbereichs oben in der Seitenleiste – auf dem Telefon auch unter **Mehr** – und mit ++⌘/Strg K++ → „Über Flowplan“) zeigt:
 
 - **Version:** die laufende Version, den Commit und das Build-Datum, bei unseren Docker-Images auch, ob es eine **Beta** (`:beta`) oder ein **Release** ist. Admins sehen hier zusätzlich, wenn eine neuere Version bekannt ist. Bei einer Fehlermeldung die Version am besten mit angeben.
 - **Was ist neu:** öffnet die Versionshinweise der letzten Versionen (siehe [Neuigkeiten nach Updates](/offline-and-apps#hell-und-dunkel)).

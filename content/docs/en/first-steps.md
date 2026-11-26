@@ -111,7 +111,9 @@ Using flowplan.org and something isn't working right now? The [status page](http
 
 ### About Flowplan
 
-**Settings → Help & info → About Flowplan** (`/#settings/about`, also in the account menu ⋯ at the bottom of the sidebar – on a phone under **More** – and with ++⌘/Ctrl K++ → “About Flowplan”) shows:
+**Account in the workspace menu:** a click on the workspace name at the top shows who is signed in (name and e-mail), the workspaces to switch to or create, in the app **Switch instance …**, and below them the theme (light/dark), **About Flowplan**, **What's new** and the legal notice and privacy policy if set up; **Sign out** is last. {since=0.11.7}
+
+**Settings → Help & info → About Flowplan** (`/#settings/about`, also in the workspace menu at the top of the sidebar – on a phone also under **More** – and with ++⌘/Ctrl K++ → “About Flowplan”) shows:
 
 - **Version:** the running version, the commit and the build date; for our Docker images also whether it is a **beta** (`:beta`) or a **release**. Admins also see here when a newer version is known. Best mention the version when reporting a bug.
 - **What's new:** opens the release notes of the latest versions (see [What's new after updates](/en/offline-and-apps#light-and-dark)).
