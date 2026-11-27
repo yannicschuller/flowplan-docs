@@ -1,5 +1,5 @@
 ---
-keywords: Fehlersuche, Neustart, Absturz, OOM, Speicher voll, docker inspect, dmesg, Litestream, checksum mismatch, Sperre, Fehlerbericht
+keywords: Fehlersuche, Neustart, Absturz, OOM, Speicher voll, docker inspect, dmesg, Litestream, checksum mismatch, Sperre, Fehlerbericht, Bug-Report, Installationsdetails, Diagnose
 ---
 
 # Fehlersuche im Betrieb
@@ -81,6 +81,14 @@ Flowplan: ANOTHER CONTAINER IS USING THE DATA FOLDER /app/data.
 **Einstellungen → Instanz → Überwachung** zeigt auf beiden Containern die Warnung „Ein zweiter Flowplan-Container (*Host*) nutzt seit *Zeit* dasselbe Datenverzeichnis …“. Ein paar Sekunden während eines Updates deuten auf ein Ausrollen mit Überlappung; bleibt die Warnung, läuft eine zweite Ressource, Replica oder ein `docker run` auf demselben Volume. Such den anderen Container (`docker ps`, der Hostname in der Warnung) und stopp ihn. Wie du ohne Überlappung ausrollst, auch in Coolify, steht unter [SQLite ohne Überlappung ausrollen](/coolify-and-proxy#sqlite-ohne-ueberlappung-ausrollen).
 
 ## Was in einen Fehlerbericht gehört
+
+**Für Bug-Report kopieren** {since=0.12.2}: Unter **Einstellungen → Über Flowplan** fasst dieser Knopf die Installationsdetails in einer Zeile zusammen und zeigt sie in einem Kasten darunter, zum Beispiel `Backend: Flowplan 0.12.2 (release, build 28c0c38, built 2026-11-27T12:10Z) · Frontend: Firefox 140, Windows`. Füg sie im Issue ins Feld **Installation details** ein.
+
+- **Alle** bekommen die Flowplan-Version, den Kanal (Beta oder Release), den Build (kurzer Commit) und sein Datum sowie den eigenen Browser und das System – in der App für iPhone, iPad und Android oder in der Desktop-App statt des Browsers die Version der App.
+- **Admins** bekommen außerdem Node.js, wie Flowplan installiert ist, die Datenbank (SQLite oder PostgreSQL mit Hauptversion), den Speicher (lokale Platte oder S3) und Einzelinstanz oder Cluster. Derselbe Knopf steht unter **Einstellungen → Instanz → Name & Version**. Die Installationsart ist, was `FLOWPLAN_INSTALL_METHOD` sagt ([Konfiguration](/configuration-storage#rechtliches-und-oberflaeche)), sonst das, was Flowplan erkennt: Kubernetes, Docker, Podman oder kein Container.
+- **Nie darin:** Hostnamen, IP-Adressen, die Adresse der Instanz, E-Mail-Adressen, Namen oder Geheimnisse.
+
+Den Backend-Teil gibt es auch über `GET /api/diagnostics` und das MCP-Werkzeug [`get_diagnostics`](/mcp#werkzeuge). Ein API-Token hat nie Admin-Rechte; beide antworten ihm deshalb ohne die Admin-Angaben.
 
 Eröffne ein [Issue](https://github.com/yannicschuller/flowplan/issues/new/choose) mit:
 
