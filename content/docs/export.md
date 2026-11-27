@@ -55,7 +55,7 @@ Grenzen je Export: 500 Seiten, 200.000 Einträge, 250 MB Inhalt (davon höchsten
 
 Drei weitere Formate für Handbücher, Berichte und alles, was außerhalb von Flowplan gelesen oder weiterbearbeitet wird. Alle drei gehen vom selben bereinigten Seiteninhalt aus wie der Markdown-Export und berücksichtigen Leserechte genauso: Enthalten ist nur, was du lesen darfst – private Einträge, Journale mit PIN und Bilder aus Seiten, die du nicht öffnen darfst, bleiben draußen (statt eines Bildes steht dann ein Hinweis, ein Link auf eine unzugängliche Seite wird zu Text).
 
-**Als Word (DOCX)** – **Seitenaktionen → Exportieren → Als Word (DOCX)**, bei einer Datenbank auch über **Exportieren** in der Werkzeugleiste, bei einem einzelnen Eintrag über das **…**-Menü im Kopf des Eintrags. Die Datei kommt ohne Word-Bibliothek direkt aus Flowplan und öffnet sich in Word, LibreOffice und Pages:
+**Als Word (DOCX)** – **Seitenaktionen → Exportieren → Als Word (DOCX)**, bei einer Datenbank auch über **Exportieren** in der Werkzeugleiste, bei einem einzelnen Eintrag über **Als Word exportieren (DOCX)** im **…**-Menü im Kopf des Eintrags {since=0.12.1}. Die Datei kommt ohne Word-Bibliothek direkt aus Flowplan und öffnet sich in Word, LibreOffice und Pages:
 
 - Überschriften (als Word-Überschriftenstile, also mit Navigationsbereich), Absätze mit Ausrichtung, **fett**, *kursiv*, unterstrichen, durchgestrichen, Code, Markierungen, Textfarbe, Hoch- und Tiefstellung, Links.
 - Aufzählungen und nummerierte Listen auch verschachtelt, Aufgaben mit ☐/☑ und Fälligkeitsdatum.

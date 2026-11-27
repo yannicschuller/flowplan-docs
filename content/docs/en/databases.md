@@ -25,8 +25,9 @@ Below are **Your templates**: saved database templates, such as your own "Notes 
 
 ## Records
 
-- **New** at the bottom of the table or at the top right creates a record and opens it with the title selected – just start typing, <kbd>Enter</kbd> saves.
+- **New** at the bottom of the table or at the top right creates a record and opens it with the title selected – just start typing, <kbd>Enter</kbd> saves. The record opens at once, while the server is still creating it; what you type straight away is saved as soon as it is there. {since=0.12.1}
 - **Editing:** in the table <kbd>Enter</kbd> saves numbers too; a double-click on a multi-select only opens it without ticking an option. <kbd>Esc</kbd> closes an open record – what you typed into the title or properties stays saved.
+- **Dates in the table:** a click on the cell opens the date in a popover beside it – with **+ Time**, **Remove date** and the time zone, also in narrow columns. <kbd>Enter</kbd> saves and closes, <kbd>Esc</kbd> closes without saving, <kbd>Tab</kbd> saves and moves on; a click elsewhere saves too. {since=0.12.1}
 - A click on the title opens the record as a page: the title at the top to edit directly, the properties below it, and below them a full document with the same editor as every other page – including comments, version history and editing together.
 - **Open records as** (sliders at the top of the record → layout, for all records of the database; a view can choose differently under **Configure view**): **Side peek** to the right of the view, **Centred** as a dialog over the view (the default) or **Full page** – the record then fills the content area next to the sidebar like any page, with no database behind it.
 - **Side peek beside the view** {since=0.11.0}: in a timeline it docks beside the view, which narrows and stays clickable – another bar switches the record, <kbd>↑</kbd>/<kbd>↓</kbd> step through the view, <kbd>Esc</kbd> closes. Drag the left edge for its width (kept per device). Tables, boards and lists choose **Beside** or **Over** under **Configure view → Side peek**. Below 1000 pixels the record opens as a page.

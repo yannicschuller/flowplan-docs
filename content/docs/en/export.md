@@ -55,7 +55,7 @@ Limits per export: 500 pages, 200,000 records, 250 MB of content (at most 200 MB
 
 Three more formats for handbooks, reports and everything that is read or edited outside Flowplan. All three start from the same cleaned page content as the Markdown export and respect read permissions in the same way: they contain only what you may read – other people's private records, PIN-locked journals and pictures from pages you may not open stay out (a note stands in for such a picture, and a link to an inaccessible page becomes plain text).
 
-**As Word (DOCX)** – **Page actions → Export → As Word (DOCX)**, for a database also via **Export** in the toolbar, for a single record via the **…** menu in the record's header. The file is written by Flowplan itself, without a Word library, and opens in Word, LibreOffice and Pages:
+**As Word (DOCX)** – **Page actions → Export → As Word (DOCX)**, for a database also via **Export** in the toolbar, for a single record via **Export as Word (DOCX)** in the **…** menu in the record's header {since=0.12.1}. The file is written by Flowplan itself, without a Word library, and opens in Word, LibreOffice and Pages:
 
 - Headings (as Word heading styles, so the navigation pane works), paragraphs with alignment, **bold**, *italic*, underline, strikethrough, code, highlights, text colour, superscript and subscript, links.
 - Bulleted and numbered lists, also nested, tasks with ☐/☑ and their due date.
