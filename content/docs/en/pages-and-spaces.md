@@ -57,7 +57,7 @@ Right-clicking a page in the page tree or under favourites – a long press on a
 
 ### Filter pages
 
-The **Filter pages** field above the page tree hides what does not match; parents of the hits stay visible and expanded. <kbd>Esc</kbd> clears the filter. Templates, media, tags, graph, trash, settings and help sit as a toolbar at the sidebar's bottom ([your choice](/settings#symbols-at-the-bottom-of-the-sidebar) {since=0.12.1}). On a phone a small **More** button, bottom left, lists them, so the page tree keeps its height {since=0.12.1}; **Keyboard shortcuts** stays on iPad and computer. Theme, **About Flowplan**, legal pages and **Sign out** are in the workspace menu.
+The **Filter pages** field above the page tree hides what does not match; parents of the hits stay visible and expanded. <kbd>Esc</kbd> clears the filter. Templates, media, tags, graph, trash, settings and help sit as a toolbar at the sidebar's bottom ([your choice](/settings#symbols-at-the-bottom-of-the-sidebar) {since=0.12.1}). On a phone **More**, the sidebar's last entry right below **Add space**, lists them {since=0.12.2}; **Keyboard shortcuts** stays on iPad and computer. Theme, **About Flowplan**, legal pages and **Sign out** are in the workspace menu.
 
 ## Arrange and move
 
