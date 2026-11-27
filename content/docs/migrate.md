@@ -49,6 +49,8 @@ Für alle Quellen gilt:
 - Links zwischen importierten Seiten zeigen auf die neuen Seiten. Bilder und Anhänge werden hochgeladen – jede Datei einmal, auch wenn mehrere Seiten sie zeigen.
 - **Als neue Datenbank** wird jede Notiz ein Eintrag mit den Eigenschaften *Tags*, *Erstellt*, *Geändert*, *Ordner* (der Ordnerpfad) und – wenn vorhanden – *Quelle*. Als Seiten werden Tags zu [Tags der Seite](/page-tags#tags-und-eigenschaften); fehlende werden im Arbeitsbereich angelegt.
 
+**Eigenschaften aus Obsidian:** Als Seiten werden die weiteren Schlüssel im Frontmatter der Notizen zu Eigenschaften der Seite. Ihre Art übernimmt Flowplan aus Obsidian (`.obsidian/types.json` im Tresor): **Liste** wird Mehrfachauswahl, **Zahl**, **Kontrollkästchen** und **Datum** bleiben es (**Datum & Uhrzeit** als Datum mit Uhrzeit), **Text** bleibt Text. Für Schlüssel ohne Eintrag dort schaut Flowplan auf die Werte aller Notizen: Steht in einer Notiz eine Liste, wird es eine Mehrfachauswahl; wenige kurze Werte, die sich wiederholen – höchstens 12 verschiedene, jeder in mindestens zwei Notizen, etwa `status: offen` –, werden eine Auswahl. Die Optionen sind alle Werte des Tresors, genau wie geschrieben, in der Reihenfolge, in der sie zuerst vorkommen. Werte mit `[[Links]]`, Werte über 60 Zeichen, Sätze und Werte, die sich nur in Groß- und Kleinschreibung unterscheiden, bleiben Text. Gibt es die Eigenschaft im Arbeitsbereich schon, behält sie ihre Art. {since=0.12.1}
+
 ## Von Notion
 
 ::: steps

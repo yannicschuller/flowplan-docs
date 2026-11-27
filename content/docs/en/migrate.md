@@ -49,6 +49,8 @@ For all sources:
 - Links between imported pages point to the new pages. Images and attachments are uploaded – every file once, even if several pages show it.
 - **As a new database**, every note becomes a record with the properties *Tags*, *Created*, *Updated*, *Folder* (the folder path) and – where present – *Source*. As pages, tags become the [page's tags](/page-tags#tags-and-properties); missing ones are created in the workspace.
 
+**Properties from Obsidian:** as pages, the further keys in the notes' frontmatter become the page's properties. Flowplan takes their type from Obsidian (`.obsidian/types.json` in the vault): **List** becomes a multi-select, **Number**, **Checkbox** and **Date** stay what they are (**Date & time** as a date with time), **Text** stays text. For keys without an entry there, Flowplan looks at the values of all notes: a list on any note makes a multi-select; a few short values that repeat – at most 12 different ones, each in at least two notes, such as `status: open` – make a select. The options are every value of the vault, exactly as written, in the order they first appear. Values with `[[links]]`, values over 60 characters, sentences and values that differ only in upper and lower case stay text. A property the workspace already has keeps its type. {since=0.12.1}
+
 ## From Notion
 
 ::: steps
