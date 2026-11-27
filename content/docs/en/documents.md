@@ -37,7 +37,7 @@ At the start of a line or after a space, `/` opens the block menu right at the c
 | Whiteboard | `/board` | Embed a whiteboard in the document |
 | Draw | `/draw`, `/sketch`, `/handwriting` | Handwriting and sketches with a pen or finger ([Handwriting in documents](/notebooks#handwriting-in-documents)) |
 | Linked database | `/db` | A view of an existing database |
-| Two columns | `/columns` | Content side by side |
+| Columns | `/columns` | Two or three columns side by side ([Columns](#columns)) |
 | Embed | `/embed` | Players for YouTube, Vimeo, Loom, Spotify, Figma, CodePen; a link card otherwise |
 | Spoiler | `/spoiler` | Hidden text, revealed by a click |
 | Voice note | `/voice` | Record (up to two hours) and insert as audio, optionally also as a transcript |
@@ -89,10 +89,20 @@ A synced block (`/sync` → **Synced block**) is content that is the same in sev
 - Permissions come from the page the block was created on: whoever may not read that page sees a notice instead of the content.
 - The search finds the text on the original page. The block does not appear on published pages.
 
+## Columns
+
+`/columns` puts **2 or 3 columns** side by side – two PDFs, say, a picture next to its text or three metrics. A column takes any block except more columns, and every column always has a paragraph to keep writing in, also below a PDF. {since=0.12.3}
+
+- **Create:** `/columns` → **2 columns** or **3 columns**. Or drag a block by its handle to the left or right edge of another. Or select two or three blocks and choose **Side by side** in the block menu.
+- **Width:** drag the gap between two columns to make them wider or narrower (each at least 20 %). A double-click on the gap makes them all equal again. The widths are saved with the page and apply for everyone who reads it.
+- **Remove:** in an empty column, <kbd>⌫</kbd> deletes the column. When only one is left, its content flows back into the page.
+- **Little room:** columns stand side by side only while each can be about 320 pixels wide. On phones and in narrow windows they are stacked; three columns usually need the full page width.
+- **Files and PDFs** shrink to their column; a click opens them as usual.
+- **Export:** print, PDF and Word show columns side by side with their widths (Word as a table without borders). Markdown has no columns: there they follow one another, each headed **Column 1**, **Column 2** … E-books, Jira and Confluence show them one after another too. Search finds the text in every column.
+
 ## More blocks
 
 - **Table of contents**: lists the headings of the page and jumps there on click.
-- **Two columns**: blocks side by side; stacked on a phone.
 - **Linked database**: a view of an existing database with its own filters and sorting; changes to records go to the source. See [Views](/views#linked-databases).
 - **Whiteboard**: a whiteboard right in the document; the button at the top right opens it large.
 - **Draw** (`/draw`): a block for handwriting across the full width, blank, lined or grid, with a height you drag; several people draw at once without overwriting each other. See [Handwriting in documents](/notebooks#handwriting-in-documents).

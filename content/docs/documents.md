@@ -37,7 +37,7 @@ Am Zeilenanfang oder nach einem Leerzeichen öffnet `/` das Blockmenü direkt an
 | Whiteboard | `/board` | Whiteboard im Dokument einbetten |
 | Zeichnen | `/zeichnen`, `/draw`, `/handschrift` | Handschrift und Skizzen mit Stift oder Finger ([Handschrift in Dokumenten](/notebooks#handschrift-in-dokumenten)) |
 | Verknüpfte Datenbank | `/db` | Ansicht einer vorhandenen Datenbank |
-| Zwei Spalten | `/spalten` | Inhalte nebeneinander |
+| Spalten | `/spalten` | Zwei oder drei Spalten nebeneinander ([Spalten](#spalten)) |
 | Einbetten | `/embed` | Player für YouTube, Vimeo, Loom, Spotify, Figma, CodePen; sonst Linkkarte |
 | Spoiler | `/spoiler` | Verdeckter Text, per Klick sichtbar |
 | Sprachnotiz | `/sprachnotiz` | Aufnehmen (bis zu zwei Stunden) und als Audio, auf Wunsch auch als Transkript einfügen |
@@ -89,10 +89,20 @@ Ein synchronisierter Block (`/sync` → **Synchronisierter Block**) ist Inhalt, 
 - Die Rechte kommen von der Seite, auf der der Block entstanden ist: Wer dort nicht lesen darf, sieht statt des Inhalts einen Hinweis.
 - Die Suche findet den Text auf der Ursprungsseite. Auf veröffentlichten Seiten erscheint der Block nicht.
 
+## Spalten
+
+Mit `/spalten` stellst du **2 oder 3 Spalten** nebeneinander – etwa zwei PDFs, ein Bild neben seinem Text oder drei Kennzahlen. In eine Spalte passt jeder Block außer weiteren Spalten, und jede Spalte hat immer einen Absatz zum Weiterschreiben, auch unter einer PDF. {since=0.12.3}
+
+- **Anlegen:** `/spalten` → **2 Spalten** oder **3 Spalten**. Oder zieh einen Block am Griff an den linken oder rechten Rand eines anderen. Oder wähle zwei bis drei Blöcke aus und nimm im Blockmenü **Nebeneinander**.
+- **Breite:** Zieh die Lücke zwischen zwei Spalten, um sie breiter oder schmaler zu machen (jede mindestens 20 %). Ein Doppelklick auf die Lücke macht alle wieder gleich breit. Die Breiten werden mit der Seite gespeichert und gelten für alle, die sie lesen.
+- **Entfernen:** In einer leeren Spalte löscht <kbd>⌫</kbd> die Spalte. Bleibt nur eine übrig, fließt ihr Inhalt zurück in die Seite.
+- **Wenig Platz:** Nebeneinander stehen Spalten nur, solange jede etwa 320 Pixel breit sein kann. Auf dem Smartphone und in schmalen Fenstern stehen sie untereinander; drei Spalten brauchen meist die volle Seitenbreite.
+- **Dateien und PDFs** werden so schmal wie ihre Spalte; ein Klick öffnet sie wie sonst.
+- **Export:** Drucken, PDF und Word zeigen Spalten nebeneinander mit ihren Breiten (Word als Tabelle ohne Rahmen). Markdown kennt keine Spalten: Dort stehen sie nacheinander, jede mit **Spalte 1**, **Spalte 2** … davor. E-Book, Jira und Confluence zeigen sie ebenfalls nacheinander. Die Suche findet den Text in allen Spalten.
+
 ## Weitere Blöcke
 
 - **Inhaltsverzeichnis**: listet die Überschriften der Seite und springt per Klick dorthin.
-- **Zwei Spalten**: Blöcke nebeneinander; auf dem Smartphone untereinander.
 - **Verknüpfte Datenbank**: eine Ansicht einer vorhandenen Datenbank mit eigenen Filtern und Sortierungen; Änderungen an Einträgen landen in der Quelle. Siehe [Ansichten](/views#verknuepfte-datenbanken).
 - **Whiteboard**: ein Whiteboard direkt im Dokument; der Knopf oben rechts öffnet es groß.
 - **Zeichnen** (`/zeichnen`): ein Block für Handschrift über die ganze Breite, leer, liniert oder kariert, in der Höhe ziehbar; mehrere Personen zeichnen gleichzeitig, ohne sich zu überschreiben. Siehe [Handschrift in Dokumenten](/notebooks#handschrift-in-dokumenten).
