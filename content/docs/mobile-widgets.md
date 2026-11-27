@@ -23,45 +23,69 @@ Die Auswahllisten (Datenbanken, Ansichten, Eigenschaften, Kalender, Formulare �
 
 | Widget | Was es zeigt | Einstellungen |
 | --- | --- | --- |
-| **Schnellerfassung** | Knöpfe für Notiz, Aufgabe, Sprachnotiz, Foto | Ziel (Standard: dein Erfassungs-Eingang), welche Knöpfe |
-| **Aufgaben** | Offene Aufgaben – **direkt im Widget abhaken** | Meine Aufgaben, Einträge einer Datenbank (mit Ansicht) oder To-dos einer Seite; alle offenen, heute fällig oder überfällig; Anzahl |
-| **Heute** | Termine und fällige Aufgaben | Kalender, Zeitraum (heute, 3 Tage, Woche), fällige Aufgaben ein/aus |
-| **Seite und Favoriten** | Deine Favoriten oder eine Seite / Datenbank-Ansicht | Seite, Ansicht, bis zu zwei Eigenschaften |
-| **Datenbank-Zähler** | Eine Zahl (Anzahl, Summe, Durchschnitt) mit Verlauf der letzten 14 Tage | Datenbank, Ansicht, Wert, Gruppe, Verlauf |
+| **Mein Tag** (mittel und groß) | Die Termine von heute, was heute fällig oder überfällig ist, und die Gewohnheiten von heute – Aufgaben und Gewohnheiten **direkt abhaken** | Kalender, Gewohnheiten-Datenbank |
+| **Aufgaben** | Offene Aufgaben – **direkt im Widget abhaken**; groß: etwa zehn, gruppiert nach *Überfällig*, *Heute*, *Später* | Meine Aufgaben, Einträge einer Datenbank (mit Ansicht) oder To-dos einer Seite; alle offenen, heute fällig oder überfällig |
+| **Heute** | Termine und fällige Aufgaben; klein: der **nächste Termin** mit Countdown und **Beitreten**; oben die ungelesenen Erwähnungen | Kalender, Zeitraum (heute, 3 Tage, Woche), fällige Aufgaben ein/aus |
+| **Seiten** | Deine Favoriten, **zuletzt geöffnete** Seiten und Bücher (Weiterlesen, mit Lesefortschritt) oder eine Seite / Datenbank-Ansicht | Zeigen, Seite, Ansicht, bis zu zwei Eigenschaften |
+| **Kennzahl** | Eine Zahl mit ihrem Trend – aus einer **Datenbank** (Anzahl, Summe, Durchschnitt, Verlauf der letzten 14 Tage) oder einer Kachel eines [Dashboards](/dashboards) | Quelle; Datenbank, Ansicht, Wert, Gruppe bzw. Dashboard und Kachel |
 | **Tagebuch und Gewohnheiten** | Ob heute geschrieben ist, Serie; Gewohnheiten **zum Abhaken** | Journal, Gewohnheiten-Datenbank |
 | **Zeit diese Woche** | Stunden der Woche und von heute; **Timer starten/stoppen** | welcher Timer „Starten“ startet |
-| **Erwähnungen** | Wer dich erwähnt oder dir eine Aufgabe gegeben hat; **als gelesen markieren** | Erwähnungen und/oder neue Aufgaben, nur ungelesene |
-| **Formular-Eingänge** | Neue Antworten eines Formulars | Formular |
+| **Frist** | Countdown bis zum Fälligkeitsdatum eines Eintrags oder einer Aufgabe; überfällig in Rot | Datenbank und Eintrag oder eine deiner Aufgaben |
+| **Schnellerfassung** | Knöpfe für Notiz, Aufgabe, Sprachnotiz, Foto | Ziel (Standard: dein Erfassungs-Eingang), welche Knöpfe |
 | **Flowplan** | Fällige Aufgaben im Überblick | mit oder ohne Posteingang, laufende Zeiterfassung ein/aus |
 | **Flowplan Posteingang** | Zahl der ungelesenen Mitteilungen | – |
-| **Flowplan Instanz, Live, Speicher** | Nur für [Administratoren](#widgets-fuer-administratoren): Zustand, eine Live-Zahl, Speicher | was es zeigt bzw. welche Kennzahl |
+| **Flowplan Admin-Status, Live, Speicher** | Nur für [Administratoren](#widgets-fuer-administratoren): Ampel mit Zustand, Fehlern, Sicherung und freiem Speicher, eine Live-Zahl, Speicher | was es zeigt bzw. welche Kennzahl |
 
 „Meine Aufgaben“ zeigt neben den Aufgaben aus Dokumenten auch offene Einträge aus Datenbanken, in denen du in einer Personen-Eigenschaft (z. B. „Verantwortlich“) stehst – mit Datenbank und Fälligkeit (dem [Fälligkeitsdatum der Datenbank](/projects-and-tickets#wann-ist-ein-eintrag-faellig)), direkt abhakbar, wenn du den Eintrag bearbeiten darfst. Nach denselben Regeln erscheinen diese Einträge auch im Widget **Flowplan** (samt der Zahl am App-Symbol und den Erinnerungen ohne Push), mit ihrem Fälligkeitsdatum im Widget **Heute** und damit bei Siri „Was steht heute in Flowplan an“ sowie in Spotlight auf iPhone und iPad. Private Einträge anderer, Datenbanken hinter einer Journal-PIN, Ende-zu-Ende-verschlüsselte Bereiche und für dich ausgeblendete Eigenschaften bleiben überall draußen; einen Eintrag, den eine gewählte Kalender-Ansicht im Widget **Heute** schon zeigt, gibt es dort nur einmal.
 
 Gut zu wissen:
 
-- **Verlauf des Zählers:** Flowplan merkt sich den Wert jeden Tag. Tage, bevor das Widget eingerichtet war, werden geschätzt und heller/gestrichelt gezeichnet.
+- **Verlauf einer Kennzahl aus einer Datenbank:** Flowplan merkt sich den Wert jeden Tag. Tage, bevor das Widget eingerichtet war, werden geschätzt und heller/gestrichelt gezeichnet; der Trend vergleicht den letzten Tag mit dem ersten der 14.
+- **Letzte Aktualisierung:** unten in jedem Widget mit Daten – „vor 12 Min.“ auf dem iPhone, „Aktualisiert 14:05“ auf Android; nach mehr als einer Stunde ein Warnzeichen und „Stand 01:10“ (kleine Widgets: nur die Warnung).
+- **Daten:** „Überfällig · 10 T“, „Heute 14:00“, „Morgen“, innerhalb einer Woche der Wochentag, danach das Datum. Nichts mehr offen: *Alles erledigt* mit dem Knopf *Neue Aufgabe*.
 - **Datenschutz:** Widgets zeigen nur, was du auch in Flowplan sehen darfst. Seiten hinter einer Journal-PIN oder mit Ende-zu-Ende-Verschlüsselung zeigen im Widget nur ihren Zustand, nie Inhalte.
 - **Abgemeldet?** Endet deine Sitzung (z. B. bei kurzer SSO-Sitzung), zeigen alle Widgets *Flowplan öffnen und anmelden*. Ihre Einstellungen bleiben; nach dem Anmelden füllen sie sich sofort wieder.
 - **Profile:** Jedes Widget zeigt das Profil, das in seinen Einstellungen steht (siehe [Farbe und Profil pro Widget](#farbe-und-profil-pro-widget)).
 - **Farben:** Jedes Widget hat eine eigene Farbe (siehe [Farbe und Profil pro Widget](#farbe-und-profil-pro-widget)). Rot, Gelb und Grün behalten immer ihre Bedeutung.
-- **Heutige Aufgaben abhaken:** Widget **Aufgaben** hinzufügen und in seinen Einstellungen *Heute fällig* wählen.
+- **Heutige Aufgaben abhaken:** Widget **Mein Tag** hinzufügen oder **Aufgaben** mit *Heute fällig*.
 - **Aktualisierung:** wenn du in Flowplan etwas änderst, wenn die App in den Vordergrund kommt, im Hintergrund etwa alle 30 Minuten (iOS entscheidet selbst, wie oft). Auf dem iPhone ab iOS 26 zusätzlich [sofort per Push](#sofort-aktuell-auf-dem-iphone).
 - **Voraussetzung:** Die einstellbaren Widgets, Live-Aktivitäten außer der Zeiterfassung sowie Siri und Kurzbefehle brauchen einen Flowplan-Server ab 0.7.0. *Flowplan*, *Flowplan Posteingang* und die laufende Zeiterfassung gehen ab 0.4.0.
 
-### Nächster Termin, Weiterlesen, Kennzahl und Frist {since=0.11.0}
+### Nächster Termin, Zuletzt geöffnet, Kennzahl eines Dashboards und Frist {since=0.11.0}
 
-| Widget | Was es zeigt | Einstellungen |
-| --- | --- | --- |
-| **Nächster Termin** | Die nächsten ein bis drei Termine mit Countdown und Ort; bei einem Video-Link der Knopf **Beitreten** | Kalender (wie bei **Heute**), Zeitraum (heute, 48 Stunden, Woche), *Beitreten* ein/aus |
-| **Weiterlesen** | Zuletzt geöffnete Seiten oder die Bücher der [Bibliothek](/library) mit Lesefortschritt | Quelle (zuletzt geöffnet oder Bibliothek), Anzahl (1–6) |
-| **Kennzahl** | Eine Zahl-Kachel eines [Dashboards](/dashboards) mit Verlauf als Linie und Veränderung zum Vortag | Dashboard, Kachel |
-| **Frist** | Countdown bis zum Fälligkeitsdatum eines Eintrags oder einer Aufgabe; überfällig in Rot | Datenbank und Eintrag oder eine deiner Aufgaben |
+Diese Teile brauchen Flowplan ab 0.11.0 auf dem Server; ältere zeigen *Dieses Widget braucht ein neueres Flowplan auf deiner Instanz* (**Heute** zeigt dann keinen nächsten Termin):
+
+- der **nächste Termin** im kleinen Widget **Heute** und **Beitreten**,
+- **Seiten** mit *Zuletzt geöffnet* (mit Lesefortschritt der Bücher aus der [Bibliothek](/library)),
+- **Kennzahl** mit einem Dashboard als Quelle (Verlauf als Linie und Veränderung zum Vortag),
+- **Frist**.
 
 - **Beitreten** gibt es nur für Links bekannter Videodienste – Zoom, Microsoft Teams, Google Meet, Webex, Jitsi Meet und Whereby – im Ort, in einer Link- oder Text-Eigenschaft oder in der Beschreibung des Termins (dort landen sie bei synchronisierten Google- und Microsoft-Kalendern). Eigene Dienste (etwa BigBlueButton oder ein eigenes Jitsi) trägt die Administration als Hostnamen in `MEETING_HOSTS` ein, mehrere durch Kommas getrennt: `MEETING_HOSTS=bbb.example.org,meet.example.org`. Andere Links bekommen nie einen Beitreten-Knopf.
 - **Lesefortschritt:** Bei Büchern der Bibliothek zählt die Seite, die du zuletzt gelesen hast, gemessen an allen Seiten des Buchs.
-- **Kennzahl:** Flowplan merkt sich den Wert jeden Tag; der Verlauf zeigt bis zu 30 Tage, ab dem Tag, an dem das Widget eingerichtet wurde.
+- **Kennzahl eines Dashboards:** Flowplan merkt sich den Wert jeden Tag; der Verlauf zeigt bis zu 30 Tage, ab dem Tag, an dem das Widget eingerichtet wurde.
 - Auch hier gilt: Seiten hinter einer Journal-PIN und Ende-zu-Ende-verschlüsselte Bereiche zeigen nur ihren Zustand, für dich ausgeblendete Eigenschaften (etwa ein verborgenes Fälligkeitsdatum) bleiben leer.
+
+### Weniger Widgets
+
+Aus 14 einstellbaren Widgets sind weniger geworden:
+
+- **Datenbank-Zähler** ist jetzt eine Quelle der **Kennzahl** (Quelle *Datenbank*),
+- **Weiterlesen** ist *Zuletzt geöffnet* im Widget **Seiten** (vorher *Seite und Favoriten*),
+- **Nächster Termin** ist das kleine Widget **Heute**,
+- **Erwähnungen** und **Formular-Eingänge** gibt es nicht mehr; **Heute** zeigt stattdessen die Zahl der ungelesenen Erwähnungen.
+
+Widgets, die schon auf deinem Bildschirm sind, bleiben:
+
+::: tabs
+== iPhone und iPad
+*Datenbank-Zähler*, *Weiterlesen* und *Nächster Termin* funktionieren mit ihren Einstellungen weiter; in der Galerie stehen sie als „(alt)“ (iOS kann sie dort nicht ausblenden). *Erwähnungen* und *Formular-Eingänge* verschwinden mit dem Update.
+== Android
+Alle fünf funktionieren weiter, stehen aber nicht mehr in der Widget-Auswahl.
+:::
+
+### Sperrbildschirm (iPhone und iPad)
+
+Rund, rechteckig und als Zeile über der Uhr: **Aufgaben** (offen, überfällig), **Heute** (nächster Termin), **Flowplan Karten fällig** und für Administratoren **Flowplan Live** und **Flowplan Admin-Status**.
 
 ### Farbe und Profil pro Widget
 
@@ -82,18 +106,19 @@ Ab iOS 26 sagt die Instanz deinen iPhones Bescheid, sobald sich etwas ändert, d
 
 ## Widgets für Administratoren
 
-Wer die Instanz administriert (Mitglied der Admin-Gruppe, `OIDC_ADMIN_GROUP`, Standard `flowplan-admins`), bekommt in der App für iPhone, iPad und Android drei weitere Widgets. Jedes zeigt eine Sache groß; welche, wählst du auf dem iPhone in den Einstellungen des Widgets.
+Wer die Instanz administriert (Mitglied der Admin-Gruppe, `OIDC_ADMIN_GROUP`, Standard `flowplan-admins`), bekommt in der App für iPhone, iPad und Android drei weitere Widgets. *Flowplan Live* und *Flowplan Speicher* zeigen eine Sache groß; welche, wählst du auf dem iPhone in den Einstellungen des Widgets.
 
 | Widget | Größen (iOS) | Einstellung (Standard zuerst) | Tippen öffnet |
 | --- | --- | --- | --- |
-| **Flowplan Instanz** | klein, mittel, Sperrbildschirm | *Zeigen:* Zustand (*Alles in Ordnung*, Hinweise oder Störungen mit der wichtigsten), letzte Sicherung oder Version mit verfügbarem Update | Startseite der Einstellungen bei **Instanz auf einen Blick** (bei Hinweisen/Störungen die Überwachung) |
+| **Flowplan Admin-Status** (vorher *Flowplan Instanz*) | klein, mittel, groß, Sperrbildschirm | *Zeigen:* Zustand – eine **Ampel** (grün, gelb, rot: das Schlechteste der vier) mit **Zustand** der Instanz, **Fehlern der letzten Stunde**, **Alter der letzten Sicherung** und **freiem Speicher** auf der Festplatte (klein: was Aufmerksamkeit braucht); oder die letzte Sicherung oder die Version mit verfügbarem Update groß | Startseite der Einstellungen bei **Instanz auf einen Blick** (bei Hinweisen/Störungen die Überwachung) |
 | **Flowplan Live** | klein, mittel, groß, Sperrbildschirm | *Kennzahl:* gerade aktiv, Anfragen/Min., Fehlerrate (1 Std.) oder Anmeldungen heute; ab mittel die übrigen Zahlen klein und die Anfragen der letzten 24 Stunden als Kurve | Einstellungen → Instanz → Überwachung |
 | **Flowplan Speicher** | klein, mittel, Sperrbildschirm (Ring) | *Kennzahl:* Festplatte belegt, Datenbank und Dateien oder vollster Arbeitsbereich (Kontingent) | Einstellungen → Instanz → Speicher |
 
 - Alle anderen sehen in diesen Widgets *Nur für Administratoren*; ohne Anmeldung steht dort *Flowplan öffnen und anmelden*.
 - Die Daten kommen wie bei den anderen Widgets mit dem Geräte-Token der App (`GET /api/mobile/admin-summary`). Die Instanz prüft bei jedem Abruf, ob die Person der Sitzung, an die das Gerät gebunden ist, gerade Administrator ist – wer aus der Admin-Gruppe fällt, sich abmeldet oder das Gerät unter *Angemeldete Geräte* entfernt, bekommt nichts mehr. API-Tokens bekommen diese Daten nie.
 - Übertragen werden nur Zahlen und Zustände – keine Namen, E-Mail-Adressen oder Namen von Arbeitsbereichen.
-- Ist die Statistik ausgeschaltet (`FLOWPLAN_METRICS=off` oder unter *Einstellungen → Instanz → Überwachung → Statistik*), zeigt *Flowplan Live* „Statistik ausgeschaltet“; Zustand und Speicher bleiben.
+- Ist die Statistik ausgeschaltet (`FLOWPLAN_METRICS=off` oder unter *Einstellungen → Instanz → Überwachung → Statistik*), zeigt *Flowplan Live* „Statistik ausgeschaltet“ und *Admin-Status* bei den Fehlern „–“; Zustand, Sicherung und Speicher bleiben.
+- **Ampel:** rot bei einer Störung, einer fehlgeschlagenen oder über zwei Tage alten Sicherung, 5 % Fehlern oder unter 5 % freiem Speicher; gelb bei Hinweisen, einer Sicherung älter als einen Tag oder ausgeschaltet, 1 % Fehlern oder unter 15 % freiem Speicher.
 - Ältere Instanzen ohne diesen Endpunkt zeigen *Nur für Administratoren*.
 
 ## Knöpfe an Mitteilungen

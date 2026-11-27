@@ -23,45 +23,69 @@ The lists to choose from (databases, views, properties, calendars, forms …) co
 
 | Widget | What it shows | Settings |
 | --- | --- | --- |
-| **Quick capture** | Buttons for note, task, voice memo, photo | Where to save (default: your capture inbox), which buttons |
-| **Tasks** | Open tasks – **check them off right in the widget** | My tasks, records of a database (with view) or to-dos of a page; all open, due today or overdue; number |
-| **Today** | Appointments and tasks due | Calendars, range (today, 3 days, week), tasks due on/off |
-| **Page and favorites** | Your favorites, or one page / database view | Page, view, up to two properties |
-| **Database counter** | One number (count, sum, average) with its last 14 days | Database, view, value, group, history |
+| **My day** (medium and large) | Today's appointments, what is due today or overdue, and today's habits – **check off** tasks and habits right there | Calendars, habit database |
+| **Tasks** | Open tasks – **check them off right in the widget**; large: about ten, grouped *Overdue*, *Today*, *Later* | My tasks, records of a database (with view) or to-dos of a page; all open, due today or overdue |
+| **Today** | Appointments and tasks due; small: the **next appointment** with a countdown and **Join**; unread mentions at the top | Calendars, range (today, 3 days, week), tasks due on/off |
+| **Pages** | Your favorites, **recently opened** pages and books (continue reading, with your progress), or one page / database view | Show, page, view, up to two properties |
+| **Key figure** | One number with its trend – from a **database** (count, sum, average, its last 14 days) or a tile of a [dashboard](/dashboards) | Source; database, view, value, group, or dashboard and tile |
 | **Journal and habits** | Whether today is written, your streak; habits **to check off** | Journal, habit database |
 | **Time this week** | Hours this week and today; **start/stop the timer** | Which timer "Start" starts |
-| **Mentions** | Who mentioned you or gave you a task; **mark as read** | Mentions and/or new tasks, unread only |
-| **Form responses** | New responses to a form | Form |
+| **Deadline** | A countdown to the due date of a record or task; red when overdue | Database and record, or one of your tasks |
+| **Quick capture** | Buttons for note, task, voice memo, photo | Where to save (default: your capture inbox), which buttons |
 | **Flowplan** | Tasks due at a glance | With or without the inbox, running timer on/off |
 | **Flowplan Inbox** | Number of unread notifications | – |
-| **Flowplan Instance, Live, Storage** | [Administrators](#widgets-for-administrators) only: state, one live number, storage | What to show or which metric |
+| **Flowplan Admin status, Live, Storage** | [Administrators](#widgets-for-administrators) only: a traffic light with health, errors, backup and free storage; one live number; storage | What to show or which metric |
 
 "My tasks" shows, besides tasks from documents, the open records of databases in which you are in a person property (such as "Assignee") – with the database and due date (the [database's due date](/projects-and-tickets#when-is-a-record-due)), and you can check them off right away if you may edit the record. By the same rules these records also appear in the **Flowplan** widget (including the count on the app icon and the reminders without push), with their due date in the **Today** widget and so in Siri's "What's on today in Flowplan", and in Spotlight on iPhone and iPad. Private records of others, databases behind a journal PIN, end-to-end encrypted spaces and properties hidden from you stay out everywhere; a record that a chosen calendar view in the **Today** widget already shows appears there only once.
 
 Good to know:
 
-- **Counter history:** Flowplan keeps the value of every day. Days before the widget was set up are estimated and drawn lighter and dashed.
+- **History of a key figure from a database:** Flowplan keeps the value of every day. Days before the widget was set up are estimated and drawn lighter and dashed; the trend compares the last day with the first of the 14.
+- **Last update:** at the bottom of every widget with data – "12 min ago" on iPhone, "Updated 14:05" on Android; after more than an hour a warning and "As of 01:10" (small widgets: only the warning).
+- **Dates:** "Overdue · 10 d", "Today 14:00", "Tomorrow", the weekday within a week, beyond that the date. Nothing left: *All done* with a *New task* button.
 - **Privacy:** widgets only show what you may see in Flowplan. Pages behind a journal PIN or end-to-end encrypted only show their state in a widget, never content.
 - **Signed out?** When your session ends (e.g. a short SSO session), every widget shows *Open Flowplan to sign in*. Its settings stay; after signing in, the widgets fill again at once.
 - **Profiles:** every widget shows the profile set in its settings (see [Colour and profile per widget](#colour-and-profile-per-widget)).
 - **Colours:** every widget has a colour of its own (see [Colour and profile per widget](#colour-and-profile-per-widget)). Red, amber and green always keep their meaning.
-- **Check off today's tasks:** add the **Tasks** widget and choose *Due today* in its settings.
+- **Check off today's tasks:** add the **My day** widget or **Tasks** with *Due today*.
 - **Updates:** when you change something in Flowplan, when the app comes to the foreground, and in the background about every 30 minutes (iOS decides how often). On iPhone with iOS 26 also [right away by push](#instant-updates-on-iphone).
 - **Requirements:** the configurable widgets, the Live Activities other than the timer, and Siri and Shortcuts need a Flowplan server 0.7.0 or newer. *Flowplan*, *Flowplan Inbox* and the running timer work from 0.4.0.
 
-### Next appointment, Continue reading, Key figure and Deadline {since=0.11.0}
+### Next appointment, Recently opened, Key figure of a dashboard and Deadline {since=0.11.0}
 
-| Widget | What it shows | Settings |
-| --- | --- | --- |
-| **Next appointment** | The next one to three appointments with a countdown and the location; a **Join** button for a video link | Calendars (as in **Today**), range (today, 48 hours, week), *Join* on/off |
-| **Continue reading** | Pages you opened last, or the books of the [library](/library) with your reading progress | Source (recently opened or library), number (1–6) |
-| **Key figure** | One number tile of a [dashboard](/dashboards) with its history as a line and the change since the day before | Dashboard, tile |
-| **Deadline** | A countdown to the due date of a record or task; red when overdue | Database and record, or one of your tasks |
+These need Flowplan 0.11.0 or newer on the server; older ones show *This widget needs a newer Flowplan on your instance* (**Today** then has no next appointment):
+
+- the **next appointment** in the small **Today** widget and **Join**,
+- **Pages** with *Recently opened* (with the reading progress of books from the [library](/library)),
+- **Key figure** with a dashboard as its source (its history as a line and the change since the day before),
+- **Deadline**.
 
 - **Join** appears only for links of known video services – Zoom, Microsoft Teams, Google Meet, Webex, Jitsi Meet and Whereby – in the location, a link or text property or the appointment's description (where synced Google and Microsoft calendars put them). Administrators add their own services (such as BigBlueButton or their own Jitsi) as host names in `MEETING_HOSTS`, comma-separated: `MEETING_HOSTS=bbb.example.org,meet.example.org`. Other links never get a Join button.
 - **Reading progress:** for library books, the page you read last, measured against all pages of the book.
-- **Key figure:** Flowplan keeps the value of every day; the line shows up to 30 days, from the day the widget was set up.
+- **Key figure of a dashboard:** Flowplan keeps the value of every day; the line shows up to 30 days, from the day the widget was set up.
 - As everywhere: pages behind a journal PIN and end-to-end encrypted spaces only show their state, and properties hidden from you (such as a hidden due date) stay empty.
+
+### Fewer widgets
+
+The 14 configurable widgets have become fewer:
+
+- **Database counter** is now a source of **Key figure** (source *Database*),
+- **Continue reading** is *Recently opened* in the **Pages** widget (formerly *Page and favorites*),
+- **Next appointment** is the small **Today** widget,
+- **Mentions** and **Form responses** are gone; **Today** shows the number of unread mentions instead.
+
+Widgets already on your screen stay:
+
+::: tabs
+== iPhone and iPad
+*Database counter*, *Continue reading* and *Next appointment* keep working with their settings; in the gallery they are marked "(old)" (iOS cannot hide them there). *Mentions* and *Form responses* disappear with the update.
+== Android
+All five keep working, but are no longer offered in the widget picker.
+:::
+
+### Lock Screen (iPhone and iPad)
+
+Round, rectangular and as a line above the clock: **Tasks** (open, overdue), **Today** (next appointment), **Flowplan Cards due** and, for administrators, **Flowplan Live** and **Flowplan Admin status**.
 
 ### Colour and profile per widget
 
@@ -82,18 +106,19 @@ From iOS 26 the instance tells your iPhones as soon as something changes that yo
 
 ## Widgets for administrators
 
-People who administer the instance (members of the admin group, `OIDC_ADMIN_GROUP`, default `flowplan-admins`) get three more widgets in the app for iPhone, iPad and Android. Each shows one thing big; on the iPhone you choose which in the widget's settings.
+People who administer the instance (members of the admin group, `OIDC_ADMIN_GROUP`, default `flowplan-admins`) get three more widgets in the app for iPhone, iPad and Android. *Flowplan Live* and *Flowplan Storage* show one thing big; on the iPhone you choose which in the widget's settings.
 
 | Widget | Sizes (iOS) | Setting (default first) | Tapping opens |
 | --- | --- | --- | --- |
-| **Flowplan Instance** | small, medium, lock screen | *Show:* state (*All fine*, notices or problems with the most important one), last backup, or version with available update | Settings start page at **Instance at a glance** (Monitoring when there are notices or problems) |
+| **Flowplan Admin status** (formerly *Flowplan Instance*) | small, medium, large, lock screen | *Show:* state – a **traffic light** (green, amber, red: the worst of the four) with the instance's **health**, the **errors in the last hour**, the **age of the last backup** and the **free disk** (small: what needs attention); or the last backup, or the version with an available update, big | Settings start page at **Instance at a glance** (Monitoring when there are notices or problems) |
 | **Flowplan Live** | small, medium, large, lock screen | *Metric:* active now, requests/min, error rate (1 h) or sign-ins today; from medium up the other numbers small and the requests of the last 24 hours as a chart | Settings → Instance → Monitoring |
 | **Flowplan Storage** | small, medium, lock screen (ring) | *Metric:* disk used, database and files, or fullest workspace (quota) | Settings → Instance → Storage |
 
 - Everyone else sees *Administrators only* in these widgets; without a sign-in they say *Open Flowplan to sign in*.
 - Like the other widgets they read their data with the app's device token (`GET /api/mobile/admin-summary`). The instance checks on every call that the person of the session the device is bound to is an administrator right now – leaving the admin group, signing out or removing the device under *Signed-in devices* stops it. API tokens never get this data.
 - Only numbers and states are sent – no names, e-mail addresses or workspace names.
-- With the statistics switched off (`FLOWPLAN_METRICS=off` or under *Settings → Instance → Monitoring → Statistics*), *Flowplan Live* says "Statistics switched off"; state and storage stay.
+- With the statistics switched off (`FLOWPLAN_METRICS=off` or under *Settings → Instance → Monitoring → Statistics*), *Flowplan Live* says "Statistics switched off" and *Admin status* shows "–" for the errors; health, backup and storage stay.
+- **Traffic light:** red for a problem, a failed backup or one older than two days, 5 % errors or under 5 % free disk; amber for notices, a backup older than a day or off, 1 % errors or under 15 % free disk.
 - Older instances without this endpoint show *Administrators only*.
 
 ## Buttons on notifications
