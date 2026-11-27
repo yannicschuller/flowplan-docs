@@ -69,6 +69,12 @@ So that not everything is there at once at the start, every personal setting bel
 
 New accounts start with the instance's default – **Normal**, unless admins set another one ([Settings level for new accounts](/administration#instance)); the answer in the [introduction](#the-introduction) can adjust it. Accounts that existed before the levels are on **Expert** and so see everything as before. Admins can set a person's level under [Users](/user-management#users). The **Instance**'s sections have no levels: admins always see everything there.
 
+## Symbols at the bottom of the sidebar {since=0.12.1}
+
+You choose which symbols sit at the bottom: under **Settings → Appearance & language → Sidebar** with a checkbox per symbol, or right-click a symbol – a long press on touch screens – and pick **Hide from toolbar**. **Customize toolbar…** in the same menu leads to the setting, **Show all** brings everything back. The choice applies to you on all devices.
+
+Hidden places stay reachable through the [quick search](/search-and-notifications). On a phone they are left out under **More** as well; only **Settings** always stays there. If you hide **Settings**, it shows in the workspace menu at the top left. What the workspace hides for everyone (Study, Graph) stays hidden.
+
 ## Show and hide features {since=0.11.0}
 
 If you don't need something, hide it under **Settings → Appearance & language → Features** (Normal level). There is a switch per feature: **Flashcards**, **Whiteboards**, **Notebooks**, **Journal**, **Dashboards**, **Workflows**, **draw.io**, **AI**, **More view types** (board, calendar, timeline, gallery, chart, feed and sprints – table and list always stay), **Forms** and **Meetings**.
