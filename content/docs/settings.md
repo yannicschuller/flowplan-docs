@@ -69,6 +69,12 @@ Damit am Anfang nicht alles auf einmal da ist, gehört jede persönliche Einstel
 
 Neue Konten beginnen mit dem Standard der Instanz – **Normal**, solange Admins nichts anderes einstellen ([Einstellungsstufe für neue Konten](/administration#instanz)); die Antwort in der [Einführung](#die-einfuehrung) kann ihn anpassen. Konten, die es schon vor den Stufen gab, stehen auf **Experte** und sehen damit alles wie bisher. Admins können die Stufe einer Person unter [Benutzer](/user-management#benutzer) setzen. Die Abschnitte der **Instanz** haben keine Stufen: Admins sehen dort immer alles.
 
+## Symbole unten in der Seitenleiste {since=0.12.1}
+
+Welche Symbole unten stehen, wählst du selbst: unter **Einstellungen → Darstellung & Sprache → Seitenleiste** mit einem Häkchen je Symbol, oder per Rechtsklick auf ein Symbol – auf Touchscreens langes Drücken – mit **Aus Leiste ausblenden**. **Leiste anpassen …** im selben Menü führt zur Einstellung, **Alle anzeigen** holt alles zurück. Die Wahl gilt für dich auf allen Geräten.
+
+Ausgeblendetes bleibt über die [Schnellsuche](/search-and-notifications) erreichbar. Auf dem Telefon fehlt es auch unter **Mehr**, nur **Einstellungen** bleibt dort immer. Blendest du **Einstellungen** aus, steht der Eintrag im Menü des Arbeitsbereichs oben links. Was der Arbeitsbereich für alle ausblendet (Lernen, Graph), bleibt ausgeblendet.
+
 ## Funktionen ein- und ausblenden {since=0.11.0}
 
 Brauchst du etwas nicht, blendest du es unter **Einstellungen → Darstellung & Sprache → Funktionen** aus (Stufe Normal). Je Funktion gibt es einen Schalter: **Lernkarten**, **Whiteboards**, **Notizbücher**, **Journal**, **Dashboards**, **Workflows**, **draw.io**, **KI**, **Weitere Ansichten** (Board, Kalender, Zeitleiste, Galerie, Diagramm, Feed und Sprints – Tabelle und Liste bleiben immer), **Formulare** und **Besprechungen**.

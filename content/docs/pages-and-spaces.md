@@ -57,7 +57,7 @@ Ein Rechtsklick auf eine Seite im Seitenbaum oder unter Favoriten – auf dem Sm
 
 ### Seiten filtern
 
-Das Feld **Seiten filtern** über dem Seitenbaum blendet alles aus, was nicht passt; übergeordnete Seiten der Treffer bleiben sichtbar und aufgeklappt. <kbd>Esc</kbd> leert den Filter. Vorlagen, Medien, Tags, Graph, Papierkorb, Einstellungen und Hilfe liegen als Symbolleiste unten in der Seitenleiste. Auf dem Telefon sind sie hinter **Mehr** zusammengefasst {since=0.12.1}: ein Tipp öffnet eine Liste mit allen Einträgen samt Beschriftung, und der Seitenbaum behält die Höhe. Unter einer Linie folgt dort, was am Computer im Menü des Arbeitsbereichs oben steht: helles bzw. dunkles Design, **Über Flowplan**, **Impressum** und **Datenschutz** (wenn die Instanz sie eingerichtet hat) und zuletzt, etwas abgesetzt, **Abmelden**.
+Das Feld **Seiten filtern** über dem Seitenbaum blendet alles aus, was nicht passt; übergeordnete Seiten der Treffer bleiben sichtbar und aufgeklappt. <kbd>Esc</kbd> leert den Filter. Vorlagen, Medien, Tags, Graph, Papierkorb, Einstellungen und Hilfe liegen als Symbolleiste unten in der Seitenleiste ([nach deiner Wahl](/settings#symbole-unten-in-der-seitenleiste) {since=0.12.1}). Auf dem Telefon sind sie hinter **Mehr** zusammengefasst {since=0.12.1}: ein Tipp öffnet eine Liste mit allen Einträgen samt Beschriftung, und der Seitenbaum behält die Höhe. Unter einer Linie folgt dort, was am Computer im Menü des Arbeitsbereichs oben steht: helles bzw. dunkles Design, **Über Flowplan**, **Impressum** und **Datenschutz** (wenn die Instanz sie eingerichtet hat) und zuletzt, etwas abgesetzt, **Abmelden**.
 
 ## Ordnen und verschieben
 
