@@ -74,7 +74,7 @@ Details: [Moving an instance](/move-instance).
 
 | Variable | Default | Meaning |
 | --- | --- | --- |
-| `IMPRINT_URL` | *empty* | Link to the legal notice, e.g. `https://example.com/imprint`. Shown on the sign-in page, under shared pages and forms and in the workspace menu at the top of the sidebar (on a phone also under **More**) – only when set. |
+| `IMPRINT_URL` | *empty* | Link to the legal notice, e.g. `https://example.com/imprint`. Shown on the sign-in page, under shared pages and forms and in the workspace menu at the top of the sidebar – only when set. |
 | `PRIVACY_URL` | *empty* | Link to the privacy policy, in the same places and also only when set. |
 | `FLOWPLAN_SOURCE_URL` | Flowplan’s GitHub repository | Address of the source of the code running on this instance (http or https). The AGPL-3.0 requires that whoever runs a **modified** version for others offers them its source (§ 13). When set, **Settings → About Flowplan** and the sign-in page (footer “Source code”) link to this address instead of `github.com/yannicschuller/flowplan`; the commit is then no longer linked to GitHub. |
 | `DRAWIO_URL` | empty (shipped draw.io) | Empty: the draw.io that Flowplan ships, under `/drawio/` of your own instance – no external service, offline too {since=0.11.4}. Otherwise the address of another draw.io editor for the `/drawio` block, e.g. your own `jgraph/drawio` container or `https://embed.diagrams.net`. https only (http only for `localhost`); an invalid value turns draw.io off. Viewing never loads draw.io. |
