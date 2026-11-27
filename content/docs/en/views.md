@@ -35,6 +35,7 @@ In tables, lists, feeds, boards and galleries, records can be dragged to another
 - Grouped tables fold groups and show summaries per group.
 - The title column stays in place while the table scrolls sideways. On a phone it takes at most about 60 % of the table's width, and longer titles are cut short with "…". There the column with the checkbox and drag handle scrolls with the rest. This way the table can be swiped sideways anywhere, including on the title column.
 - When you scroll down, the header row with the column names stays at the top – on the full page, in a database inside a document, in an open record and in the split view. So you always know which column you're in. It scrolls sideways together with the rows and only leaves once the end of the table has passed. {since=0.9.7}
+- **Wrap cells** under **Configure view** shows the whole content of every cell: text wraps, multi-selects, relations and people run onto several lines, and each row grows to its tallest cell – at most ten lines per cell, then "…". The setting belongs to the view and applies to everyone, also in linked databases and published tables. Switched off, every row stays on one line. {since=0.12.3}
 
 ## Board
 
