@@ -86,6 +86,7 @@ Clients, die Streamable HTTP sprechen und eigene Kopfzeilen erlauben, nutzen die
 | `query_database` | Datensätze mit Eigenschaften nach Namen, Eigenschaftsdefinitionen, Ansichten; Textfilter, eine gespeicherte Ansicht, Blättern | Lesen |
 | `get_record` | Ein Datensatz mit allen Eigenschaften und seinem Datensatzdokument | Lesen |
 | `my_tasks` | Deine Aufgaben aus Dokumenten und Datensätzen, mit Fälligkeit | Lesen |
+| `get_diagnostics` | Version, Kanal, Build und Build-Datum der Instanz mit einer Zeile für einen [Fehlerbericht](/troubleshooting#was-in-einen-fehlerbericht-gehoert); mit einem Token immer ohne die Admin-Angaben {since=0.12.2} | Lesen |
 | `optimize_flashcard_parameters` | Passt die FSRS-Parameter eines [Lernkarten-Stapels](/flashcards-optimize) (oder eines Teils davon) an deine Wertungen an und empfiehlt eine Behaltensrate mit der Arbeit je Rate; speichert nichts {since=0.11.0} | Lesen |
 | `create_page` | Neues Dokument, neue Datenbank oder neues Whiteboard; Dokumente können mit Markdown-Inhalt beginnen | Schreiben |
 | `append_to_page` | Hängt Markdown ans Ende eines Dokuments an | Schreiben |

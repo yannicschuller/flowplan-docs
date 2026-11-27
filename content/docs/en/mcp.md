@@ -86,6 +86,7 @@ Clients that speak Streamable HTTP and accept their own headers use this configu
 | `query_database` | Records with properties by name, property definitions, views; text filter, a saved view, paging | Read |
 | `get_record` | One record with all properties and its record document | Read |
 | `my_tasks` | Your tasks from documents and records, with due dates | Read |
+| `get_diagnostics` | Version, channel, build and build date of the instance with a line for a [bug report](/troubleshooting#what-to-put-in-a-bug-report); with a token always without the admin details {since=0.12.2} | Read |
 | `optimize_flashcard_parameters` | Fits the FSRS parameters of a [flashcard deck](/flashcards-optimize) (or a part of it) to your ratings and recommends a retention with the workload per retention; stores nothing {since=0.11.0} | Read |
 | `create_page` | New document, database or whiteboard; documents can start with Markdown content | Write |
 | `append_to_page` | Appends Markdown to the end of a document | Write |
