@@ -51,6 +51,22 @@ Flowplan only calculates when you want it to – exactly, with fractions, in Ger
 - **Vectors**: write vectors as `(1 | 2 | 3)`, `(1; 2; 3)` or `(1, 2, 3)`. Flowplan calculates sums and multiples (`2 · (1; −2) − (3; 1) = (−1; −5)`), the **dot product** with `·` including the **angle** (`(1, 0) · (0, 1) = 0 ⇒ ∠ = 90°`), the **cross product** with `×` (`(1|0|0) × (0|1|0) = (0 | 0 | 1)`) and the **magnitude** with `|…|` (`|(1, 1)| = √2`). A vector selected on its own shows its magnitude and **unit vector** (`(3, 4) ⇒ v⁰ = (3/5, 4/5)`). **Draw vectors** in the text menu shows vectors in the plane as arrows in a coordinate system – for `(1, 2) + (3, 1)` both vectors and their sum. More vectors such as `(3, 2)` can be entered in the graph next to functions. **Vectors in space** such as `(1, 2, 3)` – cross products too – are drawn in a 3D coordinate system with x, y and z axes, a floor grid and dashed guides to the floor; **dragging turns the view**, and the view is saved with the page. The formula editor has the building blocks **Vector** (column vector), **Vector arrow** and **Cross product**; column vectors in formulas are calculated the same way.
 - **In formulas**: the formula editor shows the same options under **Calculate** and appends the result in LaTeX, such as `\frac{3}{4} + \frac{1}{6} = \frac{11}{12}`.
 
+### Calculus {since=0.12.3}
+
+Select a function such as `f(x) = (x + 3)·eˣ` or `f(t) = ½·t³·e^(−t/3 − 3/5)` (any variable name). **Calculus** in the text menu offers, inserted with one click:
+
+- **First and second derivative** (product, quotient and chain rule), written as in a notebook: `f′(x) = (x + 4)·eˣ`, `f′(x) = 84x·(2x² − 13)²⁰`
+- **Zeros**, **extreme points** with their type (`min (−4 | −e⁻⁴ ≈ −0.01832)`), **inflection points**, **monotonicity** and **curvature**
+- **Antiderivative** for polynomials, e^(ax + b), sin/cos(ax + b), 1/x, x·eˣ, x·ln(x) and simple chains – otherwise it says none was found; the **area with the x-axis**
+- **Limits** as x → ±∞ and at gaps, **asymptotes** and the **inflection tangent**
+- with `x₀ = 1` after the function: **function value**, **tangent** and **normal**; with two functions: their **intersections**
+
+Selected limits and integrals work too: `lim x→0 sin(x)/x` gives 1, `∫₀² x² dx` gives 8/3 and the **mean value** 4/3. What the algebra allows is exact; anything else is numeric and marked **≈**.
+
+The **hint after "="** knows functions written above: below `f(x) = (x + 3)·eˣ`, `f′(x) =` suggests `(x + 4)·eˣ`; `F(x) =`, `f(2) =`, `lim x→∞ f(x) =` and `∫₀¹ f(x) dx =` work too.
+
+In a **function graph**, **ƒ′** next to a function shows **f′** and **f″**, marks **points** and hatches an **area** between two bounds, with the integral and mean value.
+
 ## Dashboards and metrics
 
 **/Metric** inserts a card with a number from a database, **/Dashboard** three side by side. With the gear you choose:

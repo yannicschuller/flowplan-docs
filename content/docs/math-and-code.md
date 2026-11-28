@@ -51,6 +51,22 @@ Flowplan rechnet nur, wenn du es möchtest – exakt mit Brüchen, in deutscher 
 - **Vektoren**: Schreibe Vektoren als `(1 | 2 | 3)`, `(1; 2; 3)` oder `(1, 2, 3)` – in deutscher Schreibweise ist ein Komma zwischen Ziffern sonst ein Dezimalkomma, `(1,5; 2)` ist also (1,5 | 2). Flowplan rechnet Summen und Vielfache (`2 · (1; −2) − (3; 1) = (−1; −5)`), das **Skalarprodukt** mit `·` samt **Winkel** (`(1; 0) · (0; 1) = 0 ⇒ ∠ = 90°`), das **Kreuzprodukt** mit `×` (`(1|0|0) × (0|1|0) = (0 | 0 | 1)`) und den **Betrag** mit `|…|` (`|(1; 1)| = √2`). Ein markierter Vektor allein zeigt seinen Betrag und den **Einheitsvektor** (`(3; 4) ⇒ v⁰ = (3/5; 4/5)`). **Vektoren zeichnen** im Textmenü stellt Vektoren der Ebene als Pfeile im Koordinatensystem dar – bei `(1; 2) + (3; 1)` beide Vektoren und ihre Summe. Im Graphen lassen sich weitere Vektoren wie `(3; 2)` neben Funktionen eintragen. **Vektoren im Raum** wie `(1 | 2 | 3)` – auch Kreuzprodukte – zeichnet Flowplan in einem 3D-Koordinatensystem mit x-, y- und z-Achse, Bodenraster und gestrichelten Hilfslinien zum Boden; **Ziehen dreht die Ansicht**, die Drehung wird mit der Seite gespeichert. Im Formel-Editor gibt es die Bausteine **Vektor** (Spaltenvektor), **Vektorpfeil** und **Kreuzprodukt**; Spaltenvektoren in Formeln werden genauso berechnet.
 - **In Formeln**: Der Formel-Editor zeigt dieselben Möglichkeiten unter **Rechnen** und hängt das Ergebnis in LaTeX an, etwa `\frac{3}{4} + \frac{1}{6} = \frac{11}{12}`.
 
+### Analysis {since=0.12.3}
+
+Markiere eine Funktion wie `f(x) = (x + 3)·eˣ` oder `f(t) = ½·t³·e^(−t/3 − 3/5)` – jeder Variablenname geht. Im Textmenü fasst **Analysis** zusammen, was Flowplan daraus berechnet; ein Klick fügt das Ergebnis dahinter ein:
+
+- **1. und 2. Ableitung** mit Produkt-, Quotienten- und Kettenregel, so geschrieben wie im Heft: `f′(x) = (x + 4)·eˣ`, `f′(x) = 84x·(2x² − 13)²⁰`, `f′(x) = (x² − 2x − 1)/(x − 1)²`
+- **Kurvendiskussion**: **Nullstellen**, **Extrempunkte** mit ihrer Art (`T(−4 | −e⁻⁴ ≈ −0,01832)`), **Wendepunkte** und Sattelpunkte, **Monotonie** und **Krümmung** als Bereiche (`streng monoton fallend für x < −4`)
+- **Stammfunktion** für Polynome, e^(ax + b), sin und cos von ax + b, 1/x, Produkte wie x·eˣ oder x·ln(x) und einfache Verkettungen – findet Flowplan keine, steht dort „keine Stammfunktion gefunden“ statt einer geratenen; dazu die **Fläche mit der x-Achse** zwischen den Nullstellen
+- **Grenzwerte** für x → ±∞ und an Definitionslücken, **Asymptoten** (senkrecht, waagerecht, schief) und die **Wendetangente**
+- mit einer Stelle – `f(x) = x² − 4x, x₀ = 1` – den **Funktionswert**, die **Tangente** und die **Normale**; zwei Funktionen – `f(x) = x², g(x) = 2x + 3` – ergeben ihre **Schnittpunkte**
+
+Auch Grenzwerte und Integrale lassen sich markieren: `lim x→0 sin(x)/x` ergibt 1, `lim x→0⁺ 1/x` ergibt ∞, `∫₀² x² dx` ergibt 8/3, dazu den **Mittelwert** 1/(b − a)·∫ = 4/3. Exakt ist alles, was die Algebra hergibt (Brüche, Wurzeln, e und ln); sonst rechnet Flowplan numerisch und kennzeichnet das mit **≈**, bei periodischen Funktionen für −2π ≤ x ≤ 2π.
+
+Der **Hinweis nach „=“** kennt Funktionen, die weiter oben stehen: Unter `f(x) = (x + 3)·eˣ` schlägt `f′(x) =` gleich `(x + 4)·eˣ` vor, ebenso `f″(x) =`, `F(x) =` (eine Stammfunktion), `f(2) =`, `lim x→∞ f(x) =` und `∫₀¹ f(x) dx =`.
+
+Im **Funktionsgraphen** öffnet **ƒ′** neben einer Funktion ihre Analyse: **f′** und **f″** gestrichelt einblenden, **Punkte** markieren (Nullstellen, Hoch-, Tief- und Wendepunkte, Schnittpunkte mit anderen markierten Funktionen) und eine **Fläche** zwischen zwei Grenzen schraffieren – mit Integral und Mittelwert in der Legende. Funktionen dürfen hier jede Variable haben, etwa `t·e^(−t)`.
+
 ## Dashboards und Kennzahlen
 
 **/Kennzahl** fügt eine Karte mit einer Zahl aus einer Datenbank ein, **/Dashboard** gleich drei nebeneinander. Über das Zahnrad wählst du:
