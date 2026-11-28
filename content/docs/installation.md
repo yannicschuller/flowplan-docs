@@ -185,7 +185,7 @@ Alle Werte erklärt das README des Charts. Mehrere Pods mit PostgreSQL, Redis un
 
 ## Ohne Docker
 
-Node.js 22.13 oder neuer (Node 24 LTS empfohlen):
+{since=0.12.3} Node.js 24 oder neuer (das Image nutzt Node 26):
 
 ```bash
 npm ci

@@ -185,7 +185,7 @@ The chart's README explains every value. Several pods with PostgreSQL, Redis and
 
 ## Without Docker
 
-Node.js 22.13 or newer (the image uses Node 26):
+{since=0.12.3} Node.js 24 or newer (the image uses Node 26):
 
 ```bash
 npm ci
