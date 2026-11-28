@@ -82,7 +82,7 @@ Flowplan: ANOTHER CONTAINER IS USING THE DATA FOLDER /app/data.
 
 ## What to put in a bug report
 
-**Copy for bug report** {since=0.12.2}: under **Settings → About Flowplan** this button puts the installation details into one line and shows it in a box below, for example `Backend: Flowplan 0.12.2 (release, build 28c0c38, built 2026-11-27T12:10Z) · Frontend: Firefox 140, Windows`. Paste it into the issue's **Installation details** field.
+**Copy for bug report** {since=0.12.2}: under **Settings → About Flowplan** this button puts the installation details into one line and shows it in a box below, for example `Flowplan 0.12.2 (release, build 28c0c38, built 2026-11-27T12:10Z) · Frontend: Firefox 140, Windows`. Paste it into the issue's **Installation details** field.
 
 - **Everyone** gets the Flowplan version, the channel (beta or release), the build (short commit) and its date, and their own browser and system – in the iPhone, iPad and Android app or the desktop app the app's version instead of the browser.
 - **Admins** also get Node.js, how Flowplan is installed, the database (SQLite or PostgreSQL with its major version), the storage (local disk or S3) and single instance or cluster. The same button is under **Settings → Instance → Name & version**. The install method is what `FLOWPLAN_INSTALL_METHOD` says ([Configuration](/configuration-storage#legal-and-interface)), otherwise what Flowplan detects: Kubernetes, Docker, Podman or no container.

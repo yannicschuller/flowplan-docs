@@ -82,7 +82,7 @@ Flowplan: ANOTHER CONTAINER IS USING THE DATA FOLDER /app/data.
 
 ## Was in einen Fehlerbericht gehört
 
-**Für Bug-Report kopieren** {since=0.12.2}: Unter **Einstellungen → Über Flowplan** fasst dieser Knopf die Installationsdetails in einer Zeile zusammen und zeigt sie in einem Kasten darunter, zum Beispiel `Backend: Flowplan 0.12.2 (release, build 28c0c38, built 2026-11-27T12:10Z) · Frontend: Firefox 140, Windows`. Füg sie im Issue ins Feld **Installation details** ein.
+**Für Bug-Report kopieren** {since=0.12.2}: Unter **Einstellungen → Über Flowplan** fasst dieser Knopf die Installationsdetails in einer Zeile zusammen und zeigt sie in einem Kasten darunter, zum Beispiel `Flowplan 0.12.2 (release, build 28c0c38, built 2026-11-27T12:10Z) · Frontend: Firefox 140, Windows`. Füg sie im Issue ins Feld **Installation details** ein.
 
 - **Alle** bekommen die Flowplan-Version, den Kanal (Beta oder Release), den Build (kurzer Commit) und sein Datum sowie den eigenen Browser und das System – in der App für iPhone, iPad und Android oder in der Desktop-App statt des Browsers die Version der App.
 - **Admins** bekommen außerdem Node.js, wie Flowplan installiert ist, die Datenbank (SQLite oder PostgreSQL mit Hauptversion), den Speicher (lokale Platte oder S3) und Einzelinstanz oder Cluster. Derselbe Knopf steht unter **Einstellungen → Instanz → Name & Version**. Die Installationsart ist, was `FLOWPLAN_INSTALL_METHOD` sagt ([Konfiguration](/configuration-storage#rechtliches-und-oberflaeche)), sonst das, was Flowplan erkennt: Kubernetes, Docker, Podman oder kein Container.
