@@ -44,7 +44,7 @@ Solange Flowplan geöffnet ist, gleicht es die Kopie selbst ab: beim Start, wenn
 - Läuft ein Abgleich länger, steht unten links kurz **Offline-Kopie wird aktualisiert …**.
 - Ist die Anmeldung abgelaufen, gleicht Flowplan nicht ab – die vorhandene Kopie bleibt unverändert.
 
-Unter **Einstellungen → Offline & Geräte** steht der Stand, etwa „Offline-Kopie aktualisiert vor 2 Std. · 312 Seiten · 85 MB“. **Jetzt aktualisieren** lädt alle Seiten neu.
+Unter **Einstellungen → Offline & Geräte** steht der Stand, etwa „Offline-Kopie aktualisiert vor 2 Std. · 312 Seiten · 85 MB“. **Jetzt aktualisieren** lädt alle Seiten neu. Läuft ein Abgleich, steht dort stattdessen, wie weit er ist („Offline-Kopie wird erstellt … 2 von 3“), danach sein Ergebnis; scrollst du weiter, bleibt diese Zeile oben sichtbar. Speicherbudget, **Auch Eintragsinhalte und Dateien speichern** und **Offline behalten** sind so lange ausgegraut, mit dem Hinweis „Wird verfügbar, sobald die Offline-Kopie fertig ist.“ {since=0.12.3}
 
 **Auch Eintragsinhalte und Dateien speichern** legt zusätzlich die Dokumente aller Datenbank-Einträge und die Dateien der Seiten ab, auch wenn du sie noch nie geöffnet hast – bis zum [Speicherbudget](/what-works-offline#speicherbudget) und nur, solange das Gerät genug Platz hat. Ohne Haken bleiben nur Einträge und Dateien, die du schon einmal geöffnet hast oder [offline behältst](/what-works-offline#offline-behalten). Ausschalten entfernt die zusätzlich gespeicherten Einträge und Dateien – außer denen, die du offline behältst. {since=0.11.1}
 

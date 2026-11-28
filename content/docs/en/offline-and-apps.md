@@ -44,7 +44,7 @@ While Flowplan is open, it keeps the copy up to date on its own: at start, when 
 - When an update takes a moment, **Updating offline copy …** shows briefly in the bottom left corner.
 - When the sign-in has expired, Flowplan does not update – the existing copy stays as it is.
 
-**Settings → Offline & devices** shows the state, for example “Offline copy updated 2 h ago · 312 pages · 85 MB”. **Update now** loads every page again.
+**Settings → Offline & devices** shows the state, for example “Offline copy updated 2 h ago · 312 pages · 85 MB”. **Update now** loads every page again. While a sync runs, that line shows how far it has got instead (“Creating the offline copy … 2 of 3”), afterwards its result; when you scroll on, the line stays visible at the top. The storage budget, **Also store record contents and files** and **Keep offline** are greyed out until then, with the note “Available once the offline copy is ready.” {since=0.12.3}
 
 **Also store record contents and files** also stores the documents of all records and the files of the pages, even ones never opened – up to the [storage budget](/what-works-offline#storage-budget) and the device's free space. Without it, only what you opened or [keep offline](/what-works-offline#keep-offline) is kept. Turning it off removes these extras, except what you keep offline. {since=0.11.1}
 
