@@ -96,7 +96,7 @@ A synced block (`/sync` → **Synced block**) is content that is the same in sev
 - **Create:** `/columns` → **2 columns** or **3 columns**. Or drag a block by its handle to the left or right edge of another. Or select two or three blocks and choose **Side by side** in the block menu.
 - **Width:** drag the gap between two columns to make them wider or narrower (each at least 20 %). A double-click on the gap makes them all equal again. The widths are saved with the page and apply for everyone who reads it.
 - **Remove:** in an empty column, <kbd>⌫</kbd> deletes the column. When only one is left, its content flows back into the page.
-- **Little room:** columns stand side by side only while each can be about 320 pixels wide. On phones and in narrow windows they are stacked; three columns usually need the full page width.
+- **Little room:** columns stand side by side while each can be about 200 pixels wide – three fit at normal page width. On phones and in narrow windows they are stacked.
 - **Files and PDFs** shrink to their column; a click opens them as usual.
 - **Export:** print, PDF and Word show columns side by side with their widths (Word as a table without borders). Markdown has no columns: there they follow one another, each headed **Column 1**, **Column 2** … E-books, Jira and Confluence show them one after another too. Search finds the text in every column.
 

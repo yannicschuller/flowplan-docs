@@ -96,7 +96,7 @@ Mit `/spalten` stellst du **2 oder 3 Spalten** nebeneinander – etwa zwei PDFs,
 - **Anlegen:** `/spalten` → **2 Spalten** oder **3 Spalten**. Oder zieh einen Block am Griff an den linken oder rechten Rand eines anderen. Oder wähle zwei bis drei Blöcke aus und nimm im Blockmenü **Nebeneinander**.
 - **Breite:** Zieh die Lücke zwischen zwei Spalten, um sie breiter oder schmaler zu machen (jede mindestens 20 %). Ein Doppelklick auf die Lücke macht alle wieder gleich breit. Die Breiten werden mit der Seite gespeichert und gelten für alle, die sie lesen.
 - **Entfernen:** In einer leeren Spalte löscht <kbd>⌫</kbd> die Spalte. Bleibt nur eine übrig, fließt ihr Inhalt zurück in die Seite.
-- **Wenig Platz:** Nebeneinander stehen Spalten nur, solange jede etwa 320 Pixel breit sein kann. Auf dem Smartphone und in schmalen Fenstern stehen sie untereinander; drei Spalten brauchen meist die volle Seitenbreite.
+- **Wenig Platz:** Nebeneinander stehen Spalten, solange jede etwa 200 Pixel breit sein kann – drei passen bei normaler Seitenbreite. Auf dem Smartphone und in schmalen Fenstern stehen sie untereinander.
 - **Dateien und PDFs** werden so schmal wie ihre Spalte; ein Klick öffnet sie wie sonst.
 - **Export:** Drucken, PDF und Word zeigen Spalten nebeneinander mit ihren Breiten (Word als Tabelle ohne Rahmen). Markdown kennt keine Spalten: Dort stehen sie nacheinander, jede mit **Spalte 1**, **Spalte 2** … davor. E-Book, Jira und Confluence zeigen sie ebenfalls nacheinander. Die Suche findet den Text in allen Spalten.
 
