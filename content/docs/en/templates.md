@@ -72,6 +72,16 @@ Under **Templates**, choose **Edit** on your template, then under **Content**:
 
 Pages already created from the template don't change. Whoever may rename the template may change its content: its creator or a workspace owner.
 
+### Placeholders in page templates {since=0.12.3}
+
+Your own document templates can contain [placeholders](#placeholders) too – like record templates, just without a database. When you create a page from the template with **New page**, Flowplan fills in the values once: in the title, headings, text, tables and callouts, and in text properties. Example: a template “Kickoff {{Customer}}” with the property *Customer* = “ACME” gives the page “Kickoff ACME”.
+
+- **`{{Property}}`** – the value of a [property](/page-tags#tags-and-properties) as the template brings it. Upper and lower case don't matter.
+- **`{{Title}}`** is the title you give in the **New page** dialog (without one, the template's name). **`{{Today}}`** (also `{{Date}}`), **`{{Now}}`**, **`{{Creator}}`** and **`{{Me}}`** (whoever creates the page) and **`{{Space}}`** (the new page's space) are built in, and so are the German names (`{{Titel}}`, `{{Heute}}`, `{{Jetzt}}`, `{{Ersteller}}`, `{{Ich}}`, `{{Bereich}}`). If a property has the same name, the property wins.
+- In a template's draft (**Edit content**), the **{ }** icon in the bar at the top inserts placeholders at the cursor; there they stay as written.
+
+The same rules as for record templates apply: values appear as plain text, empty properties give empty text, unknown placeholders stay as written. The values are only filled in on creation – if a property changes later, the text stays as it is.
+
 **Page templates and record templates:** page templates (documents, databases) create whole pages – saved with **Page actions → Save as template**, used from **New page**. Record templates belong to a database and fill new records (see below); you change them with **Edit** in the database.
 
 ## Record templates
@@ -86,6 +96,7 @@ Text in double curly braces is replaced with the record's values when the templa
 
 - **`{{Property}}`** – the value of a property of the database. Upper and lower case don't matter.
 - **`{{Title}}`**, **`{{Today}}`** (also `{{Date}}`), **`{{Now}}`**, **`{{Creator}}`**, **`{{Me}}`** (whoever applies the template) and **`{{Database}}`** are built in. The German names (`{{Titel}}`, `{{Heute}}`, `{{Datum}}`, `{{Jetzt}}`, `{{Ersteller}}`, `{{Ich}}`, `{{Datenbank}}`) work too. If a property has the same name (say “Date”), the property wins.
+- **`{{Space}}`** (also `{{Bereich}}`) is the name of the space the database is in. {since=0.12.3}
 - The **{ }** icon next to a record's **Content** (**Insert placeholder**) inserts placeholders at the cursor and lists all properties of the database.
 
 Values appear as in the table: dates in your language and in the property's date format, multi-select joined by commas, relations as the titles of the linked records, people by name, checkboxes as ✓ or ✗. Empty properties give empty text; unknown placeholders stay as written. Values are always inserted as plain text, never as formatting or HTML. Properties only certain people may see stay empty – the text is visible to everyone who sees the record.

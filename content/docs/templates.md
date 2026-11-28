@@ -72,6 +72,16 @@ Unter **Vorlagen** wählst du bei deiner Vorlage **Bearbeiten** und dann unter *
 
 Bereits aus der Vorlage erstellte Seiten ändern sich nicht. Den Inhalt ändern darf, wer die Vorlage auch umbenennen darf: ihr Ersteller oder ein Eigentümer des Arbeitsbereichs.
 
+### Platzhalter in Seitenvorlagen {since=0.12.3}
+
+Auch eine eigene Dokumentvorlage kann [Platzhalter](#platzhalter) enthalten – wie eine Datensatzvorlage, nur ohne Datenbank. Erstellst du über **Neue Seite** eine Seite aus der Vorlage, setzt Flowplan einmal die Werte ein: im Titel, in Überschriften, im Text, in Tabellen und Hinweisen sowie in Text-Eigenschaften. Beispiel: eine Vorlage „Kickoff {{Kunde}}“ mit der Eigenschaft *Kunde* = „ACME“ ergibt die Seite „Kickoff ACME“.
+
+- **`{{Eigenschaft}}`** – der Wert einer [Eigenschaft](/page-tags#tags-und-eigenschaften), wie ihn die Vorlage mitbringt. Groß- und Kleinschreibung spielen keine Rolle.
+- **`{{Titel}}`** ist der Titel, den du im Dialog **Neue Seite** vergibst (ohne einen der Name der Vorlage). **`{{Heute}}`** (auch `{{Datum}}`), **`{{Jetzt}}`**, **`{{Ersteller}}`** und **`{{Ich}}`** (wer die Seite erstellt) sowie **`{{Bereich}}`** (der Bereich der neuen Seite) sind eingebaut, ebenso die englischen Namen (`{{Title}}`, `{{Today}}`, `{{Now}}`, `{{Creator}}`, `{{Me}}`, `{{Space}}`). Heißt eine Eigenschaft genauso, gilt die Eigenschaft.
+- Im Entwurf einer Vorlage (**Inhalt bearbeiten**) setzt das Symbol **{ }** in der Leiste oben Platzhalter an der Schreibmarke ein; dort bleiben sie stehen.
+
+Es gelten dieselben Regeln wie bei Datensatzvorlagen: Werte erscheinen als reiner Text, leere Eigenschaften ergeben leeren Text, unbekannte Platzhalter bleiben stehen. Die Werte werden nur beim Erstellen eingesetzt – ändert sich später eine Eigenschaft, bleibt der Text, wie er ist.
+
 **Seitenvorlagen und Datensatzvorlagen:** Seitenvorlagen (Dokumente, Datenbanken) erstellen ganze Seiten – gespeichert über **Seitenaktionen → Als Vorlage speichern**, verwendet bei **Neue Seite**. Datensatzvorlagen gehören zu einer Datenbank und füllen neue Einträge (siehe unten); geändert werden sie mit **Bearbeiten** in der Datenbank.
 
 ## Datensatzvorlagen
@@ -86,6 +96,7 @@ Text in doppelten geschweiften Klammern wird beim Anwenden durch die Werte des E
 
 - **`{{Eigenschaft}}`** – der Wert einer Eigenschaft der Datenbank. Groß- und Kleinschreibung spielen keine Rolle.
 - **`{{Titel}}`**, **`{{Heute}}`** (auch `{{Datum}}`), **`{{Jetzt}}`**, **`{{Ersteller}}`**, **`{{Ich}}`** (wer die Vorlage anwendet) und **`{{Datenbank}}`** sind eingebaut. Die englischen Namen (`{{Title}}`, `{{Today}}`, `{{Date}}`, `{{Now}}`, `{{Creator}}`, `{{Me}}`, `{{Database}}`) funktionieren ebenso. Heißt eine Eigenschaft genauso (etwa „Datum“), gilt die Eigenschaft.
+- **`{{Bereich}}`** (auch `{{Space}}`) ist der Name des Bereichs, in dem die Datenbank liegt. {since=0.12.3}
 - Das Symbol **{ }** neben **Inhalt** eines Eintrags (**Platzhalter einfügen**) setzt Platzhalter an der Schreibmarke ein und listet alle Eigenschaften der Datenbank.
 
 Werte erscheinen wie in der Tabelle: Datumsangaben in deiner Sprache und im Datumsformat der Eigenschaft, Mehrfachauswahl durch Kommas getrennt, Verknüpfungen als Titel der verknüpften Einträge, Personen mit Namen, Kontrollkästchen als ✓ oder ✗. Leere Eigenschaften ergeben leeren Text; unbekannte Platzhalter bleiben stehen. Werte werden immer als reiner Text eingesetzt, nie als Formatierung oder HTML. Eigenschaften, die nur bestimmte Personen sehen dürfen, bleiben leer – der Text ist für alle sichtbar, die den Eintrag sehen.
